@@ -19,4 +19,8 @@ API Methods:
 3. navigate your browser to `http://localhost:3000/auth/user/pass` when user and pass are your github credentials to authenticate.
 4. navigate to any of the urls specified by the API methods
 
+#### Change log
+
+[2013-03-26]
+* Created very basic app design (to see: http://localhost/gisto/app/#/view1)
 
