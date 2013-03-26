@@ -86,7 +86,7 @@ div.toolbox {
     font-size:14px;
     margin: 0;
     text-align: right;
-    background: lavender;
+    background: #C2D8FF;
     border-bottom: 1px solid hsl(0,0%,60%);
     box-shadow: 0px 2px 5px #ccc;
 }
@@ -127,9 +127,18 @@ aside ul li {
     text-decoration: none;
     color: #555;
     font: 300 14px 'trebuchet ms',arial,sans-serif;
+    border-top: 1px solid #fff;
 }
+
+aside ul li:first-child {
+    border-top: none;
+}
+
 aside ul li:hover {
-    background: lemonchiffon;
+    background: darkseagreen;
+    box-shadow: 5px 5px 20px #555 inset;
+    color: #fff;
+    text-shadow: 1px 1px 5px #555;
 }
 
 aside footer,
@@ -221,4 +230,34 @@ color: #555;
 
 .the-gist-name a:hover {
 box-shadow: 0px 0px 10px #555 inset;
+}
+
+.messenger {
+    background: khaki;
+    cursor: pointer;
+    font-size: 14px;
+    color: #FFFFFF;
+    padding: 10px;
+    text-shadow: 0 1px 1px #000000;
+}
+
+.messenger.info {
+    background: #0480BE;
+
+}
+
+.messenger.warn {
+    background: #b94a48;
+}
+
+.messenger.ok {
+    background: #468847;
+}
+
+
+.messenger.info span code,
+.messenger.warn span code,
+.messenger.ok span code,
+.messenger span code {
+    font: 700 1em cursive;
 }
