@@ -224,6 +224,7 @@ div.comments {
     padding: 10px;
     margin: 0;
     background: #fff;
+    background-image: -webkit-linear-gradient(top, white 0%,#ddd 100%);
 }
 
 .the-gist-name {
