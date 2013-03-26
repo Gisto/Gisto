@@ -56,26 +56,36 @@
     console.log({
       description: req.body.description,
       "public": true,
-      files: req.body.files
+      files: JSON.parse(req.body.files)
     });
 
 
     ghgist.create({
       description: req.body.description,
       "public": true,
-      files: req.body.files
+      files: JSON.parse(req.body.files)
     }, function(err,data) {
       if (err) {
-        res.send({status: 'could not create gist', error: err});
+        res.send({status: 'error', error: err});
       }
 
       res.send({'status': "ok"});
     });
-   
 
    };
 
    exports.editGist = function (req, res) {
+
+    ghgist.edit(req.body.id, {
+      description: req.body.description,
+      files: JSON.parse(req.body.files)
+    }, function(err,data) {
+      if (err) {
+        res.send({status: 'error', error: err});
+      }
+
+      res.send({'status': "ok"});
+    });
 
    };
 

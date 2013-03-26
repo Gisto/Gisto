@@ -12,6 +12,23 @@ API Methods:
 * /gists/unstar/id
 * /gists/comments/id
 
+## post methods
+* /gists/create
+
+>parameters:
+
+`description - type(string) - description of the gist`
+
+`files - type(json string) - Json array with files and content { "text.txt": {content: "bla bla"} }`
+
+* /gists/edit
+
+>parameters:
+
+`description - type(string) - new description of the gist`
+
+`files - type(json string) - Json array with files and content { "text.txt": {content: "bla bla edited"} }`
+
 ### Running the API server
 
 1. browse to the api directory
