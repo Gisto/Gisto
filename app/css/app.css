@@ -91,6 +91,20 @@ div.toolbox {
     box-shadow: 0px 2px 5px #ccc;
 }
 
+div.toolbox span {
+    float: left;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+div.toolbox span i {
+    background: #555;
+    font-style: normal;
+    color: white;
+    padding: 0px 5px;
+    border-radius: 3px;
+}
+
 aside {
     -webkit-flex: 0 0 30%;
     height: 100%;
@@ -139,10 +153,10 @@ menu {
 }
 
 .main section {
-    padding: 10px;
+    padding: 20px;
     font-size:14px;
     -webkit-flex: 1 1 auto;
-    overflow: auto;
+    overflow-y: scroll;
     min-height: 0;
 }
 
@@ -158,12 +172,53 @@ menu {
 }
 
 div.comments {
-padding: 10px;
-line-height: 14px;
-font-size: 14px;
-margin: 0;
-text-align: left;
-background: #fef8a5;
-border-top: 1px solid #999;
-box-shadow: 0px -3px 5px #CCC;
+    padding: 10px;
+    line-height: 14px;
+    font-size: 14px;
+    margin: 0;
+    text-align: left;
+    background: #fef8a5;
+    border-top: 1px solid #999;
+    box-shadow: 0px -3px 5px #CCC;
+}
+
+.the-gist {
+    background: #F2F2F2;
+    padding: 0px;
+    border: 1px solid #CCC;
+    box-shadow: 0px 0px 20px #ccc;
+    margin:0px 0px 20px 0px;
+}
+
+.the-gist pre {
+    padding: 10px;
+    margin: 0;
+    background: #fff;
+}
+
+.the-gist-name {
+    background: rgba(255, 230, 190, 0.59);
+    padding: 10px;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+}
+
+.the-gist-name a {
+display: block;
+float: right;
+font-size: 20px;
+position: relative;
+top: -10px;
+border-left: 1px solid #CCC;
+height: 38px;
+right: -10px;
+width: 38px;
+padding: 8px 0px 0px 0px;
+text-align: center;
+text-decoration: none;
+color: #555;
+}
+
+.the-gist-name a:hover {
+box-shadow: 0px 0px 10px #555 inset;
 }

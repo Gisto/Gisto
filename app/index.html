@@ -14,7 +14,7 @@
 
             <header class="flex">
                 <h1 title="Gist desktop app">Gisto</h1>
-                <i class="settings icon-wrench"></i>
+                <i class="settings icon-cog"></i>
             </header>
 
             <ul class="flex">
@@ -46,17 +46,31 @@
             </header>
 
             <div class="toolbox">
-                Toolbox | 
-                <i class="icon-upload"></i> | 
-                <i class="icon-edit"></i> | 
-                <i class="icon-cut"></i> | 
-                <i class="icon-paste"></i>
                 
+                <span>
+                    <b>Revision:</b> <i>3</i> | <b>Date:</b> <i>26/03/2013</i>
+                </span>
+                
+                <i class="icon-upload"> Upload</i> | 
+                <i class="icon-download"> Download</i> | 
+                <i class="icon-trash"> Remove</i> | 
+                <i class="icon-file-alt"> File list</i>
+
             </div>
 
             <section>
-                
-                <pre>
+
+                <div class="the-gist">       
+                    <div class="the-gist-name">
+                        <i class="icon-file-alt"></i> <b>curl.php</b> | Name of this gist
+                        <a href="#" title="More Options..."><i class="icon-cogs"></i></a>
+                        <a href="#" title="Edit"><i class="icon-pencil"></i></a>
+                        <a href="#" title="Star"><i class="icon-star"></i></a>
+                        <a href="#" title="Download"><i class="icon-cloud-download"></i></a>
+                        <a href="#" title="Direct link"><i class="icon-link"></i></a>
+                        <a href="#" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
+                    </div>
+                    <pre>
 .select,
 .input[type="text"],
 .input[type="email"],
@@ -71,17 +85,50 @@
   padding: 5px 0;
   width: 200px;
 }
+                    </pre>
+                </div>      
 
-                </pre>
+                
+                
+                <div class="the-gist">       
+                    <div class="the-gist-name">
+                        <i class="icon-file-alt"></i> <b>curl.php</b> | Name of this gist
+                        <a href="#" title="More Options..."><i class="icon-cogs"></i></a>
+                        <a href="#" title="Edit"><i class="icon-pencil"></i></a>
+                        <a href="#" title="Star"><i class="icon-star"></i></a>
+                        <a href="#" title="Download"><i class="icon-cloud-download"></i></a>
+                        <a href="#" title="Direct link"><i class="icon-link"></i></a>
+                        <a href="#" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
+                    </div>
+                    <pre>
+&lt;?php
+function ParseUrl($URL) {
+    $crl = curl_init();
+    curl_setopt ($crl, CURLOPT_URL, $URL);
+    curl_setopt ($crl, CURLOPT_PORT, 8086);
+    curl_setopt ($crl, CURLOPT_USERPWD, "admin:pass");
+    curl_setopt ($crl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt ($crl, CURLOPT_CONNECTTIMEOUT, 5);
+    $ret = curl_exec($crl);
+    curl_close($crl);
+    return $ret;
+}
+
+echo ParseUrl('http://xxx.me/serverinfo');
+?&gt;
+                    </pre>
+                </div>   
+                
+                
                 
             </section>
 
-                <div class="comments">
-                    <b>3</b> Comments | <i class="icon-arrow-up">Show</i>
-                </div>
-            
+            <div class="comments">
+                <b>3</b> Comments | <i class="icon-arrow-up">Show</i>
+            </div>
+
             <footer>
-                    Some foot note here
+                Some foot note here
             </footer>
 
         </div>
