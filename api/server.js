@@ -3,6 +3,8 @@ var express = require('express'),
  
 var app = express();
  
+ // allow post data
+ app.use(express.bodyParser());
 
  // gist control
 
@@ -12,6 +14,8 @@ app.get('/gists/:id', gists.getGistById);
 app.get('/gists/star/:id', gists.starGistById);
 app.get('/gists/unstar/:id', gists.unStarGistById);
 app.get('/gists/comments/:id', gists.getGistCommentsByGistId);
+app.post('/gists/create', gists.createGist);
+app.post('/gists/edit', gists.editGist);
 
 
 
