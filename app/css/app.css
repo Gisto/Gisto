@@ -109,13 +109,13 @@ div.toolbox span i {
 
 div.toolbox a {
     border: 1px solid #555;
-    padding: 1px 5px;
+    padding: 0px 5px;
     border-radius: 3px;
     color: #fff;
     background: #555;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 9px;
+    font-size: 11px;
 }
 
 div.toolbox a:hover {
@@ -244,7 +244,7 @@ div.comments {
     padding: 10px;
     margin: 0;
     background: #fff;
-/*    background-image: -webkit-linear-gradient(top, white 0%,#ddd 100%);*/
+    /*    background-image: -webkit-linear-gradient(top, white 0%,#ddd 100%);*/
 }
 
 .the-gist-name {
