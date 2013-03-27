@@ -4,7 +4,9 @@
 * {
     box-sizing: border-box;
 }
-
+*:focus {
+    outline: none;
+}
 html {
     height: 100%;
     overflow: hidden;
@@ -23,7 +25,7 @@ body {
 ::-webkit-scrollbar {
     height: 5px;
     width: 7px;
-    background: #535353;
+    background: #555;
 }
 ::-webkit-scrollbar-thumb {
     background: #f2f2f2;
@@ -74,7 +76,7 @@ aside header,
     padding: 0px 10px;
     line-height: 50px;
     text-align: left;
-    background: -webkit-linear-gradient(top, hsl(0,0%,95%), hsl(0,0%,85%) );
+    background: -webkit-linear-gradient(top, #F2F2F2, #D9D9D9 );
     border-top: 1px solid hsl(0,0%,100%);
     border-bottom: 1px solid hsl(0,0%,60%);
     text-shadow: 1px 1px 1px #fff;
@@ -105,6 +107,22 @@ div.toolbox span i {
     border-radius: 3px;
 }
 
+div.toolbox a {
+    border: 1px solid #555;
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: #fff;
+    background: #555;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 9px;
+}
+
+div.toolbox a:hover {
+    background: #000;
+    border: 1px solid #000;
+}
+
 .type {
     background: #f2f2f2;
     padding: 0 4px;
@@ -117,7 +135,7 @@ div.toolbox span i {
 .secret {
     color: #C00;
     border: 1px solid #c00;
-    
+
 }
 
 .public {
@@ -136,19 +154,21 @@ aside ul {
     min-height: 0;
     padding: 0px;
     margin: 0;
+    background: -webkit-linear-gradient(top, #F2F2F2, #D9D9D9 );
     list-style: none;
     overflow-y: scroll;
-    box-shadow: 0px 3px 10px #555 inset;
+    box-shadow: 0px 0px 30px #555 inset;
 }
 
 aside ul li {
-    padding: 20px;
+    padding: 10px 20px;
     border-bottom:1px solid #555;
     text-decoration: none;
-    color: #555;
-    font: 300 14px 'trebuchet ms',arial,sans-serif;
+    color: #000;
+    font: 300 16px 'trebuchet ms',arial,sans-serif;
     border-top: 1px solid #fff;
     cursor: pointer;
+    background: linea;
 }
 
 aside ul li:first-child {
@@ -224,34 +244,34 @@ div.comments {
     padding: 10px;
     margin: 0;
     background: #fff;
-    background-image: -webkit-linear-gradient(top, white 0%,#ddd 100%);
+/*    background-image: -webkit-linear-gradient(top, white 0%,#ddd 100%);*/
 }
 
 .the-gist-name {
-    background: rgba(255, 230, 190, 0.59);
+    background: rgb(255, 200, 169);
     padding: 10px;
     border-bottom: 1px solid #CCC;
     position: relative;
 }
 
 .the-gist-name a {
-display: block;
-float: right;
-font-size: 20px;
-position: relative;
-top: -10px;
-border-left: 1px solid #CCC;
-height: 38px;
-right: -10px;
-width: 38px;
-padding: 8px 0px 0px 0px;
-text-align: center;
-text-decoration: none;
-color: #555;
+    display: block;
+    float: right;
+    font-size: 20px;
+    position: relative;
+    top: -10px;
+    border-left: 1px solid #CCC;
+    height: 38px;
+    right: -10px;
+    width: 38px;
+    padding: 8px 0px 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    color: #555;
 }
-
 .the-gist-name a:hover {
-box-shadow: 0px 0px 10px #555 inset;
+    box-shadow: 0px 0px 10px #555 inset;
+    color:#000;
 }
 
 .messenger {
@@ -282,4 +302,17 @@ box-shadow: 0px 0px 10px #555 inset;
 .messenger.ok span code,
 .messenger span code {
     font: 700 1em cursive;
+}
+
+aside header input {
+    position: absolute;
+    left: 200px;
+    top: 10px;
+    border-radius: 21px;
+    padding: 5px 10px;
+    border: 1px solid #CCC;
+    box-shadow: 1px 1px 5px #CCC inset;
+    width: 200px;
+    height: 33px;
+    color: #555;
 }
