@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="http://localhost:3000/gists/edit" method="POST">
+		<input type="text" name="id" />
+		<input type="text" name="description" />
+		<input type="hidden" name="files" value='{"test.txt": {"content": "String file contents which are edited"} }' />
+		<input type="submit" />
+	</form>
+</body>	
+</html>
