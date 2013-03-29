@@ -5,26 +5,32 @@
         <title>Gisto</title>
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/app.css">
+<!--
+        <link href="http://alexgorbatchev.com/pub/sh/current/styles/shCoreDefault.css" rel="stylesheet" type="text/css" />
+        <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+        <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
+-->
+
     </head>
 
     <body>
 
-        <aside class="flex">
+        <aside class="flex" ng-controller="theGistList">
 
             <header class="flex">
                 <h1 title="Gist desktop app">Gisto</h1>
-                <input type="text" ng-model="search" class="search-query" placeholder="Search">
+                <input type="text" ng-model="search" class="search-query" placeholder="Search gists">
                 <i class="settings icon-cog"></i>
             </header>
 
-            <ul ng-controller="theGists" class="flex">
-                <li id="gist-{{gist.id}}" ng-repeat="gist in gists | filter:search | orderBy:'title'">
-                    {{gist.title}}
+            <ul class="flex">
+                <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search | orderBy:'title')">
+                    <span ng-repeat="file in gist.files">{{file.filename}}</span>
                 </li>
             </ul>
 
             <footer class="flex">
-                Total 10 gists
+                Total {{filteredGists.length}} gists
             </footer>
         </aside>
 
@@ -78,7 +84,7 @@
                         <a href="#" title="Direct link"><i class="icon-link"></i></a>
                         <a href="#" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
                     </div>
-                    <pre>
+                    <pre class="">
 .select {
     border: medium none;
     border-radius: 3px 3px 3px 3px;
@@ -101,7 +107,7 @@
                         <a href="#" title="Direct link"><i class="icon-link"></i></a>
                         <a href="#" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
                     </div>
-                    <pre>
+                    <pre class="">
 &lt;?php
 function ParseUrl($URL) {
     $crl = curl_init();
@@ -148,6 +154,9 @@ echo ParseUrl('http://xxx.me/serverinfo');
         <script src="js/controllers.js"></script>
         <script src="js/filters.js"></script>
         <script src="js/directives.js"></script>
+        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+        <script src="js/main.js"></script>
+
     </body>
 
 </html>
