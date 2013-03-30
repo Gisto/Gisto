@@ -15,7 +15,7 @@ MyCtrl2.$inject = [];
 function theGistList($scope, $http) {
 
     $http.get('gists.json').success(function(data) {
-        $scope.gists = data;
-    });
+            $scope.gists = data;
+        });
     
 }

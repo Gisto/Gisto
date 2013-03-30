@@ -24,7 +24,7 @@
             </header>
 
             <ul class="flex">
-                <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search | orderBy:'title')">
+                <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
                     <span ng-repeat="file in gist.files">{{file.filename}}</span>
                 </li>
             </ul>
