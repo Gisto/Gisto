@@ -7,4 +7,10 @@ angular.module('myApp.filters', []).
     return function(text) {
       return String(text).replace(/\%VERSION\%/mg, version);
     }
-  }]);
+  }])
+  .filter('publicOrPrivet', function() {
+  return function(input) {
+    return input ? 'public' : 'privet';
+  };
+});
+  

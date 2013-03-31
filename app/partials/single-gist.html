@@ -1,5 +1,5 @@
  <header>
-                <span class="type public">{{single.public}}</span> Name of this gist
+                <span class="type public">{{single.public | publicOrPrivet}}</span> {{single.description}}
             </header>
 <!--
             <div class="messenger">
@@ -27,7 +27,7 @@
 <div class="toolbox">
 
     <span>
-        <b>Revision:</b> <i>3</i> | <b>Created:</b> <i>{{ single.created_at| date }}</i> | <b>id:</b> <i>{{single.id}}</i>
+        <b>Revision:</b> <i>3</i> | <b>Created:</b> <i>{{ single.created_at| date }}</i>
     </span>
     <a href="">Add new file</a>
     <a href="">Upload</a> 
