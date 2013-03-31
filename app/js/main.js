@@ -3,6 +3,18 @@ $(function() {
     setTimeout(function() {
         $('.messenger').slideUp('slow');
     },2000);
+    
+    
+    $('aside header a .update').click(function(){
+        $.ajax( {
+            url: "http://localhost:3000/gists/",
+            crossDomain: true 
+        })
+        .done(function() { 
+            console.log("success"); 
+        });
+    });
+    
 });
 
 /*
