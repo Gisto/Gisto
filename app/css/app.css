@@ -71,6 +71,15 @@ h1 {
     margin: 0;
 }
 
+h1 a {
+    text-decoration: none;
+    color:#555;
+}
+
+h1 a:hover {
+    color:#333;
+}
+
 aside header,
 .main header {
     padding: 0px 10px;
@@ -132,7 +141,7 @@ div.toolbox a:hover {
     text-decoration: none;
     font-weight: 700;
 }
-.secret {
+.privet {
     color: #C00;
     border: 1px solid #c00;
 
@@ -210,7 +219,7 @@ menu {
     min-height: 0;
 }
 
-aside header a .settings {
+div.main header a .settings {
     position: absolute;
     float: left;
     top: 10px;
@@ -223,7 +232,7 @@ aside header a .settings {
     text-decoration: none;
 }
 
-aside header a .update {
+div.main header a .update {
     position: absolute;
     float: left;
     top: 10px;
@@ -234,6 +243,20 @@ aside header a .update {
     background: #f2f2f2;
     color: #555;
     text-decoration: none;
+}
+
+div.main img.gravatar {
+    position: absolute;
+    float: left;
+    top: 10px;
+    right: 80px;
+    border: 1px solid #999;
+    padding: 0px;
+    border-radius: 3px;
+    background: #f2f2f2;
+    color: #555;
+    text-decoration: none;
+    width: 34px;
 }
 
 div.comments {
@@ -330,4 +353,8 @@ aside header input {
     width: 200px;
     height: 33px;
     color: #555;
+}
+
+#empty {
+    font-size: 30px
 }
