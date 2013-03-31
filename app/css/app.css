@@ -210,7 +210,7 @@ menu {
     min-height: 0;
 }
 
-.settings {
+aside header a .settings {
     position: absolute;
     float: left;
     top: 10px;
@@ -219,6 +219,21 @@ menu {
     padding: 6px;
     border-radius: 3px;
     background: #f2f2f2;
+    color: #555;
+    text-decoration: none;
+}
+
+aside header a .update {
+    position: absolute;
+    float: left;
+    top: 10px;
+    right: 45px;
+    border: 1px solid #999;
+    padding: 6px;
+    border-radius: 3px;
+    background: #f2f2f2;
+    color: #555;
+    text-decoration: none;
 }
 
 div.comments {
