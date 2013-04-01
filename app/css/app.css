@@ -388,35 +388,47 @@ div.main .the-comments .comment_gravatar {
 
 /** login form **/
 .login-form {
--webkit-border-radius: 16px;
-border-radius: 16px;
-width: 454px;
-height: 275px;
-background: rgb(255, 255, 255);
-border: 1px solid rgb(229, 229, 229);
-margin: auto;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    width: 454px;
+    height: 275px;
+    background: transparent;
+    margin: auto;
 }
 
 .login-form header {
     text-align: center;
+    padding: 20px 0px 10px;
 }
 
-.login-form .icon-github {
-    font-size: 80px;
+.login-form i {
+    font-size: 49px;
 }
 
 .login-form h1 {
-    display: inline-block;
 }
 
 .login-form input[type="text"],
 .login-form input[type="password"] {
     display: block;
-    margin: 23px 0 0 65px;
-    width: 310px;
+    margin: 10px auto;
+    width: 300px;
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #bbb inset;
 }
 
 .login-form input[type="submit"] {
-    margin: 21px 0 0 64px;
-    width: 310px;
+	color: #ffffff;
+	padding: 10px 20px;
+	background: -webkit-gradient(linear, left top, left bottom,from(#6b6b6b),to(#000000));
+	margin: 0 auto;
+	border-radius: 5px;
+	border: 1px solid #000000;
+	box-shadow:0px 1px 3px rgba(000,000,000,0.5),inset 0px 0px 1px rgba(255,255,255,0.7);
+	text-shadow:0px -1px 0px rgba(0,0,0,0.9),0px 1px 0px rgba(255,255,255,1);
+	display: block;
+	width: 300px;
+	text-transform: uppercase;
 }
