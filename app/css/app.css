@@ -303,12 +303,12 @@ cursor: pointer;
     float: right;
     font-size: 20px;
     position: relative;
-    top: -10px;
+    top: 0px;
     border-left: 1px solid #CCC;
-    height: 38px;
+    height: 22px;
     right: -10px;
     width: 38px;
-    padding: 8px 0px 0px 0px;
+/*    padding: 8px 0px 0px 0px;*/
     text-align: center;
     text-decoration: none;
     color: #555;
@@ -419,4 +419,28 @@ margin: auto;
 .login-form input[type="submit"] {
     margin: 21px 0 0 64px;
     width: 310px;
+}
+
+.the-gist pre {
+    width: 100%;
+    height: 400px;
+    padding: 0;
+    margin: 0;
+}
+
+.the-gist-name > b {
+    float: left;
+position: relative;
+top: 3px;
+left: 6px;
+}
+
+.the-gist-name > i {
+    float: left;
+position: relative;
+top: 4px;
+}
+
+.the-gist-name {
+    overflow: auto;
 }
