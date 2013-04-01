@@ -6,8 +6,14 @@ var app = express();
  // allow post data
  app.use(express.bodyParser());
 
- // gist control
+// Allow X-origin access to API
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 
+// gist control
 app.get('/gists', gists.listGists);
 app.get('/gists/starred', gists.getStarredGists);
 app.get('/gists/:id', gists.getGistById);
@@ -16,6 +22,7 @@ app.get('/gists/unstar/:id', gists.unStarGistById);
 app.get('/gists/comments/:id', gists.getGistCommentsByGistId);
 app.post('/gists/create', gists.createGist);
 app.post('/gists/edit', gists.editGist);
+
 
 
 
