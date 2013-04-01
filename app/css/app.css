@@ -84,6 +84,7 @@ aside header,
 .main header {
     padding: 0px 10px;
     line-height: 50px;
+    position: relative;
     text-align: left;
     background: -webkit-linear-gradient(top, #F2F2F2, #D9D9D9 );
     border-top: 1px solid hsl(0,0%,100%);
@@ -172,6 +173,12 @@ aside ul {
 }
 
 aside ul li {
+    
+}
+
+aside ul li a {
+    text-decoration: none;
+    color: #000;
     padding: 10px 20px;
     border-bottom:1px solid #555;
     text-decoration: none;
@@ -179,6 +186,7 @@ aside ul li {
     font: 300 16px 'trebuchet ms',arial,sans-serif;
     border-top: 1px solid #fff;
     cursor: pointer;
+    display: block;
 }
 
 aside ul li:first-child {
@@ -350,13 +358,13 @@ cursor: pointer;
 
 aside header input {
     position: absolute;
-    left: 200px;
+    right: 5px;
     top: 10px;
     border-radius: 21px;
     padding: 5px 10px;
     border: 1px solid #CCC;
     box-shadow: 1px 1px 5px #CCC inset;
-    width: 200px;
+    width: 50%;
     height: 33px;
     color: #555;
 }
