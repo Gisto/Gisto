@@ -189,7 +189,7 @@ aside ul li a {
     display: block;
 }
 
-aside ul li:first-child {
+aside ul li a:first-child {
     border-top: none;
 }
 
