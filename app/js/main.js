@@ -11,13 +11,13 @@ $(function() {
     });
     
     $('div.main').on('click', 'div.comments i.icon-arrow-up', function() {
-        $('div.the-comments').show('slow');
+        $('div.the-comments span').show('slow');
         $('div.comments i').text(' hide')
                 .removeClass('icon-arrow-up')
                 .addClass('icon-arrow-down');
     });
     $('div.main').on('click', 'div.comments i.icon-arrow-down', function() {
-        $('div.the-comments').hide('slow');
+        $('div.the-comments span').hide('slow');
         $('div.comments i').text(' show')
                 .removeClass('icon-arrow-down')
                 .addClass('icon-arrow-up');

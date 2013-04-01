@@ -61,11 +61,15 @@
 </section>
 
 <div class="comments">
-    <b>{{single.comments}}</b> Comments <i class="icon-arrow-up"> Show</i>
+    <b><span class="icon-comments"></span> {{single.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
     
-    <div class="the-comments">
-        <p><b>comment by:</b> sasha</p>
-        <p>Comment text here, we need to play with the height.</p>
+    <div ng-controller="theGistComments" class="the-comments">
+        <span ng-repeat="comment in comments">
+            <p>
+               <img src="{{comment.user.avatar_url}}" class="comment_gravatar" title="{{comment.user.login}}" />  
+                <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
+            <blockquote>{{comment.body}}</blockquote>
+        </span>
     </div>
     
 </div>
