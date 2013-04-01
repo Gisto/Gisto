@@ -6,8 +6,6 @@
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/app.css">
 
-        <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
-<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
 
     </head>
 
@@ -23,8 +21,10 @@
             </header>
 
             <ul class="flex">
-                <li onclick="location.href='#/gist/{{gist.id}}'" id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
-                    <span ng-repeat="file in gist.files">{{gist.description || file.filename}}<br /> </span>
+                <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
+                    <a href="#/gist/{{gist.id}}">
+                        <span ng-repeat="file in gist.files">{{gist.description || file.filename}}<br /> </span>
+                    </a>
                 </li>
             </ul>
 
