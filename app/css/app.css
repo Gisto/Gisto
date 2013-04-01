@@ -365,11 +365,23 @@ aside header input {
     font-size: 30px
 }
 
-.the-comments {
+.the-comments span {
     display: none;
 background: #FFF;
 padding: 0px 10px;
 margin: 10px 0;
 border: 1px solid #CCC;
 box-shadow: 0px 2px 10px #DDD inset;
+}
+
+.the-comments span blockquote {
+border-left: 5px solid #CCC;
+margin-left: 0;
+text-indent: 10px;
+}
+
+div.main .the-comments .comment_gravatar {
+    border-radius: 3px;
+    width: 34px;
+    vertical-align: middle;
 }
