@@ -1,59 +1,41 @@
-$(function() {
-
-    setTimeout(function() {
-        $('.messenger').slideUp('slow');
-    },2000);
-    
-    
-    $('aside header a .update').click(function(){
-        $.ajax( {
-            url: "http://localhost:3000/gists/",
-            crossDomain: true 
-        })
-        .done(function() { 
-            console.log("success"); 
-        });
-    });
-    
+$("#loading").ajaxStart(function() {
+    $(this).show();
+}).ajaxStop(function() {
+    $(this).hide();
 });
 
-/*
-function path()
-{
-  var args = arguments,
-      result = [];
-       
-  for(var i = 0; i < args.length; i++)
-      result.push(args[i].replace('@', 'http://alexgorbatchev.com/pub/sh/current/scripts/'));
-       
-  return result
-};
- 
-SyntaxHighlighter.autoloader.apply(null, path(
-  'applescript            @shBrushAppleScript.js',
-  'actionscript3 as3      @shBrushAS3.js',
-  'bash shell             @shBrushBash.js',
-  'coldfusion cf          @shBrushColdFusion.js',
-  'cpp c                  @shBrushCpp.js',
-  'c# c-sharp csharp      @shBrushCSharp.js',
-  'css                    @shBrushCss.js',
-  'delphi pascal          @shBrushDelphi.js',
-  'diff patch pas         @shBrushDiff.js',
-  'erl erlang             @shBrushErlang.js',
-  'groovy                 @shBrushGroovy.js',
-  'java                   @shBrushJava.js',
-  'jfx javafx             @shBrushJavaFX.js',
-  'js jscript javascript  @shBrushJScript.js',
-  'perl pl                @shBrushPerl.js',
-  'php                    @shBrushPhp.js',
-  'text plain             @shBrushPlain.js',
-  'py python              @shBrushPython.js',
-  'ruby rails ror rb      @shBrushRuby.js',
-  'sass scss              @shBrushSass.js',
-  'scala                  @shBrushScala.js',
-  'sql                    @shBrushSql.js',
-  'vb vbnet               @shBrushVb.js',
-  'xml xhtml xslt html    @shBrushXml.js'
-));
-SyntaxHighlighter.all();
-*/
+$(function() {
+
+    $('div.main').on('click', '.messenger', function() {
+        $(this).slideUp('slow');
+    });
+    
+    $('div.main').on('click', 'div.comments i.icon-arrow-up', function() {
+        $('div.the-comments').show('slow');
+        $('div.comments i').text(' hide')
+                .removeClass('icon-arrow-up')
+                .addClass('icon-arrow-down');
+    });
+    $('div.main').on('click', 'div.comments i.icon-arrow-down', function() {
+        $('div.the-comments').hide('slow');
+        $('div.comments i').text(' show')
+                .removeClass('icon-arrow-down')
+                .addClass('icon-arrow-up');
+    });
+    
+
+    $('div.main header a .update').click(function() {
+        $.ajax({
+            url: "http://localhost:3000/gists/",
+            crossDomain: true
+        })
+                .done(function() {
+            console.log("success");
+        });
+    });
+
+    $('pre,code').each(function(i, e) {
+        hljs.highlightBlock(e)
+    });
+
+});

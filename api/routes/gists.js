@@ -31,18 +31,6 @@ exports.auth = function(req, res) {
 exports.listGists = function(req, res) {
     res.contentType('application/json');
     ghgist.list(function(err, data) {
-
-        // Write gists json file
-        var fs = require('fs');
-        var outputFilename = __dirname + '/../../app/gists.json';
-        fs.writeFile(outputFilename, JSON.stringify(data, null, 4), function(err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("JSON saved to" + outputFilename);
-            }
-        });
-
         res.send(data);
     })
 

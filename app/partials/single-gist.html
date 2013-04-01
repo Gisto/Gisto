@@ -31,7 +31,7 @@
 <div class="toolbox">
 
     <span>
-        <b>Revision:</b> <i>3</i> | <b>Created:</b> <i>{{ single.created_at| date }}</i>
+        <b>Revisions:</b> <i>{{single.history.length}}</i> | <b>Created:</b> <i>{{ single.created_at| date }}</i>
     </span>
     <a href="">Add new file</a>
     <a href="">Upload</a> 
@@ -53,7 +53,7 @@
             <a href="{{file.raw_url}}" title="Direct link"><i class="icon-link"></i></a>
             <a href="#" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
-<pre class="">
+<pre class="brush: php">
 {{file.content}}
 </pre>
     </div>      
@@ -61,9 +61,15 @@
 </section>
 
 <div class="comments">
-    <b>{{single.comments}}</b> Comments | <i class="icon-arrow-up">Show</i>
+    <b>{{single.comments}}</b> Comments <i class="icon-arrow-up"> Show</i>
+    
+    <div class="the-comments">
+        <p><b>comment by:</b> sasha</p>
+        <p>Comment text here, we need to play with the height.</p>
+    </div>
+    
 </div>
 
 <footer>
-    Some foot note here
+    &copy; 2013 Gisto | <b>www.gisto.org</b>
 </footer>
