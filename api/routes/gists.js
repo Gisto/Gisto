@@ -39,7 +39,7 @@ exports.listGists = function(req, res) {
             if (err) {
                 console.log(err);
             } else {
-                console.log("JSON saved to ");
+                console.log("JSON saved to" + outputFilename);
             }
         });
 
