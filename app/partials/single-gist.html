@@ -1,6 +1,6 @@
 <header>
     <img src="{{single.user.avatar_url}}" class="gravatar" title="{{single.user.login}}" /> 
-    <a href="" ng-click="theGistList()" title="Sync gists from server"><i class="update icon-download"></i></a>
+    <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
     <a href="" title="General settings"><i class="settings icon-cog"></i></a>
 
     <span class="type {{single.public | publicOrPrivet}}">{{single.public | publicOrPrivet}}</span> {{single.description}}
@@ -33,6 +33,7 @@
     <span>
         <b>Revisions:</b> <i>{{single.history.length}}</i> | <b>Created:</b> <i>{{ single.created_at| date }}</i>
     </span>
+        <div class="icon-tags"> php, css, html</div>
     <a href="">Add new file</a>
     <a href="">Upload</a> 
     <a href="">Download</a> 
@@ -48,14 +49,13 @@
             <i class="icon-file-alt"></i> <b>{{file.filename}}</b>
             <a href="#" title="More Options..."><i class="icon-cogs"></i></a>
             <a href="#" title="Edit"><i class="icon-pencil"></i></a>
+            <a href="#" title="Edit"><i class="icon-tags"></i></a>
             <a href="#" title="Star"><i class="icon-star-empty"></i></a>
             <a href="#" title="Download"><i class="icon-download"></i></a>
             <a href="{{file.raw_url}}" title="Direct link"><i class="icon-link"></i></a>
             <a href="#" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
-<pre editor="{{file.filename}}" class="brush: php">
-        {{file.content}}
-</pre>
+<pre editor="{{file.filename}}">{{file.content}}</pre>
     </div>      
 
 </section>
@@ -75,5 +75,5 @@
 </div>
 
 <footer>
-    &copy; 2013 Gisto | <b>www.gisto.org</b>
+    &copy; 2013 Gisto | <b>www.gisto.com</b>
 </footer>
