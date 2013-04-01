@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Gisto</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/app.css">
+
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+
+<script src="js/jquery.min.js"></script>
+    <script>
+
+$(function() {
+
+
+    $('#loginForm').submit(function(e) {
+        e.preventDefault();
+        console.log('stopped');
+
+        var form = e.currentTarget;
+
+        $.get('http://localhost:3000/auth/' + form.user.value + '/' + form.pass.value).error(function() {
+                alert('failed to login');
+            }).success(function(data) {
+                window.location.href = "index.html";
+            });
+
+    });
+
+});
+    </script>
+
+    </head>
+
+    <body>
+
+        <div class="login-form">
+
+            <header>
+                <i class="icon-github"></i> <h1>Gisto</h1>
+            </header>
+
+             <form id="loginForm" action="http://localhost:3000/auth" method="GET">
+                <input type="text" name="user" placeholder="user" />
+                <input type="password" name="pass" placeholder="password" />
+                <input type="submit" value="login" />
+            </form>
+
+        </div>
+
+       
+
+    </body>
+
+</html>

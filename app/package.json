@@ -1,0 +1,20 @@
+{
+  "main": "login.html",
+  "node-main": "api/server.js",
+  "single-instance": true,
+  "name": "Gisto",
+  "description": "Gist viewer and manager",
+  "version": "0.1.0",
+  "keywords": [ "gist", "github", "node-webkit" ],
+  "window": {
+    "toolbar": false,
+    "width": 1280,
+    "height": 720,
+    "position": "center",
+    "min_width": 800,
+    "min_height": 500
+  },
+  "webkit": {
+    "plugin": true
+  }
+}

@@ -385,3 +385,38 @@ div.main .the-comments .comment_gravatar {
     width: 34px;
     vertical-align: middle;
 }
+
+/** login form **/
+.login-form {
+-webkit-border-radius: 16px;
+border-radius: 16px;
+width: 454px;
+height: 275px;
+background: rgb(255, 255, 255);
+border: 1px solid rgb(229, 229, 229);
+margin: auto;
+}
+
+.login-form header {
+    text-align: center;
+}
+
+.login-form .icon-github {
+    font-size: 80px;
+}
+
+.login-form h1 {
+    display: inline-block;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    display: block;
+    margin: 23px 0 0 65px;
+    width: 310px;
+}
+
+.login-form input[type="submit"] {
+    margin: 21px 0 0 64px;
+    width: 310px;
+}
