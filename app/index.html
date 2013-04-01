@@ -5,16 +5,16 @@
         <title>Gisto</title>
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/app.css">
-        <!--
-                <link href="http://alexgorbatchev.com/pub/sh/current/styles/shCoreDefault.css" rel="stylesheet" type="text/css" />
-                <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
-                <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
-        -->
+
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
 
     </head>
 
     <body>
 
+        <div id="loading" style="display: none">LOADING ...</div>       
+        
         <aside class="flex" ng-controller="theGistList">
 
             <header class="flex">
@@ -24,7 +24,7 @@
 
             <ul class="flex">
                 <li onclick="location.href='#/gist/{{gist.id}}'" id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
-                    <span ng-repeat="file in gist.files">{{file.filename}}<br /> </span>
+                    <span ng-repeat="file in gist.files">{{gist.description || file.filename}}<br /> </span>
                 </li>
             </ul>
 
