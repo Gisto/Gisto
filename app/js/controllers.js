@@ -14,6 +14,17 @@ function theGist($scope, $routeParams, $http) {
         .success(function(data) {
             $scope.single = data;
     });
+        
+    // $scope.$on('$viewContentLoaded', function() {
+    //     var editors = $('.editor');
+    //     for (var i = 0, limit = editors.length; i < limit; i++) {
+    //         console.log(editors[i]);
+    //         var editor = ace.edit(editors[i]);
+    //             editor.setTheme("ace/theme/monokai");
+    //             editor.getSession().setMode("ace/mode/javascript");
+    //     }
+    // });
+
 }
 
 function theGistComments($scope, $routeParams, $http) {
