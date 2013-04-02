@@ -20,7 +20,7 @@
 
             <ul class="flex">
                 <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
-                    <a href="#/gist/{{gist.id}}">
+                    <a onclick="document.location.href='#/gist/{{gist.id}}'">
                         <span ng-repeat="file in gist.files">{{gist.description || file.filename}}<br /> </span>
                     </a>
                 </li>
