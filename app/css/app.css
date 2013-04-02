@@ -103,11 +103,6 @@ div.toolbox {
     box-shadow: 0px 2px 5px #ccc;
 }
 
-.toolbox div {
-    font-size: 13px;
-    padding: 0px 10px 0px 0px;
-}
-
 div.toolbox span {
     float: left;
     font-size: 11px;
@@ -178,7 +173,7 @@ aside ul {
 }
 
 aside ul li {
-
+    
 }
 
 aside ul li a {
@@ -263,7 +258,8 @@ div.main img.gravatar {
     position: absolute;
     float: left;
     top: 10px;
-    right: 82px;
+    right: 80px;
+    border: 1px solid #999;
     padding: 0px;
     border-radius: 3px;
     background: #f2f2f2;
@@ -275,17 +271,18 @@ div.main img.gravatar {
 div.comments {
     padding: 10px;
     line-height: 14px;
+    z-index: 9;
     font-size: 14px;
     margin: 0;
     text-align: left;
     background: #fef8a5;
     border-top: 1px solid #999;
-    box-shadow: 0px -3px 5px #CCC;
+    box-shadow: 0px -3px 20px #777;
 }
 
 div.comments i {
-    float: right;
-    cursor: pointer;
+float: right;
+cursor: pointer;
 }
 
 .the-gist {
@@ -320,13 +317,13 @@ div.comments i {
     height: 22px;
     right: -10px;
     width: 38px;
-    /*    padding: 8px 0px 0px 0px;*/
+/*    padding: 8px 0px 0px 0px;*/
     text-align: center;
     text-decoration: none;
     color: #555;
 }
 .the-gist-name a:hover {
-    /*    box-shadow: 0px 0px 10px #555 inset;*/
+    box-shadow: 0px 0px 10px #555 inset;
     color:#000;
 }
 
@@ -379,17 +376,17 @@ aside header input {
 
 .the-comments span {
     display: none;
-    background: #FFF;
-    padding: 0px 10px;
-    margin: 10px 0;
-    border: 1px solid #CCC;
-    box-shadow: 0px 2px 10px #DDD inset;
+background: #FFF;
+padding: 0px 10px;
+margin: 10px 0;
+border: 1px solid #CCC;
+box-shadow: 0px 2px 10px #DDD inset;
 }
 
 .the-comments span blockquote {
-    border-left: 5px solid #CCC;
-    margin-left: 0;
-    text-indent: 10px;
+border-left: 5px solid #CCC;
+margin-left: 0;
+text-indent: 10px;
 }
 
 div.main .the-comments .comment_gravatar {
@@ -456,15 +453,15 @@ div.main .the-comments .comment_gravatar {
 
 .the-gist-name > b {
     float: left;
-    position: relative;
-    top: 3px;
-    left: 6px;
+position: relative;
+top: 3px;
+left: 6px;
 }
 
 .the-gist-name > i {
     float: left;
-    position: relative;
-    top: 4px;
+position: relative;
+top: 4px;
 }
 
 .the-gist-name {

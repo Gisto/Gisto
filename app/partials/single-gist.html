@@ -55,7 +55,7 @@
             <a href="{{file.raw_url}}" title="Direct link"><i class="icon-link"></i></a>
             <a href="#" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
-<pre editor="{{file.filename}}">{{file.content}}</pre>
+<pre id="editor" editor="{{file.language | lowercase}}">{{file.content}}</pre>
     </div>      
 
 </section>
