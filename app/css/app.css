@@ -145,7 +145,7 @@ div.toolbox a:hover {
     text-decoration: none;
     font-weight: 700;
 }
-.privet {
+.secret {
     color: #C00;
     border: 1px solid #c00;
 
@@ -354,7 +354,7 @@ div.comments i {
 }
 
 .messenger {
-    background: khaki;
+    background: #0480BE;
     display: none;
     cursor: pointer;
     font-size: 14px;

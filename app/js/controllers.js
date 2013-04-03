@@ -40,13 +40,11 @@ function createGistCtrl($scope, $routeParams, $http) {
         };
 
 
-        console.log('{"description": "' + $scope.gistTitle + '", "public": false, "files": ' + files + '}');
         $http.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
         $http.defaults.headers.put['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS';
         $http.defaults.headers.put['Access-Control-Allow-Headers'] = 'X-Requested-With, Content-Type';
         $http.post('http://localhost:3000/gists/create', data)
                 .success(function(response) {
-            console.log(response);
             window.location.href = "#/gist/" + response.id
         });
     }
