@@ -6,10 +6,15 @@ $("#loading").ajaxStart(function() {
 
 $(function() {
 
+    $('aside').on('click', 'a', function() {
+        ($('aside a').hasClass('active')) ? $('aside a').removeClass('active') : $(this).addClass('active');
+        $(this).addClass('active');
+    });
+
     $('div.main').on('click', '.messenger', function() {
         $(this).slideUp('slow');
     });
-    
+
     $('div.main').on('click', 'div.comments i.icon-arrow-up', function() {
         $('div.the-comments span').fadeIn('slow');
         $('div.comments i').text(' hide')
@@ -22,7 +27,7 @@ $(function() {
                 .removeClass('icon-arrow-down')
                 .addClass('icon-arrow-up');
     });
-    
+
 
     $('div.main header a .update').click(function() {
         $.ajax({
