@@ -174,7 +174,7 @@ aside ul {
 }
 
 aside ul li {
-    
+
 }
 
 aside ul li a {
@@ -194,11 +194,19 @@ aside ul li a:first-child {
     border-top: none;
 }
 
-aside ul li a:hover {
-    background: darkseagreen;
+aside ul li a:hover,
+aside ul li a.active {
     box-shadow: 0px 1px 8px #555 inset;
     color: #fff;
     text-shadow: 1px 1px 5px #555;
+}
+
+aside ul li a:hover {
+    background: #999;
+}
+
+aside ul li a.active {
+    background: darkseagreen;
 }
 
 aside footer,
@@ -294,14 +302,14 @@ div.comments {
     font-size: 14px;
     margin: 0;
     text-align: left;
-    background: #fef8a5;
+    background: #F7FFC2;
     border-top: 1px solid #999;
     box-shadow: 0px -3px 20px #777;
 }
 
 div.comments i {
-float: right;
-cursor: pointer;
+    float: right;
+    cursor: pointer;
 }
 
 .the-gist {
@@ -320,7 +328,7 @@ cursor: pointer;
 }
 
 .the-gist-name {
-    background: rgb(255, 200, 169);
+    background: #FFCAC2;
     padding: 10px;
     border-bottom: 1px solid #CCC;
     position: relative;
@@ -336,7 +344,7 @@ cursor: pointer;
     height: 22px;
     right: -10px;
     width: 38px;
-/*    padding: 8px 0px 0px 0px;*/
+    /*    padding: 8px 0px 0px 0px;*/
     text-align: center;
     text-decoration: none;
     color: #555;
@@ -394,17 +402,17 @@ aside header input {
 
 .the-comments span {
     display: none;
-background: #FFF;
-padding: 0px 10px;
-margin: 10px 0;
-border: 1px solid #CCC;
-box-shadow: 0px 2px 10px #DDD inset;
+    background: #FFF;
+    padding: 0px 10px;
+    margin: 10px 0;
+    border: 1px solid #CCC;
+    box-shadow: 0px 2px 10px #DDD inset;
 }
 
 .the-comments span blockquote {
-border-left: 5px solid #CCC;
-margin-left: 0;
-text-indent: 10px;
+    border-left: 5px solid #CCC;
+    margin-left: 0;
+    text-indent: 10px;
 }
 
 div.main .the-comments .comment_gravatar {
@@ -471,15 +479,15 @@ div.main .the-comments .comment_gravatar {
 
 .the-gist-name > b {
     float: left;
-position: relative;
-top: 3px;
-left: 6px;
+    position: relative;
+    top: 3px;
+    left: 6px;
 }
 
 .the-gist-name > i {
     float: left;
-position: relative;
-top: 4px;
+    position: relative;
+    top: 4px;
 }
 
 .the-gist-name {
@@ -488,6 +496,5 @@ top: 4px;
 
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none;
+    display: none;
 }
-
