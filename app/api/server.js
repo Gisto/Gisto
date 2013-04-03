@@ -11,7 +11,7 @@ app.all('*', function(req, res, next){
     //if (!req.get('Origin')) return next();
     // use "*" here to accept any origin
     res.set('Access-Control-Allow-Origin', '*');
-    res.set('Access-Control-Allow-Methods', 'GET, POST');
+    res.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
     res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
     // res.set('Access-Control-Allow-Max-Age', 3600);
     if ('OPTIONS' == req.method) return res.send(200);
@@ -25,7 +25,7 @@ app.get('/gists/:id', gists.getGistById);
 app.get('/gists/star/:id', gists.starGistById);
 app.get('/gists/unstar/:id', gists.unStarGistById);
 app.get('/gists/comments/:id', gists.getGistCommentsByGistId);
-app.post('/gists/create', gists.createGist);
+app.put('/gists/create', gists.createGist);
 app.post('/gists/edit', gists.editGist);
 
 

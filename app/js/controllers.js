@@ -47,7 +47,11 @@ function createGistCtrl($scope, $routeParams, $http) {
             content: $scope.gistContent
         };
 
-        $http.post('http://localhost:3000/gists/create', "{description: $scope.gistTitle, public: false, files: files}" )
+        $http.defaults.headers.put['Access-Control-Allow-Origin']='*';
+        $http.defaults.headers.put['Access-Control-Allow-Methods']='POST, GET, PUT, DELETE, OPTIONS';
+        $http.defaults.headers.put['Access-Control-Allow-Headers']='X-Requested-With, Content-Type';
+
+        $http.put('http://localhost:3000/gists/create', "{description: $scope.gistTitle, public: false, files: files}" )
             .success(function(data) {
                 console.log(data.id);
                 window.location.href = "#/gist/" + data.id
