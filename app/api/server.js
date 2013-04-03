@@ -7,10 +7,15 @@ var app = express();
  app.use(express.bodyParser());
 
 // Allow X-origin access to API
-app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
+app.all('*', function(req, res, next){
+    //if (!req.get('Origin')) return next();
+    // use "*" here to accept any origin
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+    res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+    // res.set('Access-Control-Allow-Max-Age', 3600);
+    if ('OPTIONS' == req.method) return res.send(200);
+    next();
 });
 
 // gist control
@@ -20,7 +25,7 @@ app.get('/gists/:id', gists.getGistById);
 app.get('/gists/star/:id', gists.starGistById);
 app.get('/gists/unstar/:id', gists.unStarGistById);
 app.get('/gists/comments/:id', gists.getGistCommentsByGistId);
-app.post('/gists/create', gists.createGist);
+app.put('/gists/create', gists.createGist);
 app.post('/gists/edit', gists.editGist);
 
 
