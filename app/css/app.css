@@ -355,6 +355,7 @@ div.comments i {
 
 .messenger {
     background: khaki;
+    display: none;
     cursor: pointer;
     font-size: 14px;
     color: #FFFFFF;
