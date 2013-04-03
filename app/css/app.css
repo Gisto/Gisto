@@ -10,6 +10,7 @@
 html {
     height: 100%;
     overflow: hidden;
+    font: 20px/1.231 'trebuchet ms',arial, sans-serif;
 }
 
 body {
@@ -427,11 +428,15 @@ div.main .the-comments .comment_gravatar {
     -webkit-border-radius: 16px;
     border-radius: 16px;
     width: 454px;
+    text-align: center;
     height: 275px;
     background: transparent;
     margin: auto;
 }
 
+.login-form .spiner {
+    margin: 10px auto;display: none
+}
 .login-form header {
     text-align: center;
     padding: 20px 0px 10px;

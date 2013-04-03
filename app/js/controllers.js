@@ -1,21 +1,21 @@
 'use strict';
 /* Controllers */
 
-function theGistList($scope, $http) {
+function listGistCtrl($scope, $http) {
     $http.get('http://localhost:3000/gists')
             .success(function(data) {
         $scope.gists = data;
     });
 }
 
-function theGist($scope, $routeParams, $http) {
+function singleGistCtrl($scope, $routeParams, $http) {
     $http.get('http://localhost:3000/gists/' + $routeParams.gistId)
             .success(function(data) {
         $scope.single = data;
     });
 }
 
-function theGistComments($scope, $routeParams, $http) {
+function commentsGistCtrl($scope, $routeParams, $http) {
     $http.get('http://localhost:3000/gists/comments/' + $routeParams.gistId)
             .success(function(data) {
         $scope.comments = data;
@@ -38,8 +38,6 @@ function createGistCtrl($scope, $routeParams, $http) {
             public: false,
             files: files
         };
-
-
         $http.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
         $http.defaults.headers.put['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS';
         $http.defaults.headers.put['Access-Control-Allow-Headers'] = 'X-Requested-With, Content-Type';
