@@ -54,23 +54,16 @@ exports.getGistById = function(req, res) {
 exports.createGist = function(req, res) {
     res.contentType('application/json');
 
-    console.log({
-        description: req.body.description,
-        "public": true,
-        files: JSON.parse(req.body.files)
-    });
-
-
     ghgist.create({
         description: req.body.description,
-        "public": true,
+        "public": req.body.public,
         files: JSON.parse(req.body.files)
     }, function(err, data) {
         if (err) {
             res.send({status: 'error', error: err});
         }
 
-        res.send({'status': "ok"});
+        res.send({data: data});
     });
 
 };
