@@ -6,5 +6,6 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives'])
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'partials/empty.html'});
     $routeProvider.when('/gist/:gistId', {templateUrl: 'partials/single-gist.html', controller: theGist});
+    $routeProvider.when('/create', { templateUrl: 'partials/create.html', controller: createGistCtrl});
     $routeProvider.otherwise({redirectTo: '/'});
   }]);

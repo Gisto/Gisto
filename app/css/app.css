@@ -254,11 +254,24 @@ div.main header a .update {
     text-decoration: none;
 }
 
+div.main header a .create {
+    position: absolute;
+    float: left;
+    top: 10px;
+    right: 83px;
+    border: 1px solid #999;
+    padding: 6px;
+    border-radius: 3px;
+    background: #f2f2f2;
+    color: #555;
+    text-decoration: none;
+}
+
 div.main img.gravatar {
     position: absolute;
     float: left;
     top: 10px;
-    right: 80px;
+    right: 116px;
     border: 1px solid #999;
     padding: 0px;
     border-radius: 3px;
@@ -467,3 +480,4 @@ top: 4px;
 .the-gist-name {
     overflow: auto;
 }
+

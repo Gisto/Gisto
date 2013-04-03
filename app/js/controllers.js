@@ -32,5 +32,26 @@ function theGistComments($scope, $routeParams, $http) {
         .success(function(data) {
             $scope.comments = data;
     });
-} 
+}
+
+function createGistCtrl($scope, $routeParams, $http) {
+    $scope.save = function() {
+        console.log([
+            $scope.gistTitle,
+            $scope.gistFileName,
+            $scope.gistContent
+        ]);
+
+        var files = {};
+        files[$scope.gistFileName] = {
+            content: $scope.gistContent
+        };
+
+        $http.post('http://localhost:3000/gists/create', "{description: $scope.gistTitle, public: false, files: files}" )
+            .success(function(data) {
+                console.log(data.id);
+                window.location.href = "#/gist/" + data.id
+            });
+    }
+}
 
