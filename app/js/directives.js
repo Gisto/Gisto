@@ -18,7 +18,7 @@ app.directive('editor', function($timeout) {
             console.log('Lang to highlight: ' + lang);
 
             var editor = ace.edit(element[0]);
-            editor.setTheme("ace/theme/textmate");
+            editor.setTheme("ace/theme/tomorrow");
             editor.getSession().setMode("ace/mode/" + lang);
         }, 0);
     };
