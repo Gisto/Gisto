@@ -46,5 +46,13 @@ angular.module('myApp.filters', []).
         return function(input) {
             return languages.hasOwnProperty(input) ? languages[input] : input;
         };
+    }).filter('removeTagSymbol', function() {
+        return function(input) {
+            return input.substring(1, input.length);
+        }
+    }).filter('removeTags', function() {
+        return function(input) {
+            return input.replace(/(#[A-Za-z0-9\-\_]+)/g, '');
+        }
     });
 

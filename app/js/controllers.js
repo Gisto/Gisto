@@ -4,8 +4,11 @@
 function listGistCtrl($scope, $http) {
     $http.get('http://localhost:3000/gists')
             .success(function(data) {
-        $scope.gists = data;
-    });
+                for (var item in data) {
+                    data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                }
+                $scope.gists = data;
+            });
 }
 
 function singleGistCtrl($scope, $routeParams, $http) {
@@ -13,7 +16,6 @@ function singleGistCtrl($scope, $routeParams, $http) {
             .success(function(data) {
         $scope.single = data;
         $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-        console.log($scope.tags);
     });
 }
 

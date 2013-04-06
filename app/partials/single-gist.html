@@ -48,8 +48,8 @@
 
 </div>
 
-<div class="tags icon-tags">
-    <span ng-repeat="tag in tags"> {{tag}} </span>
+<div class="tags">
+    <span class="icon-tags" ng-repeat="tag in tags"> {{tag | removeTagSymbol}} </span>
 </div>
 
 <section>
