@@ -59,8 +59,7 @@
             <a href="#" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
 
-
-        <pre id="editor" editor="{{file.language | lowercase}}">{{file.content}}</pre>
+        <editor language="{{file.language | codeLanguage}}" index="{{$index}}"></editor>
 
     </div>
 
