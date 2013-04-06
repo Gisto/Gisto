@@ -1,10 +1,12 @@
 <header>
+
     <img src="{{single.user.avatar_url}}" class="gravatar" title="{{single.user.login}}" />
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
     <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
     <a href="" title="General settings"><i class="settings icon-cog"></i></a>
 
     <span class="type {{single.public | publicOrPrivet}}">{{single.public | publicOrPrivet}}</span> {{single.description}}
+
 </header>
 
 <div class="messenger">
@@ -37,13 +39,17 @@
     <span>
         <b>Revisions:</b> <i>{{single.history.length}}</i> | <b>Created:</b> <i>{{ single.created_at| date }}</i>
     </span>
-    <div class="icon-tags"> php, css, html</div>
+
     <a href="">Add new file</a>
     <a href="">Upload</a>
     <a href="">Download</a>
     <a href="">Remove</a>
     <a href="">File list</a>
 
+</div>
+
+<div ng-repeat="tag in tags" class="tags icon-tags">
+    <span ng-repeat="t in tag"> {{t}} </span>
 </div>
 
 <section>
