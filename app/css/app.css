@@ -508,3 +508,11 @@ div.main .the-comments .comment_gravatar {
     padding: 20px 0 0 20px;
     font-size: 14px;
 }
+
+aside ul li a {
+    font-size: 12px;
+}
+
+aside ul li a span {
+    font-size: 20px;
+}
