@@ -12,7 +12,7 @@ function singleGistCtrl($scope, $routeParams, $http) {
     $http.get('http://localhost:3000/gists/' + $routeParams.gistId)
             .success(function(data) {
         $scope.single = data;
-        $scope.tags = data.description ? [data.description.match(/(#[A-Za-z0-9\-\_]+)/g)] : [];
+        $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
         console.log($scope.tags);
     });
 }
