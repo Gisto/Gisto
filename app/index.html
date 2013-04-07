@@ -21,10 +21,14 @@
             <ul class="flex">
                 <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
                     <a onclick="document.location.href = '#/gist/{{gist.id}}'">
-                        <h3 ng-repeat="file in gist.files">{{gist.description || file.filename}}<br />
+
+                        <h3 ng-repeat="file in gist.files">{{(gist.description | removeTags) || file.filename}}<br />
                         </h3>
                         <span class="pills"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
                         <span class="pills {{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
+                        <br>
+                        <span ng-repeat="tag in gist.tags" class=""><i class="icon-tags"></i><i> {{tag | removeTagSymbol}} </i></span>
+
                     </a>
                 </li>
             </ul>
