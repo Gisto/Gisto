@@ -62,26 +62,40 @@ function commentsGistCtrl($scope, $routeParams, $http) {
 }
 
 function createGistCtrl($scope, $routeParams, $http) {
-    $scope.save = function() {
-        console.log([
-            $scope.gistTitle,
-            $scope.gistFileName,
-            $scope.gistContent,
-            $scope.gistPublic
-        ]);
-        var files = {};
-        files[$scope.gistFileName] = {
-            content: $scope.gistContent
-        };
+    $scope.description = '';
+    $scope.isPublic = false;
+    $scope.files = [
+        {
+            filename: '',
+            content: ''
+        }
+    ];
+    $scope.save = function($event) {
+
+        if ($event) {
+            $event.preventDefault();
+        }
+
         var data = {
-            description: $scope.gistTitle,
-            public: $scope.gistPublic,
-            files: files
+          description: $scope.description,
+          "public": $scope.isPublic,
+          files: {}
         };
+
+        for(var file in $scope.files) {
+            data.files[$scope.files[file].filename] = {
+                content: $scope.files[file].content
+            };
+        }
+
         $http.post('http://localhost:3000/gists/create', data)
-                .success(function(response) {
-            window.location.href = "#/gist/" + response.id
-        });
+            .success(function(response) {
+                if (response.status === 'ok') {
+                    $('.ok').slideDown('slow');
+                    $('.ok span').text('Gist saved');
+                    window.location.href = "#/gist/" + response.data.id
+                }
+            });
     }
 }
 

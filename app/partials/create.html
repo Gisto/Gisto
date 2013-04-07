@@ -16,16 +16,22 @@
 </div>
 
 <section>
-    <h1>Create gist</h1>
-    <input type="text" ng-model="gistTitle" class="desc" placeholder="Description">
-    <input type="text" ng-model="gistFileName" placeholder="Filename">
-    <input type="checkbox" ng-model="gistPublic"> Public
-    <div class="the-gist" onload="initEditors()">
 
-        <div class="the-gist-name">
-            <i class="icon-file-alt"></i> <b>{{gistFileName || 'filename'}}</b>
+    <h1>Create gist</h1>
+    <input type="text" ng-model="description" class="desc" placeholder="Description">
+    <input type="checkbox" ng-model="isPublic"> Public
+
+    <div ng-repeat="file in files">
+        <input type="text" ng-model="file.filename" placeholder="Filename">
+
+        <div class="the-gist" onload="initEditors()">
+
+            <div class="the-gist-name">
+                <i class="icon-file-alt"></i> <b>{{gistFileName || 'filename'}}</b>
+            </div>
+            <editor language="html" index="{{$index}}" ng-model="file.content"></editor>
         </div>
-        <editor language="html" index="{{$index}}" ng-model="gistContent"></editor>
+
     </div>
 
 </section>
