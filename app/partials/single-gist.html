@@ -49,7 +49,7 @@
 </div>
 
 <div class="tags icon-tags">
-    <span ng-repeat="tag in tags"> {{tag}} </span>
+    <span ng-repeat="tag in tags" ng-click="populateSearch($event,tag)"> {{tag}} </span>
 </div>
 
 <section>

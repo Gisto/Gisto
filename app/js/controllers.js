@@ -13,7 +13,10 @@ function singleGistCtrl($scope, $routeParams, $http) {
             .success(function(data) {
         $scope.single = data;
         $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-        console.log($scope.tags);
+        $scope.populateSearch = function($event, the_tag) {
+            $scope.search = the_tag;
+            console.log('Tag: ' + the_tag);
+        };
     });
 }
 

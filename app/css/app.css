@@ -513,6 +513,27 @@ aside ul li a {
     font-size: 12px;
 }
 
-aside ul li a span {
+aside ul li a > h3 {
     font-size: 20px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 5px 0px;
+}
+
+aside ul li a span {
+    border: 1px solid #999;
+    padding: 0 4px;
+    border-radius: 3px;
+    background: #f2f2f2;
+    text-shadow: none;
+    color:#555;
+}
+
+aside ul li a:hover span.pills {
+    color:#555;
+    text-shadow: none;
+}
+
+aside ul li a:hover span.secret,
+aside ul li a:hover span.public {
+    border: 1px solid #999;
 }
