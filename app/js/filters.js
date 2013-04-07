@@ -8,51 +8,65 @@ angular.module('myApp.filters', []).
             return String(text).replace(/\%VERSION\%/mg, version);
         }
     }])
-    .filter('publicOrPrivet', function() {
+        .filter('publicOrPrivet', function() {
     return function(input) {
         return input ? 'public' : 'secret';
     };
-    }).filter('codeLanguage', function() {
+}).filter('codeLanguage', function() {
 
-        var languages = {
-            "C#":"csharp",
-            "C++":"c_cpp",
-            Clojure:"clojure",
-            CoffeeScript:"coffee",
-            ColdFusion:"coldfusion",
-            CSS:"css",
-            Groovy:"groovy",
-            Haxe:"haxe",
-            HTML:"html",
-            Java:"java",
-            JavaScript:"javascript",
-            JSON:"json",
-            Lua:"lua",
-            Markdown:"markdown",
-            OCaml:"ocaml",
-            Perl:"perl",
-            PHP:"php",
-            PowerShell:"powershell",
-            Python:"python",
-            Ruby:"ruby",
-            Scala:"scala",
-            SCSS:"scss",
-            SQL:"sql",
-            TeX:"latex",
-            Textile:"textile",
-            XML:"xml"
-        };
+    var languages = {
+        "C#": "csharp",
+        "C++": "c_cpp",
+        Clojure: "clojure",
+        CoffeeScript: "coffee",
+        ColdFusion: "coldfusion",
+        CSS: "css",
+        Groovy: "groovy",
+        Haxe: "haxe",
+        HTML: "html",
+        Java: "java",
+        JavaScript: "javascript",
+        JSON: "json",
+        Lua: "lua",
+        Markdown: "markdown",
+        OCaml: "ocaml",
+        Perl: "perl",
+        PHP: "php",
+        PowerShell: "powershell",
+        Python: "python",
+        Ruby: "ruby",
+        Scala: "scala",
+        SCSS: "scss",
+        SQL: "sql",
+        TeX: "latex",
+        Textile: "textile",
+        XML: "xml"
+    };
 
-        return function(input) {
-            return languages.hasOwnProperty(input) ? languages[input] : input;
-        };
-    }).filter('removeTagSymbol', function() {
-        return function(input) {
-            return input.substring(1, input.length);
+    return function(input) {
+        return languages.hasOwnProperty(input) ? languages[input] : input;
+    };
+}).filter('removeTagSymbol', function() {
+    return function(input) {
+        return input.substring(1, input.length);
+    }
+}).filter('removeTags', function() {
+    return function(input) {
+        return input.replace(/(#[A-Za-z0-9\-\_]+)/g, '');
+    }
+}).filter('truncate', function() {
+    return function(text, length, end) {
+        if (isNaN(length))
+            length = 10;
+        if (end === undefined)
+            end = "...";
+        if (text.length <= length || text.length - end.length <= length) {
+            return text;
         }
-    }).filter('removeTags', function() {
-        return function(input) {
-            return input.replace(/(#[A-Za-z0-9\-\_]+)/g, '');
+        else {
+            return String(text).substring(0, length - end.length) + end;
         }
-    });
+
+    };
+});
 

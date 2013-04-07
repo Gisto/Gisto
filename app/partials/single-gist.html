@@ -5,7 +5,9 @@
     <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
     <a href="" title="General settings"><i class="settings icon-cog"></i></a>
 
-    <span class="type {{single.public | publicOrPrivet}}">{{single.public | publicOrPrivet}}</span> {{single.description}}
+    <span class="type {{single.public | publicOrPrivet}}">{{single.public | publicOrPrivet}}</span>
+
+    <span class="title">{{single.description | removeTags | truncate:55}}</span>
 
 </header>
 
@@ -46,10 +48,6 @@
     <a href="">Remove</a>
     <a href="">File list</a>
 
-</div>
-
-<div class="tags">
-    <span class="icon-tags" ng-repeat="tag in tags"> {{tag | removeTagSymbol}} </span>
 </div>
 
 <section>

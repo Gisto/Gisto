@@ -4,11 +4,11 @@
 function listGistCtrl($scope, $http) {
     $http.get('http://localhost:3000/gists')
             .success(function(data) {
-                for (var item in data) {
-                    data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-                }
-                $scope.gists = data;
-            });
+        for (var item in data) {
+            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+        }
+        $scope.gists = data;
+    });
 }
 
 function singleGistCtrl($scope, $routeParams, $http) {
@@ -31,7 +31,8 @@ function createGistCtrl($scope, $routeParams, $http) {
         console.log([
             $scope.gistTitle,
             $scope.gistFileName,
-            $scope.gistContent
+            $scope.gistContent,
+            $scope.gistPublic
         ]);
         var files = {};
         files[$scope.gistFileName] = {
@@ -39,7 +40,7 @@ function createGistCtrl($scope, $routeParams, $http) {
         };
         var data = {
             description: $scope.gistTitle,
-            public: false,
+            public: $scope.gistPublic,
             files: files
         };
         $http.defaults.headers.put['Access-Control-Allow-Origin'] = '*';
