@@ -22,9 +22,8 @@
                 <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
                     <a onclick="document.location.href = '#/gist/{{gist.id}}'">
 
-                        <h3 ng-repeat="file in gist.files">
-
-                            {{(gist.description | removeTags) || file.filename}}<br />
+                        <h3>
+                            {{(gist.description | removeTags) || 'Untitled'}}<br />
                         </h3>
                         <span class="{{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
                         &nbsp;

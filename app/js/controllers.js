@@ -35,6 +35,7 @@ function singleGistCtrl($scope, $routeParams, $http) {
             }
 
             var data = {
+                description: $scope.single.description,
                 id: $scope.single.id,
                 files: {}
             };
@@ -50,6 +51,7 @@ function singleGistCtrl($scope, $routeParams, $http) {
                 if (response.status === 'ok') {
                     $('.ok').slideDown('slow');
                     $('.ok span').text('Gist saved');
+                    $scope.edit = false;
                     $scope.single.history = response.data.history;
                     setTimeout(function() {
                         $('.ok').slideUp();
@@ -85,24 +87,24 @@ function createGistCtrl($scope, $routeParams, $http) {
         }
 
         var data = {
-          description: $scope.description,
-          "public": $scope.isPublic,
-          files: {}
+            description: $scope.description,
+            "public": $scope.isPublic,
+            files: {}
         };
 
-        for(var file in $scope.files) {
+        for (var file in $scope.files) {
             data.files[$scope.files[file].filename] = {
                 content: $scope.files[file].content
             };
         }
 
         $http.post('http://localhost:3000/gists/create', data)
-            .success(function(response) {
-                if (response.status === 'ok') {
-                    $('.ok').slideDown('slow');
-                    $('.ok span').text('Gist saved');
-                    window.location.href = "#/gist/" + response.data.id
-                }
-            });
+                .success(function(response) {
+            if (response.status === 'ok') {
+                $('.ok').slideDown('slow');
+                $('.ok span').text('Gist saved');
+                window.location.href = "#/gist/" + response.data.id
+            }
+        });
     }
 }
