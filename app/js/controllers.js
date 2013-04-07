@@ -16,10 +16,18 @@ function singleGistCtrl($scope, $routeParams, $http) {
             .success(function(data) {
         $scope.single = data;
         $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-            $scope.keypressCallback = function($event) {
-                alert('Voila!');
-                $event.preventDefault();
-            };
+
+        $scope.enableEdit = function() {
+            $scope.edit = true;
+        };
+        $scope.disableEdit = function() {
+            $scope.edit = false;
+        };
+
+        $scope.keypressCallback = function($event) {
+            alert('Voila!');
+            $event.preventDefault();
+        };
         $scope.save = function($event) {
 
             if ($event) {
@@ -31,23 +39,23 @@ function singleGistCtrl($scope, $routeParams, $http) {
                 files: {}
             };
 
-            for(var file in $scope.single.files) {
+            for (var file in $scope.single.files) {
                 data.files[file] = {
                     content: $scope.single.files[file].content
                 };
             }
 
             $http.post('http://localhost:3000/gists/edit', data)
-                .success(function(response) {
-                    if (response.status === 'ok') {
-                        $('.ok').slideDown('slow');
-                        $('.ok span').text('Gist saved');
-                        $scope.single.history = response.data.history;
-                        setTimeout(function() {
-                            $('.ok').slideUp();
-                        }, 2500);
-                    }
-                });
+                    .success(function(response) {
+                if (response.status === 'ok') {
+                    $('.ok').slideDown('slow');
+                    $('.ok span').text('Gist saved');
+                    $scope.single.history = response.data.history;
+                    setTimeout(function() {
+                        $('.ok').slideUp();
+                    }, 2500);
+                }
+            });
 
         };
 
@@ -84,4 +92,3 @@ function createGistCtrl($scope, $routeParams, $http) {
         });
     }
 }
-

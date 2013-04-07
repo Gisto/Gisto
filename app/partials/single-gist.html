@@ -7,7 +7,18 @@
 
     <span class="type {{single.public | publicOrPrivet}}">{{single.public | publicOrPrivet}}</span>
 
-    <span class="title">{{single.description | removeTags | truncate:55}}</span>
+
+    <span ng-switch on="edit">
+        <span ng-switch-when="true">
+            <input class="edaitable" ng-model="single.description" unfocus="disableEdit()">
+            <i ng-click="disableEdit()" class="icon-remove"></i>
+        </span>
+        <span class="title" ng-switch-default ng-click="enableEdit()">
+            {{single.description | removeTags | truncate:55}}
+        </span>
+    </span>
+
+
 
 </header>
 
@@ -54,7 +65,19 @@
 
     <div class="the-gist" ng-repeat="file in single.files" onload="initEditors()">
         <div class="the-gist-name">
-            <i class="icon-file-alt"></i> <b>{{file.filename}}</b>
+
+
+            <span ng-switch on="edit">
+                <span ng-switch-when="true">
+                    <input class="edaitable" ng-model="file.filename" unfocus="disableEdit()">
+                    <i ng-click="disableEdit()" class="icon-remove"></i>
+                </span>
+                <span ng-switch-default ng-click="enableEdit()">
+                    <i class="icon-file-alt"></i> {{file.filename}}
+                </span>
+            </span>
+
+
             <a href="#" title="Edit"><i class="icon-pencil"></i></a>
             <a href="#" title="Edit"><i class="icon-tags"></i></a>
             <a href="#" title="Star"><i class="icon-star-empty"></i></a>
