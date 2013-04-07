@@ -576,3 +576,31 @@ section h1 {
     font-weight: 300;
     text-transform: uppercase;
 }
+
+header input.edaitable {
+    border: 1px solid #CCC;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 0;
+    width: 50%;
+    box-shadow: 1px 1px 5px #CCC inset;
+    position: absolute;
+    top: 6px;
+    left: 113px;
+}
+
+.the-gist-name input.edaitable {
+    border: 1px solid #CCC;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 0;
+    width: 200px;
+    box-shadow: 1px 1px 5px #CCC inset;
+    position: absolute;
+    top: 6px;
+    left: 28px;
+}
+
+.the-gist-name span {
+    line-height: 22px;
+}

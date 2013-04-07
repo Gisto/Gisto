@@ -41,6 +41,22 @@ app.directive('editor', function($timeout) {
     };
 });
 
+module.directive('unfocus', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attribs) {
+
+            element[0].focus();
+
+            element.bind("blur", function() {
+                scope.$apply(attribs["unfocus"]);
+                console.log("??");
+            });
+
+        }
+
+    }
+});
 
 //
 //
