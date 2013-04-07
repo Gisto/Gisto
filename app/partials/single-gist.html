@@ -37,11 +37,11 @@
 <div class="toolbox">
 
     <span>
-        <b>Revisions:</b> <i>{{single.history.length}}</i> | <b>Created:</b> <i>{{ single.created_at| date }}</i>
+        <b>Revisions:</b> <i>{{single.history.length}}</i> | <b>Created:</b> <i>{{ single.created_at| date:'medium' }}</i> | <b>Last Updated:</b> <i>{{ single.history[0].committed_at | date:'medium' }}</i>
     </span>
 
     <a href="">Add new file</a>
-    <a href="">Upload</a>
+    <a ng-click="save()">Save</a>
     <a href="">Download</a>
     <a href="">Remove</a>
     <a href="">File list</a>
