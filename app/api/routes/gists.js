@@ -55,15 +55,15 @@ exports.createGist = function(req, res) {
     res.contentType('application/json');
 
     ghgist.create({
-        "description": req.body.description,
+        description: req.body.description,
         "public": req.body.public,
-        "files": req.body.files
+        files: JSON.parse(req.body.files)
     }, function(err, data) {
         if (err) {
             res.send({status: 'error', error: err});
         }
 
-        res.send(data);
+        res.send({data: data});
     });
 
 };
@@ -72,13 +72,13 @@ exports.editGist = function(req, res) {
 
     ghgist.edit(req.body.id, {
         description: req.body.description,
-        files: JSON.parse(req.body.files)
+        files: req.body.files
     }, function(err, data) {
         if (err) {
             res.send({status: 'error', error: err});
         }
 
-        res.send({'status': "ok"});
+        res.send({'status': "ok", data: data});
     });
 
 };
