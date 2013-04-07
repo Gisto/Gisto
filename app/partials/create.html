@@ -1,33 +1,31 @@
 <header>
     <img src="{{single.user.avatar_url}}" class="gravatar" title="{{single.user.login}}" />
-    <a onclick="document.location.href='#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
+    <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
     <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
     <a href="" title="General settings"><i class="settings icon-cog"></i></a>
 
-    <span class="type {{single.public | publicOrPrivet}}">{{single.public | publicOrPrivet}}</span> {{single.description}}
+    <span class="type {{gistPublic | publicOrPrivet}}">{{gistPublic | publicOrPrivet}}</span>
+    {{gistTitle}}
 </header>
 
 <div class="toolbox">
 
-    <div class="icon-tags"> php, css, html</div>
     <a href="">Add new file</a>
-    <a href="">Save</a>
+    <a href="" ng-click="save()">Save</a>
 
 </div>
 
 <section>
-    <input type="text" ng-model="gistTitle" placeholder="Description" />
-    <br />
-    <input type="text" ng-model="gistFileName" placeholder="Filename" />
+    <h1>Create gist</h1>
+    <input type="text" ng-model="gistTitle" class="desc" placeholder="Description">
+    <input type="text" ng-model="gistFileName" placeholder="Filename">
+    <input type="checkbox" ng-model="gistPublic"> Public
     <div class="the-gist" onload="initEditors()">
 
         <div class="the-gist-name">
-
-            <a href="#" title="More Options..."><i class="icon-cogs"></i></a>
-            <a href="#" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
-            <a ng-click="save()" title="Save"><i class="icon-save"></i></a>
+            <i class="icon-file-alt"></i> <b>{{gistFileName || 'filename'}}</b>
         </div>
-        <textarea id="editor" ng-model="gistContent"></textarea>
+        <editor language="html" index="{{$index}}" ng-model="gistContent"></editor>
     </div>
 
 </section>
