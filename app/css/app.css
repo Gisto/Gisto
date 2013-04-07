@@ -521,9 +521,9 @@ aside ul li a > h3 {
 
 aside ul li a span {
     border: 1px solid #999;
-    padding: 0 4px;
-    border-radius: 3px;
+    padding: 0px 4px;
     background: #f2f2f2;
+    margin: 0px -5px 0px 0px;
     text-shadow: none;
     color:#555;
 }
@@ -533,9 +533,10 @@ aside ul li a:hover span.pills {
     text-shadow: none;
 }
 
-aside ul li a:hover span.secret,
-aside ul li a:hover span.public {
-    border: 1px solid #999;
+aside ul li a span.secret,
+aside ul li a span.public {
+    border-radius: 3px;
+    text-transform: uppercase;
 }
 
 
@@ -545,4 +546,33 @@ aside ul li a p {
 
 aside ul li a p span {
     margin: 0px 4px 0px 0px;
+    border:none;
+    background: transparent;
+}
+
+.gist-comment {
+    border-radius: 3px;
+    border-right:none;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    padding: 0px 4px;
+}
+
+section input[type="text"]{
+    display: block;
+    margin: 10px 0;
+    width: 300px;
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #bbb inset;
+}
+
+section input[type="text"].desc {
+    width: 100%;
+}
+
+section h1 {
+    font-weight: 300;
+    text-transform: uppercase;
 }
