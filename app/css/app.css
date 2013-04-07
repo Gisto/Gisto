@@ -537,3 +537,12 @@ aside ul li a:hover span.secret,
 aside ul li a:hover span.public {
     border: 1px solid #999;
 }
+
+
+aside ul li a p {
+    margin: 10px 0px 0;
+}
+
+aside ul li a p span {
+    margin: 0px 4px 0px 0px;
+}
