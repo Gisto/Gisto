@@ -14,29 +14,29 @@ app.directive('appVersion', ['version', function(version) {
 app.directive('editor', function($timeout) {
     var editorWindow = angular.element('<pre id="editor-{{$index}}">{{file.content}}</pre>');
     return {
-      restrict:'E',
-      compile: function(elem) {
-        elem.append(editorWindow);
+        restrict: 'E',
+        compile: function(elem) {
+            elem.append(editorWindow);
 
-        return function(scope, element, attrs) {
+            return function(scope, element, attrs) {
 
-            $timeout(function() {
+                $timeout(function() {
 
-                var lang = attrs.language,
-                    editor = ace.edit('editor-' + attrs.index);
+                    var lang = attrs.language,
+                            editor = ace.edit('editor-' + attrs.index);
 
-                console.log({language: lang});
+                    console.log({language: lang});
 
-                editor.setTheme("ace/theme/tomorrow");
-                editor.getSession().setMode("ace/mode/" + lang);
+                    editor.setTheme("ace/theme/tomorrow");
+                    editor.getSession().setMode("ace/mode/" + lang);
 
-                editor.on('change', function(data) {
-                    scope.file.content = editor.getValue();
-                });
+                    editor.on('change', function(data) {
+                        scope.file.content = editor.getValue();
+                    });
 
-            }, 0);
+                }, 0);
+            }
         }
-      }
 
     };
 });

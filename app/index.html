@@ -22,10 +22,14 @@
                 <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
                     <a onclick="document.location.href = '#/gist/{{gist.id}}'">
 
-                        <h3 ng-repeat="file in gist.files">{{(gist.description | removeTags) || file.filename}}<br />
+                        <h3 ng-repeat="file in gist.files">
+
+                            {{(gist.description | removeTags) || file.filename}}<br />
                         </h3>
-                        <span class="pills"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
-                        <span class="pills {{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
+                        <span class="{{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
+                        &nbsp;
+                        <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
+
                         <p>
                             <span ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag | removeTagSymbol}} </i></span>
                         </p>
