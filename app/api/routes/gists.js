@@ -57,13 +57,13 @@ exports.createGist = function(req, res) {
     ghgist.create({
         description: req.body.description,
         "public": req.body.public,
-        files: JSON.parse(req.body.files)
+        files: req.body.files
     }, function(err, data) {
         if (err) {
             res.send({status: 'error', error: err});
         }
 
-        res.send({data: data});
+        res.send({status: 'ok', data: data});
     });
 
 };
