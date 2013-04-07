@@ -16,7 +16,15 @@ function singleGistCtrl($scope, $routeParams, $http) {
             .success(function(data) {
         $scope.single = data;
         $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-        $scope.save = function() {
+            $scope.keypressCallback = function($event) {
+                alert('Voila!');
+                $event.preventDefault();
+            };
+        $scope.save = function($event) {
+
+            if ($event) {
+                $event.preventDefault();
+            }
 
             var data = {
                 id: $scope.single.id,
@@ -42,7 +50,7 @@ function singleGistCtrl($scope, $routeParams, $http) {
                 });
 
         };
-            
+
     });
 }
 
