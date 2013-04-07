@@ -52,10 +52,15 @@ angular.module('myApp.filters', []).
     }
 }).filter('removeTags', function() {
     return function(input) {
-        return input.replace(/(#[A-Za-z0-9\-\_]+)/g, '');
+        return input ? input.replace(/(#[A-Za-z0-9\-\_]+)/g, '') : input;
     }
 }).filter('truncate', function() {
     return function(text, length, end) {
+
+        if (!text) {
+            return '';
+        }
+        
         if (isNaN(length))
             length = 10;
         if (end === undefined)
