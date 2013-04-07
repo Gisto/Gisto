@@ -6,6 +6,8 @@
 }
 *:focus {
     outline: none;
+    transition: all 0.15s ease-in;
+    -webkit-transition: all 0.15s ease-in;
 }
 html {
     height: 100%;
@@ -70,6 +72,13 @@ h1 {
     font-size: 2em;
     padding: 0;
     margin: 0;
+}
+
+a {
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
 }
 
 h1 a {
