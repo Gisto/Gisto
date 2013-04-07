@@ -52,7 +52,7 @@
     <span class="icon-tags" ng-repeat="tag in tags"> {{tag | removeTagSymbol}} </span>
 </div>
 
-<section>
+<section ui-keydown="{'ctrl-83':'save($event)'}">
 
     <div class="the-gist" ng-repeat="file in single.files" onload="initEditors()">
         <div class="the-gist-name">
