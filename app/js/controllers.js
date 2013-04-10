@@ -25,6 +25,15 @@ function singleGistCtrl($scope, $routeParams, $http) {
             $scope.edit = false;
         };
 
+        $scope.addFile = function() {
+          var fileName = 'newFile' + Object.keys($scope.single.files).length + '.txt';
+          $scope.single.files[fileName] = {
+                content: '',
+                filename: fileName,
+                language: 'text'
+            };
+        };
+
         $scope.save = function($event) {
             $('.loading span').text('Saving...');
             $('.edit').slideUp();
@@ -79,6 +88,17 @@ function createGistCtrl($scope, $routeParams, $http) {
             content: ''
         }
     ];
+
+    $scope.addFile = function() {
+        console.log('add file');
+        console.log($scope);
+        $scope.files.push({
+            content: '',
+            filename: '',
+            language: 'html'
+        });
+    };
+
     $scope.save = function($event) {
 
         if ($event) {
