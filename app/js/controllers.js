@@ -24,10 +24,6 @@ function singleGistCtrl($scope, $routeParams, $http) {
             $scope.edit = false;
         };
 
-        $scope.keypressCallback = function($event) {
-            alert('Voila!');
-            $event.preventDefault();
-        };
         $scope.save = function($event) {
 
             if ($event) {
@@ -42,7 +38,8 @@ function singleGistCtrl($scope, $routeParams, $http) {
 
             for (var file in $scope.single.files) {
                 data.files[file] = {
-                    content: $scope.single.files[file].content
+                    content: $scope.single.files[file].content,
+                    filename: $scope.single.files[file].filename
                 };
             }
 
