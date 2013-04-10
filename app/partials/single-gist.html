@@ -10,10 +10,10 @@
 
     <span ng-switch on="edit">
         <span ng-switch-when="true">
-            <input class="edaitable" ng-model="single.description" unfocus="disableEdit()">
+            <input class="edaitable" ng-model="single.description">
             <i ng-click="disableEdit()" class="icon-remove"></i>
         </span>
-        <span class="title" ng-switch-default ng-click="enableEdit()">
+        <span class="title" ng-switch-default>
             {{(single.description | removeTags | truncate:55) || 'Untitled'}}
         </span>
     </span>
@@ -54,10 +54,10 @@
     </span>
 
     <a href="">Add new file</a>
+    <a href="" ng-click="enableEdit()">Edit</a>
     <a ng-click="save()">Save</a>
     <a href="">Download</a>
     <a href="">Remove</a>
-    <a href="">File list</a>
 
 </div>
 
@@ -69,10 +69,10 @@
 
             <span ng-switch on="edit">
                 <span ng-switch-when="true">
-                    <input class="edaitable" ng-model="file.filename" unfocus="disableEdit()">
+                    <input class="edaitable" ng-model="file.filename">
                     <i ng-click="disableEdit()" class="icon-remove"></i>
                 </span>
-                <span ng-switch-default ng-click="enableEdit()">
+                <span ng-switch-default>
                     <i class="icon-file-alt"></i> {{file.filename}}
                 </span>
             </span>
@@ -91,6 +91,8 @@
     </div>
 
 </section>
+
+</span>
 
 <div class="comments">
     <b><span class="icon-comments"></span> {{single.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>

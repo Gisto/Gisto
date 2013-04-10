@@ -25,7 +25,7 @@ function singleGistCtrl($scope, $routeParams, $http) {
         };
 
         $scope.save = function($event) {
-
+            $('.loading span').text('Saving...');
             if ($event) {
                 $event.preventDefault();
             }

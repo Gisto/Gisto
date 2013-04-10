@@ -1,9 +1,3 @@
-$("#loading").ajaxStart(function() {
-    $(this).show();
-}).ajaxStop(function() {
-    $(this).hide();
-});
-
 $(function() {
 
     $('aside').on('click', 'a', function() {
@@ -28,14 +22,4 @@ $(function() {
                 .addClass('icon-arrow-up');
     });
 
-
-    $('div.main header a .update').click(function() {
-        $.ajax({
-            url: "http://localhost:3000/gists/",
-            crossDomain: true
-        })
-                .done(function() {
-            console.log("success");
-        });
-    });
 });
