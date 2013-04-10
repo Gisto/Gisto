@@ -11,7 +11,6 @@
     <span ng-switch on="edit">
         <span ng-switch-when="true">
             <input class="edaitable" ng-model="single.description">
-            <i ng-click="disableEdit()" class="icon-remove"></i>
         </span>
         <span class="title" ng-switch-default>
             {{(single.description | removeTags | truncate:55) || 'Untitled'}}
@@ -75,7 +74,6 @@
             <span ng-switch on="edit">
                 <span ng-switch-when="true">
                     <input class="edaitable" ng-model="file.filename">
-                    <i ng-click="disableEdit()" class="icon-remove"></i>
                 </span>
                 <span ng-switch-default>
                     <i class="icon-file-alt"></i> {{file.filename}}
