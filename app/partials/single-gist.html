@@ -65,7 +65,7 @@
 
 </div>
 
-<section ui-keydown="{'ctrl-83':'save($event)'}">
+<section ui-keydown="{'ctrl-83':'save($event)'}" ui-event="{ dragover : 'dragStart($event)', dragend: 'dragEnd($event)', drop: 'drop($event)' }">
 
     <div class="the-gist" ng-repeat="file in single.files" onload="initEditors()">
         <div class="the-gist-name">

@@ -34,6 +34,41 @@ function singleGistCtrl($scope, $routeParams, $http) {
             };
         };
 
+        $scope.dragStart = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log('dragging start');
+        };
+
+        $scope.drop = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var data = event.dataTransfer;
+            for (var i = 0; i < data.files.length; i++) { // For each dropped file
+                var file = data.files[i];
+                var reader = new FileReader();
+
+                reader.onloadend = (function(filename) { return function(event) {
+                    $scope.single.files[filename] = {
+                        filename: filename,
+                        content: event.target.result,
+                        language: 'html'
+                    };
+                    $scope.$digest();
+                }})(file.name);
+
+                reader.readAsText(file);
+            }
+        };
+
+        $scope.dragEnd = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log('drag end');
+        };
+
+
+
         $scope.save = function($event) {
             $('.loading span').text('Saving...');
             $('.edit').slideUp();
