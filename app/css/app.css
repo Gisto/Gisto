@@ -79,6 +79,8 @@ a {
     -moz-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
     -ms-transition: all 300ms ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 h1 a {
