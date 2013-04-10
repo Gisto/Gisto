@@ -19,6 +19,7 @@ function singleGistCtrl($scope, $routeParams, $http) {
 
         $scope.enableEdit = function() {
             $scope.edit = true;
+            $('.edit').slideDown('slow');
         };
         $scope.disableEdit = function() {
             $scope.edit = false;
@@ -26,6 +27,7 @@ function singleGistCtrl($scope, $routeParams, $http) {
 
         $scope.save = function($event) {
             $('.loading span').text('Saving...');
+            $('.edit').slideUp();
             if ($event) {
                 $event.preventDefault();
             }
