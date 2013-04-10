@@ -378,6 +378,10 @@ div.comments i {
 
 }
 
+.messenger.edit {
+    background:goldenrod;
+}
+
 .messenger.warn {
     background: #b94a48;
 }
@@ -386,12 +390,25 @@ div.comments i {
     background: #468847;
 }
 
-
-.messenger.info span code,
-.messenger.warn span code,
-.messenger.ok span code,
 .messenger span code {
     font: 700 1em cursive;
+}
+
+.messenger a {
+    background: #FFF;
+    color: #555;
+    padding: 0px 3px;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 12px;
+    text-transform: uppercase;
+    box-shadow: 1px 1px 1px #555;
+    font-weight: 100;
+    text-shadow: none;
+}
+
+.messenger a:hover {
+    box-shadow: none;
 }
 
 aside header input {
