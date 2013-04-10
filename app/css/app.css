@@ -610,9 +610,6 @@ header input.edaitable {
     margin: 0;
     width: 50%;
     box-shadow: 1px 1px 5px #CCC inset;
-    position: absolute;
-    top: 6px;
-    left: 113px;
 }
 
 .the-gist-name input.edaitable {
@@ -624,7 +621,7 @@ header input.edaitable {
     box-shadow: 1px 1px 5px #CCC inset;
     position: absolute;
     top: 6px;
-    left: 28px;
+    left: 6px;
 }
 
 .the-gist-name span {
