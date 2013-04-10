@@ -40,38 +40,3 @@ app.directive('editor', function($timeout) {
 
     };
 });
-
-app.directive('unfocus', function() {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attribs) {
-
-            element[0].focus();
-
-            element.bind("blur", function() {
-                scope.$apply(attribs["unfocus"]);
-                console.log("??");
-            });
-
-        }
-
-    };
-});
-
-//
-//
-//    return function(scope, element, attrs) {
-//        $timeout(function() {
-//            var lang = attrs.editor;
-//            var editor = ace.edit(element[0]);
-//            editor.setTheme("ace/theme/tomorrow");
-//            editor.getSession().setMode("ace/mode/" + lang);
-//
-//            editor.on('change', function(data) {
-//               console.log(editor.getValue());
-//
-//            });
-//
-//        }, 0);
-//    };
-//});
