@@ -57,7 +57,7 @@
         <b>Revisions:</b> <i>{{single.history.length}}</i> | <b>Created:</b> <i>{{ single.created_at| date:'dd/MM/yyyy HH:mm:ss' }}</i> | <b>Last Updated:</b> <i>{{ single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss' }}</i>
     </span>
 
-    <a href="">Add new file</a>
+    <a ng-click="addFile()">Add new file</a>
     <a href="" ng-click="enableEdit()">Edit</a>
     <a ng-click="save()">Save</a>
     <a href="">Download</a>
