@@ -41,7 +41,7 @@ app.directive('editor', function($timeout) {
     };
 });
 
-module.directive('unfocus', function() {
+app.directive('unfocus', function() {
     return {
         restrict: 'A',
         link: function(scope, element, attribs) {
@@ -55,7 +55,7 @@ module.directive('unfocus', function() {
 
         }
 
-    }
+    };
 });
 
 //
