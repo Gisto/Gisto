@@ -52,6 +52,48 @@ function singleGistCtrl($scope, $routeParams, $http) {
             });
         };
 
+        $scope.dragStart = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            $('.edit').slideDown('slow');
+            $('.main section').addClass('dragarea');
+            $('.edit span').text('Drag detected - now drop!');
+        };
+
+        $scope.drop = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var data = event.dataTransfer;
+            for (var i = 0; i < data.files.length; i++) { // For each dropped file
+                var file = data.files[i];
+                var reader = new FileReader();
+
+                reader.onloadend = (function(filename) {
+                    return function(event) {
+                        $scope.single.files[filename] = {
+                            filename: filename,
+                            content: event.target.result,
+                            language: 'html'
+                        };
+                        $scope.$digest();
+                    }
+                })(file.name);
+
+                reader.readAsText(file);
+                $('.edit').slideUp('slow');
+                $('.ok').slideDown('slow');
+                $('.main section').removeClass('dragarea');
+                $('.ok span').html('Dropped: <b>' + file.name + '</b>');
+            }
+        };
+
+        $scope.dragEnd = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+        };
+
+
+
         $scope.save = function($event) {
             $('.loading span').text('Saving...');
             $('.edit').slideUp();
@@ -106,6 +148,17 @@ function createGistCtrl($scope, $routeParams, $http) {
             content: ''
         }
     ];
+
+    $scope.addFile = function() {
+        console.log('add file');
+        console.log($scope);
+        $scope.files.push({
+            content: '',
+            filename: '',
+            language: 'html'
+        });
+    };
+
     $scope.save = function($event) {
 
         if ($event) {

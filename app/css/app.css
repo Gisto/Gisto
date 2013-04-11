@@ -629,3 +629,8 @@ header input.edaitable {
 .the-gist-name span {
     line-height: 22px;
 }
+
+.dragarea {
+    opacity: 0.3;
+    border: 3px dashed goldenrod;
+}
