@@ -25,8 +25,7 @@ function singleGistCtrl($scope, $routeParams, $http) {
             $scope.edit = false;
         };
 
-        << << << < HEAD
-                $scope.warnDeleteGist = function() {
+        $scope.warnDeleteGist = function() {
             $('.delete').slideDown('slow');
         };
         $scope.cancelDeleteGist = function() {
