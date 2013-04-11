@@ -25,7 +25,8 @@ function singleGistCtrl($scope, $routeParams, $http) {
             $scope.edit = false;
         };
 
-        $scope.warnDeleteGist = function() {
+        << << << < HEAD
+                $scope.warnDeleteGist = function() {
             $('.delete').slideDown('slow');
         };
         $scope.cancelDeleteGist = function() {
@@ -52,12 +53,22 @@ function singleGistCtrl($scope, $routeParams, $http) {
             });
         };
 
+        $scope.addFile = function() {
+            var fileName = 'newFile' + Object.keys($scope.single.files).length + '.txt';
+            $scope.single.files[fileName] = {
+                content: '',
+                filename: fileName,
+                language: 'text'
+            };
+        };
+
         $scope.dragStart = function(e) {
             e.stopPropagation();
             e.preventDefault();
             $('.edit').slideDown('slow');
             $('.main section').addClass('dragarea');
             $('.edit span').text('Drag detected - now drop!');
+            console.log('dragging start');
         };
 
         $scope.drop = function(e) {
@@ -84,12 +95,26 @@ function singleGistCtrl($scope, $routeParams, $http) {
                 $('.ok').slideDown('slow');
                 $('.main section').removeClass('dragarea');
                 $('.ok span').html('Dropped: <b>' + file.name + '</b>');
+                reader.onloadend = (function(filename) {
+                    return function(event) {
+                        $scope.single.files[filename] = {
+                            filename: filename,
+                            content: event.target.result,
+                            language: 'html'
+                        };
+                        $scope.$digest();
+                    }
+                })(file.name);
+
+                reader.readAsText(file);
+
             }
         };
 
         $scope.dragEnd = function(e) {
             e.stopPropagation();
             e.preventDefault();
+            console.log('drag end');
         };
 
 
