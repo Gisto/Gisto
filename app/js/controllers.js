@@ -78,18 +78,6 @@ function singleGistCtrl($scope, $routeParams, $http) {
                 var file = data.files[i];
                 var reader = new FileReader();
 
-                reader.onloadend = (function(filename) {
-                    return function(event) {
-                        $scope.single.files[filename] = {
-                            filename: filename,
-                            content: event.target.result,
-                            language: 'html'
-                        };
-                        $scope.$digest();
-                    }
-                })(file.name);
-
-                reader.readAsText(file);
                 $('.edit').slideUp('slow');
                 $('.ok').slideDown('slow');
                 $('.main section').removeClass('dragarea');
