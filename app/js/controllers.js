@@ -25,6 +25,33 @@ function singleGistCtrl($scope, $routeParams, $http) {
             $scope.edit = false;
         };
 
+        $scope.warnDeleteGist = function() {
+            $('.delete').slideDown('slow');
+        };
+        $scope.cancelDeleteGist = function() {
+            $('.delete').slideUp('slow');
+        };
+
+        $scope.del = function($event) {
+            if ($event) {
+                $event.preventDefault();
+            }
+            var data = {
+                id: $scope.single.id
+            };
+            $http.delete('http://localhost:3000/gists/:id', data)
+                    .success(function(response) {
+                if (response.status === 'ok') {
+                    $('.warn').slideDown('slow');
+                    $('.warn span').text('Gist saved');
+                    $scope.single.history = response.data.history;
+                    setTimeout(function() {
+                        $('.warn').slideUp();
+                    }, 2500);
+                }
+            });
+        };
+
         $scope.save = function($event) {
             $('.loading span').text('Saving...');
             $('.edit').slideUp();

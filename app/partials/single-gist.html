@@ -51,6 +51,13 @@
     <span>Edit mode <b>on</b> | <a href="" ng-click="disableEdit()">Cancel</a></span>
 </div>
 
+<div class="messenger delete warn">
+    <i class="icon-warning-sign"> </i>
+    <span>Are you sure you want to <b>delete</b> this gist? | <a href="" ng-click="del()">Yes!</a> <a href="" ng-click="cancelDeleteGist()">Cancel</a></span>
+</div>
+
+
+
 <div class="toolbox">
 
     <span>
@@ -61,7 +68,7 @@
     <a href="" ng-click="enableEdit()">Edit</a>
     <a ng-click="save()">Save</a>
     <a href="">Download</a>
-    <a href="">Remove</a>
+    <a ng-click="warnDeleteGist()" href="">Remove</a>
 
 </div>
 
