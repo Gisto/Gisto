@@ -11,7 +11,11 @@ function listGistCtrl($scope, $http) {
     });
 }
 
-function singleGistCtrl($scope, $routeParams, $http) {
+function singleGistCtrl($scope, $routeParams, $http, db) {
+    //console.log(db);
+    db.get('myTest5', function(response) {
+       console.log(response);
+    });
     $http.get('http://localhost:3000/gists/' + $routeParams.gistId)
             .success(function(data) {
         $scope.single = data;
