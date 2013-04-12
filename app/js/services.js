@@ -104,6 +104,7 @@ dbService.factory('db', function() {
                     data: response
                 });
             });
+
         };
 
         return service;
