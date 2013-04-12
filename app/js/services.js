@@ -107,6 +107,23 @@ dbService.factory('db', function() {
 
         };
 
+        service.delete = function(id, callback) {
+            db.get(id, function(err,doc) {
+               db.remove(doc, function(err,response) {
+                  if (err) {
+                      callback({
+                          status: 'error',
+                          error: err
+                      });
+                  }
+                  return callback({
+                      status: 'ok',
+                      data: response
+                  })
+               });
+            });
+        };
+
         return service;
     })();
 });
