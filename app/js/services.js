@@ -40,3 +40,77 @@ angular.module('JobIndicator', [])
         });
     };
 });
+
+var dbService = angular.module('dbService', []);
+dbService.factory('db', function() {
+    return (function() {
+
+        // private
+        var db = Pouch('gisto'); // open or create the database
+
+        // handle all db callbacks and return the data whether it succeded or not.
+        var handleResponse = function(err, response) {
+          if (err) {
+              return {
+                  status: 'error',
+                  error: err
+              };
+          }
+          return {
+              status: 'ok',
+              data: response
+          };
+        };
+
+        // public
+        var service = {};
+
+        service.set = function(id, obj, callback) {
+            obj._id = id;
+            (function(obj, callback) {
+
+                var execute = function() {
+                    db.put(obj, function(err,response) {
+                        if (err) {
+                            return callback({
+                                status: 'error',
+                                error: err
+                            });
+                        }
+                        return callback({
+                            status: 'ok',
+                            data: response
+                        });
+                    });
+                };
+
+                service.get(id, function(response) { // check if there is an existing version
+                   if (response.status === 'ok') {
+                       obj._rev = response.data._rev; // update the revision number in the object
+                   }
+                   execute(); // execute the query
+                });
+
+            })(obj, callback);
+        };
+
+        service.get = function(id, callback) {
+            (function(id, callback) {
+                db.get(id, function(err,response) {
+                    if (err) {
+                        return callback({
+                            status: 'error',
+                            error: err
+                        });
+                    }
+                    return callback({
+                        status: 'ok',
+                        data: response
+                    });
+                });
+            })(id, callback);
+        };
+
+        return service;
+    })();
+});
