@@ -10,7 +10,7 @@
 
     <span ng-switch on="edit">
         <span ng-switch-when="true">
-            <input class="edaitable" ng-model="single.description">
+            <input  ui-keydown="{'ctrl-83':'save($event)'}" class="edaitable" ng-model="single.description">
         </span>
         <span class="title" ng-switch-default>
             {{(single.description | removeTags | truncate:55) || 'Untitled'}}
@@ -38,7 +38,7 @@
 
 <div class="messenger ok">
     <i class="icon-ok-sign"> </i>
-    <span>OK / Success notification</span>
+    <span>Success</span>
 </div>
 
 <div class="messenger loading">

@@ -83,6 +83,16 @@ exports.editGist = function(req, res) {
 
 };
 
+
+exports.deleteGist = function(req, res) {
+    console.log(req.params.id);
+    console.log(req.body.id);
+    ghgist.delete(req.params.id);
+    res.send({'status': "ok"});
+
+};
+
+
 exports.starGistById = function(req, res) {
     res.contentType('application/json');
     ghgist.star(req.params.id);

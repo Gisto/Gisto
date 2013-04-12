@@ -39,12 +39,11 @@ function singleGistCtrl($scope, $routeParams, $http) {
             var data = {
                 id: $scope.single.id
             };
-            $http.delete('http://localhost:3000/gists/:id', data)
+            $http.get('http://localhost:3000/gists/delete/' + $scope.single.id)
                     .success(function(response) {
                 if (response.status === 'ok') {
                     $('.warn').slideDown('slow');
-                    $('.warn span').text('Gist saved');
-                    $scope.single.history = response.data.history;
+                    $('.warn span').text('Gist deleted');
                     setTimeout(function() {
                         $('.warn').slideUp();
                     }, 2500);
