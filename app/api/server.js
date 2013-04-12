@@ -28,6 +28,7 @@ app.get('/gists/unstar/:id', gists.unStarGistById);
 app.get('/gists/comments/:id', gists.getGistCommentsByGistId);
 app.post('/gists/create', gists.createGist);
 app.post('/gists/edit', gists.editGist);
+app.get('/gists/delete/:id', gists.deleteGist);
 
 
 
