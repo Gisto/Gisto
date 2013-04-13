@@ -15,6 +15,7 @@ angular.module('myApp.filters', []).
 }).filter('codeLanguage', function() {
 
     var languages = {
+        "": "text",
         "C#": "csharp",
         "C++": "c_cpp",
         Clojure: "clojure",
@@ -60,7 +61,7 @@ angular.module('myApp.filters', []).
         if (!text) {
             return '';
         }
-        
+
         if (isNaN(length))
             length = 10;
         if (end === undefined)
