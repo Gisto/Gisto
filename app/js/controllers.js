@@ -1,31 +1,22 @@
 'use strict';
 /* Controllers */
 
-function listGistCtrl($scope, $http, db, ghAPI) {
-    /*
-     db.set('gisto_auth', {token: ''}, function(response) {
-     if (response.status === 'ok') {
-     console.log('OK');
-     } else {
-     console.log('NADA!!!');
-     }
-     });
+function listGistCtrl($scope, $http, ghAPI) {
+    // Get the gists list
+    var data = ghAPI.gists(function(data) {
+        for (var item in data) {
+            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+        }
+        $scope.gists = data;
+    });
 
-     db.get('gisto_auth', function(response) {
-     console.log(response.data.token);
-     });
-     */
-    var data = ghAPI.gists(); // Get the gists list
-    for (var item in data) {
-        data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-    }
-    $scope.gists = data;
 }
 
-function singleGistCtrl($scope, $routeParams, $http, db, ghAPI) {
-    var data = ghAPI.gist($routeParams.gistId);
-    $scope.single = data;
-    $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
+    ghAPI.gist($routeParams.gistId, function(data) {
+        $scope.single = data;
+        $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+    });
 
     $scope.enableEdit = function() {
         $scope.edit = true;
@@ -46,15 +37,24 @@ function singleGistCtrl($scope, $routeParams, $http, db, ghAPI) {
         if ($event) {
             $event.preventDefault();
         }
-        var response = ghAPI.delete($scope.single.id);
-        if (response === 'ok') {
-            console.log(response);
-            $('.warn').slideDown('slow');
-            $('.warn span').text('Gist deleted');
-            setTimeout(function() {
-                $('.warn').slideUp();
-            }, 2500);
-        }
+        console.log($scope);
+        ghAPI.delete($scope.single.id, function(response) {
+            if (response.status === 'ok') {
+                console.log(response);
+                $('.ok').slideDown('slow');
+                $('.ok span').text('Gist deleted');
+                setTimeout(function() {
+                    $('.ok').slideUp();
+                }, 2500);
+            } else {
+                console.log(response);
+                $('.warn').slideDown('slow');
+                $('.warn span').text('Gist not deleted, something went wrong');
+                setTimeout(function() {
+                    $('.warn').slideUp();
+                }, 2500);
+            }
+        });
     };
 
     $scope.addFile = function() {
@@ -131,16 +131,19 @@ function singleGistCtrl($scope, $routeParams, $http, db, ghAPI) {
             };
         }
 
-        var response = ghAPI.edit(data);
-        if (response.status === 'ok') {
-            $('.ok').slideDown('slow');
-            $('.ok span').text('Gist saved');
-            $scope.edit = false;
-            $scope.single.history = response.data.history;
-            setTimeout(function() {
-                $('.ok').slideUp();
-            }, 2500);
-        }
+        ghAPI.edit($scope.single.id, data, function(response) {
+            if (response.status === '200') {
+                console.log('>>> response.status');
+                console.log(response.status);
+                $('.ok').slideDown('slow');
+                $('.ok span').text('Gist saved');
+                $scope.edit = false;
+                $scope.single.history = response.data.history;
+                setTimeout(function() {
+                    $('.ok').slideUp();
+                }, 2500);
+            }
+        });
     };
 
 }
@@ -190,11 +193,12 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
             };
         }
 
-        var response = ghAPI.create(data);
-        if (response === 'OK') {
-            $('.ok').slideDown('slow');
-            $('.ok span').text('Gist saved');
-            window.location.href = "#/gist/" + response.data.id;
-        }
+        ghAPI.create(data, function(response) {
+            if (response.status === 'ok') {
+                $('.ok').slideDown('slow');
+                $('.ok span').text('Gist saved');
+                window.location.href = "#/gist/" + response.data.id;
+            }
+        });
     }
 }

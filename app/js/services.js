@@ -34,146 +34,92 @@ angular.module('JobIndicator', [])
         }, function(response) {
             // do something on error
             // todo hide the spinner
-            $('.warn').slideDown('slow');
-            $('.warn span').text('Something not right');
+            //$('.warn').slideDown('slow');
+            //$('.warn span').text('Something not right');
+            console.info('services.js -> "JobIndicator" condition went to error.')
             return $q.reject(response);
         });
     };
 });
 
-var dbService = angular.module('dbService', []);
-dbService.factory('db', function() {
-    return (function() {
-
-        // private
-        var db = Pouch('gisto'); // open or create the database
-
-        // handle all db callbacks and return the data whether it succeded or not.
-        var handleResponse = function(err, response) {
-            if (err) {
-                return {
-                    status: 'error',
-                    error: err
-                };
-            }
-            return {
-                status: 'ok',
-                data: response
-            };
-        };
-
-        // public
-        var service = {};
-
-        service.set = function(id, obj, callback) {
-            obj._id = id;
-
-            var execute = function() {
-                db.put(obj, function(err, response) {
-                    if (err) {
-                        return callback({
-                            status: 'error',
-                            error: err
-                        });
-                    }
-                    return callback({
-                        status: 'ok',
-                        data: response
-                    });
-                });
-            };
-
-            service.get(id, function(response) { // check if there is an existing version
-                if (response.status === 'ok') {
-                    obj._rev = response.data._rev; // update the revision number in the object
-                }
-                execute(); // execute the query
-            });
-        };
-
-        service.get = function(id, callback) {
-            db.get(id, function(err, response) {
-                if (err) {
-                    return callback({
-                        status: 'error',
-                        error: err
-                    });
-                }
-                return callback({
-                    status: 'ok',
-                    data: response
-                });
-            });
-
-        };
-
-        service.delete = function(id, callback) {
-            db.get(id, function(err, doc) {
-                db.remove(doc, function(err, response) {
-                    if (err) {
-                        callback({
-                            status: 'error',
-                            error: err
-                        });
-                    }
-                    return callback({
-                        status: 'ok',
-                        data: response
-                    });
-                });
-            });
-        };
-
-        return service;
-    })();
-});
-
-var ghAPI = angular.module('gitHubAPI', ['ngResource'], function($provide) {
+var ghAPI = angular.module('gitHubAPI', [], function($provide) {
     $provide.factory('ghAPI', function($http) {
-        var api_url = 'https://api.github.com/gists';
-        var token = '?access_token=';
+        var api_url = 'https://api.github.com/gists',
+                token = '?access_token=' + localStorage.access_token;
+
         return {
-            gists: function() {
-                // GET /gists
-                return $http.get(api_url + token).then(function(response) {
-                    return response.data;
+            // GET /gists
+            gists: function(callback) {
+                $http.get(api_url + token).then(function(response) {
+                    return callback(response.data);
                 });
             },
-            gist: function(id) {
-                // GET /gists/:id
-                return $http.get(api_url + '/' + id + token).then(function(response) {
-                    return response.data;
+            // GET /gists/:id
+            gist: function(id, callback) {
+                $http.get(api_url + '/' + id + token).then(function(response) {
+                    return callback(response.data);
                 });
             },
-            create: function(new_gist) {
-                // POST /gists
-                return $http.post(api_url + token, new_gist).then(function(response) {
-                    return 'OK';
+            // POST /gists
+            create: function(data, callback) {
+                $http({
+                    method: 'POST',
+                    url: api_url + token,
+                    data: data
+                }).then(function(response) {
+                    return callback({
+                        status: 'ok',
+                        data: response
+                    });
                 });
             },
-            edit: function(id, data) {
-                // PATCH /gists/:id
-            },
-            delete: function(id) {
-                // DELETE /gists/:id
-                return $http.delete(api_url + '/' + id + token).then(function(response) {
-                    return 'ok';
+            // PATCH /gists/:id
+            edit: function(id, data, response) {
+                $http({
+                    method: 'PATCH',
+                    url: api_url + '/' + id + token,
+                    data: data
+                }).success(function(data, status, headers, config) {
+//                    return response({
+//                        data: data,
+//                        status: status,
+//                        headers: headers(),
+//                        config: config
+//                    });
+                    console.log(data);
+                    console.log(status);
+                    console.log(headers());
+                    console.log(config);
+                }).error(function(data, status, headers, config) {
+                    return callback({
+                        status: status,
+                        header: headers,
+                        data: data
+                    });
                 });
             },
+            // DELETE /gists/:id
+            delete: function(id, callback) {
+                $http.delete(api_url + '/' + id + token).then(function(response) {
+                    return callback({
+                        status: 'ok'
+                    });
+                });
+            },
+            // GET /gists/starred
             starred: function() {
-                // GET /gists/starred
             },
+            // PUT /gists/:id/star
             star: function() {
-                // PUT /gists/:id/star
             },
+            // DELETE /gists/:id/star
             unstar: function() {
-                // DELETE /gists/:id/star
             },
+            // GET /gists/:id/star
             is_starred: function() {
-                // GET /gists/:id/star
             },
+            // POST /gists/:id/forks
             fork: function() {
-                // POST /gists/:id/forks
             }
         };
     });
