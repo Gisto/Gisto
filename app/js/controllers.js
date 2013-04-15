@@ -1,19 +1,25 @@
 'use strict';
 /* Controllers */
 
+function avatarCtrl($scope) {
+    $scope.avatar = localStorage.avatar;
+}
+
 function listGistCtrl($scope, $http, ghAPI) {
     // Get the gists list
-    var data = ghAPI.gists(function(data) {
+    ghAPI.gists(function(response) {
+        var data = response.data;
         for (var item in data) {
             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
         }
         $scope.gists = data;
-    });
-
+    }
+    );
 }
 
 function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
-    ghAPI.gist($routeParams.gistId, function(data) {
+    ghAPI.gist($routeParams.gistId, function(response) {
+        var data = response.data;
         $scope.single = data;
         $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
     });
@@ -39,7 +45,7 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         }
         console.log($scope);
         ghAPI.delete($scope.single.id, function(response) {
-            if (response.status === 'ok') {
+            if (response.status === 204) {
                 console.log(response);
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist deleted');
@@ -132,9 +138,7 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         }
 
         ghAPI.edit($scope.single.id, data, function(response) {
-            if (response.status === '200') {
-                console.log('>>> response.status');
-                console.log(response.status);
+            if (response.status === 200) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
                 $scope.edit = false;
@@ -142,16 +146,25 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
                 setTimeout(function() {
                     $('.ok').slideUp();
                 }, 2500);
+            } else {
+                $('.warn').slideDown('slow');
+                $('.warn span').text('Something went wrong');
+                setTimeout(function() {
+                    $('.warn').slideUp();
+                }, 2500);
             }
         });
     };
 
 }
 
-function commentsGistCtrl($scope, $routeParams, $http) {
-    $http.get('http://localhost:3000/gists/comments/' + $routeParams.gistId)
-            .success(function(data) {
-        $scope.comments = data;
+function commentsGistCtrl($scope, $routeParams, $http, ghAPI) {
+    ghAPI.comments($routeParams.gistId, function(response) {
+        if (response.status === 200) {
+            $scope.comments = response.data;
+        } else {
+            console.warn('[!!!] >>> Comments not loaded - server responded with error.');
+        }
     });
 }
 
@@ -194,7 +207,7 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
         }
 
         ghAPI.create(data, function(response) {
-            if (response.status === 'ok') {
+            if (response.status === 201) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
                 window.location.href = "#/gist/" + response.data.id;
