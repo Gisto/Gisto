@@ -32,7 +32,7 @@ angular.module('JobIndicator', [])
 // todo hide the spinner
 //$('.warn').slideDown('slow');
 //$('.warn span').text('Something not right');
-            console.info('services.js -> "JobIndicator" condition went to error.')
+            console.info('services.js -> "JobIndicator" condition went to error.');
             return $q.reject(response);
         });
     };
@@ -197,10 +197,10 @@ var ghAPI = angular.module('gitHubAPI', [], function($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function(data, status, headers, config) {
-                    console.log(data);
-                    console.log(status);
-                    console.log(headers());
-                    console.log(config);
+//                    console.log(data);
+//                    console.log(status);
+//                    console.log(headers());
+//                    console.log(config);
                     return callback({
                         data: data,
                         status: status,
