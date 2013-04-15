@@ -1,5 +1,4 @@
 'use strict';
-
 /* Services */
 
 
@@ -7,8 +6,6 @@
 // In this case it is a simple value service.
 angular.module('myApp.services', []).
         value('version', '0.1');
-
-
 //
 // This is the working indicator
 //
@@ -16,7 +13,7 @@ angular.module('JobIndicator', [])
         .config(function($httpProvider) {
     $httpProvider.responseInterceptors.push('myHttpInterceptor');
     var spinnerFunction = function(data, headersGetter) {
-        // todo start the spinner here
+// todo start the spinner here
         $('.loading').slideDown('slow');
         return data;
     };
@@ -26,83 +23,196 @@ angular.module('JobIndicator', [])
         .factory('myHttpInterceptor', function($q, $window) {
     return function(promise) {
         return promise.then(function(response) {
-            // do something on success
-            // todo hide the spinner
+// do something on success
+// todo hide the spinner
             $('.loading').slideUp('slow');
             return response;
-
         }, function(response) {
-            // do something on error
-            // todo hide the spinner
-            //$('.warn').slideDown('slow');
-            //$('.warn span').text('Something not right');
+// do something on error
+// todo hide the spinner
+//$('.warn').slideDown('slow');
+//$('.warn span').text('Something not right');
             console.info('services.js -> "JobIndicator" condition went to error.')
             return $q.reject(response);
         });
     };
 });
-
 var ghAPI = angular.module('gitHubAPI', [], function($provide) {
     $provide.factory('ghAPI', function($http) {
         var api_url = 'https://api.github.com/gists',
-                token = '?access_token=' + localStorage.access_token;
-
+                token = localStorage.access_token;
         return {
             // GET /gists
             gists: function(callback) {
-                $http.get(api_url + token).then(function(response) {
-                    return callback(response.data);
+                $http({
+                    method: 'GET',
+                    url: api_url,
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function(data, status, headers, config) {
+//                    console.log(data);
+//                    console.log(status);
+//                    console.log(headers());
+//                    console.log(config);
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
+                }).error(function(data, status, headers, config) {
+//                    console.log(data);
+//                    console.log(status);
+//                    console.log(headers());
+//                    console.log(config);
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
                 });
             },
             // GET /gists/:id
             gist: function(id, callback) {
-                $http.get(api_url + '/' + id + token).then(function(response) {
-                    return callback(response.data);
+                $http({
+                    method: 'GET',
+                    url: api_url + '/' + id,
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function(data, status, headers, config) {
+//                    console.log(data);
+//                    console.log(status);
+//                    console.log(headers());
+//                    console.log(config);
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
+                }).error(function(data, status, headers, config) {
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
                 });
             },
             // POST /gists
             create: function(data, callback) {
                 $http({
                     method: 'POST',
-                    url: api_url + token,
-                    data: data
-                }).then(function(response) {
+                    url: api_url,
+                    data: data,
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function(data, status, headers, config) {
+//                    console.log(data);
+//                    console.log(status);
+//                    console.log(headers());
+//                    console.log(config);
                     return callback({
-                        status: 'ok',
-                        data: response
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
+                }).error(function(data, status, headers, config) {
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
                     });
                 });
             },
             // PATCH /gists/:id
-            edit: function(id, data, response) {
+            edit: function(id, data, callback) {
                 $http({
                     method: 'PATCH',
-                    url: api_url + '/' + id + token,
-                    data: data
+                    url: api_url + '/' + id,
+                    data: data,
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
                 }).success(function(data, status, headers, config) {
-//                    return response({
-//                        data: data,
-//                        status: status,
-//                        headers: headers(),
-//                        config: config
-//                    });
-                    console.log(data);
-                    console.log(status);
-                    console.log(headers());
-                    console.log(config);
+//                    console.log(data);
+//                    console.log(status);
+//                    console.log(headers());
+//                    console.log(config);
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
                 }).error(function(data, status, headers, config) {
                     return callback({
+                        data: data,
                         status: status,
-                        header: headers,
-                        data: data
+                        headers: headers(),
+                        config: config
                     });
                 });
             },
             // DELETE /gists/:id
             delete: function(id, callback) {
-                $http.delete(api_url + '/' + id + token).then(function(response) {
+                $http({
+                    method: 'DELETE',
+                    url: api_url + '/' + id,
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function(data, status, headers, config) {
+//                    console.log(data);
+//                    console.log(status);
+//                    console.log(headers());
+//                    console.log(config);
                     return callback({
-                        status: 'ok'
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
+                }).error(function(data, status, headers, config) {
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
+                });
+            },
+            // GET /gists/:id/comments
+            comments: function(id, callback) {
+                $http({
+                    method: 'GET',
+                    url: api_url + '/' + id + '/comments',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function(data, status, headers, config) {
+                    console.log(data);
+                    console.log(status);
+                    console.log(headers());
+                    console.log(config);
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
+                }).error(function(data, status, headers, config) {
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
                     });
                 });
             },
