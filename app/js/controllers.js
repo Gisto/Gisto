@@ -7,14 +7,20 @@ function avatarCtrl($scope) {
 
 function listGistCtrl($scope, $http, ghAPI) {
     // Get the gists list
+
     ghAPI.gists(function(response) {
-        var data = response.data;
-        for (var item in data) {
-            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+        console.log(response);
+
+        for (var item in response.data) {
+            response.data[item].tags =  response.data[item].description ?  response.data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
         }
-        $scope.gists = data;
-    }
-    );
+        if (!$scope.gists) {
+            $scope.gists = response.data;
+        } else {
+            $scope.gists.push.apply($scope.gists, response.data);
+        }
+
+    });
 }
 
 function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
