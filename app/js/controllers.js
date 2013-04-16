@@ -1,12 +1,24 @@
 'use strict';
 /* Controllers */
 
+function loginCtrl($scope, $http, $routeProvider, ghAPI) {
+    $scope.submit = function() {
+        ghAPI.login($scope.user, $scope.pass, function(response) {
+            if (response.status === 201) {
+                localStorage.token = response.data.token;
+            } else {
+                console.warn('[!!!] >>> Comments not loaded - server responded with error.');
+            }
+        });
+    };
+}
+
 function avatarCtrl($scope) {
     $scope.avatar = localStorage.avatar;
 }
 
 function listGistCtrl($scope, $http, ghAPI) {
-    // Get the gists list
+// Get the gists list
     ghAPI.gists(function(response) {
         var data = response.data;
         for (var item in data) {
@@ -23,7 +35,6 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         $scope.single = data;
         $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
     });
-
     $scope.enableEdit = function() {
         $scope.edit = true;
         $('.edit').slideDown('slow');
@@ -31,14 +42,12 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
     $scope.disableEdit = function() {
         $scope.edit = false;
     };
-
     $scope.warnDeleteGist = function() {
         $('.delete').slideDown('slow');
     };
     $scope.cancelDeleteGist = function() {
         $('.delete').slideUp('slow');
     };
-
     $scope.del = function($event) {
         if ($event) {
             $event.preventDefault();
@@ -62,7 +71,6 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
             }
         });
     };
-
     $scope.addFile = function() {
         var fileName = 'newFile' + Object.keys($scope.single.files).length + '.txt';
         $scope.single.files[fileName] = {
@@ -71,7 +79,6 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
             language: 'text'
         };
     };
-
     $scope.dragStart = function(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -80,7 +87,6 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         $('.edit span').text('Drag detected - now drop!');
         console.log('dragging start');
     };
-
     $scope.drop = function(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -88,7 +94,6 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         for (var i = 0; i < data.files.length; i++) { // For each dropped file
             var file = data.files[i];
             var reader = new FileReader();
-
             $('.edit').slideUp('slow');
             $('.ok').slideDown('slow');
             $('.main section').removeClass('dragarea');
@@ -103,20 +108,14 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
                     $scope.$digest();
                 }
             })(file.name);
-
             reader.readAsText(file);
-
         }
     };
-
     $scope.dragEnd = function(e) {
         e.stopPropagation();
         e.preventDefault();
         console.log('drag end');
     };
-
-
-
     $scope.save = function($event) {
         $('.loading span').text('Saving...');
         $('.edit').slideUp();
@@ -129,7 +128,6 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
             id: $scope.single.id,
             files: {}
         };
-
         for (var file in $scope.single.files) {
             data.files[file] = {
                 content: $scope.single.files[file].content,
@@ -155,7 +153,6 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
             }
         });
     };
-
 }
 
 function commentsGistCtrl($scope, $routeParams, $http, ghAPI) {
@@ -177,7 +174,6 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
             content: ''
         }
     ];
-
     $scope.addFile = function() {
         console.log('add file');
         console.log($scope);
@@ -187,7 +183,6 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
             language: 'html'
         });
     };
-
     $scope.save = function($event) {
 
         if ($event) {
@@ -199,7 +194,6 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
             "public": $scope.isPublic,
             files: {}
         };
-
         for (var file in $scope.files) {
             data.files[$scope.files[file].filename] = {
                 content: $scope.files[file].content

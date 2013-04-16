@@ -40,15 +40,60 @@ angular.module('JobIndicator', [])
 var ghAPI = angular.module('gitHubAPI', [], function($provide) {
     $provide.factory('ghAPI', function($http) {
         var api_url = 'https://api.github.com/gists',
-                token = localStorage.access_token;
+                token = localStorage.token;
         return {
+// POST /authorizations
+            login: function(user, pass, callback) {
+                $http({
+                    method: 'POST',
+                    url: 'https://api.github.com/authorizations',
+                    data: {"scopes": [
+                            "repo",
+                            "gist",
+                            "user"
+                        ],
+                        "note": "Gisto"
+                    },
+                    headers: {
+                        "User-Agent": "Gisto/1.0.0",
+                        "Authorization": "Basic " + btoa(user + ":" + pass),
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                }).success(function(data, status, headers, config) {
+//                    console.log('>>> DATA');
+//                    console.log(data);
+//                    console.log('>>> STATUS');
+//                    console.log(status);
+//                    console.log('>>> HEADERS');
+//                    console.log(headers());
+//                    console.log('>>> CONFIG');
+//                    console.log(config);
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
+                }).error(function(data, status, headers, config) {
+//                    console.log(data);
+//                    console.log(status);
+//                    console.log(headers());
+//                    console.log(config);
+                    return callback({
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    });
+                });
+            },
             // GET /gists
             gists: function(callback) {
                 $http({
                     method: 'GET',
                     url: api_url,
                     headers: {
-                        Authorization: 'token ' + token
+                        "Authorization": "token " + token
                     }
                 }).success(function(data, status, headers, config) {
 //                    console.log(data);
