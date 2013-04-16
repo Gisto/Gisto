@@ -41,31 +41,35 @@ var ghAPI = angular.module('gitHubAPI', [], function($provide) {
     $provide.factory('ghAPI', function($http) {
         var api_url = 'https://api.github.com/gists',
                 token = localStorage.access_token;
-        return {
+        var api = {
             // GET /gists
-            gists: function(callback) {
+            gists: function(callback, pageNumber) {
+                var url = pageNumber ? api_url + '?page=' + pageNumber : api_url
+                console.log(url);
                 $http({
                     method: 'GET',
-                    url: api_url,
+                    url: url,
                     headers: {
                         Authorization: 'token ' + token
                     }
                 }).success(function(data, status, headers, config) {
-//                    console.log(data);
-//                    console.log(status);
-//                    console.log(headers());
-//                    console.log(config);
-                    return callback({
-                        data: data,
-                        status: status,
-                        headers: headers(),
-                        config: config
-                    });
+                        var data = {
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        };
+                    callback(data);
+
+                  var links = data.headers.link.split(',');
+                  for (var link in links) {
+                      link = links[link];
+                      if (link.indexOf('rel="next') > -1) {
+                          pageNumber = link.match(/[0-9]+/)[0];
+                          api.gists(callback, pageNumber);
+                      }
+                  }
                 }).error(function(data, status, headers, config) {
-//                    console.log(data);
-//                    console.log(status);
-//                    console.log(headers());
-//                    console.log(config);
                     return callback({
                         data: data,
                         status: status,
@@ -232,5 +236,7 @@ var ghAPI = angular.module('gitHubAPI', [], function($provide) {
             fork: function() {
             }
         };
+
+        return api;
     });
 });
