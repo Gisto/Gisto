@@ -1,7 +1,7 @@
 'use strict';
 /* Controllers */
 
-function loginCtrl($scope, $http, $routeProvider, ghAPI) {
+function loginCtrl($scope, $http, ghAPI) {
     $scope.submit = function() {
         ghAPI.login($scope.user, $scope.pass, function(response) {
             if (response.status === 201) {
