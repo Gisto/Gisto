@@ -20,7 +20,7 @@ function listGistCtrl($scope, $http, ghAPI) {
             $scope.gists.push.apply($scope.gists, response.data);
         }
 
-    });
+    }, true);
 }
 
 function singleGistCtrl($scope, $routeParams, $http, ghAPI) {

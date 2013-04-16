@@ -43,22 +43,28 @@ var ghAPI = angular.module('gitHubAPI', [], function($provide) {
                 token = localStorage.access_token;
         var api = {
             // GET /gists
-            gists: function(callback, pageNumber) {
-                var url = pageNumber ? api_url + '?page=' + pageNumber : api_url
-                console.log(url);
+            gists: function(callback, updateOnly, pageNumber) {
+                var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
+                    headers = {
+                        Authorization: 'token ' + token
+                    };
+
+                if (updateOnly) {
+                    headers['If-Modified-Since'] = localStorage.gistsLastUpdated;
+                }
+
                 $http({
                     method: 'GET',
                     url: url,
-                    headers: {
-                        Authorization: 'token ' + token
-                    }
+                    headers: headers
                 }).success(function(data, status, headers, config) {
-                        var data = {
-                            data: data,
-                            status: status,
-                            headers: headers(),
-                            config: config
-                        };
+                    var data = {
+                        data: data,
+                        status: status,
+                        headers: headers(),
+                        config: config
+                    };
+                    localStorage.gistsLastUpdated = data.headers['last-modified'];
                     callback(data);
 
                   var links = data.headers.link.split(',');
@@ -66,7 +72,7 @@ var ghAPI = angular.module('gitHubAPI', [], function($provide) {
                       link = links[link];
                       if (link.indexOf('rel="next') > -1) {
                           pageNumber = link.match(/[0-9]+/)[0];
-                          api.gists(callback, pageNumber);
+                          api.gists(callback, null, pageNumber);
                       }
                   }
                 }).error(function(data, status, headers, config) {
