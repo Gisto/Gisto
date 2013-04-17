@@ -7,7 +7,7 @@ angular.module('myApp', ['ui', 'myApp.filters', 'myApp.services', 'myApp.directi
         if (localStorage.token) {
             $routeProvider.when('/', {templateUrl: 'partials/empty.html'});
         } else {
-            $routeProvider.when('/', {templateUrl: 'login.html',controller: loginCtrl});
+            $routeProvider.when('/', {templateUrl: 'login.html', controller: loginCtrl});
         }
         $routeProvider.when('/login', {templateUrl: 'login.html', controller: loginCtrl});
         $routeProvider.when('/gist/:gistId', {templateUrl: 'partials/single-gist.html', controller: singleGistCtrl});
