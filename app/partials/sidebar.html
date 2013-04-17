@@ -1,0 +1,31 @@
+<aside class="flex" ng-controller="listGistCtrl">
+
+    <header class="flex">
+        <h1 title="Gist desktop app"><a href="#/">
+                <i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i>
+            </a></h1>
+        <input type="text" ng-model="search" class="search-query" placeholder="Search gists">
+    </header>
+
+    <ul class="flex">
+        <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
+            <a onclick="document.location.href = '#/gist/{{gist.id}}'">
+
+                <h3>
+                    {{(gist.description | removeTags) || 'Untitled'}}<br />
+                </h3>
+                <span class="{{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
+                &nbsp;
+                <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
+
+                <p>
+                    <span ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag | removeTagSymbol}} </i></span>
+                </p>
+            </a>
+        </li>
+    </ul>
+
+    <footer class="flex">
+        Total {{filteredGists.length}} gists
+    </footer>
+</aside>
