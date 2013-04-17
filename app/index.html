@@ -1,66 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-    <head>
-        <meta charset="utf-8">
-        <title>Gisto</title>
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="css/app.css">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>Gisto</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/app.css">
+</head>
 
-    <body class="ng-cloak">
+<body class="ng-cloak">
 
-        <aside class="flex" ng-controller="listGistCtrl">
+<aside class="flex" ng-controller="listGistCtrl">
 
-            <header class="flex">
-                <h1 title="Gist desktop app"><a href="#/">
-                        <i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i>
-                    </a></h1>
-                <input type="text" ng-model="search" class="search-query" placeholder="Search gists">
-            </header>
+    <header class="flex">
+        <h1 title="Gist desktop app"><a href="#/">
+            <i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i>
+        </a></h1>
+        <input type="text" ng-model="search" class="search-query" placeholder="Search gists">
+    </header>
 
-            <ul class="flex">
-                <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
-                    <a onclick="document.location.href = '#/gist/{{gist.id}}'">
+    <ul class="flex">
+        <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
+            <a onclick="document.location.href = '#/gist/{{gist.id}}'">
 
-                        <h3>
-                            {{(gist.description | removeTags) || 'Untitled'}}<br />
-                        </h3>
-                        <span class="{{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
-                        &nbsp;
-                        <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
+                <h3>
+                    {{(gist.description | removeTags) || 'Untitled'}}<br/>
+                </h3>
+                <span class="{{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
+                &nbsp;
+                <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
 
-                        <p>
-                            <span ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag | removeTagSymbol}} </i></span>
-                        </p>
-                    </a>
-                </li>
-            </ul>
+                <p>
+                    <span ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag |
+                        removeTagSymbol}} </i></span>
+                </p>
+            </a>
+        </li>
+    </ul>
 
-            <footer class="flex">
-                Total {{filteredGists.length}} gists
-            </footer>
-        </aside>
+    <footer class="flex">
+        Total {{filteredGists.length}} gists
+    </footer>
+</aside>
 
-        <div class="main flex" role="main" ng-view>
+<div class="main flex" role="main" ng-view>
 
-        </div>
+</div>
 
-        <!--SCRIPTS-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="lib/ace/ace.js"></script>
-        <!--
-        script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script
-        -->
-        <script src="lib/angular/angular.js"></script>
-        <script src="lib/angular/angular-resource.js"></script>
-        <script src="lib/angular-ui/angular-ui.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/services.js"></script>
-        <script src="js/controllers.js"></script>
-        <script src="js/filters.js"></script>
-        <script src="js/directives.js"></script>
-        <script src="https://raw.github.com/coreyti/showdown/master/compressed/showdown.js"></script>
-    </body>
+<!--SCRIPTS-->
+<script src="js/jquery.min.js"></script>
+<script src="js/main.js"></script>
+<script src="lib/ace/ace.js"></script>
+<!--
+script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script
+-->
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
+<script src="lib/angular-ui/angular-ui.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+<script src="https://raw.github.com/coreyti/showdown/master/compressed/showdown.js"></script>
+</body>
 
 </html>
