@@ -48,9 +48,7 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                     method: 'POST',
                     url: 'https://api.github.com/authorizations',
                     data: {"scopes": [
-                        "repo",
-                        "gist",
-                        "user"
+                        "gist"
                     ],
                         "note": "Gisto"
                     },
@@ -109,7 +107,7 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                             headers: headers(),
                             config: config
                         };
-                        localStorage.gistsLastUpdated = data.headers['last-modified'];
+                        // localStorage.gistsLastUpdated = data.headers['last-modified'];
                         callback(data);
 
                         var links = data.headers.link.split(',');
