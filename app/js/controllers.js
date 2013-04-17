@@ -1,13 +1,14 @@
 'use strict';
 /* Controllers */
 
-function loginCtrl($scope, $http, ghAPI) {
+function loginCtrl($scope, ghAPI) {
     $scope.submit = function() {
         ghAPI.login($scope.user, $scope.pass, function(response) {
             if (response.status === 201) {
                 localStorage.token = response.data.token;
+                window.location.reload();
             } else {
-                console.warn('[!!!] >>> Comments not loaded - server responded with error.');
+                console.warn('[!!!] >>> Log-in failed - server responded with error.');
             }
         });
     };
