@@ -3,14 +3,14 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('myApp', ['ui', 'myApp.filters', 'myApp.services', 'myApp.directives', 'JobIndicator', 'gitHubAPI']).
-        config(['$routeProvider', function($routeProvider) {
-        if (localStorage.token) {
-            $routeProvider.when('/', {templateUrl: 'partials/empty.html'});
-        } else {
-            $routeProvider.when('/', {templateUrl: 'login.html', controller: loginCtrl});
-        }
+    config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/', {templateUrl: 'app.html', redirectTo: function () {
+            if (!localStorage.token) {
+                return '/login';
+            }
+        }});
         $routeProvider.when('/login', {templateUrl: 'login.html', controller: loginCtrl});
-        $routeProvider.when('/gist/:gistId', {templateUrl: 'partials/single-gist.html', controller: singleGistCtrl});
-        $routeProvider.when('/create', {templateUrl: 'partials/create.html', controller: createGistCtrl});
+        $routeProvider.when('/gist/:gistId', {templateUrl: 'partials/single-gist.html', controller: singleGistCtrl, reloadOnSearch: false});
+        $routeProvider.when('/create', {templateUrl: 'partials/create.html', controller: createGistCtrl, reloadOnSearch: false});
         $routeProvider.otherwise({redirectTo: '/'});
     }]);

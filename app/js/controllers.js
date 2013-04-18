@@ -2,11 +2,10 @@
 /* Controllers */
 
 function loginCtrl($scope, ghAPI) {
-    $scope.submit = function() {
-        ghAPI.login($scope.user, $scope.pass, function(response) {
+    $scope.submit = function () {
+        ghAPI.login($scope.user, $scope.pass, function (response) {
             if (response.status === 201) {
-                localStorage.token = response.data.token;
-                window.location.reload();
+                window.location.href = "index.html#/";
             } else {
                 console.warn('[!!!] >>> Log-in failed - server responded with error.');
             }
@@ -21,11 +20,11 @@ function avatarCtrl($scope) {
 function listGistCtrl($scope, $http, ghAPI) {
     // Get the gists list
 
-    ghAPI.gists(function(response) {
+    ghAPI.gists(function (response) {
         console.log(response);
 
         for (var item in response.data) {
-            response.data[item].tags =  response.data[item].description ?  response.data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+            response.data[item].tags = response.data[item].description ? response.data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
         }
         if (!$scope.gists) {
             $scope.gists = response.data;
@@ -33,56 +32,56 @@ function listGistCtrl($scope, $http, ghAPI) {
             $scope.gists.push.apply($scope.gists, response.data);
         }
 
-    }, true);
+    });
 }
 
 function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
-    ghAPI.gist($routeParams.gistId, function(response) {
+    ghAPI.gist($routeParams.gistId, function (response) {
         var data = response.data;
         $scope.single = data;
         $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
     });
 
-    $scope.enableEdit = function() {
+    $scope.enableEdit = function () {
         $scope.edit = true;
         $('.edit').slideDown('slow');
     };
-    $scope.disableEdit = function() {
+    $scope.disableEdit = function () {
         $scope.edit = false;
     };
 
-    $scope.warnDeleteGist = function() {
+    $scope.warnDeleteGist = function () {
         $('.delete').slideDown('slow');
     };
-    $scope.cancelDeleteGist = function() {
+    $scope.cancelDeleteGist = function () {
         $('.delete').slideUp('slow');
     };
 
-    $scope.del = function($event) {
+    $scope.del = function ($event) {
         if ($event) {
             $event.preventDefault();
         }
         console.log($scope);
-        ghAPI.delete($scope.single.id, function(response) {
+        ghAPI.delete($scope.single.id, function (response) {
             if (response.status === 204) {
                 console.log(response);
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist deleted');
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
             } else {
                 console.log(response);
                 $('.warn').slideDown('slow');
                 $('.warn span').text('Gist not deleted, something went wrong');
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.warn').slideUp();
                 }, 2500);
             }
         });
     };
 
-    $scope.addFile = function() {
+    $scope.addFile = function () {
         var fileName = 'newFile' + Object.keys($scope.single.files).length + '.txt';
         $scope.single.files[fileName] = {
             content: '',
@@ -91,7 +90,7 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         };
     };
 
-    $scope.dragStart = function(e) {
+    $scope.dragStart = function (e) {
         e.stopPropagation();
         e.preventDefault();
         $('.edit').slideDown('slow');
@@ -100,7 +99,7 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         console.log('dragging start');
     };
 
-    $scope.drop = function(e) {
+    $scope.drop = function (e) {
         e.stopPropagation();
         e.preventDefault();
         var data = event.dataTransfer;
@@ -112,8 +111,8 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
             $('.ok').slideDown('slow');
             $('.main section').removeClass('dragarea');
             $('.ok span').html('Dropped: <b>' + file.name + '</b>');
-            reader.onloadend = (function(filename) {
-                return function(event) {
+            reader.onloadend = (function (filename) {
+                return function (event) {
                     $scope.single.files[filename] = {
                         filename: filename,
                         content: event.target.result,
@@ -128,15 +127,14 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         }
     };
 
-    $scope.dragEnd = function(e) {
+    $scope.dragEnd = function (e) {
         e.stopPropagation();
         e.preventDefault();
         console.log('drag end');
     };
 
 
-
-    $scope.save = function($event) {
+    $scope.save = function ($event) {
         $('.loading span').text('Saving...');
         $('.edit').slideUp();
         if ($event) {
@@ -156,19 +154,19 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
             };
         }
 
-        ghAPI.edit($scope.single.id, data, function(response) {
+        ghAPI.edit($scope.single.id, data, function (response) {
             if (response.status === 200) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
                 $scope.edit = false;
                 $scope.single.history = response.data.history;
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
             } else {
                 $('.warn').slideDown('slow');
                 $('.warn span').text('Something went wrong');
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.warn').slideUp();
                 }, 2500);
             }
@@ -178,7 +176,7 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
 }
 
 function commentsGistCtrl($scope, $routeParams, $http, ghAPI) {
-    ghAPI.comments($routeParams.gistId, function(response) {
+    ghAPI.comments($routeParams.gistId, function (response) {
         if (response.status === 200) {
             $scope.comments = response.data;
         } else {
@@ -197,7 +195,7 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
         }
     ];
 
-    $scope.addFile = function() {
+    $scope.addFile = function () {
         console.log('add file');
         console.log($scope);
         $scope.files.push({
@@ -207,7 +205,7 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
         });
     };
 
-    $scope.save = function($event) {
+    $scope.save = function ($event) {
 
         if ($event) {
             $event.preventDefault();
@@ -225,7 +223,7 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
             };
         }
 
-        ghAPI.create(data, function(response) {
+        ghAPI.create(data, function (response) {
             if (response.status === 201) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
