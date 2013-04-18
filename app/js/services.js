@@ -53,19 +53,11 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                         "note": "Gisto"
                     },
                     headers: {
-                        "User-Agent": "Gisto/1.0.0",
                         "Authorization": "Basic " + btoa(user + ":" + pass),
                         "Content-Type": "application/x-www-form-urlencoded"
                     }
                 }).success(function (data, status, headers, config) {
-//                    console.log('>>> DATA');
-//                    console.log(data);
-//                    console.log('>>> STATUS');
-//                    console.log(status);
-//                    console.log('>>> HEADERS');
-//                    console.log(headers());
-//                    console.log('>>> CONFIG');
-//                    console.log(config);
+                        localStorage.token = token = data.token;
                         return callback({
                             data: data,
                             status: status,
@@ -73,10 +65,6 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                             config: config
                         });
                     }).error(function (data, status, headers, config) {
-//                    console.log(data);
-//                    console.log(status);
-//                    console.log(headers());
-//                    console.log(config);
                         return callback({
                             data: data,
                             status: status,
