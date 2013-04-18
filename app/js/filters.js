@@ -7,7 +7,13 @@ angular.module('myApp.filters', []).
         return function(text) {
             return String(text).replace(/\%VERSION\%/mg, version);
         }
-    }])
+    }]).filter('markDown', function() {
+        return function(input) {
+            var converter = new Showdown.converter();
+            var html = converter.makeHtml(input);
+            return html;
+        };
+    })
         .filter('publicOrPrivet', function() {
     return function(input) {
         return input ? 'public' : 'secret';
