@@ -111,7 +111,7 @@
             <p>
                 <img src="{{comment.user.avatar_url}}" class="comment_gravatar" title="{{comment.user.login}}" />
                 <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
-            <blockquote>{{comment.body}}</blockquote>
+            <div class="blockquote" ng-bind-html-unsafe="comment.body | markDown"></div>
         </span>
     </div>
 
