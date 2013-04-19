@@ -37,8 +37,9 @@ angular.module('JobIndicator', [])
             });
         };
     });
-var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
-    $provide.factory('ghAPI', function ($http) {
+
+angular.module('gitHubAPI', ['gistData'], function ($provide) {
+    $provide.factory('ghAPI', function ($http, gistData) {
         var api_url = 'https://api.github.com/gists',
             token = localStorage.token;
         var api = {
@@ -74,7 +75,7 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                     });
             },
             // GET /gists
-            gists: function (callback, updateOnly, pageNumber) {
+            gists: function (updateOnly, pageNumber) {
                 var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
                     headers = {
                         Authorization: 'token ' + token
@@ -89,32 +90,28 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                     url: url,
                     headers: headers
                 }).success(function (data, status, headers, config) {
-                        var data = {
-                            data: data,
-                            status: status,
-                            headers: headers(),
-                            config: config
-                        };
-                        // localStorage.gistsLastUpdated = data.headers['last-modified'];
-                        callback(data);
 
-                        if (data.headers.link) {
-                            var links = data.headers.link.split(',');
+                        for (var item in data) { // process and arrange data
+                            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                            data[item].single = {};
+                        }
+
+                        gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
+                        // localStorage.gistsLastUpdated = data.headers['last-modified'];
+
+                        if (headers.link) {
+                            var links = headers.link.split(',');
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
                                     pageNumber = link.match(/[0-9]+/)[0];
-                                    api.gists(callback, null, pageNumber);
+                                    api.gists(null, pageNumber);
                                 }
                             }
                         }
 
                     }).error(function (data, status, headers, config) {
-//                    console.log(data);
-//                    console.log(status);
-//                    console.log(headers());
-//                    console.log(config);
-                        return callback({
+                        console.log({
                             data: data,
                             status: status,
                             headers: headers(),
@@ -123,7 +120,8 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                     });
             },
             // GET /gists/:id
-            gist: function (id, callback) {
+            gist: function (id) {
+                var gist = gistData.getGistById(id); // get the currently viewed gist
                 $http({
                     method: 'GET',
                     url: api_url + '/' + id,
@@ -131,18 +129,9 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
-//                    console.log(data);
-//                    console.log(status);
-//                    console.log(headers());
-//                    console.log(config);
-                        return callback({
-                            data: data,
-                            status: status,
-                            headers: headers(),
-                            config: config
-                        });
+                        gist.single = data; // update the current gist with the new data
                     }).error(function (data, status, headers, config) {
-                        return callback({
+                        console.log({
                             data: data,
                             status: status,
                             headers: headers(),
@@ -160,10 +149,6 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
-//                    console.log(data);
-//                    console.log(status);
-//                    console.log(headers());
-//                    console.log(config);
                         return callback({
                             data: data,
                             status: status,
@@ -189,10 +174,6 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
-//                    console.log(data);
-//                    console.log(status);
-//                    console.log(headers());
-//                    console.log(config);
                         return callback({
                             data: data,
                             status: status,
@@ -217,10 +198,6 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
-//                    console.log(data);
-//                    console.log(status);
-//                    console.log(headers());
-//                    console.log(config);
                         return callback({
                             data: data,
                             status: status,
@@ -245,10 +222,6 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
-//                    console.log(data);
-//                    console.log(status);
-//                    console.log(headers());
-//                    console.log(config);
                         return callback({
                             data: data,
                             status: status,
@@ -282,5 +255,22 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
         };
 
         return api;
+    });
+});
+
+angular.module('gistData', [], function ($provide) {
+    $provide.factory('gistData', function () {
+        var dataService = {
+            list: [],
+            getGistById: function (id) {
+                for (var gist in dataService.list) {
+                    gist = dataService.list[gist];
+                    if (gist.id === id) {
+                        return gist;
+                    }
+                }
+            }
+        };
+        return dataService;
     });
 });

@@ -5,15 +5,15 @@
     <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
 
-    <span class="type {{single.public | publicOrPrivet}}">{{single.public | publicOrPrivet}}</span>
+    <span class="type {{single.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
 
 
     <span ng-switch on="edit">
         <span ng-switch-when="true">
-            <input ui-keydown="{'ctrl-83':'save($event)'}" class="edaitable" ng-model="single.description">
+            <input ui-keydown="{'ctrl-83':'save($event)'}" class="edaitable" ng-model="gist.description">
         </span>
         <span class="title" ng-switch-default>
-            {{(single.description | removeTags | truncate:55) || 'Untitled'}}
+            {{(gist.description | removeTags | truncate:55) || 'Untitled'}}
         </span>
     </span>
 
@@ -60,8 +60,10 @@
 <div class="toolbox">
 
     <span>
-        <b>Revisions:</b> <i>{{single.history.length}}</i> | <b>Created:</b> <i>{{ single.created_at| date:'dd/MM/yyyy
-        HH:mm:ss' }}</i> | <b>Last Updated:</b> <i>{{ single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss' }}</i>
+        <b>Revisions:</b> <i>{{gist.single.history.length}}</i> | <b>Created:</b> <i>{{ gist.single.created_at|
+        date:'dd/MM/yyyy
+        HH:mm:ss' }}</i> | <b>Last Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'
+        }}</i>
     </span>
 
     <a ng-click="addFile()">Add new file</a>
@@ -76,7 +78,7 @@
 <section ui-keydown="{'ctrl-83':'save($event)'}"
          ui-event="{ dragover : 'dragStart($event)', dragend: 'dragEnd($event)', drop: 'drop($event)' }">
 
-    <div class="the-gist" ng-repeat="file in single.files" onload="initEditors()">
+    <div class="the-gist" ng-repeat="file in gist.single.files" onload="initEditors()">
         <div class="the-gist-name">
 
 
@@ -106,7 +108,7 @@
 </span>
 
 <div class="comments">
-    <b><span class="icon-comments"></span> {{single.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
+    <b><span class="icon-comments"></span> {{gist.single.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
 
     <div ng-controller="commentsGistCtrl" class="the-comments">
         <span ng-repeat="comment in comments">

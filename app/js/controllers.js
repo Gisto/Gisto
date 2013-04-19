@@ -18,30 +18,16 @@ function avatarCtrl($scope) {
     $scope.avatar = localStorage.avatar;
 }
 
-function listGistCtrl($scope, $http, ghAPI) {
+function listGistCtrl($scope, ghAPI, gistData) {
+    $scope.gists = gistData.list;
     // Get the gists list
-
-    ghAPI.gists(function (response) {
-        console.log(response);
-
-        for (var item in response.data) {
-            response.data[item].tags = response.data[item].description ? response.data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-        }
-        if (!$scope.gists) {
-            $scope.gists = response.data;
-        } else {
-            $scope.gists.push.apply($scope.gists, response.data);
-        }
-
-    }, true);
+    ghAPI.gists();
 }
 
-function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
-    ghAPI.gist($routeParams.gistId, function (response) {
-        var data = response.data;
-        $scope.single = data;
-        $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-    });
+function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
+    $scope.gist = gistData.getGistById($routeParams.gistId);
+    ghAPI.gist($routeParams.gistId);
+
 
     $scope.copyToClipboard = function (file) {
         if (clipboard !== undefined) {
@@ -155,24 +141,24 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         }
 
         var data = {
-            description: $scope.single.description,
-            id: $scope.single.id,
+            description: $scope.gist.description,
+            id: $scope.gist.id,
             files: {}
         };
 
-        for (var file in $scope.single.files) {
+        for (var file in $scope.gist.single.files) {
             data.files[file] = {
-                content: $scope.single.files[file].content,
-                filename: $scope.single.files[file].filename
+                content: $scope.gist.single.files[file].content,
+                filename: $scope.gist.single.files[file].filename
             };
         }
 
-        ghAPI.edit($scope.single.id, data, function (response) {
+        ghAPI.edit($scope.gist.single.id, data, function (response) {
             if (response.status === 200) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
                 $scope.edit = false;
-                $scope.single.history = response.data.history;
+                $scope.gist.single.history = response.data.history;
                 setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
