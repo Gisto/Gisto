@@ -98,7 +98,7 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
                         callback(data);
 
-                        if(data.headers.link) {
+                        if (data.headers.link) {
                             var links = data.headers.link.split(',');
                             for (var link in links) {
                                 link = links[link];

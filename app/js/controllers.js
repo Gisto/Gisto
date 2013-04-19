@@ -43,8 +43,8 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
     });
 
-    $scope.copyToClipboard = function(file) {
-        if(clipboard !== undefined) {
+    $scope.copyToClipboard = function (file) {
+        if (clipboard !== undefined) {
             clipboard.set(file.content, 'text');
         } else {
             console.log('>>> DEBUG MOD ON | Copy to clipboard really only works in App \n File name: ' + file.filename + '\n Content: \n' + file.content)
@@ -52,7 +52,7 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
 
         $('.ok').slideDown('slow');
         $('.ok span').html('Content of a file <b>' + file.filename + '</b> copied to clipboard');
-        setTimeout(function() {
+        setTimeout(function () {
             $('.ok').slideUp();
         }, 2500);
     };
