@@ -10,6 +10,7 @@ angular.module('myApp', ['ui', 'myApp.filters', 'myApp.services', 'myApp.directi
             $routeProvider.when('/', {templateUrl: 'login.html', controller: loginCtrl});
         }
         $routeProvider.when('/login', {templateUrl: 'login.html', controller: loginCtrl});
+        $routeProvider.when('/settings', {templateUrl: 'partials/settings.html'/*, controller: loginCtrl*/});
         $routeProvider.when('/gist/:gistId', {templateUrl: 'partials/single-gist.html', controller: singleGistCtrl});
         $routeProvider.when('/create', {templateUrl: 'partials/create.html', controller: createGistCtrl});
         $routeProvider.otherwise({redirectTo: '/'});
