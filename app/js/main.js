@@ -1,10 +1,5 @@
 $(function() {
 
-    $('aside').on('click', 'a', function() {
-        ($('aside a').hasClass('active')) ? $('aside a').removeClass('active') : $(this).addClass('active');
-        $(this).addClass('active');
-    });
-
     $('div.main').on('click', '.messenger', function() {
         $(this).slideUp('slow');
     });
