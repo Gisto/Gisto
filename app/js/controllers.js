@@ -5,7 +5,8 @@ function loginCtrl($scope, ghAPI) {
     $scope.submit = function () {
         ghAPI.login($scope.user, $scope.pass, function (response) {
             if (response.status === 201) {
-                window.location.href = "index.html#/";
+                localStorage.token = response.data.token;
+                window.location.reload();
             } else {
                 console.warn('[!!!] >>> Log-in failed - server responded with error.');
             }
@@ -32,7 +33,7 @@ function listGistCtrl($scope, $http, ghAPI) {
             $scope.gists.push.apply($scope.gists, response.data);
         }
 
-    });
+    }, true);
 }
 
 function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
@@ -41,6 +42,20 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         $scope.single = data;
         $scope.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
     });
+
+    $scope.copyToClipboard = function(file) {
+        if(clipboard !== undefined) {
+            clipboard.set(file.content, 'text');
+        } else {
+            console.log('>>> DEBUG MOD ON | Copy to clipboard really only works in App \n File name: ' + file.filename + '\n Content: \n' + file.content)
+        }
+
+        $('.ok').slideDown('slow');
+        $('.ok span').html('Content of a file <b>' + file.filename + '</b> copied to clipboard');
+        setTimeout(function() {
+            $('.ok').slideUp();
+        }, 2500);
+    };
 
     $scope.enableEdit = function () {
         $scope.edit = true;
@@ -56,7 +71,6 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
     $scope.cancelDeleteGist = function () {
         $('.delete').slideUp('slow');
     };
-
     $scope.del = function ($event) {
         if ($event) {
             $event.preventDefault();
@@ -132,7 +146,6 @@ function singleGistCtrl($scope, $routeParams, $http, ghAPI) {
         e.preventDefault();
         console.log('drag end');
     };
-
 
     $scope.save = function ($event) {
         $('.loading span').text('Saving...');

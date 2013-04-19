@@ -98,14 +98,17 @@ var ghAPI = angular.module('gitHubAPI', [], function ($provide) {
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
                         callback(data);
 
-                        var links = data.headers.link.split(',');
-                        for (var link in links) {
-                            link = links[link];
-                            if (link.indexOf('rel="next') > -1) {
-                                pageNumber = link.match(/[0-9]+/)[0];
-                                api.gists(callback, null, pageNumber);
+                        if(data.headers.link) {
+                            var links = data.headers.link.split(',');
+                            for (var link in links) {
+                                link = links[link];
+                                if (link.indexOf('rel="next') > -1) {
+                                    pageNumber = link.match(/[0-9]+/)[0];
+                                    api.gists(callback, null, pageNumber);
+                                }
                             }
                         }
+
                     }).error(function (data, status, headers, config) {
 //                    console.log(data);
 //                    console.log(status);

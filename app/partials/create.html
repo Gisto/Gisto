@@ -1,43 +1,37 @@
-<!-- Sidebar -->
-<ng-include src="'partials/list.html'"></ng-include>
+<header>
+    <img src="{{single.user.avatar_url}}" class="gravatar" title="{{single.user.login}}" />
+    <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
+    <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
+    <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
 
-<div class="main flex" role="main">
+    <span class="type {{isPublic | publicOrPrivet}}">{{isPublic | publicOrPrivet}}</span>
+    {{description}}
+</header>
 
-    <header>
-        <img src="{{single.user.avatar_url}}" class="gravatar" title="{{single.user.login}}"/>
-        <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
-        <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
-        <a href="" title="General settings"><i class="settings icon-cog"></i></a>
+<div class="toolbox">
 
-        <span class="type {{gistPublic | publicOrPrivet}}">{{gistPublic | publicOrPrivet}}</span>
-        {{gistTitle}}
-    </header>
+    <a href="" ng-click="addFile()">Add new file</a>
+    <a href="" ng-click="save()">Save</a>
 
-    <div class="toolbox">
+</div>
 
-        <a href="" ng-click="addFile()">Add new file</a>
-        <a href="" ng-click="save()">Save</a>
+<section>
+
+    <h1>Create gist</h1>
+    <input type="text" ng-model="description" class="desc" placeholder="Description">
+    <input type="checkbox" ng-model="isPublic"> Public
+
+    <div ng-repeat="file in files">
+        <input type="text" ng-model="file.filename" placeholder="Filename">
+
+        <div class="the-gist" onload="initEditors()">
+
+            <div class="the-gist-name">
+                <i class="icon-file-alt"></i> <b>{{file.filename || 'filename'}}</b>
+            </div>
+            <editor language="html" index="{{$index}}" ng-model="file.content"></editor>
+        </div>
 
     </div>
 
-    <section>
-
-        <h1>Create gist</h1>
-        <input type="text" ng-model="description" class="desc" placeholder="Description">
-        <input type="checkbox" ng-model="isPublic"> Public
-
-        <div ng-repeat="file in files">
-            <input type="text" ng-model="file.filename" placeholder="Filename">
-
-            <div class="the-gist" onload="initEditors()">
-
-                <div class="the-gist-name">
-                    <i class="icon-file-alt"></i> <b>{{gistFileName || 'filename'}}</b>
-                </div>
-                <editor language="html" index="{{$index}}" ng-model="file.content"></editor>
-            </div>
-
-        </div>
-
-    </section>
-</div>
+</section>
