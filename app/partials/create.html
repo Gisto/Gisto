@@ -4,8 +4,8 @@
     <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
     <a href="" title="General settings"><i class="settings icon-cog"></i></a>
 
-    <span class="type {{gistPublic | publicOrPrivet}}">{{gistPublic | publicOrPrivet}}</span>
-    {{gistTitle}}
+    <span class="type {{isPublic | publicOrPrivet}}">{{isPublic | publicOrPrivet}}</span>
+    {{description}}
 </header>
 
 <div class="toolbox">
@@ -27,7 +27,7 @@
         <div class="the-gist" onload="initEditors()">
 
             <div class="the-gist-name">
-                <i class="icon-file-alt"></i> <b>{{gistFileName || 'filename'}}</b>
+                <i class="icon-file-alt"></i> <b>{{file.filename || 'filename'}}</b>
             </div>
             <editor language="html" index="{{$index}}" ng-model="file.content"></editor>
         </div>
