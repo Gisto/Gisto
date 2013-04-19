@@ -34,7 +34,7 @@
 
     <ul class="flex">
         <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
-            <a onclick="document.location.href = '#/gist/{{gist.id}}'">
+            <a ui-route="/gist/{{gist.id}}" ng-class="{active: $uiRoute}" onclick="document.location.href = '#/gist/{{gist.id}}'">
 
                 <h3>
                     {{(gist.description | removeTags) || 'Untitled'}}<br/>
