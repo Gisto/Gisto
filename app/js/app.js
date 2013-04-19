@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['ui', 'myApp.filters', 'myApp.services', 'myApp.directives', 'JobIndicator', 'gitHubAPI']).
+angular.module('myApp', ['ui', 'myApp.filters', 'myApp.services', 'myApp.directives', 'JobIndicator', 'gitHubAPI', 'gistData']).
     config(['$routeProvider', function ($routeProvider) {
         if (localStorage.token) {
             $routeProvider.when('/', {templateUrl: 'partials/empty.html'});
