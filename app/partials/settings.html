@@ -1,5 +1,5 @@
 <header>
-    <img src="{{single.user.avatar_url}}" class="gravatar" title="{{single.user.login}}" />
+    <img src="{{single.user.avatar_url}}" class="gravatar" title="{{single.user.login}}"/>
     <a title="Create new gist" onclick="document.location.href = '#/create'"><i class="create icon-file"></i></a>
     <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
@@ -21,14 +21,17 @@
     <div class="tabs">
         <div id="tab1">
             <h2><a ng-click="show=1">General</a></h2>
+
             <div ng-show="show==1">This content appears on tab 1.</div>
         </div>
         <div id="tab2">
             <h2><a ng-click="show=2">Look &amp; feel</a></h2>
+
             <div ng-show="show==2">This content appears on tab 2.</div>
         </div>
         <div id="tab3">
             <h2><a ng-click="show=3">Gisto settings</a></h2>
+
             <div ng-show="show==3">This content appears on tab 3.</div>
         </div>
     </div>
