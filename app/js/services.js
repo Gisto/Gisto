@@ -38,8 +38,8 @@ angular.module('JobIndicator', [])
         };
     });
 
-angular.module('gitHubAPI', ['gistData'], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData) {
+angular.module('gitHubAPI', [], function ($provide) {
+    $provide.factory('ghAPI', function ($http) {
         var api_url = 'https://api.github.com/gists',
             token = localStorage.token;
         var api = {
@@ -75,7 +75,7 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                     });
             },
             // GET /gists
-            gists: function (updateOnly, pageNumber) {
+            gists: function (callback, pageNumber, updateOnly) {
                 var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
                     headers = {
                         Authorization: 'token ' + token
@@ -90,15 +90,9 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                     url: url,
                     headers: headers
                 }).success(function (data, status, headers, config) {
+                        callback(data);
 
-                        for (var item in data) { // process and arrange data
-                            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-                            data[item].single = {};
-                        }
-
-                        gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
-                        // localStorage.gistsLastUpdated = data.headers['last-modified'];
-
+                        // check if there are more gists and retrieve them
                         var headers = headers();
                         if (headers.link) {
                             var links = headers.link.split(',');
@@ -106,14 +100,12 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
                                     pageNumber = link.match(/[0-9]+/)[0];
-                                    console.log(pageNumber);
-                                    api.gists(null, pageNumber);
+                                    api.gists(callback, pageNumber, null);
                                 }
                             }
                         }
-
                     }).error(function (data, status, headers, config) {
-                        console.log({
+                        callback({
                             data: data,
                             status: status,
                             headers: headers(),
@@ -122,8 +114,7 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                     });
             },
             // GET /gists/:id
-            gist: function (id) {
-                var gist = gistData.getGistById(id); // get the currently viewed gist
+            gist: function (id, callback) {
                 $http({
                     method: 'GET',
                     url: api_url + '/' + id,
@@ -131,9 +122,9 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
-                        gist.single = data; // update the current gist with the new data
+                        callback(data);
                     }).error(function (data, status, headers, config) {
-                        console.log({
+                        callback({
                             data: data,
                             status: status,
                             headers: headers(),
@@ -260,11 +251,119 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
     });
 });
 
+angular.module('cacheService', ['gitHubAPI', 'gistData'], function ($provide) {
+    $provide.factory('cacheService', function (ghAPI, gistData) {
+        var cacheService = {
+            generateKey: function (func, params) {
+                var key = func + '/';
+
+                if (params.hasOwnProperty('id')) {
+                    key += params.id;
+                }
+
+                cacheService.set('cachedKeys', [key]);
+                return key;
+            },
+            get: function (func, scope, params, invalidate) {
+                params = params || {};
+                var key = cacheService.generateKey(func, params);
+                var cache = false; // debug
+                if (navigator.onLine && !cache) {
+                    cacheService[func].call(scope, key, params, invalidate);
+                } else {
+                    var cachedData = localStorage[key];
+                    if (cachedData) {
+                        if (Object.prototype.toString.call(scope) === '[object Array]') {
+                            scope.push.apply(scope, JSON.parse(cachedData));
+                        } else { // json object
+                            var parsedData = JSON.parse(cachedData);
+                            // modify the existing object so we won't break the model binding
+                            for (var item in parsedData) {
+                                scope[item] = parsedData[item];
+                            }
+                        }
+                    }
+                }
+            },
+            set: function (key, value, invalidate) {
+                if (invalidate) {
+                    console.log('invalidate');
+                    localStorage[key] = JSON.stringify(value); // overwrite value
+                } else {
+                    var data = null;
+                    try {
+                        data = JSON.parse(localStorage[key]);
+                    } catch (parseException) {
+                        data = [];
+                    }
+                    if (Object.prototype.toString.call(data) === '[object Array]') {
+                        data.push.apply(data, value || []);
+                    } else { // json object
+                        data = value; // overwrite the data instead of adding it
+                    }
+                    localStorage[key] = JSON.stringify(data);
+                }
+
+            },
+            invalidateCache: function () {
+                var cachedKeys = localStorage.cachedKeys;
+                if (cachedKeys) {
+                    cachedKeys = JSON.parse(cachedKeys);
+                    for (var key in cachedKeys) {
+                        delete localStorage[cachedKeys[key]];
+                    }
+                    delete localStorage.cachedKeys;
+                }
+            },
+            getGists: function (key, params, invalidate) {
+                (function (scope, key, params, invalidate) {
+                    ghAPI.gists(function (data) {
+
+                        // process response
+                        for (var item in data) {
+                            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                            data[item].single = {};
+                        }
+
+                        // append data to current scope
+                        scope.push.apply(scope, data);
+
+                        // save local copy
+                        cacheService.set(key, data, invalidate);
+
+                    });
+                })(this, key, params, invalidate);
+            },
+            getSingleGist: function (key, params, invalidate) {
+
+                (function (scope, key, params, invalidate) {
+
+                    ghAPI.gist(params.id, function (data) {
+                        var gist = gistData.getGistReferenceById(params.id);
+                        gist.single = data; // update the current viewed gist
+
+                        cacheService.set(key, data, true);
+                    });
+
+                })(this, key, params, invalidate);
+
+            },
+            updateGist: function (key, params, invalidate) {
+
+            },
+            createGist: function (key, params, invalidate) {
+
+            }
+        };
+        return cacheService;
+    });
+});
+
 angular.module('gistData', [], function ($provide) {
     $provide.factory('gistData', function () {
         var dataService = {
             list: [],
-            getGistById: function (id) {
+            getGistReferenceById: function (id) {
                 for (var gist in dataService.list) {
                     gist = dataService.list[gist];
                     if (gist.id === id) {
