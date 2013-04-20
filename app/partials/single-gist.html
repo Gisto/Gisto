@@ -10,7 +10,7 @@
 
     <span ng-switch on="edit">
         <span ng-switch-when="true">
-            <input ui-keydown="{'ctrl-83':'save($event)'}" class="edaitable" ng-model="gist.description">
+            <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" ng-model="gist.description">
         </span>
         <span class="title" ng-switch-default>
             {{(gist.description | removeTags | truncate:55) || 'Untitled'}}
@@ -68,14 +68,14 @@
 
     <a ng-click="addFile()">Add new file</a>
     <a href="" ng-click="enableEdit()">Edit</a>
-    <a ng-click="save()">Save</a>
+    <a ng-click="update()">Update</a>
     <a href="https://gist.github.com/{{single.user.login}}/{{single.id}}/download"
        download="gist-by-{{single.user.login}}-id-{{single.id}}.tar.gz">Download</a>
     <a ng-click="warnDeleteGist()" href="">Remove</a>
 
 </div>
 
-<section ui-keydown="{'ctrl-83':'save($event)'}"
+<section ui-keydown="{'ctrl-83':'update($event)'}"
          ui-event="{ dragover : 'dragStart($event)', dragend: 'dragEnd($event)', drop: 'drop($event)' }">
 
     <div class="the-gist" ng-repeat="file in gist.single.files" onload="initEditors()">

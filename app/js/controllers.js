@@ -133,7 +133,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         console.log('drag end');
     };
 
-    $scope.save = function ($event) {
+    $scope.update = function ($event) {
         $('.loading span').text('Saving...');
         $('.edit').slideUp();
         if ($event) {
