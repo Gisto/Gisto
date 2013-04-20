@@ -1,6 +1,12 @@
 'use strict';
 /* Controllers */
 
+function themeCtrl($scope) {
+    // Change to 'nite' for dark theme and 'monokai' for editor
+    $scope.theme = localStorage.theme || 'default';
+    $scope.editor_theme = localStorage.editor_theme || 'tomorrow';
+}
+
 function loginCtrl($scope, ghAPI) {
     $scope.submit = function () {
         ghAPI.login($scope.user, $scope.pass, function (response) {

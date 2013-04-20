@@ -1,11 +1,11 @@
 <header>
 
-    <img src="{{single.user.avatar_url}}" class="gravatar" title="{{single.user.login}}"/>
+    <img src="{{gist.user.avatar_url}}" class="gravatar" title="{{single.user.login}}"/>
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
     <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
 
-    <span class="type {{single.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
+    <span class="type {{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
 
 
     <span ng-switch on="edit">
@@ -99,7 +99,7 @@
             <a ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
 
-        <editor language="{{file.language | codeLanguage}}" index="{{$index}}"></editor>
+        <editor data-ng-controller="themeCtrl" language="{{file.language | codeLanguage}}" theme="{{editor_theme}}" index="{{$index}}"></editor>
 
     </div>
 
