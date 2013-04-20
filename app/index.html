@@ -5,15 +5,12 @@
     <title>Gisto</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" data-ng-controller="themeCtrl" href="themes/{{theme}}/theme.css">
 
     <script>
         if (typeof window.require != 'undefined') {
             window.gui = require('nw.gui');
             var clipboard = window.gui.Clipboard.get();
-            /*
-             clipboard.set('I love node-webkit :)', 'text');
-             console.log('>>> ');console.log(clipboard.get('text'));
-             */
         }
     </script>
 

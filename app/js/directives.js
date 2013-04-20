@@ -23,11 +23,13 @@ app.directive('editor', function($timeout) {
                 $timeout(function() {
 
                     var lang = attrs.language,
-                            editor = ace.edit('editor-' + attrs.index);
+                        editor = ace.edit('editor-' + attrs.index),
+                        theme = attrs.theme;
 
                     console.log({language: lang});
+                    console.log('Theme: ' + theme);
 
-                    editor.setTheme("ace/theme/tomorrow");
+                    editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
 
                     editor.on('change', function(data) {
