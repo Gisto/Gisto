@@ -62,7 +62,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             $event.preventDefault();
         }
         console.log($scope);
-        ghAPI.delete($scope.single.id, function (response) {
+        ghAPI.delete($scope.gist.single.id, function (response) {
             if (response.status === 204) {
                 console.log(response);
                 $('.ok').slideDown('slow');
@@ -82,8 +82,8 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
     };
 
     $scope.addFile = function () {
-        var fileName = 'newFile' + Object.keys($scope.single.files).length + '.txt';
-        $scope.single.files[fileName] = {
+        var fileName = 'newFile' + Object.keys($scope.gist.single.files).length + '.txt';
+        $scope.gist.single.files[fileName] = {
             content: '',
             filename: fileName,
             language: 'text'
@@ -113,7 +113,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             $('.ok span').html('Dropped: <b>' + file.name + '</b>');
             reader.onloadend = (function (filename) {
                 return function (event) {
-                    $scope.single.files[filename] = {
+                    $scope.gist.single.files[filename] = {
                         filename: filename,
                         content: event.target.result,
                         language: 'html'

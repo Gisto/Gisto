@@ -99,12 +99,14 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
+                        var headers = headers();
                         if (headers.link) {
                             var links = headers.link.split(',');
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
                                     pageNumber = link.match(/[0-9]+/)[0];
+                                    console.log(pageNumber);
                                     api.gists(null, pageNumber);
                                 }
                             }
