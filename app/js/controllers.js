@@ -18,15 +18,14 @@ function avatarCtrl($scope) {
     $scope.avatar = localStorage.avatar;
 }
 
-function listGistCtrl($scope, ghAPI, gistData) {
+function listGistCtrl($scope, cacheService, gistData) {
     $scope.gists = gistData.list;
-    // Get the gists list
-    ghAPI.gists();
+    cacheService.get('getGists', gistData.list);
 }
 
-function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
-    $scope.gist = gistData.getGistById($routeParams.gistId);
-    ghAPI.gist($routeParams.gistId);
+function singleGistCtrl($scope, $routeParams, gistData, cacheService, ghAPI) {
+    $scope.gist = gistData.getGistReferenceById($routeParams.gistId);
+    cacheService.get('getSingleGist', $scope.gist.single, {id: $routeParams.gistId});
 
 
     $scope.copyToClipboard = function (file) {
@@ -153,23 +152,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             };
         }
 
-        ghAPI.edit($scope.gist.single.id, data, function (response) {
-            if (response.status === 200) {
-                $('.ok').slideDown('slow');
-                $('.ok span').text('Gist saved');
-                $scope.edit = false;
-                $scope.gist.single.history = response.data.history;
-                setTimeout(function () {
-                    $('.ok').slideUp();
-                }, 2500);
-            } else {
-                $('.warn').slideDown('slow');
-                $('.warn span').text('Something went wrong');
-                setTimeout(function () {
-                    $('.warn').slideUp();
-                }, 2500);
-            }
-        });
+        // cacheService.get('update', { id: $scope.gist.single.id, data: data });
     };
 
 }
