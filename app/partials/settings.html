@@ -8,9 +8,11 @@
     <i class="icon-wrench"></i> Settings
 </header>
 
+<form ng-controller="settingsCtrl">
+
 <div class="toolbox">
 
-    <a>Update</a>
+    <a ng-click="update_settings()">update</a>
 
 </div>
 
@@ -27,7 +29,12 @@
         <div id="tab2">
             <h2><a ng-click="show=2">Look &amp; feel</a></h2>
 
-            <div ng-show="show==2">This content appears on tab 2.</div>
+            <div ng-show="show==2">
+                <p>Set theme:</p>
+                <input type="radio" ng-model="theme" value="default"> Default <br/>
+                <input type="radio" ng-model="theme" value="nite"> Nite (dark)<br/>
+
+            </div>
         </div>
         <div id="tab3">
             <h2><a ng-click="show=3">Gisto settings</a></h2>
@@ -37,3 +44,5 @@
     </div>
 
 </section>
+
+</form>
