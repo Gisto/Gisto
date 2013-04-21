@@ -21,7 +21,7 @@ aside header,
 }
 
 div.toolbox {
-    background: #0C2C50;
+    background: #687085;
     border-bottom: 1px solid #585858;
     box-shadow: 3px 7px 20px #333;
 }
@@ -98,7 +98,7 @@ aside ul li a:hover {
 }
 
 aside ul li a.active {
-    background: #325032;
+    background: #597459;
 }
 
 aside footer,
@@ -128,9 +128,10 @@ div.main header a:hover .create{
 }
 
 div.comments {
-    background: #553C1D;
+    background: #C0AC77;
     border-top: 1px solid #727272;
     box-shadow: 0px -3px 20px #333;
+    color: #555;
 }
 
 .the-gist {
@@ -144,7 +145,7 @@ div.comments {
 }
 
 .the-gist-name {
-    background: #C93E29;
+    background: #A35531;
     border-bottom: 1px solid #000;
     color: #fff;
 }

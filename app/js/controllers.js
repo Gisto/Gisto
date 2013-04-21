@@ -1,10 +1,14 @@
 'use strict';
 /* Controllers */
 
-function themeCtrl($scope) {
-    // Change to 'nite' for dark theme and 'monokai' for editor
+function settingsCtrl($scope) {
     $scope.theme = localStorage.theme || 'default';
-    $scope.editor_theme = localStorage.editor_theme || 'tomorrow';
+    $scope.update_settings = function () {
+        var new_theme = $scope.theme;
+        console.warn(new_theme);
+        localStorage.theme = new_theme;
+        window.location.reload();
+    };
 }
 
 function loginCtrl($scope, ghAPI) {
