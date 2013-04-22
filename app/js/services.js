@@ -1,19 +1,12 @@
 'use strict';
-/* Services */
 
-
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', []).
-    value('version', '0.1');
-//
-// This is the working indicator
-//
+/**
+ * This is the working indicator
+ */
 angular.module('JobIndicator', [])
     .config(function ($httpProvider) {
         $httpProvider.responseInterceptors.push('myHttpInterceptor');
         var spinnerFunction = function (data, headersGetter) {
-// todo start the spinner here
             $('.loading').slideDown('slow');
             return data;
         };
@@ -23,13 +16,9 @@ angular.module('JobIndicator', [])
     .factory('myHttpInterceptor', function ($q, $window) {
         return function (promise) {
             return promise.then(function (response) {
-// do something on success
-// todo hide the spinner
                 $('.loading').slideUp('slow');
                 return response;
             }, function (response) {
-// do something on error
-// todo hide the spinner
 //$('.warn').slideDown('slow');
 //$('.warn span').text('Something not right');
                 console.info('services.js -> "JobIndicator" condition went to error.');
@@ -40,10 +29,12 @@ angular.module('JobIndicator', [])
 
 angular.module('gitHubAPI', ['gistData'], function ($provide) {
     $provide.factory('ghAPI', function ($http, gistData) {
+        var settings = JSON.parse(localStorage.settings);
         var api_url = 'https://api.github.com/gists',
-            token = localStorage.token;
+            token = settings.token;
         var api = {
-// POST /authorizations
+
+            // POST /authorizations
             login: function (user, pass, callback) {
                 $http({
                     method: 'POST',
@@ -58,7 +49,6 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         "Content-Type": "application/x-www-form-urlencoded"
                     }
                 }).success(function (data, status, headers, config) {
-                        localStorage.token = token = data.token;
                         return callback({
                             data: data,
                             status: status,
@@ -74,6 +64,7 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         });
                     });
             },
+
             // GET /gists
             gists: function (updateOnly, pageNumber) {
                 var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
@@ -121,6 +112,7 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         });
                     });
             },
+
             // GET /gists/:id
             gist: function (id) {
                 var gist = gistData.getGistById(id); // get the currently viewed gist
@@ -141,6 +133,7 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         });
                     });
             },
+
             // POST /gists
             create: function (data, callback) {
                 $http({
@@ -166,6 +159,7 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         });
                     });
             },
+
             // PATCH /gists/:id
             edit: function (id, data, callback) {
                 $http({
@@ -191,6 +185,7 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         });
                     });
             },
+
             // DELETE /gists/:id
             delete: function (id, callback) {
                 $http({
@@ -215,6 +210,7 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         });
                     });
             },
+
             // GET /gists/:id/comments
             comments: function (id, callback) {
                 $http({
@@ -239,18 +235,23 @@ angular.module('gitHubAPI', ['gistData'], function ($provide) {
                         });
                     });
             },
+
             // GET /gists/starred
             starred: function () {
             },
+
             // PUT /gists/:id/star
             star: function () {
             },
+
             // DELETE /gists/:id/star
             unstar: function () {
             },
+
             // GET /gists/:id/star
             is_starred: function () {
             },
+
             // POST /gists/:id/forks
             fork: function () {
             }
@@ -276,3 +277,73 @@ angular.module('gistData', [], function ($provide) {
         return dataService;
     });
 });
+
+angular.module('appSetting', [], function ($provide) {
+    $provide.factory('appSetting', function () {
+        var settings = {
+                theme_list: ['default', 'nite'],
+                editor_theme_list: [
+                    'ambiance',
+                    'chaos',
+                    'chrome',
+                    'clouds',
+                    'clouds_midnight',
+                    'cobalt',
+                    'crimson_editor',
+                    'dawn',
+                    'dreamweaver',
+                    'eclipse',
+                    'github',
+                    'idle_fingers',
+                    'kr',
+                    'merbivore',
+                    'merbivore_soft',
+                    'mono_industrial',
+                    'monokai',
+                    'pastel_on_dark',
+                    'solarized_dark',
+                    'solarized_light',
+                    'textmate',
+                    'tomorrow',
+                    'tomorrow_night_blue',
+                    'tomorrow_night_bright',
+                    'tomorrow_night_eighties',
+                    'tomorrow_night',
+                    'twilight',
+                    'vibrant_ink',
+                    'xcode'
+                ],
+                isLoggedIn: function (callback) {
+                    var storage = JSON.parse(localStorage.settings);
+                    if(storage.token && storage.token !== '') {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                logOut: function (callback) {
+                    if (storage.clear()) {
+                        return callback({
+                            status: 'ok'
+                        });
+                    }
+                },
+                getSettings: function (callback) {
+                    var storage = JSON.parse(localStorage.settings);
+                    return callback({
+                        status: 'ok',
+                        settings: storage
+                    });
+                },
+                setSettings: function (data, callback) {
+                    new_data.token = data.token;
+                    new_data.theme = data.theme;
+                    new_data.editor_theme = data.editor_theme;
+                    new_data.last_modified = new Date();
+                    localStorage.settings = JSON.stringify(new_data);
+                }
+            };
+        return settings;
+    });
+})
+;
