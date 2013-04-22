@@ -8,6 +8,9 @@
     <link rel="stylesheet" data-ng-controller="settingsCtrl" href="themes/{{theme}}/theme.css">
 
     <script>
+        /**
+         * Needed to load node-webkit functionality.
+         */
         if (typeof window.require != 'undefined') {
             window.gui = require('nw.gui');
             var clipboard = window.gui.Clipboard.get();
@@ -18,7 +21,7 @@
 
 <body class="ng-cloak">
 
-<aside class="flex" ng-controller="listGistCtrl">
+<aside ui-route="/login" ng-class="{hide: $uiRoute}" class="flex" ng-controller="listGistCtrl">
 
     <header class="flex">
         <h1 title="Gist desktop app"><a href="#/">
