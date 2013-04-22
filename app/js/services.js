@@ -3,6 +3,9 @@
 /**
  * This is the working indicator
  */
+
+angular.module('myApp.services', []);
+
 angular.module('JobIndicator', [])
     .config(function ($httpProvider) {
         $httpProvider.responseInterceptors.push('myHttpInterceptor');
