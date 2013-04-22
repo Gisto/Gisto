@@ -2,11 +2,53 @@
 /* Controllers */
 
 function settingsCtrl($scope) {
-    $scope.theme = localStorage.theme || 'default';
+    $scope.themes = [
+        'default',
+        'nite'
+    ];
+    $scope.editor_themes = [
+        'ambiance',
+        'chaos',
+        'chrome',
+        'clouds',
+        'clouds_midnight',
+        'cobalt',
+        'crimson_editor',
+        'dawn',
+        'dreamweaver',
+        'eclipse',
+        'github',
+        'idle_fingers',
+        'kr',
+        'merbivore',
+        'merbivore_soft',
+        'mono_industrial',
+        'monokai',
+        'pastel_on_dark',
+        'solarized_dark',
+        'solarized_light',
+        'textmate',
+        'tomorrow',
+        'tomorrow_night_blue',
+        'tomorrow_night_bright',
+        'tomorrow_night_eighties',
+        'tomorrow_night',
+        'twilight',
+        'vibrant_ink',
+        'xcode'
+    ];
+
+    var settings = JSON.parse(localStorage.settings);
+    $scope.theme = settings.theme || 'default';
+    $scope.editor_theme = settings.editor_theme || 'tomorrow';
+    $scope.token = settings.token || '';
     $scope.update_settings = function () {
-        var new_theme = $scope.theme;
-        console.warn(new_theme);
-        localStorage.theme = new_theme;
+        var new_theme = $scope.theme,
+            data = {};
+        data.theme = new_theme;
+        data.editor_theme = $scope.editor_theme;
+        data.token = settings.token;
+        localStorage.settings = JSON.stringify(data);
         window.location.reload();
     };
 }
@@ -15,17 +57,17 @@ function loginCtrl($scope, ghAPI) {
     $scope.submit = function () {
         ghAPI.login($scope.user, $scope.pass, function (response) {
             if (response.status === 201) {
-                localStorage.token = response.data.token;
-                window.location.reload();
+                var data = {};
+                data.token = response.data.token;
+                data.theme = 'default';
+                data.editor_theme = 'tomorrow';
+                localStorage.settings = JSON.stringify(data);
+                window.location.href= '#/';
             } else {
                 console.warn('[!!!] >>> Log-in failed - server responded with error.');
             }
         });
     };
-}
-
-function avatarCtrl($scope) {
-    $scope.avatar = localStorage.avatar;
 }
 
 function listGistCtrl($scope, ghAPI, gistData) {
@@ -37,7 +79,6 @@ function listGistCtrl($scope, ghAPI, gistData) {
 function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
     $scope.gist = gistData.getGistById($routeParams.gistId);
     ghAPI.gist($routeParams.gistId);
-
 
     $scope.copyToClipboard = function (file) {
         if (clipboard !== undefined) {
