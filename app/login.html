@@ -1,42 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="myApp">
-<head>
-    <meta charset="utf-8">
-    <title>Gisto</title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="css/app.css">
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script>
-
-        $(function () {
-
-
-            $('#loginForm').submit(function (e) {
-                e.preventDefault();
-                console.log('stopped');
-                var form = e.currentTarget;
-                $.ajax({
-                    url: 'http://localhost:3000/auth/' + form.user.value + '/' + form.pass.value,
-                    beforeSend: function () {
-                        $('.spiner').show();
-                    },
-                    success: function (data) {
-                        $('.spiner').show();
-                        window.location.href = "index.html";
-                    },
-                    error: function () {
-                        $('.spiner').hide();
-                        alert('failed to login');
-                    }
-                })
-            });
-        });
-    </script>
-
-</head>
-
-<body>
-
 <div class="login-form">
 
     <header>
@@ -52,7 +13,3 @@
 
 </div>
 
-
-</body>
-
-</html>

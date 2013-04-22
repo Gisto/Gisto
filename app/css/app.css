@@ -64,6 +64,10 @@ body {
     font-size: 0;
 }
 
+.hide {
+    display:none !important;
+}
+
 .flex {
     display: -webkit-flex;
     -webkit-flex-direction: column;

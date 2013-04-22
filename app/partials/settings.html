@@ -23,23 +23,34 @@
     <div class="tabs">
         <div id="tab1">
             <h2><a ng-click="show=1">General</a></h2>
+            <div ng-show="show==1">
 
-            <div ng-show="show==1">This content appears on tab 1.</div>
-        </div>
-        <div id="tab2">
-            <h2><a ng-click="show=2">Look &amp; feel</a></h2>
-
-            <div ng-show="show==2">
-                <p>Set theme:</p>
-                <input type="radio" ng-model="theme" value="default"> Default <br/>
-                <input type="radio" ng-model="theme" value="nite"> Nite (dark)<br/>
+                This content appears on tab 1.
 
             </div>
         </div>
+        <div id="tab2">
+            <h2><a ng-click="show=2">Look &amp; feel</a></h2>
+            <div ng-show="show==2">
+
+                <p>Set theme:</p>
+                <select ng-model="theme">
+                    <option ng-repeat="theme in themes">{{theme}}</option>
+                </select>
+                <p>Set editor theme:</p>
+                <select ng-model="editor_theme">
+                    <option ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
+                </select>
+            </div>
+
+        </div>
         <div id="tab3">
             <h2><a ng-click="show=3">Gisto settings</a></h2>
+            <div ng-show="show==3">
 
-            <div ng-show="show==3">This content appears on tab 3.</div>
+                This content appears on tab 3.
+
+            </div>
         </div>
     </div>
 
