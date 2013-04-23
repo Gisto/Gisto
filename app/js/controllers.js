@@ -1,55 +1,27 @@
 'use strict';
 /* Controllers */
 
-function settingsCtrl($scope) {
-    $scope.themes = [
-        'default',
-        'nite'
-    ];
-    $scope.editor_themes = [
-        'ambiance',
-        'chaos',
-        'chrome',
-        'clouds',
-        'clouds_midnight',
-        'cobalt',
-        'crimson_editor',
-        'dawn',
-        'dreamweaver',
-        'eclipse',
-        'github',
-        'idle_fingers',
-        'kr',
-        'merbivore',
-        'merbivore_soft',
-        'mono_industrial',
-        'monokai',
-        'pastel_on_dark',
-        'solarized_dark',
-        'solarized_light',
-        'textmate',
-        'tomorrow',
-        'tomorrow_night_blue',
-        'tomorrow_night_bright',
-        'tomorrow_night_eighties',
-        'tomorrow_night',
-        'twilight',
-        'vibrant_ink',
-        'xcode'
-    ];
+function settingsCtrl($scope, appSettings) {
+    $scope.themes = appSettings.theme_list;
+    $scope.editor_themes = appSettings.editor_theme_list;
 
-    var settings = JSON.parse(localStorage.settings);
-    $scope.theme = settings.theme || 'default';
-    $scope.editor_theme = settings.editor_theme || 'tomorrow';
-    $scope.token = settings.token || '';
+    $scope.theme = appSettings.get('theme') || 'default';
+    $scope.editor_theme = appSettings.get('editor_theme') || 'tomorrow';
+    $scope.token = appSettings.get('token') || '';
     $scope.update_settings = function () {
-        var new_theme = $scope.theme,
-            data = {};
-        data.theme = new_theme;
+        var data = {};
+        data.theme = $scope.theme;
         data.editor_theme = $scope.editor_theme;
-        data.token = settings.token;
-        localStorage.settings = JSON.stringify(data);
-        window.location.reload();
+        data.token = appSettings.get('token');
+        var saved = appSettings.set(data,function (response) {
+            if(response.status === 'ok') {
+                console.log('SAVED SETTINGS');
+                window.location.reload();
+            } else {
+                console.log('NOT SAVED SETTINGS');
+            }
+        });
+
     };
 }
 
@@ -62,7 +34,7 @@ function loginCtrl($scope, ghAPI) {
                 data.theme = 'default';
                 data.editor_theme = 'tomorrow';
                 localStorage.settings = JSON.stringify(data);
-                window.location.href= '#/';
+                window.location.href = '#/';
             } else {
                 console.warn('[!!!] >>> Log-in failed - server responded with error.');
             }
