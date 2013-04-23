@@ -327,11 +327,7 @@ angular.module('appSettings', [], function ($provide) {
             },
 
             logOut: function (callback) {
-                if (storage.clear()) {
-                    return callback({
-                        status: 'ok'
-                    });
-                }
+                localStorage.settings = '';
             },
 
             getAll: function (callback) {
@@ -355,13 +351,12 @@ angular.module('appSettings', [], function ($provide) {
                 new_data.token = data.token;
                 new_data.theme = data.theme;
                 new_data.editor_theme = data.editor_theme;
-                new_data.last_modified = new Date;
+                new_data.last_modified = new Date().toUTCString();
                 if (localStorage.settings = JSON.stringify(new_data)) {
                     return callback({
                         status: 'ok'
                     });
                 }
-
             },
 
             setOne: function (key, new_data, callback) {
