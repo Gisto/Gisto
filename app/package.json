@@ -1,5 +1,5 @@
 {
-    "main": "login.html",
+    "main": "index.html#/",
     "node-main": "api/server.js",
     "single-instance": true,
     "name": "Gisto",
