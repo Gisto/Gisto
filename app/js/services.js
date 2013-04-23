@@ -30,11 +30,10 @@ angular.module('JobIndicator', [])
         };
     });
 
-angular.module('gitHubAPI', ['gistData'], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData) {
-        var settings = JSON.parse(localStorage.settings);
+angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings) {
         var api_url = 'https://api.github.com/gists',
-            token = settings.token;
+            token = appSettings.get('token');
         var api = {
 
             // POST /authorizations
@@ -281,74 +280,95 @@ angular.module('gistData', [], function ($provide) {
     });
 });
 
-angular.module('appSetting', [], function ($provide) {
-    $provide.factory('appSetting', function () {
+angular.module('appSettings', [], function ($provide) {
+    $provide.factory('appSettings', function () {
         var settings = {
-                theme_list: ['default', 'nite'],
-                editor_theme_list: [
-                    'ambiance',
-                    'chaos',
-                    'chrome',
-                    'clouds',
-                    'clouds_midnight',
-                    'cobalt',
-                    'crimson_editor',
-                    'dawn',
-                    'dreamweaver',
-                    'eclipse',
-                    'github',
-                    'idle_fingers',
-                    'kr',
-                    'merbivore',
-                    'merbivore_soft',
-                    'mono_industrial',
-                    'monokai',
-                    'pastel_on_dark',
-                    'solarized_dark',
-                    'solarized_light',
-                    'textmate',
-                    'tomorrow',
-                    'tomorrow_night_blue',
-                    'tomorrow_night_bright',
-                    'tomorrow_night_eighties',
-                    'tomorrow_night',
-                    'twilight',
-                    'vibrant_ink',
-                    'xcode'
-                ],
-                isLoggedIn: function (callback) {
-                    var storage = JSON.parse(localStorage.settings);
-                    if(storage.token && storage.token !== '') {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                },
-                logOut: function (callback) {
-                    if (storage.clear()) {
-                        return callback({
-                            status: 'ok'
-                        });
-                    }
-                },
-                getSettings: function (callback) {
-                    var storage = JSON.parse(localStorage.settings);
-                    return callback({
-                        status: 'ok',
-                        settings: storage
-                    });
-                },
-                setSettings: function (data, callback) {
-                    new_data.token = data.token;
-                    new_data.theme = data.theme;
-                    new_data.editor_theme = data.editor_theme;
-                    new_data.last_modified = new Date.now();
-                    localStorage.settings = JSON.stringify(new_data);
-                },
-                updateSetting: function(key, new_data, callback) {
 
+            theme_list: ['default', 'nite'],
+
+            editor_theme_list: [
+                'ambiance',
+                'chaos',
+                'chrome',
+                'clouds',
+                'clouds_midnight',
+                'cobalt',
+                'crimson_editor',
+                'dawn',
+                'dreamweaver',
+                'eclipse',
+                'github',
+                'idle_fingers',
+                'kr',
+                'merbivore',
+                'merbivore_soft',
+                'mono_industrial',
+                'monokai',
+                'pastel_on_dark',
+                'solarized_dark',
+                'solarized_light',
+                'textmate',
+                'tomorrow',
+                'tomorrow_night_blue',
+                'tomorrow_night_bright',
+                'tomorrow_night_eighties',
+                'tomorrow_night',
+                'twilight',
+                'vibrant_ink',
+                'xcode'
+            ],
+
+            isLoggedIn: function (callback) {
+                if(localStorage.settings !== undefined) {
+                    return true;
+                } else {
+                    document.location.href = '#/login';
                 }
-            };
+            },
+
+            logOut: function (callback) {
+                if (storage.clear()) {
+                    return callback({
+                        status: 'ok'
+                    });
+                }
+            },
+
+            getAll: function (callback) {
+                var storage = JSON.parse(localStorage.settings);
+                return callback({
+                    status: 'ok',
+                    settings: storage
+                });
+            },
+
+            get: function (name) {
+                if(settings.isLoggedIn()) {
+                    var storage = JSON.parse(localStorage.settings);
+                    console.log('Storage pulled:' + storage[name]);
+                    return storage[name];
+                }
+            },
+
+            set: function (data, callback) {
+                var new_data = {};
+                new_data.token = data.token;
+                new_data.theme = data.theme;
+                new_data.editor_theme = data.editor_theme;
+                new_data.last_modified = new Date;
+                if (localStorage.settings = JSON.stringify(new_data)) {
+                    return callback({
+                        status: 'ok'
+                    });
+                }
+
+            },
+
+            setOne: function (key, new_data, callback) {
+
+            }
+        };
+
         return settings;
     });
 });
