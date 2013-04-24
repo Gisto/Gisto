@@ -319,27 +319,25 @@ angular.module('appSettings', [], function ($provide) {
             ],
 
             isLoggedIn: function (callback) {
-                if(localStorage.settings !== undefined) {
+                if (localStorage.settings !== undefined) {
                     return true;
                 } else {
                     document.location.href = '#/login';
                 }
             },
 
-            logOut: function (callback) {
+            logOut: function () {
                 localStorage.settings = '';
+                document.location.href = '#/login';
             },
 
-            getAll: function (callback) {
+            getAll: function () {
                 var storage = JSON.parse(localStorage.settings);
-                return callback({
-                    status: 'ok',
-                    settings: storage
-                });
+                return storage;
             },
 
             get: function (name) {
-                if(settings.isLoggedIn()) {
+                if (settings.isLoggedIn()) {
                     var storage = JSON.parse(localStorage.settings);
                     console.log('Storage pulled:' + storage[name]);
                     return storage[name];
@@ -353,14 +351,20 @@ angular.module('appSettings', [], function ($provide) {
                 new_data.editor_theme = data.editor_theme;
                 new_data.last_modified = new Date().toUTCString();
                 if (localStorage.settings = JSON.stringify(new_data)) {
-                    return callback({
-                        status: 'ok'
-                    });
+                    if (callback) {
+                        return callback({
+                            status: 'ok'
+                        });
+                    }
                 }
             },
 
             setOne: function (key, new_data, callback) {
-
+                var old_data = settings.getAll(),
+                    to_store;
+                old_data[key] = new_data;
+                console.log(old_data);
+                settings.set(old_data);
             }
         };
 
