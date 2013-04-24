@@ -13,8 +13,8 @@ function settingsCtrl($scope, appSettings) {
         data.theme = $scope.theme;
         data.editor_theme = $scope.editor_theme;
         data.token = appSettings.get('token');
-        var saved = appSettings.set(data,function (response) {
-            if(response.status === 'ok') {
+        var saved = appSettings.set(data, function (response) {
+            if (response.status === 'ok') {
                 console.log('SAVED SETTINGS');
                 window.location.reload();
             } else {
@@ -42,7 +42,14 @@ function loginCtrl($scope, ghAPI) {
     };
 }
 
+function logoutCtrl($scope,appSettings) {
+    $scope.logOut = function() {
+        appSettings.logOut();
+    }
+}
+
 function listGistCtrl($scope, ghAPI, gistData) {
+
     $scope.gists = gistData.list;
     // Get the gists list
     ghAPI.gists();

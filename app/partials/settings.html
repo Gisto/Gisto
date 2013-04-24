@@ -1,7 +1,7 @@
 <header>
     <img src="{{single.user.avatar_url}}" class="gravatar" title="{{single.user.login}}"/>
     <a title="Create new gist" onclick="document.location.href = '#/create'"><i class="create icon-file"></i></a>
-    <a href="login.html" title="Switch account"><i class="update icon-signout"></i></a>
+    <a data-ng-controller="logoutCtrl" ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
 
     <span class="" ng-hide></span>
