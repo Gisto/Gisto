@@ -125,6 +125,14 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
+                        api.is_starred(data.id,function(response) {
+                            if(response.status === 204) {
+                                data.starred = true;
+                            } else {
+                                data.starred = false;
+                            }
+                            console.log('Is it starred: ' + data.starred)
+                        });
                         gist.single = data; // update the current gist with the new data
                     }).error(function (data, status, headers, config) {
                         console.log({
@@ -243,15 +251,78 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
             },
 
             // PUT /gists/:id/star
-            star: function () {
+            star: function (id, callback) {
+                $http({
+                    method: 'PUT',
+                    url: api_url + '/' + id + '/star',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
             },
 
             // DELETE /gists/:id/star
-            unstar: function () {
+            unstar: function (id, callback) {
+                $http({
+                    method: 'DELETE',
+                    url: api_url + '/' + id + '/star',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
             },
 
             // GET /gists/:id/star
-            is_starred: function () {
+            is_starred: function (id,callback) {
+                $http({
+                    method: 'get',
+                    url: api_url + '/' + id + '/star',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
             },
 
             // POST /gists/:id/forks
@@ -327,7 +398,7 @@ angular.module('appSettings', [], function ($provide) {
             },
 
             logOut: function () {
-                localStorage.settings = '';
+                delete localStorage.settings;
                 document.location.href = '#/login';
             },
 

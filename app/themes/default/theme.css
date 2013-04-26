@@ -48,9 +48,8 @@ div.toolbox a:hover {
 }
 
 .secret {
-    color: #C00;
-    border: 1px solid #c00;
-
+    color: #FD5050;
+    border: 1px solid #FD5050;
 }
 
 .public {
@@ -249,4 +248,8 @@ header input.edaitable {
 .blockquote code {
     background: #F2F2F2;
     border: 1px solid #CCC;
+}
+
+a .star {
+    color:#555;
 }
