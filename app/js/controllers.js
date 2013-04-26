@@ -59,6 +59,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
     $scope.gist = gistData.getGistById($routeParams.gistId);
     ghAPI.gist($routeParams.gistId);
 
+    //console.log('>>>>>>>>>>>>>>>>>>>>>> scope gist');
+    //console.log();
+
     $scope.copyToClipboard = function (file) {
         if (clipboard !== undefined) {
             clipboard.set(file.content, 'text');
@@ -87,6 +90,55 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
     $scope.cancelDeleteGist = function () {
         $('.delete').slideUp('slow');
     };
+
+    $scope.star = function($event) {
+        if ($event) {
+            $event.preventDefault();
+        }
+        ghAPI.star($scope.gist.single.id, function(response){
+            if (response.status === 204) {
+                console.log(response);
+                $('.ok').slideDown('slow');
+                $('.ok span').text('Gist starred');
+                $('.star').removeClass('icon-star-empty').addClass('icon-star');
+                setTimeout(function () {
+                    $('.ok').slideUp();
+                }, 2500);
+            } else {
+                console.log(response);
+                $('.warn').slideDown('slow');
+                $('.warn span').text('Gist not starred, something went wrong');
+                setTimeout(function () {
+                    $('.warn').slideUp();
+                }, 2500);
+            }
+        });
+    };
+
+    $scope.unstar = function($event) {
+        if ($event) {
+            $event.preventDefault();
+        }
+        ghAPI.unstar($scope.gist.single.id, function(response){
+            if (response.status === 204) {
+                console.log(response);
+                $('.ok').slideDown('slow');
+                $('.ok span').text('Star removed');
+                $('.star').removeClass('icon-star').addClass('icon-star-empty');
+                setTimeout(function () {
+                    $('.ok').slideUp();
+                }, 2500);
+            } else {
+                console.log(response);
+                $('.warn').slideDown('slow');
+                $('.warn span').text('Something went wrong');
+                setTimeout(function () {
+                    $('.warn').slideUp();
+                }, 2500);
+            }
+        });
+    };
+
     $scope.del = function ($event) {
         if ($event) {
             $event.preventDefault();
