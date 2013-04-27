@@ -240,6 +240,7 @@ div.comments {
     padding: 10px;
     line-height: 14px;
     z-index: 9;
+    position: relative;
     font-size: 14px;
     margin: 0;
     text-align: left;
