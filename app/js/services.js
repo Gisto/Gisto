@@ -355,7 +355,7 @@ angular.module('appSettings', [], function ($provide) {
     $provide.factory('appSettings', function () {
         var settings = {
 
-            theme_list: ['default', 'nite'],
+            theme_list: ['default', 'nite', 'dark', 'dark-blue'],
 
             editor_theme_list: [
                 'ambiance',
