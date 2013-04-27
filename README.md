@@ -1,43 +1,47 @@
-# GISTO — for gists #
+# </Gisto\>[^name]
 
-## How to use API
+###### Snippets made awesome
 
-API Methods:
+![Gisto](http://gisto.github.io/img/single-gist.png "Gisto")
 
-* /auth/user/pass
-* /gists 
-* /gists/starred
-* /gists/id
-* /gists/star/id
-* /gists/unstar/id
-* /gists/comments/id
+## About
 
-## post methods
-* /gists/create
+Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily.
 
->parameters:
+Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account!
 
-`description - type(string) - description of the gist`
+Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. 
 
-`files - type(json string) - Json array with files and content { "text.txt": {content: "bla bla"} }`
+You may thing of Gisto as Evernote for code.
 
-* /gists/edit
+###### Gisto will soon be avaliable on: Windows, OSX and Linux
 
->parameters:
+## Features
 
-`description - type(string) - new description of the gist`
+* GitHub integration
+* Gist tagging
+* Quick inplace editing
+* Search filter gists
+* Offline access to gists
 
-`files - type(json string) - Json array with files and content { "text.txt": {content: "bla bla edited"} }`
+## Status
 
-### Running the API server
+Gisto is not yet officially released to the public. It is currently heavily developed. Various features will be left out from the first release.
 
-1. browse to the api directory
-2. node server
-3. navigate your browser to `http://localhost:3000/auth/user/pass` when user and pass are your github credentials to authenticate.
-4. navigate to any of the urls specified by the API methods
+**We are planing to release the first version very soon and add new features as quickly as possible.**
 
-#### Change log
+## Made of
 
-[2013-03-26]
-* Created very basic app design (to see: http://localhost/gisto/app/#/view1)
+Gisto made using HTML5/CSS3 and:
 
+* [Angular.js](http://angularjs.org/) 
+* [Node.js](http://nodejs.org/)
+* [node-webkit](https://github.com/rogerwang/node-webkit)
+* [jQuery](http://jquery.com/)
+
+
+## Build instruction
+
+*coming soon*
+
+[^name]: The name will probably be changed very soon, any suggestion are very welcome.
