@@ -37,6 +37,11 @@ function loginCtrl($scope, ghAPI) {
                 window.location.href = '#/';
             } else {
                 console.warn('[!!!] >>> Log-in failed - server responded with error.');
+                $('.warn').slideDown('slow');
+                $('.warn span').text('Log-in failed - server responded with error');
+                setTimeout(function () {
+                    $('.warn').slideUp();
+                }, 2500);
             }
         });
     };
