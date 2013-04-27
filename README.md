@@ -23,6 +23,7 @@ You may thing of Gisto as Evernote for code.
 * Quick inplace editing
 * Search filter gists
 * Offline access to gists
+* UI Themes
 
 ## Status
 
@@ -37,8 +38,13 @@ Gisto made using HTML5/CSS3 and:
 * [Angular.js](http://angularjs.org/) 
 * [Node.js](http://nodejs.org/)
 * [node-webkit](https://github.com/rogerwang/node-webkit)
-* [jQuery](http://jquery.com/)
 
+and...
+
+* [Angular UI](http://angular-ui.github.io/)
+* [jQuery](http://jquery.com/)
+* [Ace editor](http://ajaxorg.github.io/ace/)
+* [showdown](https://github.com/coreyti/showdown)
 
 ## Build instruction
 
