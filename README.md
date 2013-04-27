@@ -1,4 +1,4 @@
-# </Gisto\>[^name]
+# Gisto*
 
 ###### Snippets made awesome
 
@@ -44,4 +44,4 @@ Gisto made using HTML5/CSS3 and:
 
 *coming soon*
 
-[^name]: The name will probably be changed very soon, any suggestion are very welcome.
+** The name will probably be changed very soon, any suggestion are very welcome.
