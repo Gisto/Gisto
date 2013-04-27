@@ -107,6 +107,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist starred');
                 $('.star').removeClass('icon-star-empty').addClass('icon-star');
+                $scope.gist.single.starred = !$scope.gist.single.starred;
                 setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
@@ -131,6 +132,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Star removed');
                 $('.star').removeClass('icon-star').addClass('icon-star-empty');
+                $scope.gist.single.starred = !$scope.gist.single.starred;
                 setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
