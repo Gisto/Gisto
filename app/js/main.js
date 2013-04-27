@@ -9,12 +9,19 @@ $(function () {
         $('div.comments i').text(' hide')
             .removeClass('icon-arrow-up')
             .addClass('icon-arrow-down');
+            $('div.comments').css({
+                height:'300px',
+                overflow: 'auto'
+            });
     });
     $('div.main').on('click', 'div.comments i.icon-arrow-down', function () {
         $('div.the-comments span').fadeOut('slow');
         $('div.comments i').text(' show')
             .removeClass('icon-arrow-down')
             .addClass('icon-arrow-up');
+        $('div.comments').css({
+                height:'inherit'
+            });
     });
 
 });
