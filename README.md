@@ -46,6 +46,6 @@ Gisto made using HTML5/CSS3 and:
 
 ## Issues and bug reporting
 
-Please feel free to add a bug / feature request / suggstions to issue tracker at: https://github.com/Gisto/gisto/issues
+Please feel free to add a bug / feature request / suggestions to issue tracker at: https://github.com/Gisto/gisto/issues
 
 ** The name will probably be changed very soon, any suggestion are very welcome.
