@@ -29,6 +29,7 @@ function loginCtrl($scope, ghAPI) {
     $scope.submit = function () {
         ghAPI.login($scope.user, $scope.pass, function (response) {
             if (response.status === 201) {
+                console.log(response);
                 var data = {};
                 data.token = response.data.token;
                 data.theme = 'default';
@@ -313,4 +314,8 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
             }
         });
     }
+}
+
+function headerController($scope) {
+
 }
