@@ -316,42 +316,34 @@ angular.module('cacheService', ['gitHubAPI', 'gistData'], function ($provide) {
                 }
             },
             getGists: function (key, params, invalidate) {
-                (function (scope, key, params, invalidate) {
-                    ghAPI.gists(function (data) {
+                var that = this;
 
-                        // process response
-                        for (var item in data) {
-                            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-                            data[item].single = {};
-                        }
+                ghAPI.gists(function (data) {
 
-                        // append data to current scope
-                        scope.push.apply(scope, data);
+                    // process response
+                    for (var item in data) {
+                        data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                        data[item].single = {};
+                    }
 
-                        // save local copy
-                        cacheService.set(key, data, invalidate);
+                    // append data to current scope
+                    that.push.apply(that, data);
 
-                    });
-                })(this, key, params, invalidate);
+                    // save local copy
+                    cacheService.set(key, data, invalidate);
+
+                });
             },
-            getSingleGist: function (key, params, invalidate) {
+            getSingleGist: function (key, params, cacheOnly) {
 
-                (function (scope, key, params, invalidate) {
-
-                    ghAPI.gist(params.id, function (data) {
+                ghAPI.gist(params.id, function (data) {
+                    if (!cacheOnly) {
                         var gist = gistData.getGistReferenceById(params.id);
                         gist.single = data; // update the current viewed gist
+                    }
 
-                        cacheService.set(key, data, true);
-                    });
-
-                })(this, key, params, invalidate);
-
-            },
-            updateGist: function (key, params, invalidate) {
-
-            },
-            createGist: function (key, params, invalidate) {
+                    cacheService.set(key, data, true);
+                });
 
             }
         };
