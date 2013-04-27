@@ -245,9 +245,13 @@ div.comments {
     text-align: left;
 }
 
+div.comments .clicky {
+    display: block;
+    cursor: pointer;
+}
+
 div.comments i {
     float: right;
-    cursor: pointer;
 }
 
 .the-gist {
