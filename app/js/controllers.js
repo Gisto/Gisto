@@ -151,7 +151,8 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 $('.ok span').text('Gist deleted');
                 setTimeout(function () {
                     $('.ok').slideUp();
-                }, 2500);
+                    window.location.href = 'index.html#/';
+                }, 1000);
             } else {
                 console.log(response);
                 $('.warn').slideDown('slow');
