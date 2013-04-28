@@ -14,15 +14,16 @@ Gisto started as an attempt to fulfill the lack of a syntax highlighted and clou
 
 You may thing of Gisto as Evernote for code.
 
-###### Gisto will soon be avaliable on: Windows, OSX and Linux
+###### Gisto will soon be available on: Windows, OSX and Linux
 
 ## Features
 
 * GitHub integration
 * Gist tagging
-* Quick inplace editing
+* Quick in-place editing
+* Drug & drop to create gist/add file
 * Search filter gists
-* Offline access to gists
+* Offline access to gists (Will be integrated into full release)
 * UI Themes
 
 ## Status
@@ -45,8 +46,13 @@ and...
 * [jQuery](http://jquery.com/)
 * [Ace editor](http://ajaxorg.github.io/ace/)
 * [showdown](https://github.com/coreyti/showdown)
+* [Font-Awesome](http://fortawesome.github.io/Font-Awesome/)
 
-## Build instruction
+## Downloads
+
+Binary files will be provided upon release
+
+## Build instructions
 
 *coming soon*
 
@@ -55,3 +61,11 @@ and...
 Please feel free to add a bug / feature request / suggestions to issue tracker at: https://github.com/Gisto/gisto/issues
 
 ** The name will probably be changed very soon, any suggestion are very welcome.
+
+## License
+
+*Coming soon*
+
+### Contributors
+
+*Will be listed here*
