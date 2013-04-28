@@ -557,4 +557,5 @@ header input.edaitable {
 body.login header {
     background:transparent;
     border: none;
+    height: auto;
 }
