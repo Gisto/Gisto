@@ -71,7 +71,7 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
             gists: function (updateOnly, pageNumber) {
                 var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
                     headers = {
-                        Authorization: 'token ' + token
+                        Authorization: 'token ' + JSON.parse(localStorage.settings).token
                     };
 
                 if (updateOnly) {
@@ -403,14 +403,13 @@ angular.module('appSettings', [], function ($provide) {
             },
 
             getAll: function () {
-                var storage = JSON.parse(localStorage.settings);
-                return storage;
+                var all_settings = JSON.parse(localStorage.settings);
+                return all_settings;
             },
 
             get: function (name) {
                 if (settings.isLoggedIn()) {
                     var storage = JSON.parse(localStorage.settings);
-                    console.log('Storage pulled:' + storage[name]);
                     return storage[name];
                 }
             },

@@ -32,7 +32,6 @@ function loginCtrl($scope, ghAPI) {
                 console.log(response);
                 var data = {};
                 data.token = response.data.token;
-                //data.avatar = response.data.user.avatar_url;
                 data.theme = 'default';
                 data.editor_theme = 'tomorrow';
                 localStorage.settings = JSON.stringify(data);
@@ -49,14 +48,14 @@ function loginCtrl($scope, ghAPI) {
     };
 }
 
-function logoutCtrl($scope,appSettings) {
+function logoutCtrl($scope,appSettings,gistData) {
     $scope.logOut = function() {
+        gistData.list = [];
         appSettings.logOut();
     }
 }
 
 function listGistCtrl($scope, ghAPI, gistData) {
-
     $scope.gists = gistData.list;
     console.log('>>>>');
     console.log($scope.gists[0]);
