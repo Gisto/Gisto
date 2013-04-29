@@ -21,7 +21,7 @@
 
 <body class="ng-cloak" ui-route="/login" ng-class="{login: $uiRoute}">
 
-<aside ui-route="/login" ng-class="{hide: $uiRoute}" class="flex" ng-controller="listGistCtrl">
+<aside ui-route="/login" class="flex" ui-if="$uiRoute==false" ng-controller="listGistCtrl">
 
     <header class="flex">
         <h1 title="Gist desktop app"><a href="#/">

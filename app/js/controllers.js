@@ -32,6 +32,7 @@ function loginCtrl($scope, ghAPI) {
                 console.log(response);
                 var data = {};
                 data.token = response.data.token;
+                //data.avatar = response.data.user.avatar_url;
                 data.theme = 'default';
                 data.editor_theme = 'tomorrow';
                 localStorage.settings = JSON.stringify(data);
@@ -57,6 +58,8 @@ function logoutCtrl($scope,appSettings) {
 function listGistCtrl($scope, ghAPI, gistData) {
 
     $scope.gists = gistData.list;
+    console.log('>>>>');
+    console.log($scope.gists[0]);
     // Get the gists list
     ghAPI.gists();
 }
