@@ -21,7 +21,7 @@ You may thing of Gisto as Evernote for code.
 * GitHub integration
 * Gist tagging
 * Quick in-place editing
-* Drug & drop to create gist/add file
+* Drag & drop to create gist/add file
 * Search filter gists
 * Offline access to gists (Will be integrated into full release)
 * UI Themes
@@ -58,14 +58,20 @@ Binary files will be provided upon release
 
 ## Issues and bug reporting
 
-Please feel free to add a bug / feature request / suggestions to issue tracker at: https://github.com/Gisto/gisto/issues
+Please feel free to add a bug / feature request / suggestions to the [issue tracker]( https://github.com/Gisto/gisto/issues).
 
-** The name will probably be changed very soon, any suggestion are very welcome.
 
 ## License
 
 *Coming soon*
 
-### Contributors
+## Contributors and mentions
 
-*Will be listed here*
+|||
+| ------------- |:-------------|:-----|
+| ![Maayan](http://www.gravatar.com/avatar/3a615b34ef2060face8fcd481c6377e1?s=50 "Maayan") | Maayan | [@MaayanGlikser](https://twitter.com/MaayanGlikser) |
+| ![Sasha](http://www.gravatar.com/avatar/7ddad1a9a1c8de452badaf82b6c30c76?s=50 "Sasha") | Sasha | [@sanusart](https://twitter.com/sanusart) |
+
+---
+
+** The name will probably be changed very soon, any suggestion are very welcome.
