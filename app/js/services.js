@@ -22,9 +22,13 @@ angular.module('JobIndicator', [])
                 $('.loading').slideUp('slow');
                 return response;
             }, function (response) {
-//$('.warn').slideDown('slow');
-//$('.warn span').text('Something not right');
-                console.info('services.js -> "JobIndicator" condition went to error.');
+                if(response.status == '404') {
+                    $('.loading').hide('slow');
+                }
+                console.log('LOADING...');
+                console.log(response);
+                //$('.warn').slideDown('slow');
+                //$('.warn span').text('Something not right');
                 return $q.reject(response);
             });
         };
