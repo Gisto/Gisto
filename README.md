@@ -50,11 +50,11 @@ and...
 
 ## Downloads
 
-Binary files will be provided upon release
+Binary files for various platforms will be provided upon release, if you *really can't wait* - you can package Gisto by yourself (*see **Packaging instructions** bellow*).
 
-## Build instructions
+## Packaging instructions
 
-*coming soon*
+Gisto depends on [node-webkit](https://github.com/rogerwang/node-webkit) project. Build instructions for your platform may be found on the projects [Wiki](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps#make-a-package).
 
 ## Issues and bug reporting
 
