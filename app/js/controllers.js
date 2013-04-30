@@ -13,6 +13,7 @@ function settingsCtrl($scope, appSettings) {
         data.theme = $scope.theme;
         data.editor_theme = $scope.editor_theme;
         data.token = appSettings.get('token');
+        data.avatar = appSettings.get('avatar');
         var saved = appSettings.set(data, function (response) {
             if (response.status === 'ok') {
                 console.log('SAVED SETTINGS');
@@ -33,6 +34,7 @@ function loginCtrl($scope, ghAPI) {
                 var data = {};
                 data.token = response.data.token;
                 data.theme = 'default';
+                data.avatar = '';
                 data.editor_theme = 'tomorrow';
                 localStorage.settings = JSON.stringify(data);
                 window.location.href = '#/';
@@ -57,8 +59,6 @@ function logoutCtrl($scope,appSettings,gistData) {
 
 function listGistCtrl($scope, ghAPI, gistData) {
     $scope.gists = gistData.list;
-    console.log('>>>>');
-    console.log($scope.gists[0]);
     // Get the gists list
     ghAPI.gists();
 }
@@ -264,7 +264,6 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             }
         });
     };
-
 }
 
 function commentsGistCtrl($scope, $routeParams, $http, ghAPI) {
