@@ -7,31 +7,18 @@
 angular.module('myApp.services', []);
 
 angular.module('JobIndicator', [])
-    .config(function ($httpProvider) {
-        $httpProvider.responseInterceptors.push('myHttpInterceptor');
-        var spinnerFunction = function (data, headersGetter) {
-            $('.loading').slideDown('slow');
-            return data;
-        };
-        $httpProvider.defaults.transformRequest.push(spinnerFunction);
-    })
-// register the interceptor as a service, intercepts ALL angular ajax http calls
-    .factory('myHttpInterceptor', function ($q, $window) {
-        return function (promise) {
-            return promise.then(function (response) {
-                $('.loading').slideUp('slow');
-                return response;
-            }, function (response) {
-                if(response.status == '404') {
-                    $('.loading').hide('slow');
-                }
-                console.log('LOADING...');
-                console.log(response);
-                //$('.warn').slideDown('slow');
-                //$('.warn span').text('Something not right');
-                return $q.reject(response);
-            });
-        };
+    .config(function($httpProvider) {
+        var numLoadings = 0;
+        $httpProvider.responseInterceptors.push(function() {
+            return function(promise) {
+                numLoadings++;
+                $('.loading').show();
+                var hide = function(r) { if (!(--numLoadings)) $('.loading').hide(); return r; };
+                //console.log('**************** LOADING ****************');
+                //console.log(slideUp(r));
+                return promise.then(hide, hide);
+            };
+        });
     });
 
 angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
