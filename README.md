@@ -50,7 +50,7 @@ and...
 
 ## Downloads
 
-Binary files for various platforms will be provided upon release, if you *really can't wait* - you can package Gisto by yourself (*see **Packaging instructions** bellow*).
+Binary files for various platforms will be provided upon release, if you *really can't wait* - you can package Gisto by yourself (see "Packaging instructions" bellow).
 
 ## Packaging instructions
 
