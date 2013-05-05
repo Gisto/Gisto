@@ -1,20 +1,22 @@
-# Gisto*
+# \</Codr\>
 
 ###### Snippets made awesome
 
-![Gisto](http://gisto.github.io/img/single-gist.png "Gisto")
+
+
+![Codr](http://codrs.github.io/img/single-gist.png "codr")
 
 ## About
 
-Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily.
+Codr is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily.
 
 Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account!
 
-Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. 
+Codr started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. 
 
-You may thing of Gisto as Evernote for code.
+You may thing of Codr as Evernote for code.
 
-###### Gisto will soon be available on: Windows, OSX and Linux
+###### Codr will soon be available on: Windows, OSX and Linux
 
 ## Features
 
@@ -28,13 +30,13 @@ You may thing of Gisto as Evernote for code.
 
 ## Status
 
-Gisto is not yet officially released to the public. It is currently heavily developed. Various features will be left out from the first release.
+Codr is not yet officially released to the public. It is currently heavily developed. Various features will be left out from the first release.
 
 **We are planing to release the first version very soon and add new features as quickly as possible.**
 
 ## Made of
 
-Gisto made using HTML5/CSS3 and:
+Codr made using HTML5/CSS3 and:
 
 * [Angular.js](http://angularjs.org/) 
 * [Node.js](http://nodejs.org/)
@@ -50,15 +52,15 @@ and...
 
 ## Downloads
 
-Binary files for various platforms will be provided upon release, if you *really can't wait* - you can package Gisto by yourself (see "Packaging instructions" bellow).
+Binary files for various platforms will be provided upon release, if you *really can't wait* - you can package Codr by yourself (see "Packaging instructions" bellow).
 
 ## Packaging instructions
 
-Gisto depends on [node-webkit](https://github.com/rogerwang/node-webkit) project. Build instructions for your platform may be found on the projects [Wiki](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps#make-a-package).
+Codr depends on [node-webkit](https://github.com/rogerwang/node-webkit) project. Build instructions for your platform may be found on the projects [Wiki](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps#make-a-package).
 
 ## Issues and bug reporting
 
-Please feel free to add a bug / feature request / suggestions to the [issue tracker]( https://github.com/Gisto/gisto/issues).
+Please feel free to add a bug / feature request / suggestions to the [issue tracker]( https://codrs.com/codrs/codr/issues).
 
 
 ## License
@@ -73,5 +75,3 @@ Please feel free to add a bug / feature request / suggestions to the [issue trac
 | ![Sasha](http://www.gravatar.com/avatar/7ddad1a9a1c8de452badaf82b6c30c76?s=50 "Sasha") | Sasha | [@sanusart](https://twitter.com/sanusart) | [www.sanusart.com](http://sanusart.com) |
 
 ---
-
-** The name will probably be changed very soon, any suggestion are very welcome.
