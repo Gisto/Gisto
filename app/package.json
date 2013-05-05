@@ -2,7 +2,7 @@
     "main": "index.html#/",
     "node-main": "api/server.js",
     "single-instance": true,
-    "name": "Gisto",
+    "name": "Codr",
     "description": "Gist viewer and manager",
     "version": "0.1.0",
     "keywords": ["gist", "github", "node-webkit"],
