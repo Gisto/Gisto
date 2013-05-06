@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                 ],
 
                 // Destination for concatenated/minified JavaScript
-                dest: 'app/js/min/<%= pkg.name %>.min.js',
+                dest: 'app/js/<%= pkg.name %>.min.js',
 
                 // Destination for sourcemap of minified JavaScript
                 destMap: 'app/js/all.js.map'
