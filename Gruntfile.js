@@ -4,6 +4,9 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         'jsmin-sourcemap': {
             all: {
+		options: {
+		      banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+	    	},
                 // Source files to concatenate and minify (also accepts a string and minimatch items)
                 src: [
                     'app/lib/jquery/jquery-2.0.0.js',
@@ -23,7 +26,7 @@ module.exports = function(grunt) {
                 dest: 'app/js/<%= pkg.name %>.min.js',
 
                 // Destination for sourcemap of minified JavaScript
-                destMap: 'app/js/all.js.map'
+                destMap: 'all.js.map'
             }
         }
     });

@@ -1,3 +1,4 @@
 nbproject/
 .idea/
 node_modules/
+server.js
