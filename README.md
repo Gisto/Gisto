@@ -65,7 +65,7 @@ Please feel free to add a bug / feature request / suggestions to the [issue trac
 
 ## License
 
-*Coming soon*
+MIT https://github.com/codrs/codr/blob/master/LICENSE
 
 ## Contributors and mentions
 
