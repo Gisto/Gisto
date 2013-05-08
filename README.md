@@ -4,7 +4,7 @@
 
 
 
-![Codr](http://codrs.github.io/img/single-gist.png "codr")
+![Codr](http://codrs.github.io//img/Screenshot from 2013-05-09 00:54:00.png "codr")
 
 ## About
 
