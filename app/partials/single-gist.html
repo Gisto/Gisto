@@ -1,6 +1,6 @@
-<header>
+<header ng-controller="viewCtrl">
 
-    <img src="{{gist.user.avatar_url}}" class="gravatar" title="{{single.user.login}}"/>
+    <img src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
     <span ng-switch on="gist.single.starred">
         <span ng-switch-when="true">
@@ -14,7 +14,7 @@
     <a data-ng-controller="logoutCtrl" ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
 
-    <span class="type {{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
+    <span class="type {{gist.public | publicOrPrivet}}"><i class="icon-{{gist.public | publicOrPrivet}}"></i></span>
 
 
     <span ng-switch on="edit">
@@ -56,23 +56,21 @@
 
 <div class="messenger edit">
     <i class="icon-edit"> </i>
-    <span>Edit mode <b>on</b> | <a href="" ng-click="disableEdit()">Cancel</a></span>
+    <span>Edit mode <b>on</b> | <a href="" ng-click="update()">update</a></span>
 </div>
 
 <div class="messenger delete warn">
     <i class="icon-warning-sign"> </i>
-    <span>Are you sure you want to <b>delete</b> this gist? | <a href="" ng-click="del()">Yes!</a> <a href=""
-                                                                                                      ng-click="cancelDeleteGist()">Cancel</a></span>
+    <span>Are you sure you want to <b>delete</b> this gist? | <a href="" ng-click="del()">Yes!</a>
+        <a href="" ng-click="cancelDeleteGist()">Cancel</a></span>
 </div>
 
 
 <div class="toolbox">
 
     <span>
-        <b>Revisions:</b> <i>{{gist.single.history.length}}</i> | <b>Created:</b> <i>{{ gist.single.created_at|
-        date:'dd/MM/yyyy
-        HH:mm:ss' }}</i> | <b>Last Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'
-        }}</i>
+        <b>Revisions:</b> <i>{{gist.single.history.length}}</i> | <b>Created:</b> <i>{{ gist.single.created_at | date:'dd/MM/yyyy HH:mm:ss' }}</i> |
+        <b>Last Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
     </span>
 
     <a ng-click="addFile()">Add new file</a>
@@ -106,7 +104,8 @@
             <a ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
 
-        <editor data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" theme="{{editor_theme}}" index="{{$index}}"></editor>
+        <editor data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" theme="{{editor_theme}}"
+                index="{{$index}}"></editor>
 
     </div>
 
@@ -123,7 +122,7 @@
     <div ng-controller="commentsGistCtrl" class="the-comments">
         <span ng-repeat="comment in comments">
             <p>
-                <img src="{{comment.user.avatar_url}}" class="comment_gravatar" title="{{comment.user.login}}"/>
+                <img src="{{comments_avatar || comment.user.avatar_url}}" class="comment_gravatar" title="{{comment.user.login}}"/>
                 <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
             <div class="blockquote" ng-bind-html-unsafe="comment.body | markDown"></div>
         </span>

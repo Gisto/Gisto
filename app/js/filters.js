@@ -16,12 +16,13 @@ angular.module('myApp.filters', []).
     })
     .filter('publicOrPrivet',function () {
         return function (input) {
-            return input ? 'public' : 'secret';
+            return input ? 'unlock' : 'lock';
         };
     }).filter('codeLanguage',function () {
 
         var languages = {
-            "": "text",
+            null: "text",
+            ApacheConf: "text",
             "C#": "csharp",
             "C++": "c_cpp",
             Clojure: "clojure",
@@ -44,6 +45,7 @@ angular.module('myApp.filters', []).
             Ruby: "ruby",
             Scala: "scala",
             SCSS: "scss",
+            Shell: "sh",
             SQL: "sql",
             TeX: "latex",
             Textile: "textile",

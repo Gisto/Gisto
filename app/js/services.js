@@ -80,6 +80,10 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
                             data[item].single = {};
                         }
 
+                        // Set avatar
+                        console.log(data[item].user.gravatar_id);
+                        appSettings.setOne('avatar',data[item].user.gravatar_id);
+
                         gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
@@ -329,7 +333,7 @@ angular.module('gistData', [], function ($provide) {
     $provide.factory('gistData', function () {
         var dataService = {
             list: [],
-            getGistById: function (id) {
+        getGistById: function (id) {
                 for (var gist in dataService.list) {
                     gist = dataService.list[gist];
                     if (gist.id === id) {
@@ -409,6 +413,7 @@ angular.module('appSettings', [], function ($provide) {
                 var new_data = {};
                 new_data.token = data.token;
                 new_data.theme = data.theme;
+                new_data.avatar = data.avatar;
                 new_data.editor_theme = data.editor_theme;
                 new_data.last_modified = new Date().toUTCString();
                 if (localStorage.settings = JSON.stringify(new_data)) {
