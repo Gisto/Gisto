@@ -13,7 +13,7 @@ angular.module('JobIndicator', [])
             return function(promise) {
                 numLoadings++;
                 $('.loading').show();
-                var hide = function(r) { if (!(--numLoadings)) $('.loading').hide(); return r; };
+                var hide = function(r) { if (!(--numLoadings)) $('.loading').slideUp(); return r; };
                 //console.log('**************** LOADING ****************');
                 //console.log(slideUp(r));
                 return promise.then(hide, hide);
