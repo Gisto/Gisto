@@ -39,8 +39,8 @@
     ],
     "licenses": [
         {
-            "type": "",
-            "url": ""
+            "type": "MIT",
+            "url": "https://github.com/codrs/codr/blob/master/LICENSE"
         }
     ],
     "readmeFilename": "README.md"
