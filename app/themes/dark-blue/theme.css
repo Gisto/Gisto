@@ -67,14 +67,14 @@ div.toolbox a:hover {
     box-shadow: 0px 0px 10px #333 inset;
 }
 
-.secret {
+.lock {
     color: #FD5050;
-    border: 1px solid #FD5050;
+    /*border: 1px solid #FD5050;*/
 }
 
-.public {
+.unlock {
     color: #468847;
-    border: 1px solid #468847;
+    /*border: 1px solid #468847;*/
 }
 
 aside {

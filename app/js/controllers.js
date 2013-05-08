@@ -8,6 +8,7 @@ function settingsCtrl($scope, appSettings) {
     $scope.theme = appSettings.get('theme') || 'default';
     $scope.editor_theme = appSettings.get('editor_theme') || 'tomorrow';
     $scope.token = appSettings.get('token') || '';
+    $scope.avatar = appSettings.get('avatar') || '';
     $scope.update_settings = function () {
         var data = {};
         data.theme = $scope.theme;
@@ -26,6 +27,10 @@ function settingsCtrl($scope, appSettings) {
     };
 }
 
+function viewCtrl($scope) {
+    $scope.avatar = 'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings)['avatar'];
+}
+
 function loginCtrl($scope, ghAPI) {
     $scope.submit = function () {
         ghAPI.login($scope.user, $scope.pass, function (response) {
@@ -34,7 +39,7 @@ function loginCtrl($scope, ghAPI) {
                 var data = {};
                 data.token = response.data.token;
                 data.theme = 'default';
-                data.avatar = '';
+                data.avatar = 'none';
                 data.editor_theme = 'tomorrow';
                 localStorage.settings = JSON.stringify(data);
                 window.location.href = '#/';
@@ -269,7 +274,11 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
 function commentsGistCtrl($scope, $routeParams, $http, ghAPI) {
     ghAPI.comments($routeParams.gistId, function (response) {
         if (response.status === 200) {
-            $scope.comments = response.data;
+            if(response.data.length >=1) {
+                $scope.comments = response.data;
+            } else {
+                $scope.comments_avatar = '';
+            }
         } else {
             console.warn('[!!!] >>> Comments not loaded - server responded with error.');
         }
