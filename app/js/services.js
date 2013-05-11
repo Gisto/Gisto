@@ -426,10 +426,8 @@ angular.module('appSettings', [], function ($provide) {
             },
 
             setOne: function (key, new_data, callback) {
-                var old_data = settings.getAll(),
-                    to_store;
+                var old_data = settings.getAll();
                 old_data[key] = new_data;
-                console.log(old_data);
                 settings.set(old_data);
             }
         };
