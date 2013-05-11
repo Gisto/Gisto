@@ -385,7 +385,8 @@ angular.module('appSettings', [], function ($provide) {
             ],
 
             isLoggedIn: function (callback) {
-                if (localStorage.settings !== undefined) {
+
+                if (localStorage.settings && JSON.parse(localStorage.settings)['token'] !== undefined) {
                     return true;
                 } else {
                     document.location.href = '#/login';
