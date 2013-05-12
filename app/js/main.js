@@ -13,9 +13,7 @@ $(function () {
                 .addClass('icon-arrow-up');
             $('div.comments').animate({
                 height: '35px'
-            },500).css({
-                    overflow:'hidden'
-                });
+            },500);
         } else {
             $('div.the-comments span').slideDown('slow');
             $('div.comments i').text(' hide')
@@ -23,9 +21,7 @@ $(function () {
                 .addClass('icon-arrow-down');
             $('div.comments').animate({
                 height: '300px'
-            },500).css({
-                    overflow:'auto'
-                });
+            },500);
         }
     });
 
