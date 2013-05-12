@@ -1,6 +1,6 @@
 {
     "main": "index.html#/",
-    "single-instance": true,
+    "single-instance": false,
     "name": "Codr",
     "description": "Gist viewer and manager",
     "version": "0.1.0",

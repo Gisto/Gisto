@@ -132,7 +132,7 @@ div.toolbox a {
 }
 
 .type {
-    padding: 0 4px;
+    padding: 2px 8px;
     border-radius: 3px;
     text-transform: uppercase;
     text-decoration: none;
@@ -245,6 +245,7 @@ div.comments {
     font-size: 14px;
     margin: 0;
     text-align: left;
+    overflow-x: auto;
 }
 
 div.comments .clicky {
@@ -352,6 +353,12 @@ aside header input {
 div.blockquote {
     margin-left: 0;
     text-indent: 10px;
+}
+
+div.blockquote p {
+    padding: 0 10px;
+    line-height: 21px;
+    text-indent: 0;
 }
 
 div.main .the-comments .comment_gravatar {
