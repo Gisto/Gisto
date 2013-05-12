@@ -107,6 +107,7 @@ div.toolbox {
     z-index: 5;
     margin: 0;
     text-align: right;
+    -webkit-user-select: none;
 }
 div.toolbox span {
     float: left;
@@ -449,6 +450,7 @@ div.main .the-comments .comment_gravatar {
 
 aside ul li a {
     font-size: 12px;
+    -webkit-user-select: none;
 }
 
 aside ul li a > h3 {

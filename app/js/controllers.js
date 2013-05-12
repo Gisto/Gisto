@@ -274,11 +274,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
 function commentsGistCtrl($scope, $routeParams, $http, ghAPI) {
     ghAPI.comments($routeParams.gistId, function (response) {
         if (response.status === 200) {
-            if(response.data.length >=1) {
-                $scope.comments = response.data;
-            } else {
-                $scope.comments_avatar = '';
-            }
+            $scope.comments = response.data;
         } else {
             console.warn('[!!!] >>> Comments not loaded - server responded with error.');
         }
