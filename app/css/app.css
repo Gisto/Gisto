@@ -245,6 +245,7 @@ div.comments {
     font-size: 14px;
     margin: 0;
     text-align: left;
+    overflow-x: auto;
 }
 
 div.comments .clicky {
@@ -352,6 +353,10 @@ aside header input {
 div.blockquote {
     margin-left: 0;
     text-indent: 10px;
+}
+
+div.blockquote p {
+    padding: 0 10px;
 }
 
 div.main .the-comments .comment_gravatar {
