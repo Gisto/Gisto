@@ -1,6 +1,5 @@
 {
     "main": "index.html#/",
-    "node-main": "api/server.js",
     "single-instance": true,
     "name": "Codr",
     "description": "Gist viewer and manager",
