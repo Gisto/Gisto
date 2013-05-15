@@ -1,8 +1,8 @@
 {
-    "name": "codr",
+    "name": "gisto",
     "version": "0.1.0",
-    "description": "Codr is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Codr started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may thing of Codr as Evernote for code.",
-    "homepage":"http://codrs.github.io/",
+    "description": "Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may thing of Gisto as Evernote for code.",
+    "homepage":"http://gisto.github.io/",
     "main": "app/index.html",
     "dependencies": {
         "grunt": "~0.4.1"
@@ -16,13 +16,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/codrs/codr.git"
+        "url": "https://github.com/gisto/gisto.git"
     },
     "bugs": {
-        "url": "https://github.com/codrs/codr/issues"
+        "url": "https://github.com/gisto/gisto/issues"
     },
     "keywords": [
-        "codr",
+        "gisto",
         "gist",
         "code",
         "snippets"
@@ -40,7 +40,7 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/codrs/codr/blob/master/LICENSE"
+            "url": "https://github.com/gisto/gisto/blob/master/LICENSE"
         }
     ],
     "readmeFilename": "README.md"
