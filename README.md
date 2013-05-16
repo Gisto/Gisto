@@ -2,9 +2,10 @@
 
 ###### Snippets made awesome
 
+| Light theme | Dark theme |
+|:------|:------|
+| ![Gisto](http://Gisto.github.io/img/lite_theme.png "Gisto") | ![Gisto](http://Gisto.github.io/img/dark_theme.png "Gisto") |
 
-
-![Gisto](http://Gisto.github.io//img/Screenshot from 2013-05-09 00:54:00.png "Gisto")
 
 ## About
 
