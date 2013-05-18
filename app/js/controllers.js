@@ -256,6 +256,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
                 $scope.edit = false;
+                $scope.gist.single.files = response.data.files;
                 $scope.gist.single.history = response.data.history;
                 setTimeout(function () {
                     $('.ok').slideUp();
