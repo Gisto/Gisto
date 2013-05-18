@@ -6,6 +6,7 @@
     "version": "0.1.0",
     "keywords": ["gist", "github", "node-webkit"],
     "window": {
+        "icon": "icon.png",
         "toolbar": false,
         "width": 1280,
         "height": 720,
