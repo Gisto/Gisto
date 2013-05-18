@@ -281,7 +281,7 @@ function commentsGistCtrl($scope, $routeParams, $http, ghAPI) {
     });
 }
 
-function createGistCtrl($scope, $routeParams, $http, ghAPI) {
+function createGistCtrl($scope, $routeParams, $http, ghAPI, gistData) {
     $scope.description = '';
     $scope.isPublic = false;
     $scope.files = [
@@ -321,6 +321,17 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI) {
 
         ghAPI.create(data, function (response) {
             if (response.status === 201) {
+
+                var newGist = {
+                    id: response.data.id,
+                    description: $scope.description,
+                    "public": $scope.isPublic,
+                    files: {}
+                };
+
+                gistData.list.push(newGist);
+
+
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
                 window.location.href = "#/gist/" + response.data.id;
