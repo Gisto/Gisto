@@ -38,6 +38,7 @@ function loginCtrl($scope, ghAPI, appSettings) {
                 console.log(response);
                 var data = {};
                 data.token = response.data.token;
+                ghAPI.setToken(response.data.token);
                 data.theme = appSettings.get('default') || 'default';
                 data.avatar = appSettings.get('none') || 'none';
                 data.editor_theme = appSettings.get('tomorrow') || 'tomorrow';
