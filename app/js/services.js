@@ -27,6 +27,10 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
             token = appSettings.get('token');
         var api = {
 
+            setToken: function(newToken) {
+                token = newToken;
+            },
+
             // POST /authorizations
             login: function (user, pass, callback) {
                 $http({
