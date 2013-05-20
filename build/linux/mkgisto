@@ -8,13 +8,14 @@ APP_DIR="/home/$ME/www/gisto/app"
 
 read -e -p "Please enter version number: " -i "0.1.0a" VERSION
 read -e -p "Please enter package name: " -i "gisto-$VERSION-amd64" PKG_NAME
+
 cd $APP_DIR && zip -r app.nw *
 
 cat /usr/bin/nw app.nw > gisto && chmod +x gisto
 mv gisto $HERE/gisto/usr/bin/
-rm $APP_DIR/app.nw
 
 dpkg -b $HERE/gisto
+
 
 if [ ! -d ../bin/$VERSION ]
 then
@@ -24,3 +25,7 @@ fi
 mv $HERE/gisto.deb ../bin/$VERSION/$PKG_NAME.deb
 fakeroot alien --to-rpm -c -k ../bin/$VERSION/$PKG_NAME.deb
 mv gisto-*.rpm ../bin/$VERSION/$PKG_NAME.rpm
+echo -e ">>> Clean-up...."
+rm $APP_DIR/app.nw
+rm $HERE/gisto/usr/bin/gisto
+
