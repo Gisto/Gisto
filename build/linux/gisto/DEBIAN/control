@@ -1,0 +1,27 @@
+Package: gisto
+Section: development
+Priority: extra
+Maintainer: Sasha Khamkov <sanusart@gmail.com>
+Version: 0.1.0a
+Homepage: http://www.gistoapp.com
+Architecture: amd64
+Depends: 
+Description: Gist snippet manager
+ Gisto is a Cross-platform snippets management desktop application that allows you and your team share code snippets fast and easily.
+ .
+ Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account!
+ .
+ .
+ Features
+ .
+ * GitHub integration
+ * Gist tagging
+ * Quick in-place editing
+ * Drag & drop to create gist/add file
+ * Search filter gists
+ * Offline access to gists (Will be integrated into full release)
+ * UI Themes
+ .
+ .
+ and more
+
