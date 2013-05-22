@@ -331,7 +331,7 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI, gistData) {
                     files: {}
                 };
 
-                gistData.list.push(newGist);
+                gistData.list.unshift(newGist);
 
 
                 $('.ok').slideDown('slow');
