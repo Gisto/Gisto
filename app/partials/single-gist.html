@@ -22,7 +22,7 @@
             <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" ng-model="gist.description">
         </span>
         <span class="title" ng-switch-default>
-            {{(gist.description | removeTags | truncate:55) || 'Untitled'}}
+            {{(gist.description | removeTags | truncate:80) || 'Untitled'}}
         </span>
     </span>
 

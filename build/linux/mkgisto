@@ -6,6 +6,9 @@ HERE=`pwd`
 ME=`whoami`
 APP_DIR="/home/$ME/www/gisto/app"
 
+cd ../
+grunt --debug
+
 read -e -p "Please enter version number: " -i "0.1.0a" VERSION
 read -e -p "Please enter package name: " -i "gisto-$VERSION-amd64" PKG_NAME
 

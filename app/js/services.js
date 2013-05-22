@@ -117,6 +117,7 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
             // GET /gists/:id
             gist: function (id) {
                 var gist = gistData.getGistById(id); // get the currently viewed gist
+
                 $http({
                     method: 'GET',
                     url: api_url + '/' + id,
@@ -133,6 +134,7 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
                             console.log('Is it starred: ' + data.starred)
                         });
                         gist.single = data; // update the current gist with the new data
+
                     }).error(function (data, status, headers, config) {
                         console.log({
                             data: data,
