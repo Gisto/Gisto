@@ -8,11 +8,11 @@
     "window": {
         "icon": "icon.png",
         "toolbar": false,
-        "width": 1280,
-        "height": 720,
+        "width": 1200,
+        "height": 600,
         "position": "center",
-        "min_width": 800,
-        "min_height": 500
+        "min_width": 1200,
+        "min_height": 600
     },
     "webkit": {
         "plugin": true

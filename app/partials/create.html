@@ -18,18 +18,18 @@
 <section>
 
     <h1>Create gist</h1>
-    <input type="text" ng-model="description" class="desc" placeholder="Description">
+    <input ui-keydown="{'ctrl-83':'save($event)'}" type="text" ng-model="description" class="desc" placeholder="Description">
     <input type="checkbox" ng-model="isPublic"> Public
 
     <div ng-repeat="file in files">
-        <input type="text" ng-model="file.filename" placeholder="Filename">
+        <input ui-keydown="{'ctrl-83':'save($event)'}" type="text" ng-model="file.filename" placeholder="Filename">
 
         <div class="the-gist" onload="initEditors()">
 
             <div class="the-gist-name">
                 <i class="icon-file-alt"></i> <b>{{file.filename || 'filename'}}</b>
             </div>
-            <editor language="html" index="{{$index}}" ng-model="file.content"></editor>
+            <editor ui-keydown="{'ctrl-83':'save($event)'}" language="html" index="{{$index}}" ng-model="file.content"></editor>
         </div>
 
     </div>
