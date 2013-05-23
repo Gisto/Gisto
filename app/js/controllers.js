@@ -28,7 +28,7 @@ function settingsCtrl($scope, appSettings) {
 }
 
 function viewCtrl($scope) {
-    $scope.avatar = 'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings)['avatar'];
+    $scope.avatar = 'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
 }
 
 function loginCtrl($scope, ghAPI, appSettings) {
@@ -60,7 +60,7 @@ function logoutCtrl($scope,appSettings,gistData) {
     $scope.logOut = function() {
         gistData.list = [];
         appSettings.logOut();
-    }
+    };
 }
 
 function listGistCtrl($scope, ghAPI, gistData) {
@@ -70,9 +70,10 @@ function listGistCtrl($scope, ghAPI, gistData) {
 }
 
 function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
-    $scope.gist = gistData.getGistById($routeParams.gistId);
-    ghAPI.gist($routeParams.gistId);
 
+    $scope.gist = gistData.getGistById($routeParams.gistId);
+
+    ghAPI.gist($routeParams.gistId);
     //console.log('>>>>>>>>>>>>>>>>>>>>>> scope gist');
     //console.log();
 
@@ -80,7 +81,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         if (clipboard !== undefined) {
             clipboard.set(file.content, 'text');
         } else {
-            console.log('>>> DEBUG MOD ON | Copy to clipboard really only works in App \n File name: ' + file.filename + '\n Content: \n' + file.content)
+            console.log('>>> DEBUG MOD ON | Copy to clipboard really only works in App \n File name: ' + file.filename + '\n Content: \n' + file.content);
         }
 
         $('.ok').slideDown('slow');
@@ -218,7 +219,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                         language: 'html'
                     };
                     $scope.$digest();
-                }
+                };
             })(file.name);
 
             reader.readAsText(file);
@@ -259,6 +260,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 $scope.edit = false;
                 $scope.gist.single.files = response.data.files;
                 $scope.gist.single.history = response.data.history;
+
+                console.warn(response.data.id);
+
                 setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
@@ -339,7 +343,7 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI, gistData) {
                 window.location.href = "#/gist/" + response.data.id;
             }
         });
-    }
+    };
 }
 
 function headerController($scope) {
