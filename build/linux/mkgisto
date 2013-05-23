@@ -15,8 +15,16 @@ echo -e "\n\n\n"
 echo -e "\e[30;48;5;82m >>> \e[40;38;5;82m Run grunt against the project \e[0m"
 grunt --debug
 
+read -e -p "Please enter you name: " -i "Sasha Khamkov" NAME
+read -e -p "Please enter your e-mail address: " -i "sanusart@gmail.com" EMAIL
 read -e -p "Please enter version number: " -i "0.1.0a" VERSION
-read -e -p "Please enter package name: " -i "gisto-$VERSION-amd64" PKG_NAME
+read -e -p "Please enter architecture [amd64, i386, any]: " -i "amd64" ARCH
+read -e -p "Please enter package name: " -i "gisto-$VERSION-$ARCH" PKG_NAME
+
+sed -i "s/%NAME%/$NAME/g" $HERE/gisto/DEBIAN/control
+sed -i "s/%EMAIL%/$EMAIL/g" $HERE/gisto/DEBIAN/control
+sed -i "s/%ARCH%/$ARCH/g" $HERE/gisto/DEBIAN/control
+sed -i "s/%VERSION%/$VERSION/g" $HERE/gisto/DEBIAN/control
 
 echo -e "\e[30;48;5;82m >>> \e[40;38;5;82m Creating binaries with node-webkit \e[0m"
 cd $APP_DIR && zip -r app.nw *
@@ -48,6 +56,12 @@ tar -cvzf $PKG_NAME.tar.gz usr
 mv $PKG_NAME.tar.gz ../../../bin/$VERSION/
 
 echo -e "\e[30;48;5;82m >>> \e[40;38;5;82m Clean-up.... \e[0m"
+
+sed -i "s/$NAME/%NAME%/g" $HERE/gisto/DEBIAN/control
+sed -i "s/$EMAIL/%EMAIL%/g" $HERE/gisto/DEBIAN/control
+sed -i "s/$ARCH/%ARCH%/g" $HERE/gisto/DEBIAN/control
+sed -i "s/$VERSION/%VERSION%/g" $HERE/gisto/DEBIAN/control
+
 rm $APP_DIR/app.nw
 rm $HERE/gisto/usr/bin/gisto
 
