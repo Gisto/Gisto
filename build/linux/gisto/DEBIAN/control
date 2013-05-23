@@ -1,10 +1,10 @@
 Package: gisto
 Section: development
 Priority: extra
-Maintainer: Sasha Khamkov <sanusart@gmail.com>
-Version: 0.1.0a
+Maintainer: %NAME% <%EMAIL%>
+Version: %VERSION%
 Homepage: http://www.gistoapp.com
-Architecture: amd64
+Architecture: %ARCH%
 Depends: 
 Description: Gist snippet manager
  Gisto is a Cross-platform snippets management desktop application that allows you and your team share code snippets fast and easily.
