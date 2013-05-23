@@ -37,7 +37,7 @@ app.directive('editor', function($timeout) {
                     });
 
                 }, 0);
-            }
+            };
         }
 
     };

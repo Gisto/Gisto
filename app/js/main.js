@@ -1,5 +1,5 @@
 $(function () {
-
+'use strict';
     $('div.main').on('click', '.messenger', function () {
         $(this).slideUp('slow');
     });
