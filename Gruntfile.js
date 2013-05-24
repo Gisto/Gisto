@@ -1,13 +1,38 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        'jshint': {
+            all: [
+                'app/js/main.js',
+                'app/js/app.js',
+                'app/js/services.js',
+                'app/js/controllers.js',
+                'app/js/filters.js',
+                'app/js/directives.js',
+            ],
+            options: {
+                "curly": true,
+                "eqnull": true,
+                "eqeqeq": true,
+                "undef": true,
+                "browser": true,
+                "node": true,
+                "devel": true,
+                "strict": true,
+                "globals": {
+                    "jQuery": true,
+                    "$": true,
+                    "angular": true,
+                    "ace": true,
+                    "Showdown": true,
+                    "clipboard": true
+                }
+            }
+        },
         'jsmin-sourcemap': {
             all: {
-		options: {
-		      banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-	    	},
-                // Source files to concatenate and minify (also accepts a string and minimatch items)
+                banner: '/*!\n<%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                 src: [
                     'app/lib/jquery/jquery-2.0.0.js',
                     'app/js/main.js',
@@ -28,10 +53,18 @@ module.exports = function(grunt) {
                 // Destination for sourcemap of minified JavaScript
                 destMap: 'all.js.map'
             }
+        },
+        removelogging: {
+            dist: {
+                src: 'app/js/<%= pkg.name %>.min.js',
+                dest: 'app/js/<%= pkg.name %>.min.js'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-jsmin-sourcemap');
-    grunt.registerTask('default', ['jsmin-sourcemap']);
+    //grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks("grunt-remove-logging");
+    grunt.registerTask('default', ['jsmin-sourcemap', 'removelogging'/*, 'jshint'*/]);
 
 };

@@ -7,13 +7,18 @@
 angular.module('myApp.services', []);
 
 angular.module('JobIndicator', [])
-    .config(function($httpProvider) {
+    .config(function ($httpProvider) {
         var numLoadings = 0;
-        $httpProvider.responseInterceptors.push(function() {
-            return function(promise) {
+        $httpProvider.responseInterceptors.push(function () {
+            return function (promise) {
                 numLoadings++;
                 $('.loading').show();
-                var hide = function(r) { if (!(--numLoadings)) $('.loading').slideUp(); return r; };
+                var hide = function (r) {
+                    if (!(--numLoadings)) {
+                        $('.loading').slideUp();
+                    }
+                    return r;
+                };
                 //console.log('**************** LOADING ****************');
                 //console.log(slideUp(r));
                 return promise.then(hide, hide);
@@ -27,7 +32,7 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
             token = appSettings.get('token');
         var api = {
 
-            setToken: function(newToken) {
+            setToken: function (newToken) {
                 token = newToken;
             },
 
@@ -86,12 +91,12 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
 
                         // Set avatar
                         console.log(data[item].user.gravatar_id);
-                        appSettings.setOne('avatar',data[item].user.gravatar_id);
+                        appSettings.setOne('avatar', data[item].user.gravatar_id);
 
                         gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
-                        var headers = headers();
+                        //var headers = headers();
                         if (headers.link) {
                             var links = headers.link.split(',');
                             for (var link in links) {
@@ -117,6 +122,7 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
             // GET /gists/:id
             gist: function (id) {
                 var gist = gistData.getGistById(id); // get the currently viewed gist
+
                 $http({
                     method: 'GET',
                     url: api_url + '/' + id,
@@ -124,15 +130,16 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
-                        api.is_starred(data.id,function(response) {
-                            if(response.status === 204) {
+                        api.is_starred(data.id, function (response) {
+                            if (response.status === 204) {
                                 data.starred = true;
                             } else {
                                 data.starred = false;
                             }
-                            console.log('Is it starred: ' + data.starred)
+                            console.log('Is it starred: ' + data.starred);
                         });
                         gist.single = data; // update the current gist with the new data
+
                     }).error(function (data, status, headers, config) {
                         console.log({
                             data: data,
@@ -300,7 +307,7 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
             },
 
             // GET /gists/:id/star
-            is_starred: function (id,callback) {
+            is_starred: function (id, callback) {
                 $http({
                     method: 'get',
                     url: api_url + '/' + id + '/star',
@@ -337,7 +344,7 @@ angular.module('gistData', [], function ($provide) {
     $provide.factory('gistData', function () {
         var dataService = {
             list: [],
-        getGistById: function (id) {
+            getGistById: function (id) {
                 for (var gist in dataService.list) {
                     gist = dataService.list[gist];
                     if (gist.id === id) {
@@ -390,7 +397,7 @@ angular.module('appSettings', [], function ($provide) {
 
             isLoggedIn: function (callback) {
 
-                if (localStorage.settings && JSON.parse(localStorage.settings)['token'] !== undefined) {
+                if (localStorage.settings && JSON.parse(localStorage.settings).token !== undefined) {
                     return true;
                 } else {
                     document.location.href = '#/login';
@@ -421,7 +428,7 @@ angular.module('appSettings', [], function ($provide) {
                 new_data.avatar = data.avatar;
                 new_data.editor_theme = data.editor_theme;
                 new_data.last_modified = new Date().toUTCString();
-                if (localStorage.settings = JSON.stringify(new_data)) {
+                if (localStorage.settings === JSON.stringify(new_data)) {
                     if (callback) {
                         return callback({
                             status: 'ok'
