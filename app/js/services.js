@@ -96,9 +96,9 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
                         gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
-                        //var headers = headers();
-                        if (headers.link) {
-                            var links = headers.link.split(',');
+                        var header = headers();
+                        if (header.link) {
+                            var links = header.link.split(',');
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
