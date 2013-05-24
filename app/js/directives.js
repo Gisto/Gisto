@@ -5,22 +5,22 @@
 var app = angular.module('myApp.directives', []);
 
 
-app.directive('appVersion', ['version', function(version) {
-        return function(scope, elm, attrs) {
-            elm.text(version);
-        };
-    }]);
+app.directive('appVersion', ['version', function (version) {
+    return function (scope, elm, attrs) {
+        elm.text(version);
+    };
+}]);
 
-app.directive('editor', function($timeout) {
+app.directive('editor', function ($timeout) {
     var editorWindow = angular.element('<pre id="editor-{{$index}}">{{file.content}}</pre>');
     return {
         restrict: 'E',
-        compile: function(elem) {
+        compile: function (elem) {
             elem.append(editorWindow);
 
-            return function(scope, element, attrs) {
+            return function (scope, element, attrs) {
 
-                $timeout(function() {
+                $timeout(function () {
 
                     var lang = attrs.language,
                         editor = ace.edit('editor-' + attrs.index),
@@ -32,7 +32,7 @@ app.directive('editor', function($timeout) {
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
 
-                    editor.on('change', function(data) {
+                    editor.on('change', function (data) {
                         scope.file.content = editor.getValue();
                     });
 

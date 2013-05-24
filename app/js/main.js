@@ -1,5 +1,5 @@
 $(function () {
-'use strict';
+    'use strict';
     $('div.main').on('click', '.messenger', function () {
         $(this).slideUp('slow');
     });
@@ -13,7 +13,7 @@ $(function () {
                 .addClass('icon-arrow-up');
             $('div.comments').animate({
                 height: '35px'
-            },500);
+            }, 500);
         } else {
             $('div.the-comments span').slideDown('slow');
             $('div.comments i').text(' hide')
@@ -21,7 +21,7 @@ $(function () {
                 .addClass('icon-arrow-down');
             $('div.comments').animate({
                 height: '300px'
-            },500);
+            }, 500);
         }
     });
 

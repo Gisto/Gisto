@@ -39,7 +39,8 @@
             <a ui-route="/gist/{{gist.id}}" ng-class="{active: $uiRoute}"
                onclick="document.location.href = '#/gist/{{gist.id}}'">
                 <h3>
-                    <i class="icon-{{gist.public | publicOrPrivet}}"></i> {{(gist.description | removeTags) || 'Untitled'}}<br/>
+                    <i class="icon-{{gist.public | publicOrPrivet}}"></i> {{(gist.description | removeTags) ||
+                    'Untitled'}}<br/>
                 </h3>
 
                 <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>

@@ -56,8 +56,8 @@ function loginCtrl($scope, ghAPI, appSettings) {
     };
 }
 
-function logoutCtrl($scope,appSettings,gistData) {
-    $scope.logOut = function() {
+function logoutCtrl($scope, appSettings, gistData) {
+    $scope.logOut = function () {
         gistData.list = [];
         appSettings.logOut();
     };
@@ -73,7 +73,20 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
 
     $scope.gist = gistData.getGistById($routeParams.gistId);
 
-    ghAPI.gist($routeParams.gistId);
+    if ($scope.gist.single.hasOwnProperty('lastUpdated')) {
+        console.log($scope.gist.single.lastUpdated);
+        var now = new Date();
+        var seconds = Math.round((now.getTime() - $scope.gist.single.lastUpdated.getTime())/1000);
+        console.log(seconds + ' have passed since last updated');
+       if (seconds > 60) {
+           ghAPI.gist($routeParams.gistId);
+       }
+
+    } else {
+        ghAPI.gist($routeParams.gistId);
+    }
+
+
     //console.log('>>>>>>>>>>>>>>>>>>>>>> scope gist');
     //console.log();
 
@@ -106,11 +119,11 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         $('.delete').slideUp('slow');
     };
 
-    $scope.star = function($event) {
+    $scope.star = function ($event) {
         if ($event) {
             $event.preventDefault();
         }
-        ghAPI.star($scope.gist.single.id, function(response){
+        ghAPI.star($scope.gist.single.id, function (response) {
             if (response.status === 204) {
                 console.log(response);
                 $('.ok').slideDown('slow');
@@ -131,11 +144,11 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         });
     };
 
-    $scope.unstar = function($event) {
+    $scope.unstar = function ($event) {
         if ($event) {
             $event.preventDefault();
         }
-        ghAPI.unstar($scope.gist.single.id, function(response){
+        ghAPI.unstar($scope.gist.single.id, function (response) {
             if (response.status === 204) {
                 console.log(response);
                 $('.ok').slideDown('slow');

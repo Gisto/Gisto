@@ -138,6 +138,11 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
                             }
                             console.log('Is it starred: ' + data.starred);
                         });
+
+                        // save timestamp of pull
+                        data.lastUpdated = new Date();
+                        console.log(data.lastUpdated);
+
                         gist.single = data; // update the current gist with the new data
 
                     }).error(function (data, status, headers, config) {
