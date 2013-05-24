@@ -9,7 +9,7 @@ module.exports = function (grunt) {
                 'app/js/services.js',
                 'app/js/controllers.js',
                 'app/js/filters.js',
-                'app/js/directives.js',
+                'app/js/directives.js'
             ],
             options: {
                 "curly": true,

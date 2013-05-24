@@ -69,7 +69,8 @@
 <div class="toolbox">
 
     <span>
-        <b>Revisions:</b> <i>{{gist.single.history.length}}</i> | <b>Created:</b> <i>{{ gist.single.created_at | date:'dd/MM/yyyy HH:mm:ss' }}</i> |
+        <b>Revisions:</b> <i>{{gist.single.history.length}}</i> | <b>Created:</b> <i>{{ gist.single.created_at |
+        date:'dd/MM/yyyy HH:mm:ss' }}</i> |
         <b>Last Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
     </span>
 
@@ -122,7 +123,8 @@
     <div ng-controller="commentsGistCtrl" class="the-comments">
         <span ng-repeat="comment in comments">
             <p>
-                <img src="{{comment.user.avatar_url || 'https://secure.gravatar.com/avatar/'}}" class="comment_gravatar" title="{{comment.user.login}}"/>
+                <img src="{{comment.user.avatar_url || 'https://secure.gravatar.com/avatar/'}}" class="comment_gravatar"
+                     title="{{comment.user.login}}"/>
                 <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
             <div class="blockquote" ng-bind-html-unsafe="comment.body | markDown"></div>
         </span>
