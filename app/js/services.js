@@ -433,7 +433,7 @@ angular.module('appSettings', [], function ($provide) {
                 new_data.avatar = data.avatar;
                 new_data.editor_theme = data.editor_theme;
                 new_data.last_modified = new Date().toUTCString();
-                if (localStorage.settings === JSON.stringify(new_data)) {
+                if (localStorage.settings = JSON.stringify(new_data)) {
                     if (callback) {
                         return callback({
                             status: 'ok'
