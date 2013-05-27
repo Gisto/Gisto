@@ -176,9 +176,10 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         console.log($scope);
         ghAPI.delete($scope.gist.single.id, function (response) {
             if (response.status === 204) {
-                console.log(response);
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist deleted');
+                // Remove from list of gists.
+                gistData.list.splice( gistData.list.indexOf(gistData.getGistById($scope.gist.single.id)), 1 );
                 setTimeout(function () {
                     $('.ok').slideUp();
                     window.location.href = 'index.html#/';

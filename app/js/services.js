@@ -216,6 +216,7 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
+
                         return callback({
                             data: data,
                             status: status,

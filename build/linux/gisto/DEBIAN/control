@@ -3,8 +3,8 @@ Section: development
 Priority: extra
 Maintainer: %NAME% <%EMAIL%>
 Version: %VERSION%
-Homepage: http://www.gistoapp.com
 Architecture: %ARCH%
+Homepage: http://www.gistoapp.com
 Depends: 
 Description: Gist snippet manager
  Gisto is a Cross-platform snippets management desktop application that allows you and your team share code snippets fast and easily.
