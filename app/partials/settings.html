@@ -19,7 +19,32 @@
 <section>
 
     <h1>Settings:</h1>
+<!--
 
+    <details>
+        <summary>General</summary>
+        <p>-- NO SETTINGS YET --</p>
+    </details>
+
+    <details>
+        <summary>Gisto settings</summary>
+        <p>-- NO SETTINGS YET --</p>
+    </details>
+-->
+
+    <details>
+        <summary>Look &amp; feel</summary>
+        <p>Set theme:</p>
+        <select ng-model="theme">
+            <option ng-repeat="theme in themes">{{theme}}</option>
+        </select>
+        <p>Set editor theme:</p>
+        <select ng-model="editor_theme">
+            <option ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
+        </select>
+    </details>
+
+    <!--
     <div class="tabs">
         <div id="tab1">
             <h2><a ng-click="show=1">General</a></h2>
@@ -53,7 +78,7 @@
             </div>
         </div>
     </div>
-
+-->
 </section>
 
 </form>

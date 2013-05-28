@@ -568,3 +568,8 @@ body.login header {
     border: none;
     height: auto;
 }
+
+details > summary {
+    font-size: 18px;
+    margin: 10px 0;
+}
