@@ -89,10 +89,11 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
                             data[item].single = {};
                         }
 
-                        // Set avatar
-                        console.log(data[item].user.gravatar_id);
-                        appSettings.setOne('avatar', data[item].user.gravatar_id);
+                        // Set lastUpdated for 60 sec cache
+                        data.lastUpdated = new Date();
 
+                        // Set avatar
+                        appSettings.setOne('avatar', data[item].user.gravatar_id);
                         gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
