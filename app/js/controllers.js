@@ -73,7 +73,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
 
     $scope.gist = gistData.getGistById($routeParams.gistId);
 
-    if ($scope.gist.single.hasOwnProperty('lastUpdated')) {
+    if ($scope.gist.hasOwnProperty('single') && $scope.gist.single.hasOwnProperty('lastUpdated')) {
         console.log($scope.gist.single.lastUpdated);
         var now = new Date();
         var seconds = Math.round((now.getTime() - $scope.gist.single.lastUpdated.getTime())/1000);

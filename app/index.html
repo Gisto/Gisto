@@ -35,7 +35,7 @@
     </header>
 
     <ul class="flex">
-        <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
+        <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'description'">
             <a ui-route="/gist/{{gist.id}}" ng-class="{active: $uiRoute}"
                onclick="document.location.href = '#/gist/{{gist.id}}'">
                 <h3>
