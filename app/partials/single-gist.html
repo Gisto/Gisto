@@ -56,7 +56,7 @@
 
 <div class="messenger edit">
     <i class="icon-edit"> </i>
-    <span>Edit mode <b>on</b> | <a href="" ng-click="update()">update</a></span>
+    <span>Edit mode <b>on</b> <a href="" ng-click="update()">update</a></span>
 </div>
 
 <div class="messenger delete warn">
@@ -69,14 +69,22 @@
 <div class="toolbox">
 
     <span>
-        <b>Revisions:</b> <i>{{gist.single.history.length}}</i> | <b>Created:</b> <i>{{ gist.single.created_at |
-        date:'dd/MM/yyyy HH:mm:ss' }}</i> |
-        <b>Last Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
+        <b>Revisions:</b> <i>{{gist.single.history.length}}</i> <b>Created:</b> <i>{{ gist.single.created_at |
+        date:'dd/MM/yyyy HH:mm:ss' }}</i>
+        <b>Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
     </span>
 
-    <a ng-click="addFile()">Add new file</a>
-    <a href="" ng-click="enableEdit()">Edit</a>
-    <a ng-click="update()">Update</a>
+    <a ng-click="addFile()">Add file</a>
+
+    <span class="edit" ng-switch on="edit">
+        <span class="edit" ng-switch-when="true">
+            <a ng-click="update()">Update</a>
+        </span>
+        <span class="edit" ng-switch-default>
+            <a href="" ng-click="enableEdit()">Edit</a>
+        </span>
+    </span>
+
     <a href="https://gist.github.com/{{gist.single.user.login}}/{{gist.single.id}}/download" download="gist.tar.gz">Download</a>
     <a ng-click="warnDeleteGist()" href="">Remove</a>
 
