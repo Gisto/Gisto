@@ -2,3 +2,4 @@ nbproject/
 .idea/
 node_modules/
 server.js
+.DS_Store
