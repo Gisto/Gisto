@@ -87,6 +87,8 @@ angular.module('gitHubAPI', ['gistData', 'appSettings'], function ($provide) {
                         for (var item in data) { // process and arrange data
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
+                            console.log(item);
+                            data[item].filesCount = Object.keys(data[item].files).length;
                         }
 
                         // Set lastUpdated for 60 sec cache

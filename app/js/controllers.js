@@ -66,10 +66,10 @@ function logoutCtrl($scope, appSettings, gistData) {
 function listGistCtrl($scope, ghAPI, gistData) {
     $scope.gists = gistData.list;
     // Get the gists list
-    if($scope.gists.hasOwnProperty('lastUpdated')) {
+    if ($scope.gists.hasOwnProperty('lastUpdated')) {
         console.log($scope.gists.lastUpdated);
         var now = new Date();
-        var seconds = Math.round((now.getTime() - $scope.gists.lastUpdated.getTime())/1000);
+        var seconds = Math.round((now.getTime() - $scope.gists.lastUpdated.getTime()) / 1000);
         console.log(seconds + ' have passed since last LIST updated');
         if (seconds > 60) {
             ghAPI.gists();
@@ -86,25 +86,20 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
     if ($scope.gist.hasOwnProperty('single') && $scope.gist.single.hasOwnProperty('lastUpdated')) {
         console.log($scope.gist.single.lastUpdated);
         var now = new Date();
-        var seconds = Math.round((now.getTime() - $scope.gist.single.lastUpdated.getTime())/1000);
+        var seconds = Math.round((now.getTime() - $scope.gist.single.lastUpdated.getTime()) / 1000);
         console.log(seconds + ' have passed since last updated');
-       if (seconds > 60) {
-           ghAPI.gist($routeParams.gistId);
-       }
-
+        if (seconds > 60) {
+            ghAPI.gist($routeParams.gistId);
+        }
     } else {
         ghAPI.gist($routeParams.gistId);
     }
-
-
-    //console.log('>>>>>>>>>>>>>>>>>>>>>> scope gist');
-    //console.log();
 
     $scope.copyToClipboard = function (file) {
         if (clipboard !== undefined) {
             clipboard.set(file.content, 'text');
         } else {
-            console.log('>>> DEBUG MOD ON | Copy to clipboard really only works in App \n File name: ' + file.filename + '\n Content: \n' + file.content);
+            console.log('>>> DEBUG MODE ON | Copy to clipboard really only works in App \n File name: ' + file.filename + '\n Content: \n' + file.content);
         }
 
         $('.ok').slideDown('slow');
@@ -189,7 +184,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist deleted');
                 // Remove from list of gists.
-                gistData.list.splice( gistData.list.indexOf(gistData.getGistById($scope.gist.single.id)), 1 );
+                gistData.list.splice(gistData.list.indexOf(gistData.getGistById($scope.gist.single.id)), 1);
                 setTimeout(function () {
                     $('.ok').slideUp();
                     window.location.href = 'index.html#/';
@@ -358,12 +353,10 @@ function createGistCtrl($scope, $routeParams, $http, ghAPI, gistData) {
                     "public": $scope.isPublic,
                     files: {}
                 };
-
-                gistData.list.unshift(newGist);
-
-
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
+                gistData.list.unshift(newGist);
+
                 window.location.href = "#/gist/" + response.data.id;
             }
         });

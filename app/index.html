@@ -44,7 +44,7 @@
                 </h3>
 
                 <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
-
+                <i class="icon-file"></i> <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
                 <p>
                     <span ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag |
                         removeTagSymbol}} </i></span>

@@ -497,6 +497,7 @@ aside ul li a p span {
     border-right: none;
     font-size: 12px;
     padding: 0px 4px;
+    margin:0;
 }
 
 section input[type="text"] {
