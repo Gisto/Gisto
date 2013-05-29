@@ -117,6 +117,14 @@ div.toolbox span {
     text-align: left;
 }
 
+div.toolbox span.edit {
+    float: none;
+    font-size: 11px;
+    width:auto;
+    text-transform: uppercase;
+    text-align: left;
+}
+
 div.toolbox span i {
     font-style: normal;
     padding: 0px 5px;
