@@ -4,7 +4,7 @@
  * This is the working indicator
  */
 
-angular.module('myApp.services', []);
+angular.module('gisto.services', []);
 
 angular.module('JobIndicator', [])
     .config(function ($httpProvider) {

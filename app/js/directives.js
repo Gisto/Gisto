@@ -2,7 +2,7 @@
 
 /* Directives */
 
-var app = angular.module('myApp.directives', []);
+var app = angular.module('gisto.directives', []);
 
 
 app.directive('appVersion', ['version', function (version) {
