@@ -117,7 +117,7 @@ div.toolbox span {
     text-align: left;
 }
 
-div.toolbox span.edit {
+div.toolbox span.toolbtn {
     float: none;
     font-size: 11px;
     width:auto;
