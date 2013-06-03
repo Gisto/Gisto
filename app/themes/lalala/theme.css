@@ -155,13 +155,14 @@ div.comments {
 }
 
 .the-gist-name {
-    background: -webkit-linear-gradient(top, rgb(215, 255, 202), rgb(155, 187, 160));
+    background: rgb(116, 158, 123);
     border-bottom: 1px solid rgb(133, 133, 133);
+    color: #fff;
 }
 
 .the-gist-name a {
     border-left: 1px solid #999;
-    color: #555;
+    color: #fff;
 }
 
 .the-gist-name a:hover {
