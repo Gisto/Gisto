@@ -34,6 +34,11 @@ app.directive('editor', function ($timeout) {
 
                     editor.on('change', function (data) {
                         scope.file.content = editor.getValue();
+                        if (!scope.edit) {
+                            scope.$apply(function() {
+                                scope.enableEdit();
+                            });
+                        }
                     });
 
                 }, 0);

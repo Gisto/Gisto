@@ -110,6 +110,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
     };
 
     $scope.enableEdit = function () {
+        console.log('enable edit');
         $scope.edit = true;
         $('.edit').slideDown('slow');
     };
