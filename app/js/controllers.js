@@ -95,15 +95,16 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         ghAPI.gist($routeParams.gistId);
     }
 
-    $scope.copyToClipboard = function (file) {
+    $scope.copyToClipboard = function (data, message) {
+        message = message || 'Content of a file <b>' + data.filename + '</b> copied to clipboard';
         if (clipboard !== undefined) {
-            clipboard.set(file.content, 'text');
+            clipboard.set(data.content || data, 'text');
         } else {
-            console.log('>>> DEBUG MODE ON | Copy to clipboard really only works in App \n File name: ' + file.filename + '\n Content: \n' + file.content);
+            console.log('>>> DEBUG MODE ON | Copy to clipboard really only works in App \n Data: ' + (data.content || data));
         }
 
         $('.ok').slideDown('slow');
-        $('.ok span').html('Content of a file <b>' + file.filename + '</b> copied to clipboard');
+        $('.ok span').html(message);
         setTimeout(function () {
             $('.ok').slideUp();
         }, 2500);
