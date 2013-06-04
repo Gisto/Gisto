@@ -208,6 +208,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             filename: fileName,
             language: 'text'
         };
+        $scope.enableEdit();
     };
 
     $scope.dragStart = function (e) {
