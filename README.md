@@ -17,7 +17,7 @@ Gisto started as an attempt to fulfill the lack of a syntax highlighted and clou
 
 You may think of Gisto as Evernote for code.
 
-#### Gisto is now available to [download](https://github.com/Gisto/Gisto/edit/master/README.md#downloads) on: Windows, OSX and Linux
+#### Gisto is now available to [download](https://github.com/Gisto/Gisto#downloads) on: Windows, OSX and Linux
 
 ## Features
 
