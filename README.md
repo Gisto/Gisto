@@ -15,9 +15,9 @@ Based on GitHub Gists Infrastructure which means you can use all your existing s
 
 Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. 
 
-You may thing of Gisto as Evernote for code.
+You may think of Gisto as Evernote for code.
 
-###### Gisto will soon be available on: Windows, OSX and Linux
+#### Gisto is now available to [download](https://github.com/Gisto/Gisto/edit/master/README.md#downloads) on: Windows, OSX and Linux
 
 ## Features
 
@@ -28,12 +28,15 @@ You may thing of Gisto as Evernote for code.
 * Search filter gists
 * Offline access to gists (Will be integrated into full release)
 * UI Themes
+* Copy to clipboard
+
+and more...
 
 ## Status
 
-Gisto is not yet officially released to the public. It is currently heavily developed. Various features will be left out from the first release.
-
-**We are planing to release the first version very soon and add new features as quickly as possible.**
+At 06/06/2013 Gisto *alpha* version released to the public. 
+It is still under heavily development towards the full release. 
+Various features will be left out from the alpha release.
 
 ## Made of
 
@@ -53,16 +56,26 @@ and...
 
 ## Downloads
 
-Binary files for various platforms will be provided upon release, if you *really can't wait* - you can package Gisto by yourself (see "Packaging instructions" bellow).
+From website: [www.gistoapp.com](http://www.gistoapp.com)
+
+OR
+
+| Windows | Linux | Mac OSX |
+|---------|-------|---------|
+| [x86](http://www.gistoapp.com/download/0.1.0a/Gisto-0.1.0a-Win_x86.exe) | [x86](http://www.gistoapp.com/download/0.1.0a/Gisto-0.1.0a-Linux_x86_64.tar.gz) / [x86_64](http://www.gistoapp.com/download/0.1.0a/Gisto-0.1.0a-Linux_x86_64.tar.gz)| [x86](http://www.gistoapp.com/download/0.1.0a/Gisto-0.1.0a-OSX_x86.dmg) |
+
+
+P.S. If you *really want* - you can also package Gisto by yourself (see "Packaging instructions" bellow).
 
 ## Packaging instructions
 
 Gisto depends on [node-webkit](https://github.com/rogerwang/node-webkit) project. Build instructions for your platform may be found on the projects [Wiki](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps#make-a-package).
 
-## Issues and bug reporting
+## Issues, bug reporting and pull requests
 
 Please feel free to add a bug / feature request / suggestions to the [issue tracker]( https://github.com/Gisto/Gisto/issues).
 
+Pull requests are welcome as well.
 
 ## License
 
