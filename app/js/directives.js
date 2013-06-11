@@ -33,7 +33,13 @@ app.directive('editor', function ($timeout) {
                     editor.getSession().setMode("ace/mode/" + lang);
 
                     editor.on('change', function (data) {
-                        scope.file.content = editor.getValue();
+
+                        scope.$apply(function() {
+                            scope.file.content = editor.getValue();
+                            if (!scope.edit) {
+                                scope.enableEdit();
+                            }
+                        });
                     });
 
                 }, 0);
