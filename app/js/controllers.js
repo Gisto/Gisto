@@ -233,6 +233,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             $('.ok').slideDown('slow');
             $('.main section').removeClass('dragarea');
             $('.ok span').html('Dropped: <b>' + file.name + '</b>');
+            $scope.edit = true;
             reader.onloadend = (function (filename) {
                 return function (event) {
                     $scope.gist.single.files[filename] = {
