@@ -272,15 +272,18 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 filename: $scope.gist.single.files[file].filename
             };
         }
+        // Remove single file from gist array
         data.files[file_name] = null;
+        delete $scope.gist.single.files[file_name];
 
         ghAPI.edit($scope.gist.single.id, data, function (response) {
             if (response.status === 200) {
                 $('.ok').slideDown('slow');
                 $('.ok span').html('File ' + file_name + ' removed');
                 $scope.edit = false;
-                $scope.gist.single.files = response.data.files;
+                //$scope.gist.single.files = response.data.files;
                 $scope.gist.single.history = response.data.history;
+                $scope.gist.filesCount = Object.keys($scope.gist.single.files).length;
 
                 console.warn(response.data.id);
 
@@ -325,8 +328,8 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 $scope.edit = false;
                 $scope.gist.single.files = response.data.files;
                 $scope.gist.single.history = response.data.history;
-
-                console.warn(response.data.id);
+                $scope.gist.tags = $scope.gist.description ? $scope.gist.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                $scope.gist.filesCount = Object.keys($scope.gist.single.files).length;
 
                 setTimeout(function () {
                     $('.ok').slideUp();
