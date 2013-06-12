@@ -1,3 +1,45 @@
-2013-06-06  Sasha Khamkov  <sanusart@gmail.com>
+Sasha Khamkov <sanusart@gmail.com>	2013-06-13
 
-    * Alpha release
+    removed the "bin" directory, no need for that.
+
+Sasha Khamkov <sanusart@gmail.com>	2013-06-13
+
+    Change version number 0.1.0a -> 0.1.1a
+
+Sasha Khamkov <sanusart@gmail.com>	2013-06-12
+
+    * Allow deleting single file from gistAllow deleting single file from gist. Removed file from the gist files[], need to remove visualy fixes #28
+    * Updates reflecting on gist list
+
+Sasha Khamkov <sanusart@gmail.com>	2013-06-11
+
+    Fixed Drag & drop bug - not entering into edit mode after drop.
+
+Sasha Khamkov <sanusart@gmail.com>	2013-06-06
+
+    * Add tarballs for Linux_x86 and Linux_x86_64
+    * a bit clean-up
+
+Maayan Glikser <maayan@glikm.com>	2013-06-05
+
+    Added windows installer
+
+Maayan Glikser <maayan@glikm.com>	2013-06-05
+
+    Added alpha build for osx v0.1.0a
+
+Maayan Glikser <maayan@glikm.com>	2013-06-04
+
+    fixed direct link, now copies to clipboard
+
+Maayan Glikser <maayan@glikm.com>	2013-06-04
+
+    changed sorting for gists list
+
+Maayan Glikser <maayan@glikm.com>	2013-06-04
+
+    Added edit mode when adding a new file
+
+Maayan Glikser <maayan@glikm.com>	2013-06-04
+
+    Changed editable mode from click on content to onchange event
