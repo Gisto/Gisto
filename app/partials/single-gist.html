@@ -106,8 +106,9 @@
             </span>
 
 
-            <a ng-click="enableEdit()" title="Edit"><i class="icon-pencil"></i></a>
-            <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i class="icon-download"></i></a>
+            <a ng-click="deleteFile(file.filename)" data-file-index="{{$index}}" title="Delete file"><i class="icon-remove"></i></a>
+            <a ng-click="enableEdit()" title="Edit"><i class="icon-pencil icon-rotate-90"></i></a>
+            <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i class="icon-download-alt"></i></a>
             <a ng-click="copyToClipboard(gist.single.html_url, 'Direct link copied to clipboard')" title="Direct link"><i class="icon-link"></i></a>
             <a ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>

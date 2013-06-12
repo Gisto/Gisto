@@ -1,5 +1,5 @@
 @import url('normalize.css');
-@import url('font-awesome.min.css');
+@import url('font-awesome.css');
 
 * {
     box-sizing: border-box;
@@ -7,19 +7,19 @@
 
 *:focus {
     outline: none;
-    transition: all 0.15s ease-in;
     -webkit-transition: all 0.15s ease-in;
+    transition: all 0.15s ease-in;
 }
 
 ::-webkit-scrollbar {
-    height: 5px;
     width: 7px;
+    height: 5px;
     background: #555;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #f2f2f2;
     -webkit-border-radius: 2px;
+    background: #f2f2f2;
     -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
 }
 
@@ -28,15 +28,15 @@
 }
 
 html {
-    height: 100%;
     overflow: hidden;
+    height: 100%;
     font: 20px/1.231 'trebuchet ms', arial, sans-serif;
 }
 
 body {
     display: -webkit-flex;
-    height: 100%;
     margin: 0;
+    height: 100%;
 }
 
 .clear {
@@ -45,8 +45,8 @@ body {
 
 /* float clearing for IE6 */
 * html .clearfix {
-    height: 1%;
     overflow: visible;
+    height: 1%;
 }
 
 /* float clearing for IE7 */
@@ -56,11 +56,11 @@ body {
 
 /* float clearing for everyone else */
 .clearfix:after {
-    clear: both;
-    content: ".";
     display: block;
-    height: 0;
     visibility: hidden;
+    clear: both;
+    height: 0;
+    content: ".";
     font-size: 0;
 }
 
@@ -74,18 +74,18 @@ body {
 }
 
 h1 {
-    font-size: 2em;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    font-size: 2em;
 }
 
 a {
+    text-decoration: none;
+    cursor: pointer;
     -webkit-transition: all 300ms ease-in-out;
     -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
     -ms-transition: all 300ms ease-in-out;
-    cursor: pointer;
-    text-decoration: none;
+    -o-transition: all 300ms ease-in-out;
 }
 
 h1 a {
@@ -94,41 +94,41 @@ h1 a {
 
 aside header,
 .main header {
-    padding: 0px 10px;
-    line-height: 50px;
     position: relative;
+    padding: 0px 10px;
     text-align: left;
+    line-height: 50px;
 }
 
 div.toolbox {
-    padding: 10px;
-    line-height: 14px;
-    font-size: 14px;
+    -webkit-user-select: none;
     z-index: 5;
     margin: 0;
+    padding: 10px;
     text-align: right;
-    -webkit-user-select: none;
+    font-size: 14px;
+    line-height: 14px;
 }
 div.toolbox span {
     float: left;
-    font-size: 11px;
     width: 520px;
-    text-transform: uppercase;
     text-align: left;
+    text-transform: uppercase;
+    font-size: 11px;
 }
 
 div.toolbox span.toolbtn {
     float: none;
-    font-size: 11px;
     width:auto;
-    text-transform: uppercase;
     text-align: left;
+    text-transform: uppercase;
+    font-size: 11px;
 }
 
 div.toolbox span i {
-    font-style: normal;
     padding: 0px 5px;
     border-radius: 2px;
+    font-style: normal;
 }
 
 div.toolbox a {
@@ -142,8 +142,8 @@ div.toolbox a {
 .type {
     padding: 2px 8px;
     border-radius: 3px;
-    text-transform: uppercase;
     text-decoration: none;
+    text-transform: uppercase;
     font-weight: 700;
 }
 
@@ -154,11 +154,11 @@ aside {
 
 aside ul {
     -webkit-flex: 1 1 auto;
-    min-height: 0;
-    padding: 0px;
-    margin: 0;
-    list-style: none;
     overflow-y: scroll;
+    margin: 0;
+    padding: 0px;
+    min-height: 0;
+    list-style: none;
 }
 
 aside ul li {
@@ -166,12 +166,12 @@ aside ul li {
 }
 
 aside ul li a {
-    text-decoration: none;
+    display: block;
     padding: 10px 20px;
+    text-decoration: none;
     text-decoration: none;
     font: 300 16px 'trebuchet ms', arial, sans-serif;
     cursor: pointer;
-    display: block;
 }
 
 aside ul li a:first-child {
@@ -197,18 +197,18 @@ menu {
 }
 
 .main section {
-    padding: 20px;
-    font-size: 14px;
     -webkit-flex: 1 1 auto;
     overflow-y: scroll;
+    padding: 20px;
     min-height: 0;
+    font-size: 14px;
 }
 
 div.main header a .settings {
     position: absolute;
-    float: left;
     top: 10px;
     right: 10px;
+    float: left;
     padding: 6px;
     border-radius: 3px;
     text-decoration: none;
@@ -216,9 +216,9 @@ div.main header a .settings {
 
 div.main header a .update {
     position: absolute;
-    float: left;
     top: 10px;
     right: 45px;
+    float: left;
     padding: 6px;
     border-radius: 3px;
     text-decoration: none;
@@ -226,9 +226,9 @@ div.main header a .update {
 
 div.main header a .create {
     position: absolute;
-    float: left;
     top: 10px;
     right: 83px;
+    float: left;
     padding: 6px;
     border-radius: 3px;
     text-decoration: none;
@@ -236,24 +236,24 @@ div.main header a .create {
 
 div.main img.gravatar {
     position: absolute;
-    float: left;
     top: 10px;
     right: 116px;
+    float: left;
     padding: 0px;
+    width: 34px;
     border-radius: 3px;
     text-decoration: none;
-    width: 34px;
 }
 
 div.comments {
-    padding: 10px;
-    line-height: 14px;
-    z-index: 9;
     position: relative;
-    font-size: 14px;
-    margin: 0;
-    text-align: left;
+    z-index: 9;
     overflow-x: auto;
+    margin: 0;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 14px;
 }
 
 div.comments .clicky {
@@ -266,38 +266,38 @@ div.comments i {
 }
 
 .the-gist {
-    padding: 0px;
     margin: 0px 0px 20px 0px;
+    padding: 0px;
 }
 
 .the-gist pre {
-    padding: 10px;
     margin: 0;
+    padding: 10px;
 }
 
 .the-gist-name {
-    padding: 10px;
     position: relative;
+    padding: 10px;
 }
 
 .the-gist-name a {
-    display: block;
-    float: right;
-    font-size: 20px;
     position: relative;
     top: 0px;
-    height: 22px;
     right: -10px;
+    display: block;
+    float: right;
     width: 38px;
+    height: 22px;
     text-align: center;
     text-decoration: none;
+    font-size: 20px;
 }
 
 .messenger {
     display: none;
-    cursor: pointer;
-    font-size: 14px;
     padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 .messenger.info {
@@ -322,16 +322,16 @@ div.comments i {
 }
 
 .messenger a {
-    background: #FFF;
-    color: #555;
     padding: 0px 3px;
-    text-decoration: none;
     border-radius: 2px;
-    font-size: 12px;
-    text-transform: uppercase;
+    background: #FFF;
     box-shadow: 1px 1px 1px #555;
-    font-weight: 100;
+    color: #555;
+    text-decoration: none;
+    text-transform: uppercase;
     text-shadow: none;
+    font-weight: 100;
+    font-size: 12px;
 }
 
 .messenger a:hover {
@@ -340,12 +340,12 @@ div.comments i {
 
 aside header input {
     position: absolute;
-    right: 5px;
     top: 10px;
-    border-radius: 21px;
+    right: 5px;
     padding: 5px 10px;
     width: 50%;
     height: 33px;
+    border-radius: 21px;
 }
 
 #empty {
@@ -354,8 +354,8 @@ aside header input {
 
 .the-comments span {
     display: none;
-    padding: 0px 10px;
     margin: 10px 0;
+    padding: 0px 10px;
 }
 
 div.blockquote {
@@ -365,35 +365,35 @@ div.blockquote {
 
 div.blockquote p {
     padding: 0 10px;
-    line-height: 21px;
     text-indent: 0;
+    line-height: 21px;
 }
 
 div.main .the-comments .comment_gravatar {
-    border-radius: 3px;
     width: 34px;
+    border-radius: 3px;
     vertical-align: middle;
 }
 
 /** login form **/
 .login-form {
+    margin: auto;
+    width: 454px;
+    height: 275px;
     -webkit-border-radius: 16px;
     border-radius: 16px;
-    width: 454px;
-    text-align: center;
-    height: 275px;
     background: transparent;
-    margin: auto;
+    text-align: center;
 }
 
 .login-form .spiner {
-    margin: 10px auto;
-    display: none
+    display: none;
+    margin: 10px auto
 }
 
 .login-form header {
-    text-align: center;
     padding: 20px 0px 10px;
+    text-align: center;
 }
 
 .login-form i {
@@ -407,47 +407,47 @@ div.main .the-comments .comment_gravatar {
 .login-form input[type="password"] {
     display: block;
     margin: 10px auto;
+    padding: 10px;
     width: 300px;
     border: 1px solid #555;
-    padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px #bbb inset;
 }
 
 .login-form input[type="submit"] {
-    margin: 21px 0 0 64px;
-    width: 310px;
-    color: #ffffff;
-    padding: 10px 20px;
-    background: -webkit-gradient(linear, left top, left bottom, from(#6b6b6b), to(#000000));
-    margin: 0 auto;
-    border-radius: 5px;
-    border: 1px solid #000000;
-    box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.5), inset 0px 0px 1px rgba(255, 255, 255, 0.7);
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.9), 0px 1px 0px rgba(255, 255, 255, 1);
     display: block;
+    margin: 21px 0 0 64px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    width: 310px;
     width: 300px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#6b6b6b), to(#000000));
+    box-shadow: 0px 1px 3px rgba(000, 000, 000, 0.5), inset 0px 0px 1px rgba(255, 255, 255, 0.7);
+    color: #ffffff;
     text-transform: uppercase;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.9), 0px 1px 0px rgba(255, 255, 255, 1);
 }
 
 .the-gist pre {
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 400px;
-    padding: 0;
-    margin: 0;
 }
 
 .the-gist-name > b {
-    float: left;
     position: relative;
     top: 3px;
     left: 6px;
+    float: left;
 }
 
 .the-gist-name > i {
-    float: left;
     position: relative;
     top: 4px;
+    float: left;
 }
 
 .the-gist-name {
@@ -464,19 +464,19 @@ div.main .the-comments .comment_gravatar {
 }
 
 aside ul li a {
-    font-size: 12px;
     -webkit-user-select: none;
+    font-size: 12px;
 }
 
 aside ul li a > h3 {
-    font-size: 20px;
-    padding: 0px 0px 0px 0px;
     margin: 0px 0px 5px 0px;
+    padding: 0px 0px 0px 0px;
+    font-size: 20px;
 }
 
 aside ul li a span {
-    padding: 0px 4px;
     margin: 0px -5px 0px 0px;
+    padding: 0px 4px;
     text-shadow: none;
 }
 
@@ -501,18 +501,18 @@ aside ul li a p span {
 }
 
 .gist-comment {
-    border-radius: 3px;
-    border-right: none;
-    font-size: 12px;
-    padding: 0px 4px;
     margin:0;
+    padding: 0px 4px;
+    border-right: none;
+    border-radius: 3px;
+    font-size: 12px;
 }
 
 section input[type="text"] {
     display: block;
     margin: 10px 0;
-    width: 300px;
     padding: 10px;
+    width: 300px;
     border-radius: 5px;
 }
 
@@ -521,25 +521,25 @@ section input[type="text"].desc {
 }
 
 section h1 {
-    font-weight: 300;
     text-transform: uppercase;
+    font-weight: 300;
 }
 
 header input.edaitable {
-    padding: 5px;
-    border-radius: 3px;
     margin: 0;
+    padding: 5px;
     width: 50%;
+    border-radius: 3px;
 }
 
 .the-gist-name input.edaitable {
-    padding: 5px;
-    border-radius: 3px;
-    margin: 0;
-    width: 200px;
     position: absolute;
     top: 6px;
     left: 6px;
+    margin: 0;
+    padding: 5px;
+    width: 200px;
+    border-radius: 3px;
 }
 
 .the-gist-name span {
@@ -551,9 +551,9 @@ header input.edaitable {
 }
 
 .blockquote code {
-    font-family: monospace;
     padding: 1px 3px;
     border-radius: 2px;
+    font-family: monospace;
 }
 
 .main {
@@ -562,23 +562,23 @@ header input.edaitable {
 }
 
 .login .main:before {
-    content: "";
     position: absolute;
-    z-index: -1;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    z-index: -1;
     background-image: url(data:image/png;base64,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);
+    content: "";
 }
 
 body.login header {
-    background:transparent;
-    border: none;
     height: auto;
+    border: none;
+    background:transparent;
 }
 
 details > summary {
-    font-size: 18px;
     margin: 10px 0;
+    font-size: 18px;
 }

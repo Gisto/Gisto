@@ -256,6 +256,48 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         console.log('drag end');
     };
 
+    $scope.deleteFile = function(file_name) {
+        console.log('delete file',file_name);
+        $('.loading span').html('Deleting file <b>' + file_name + '</b>');
+
+        var data = {
+            description: $scope.gist.description,
+            id: $scope.gist.id,
+            files: {}
+        };
+
+        for (var file in $scope.gist.single.files) {
+            data.files[file] = {
+                content: $scope.gist.single.files[file].content,
+                filename: $scope.gist.single.files[file].filename
+            };
+        }
+        data.files[file_name] = null;
+
+        ghAPI.edit($scope.gist.single.id, data, function (response) {
+            if (response.status === 200) {
+                $('.ok').slideDown('slow');
+                $('.ok span').html('File ' + file_name + ' removed');
+                $scope.edit = false;
+                $scope.gist.single.files = response.data.files;
+                $scope.gist.single.history = response.data.history;
+
+                console.warn(response.data.id);
+
+                setTimeout(function () {
+                    $('.ok').slideUp();
+                }, 2500);
+            } else {
+                $('.warn').slideDown('slow');
+                $('.warn span').text('Something went wrong');
+                setTimeout(function () {
+                    $('.warn').slideUp();
+                }, 2500);
+            }
+        });
+
+    };
+
     $scope.update = function ($event) {
         $('.loading span').text('Saving...');
         $('.edit').slideUp();
@@ -300,7 +342,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
     };
 }
 
-function commentsGistCtrl($scope, $routeParams, $http, ghAPI) {
+function commentsGistCtrl($scope, $routeParams, ghAPI) {
     ghAPI.comments($routeParams.gistId, function (response) {
         if (response.status === 200) {
             $scope.comments = response.data;
@@ -310,7 +352,7 @@ function commentsGistCtrl($scope, $routeParams, $http, ghAPI) {
     });
 }
 
-function createGistCtrl($scope, $routeParams, $http, ghAPI, gistData) {
+function createGistCtrl($scope, ghAPI, gistData) {
     $scope.description = '';
     $scope.isPublic = false;
     $scope.files = [
