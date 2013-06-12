@@ -34,7 +34,9 @@ and more...
 
 ## Status
 
-At 06/06/2013 Gisto *alpha* version released to the public. 
+At 13/06/2013 Gisto *alpha* version 0.1.1a released featuring several bug fixes.
+At 06/06/2013 Gisto *alpha* version 0.1.0a released to the public.
+
 It is still under heavily development towards the full release. 
 Various features will be left out from the alpha release.
 
@@ -62,7 +64,7 @@ OR
 
 | Windows | Linux | Mac OSX |
 |---------|-------|---------|
-| [x86](http://www.gistoapp.com/download/0.1.0a/Gisto-0.1.0a-Win_x86.zip) | [x86](http://www.gistoapp.com/download/0.1.0a/Gisto-0.1.0a-Linux_x86.tar.gz) / [x86_64](http://www.gistoapp.com/download/0.1.0a/Gisto-0.1.0a-Linux_x86_64.tar.gz)| [x86](http://www.gistoapp.com/download/0.1.0a/Gisto-0.1.0a-OSX_x86.dmg) |
+| [x86](http://www.gistoapp.com/download/0.1.1a/Gisto-0.1.1a-Win_x86.zip) | [x86](http://www.gistoapp.com/download/0.1.1a/Gisto-0.1.1a-Linux_x86.tar.gz) / [x86_64](http://www.gistoapp.com/download/0.1.1a/Gisto-0.1.1a-Linux_x86_64.tar.gz)| [x86](http://www.gistoapp.com/download/0.1.1a/Gisto-0.1.1a-OSX_x86.dmg) |
 
 
 P.S. If you *really want* - you can also package Gisto by yourself (see "Packaging instructions" bellow).
