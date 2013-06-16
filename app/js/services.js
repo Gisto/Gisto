@@ -1,51 +1,110 @@
 'use strict';
-/* Services */
 
+/**
+ * This is the working indicator
+ */
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', []).
-    value('version', '0.1');
-//
-// This is the working indicator
-//
-angular.module('JobIndicator', [])
-    .config(function ($httpProvider) {
-        $httpProvider.responseInterceptors.push('myHttpInterceptor');
-        var spinnerFunction = function (data, headersGetter) {
-// todo start the spinner here
-            $('.loading').slideDown('slow');
-            return data;
+angular.module('gisto.services', []);
+
+angular.module('requestHandler', [], function ($provide) {
+    $provide.factory('requestHandler', function ($http) {
+
+        function handleRequest(args) {
+
+            if (!args.stopNotification) { // stop the notification if requested
+                $('.loading').show();
+            }
+
+            var http = $http(args);
+
+            var requestService = {
+                success: function (callback) {
+                    http.success(function (data, status, headers, config) {
+                        // only hide the notification if there are no pending requests
+                        if ($http.pendingRequests.length < 1) {
+                            $('.loading').slideUp();
+                        }
+                        callback(data, status, headers, config); // call the user callback
+                    });
+                    return requestService; // return the object for chaining
+                },
+                error: function (callback) {
+                    http.error(function (data, status, headers, config) {
+                        // only hide the notification if there are no pending requests
+                        if ($http.pendingRequests.length < 1) {
+                            $('.loading').slideUp();
+                        }
+                        callback(data, status, headers, config); // call the user callback
+                    });
+                    return requestService; // return the object for chaining
+                }
+            };
+
+            return requestService;
+        }
+
+        // create the main function mimicking $http
+        var requestHandler = function (args) {
+            return handleRequest(args);
         };
-        $httpProvider.defaults.transformRequest.push(spinnerFunction);
-    })
-// register the interceptor as a service, intercepts ALL angular ajax http calls
-    .factory('myHttpInterceptor', function ($q, $window) {
-        return function (promise) {
-            return promise.then(function (response) {
-// do something on success
-// todo hide the spinner
-                $('.loading').slideUp('slow');
-                return response;
-            }, function (response) {
-// do something on error
-// todo hide the spinner
-//$('.warn').slideDown('slow');
-//$('.warn span').text('Something not right');
-                console.info('services.js -> "JobIndicator" condition went to error.');
-                return $q.reject(response);
-            });
+
+        // add $http sub methods support
+
+        requestHandler.delete = function (url, config) {
+            config = config || {};
+            config.method = 'delete';
+            config.url = url;
+            return handleRequest(config);
         };
+
+        requestHandler.get = function (url, config) {
+            config = config || {};
+            config.method = 'get';
+            config.url = url;
+            return handleRequest(config);
+        };
+
+        requestHandler.jsonp = function (url, config) {
+            config = config || {};
+            config.method = 'jsonp';
+            config.url = url;
+            return handleRequest(config);
+        };
+
+        requestHandler.post = function (url, data, config) {
+            config = config || {};
+            config.method = 'post';
+            config.url = url;
+            config.data = data;
+            return handleRequest(config);
+        };
+
+        requestHandler.put = function (url, data, config) {
+            config = config || {};
+            config.method = 'put';
+            config.url = url;
+            config.data = data;
+            return handleRequest(config);
+        };
+
+        return requestHandler;
+
     });
+});
 
-angular.module('gitHubAPI', [], function ($provide) {
-    $provide.factory('ghAPI', function ($http) {
+angular.module('gitHubAPI', ['gistData', 'appSettings', 'requestHandler'], function ($provide) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler) {
         var api_url = 'https://api.github.com/gists',
-            token = localStorage.token;
+            token = appSettings.get('token');
         var api = {
-// POST /authorizations
+
+            setToken: function (newToken) {
+                token = newToken;
+            },
+
+            // POST /authorizations
             login: function (user, pass, callback) {
-                $http({
+                requestHandler({
                     method: 'POST',
                     url: 'https://api.github.com/authorizations',
                     data: {"scopes": [
@@ -58,7 +117,6 @@ angular.module('gitHubAPI', [], function ($provide) {
                         "Content-Type": "application/x-www-form-urlencoded"
                     }
                 }).success(function (data, status, headers, config) {
-                        localStorage.token = token = data.token;
                         return callback({
                             data: data,
                             status: status,
@@ -74,38 +132,54 @@ angular.module('gitHubAPI', [], function ($provide) {
                         });
                     });
             },
+
             // GET /gists
-            gists: function (callback, pageNumber, updateOnly) {
+            gists: function (updateOnly, pageNumber) {
                 var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
                     headers = {
-                        Authorization: 'token ' + token
+                        Authorization: 'token ' + JSON.parse(localStorage.settings).token
                     };
 
                 if (updateOnly) {
                     headers['If-Modified-Since'] = localStorage.gistsLastUpdated;
                 }
 
-                $http({
+                requestHandler({
                     method: 'GET',
                     url: url,
                     headers: headers
                 }).success(function (data, status, headers, config) {
-                        callback(data);
 
-                        // check if there are more gists and retrieve them
-                        var headers = headers();
-                        if (headers.link) {
-                            var links = headers.link.split(',');
+                        for (var item in data) { // process and arrange data
+                            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                            data[item].single = {};
+                            console.log(item);
+                            data[item].filesCount = Object.keys(data[item].files).length;
+                        }
+
+                        // Set lastUpdated for 60 sec cache
+                        data.lastUpdated = new Date();
+
+                        // Set avatar
+                        appSettings.setOne('avatar', data[item].user.gravatar_id);
+                        gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
+                        // localStorage.gistsLastUpdated = data.headers['last-modified'];
+
+                        var header = headers();
+                        if (header.link) {
+                            var links = header.link.split(',');
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
                                     pageNumber = link.match(/[0-9]+/)[0];
-                                    api.gists(callback, pageNumber, null);
+                                    console.log(pageNumber);
+                                    api.gists(null, pageNumber);
                                 }
                             }
                         }
+
                     }).error(function (data, status, headers, config) {
-                        callback({
+                        console.log({
                             data: data,
                             status: status,
                             headers: headers(),
@@ -113,18 +187,35 @@ angular.module('gitHubAPI', [], function ($provide) {
                         });
                     });
             },
+
             // GET /gists/:id
-            gist: function (id, callback) {
-                $http({
+            gist: function (id) {
+                var gist = gistData.getGistById(id); // get the currently viewed gist
+
+                requestHandler({
                     method: 'GET',
                     url: api_url + '/' + id,
                     headers: {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
-                        callback(data);
+                        api.is_starred(data.id, function (response) {
+                            if (response.status === 204) {
+                                data.starred = true;
+                            } else {
+                                data.starred = false;
+                            }
+                            console.log('Is it starred: ' + data.starred);
+                        });
+
+                        // save timestamp of pull
+                        data.lastUpdated = new Date();
+                        console.log(data.lastUpdated);
+
+                        gist.single = data; // update the current gist with the new data
+
                     }).error(function (data, status, headers, config) {
-                        callback({
+                        console.log({
                             data: data,
                             status: status,
                             headers: headers(),
@@ -132,9 +223,10 @@ angular.module('gitHubAPI', [], function ($provide) {
                         });
                     });
             },
+
             // POST /gists
             create: function (data, callback) {
-                $http({
+                requestHandler({
                     method: 'POST',
                     url: api_url,
                     data: data,
@@ -157,9 +249,10 @@ angular.module('gitHubAPI', [], function ($provide) {
                         });
                     });
             },
+
             // PATCH /gists/:id
             edit: function (id, data, callback) {
-                $http({
+                requestHandler({
                     method: 'PATCH',
                     url: api_url + '/' + id,
                     data: data,
@@ -182,15 +275,17 @@ angular.module('gitHubAPI', [], function ($provide) {
                         });
                     });
             },
+
             // DELETE /gists/:id
             delete: function (id, callback) {
-                $http({
+                requestHandler({
                     method: 'DELETE',
                     url: api_url + '/' + id,
                     headers: {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
+
                         return callback({
                             data: data,
                             status: status,
@@ -206,9 +301,10 @@ angular.module('gitHubAPI', [], function ($provide) {
                         });
                     });
             },
+
             // GET /gists/:id/comments
             comments: function (id, callback) {
-                $http({
+                requestHandler({
                     method: 'GET',
                     url: api_url + '/' + id + '/comments',
                     headers: {
@@ -230,18 +326,86 @@ angular.module('gitHubAPI', [], function ($provide) {
                         });
                     });
             },
+
             // GET /gists/starred
             starred: function () {
             },
+
             // PUT /gists/:id/star
-            star: function () {
+            star: function (id, callback) {
+                requestHandler({
+                    method: 'PUT',
+                    url: api_url + '/' + id + '/star',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
             },
+
             // DELETE /gists/:id/star
-            unstar: function () {
+            unstar: function (id, callback) {
+                requestHandler({
+                    method: 'DELETE',
+                    url: api_url + '/' + id + '/star',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
             },
+
             // GET /gists/:id/star
-            is_starred: function () {
+            is_starred: function (id, callback) {
+                requestHandler({
+                    method: 'get',
+                    url: api_url + '/' + id + '/star',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
             },
+
             // POST /gists/:id/forks
             fork: function () {
             }
@@ -251,111 +415,11 @@ angular.module('gitHubAPI', [], function ($provide) {
     });
 });
 
-angular.module('cacheService', ['gitHubAPI', 'gistData'], function ($provide) {
-    $provide.factory('cacheService', function (ghAPI, gistData) {
-        var cacheService = {
-            generateKey: function (func, params) {
-                var key = func + '/';
-
-                if (params.hasOwnProperty('id')) {
-                    key += params.id;
-                }
-
-                cacheService.set('cachedKeys', [key]);
-                return key;
-            },
-            get: function (func, scope, params, invalidate) {
-                params = params || {};
-                var key = cacheService.generateKey(func, params);
-                var cache = false; // debug
-                if (navigator.onLine && !cache) {
-                    cacheService[func].call(scope, key, params, invalidate);
-                } else {
-                    var cachedData = localStorage[key];
-                    if (cachedData) {
-                        if (Object.prototype.toString.call(scope) === '[object Array]') {
-                            scope.push.apply(scope, JSON.parse(cachedData));
-                        } else { // json object
-                            var parsedData = JSON.parse(cachedData);
-                            // modify the existing object so we won't break the model binding
-                            for (var item in parsedData) {
-                                scope[item] = parsedData[item];
-                            }
-                        }
-                    }
-                }
-            },
-            set: function (key, value, invalidate) {
-                if (invalidate) {
-                    console.log('invalidate');
-                    localStorage[key] = JSON.stringify(value); // overwrite value
-                } else {
-                    var data = null;
-                    try {
-                        data = JSON.parse(localStorage[key]);
-                    } catch (parseException) {
-                        data = [];
-                    }
-                    if (Object.prototype.toString.call(data) === '[object Array]') {
-                        data.push.apply(data, value || []);
-                    } else { // json object
-                        data = value; // overwrite the data instead of adding it
-                    }
-                    localStorage[key] = JSON.stringify(data);
-                }
-
-            },
-            invalidateCache: function () {
-                var cachedKeys = localStorage.cachedKeys;
-                if (cachedKeys) {
-                    cachedKeys = JSON.parse(cachedKeys);
-                    for (var key in cachedKeys) {
-                        delete localStorage[cachedKeys[key]];
-                    }
-                    delete localStorage.cachedKeys;
-                }
-            },
-            getGists: function (key, params, invalidate) {
-                var that = this;
-
-                ghAPI.gists(function (data) {
-
-                    // process response
-                    for (var item in data) {
-                        data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-                        data[item].single = {};
-                    }
-
-                    // append data to current scope
-                    that.push.apply(that, data);
-
-                    // save local copy
-                    cacheService.set(key, data, invalidate);
-
-                });
-            },
-            getSingleGist: function (key, params, cacheOnly) {
-
-                ghAPI.gist(params.id, function (data) {
-                    if (!cacheOnly) {
-                        var gist = gistData.getGistReferenceById(params.id);
-                        gist.single = data; // update the current viewed gist
-                    }
-
-                    cacheService.set(key, data, true);
-                });
-
-            }
-        };
-        return cacheService;
-    });
-});
-
 angular.module('gistData', [], function ($provide) {
     $provide.factory('gistData', function () {
         var dataService = {
             list: [],
-            getGistReferenceById: function (id) {
+            getGistById: function (id) {
                 for (var gist in dataService.list) {
                     gist = dataService.list[gist];
                     if (gist.id === id) {
@@ -365,5 +429,96 @@ angular.module('gistData', [], function ($provide) {
             }
         };
         return dataService;
+    });
+});
+
+angular.module('appSettings', [], function ($provide) {
+    $provide.factory('appSettings', function () {
+        var settings = {
+
+            theme_list: ['default', 'lalala', 'nite', 'dark', 'dark-blue'],
+
+            editor_theme_list: [
+                'ambiance',
+                'chaos',
+                'chrome',
+                'clouds',
+                'clouds_midnight',
+                'cobalt',
+                'crimson_editor',
+                'dawn',
+                'dreamweaver',
+                'eclipse',
+                'github',
+                'idle_fingers',
+                'kr',
+                'merbivore',
+                'merbivore_soft',
+                'mono_industrial',
+                'monokai',
+                'pastel_on_dark',
+                'solarized_dark',
+                'solarized_light',
+                'textmate',
+                'tomorrow',
+                'tomorrow_night_blue',
+                'tomorrow_night_bright',
+                'tomorrow_night_eighties',
+                'tomorrow_night',
+                'twilight',
+                'vibrant_ink',
+                'xcode'
+            ],
+
+            isLoggedIn: function (callback) {
+
+                if (localStorage.settings && JSON.parse(localStorage.settings).token !== undefined) {
+                    return true;
+                } else {
+                    document.location.href = '#/login';
+                }
+            },
+
+            logOut: function () {
+                delete localStorage.settings;
+                document.location.href = '#/login';
+            },
+
+            getAll: function () {
+                var all_settings = JSON.parse(localStorage.settings);
+                return all_settings;
+            },
+
+            get: function (name) {
+                if (settings.isLoggedIn()) {
+                    var storage = JSON.parse(localStorage.settings);
+                    return storage[name];
+                }
+            },
+
+            set: function (data, callback) {
+                var new_data = {};
+                new_data.token = data.token;
+                new_data.theme = data.theme;
+                new_data.avatar = data.avatar;
+                new_data.editor_theme = data.editor_theme;
+                new_data.last_modified = new Date().toUTCString();
+                if (localStorage.settings = JSON.stringify(new_data)) {
+                    if (callback) {
+                        return callback({
+                            status: 'ok'
+                        });
+                    }
+                }
+            },
+
+            setOne: function (key, new_data, callback) {
+                var old_data = settings.getAll();
+                old_data[key] = new_data;
+                settings.set(old_data);
+            }
+        };
+
+        return settings;
     });
 });

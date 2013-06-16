@@ -1,43 +1,86 @@
-# GISTO — for gists #
+# \</Gisto\>
 
-## How to use API
+###### Snippets made awesome
 
-API Methods:
+| Light theme | Dark theme |
+|:------|:------|
+| ![Gisto](http://Gisto.github.io/img/lite_theme.png "Gisto") | ![Gisto](http://Gisto.github.io/img/dark_theme.png "Gisto") |
 
-* /auth/user/pass
-* /gists 
-* /gists/starred
-* /gists/id
-* /gists/star/id
-* /gists/unstar/id
-* /gists/comments/id
 
-## post methods
-* /gists/create
+## About
 
->parameters:
+Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily.
 
-`description - type(string) - description of the gist`
+Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account!
 
-`files - type(json string) - Json array with files and content { "text.txt": {content: "bla bla"} }`
+Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. 
 
-* /gists/edit
+You may think of Gisto as Evernote for code.
 
->parameters:
+#### Gisto is now available to [download](https://github.com/Gisto/Gisto#downloads) on: Windows, OSX and Linux
 
-`description - type(string) - new description of the gist`
+## Features
 
-`files - type(json string) - Json array with files and content { "text.txt": {content: "bla bla edited"} }`
+* GitHub integration
+* Gist tagging
+* Quick in-place editing
+* Drag & drop to create gist/add file
+* Search filter gists
+* Offline access to gists (Will be integrated into full release)
+* UI Themes
+* Copy to clipboard
 
-### Running the API server
+and more...
 
-1. browse to the api directory
-2. node server
-3. navigate your browser to `http://localhost:3000/auth/user/pass` when user and pass are your github credentials to authenticate.
-4. navigate to any of the urls specified by the API methods
+## Status
 
-#### Change log
+At 13/06/2013 Gisto *alpha* version 0.1.1a released featuring several bug fixes.
+At 06/06/2013 Gisto *alpha* version 0.1.0a released to the public.
 
-[2013-03-26]
-* Created very basic app design (to see: http://localhost/gisto/app/#/view1)
+It is still under heavily development towards the full release. 
+Various features will be left out from the alpha release.
 
+## Made of
+
+Gisto made using HTML5/CSS3 and:
+
+* [Angular.js](http://angularjs.org/) 
+* [Node.js](http://nodejs.org/)
+* [node-webkit](https://github.com/rogerwang/node-webkit)
+
+and...
+
+* [Angular UI](http://angular-ui.github.io/)
+* [jQuery](http://jquery.com/)
+* [Ace editor](http://ajaxorg.github.io/ace/)
+* [showdown](https://github.com/coreyti/showdown)
+* [Font-Awesome](http://fortawesome.github.io/Font-Awesome/)
+
+## Downloads
+
+From website: [www.gistoapp.com](http://www.gistoapp.com)
+
+P.S. If you *really want* - you can also package Gisto by yourself (see "Packaging instructions" bellow).
+
+## Packaging instructions
+
+Gisto depends on [node-webkit](https://github.com/rogerwang/node-webkit) project. Build instructions for your platform may be found on the projects [Wiki](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps#make-a-package).
+
+## Issues, bug reporting and pull requests
+
+Please feel free to add a bug / feature request / suggestions to the [issue tracker]( https://github.com/Gisto/Gisto/issues).
+
+Pull requests are welcome as well.
+
+## License
+
+MIT https://github.com/Gisto/Gisto/blob/master/LICENSE
+
+## Contributors and mentions
+
+|||||
+| ------------- |:-------------|:-----|:-----|
+| ![Maayan](http://www.gravatar.com/avatar/3a615b34ef2060face8fcd481c6377e1?s=50 "Maayan") | Maayan | [@MaayanGlikser](https://twitter.com/MaayanGlikser) | [www.glikm.com](http://www.glikm.com) |
+| ![Sasha](http://www.gravatar.com/avatar/7ddad1a9a1c8de452badaf82b6c30c76?s=50 "Sasha") | Sasha | [@sanusart](https://twitter.com/sanusart) | [www.sanusart.com](http://sanusart.com) |
+
+---

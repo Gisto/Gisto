@@ -1,51 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="gisto">
 <head>
     <meta charset="utf-8">
     <title>Gisto</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" data-ng-controller="settingsCtrl" href="themes/{{theme}}/theme.css">
 
     <script>
+        /**
+         * Needed to load node-webkit functionality.
+         */
         if (typeof window.require != 'undefined') {
             window.gui = require('nw.gui');
             var clipboard = window.gui.Clipboard.get();
-            /*
-             clipboard.set('I love node-webkit :)', 'text');
-             console.log('>>> ');console.log(clipboard.get('text'));
-             */
         }
     </script>
 
 </head>
 
-<body class="ng-cloak">
+<body class="ng-cloak" ui-route="/login" ng-class="{login: $uiRoute}">
 
-<aside class="flex" ng-controller="listGistCtrl">
+<aside ui-route="/login" class="flex" ui-if="$uiRoute==false" ng-controller="listGistCtrl">
 
     <header class="flex">
         <h1 title="Gist desktop app"><a href="#/">
             <i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i>
         </a></h1>
         <input list="gistDataList" type="text" ng-model="search" class="search-query" placeholder="Search gists">
+        <!--
         <datalist id="gistDataList">
             <option ng-repeat="gist in gists" value="{{(gist.description | removeTags) || 'Untitled'}}"></option>
         </datalist>
-
+        -->
     </header>
 
     <ul class="flex">
-        <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'title'">
+        <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'created_at'">
             <a ui-route="/gist/{{gist.id}}" ng-class="{active: $uiRoute}"
                onclick="document.location.href = '#/gist/{{gist.id}}'">
-
                 <h3>
-                    {{(gist.description | removeTags) || 'Untitled'}}<br/>
+                    <i class="icon-{{gist.public | publicOrPrivet}}"></i> {{(gist.description | removeTags) ||
+                    'Untitled'}}<br/>
                 </h3>
-                <span class="{{gist.public | publicOrPrivet}}">{{gist.public | publicOrPrivet}}</span>
-                &nbsp;
-                <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
 
+                <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
+                <i class="icon-file"></i> <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
                 <p>
                     <span ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag |
                         removeTagSymbol}} </i></span>
@@ -64,14 +64,20 @@
 </div>
 
 <!--SCRIPTS-->
-<script src="lib/jquery/jquery.min.js"></script>
+
+<!-- env:prod -->
+<!---->
+<script src="lib/ace/ace.js"></script>
+<script src="js/gisto.min.js"></script>
+<!---->
+<!-- env:prod -->
+
+<!-- env:dev -->
+<!--
+<script src="lib/jquery/jquery-2.0.0.js"></script>
 <script src="js/main.js"></script>
 <script src="lib/ace/ace.js"></script>
-<!--
-script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script
--->
 <script src="lib/angular/angular.js"></script>
-<script src="lib/angular/angular-resource.js"></script>
 <script src="lib/angular-ui/angular-ui.js"></script>
 <script src="js/app.js"></script>
 <script src="js/services.js"></script>
@@ -79,6 +85,9 @@ script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></sc
 <script src="js/filters.js"></script>
 <script src="js/directives.js"></script>
 <script src="lib/showdown.js"></script>
+-->
+<!-- env:dev -->
+
 </body>
 
 </html>
