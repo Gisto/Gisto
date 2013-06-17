@@ -36,7 +36,7 @@
     </header>
 
     <ul class="flex">
-        <li id="gist-{{gist.id}}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'created_at'">
+        <li id="gist-{{gist.id}}" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'created_at'">
             <a ui-route="/gist/{{gist.id}}" ng-class="{active: $uiRoute}"
                onclick="document.location.href = '#/gist/{{gist.id}}'">
                 <h3>
@@ -68,6 +68,7 @@
 <!-- env:prod -->
 <!---->
 <script src="lib/ace/ace.js"></script>
+<script src="lib/angular/angular.js"></script>
 <script src="js/gisto.min.js"></script>
 <!---->
 <!-- env:prod -->
