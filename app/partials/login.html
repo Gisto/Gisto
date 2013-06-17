@@ -10,10 +10,11 @@
     </header>
 
     <form ng-submit="submit()">
-        <input type="text" ng-model="user" placeholder="user" required>
-        <input type="password" ng-model="pass" placeholder="password" required/>
+        <input type="text" ng-model="user" placeholder="GitHub username/e-mail" required>
+        <input type="password" ng-model="pass" placeholder="GitHub password" required/>
         <input type="submit" value="login"/>
-        <i class="spiner icon-spinner icon-spin"></i>
+
+        <i ng-show="spinner" class="spiner icon-spinner icon-spin"></i>
     </form>
 
 </div>
