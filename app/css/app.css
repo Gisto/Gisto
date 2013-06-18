@@ -154,7 +154,7 @@ aside {
 }
 
 aside ul {
-    -webkit-flex: 1 1 auto;
+    -webkit-flex: 1;
     overflow-y: scroll;
     margin: 0;
     padding: 0px;
@@ -190,7 +190,7 @@ aside footer,
 }
 
 .main {
-    -webkit-flex: 1 1 auto;
+    -webkit-flex: 1;
 }
 
 menu {
@@ -198,7 +198,7 @@ menu {
 }
 
 .main section {
-    -webkit-flex: 1 1 auto;
+    -webkit-flex: 1;
     overflow-y: scroll;
     padding: 20px;
     min-height: 0;
