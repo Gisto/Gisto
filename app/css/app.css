@@ -607,5 +607,5 @@ details > summary {
 .animate-list-enter {
     opacity: 0;
     top: -50px;
-    height: 0px;
+    height: auto;
 }
