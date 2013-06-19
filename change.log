@@ -1,45 +1,17 @@
-Sasha Khamkov <sanusart@gmail.com>	2013-06-13
+0.1.2a
+-----------------
+Added version checker
+Rewrote the save function of application settings to be more versatile.
+Changed appearance  of main application screen.
+Changed notifications to bottom right corner in order to avoid movement of the entire screen.
+Updated node-webkit to version 0.6.0/Chromium 28
 
-    removed the "bin" directory, no need for that.
+0.1.1a
+------------------
+Edit mode is now triggered after dragging and dropping a file inside a gist.
+Deleting single files from gists is now available.
+Updates are now reflected on gist list
 
-Sasha Khamkov <sanusart@gmail.com>	2013-06-13
-
-    Change version number 0.1.0a -> 0.1.1a
-
-Sasha Khamkov <sanusart@gmail.com>	2013-06-12
-
-    * Allow deleting single file from gistAllow deleting single file from gist. Removed file from the gist files[], need to remove visualy fixes #28
-    * Updates reflecting on gist list
-
-Sasha Khamkov <sanusart@gmail.com>	2013-06-11
-
-    Fixed Drag & drop bug - not entering into edit mode after drop.
-
-Sasha Khamkov <sanusart@gmail.com>	2013-06-06
-
-    * Add tarballs for Linux_x86 and Linux_x86_64
-    * a bit clean-up
-
-Maayan Glikser <maayan@glikm.com>	2013-06-05
-
-    Added windows installer
-
-Maayan Glikser <maayan@glikm.com>	2013-06-05
-
-    Added alpha build for osx v0.1.0a
-
-Maayan Glikser <maayan@glikm.com>	2013-06-04
-
-    fixed direct link, now copies to clipboard
-
-Maayan Glikser <maayan@glikm.com>	2013-06-04
-
-    changed sorting for gists list
-
-Maayan Glikser <maayan@glikm.com>	2013-06-04
-
-    Added edit mode when adding a new file
-
-Maayan Glikser <maayan@glikm.com>	2013-06-04
-
-    Changed editable mode from click on content to onchange event
+0.1.0a
+------------------
+Initial version - Alpha release
