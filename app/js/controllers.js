@@ -33,6 +33,7 @@ function viewCtrl($scope) {
 
 function loginCtrl($scope, ghAPI, appSettings) {
     $scope.submit = function () {
+        $scope.spinner = true;
         ghAPI.login($scope.user, $scope.pass, function (response) {
             if (response.status === 201) {
                 console.log(response);
@@ -45,6 +46,7 @@ function loginCtrl($scope, ghAPI, appSettings) {
                 localStorage.settings = JSON.stringify(data);
                 window.location.href = '#/';
             } else {
+                $scope.spinner = false;
                 console.warn('[!!!] >>> Log-in failed - server responded with error.');
                 $('.warn').slideDown('slow');
                 $('.warn span').text('Log-in failed - server responded with error');

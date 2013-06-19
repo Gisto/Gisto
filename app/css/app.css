@@ -65,7 +65,7 @@ body {
 }
 
 .hide {
-    display:none !important;
+    display: none !important;
 }
 
 .flex {
@@ -109,6 +109,7 @@ div.toolbox {
     font-size: 14px;
     line-height: 14px;
 }
+
 div.toolbox span {
     float: left;
     width: 520px;
@@ -119,7 +120,7 @@ div.toolbox span {
 
 div.toolbox span.toolbtn {
     float: none;
-    width:auto;
+    width: auto;
     text-align: left;
     text-transform: uppercase;
     font-size: 11px;
@@ -153,7 +154,7 @@ aside {
 }
 
 aside ul {
-    -webkit-flex: 1 1 auto;
+    -webkit-flex: 1;
     overflow-y: scroll;
     margin: 0;
     padding: 0px;
@@ -189,7 +190,7 @@ aside footer,
 }
 
 .main {
-    -webkit-flex: 1 1 auto;
+    -webkit-flex: 1;
 }
 
 menu {
@@ -197,7 +198,7 @@ menu {
 }
 
 .main section {
-    -webkit-flex: 1 1 auto;
+    -webkit-flex: 1;
     overflow-y: scroll;
     padding: 20px;
     min-height: 0;
@@ -387,7 +388,6 @@ div.main .the-comments .comment_gravatar {
 }
 
 .login-form .spiner {
-    display: none;
     margin: 10px auto
 }
 
@@ -501,7 +501,7 @@ aside ul li a p span {
 }
 
 .gist-comment {
-    margin:0;
+    margin: 0;
     padding: 0px 4px;
     border-right: none;
     border-radius: 3px;
@@ -575,10 +575,37 @@ header input.edaitable {
 body.login header {
     height: auto;
     border: none;
-    background:transparent;
+    background: transparent;
 }
 
 details > summary {
     margin: 10px 0;
     font-size: 18px;
+}
+
+/* ANIMATE */
+
+.animate-list-enter,
+.animate-list-leave {
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+}
+
+.animate-list-enter.animate-list-enter-active,
+.animate-list-leave {
+    opacity: 1;
+    top: 0;
+    height: auto;
+}
+
+.animate-list-leave.animate-list-leave-active,
+.animate-list-enter {
+    opacity: 0;
+    top: -50px;
+    height: auto;
 }
