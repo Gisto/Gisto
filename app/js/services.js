@@ -153,7 +153,6 @@ angular.module('gitHubAPI', ['gistData', 'appSettings', 'requestHandler'], funct
                         for (var item in data) { // process and arrange data
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
-                            console.log(item);
                             data[item].filesCount = Object.keys(data[item].files).length;
                         }
 
@@ -497,23 +496,26 @@ angular.module('appSettings', [], function ($provide) {
             },
 
             set: function (data, callback) {
-                var new_data = {};
-                new_data.token = data.token;
-                new_data.theme = data.theme;
-                new_data.avatar = data.avatar;
-                new_data.editor_theme = data.editor_theme;
-                new_data.last_modified = new Date().toUTCString();
-                if (localStorage.settings = JSON.stringify(new_data)) {
-                    if (callback) {
-                        return callback({
-                            status: 'ok'
-                        });
-                    }
+
+                var settings = JSON.parse(localStorage.settings) || {};
+
+                for (var key in data) {
+                    settings[key] = data[key];
                 }
+                settings.last_modified = new Date().toUTCString();
+                localStorage.settings = JSON.stringify(settings);
+
+                if (callback) {
+                    return callback({
+                        status: 'ok'
+                    });
+                }
+
             },
 
             setOne: function (key, new_data, callback) {
                 var old_data = settings.getAll();
+                console.log(old_data);
                 old_data[key] = new_data;
                 settings.set(old_data);
             }

@@ -561,6 +561,35 @@ header input.edaitable {
     z-index: 1;
 }
 
+.updateAvailable {
+    border: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+    background: #FFF;
+    padding: 13px;
+    display: block;
+    margin: 11px 0;
+}
+
+.made-possible-by {
+    text-align: center;
+    margin: 5% 0 0 0;
+    font-size: 35px;
+}
+
+
+
+ul.logos {
+    list-style: none;
+    margin: 4% 0;
+}
+
+ul.logos li {
+    float: left;
+    margin: 0 1%;
+    border: 1px solid #CCC;
+    width: 30%;
+}
+
 .login .main:before {
     position: absolute;
     top: 0;
