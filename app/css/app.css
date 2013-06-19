@@ -299,6 +299,12 @@ div.comments i {
     padding: 10px;
     font-size: 14px;
     cursor: pointer;
+    position: absolute;
+    bottom: 75px;
+    z-index: 10;
+    right: 20px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px #000;
 }
 
 .messenger.info {
