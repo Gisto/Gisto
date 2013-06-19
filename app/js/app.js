@@ -3,7 +3,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('gisto', ['ui', 'gisto.filters', 'gisto.services', 'gisto.directives', 'requestHandler', 'gitHubAPI', 'gistData', 'appSettings']).
     config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/', {templateUrl: 'partials/empty.html'});
+        $routeProvider.when('/', {templateUrl: 'partials/empty.html', controller: mainCtrl});
         $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: loginCtrl});
         $routeProvider.when('/settings', {templateUrl: 'partials/settings.html'/*, controller: loginCtrl*/});
         $routeProvider.when('/gist/:gistId', {templateUrl: 'partials/single-gist.html', controller: singleGistCtrl});
