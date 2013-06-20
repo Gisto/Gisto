@@ -449,7 +449,7 @@ function mainCtrl($scope, $http, appSettings) {
 
     }
 
-    $scope.$watch('currentVersion', function() {
+    $scope.$watch('currentVersion + latestVersion', function() {
 
         if ($scope.currentVersion && $scope.latestVersion && $scope.currentVersion !== $scope.latestVersion.version) {
             $scope.updateAvailable = true;
