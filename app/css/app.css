@@ -568,21 +568,14 @@ header input.edaitable {
 }
 
 .updateAvailable {
-    border: 1px solid #CCC;
-    border-bottom: 1px solid #CCC;
-    background: #FFF;
-    padding: 13px;
+    border: 1px solid green;
+    background: lightgreen;
+    padding: 9px;
     display: block;
-    margin: 11px 0;
+    font-size: 16px;
+    color: green;
+    border-radius: 3px;
 }
-
-.made-possible-by {
-    text-align: center;
-    margin: 5% 0 0 0;
-    font-size: 35px;
-}
-
-
 
 ul.logos {
     list-style: none;
