@@ -8,25 +8,24 @@
 
     Please select gist from the list
     <br/>
-    ⤶
+   <!-- ⤶ -->
+    <i class="icon-long-arrow-left"></i>
 
     <hr>
 
-    Current version: {{currentVersion}} <br />
+    <p>Current version: {{currentVersion}}</p>
     <p ng-show="updateAvailable" class="updateAvailable">
-        Gisto version {{latestVersion.version}} is now available. Get it at http://www.gistoapp.com
+        <i class="icon-warning-sign"></i> Gisto version <b>{{latestVersion.version}}</b> is now available. Get it at <a ng-click="gotoSite()">http://www.gistoapp.com</a>
     </p>
-    <br />
 
-
-    <h2 class="made-possible-by">
+    <p class="made-possible-by">
         <b><i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i></b> is made possible thanks to:
-    </h2>
+    </p>
 
     <ul class="logos">
-        <li><img src="img/angularjs.png" alt="" /></li>
-        <li><img src="img/node.png" alt="" /></li>
-        <li><img src="img/nw2.png" alt="" /></li>
+        <li><img width="100%" src="img/angularjs.png" alt="" /></li>
+        <li><img width="100%" src="img/node.png" alt="" /></li>
+        <li><img width="100%" src="img/nw2.png" alt="" /></li>
     </ul>
 
 

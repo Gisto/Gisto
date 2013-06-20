@@ -102,6 +102,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         if (clipboard !== undefined) {
             clipboard.set(data.content || data, 'text');
         } else {
+            // Copy to clipboard really only works in App
             console.log('>>> DEBUG MODE ON | Copy to clipboard really only works in App \n Data: ' + (data.content || data));
         }
 
@@ -422,6 +423,10 @@ function mainCtrl($scope, $http, appSettings) {
     $scope.latestVersion = appSettings.get('latestVersion');
     $scope.currentVersion = '';
     $scope.updateAvailable = false;
+
+    $scope.gotoSite = function() {
+        gui.Shell.openExternal('http://www.gistoapp.com');
+    };
 
     // get the current version number
     $http.get('./package.json').success(function(data) {
