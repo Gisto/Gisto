@@ -337,6 +337,12 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
+            } else if(response.status === 422) {
+                $('.warn').slideDown('slow');
+                $('.warn span').text('You cannot save empty files');
+                setTimeout(function () {
+                    $('.warn').slideUp();
+                }, 2500);
             } else {
                 $('.warn').slideDown('slow');
                 $('.warn span').text('Something went wrong');
