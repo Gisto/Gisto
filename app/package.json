@@ -10,9 +10,7 @@
         "toolbar": false,
         "width": 1200,
         "height": 600,
-        "position": "center",
-        "min_width": 1200,
-        "min_height": 600
+        "position": "center"
     },
     "webkit": {
         "plugin": true
