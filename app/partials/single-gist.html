@@ -73,19 +73,19 @@
         <b>Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
     </span>
 
-    <a ng-click="addFile()">Add file</a>
+    <a ng-click="addFile()" title="Add new file to this gist">Add file</a>
 
     <span class="toolbtn" ng-switch on="edit">
         <span class="toolbtn" ng-switch-when="true">
-            <a ng-click="update()">Update</a>
+            <a ng-click="update()" title="Save all changes">Update</a>
         </span>
         <span class="toolbtn" ng-switch-default>
-            <a ng-click="enableEdit()">Edit</a>
+            <a ng-click="enableEdit()" title="Edit this gist">Edit</a>
         </span>
     </span>
 
-    <a href="https://gist.github.com/{{gist.single.user.login}}/{{gist.single.id}}/download" download="gist.tar.gz">Download</a>
-    <a ng-click="warnDeleteGist()" href="">Remove</a>
+    <a href="https://gist.github.com/{{gist.single.user.login}}/{{gist.single.id}}/download" download="gist.tar.gz" title="Download this gist as single tarball">Download</a>
+    <a ng-click="warnDeleteGist()" href="" title="Delete this gist">Remove</a>
 
 </div>
 
@@ -106,7 +106,7 @@
             </span>
 
 
-            <a ng-click="deleteFile(file.filename)" data-file-index="{{$index}}" title="Delete file"><i class="icon-remove"></i></a>
+            <a ng-click="deleteFile(file.filename)" data-file-index="{{$index}}" title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
             <a ng-click="enableEdit()" title="Edit"><i class="icon-pencil icon-rotate-90"></i></a>
             <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i class="icon-download-alt"></i></a>
             <a ng-click="copyToClipboard(gist.single.html_url, 'Direct link copied to clipboard')" title="Direct link"><i class="icon-link"></i></a>
