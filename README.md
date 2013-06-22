@@ -34,8 +34,9 @@ and more...
 
 ## Status
 
-At 13/06/2013 Gisto *alpha* version 0.1.1a released featuring several bug fixes.
-At 06/06/2013 Gisto *alpha* version 0.1.0a released to the public.
+Gisto is currently in it's late ALPHA stage. Few alpha versions already released.
+
+Please see the [change.log](https://github.com/Gisto/Gisto/blob/master/change.log) for more detailed info regarding new features, bug fixes and releases.
 
 It is still under heavily development towards the full release. 
 Various features will be left out from the alpha release.
