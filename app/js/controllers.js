@@ -140,6 +140,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 $('.ok span').text('Gist starred');
                 $('.star').removeClass('icon-star-empty').addClass('icon-star');
                 $scope.gist.single.starred = !$scope.gist.single.starred;
+                $scope.gist.has_star = true;
                 setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
@@ -165,6 +166,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 $('.ok span').text('Star removed');
                 $('.star').removeClass('icon-star').addClass('icon-star-empty');
                 $scope.gist.single.starred = !$scope.gist.single.starred;
+                $scope.gist.has_star = false;
                 setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
@@ -337,7 +339,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
-            } else if(response.status === 422) {
+            } else if(response.status === 422) { // ststus code of: 422 (Unprocessable Entity)
                 $('.warn').slideDown('slow');
                 $('.warn span').text('You cannot save empty files');
                 setTimeout(function () {

@@ -170,7 +170,7 @@ aside ul {
 }
 
 aside ul li {
-
+    position: relative;
 }
 
 aside ul li a {

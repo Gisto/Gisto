@@ -155,6 +155,14 @@ angular.module('gitHubAPI', ['gistData', 'appSettings', 'requestHandler'], funct
                             data[item].single = {};
                             data[item].filesCount = Object.keys(data[item].files).length;
                         }
+                        // Indicate "starred" in the gist list
+                        api.starred(function(response){
+                            for (var s in response.data) {
+                                console.log('STARRED' + s + ':', response.data[s].id);
+                                var gist = gistData.getGistById(response.data[s].id);
+                                gist.has_star = true;
+                            }
+                        });
 
                         // Set lastUpdated for 60 sec cache
                         data.lastUpdated = new Date();
@@ -327,7 +335,28 @@ angular.module('gitHubAPI', ['gistData', 'appSettings', 'requestHandler'], funct
             },
 
             // GET /gists/starred
-            starred: function () {
+            starred: function (callback) {
+                requestHandler({
+                    method: 'GET',
+                    url: api_url + '/starred',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
             },
 
             // PUT /gists/:id/star
