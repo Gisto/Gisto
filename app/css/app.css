@@ -666,26 +666,3 @@ details > summary {
     top: -50px;
     height: auto;
 }
-
-ul li .the-star {
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid #555;
-    -webkit-transform: rotate(135deg);
-    top: -4px;
-    left: -13px;
-    position:absolute;
-    content: '*';
-    color: #fff;
-}
-
-ul li .the-star i {
-    position: relative;
-    left: -4px;
-    background: transparent;
-    color: #fff;
-    border: none;
-    top: -21px;
-}

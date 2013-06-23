@@ -23,7 +23,7 @@ aside header,
 }
 
 div.toolbox {
-    background: #C2D8FF;
+    background: rgb(167, 202, 211);
     border-bottom: 1px solid hsl(0, 0%, 60%);
     box-shadow: 3px 7px 20px #777;
 }
@@ -84,7 +84,7 @@ aside ul li a:hover {
 }
 
 aside ul li a.active {
-    background: darkseagreen;
+    background: #EC9073;
 }
 
 aside footer,
@@ -138,7 +138,7 @@ div.main img.gravatar {
 }
 
 div.comments {
-    background: #F7FFC2;
+    background: #F2C76B;
     border-top: 1px solid #999;
     box-shadow: 0px -3px 20px #777;
 }
@@ -154,13 +154,14 @@ div.comments {
 }
 
 .the-gist-name {
-    background: #FFCAC2;
-    border-bottom: 1px solid #CCC;
+    background: rgb(116, 158, 123);
+    border-bottom: 1px solid rgb(133, 133, 133);
+    color: #fff;
 }
 
 .the-gist-name a {
     border-left: 1px solid #999;
-    color: #555;
+    color: #fff;
 }
 
 .the-gist-name a:hover {
@@ -251,4 +252,27 @@ header input.edaitable {
 
 a .star {
     color:#555;
+}
+
+ul li .the-star {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #555;
+    -webkit-transform: rotate(135deg);
+    top: -4px;
+    left: -13px;
+    position:absolute;
+    content: '*';
+    color: #fff;
+}
+
+ul li .the-star i {
+    position: relative;
+    left: -4px;
+    background: transparent;
+    color: #fff;
+    border: none;
+    top: -21px;
 }
