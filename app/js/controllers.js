@@ -113,6 +113,14 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         }, 2500);
     };
 
+    $scope.gotoSite = function(user,id,file) {
+        console.log('user',user);
+        console.log('id',id);
+        console.log('file',file);
+        console.log('url','https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace('.','-'));
+        gui.Shell.openExternal( 'https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace('.','-') );
+    };
+
     $scope.enableEdit = function () {
         console.log('enable edit');
         $scope.edit = true;

@@ -13,8 +13,8 @@ body * {
 }
 
 body section {
-    -webkit-animation: fadein 2s;
-    animation: fadein 2s;
+    -webkit-animation: fadein 1s;
+    animation: fadein 1s;
 }
 
 @keyframes fadein {
