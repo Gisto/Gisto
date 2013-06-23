@@ -85,9 +85,7 @@ aside ul {
 }
 
 aside ul li a {
-    color: #000;
     border-bottom: 1px solid #9C9C9C;
-    color: #000;
     border-top: 1px solid #fff;
 }
 
@@ -285,4 +283,33 @@ header input.edaitable {
 
 a .star {
     color:#FFFF9D;
+}
+
+ul li .the-star {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #007ACD;
+    -webkit-transform: rotate(135deg);
+    top: -3px;
+    left: -13px;
+    position:absolute;
+    content: '*';
+    color: #555;
+}
+
+ul li:hover .the-star,
+ul li a.active .the-star{
+    border-top: 20px solid #555;
+    color: #007ACD;
+}
+
+ul li .the-star i {
+    position: relative;
+    left: -4px;
+    background: transparent;
+    color: #fff;
+    border: none;
+    top: -21px;
 }
