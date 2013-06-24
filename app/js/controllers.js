@@ -117,8 +117,8 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         console.log('user',user);
         console.log('id',id);
         console.log('file',file);
-        console.log('url','https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace('.','-'));
-        gui.Shell.openExternal( 'https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace('.','-') );
+        console.log('url','https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi,'-'));
+        gui.Shell.openExternal( 'https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi,'-'));
     };
 
     $scope.enableEdit = function () {
