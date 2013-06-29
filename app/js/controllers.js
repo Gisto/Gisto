@@ -103,7 +103,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             clipboard.set(data.content || data, 'text');
         } else {
             // Copy to clipboard really only works in App
-            console.log('>>> DEBUG MODE ON | Copy to clipboard really only works in App \n Data: ' + (data.content || data));
+            console.warn('>>> DEBUG MODE ON | Copy to clipboard really only works in App \n Data: ' + (data.content || data));
         }
 
         $('.ok').slideDown('slow');

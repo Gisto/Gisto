@@ -54,6 +54,15 @@ module.exports = function (grunt) {
                 destMap: 'all.js.map'
             }
         },
+        watch: {
+            scripts: {
+                files: '**/*.js',
+                tasks: ['jsmin-sourcemap'],
+                options: {
+                    interrupt: true
+                }
+            }
+        },
         removelogging: {
             dist: {
                 src: 'app/js/<%= pkg.name %>.min.js',
@@ -63,6 +72,7 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-jsmin-sourcemap');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks("grunt-remove-logging");
     grunt.registerTask('default', ['jsmin-sourcemap', 'removelogging'/*, 'jshint'*/]);
