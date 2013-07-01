@@ -149,20 +149,11 @@ angular.module('gitHubAPI', ['gistData', 'appSettings', 'requestHandler'], funct
                     url: url,
                     headers: headers
                 }).success(function (data, status, headers, config) {
-
                         for (var item in data) { // process and arrange data
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
                             data[item].filesCount = Object.keys(data[item].files).length;
                         }
-                        // Indicate "starred" in the gist list
-                        api.starred(function(response){
-                            for (var s in response.data) {
-                                console.log('STARRED' + s + ':', response.data[s].id);
-                                var gist = gistData.getGistById(response.data[s].id);
-                                gist.has_star = true;
-                            }
-                        });
 
                         // Set lastUpdated for 60 sec cache
                         data.lastUpdated = new Date();
@@ -178,12 +169,25 @@ angular.module('gitHubAPI', ['gistData', 'appSettings', 'requestHandler'], funct
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
-                                    pageNumber = link.match(/[0-9]+/)[0];
-                                    console.log(pageNumber);
-                                    api.gists(null, pageNumber);
+                                    var nextPage = link.match(/[0-9]+/)[0];
+
+                                    if (!pageNumber || nextPage > pageNumber) {
+                                        api.gists(null, nextPage);
+                                        return; // end the function before it reaches starred gist list call
+                                    }
                                 }
                             }
                         }
+
+                        // end of the paging calls
+                        api.starred(function(response){
+                            for (var s in response.data) {
+                                var gist = gistData.getGistById(response.data[s].id);
+                                if (gist) {
+                                    gist.has_star = true;
+                                }
+                            }
+                        });
 
                     }).error(function (data, status, headers, config) {
                         console.log({
@@ -335,20 +339,40 @@ angular.module('gitHubAPI', ['gistData', 'appSettings', 'requestHandler'], funct
             },
 
             // GET /gists/starred
-            starred: function (callback) {
+            starred: function (callback, pageNumber) {
+                var url = pageNumber ? api_url + '/starred' + '?page=' + pageNumber : api_url + '/starred';
                 requestHandler({
                     method: 'GET',
-                    url: api_url + '/starred',
+                    url: url,
                     headers: {
                         Authorization: 'token ' + token
                     }
                 }).success(function (data, status, headers, config) {
-                        return callback({
+
+                        // return the data
+                        callback({
                             data: data,
                             status: status,
                             headers: headers(),
                             config: config
                         });
+
+                        var header = headers();
+                        if (header.link) {
+                            var links = header.link.split(',');
+                            for (var link in links) {
+                                link = links[link];
+                                if (link.indexOf('rel="next') > -1) {
+                                    var nextPage = link.match(/[0-9]+/)[0];
+
+                                    if (!pageNumber || nextPage > pageNumber) {
+                                        api.starred(callback, nextPage);
+                                        return; // end the function before it reaches starred gist list call
+                                    }
+                                }
+                            }
+                        }
+
                     }).error(function (data, status, headers, config) {
                         return callback({
                             data: data,
@@ -544,7 +568,6 @@ angular.module('appSettings', [], function ($provide) {
 
             setOne: function (key, new_data, callback) {
                 var old_data = settings.getAll();
-                console.log(old_data);
                 old_data[key] = new_data;
                 settings.set(old_data);
             }

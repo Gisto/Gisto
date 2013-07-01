@@ -643,6 +643,15 @@ details > summary {
 
 /* ANIMATE */
 
+.star-enter {
+    -webkit-transition: 1s linear all;
+    opacity: 0;
+}
+
+.star-enter.star-active {
+    opacity: 1;
+}
+
 .animate-list-enter,
 .animate-list-leave {
     -webkit-animation-duration: 1s;
@@ -707,6 +716,65 @@ details > summary {
     }
     100% {
         -webkit-transform: perspective(400px) rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+
+/**/
+
+.animate-star-enter,
+.animate-star-leave {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.animate-star-leave.animate-star-leave-active,
+.animate-star-leave {
+    -webkit-animation-name: starOut;
+    animation-name: starOut;
+}
+
+@-webkit-keyframes starOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes starOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.animate-star-enter.animate-star-enter-active,
+.animate-star-leave {
+    -webkit-animation-name: starIn;
+    animation-name: starIn;
+}
+
+@-webkit-keyframes starIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes starIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
         opacity: 1;
     }
 }

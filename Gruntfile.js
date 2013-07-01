@@ -38,7 +38,7 @@ module.exports = function (grunt) {
                     'app/js/main.js',
                     //'app/lib/ace/*.js',
                     //'app/lib/angular/angular.js',
-                    'app/lib/angular-ui/angular-ui.js',
+                    'app/lib/angular-ui/ui-utils.min.js',
                     'app/js/app.js',
                     'app/js/services.js',
                     'app/js/controllers.js',

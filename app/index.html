@@ -36,14 +36,14 @@
     </header>
 
     <ul>
-        <li id="gist-{{gist.id}}" ng-animate="{enter: 'animate-list-enter', leave: 'animate-list-leave'}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'created_at'">
+        <li id="gist-{{gist.id}}" ng-animate="{enter: 'animate-list-enter', leave: 'animate-list-leave'}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
             <a ui-route="/gist/{{gist.id}}" ng-class="{active: $uiRoute}"
                onclick="document.location.href = '#/gist/{{gist.id}}'">
                 <h3>
                     <i class="icon-{{gist.public | publicOrPrivet}}"></i>
                     {{(gist.description | removeTags) || 'Untitled'}}
                 </h3>
-                <div ng-if="gist.has_star" class="the-star"><i class="icon-star"></i></div>
+                <div ng-if="gist.has_star" class="the-star" ng-animate="{enter: 'animate-star-enter', leave: 'animate-star-leave'}"><i class="icon-star"></i></div>
                 <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
                 <i class="icon-file"></i> <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
                 <p>
@@ -66,27 +66,28 @@
 <!--SCRIPTS-->
 
 <!-- env:prod -->
-<!---->
+<!--
 <script src="lib/ace/ace.js"></script>
 <script src="lib/angular/angular.js"></script>
+<script src="lib/angular-ui/ui-utils.min.js"></script>
 <script src="js/gisto.min.js"></script>
-<!---->
+-->
 <!-- env:prod -->
 
 <!-- env:dev -->
-<!--
+<!---->
 <script src="lib/jquery/jquery-2.0.0.js"></script>
 <script src="js/main.js"></script>
 <script src="lib/ace/ace.js"></script>
 <script src="lib/angular/angular.js"></script>
-<script src="lib/angular-ui/angular-ui.js"></script>
+<script src="lib/angular-ui/ui-utils.min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/services.js"></script>
 <script src="js/controllers.js"></script>
 <script src="js/filters.js"></script>
 <script src="js/directives.js"></script>
 <script src="lib/showdown.js"></script>
--->
+<!--->
 <!-- env:dev -->
 
 </body>
