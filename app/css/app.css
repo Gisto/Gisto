@@ -655,7 +655,7 @@ details > summary {
 .animate-list-enter,
 .animate-list-leave {
     -webkit-animation-duration: 0.5s;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     position: relative;
@@ -683,11 +683,11 @@ details > summary {
 
 @keyframes listOut {
     0% {
-        -webkit-transform: perspective(400px) rotateX(0deg);
+        transform: perspective(400px) rotateX(0deg);
         opacity: 1;
     }
     100% {
-        -webkit-transform: perspective(400px) rotateX(90deg);
+        transform: perspective(400px) rotateX(90deg);
         opacity: 0;
     }
 }
@@ -711,11 +711,11 @@ details > summary {
 
 @keyframes listIn {
     0% {
-        -webkit-transform: perspective(400px) rotateX(90deg);
+        transform: perspective(400px) rotateX(90deg);
         opacity: 0;
     }
     100% {
-        -webkit-transform: perspective(400px) rotateX(0deg);
+        transform: perspective(400px) rotateX(0deg);
         opacity: 1;
     }
 }
