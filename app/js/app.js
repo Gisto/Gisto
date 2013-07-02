@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('gisto', ['ui', 'gisto.filters', 'gisto.services', 'gisto.directives', 'requestHandler', 'gitHubAPI', 'gistData', 'appSettings']).
+angular.module('gisto', ['ui.utils', 'gisto.filters', 'gisto.services', 'gisto.directives', 'requestHandler', 'gitHubAPI', 'gistData', 'appSettings']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {templateUrl: 'partials/empty.html', controller: mainCtrl});
         $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: loginCtrl});

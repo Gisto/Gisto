@@ -36,14 +36,14 @@
     </header>
 
     <ul>
-        <li id="gist-{{gist.id}}" ng-animate="{enter: 'animate-list-enter', leave: 'animate-list-leave'}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'created_at'">
+        <li id="gist-{{gist.id}}" ng-animate="{enter: 'animate-list-enter', leave: 'animate-list-leave'}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
             <a ui-route="/gist/{{gist.id}}" ng-class="{active: $uiRoute}"
                onclick="document.location.href = '#/gist/{{gist.id}}'">
                 <h3>
                     <i class="icon-{{gist.public | publicOrPrivet}}"></i>
                     {{(gist.description | removeTags) || 'Untitled'}}
                 </h3>
-                <div ng-if="gist.has_star" class="the-star"><i class="icon-star"></i></div>
+                <div ng-if="gist.has_star" class="the-star" ng-animate="{enter: 'animate-star-enter', leave: 'animate-star-leave'}"><i class="icon-star"></i></div>
                 <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
                 <i class="icon-file"></i> <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
                 <p>
