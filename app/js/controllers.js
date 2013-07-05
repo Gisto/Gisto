@@ -113,12 +113,12 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         }, 2500);
     };
 
-    $scope.gotoSite = function(user,id,file) {
-        console.log('user',user);
-        console.log('id',id);
-        console.log('file',file);
-        console.log('url','https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi,'-'));
-        gui.Shell.openExternal( 'https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi,'-'));
+    $scope.gotoSite = function (user, id, file) {
+        console.log('user', user);
+        console.log('id', id);
+        console.log('file', file);
+        console.log('url', 'https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi, '-'));
+        gui.Shell.openExternal('https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi, '-'));
     };
 
     $scope.enableEdit = function () {
@@ -269,8 +269,8 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         console.log('drag end');
     };
 
-    $scope.deleteFile = function(file_name) {
-        console.log('delete file',file_name);
+    $scope.deleteFile = function (file_name) {
+        console.log('delete file', file_name);
         $('.loading span').html('Deleting file <b>' + file_name + '</b>');
 
         var data = {
@@ -347,7 +347,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 setTimeout(function () {
                     $('.ok').slideUp();
                 }, 2500);
-            } else if(response.status === 422) { // ststus code of: 422 (Unprocessable Entity)
+            } else if (response.status === 422) { // ststus code of: 422 (Unprocessable Entity)
                 $('.warn').slideDown('slow');
                 $('.warn span').text('You cannot save empty files');
                 setTimeout(function () {
@@ -365,13 +365,15 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
 }
 
 function commentsGistCtrl($scope, $routeParams, ghAPI) {
-    ghAPI.comments($routeParams.gistId, function (response) {
-        if (response.status === 200) {
-            $scope.comments = response.data;
-        } else {
-            console.warn('[!!!] >>> Comments not loaded - server responded with error.');
-        }
-    });
+    if ($scope.gist.comments > 0) {
+        ghAPI.comments($routeParams.gistId, function (response) {
+            if (response.status === 200) {
+                $scope.comments = response.data;
+            } else {
+                console.warn('[!!!] >>> Comments not loaded - server responded with error.');
+            }
+        });
+    }
 }
 
 function createGistCtrl($scope, ghAPI, gistData) {
@@ -440,38 +442,37 @@ function mainCtrl($scope, $http, appSettings) {
     $scope.currentVersion = '';
     $scope.updateAvailable = false;
 
-    $scope.gotoSite = function() {
+    $scope.gotoSite = function () {
         gui.Shell.openExternal('http://www.gistoapp.com');
     };
 
     // get the current version number
-    $http.get('./package.json').success(function(data) {
-       $scope.currentVersion = data.version;
+    $http.get('./package.json').success(function (data) {
+        $scope.currentVersion = data.version;
     });
 
-    var timestamp = new Date().getTime()  - 86400000; // 1 day ago
+    var timestamp = new Date().getTime() - 86400000; // 1 day ago
     if (!$scope.latestVersion || $scope.latestVersion.timestamp < timestamp) {
         console.log('save');
         // get the latest version number
         $http({
             url: 'https://api.github.com/repos/Gisto/Gisto/contents/app/package.json',
             headers: {
-                Accept : "application/vnd.github.3.raw"
+                Accept: "application/vnd.github.3.raw"
             },
             method: 'get'
-        }).success(function(data) {
+        }).success(function (data) {
                 appSettings.setOne('latestVersion', {version: data.version, timestamp: new Date().getTime() });
-        });
+            });
 
     }
 
-    $scope.$watch('currentVersion + latestVersion', function() {
+    $scope.$watch('currentVersion + latestVersion', function () {
 
         if ($scope.currentVersion && $scope.latestVersion && $scope.currentVersion !== $scope.latestVersion.version) {
             $scope.updateAvailable = true;
         }
     });
-
 
 
 }
