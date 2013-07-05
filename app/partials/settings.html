@@ -1,5 +1,5 @@
 <header ng-controller="viewCtrl">
-    <img src="{{avatar || 'https://secure.gravatar.com/avatar/'}}" class="gravatar" title="{{single.user.login}}"/>
+    <img ng-src="{{avatar || 'https://secure.gravatar.com/avatar/'}}" class="gravatar" title="{{single.user.login}}"/>
     <a title="Create new gist" onclick="document.location.href = '#/create'"><i class="create icon-file"></i></a>
     <a data-ng-controller="logoutCtrl" ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>

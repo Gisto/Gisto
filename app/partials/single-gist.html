@@ -1,6 +1,6 @@
 <header ng-controller="viewCtrl">
 
-    <img src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
+    <img ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
     <span ng-switch on="gist.single.starred">
         <span ng-switch-when="true">
@@ -132,7 +132,7 @@
     <div ng-controller="commentsGistCtrl" class="the-comments">
         <span ng-repeat="comment in comments">
             <p>
-                <img src="{{comment.user.avatar_url || 'https://secure.gravatar.com/avatar/'}}" class="comment_gravatar"
+                <img ng-src="{{comment.user.avatar_url || 'https://secure.gravatar.com/avatar/'}}" class="comment_gravatar"
                      title="{{comment.user.login}}"/>
                 <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
             <div class="blockquote" ng-bind-html-unsafe="comment.body | markDown"></div>
