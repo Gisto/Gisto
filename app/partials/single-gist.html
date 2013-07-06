@@ -56,7 +56,7 @@
 
 <div class="messenger edit">
     <i class="icon-edit"> </i>
-    <span>Edit mode <b>on</b> <a href="" ng-click="update(gist.single.files,gist.single.description)">update</a> | <a ng-click="disableEdit()" title="changes wont be saved">cancel</a></span>
+    <span>Edit mode <b>on</b> <a href="" ng-click="update()">update</a> | <a ng-click="disableEdit()" title="changes wont be saved">cancel</a></span>
 </div>
 
 <div class="messenger delete warn">
@@ -80,7 +80,7 @@
             <a ng-click="update()" title="Save all changes">Update</a>
         </span>
         <span class="toolbtn" ng-switch-default>
-            <a ng-click="enableEdit()" title="Edit this gist">Edit</a>
+            <a ng-click="enableEdit(gist.single.files,gist.description)" title="Edit this gist">Edit</a>
         </span>
     </span>
 
@@ -107,7 +107,7 @@
 
 
             <a ng-click="deleteFile(file.filename)" data-file-index="{{$index}}" title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
-            <a ng-click="enableEdit()" title="Edit"><i class="icon-pencil icon-rotate-90"></i></a>
+            <a ng-click="enableEdit(gist.single.files,gist.description)" title="Edit"><i class="icon-pencil icon-rotate-90"></i></a>
             <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i class="icon-download-alt"></i></a>
             <a ng-click="gotoSite(gist.single.user.login, gist.single.id ,file.filename)" title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
             <a ng-click="copyToClipboard(gist.single.html_url, 'Direct link copied to clipboard')" title="Copy direct link to clipboard"><i class="icon-link"></i></a>
