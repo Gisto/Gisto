@@ -314,12 +314,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
 
     };
 
-    $scope.update = function ($event) {
+    $scope.update = function ($old_object,$old_description) {
         $('.loading span').text('Saving...');
         $('.edit').slideUp();
-        if ($event) {
-            $event.preventDefault();
-        }
 
         var data = {
             description: $scope.gist.description,
@@ -334,6 +331,19 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             };
         }
 
+        console.warn('Old files',$old_object);
+        console.warn('New files',data.files);
+        console.warn('Old desc',$old_description);
+        console.warn('New desc',$scope.gist.description);
+
+        if( angular.equals($old_object, data.files) || angular.equals($old_description, $scope.gist.description) ) {
+            $('.ok').slideDown('slow');
+            $('.ok span').text('No changes to save.');
+            $scope.edit = false;
+            setTimeout(function () {
+                $('.ok').slideUp();
+            }, 2500);
+        } else {
         ghAPI.edit($scope.gist.single.id, data, function (response) {
             if (response.status === 200) {
                 $('.ok').slideDown('slow');
@@ -361,6 +371,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
                 }, 2500);
             }
         });
+    }
     };
 }
 
