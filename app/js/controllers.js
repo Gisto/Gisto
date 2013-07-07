@@ -121,14 +121,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         gui.Shell.openExternal('https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi, '-'));
     };
 
-    $scope.enableEdit = function (old_object,old_description) {
-        $scope.old_object = old_object;
+    $scope.enableEdit = function (old_obj,old_description) {
+        $scope.old_object = angular.copy(old_obj);
         $scope.old_description = old_description;
-
-        console.log('enable edit');
-
-        console.warn('Old files',old_object);
-        console.warn('Old desc',old_description);
 
         $scope.edit = true;
         $('.edit').slideDown('slow');
@@ -338,10 +333,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             };
         }
 
-        console.warn('New files',$scope.gist.single.files);
-        console.warn('New desc',$scope.gist.description);
-
-        if( angular.equals($scope.old_object,$scope.gist.files) || angular.equals($scope.old_description, $scope.gist.description) ) {
+        if( angular.equals($scope.old_object, $scope.gist.single.files) && angular.equals($scope.old_description, $scope.gist.description) ) {
             $('.warn').slideDown('slow');
             $('.warn span').text('No changes to save.');
             $scope.edit = false;
