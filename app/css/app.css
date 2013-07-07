@@ -641,7 +641,9 @@ details > summary {
     font-size: 18px;
 }
 
-/* ANIMATE */
+.smaller {
+    font-size: 18px;
+}
 
 .star-enter {
     -webkit-transition: 1s linear all;
