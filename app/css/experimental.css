@@ -1,0 +1,242 @@
+@import url('normalize.css');
+@import url('font-awesome.css');
+
+html,body {
+    height: 100%;
+    background: #fbfbf9;
+}
+
+aside {
+    background: #289aea;
+    width: 60px;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+
+aside .avatar img {
+    width: 35px;
+    height: 35px;
+}
+
+aside .avatar {
+    padding: 15px 0;
+    text-align: center;
+}
+
+aside ul.buttons {
+    color: #fff;
+    list-style: none;
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+aside ul.buttons li {
+     text-align: center;
+     padding: 10px 0;   
+}
+
+aside .top ul.buttons li:nth-child(odd) {
+    background: #2aa2f7;
+}
+
+aside ul.buttons li.active {
+    background: #5cbcfe;
+    color: #fff;
+}
+
+section.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 18px;
+}
+
+.notification-count {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    background: #fff;
+    border-radius: 9px;
+    color: #289aea;
+    font-weight: 700;
+}
+
+.menu-extend {
+    height: 100%;
+    background: #26211d;
+    width: 288px;
+    position: absolute;
+    top: 0;
+    left: 60px;
+}
+
+.menu-extend .search {
+    text-align: center;
+    margin: 10px;
+}
+
+.menu-extend .search input[type="text"] {
+ border: 1px solid #8b7a6c;
+ margin: 0 auto;
+ width: 203px;
+ padding: 0 10px;   
+ background: #695e55;
+ color: #ffffff;
+ border-radius: 12px;
+}
+
+.menu-extend .gist-list {
+    color: #fff;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.title {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    clear: both;
+}
+.details {
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+
+}
+.gist-list li {
+    padding: 15px 0 8px 10px;
+    position: relative;
+    /*border-bottom: 1px solid #ccc;*/
+}
+.gist-list p, .gist-list h2.title {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.tag-indicator {
+    height: 15px;
+    width: 15px;
+    display: block;
+    float: left;
+    margin: 0 2px;
+    font-size: 10px;
+    color: #000;
+    font-weight: 700;
+}
+
+.blue {
+    background: #68E8FB;
+}
+
+.green {
+    background: #1ee944;
+}
+
+.details span {
+    margin: 13px 0px 0 0px;
+    padding: 1px 7px;
+    display: inline-block;
+    font-size: 14px;
+}
+.details span:nth-child(1) {
+    border-right: none;
+}
+
+.main {
+    float: left;
+    margin: 0 0 0 320px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    min-width: 900px;
+}
+
+.single-gist h1 {
+    font-weight: 100;
+    font-size: 48px;
+    margin: 30px 0 7px 0;
+    padding: 0;
+}
+
+#editor {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 1000px;
+    height: 400px;
+}
+
+.file header {
+    background: #749E7B;  border-bottom: 1px solid #858585;  color: #FFF;
+    overflow: auto;
+    padding: 10px;
+}
+.file header a {
+    position: relative;  top: 0px;  
+    color: #fff;
+    right: -10px;  display: block;  float: right;  width: 38px;  height: 22px;  text-align: center;  text-decoration: none;  font-size: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 5px;
+    background: #efefef;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2px;
+    background: #333;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+::-webkit-scrollbar-corner {
+    background: #fff;
+}
+
+.subtitle {
+    margin: 0 0 20px 0;
+}
+.subtitle span {
+    margin: 0 20px 0 0;
+}
+
+.top-bar header .box-big {
+    float: right;
+    background: #000;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0 1px;
+    font-size: 24px;
+    opacity: 0.4;
+}
+
+.top-bar .actions {
+    float: right;
+    padding-right: 1px;
+}
+
+.top-bar .actions .action-button {
+    background: #000;
+    color: #fff;
+    padding: 3px 6px;
+    display: inline-block;
+    margin: 2px 0 0 -3px;
+    font-size: 15px;
+    opacity: 0.4;
+}
+
+.clear {
+    clear: both;
+}
+
+.top-bar {
+    margin: 15px 0 0 0;
+}

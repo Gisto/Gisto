@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gisto">
+<head>
+    <meta charset="utf-8">
+    <title>Gisto</title>
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/experimental.css">
+
+</head>
+
+<body>
+
+<aside>
+    <section class="menu-bar">
+        <section class="top">
+
+            <div class="avatar">
+                <img src="https://secure.gravatar.com/avatar/3a615b34ef2060face8fcd481c6377e1" alt="" />
+            </div>
+
+            <ul class="buttons">
+                <li><i class="icon-file"></i></li>
+                <li class="active"><i class="icon-list"></i></li>
+                <li><i class="icon-star"></i></li>
+                <li><i class="icon-tags"></i></li>
+            </ul>
+
+        </section>
+
+        <section class="bottom">
+            <ul class="buttons">
+                <li>
+                    <i class="icon-flag"></i>
+                    <p class="notification-count">18</p>
+                </li>
+                <li><i class="icon-cog"></i></li>
+            </ul>
+        </section>
+    </section>
+
+    <section class="menu-extend">
+
+           <div class="search">
+               <input type="text" placeholder="Search" />
+           </div>
+
+            <ul class="gist-list">
+                <li>
+                    <div class="tags">
+                        <div class="tag-indicator blue"></div>
+                        <div class="tag-indicator green"></div>
+                    </div>
+                    <h2 class="title">min-height by container height
+                    </h2>
+
+                    <p class="details">
+                        <span><i class="icon-comments"></i> 0</span>
+                        <span><i class="icon-file-alt"></i> 1</span>
+                    </p>
+                </li>
+                <li>
+                    <div class="tags">
+                        <div class="tag-indicator blue"></div>
+                        <div class="tag-indicator green"></div>
+                    </div>
+                    <h2 class="title">requestHandler service
+                    </h2>
+
+                    <p class="details">
+                        <span><i class="icon-comments"></i> 0</span>
+                        <span><i class="icon-file-alt"></i> 1</span>
+                    </p>
+                </li>
+                <li>
+                    <div class="tags">
+                        <div class="tag-indicator blue"></div>
+                        <div class="tag-indicator green"></div>
+                    </div>
+                    <h2 class="title">Usage of requestHandler
+                    </h2>
+
+                    <p class="details">
+                        <span><i class="icon-comments"></i> 0</span>
+                        <span><i class="icon-file-alt"></i> 1</span>
+                    </p>
+                </li>
+                <li>
+                    <div class="tags">
+                        <div class="tag-indicator blue"></div>
+                        <div class="tag-indicator green"></div>
+                    </div>
+                    <h2 class="title">test new awesome service
+                    </h2>
+
+                    <p class="details">
+                        <span><i class="icon-comments"></i> 0</span>
+                        <span><i class="icon-file-alt"></i> 1</span>
+                    </p>
+                </li>
+                <li>
+                    <div class="tags">
+                        <div class="tag-indicator blue"></div>
+                        <div class="tag-indicator green"></div>
+                    </div>
+                    <h2 class="title">Multiple value angular filter
+                    </h2>
+
+                    <p class="details">
+                        <span><i class="icon-comments"></i> 0</span>
+                        <span><i class="icon-file-alt"></i> 1</span>
+                    </p>
+                </li>
+                <li>
+                    <div class="tags">
+                        <div class="tag-indicator blue"></div>
+                        <div class="tag-indicator green"></div>
+                    </div>
+                    <h2 class="title">trying out
+                    </h2>
+
+                    <p class="details">
+                        <span><i class="icon-comments"></i> 0</span>
+                        <span><i class="icon-file-alt"></i> 1</span>
+                    </p>
+                </li>
+            </ul>
+
+
+    </section>
+</aside>
+
+<section class="main">
+
+    <div class="single-gist">
+
+        <div class="top-bar">
+
+            <header>
+
+                 <span class="star box-big">
+                    <i class="icon-tag"></i>
+                </span>
+
+                <span class="secret box-big">
+                    <i class="icon-unlock"></i>
+                </span>
+
+                <span class="star box-big">
+                    <i class="icon-star"></i>
+                </span>
+
+
+
+            </header>
+
+            <div class="clear"></div>
+
+            <div class="actions">
+                <span class="action-button">Add File</span>
+                <span class="action-button">Edit</span>
+                <span class="action-button">Download</span>
+                <span class="action-button">Remove</span>
+            </div>
+
+        </div>
+
+        <h1>RequestHandler Service</h1>
+        <div class="subtitle">
+            <span>Revision: 3</span> <span>Last Updated: 12/04/2013 17:09</span>
+        </div>
+
+        <div class="file">
+            <header>
+                <span ng-switch="" on="edit">
+                    <!-- ngSwitchWhen: true -->
+                    <!-- ngSwitchDefault:  --><span ng-switch-default="" class="ng-scope ng-binding">
+                        <i class="icon-file-alt"></i> exampleController.js
+                    </span>
+                </span>
+
+                <a ng-click="deleteFile(file.filename)" data-file-index="0" title="Delete exampleController.js"><i class="icon-remove"></i></a>
+                <a ng-click="enableEdit()" title="Edit"><i class="icon-pencil icon-rotate-90"></i></a>
+                <a href="https://gist.github.com/raw/5717178/0bd68be67449a13fedce4101792a97eb0bf491df/exampleController.js" download="exampleController.js" title="Download"><i class="icon-download-alt"></i></a>
+                <a ng-click="gotoSite(gist.single.user.login, gist.single.id ,file.filename)" title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
+                <a ng-click="copyToClipboard(gist.single.html_url, 'Direct link copied to clipboard')" title="Copy direct link to clipboard"><i class="icon-link"></i></a>
+                <a ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
+            </header>
+            <div id="editor">
+                function foo(items) {
+                var x = "All this is syntax highlighted";
+                return x;
+                }
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+</section>
+
+
+<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.getSession().setUseWorker(false);
+    editor.setTheme("ace/theme/tomorrow");
+    editor.getSession().setMode("ace/mode/javascript");
+</script>
+<!--SCRIPTS-->
+
+<!-- env:prod -->
+<!--
+
+<script src="lib/angular/angular.js"></script>
+<script src="js/gisto.min.js"></script>
+-->
+<!-- env:prod -->
+
+<!-- env:dev -->
+<!--
+<script src="lib/jquery/jquery-2.0.0.js"></script>
+<script src="js/main.js"></script>
+<script src="lib/ace/ace.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-ui/angular-ui.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+<script src="lib/showdown.js"></script>
+-->
+<!-- env:dev -->
+
+</body>
+
+</html>
