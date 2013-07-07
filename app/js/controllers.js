@@ -97,13 +97,18 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         ghAPI.gist($routeParams.gistId);
     }
 
-    $scope.copyToClipboard = function (data, message) {
+    $scope.copyToClipboard = function (data, message,type) {
         message = message || 'Content of a file <b>' + data.filename + '</b> copied to clipboard';
         if (clipboard !== undefined) {
-            clipboard.set(data.content || data, 'text');
+            if(type === 'embed') {
+                clipboard.set('<script src="' + /*https://gist.github.com/sanusart/5944686.js*/ data + '"></script>');
+            } else {
+                clipboard.set(data.content || data, 'text');
+            }
         } else {
             // Copy to clipboard really only works in App
             console.warn('>>> DEBUG MODE ON | Copy to clipboard really only works in App \n Data: ' + (data.content || data));
+            console.log('data:', data);
         }
 
         $('.ok').slideDown('slow');
