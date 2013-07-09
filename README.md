@@ -77,6 +77,10 @@ Pull requests are welcome as well.
 
 MIT https://github.com/Gisto/Gisto/blob/master/LICENSE
 
+## Development
+
+See [setting up for development](http://www.gistoapp.com/docs/#doc-dev) section of the docs.
+
 ## Contributors and mentions
 
 |||||
