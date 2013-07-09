@@ -140,7 +140,7 @@ section.bottom {
 }
 
 .details span {
-    margin: 13px 0px 0 0px;
+    margin: 0;
     padding: 1px 7px;
     display: inline-block;
     font-size: 14px;
@@ -154,7 +154,7 @@ section.bottom {
     margin: 0 0 0 320px;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    min-width: 900px;
+    min-width: 600px;
 }
 
 .single-gist h1 {
@@ -164,13 +164,17 @@ section.bottom {
     padding: 0;
 }
 
+.tags {
+    margin: 0 0 18px 0;
+}
+
 #editor {
     position: relative;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 1000px;
+    width: 850px;
     height: 400px;
 }
 
