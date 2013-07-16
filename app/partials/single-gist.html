@@ -2,6 +2,7 @@
 
     <img ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
+
     <span ng-switch on="gist.single.starred">
         <span ng-switch-when="true">
     <a data-ng-click="unstar()" title="unStar"><i class="star icon-star"></i></a>
