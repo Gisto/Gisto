@@ -81,7 +81,7 @@ function listGistCtrl($scope, ghAPI, gistData) {
     }
 }
 
-function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
+function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope) {
 
     $scope.gist = gistData.getGistById($routeParams.gistId);
 
@@ -119,9 +119,6 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
     };
 
     $scope.gotoSite = function (user, id, file) {
-        console.log('user', user);
-        console.log('id', id);
-        console.log('file', file);
         console.log('url', 'https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi, '-'));
         gui.Shell.openExternal('https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi, '-'));
     };
@@ -130,11 +127,11 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         $scope.old_object = angular.copy(old_obj);
         $scope.old_description = old_description;
 
-        $scope.edit = true;
+        $rootScope.edit = true;
         $('.edit').slideDown('slow');
     };
     $scope.disableEdit = function () {
-        $scope.edit = false;
+        $rootScope.edit = false;
     };
 
     $scope.warnDeleteGist = function () {
@@ -253,7 +250,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             $('.ok').slideDown('slow');
             $('.main section').removeClass('dragarea');
             $('.ok span').html('Dropped: <b>' + file.name + '</b>');
-            $scope.edit = true;
+            $rootScope.edit = true;
             reader.onloadend = (function (filename) {
                 return function (event) {
                     $scope.gist.single.files[filename] = {
@@ -300,7 +297,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             if (response.status === 200) {
                 $('.ok').slideDown('slow');
                 $('.ok span').html('File ' + file_name + ' removed');
-                $scope.edit = false;
+                $rootScope.edit = false;
                 //$scope.gist.single.files = response.data.files;
                 $scope.gist.single.history = response.data.history;
                 $scope.gist.filesCount = Object.keys($scope.gist.single.files).length;
@@ -341,7 +338,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
         if( angular.equals($scope.old_object, $scope.gist.single.files) && angular.equals($scope.old_description, $scope.gist.description) ) {
             $('.warn').slideDown('slow');
             $('.warn span').text('No changes to save.');
-            $scope.edit = false;
+            $rootScope.edit = false;
             setTimeout(function () {
                 $('.warn').slideUp();
             }, 2500);
@@ -350,7 +347,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI) {
             if (response.status === 200) {
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
-                $scope.edit = false;
+                $rootScope.edit = false;
                 $scope.gist.single.files = response.data.files;
                 $scope.gist.single.history = response.data.history;
                 $scope.gist.tags = $scope.gist.description ? $scope.gist.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
