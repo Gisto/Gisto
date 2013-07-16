@@ -63,6 +63,16 @@ module.exports = function (grunt) {
                 }
             }
         },
+        dev_prod_switch: {
+            options: {
+                environment: 'dev' // 'prod' or 'dev'
+            },
+            all: {
+                files: {
+                    'app/index.html': 'app/index.html' // source: destination
+                }
+            }
+        },
         removelogging: {
             dist: {
                 src: 'app/js/<%= pkg.name %>.min.js',
@@ -73,8 +83,9 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-jsmin-sourcemap');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-dev-prod-switch');
     //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks("grunt-remove-logging");
-    grunt.registerTask('default', ['jsmin-sourcemap', 'removelogging'/*, 'jshint'*/]);
+    grunt.registerTask('default', ['jsmin-sourcemap', 'removelogging', 'dev_prod_switch']);
 
 };
