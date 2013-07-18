@@ -27,3 +27,14 @@ $(function () {
 
 });
 
+/*
+if (navigator.onLine === false) {
+    var message = 'It seems you\'ve lost internet connection.';
+    $('.warn').slideDown('slow');
+    $('.warn span').text(message);
+    setTimeout(function () {
+        $('.warn').slideUp();
+    }, 2500);
+    console.log(message);
+}
+*/

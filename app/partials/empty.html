@@ -1,6 +1,6 @@
 <header>
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
-    <a data-ng-controller="logoutCtrl" ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
+    <a data-ng-controller="logoutCtrl" data-ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
 </header>
 
@@ -14,8 +14,8 @@
     <hr>
 
     <p>Current version: {{currentVersion}}</p>
-    <p ng-show="updateAvailable" class="updateAvailable">
-        <i class="icon-warning-sign"></i> Gisto version <b>{{latestVersion.version}}</b> is now available. Get it at <a ng-click="gotoSite()">http://www.gistoapp.com</a>
+    <p data-ng-show="updateAvailable" class="updateAvailable">
+        <i class="icon-warning-sign"></i> Gisto version <b>{{latestVersion.version}}</b> is now available. Get it at <a data-ng-click="gotoSite()">http://www.gistoapp.com</a>
     </p>
 
     <p class="made-possible-by">
