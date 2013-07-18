@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="gisto">
+<html lang="en" data-ng-app="gisto">
 <head>
     <meta charset="utf-8">
     <title>Gisto</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" data-ng-controller="settingsCtrl" ng-href="themes/{{theme}}/theme.css">
+    <link rel="stylesheet" data-ng-controller="settingsCtrl" data-ng-href="themes/{{theme}}/theme.css">
 
     <script>
         /**
@@ -19,35 +19,35 @@
 
 </head>
 
-<body class="ng-cloak" ui-route="/login" ng-class="{login: $uiRoute}">
+<body class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute}">
 
-<aside ui-route="/login" class="flex" ng-if="$uiRoute==false" ng-controller="listGistCtrl" ng-hide="edit">
+<aside ui-route="/login" class="flex" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl" data-ng-hide="edit">
 
     <header class="flex">
         <h1 title="Gist desktop app"><a href="#/">
             <i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i>
         </a></h1>
-        <input list="gistDataList" type="text" ng-model="search" class="search-query" placeholder="Search gists">
+        <input list="gistDataList" type="text" data-ng-model="search" class="search-query" placeholder="Search gists">
         <!--
         <datalist id="gistDataList">
-            <option ng-repeat="gist in gists" value="{{(gist.description | removeTags) || 'Untitled'}}"></option>
+            <option data-ng-repeat="gist in gists" value="{{(gist.description | removeTags) || 'Untitled'}}"></option>
         </datalist>
         -->
     </header>
 
     <ul>
-        <li id="gist-{{gist.id}}" ng-animate="{enter: 'animate-list-enter', leave: 'animate-list-leave'}" ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
-            <a ui-route="/gist/{{gist.id}}" ng-class="{active: $uiRoute}"
+        <li id="gist-{{gist.id}}" data-ng-animate="{enter: 'animate-list-enter', leave: 'animate-list-leave'}" data-ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
+            <a ui-route="/gist/{{gist.id}}" data-ng-class="{active: $uiRoute}"
                onclick="document.location.href = '#/gist/{{gist.id}}'">
                 <h3>
                     <i class="icon-{{gist.public | publicOrPrivet}}"></i>
                     {{(gist.description | removeTags) || 'Untitled'}}
                 </h3>
-                <div ng-if="gist.has_star" class="the-star" ng-animate="{enter: 'animate-star-enter', leave: 'animate-star-leave'}"><i class="icon-star"></i></div>
+                <div data-ng-if="gist.has_star" class="the-star" data-ng-animate="{enter: 'animate-star-enter', leave: 'animate-star-leave'}"><i class="icon-star"></i></div>
                 <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
                 <i class="icon-file"></i> <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
                 <p>
-                    <span ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag |
+                    <span data-ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag |
                         removeTagSymbol}} </i></span>
                 </p>
             </a>
@@ -59,7 +59,7 @@
     </footer>
 </aside>
 
-<div class="main flex" role="main" ng-view>
+<div class="main flex" role="main" data-ng-view>
 
 </div>
 

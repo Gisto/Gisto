@@ -639,6 +639,7 @@ body.login header {
 details > summary {
     margin: 10px 0;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .smaller {
