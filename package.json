@@ -13,6 +13,7 @@
         "grunt-contrib-nodeunit": "~0.1.2",
         "grunt-jsmin-sourcemap": "1.7.0",
         "grunt-remove-logging": "~0.1.0",
+        "grunt-dev-prod-switch": "0.1.2",
         "grunt-contrib-watch": "~0.4.3"
     },
     "repository": {

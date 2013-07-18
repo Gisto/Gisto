@@ -23,14 +23,21 @@ app.directive('editor', function ($timeout) {
                 $timeout(function () {
 
                     var lang = attrs.language,
+                        font = +attrs.font,
                         editor = ace.edit('editor-' + attrs.index),
                         theme = attrs.theme;
 
-                    console.log({language: lang});
-                    console.log('Theme: ' + theme);
+
 
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
+                    editor.setFontSize(font);
+                    editor.setShowPrintMargin(false);
+                    editor.setAutoScrollEditorIntoView(true);
+
+                    console.log('language:', lang);
+                    console.log('Theme:', theme);
+                    console.log('Font size:', font);
 
                     editor.on('change', function (data) {
 
