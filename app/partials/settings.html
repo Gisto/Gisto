@@ -1,18 +1,18 @@
-<header ng-controller="viewCtrl">
-    <img ng-src="{{avatar || 'https://secure.gravatar.com/avatar/'}}" class="gravatar" title="{{single.user.login}}"/>
+<header data-ng-controller="viewCtrl">
+    <img data-ng-src="{{avatar || 'https://secure.gravatar.com/avatar/'}}" class="gravatar" title="{{single.user.login}}"/>
     <a title="Create new gist" onclick="document.location.href = '#/create'"><i class="create icon-file"></i></a>
-    <a data-ng-controller="logoutCtrl" ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
+    <a data-ng-controller="logoutCtrl" data-ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
 
-    <span class="" ng-hide></span>
+    <span class="" data-ng-hide></span>
     <i class="icon-wrench"></i> Settings
 </header>
 
-<form ng-controller="settingsCtrl">
+<form data-ng-controller="settingsCtrl">
 
 <div class="toolbox">
 
-    <a ng-click="update_settings()">update</a>
+    <a data-ng-click="update_settings()">update</a>
 
 </div>
 
@@ -35,43 +35,48 @@
     <details>
         <summary>Look &amp; feel</summary>
         <p>Set theme:</p>
-        <select ng-model="theme">
-            <option ng-repeat="theme in themes">{{theme}}</option>
+        <select data-ng-model="theme">
+            <option data-ng-repeat="theme in themes">{{theme}}</option>
         </select>
         <p>Set editor theme:</p>
-        <select ng-model="editor_theme">
-            <option ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
+        <select data-ng-model="editor_theme">
+            <option data-ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
         </select>
+        <p>Set editor font size:</p>
+        <select data-ng-model="font_size">
+            <option data-ng-repeat="font_size in font_sizes">{{font_size}}</option>
+        </select> pixel
+
     </details>
 
     <!--
     <div class="tabs">
         <div id="tab1">
-            <h2><a ng-click="show=1">General</a></h2>
-            <div ng-show="show==1">
+            <h2><a data-ng-click="show=1">General</a></h2>
+            <div data-ng-show="show==1">
 
                 --
 
             </div>
         </div>
         <div id="tab2">
-            <h2><a ng-click="show=2">Look &amp; feel</a></h2>
-            <div ng-show="show==2">
+            <h2><a data-ng-click="show=2">Look &amp; feel</a></h2>
+            <div data-ng-show="show==2">
 
                 <p>Set theme:</p>
-                <select ng-model="theme">
-                    <option ng-repeat="theme in themes">{{theme}}</option>
+                <select data-ng-model="theme">
+                    <option data-ng-repeat="theme in themes">{{theme}}</option>
                 </select>
                 <p>Set editor theme:</p>
-                <select ng-model="editor_theme">
-                    <option ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
+                <select data-ng-model="editor_theme">
+                    <option data-ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
                 </select>
             </div>
 
         </div>
         <div id="tab3">
-            <h2><a ng-click="show=3">Gisto settings</a></h2>
-            <div ng-show="show==3">
+            <h2><a data-ng-click="show=3">Gisto settings</a></h2>
+            <div data-ng-show="show==3">
 
                 --
 

@@ -9,12 +9,12 @@
         <h1><i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i></h1>
     </header>
 
-    <form ng-submit="submit()">
-        <input type="text" ng-model="user" placeholder="GitHub username/e-mail" required>
-        <input type="password" ng-model="pass" placeholder="GitHub password" required/>
+    <form data-ng-submit="submit()">
+        <input type="text" data-ng-model="user" placeholder="GitHub username/e-mail" required>
+        <input type="password" data-ng-model="pass" placeholder="GitHub password" required/>
         <input type="submit" value="login"/>
 
-        <i ng-show="spinner" class="spiner icon-spinner icon-spin"></i>
+        <i data-ng-show="spinner" class="spiner icon-spinner icon-spin"></i>
     </form>
 
 </div>

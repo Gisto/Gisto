@@ -1,7 +1,7 @@
-<header ng-controller="viewCtrl">
-    <img ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
+<header data-ng-controller="viewCtrl">
+    <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
-    <a data-ng-controller="logoutCtrl" ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
+    <a data-ng-controller="logoutCtrl" data-ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
 
     <span class="type {{isPublic | publicOrPrivet}}"><i class="icon-{{isPublic | publicOrPrivet}}"></i></span>
@@ -10,20 +10,20 @@
 
 <div class="toolbox">
 
-    <a href="" ng-click="addFile()">Add new file</a>
-    <a href="" ng-click="save()">Save</a>
+    <a href="" data-ng-click="addFile()">Add new file</a>
+    <a href="" data-ng-click="save()">Save</a>
 
 </div>
 
 <section>
 
     <h1>Create gist</h1>
-    <input ui-keydown="{'ctrl-83':'save($event)'}" type="text" ng-model="description" class="desc"
+    <input ui-keydown="{'ctrl-83':'save($event)'}" type="text" data-ng-model="description" class="desc"
            placeholder="Description">
-    <input type="checkbox" ng-model="isPublic"> Public
+    <input type="checkbox" data-ng-model="isPublic"> Public
 
-    <div ng-repeat="file in files">
-        <input ui-keydown="{'ctrl-83':'save($event)'}" type="text" ng-model="file.filename" placeholder="Filename">
+    <div data-ng-repeat="file in files">
+        <input ui-keydown="{'ctrl-83':'save($event)'}" type="text" data-ng-model="file.filename" placeholder="Filename">
 
         <div class="the-gist" onload="initEditors()">
 
@@ -31,7 +31,7 @@
                 <i class="icon-file-alt"></i> <b>{{file.filename || 'filename'}}</b>
             </div>
             <editor ui-keydown="{'ctrl-83':'save($event)'}" language="html" index="{{$index}}"
-                    ng-model="file.content"></editor>
+                    data-ng-model="file.content"></editor>
         </div>
 
     </div>
