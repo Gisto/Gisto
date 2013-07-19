@@ -90,13 +90,24 @@
     <a data-ng-click="copyToClipboard('https://gist.github.com/{{ gist.user.login }}/{{ gist.id }}.js', 'Embed code copied to clipboard','embed')" title="Copy embed code to clipboard">Embed</a>
     <a data-ng-click="warnDeleteGist()" href="" title="Delete this gist">Remove</a>
 
+    <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
+        <i class="icon-sort-down"></i>
+        <div data-ng-show="dropdown.show">
+            <p class="scroller" data-ng-repeat="file in gist.single.files" scroll-to="file-{{$index}}"><i class="icon-file"></i> {{file.filename}}</p>
+        </div>
+    </a>
+
+
+
+
+
 </div>
 
 <section ui-keydown="{'ctrl-83':'update($event)'}"
          ui-event="{ dragover : 'dragStart($event)', dragend: 'dragEnd($event)', drop: 'drop($event)' }">
 
     <div class="the-gist" data-ng-repeat="file in gist.single.files" onload="initEditors()">
-        <div class="the-gist-name">
+        <div id="file-{{$index}}" class="the-gist-name">
 
 
             <span data-ng-switch on="edit">
