@@ -55,6 +55,7 @@ app.directive('editor', function ($timeout) {
     };
 });
 
+
 app.directive("scrollTo", ["$window", function ($window) {
     // http://ngmodules.org/modules/ngScrollTo
     // This directive is currently for files dropdown only
