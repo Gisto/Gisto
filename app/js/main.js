@@ -25,6 +25,13 @@ $(function () {
         }
     });
 
+    $('body').on('click', '.scroller', function (e) {
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: $("#file-2").offset().top
+        }, 2000);
+    });
+
 });
 
 /*

@@ -28,7 +28,6 @@ app.directive('editor', function ($timeout) {
                         theme = attrs.theme;
 
 
-
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
                     editor.setFontSize(font);
@@ -41,7 +40,7 @@ app.directive('editor', function ($timeout) {
 
                     editor.on('change', function (data) {
 
-                        scope.$apply(function() {
+                        scope.$apply(function () {
                             scope.file.content = editor.getValue();
                             if (!scope.edit) {
                                 scope.enableEdit();
@@ -55,3 +54,40 @@ app.directive('editor', function ($timeout) {
 
     };
 });
+
+app.directive("scrollTo", ["$window", function ($window) {
+    // http://ngmodules.org/modules/ngScrollTo
+    // This directive is currently for files dropdown only
+    // TODO: rewrite to be as single directive.
+    return {
+        restrict: "AC",
+        compile: function () {
+
+            var document = $window.document;
+
+            function scrollInto(idOrName) {
+                if (!idOrName)
+                    $window.scrollTo(0, 0);
+                var el = document.getElementById(idOrName);
+                if (!el) {
+                    el = document.getElementsByName(idOrName);
+
+                    if (el && el.length)
+                        el = el[0];
+                    else
+                        el = null;
+                }
+
+                if (el) {
+                    el.scrollIntoView();
+                }
+            }
+
+            return function (scope, element, attr) {
+                element.bind("click", function (event) {
+                    scrollInto(attr.scrollTo);
+                });
+            };
+        }
+    };
+}]);
