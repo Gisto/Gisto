@@ -35,15 +35,10 @@ module.exports = function (grunt) {
                 banner: '/*!\n<%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                 src: [
                     'app/lib/jquery/jquery-2.0.0.js',
-                    'app/js/main.js',
                     //'app/lib/ace/*.js',
                     //'app/lib/angular/angular.js',
                     'app/lib/angular-ui/ui-utils.min.js',
-                    'app/js/app.js',
-                    'app/js/services.js',
-                    'app/js/controllers.js',
-                    'app/js/filters.js',
-                    'app/js/directives.js',
+                    'app/js/*.js',
                     'app/lib/showdown.js'
                 ],
 
