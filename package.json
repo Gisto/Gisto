@@ -14,7 +14,8 @@
         "grunt-jsmin-sourcemap": "1.7.0",
         "grunt-remove-logging": "~0.1.0",
         "grunt-dev-prod-switch": "0.1.4",
-        "grunt-contrib-watch": "~0.4.3"
+        "grunt-contrib-watch": "~0.4.3",
+        "grunt-concat-sourcemap": "~0.3.0"
     },
     "repository": {
         "type": "git",

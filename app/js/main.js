@@ -20,7 +20,7 @@ $(function () {
                 .removeClass('icon-arrow-up')
                 .addClass('icon-arrow-down');
             $('div.comments').animate({
-                height: (document.height / 2) + 'px'
+                height: (window.innerHeight / 2) + 'px'
             }, 500);
         }
     });

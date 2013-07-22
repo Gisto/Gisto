@@ -30,29 +30,28 @@ module.exports = function (grunt) {
                 }
             }
         },
-        'jsmin-sourcemap': {
-            all: {
-                banner: '/*!\n<%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-                src: [
-                    'app/lib/jquery/jquery-2.0.0.js',
-                    //'app/lib/ace/*.js',
-                    //'app/lib/angular/angular.js',
-                    'app/lib/angular-ui/ui-utils.min.js',
-                    'app/js/*.js',
-                    'app/lib/showdown.js'
-                ],
-
-                // Destination for concatenated/minified JavaScript
-                dest: 'app/js/<%= pkg.name %>.min.js',
-
-                // Destination for sourcemap of minified JavaScript
-                destMap: 'all.js.map'
+        concat_sourcemap: {
+            default_options: {
+                options: {
+                    sourcesContent: true
+                },
+                files: {
+                    'app/js/gisto.min.js': [
+                        'app/lib/jquery/jquery-2.0.0.js',
+                        'app/lib/angular/angular.js',
+                        'app/lib/angular-ui/ui-utils.min.js',
+                        'app/js/*/*.js',
+                        'app/js/app.js',
+                        'app/lib/showdown.js',
+                        'app/js/main.js'
+                    ]
+                }
             }
         },
         watch: {
             scripts: {
                 files: '**/*.js',
-                tasks: ['jsmin-sourcemap'],
+                tasks: ['concat_sourcemap'],
                 options: {
                     interrupt: true
                 }
@@ -60,7 +59,7 @@ module.exports = function (grunt) {
         },
         dev_prod_switch: {
             options: {
-                environment: 'dev' // 'prod' or 'dev'
+                environment: 'prod' // 'prod' or 'dev'
             },
             all: {
                 files: {
@@ -76,11 +75,15 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-jsmin-sourcemap');
+    grunt.loadNpmTasks('grunt-concat-sourcemap');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-dev-prod-switch');
     //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks("grunt-remove-logging");
-    grunt.registerTask('default', ['jsmin-sourcemap', 'removelogging', 'dev_prod_switch']);
+    grunt.registerTask('default', [
+        'concat_sourcemap',
+        'removelogging',
+        'dev_prod_switch'
+    ]);
 
 };
