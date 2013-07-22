@@ -1,6 +1,6 @@
 'use strict';
 
-function listGistCtrl($scope, ghAPI, gistData) {
+function listGistCtrl($scope, ghAPI, gistData, socket) {
     $scope.gists = gistData.list;
     // Get the gists list
     if ($scope.gists.hasOwnProperty('lastUpdated')) {

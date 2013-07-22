@@ -59,7 +59,7 @@ module.exports = function (grunt) {
         },
         dev_prod_switch: {
             options: {
-                environment: 'prod' // 'prod' or 'dev'
+                environment: 'dev' // 'prod' or 'dev'
             },
             all: {
                 files: {
