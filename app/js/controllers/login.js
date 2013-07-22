@@ -1,6 +1,6 @@
 'use strict';
 
-function loginCtrl($scope, ghAPI, appSettings) {
+function loginCtrl($scope, ghAPI, appSettings, notificationService) {
     $scope.submit = function () {
         $scope.spinner = true;
         ghAPI.login($scope.user, $scope.pass, function (response) {
@@ -13,6 +13,7 @@ function loginCtrl($scope, ghAPI, appSettings) {
                 data.avatar = appSettings.get('none') || 'none';
                 data.editor_theme = appSettings.get('tomorrow') || 'tomorrow';
                 localStorage.settings = JSON.stringify(data);
+                notificationService.register(); // register for notifications at gisto server
                 window.location.href = '#/';
             } else {
                 $scope.spinner = false;

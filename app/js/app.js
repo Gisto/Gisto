@@ -15,9 +15,13 @@ angular.module('gisto', [
         'gisto.service.gistData',
         'gisto.service.requestHandler',
         'gisto.service.gitHubAPI',
-        'gisto.service.appSettings'
+        'gisto.service.appSettings',
+        'btford.socket-io',
+        'gisto.service.notificationService'
     ]).
-    config(['$routeProvider', function ($routeProvider) {
+    config(['$routeProvider', 'socketProvider', function ($routeProvider, socketProvider) {
+        socketProvider.path('http://localhost:3000'); // configure path to server
+
         $routeProvider.when('/', {
             templateUrl: 'partials/empty.html',
             controller: mainCtrl

@@ -5,13 +5,33 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.appSettings',
     'gisto.service.requestHandler'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q) {
         var api_url = 'https://api.github.com/gists',
             token = appSettings.get('token');
         var api = {
 
             setToken: function (newToken) {
                 token = newToken;
+            },
+
+            getLoggedInUser: function () {
+
+                var deferred  = $q.defer();
+
+                requestHandler({
+                    method: 'GET',
+                    url: 'https://api.github.com/user',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data) {
+                        deferred .resolve(data.login);
+                    }).error(function (error) {
+                        console.log('Could not get logged in user', error);
+                        deferred .reject(error);
+                    });
+
+                return deferred.promise;
             },
 
             // POST /authorizations
@@ -92,7 +112,7 @@ angular.module('gisto.service.gitHubAPI', [
                         }
 
                         // end of the paging calls
-                        api.starred(function(response){
+                        api.starred(function (response) {
                             for (var s in response.data) {
                                 var gist = gistData.getGistById(response.data[s].id);
                                 if (gist) {
