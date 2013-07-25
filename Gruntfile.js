@@ -59,7 +59,7 @@ module.exports = function (grunt) {
         },
         dev_prod_switch: {
             options: {
-                environment: 'prod' // 'prod' or 'dev'
+                environment: grunt.option('env') || 'dev' // 'prod' or 'dev'
             },
             all: {
                 files: {
@@ -78,12 +78,15 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concat-sourcemap');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-dev-prod-switch');
-    //grunt.loadNpmTasks('grunt-contrib-jshint');
+    //grunt.loadNpmTasks('grunt-contrib-jshint'); // Later
     grunt.loadNpmTasks("grunt-remove-logging");
+
     grunt.registerTask('default', [
         'concat_sourcemap',
-        'removelogging',
-        'dev_prod_switch'
+        'removelogging'
     ]);
+
+    // Can be used as `grunt env --env=prod` or `grunt env --env=dev`
+    grunt.registerTask('env', ['dev_prod_switch']);
 
 };
