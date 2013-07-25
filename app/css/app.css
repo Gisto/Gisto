@@ -7,7 +7,13 @@
     }
 }
 
-body * {
+*:not(input) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body *,:not(input) {
     box-sizing: border-box;
 }
 
@@ -266,22 +272,25 @@ div.main header a .create {
 }
 
 div.main header a .notify {
-    position: absolute;
+    position: relative;
     top: 10px;
-    right: 152px;
-    float: left;
+    right: 142px;
+    float: right;
     padding: 6px;
     border-radius: 3px;
     text-decoration: none;
-    -webkit-animation: blink 2s linear infinite;
 }
 
-@-webkit-keyframes blink {
-    0% { opacity:1; }
-    25% { opacity: 0.5; }
-    50% { opacity:0; }
-    75% { opacity: 0.5; }
-    100% { opacity:1; }
+div.main header a .notify span {
+    position: absolute;
+    border: 3px solid #C00;
+    left: 0;
+    color: #FFF;
+    font-size: 8px;
+    background: #C00;
+    top: 0;
+    padding: 0;
+    text-shadow: none;
 }
 
 div.main img.gravatar {
