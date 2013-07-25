@@ -291,6 +291,7 @@ div.main header a .notify span {
     top: 0;
     padding: 0;
     text-shadow: none;
+    box-shadow: 1px 1px 0px #F2F2F2;
 }
 
 div.main img.gravatar {
