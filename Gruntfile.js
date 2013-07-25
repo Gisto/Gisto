@@ -78,15 +78,23 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concat-sourcemap');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-dev-prod-switch');
-    //grunt.loadNpmTasks('grunt-contrib-jshint'); // Later
+    // grunt.loadNpmTasks('grunt-contrib-jshint'); // Later
     grunt.loadNpmTasks("grunt-remove-logging");
 
+    /**
+     * The default task.
+     */
     grunt.registerTask('default', [
+        // 'grunt-contrib-jshint', // Later
         'concat_sourcemap',
-        'removelogging'
+        'removelogging',
+        'dev_prod_switch'
     ]);
 
-    // Can be used as `grunt env --env=prod` or `grunt env --env=dev`
+    /**
+     * Can be used as `grunt env --env=prod` or `grunt env --env=dev`
+     * or with default task as `grunt --env=dev`
+     */
     grunt.registerTask('env', ['dev_prod_switch']);
 
 };
