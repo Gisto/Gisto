@@ -29,7 +29,7 @@ io.sockets.on('connection', function (client) {
         if (recipient) {
             console.log(recipient);
             if (recipient.length > 0) {
-                io.sockets.socket(recipient[0].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId});
+                io.sockets.socket(recipient[0].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId, name: data.name});
             }
         } else {
             console.log('recipient 404 queue notification');

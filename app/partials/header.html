@@ -1,6 +1,20 @@
 <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
 
-<a onclick="" title="Notification"><i class="notify icon-flag"><span class="bubble" ng-show="notifications.length > 0">{{ notifications.length }}</span></i></a>
+<span class="notifications">
+    <a onclick="" title="Notification"><i class="notify icon-flag"><span class="bubble" ng-show="notifications.length > 0">{{ notifications.length }}</span></i></a>
+
+    <ul class="notification-list">
+        <li ng-repeat="item in notifications">
+            <a ng-click="loadExternalGist(item.gistId, item.sender)">
+            <span class="name">{{ item.name }}</span>
+            <span class="sentBy">{{ item.sender }}</span>
+            <span class="date">21/07/13 20:50</span>
+            </a>
+        </li>
+    </ul>
+
+</span>
+
 
 <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
 

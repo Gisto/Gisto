@@ -826,3 +826,32 @@ details > summary {
     text-transform: lowercase;
     font-size: 12px;
 }
+
+.notifications {
+    position: relative;
+}
+
+.notification-list {
+    background: #FFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 400px;
+    padding: 0;
+    margin: 0;
+}
+
+.notification-list li {
+    list-style: none;
+    font-size: 13px;
+    border: 1px solid #CCC;
+    padding: 15px;
+    margin: 0;
+    line-height: 3.5;
+}
+
+.notification-list span {
+    line-height: 3.5px;
+}
+

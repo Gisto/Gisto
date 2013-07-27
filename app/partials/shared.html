@@ -1,22 +1,13 @@
-<header data-ng-controller="headerController">
+<header>
 
-    <a onclick="" title="Notification"><i class="notify icon-bullhorn"><span class="bubble">4</span></i></a>
-
-    <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
-    <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
-
-
-    <a data-ng-controller="logoutCtrl" data-ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
-    <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
-
-
+    <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
     <span data-ng-switch on="edit">
         <span data-ng-switch-when="true">
             <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" data-ng-model="gist.description">
         </span>
         <span class="title" data-ng-switch-default>
-            Name of the shared gist
+            {{ (gist.single.description | removeTags | truncate:80) || 'Untitled' }}
         </span>
     </span>
 
@@ -62,11 +53,11 @@
 <div class="toolbox">
 
     <span class="date_meta">
-        <b>SomeUser</b> want to share this gist with you.
+        <b>{{ author }}</b> want to share this gist with you.
     </span>
 
 
-    <a data-ng-click="" href="" title="Fork this gist">Fork</a> or <a data-ng-click="" href="" title="Reject this gist">Reject</a>
+    <a data-ng-click="fork()" href="" title="Fork this gist">Fork</a> or <a data-ng-click="reject()" href="" title="Reject this gist">Reject</a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
         <i class="icon-sort-down"></i>
