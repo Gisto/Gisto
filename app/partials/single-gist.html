@@ -1,10 +1,6 @@
-<header data-ng-controller="headerController">
+<header>
 
-    <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
-
-    <a onclick="" title="Notification"><i class="notify icon-flag"><span class="bubble" ng-show="notifications.length > 0">{{ notifications.length }}</span></i></a>
-
-    <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
+   <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
     <span data-ng-switch on="gist.single.starred">
         <span data-ng-switch-when="true">
@@ -13,10 +9,7 @@
         <span class="" data-ng-switch-default>
     <a data-ng-click="star()" title="Star"><i class="star icon-star-empty"></i></a>
         </span>
-    </span>
-
-    <a data-ng-controller="logoutCtrl" data-ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
-    <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
+</span>
 
     <span class="type {{gist.public | publicOrPrivet}}"><i class="icon-{{gist.public | publicOrPrivet}}"></i></span>
 
