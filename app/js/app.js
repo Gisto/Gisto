@@ -41,6 +41,10 @@ angular.module('gisto', [
             templateUrl: 'partials/create.html',
             controller: createGistCtrl
         });
+        $routeProvider.when('/shared', {
+            templateUrl: 'partials/shared.html',
+            controller: sharedCtrl
+        });
         $routeProvider.otherwise({
             redirectTo: '/'
         });
