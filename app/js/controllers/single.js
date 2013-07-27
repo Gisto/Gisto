@@ -1,6 +1,6 @@
 'use strict';
 
-function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope) {
+function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService) {
 
     $scope.gist = gistData.getGistById($routeParams.gistId);
 
@@ -15,6 +15,10 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope) {
     } else {
         ghAPI.gist($routeParams.gistId);
     }
+
+    $scope.share = function() {
+        notificationService.send($scope.gist.id, 'morsdyce');
+    };
 
     $scope.copyToClipboard = function (data, message,type) {
         message = message || 'Content of a file <b>' + data.filename + '</b> copied to clipboard';

@@ -9,16 +9,28 @@ var clients = [];
 io.sockets.on('connection', function (client) {
 
     client.on('registerClient', function (data) {
-        console.log('REGISTERING CLIENT ' + data.user);
+        console.log('registering client: ' + data.user);
         this.user = data.user;
         clients.push(client);
-        console.log(clients);
 
     });
 
     client.on('disconnect', function() {
         console.log('client ' + this.user + ' disconnected');
         clients.splice(clients.indexOf(client), 1);
-        console.log(clients);
+    });
+
+    client.on('sendNotification', function(data) {
+
+        var recipient = clients.filter(function(item) {
+            return item.user === data.recipient;
+        });
+
+        if (recipient) {
+            console.log('found recipient');
+        } else {
+            console.log('recipient 404 queue notification');
+        }
+
     });
 });
