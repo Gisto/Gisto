@@ -1,4 +1,6 @@
-<header>
+<header ng-controller="headerController">
+    <a onclick="" title="Notification"><i class="notify icon-bullhorn"><span class="bubble">4</span></i></a>
+    <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
     <a data-ng-controller="logoutCtrl" data-ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
     <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
