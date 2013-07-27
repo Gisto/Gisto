@@ -7,7 +7,13 @@
     }
 }
 
-body * {
+*:not(input) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body *,:not(input) {
     box-sizing: border-box;
 }
 
@@ -263,6 +269,29 @@ div.main header a .create {
     padding: 6px;
     border-radius: 3px;
     text-decoration: none;
+}
+
+div.main header a .notify {
+    position: relative;
+    top: 10px;
+    right: 142px;
+    float: right;
+    padding: 6px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+div.main header a .notify span {
+    position: absolute;
+    border: 3px solid #C00;
+    left: 0;
+    color: #FFF;
+    font-size: 8px;
+    background: #C00;
+    top: 0;
+    padding: 0;
+    text-shadow: none;
+    box-shadow: 1px 1px 0px #F2F2F2;
 }
 
 div.main img.gravatar {

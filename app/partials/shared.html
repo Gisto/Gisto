@@ -1,0 +1,137 @@
+<header data-ng-controller="viewCtrl">
+
+    <a onclick="" title="Notification"><i class="notify icon-bullhorn"><span class="bubble">4</span></i></a>
+
+    <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
+    <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
+
+
+    <a data-ng-controller="logoutCtrl" data-ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>
+    <a onclick="document.location.href = '#/settings'" title="General settings"><i class="settings icon-cog"></i></a>
+
+
+
+    <span data-ng-switch on="edit">
+        <span data-ng-switch-when="true">
+            <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" data-ng-model="gist.description">
+        </span>
+        <span class="title" data-ng-switch-default>
+            Name of the shared gist
+        </span>
+    </span>
+
+
+</header>
+
+<div class="messenger">
+    <i class="icon-lightbulb"></i>
+    <span>Simple notification</span>
+</div>
+
+<div class="messenger info">
+    <i class="icon-info-sign"> </i>
+    <span>Informative notification</span>
+</div>
+
+<div class="messenger warn">
+    <i class="icon-warning-sign"> </i>
+    <span>Warning</span>
+</div>
+
+<div class="messenger ok">
+    <i class="icon-ok-sign"> </i>
+    <span>Success</span>
+</div>
+
+<div class="messenger loading">
+    <i class="icon-spin icon-spinner"> </i>
+    <span>Loading...</span>
+</div>
+
+<div class="messenger edit">
+    <i class="icon-edit"> </i>
+    <span>Edit mode <b>on</b> <a href="" data-ng-click="update()">update</a> | <a data-ng-click="disableEdit()" title="changes wont be saved">cancel</a></span>
+</div>
+
+<div class="messenger delete warn">
+    <i class="icon-warning-sign"> </i>
+    <span>Are you sure you want to <b>delete</b> this gist? | <a href="" data-ng-click="del()">Yes!</a>
+        <a href="" data-ng-click="cancelDeleteGist()">Cancel</a></span>
+</div>
+
+<div class="toolbox">
+
+    <span class="date_meta">
+        <b>SomeUser</b> want to share this gist with you.
+    </span>
+
+
+    <a data-ng-click="" href="" title="Fork this gist">Fork</a> or <a data-ng-click="" href="" title="Reject this gist">Reject</a>
+
+    <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
+        <i class="icon-sort-down"></i>
+        <div data-ng-show="dropdown.show">
+            <p class="scroller" data-ng-repeat="file in gist.single.files" scroll-to="file-{{$index}}"><i class="icon-file"></i> {{file.filename}}</p>
+        </div>
+    </a>
+
+
+
+
+
+</div>
+
+<section ui-keydown="{'ctrl-83':'update($event)'}"
+         ui-event="{ dragover : 'dragStart($event)', dragend: 'dragEnd($event)', drop: 'drop($event)' }">
+
+    <div class="the-gist" data-ng-repeat="file in gist.single.files" onload="initEditors()">
+        <div id="file-{{$index}}" class="the-gist-name">
+
+
+            <span data-ng-switch on="edit">
+                <span data-ng-switch-when="true">
+                    <input class="edaitable" data-ng-model="file.filename">
+                </span>
+                <span data-ng-switch-default>
+                    <i class="icon-file-alt"></i> {{file.filename}}
+                </span>
+            </span>
+
+
+            <a data-ng-click="deleteFile(file.filename)" data-file-index="{{$index}}" title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
+            <a data-ng-click="enableEdit(gist.files ,gist.description)" title="Edit"><i class="icon-pencil icon-rotate-90"></i></a>
+            <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i class="icon-download-alt"></i></a>
+            <a data-ng-click="gotoSite(gist.single.user.login, gist.single.id ,file.filename)" title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
+            <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
+        </div>
+
+        <editor data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" font="{{font_size}}" theme="{{editor_theme}}"
+                index="{{$index}}"></editor>
+
+    </div>
+
+</section>
+
+</span>
+
+<div class="comments">
+
+<span class="clicky">
+    <b><span class="icon-comments"></span> 0</b> Comment(s) <i class="icon-arrow-up"> Show</i>
+</span>
+
+    <div data-ng-controller="commentsGistCtrl" class="the-comments">
+        <span data-ng-repeat="comment in comments">
+            <p>
+                <img data-ng-src="{{comment.user.avatar_url || 'https://secure.gravatar.com/avatar/'}}" class="comment_gravatar"
+                     title="{{comment.user.login}}"/>
+                <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
+            <div class="blockquote" data-ng-bind-html-unsafe="comment.body | markDown"></div>
+        </span>
+    </div>
+
+</div>
+
+<footer>
+    &copy; 2013 <b>Gisto</b> | http://www.gistoapp.com
+</footer>
