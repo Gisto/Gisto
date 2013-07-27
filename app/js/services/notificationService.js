@@ -13,7 +13,9 @@ angular.module('gisto.service.notificationService', [], function($provide) {
            },
            send: function(gistId, user) {
                socket.emit('sendNotification', { recipient: user, gistId: gistId });
-           }
+           },
+           forward: socket.forward
+
        };
 
        return service;

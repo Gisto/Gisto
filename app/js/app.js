@@ -22,6 +22,8 @@ angular.module('gisto', [
     config(['$routeProvider', 'socketProvider', function ($routeProvider, socketProvider) {
         socketProvider.path('http://localhost:3000'); // configure path to server
 
+        console.log(socketProvider);
+
         $routeProvider.when('/', {
             templateUrl: 'partials/empty.html',
             controller: mainCtrl

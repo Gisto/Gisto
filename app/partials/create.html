@@ -1,5 +1,5 @@
 <header data-ng-controller="headerController">
-    <a onclick="" title="Notification"><i class="notify icon-flag"><span class="bubble" ng-show="notificationCount !== 0">{{ notificationCount }}</span></i></a>
+    <a onclick="" title="Notification"><i class="notify icon-flag"><span class="bubble" ng-show="notifications.length > 0">{{ notifications.length }}</span></i></a>
     <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
     <a data-ng-controller="logoutCtrl" data-ng-click="logOut()" title="Log out"><i class="update icon-signout"></i></a>

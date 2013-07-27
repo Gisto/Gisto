@@ -2,7 +2,7 @@
 
     <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
 
-    <a onclick="" title="Notification"><i class="notify icon-flag"><span class="bubble" ng-show="notificationCount !== 0">{{ notificationCount }}</span></i></a>
+    <a onclick="" title="Notification"><i class="notify icon-flag"><span class="bubble" ng-show="notifications.length > 0">{{ notifications.length }}</span></i></a>
 
     <a onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
 
