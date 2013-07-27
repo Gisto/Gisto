@@ -43,7 +43,7 @@ angular.module('gisto', [
             templateUrl: 'partials/create.html',
             controller: createGistCtrl
         });
-        $routeProvider.when('/shared', {
+        $routeProvider.when('/shared/:user/:id', {
             templateUrl: 'partials/shared.html',
             controller: sharedCtrl
         });

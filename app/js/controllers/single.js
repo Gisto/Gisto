@@ -17,7 +17,12 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
     }
 
     $scope.share = function() {
-        notificationService.send($scope.gist.id, 'morsdyce');
+        if ($scope.userToShare) {
+            notificationService.send($scope.gist.id, $scope.gist.description, $scope.userToShare);
+        } else {
+            alert('user is empty');
+        }
+
     };
 
     $scope.copyToClipboard = function (data, message,type) {

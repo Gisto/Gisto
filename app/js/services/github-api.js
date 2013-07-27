@@ -16,7 +16,7 @@ angular.module('gisto.service.gitHubAPI', [
 
             getLoggedInUser: function () {
 
-                var deferred  = $q.defer();
+                var deferred = $q.defer();
 
                 requestHandler({
                     method: 'GET',
@@ -25,10 +25,10 @@ angular.module('gisto.service.gitHubAPI', [
                         Authorization: 'token ' + token
                     }
                 }).success(function (data) {
-                        deferred .resolve(data.login);
+                        deferred.resolve(data.login);
                     }).error(function (error) {
                         console.log('Could not get logged in user', error);
-                        deferred .reject(error);
+                        deferred.reject(error);
                     });
 
                 return deferred.promise;
@@ -133,7 +133,10 @@ angular.module('gisto.service.gitHubAPI', [
 
             // GET /gists/:id
             gist: function (id) {
-                var gist = gistData.getGistById(id); // get the currently viewed gist
+
+                var deferred = $q.defer();
+
+                var gist = gistData.getGistById(id) || {}; // get the currently viewed gist or an empty object to apply the data
 
                 requestHandler({
                     method: 'GET',
@@ -157,6 +160,8 @@ angular.module('gisto.service.gitHubAPI', [
 
                         gist.single = data; // update the current gist with the new data
 
+                        deferred.resolve(gist);
+
                     }).error(function (data, status, headers, config) {
                         console.log({
                             data: data,
@@ -164,7 +169,11 @@ angular.module('gisto.service.gitHubAPI', [
                             headers: headers(),
                             config: config
                         });
+
+                        deferred.reject(status);
                     });
+
+                return deferred.promise;
             },
 
             // POST /gists
@@ -391,7 +400,25 @@ angular.module('gisto.service.gitHubAPI', [
             },
 
             // POST /gists/:id/forks
-            fork: function () {
+            fork: function (id) {
+
+                var deferred = $q.defer();
+
+                requestHandler({
+                    method: 'post',
+                    url: api_url + '/' + id + '/forks',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        gistData.list.push(data);
+                        deferred.resolve(data);
+                }).error(function (data, status, headers, config) {
+                        deferred.reject(data);
+                });
+
+                return deferred.promise;
+
             }
         };
 
