@@ -8,12 +8,12 @@
 
 <img data-ng-src="{{avatar}}" class="button gravatar" title="{{single.user.login}}"/>
 
-<a class="button notification" onclick="" title="Notification" ng-show="notifications.length > 0">
+<a class="button notification" data-ng-click="showNotifications=!showNotifications" title="Notification" data-ng-show="notifications.length > 0">
     <i class="notify icon-flag">
         <span class="bubble">{{ notifications.length }}</span>
 
 
-        <div ng-show="notifications.length > 0">
+        <div ng-show="notifications.length > 0" data-ng-show="showNotifications">
             <ul>
                 <li ng-repeat="item in notifications" ng-click="loadExternalGist(item.gistId, item.sender)">
                     <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
