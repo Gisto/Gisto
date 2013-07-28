@@ -837,11 +837,9 @@ details > summary {
     top: 35px;
     right: 0;
     z-index: 9;
-    background: #555;
     font-size: 9pt;
     line-height: 20px;
     padding: 5px;
-    color: #FFF;
     text-shadow: none;
     border-radius: 5px;
 }
@@ -857,16 +855,12 @@ details > summary {
 }
 
 .notification div:after {
-    border-color: rgba(85, 85, 85, 0);
-    border-bottom-color: #555;
     border-width: 10px;
     left: 95%;
     margin-left: -10px;
 }
 
 .notification div:before {
-    border-color: rgba(191, 191, 191, 0);
-    border-bottom-color: #bfbfbf;
     border-width: 11px;
     left: 95%;
     margin-left: -11px;
@@ -889,16 +883,11 @@ details > summary {
 .notification ul li {
     width: 250px;
     float: right;
-    background: #666;
     margin: 0px 0px 5px 0px;
     padding: 3px 5px;
     border-radius: 3px;
-    color: #ccc;
 }
 
-.notification ul li strong {
-    color: #fff;
-}
 
 .share-drop-down {
     position: relative;
@@ -910,11 +899,11 @@ details > summary {
     right: -2px;
     top: 17px;
     width: 185px;
-    background: #555;
     text-align: left;
     padding: 10px;
     margin: 9px 0px 0px 0px;
     text-transform: lowercase;
+    background: #555;
     font-size: 12px;
 }
 

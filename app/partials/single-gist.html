@@ -84,8 +84,9 @@
 
     <a class="share-drop-down" data-ng-click="dropdown.share.show=!dropdown.share.show" title="Share this Gist">Share
         <div data-ng-show="dropdown.share.show">
-            <input data-ng-click="dropdown.share.show=!dropdown.share.show" type="text" ng-model="userToShare" placeholder="GisHub user name"/>
-            <input type="submit" value="share"  data-ng-click="share()"  />
+            <input data-ng-click="dropdown.share.show=!dropdown.share.show" type="text" ng-model="userToShare"
+                   placeholder="GisHub user name"/>
+            <input type="submit" value="share" data-ng-click="share()"/>
         </div>
     </a>
 
@@ -132,6 +133,8 @@
                     class="icon-download-alt"></i></a>
             <a data-ng-click="gotoSite(gist.single.user.login, gist.single.id ,file.filename)"
                title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
+            <a ng-click="copyToClipboard(gist.single.html_url, 'Direct link copied to clipboard')"
+               title="Copy direct link to clipboard"><i class="icon-link"></i></a>
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
 
