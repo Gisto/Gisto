@@ -8,9 +8,9 @@
 
 <img data-ng-src="{{avatar}}" class="button gravatar" title="{{single.user.login}}"/>
 
-<a class="button notification" onclick="" title="Notification">
+<a class="button notification" onclick="" title="Notification" ng-show="notifications.length > 0">
     <i class="notify icon-flag">
-        <span class="bubble" ng-show="notifications.length > 0">{{ notifications.length }}</span>
+        <span class="bubble">{{ notifications.length }}</span>
 
 
         <div ng-show="notifications.length > 0">
@@ -18,7 +18,7 @@
                 <li ng-repeat="item in notifications" ng-click="loadExternalGist(item.gistId, item.sender)">
                     <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
                     <strong>{{ item.sender }}</strong> shared: <br/>
-                    <strong>{{ item.name }}</strong> with you.
+                    <strong>{{ item.name | removeTags }}</strong> with you.
                 </li>
             </ul>
         </div>
