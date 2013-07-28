@@ -279,6 +279,7 @@ ul li .the-star i {
 .notification div {
     background: -webkit-linear-gradient(top, #F2F2F2, #D9D9D9);
     color: #555;
+    box-shadow: #555 0px 0px 20px;
 }
 
 .notification div:after {
