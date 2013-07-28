@@ -13,7 +13,7 @@
     user-select: none;
 }
 
-body *,:not(input) {
+body *, :not(input) {
     box-sizing: border-box;
 }
 
@@ -245,6 +245,7 @@ div.main header .button {
     float: right;
     margin: 10px 0px 0px 5px;
 }
+
 div.main header .button i {
     padding: 6px;
     border-radius: 3px;
@@ -831,7 +832,6 @@ details > summary {
     font-size: 12px;
 }
 
-
 .notification div {
     position: absolute;
     top: 35px;
@@ -845,6 +845,7 @@ details > summary {
     text-shadow: none;
     border-radius: 5px;
 }
+
 .notification div:after, .notification div:before {
     bottom: 100%;
     border: solid transparent;
@@ -862,6 +863,7 @@ details > summary {
     left: 95%;
     margin-left: -10px;
 }
+
 .notification div:before {
     border-color: rgba(191, 191, 191, 0);
     border-bottom-color: #bfbfbf;
@@ -889,11 +891,11 @@ details > summary {
     margin: 0px 0px 5px 0px;
     padding: 3px 5px;
     border-radius: 3px;
-    color:#ccc;
+    color: #ccc;
 }
 
 .notification ul li strong {
-    color:#fff;
+    color: #fff;
 }
 
 .share-drop-down {
@@ -902,10 +904,10 @@ details > summary {
 }
 
 .share-drop-down div {
-position: absolute;
+    position: absolute;
     right: -2px;
     top: 17px;
-    width: 182px;
+    width: 185px;
     background: #555;
     text-align: left;
     padding: 10px;
@@ -924,4 +926,5 @@ position: absolute;
     border-radius: 3px;
     padding: 3px 5px;
     text-transform: uppercase;
+    float: right;
 }
