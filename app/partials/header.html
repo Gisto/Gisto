@@ -13,7 +13,7 @@
         <span class="bubble" ng-show="notifications.length > 0">{{ notifications.length }}</span>
 
 
-        <div>
+        <div ng-show="notifications.length > 0">
             <ul>
                 <li ng-repeat="item in notifications" ng-click="loadExternalGist(item.gistId, item.sender)">
                     <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
