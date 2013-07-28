@@ -313,3 +313,27 @@ ul li .the-star i {
     border: none;
     top: -21px;
 }
+
+.notification div {
+    background: #555;
+    color: #FFF;
+}
+
+.notification div:after {
+    border-color: rgba(85, 85, 85, 0);
+    border-bottom-color: #555;
+}
+
+.notification div:before {
+    border-color: rgba(191, 191, 191, 0);
+    border-bottom-color: #bfbfbf;
+}
+
+.notification ul li {
+    background: #666;
+    color: #ccc;
+}
+
+.notification ul li strong {
+    color: #fff;
+}
