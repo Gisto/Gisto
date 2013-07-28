@@ -877,6 +877,8 @@ details > summary {
     list-style: none;
     padding: 5px;
     margin: 0px;
+    overflow: auto;
+    max-height: 300px;
 }
 
 .notification ul img {
