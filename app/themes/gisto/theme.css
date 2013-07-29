@@ -275,3 +275,29 @@ ul li .the-star i {
     border: none;
     top: -21px;
 }
+
+.notification div {
+    background: -webkit-linear-gradient(top, #F2F2F2, #D9D9D9);
+    color: #555;
+    box-shadow: #555 0px 0px 20px;
+}
+
+.notification div:after {
+    border-color: rgba(85, 85, 85, 0);
+    border-bottom-color: #F2F2F2;
+}
+
+.notification div:before {
+    border-color: rgba(191, 191, 191, 0);
+    border-bottom-color: #F2F2F2;
+}
+
+.notification ul li {
+    background: #CCC;
+    color: #555;
+    box-shadow: 1px 3px 20px #BBB inset;
+}
+
+.notification ul li strong {
+    color: #555;
+}
