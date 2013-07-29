@@ -38,6 +38,13 @@ io.sockets.on('connection', function (client) {
         clients.splice(clients.indexOf(client), 1);
     });
 
+    client.on('notificationRead', function(item) {
+
+        // remove notification from database
+        db.notifications.remove({recipient: client.user, gistId: item.gistId}, false);
+
+    });
+
     client.on('sendNotification', function(data) {
 
         var recipient = clients.filter(function(item) {
@@ -46,22 +53,22 @@ io.sockets.on('connection', function (client) {
 
         if (recipient && recipient.length > 0) {
             io.sockets.socket(recipient[0].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId, name: data.name, gravatar_id: data.gravatar_id});
-        } else {
-            console.log('recipient 404 queue notification');
-            db.notifications.save({
-                sender: client.user,
-                recipient: data.recipient,
-                gistId: data.gistId,
-                name: data.name,
-                gravatar_id: data.gravatar_id
-            }, function(err, saved) {
-               if (err || !saved) {
-                   console.log('notification failed to save');
-               }  else {
-                   console.log('notification saved');
-               }
-            });
         }
+
+        // save the notification
+        db.notifications.save({
+            sender: client.user,
+            recipient: data.recipient,
+            gistId: data.gistId,
+            name: data.name,
+            gravatar_id: data.gravatar_id
+        }, function(err, saved) {
+           if (err || !saved) {
+               console.log('notification failed to save');
+           }  else {
+               console.log('notification saved');
+           }
+        });
 
     });
 });

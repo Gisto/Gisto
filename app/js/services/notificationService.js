@@ -4,7 +4,6 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
     $provide.factory('notificationService', function (ghAPI, socket, $rootScope) {
         var service = {
             notifications: [],
-            userGravatarId: '',
             register: function () { // register for notifications on the server.
                 console.log('registering user');
                 $rootScope.userRegistered = true;
@@ -16,11 +15,10 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                     console.log(user);
                 });
             },
-            send: function (gistId, gistName, user, gravatar_id) {
-                socket.emit('sendNotification', { recipient: user, gistId: gistId, name: gistName, gravatar_id: service.userGravatarId });
-            },
+            send: socket.emit,
             forward: socket.forward,
             add: function (notification) {
+                console.log(notification);
                 this.notifications.push(notification);
             },
             remove: function (id) {
@@ -30,6 +28,7 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
 
                 if (gist) {
                     this.notifications.splice(this.notifications.indexOf(gist), 1);
+                    this.send('notificationRead', {gistId: id});
                 }
             }
 
