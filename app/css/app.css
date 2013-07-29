@@ -122,6 +122,7 @@ a {
     -moz-transition: all 300ms ease-in-out;
     -ms-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
+    color: #000;
 }
 
 h1 a {
@@ -390,7 +391,7 @@ aside header input {
 }
 
 .the-comments span {
-    height:calc(100% / 6);
+    height:50%;
     margin: 10px 0;
     padding: 0px 10px;
     display: block;

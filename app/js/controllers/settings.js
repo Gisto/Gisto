@@ -1,6 +1,6 @@
 'use strict';
 
-function settingsCtrl($scope, appSettings) {
+function settingsCtrl($scope, appSettings,$rootScope) {
     $scope.themes = appSettings.theme_list;
     $scope.editor_theme = appSettings.get('editor_theme') || 'tomorrow';
     $scope.editor_themes = appSettings.editor_theme_list;
@@ -25,5 +25,16 @@ function settingsCtrl($scope, appSettings) {
             }
         });
 
+    };
+
+    $rootScope.goToSite = function(url,params) {
+
+        for(var i = 0, l = params.length; i < l; i++){
+            var out = url.replace(/{(\d+)}/g,function(match, i) {
+                return typeof params[i] != 'undefined' ? params[i] : match;
+            });
+        }
+        console.log('Out:',out);
+        gui.Shell.openExternal(out);
     };
 }

@@ -14,6 +14,9 @@
         <input type="password" data-ng-model="pass" placeholder="GitHub password" required/>
         <input type="submit" value="login"/>
 
+        <p>No account yet?<br/>
+            Sign-up at <a data-ng-click="goToSite('https://github.com/{0}/{1}',['signup','free'])" href="">GitHub</a></p>
+
         <i data-ng-show="spinner" class="spiner icon-spinner icon-spin"></i>
     </form>
 
