@@ -854,6 +854,7 @@ details > summary {
     margin: 0px 0px 5px 0px;
     padding: 3px 5px;
     border-radius: 3px;
+    position: relative;
 }
 
 
@@ -886,4 +887,17 @@ details > summary {
     padding: 3px 5px;
     text-transform: uppercase;
     float: right;
+}
+
+.remove-notification {
+    color: #C00;
+    position: absolute !important;
+    top: 0px;
+    right: 0px;
+    z-index: 99999;
+    font-size: 13px;
+}
+
+.remove-notification:hover {
+    color:#fff;
 }
