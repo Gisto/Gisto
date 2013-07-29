@@ -254,40 +254,6 @@ div.main header .button i {
     display: inherit;
 }
 
-/*div.main header a .settings {
-    top: 10px;
-    right: 10px;
-    float: left;
-    padding: 6px;
-    border-radius: 3px;
-    text-decoration: none;
-}
-
-div.main header a .update {
-    top: 10px;
-    right: 45px;
-    float: left;
-    padding: 6px;
-    border-radius: 3px;
-    text-decoration: none;
-}
-
-div.main header a .create {
-    top: 10px;
-    right: 83px;
-    float: left;
-    padding: 6px;
-    border-radius: 3px;
-    text-decoration: none;
-}
-
-div.main header a .notify {
-    padding: 6px;
-    border-radius: 3px;
-    text-decoration: none;
-}
-*/
-
 div.main header a .notify span {
     border: 3px solid #C00;
     position: absolute;
@@ -424,9 +390,10 @@ aside header input {
 }
 
 .the-comments span {
-    display: none;
+    height:calc(100% / 6);
     margin: 10px 0;
     padding: 0px 10px;
+    display: block;
 }
 
 div.blockquote {

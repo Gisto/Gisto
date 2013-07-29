@@ -150,12 +150,12 @@
 
 <div class="comments">
 
-<span class="clicky">
+<span class="clicky" data-ng-click="showComments=!showComments">
     <b><span class="icon-comments"></span> {{gist.single.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
 </span>
 
     <div data-ng-controller="commentsGistCtrl" class="the-comments">
-        <span data-ng-repeat="comment in comments">
+        <span data-ng-repeat="comment in comments" data-ng-show="showComments">
             <p>
                 <img data-ng-src="{{comment.user.avatar_url || 'https://secure.gravatar.com/avatar/'}}"
                      class="comment_gravatar"
