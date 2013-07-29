@@ -25,7 +25,7 @@ angular.module('gisto.service.gitHubAPI', [
                         Authorization: 'token ' + token
                     }
                 }).success(function (data) {
-                        deferred.resolve(data.login);
+                        deferred.resolve(data);
                     }).error(function (error) {
                         console.log('Could not get logged in user', error);
                         deferred.reject(error);
