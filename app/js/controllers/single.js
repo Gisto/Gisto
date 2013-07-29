@@ -46,7 +46,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         }, 2500);
     };
 
-    $scope.gotoSite = function (user, id, file) {
+    $scope.goToGist = function (user, id, file) {
         console.log('url', 'https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi, '-'));
         gui.Shell.openExternal('https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi, '-'));
     };

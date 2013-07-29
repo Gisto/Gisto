@@ -81,6 +81,8 @@
         </span>
     </span>
 
+    <a data-ng-click="goToSite('http://plnkr.co/edit/gist:{0}',[gist.single.id])" title="Open gist in 'plunker'">Plunker</a>
+
     <a class="share-drop-down" data-ng-click="dropdown.share.show=!dropdown.share.show" title="Share this Gist">Share
         <div data-ng-show="dropdown.share.show">
             <input data-ng-click="dropdown.share.show=!dropdown.share.show" type="text" ng-model="userToShare"
@@ -130,7 +132,7 @@
                     class="icon-pencil icon-rotate-90"></i></a>
             <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
                     class="icon-download-alt"></i></a>
-            <a data-ng-click="gotoSite(gist.single.user.login, gist.single.id ,file.filename)"
+            <a data-ng-click="goToGist(gist.single.user.login, gist.single.id ,file.filename)"
                title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
             <a ng-click="copyToClipboard(gist.single.html_url, 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>
