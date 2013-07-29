@@ -16,7 +16,7 @@
         <div ng-show="notifications.length > 0" data-ng-show="showNotifications">
             <ul>
                 <li ng-repeat="item in notifications" ng-click="loadExternalGist(item.gistId, item.sender)">
-                    <img data-ng-src="{{avatar}}" class="gravatar" title="{{single.user.login}}"/>
+                    <img data-ng-src="https://secure.gravatar.com/avatar/{{item.gravatar_id}}" class="gravatar" title="{{single.user.login}}"/>
                     <strong>{{ item.sender }}</strong> shared: <br/>
                     <strong>{{ item.name | removeTags }}</strong> with you.
                 </li>

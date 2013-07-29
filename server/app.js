@@ -19,46 +19,48 @@ io.sockets.on('connection', function (client) {
         clients.push(client);
 
         // check for existing notifications
-        db.notifications.find({recipient: data.user}, function(err, notifications) {
-           if (err || !notifications) {
-               console.log('no pending notifications');
-           }  else {
+        db.notifications.find({recipient: data.user}, function (err, notifications) {
+            if (err || !notifications) {
+                console.log('no pending notifications');
+            } else {
 
-               notifications.forEach( function(notification) {
-                   io.sockets.socket(client.id).emit('receiveNotification', notification);
-               } );
-           }
+                notifications.forEach(function (notification) {
+                    io.sockets.socket(client.id).emit('receiveNotification', notification);
+                });
+            }
         });
 
 
     });
 
-    client.on('disconnect', function() {
+    client.on('disconnect', function () {
         console.log('client ' + this.user + ' disconnected');
         clients.splice(clients.indexOf(client), 1);
     });
 
-    client.on('sendNotification', function(data) {
+    client.on('sendNotification', function (data) {
 
-        var recipient = clients.filter(function(item) {
+        var recipient = clients.filter(function (item) {
             return item.user === data.recipient;
         });
 
         if (recipient && recipient.length > 0) {
-            io.sockets.socket(recipient[0].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId, name: data.name});
+            io.sockets.socket(recipient[0].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId, name: data.name, gravatar_id: client.gravatar_id });
+            console.log('DATA:' + data.gravatar_id);
         } else {
             console.log('recipient 404 queue notification');
             db.notifications.save({
                 sender: client.user,
                 recipient: data.recipient,
                 gistId: data.gistId,
+                gravatar_id: client.gravatar_id,
                 name: data.name
-            }, function(err, saved) {
-               if (err || !saved) {
-                   console.log('notification failed to save');
-               }  else {
-                   console.log('notification saved');
-               }
+            }, function (err, saved) {
+                if (err || !saved) {
+                    console.log('notification failed to save');
+                } else {
+                    console.log('notification saved');
+                }
             });
         }
 
