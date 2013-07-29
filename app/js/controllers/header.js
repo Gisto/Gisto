@@ -1,6 +1,6 @@
 'use strict';
 
-function headerController($scope, $rootScope, notificationService, $location) {
+function headerController($scope, $rootScope, notificationService, $location,$routeParams) {
 
     notificationService.forward('receiveNotification', $scope);
 
@@ -29,5 +29,8 @@ function headerController($scope, $rootScope, notificationService, $location) {
         $location.url('/shared/' + user + '/' + id);
     };
 
+    $scope.reject = function(id) {
+        notificationService.remove(id);
+    };
 
 }
