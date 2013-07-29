@@ -45,14 +45,15 @@ io.sockets.on('connection', function (client) {
         });
 
         if (recipient && recipient.length > 0) {
-            io.sockets.socket(recipient[0].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId, name: data.name});
+            io.sockets.socket(recipient[0].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId, name: data.name, gravatar_id: data.gravatar_id});
         } else {
             console.log('recipient 404 queue notification');
             db.notifications.save({
                 sender: client.user,
                 recipient: data.recipient,
                 gistId: data.gistId,
-                name: data.name
+                name: data.name,
+                gravatar_id: data.gravatar_id
             }, function(err, saved) {
                if (err || !saved) {
                    console.log('notification failed to save');
