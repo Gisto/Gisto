@@ -13,7 +13,7 @@
     user-select: none;
 }
 
-body *,:not(input) {
+body *, :not(input) {
     box-sizing: border-box;
 }
 
@@ -241,49 +241,22 @@ menu {
     font-size: 14px;
 }
 
-div.main header a .settings {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    float: left;
-    padding: 6px;
-    border-radius: 3px;
-    text-decoration: none;
-}
-
-div.main header a .update {
-    position: absolute;
-    top: 10px;
-    right: 45px;
-    float: left;
-    padding: 6px;
-    border-radius: 3px;
-    text-decoration: none;
-}
-
-div.main header a .create {
-    position: absolute;
-    top: 10px;
-    right: 83px;
-    float: left;
-    padding: 6px;
-    border-radius: 3px;
-    text-decoration: none;
-}
-
-div.main header a .notify {
-    position: relative;
-    top: 10px;
-    right: 142px;
+div.main header .button {
     float: right;
+    margin: 10px 0px 0px 5px;
+}
+
+div.main header .button i {
     padding: 6px;
     border-radius: 3px;
     text-decoration: none;
+    position: relative;
+    display: inherit;
 }
 
 div.main header a .notify span {
-    position: absolute;
     border: 3px solid #C00;
+    position: absolute;
     left: 0;
     color: #FFF;
     font-size: 8px;
@@ -295,10 +268,8 @@ div.main header a .notify span {
 }
 
 div.main img.gravatar {
-    position: absolute;
     top: 10px;
     right: 116px;
-    float: left;
     padding: 0px;
     width: 34px;
     border-radius: 3px;
@@ -419,9 +390,10 @@ aside header input {
 }
 
 .the-comments span {
-    display: none;
+    height:calc(100% / 6);
     margin: 10px 0;
     padding: 0px 10px;
+    display: block;
 }
 
 div.blockquote {
@@ -827,31 +799,90 @@ details > summary {
     font-size: 12px;
 }
 
-.notifications {
-    position: relative;
-}
-
-.notification-list {
-    background: #FFF;
+.notification div {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    width: 400px;
-    padding: 0;
-    margin: 0;
+    top: 35px;
+    right: 0;
+    z-index: 9;
+    font-size: 9pt;
+    line-height: 20px;
+    padding: 5px;
+    text-shadow: none;
+    border-radius: 5px;
 }
 
-.notification-list li {
+.notification div:after, .notification div:before {
+    bottom: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.notification div:after {
+    border-width: 10px;
+    left: 95%;
+    margin-left: -10px;
+}
+
+.notification div:before {
+    border-width: 11px;
+    left: 95%;
+    margin-left: -11px;
+}
+
+.notification ul {
+    width: 300px;
     list-style: none;
-    font-size: 13px;
-    border: 1px solid #CCC;
-    padding: 15px;
-    margin: 0;
-    line-height: 3.5;
+    padding: 5px;
+    margin: 0px;
+    overflow: auto;
+    max-height: 300px;
 }
 
-.notification-list span {
-    line-height: 3.5px;
+.notification ul img {
+    float: left;
+    margin: -3px 0px 0px -45px;
 }
 
+.notification ul li {
+    width: 250px;
+    float: right;
+    margin: 0px 0px 5px 0px;
+    padding: 3px 5px;
+    border-radius: 3px;
+}
+
+
+.share-drop-down {
+    position: relative;
+    margin: 0px 3px 0px 0px;
+}
+
+.share-drop-down div {
+    position: absolute;
+    right: -2px;
+    top: 17px;
+    width: 185px;
+    text-align: left;
+    padding: 10px;
+    margin: 9px 0px 0px 0px;
+    text-transform: lowercase;
+    background: #555;
+    font-size: 12px;
+}
+
+.share-drop-down div input[type="text"] {
+    border: none;
+    padding: 3px;
+}
+
+.share-drop-down div input[type="submit"] {
+    border: none;
+    border-radius: 3px;
+    padding: 3px 5px;
+    text-transform: uppercase;
+    float: right;
+}

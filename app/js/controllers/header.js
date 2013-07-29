@@ -15,8 +15,13 @@ function headerController($scope, $rootScope, notificationService, $location) {
         notificationService.add({
             sender: data.sender,
             name: data.name,
-            gistId: data.gistId
+            gistId: data.gistId,
+            gravatar_id: data.gravatar_id
         });
+        console.log({sender: data.sender,
+            name: data.name,
+            gistId: data.gistId,
+            gravatar_id: data.gravatar_id});
     });
 
     $scope.loadExternalGist = function(id, user) {
