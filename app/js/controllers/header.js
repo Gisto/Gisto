@@ -12,6 +12,7 @@ function headerController($scope, $rootScope, notificationService, $location) {
     }
 
     $scope.$on('socket:receiveNotification', function(e, data) {
+        console.log(data);
         notificationService.add({
             sender: data.sender,
             name: data.name,
