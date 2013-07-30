@@ -55,6 +55,7 @@ div.toolbox a {
     border: 1px solid #555;
     color: #fff;
     background: #444;
+    box-shadow: 0px 0px 4px #333;
 }
 
 div.toolbox a:hover {
@@ -87,6 +88,7 @@ aside ul {
 aside ul li a {
     border-bottom: 1px solid #9C9C9C;
     border-top: 1px solid #fff;
+    color: #CCC;
 }
 
 aside ul li a > h3 {
@@ -125,23 +127,23 @@ aside footer,
     text-shadow: 1px 1px 1px #555;
 }
 
-.main {
-}
-
-
-div.main header a .update,
 div.main header a .settings,
-div.main header a .create {
+div.main header a .create,
+div.main header a .update {
     border: 1px solid #999;
     background: #555;
     color: #ccc;
 }
 
-div.main header a:hover .update,
-div.main header a:hover .settings,
-div.main header a:hover .create{
+div.main header a .settings:hover,
+div.main header a .create:hover,
+div.main header a .update:hover {
     color: #f2f2f2;
     text-shadow:0px 0px 5px #fff;
+}
+
+i.notify {
+    color:#ccc;
 }
 
 div.comments {
@@ -229,7 +231,11 @@ aside ul li a span {
     color: #DBDBDB;
 }
 
-aside ul li a:hover span.pills {
+aside ul li a > span.pills {
+    color: #555;
+}
+
+aside ul li a:hover > span.pills {
     color: #555;
 }
 

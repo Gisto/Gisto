@@ -20,7 +20,11 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         if ($scope.userToShare) {
             notificationService.send('sendNotification', { recipient: $scope.userToShare, gistId: $scope.gist.id, name: $scope.gist.description, gravatar_id: $scope.gist.user.gravatar_id});
         } else {
-            alert('user is empty');
+            $('.warn').slideDown('slow');
+            $('.warn span').text('User is empty');
+            setTimeout(function () {
+                $('.warn').slideUp();
+            }, 2500);
         }
 
     };

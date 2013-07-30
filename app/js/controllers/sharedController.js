@@ -1,6 +1,6 @@
 'use strict';
 
-function sharedCtrl($scope, ghAPI, gistData, $routeParams, $location, notificationService) {
+function sharedCtrl($scope, ghAPI, gistData, $routeParams, $location, notificationService, $window) {
 
     $scope.author = $routeParams.user;
 
@@ -15,7 +15,7 @@ function sharedCtrl($scope, ghAPI, gistData, $routeParams, $location, notificati
 
     $scope.reject = function() {
         notificationService.remove($routeParams.id);
-        $location.url('/');
+        $window.history.back(-1);
     };
 
 };

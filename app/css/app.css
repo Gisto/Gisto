@@ -425,6 +425,10 @@ div.main .the-comments .comment_gravatar {
     text-align: center;
 }
 
+.login p {
+    font-size: 16px;
+}
+
 .login-form .spiner {
     margin: 10px auto
 }
