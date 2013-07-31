@@ -73,6 +73,15 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         $('.delete').slideUp('slow');
     };
 
+    $scope.$on('serverFailure', function() {
+        console.log('server failure');
+        $('.notification-error').slideDown('slow');
+
+        setTimeout(function() {
+            $('.notification-error').slideUp('slow');
+        }, 3000);
+    });
+
     $scope.star = function ($event) {
         if ($event) {
             $event.preventDefault();
