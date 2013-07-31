@@ -13,6 +13,9 @@ var clients = [];
 
 io.sockets.on('connection', function (client) {
 
+   console.log('client connected');
+    io.sockets.socket(client.id).emit('identify');
+
     client.on('registerClient', function (data) {
         console.log('registering client: ' + data.user);
         this.user = data.user;

@@ -20,9 +20,11 @@ angular.module('gisto', [
         'gisto.service.notificationService'
     ]).
     config(['$routeProvider', 'socketProvider', function ($routeProvider, socketProvider) {
-        socketProvider.path('http://server.gistoapp.com:3000'); // configure path to server
+        //socketProvider.path('http://localhost:3000'); // configure path to server
+        var socket = io.connect('http://server.gistoapp.com:3000');
+        socketProvider.ioSocket(socket);
 
-        console.log(socketProvider);
+        window.ioSocket = socket;
 
         $routeProvider.when('/', {
             templateUrl: 'partials/empty.html',

@@ -5,23 +5,34 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
         var service = {
             notifications: [],
             register: function () { // register for notifications on the server.
-                console.log('registering user');
-                $rootScope.userRegistered = true;
                 var user = ghAPI.getLoggedInUser().then(function (user) {
-                    console.log('register user: ', user);
                     socket.emit('registerClient', { user: user.login });
-                    service.userGravatarId = user.gravatar_id;
-                    console.log('garvaar id', user.gravatar_id);
-                    console.log(user);
                 });
             },
-            send: socket.emit,
+            send: function(e, data) {
+                console.log();
+                console.log(service.connected);
+                if (!window.ioSocket.socket.connected) {
+                    // notify
+                    $rootScope.$broadcast('serverFailure');
+                    return;
+                }
+
+                socket.emit(e,data);
+            },
             forward: socket.forward,
             add: function (notification) {
                 console.log(notification);
                 this.notifications.push(notification);
             },
             remove: function (id) {
+
+                if (!window.ioSocket.socket.connected) {
+                    // notify
+                    $rootScope.$broadcast('serverFailure');
+                    return;
+                }
+
                 var gist = this.notifications.filter(function (item) {
                     return item.id === id;
                 });

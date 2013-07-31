@@ -13,7 +13,6 @@ function loginCtrl($scope, ghAPI, appSettings, notificationService) {
                 data.avatar = appSettings.get('none') || 'none';
                 data.editor_theme = appSettings.get('tomorrow') || 'tomorrow';
                 localStorage.settings = JSON.stringify(data);
-                notificationService.register(); // register for notifications at gisto server
                 window.location.href = '#/';
             } else {
                 $scope.spinner = false;
