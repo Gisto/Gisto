@@ -476,7 +476,8 @@ div.main .the-comments .comment_gravatar {
     margin: 0;
     padding: 0;
     width: 100%;
-    _height: 400px;
+    max-height: 600px;
+    min-height: 200px;
 }
 
 .the-gist-name > b {
