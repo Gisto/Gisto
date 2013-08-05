@@ -345,7 +345,7 @@ ul li .the-star i {
     color: #fff;
 }
 
-details:hover {
+details[open] {
     color: #fff;
     background: -webkit-linear-gradient(top, #6D6D6D, #3C3C3C);
 }
