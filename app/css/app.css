@@ -472,14 +472,6 @@ div.main .the-comments .comment_gravatar {
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.9), 0px 1px 0px rgba(255, 255, 255, 1);
 }
 
-.the-gist pre {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-height: 600px;
-    min-height: 200px;
-}
-
 .the-gist-name > b {
     position: relative;
     top: 3px;
@@ -905,4 +897,26 @@ details > summary {
 
 .remove-notification:hover {
     color:#fff;
+}
+
+.the-gist pre {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+details input[type="text"] {
+    margin: 0;
+    padding: 5px;
+    width: 60px;
+    border-radius: 5px;
+    display: -webkit-inline-box;
+}
+
+details {
+    background: transparent;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 3px;
+    border: 1px solid #ccc;
 }
