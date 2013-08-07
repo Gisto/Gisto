@@ -7,80 +7,44 @@
 
 <form data-ng-controller="settingsCtrl">
 
-<div class="toolbox">
+    <div class="toolbox">
 
-    <a data-ng-click="update_settings()">update</a>
+        <a data-ng-click="update_settings()">update</a>
 
-</div>
-
-<section>
-
-    <h1>Settings:</h1>
-<!--
-
-    <details>
-        <summary>General</summary>
-        <p>-- NO SETTINGS YET --</p>
-    </details>
-
-    <details>
-        <summary>Gisto settings</summary>
-        <p>-- NO SETTINGS YET --</p>
-    </details>
--->
-
-    <details>
-        <summary>Look &amp; feel</summary>
-        <p>Set theme:</p>
-        <select data-ng-model="theme">
-            <option data-ng-repeat="theme in themes">{{theme}}</option>
-        </select>
-        <p>Set editor theme:</p>
-        <select data-ng-model="editor_theme">
-            <option data-ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
-        </select>
-        <p>Set editor font size:</p>
-        <select data-ng-model="font_size">
-            <option data-ng-repeat="font_size in font_sizes">{{font_size}}</option>
-        </select> pixel
-
-    </details>
-
-    <!--
-    <div class="tabs">
-        <div id="tab1">
-            <h2><a data-ng-click="show=1">General</a></h2>
-            <div data-ng-show="show==1">
-
-                --
-
-            </div>
-        </div>
-        <div id="tab2">
-            <h2><a data-ng-click="show=2">Look &amp; feel</a></h2>
-            <div data-ng-show="show==2">
-
-                <p>Set theme:</p>
-                <select data-ng-model="theme">
-                    <option data-ng-repeat="theme in themes">{{theme}}</option>
-                </select>
-                <p>Set editor theme:</p>
-                <select data-ng-model="editor_theme">
-                    <option data-ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
-                </select>
-            </div>
-
-        </div>
-        <div id="tab3">
-            <h2><a data-ng-click="show=3">Gisto settings</a></h2>
-            <div data-ng-show="show==3">
-
-                --
-
-            </div>
-        </div>
     </div>
--->
-</section>
+
+    <section>
+
+        <h1>Settings:</h1>
+
+        <details>
+            <summary>Look &amp; feel</summary>
+
+            <p>Set Gisto theme to <select data-ng-model="theme">
+                    <option data-ng-repeat="theme in themes">{{theme}}</option>
+                </select></p>
+
+        </details>
+
+        <details>
+            <summary>Editor</summary>
+
+            <p>Set editor theme to <select data-ng-model="editor_theme">
+                    <option data-ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
+                </select></p>
+
+            <p>Set editor font size to <select data-ng-model="font_size">
+                    <option data-ng-repeat="font_size in font_sizes">{{font_size}}</option>
+                </select> pixel
+            </p>
+
+            <p>Set minimum editor height to <input type="text" data-ng-model="min_height"/> <b>pixels</b> (<i>leave empty to fit content</i>)
+            </p>
+
+            <p>Limit editor height to <input type="text" data-ng-model="max_height"/> <b>pixels</b> (<i>leave empty for unlimited</i>)
+            </p>
+        </details>
+
+    </section>
 
 </form>
