@@ -10,8 +10,6 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                 });
             },
             send: function(e, data) {
-                console.log();
-                console.log(service.connected);
                 if (!window.ioSocket.socket.connected) {
                     // notify
                     $rootScope.$broadcast('serverFailure');
