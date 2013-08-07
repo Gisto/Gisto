@@ -32,6 +32,7 @@ function headerController($scope, $rootScope, notificationService, $location,$ro
 
     $scope.$on('socket:notificationRead', function(e, data) {
         // remove read notification
+        console.log('recieved read notification deleting notification');
         (data && data.gistId) && notificationService.remove(data.gistId);
     });
 
@@ -41,6 +42,7 @@ function headerController($scope, $rootScope, notificationService, $location,$ro
 
     $scope.reject = function(id) {
         notificationService.remove(id);
+        notificationService.send('notificationRead', {gistId: id});
     };
 
 }

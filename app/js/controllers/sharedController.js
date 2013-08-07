@@ -16,6 +16,7 @@ function sharedCtrl($scope, ghAPI, gistData, $routeParams, $location, notificati
 
     $scope.reject = function() {
         notificationService.remove($routeParams.id);
+        console.log('sending notificationRead request');
         notificationService.send('notificationRead', {gistId: $routeParams.id});
         $window.history.back(-1);
     };
