@@ -1,6 +1,8 @@
 'use strict';
 
-function headerController($scope, $rootScope, notificationService, $location,$routeParams) {
+function headerController($scope, notificationService, $location, appSettings, gistData) {
+
+    notificationService.login();
 
     notificationService.forward('receiveNotification', $scope);
     notificationService.forward('notificationRead', $scope);
@@ -8,6 +10,15 @@ function headerController($scope, $rootScope, notificationService, $location,$ro
 
     $scope.avatar = 'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
     $scope.notifications = notificationService.notifications;
+
+    $scope.logOut = function () {
+
+        console.log('logging out');
+        notificationService.logout();
+
+        gistData.list = [];
+        appSettings.logOut();
+    };
 
     $scope.$on('socket:identify', function(e, data) {
         // identify to the server
