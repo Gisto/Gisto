@@ -20,6 +20,11 @@ function headerController($scope, notificationService, $location, appSettings, g
         appSettings.logOut();
     };
 
+    $scope.$on('ApplicationState', function(state) {
+        console.log(state);
+       console.log('connectivity changed! ' + state.online);
+    });
+
     $scope.$on('socket:identify', function(e, data) {
         // identify to the server
         console.log('recieved identify request');
