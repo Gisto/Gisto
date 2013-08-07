@@ -297,3 +297,7 @@ ul li .the-star i {
 .notification ul li strong {
     color: #555;
 }
+
+details[open] {
+    background: -webkit-linear-gradient(top, #F2F2F2, #D9D9D9);
+}
