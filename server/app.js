@@ -46,6 +46,9 @@ io.sockets.on('connection', function (client) {
         // remove notification from database
         db.notifications.remove({recipient: client.user, gistId: item.gistId}, false);
 
+        // send all clients that the notification has been read.
+        client.sockets.socket.emit('notificationRead', {gistId: item.gistId});
+
     });
 
     client.on('sendNotification', function(data) {
@@ -55,7 +58,10 @@ io.sockets.on('connection', function (client) {
         });
 
         if (recipient && recipient.length > 0) {
-            io.sockets.socket(recipient[0].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId, name: data.name, gravatar_id: data.gravatar_id});
+
+            for (var i = 0, limit = recipient.length; i < limit; i++) {
+                io.sockets.socket(recipient[i].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId, name: data.name, gravatar_id: data.gravatar_id});
+            }
         }
 
         // save the notification

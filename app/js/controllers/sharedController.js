@@ -9,12 +9,14 @@ function sharedCtrl($scope, ghAPI, gistData, $routeParams, $location, notificati
     $scope.fork = function() {
         ghAPI.fork($routeParams.id).then(function(data) {
             notificationService.remove($routeParams.id);
+            notificationService.send('notificationRead', {gistId: $routeParams.id});
             $location.url('/gist/' + data.id);
         });
     };
 
     $scope.reject = function() {
         notificationService.remove($routeParams.id);
+        notificationService.send('notificationRead', {gistId: $routeParams.id});
         $window.history.back(-1);
     };
 
