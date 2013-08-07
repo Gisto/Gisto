@@ -20,6 +20,9 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
             },
             send: function(e, data) {
                 if (!window.ioSocket.socket.connected) {
+                    // attempt to reconnect
+                    this.login();
+
                     // notify
                     $rootScope.$broadcast('serverFailure');
                     return;
