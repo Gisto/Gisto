@@ -4,10 +4,19 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
     $provide.factory('notificationService', function (ghAPI, socket, $rootScope) {
         var service = {
             notifications: [],
-            register: function () { // register for notifications on the server.
+            register: function () {
+             // register for notifications on the server.
                 var user = ghAPI.getLoggedInUser().then(function (user) {
                     socket.emit('registerClient', { user: user.login });
                 });
+            },
+            logout: function() {
+                console.log('log out');
+                window.ioSocket.socket.disconnect();
+            },
+            login: function() {
+                console.log('logging in - notification server');
+                window.ioSocket.socket.connect();
             },
             send: function(e, data) {
                 if (!window.ioSocket.socket.connected) {
