@@ -344,3 +344,8 @@ ul li .the-star i {
 .notification ul li strong {
     color: #fff;
 }
+
+details[open] {
+    color: #fff;
+    background: -webkit-linear-gradient(top, #6D6D6D, #3C3C3C);
+}
