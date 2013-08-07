@@ -39,7 +39,6 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
 
                 if (gist) {
                     this.notifications.splice(this.notifications.indexOf(gist), 1);
-                    this.send('notificationRead', {gistId: id});
                 }
             }
 

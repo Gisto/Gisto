@@ -3,6 +3,7 @@
 function headerController($scope, $rootScope, notificationService, $location,$routeParams) {
 
     notificationService.forward('receiveNotification', $scope);
+    notificationService.forward('notificationRead', $scope);
     notificationService.forward('identify', $scope);
 
     $scope.avatar = 'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
@@ -27,6 +28,11 @@ function headerController($scope, $rootScope, notificationService, $location,$ro
             name: data.name,
             gistId: data.gistId,
             gravatar_id: data.gravatar_id});
+    });
+
+    $scope.$on('socket:notificationRead', function(e, data) {
+        // remove read notification
+        (data && data.gistId) && notificationService.remove(data.gistId);
     });
 
     $scope.loadExternalGist = function(id, user) {
