@@ -17,12 +17,13 @@ angular.module('gisto', [
         'gisto.service.gitHubAPI',
         'gisto.service.appSettings',
         'btford.socket-io',
-        'gisto.service.notificationService'
+        'gisto.service.notificationService',
+        'gisto.service.onlineStatusService'
     ]).
     config(['$routeProvider', 'socketProvider', function ($routeProvider, socketProvider) {
         //socketProvider.path('http://localhost:3000'); // configure path to server
-        var socket = io.connect('http://localhost:3000');
-        //var socket = io.connect('http://server.gistoapp.com:3000');
+        //var socket = io.connect('http://localhost:3000');
+        var socket = io.connect('http://server.gistoapp.com:3000');
         socketProvider.ioSocket(socket);
         window.ioSocket = socket;
 
