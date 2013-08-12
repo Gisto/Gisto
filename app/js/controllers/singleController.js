@@ -19,6 +19,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
     $scope.share = function() {
         if ($scope.userToShare) {
             notificationService.send('sendNotification', { recipient: $scope.userToShare, gistId: $scope.gist.id, name: $scope.gist.description, gravatar_id: $scope.gist.user.gravatar_id});
+            console.log('sent notification!');
         } else {
             $('.warn').slideDown('slow');
             $('.warn span').text('User is empty');
