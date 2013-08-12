@@ -21,7 +21,8 @@
 
 <body class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute}">
 
-<aside ui-route="/login" class="flex" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl" data-ng-hide="edit">
+<aside ui-route="/login" class="flex" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
+       data-ng-hide="edit">
 
     <header class="flex">
         <h1 title="Gist desktop app"><a href="#/">
@@ -36,16 +37,21 @@
     </header>
 
     <ul>
-        <li id="gist-{{gist.id}}" data-ng-animate="{enter: 'animate-list-enter', leave: 'animate-list-leave'}" data-ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
+        <li id="gist-{{gist.id}}" data-ng-animate="{enter: 'animate-list-enter', leave: 'animate-list-leave'}"
+            data-ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
             <a ui-route="/gist/{{gist.id}}" data-ng-class="{active: $uiRoute}"
                onclick="document.location.href = '#/gist/{{gist.id}}'">
                 <h3>
                     <i class="icon-{{gist.public | publicOrPrivet}}"></i>
                     {{(gist.description | removeTags) || 'Untitled'}}
                 </h3>
-                <div data-ng-if="gist.has_star" class="the-star" data-ng-animate="{enter: 'animate-star-enter', leave: 'animate-star-leave'}"><i class="icon-star"></i></div>
+
+                <div data-ng-if="gist.has_star" class="the-star"
+                     data-ng-animate="{enter: 'animate-star-enter', leave: 'animate-star-leave'}"><i
+                        class="icon-star"></i></div>
                 <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
-                <i class="icon-file"></i> <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
+                <i class="icon-file"></i>
+                <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
                 <p>
                     <span data-ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag |
                         removeTagSymbol}} </i></span>
@@ -55,8 +61,11 @@
     </ul>
 
     <footer class="flex">
-        <span>Total {{filteredGists.length}} gists</span>
-        <span class=""><i class="icon-globe" ng-class="{offline: !onlineStatus.status, online: onlineStatus.status }"></i> {{ onlineStatus.state }}</span>
+        <div>
+            <span>Total {{filteredGists.length}} gists</span>
+            <span class=""><i class="icon-globe"
+                              ng-class="{offline: !onlineStatus.status, online: onlineStatus.status }"></i> {{ onlineStatus.state }}</span>
+        </div>
     </footer>
 </aside>
 
