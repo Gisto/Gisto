@@ -226,6 +226,15 @@ aside footer,
     text-align: center;
 }
 
+aside footer div {
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+}
+
+aside footer span:first-child {
+    -webkit-flex: 1 0 0;
+}
+
 .main {
     -webkit-flex: 1;
 }
