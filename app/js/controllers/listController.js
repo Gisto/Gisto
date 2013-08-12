@@ -1,7 +1,19 @@
 'use strict';
 
-function listGistCtrl($scope, ghAPI, gistData, socket) {
+function listGistCtrl($scope, ghAPI, gistData, notificationService) {
     $scope.gists = gistData.list;
+    $scope.onlineStatus = {
+       state: "Offline",
+       status: false
+    };
+
+    $scope.$on('ApplicationState', function(e, data) {
+        console.log(data);
+        $scope.onlineStatus.state = data.online ? "Online" : "Offline";
+        $scope.onlineStatus.status = data.online;
+
+    }, true);
+
     // Get the gists list
     if ($scope.gists.hasOwnProperty('lastUpdated')) {
         console.log($scope.gists.lastUpdated);

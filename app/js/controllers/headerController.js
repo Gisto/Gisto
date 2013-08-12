@@ -1,12 +1,13 @@
 'use strict';
 
-function headerController($scope, notificationService, $location, appSettings, gistData) {
+function headerController($scope, notificationService, $location, appSettings, gistData, onlineStatus) {
 
     notificationService.login();
 
     notificationService.forward('receiveNotification', $scope);
     notificationService.forward('notificationRead', $scope);
     notificationService.forward('identify', $scope);
+    notificationService.forward('disconnect', $scope);
 
     $scope.avatar = 'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
     $scope.notifications = notificationService.notifications;
@@ -20,11 +21,18 @@ function headerController($scope, notificationService, $location, appSettings, g
         appSettings.logOut();
     };
 
-       /*
-    $scope.$on('ApplicationState', function(state) {
-        console.log(state);
-       console.log('connectivity changed! ' + state.online);
-    });*/
+    $scope.onlineStatus = onlineStatus;
+
+    $scope.$watch('onlineStatus.isOnline()', function(online) {
+       if (online && (!window.ioSocket.socket.connected || !window.ioSocket.socket.reconnecting) ) {
+           notificationService.login();
+       }
+    });
+
+    $scope.$on('socket:disconnect', function(e) {
+       console.log('disconnected');
+        notificationService.disconnected();
+    });
 
     $scope.$on('socket:identify', function(e, data) {
         // identify to the server
