@@ -55,7 +55,8 @@
     </ul>
 
     <footer class="flex">
-        Total {{filteredGists.length}} gists
+        <span>Total {{filteredGists.length}} gists</span>
+        <span class=""><i class="icon-globe" ng-class="{offline: !onlineStatus.status, online: onlineStatus.status }"></i> {{ onlineStatus.state }}</span>
     </footer>
 </aside>
 

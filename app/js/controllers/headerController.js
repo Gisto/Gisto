@@ -7,6 +7,7 @@ function headerController($scope, notificationService, $location, appSettings, g
     notificationService.forward('receiveNotification', $scope);
     notificationService.forward('notificationRead', $scope);
     notificationService.forward('identify', $scope);
+    notificationService.forward('disconnect', $scope);
 
     $scope.avatar = 'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
     $scope.notifications = notificationService.notifications;
@@ -26,6 +27,11 @@ function headerController($scope, notificationService, $location, appSettings, g
        if (online && (!window.ioSocket.socket.connected || !window.ioSocket.socket.reconnecting) ) {
            notificationService.login();
        }
+    });
+
+    $scope.$on('socket:disconnect', function(e) {
+       console.log('disconnected');
+        notificationService.disconnected();
     });
 
     $scope.$on('socket:identify', function(e, data) {

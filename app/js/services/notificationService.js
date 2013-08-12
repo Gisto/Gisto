@@ -4,10 +4,12 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
     $provide.factory('notificationService', function (ghAPI, socket, $rootScope) {
         var service = {
             notifications: [],
+            isOnline: false,
             register: function () {
              // register for notifications on the server.
                 var user = ghAPI.getLoggedInUser().then(function (user) {
                     socket.emit('registerClient', { user: user.login });
+                    $rootScope.$broadcast('ApplicationState', { online: true });
                 });
             },
             logout: function() {
@@ -53,6 +55,9 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                         this.notifications.splice(this.notifications.indexOf(gist[i]), 1);
                     }
                 }
+            },
+            disconnected: function() {
+                $rootScope.$broadcast('ApplicationState', { online: false });
             }
 
         };
