@@ -15,14 +15,12 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                 window.ioSocket.socket.disconnect();
             },
             login: function() {
-                console.log('logging in - notification server');
-                window.ioSocket.socket.connect();
+                if (!window.ioSocket.socket.connected) {
+                    window.ioSocket.socket.connect();
+                }
             },
             send: function(e, data) {
                 if (!window.ioSocket.socket.connected) {
-                    // attempt to reconnect
-                    this.login();
-
                     // notify
                     $rootScope.$broadcast('serverFailure');
                     return;
@@ -44,11 +42,16 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                 }
 
                 var gist = this.notifications.filter(function (item) {
-                    return item.id === id;
+                    console.log('filter', item, id);
+                    return item.gistId === id;
                 });
 
-                if (gist) {
-                    this.notifications.splice(this.notifications.indexOf(gist), 1);
+                console.log('remove', gist);
+
+                if (gist && gist.length > 0) {
+                    for (var i = 0, limit = gist.length; i < limit; i++) {
+                        this.notifications.splice(this.notifications.indexOf(gist[i]), 1);
+                    }
                 }
             }
 
