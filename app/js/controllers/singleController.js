@@ -65,6 +65,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
     };
     $scope.disableEdit = function () {
         $rootScope.edit = false;
+        $('.edit').slideUp('slow');
     };
 
     $scope.warnDeleteGist = function () {
