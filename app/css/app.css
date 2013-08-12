@@ -920,3 +920,11 @@ details {
     border-radius: 3px;
     border: 1px solid #ccc;
 }
+
+.online {
+    color: #468847;
+}
+
+.offline {
+    color: #903E30;
+}
