@@ -6,7 +6,7 @@
 
 <a class="button" onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create icon-file"></i></a>
 
-<img data-ng-src="{{avatar}}" class="button gravatar" title="{{single.user.login}}"/>
+<img data-ng-src="{{avatar || 'https://secure.gravatar.com/avatar/'}}" class="button gravatar" title="{{single.user.login}}"/>
 
 <a class="button notification" data-ng-click="showNotifications=!showNotifications" title="Notification">
     <i class="notify icon-flag">
