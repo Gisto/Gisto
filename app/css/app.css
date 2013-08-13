@@ -347,6 +347,24 @@ div.comments i {
     box-shadow: 1px 1px 5px #000;
 }
 
+.login .messenger {
+    display: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    top:0;
+    right:inherit;
+    margin: 0 auto;
+    z-index: 10;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px #000;
+}
+
+.login .messenger i {
+    font-size: 14px;
+}
+
 .messenger.info {
     background: #0480BE;
 
@@ -432,6 +450,7 @@ div.main .the-comments .comment_gravatar {
     border-radius: 16px;
     background: transparent;
     text-align: center;
+    position: relative;
 }
 
 .login p {

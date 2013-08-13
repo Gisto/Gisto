@@ -1,17 +1,28 @@
+0.1.3a
+-----------------
+- Added indication to gist list for stared gists.
+- Notify if empty file is to be saved.
+- Add "Open file at GitHub Gist website" to gist files.
+- Added animations for more aesthetic experience.
+- Small UI fixes.
+- Updated angular UI to angular-ui utils 0.0.3.
+- Updated starred gists to update only when gists finished loading.
+- Improved efficiency when loading multiple gist pages.
+
 0.1.2a
 -----------------
-Added version checker
-Rewrote the save function of application settings to be more versatile.
-Changed appearance  of main application screen.
-Changed notifications to bottom right corner in order to avoid movement of the entire screen.
-Updated node-webkit to version 0.6.0/Chromium 28
+- Added version checker
+- Rewrote the save function of application settings to be more versatile.
+- Changed appearance  of main application screen.
+- Changed notifications to bottom right corner in order to avoid movement of the entire screen.
+- Updated node-webkit to version 0.6.0/Chromium 28
 
 0.1.1a
 ------------------
-Edit mode is now triggered after dragging and dropping a file inside a gist.
-Deleting single files from gists is now available.
-Updates are now reflected on gist list
+- Edit mode is now triggered after dragging and dropping a file inside a gist.
+- Deleting single files from gists is now available.
+- Updates are now reflected on gist list
 
 0.1.0a
 ------------------
-Initial version - Alpha release
+- Initial version - Alpha release
