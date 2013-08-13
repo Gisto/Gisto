@@ -17,7 +17,6 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                         service.token = data[0].data.server_token;
                         socket.emit('registerClient', { user: data[1].login, token: service.token });
                         $rootScope.$broadcast('ApplicationState', { online: true });
-
                 });
             },
             logout: function() {

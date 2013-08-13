@@ -3,8 +3,6 @@ var app = require('express')()
     , io = require('socket.io').listen(server)
     , clientToken = require('./config.js').clientToken;
 
-console.log(clientToken);
-
 var databaseUrl = "gisto",
     collections = ["notifications"],
     db = require('mongojs').connect(databaseUrl, collections);
