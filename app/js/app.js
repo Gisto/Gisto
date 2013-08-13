@@ -21,9 +21,10 @@ angular.module('gisto', [
         'gisto.service.onlineStatusService'
     ]).
     config(['$routeProvider', 'socketProvider', function ($routeProvider, socketProvider) {
-        //socketProvider.path('http://localhost:3000'); // configure path to server
-        var socket = io.connect('http://localhost:3000');
-        //var socket = io.connect('http://server.gistoapp.com:3000');
+
+        // connect to notification server
+        //var socket = io.connect('http://localhost:3000'); // development
+        var socket = io.connect('http://server.gistoapp.com:3000'); // production
         socketProvider.ioSocket(socket);
         window.ioSocket = socket;
 
