@@ -1,6 +1,6 @@
 'use strict';
 
-function createGistCtrl($scope, ghAPI, gistData) {
+function createGistCtrl($scope,$rootScope, ghAPI, gistData) {
     $scope.description = '';
     $scope.isPublic = false;
     $scope.files = [
@@ -18,6 +18,15 @@ function createGistCtrl($scope, ghAPI, gistData) {
             filename: '',
             language: 'html'
         });
+    };
+
+    $scope.enableEdit = function () {
+        $rootScope.edit = true;
+        $('.edit').slideDown('slow');
+    };
+    $scope.disableEdit = function () {
+        $rootScope.edit = false;
+        $('.edit').slideUp('slow');
     };
 
     $scope.save = function ($event) {
@@ -47,8 +56,10 @@ function createGistCtrl($scope, ghAPI, gistData) {
                     "public": $scope.isPublic,
                     files: {}
                 };
+                $rootScope.edit = false;
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
+                newGist.tags = $scope.description ? $scope.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                 gistData.list.unshift(newGist);
 
                 window.location.href = "#/gist/" + response.data.id;
