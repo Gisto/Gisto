@@ -1,15 +1,23 @@
 'use strict';
 
 angular.module('gisto.service.notificationService', [], function ($provide) {
-    $provide.factory('notificationService', function (ghAPI, socket, $rootScope) {
+    $provide.factory('notificationService', function (ghAPI, socket, $rootScope, $http, $q) {
         var service = {
             notifications: [],
             isOnline: false,
+            token: '',
+
             register: function () {
              // register for notifications on the server.
-                var user = ghAPI.getLoggedInUser().then(function (user) {
-                    socket.emit('registerClient', { user: user.login });
-                    $rootScope.$broadcast('ApplicationState', { online: true });
+
+                $q.all([
+                    $http.get('./config.json'),
+                    ghAPI.getLoggedInUser()
+                ]).then(function(data) {
+                        service.token = data[0].data.server_token;
+                        socket.emit('registerClient', { user: data[1].login, token: service.token });
+                        $rootScope.$broadcast('ApplicationState', { online: true });
+
                 });
             },
             logout: function() {

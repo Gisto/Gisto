@@ -1,6 +1,9 @@
 var app = require('express')()
     , server = require('http').createServer(app)
-    , io = require('socket.io').listen(server);
+    , io = require('socket.io').listen(server)
+    , clientToken = require('./config.js').clientToken;
+
+console.log(clientToken);
 
 var databaseUrl = "gisto",
     collections = ["notifications"],
@@ -17,6 +20,14 @@ io.sockets.on('connection', function (client) {
     io.sockets.socket(client.id).emit('identify');
 
     client.on('registerClient', function (data) {
+        console.log(data);
+        if ( !data.hasOwnProperty('token') || data.token !== clientToken) {
+            console.log('failed authentication');
+            client.disconnect();
+            return;
+        }
+
+
         console.log('registering client: ' + data.user);
         this.user = data.user;
         clients.push(client);

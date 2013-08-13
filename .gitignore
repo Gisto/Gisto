@@ -80,3 +80,7 @@ web-server.js
 npm-debug.log
 node_modules
 
+## Gisto Specific ##
+app/config.json
+server/config.js
+
