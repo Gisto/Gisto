@@ -29,6 +29,50 @@ function createGistCtrl($scope,$rootScope, ghAPI, gistData) {
         $('.edit').slideUp('slow');
     };
 
+    $scope.dragStart = function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        $('.edit').slideDown('slow');
+        $('.main section').addClass('dragarea');
+        $('.edit span').text('Drag detected - now drop!');
+        console.log('dragging start');
+    };
+
+    $scope.drop = function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var data = event.dataTransfer;
+        for (var i = 0; i < data.files.length; i++) { // For each dropped file
+            var file = data.files[i];
+            var reader = new FileReader();
+
+            $('.edit').slideUp('slow');
+            $('.ok').slideDown('slow');
+            $('.main section').removeClass('dragarea');
+            $('.ok span').html('Dropped: <b>' + file.name + '</b>');
+            $rootScope.edit = true;
+            reader.onloadend = (function (filename) {
+                return function (event) {
+                    $scope.files.push({
+                        filename: filename,
+                        content: event.target.result,
+                        language: 'html'
+                    });
+                    $scope.$digest();
+                };
+            })(file.name);
+
+            reader.readAsText(file);
+
+        }
+    };
+
+    $scope.dragEnd = function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        console.log('drag end');
+    };
+
     $scope.save = function ($event) {
 
         if ($event) {
