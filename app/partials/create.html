@@ -33,6 +33,8 @@
 
             <div class="the-gist-name">
                 <i class="icon-file-alt"></i> <b>{{file.filename || 'filename'}}</b>
+                <a data-ng-click="deleteFile($index)" data-file-index="{{$index}}"
+                   title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
             </div>
             <editor ui-keydown="{'ctrl-83':'save($event)'}" language="html" index="{{$index}}"
                     data-ng-model="file.content"></editor>

@@ -39,6 +39,8 @@ module.exports = function (grunt) {
                     'app/js/gisto.min.js': [
                         'app/lib/jquery/jquery-2.0.0.js',
                         'app/lib/angular/angular.js',
+                        'app/lib/socket-io/socket.io.min.js',
+                        'app/lib/socket-io/socket.js',
                         'app/lib/angular-ui/ui-utils.min.js',
                         'app/js/*/*.js',
                         'app/js/app.js',

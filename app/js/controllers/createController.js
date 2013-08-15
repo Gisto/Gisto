@@ -1,7 +1,9 @@
 'use strict';
 
-function createGistCtrl($scope,$rootScope, ghAPI, gistData) {
+function createGistCtrl($scope, $rootScope, ghAPI, gistData) {
+
     $scope.description = '';
+
     $scope.isPublic = false;
     $scope.files = [
         {
@@ -18,6 +20,10 @@ function createGistCtrl($scope,$rootScope, ghAPI, gistData) {
             filename: '',
             language: 'html'
         });
+    };
+
+    $scope.deleteFile = function (index) {
+        $scope.files.splice(index,1);
     };
 
     $scope.enableEdit = function () {
