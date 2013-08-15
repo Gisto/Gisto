@@ -18,6 +18,14 @@ angular.module('gisto.service.gitHubAPI', [
 
                 var deferred = $q.defer();
 
+                var user = appSettings.get('username');
+
+                if (user) {
+                    console.log('from saved data');
+                    deferred.resolve({login: user});
+                    return deferred;
+                }
+
                 requestHandler({
                     method: 'GET',
                     url: 'https://api.github.com/user',
@@ -25,6 +33,10 @@ angular.module('gisto.service.gitHubAPI', [
                         Authorization: 'token ' + token
                     }
                 }).success(function (data) {
+                        appSettings.set({
+                           username: data.login,
+                           gravatar_id: data.gravatar_id
+                        });
                         deferred.resolve(data);
                     }).error(function (error) {
                         console.log('Could not get logged in user', error);
