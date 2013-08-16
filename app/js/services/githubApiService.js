@@ -23,7 +23,7 @@ angular.module('gisto.service.gitHubAPI', [
                 if (user) {
                     console.log('from saved data');
                     deferred.resolve({login: user});
-                    return deferred;
+                    return deferred.promise;
                 }
 
                 requestHandler({

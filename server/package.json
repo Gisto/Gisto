@@ -5,6 +5,7 @@
   "dependencies": {
     "socket.io": "~0.9.16",
     "express": "~3.2.6",
-    "mongojs": "~0.7.10"
+    "mongojs": "~0.7.10",
+    "nodealytics": "0.0.5"
   }
 }

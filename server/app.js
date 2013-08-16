@@ -1,12 +1,16 @@
 var app = require('express')()
     , server = require('http').createServer(app)
     , io = require('socket.io').listen(server)
-    , clientToken = require('./config.js').clientToken;
+    , clientToken = require('./config.js').clientToken
+    , analytics = require('nodealytics');
 
 var databaseUrl = "gisto",
     collections = ["notifications"],
     db = require('mongojs').connect(databaseUrl, collections);
 
+analytics.initialize('UA-40972813-1', 'gistoapp.com', function () {
+    //MORE GOOGLE ANALYTICS CODE HERE
+});
 
 server.listen(3000);
 
@@ -25,7 +29,6 @@ io.sockets.on('connection', function (client) {
             return;
         }
 
-
         console.log('registering client: ' + data.user);
         this.user = data.user;
         clients.push(client);
@@ -39,6 +42,12 @@ io.sockets.on('connection', function (client) {
                notifications.forEach( function(notification) {
                    io.sockets.socket(client.id).emit('receiveNotification', notification);
                } );
+           }
+        });
+
+        analytics.trackEvent('clientLogin', data.user, function (err, resp) {
+           if (!err && resp.statusCode === 200) {
+               console.log('Event has been tracked');
            }
         });
 
