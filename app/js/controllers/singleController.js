@@ -1,6 +1,6 @@
 'use strict';
 
-function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService) {
+function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService, appSettings) {
 
     $scope.gist = gistData.getGistById($routeParams.gistId);
 
@@ -18,7 +18,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
     $scope.share = function() {
         if ($scope.userToShare) {
-            notificationService.send('sendNotification', { recipient: $scope.userToShare, gistId: $scope.gist.id, name: $scope.gist.description, gravatar_id: $scope.gist.user.gravatar_id});
+            notificationService.send('sendNotification', { recipient: $scope.userToShare, gistId: $scope.gist.id, name: $scope.gist.description, gravatar_id: appSettings.get('gravatar_id')});
             console.log('sent notification!');
         } else {
             $('.warn').slideDown('slow');
