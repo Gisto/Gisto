@@ -1,3 +1,25 @@
+0.2.0b
+-----------------
+- Gisto users can now share gists to each other easily! just hit the send button and enter a github username of the person you want to share with. The user will be immdiatly notified and can view/fork the gist!
+- Open in plunker, You can now load gists with 1 click into plunkr, if the gist contains web files (html, css, js) it automatically loads and runs them!
+- Added more themes, syntax modes and new adjustable settings to the editor.
+- Editors height are now based on file height and minimum and maximum height can be adjusted in the settings.
+- Added "Edit Mode" for unobstructive file editing. when changes are detected to a file the sidebar closes allowing you to focus on the code.
+- Added dropdown with file list in single gist view to ease navigation between files.
+- Added "Copy embed code to clipboard".
+- Added a delete button to files in create new gist screen.
+- Added online/offline indicator to show status of notifications server.
+- Fixed 404 bad requests.
+- Added a check to see if a gist has comments, if there are none a request for the comments isn't sent.
+- Gists are now saved only when changes are detected to prevent a revision increment with no changes.
+- Added registration link to GitHub for those who do not yet have a GitHub account.
+- Fixed positioning of data and revision data in single gist for low resolutions.
+- Gist tags are now added to the list when creating a new gist.
+- Gravatar fot cached after user logout and another user logging in right after.
+- Drag & Drop is now working in create gist.
+- Added caching to github username and updated gravatar so it can appear in the main screen.
+- See more at: http://localhost:4000/changelog/#sthash.NyIXHrrY.dpuf
+
 0.1.3a
 -----------------
 - Added indication to gist list for stared gists.
