@@ -26,17 +26,18 @@ You may think of Gisto as Evernote for code.
 * Quick in-place editing
 * Drag & drop to create gist/add file
 * Search filter gists
-* Offline access to gists (Will be integrated into full release)
+* Clipboard support
 * UI Themes
 * Copy to clipboard
+* Offline access to gists (Will be integrated into full release)
 
-and more...
+and [more](https://gistoapp.com/features/)...
 
 ## Status
 
-Gisto is currently in it's late ALPHA stage. Few alpha versions already released.
+Gisto is currently in it's Beta.
 
-Please see the [change.log](https://github.com/Gisto/Gisto/blob/master/change.log) for more detailed info regarding new features, bug fixes and releases.
+Please see the [change.log](https://gistoapp.com/changelog/) for more detailed info regarding new features, bug fixes and releases.
 
 It is still under heavily development towards the full release. 
 Various features will be left out from the alpha release.
@@ -72,6 +73,10 @@ Gisto depends on [node-webkit](https://github.com/rogerwang/node-webkit) project
 Please feel free to add a bug / feature request / suggestions to the [issue tracker]( https://github.com/Gisto/Gisto/issues).
 
 Pull requests are welcome as well.
+
+## Documentation
+
+See [Docs](http://www.gistoapp.com/docs/) section on gisto site.
 
 ## License
 
