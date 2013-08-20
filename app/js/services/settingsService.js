@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gisto.service.appSettings', [], function ($provide) {
-    $provide.factory('appSettings', function () {
+    $provide.factory('appSettings', function ($rootScope) {
         var settings = {
 
             theme_list: ['default', 'gisto', 'nite', 'dark', 'dark-blue'],
@@ -49,6 +49,7 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
             },
 
             logOut: function () {
+                $rootScope.edit = false;
                 delete localStorage.settings;
                 document.location.href = '#/login';
             },
