@@ -16,7 +16,7 @@
         <div data-ng-show="showNotifications && notifications.length > 0">
             <ul>
                 <li data-ng-repeat="item in notifications" data-ng-click="loadExternalGist(item.gistId, item.sender)">
-                <i data-ng-click="reject(item.gistId);" class="icon-remove-sign remove-notification"></i>
+                <i data-ng-click="reject(item.gistId);" class="icon-trash remove-notification"></i>
                     <img data-ng-src="https://secure.gravatar.com/avatar/{{item.gravatar_id}}" class="gravatar" title="{{single.user.login}}"/>
                     <strong>{{ item.sender }}</strong> shared: <br/>
                     <strong>{{ item.name | removeTags }}</strong>
