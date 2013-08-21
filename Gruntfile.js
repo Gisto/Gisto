@@ -4,7 +4,6 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         'jshint': {
             all: [
-                'app/js/main.js',
                 'app/js/app.js',
                 'app/js/services.js',
                 'app/js/controllers.js',
@@ -37,15 +36,13 @@ module.exports = function (grunt) {
                 },
                 files: {
                     'app/js/gisto.min.js': [
-                        'app/lib/jquery/jquery-2.0.0.js',
-                        'app/lib/angular/angular.js',
-                        'app/lib/socket-io/socket.io.min.js',
-                        'app/lib/socket-io/socket.js',
-                        'app/lib/angular-ui/ui-utils.min.js',
+                        'app/lib/jquery/*.js',
+                        'app/lib/angular/*.js',
+                        'app/lib/socket-io/*.js',
+                        'app/lib/angular-ui/*.js',
                         'app/js/*/*.js',
                         'app/js/app.js',
-                        'app/lib/showdown.js',
-                        'app/js/main.js'
+                        'app/lib/showdown.js'
                     ]
                 }
             }
@@ -59,6 +56,7 @@ module.exports = function (grunt) {
                 }
             }
         },
+        // Can be ran as `grunt --env=dev` or ``grunt --env=prod``
         dev_prod_switch: {
             options: {
                 environment: grunt.option('env') || 'dev' // 'prod' or 'dev'
