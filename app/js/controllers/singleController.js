@@ -272,11 +272,13 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         };
 
         for (var file in $scope.gist.single.files) {
-            data.files[file] = {
+            data.files[$scope.gist.single.files[file].filename] = {
                 content: $scope.gist.single.files[file].content,
                 filename: $scope.gist.single.files[file].filename
             };
         }
+
+        console.log('data',$scope.gist.single);
 
         if( angular.equals($scope.old_object, $scope.gist.single.files) && angular.equals($scope.old_description, $scope.gist.description) ) {
             $('.warn').slideDown('slow');
@@ -300,6 +302,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                         $('.ok').slideUp();
                     }, 2500);
                 } else if (response.status === 422) { // ststus code of: 422 (Unprocessable Entity)
+                    console.log(response);
                     $('.warn').slideDown('slow');
                     $('.warn span').text('You cannot save empty files');
                     setTimeout(function () {
