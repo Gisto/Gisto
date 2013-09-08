@@ -470,6 +470,10 @@ div.main .the-comments .comment_gravatar {
     font-size: 49px;
 }
 
+.login-form i.icon-arrow-left, .login-form a {
+    font-size: 16px;
+}
+
 .login-form h1 {
 }
 
