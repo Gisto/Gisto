@@ -47,7 +47,17 @@ angular.module('gisto.service.gitHubAPI', [
             },
 
             // POST /authorizations
-            login: function (user, pass, callback) {
+            login: function (user, pass, callback, twoStepAuthCode) {
+
+                var headers = {
+                    "Authorization": "Basic " + btoa(user + ":" + pass),
+                    "Content-Type": "application/x-www-form-urlencoded"
+                };
+
+                if (twoStepAuthCode) {
+                    headers['X-GitHub-OTP'] = twoStepAuthCode;
+                }
+
                 requestHandler({
                     method: 'POST',
                     url: 'https://api.github.com/authorizations',
@@ -56,10 +66,7 @@ angular.module('gisto.service.gitHubAPI', [
                     ],
                         "note": "Gisto"
                     },
-                    headers: {
-                        "Authorization": "Basic " + btoa(user + ":" + pass),
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    }
+                    headers: headers
                 }).success(function (data, status, headers, config) {
                         return callback({
                             data: data,

@@ -11,9 +11,21 @@
             <span>Warning</span>
         </div>
 
-        <input type="text" data-ng-model="user" placeholder="GitHub username/e-mail" required>
-        <input type="password" data-ng-model="pass" placeholder="GitHub password" required/>
+        <div class="messenger info">
+            <i class="icon-info-sign"> </i>
+            <span>2 Factor authentication token needed</span>
+        </div>
+
+        <div data-ng-hide="step2">
+            <input type="text" data-ng-model="user" placeholder="GitHub username/e-mail" required>
+            <input type="password" data-ng-model="pass" placeholder="GitHub password" required/>
+        </div>
+        <div data-ng-show="step2">
+            <input type="text" data-ng-model="code" placeholder="Authenticator token">
+
+        </div>
         <input type="submit" value="login"/>
+        <p data-ng-show="step2"><a href="#" data-ng-click="step1()"><i class="icon-arrow-left"></i> Re-enter username/password</a></p>
 
         <p>No account yet? Sign-up at <a data-ng-click="goToSite('https://github.com/{0}/{1}',['signup','free'])" href="">GitHub</a></p>
 
