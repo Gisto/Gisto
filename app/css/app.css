@@ -73,6 +73,8 @@ body {
     display: -webkit-flex;
     margin: 0;
     height: 100%;
+    -webkit-user-select: none;
+    cursor: default;
 }
 
 .clear {
