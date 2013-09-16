@@ -13,14 +13,6 @@
     user-select: none;
 }
 
-* ,:not(input){
-    cursor:default;
-}
-
-input {
-    cursor: auto;
-}
-
 body *, :not(input) {
     box-sizing: border-box;
 }
@@ -183,7 +175,6 @@ div.toolbox a {
     text-decoration: none;
     text-transform: uppercase;
     font-size: 11px;
-    cursor: pointer;
 }
 
 .type {
@@ -341,11 +332,6 @@ div.comments i {
     text-align: center;
     text-decoration: none;
     font-size: 20px;
-    cursor: pointer;
-}
-
-a,a i {
-    cursor: pointer;
 }
 
 .messenger {
@@ -898,12 +884,8 @@ details > summary {
     padding: 3px 5px;
     border-radius: 3px;
     position: relative;
-    cursor: pointer;
 }
 
-.files-drop-down p.scroller {
-    cursor: pointer;
-}
 
 .share-drop-down {
     position: relative;
