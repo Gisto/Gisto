@@ -41,7 +41,7 @@ body section {
     }
 }
 
-*:focus {
+*:focus,*:hover {
     outline: none;
     -webkit-transition: all 0.15s ease-in;
     transition: all 0.15s ease-in;
@@ -962,3 +962,47 @@ details {
 .offline {
     color: #903E30;
 }
+
+.date_meta div.revision-drop-down {
+    position: absolute;
+    left: 70px;
+    top: 79px;
+    height: auto;
+    max-height: 60%;
+    background: #555;
+    text-align: left;
+    overflow: auto;
+    padding: 0 10px;
+    margin: 9px 0px 0px 0px;
+    text-transform: lowercase;
+    font-size: 12px;
+    width:200px;
+}
+
+div.revision-drop-down a p b {
+    font-size: 20px;
+    font-weight: 100;
+}
+
+div.revision-drop-down a p {
+    border-bottom: 1px solid #fff;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 10px;
+    margin-left: 10px;
+}
+div.revision-drop-down a:hover {
+    background:transparent !important;
+    border: none !important;
+}
+
+div.revision-drop-down a:last-child p {
+    border:none;
+}
+
+div.revision-drop-down a p:hover {
+    text-shadow: 0 0 20px #fff;
+    padding-left:10px;
+}
+

@@ -195,6 +195,51 @@ angular.module('gisto.service.gitHubAPI', [
                 return deferred.promise;
             },
 
+            // GET /gists/:id/:revision
+            history: function (id,revId) {
+
+                var deferred = $q.defer();
+
+                var gist = gistData.getGistById(id) || {}; // get the currently viewed gist or an empty object to apply the data
+
+                requestHandler({
+                    method: 'GET',
+                    url: api_url + '/' + id + '/' + revId,
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        api.is_starred(data.id, function (response) {
+                            if (response.status === 204) {
+                                data.starred = true;
+                            } else {
+                                data.starred = false;
+                            }
+                            console.log('Is it starred: ' + data.starred);
+                        });
+
+                        // save timestamp of pull
+                        data.lastUpdated = new Date();
+                        console.log(data.lastUpdated);
+
+                        gist.history = data; // update the current gist with the new data
+
+                        deferred.resolve(gist);
+
+                    }).error(function (data, status, headers, config) {
+                        console.log({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+
+                        deferred.reject(status);
+                    });
+
+                return deferred.promise;
+            },
+
             // POST /gists
             create: function (data, callback) {
                 requestHandler({
