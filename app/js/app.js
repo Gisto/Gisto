@@ -43,6 +43,10 @@ angular.module('gisto', [
             templateUrl: 'partials/single-gist.html',
             controller: singleGistCtrl
         });
+        $routeProvider.when('/history/:gistId/rev/:gistRevisionId', {
+            templateUrl: 'partials/history.html',
+            controller: singleGistHistoryCtrl
+        });
         $routeProvider.when('/create', {
             templateUrl: 'partials/create.html',
             controller: createGistCtrl
