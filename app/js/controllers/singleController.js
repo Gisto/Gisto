@@ -71,8 +71,18 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
     $scope.warnDeleteGist = function () {
         $('.delete').slideDown('slow');
     };
+
     $scope.cancelDeleteGist = function () {
         $('.delete').slideUp('slow');
+    };
+
+    $scope.warnStateChange = function ($state) {
+        $scope.state = $state;
+        $('.state').slideDown('slow');
+    };
+
+    $scope.cancelStateChange = function () {
+        $('.state').slideUp('slow');
     };
 
     $scope.$on('serverFailure', function() {
@@ -83,6 +93,16 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
             $('.notification-error').slideUp('slow');
         }, 3000);
     });
+
+    $scope.changeState = function($state) {
+        var the_state;
+        if($state === 'public') {
+            the_state = 'public';
+        } else {
+            the_state = 'private';
+        }
+        console.log('To ' + the_state);
+    }
 
     $scope.star = function ($event) {
         if ($event) {

@@ -11,7 +11,15 @@
         </span>
 </span>
 
-    <span class="type {{gist.public | publicOrPrivet}}"><i class="icon-{{gist.public | publicOrPrivet}}"></i></span>
+
+<span data-ng-switch on="gist.public">
+    <span data-ng-switch-when="true">
+        <a data-ng-click="warnStateChange('private')" title="Make private"><i class="star icon-unlock"></i></a>
+    </span>
+    <span class="" data-ng-switch-default>
+        <a data-ng-click="warnStateChange('public')" title="Make public"><i class="star icon-lock"></i></a>
+    </span>
+</span>
 
     <span data-ng-switch on="edit">
         <span data-ng-switch-when="true">
@@ -62,6 +70,12 @@
         <a href="" data-ng-click="cancelDeleteGist()">Cancel</a></span>
 </div>
 
+<div class="messenger state warn">
+    <i class="icon-warning-sign"> </i>
+    <span>Are you sure you want to make this gist <b>{{state}}</b>? <br />This will delete and recreate the gist as {{state}}, comments and revisions will be lost <a href="" data-ng-click="changeState(state)">Yes!</a>
+        <a href="" data-ng-click="cancelStateChange()">Cancel</a></span>
+</div>
+
 <div class="messenger warn notification-error">
     <i class="icon-warning-sign"> </i>
     <span>Server connection lost, please try again later.</span>
@@ -70,19 +84,23 @@
 <div class="toolbox">
 
     <span class="date_meta">
-        <b>Revisions:</b> <i data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}} <code class="icon-sort-down"></code></i> <b>Created:</b> <i>{{ gist.single.created_at |
+        <b>Revisions:</b> <i data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}}
+        <code class="icon-sort-down"></code></i> <b>Created:</b> <i>{{ gist.single.created_at |
         date:'dd/MM/yyyy HH:mm:ss' }}</i>
         <b>Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
 
-        <div data-ng-controller="singleGistHistoryCtrl" class="revision-drop-down" data-ng-show="dropdown.revisions.show">
+        <div data-ng-controller="singleGistHistoryCtrl" class="revision-drop-down"
+             data-ng-show="dropdown.revisions.show">
             <div ng-repeat="revision in gist.single.history">
-            <a href="#/history/{{ gist.single.id }}/rev/{{ revision.version }}">
-                <p data-ng-hide="$index==0">
-                    <b>Rev. {{ revision.version | truncate : 7 : ''}}</b><br/>
-                    {{ revision.committed_at  | date:'dd/MM/yyyy HH:mm:ss'}}<br/>
-                    {{ revision.change_status.total }} Changes: <code class="icon-plus-sign-alt"></code> {{ revision.change_status.additions }}, <code class="icon-minus-sign-alt"></code> {{ revision.change_status.deletions }}</p>
-            </a>
-                </div>
+                <a href="#/history/{{ gist.single.id }}/rev/{{ revision.version }}">
+                    <p data-ng-hide="$index==0">
+                        <b>Rev. {{ revision.version | truncate : 7 : ''}}</b><br/>
+                        {{ revision.committed_at | date:'dd/MM/yyyy HH:mm:ss'}}<br/>
+                        {{ revision.change_status.total }} Changes: <code class="icon-plus-sign-alt"></code> {{
+                        revision.change_status.additions }}, <code class="icon-minus-sign-alt"></code> {{
+                        revision.change_status.deletions }}</p>
+                </a>
+            </div>
         </div>
 
     </span>
@@ -98,7 +116,8 @@
         </span>
     </span>
 
-    <a data-ng-click="goToSite('http://plnkr.co/edit/gist:{0}?p=preview',[gist.single.id])" title="Open gist in 'plunker'">Plunker</a>
+    <a data-ng-click="goToSite('http://plnkr.co/edit/gist:{0}?p=preview',[gist.single.id])"
+       title="Open gist in 'plunker'">Plunker</a>
 
     <a class="share-drop-down" data-ng-click="dropdown.share.show=!dropdown.share.show" title="Share this Gist">Share
         <div data-ng-show="dropdown.share.show">
