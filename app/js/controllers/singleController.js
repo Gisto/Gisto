@@ -97,11 +97,48 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
     $scope.changeState = function($state) {
         var the_state;
         if($state === 'public') {
-            the_state = 'public';
+            the_state = true;
         } else {
-            the_state = 'private';
+            the_state = false;
         }
-        console.log('To ' + the_state);
+
+        var data = {
+            description: $scope.gist.single.description,
+            "public": the_state,
+            files: {}
+        };
+
+        for (var file in $scope.gist.single.files) {
+            data.files[$scope.gist.single.files[file].filename] = {
+                content: $scope.gist.single.files[file].content
+            };
+        }
+
+        ghAPI.create(data, function (response) {
+            if (response.status === 201) {
+
+                var newGist = {
+                    id: response.data.id,
+                    description: response.data.description,
+                    "public": response.data.public,
+                    files: {}
+                };
+
+                console.log('NEW:', newGist);
+
+                $('.ok').slideDown('slow');
+                $('.ok span').text('Gist set to ' + $state);
+                newGist.tags = newGist.description ? newGist.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                newGist.files = response.data.files;
+                newGist.filesCount = Object.keys(newGist.files).length;
+                newGist.history = response.data.history;
+                gistData.list.unshift(newGist);
+
+                window.location.href = "#/gist/" + response.data.id;
+            }
+        });
+
+
     }
 
     $scope.star = function ($event) {
