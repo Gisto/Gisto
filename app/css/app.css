@@ -2,8 +2,11 @@
 @import url('font-awesome.css');
 
 @media only screen and ( max-width: 1345px) {
-    .date_meta {
+    .gist_date_meta {
         display: none;
+    }
+    div.toolbox span  {
+        width:100px !important;
     }
 }
 

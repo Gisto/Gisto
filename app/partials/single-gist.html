@@ -85,10 +85,12 @@
 
     <span class="date_meta">
         <b>Revisions:</b> <i data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}}
-        <code class="icon-sort-down"></code></i> <b>Created:</b> <i>{{ gist.single.created_at |
+        <code class="icon-sort-down"></code></i>
+<date class="gist_date_meta">
+        <b>Created:</b> <i>{{ gist.single.created_at |
         date:'dd/MM/yyyy HH:mm:ss' }}</i>
         <b>Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
-
+</date>
         <div data-ng-controller="singleGistHistoryCtrl" class="revision-drop-down"
              data-ng-show="dropdown.revisions.show">
             <div ng-repeat="revision in gist.single.history">
