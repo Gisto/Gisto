@@ -94,7 +94,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         }, 3000);
     });
 
-    $scope.changeState = function($state) {
+    $scope.changeState = function($state,event) {
         var the_state;
         if($state === 'public') {
             the_state = true;
@@ -117,6 +117,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         ghAPI.create(data, function (response) {
             if (response.status === 201) {
 
+                $('.ok').slideDown('slow');
+                $('.ok span').text('Gist set to ' + $state);
+
                 var newGist = {
                     id: response.data.id,
                     description: response.data.description,
@@ -124,16 +127,18 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                     files: {}
                 };
 
-                console.log('NEW:', newGist);
+                // Remove the old gist
+                ghAPI.delete($scope.gist.single.id);
+                gistData.list.splice(gistData.list.indexOf(gistData.getGistById($scope.gist.single.id)), 1);
 
-                $('.ok').slideDown('slow');
-                $('.ok span').text('Gist set to ' + $state);
                 newGist.tags = newGist.description ? newGist.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                 newGist.files = response.data.files;
                 newGist.filesCount = Object.keys(newGist.files).length;
                 newGist.history = response.data.history;
                 gistData.list.unshift(newGist);
-
+                setTimeout(function () {
+                    $('.ok').slideUp();
+                }, 2500);
                 window.location.href = "#/gist/" + response.data.id;
             }
         });
