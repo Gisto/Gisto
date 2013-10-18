@@ -31,13 +31,13 @@ You may think of Gisto as Evernote for code.
 * Copy to clipboard
 * Offline access to gists (Will be integrated into full release)
 
-and [more](https://gistoapp.com/features/)...
+and [more](http://gistoapp.com/features/)...
 
 ## Status
 
 Gisto is currently in it's Beta.
 
-Please see the [change.log](https://gistoapp.com/changelog/) for more detailed info regarding new features, bug fixes and releases.
+Please see the [change.log](http://gistoapp.com/changelog/) for more detailed info regarding new features, bug fixes and releases.
 
 It is still under heavily development towards the full release. 
 Various features will be left out from the alpha release.
