@@ -190,7 +190,7 @@
 <div class="comments">
 
 <span class="clicky" data-ng-click="showComments=!showComments">
-    <b><span class="icon-comments"></span> {{gist.single.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
+    <b><span class="icon-comments"></span> {{gist.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
 </span>
 
     <div data-ng-controller="commentsGistCtrl" class="the-comments">
@@ -202,6 +202,23 @@
                 <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
             <div class="blockquote" data-ng-bind-html-unsafe="comment.body | markDown"></div>
         </span>
+
+        <div data-ng-if="showComments">
+            <h3>Add Comment</h3>
+
+            <span data-ng-show="showPreview">
+            <div class="show-preview" data-ng-bind-html-unsafe="comment_body | markDown"></div>
+        </span>
+
+        <span class="comment-text-holder">
+            <a class="preview" data-ng-click="showPreview=!showPreview">preview</a>
+            <textarea class="comment-text" data-ng-model="comment_body">
+
+            </textarea>
+        </span>
+            <a  class="post-comment" data-ng-click="add_comment(comment_body)">Post</a>
+        </div>
+
     </div>
 
 </div>

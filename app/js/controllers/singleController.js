@@ -133,6 +133,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
                 newGist.tags = newGist.description ? newGist.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                 newGist.files = response.data.files;
+                newGist.comments = 0;
                 newGist.filesCount = Object.keys(newGist.files).length;
                 newGist.history = response.data.history;
                 gistData.list.unshift(newGist);

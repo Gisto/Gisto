@@ -1,8 +1,6 @@
 'use strict';
 
 function commentsGistCtrl($scope, $routeParams, ghAPI) {
-    console.log('>>>>>>>>>>>>> Comments',$scope.gist.comments);
-    if ($scope.gist.comments > 0) {
         ghAPI.comments($routeParams.gistId, function (response) {
             if (response.status === 200) {
                 $scope.comments = response.data;
@@ -10,5 +8,22 @@ function commentsGistCtrl($scope, $routeParams, ghAPI) {
                 console.warn('[!!!] >>> Comments not loaded - server responded with error.');
             }
         });
-    }
+
+    $scope.add_comment = function(data){
+        console.log('COMMENT BODY',data);
+        var comment = {
+            "body": data
+        };
+        ghAPI.add_comment($routeParams.gistId, comment, function (response) {
+            if (response.status === 201) {
+                $scope.comments.push(response.data);
+                $scope.gist.comments = $scope.gist.comments +1;
+                angular.element(document.querySelector('.comment-text')).val('');
+                angular.element(document.querySelector('.show-preview')).html('');
+            } else {
+                console.warn('[!!!] >>> Comment not posted - server responded with error.');
+            }
+        });
+    };
+
 }
