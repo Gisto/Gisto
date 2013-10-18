@@ -343,6 +343,32 @@ angular.module('gisto.service.gitHubAPI', [
                     });
             },
 
+            // POST /gists/:id/comments
+            add_comment: function (id, data, callback) {
+                requestHandler({
+                    method: 'POST',
+                    url: api_url + '/' + id + '/comments',
+                    data: data,
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
+            },
+
             // GET /gists/starred
             starred: function (callback, pageNumber) {
                 var url = pageNumber ? api_url + '/starred' + '?page=' + pageNumber : api_url + '/starred';

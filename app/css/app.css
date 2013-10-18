@@ -429,6 +429,40 @@ aside header input {
     display: block;
 }
 
+.the-comments a.post-comment {
+    background: #555;
+    color: #FFF;
+    padding: 3px 10px;
+    border-radius: 3px;
+}
+
+.the-comments span a {
+    text-decoration: underline;
+}
+
+.the-comments .comment-text-holder {
+    position: relative;
+}
+
+.the-comments textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    padding: 20px 0;
+    height: 100px;
+}
+
+.the-comments .preview {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: darkgrey;
+    color: #FFF;
+    padding: 5px 10px;
+    border-radius: 0px 0px 0px 5px;
+    text-decoration: none;
+}
+
 div.blockquote {
     margin-left: 0;
     text-indent: 10px;
