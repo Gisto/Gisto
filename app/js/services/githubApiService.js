@@ -369,6 +369,31 @@ angular.module('gisto.service.gitHubAPI', [
                     });
             },
 
+            // DELETE /gists/:gist_id/comments/:id
+            delete_comment: function (gist_id, comment_id, callback) {
+                requestHandler({
+                    method: 'DELETE',
+                    url: api_url + '/' + gist_id + '/comments' + '/' + comment_id,
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
+            },
+
             // GET /gists/starred
             starred: function (callback, pageNumber) {
                 var url = pageNumber ? api_url + '/starred' + '?page=' + pageNumber : api_url + '/starred';
