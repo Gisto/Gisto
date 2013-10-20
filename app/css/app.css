@@ -440,7 +440,8 @@ aside header input {
     text-decoration: underline;
 }
 
-.the-comments .comment-text-holder {
+.the-comments .comment-text-holder,
+.the-comments .comment-holder {
     position: relative;
 }
 
@@ -452,15 +453,25 @@ aside header input {
     height: 100px;
 }
 
-.the-comments .preview {
+.the-comments .preview,
+.the-comments .trash,
+.the-comments .edit {
     position: absolute;
     top: 0;
     right: 0;
-    background: darkgrey;
     color: #FFF;
     padding: 5px 10px;
-    border-radius: 0px 0px 0px 5px;
     text-decoration: none;
+}
+
+.the-comments .preview {
+    background: cornflowerblue;
+    border-radius: 0px 0px 0px 5px;
+}
+
+.the-comments .trash {
+    background: tomato;
+    border-radius: 0px 0px 0px 5px;
 }
 
 div.blockquote {
