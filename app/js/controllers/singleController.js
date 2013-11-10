@@ -203,7 +203,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         if ($event) {
             $event.preventDefault();
         }
-        console.log($scope);
+        console.log('delete activated', $scope);
         ghAPI.delete($scope.gist.single.id, function (response) {
             if (response.status === 204) {
                 $('.ok').slideDown('slow');
@@ -344,11 +344,11 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         console.log('data',$scope.gist.single);
 
         if( angular.equals($scope.old_object, $scope.gist.single.files) && angular.equals($scope.old_description, $scope.gist.description) ) {
-            $('.warn').slideDown('slow');
-            $('.warn span').text('No changes to save.');
+            $('.warn.template span').text('No changes to save.');
+            $('.warn.template').slideDown('slow');
             $rootScope.edit = false;
             setTimeout(function () {
-                $('.warn').slideUp();
+                $('.warn.template').slideUp();
             }, 2500);
         } else {
             ghAPI.edit($scope.gist.single.id, data, function (response) {
