@@ -18,12 +18,12 @@ var clients = [];
 
 io.sockets.on('connection', function (client) {
 
-   console.log('client connected');
+    console.log('client connected');
     io.sockets.socket(client.id).emit('identify');
 
     client.on('registerClient', function (data) {
         console.log(data);
-        if ( !data.hasOwnProperty('token') || data.token !== clientToken) {
+        if (!data.hasOwnProperty('token') || data.token !== clientToken) {
             console.log('failed authentication');
             client.disconnect();
             return;
@@ -34,32 +34,37 @@ io.sockets.on('connection', function (client) {
         clients.push(client);
 
         // check for existing notifications
-        db.notifications.find({recipient: data.user}, function(err, notifications) {
-           if (err || !notifications) {
-               console.log('no pending notifications');
-           }  else {
+        db.notifications.find({recipient: data.user}, function (err, notifications) {
+            if (err || !notifications) {
+                console.log('no pending notifications');
+            } else {
 
-               notifications.forEach( function(notification) {
-                   io.sockets.socket(client.id).emit('receiveNotification', notification);
-               } );
-           }
+                notifications.forEach(function (notification) {
+                    io.sockets.socket(client.id).emit('receiveNotification', notification);
+                });
+            }
         });
 
-        analytics.trackEvent('clientLogin', data.user, function (err, resp) {
-           if (!err && resp.statusCode === 200) {
-               console.log('Event has been tracked');
-           }
-        });
+        var userAgent = data['useragent'] || 'application';
+
+        if (userAgent !== 'plugin') {
+            analytics.trackEvent('clientLogin', data.user, function (err, resp) {
+                if (!err && resp.statusCode === 200) {
+                    console.log('Event has been tracked');
+                }
+            });
+            console.log('track login');
+        }
 
 
     });
 
-    client.on('disconnect', function() {
+    client.on('disconnect', function () {
         console.log('client ' + this.user + ' disconnected');
         clients.splice(clients.indexOf(client), 1);
     });
 
-    client.on('notificationRead', function(item) {
+    client.on('notificationRead', function (item) {
 
         console.log('recieved notification');
 
@@ -67,49 +72,69 @@ io.sockets.on('connection', function (client) {
         db.notifications.remove({recipient: client.user, gistId: item.gistId}, false);
 
         // send all clients that the notification has been read.
-        var recipient = getAllClientSockets(clients,client.user);
+        var recipient = getAllClientSockets(clients, client.user);
 
         if (recipient && recipient.length > 0) {
 
             for (var i = 0, limit = recipient.length; i < limit; i++) {
                 console.log('sending notification: ' + i);
-                io.sockets.socket(recipient[i].id).emit('notificationRead',  {gistId: item.gistId});
+                io.sockets.socket(recipient[i].id).emit('notificationRead', {gistId: item.gistId});
             }
         }
 
     });
 
-    client.on('sendNotification', function(data) {
+    client.on('sendNotification', function (data) {
 
-        var recipient = getAllClientSockets(clients,data.recipient);
+        var recipient = getAllClientSockets(clients, data.recipient);
         console.log('clients', recipient);
         if (recipient && recipient.length > 0) {
 
-            for (var i = 0, limit = recipient.length; i < limit; i++) {
-                io.sockets.socket(recipient[i].id).emit('receiveNotification', { sender: client.user, gistId: data.gistId, name: data.name, gravatar_id: data.gravatar_id});
+            // check whether the notification came from plugin or the application
+            if (data.hasOwnProperty('type') && data.type === 'create') {
+                // plugin
+
+            } else {
+                // application
+
+                // construct data object
+                var notification = {
+                    sender: client.user,
+                    gistId: data.gistId,
+                    name: data.name,
+                    gravatar_id: data.gravatar_id
+                };
+
+                for (var i = 0, limit = recipient.length; i < limit; i++) {
+                    io.sockets.socket(recipient[i].id).emit('receiveNotification', notification);
+                }
+
+                // save the notification
+                db.notifications.save({
+                    sender: client.user,
+                    recipient: data.recipient,
+                    gistId: data.gistId,
+                    name: data.name,
+                    gravatar_id: data.gravatar_id
+                }, function (err, saved) {
+                    if (err || !saved) {
+                        console.log('notification failed to save');
+                    } else {
+                        console.log('notification saved');
+                    }
+                });
+
             }
+
+
         }
 
-        // save the notification
-        db.notifications.save({
-            sender: client.user,
-            recipient: data.recipient,
-            gistId: data.gistId,
-            name: data.name,
-            gravatar_id: data.gravatar_id
-        }, function(err, saved) {
-           if (err || !saved) {
-               console.log('notification failed to save');
-           }  else {
-               console.log('notification saved');
-           }
-        });
 
     });
 });
 
 function getAllClientSockets(clients, username) {
-    return clients.filter(function(item) {
+    return clients.filter(function (item) {
         return item.user === username;
     });
 }
