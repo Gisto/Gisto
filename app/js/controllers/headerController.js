@@ -45,16 +45,19 @@ function headerController($scope, notificationService, $location, appSettings, g
 
     $scope.$on('socket:receiveNotification', function(e, data) {
         console.log(data);
-        notificationService.add({
-            sender: data.sender,
-            name: data.name,
-            gistId: data.gistId,
-            gravatar_id: data.gravatar_id
-        });
-        console.log({sender: data.sender,
-            name: data.name,
-            gistId: data.gistId,
-            gravatar_id: data.gravatar_id});
+
+        // check for notification type
+        if (data.hasOwnProperty('type') && data.type === 'create') {
+            // create notification
+        } else {
+            // regular notification
+            notificationService.add({
+                sender: data.sender,
+                name: data.name,
+                gistId: data.gistId,
+                gravatar_id: data.gravatar_id
+            });
+        }
     });
 
     $scope.$on('socket:notificationRead', function(e, data) {
