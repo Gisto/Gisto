@@ -40,16 +40,23 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
             forward: socket.forward,
             add: function (notification) {
 
-                // check for duplicate notifications
-                var filter = this.notifications.filter(function(item) {
-                   return  item.gistId === notification.gistId;
-                });
-                console.log(filter);
-                if (filter.length > 0) {
-                    return; // duplicate notification found do not add to list
-                };
+                notification.type = notification.type || 'share';
+
+                // check for notification type
+                if (notification.type === 'share') { // share notification
+
+                    // check for duplicate notifications
+                    var filter = this.notifications.filter(function(item) {
+                        return  item.gistId === notification.gistId;
+                    });
+                    console.log(filter);
+                    if (filter.length > 0) {
+                        return; // duplicate notification found do not add to list
+                    };
+                }
 
                 this.notifications.push(notification);
+
             },
             remove: function (id) {
 

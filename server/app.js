@@ -83,6 +83,12 @@ io.sockets.on('connection', function (client) {
 
         var recipient = getAllClientSockets(clients,data.recipient);
         console.log('clients', recipient);
+
+        // construct notification
+        var notification = {
+
+        };
+
         if (recipient && recipient.length > 0) {
 
             for (var i = 0, limit = recipient.length; i < limit; i++) {
