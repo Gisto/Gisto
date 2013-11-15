@@ -86,48 +86,43 @@ io.sockets.on('connection', function (client) {
 
     client.on('sendNotification', function (data) {
 
+        // add missing type field for backwards compatibility
+        if (!data.hasOwnProperty('type')) {
+            data.type = 'share';
+        }
+
+        // construct data object according to type
+        if (data.type === 'create') {
+
+        } else {
+
+            var notification = {
+                sender: client.user,
+                gistId: data.gistId,
+                name: data.name,
+                gravatar_id: data.gravatar_id,
+                type: 'share'
+            };
+        }
+
+        // check if the recipient is online and send the notification
         var recipient = getAllClientSockets(clients, data.recipient);
-        console.log('clients', recipient);
         if (recipient && recipient.length > 0) {
 
-            // check whether the notification came from plugin or the application
-            if (data.hasOwnProperty('type') && data.type === 'create') {
-                // plugin
-
-            } else {
-                // application
-
-                // construct data object
-                var notification = {
-                    sender: client.user,
-                    gistId: data.gistId,
-                    name: data.name,
-                    gravatar_id: data.gravatar_id
-                };
-
-                for (var i = 0, limit = recipient.length; i < limit; i++) {
-                    io.sockets.socket(recipient[i].id).emit('receiveNotification', notification);
-                }
-
-                // save the notification
-                db.notifications.save({
-                    sender: client.user,
-                    recipient: data.recipient,
-                    gistId: data.gistId,
-                    name: data.name,
-                    gravatar_id: data.gravatar_id
-                }, function (err, saved) {
-                    if (err || !saved) {
-                        console.log('notification failed to save');
-                    } else {
-                        console.log('notification saved');
-                    }
-                });
-
+            for (var i = 0, limit = recipient.length; i < limit; i++) {
+                io.sockets.socket(recipient[i].id).emit('receiveNotification', notification);
             }
 
-
         }
+
+        // save the notification
+        db.notifications.save(notification, function (err, saved) {
+            if (err || !saved) {
+                console.log('notification failed to save');
+            } else {
+                console.log('notification saved');
+            }
+        });
 
 
     });
