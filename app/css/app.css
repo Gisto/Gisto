@@ -891,6 +891,11 @@ details > summary {
     border-radius: 5px;
 }
 
+.notification ul li > p {
+    margin: 0;
+    padding: 0;
+}
+
 .notification div:after, .notification div:before {
     bottom: 100%;
     border: solid transparent;
