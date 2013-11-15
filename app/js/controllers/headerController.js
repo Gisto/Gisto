@@ -50,7 +50,7 @@ function headerController($scope, notificationService, $location, appSettings, g
         if (data.hasOwnProperty('type') && data.type === 'create') {
             // create notification
         } else {
-            // regular notification
+            // share notification
             notificationService.add({
                 sender: data.sender,
                 name: data.name,
