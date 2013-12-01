@@ -21,8 +21,13 @@
             <summary>Look &amp; feel</summary>
 
             <p>Set Gisto theme to <select data-ng-model="theme">
-                    <option data-ng-repeat="theme in themes">{{theme}}</option>
-                </select></p>
+                <option data-ng-repeat="theme in themes">{{theme}}</option>
+            </select></p>
+
+            <p>Animations are <select data-ng-model="anim">
+                <option value="0">Disable</option>
+                <option value="1">Enable</option>
+            </select></p>
 
         </details>
 
@@ -30,18 +35,20 @@
             <summary>Editor</summary>
 
             <p>Set editor theme to <select data-ng-model="editor_theme">
-                    <option data-ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
-                </select></p>
+                <option data-ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
+            </select></p>
 
             <p>Set editor font size to <select data-ng-model="font_size">
-                    <option data-ng-repeat="font_size in font_sizes">{{font_size}}</option>
-                </select> pixel
+                <option data-ng-repeat="font_size in font_sizes">{{font_size}}</option>
+            </select> pixel
             </p>
 
-            <p>Set minimum editor height to <input type="text" data-ng-model="min_height"/> <b>pixels</b> (<i>leave empty to fit content</i>)
+            <p>Set minimum editor height to <input type="text" data-ng-model="min_height"/> <b>pixels</b> (<i>leave
+                empty to fit content</i>)
             </p>
 
-            <p>Limit editor height to <input type="text" data-ng-model="max_height"/> <b>pixels</b> (<i>leave empty for unlimited</i>)
+            <p>Limit editor height to <input type="text" data-ng-model="max_height"/> <b>pixels</b> (<i>leave empty for
+                unlimited</i>)
             </p>
         </details>
 
