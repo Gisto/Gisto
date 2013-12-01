@@ -86,27 +86,14 @@ io.sockets.on('connection', function (client) {
 
     client.on('sendNotification', function (data) {
 
-        // add missing type field for backwards compatibility
-        if (!data.hasOwnProperty('type')) {
-            data.type = 'share';
-        }
+        var recipient = getAllClientSockets(clients,data.recipient);
+        console.log('clients', recipient);
 
-        // construct data object according to type
-        if (data.type === 'create') {
+        // construct notification
+        var notification = {
 
-        } else {
+        };
 
-            var notification = {
-                sender: client.user,
-                gistId: data.gistId,
-                name: data.name,
-                gravatar_id: data.gravatar_id,
-                type: 'share'
-            };
-        }
-
-        // check if the recipient is online and send the notification
-        var recipient = getAllClientSockets(clients, data.recipient);
         if (recipient && recipient.length > 0) {
 
             for (var i = 0, limit = recipient.length; i < limit; i++) {

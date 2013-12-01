@@ -9,6 +9,7 @@ function settingsCtrl($scope, appSettings,$rootScope) {
     $scope.min_height = appSettings.get('min_height') || '';
     $scope.max_height = appSettings.get('max_height') || '';
     $scope.theme = appSettings.get('theme') || 'default';
+    $scope.anim = appSettings.get('anim') || 1;
     $scope.token = appSettings.get('token') || '';
     $scope.avatar = appSettings.get('avatar') || '';
     angular.element('.the-gist pre').css({
@@ -18,6 +19,7 @@ function settingsCtrl($scope, appSettings,$rootScope) {
     $scope.update_settings = function () {
         var data = {};
         data.theme = $scope.theme;
+        data.anim = $scope.anim;
         data.editor_theme = $scope.editor_theme;
         data.font_size = $scope.font_size;
         data.min_height = $scope.min_height;

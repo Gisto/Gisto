@@ -20,30 +20,6 @@ body *, :not(input) {
     box-sizing: border-box;
 }
 
-body section {
-    -webkit-animation: fadein 1s;
-    animation: fadein 1s;
-}
-
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes fadein {
-    /* Safari and Chrome */
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 *:focus,*:hover {
     outline: none;
     -webkit-transition: all 0.15s ease-in;
@@ -736,132 +712,6 @@ details > summary {
     opacity: 1;
 }
 
-.animate-list-enter,
-.animate-list-leave {
-    -webkit-animation-duration: 0.5s;
-    animation-duration: 0.5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    position: relative;
-    top: 0;
-    height: auto;
-}
-
-.animate-list-leave.animate-list-leave-active,
-.animate-list-enter {
-    -webkit-animation-name: listOut;
-    animation-name: listOut;
-    top: 0;
-}
-
-@-webkit-keyframes listOut {
-    0% {
-        -webkit-transform: perspective(400px) rotateX(0deg);
-        opacity: 1;
-    }
-    100% {
-        -webkit-transform: perspective(400px) rotateX(90deg);
-        opacity: 0;
-    }
-}
-
-@keyframes listOut {
-    0% {
-        transform: perspective(400px) rotateX(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: perspective(400px) rotateX(90deg);
-        opacity: 0;
-    }
-}
-
-.animate-list-enter.animate-list-enter-active,
-.animate-list-leave {
-    -webkit-animation-name: listIn;
-    animation-name: listIn;
-}
-
-@-webkit-keyframes listIn {
-    0% {
-        -webkit-transform: perspective(400px) rotateX(90deg);
-        opacity: 0;
-    }
-    100% {
-        -webkit-transform: perspective(400px) rotateX(0deg);
-        opacity: 1;
-    }
-}
-
-@keyframes listIn {
-    0% {
-        transform: perspective(400px) rotateX(90deg);
-        opacity: 0;
-    }
-    100% {
-        transform: perspective(400px) rotateX(0deg);
-        opacity: 1;
-    }
-}
-
-/**/
-
-.animate-star-enter,
-.animate-star-leave {
-    -webkit-animation-duration: 2s;
-    animation-duration: 2s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-.animate-star-leave.animate-star-leave-active,
-.animate-star-leave {
-    -webkit-animation-name: starOut;
-    animation-name: starOut;
-}
-
-@-webkit-keyframes starOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-@keyframes starOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-.animate-star-enter.animate-star-enter-active,
-.animate-star-leave {
-    -webkit-animation-name: starIn;
-    animation-name: starIn;
-}
-
-@-webkit-keyframes starIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes starIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .files-drop-down {
     position: relative;
 }
@@ -889,6 +739,11 @@ details > summary {
     padding: 5px;
     text-shadow: none;
     border-radius: 5px;
+}
+
+.notification ul li > p {
+    margin: 0;
+    padding: 0;
 }
 
 .notification div:after, .notification div:before {
@@ -1039,6 +894,7 @@ div.revision-drop-down a p {
     padding-top: 0;
     padding-bottom: 10px;
     margin-left: 10px;
+    color:#ccc;
 }
 div.revision-drop-down a:hover {
     background:transparent !important;
@@ -1050,7 +906,6 @@ div.revision-drop-down a:last-child p {
 }
 
 div.revision-drop-down a p:hover {
-    text-shadow: 0 0 20px #fff;
-    padding-left:10px;
+    color:#fff;
 }
 
