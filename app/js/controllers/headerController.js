@@ -15,6 +15,7 @@ function headerController($scope, notificationService, $location, appSettings, g
     $scope.logOut = function () {
 
         console.log('logging out');
+        $scope.notifications.length = 0;
         notificationService.logout();
 
         gistData.list = [];
