@@ -297,6 +297,15 @@ ul li .the-star i {
     color: #555;
 }
 
+.date_meta .notification a,
+.date_meta .notification a:hover {
+    color: #555;
+}
+
+.date_meta .notification li:hover {
+    background: #f2f2f2;
+}
+
 details[open] {
     background: -webkit-linear-gradient(top, #F2F2F2, #D9D9D9);
 }

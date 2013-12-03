@@ -9,7 +9,8 @@ function headerController($scope, notificationService, $location, appSettings, g
     notificationService.forward('identify', $scope);
     notificationService.forward('disconnect', $scope);
 
-    $scope.avatar = 'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
+    $scope.avatar = 'https://0.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar + '?d=https%3A%2F%2Fidenticons.github.com%2F' + JSON.parse(localStorage.settings).avatar + '.png&amp;r=x';//'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
+
     $scope.notifications = notificationService.notifications;
 
     $scope.logOut = function () {
