@@ -40,6 +40,8 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
             forward: socket.forward,
             add: function (notification) {
 
+                console.log('notification', notification);
+
                 notification.type = notification.type || 'share';
 
                 // check for notification type

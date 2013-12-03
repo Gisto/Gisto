@@ -72,7 +72,8 @@
 
 <div class="messenger state warn">
     <i class="icon-warning-sign"> </i>
-    <span>Are you sure you want to make this gist <b>{{state}}</b>? <br />This will delete and recreate the gist as {{state}}, comments and revisions will be lost <a href="" data-ng-click="changeState(state)">Yes!</a>
+    <span>Are you sure you want to make this gist <b>{{state}}</b>? <br/>This will delete and recreate the gist as {{state}}, comments and revisions will be lost <a
+            href="" data-ng-click="changeState(state)">Yes!</a>
         <a href="" data-ng-click="cancelStateChange()">Cancel</a></span>
 </div>
 
@@ -87,22 +88,30 @@
         <b>Revisions:</b> <i data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}}
         <code class="icon-sort-down"></code></i>
 <date class="gist_date_meta">
-        <b>Created:</b> <i>{{ gist.single.created_at |
-        date:'dd/MM/yyyy HH:mm:ss' }}</i>
-        <b>Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
+    <b>Created:</b> <i>{{ gist.single.created_at |
+    date:'dd/MM/yyyy HH:mm:ss' }}</i>
+    <b>Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
 </date>
-        <div data-ng-controller="singleGistHistoryCtrl" class="revision-drop-down"
-             data-ng-show="dropdown.revisions.show">
-            <div ng-repeat="revision in gist.single.history">
-                <a href="#/history/{{ gist.single.id }}/rev/{{ revision.version }}">
-                    <p data-ng-hide="$index==0">
-                        <b>Rev. {{ revision.version | truncate : 7 : ''}}</b><br/>
-                        {{ revision.committed_at | date:'dd/MM/yyyy HH:mm:ss'}}<br/>
-                        {{ revision.change_status.total }} Changes: <code class="icon-plus-sign-alt"></code> {{
-                        revision.change_status.additions }}, <code class="icon-minus-sign-alt"></code> {{
-                        revision.change_status.deletions }}</p>
-                </a>
+
+        <div data-ng-controller="singleGistHistoryCtrl" class="notification" data-ng-show="dropdown.revisions.show">
+            <div ng-hide="gist.single.history.length==1">
+
+                <ul>
+                    <li ng-repeat="revision in gist.single.history">
+                        <a href="#/history/{{ gist.single.id }}/rev/{{ revision.version }}">
+                            <p data-ng-hide="$index==0" data-ng-hide="$index==0">
+                                <b>Rev. {{ revision.version | truncate : 7 : ''}}</b><br/>
+                                {{ revision.committed_at | date:'dd/MM/yyyy HH:mm:ss'}}<br/>
+                                {{ revision.change_status.total }} Changes: <code class="icon-plus-sign-alt"></code> {{
+                                revision.change_status.additions }}, <code class="icon-minus-sign-alt"></code> {{
+                                revision.change_status.deletions }}
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+
             </div>
+
         </div>
 
     </span>
@@ -217,7 +226,7 @@
 
             </textarea>
         </span>
-            <a  class="post-comment" data-ng-click="add_comment(comment_body)">Post</a>
+            <a class="post-comment" data-ng-click="add_comment(comment_body)">Post</a>
         </div>
 
     </div>
