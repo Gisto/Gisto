@@ -841,6 +841,14 @@ details > summary {
     font-size: 12px;
 }
 
+.date_meta .notification .icon-plus-sign-alt {
+    color: darkgreen;
+}
+
+.date_meta .notification .icon-minus-sign-alt {
+    color: darkred;
+}
+
 .share-drop-down {
     position: relative;
     margin: 0px 3px 0px 0px;

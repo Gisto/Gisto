@@ -71,11 +71,14 @@
 
     <span class="date_meta">
         <a href="#/gist/{{ gist.history.id }}"><code class="icon-chevron-left"></code> Back to gist</a>
+        <date class="gist_date_meta">
         <b>Revision:</b> <i>{{ gist.history.history[0].version | truncate : 7 : ''}}</i> <b>Created:</b>
         <i>{{ gist.history.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss' }}</i>
-
+</date>
     </span>
 
+    <a data-ng-click="goToSite('https://gist.github.com/{0}/{1}/{2}',[gist.user.login,gist.single.id,gist.history.history[0].version])"
+       title="Open gist in 'plunker'">Open on web</a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
         <i class="icon-sort-down"></i>
@@ -94,7 +97,6 @@
 
     <div class="the-gist" data-ng-repeat="file in gist.history.files" onload="initEditors()">
         <div id="file-{{$index}}" class="the-gist-name">
-
 
             <span data-ng-switch on="edit">
                 <span data-ng-switch-when="true">
