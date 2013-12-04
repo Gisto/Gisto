@@ -134,8 +134,12 @@
 <div class="comments">
 
 <span class="clicky" data-ng-click="showComments=!showComments">
+    <!--
     <b><span class="icon-comments"></span> {{gist.history.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
+-->
+    <b><span class="icon-warning-sign"></span> </b> Sorry! no comments in history view
 </span>
+<!--
 
     <div data-ng-controller="commentsGistCtrl" class="the-comments">
         <span data-ng-repeat="comment in comments" data-ng-show="showComments">
@@ -147,6 +151,7 @@
             <div class="blockquote" data-ng-bind-html-unsafe="comment.body | markDown"></div>
         </span>
     </div>
+-->
 
 </div>
 
