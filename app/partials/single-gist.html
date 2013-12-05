@@ -85,8 +85,10 @@
 <div class="toolbox">
 
     <span class="date_meta">
-        <b>Revisions:</b> <i data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}}
+
+        <b>Revisions:</b> <i title="Click to browse revisions" data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}}
         <code class="icon-sort-down"></code></i>
+
 <date class="gist_date_meta">
     <b>Created:</b> <i>{{ gist.single.created_at |
     date:'dd/MM/yyyy HH:mm:ss' }}</i>
