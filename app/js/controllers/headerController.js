@@ -1,6 +1,6 @@
 'use strict';
 
-function headerController($scope, notificationService, $location, appSettings, gistData, onlineStatus) {
+function headerController($scope, notificationService, $location, appSettings, gistData, onlineStatus, $timeout) {
 
     notificationService.login();
 
@@ -9,7 +9,13 @@ function headerController($scope, notificationService, $location, appSettings, g
     notificationService.forward('identify', $scope);
     notificationService.forward('disconnect', $scope);
 
-    $scope.avatar = 'https://0.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar + '?d=https%3A%2F%2Fidenticons.github.com%2F' + JSON.parse(localStorage.settings).avatar + '.png&amp;r=x';//'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
+    if(JSON.parse(localStorage.settings).avatar === 'none') {
+        $timeout(function(){
+            $scope.avatar = 'https://0.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar + '?d=https%3A%2F%2Fidenticons.github.com%2F' + JSON.parse(localStorage.settings).avatar + '.png&amp;r=x';//'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
+        },5000);
+    } else {
+        $scope.avatar = 'https://0.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar + '?d=https%3A%2F%2Fidenticons.github.com%2F' + JSON.parse(localStorage.settings).avatar + '.png&amp;r=x';//'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
+    }
 
     $scope.notifications = notificationService.notifications;
 
