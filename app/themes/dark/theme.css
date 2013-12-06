@@ -322,6 +322,15 @@ ul li .the-star i {
     color: #fff;
 }
 
+.date_meta .notification a,
+.date_meta .notification a:hover {
+    color: #ccc;
+}
+
+.date_meta .notification li:hover {
+    background: #333;
+}
+
 .share-drop-down div {
     background: #555;
 }
