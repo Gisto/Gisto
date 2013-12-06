@@ -259,8 +259,7 @@ div.main header a .notify span {
 }
 
 div.main img.gravatar {
-    top: 10px;
-    right: 116px;
+    top: 0px;
     padding: 0px;
     width: 34px;
     border-radius: 3px;
@@ -779,7 +778,8 @@ details > summary {
 
 .notification ul img {
     float: left;
-    margin: -3px 0px 0px -45px;
+    margin: 0px 0px 0px -44px;
+    position: absolute;
 }
 
 .notification ul li {
@@ -791,6 +791,63 @@ details > summary {
     position: relative;
 }
 
+.notification ul li cite {
+    font-size: 12px;
+}
+
+.date_meta .notification div {
+    position: absolute;
+    top: 96px;
+    left: 10px;
+    z-index: 9;
+    font-size: 9pt;
+    line-height: 20px;
+    padding: 5px;
+    text-shadow: none;
+    border-radius: 5px;
+    min-height: 106px;
+    width:210px;
+}
+.date_meta .notification ul {
+    width:200px;
+}
+.date_meta .notification li:first-child {
+    display:none;
+}
+.date_meta .notification li {
+    width: 180px;
+    float: left;
+    margin: 0px 0px 5px 0px;
+    padding: 0 10px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.date_meta .notification div:after {
+    border-width: 10px;
+    margin-left: -136px;
+}
+
+.date_meta .notification div:before {
+    border-width: 11px;
+    margin-left: -136px;
+}
+
+.date_meta .notification a,
+.date_meta .notification a:hover {
+    background: rgba(0, 0, 0, 0) !important;
+    border: none;
+    display: inherit;
+    font-size: 12px;
+}
+
+.date_meta .notification .icon-plus-sign-alt {
+    color: darkgreen;
+}
+
+.date_meta .notification .icon-minus-sign-alt {
+    color: darkred;
+}
 
 .share-drop-down {
     position: relative;
@@ -879,12 +936,12 @@ details {
     margin: 9px 0px 0px 0px;
     text-transform: lowercase;
     font-size: 12px;
-    width:200px;
+    width:170px;
 }
 
 div.revision-drop-down a p b {
-    font-size: 20px;
-    font-weight: 100;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 div.revision-drop-down a p {
@@ -892,7 +949,7 @@ div.revision-drop-down a p {
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0;
-    padding-bottom: 10px;
+    padding-bottom: 0;
     margin-left: 10px;
     color:#ccc;
 }
@@ -909,3 +966,11 @@ div.revision-drop-down a p:hover {
     color:#fff;
 }
 
+
+.favicon {
+    position: relative;
+    top: 4px;
+    left: 0;
+    border: none;
+    padding: 10px;
+}
