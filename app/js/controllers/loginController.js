@@ -11,13 +11,11 @@ function loginCtrl($scope, ghAPI, appSettings, notificationService) {
     function handleLogin(response) {
         if (response.status === 201) {
             console.log(response);
-            var data = {};
-            data.token = response.data.token;
             ghAPI.setToken(response.data.token);
-            data.theme = appSettings.get('default') || 'default';
-            data.avatar = appSettings.get('none') || 'none';
-            data.editor_theme = appSettings.get('tomorrow') || 'tomorrow';
-            localStorage.settings = JSON.stringify(data);
+            appSettings.set({
+                token: response.data.token
+            });
+            console.log('saved token');
             window.location.href = '#/';
         } else if (response.status === 401 && response.headers['x-github-otp']) {
             $scope.step2 = true;

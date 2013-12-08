@@ -23,8 +23,8 @@ angular.module('gisto', [
     config(['$routeProvider', 'socketProvider', function ($routeProvider, socketProvider) {
 
         // connect to notification server
-        var socket = io.connect('http://localhost:3000'); // development
-//        var socket = io.connect('http://server.gistoapp.com:3000'); // production
+//        var socket = io.connect('http://localhost:3000'); // development
+        var socket = io.connect('http://server.gistoapp.com:3000'); // production
         socketProvider.ioSocket(socket);
         window.ioSocket = socket;
 
