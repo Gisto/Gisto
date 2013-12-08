@@ -38,10 +38,27 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 "vibrant_ink",
                 "xcode"
             ],
+            data: { // default settings
+                avatarUrl: 'https://secure.gravatar.com/avatar/'
+            },
+
+
+            loadSettings: function() {
+
+                if (!localStorage.settings) {
+                    return; // no settings saved do nothing
+                }
+
+                var parsedSettings = JSON.parse(localStorage.settings);
+                for (var key in parsedSettings) {
+                    settings.data[key] = parsedSettings[key];
+                }
+
+            },
 
             isLoggedIn: function (callback) {
 
-                if (localStorage.settings && JSON.parse(localStorage.settings).token !== undefined) {
+                if (settings.data['token']) {
                     return true;
                 } else {
                     document.location.href = '#/login';
@@ -50,31 +67,32 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
 
             logOut: function () {
                 $rootScope.edit = false;
+                settings.data = [];
                 delete localStorage.settings;
                 document.location.href = '#/login';
             },
 
             getAll: function () {
-                var all_settings = JSON.parse(localStorage.settings);
-                return all_settings;
+                return settings.data;
             },
 
             get: function (name) {
                 if (settings.isLoggedIn()) {
-                    var storage = JSON.parse(localStorage.settings);
-                    return storage[name];
+                    return settings.data[name];
                 }
             },
 
             set: function (data, callback) {
 
-                var settings = JSON.parse(localStorage.settings) || {};
+
 
                 for (var key in data) {
-                    settings[key] = data[key];
+                    settings.data[key] = data[key];
                 }
-                settings.last_modified = new Date().toUTCString();
-                localStorage.settings = JSON.stringify(settings);
+                console.log('recieved new settings', data);
+                console.log('saved new settings', settings.data);
+                settings.data['last_modified'] = new Date().toUTCString();
+                localStorage.settings = JSON.stringify(settings.data);
 
                 if (callback) {
                     return callback({
@@ -85,11 +103,12 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
             },
 
             setOne: function (key, new_data, callback) {
-                var old_data = settings.getAll();
-                old_data[key] = new_data;
-                settings.set(old_data);
+                settings.data[key] = new_data;
+                localStorage.settings = JSON.stringify(settings.data);
             }
         };
+
+        settings.loadSettings();
 
         return settings;
     });

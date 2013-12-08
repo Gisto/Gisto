@@ -9,7 +9,6 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
 
             register: function () {
              // register for notifications on the server.
-
                 $q.all([
                     $http.get('./config.json'),
                     ghAPI.getLoggedInUser()

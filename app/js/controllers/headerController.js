@@ -1,6 +1,6 @@
 'use strict';
 
-function headerController($scope, notificationService, $location, appSettings, gistData, onlineStatus, $timeout) {
+function headerController($scope, notificationService, $location, appSettings, gistData, onlineStatus) {
 
     notificationService.login();
 
@@ -9,13 +9,7 @@ function headerController($scope, notificationService, $location, appSettings, g
     notificationService.forward('identify', $scope);
     notificationService.forward('disconnect', $scope);
 
-    if(JSON.parse(localStorage.settings).avatar === 'none') {
-        $timeout(function(){
-            $scope.avatar = 'https://0.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar + '?d=https%3A%2F%2Fidenticons.github.com%2F' + JSON.parse(localStorage.settings).avatar + '.png&amp;r=x';//'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
-        },5000);
-    } else {
-        $scope.avatar = 'https://0.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar + '?d=https%3A%2F%2Fidenticons.github.com%2F' + JSON.parse(localStorage.settings).avatar + '.png&amp;r=x';//'https://secure.gravatar.com/avatar/' + JSON.parse(localStorage.settings).avatar;
-    }
+    $scope.settings = appSettings.data;
 
     $scope.notifications = notificationService.notifications;
 
@@ -52,20 +46,9 @@ function headerController($scope, notificationService, $location, appSettings, g
     });
 
     $scope.$on('socket:receiveNotification', function(e, data) {
+        console.log('recieve: ' , data);
+        notificationService.add(data);
         console.log(data);
-
-        // check for notification type
-        if (data.hasOwnProperty('type') && data.type === 'create') {
-            // create notification
-        } else {
-            // share notification
-            notificationService.add({
-                sender: data.sender,
-                name: data.name,
-                gistId: data.gistId,
-                gravatar_id: data.gravatar_id
-            });
-        }
     });
 
     $scope.$on('socket:notificationRead', function(e, data) {

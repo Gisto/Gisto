@@ -35,7 +35,8 @@ angular.module('gisto.service.gitHubAPI', [
                 }).success(function (data) {
                         appSettings.set({
                            username: data.login,
-                           gravatar_id: data.gravatar_id
+                           gravatar_id: data.gravatar_id,
+                           avatarUrl: data.avatar_url
                         });
                         deferred.resolve(data);
                     }).error(function (error) {
@@ -88,7 +89,7 @@ angular.module('gisto.service.gitHubAPI', [
             gists: function (updateOnly, pageNumber) {
                 var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
                     headers = {
-                        Authorization: 'token ' + JSON.parse(localStorage.settings).token
+                        Authorization: 'token ' + token
                     };
 
                 if (updateOnly) {
@@ -109,8 +110,6 @@ angular.module('gisto.service.gitHubAPI', [
                         // Set lastUpdated for 60 sec cache
                         data.lastUpdated = new Date();
 
-                        // Set avatar
-                        appSettings.setOne('avatar', data[item].user.gravatar_id);
                         gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
