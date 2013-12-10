@@ -91,8 +91,8 @@
 
 <date class="gist_date_meta">
     <b>Created:</b> <i>{{ gist.single.created_at |
-    date:'dd/MM/yyyy HH:mm:ss' }}</i>
-    <b>Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm:ss'}}</i>
+    date:'dd/MM/yyyy HH:mm' }}</i>
+    <b>Updated:</b> <i>{{ gist.single.history[0].committed_at | date:'dd/MM/yyyy HH:mm'}}</i>
 </date>
 
         <div data-ng-controller="singleGistHistoryCtrl" class="notification" data-ng-show="dropdown.revisions.show">
@@ -144,6 +144,7 @@
        download="gist.tar.gz" title="Download this gist as single tarball">Download</a>
     <a data-ng-click="copyToClipboard('https://gist.github.com/{{ gist.user.login }}/{{ gist.id }}.js', 'Embed code copied to clipboard','embed')"
        title="Copy embed code to clipboard">Embed</a>
+    <a to-url="{{gist.single.html_url}}" href="" title="Open Gist in browser">Open in browser</a>
     <a data-ng-click="warnDeleteGist()" href="" title="Delete this gist">Remove</a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
@@ -183,7 +184,7 @@
                     class="icon-download-alt"></i></a>
             <a to-url="https://gist.github.com/{{ gist.single.user.login }}/{{ gist.single.id }}/#file-{{ file.filename | dotToDash }}"
                title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
-            <a ng-click="copyToClipboard(gist.single.html_url, 'Direct link copied to clipboard')"
+            <a ng-click="copyToClipboard('https://gist.github.com/{{ gist.single.user.login }}/{{ gist.single.id }}/#file-{{ file.filename | dotToDash }}', 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
