@@ -77,8 +77,8 @@
 </date>
     </span>
 
-    <a data-ng-click="goToSite('https://gist.github.com/{0}/{1}/{2}',[gist.user.login,gist.single.id,gist.history.history[0].version])"
-       title="Open gist in 'plunker'">Open on web</a>
+    <a to-url="https://gist.github.com/{{gist.user.login}}/{{gist.single.id}}/{{gist.history.history[0].version}}"
+       title="Open gist in browser">Open on web</a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
         <i class="icon-sort-down"></i>
@@ -114,7 +114,7 @@
                     class="icon-pencil icon-rotate-90"></i></a>
             <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
                     class="icon-download-alt"></i></a>
-            <a data-ng-click="goToGist(gist.history.user.login, gist.history.id ,file.filename)"
+            <a to-url="https://gist.github.com/{{ gist.history.user.login }}/{{ gist.history.id }}/#file-{{ file.filename }}"
                title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
             <a ng-click="copyToClipboard(gist.history.html_url, 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>
@@ -130,30 +130,6 @@
 </section>
 
 </span>
-
-<div class="comments">
-
-<span class="clicky" data-ng-click="showComments=!showComments">
-    <!--
-    <b><span class="icon-comments"></span> {{gist.history.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
--->
-    <b><span class="icon-warning-sign"></span> </b> Sorry! no comments in history view
-</span>
-<!--
-
-    <div data-ng-controller="commentsGistCtrl" class="the-comments">
-        <span data-ng-repeat="comment in comments" data-ng-show="showComments">
-            <p>
-                <img data-ng-src="{{comment.user.avatar_url || 'https://secure.gravatar.com/avatar/'}}"
-                     class="comment_gravatar"
-                     title="{{comment.user.login}}"/>
-                <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
-            <div class="blockquote" data-ng-bind-html-unsafe="comment.body | markDown"></div>
-        </span>
-    </div>
--->
-
-</div>
 
 <footer>
     &copy; 2013 <b>Gisto</b> | http://www.gistoapp.com

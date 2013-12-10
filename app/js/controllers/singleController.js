@@ -51,11 +51,6 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         }, 2500);
     };
 
-    $scope.goToGist = function (user, id, file) {
-        console.log('url', 'https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi, '-'));
-        gui.Shell.openExternal('https://gist.github.com/' + user + '/' + id + '/#file-' + file.replace(/[.]/gi, '-'));
-    };
-
     $scope.enableEdit = function (old_obj,old_description) {
         $scope.old_object = angular.copy(old_obj);
         $scope.old_description = old_description;

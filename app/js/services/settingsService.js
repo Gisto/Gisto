@@ -43,7 +43,7 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
             },
 
 
-            loadSettings: function() {
+            loadSettings: function () {
 
                 if (!localStorage.settings) {
                     return; // no settings saved do nothing
@@ -83,8 +83,6 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
             },
 
             set: function (data, callback) {
-
-
 
                 for (var key in data) {
                     settings.data[key] = data[key];
