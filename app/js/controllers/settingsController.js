@@ -34,17 +34,5 @@ function settingsCtrl($scope, appSettings,$rootScope) {
                 console.log('NOT SAVED SETTINGS');
             }
         });
-
-    };
-
-    $rootScope.goToSite = function(url,params) {
-
-        for(var i = 0, l = params.length; i < l; i++){
-            var out = url.replace(/{(\d+)}/g,function(match, i) {
-                return typeof params[i] != 'undefined' ? params[i] : match;
-            });
-        }
-        console.log('Out:',out);
-        gui.Shell.openExternal(out);
     };
 }

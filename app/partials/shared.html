@@ -41,7 +41,8 @@
 
 <div class="messenger edit">
     <i class="icon-edit"> </i>
-    <span>Edit mode <b>on</b> <a href="" data-ng-click="update()">update</a> | <a data-ng-click="disableEdit()" title="changes wont be saved">cancel</a></span>
+    <span>Edit mode <b>on</b> <a href="" data-ng-click="update()">update</a> | <a data-ng-click="disableEdit()"
+                                                                                  title="changes wont be saved">cancel</a></span>
 </div>
 
 <div class="messenger delete warn">
@@ -57,17 +58,17 @@
     </span>
 
 
-    <a data-ng-click="fork()" href="" title="Fork this gist">Fork</a> or <a data-ng-click="reject()" href="" title="Reject this gist">Reject</a>
+    <a data-ng-click="fork()" href="" title="Fork this gist">Fork</a> or <a data-ng-click="reject()" href=""
+                                                                            title="Reject this gist">Reject</a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
         <i class="icon-sort-down"></i>
+
         <div data-ng-show="dropdown.show">
-            <p class="scroller" data-ng-repeat="file in gist.single.files" scroll-to="file-{{$index}}"><i class="icon-file"></i> {{file.filename}}</p>
+            <p class="scroller" data-ng-repeat="file in gist.single.files" scroll-to="file-{{$index}}"><i
+                    class="icon-file"></i> {{file.filename}}</p>
         </div>
     </a>
-
-
-
 
 
 </div>
@@ -95,14 +96,15 @@
                     class="icon-pencil icon-rotate-90"></i></a>
             <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
                     class="icon-download-alt"></i></a>
-            <a data-ng-click="gotoSite(gist.single.user.login, gist.single.id ,file.filename)"
+            <a to-url="https://gist.github.com/{{ gist.single.user.login }}/{{ gist.single.id }}/#file-{{ file.filename }}"
                title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
             <a ng-click="copyToClipboard(gist.single.html_url, 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
 
-        <editor data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" font="{{font_size}}" theme="{{editor_theme}}"
+        <editor data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" font="{{font_size}}"
+                theme="{{editor_theme}}"
                 index="{{$index}}"></editor>
 
     </div>
@@ -110,24 +112,6 @@
 </section>
 
 </span>
-
-<div class="comments">
-
-<span class="clicky">
-    <b><span class="icon-comments"></span> 0</b> Comment(s) <i class="icon-arrow-up"> Show</i>
-</span>
-
-    <div data-ng-controller="commentsGistCtrl" class="the-comments">
-        <span data-ng-repeat="comment in comments">
-            <p>
-                <img data-ng-src="{{comment.user.avatar_url || 'https://secure.gravatar.com/avatar/'}}" class="comment_gravatar"
-                     title="{{comment.user.login}}"/>
-                <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
-            <div class="blockquote" data-ng-bind-html-unsafe="comment.body | markDown"></div>
-        </span>
-    </div>
-
-</div>
 
 <footer>
     &copy; 2013 <b>Gisto</b> | http://www.gistoapp.com

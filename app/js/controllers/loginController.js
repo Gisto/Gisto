@@ -45,14 +45,4 @@ function loginCtrl($scope, ghAPI, appSettings, notificationService) {
         }
         ghAPI.login($scope.user, $scope.pass, handleLogin, $scope.code);
     };
-
-//    $scope.step2Submit = function() {
-//        alert('2 step submit');
-//        if (!$scope.code) {
-//            $('.warn').slideDown();
-//            return;
-//        }
-//
-//        ghAPI.login($scope.user, $scope.pass, handleLogin, $scope.code);
-//    };
 }
