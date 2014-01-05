@@ -25,7 +25,20 @@ function mainCtrl($scope, $http, appSettings) {
             },
             method: 'get'
         }).success(function (data) {
-                appSettings.setOne('latestVersion', {version: data.version, timestamp: new Date().getTime() });
+
+                appSettings.loadSettings().then(function(result) {
+
+                    appSettings.set({
+                        latestVersion: {
+                            version: data.version,
+                            timestamp: new Date().getTime()
+                        }
+                    });
+
+                }, function(error) {
+                    console.log('could not load app settings');
+                });
+
             });
 
     }
