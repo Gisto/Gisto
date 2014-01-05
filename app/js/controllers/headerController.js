@@ -26,7 +26,7 @@ function headerController($scope, notificationService, $location, appSettings, g
     $scope.onlineStatus = onlineStatus;
 
     $scope.$watch('onlineStatus.isOnline()', function(online) {
-       if (online && (!window.ioSocket.socket.connected || !window.ioSocket.socket.reconnecting) ) {
+       if (online && window.ioSocket && (!window.ioSocket.socket.connected || !window.ioSocket.socket.reconnecting) ) {
            notificationService.login();
        } else if (!online) {
            notificationService.disconnected();

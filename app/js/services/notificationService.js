@@ -23,9 +23,7 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                 window.ioSocket.socket.disconnect();
             },
             login: function() {
-                if (!window.ioSocket.socket.connected) {
-                    window.ioSocket.socket.connect();
-                }
+                window.ioSocket.socket.connect();
             },
             send: function(e, data) {
                 if (!window.ioSocket.socket.connected) {

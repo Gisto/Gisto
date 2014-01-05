@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gisto.service.appSettings', [], function ($provide) {
-    $provide.factory('appSettings', function ($rootScope) {
+    $provide.factory('appSettings', function ($rootScope, $q, $timeout) {
         var settings = {
 
             theme_list: ['default', 'gisto', 'nite', 'dark', 'dark-blue'],
@@ -42,27 +42,65 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 avatarUrl: 'https://secure.gravatar.com/avatar/'
             },
 
-
             loadSettings: function () {
+                var defer = $q.defer();
 
-                if (!localStorage.settings) {
-                    return; // no settings saved do nothing
-                }
+                // $timeout(function() { // uncomment when you want to simulate loading delay
 
-                var parsedSettings = JSON.parse(localStorage.settings);
-                for (var key in parsedSettings) {
-                    settings.data[key] = parsedSettings[key];
+                // if data already loaded (first check) return data
+                // if data is not loaded and localstorage settings does not exist, return default settings object
+                if (settings.dataLoaded || !localStorage.settings) {
+                    defer.resolve(settings.data);
+                } else {
+                    var parsedSettings = JSON.parse(localStorage.settings);
+                    //console.log(parsedSettings);
+                    // assign the data object from the json array
+                    for (var key in parsedSettings) {
+                        settings.data[key] = parsedSettings[key];
+                    }
+
+                    // mark settings as loaded for further checks
+                    settings.dataLoaded = true;
+
+                    defer.resolve(settings.data);
                 }
+                //}, 2500); // uncomment when you want to simulate loading delay
+
+                return defer.promise;
+            },
+
+            getToken: function () {
+
+                var defer = $q.defer();
+
+                settings.loadSettings().then(function (result) {
+
+                    if (result['token']) {
+                        defer.resolve(result['token']);
+                    } else {
+                        defer.reject('no token');
+                    }
+
+                }, function (error) {
+                    defer.reject(error);
+                });
+
+                return defer.promise;
 
             },
 
             isLoggedIn: function (callback) {
 
-                if (settings.data['token']) {
-                    return true;
-                } else {
-                    document.location.href = '#/login';
-                }
+                settings.loadSettings().then(function (result) {
+
+                    if (result['token']) {
+                        return true;
+                    }
+
+                    window.location.href = '#/login';
+                }, function (error) {
+                    window.location.href = '#/login';
+                });
             },
 
             logOut: function () {
@@ -87,8 +125,6 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 for (var key in data) {
                     settings.data[key] = data[key];
                 }
-                console.log('recieved new settings', data);
-                console.log('saved new settings', settings.data);
                 settings.data['last_modified'] = new Date().toUTCString();
                 localStorage.settings = JSON.stringify(settings.data);
 
@@ -98,15 +134,8 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                     });
                 }
 
-            },
-
-            setOne: function (key, new_data, callback) {
-                settings.data[key] = new_data;
-                localStorage.settings = JSON.stringify(settings.data);
             }
         };
-
-        settings.loadSettings();
 
         return settings;
     });
