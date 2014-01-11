@@ -35,11 +35,14 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data) {
-                            appSettings.set({
-                                username: data.login,
-                                gravatar_id: data.gravatar_id,
-                                avatarUrl: data.avatar_url
+                            appSettings.loadSettings().then(function(result) {
+                                appSettings.set({
+                                    username: data.login,
+                                    gravatar_id: data.gravatar_id,
+                                    avatarUrl: data.avatar_url
+                                });
                             });
+
                             deferred.resolve(data);
                         }).error(function (error) {
                             console.log('Could not get logged in user', error);

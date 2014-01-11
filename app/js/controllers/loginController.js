@@ -11,15 +11,16 @@ function loginCtrl($scope, ghAPI, appSettings, notificationService) {
     function handleLogin(response) {
         if (response.status === 201) {
             console.log(response);
-            ghAPI.setToken(response.data.token);
-            appSettings.set({
-                token: response.data.token
+
+            appSettings.loadSettings().then(function(result) {
+
+                appSettings.set({
+                    token: response.data.token
+                });
+                console.log('saved token');
+                window.location.href = '#/';
             });
-            console.log('saved token');
 
-
-
-            window.location.href = '#/';
         } else if (response.status === 401 && response.headers['x-github-otp']) {
             $scope.step2 = true;
             $scope.spinner = false;
