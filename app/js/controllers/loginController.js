@@ -1,8 +1,13 @@
 'use strict';
 
-function loginCtrl($scope, ghAPI, appSettings, notificationService) {
+function loginCtrl($scope, ghAPI, appSettings, $location) {
 
     $scope.tokenAttempts = 0;
+    $scope.useManualToken = false;
+
+    $scope.toggleManualToken = function() {
+      $scope.useManualToken = !$scope.useManualToken;
+    };
 
     $scope.step1 = function() {
         $scope.step2 = false;
@@ -48,5 +53,26 @@ function loginCtrl($scope, ghAPI, appSettings, notificationService) {
             $scope.tokenAttempts++;
         }
         ghAPI.login($scope.user, $scope.pass, handleLogin, $scope.code);
+    };
+
+    $scope.manualLogin = function() {
+
+        ghAPI.isTokenValid($scope.manualToken).then(function() {
+            // token is valid save and redirect to homepage
+            appSettings.loadSettings().then(function(result) {
+               appSettings.set({
+                   token: $scope.manualToken
+               });
+               $location.url('/');
+            });
+
+        }, function(error) {
+            $('.warn').slideDown('slow');
+            $('.warn span').text('Log-in failed - Token is invalid');
+            setTimeout(function () {
+                $('.warn').slideUp();
+            }, 2500);
+        });
+
     };
 }

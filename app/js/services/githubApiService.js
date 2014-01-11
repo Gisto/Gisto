@@ -54,6 +54,28 @@ angular.module('gisto.service.gitHubAPI', [
                 return deferred.promise;
             },
 
+            isTokenValid: function(token) {
+
+                var deferred = $q.defer();
+
+                requestHandler({
+                    method: 'GET',
+                    url: 'https://api.github.com/user',
+                    headers: {
+                        Authorization: 'token ' + token
+                    }
+                }).success(function (data) {
+                        console.log(data);
+                        deferred.resolve(true);
+                    }).error(function (error) {
+                        console.log('Could not verify token', error);
+                        deferred.reject(false);
+                    });
+
+                return deferred.promise;
+
+            },
+
             // POST /authorizations
             login: function (user, pass, callback, twoStepAuthCode) {
 
