@@ -513,7 +513,7 @@ div.main .the-comments .comment_gravatar {
     box-shadow: 0px 0px 10px #bbb inset;
 }
 
-.login-form input[type="submit"] {
+.login-form input[type="submit"], .login-form button {
     display: block;
     margin: 21px 0 0 64px;
     margin: 0 auto;

@@ -4,20 +4,20 @@
         <h1><i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i></h1>
     </header>
 
-    <form data-ng-submit="submit()">
+    <div class="messenger warn">
+        <i class="icon-warning-sign"> </i>
+        <span>Warning</span>
+    </div>
 
-        <div class="messenger warn">
-            <i class="icon-warning-sign"> </i>
-            <span>Warning</span>
-        </div>
+    <div class="messenger info">
+        <i class="icon-info-sign"> </i>
+        <span>2 Factor authentication token needed</span>
+    </div>
 
-        <div class="messenger info">
-            <i class="icon-info-sign"> </i>
-            <span>2 Factor authentication token needed</span>
-        </div>
+    <form data-ng-submit="submit()" data-ng-show="!useManualToken">
 
         <div data-ng-hide="step2">
-            <input type="text" data-ng-model="user" placeholder="GitHub username/e-mail" required>
+            <input type="text" data-ng-model="user" placeholder="GitHub username/e-mail" required autofocus>
             <input type="password" data-ng-model="pass" placeholder="GitHub password" required/>
         </div>
         <div data-ng-show="step2">
@@ -28,9 +28,18 @@
         <p data-ng-show="step2"><a href="#" data-ng-click="step1()"><i class="icon-arrow-left"></i> Re-enter username/password</a></p>
 
         <p>No account yet? Sign-up at <a to-url="https://github.com/signup/free" href="">GitHub</a></p>
+        <p><a data-ng-click="toggleManualToken()">Enter Existing Access Token</a></p>
+
 
         <i data-ng-show="spinner" class="spiner icon-spinner icon-spin"></i>
     </form>
 
+    <form data-ng-show="useManualToken" >
+        <p>Generate your access token yourself by going to</p>
+        <p><a href="https://github.com/settings/applications">https://github.com/settings/applications</a></p>
+        <input type="text" data-ng-model="manualToken" placeholder="Token" required />
+        <p><input data-ng-click="manualLogin()" type="submit" value="Login" /></p>
+        <p><button data-ng-click="toggleManualToken()">Cancel</button></p>
+    </form>
 </div>
 
