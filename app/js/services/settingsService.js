@@ -39,7 +39,9 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 "xcode"
             ],
             data: { // default settings
-                avatarUrl: 'https://secure.gravatar.com/avatar/'
+                avatarUrl: 'https://secure.gravatar.com/avatar/',
+                theme: 'default',
+                editor_theme: 'tomorrow'
             },
 
             loadSettings: function () {
@@ -105,8 +107,14 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
 
             logOut: function () {
                 $rootScope.edit = false;
-                settings.data = [];
-                delete localStorage.settings;
+
+                settings.set({
+                    token: null,
+                    avatarUrl: 'https://secure.gravatar.com/avatar/',
+                    gravatar_id: null,
+                    username: null
+                });
+
                 document.location.href = '#/login';
             },
 
