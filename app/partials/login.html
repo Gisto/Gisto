@@ -36,7 +36,7 @@
 
     <form data-ng-show="useManualToken" >
         <p>Generate your access token yourself by going to</p>
-        <p><a href="https://github.com/settings/applications">https://github.com/settings/applications</a></p>
+        <p><a to-url="https://github.com/settings/applications">https://github.com/settings/applications</a></p>
         <input type="text" data-ng-model="manualToken" placeholder="Token" required />
         <p><input data-ng-click="manualLogin()" type="submit" value="Login" /></p>
         <p><button data-ng-click="toggleManualToken()">Cancel</button></p>
