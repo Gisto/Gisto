@@ -35,11 +35,22 @@
     </form>
 
     <form data-ng-show="useManualToken" >
-        <p>Generate your access token yourself by going to</p>
-        <p><a to-url="https://github.com/settings/applications">https://github.com/settings/applications</a></p>
         <input type="text" data-ng-model="manualToken" placeholder="Token" required />
         <p><input data-ng-click="manualLogin()" type="submit" value="Login" /></p>
         <p><button data-ng-click="toggleManualToken()">Cancel</button></p>
+        <p>You can generate access token at <a to-url="https://github.com/settings/applications">GitHub</a></p>
     </form>
+
+    <a class="auth-help" href="#"> ? <div>By default, Gisto is using oAuth via github API.
+        In order for you to get authenticated, you need to generate access token.<br />
+        That is why GitHub username and password is asked by Gisto. After first authentication - only the generated token used to bridge between github and your gisto installation up to the point when you log out of gisto - action which terminates the token.<br />
+    <br />Other options of authentication are:
+        <ul>
+            <li>Manualy generated token</li>
+            <li>2-step authentication (if 2 step authentication is active in your account)</li>
+        </ul>
+    </div></a>
+
+
 </div>
 

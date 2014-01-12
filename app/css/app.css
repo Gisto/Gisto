@@ -470,7 +470,6 @@ div.main .the-comments .comment_gravatar {
 .login-form {
     margin: auto;
     width: 454px;
-    height: 275px;
     -webkit-border-radius: 16px;
     border-radius: 16px;
     background: transparent;
@@ -973,4 +972,52 @@ div.revision-drop-down a p:hover {
     left: 0;
     border: none;
     padding: 10px;
+}
+
+a.auth-help {
+    background: #555;
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    color: #fff;
+    box-shadow: 0px -7px 30px #fff;
+    margin: 0 auto;
+    border-bottom: 2px solid #333;
+    position: relative;
+    font-weight: bold;
+}
+
+a.auth-help:hover {
+    text-shadow: 0 0 5px #fff;
+    border-bottom: none;
+    transition: all 0.30s ease-in;
+}
+
+a.auth-help:hover div {
+    display:block;
+    zoom:normal !important;
+    font-weight: 100  !important;
+    text-shadow: none  !important;
+}
+
+a.auth-help div {
+    font: 100 14px/21px 'trebuchet ms', arial, sans-serif;
+    background: #555;
+    width: 360px;
+    margin: 0 auto;
+    text-align: justify;
+    position: absolute;
+    bottom: 40px;
+    right: 50%;
+    margin-right: -180px;
+    padding: 30px;
+    box-shadow: 0px 0px 10px #333;
+    display:none;
+    opacity:0.95;
+}
+
+a.auth-help div {
+    text-align: left;
 }
