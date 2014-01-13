@@ -982,7 +982,7 @@ a.auth-help {
     line-height: 30px;
     border-radius: 50%;
     color: #fff;
-    box-shadow: 0px -7px 30px #fff;
+    /*box-shadow: 0px -7px 30px #fff;*/
     margin: 0 auto;
     border-bottom: 2px solid #333;
     position: relative;
@@ -994,6 +994,8 @@ a.auth-help:hover {
     border-bottom: none;
     transition: all 0.30s ease-in;
 }
+
+
 
 a.auth-help:hover div {
     display:block;

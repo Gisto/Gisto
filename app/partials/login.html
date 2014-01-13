@@ -41,14 +41,16 @@
         <p>You can generate access token at <a to-url="https://github.com/settings/applications">GitHub</a></p>
     </form>
 
-    <a class="auth-help" href="#"> ? <div>By default, Gisto is using oAuth via github API.
-        In order for you to get authenticated, you need to generate access token.<br />
-        That is why GitHub username and password is asked by Gisto. After first authentication - only the generated token used to bridge between github and your gisto installation up to the point when you log out of gisto - action which terminates the token.<br />
-    <br />Other options of authentication are:
-        <ul>
-            <li>Manualy generated token</li>
-            <li>2-step authentication (if 2 step authentication is active in your account)</li>
-        </ul>
+    <a class="auth-help" href="#"> ? <div>
+
+        Gisto authenticates to GitHub by using basic authentication over SSL and retrieving an oAuth2 token. Thus the need for your GitHub user and password.
+        <br /><br />
+        Gisto <em>only saves</em> the oAuth2 token received after authenticating and <em>nothing else</em>.
+        <br /><br/>
+        If you would rather to supply your own access token without providing Gisto your login details you may manually create an access token
+        from the account settings at GitHub and login using the generated token.
+        <br/><br/>
+        This token will be saved permanently until you log out.
     </div></a>
 
 
