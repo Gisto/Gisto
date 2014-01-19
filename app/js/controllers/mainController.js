@@ -1,7 +1,14 @@
 'use strict';
 
 function mainCtrl($scope, $http, appSettings) {
-    $scope.latestVersion = appSettings.get('latestVersion');
+
+    appSettings.loadSettings().then(function(result) {
+        $scope.latestVersion = appSettings.get('latestVersion');
+        console.log($scope.latestVersion);
+    });
+
+
+
     $scope.currentVersion = '';
     $scope.updateAvailable = false;
 
@@ -12,6 +19,7 @@ function mainCtrl($scope, $http, appSettings) {
     // get the current version number
     $http.get('./package.json').success(function (data) {
         $scope.currentVersion = data.version;
+        console.log('package json', data);
     });
 
     var timestamp = new Date().getTime() - 86400000; // 1 day ago
@@ -25,15 +33,15 @@ function mainCtrl($scope, $http, appSettings) {
             },
             method: 'get'
         }).success(function (data) {
-
+                console.log('network', data);
                 appSettings.loadSettings().then(function(result) {
 
-                    appSettings.set({
-                        latestVersion: {
-                            version: data.version,
+                    $scope.latestVersion = {
+                        version: data.version,
                             timestamp: new Date().getTime()
-                        }
-                    });
+                    };
+
+                    appSettings.set($scope.latestVersion);
 
                 }, function(error) {
                     console.log('could not load app settings');
@@ -44,7 +52,7 @@ function mainCtrl($scope, $http, appSettings) {
     }
 
     $scope.$watch('currentVersion + latestVersion', function () {
-
+        console.log('watch', $scope.currentVersion, $scope.latestVersion);
         if ($scope.currentVersion && $scope.latestVersion && $scope.currentVersion !== $scope.latestVersion.version) {
             $scope.updateAvailable = true;
         }
