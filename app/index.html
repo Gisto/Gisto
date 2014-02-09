@@ -3,8 +3,9 @@
 <head data-ng-controller="settingsCtrl">
     <meta charset="utf-8">
     <title>Gisto</title>
-    <meta name="viewport" content="width=device-width">
+    <meta data-ng-if="mobile" name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/app.css">
+    <link data-ng-if="mobile" rel="stylesheet" href="css/mobile.css">
     <link rel="stylesheet" data-ng-href="themes/{{theme}}/theme.css">
     <link rel="stylesheet" data-ng-if="anim==1" data-ng-href="css/animation.css">
 
@@ -22,7 +23,7 @@
 
 <body class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute}">
 
-<aside ui-route="/login" class="flex" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
+<aside ui-route="/login" class="flex" data-ng-if="(mobile && show_aside)" data-ng-class="{wide: mobile}" ata-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
        data-ng-hide="edit">
 
     <header class="flex">
@@ -40,7 +41,7 @@
     <ul>
         <li id="gist-{{gist.id}}" data-ng-animate="{enter: 'animate-list-enter', leave: 'animate-list-leave'}"
             data-ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
-            <a ui-route="/gist/{{gist.id}}" data-ng-class="{active: $uiRoute}"
+            <a ui-route="/gist/{{gist.id}}" data-ng-class="{active: $uiRoute}" data-ng-click="showGist()"
                onclick="document.location.href = '#/gist/{{gist.id}}'">
                 <h3>
                     <i class="icon-{{gist.public | publicOrPrivet}}"></i>
@@ -70,18 +71,18 @@
     </footer>
 </aside>
 
-<div class="main flex" role="main" data-ng-view>
+<div data-ng-if="show_aside!=true" class="main flex" role="main" data-ng-view>
 
 </div>
 
 <!--SCRIPTS-->
 
-<!-- env:prod -->
+<!-- env:prod --#>
 <script src="lib/ace/ace.js"></script>
 <script src="js/gisto.min.js"></script>
 <!-- env:prod:end -->
 
-<!-- env:dev --#>
+<!-- env:dev -->
 <script src="lib/jquery/jquery.js"></script>
 <script src="lib/ace/ace.js"></script>
 <script src="lib/socket-io/socket.io.min.js"></script>

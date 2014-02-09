@@ -171,6 +171,11 @@ aside {
     height: 100%;
 }
 
+aside.wide {
+    -webkit-flex:auto;
+    height: 100%;
+}
+
 aside ul {
     -webkit-flex: 1;
     overflow-y: scroll;
@@ -1023,3 +1028,4 @@ a.auth-help div {
 a.auth-help div {
     text-align: left;
 }
+

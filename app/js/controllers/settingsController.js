@@ -1,6 +1,12 @@
 'use strict';
 
-function settingsCtrl($scope, appSettings,$rootScope) {
+function settingsCtrl($scope, appSettings,$rootScope,$window) {
+
+    $rootScope.mobile = false;
+    if ($window.innerWidth < 700) {
+        $rootScope.mobile = true;
+    }
+
     $scope.themes = appSettings.theme_list;
     $scope.editor_themes = appSettings.editor_theme_list;
     $scope.font_sizes = appSettings.font_size;

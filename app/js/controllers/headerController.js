@@ -1,6 +1,6 @@
 'use strict';
 
-function headerController($scope, notificationService, $location, appSettings, gistData, onlineStatus) {
+function headerController($scope,$rootScope, notificationService, $location, appSettings, gistData, onlineStatus) {
 
     notificationService.login();
 
@@ -12,6 +12,10 @@ function headerController($scope, notificationService, $location, appSettings, g
     $scope.settings = appSettings.data;
 
     $scope.notifications = notificationService.notifications;
+
+    $scope.showAside = function () {
+        $rootScope.show_aside = true;
+    }
 
     $scope.logOut = function () {
 
