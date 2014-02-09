@@ -474,7 +474,7 @@ div.main .the-comments .comment_gravatar {
 /** login form **/
 .login-form {
     margin: auto;
-    width: 454px;
+    /*width: 454px;*/
     -webkit-border-radius: 16px;
     border-radius: 16px;
     background: transparent;
