@@ -2,7 +2,7 @@
 
     <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
-    <span data-ng-switch on="edit">
+    <span data-ng-if="!mobile" data-ng-switch on="edit">
         <span data-ng-switch-when="true">
             <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" data-ng-model="gist.description">
         </span>
@@ -50,6 +50,15 @@
     <span>Are you sure you want to <b>delete</b> this gist? | <a href="" data-ng-click="del()">Yes!</a>
         <a href="" data-ng-click="cancelDeleteGist()">Cancel</a></span>
 </div>
+
+<span class="toolbox-title" data-ng-if="mobile" data-ng-switch on="edit">
+        <span data-ng-switch-when="true">
+            <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" data-ng-model="gist.description">
+        </span>
+        <span class="title" data-ng-switch-default>
+            {{(gist.description | removeTags | truncate:80) || 'Untitled'}}
+        </span>
+</span>
 
 <div class="toolbox">
 

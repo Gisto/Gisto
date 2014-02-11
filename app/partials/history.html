@@ -2,7 +2,7 @@
 
     <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
-    <span data-ng-switch on="gist.history.starred">
+    <span class="public-or-private-single-gist" data-ng-switch on="gist.history.starred">
         <span data-ng-switch-when="true">
     <a data-ng-click="unstar()" title="unStar"><i class="star icon-star"></i></a>
         </span>
@@ -11,9 +11,9 @@
         </span>
 </span>
 
-    <span class="type {{gist.public | publicOrPrivet}}"><i class="icon-{{gist.public | publicOrPrivet}}"></i></span>
+    <span class="public-or-private-single-gist" class="type {{gist.public | publicOrPrivet}}"><i class="icon-{{gist.public | publicOrPrivet}}"></i></span>
 
-    <span data-ng-switch on="edit">
+    <span data-ng-if="!mobile" data-ng-switch on="edit">
         <span data-ng-switch-when="true">
             <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" data-ng-model="gist.description">
         </span>
@@ -66,6 +66,15 @@
     <i class="icon-warning-sign"> </i>
     <span>Server connection lost, please try again later.</span>
 </div>
+
+<span class="toolbox-title" data-ng-if="mobile" data-ng-switch on="edit">
+        <span data-ng-switch-when="true">
+            <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" data-ng-model="gist.description">
+        </span>
+        <span class="title" data-ng-switch-default>
+            {{(gist.description | removeTags | truncate:80) || 'Untitled'}}
+        </span>
+</span>
 
 <div class="toolbox">
 
@@ -128,6 +137,6 @@
 
 </span>
 
-<footer>
+<footer data-ng-if="!mobile">
     &copy; 2013 <b>Gisto</b> | http://www.gistoapp.com
 </footer>

@@ -131,7 +131,7 @@
 
     <a data-ng-hide="!mobile" data-ng-click="show.mobile.actions=!show.mobile.actions"><i class="icon-cogs"></i> Action</a>
 
-<div class="toolbox-buttons" data-ng-show="show.mobile.actions">
+<toolbox-buttons data-ng-click="show.mobile.actions=!show.mobile.actions" class="toolbox-buttons" data-ng-show="(!mobile) || show.mobile.actions">
 
     <a data-ng-click="addFile()" title="Add new file to this gist">Add file</a>
 
@@ -162,10 +162,10 @@
     <a to-url="{{gist.single.html_url}}" href="" title="Open Gist in browser">Open in browser</a>
     <a data-ng-click="warnDeleteGist()" href="" title="Delete this gist">Remove</a>
 
-</div>
+</toolbox-buttons>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
-        <i class="icon-sort-down"></i> <i class="icon-file-text-alt"></i>
+        <i class="icon-sort-down"></i> <i data-ng-if="mobile" class="icon-file-text-alt"></i>
 
         <div data-ng-show="dropdown.show">
             <p class="scroller" data-ng-repeat="file in gist.single.files" scroll-to="file-{{$index}}"><i
