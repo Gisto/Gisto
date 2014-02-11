@@ -1,8 +1,10 @@
 <header>
     <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
-    <span class="" data-ng-hide></span>
-    <i class="icon-wrench"></i> Settings
+    <mobile data-ng-if="!mobile">
+        <span class="" data-ng-hide></span>
+        <i class="icon-wrench"></i> Settings
+    </mobile>
 </header>
 
 <form data-ng-controller="settingsCtrl">

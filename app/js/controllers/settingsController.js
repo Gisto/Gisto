@@ -3,8 +3,9 @@
 function settingsCtrl($scope, appSettings,$rootScope,$window) {
 
     $rootScope.mobile = false;
-    if ($window.innerWidth < 700) {
+    if ($window.innerWidth < 699) {
         $rootScope.mobile = true;
+
     }
 
     $scope.themes = appSettings.theme_list;
@@ -13,7 +14,12 @@ function settingsCtrl($scope, appSettings,$rootScope,$window) {
 
     appSettings.loadSettings().then(function(result) {
         $scope.editor_theme = result['editor_theme'] || 'tomorrow';
-        $scope.font_size = result['font_size'] || '13';
+        if($rootScope.mobile === true) {
+            $scope.font_size = result['font_size'] || '10';
+        } else {
+            $scope.font_size = result['font_size'] || '13';
+        }
+
         $scope.min_height = result['min_height'] || '';
         $scope.max_height = result['max_height'] || '';
         $scope.theme = result['theme'] || 'default';

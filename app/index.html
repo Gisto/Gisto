@@ -23,7 +23,7 @@
 
 <body class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute}">
 
-<aside ui-route="/login" class="flex" data-ng-if="(mobile && show_aside)" data-ng-class="{wide: mobile}" ata-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
+<aside ui-route="/login" class="flex" data-ng-if="!mobile || show_aside" data-ng-class="{wide: mobile}" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
        data-ng-hide="edit">
 
     <header class="flex">

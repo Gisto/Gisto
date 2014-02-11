@@ -3,3 +3,29 @@
     position: absolute;
     left: 10px;
 }
+
+.star-single-gist {
+    float: right;
+}
+
+.public-or-private-single-gist {
+    float: right;
+    margin: 0px 10px 0px 0px;
+}
+
+.toolbox-title {
+    padding: 10px;
+    font-size: 80%;
+    color: #555;
+}
+
+.toolbox-buttons a {
+    display: block;
+}
+
+.toolbox-buttons a {
+    display: block;
+    margin: 5px;
+    padding: 6px !important;
+    text-align: center;
+}

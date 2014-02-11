@@ -4,10 +4,19 @@
 
 <section id="empty">
 
-    Please select gist from the list
-    <br/>
-   <!-- ⤶ -->
-    <i class="icon-long-arrow-left"></i>
+    <switch ng-switch="mobile">
+        <switch ng-switch-when="false">
+            Please select gist from the list
+            <br/>
+            <!-- ⤶ -->
+            <i class="icon-long-arrow-left"></i>
+        </switch>
+        <switch ng-switch-when="true">
+            <i class="icon-long-arrow-up"></i>
+            Please select gist from the list
+            <br/>
+        </switch>
+    </switch>
 
     <hr>
 
