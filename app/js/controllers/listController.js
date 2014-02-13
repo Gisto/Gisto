@@ -1,6 +1,6 @@
 'use strict';
 
-function listGistCtrl($scope, ghAPI, gistData,$rootScope) {
+function listGistCtrl($scope, ghAPI, gistData, $rootScope) {
     $scope.gists = gistData.list;
     $scope.onlineStatus = {
        state: "Offline",

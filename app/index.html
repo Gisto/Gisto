@@ -3,11 +3,12 @@
 <head data-ng-controller="settingsCtrl">
     <meta charset="utf-8">
     <title>Gisto</title>
+    <meta data-ng-if="mobile" name="format-detection" content="telephone=no" />
     <meta data-ng-if="mobile" name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="css/app.css">
-    <link data-ng-if="mobile" rel="stylesheet" href="css/mobile.css">
     <link rel="stylesheet" data-ng-href="themes/{{theme}}/theme.css">
     <link rel="stylesheet" data-ng-if="anim==1" data-ng-href="css/animation.css">
+    <link data-ng-if="mobile" rel="stylesheet" href="css/mobile.css">
 
     <script>
         /**
@@ -76,6 +77,8 @@
 </div>
 
 <!--SCRIPTS-->
+
+<script data-ng-if="mobile" src="phonegap.js"></script>
 
 <!-- env:prod --#>
 <script src="lib/ace/ace.js"></script>

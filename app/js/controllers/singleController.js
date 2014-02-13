@@ -39,7 +39,11 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                 clipboard.set(data.content || data, 'text');
             }
         } else {
-            // Copy to clipboard really only works in App
+            if(type === 'embed') {
+                cordova.plugins.clipboard.copy('<script src="' + data + '"></script>');
+            } else {
+                cordova.plugins.clipboard.copy(data.content || data);
+            }
             console.warn('>>> DEBUG MODE ON | Copy to clipboard really only works in App \n Data: ' + (data.content || data));
             console.log('data:', data);
         }

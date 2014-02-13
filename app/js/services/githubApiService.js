@@ -140,7 +140,7 @@ angular.module('gisto.service.gitHubAPI', [
                             // Set lastUpdated for 60 sec cache
                             data.lastUpdated = new Date();
 
-                            gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
+                                gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
                             // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
                             var header = headers();
@@ -352,7 +352,7 @@ angular.module('gisto.service.gitHubAPI', [
             },
 
             // DELETE /gists/:id
-            delete: function (id, callback) {
+            'delete': function (id, callback) {
 
                 appSettings.loadSettings().then(function (result) {
 
