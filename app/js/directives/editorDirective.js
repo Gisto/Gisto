@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('gisto.directive.editor', []).directive('editor', function ($timeout) {
-    var editorWindow = angular.element('<pre id="editor-{{$index}}">{{file.content}}</pre>');
+angular.module('gisto.directive.editor', []).directive('editor', function ($timeout,$rootScope) {
+        var editorWindow = angular.element('<pre id="editor-{{$index}}">{{file.content}}</pre>');
     return {
         restrict: 'E',
         compile: function (elem) {

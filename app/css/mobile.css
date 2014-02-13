@@ -22,7 +22,8 @@
 .toolbox-title input.edaitable {
     margin: 0;
     padding: 5px;
-    width: 50%;
+    width: 100%;
+    border-width: 1px;
     border-radius: 3px;
 }
 
@@ -41,4 +42,32 @@
 
 .date_meta .notification div {
     top: 132px;
+}
+
+textarea.mobile-edit {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: none;
+}
+
+.the-gist-name input.edaitable {
+    width:96%;
+    z-index: 99;
+}
+.messenger {
+    display: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    bottom:initial;
+    z-index: 10;
+    right: 0;
+    border-radius: 0;
+    box-shadow: 1px 1px 5px #000;
+    width: 100%;
+    min-height: 51px;
+    line-height: 30px;
 }
