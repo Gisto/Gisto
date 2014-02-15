@@ -27,6 +27,10 @@
     border-radius: 3px;
 }
 
+div.toolbox a {
+    padding: 2px 5px;
+}
+
 .toolbox-buttons {
     position: absolute;
     right: 37px;
@@ -71,3 +75,4 @@ textarea.mobile-edit {
     min-height: 51px;
     line-height: 30px;
 }
+
