@@ -10,35 +10,34 @@
      title="{{single.user.login}}"/>
 
 <a class="button notification" data-ng-click="showNotifications=!showNotifications">
+
+    <div data-ng-show="showNotifications && notifications.length > 0">
+        <!-- data-ng-click="loadExternalGist(item.gistId, item.sender)" -->
+        <ul>
+            <li data-ng-repeat="item in notifications" data-ng-switch="item.type">
+
+                <p data-ng-switch-when="create">
+                    <i data-ng-click="reject(item.gistId);" class="icon-trash remove-notification"></i>
+                    <img data-ng-src="{{ item.icon }}" class="favicon" title=""/>
+                    <cite>A new gist has been created from {{ item.url }}</cite><br/>
+                    <strong><b>{{ item.title | removeTags }}</b></strong>
+                </p>
+
+                <p data-ng-switch-when="share" data-ng-click="loadExternalGist(item.gistId, item.sender)">
+                    <i data-ng-click="reject(item.gistId);" class="icon-trash remove-notification"></i>
+                    <img data-ng-src="https://secure.gravatar.com/avatar/{{item.gravatar_id}}" class="gravatar"
+                         title="{{single.user.login}}"/>
+                    <cite><strong>{{ item.sender }}</strong> shared:</cite><br/>
+                    <strong>{{ item.name | removeTags }}</strong> with you.
+                </p>
+
+            </li>
+
+        </ul>
+    </div>
+
     <i class="notify icon-flag">
         <span data-ng-show="notifications.length > 0" class="bubble">{{ notifications.length }}</span>
-
-
-        <div data-ng-show="showNotifications && notifications.length > 0">
-            <!-- data-ng-click="loadExternalGist(item.gistId, item.sender)" -->
-            <ul>
-                <li data-ng-repeat="item in notifications" data-ng-switch="item.type">
-
-                    <p data-ng-switch-when="create">
-                        <i data-ng-click="reject(item.gistId);" class="icon-trash remove-notification"></i>
-                        <img data-ng-src="{{ item.icon }}" class="favicon" title=""/>
-                        <cite>A new gist has been created from {{ item.url }}</cite><br/>
-                        <strong><b>{{ item.title | removeTags }}</b></strong>
-                    </p>
-
-                    <p data-ng-switch-when="share" data-ng-click="loadExternalGist(item.gistId, item.sender)">
-                        <i data-ng-click="reject(item.gistId);" class="icon-trash remove-notification"></i>
-                        <img data-ng-src="https://secure.gravatar.com/avatar/{{item.gravatar_id}}" class="gravatar"
-                             title="{{single.user.login}}"/>
-                        <cite><strong>{{ item.sender }}</strong> shared:</cite><br/>
-                        <strong>{{ item.name | removeTags }}</strong> with you.
-                    </p>
-
-                </li>
-
-            </ul>
-        </div>
-
     </i>
 </a>
 

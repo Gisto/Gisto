@@ -729,8 +729,8 @@ details > summary {
 
 .notification div {
     position: absolute;
-    top: 35px;
-    right: 0;
+    top: 48px;
+    right: 156px;
     z-index: 9;
     font-size: 9pt;
     line-height: 20px;

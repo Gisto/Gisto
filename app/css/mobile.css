@@ -102,6 +102,19 @@ textarea.mobile-edit {
     z-index: 6;
 }
 
+.notification div {
+    top: 49px;
+    right: 36px;
+}
+
+.notification div:after {
+    margin-left: -137px;
+}
+
+.notification div:before {
+    margin-left: -138px;
+}
+
 #sp-hide-menu {
     display: none
 }
