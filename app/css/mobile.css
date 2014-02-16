@@ -1,3 +1,8 @@
+aside.wide {
+    -webkit-flex: auto;
+    height: 100%;
+}
+
 .nav-btn {
     float: left;
     position: absolute;
@@ -12,6 +17,12 @@
     float: right;
     margin: 0px 10px 0px 0px;
 }
+
+div.toolbox {
+    position: relative;
+}
+
+
 
 .toolbox-title {
     padding: 10px;
@@ -34,7 +45,8 @@ div.toolbox a {
 .toolbox-buttons {
     position: absolute;
     right: 37px;
-    top: 118px;
+    top: 30px;
+    z-index: 2;
 }
 
 .toolbox-buttons a {
@@ -45,7 +57,7 @@ div.toolbox a {
 }
 
 .date_meta .notification div {
-    top: 132px;
+    top: 40px;
 }
 
 textarea.mobile-edit {
@@ -56,9 +68,10 @@ textarea.mobile-edit {
 }
 
 .the-gist-name input.edaitable {
-    width:96%;
-    z-index: 99;
+    width: 96%;
+    z-index: 1;
 }
+
 .messenger {
     display: none;
     padding: 10px;
@@ -66,7 +79,7 @@ textarea.mobile-edit {
     cursor: pointer;
     position: absolute;
     top: 0px;
-    bottom:initial;
+    bottom: initial;
     z-index: 10;
     right: 0;
     border-radius: 0;
@@ -76,3 +89,83 @@ textarea.mobile-edit {
     line-height: 30px;
 }
 
+.hide-only {
+    dispaly: none;
+    -webkit-flex: 0;
+}
+
+.ace_scrollbar {
+    z-index: 4 !important;
+}
+
+.files-drop-down div {
+    z-index: 6;
+}
+
+#sp-hide-menu {
+    display: none
+}
+
+#sp-nav, #sp-nav.wide {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%
+}
+
+#sp-nav nav, #sp-nav.wide nav {
+    display: block;
+    background: black;
+    color: white;
+    z-index: 5;
+    height: 100%
+}
+
+#sp-nav nav div, #sp-nav.wide nav div {
+    z-index: 5
+}
+
+#sp-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    float: right;
+    z-index: 10;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s
+}
+
+#sp-nav.show, #sp-nav.show.wide {
+    left: 0px;
+    overflow-x: hidden
+}
+
+#sp-nav.show + #sp-page #sp-show-menu, #sp-nav.show.wide + #sp-page #sp-show-menu {
+    display: none
+}
+
+#sp-nav.show + #sp-page #sp-hide-menu, #sp-nav.show.wide + #sp-page #sp-hide-menu {
+    display: inline
+}
+
+#sp-nav.show + #sp-page, #sp-nav.show.wide + #sp-page {
+    position: absolute;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch
+}
+
+body {
+    overflow-x: hidden !important;
+}
+
+aside header input {
+    width: 45%;
+}

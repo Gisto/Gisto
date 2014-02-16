@@ -20,7 +20,9 @@ angular.module('gisto', [
         'gisto.service.appSettings',
         'btford.socket-io',
         'gisto.service.notificationService',
-        'gisto.service.onlineStatusService'
+        'gisto.service.onlineStatusService',
+        'ngMobile',
+        'gisto.service.mobileNavigation'
     ]).
     config(['$routeProvider', 'socketProvider', function ($routeProvider, socketProvider) {
 

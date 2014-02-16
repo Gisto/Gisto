@@ -29,7 +29,7 @@ angular.module('gisto.directive.editor', []).directive('editor', function ($time
                             * editor.renderer.lineHeight
                             + editor.renderer.scrollBar.getWidth();
 
-                    $('pre#editor-' + attrs.index).height(newHeight.toString() + "px");
+                    $('pre#editor-' + attrs.index).height(parseInt(newHeight.toString()) + "px");
                     editor.resize(true);
                     }
 

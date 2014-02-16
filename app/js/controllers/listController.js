@@ -1,6 +1,6 @@
 'use strict';
 
-function listGistCtrl($scope, ghAPI, gistData, $rootScope) {
+function listGistCtrl($scope, ghAPI, gistData, $rootScope,$spMenu) {
     $scope.gists = gistData.list;
     $scope.onlineStatus = {
        state: "Offline",
@@ -9,7 +9,7 @@ function listGistCtrl($scope, ghAPI, gistData, $rootScope) {
 
     $scope.showGist = function() {
         console.log('showGist');
-        $rootScope.show_aside = false;
+        $spMenu.toggle();
     }
 
     $scope.$on('ApplicationState', function(e, data) {

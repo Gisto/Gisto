@@ -205,11 +205,12 @@
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
 
-        <editor data-ng-if="!edit" data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" font="{{font_size}}"
+        <editor data-ng-if="!mobile || !edit" data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" font="{{font_size}}"
                 theme="{{editor_theme}}"
                 index="{{$index}}"></editor>
 
-        <textarea class="mobile-edit" id="editor-{{$index}}" data-ng-if="edit" data-ng-if="mobile">{{file.content}}</textarea>
+        <textarea class="mobile-edit" id="editor-{{$index}}" ng-model="file.content" data-ng-if="edit && mobile">{{file.content}}</textarea>
+
 
     </div>
 
@@ -220,7 +221,9 @@
 <div class="comments" data-ng-if="!edit">
 
 <span class="clicky" data-ng-click="showComments=!showComments">
-    <b><span class="icon-comments"></span> {{gist.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
+    <b><span class="icon-comments"></span> {{gist.comments}}</b> Comment(s)
+    <i data-ng-if="!showComments" class="icon-arrow-up"> Show</i>
+    <i data-ng-if="showComments" class="icon-arrow-down"> Hide</i>
 </span>
 
     <div data-ng-controller="commentsGistCtrl" class="the-comments">

@@ -24,7 +24,7 @@
 
 <body class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute}">
 
-<aside ui-route="/login" class="flex"  data-ng-if="!mobile || show_aside" data-ng-class="{wide: mobile}" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
+<aside ng-swipe-left="$spMenu.toggle()" ui-route="/login" class="flex"  id="sp-nav" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
        data-ng-hide="edit">
 
     <header class="flex">
@@ -72,7 +72,7 @@
     </footer>
 </aside>
 
-<div data-ng-if="show_aside!=true" class="main flex" role="main" data-ng-view>
+<div id="sp-page" class="main flex" role="main" ng-swipe-right="$spMenu.toggle()" data-ng-view>
 
 </div>
 
@@ -90,6 +90,7 @@
 <script src="lib/ace/ace.js"></script>
 <script src="lib/socket-io/socket.io.min.js"></script>
 <script src="lib/angular/angular.js"></script>
+<script data-ng-if="mobile" src="lib/angular/angular-mobile.js"></script>
 <script src="lib/angular-ui/ui-utils.min.js"></script>
 <script src="lib/socket-io/socket.js"></script>
 <script src="js/app.js"></script>
@@ -99,6 +100,7 @@
 <script src="js/services/requestHandlerService.js"></script>
 <script src="js/services/notificationService.js"></script>
 <script src="js/services/onlineStatusService.js"></script>
+<script src="js/services/mobileNavigationService.js"></script>
 <script src="js/controllers/commentsController.js"></script>
 <script src="js/controllers/createController.js"></script>
 <script src="js/controllers/headerController.js"></script>
