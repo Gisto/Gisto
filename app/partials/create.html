@@ -1,8 +1,8 @@
 <header>
     <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
-    <span class="type {{isPublic | publicOrPrivet}}"><i class="icon-{{isPublic | publicOrPrivet}}"></i></span>
-    {{description}}
+    <span class="public-or-private-single-gist type {{isPublic | publicOrPrivet}}"><i class="icon-{{isPublic | publicOrPrivet}}"></i></span>
+    <span data-ng-if="!mobile">{{description}}</span>
 </header>
 
 <div class="messenger edit">
@@ -10,6 +10,10 @@
     <span>Edit mode <b>on</b> <a href="" data-ng-click="save()">save</a> | <a data-ng-click="disableEdit()"
                                                                                   title="changes wont be saved">cancel</a></span>
 </div>
+
+<span class="toolbox-title" data-ng-if="mobile && description!==''">
+    {{description}}
+</span>
 
 <div class="toolbox">
 
@@ -36,8 +40,12 @@
                 <a data-ng-click="deleteFile($index)" data-file-index="{{$index}}"
                    title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
             </div>
-            <editor ui-keydown="{'ctrl-83':'save($event)'}" language="html" index="{{$index}}"
-                    data-ng-model="file.content"></editor>
+            <editor data-ng-if="!mobile" data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" font="{{font_size}}"
+                    theme="{{editor_theme}}"
+                    index="{{$index}}"></editor>
+
+            <textarea class="mobile-edit" id="editor-{{$index}}" ng-model="file.content" data-ng-if="mobile">{{file.content}}</textarea>
+
         </div>
 
     </div>
