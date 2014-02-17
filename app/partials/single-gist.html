@@ -131,6 +131,7 @@
 
     <a data-ng-hide="!mobile" data-ng-click="show.mobile.actions=!show.mobile.actions"><i class="icon-cogs"></i> Action</a>
 
+<!-- This is not directive - only custom tag -->
 <toolbox-buttons data-ng-click="show.mobile.actions=!show.mobile.actions" class="toolbox-buttons" data-ng-show="(!mobile) || show.mobile.actions">
 
     <a data-ng-click="addFile()" title="Add new file to this gist">Add file</a>
@@ -147,14 +148,6 @@
     <a to-url="http://plnkr.co/edit/gist:{{gist.single.id}}?p=preview"
        title="Open gist in 'plunker'">Plunker</a>
 
-    <a class="share-drop-down" data-ng-click="dropdown.share.show=!dropdown.share.show" title="Share this Gist">Share
-        <div data-ng-show="dropdown.share.show">
-            <input data-ng-click="dropdown.share.show=!dropdown.share.show" type="text" ng-model="userToShare"
-                   placeholder="GitHub user name"/>
-            <input type="submit" value="share" data-ng-click="share()"/>
-        </div>
-    </a>
-
     <a data-ng-href="https://gist.github.com/{{gist.single.user.login}}/{{gist.single.id}}/download"
        download="gist.tar.gz" title="Download this gist as single tarball">Download</a>
     <a data-ng-click="copyToClipboard('https://gist.github.com/{{ gist.user.login }}/{{ gist.id }}.js', 'Embed code copied to clipboard','embed')"
@@ -163,6 +156,14 @@
     <a data-ng-click="warnDeleteGist()" href="" title="Delete this gist">Remove</a>
 
 </toolbox-buttons>
+
+    <a class="share-drop-down" data-ng-click="dropdown.share.show=!dropdown.share.show" title="Share this Gist">Share
+        <div data-ng-show="dropdown.share.show">
+            <input data-ng-click="dropdown.share.show=!dropdown.share.show" type="text" ng-model="userToShare"
+                   placeholder="GitHub user name"/>
+            <input type="submit" value="share" data-ng-click="share()"/>
+        </div>
+    </a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
         <i class="icon-sort-down"></i> <i data-ng-if="mobile" class="icon-file-text-alt"></i>
