@@ -632,15 +632,15 @@ angular.module('gisto.service.gitHubAPI', [
             // POST /gists/:id/forks
             fork: function (id) {
 
-                appSettings.loadSettings().then(function (result) {
+                var deferred = $q.defer();
 
-                    var deferred = $q.defer();
+                appSettings.loadSettings().then(function (result) {
 
                     requestHandler({
                         method: 'post',
                         url: api_url + '/' + id + '/forks',
                         headers: {
-                            Authorization: 'token ' + token
+                            Authorization: 'token ' + result.token
                         }
                     }).success(function (data, status, headers, config) {
                             gistData.list.push(data);
