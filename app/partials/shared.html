@@ -62,8 +62,13 @@
 
 <div class="toolbox">
 
-    <span class="date_meta">
-        <b>{{ author }}</b> want to share this gist with you.
+    <span class="date_meta" data-ng-switch="mobile">
+        <span ng-switch-when="true">
+            <b>{{ author }}</b> sharing
+        </span>
+        <span data-ng-switch-default>
+            <b>{{ author }}</b> want to share this gist with you.
+        </span>
     </span>
 
 

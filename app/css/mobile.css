@@ -94,7 +94,8 @@ textarea.mobile-edit {
     -webkit-flex: 0;
 }
 
-.ace_scrollbar {
+.ace_scrollbar,
+.ace_scrollbar-h {
     z-index: 4 !important;
 }
 
