@@ -24,7 +24,7 @@
 
 <body class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute}">
 
-<aside ng-swipe-left="$spMenu.toggle()" ui-route="/login" class="flex"  id="sp-nav" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
+<aside ng-swipe-left="$spMenu.hide()" id="gisto-list" ui-route="/login" class="flex" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
        data-ng-hide="edit">
 
     <header class="flex">
@@ -72,7 +72,7 @@
     </footer>
 </aside>
 
-<div id="sp-page" class="main flex" role="main" ng-swipe-right="$spMenu.toggle()" data-ng-view>
+<div ng-swipe-right="$spMenu.show()" id="gisto-content" class="main flex" role="main" data-ng-view>
 
 </div>
 

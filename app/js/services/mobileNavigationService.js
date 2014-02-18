@@ -8,18 +8,18 @@ angular.module('gisto.service.mobileNavigation', [])
             var menu = {};
 
             menu.show = function show() {
-                var menu = angular.element(document.querySelector('#sp-nav'));
+                var menu = angular.element(document.querySelector('#gisto-list'));
                 console.log(menu);
                 menu.addClass('show');
             };
 
             menu.hide = function hide() {
-                var menu = angular.element(document.querySelector('#sp-nav'));
+                var menu = angular.element(document.querySelector('#gisto-list'));
                 menu.removeClass('show');
             };
 
             menu.toggle = function toggle() {
-                var menu = angular.element(document.querySelector('#sp-nav'));
+                var menu = angular.element(document.querySelector('#gisto-list'));
                 menu.toggleClass('show');
             };
 
