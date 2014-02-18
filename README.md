@@ -27,11 +27,26 @@ You may think of Gisto as Evernote for code.
 * Drag & drop to create gist/add file
 * Search filter gists
 * Clipboard support
+* Revision browser
+* Change gist public/private state
 * UI Themes
 * Copy to clipboard
+* Fast share gist with another Gisto user
+* Direct GitHub access
+* 3 ways of authentication (basic, Two-Factor Authentication (2FA) and with oAuth2 token directly)
 * Offline access to gists (Will be integrated into full release)
 
 and [more](http://gistoapp.com/features/)...
+
+## Privacy/authentication
+
+Gisto authenticates to GitHub by using basic authentication over SSL and retrieving an oAuth2 token. Thus the need for your GitHub user and password.
+
+Gisto <em>only saves</em> the oAuth2 token received after authenticating and <em>nothing else</em>.
+
+If you would rather to supply your own access token without providing Gisto your login details you may manually create an access token from the account settings at GitHub and login using the generated token.
+
+This token will be saved permanently until you log out.
 
 ## Status
 
