@@ -204,7 +204,9 @@
 <div class="comments">
 
 <span class="clicky" data-ng-click="showComments=!showComments">
-    <b><span class="icon-comments"></span> {{gist.comments}}</b> Comment(s) <i class="icon-arrow-up"> Show</i>
+    <b><span class="icon-comments"></span> {{gist.comments}}</b> Comment(s)
+    <i data-ng-if="!showComments" class="icon-arrow-up"> Show</i>
+    <i data-ng-if="showComments" class="icon-arrow-down"> Hide</i>
 </span>
 
     <div data-ng-controller="commentsGistCtrl" class="the-comments">
