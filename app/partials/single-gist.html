@@ -142,6 +142,8 @@
 
     <a data-ng-href="https://gist.github.com/{{gist.single.user.login}}/{{gist.single.id}}/download"
        download="gist.tar.gz" title="Download this gist as single tarball">Download</a>
+    <a data-ng-click="copyToClipboard('{{ gist.id }}', 'Gist ID hash copied to clipboard','embed')"
+       title="Copy Gist ID hash to clipboard">Gist ID</a>
     <a data-ng-click="copyToClipboard('https://gist.github.com/{{ gist.user.login }}/{{ gist.id }}.js', 'Embed code copied to clipboard','embed')"
        title="Copy embed code to clipboard">Embed</a>
     <a to-url="{{gist.single.html_url}}" href="" title="Open Gist in browser">Open in browser</a>
