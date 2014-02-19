@@ -39,7 +39,7 @@ div.toolbox a {
 
 .toolbox-buttons {
     position: absolute;
-    right: 37px;
+    right: 86px;
     top: 30px;
     z-index: 2;
 }
@@ -49,6 +49,10 @@ div.toolbox a {
     margin: 5px;
     padding: 6px !important;
     text-align: center;
+}
+
+.share-drop-down div {
+    width: 188px;
 }
 
 .date_meta .notification div {

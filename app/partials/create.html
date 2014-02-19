@@ -52,6 +52,4 @@
 
 </section>
 
-<footer>
-    &copy; 2013 <b>Gisto</b> | http://www.gistoapp.com
-</footer>
+<ng-include data-ng-if="!mobile" src="'partials/footer.html'" data-ng-controller="footerCtrl"></ng-include>

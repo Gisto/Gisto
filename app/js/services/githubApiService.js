@@ -78,40 +78,43 @@ angular.module('gisto.service.gitHubAPI', [
 
             // POST /authorizations
             login: function (user, pass, callback, twoStepAuthCode) {
-
                 var headers = {
-                    "Authorization": "Basic " + btoa(user + ":" + pass),
-                    "Content-Type": "application/x-www-form-urlencoded"
+                    "Authorization": "Basic " + btoa(user + ":" + pass)
                 };
 
                 if (twoStepAuthCode) {
                     headers['X-GitHub-OTP'] = twoStepAuthCode;
                 }
-
-                requestHandler({
-                    method: 'POST',
-                    url: 'https://api.github.com/authorizations',
-                    data: {"scopes": [
-                        "gist"
-                    ],
-                        "note": "Gisto"
-                    },
-                    headers: headers
-                }).success(function (data, status, headers, config) {
-                        return callback({
-                            data: data,
-                            status: status,
-                            headers: headers(),
-                            config: config
+                $http.get('./config.json').then(function(conf) {
+                    requestHandler({
+                        method: 'POST',
+                        url: 'https://api.github.com/authorizations',
+                        data: {
+                            "scopes": [
+                                "gist"
+                            ],
+                            note: "Gisto - Snippets made simple",
+                            note_url: "http://www.gistoapp.com",
+                            client_id: conf.data['client_id'],
+                            client_secret: conf.data['client_secret']
+                        },
+                        headers: headers
+                    }).success(function (data, status, headers, config) {
+                            return callback({
+                                data: data,
+                                status: status,
+                                headers: headers(),
+                                config: config
+                            });
+                        }).error(function (data, status, headers, config) {
+                            return callback({
+                                data: data,
+                                status: status,
+                                headers: headers(),
+                                config: config
+                            });
                         });
-                    }).error(function (data, status, headers, config) {
-                        return callback({
-                            data: data,
-                            status: status,
-                            headers: headers(),
-                            config: config
-                        });
-                    });
+                });
             },
 
             // GET /gists
@@ -633,6 +636,7 @@ angular.module('gisto.service.gitHubAPI', [
             fork: function (id) {
 
                 var deferred = $q.defer();
+
                 appSettings.loadSettings().then(function (result) {
 
 
@@ -640,7 +644,7 @@ angular.module('gisto.service.gitHubAPI', [
                         method: 'post',
                         url: api_url + '/' + id + '/forks',
                         headers: {
-                            Authorization: 'token ' + result.token
+                            Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
                             gistData.list.push(data);
