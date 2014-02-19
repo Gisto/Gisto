@@ -1,3 +1,11 @@
+0.2.3b
+-----------------
+- Fix: Fixed Fork gist bug
+- Fix: Switch token generation to the new oAuth token generation per application
+- New: Copy gist ID to clipboard
+- Small UI/CSS fixes
+- Repository maintains
+
 0.2.2b
 -----------------
 - Fix: Text selection is now disabled on appropriate parts of the application, making a more streamlined native feel. Thanks to @tusharmath.
