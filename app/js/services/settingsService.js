@@ -20,6 +20,8 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 "github",
                 "idle_fingers",
                 "kr_theme",
+                "kuroir",
+                "katzenmilch",
                 "merbivore",
                 "merbivore_soft",
                 "monokai",
