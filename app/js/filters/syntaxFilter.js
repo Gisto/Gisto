@@ -8,7 +8,7 @@ angular.module('gisto.filter.codeLanguage', []).filter('codeLanguage', function 
             "ActionScript": "actionscript",
             "Ada": "ada",
             "ASP": "vbscript",
-            "ApacheConf": "text",
+            "ApacheConf": "apache_conf",
             "Assembly": "assembly_x86",
             "AutoHotkey": "autohotkey",
             "Batchfile": "batchfile",
