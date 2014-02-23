@@ -16,31 +16,23 @@ angular.module('gisto.directive.editor', []).directive('editor', function ($time
                         editor = ace.edit('editor-' + attrs.index),
                         theme = attrs.theme;
 
-
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
                     editor.setFontSize(font);
                     editor.setShowPrintMargin(false);
+                    editor.renderer.setShowGutter(true);
                     editor.setAutoScrollEditorIntoView(true);
-
-                    function fitSize() {
-                    var newHeight =
-                        editor.getSession().getScreenLength()
-                            * editor.renderer.lineHeight
-                            + editor.renderer.scrollBar.getWidth();
-
-                    $('pre#editor-' + attrs.index).height(newHeight.toString() + "px");
+                    editor.setOptions({
+                        maxLines: 20
+                    });
                     editor.resize(true);
-                    }
-
-                    fitSize();
 
                     console.log('language:', lang);
                     console.log('Theme:', theme);
                     console.log('Font size:', font);
+                    console.log('renderer.lineHeight',editor.renderer.lineHeight);
 
                     editor.on('change', function (data) {
-                        fitSize();
                         scope.$apply(function () {
                             scope.file.content = editor.getValue();
                             if (!scope.edit) {
