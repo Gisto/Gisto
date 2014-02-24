@@ -16,6 +16,16 @@ angular.module('gisto.directive.editor', []).directive('editor', function ($time
                         editor = ace.edit('editor-' + attrs.index),
                         theme = attrs.theme;
 
+                    // Emmet
+                    if(lang === 'html') {
+                        console.log('Is emmet should be loaded');
+                        ace.require("ace/ext/emmet");
+                        editor.setOptions({
+                            "enableEmmet": true
+                        });
+                    }
+
+
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
                     editor.setFontSize(font);
