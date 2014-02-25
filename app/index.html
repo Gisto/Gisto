@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="gisto">
+<html lang="en" data-ng-app="gisto" data-ng-controller="settingsCtrl">
 <head data-ng-controller="settingsCtrl">
     <meta charset="utf-8">
     <title>Gisto</title>
@@ -78,9 +78,9 @@
 
 <script src="lib/ace/ace.js"></script>
 
-<script src="lib/ace/ext-emmet.js"></script>
-<script src="lib/emmet.js"></script>
-<script src="lib/ace/ext-statusbar.js"></script>
+<script data-ng-if="editor_ext.emmet" src="lib/ace/ext-emmet.js"></script>
+<script data-ng-if="editor_ext.emmet" src="lib/emmet.js"></script>
+<script data-ng-if="editor_ext.statusbar" src="lib/ace/ext-statusbar.js"></script>
 
 <!-- env:prod --#>
 <script src="js/gisto.min.js"></script>

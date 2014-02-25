@@ -12,10 +12,7 @@ function settingsCtrl($scope, appSettings,$rootScope) {
         $scope.max_height = result['max_height'] || '';
         $scope.theme = result['theme'] || 'default';
         $scope.anim = result['anim'] || 1;
-        $scope.editor_ext = result['editor_ext'] || {
-            "emmet": false,
-            "statusbar": false
-        };
+        $scope.editor_ext = result['editor_ext'] || {};
     }, function(error) {
         console.log('could not load settings');
     });
@@ -28,8 +25,10 @@ function settingsCtrl($scope, appSettings,$rootScope) {
         var data = {};
         data.theme = $scope.theme;
         data.anim = $scope.anim;
-        console.log('------------------------ EXT',JSON.stringify($scope.editor_ext));
-        data.editor_ext = $scope.editor_ext;
+        data.editor_ext = {};
+        for (var key in $scope.editor_ext) {
+            data.editor_ext[key] = $scope.editor_ext[key];
+        }
         data.editor_theme = $scope.editor_theme;
         data.font_size = $scope.font_size;
         data.min_height = $scope.min_height;
