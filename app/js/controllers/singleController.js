@@ -59,7 +59,13 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         $('.edit').slideDown('slow');
     };
     $scope.disableEdit = function () {
+        console.log($scope.gist);
         $rootScope.edit = false;
+
+        // copy back the original content
+        $scope.gist.description = $scope.gist.single._original.description;
+        $scope.gist.single.description = $scope.gist.single._original.description;
+        $scope.gist.single.files = angular.copy($scope.gist.single._original.files);
         $('.edit').slideUp('slow');
     };
 
@@ -346,6 +352,19 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                 $('.warn.template').slideUp();
             }, 2500);
         } else {
+
+            /*
+            ** keep a backup incase something goes wrong - this is done to prevent a delay between
+            ** when the api call finishes and when the real original content is saved.
+            ** if a gist is saved and edited again quickly before the request completes the original
+            ** text would be wrong
+            */
+            var originalBackup = angular.copy($scope.gist.single._original);
+
+            // update the original backup to match the current changes
+            $scope.gist.single._original.files = $scope.gist.single.files;
+            $scope.gist.single._original.description = $scope.gist.single.description;
+
             ghAPI.edit($scope.gist.single.id, data, function (response) {
                 if (response.status === 200) {
                     $('.ok').slideDown('slow');
@@ -355,11 +374,13 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                     $scope.gist.single.history = response.data.history;
                     $scope.gist.tags = $scope.gist.description ? $scope.gist.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                     $scope.gist.filesCount = Object.keys($scope.gist.single.files).length;
-
                     setTimeout(function () {
                         $('.ok').slideUp();
                     }, 2500);
                 } else if (response.status === 422) { // ststus code of: 422 (Unprocessable Entity)
+                    // revert back to the original backup
+                    $scope.gist.single._original = originalBackup;
+
                     console.log(response);
                     $('.warn').slideDown('slow');
                     $('.warn span').text('You cannot save empty files');
@@ -367,6 +388,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                         $('.warn').slideUp();
                     }, 2500);
                 } else {
+                    // revert back to the original backup
+                    $scope.gist.single._original = originalBackup;
+
                     $('.warn').slideDown('slow');
                     $('.warn span').text('Something went wrong');
                     setTimeout(function () {
