@@ -134,9 +134,6 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
             set: function (data, callback) {
                 for (var key in data) {
                     settings.data[key] = data[key];
-                    if(angular.isArray(data[key])) {
-                        alert(data[key]);
-                    }
                 }
                 settings.data['last_modified'] = new Date().toUTCString();
                 localStorage.settings = JSON.stringify(settings.data);
