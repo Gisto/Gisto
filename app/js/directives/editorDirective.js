@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('gisto.directive.editor', []).directive('editor', function ($timeout) {
-    var editorWindow = angular.element('<pre id="editor-{{$index}}">{{file.content}}</pre>');
+angular.module('gisto.directive.editor', []).directive('editor', ['$timeout','appSettings',function ($timeout,appSettings) {
+    var editorWindow = angular.element('<pre id="editor-{{$index}}">{{file.content}}</pre><div data-ng-if="editor_ext.statusbar" id="statusBar-{{$index}}"><i class="icon-info-sign"></i> </div>');
     return {
         restrict: 'E',
         compile: function (elem) {
@@ -9,12 +9,28 @@ angular.module('gisto.directive.editor', []).directive('editor', function ($time
 
             return function (scope, element, attrs) {
 
+                appSettings.loadSettings().then(function(appSettingsResult) {
+
                 $timeout(function () {
 
                     var lang = attrs.language,
                         font = +attrs.font,
+                        indexed = attrs.index,
                         editor = ace.edit('editor-' + attrs.index),
                         theme = attrs.theme;
+
+                    // Emmet
+                    if(lang === 'html' && appSettingsResult.editor_ext.emmet) {
+                        console.log('Is emmet should be loaded');
+                        ace.require("ace/ext/emmet");
+                        editor.setOptions({
+                            "enableEmmet": true
+                        });
+                    }
+                    if(appSettingsResult.editor_ext.statusbar) {
+                        var StatusBar = ace.require('ace/ext/statusbar').StatusBar;
+                        var statusBar = new StatusBar(editor, document.getElementById('statusBar-'+attrs.index));
+                    }
 
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
@@ -42,8 +58,9 @@ angular.module('gisto.directive.editor', []).directive('editor', function ($time
                     });
 
                 }, 0);
+                });
             };
         }
 
     };
-});
+}]);

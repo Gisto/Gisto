@@ -43,7 +43,8 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
             data: { // default settings
                 avatarUrl: 'https://secure.gravatar.com/avatar/',
                 theme: 'default',
-                editor_theme: 'tomorrow'
+                editor_theme: 'tomorrow',
+                editor_ext: []
             },
 
             loadSettings: function () {
@@ -131,7 +132,6 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
             },
 
             set: function (data, callback) {
-
                 for (var key in data) {
                     settings.data[key] = data[key];
                 }

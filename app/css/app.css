@@ -1023,3 +1023,11 @@ a.auth-help div {
 a.auth-help div {
     text-align: left;
 }
+
+editor > div {
+    padding:5px;
+    border-top: 1px solid #ccc;
+}
+.ace_status-indicator {
+    float: right;
+}
