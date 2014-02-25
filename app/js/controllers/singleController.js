@@ -16,7 +16,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         ghAPI.gist($routeParams.gistId);
     }
 
-    $scope.share = function() {
+    $scope.share = function () {
         if ($scope.userToShare) {
             notificationService.send('sendNotification', { recipient: $scope.userToShare, gistId: $scope.gist.id, name: $scope.gist.description, gravatar_id: appSettings.get('gravatar_id')});
             console.log('sent notification!');
@@ -30,10 +30,10 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
     };
 
-    $scope.copyToClipboard = function (data, message,type) {
+    $scope.copyToClipboard = function (data, message, type) {
         message = message || 'Content of a file <b>' + data.filename + '</b> copied to clipboard';
         if (clipboard !== undefined) {
-            if(type === 'embed') {
+            if (type === 'embed') {
                 clipboard.set('<script src="' + data + '"></script>');
             } else {
                 clipboard.set(data.content || data, 'text');
@@ -51,7 +51,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         }, 2500);
     };
 
-    $scope.enableEdit = function (old_obj,old_description) {
+    $scope.enableEdit = function (old_obj, old_description) {
         $scope.old_object = angular.copy(old_obj);
         $scope.old_description = old_description;
 
@@ -86,18 +86,18 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         $('.state').slideUp('slow');
     };
 
-    $scope.$on('serverFailure', function() {
+    $scope.$on('serverFailure', function () {
         console.log('server failure');
         $('.notification-error').slideDown('slow');
 
-        setTimeout(function() {
+        setTimeout(function () {
             $('.notification-error').slideUp('slow');
         }, 3000);
     });
 
-    $scope.changeState = function($state,event) {
+    $scope.changeState = function ($state, event) {
         var the_state;
-        if($state === 'public') {
+        if ($state === 'public') {
             the_state = true;
         } else {
             the_state = false;
@@ -239,44 +239,89 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
     $scope.dragStart = function (e) {
         e.stopPropagation();
         e.preventDefault();
-        $('.edit').slideDown('slow');
+        $('.drop').slideDown('slow');
         $('.main section').addClass('dragarea');
-        $('.edit span').text('Drag detected - now drop!');
+        $('.drop span').text('Drag detected - now drop!');
         console.log('dragging start');
     };
+
 
     $scope.drop = function (e) {
         e.stopPropagation();
         e.preventDefault();
         var data = event.dataTransfer;
-        for (var i = 0; i < data.files.length; i++) { // For each dropped file
-            var file = data.files[i];
-            var reader = new FileReader();
+        for (var i = 0; i < data.files.length; i++) { // For each dropped file or directory
 
             $('.edit').slideUp('slow');
             $('.ok').slideDown('slow');
-            $('.main section').removeClass('dragarea');
-            $('.ok span').html('Dropped: <b>' + file.name + '</b>');
-            $rootScope.edit = true;
-            reader.onloadend = (function (filename) {
-                return function (event) {
-                    $scope.gist.single.files[filename] = {
-                        filename: filename,
-                        content: event.target.result,
-                        language: 'html'
-                    };
-                    $scope.$digest();
-                };
-            })(file.name);
 
-            reader.readAsText(file);
+            $('.main section').removeClass('dragarea');
+
+            var entry = data.items[i].webkitGetAsEntry(); // get file system entries
+
+            if (entry.isFile) {
+                addFileToScope(data.files[i]); // add the file to the gist scope
+                $('.ok span').html('Dropped: <b>' + entry.name + '</b>');
+
+            } else if (entry.isDirectory) {
+                $('.ok span').html('Dropped Directory: <b>' + entry.name + '</b>');
+
+                var reader = function readDirectory(entry) {
+
+                    var directoryReader = entry.createReader();
+
+                    directoryReader.readEntries(function (results) {
+                        if (results.length) {
+                            angular.forEach(results, function (resultEntry) {
+
+                                if (resultEntry.isFile) {
+                                    if (resultEntry.name === '.DS_Store') {
+                                        return; // skip osx meta data fle
+                                    }
+
+                                    resultEntry.file(function (file) {
+                                        addFileToScope(file);
+                                    });
+                                } else {
+                                    // another directory call self with the new directory
+                                    readDirectory(resultEntry);
+                                }
+                            });
+                        }
+                    });
+                }(entry); //self execute for the first time
+            }
+            $rootScope.$apply(function() {
+                $('.ok,.drop').slideUp('slow');
+                $rootScope.edit = true;
+                $('.edit').slideDown('slow');
+            });
 
         }
     };
 
+    function addFileToScope(file) {
+        var fileReader = new FileReader();
+
+        fileReader.onloadend = (function (filename) {
+            return function (event) {
+                $scope.$apply(function () {
+                    $scope.gist.single.files[filename] = {
+                        filename: filename,
+                        content: event.target.result,
+                        language: 'html'
+                    }
+                });
+            };
+        })(file.name);
+
+        fileReader.readAsText(file);
+    }
+
     $scope.dragEnd = function (e) {
         e.stopPropagation();
         e.preventDefault();
+        //$('.ok').slideUp('slow');
         console.log('drag end');
     };
 
@@ -342,9 +387,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
             };
         }
 
-        console.log('data',$scope.gist.single);
+        console.log('data', $scope.gist.single);
 
-        if( angular.equals($scope.old_object, $scope.gist.single.files) && angular.equals($scope.old_description, $scope.gist.description) ) {
+        if (angular.equals($scope.old_object, $scope.gist.single.files) && angular.equals($scope.old_description, $scope.gist.description)) {
             $('.warn.template span').text('No changes to save.');
             $('.warn.template').slideDown('slow');
             $rootScope.edit = false;
@@ -354,11 +399,11 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         } else {
 
             /*
-            ** keep a backup incase something goes wrong - this is done to prevent a delay between
-            ** when the api call finishes and when the real original content is saved.
-            ** if a gist is saved and edited again quickly before the request completes the original
-            ** text would be wrong
-            */
+             ** keep a backup incase something goes wrong - this is done to prevent a delay between
+             ** when the api call finishes and when the real original content is saved.
+             ** if a gist is saved and edited again quickly before the request completes the original
+             ** text would be wrong
+             */
             var originalBackup = angular.copy($scope.gist.single._original);
 
             // update the original backup to match the current changes

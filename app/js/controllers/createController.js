@@ -23,7 +23,7 @@ function createGistCtrl($scope, $rootScope, ghAPI, gistData) {
     };
 
     $scope.deleteFile = function (index) {
-        $scope.files.splice(index,1);
+        $scope.files.splice(index, 1);
     };
 
     $scope.enableEdit = function () {
@@ -38,37 +38,78 @@ function createGistCtrl($scope, $rootScope, ghAPI, gistData) {
     $scope.dragStart = function (e) {
         e.stopPropagation();
         e.preventDefault();
-        $('.edit').slideDown('slow');
+        $('.drop').slideDown('slow');
         $('.main section').addClass('dragarea');
-        $('.edit span').text('Drag detected - now drop!');
         console.log('dragging start');
     };
 
-    $scope.drop = function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        var data = event.dataTransfer;
-        for (var i = 0; i < data.files.length; i++) { // For each dropped file
-            var file = data.files[i];
-            var reader = new FileReader();
+    function addFileToScope(file) {
+        var fileReader = new FileReader();
 
-            $('.edit').slideUp('slow');
-            $('.ok').slideDown('slow');
-            $('.main section').removeClass('dragarea');
-            $('.ok span').html('Dropped: <b>' + file.name + '</b>');
-            $rootScope.edit = true;
-            reader.onloadend = (function (filename) {
-                return function (event) {
+        fileReader.onloadend = (function (filename) {
+            return function (event) {
+                $scope.$apply(function () {
                     $scope.files.push({
                         filename: filename,
                         content: event.target.result,
                         language: 'html'
                     });
-                    $scope.$digest();
-                };
-            })(file.name);
+                });
+            };
+        })(file.name);
 
-            reader.readAsText(file);
+        fileReader.readAsText(file);
+    }
+
+    $scope.drop = function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var data = event.dataTransfer;
+        for (var i = 0; i < data.files.length; i++) { // For each dropped file or directory
+
+            $('.edit').slideUp('slow');
+            $('.ok').slideDown('slow');
+            $('.main section').removeClass('dragarea');
+
+            var entry = data.items[i].webkitGetAsEntry(); // get file system entries
+
+            if (entry.isFile) {
+                addFileToScope(data.files[i]); // add the file to the gist scope
+                $('.ok span').html('Dropped: <b>' + entry.name + '</b>');
+
+            } else if (entry.isDirectory) {
+                $('.ok span').html('Dropped Directory: <b>' + entry.name + '</b>');
+
+                var reader = function readDirectory(entry) {
+
+                    var directoryReader = entry.createReader();
+
+                    directoryReader.readEntries(function (results) {
+                        if (results.length) {
+                            angular.forEach(results, function (resultEntry) {
+
+                                if (resultEntry.isFile) {
+                                    if (resultEntry.name === '.DS_Store') {
+                                        return; // skip osx meta data fle
+                                    }
+
+                                    resultEntry.file(function (file) {
+                                        addFileToScope(file);
+                                    });
+                                } else {
+                                    // another directory call self with the new directory
+                                    readDirectory(resultEntry);
+                                }
+                            });
+                        }
+                    });
+                }(entry); //self execute for the first time
+            }
+            $rootScope.$apply(function() {
+                $('.drop').slideUp('slow');
+                $rootScope.edit = true;
+                $('.edit').slideDown('slow');
+            });
 
         }
     };
@@ -76,6 +117,7 @@ function createGistCtrl($scope, $rootScope, ghAPI, gistData) {
     $scope.dragEnd = function (e) {
         e.stopPropagation();
         e.preventDefault();
+        //$('.ok').slideUp('slow');
         console.log('drag end');
     };
 
