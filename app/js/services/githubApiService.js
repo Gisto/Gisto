@@ -216,6 +216,7 @@ angular.module('gisto.service.gitHubAPI', [
                             console.log(data.lastUpdated);
 
                             gist.single = data; // update the current gist with the new data
+                            gist.single._original = angular.copy(data); //backup original gist
 
                             deferred.resolve(gist);
 
