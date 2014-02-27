@@ -27,7 +27,12 @@
             <p>Animations are <select data-ng-model="anim">
                 <option value="0">Disabled</option>
                 <option value="1">Enabled</option>
-            </select></p>
+            </select>
+            </p>
+
+            <p>UI size {{ ui_zoom }}%<br />
+                - <input type="range" ng-model="ui_zoom" min="80" value="100" max="120"> +
+            </p>
 
         </details>
 

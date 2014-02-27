@@ -1031,3 +1031,11 @@ editor > div {
 .ace_status-indicator {
     float: right;
 }
+
+input[type="range"] {
+    vertical-align: middle;
+}
+
+.pointer {
+    cursor: pointer;
+}
