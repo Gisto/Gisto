@@ -21,12 +21,22 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout','ap
 
                     // Emmet
                     if(lang === 'html' && appSettingsResult.editor_ext.emmet) {
-                        console.log('Is emmet should be loaded');
+                        console.log('Emmet should be loaded');
                         ace.require("ace/ext/emmet");
                         editor.setOptions({
-                            "enableEmmet": true
+                            enableEmmet: true
                         });
                     }
+                    // Auto-completion
+                    if(lang === 'html' && appSettingsResult.editor_ext.emmet) {
+                        console.log('language tools should be loaded');
+                        ace.require("ace/ext/language_tools");
+                        editor.setOptions({
+                            enableBasicAutocompletion: true,
+                            enableSnippets: true
+                        });
+                    }
+                    // Status bar
                     if(appSettingsResult.editor_ext.statusbar) {
                         var StatusBar = ace.require('ace/ext/statusbar').StatusBar;
                         var statusBar = new StatusBar(editor, document.getElementById('statusBar-'+attrs.index));
