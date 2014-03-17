@@ -77,6 +77,15 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         $('.delete').slideUp('slow');
     };
 
+    $scope.deleteFileConfirm = function (filename) {
+        $scope.fileToDelete = filename;
+        $('.delete-file').slideDown('slow');
+    };
+
+    $scope.cancelDeleteFile = function () {
+        $('.delete-file').slideUp('slow');
+    };
+
     $scope.warnStateChange = function ($state) {
         $scope.state = $state;
         $('.state').slideDown('slow');
@@ -347,6 +356,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
         ghAPI.edit($scope.gist.single.id, data, function (response) {
             if (response.status === 200) {
+                $('.delete-file').slideUp();
                 $('.ok').slideDown('slow');
                 $('.ok span').html('File ' + file_name + ' removed');
                 $rootScope.edit = false;
@@ -358,6 +368,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
                 setTimeout(function () {
                     $('.ok').slideUp();
+
                 }, 2500);
             } else {
                 $('.warn').slideDown('slow');
