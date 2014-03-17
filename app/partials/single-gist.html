@@ -74,6 +74,12 @@
         <a href="" data-ng-click="cancelDeleteGist()">Cancel</a></span>
 </div>
 
+<div class="messenger delete-file warn">
+    <i class="icon-warning-sign"> </i>
+    <span>Are you sure you want to <b>delete</b> {{ fileToDelete }}? | <a href="" data-ng-click="deleteFile(fileToDelete)">Yes!</a>
+        <a href="" data-ng-click="cancelDeleteFile()">Cancel</a></span>
+</div>
+
 <div class="messenger state warn">
     <i class="icon-warning-sign"> </i>
     <span>Are you sure you want to make this gist <b>{{state}}</b>? <br/>This will delete and recreate the gist as {{state}}, comments and revisions will be lost <a
@@ -182,8 +188,9 @@
             </span>
 
 
-            <a data-ng-click="deleteFile(file.filename)" data-file-index="{{$index}}"
+            <a data-ng-click="deleteFileConfirm(file.filename)" data-file-index="{{$index}}"
                title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
+
             <a data-ng-click="enableEdit(gist.files ,gist.description)" title="Edit"><i
                     class="icon-pencil icon-rotate-90"></i></a>
             <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
