@@ -35,6 +35,7 @@ angular.module('gisto', [
             controller: mainCtrl
         });
         $routeProvider.when('/login', {
+            name: 'login',
             templateUrl: 'partials/login.html',
             controller: loginCtrl
         });
@@ -60,4 +61,6 @@ angular.module('gisto', [
         $routeProvider.otherwise({
             redirectTo: '/'
         });
-    }]);
+    }]).run(function($rootScope) {
+        $rootScope.gistoReady = false;
+    });
