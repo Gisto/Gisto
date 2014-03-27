@@ -21,8 +21,7 @@
 </head>
 
 <body ng-style="body_zoom()" class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute}">
-
-<aside ui-route="/login" class="flex" data-ng-if="$uiRoute==false" data-ng-controller="listGistCtrl"
+<aside class="flex" data-ng-if="$root.gistoReady" data-ng-controller="listGistCtrl"
        data-ng-hide="edit">
 
     <header class="flex">
@@ -69,7 +68,6 @@
         </div>
     </footer>
 </aside>
-
 <div class="main flex" role="main" data-ng-view>
 
 </div>

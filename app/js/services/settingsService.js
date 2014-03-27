@@ -99,6 +99,9 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 settings.loadSettings().then(function (result) {
 
                     if (result['token']) {
+                        // set as gisto ready and enable the sidebar
+                        // this is done to prevent doing calls before gisto is ready to talk to github
+                        $rootScope.gistoReady = true;
                         return true;
                     }
 
