@@ -530,7 +530,7 @@ angular.module('gisto.service.gitHubAPI', [
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
-                                    var nextPage = link.match(/\?page=(\d)/)[0];
+                                    var nextPage = link.match(/\?page=(\d)/)[1];
 
                                     if (!pageNumber || nextPage > pageNumber) {
                                         api.starred(callback, nextPage);
