@@ -28,7 +28,7 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout','ap
                         });
                     }
                     // Auto-completion
-                    if(lang === 'html' && appSettingsResult.editor_ext.emmet) {
+                    if(appSettingsResult.editor_ext.emmet) {
                         console.log('language tools should be loaded');
                         ace.require("ace/ext/language_tools");
                         editor.setOptions({
