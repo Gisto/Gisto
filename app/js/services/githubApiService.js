@@ -35,26 +35,26 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data) {
-                            appSettings.loadSettings().then(function(result) {
-                                appSettings.set({
-                                    username: data.login,
-                                    gravatar_id: data.gravatar_id,
-                                    avatarUrl: data.avatar_url
-                                });
+                        appSettings.loadSettings().then(function (result) {
+                            appSettings.set({
+                                username: data.login,
+                                gravatar_id: data.gravatar_id,
+                                avatarUrl: data.avatar_url
                             });
-
-                            deferred.resolve(data);
-                        }).error(function (error) {
-                            console.log('Could not get logged in user', error);
-                            deferred.reject(error);
                         });
+
+                        deferred.resolve(data);
+                    }).error(function (error) {
+                        console.log('Could not get logged in user', error);
+                        deferred.reject(error);
+                    });
 
                 });
 
                 return deferred.promise;
             },
 
-            isTokenValid: function(token) {
+            isTokenValid: function (token) {
 
                 var deferred = $q.defer();
 
@@ -65,12 +65,12 @@ angular.module('gisto.service.gitHubAPI', [
                         Authorization: 'token ' + token
                     }
                 }).success(function (data) {
-                        console.log(data);
-                        deferred.resolve(true);
-                    }).error(function (error) {
-                        console.log('Could not verify token', error);
-                        deferred.reject(false);
-                    });
+                    console.log(data);
+                    deferred.resolve(true);
+                }).error(function (error) {
+                    console.log('Could not verify token', error);
+                    deferred.reject(false);
+                });
 
                 return deferred.promise;
 
@@ -85,7 +85,7 @@ angular.module('gisto.service.gitHubAPI', [
                 if (twoStepAuthCode) {
                     headers['X-GitHub-OTP'] = twoStepAuthCode;
                 }
-                $http.get('./config.json').then(function(conf) {
+                $http.get('./config.json').then(function (conf) {
                     requestHandler({
                         method: 'POST',
                         url: 'https://api.github.com/authorizations',
@@ -100,20 +100,20 @@ angular.module('gisto.service.gitHubAPI', [
                         },
                         headers: headers
                     }).success(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
                 });
             },
 
@@ -134,52 +134,52 @@ angular.module('gisto.service.gitHubAPI', [
                         url: url,
                         headers: headers
                     }).success(function (data, status, headers, config) {
-                            for (var item in data) { // process and arrange data
-                                data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
-                                data[item].single = {};
-                                data[item].filesCount = Object.keys(data[item].files).length;
-                            }
+                        for (var item in data) { // process and arrange data
+                            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                            data[item].single = {};
+                            data[item].filesCount = Object.keys(data[item].files).length;
+                        }
 
-                            // Set lastUpdated for 60 sec cache
-                            data.lastUpdated = new Date();
+                        // Set lastUpdated for 60 sec cache
+                        data.lastUpdated = new Date();
 
-                            gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
-                            // localStorage.gistsLastUpdated = data.headers['last-modified'];
+                        gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
+                        // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
-                            var header = headers();
-                            if (header.link) {
-                                var links = header.link.split(',');
-                                for (var link in links) {
-                                    link = links[link];
-                                    if (link.indexOf('rel="next') > -1) {
-                                        var nextPage = link.match(/[0-9]+/)[0];
+                        var header = headers();
+                        if (header.link) {
+                            var links = header.link.split(',');
+                            for (var link in links) {
+                                link = links[link];
+                                if (link.indexOf('rel="next') > -1) {
+                                    var nextPage = link.match(/[0-9]+/)[0];
 
-                                        if (!pageNumber || nextPage > pageNumber) {
-                                            api.gists(null, nextPage);
-                                            return; // end the function before it reaches starred gist list call
-                                        }
+                                    if (!pageNumber || nextPage > pageNumber) {
+                                        api.gists(null, nextPage);
+                                        return; // end the function before it reaches starred gist list call
                                     }
                                 }
                             }
+                        }
 
-                            // end of the paging calls
-                            api.starred(function (response) {
-                                for (var s in response.data) {
-                                    var gist = gistData.getGistById(response.data[s].id);
-                                    if (gist) {
-                                        gist.has_star = true;
-                                    }
+                        // end of the paging calls
+                        api.starred(function (response) {
+                            for (var s in response.data) {
+                                var gist = gistData.getGistById(response.data[s].id);
+                                if (gist) {
+                                    gist.has_star = true;
                                 }
-                            });
-
-                        }).error(function (data, status, headers, config) {
-                            console.log({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                            }
                         });
+
+                    }).error(function (data, status, headers, config) {
+                        console.log({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -202,34 +202,34 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            api.is_starred(data.id, function (response) {
-                                if (response.status === 204) {
-                                    data.starred = true;
-                                } else {
-                                    data.starred = false;
-                                }
-                                console.log('Is it starred: ' + data.starred);
-                            });
-
-                            // save timestamp of pull
-                            data.lastUpdated = new Date();
-                            console.log(data.lastUpdated);
-
-                            gist.single = data; // update the current gist with the new data
-                            gist.single._original = angular.copy(data); //backup original gist
-
-                            deferred.resolve(gist);
-
-                        }).error(function (data, status, headers, config) {
-                            console.log({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-
-                            deferred.reject(status);
+                        api.is_starred(data.id, function (response) {
+                            if (response.status === 204) {
+                                data.starred = true;
+                            } else {
+                                data.starred = false;
+                            }
+                            console.log('Is it starred: ' + data.starred);
                         });
+
+                        // save timestamp of pull
+                        data.lastUpdated = new Date();
+                        console.log(data.lastUpdated);
+
+                        gist.single = data; // update the current gist with the new data
+                        gist.single._original = angular.copy(data); //backup original gist
+
+                        deferred.resolve(gist);
+
+                    }).error(function (data, status, headers, config) {
+                        console.log({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+
+                        deferred.reject(status);
+                    });
 
                 }, function (error) {
                     deferred.reject('could not get token');
@@ -254,33 +254,33 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            api.is_starred(data.id, function (response) {
-                                if (response.status === 204) {
-                                    data.starred = true;
-                                } else {
-                                    data.starred = false;
-                                }
-                                console.log('Is it starred: ' + data.starred);
-                            });
-
-                            // save timestamp of pull
-                            data.lastUpdated = new Date();
-                            console.log(data.lastUpdated);
-
-                            gist.history = data; // update the current gist with the new data
-
-                            deferred.resolve(gist);
-
-                        }).error(function (data, status, headers, config) {
-                            console.log({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-
-                            deferred.reject(status);
+                        api.is_starred(data.id, function (response) {
+                            if (response.status === 204) {
+                                data.starred = true;
+                            } else {
+                                data.starred = false;
+                            }
+                            console.log('Is it starred: ' + data.starred);
                         });
+
+                        // save timestamp of pull
+                        data.lastUpdated = new Date();
+                        console.log(data.lastUpdated);
+
+                        gist.history = data; // update the current gist with the new data
+
+                        deferred.resolve(gist);
+
+                    }).error(function (data, status, headers, config) {
+                        console.log({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+
+                        deferred.reject(status);
+                    });
 
                 }, function (error) {
                     deferred.reject('could not get token');
@@ -302,20 +302,20 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -335,20 +335,20 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -368,20 +368,20 @@ angular.module('gisto.service.gitHubAPI', [
                         }
                     }).success(function (data, status, headers, config) {
 
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -389,31 +389,48 @@ angular.module('gisto.service.gitHubAPI', [
             },
 
             // GET /gists/:id/comments
-            comments: function (id, callback) {
-
+            comments: function (id, callback, pageNumber) {
+                pageNumber = pageNumber || 1;
                 appSettings.loadSettings().then(function (result) {
 
                     requestHandler({
                         method: 'GET',
-                        url: api_url + '/' + id + '/comments',
+                        url: api_url + '/' + id + '/comments?page=' + pageNumber,
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+
+                        var header = headers();
+                        if (header.link) {
+                            var links = header.link.split(',');
+                            for (var link in links) {
+                                link = links[link];
+                                if (link.indexOf('rel="next') > -1) {
+                                    var nextPage = link.match(/comments\?page=(\d)/)[1];
+
+                                    if (!pageNumber || nextPage > pageNumber) {
+                                        api.comments(id, callback, nextPage);
+                                    }
+                                }
+                            }
+                        }
+
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -433,20 +450,20 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -465,20 +482,20 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -499,38 +516,38 @@ angular.module('gisto.service.gitHubAPI', [
                         }
                     }).success(function (data, status, headers, config) {
 
-                            // return the data
-                            callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        // return the data
+                        callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
 
-                            var header = headers();
-                            if (header.link) {
-                                var links = header.link.split(',');
-                                for (var link in links) {
-                                    link = links[link];
-                                    if (link.indexOf('rel="next') > -1) {
-                                        var nextPage = link.match(/[0-9]+/)[0];
+                        var header = headers();
+                        if (header.link) {
+                            var links = header.link.split(',');
+                            for (var link in links) {
+                                link = links[link];
+                                if (link.indexOf('rel="next') > -1) {
+                                    var nextPage = link.match(/[0-9]+/)[0];
 
-                                        if (!pageNumber || nextPage > pageNumber) {
-                                            api.starred(callback, nextPage);
-                                            return; // end the function before it reaches starred gist list call
-                                        }
+                                    if (!pageNumber || nextPage > pageNumber) {
+                                        api.starred(callback, nextPage);
+                                        return; // end the function before it reaches starred gist list call
                                     }
                                 }
                             }
+                        }
 
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -549,20 +566,20 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -581,20 +598,20 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -613,20 +630,20 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
-                        }).error(function (data, status, headers, config) {
-                            return callback({
-                                data: data,
-                                status: status,
-                                headers: headers(),
-                                config: config
-                            });
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
                         });
+                    }).error(function (data, status, headers, config) {
+                        return callback({
+                            data: data,
+                            status: status,
+                            headers: headers(),
+                            config: config
+                        });
+                    });
 
                 }, function (error) {
                     console.log('could not get token');
@@ -648,11 +665,11 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                            gistData.list.push(data);
-                            deferred.resolve(data);
-                        }).error(function (data, status, headers, config) {
-                            deferred.reject(data);
-                        });
+                        gistData.list.push(data);
+                        deferred.resolve(data);
+                    }).error(function (data, status, headers, config) {
+                        deferred.reject(data);
+                    });
 
                 }, function (error) {
                     deferred.reject('could not get token');
