@@ -1,9 +1,10 @@
 'use strict';
 
 function commentsGistCtrl($scope, $routeParams, ghAPI) {
+        $scope.comments = [];
         ghAPI.comments($routeParams.gistId, function (response) {
             if (response.status === 200) {
-                $scope.comments = response.data;
+                $scope.comments.push.apply($scope.comments, response.data);
             } else {
                 console.warn('[!!!] >>> Comments not loaded - server responded with error.');
             }
