@@ -48,15 +48,19 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout','ap
                     editor.setShowPrintMargin(false);
                     editor.renderer.setShowGutter(true);
                     editor.setAutoScrollEditorIntoView(true);
-                    editor.setOptions({
-                        maxLines: 20
-                    });
+                    var maxLinesSettings = appSettingsResult.max_lines.toString();
+                    var minLinesSettings = (appSettingsResult.min_lines !== 0) ? appSettingsResult.min_lines.toString() : editor.session.getLength().toString() ;
+                    editor.setOption("maxLines", maxLinesSettings);
+                    editor.setOption("minLines", minLinesSettings);
                     editor.resize(true);
 
                     console.log('language:', lang);
                     console.log('Theme:', theme);
                     console.log('Font size:', font);
                     console.log('renderer.lineHeight',editor.renderer.lineHeight);
+                    console.log('# of LINES',editor.session.getLength());
+                    console.log('max_lines',appSettingsResult.max_lines);
+                    console.log('min_lines',appSettingsResult.min_lines);
 
                     editor.on('change', function (data) {
                         scope.$apply(function () {
