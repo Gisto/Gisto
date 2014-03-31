@@ -8,8 +8,8 @@ function settingsCtrl($scope, appSettings, $rootScope) {
     appSettings.loadSettings().then(function (result) {
         $scope.editor_theme = result['editor_theme'] || 'tomorrow';
         $scope.font_size = result['font_size'] || '13';
-        $scope.min_height = result['min_height'] || '';
-        $scope.max_height = result['max_height'] || '';
+        $scope.min_lines = result['min_lines'] || '0';
+        $scope.max_lines = result['max_lines'] || '50';
         $scope.theme = result['theme'] || 'default';
         $scope.anim = result['anim'] || 1;
         $scope.editor_ext = result['editor_ext'] || {};
@@ -26,10 +26,10 @@ function settingsCtrl($scope, appSettings, $rootScope) {
     };
 
 
-    angular.element('.the-gist pre').css({
+    /*angular.element('.the-gist pre').css({
         'min-height': $scope.min_height + 'px',
         'max-height': $scope.max_height + 'px'
-    });
+    });*/
     $scope.update_settings = function () {
         var data = {};
         data.theme = $scope.theme;
@@ -41,8 +41,8 @@ function settingsCtrl($scope, appSettings, $rootScope) {
         data.editor_theme = $scope.editor_theme;
         data.font_size = $scope.font_size;
         data.ui_zoom = $scope.ui_zoom;
-        data.min_height = $scope.min_height;
-        data.max_height = $scope.max_height;
+        data.min_lines = $scope.min_lines;
+        data.max_lines = $scope.max_lines;
         var saved = appSettings.set(data, function (response) {
             if (response.status === 'ok') {
                 console.log('SAVED SETTINGS');
