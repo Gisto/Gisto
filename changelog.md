@@ -1,3 +1,16 @@
+0.2.4b
+-----------------
+- Fix: Editor overflow where pasted text would appear visually broken
+- Fix: Better controll of editor size - line based
+- Update: ACE editor with additions to 2 new themes and a few new highlighters
+- Fix: When Cancelling a gist edit now the gist is returned to original state
+- New: Emmet and status bar plugins to ace editor
+- New: Drag & drop support for folders and sub-folders
+- New: Auto completion to ace editor (enable from settings)
+- New: Range selector to control application size in settings. Fixes #69
+- New: Confirmation when deleting a file from a gist. Fixes #76.
+- Update: Comments are now paginated due to changes in GitHub API.
+            
 0.2.3b
 -----------------
 - Fix: Fixed Fork gist bug
