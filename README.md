@@ -108,4 +108,6 @@ See [setting up for development](http://www.gistoapp.com/docs/#doc-dev) section 
 | ![Maayan](http://www.gravatar.com/avatar/3a615b34ef2060face8fcd481c6377e1?s=50 "Maayan") | Maayan | [@MaayanGlikser](https://twitter.com/MaayanGlikser) | [www.glikm.com](http://www.glikm.com) |
 | ![Sasha](http://www.gravatar.com/avatar/7ddad1a9a1c8de452badaf82b6c30c76?s=50 "Sasha") | Sasha | [@sanusart](https://twitter.com/sanusart) | [www.sanusart.com](http://sanusart.com) |
 
+[![Analytics](https://ga-beacon.appspot.com/UA-49967672-1/Gisto/README.md?pixel)](https://github.com/igrigorik/ga-beacon)
+
 ---
