@@ -1,6 +1,10 @@
 #!/bin/bash
 
-### Check for lib
+if [ "${1}" = "--uninstall" ]; then
+	/bin/rm -rf /usr/bin/gisto /usr/bin/nw.pak /usr/share/applications/gisto.desktop usr/share/menu/gisto /usr/share/pixmaps/gisto.png /usr/share/pixmaps/gisto.xpm
+	echo -e '\n\n\n\e[44m  \e[0m Congrats! Gisto removed from your machine.\n\n\n'
+	exit 1
+fi
 
 is_root() {
 if [[ $EUID -ne 0 ]]; then
@@ -31,7 +35,7 @@ if [[ $LIB = 'yes' ]]; then
 	read INST
 	if [ $INST = 'y' -o $INST = 'Y' ]; then
 		echo -e "\n\n\n\e[43m  \e[0m INSTALLING...\n\n\n"
-		/bin/cp -rv ./gisto/bin ./gisto/share /usr
+		/bin/cp -rv bin share /usr
 		echo -e "\n\n\n\e[42m  \e[0m Congrats! You can now find \e[1;37m</Gisto>\e[0m in your menu.\n\n\n"
 	fi
 else
