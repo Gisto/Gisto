@@ -5,12 +5,25 @@ var argv = require('yargs').argv;
 var concat = require('gulp-concat');
 var strip_log = require('gulp-strip-debug');
 
+/**
+ * @name version
+ * @description Get Gisto version
+ * @usage gulp version
+ */
 gulp.task('version', function () {
     console.log('Version', pkg_json.version);
 });
 
+/**
+ * @name version_bump
+ * @description Change Gisto version
+ * @usage gulp version_bump --to=0.2.4b
+ */
 gulp.task('version_bump', function () {
-    var files = ['./package.json', './app/package.json'];
+    var files = [
+        './package.json',
+        './app/package.json'
+    ];
     files.forEach(function (file) {
         var content = JSON.parse(fs.readFileSync(file));
         content.version = argv.to;
