@@ -5,21 +5,13 @@
     "homepage": "http://www.gistoapp.com/",
     "main": "app/index.html",
     "dependencies": {
-        "grunt": "~0.4.1",
-        "gulp": "^3.6.0"
+        "gulp": "~3.6.0"
     },
     "devDependencies": {
-        "grunt": "~0.4.1",
-        "grunt-concat-sourcemap": "~0.3.0",
-        "grunt-contrib-nodeunit": "~0.1.2",
-        "grunt-contrib-uglify": "~0.2.0",
-        "grunt-contrib-watch": "~0.4.3",
-        "grunt-dev-prod-switch": "0.1.4",
-        "grunt-jsmin-sourcemap": "1.7.0",
-        "grunt-remove-logging": "~0.1.0",
-        "gulp-concat": "^2.2.0",
-        "gulp-strip-debug": "^0.3.0",
-        "yargs": "^1.2.1"
+        "gulp-concat-sourcemap": "~1.2.1",
+        "gulp-strip-debug": "~0.3.0",
+        "gulp-util": "~2.2.14",
+        "yargs": "~1.2.1"
     },
     "repository": {
         "type": "git",
