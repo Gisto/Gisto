@@ -5,6 +5,14 @@ var fs = require('fs');
 var argv = require('yargs').argv;
 var concat = require('gulp-concat-sourcemap');
 var strip_log = require('gulp-strip-debug');
+var connect = require('gulp-connect');
+
+// Options to switch environment (dev/prod)
+var env_option = {
+    env_dev: 'env:dev',
+    env_prod: 'env:prod',
+    blocking_char: '#'
+};
 
 /**
  * @name version
@@ -37,21 +45,16 @@ gulp.task('version_bump', function () {
  * @description Change Gisto environment to "development"
  * @usage gulp dev
  */
-gulp.task('dev', function(){
+gulp.task('dev', function () {
     var files = [
         './app/index.html'
     ];
-    var option = {
-        env_dev: 'env:dev',
-        env_prod: 'env:prod',
-        blocking_char: '#'
-    };
     files.forEach(function (file) {
         var content = fs.readFileSync(file, "utf8")
-            .replace('<!-- ' + option.env_dev + ' --' + option.blocking_char + '>', '<!-- ' + option.env_dev + ' -->')
-            .replace('<!-- ' + option.env_prod + ' -->', '<!-- ' + option.env_prod + ' --' + option.blocking_char + '>')
-            .replace('/* ' + option.env_dev + ' *' + option.blocking_char + '/', '/* ' + option.env_dev + ' */')
-            .replace('/* ' + option.env_prod + ' */', '/* ' + option.env_prod + ' *' + option.blocking_char + '/');
+            .replace('<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_dev + ' -->')
+            .replace('<!-- ' + env_option.env_prod + ' -->', '<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>')
+            .replace('/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/', '/* ' + env_option.env_dev + ' */')
+            .replace('/* ' + env_option.env_prod + ' */', '/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/');
         fs.writeFileSync(file, content);
     });
 });
@@ -65,18 +68,26 @@ gulp.task('prod', ['concat'], function () {
     var files = [
         './app/index.html'
     ];
-    var option = {
-        env_dev: 'env:dev',
-        env_prod: 'env:prod',
-        blocking_char: '#'
-    };
     files.forEach(function (file) {
         var content = fs.readFileSync(file, "utf8")
-            .replace('<!-- ' + option.env_prod + ' --' + option.blocking_char + '>', '<!-- ' + option.env_prod + ' -->')
-            .replace('<!-- ' + option.env_dev + ' -->', '<!-- ' + option.env_dev + ' --' + option.blocking_char + '>')
-            .replace('/* ' + option.env_prod + ' *' + option.blocking_char + '/', '/* ' + option.env_prod + ' */')
-            .replace('/* ' + option.env_dev + ' */', '/* ' + option.env_dev + ' *' + option.blocking_char + '/');
+            .replace('<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_prod + ' -->')
+            .replace('<!-- ' + env_option.env_dev + ' -->', '<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>')
+            .replace('/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/', '/* ' + env_option.env_prod + ' */')
+            .replace('/* ' + env_option.env_dev + ' */', '/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/');
         fs.writeFileSync(file, content);
+    });
+});
+
+/**
+ * @name server
+ * @description Serves the app on specified port or 8080 if --port parameter omitted
+ * @usage gulp server OR gulp server --port=80 (defalts to 8080)
+ */
+gulp.task('server', function () {
+    connect.server({
+        root: './app',
+        port: argv.port || '8080',
+        livereload: true
     });
 });
 
@@ -109,6 +120,4 @@ gulp.task('release', ['concat'], function () {
     // Do stuff
 });
 
-gulp.task('default', ['version'], function () {
-   gutil.log('"default" task',gutil.colors.green('All run OK'))
-});
+gulp.task('default', ['version', 'dev', 'server']);
