@@ -1039,3 +1039,7 @@ input[type="range"] {
 .pointer {
     cursor: pointer;
 }
+
+.ng-invalid {
+    border: 2px solid tomato !important;
+}
