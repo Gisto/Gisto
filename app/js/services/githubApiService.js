@@ -85,7 +85,6 @@ angular.module('gisto.service.gitHubAPI', [
                 if (twoStepAuthCode) {
                     headers['X-GitHub-OTP'] = twoStepAuthCode;
                 }
-                $http.get('./config.json').then(function (conf) {
                     requestHandler({
                         method: 'POST',
                         url: 'https://api.github.com/authorizations',
@@ -95,8 +94,8 @@ angular.module('gisto.service.gitHubAPI', [
                             ],
                             note: "Gisto - Snippets made simple",
                             note_url: "http://www.gistoapp.com",
-                            client_id: conf.data['client_id'],
-                            client_secret: conf.data['client_secret']
+                            client_id: getGitHubAppClientId(),
+                            client_secret: getGitHubAppSecret()
                         },
                         headers: headers
                     }).success(function (data, status, headers, config) {
@@ -114,7 +113,6 @@ angular.module('gisto.service.gitHubAPI', [
                             config: config
                         });
                     });
-                });
             },
 
             // GET /gists

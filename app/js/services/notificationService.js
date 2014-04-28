@@ -10,11 +10,10 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
             register: function () {
              // register for notifications on the server.
                 $q.all([
-                    $http.get('./config.json'),
                     ghAPI.getLoggedInUser()
                 ]).then(function(data) {
-                        service.token = data[0].data.server_token;
-                        socket.emit('registerClient', { user: data[1].login, token: service.token });
+                        service.token = getServerToken();
+                        socket.emit('registerClient', { user: data[0].login, token: service.token });
                         $rootScope.$broadcast('ApplicationState', { online: true });
                 });
             },
