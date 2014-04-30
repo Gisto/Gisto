@@ -12,6 +12,7 @@
     "gulp-connect": "~2.0.5",
     "gulp-strip-debug": "~0.3.0",
     "gulp-util": "~2.2.14",
+    "node-webkit-builder": "0.0.2",
     "yargs": "~1.2.1"
   },
   "repository": {

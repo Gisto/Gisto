@@ -6,6 +6,7 @@ var argv = require('yargs').argv;
 var concat = require('gulp-concat-sourcemap');
 var strip_log = require('gulp-strip-debug');
 var connect = require('gulp-connect');
+var NwBuilder = require('node-webkit-builder');
 
 // Options to switch environment (dev/prod)
 var env_option = {
@@ -15,18 +16,20 @@ var env_option = {
 };
 
 /**
- * @name version
- * @description Get Gisto version
- * @usage gulp version
+ * version
+ *
+ * Get Gisto version
+ * Use: gulp version
  */
 gulp.task('version', function () {
     gutil.log('Version', gutil.colors.green(pkg_json.version));
 });
 
 /**
- * @name version_bump
- * @description Change Gisto version
- * @usage gulp version_bump --to=0.2.4b
+ * version_bump
+ *
+ * Change Gisto version
+ * Use: gulp version_bump --to=0.2.4b
  */
 gulp.task('version_bump', function () {
     var files = [
@@ -41,9 +44,10 @@ gulp.task('version_bump', function () {
 });
 
 /**
- * @name dev
- * @description Change Gisto environment to "development"
- * @usage gulp dev
+ * dev
+ *
+ * Change Gisto environment to "development"
+ * Use: gulp dev
  */
 gulp.task('dev', function () {
     var files = [
@@ -65,9 +69,10 @@ gulp.task('dev', function () {
 });
 
 /**
- * @name prod
- * @description Change Gisto environment to "production", also concatenates files and remove console logs
- * @usage gulp prod
+ * prod
+ *
+ * Change Gisto environment to "production", also concatenates files and remove console logs
+ * Use: gulp prod
  */
 gulp.task('prod', ['concat'], function () {
     var files = [
@@ -89,9 +94,10 @@ gulp.task('prod', ['concat'], function () {
 });
 
 /**
- * @name server
- * @description Serves the app on specified port or 8080 if --port parameter omitted
- * @usage gulp server OR gulp server --port=80 (defalts to 8080)
+ * server
+ *
+ * Serves the app on specified port or 8080 if --port parameter omitted
+ * Use: gulp server OR gulp server --port=80 (defalts to 8080)
  */
 gulp.task('server', function () {
     connect.server({
@@ -102,9 +108,10 @@ gulp.task('server', function () {
 });
 
 /**
- * @name concat
- * @description concatenates files and remove console logs, also used by other functions here
- * @usage gulp concat
+ * concat
+ *
+ * concatenates files and remove console logs, also used by other functions here
+ * Use: gulp concat
  */
 gulp.task('concat', function () {
     gulp.src([
@@ -122,12 +129,50 @@ gulp.task('concat', function () {
 });
 
 /**
- * @name release
- * @description Will be used for releases
- * @usage gulp release
+ * build
+ *
+ * Build binaries for specified platform
+ * Use: gulp build --os=win|osx|linux32|linux64|all
+ */
+gulp.task('build', ['prod'], function () {
+    var os = argv.os;
+    if (!os) {
+        return gutil.log(gutil.colors.red('NOTE'), gutil.colors.white('Please specify platform (Use: gulp build --os=win|osx|linux32|linux64|all)'));
+    }
+    if(os === 'all') {
+        os = 'win,osx,linux32,linux64';
+    }
+    os.split(',');
+
+    var nw = new NwBuilder({
+        files: './app/**',
+        buildDir: "./bin",
+        winIco: "./app/icon.ico",
+        version: '0.9.2',
+        platforms: os
+    });
+
+    gutil.log(gutil.colors.green('Building for: ' + os));
+    var pathToNwsnapshot = nw.options.cacheDir +'/'+ nw.options.version +'/'+os+'/nwsnapshot';
+    //return gutil.log(gutil.colors.green('XXXX: ' + pathToNwsnapshot));
+
+    nw.build().then(function () {
+        // Build OK
+    }).catch(function (error) {
+        console.error(error);
+    });
+
+});
+
+/**
+ * release
+ *
+ * Will be used for releases
+ * Use: gulp release
  */
 gulp.task('release', ['concat'], function () {
     // Do stuff
 });
 
+// Default task
 gulp.task('default', ['version', 'dev', 'server']);
