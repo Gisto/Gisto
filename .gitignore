@@ -78,8 +78,9 @@ results
 web-server.js
 npm-debug.log
 node_modules
+bin
+cache
 
 ## Gisto Specific ##
 app/config.json
 server/config.js
-
