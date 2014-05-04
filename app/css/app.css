@@ -16,6 +16,11 @@
     user-select: none;
 }
 
+.ng-invalid:focus {
+    border: 1px solid tomato !important;
+    box-shadow: 0 0 10px tomato !important;
+}
+
 body *, :not(input) {
     box-sizing: border-box;
 }
@@ -1038,10 +1043,6 @@ input[type="range"] {
 
 .pointer {
     cursor: pointer;
-}
-
-.ng-invalid {
-    border: 2px solid tomato !important;
 }
 
 .special-editor-markdown {
