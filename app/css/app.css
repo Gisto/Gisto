@@ -1043,3 +1043,7 @@ input[type="range"] {
 .ng-invalid {
     border: 2px solid tomato !important;
 }
+
+.special-editor-markdown {
+    padding: 10px 20px;
+}
