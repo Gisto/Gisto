@@ -94,8 +94,8 @@ angular.module('gisto.service.gitHubAPI', [
                             ],
                             note: "Gisto - Snippets made simple",
                             note_url: "http://www.gistoapp.com",
-                            client_id: exrtaBin('client_id'),
-                            client_secret: exrtaBin('app_secret')
+                            client_id: getGitHubAppClientId(),
+                            client_secret: getGitHubAppSecret()
                         },
                         headers: headers
                     }).success(function (data, status, headers, config) {
