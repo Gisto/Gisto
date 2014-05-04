@@ -12,7 +12,7 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                 $q.all([
                     ghAPI.getLoggedInUser()
                 ]).then(function(data) {
-                        service.token = extraBin('server_token');
+                        service.token = getServerToken();
                         socket.emit('registerClient', { user: data[0].login, token: service.token });
                         $rootScope.$broadcast('ApplicationState', { online: true });
                 });
