@@ -63,4 +63,8 @@ angular.module('gisto', [
         });
     }]).run(function($rootScope) {
         $rootScope.gistoReady = false;
+
+        var addon = require('./addons/conf/build/Release/gistoConf');
+        window.addonTest = addon;
+        console.log('********** native output', addon, addonTest.getClientId(), addonTest.getClientSecret(), addonTest.getServerToken());
     });
