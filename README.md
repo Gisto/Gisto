@@ -4,7 +4,7 @@
 
 | Light theme | Dark theme |
 |:------|:------|
-| <img src="http://gistoapp.com/img/lite_theme.png" width="400px" alt="Gisto"> | <img src="http://gistoapp.com/img/dark_theme.png" width="400px" alt="Gisto"> |
+| <img src="http://gistoapp.com/images/lite_theme.png" width="400px" alt="Gisto"> | <img src="http://gistoapp.com/images/dark_theme.png" width="400px" alt="Gisto"> |
 
 
 ## About
