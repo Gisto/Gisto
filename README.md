@@ -48,11 +48,13 @@ If you would rather to supply your own access token without providing Gisto your
 
 This token will be saved permanently until you log out.
 
+You can find out more at the [F.A.Q.](http://www.gistoapp.com/faq/) section
+
 ## Status
 
 Gisto is currently in it's Beta.
 
-Please see the [change.log](http://gistoapp.com/changelog/) for more detailed info regarding new features, bug fixes and releases.
+Please see the [change.log](http://www.gistoapp.com/changelog/) for more detailed info regarding new features, bug fixes and releases.
 
 It is still under heavily development towards the full release. 
 Various features will be left out from the alpha release.
@@ -91,7 +93,7 @@ Pull requests are welcome as well.
 
 ## Documentation
 
-See [Docs](http://www.gistoapp.com/docs/) section on gisto site.
+See [Docs](http://www.gistoapp.com/documentation/) section on gisto site.
 
 ## License
 
@@ -99,7 +101,7 @@ MIT https://github.com/Gisto/Gisto/blob/master/LICENSE
 
 ## Development
 
-See [setting up for development](http://www.gistoapp.com/docs/#doc-dev) section of the docs.
+See [setting up for development](http://www.gistoapp.com/documentation/#devs) section of the docs.
 
 ## Contributors and mentions
 
