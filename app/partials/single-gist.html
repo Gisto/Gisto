@@ -200,9 +200,12 @@
             <a ng-click="copyToClipboard('https://gist.github.com/{{ gist.single.owner.login }}/{{ gist.single.id }}/#file-{{ file.filename | dotToDash }}', 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
+
+            <a data-ng-if="file.language=='Markdown'" data-ng-click="markDownPreviewToggle()" title="Toggle markdown preview"><i class="icon-eye-open"></i></a>
+
         </div>
 
-        <editor data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" font="{{font_size}}"
+        <editor data-ng-controller="settingsCtrl" show-md-pan="true" language="{{file.language | codeLanguage}}" font="{{font_size}}"
                 theme="{{editor_theme}}"
                 index="{{$index}}"></editor>
 

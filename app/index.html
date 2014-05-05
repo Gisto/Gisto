@@ -5,6 +5,7 @@
     <title>Gisto</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/markdown.css">
     <link rel="stylesheet" data-ng-href="themes/{{theme}}/theme.css">
     <link rel="stylesheet" data-ng-if="anim==1" data-ng-href="css/animation.css">
 
@@ -81,11 +82,11 @@
 <script data-ng-if="editor_ext.statusbar" src="lib/ace/ext-statusbar.js"></script>
 <script data-ng-if="editor_ext.autocompletion" src="lib/ace/ext-language_tools.js"></script>
 
-<!-- env:prod -->
+<!-- env:prod --#>
 <script src="js/gisto.min.js"></script>
 <!-- env:prod:end -->
 
-<!-- env:dev --#>
+<!-- env:dev -->
 <script src="lib/jquery/jquery.js"></script>
 <script src="lib/socket-io/socket.io.min.js"></script>
 <script src="lib/angular/angular.js"></script>

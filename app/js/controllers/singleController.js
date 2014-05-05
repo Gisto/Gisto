@@ -157,6 +157,10 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
     }
 
+    $scope.markDownPreviewToggle = function() {
+        $('.special-editor-markdown').slideToggle('slow');
+    }
+
     $scope.star = function ($event) {
         if ($event) {
             $event.preventDefault();
