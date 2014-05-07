@@ -172,7 +172,7 @@
 </div>
 
 <section ui-keydown="{'ctrl-83':'update($event)'}"
-         ui-event="{ dragover : 'dragStart($event)', dragend: 'dragEnd($event)', drop: 'drop($event)' }">
+         ui-event="{ dragover : 'dragStart($event)', dragleave: 'dragEnd($event)', drop: 'drop($event)' }">
 
     <div class="the-gist" data-ng-repeat="file in gist.single.files" onload="initEditors()">
         <div id="file-{{$index}}" class="the-gist-name">
