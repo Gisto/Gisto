@@ -134,6 +134,17 @@ function createGistCtrl($scope, $rootScope, ghAPI, gistData) {
         };
 
         for (var file in $scope.files) {
+
+            if (!$scope.files[file].filename) {
+                console.log('no filename, generating a default filename');
+                $scope.files[file].filename = 'new_file' + file;
+            }
+
+            if (!$scope.files[file].content) {
+                console.log('no content. skipping file');
+                continue;
+            }
+
             data.files[$scope.files[file].filename] = {
                 content: $scope.files[file].content
             };
