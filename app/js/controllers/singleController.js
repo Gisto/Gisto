@@ -244,7 +244,8 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         $scope.gist.single.files[fileName] = {
             content: '',
             filename: fileName,
-            language: 'text'
+            language: 'text',
+            newFile: true
         };
         $scope.enableEdit();
     };
@@ -322,7 +323,8 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                     $scope.gist.single.files[filename] = {
                         filename: filename,
                         content: event.target.result,
-                        language: 'html'
+                        language: 'html',
+                        newFile: true
                     }
                 });
             };
@@ -340,6 +342,26 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
     $scope.deleteFile = function (file_name) {
         console.log('delete file', file_name);
+
+        var existingFiles = Object.keys($scope.gist.single.files);
+
+        var matches = existingFiles.filter(function(item) {
+           return file_name ===  $scope.gist.single.files[item].filename;
+        });
+
+        console.log(matches);
+
+        if (matches && matches.length > 0) {
+            var file = $scope.gist.single.files[matches[0]];
+            if (file.hasOwnProperty('newFile') && file.newFile) {
+                console.log('detected a new file, stop delete');
+                $('.messenger.delete-file').slideUp();
+                return;
+            } else {
+                console.log('did not detect new file');
+            }
+        }
+
         $('.loading span').html('Deleting file <b>' + file_name + '</b>');
 
         var data = {
