@@ -358,8 +358,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         if (matches && matches.length > 0) {
             var file = $scope.gist.single.files[matches[0]];
             if (file.hasOwnProperty('newFile') && file.newFile) {
-                console.log('detected a new file, stop delete');
+                console.log('detected a new file, delete local only file');
                 $('.messenger.delete-file').slideUp();
+                delete $scope.gist.single.files[file_name];
                 return;
             } else {
                 console.log('did not detect new file');
