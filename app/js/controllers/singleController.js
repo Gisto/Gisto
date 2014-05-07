@@ -337,6 +337,10 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         e.stopPropagation();
         e.preventDefault();
         //$('.ok').slideUp('slow');
+        $('.edit').slideUp('slow');
+        $('.ok,.drop').slideUp('slow');
+
+        $('.main section').removeClass('dragarea');
         console.log('drag end');
     };
 
