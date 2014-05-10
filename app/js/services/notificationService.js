@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gisto.service.notificationService', [], function ($provide) {
-    $provide.factory('notificationService', function (ghAPI, socket, $rootScope, $http, $q) {
+    $provide.factory('notificationService', function (ghAPI, socket, $rootScope, $http, $q, appSettings) {
         var service = {
             notifications: [],
             isOnline: false,
@@ -10,10 +10,10 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
             register: function () {
              // register for notifications on the server.
                 $q.all([
-                    $http.get('./config.json'),
+                    appSettings.getServerToken(),
                     ghAPI.getLoggedInUser()
                 ]).then(function(data) {
-                        service.token = data[0].data.server_token;
+                        service.token = data[0];
                         socket.emit('registerClient', { user: data[1].login, token: service.token });
                         $rootScope.$broadcast('ApplicationState', { online: true });
                 });

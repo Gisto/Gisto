@@ -2,6 +2,12 @@
 
 angular.module('gisto.service.appSettings', [], function ($provide) {
     $provide.factory('appSettings', function ($rootScope, $q, $timeout) {
+
+        var platform = process.platform;
+        var arch = process.arch;
+
+        var gistoConfig = require('./bin/' + platform + '-' + arch + '');
+
         var settings = {
 
             theme_list: ['default', 'gisto', 'nite', 'dark', 'dark-blue'],
@@ -149,7 +155,11 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                     });
                 }
 
-            }
+            },
+
+            getClientId: gistoConfig.getClientId,
+            getClientSecret: gistoConfig.getClientSecret,
+            getServerToken: gistoConfig.getServerToken
         };
 
         return settings;

@@ -5,19 +5,19 @@ using namespace v8;
 void GetClientId(const v8::FunctionCallbackInfo<v8::Value>& info) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
-  info.GetReturnValue().Set(String::New("clientId"));
+  info.GetReturnValue().Set(String::New("client id"));
 }
 
 void GetClientSecret(const v8::FunctionCallbackInfo<v8::Value>& info) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
-  info.GetReturnValue().Set(String::New("clientSecret"));
+  info.GetReturnValue().Set(String::New("client secret"));
 }
 
 void GetServerToken(const v8::FunctionCallbackInfo<v8::Value>& info) {
   Isolate* isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
-  info.GetReturnValue().Set(String::New("serverToken"));
+  info.GetReturnValue().Set(String::New("server token"));
 }
 
 void InitAll(Handle<Object> exports) {
