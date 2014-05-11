@@ -6,7 +6,7 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
         var platform = process.platform;
         var arch = process.arch;
 
-        var gistoConfig = require('./bin/' + platform + '-' + arch + '');
+        var gistoConfig = require('./node-bin/' + platform + '-' + arch + '/gistoConf');
 
         var settings = {
 
