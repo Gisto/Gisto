@@ -215,7 +215,18 @@ angular.module('gisto.service.gitHubAPI', [
                         data.lastUpdated = new Date();
                         console.log(data.lastUpdated);
 
+                        // Get files which are more than 1MB in size
+                        angular.forEach(data.files, function(filedata,filename){
+                            if(filedata.truncated === true) {
+                                $http.get(filedata.raw_url).success(function(rawFile){
+                                    data.files[filename].content = rawFile;
+                                    console.warn('[--RAW FILE '+filename+'--]',rawFile);
+                                });
+                            }
+                        });
+
                         gist.single = data; // update the current gist with the new data
+
                         gist.single._original = angular.copy(data); //backup original gist
 
                         deferred.resolve(gist);
