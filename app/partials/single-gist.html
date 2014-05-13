@@ -2,6 +2,21 @@
 
     <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
+    <div class="is-fork" data-ng-if="gist.single.fork_of">
+        <a data-ng-click="dropdown.forks.show=!dropdown.forks.show" title="fork"><i class="star icon-code-fork"></i></a>
+
+    <div class="notification notification-forks" data-ng-show="dropdown.forks.show">
+        <div>
+            <p>FORK OF: <a to-url="{{ gist.single.fork_of.html_url }}">{{ (gist.single.fork_of.id | truncate : 7 : '') }}</a>
+                <br />
+                by
+                <img data-ng-src="{{ gist.single.fork_of.owner.avatar_url }}s=40">
+                <br />
+                <b>{{ gist.single.fork_of.owner.login }}</b></p>
+        </div>
+    </div>
+    </div>
+
     <span data-ng-switch on="gist.single.starred">
         <span data-ng-switch-when="true">
     <a data-ng-click="unstar()" title="unStar"><i class="star icon-star"></i></a>
@@ -10,7 +25,6 @@
     <a data-ng-click="star()" title="Star"><i class="star icon-star-empty"></i></a>
         </span>
 </span>
-
 
 <span data-ng-switch on="gist.public">
     <span data-ng-switch-when="true">
@@ -186,7 +200,6 @@
                     <i class="icon-file-alt"></i> {{file.filename}}
                 </span>
             </span>
-
 
             <a data-ng-click="deleteFileConfirm(file.filename)" data-file-index="{{$index}}"
                title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
