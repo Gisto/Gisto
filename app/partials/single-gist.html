@@ -5,16 +5,19 @@
     <div class="is-fork" data-ng-if="gist.single.fork_of">
         <a data-ng-click="dropdown.forks.show=!dropdown.forks.show" title="fork"><i class="star icon-code-fork"></i></a>
 
-    <div class="notification notification-forks" data-ng-show="dropdown.forks.show">
-        <div>
-            <p>FORK OF: <a to-url="{{ gist.single.fork_of.html_url }}">{{ (gist.single.fork_of.id | truncate : 7 : '') }}</a>
-                <br />
-                by
-                <img data-ng-src="{{ gist.single.fork_of.owner.avatar_url }}s=40">
-                <br />
-                <b>{{ gist.single.fork_of.owner.login }}</b></p>
+        <div class="notification notification-forks" data-ng-show="dropdown.forks.show">
+            <div>
+                <p><cite>{{ gist.single.fork_of.description | removeTags}}</cite>
+                    <br />
+                    <a to-url="{{ gist.single.fork_of.html_url }}"><i
+                        class="icon-github"></i> {{ (gist.single.fork_of.id | truncate : 7 : '') }}</a>
+                    <img data-ng-src="{{ gist.single.fork_of.owner.avatar_url }}s=40">
+                    <br/>
+                    <b><a href="{{ gist.single.fork_of.owner.html_url }}">{{ gist.single.fork_of.owner.login }}</a></b>
+                </p>
+
+            </div>
         </div>
-    </div>
     </div>
 
     <span data-ng-switch on="gist.single.starred">
@@ -74,7 +77,8 @@
 
 <div class="messenger edit template">
     <i class="icon-edit"> </i>
-    <span>Edit mode <b>on</b> <a href="" data-ng-click="update()">update</a> | <a data-ng-click="disableEdit()" title="changes wont be saved">cancel</a></span>
+    <span>Edit mode <b>on</b> <a href="" data-ng-click="update()">update</a> | <a data-ng-click="disableEdit()"
+                                                                                  title="changes wont be saved">cancel</a></span>
 </div>
 
 <div class="messenger drop template">
@@ -90,7 +94,8 @@
 
 <div class="messenger delete-file warn">
     <i class="icon-warning-sign"> </i>
-    <span>Are you sure you want to <b>delete</b> {{ fileToDelete }}? | <a href="" data-ng-click="deleteFile(fileToDelete)">Yes!</a>
+    <span>Are you sure you want to <b>delete</b> {{ fileToDelete }}? | <a href=""
+                                                                          data-ng-click="deleteFile(fileToDelete)">Yes!</a>
         <a href="" data-ng-click="cancelDeleteFile()">Cancel</a></span>
 </div>
 
@@ -110,7 +115,8 @@
 
     <span class="date_meta">
 
-        <b>Revisions:</b> <i title="Click to browse revisions" data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}}
+        <b>Revisions:</b> <i title="Click to browse revisions"
+                             data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}}
         <code class="icon-sort-down"></code></i>
 
 <date class="gist_date_meta">
@@ -217,11 +223,13 @@
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
 
-            <a data-ng-if="file.language=='Markdown'" data-ng-click="markDownPreviewToggle()" title="Toggle markdown preview"><i class="icon-eye-open"></i></a>
+            <a data-ng-if="file.language=='Markdown'" data-ng-click="markDownPreviewToggle()"
+               title="Toggle markdown preview"><i class="icon-eye-open"></i></a>
 
         </div>
 
-        <editor data-ng-controller="settingsCtrl" show-md-pan="true" language="{{file.language | codeLanguage}}" font="{{font_size}}"
+        <editor data-ng-controller="settingsCtrl" show-md-pan="true" language="{{file.language | codeLanguage}}"
+                font="{{font_size}}"
                 theme="{{editor_theme}}"
                 index="{{$index}}"></editor>
 

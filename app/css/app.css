@@ -847,6 +847,11 @@ details > summary {
     line-height: 0;
 }
 
+.notification-forks cite {
+    white-space: initial;
+    text-transform: capitalize;
+}
+
 .date_meta .notification div {
     position: absolute;
     top: 96px;
