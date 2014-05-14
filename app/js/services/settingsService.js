@@ -120,7 +120,8 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                     token: null,
                     avatarUrl: 'https://secure.gravatar.com/avatar/',
                     gravatar_id: null,
-                    username: null
+                    username: null,
+                    followers: null
                 });
 
                 document.location.href = '#/login';
