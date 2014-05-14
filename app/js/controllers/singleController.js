@@ -16,9 +16,34 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         ghAPI.gist($routeParams.gistId);
     }
 
+    ghAPI.followers(function (response) {
+        console.log('response followers', response);
+        $scope.followers_array = response.data;
+    });
+
     $scope.share = function () {
         if ($scope.userToShare) {
             notificationService.send('sendNotification', { recipient: $scope.userToShare, gistId: $scope.gist.id, name: $scope.gist.description, gravatar_id: appSettings.get('gravatar_id')});
+
+            $scope.followers_array.push($scope.userToShare);
+
+            $scope.followers_array = $scope.followers_array.filter(function (elem, index, self) {
+                return index == self.indexOf(elem);
+            });
+
+            appSettings.loadSettings().then(function (result) {
+                var followersObj = {
+                    list: [],
+                    lastUpdated: result['followers'].lastUpdated
+                };
+
+                followersObj.list = $scope.followers_array;
+
+                appSettings.set({
+                    followers: followersObj
+                });
+            });
+
             console.log('sent notification!');
         } else {
             $('.warn').slideDown('slow');
@@ -157,7 +182,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
     }
 
-    $scope.markDownPreviewToggle = function() {
+    $scope.markDownPreviewToggle = function () {
         $('.special-editor-markdown').slideToggle('slow');
     }
 
@@ -305,7 +330,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                     });
                 }(entry); //self execute for the first time
             }
-            $rootScope.$apply(function() {
+            $rootScope.$apply(function () {
                 $('.ok,.drop').slideUp('slow');
                 $rootScope.edit = true;
                 $('.edit').slideDown('slow');
@@ -349,8 +374,8 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
         var existingFiles = Object.keys($scope.gist.single.files);
 
-        var matches = existingFiles.filter(function(item) {
-           return file_name ===  $scope.gist.single.files[item].filename;
+        var matches = existingFiles.filter(function (item) {
+            return file_name === $scope.gist.single.files[item].filename;
         });
 
         console.log(matches);
