@@ -1,0 +1,34 @@
+<header>
+    <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
+</header>
+
+<section id="empty">
+
+    Please select gist from the list
+    <br/>
+   <!-- ⤶ -->
+    <i class="icon-long-arrow-left"></i>
+
+    <hr>
+
+    <p>Current version: {{currentVersion}}</p>
+    <p data-ng-show="updateAvailable" class="updateAvailable">
+        <i class="icon-warning-sign"></i> Gisto version <b>{{latestVersion.version}}</b> is now available. Get it at <a data-ng-click="gotoSite()">http://www.gistoapp.com</a>
+    </p>
+
+    <p class="made-possible-by">
+        <b><i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i></b> is made possible thanks to:
+    </p>
+
+    <ul class="logos clearfix">
+        <li><img width="100%" src="img/angularjs.png" alt="" /></li>
+        <li><img width="100%" src="img/node.png" alt="" /></li>
+        <li><img width="100%" src="img/nw2.png" alt="" /></li>
+    </ul>
+
+    <p class="smaller"><i class="icon-bug"></i> Bug reports &amp; improvement suggestions are much appreciated: you may fill them at:
+        <a href="" to-url="https://github.com/Gisto/Gisto/issues">GitHub issue tracker</a>.
+    </p>
+
+
+</section>
