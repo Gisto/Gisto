@@ -1,34 +1,68 @@
-<header>
+<header ng-class="{update:updateAvailable}">
     <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 </header>
 
-<section id="empty">
+<section id="empty" class="dashboard">
 
-    Please select gist from the list
-    <br/>
-   <!-- ⤶ -->
-    <i class="icon-long-arrow-left"></i>
+    <div class="dash-container">
+        <div class="dash-item">
+            <p>You've got:</p>
 
-    <hr>
+            <p class="text-xxx-large">Total 754 Gists</p>
 
-    <p>Current version: {{currentVersion}}</p>
-    <p data-ng-show="updateAvailable" class="updateAvailable">
-        <i class="icon-warning-sign"></i> Gisto version <b>{{latestVersion.version}}</b> is now available. Get it at <a data-ng-click="gotoSite()">http://www.gistoapp.com</a>
-    </p>
+            <p class="text-x-large">38 are <b>Private</b></p>
 
-    <p class="made-possible-by">
-        <b><i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i></b> is made possible thanks to:
-    </p>
+            <p class="text-x-large">22 are <b>Starred</b></p>
+        </div>
 
-    <ul class="logos clearfix">
-        <li><img width="100%" src="img/angularjs.png" alt="" /></li>
-        <li><img width="100%" src="img/node.png" alt="" /></li>
-        <li><img width="100%" src="img/nw2.png" alt="" /></li>
-    </ul>
+            <div class="dash-item tabs">
 
-    <p class="smaller"><i class="icon-bug"></i> Bug reports &amp; improvement suggestions are much appreciated: you may fill them at:
-        <a href="" to-url="https://github.com/Gisto/Gisto/issues">GitHub issue tracker</a>.
-    </p>
+                <div class="tab">
+                    <input type="radio" id="tab-1" name="tab-group-1" checked>
+                    <label for="tab-1">Changelog</label>
+
+                    <div class="content">
+                        <h2>
+                            <a name="user-content-024b" class="anchor" href="#024b"><span class="octicon octicon-link"></span></a>0.2.4b</h2>
+
+                        <ul class="task-list">
+                            <li>Fix: Editor overflow where pasted text would appear visually broken</li>
+                            <li>Fix: Better controll of editor size - line based</li>
+                            <li>Update: ACE editor with additions to 2 new themes and a few new highlighters</li>
+                            <li>Fix: When Cancelling a gist edit now the gist is returned to original state</li>
+                            <li>New: Emmet and status bar plugins to ace editor</li>
+                            <li>New: Drag &amp; drop support for folders and sub-folders</li>
+                            <li>New: Auto completion to ace editor (enable from settings)</li>
+                            <li>New: Range selector to control application size in settings. Fixes #69</li>
+                            <li>New: Confirmation when deleting a file from a gist. Fixes #76.</li>
+                            <li>Update: Comments are now paginated due to changes in GitHub API.</li>
+                        </ul><h2>
+
+                    </div>
+                </div>
+
+                <div class="tab">
+                    <input type="radio" id="tab-2" name="tab-group-1">
+                    <label for="tab-2">News</label>
+
+                    <div class="content">
+                        stuff 2
+                    </div>
+                </div>
+
+                <div class="tab">
+                    <input type="radio" id="tab-3" name="tab-group-1">
+                    <label for="tab-3">Issues</label>
+
+                    <div class="content">
+                        stuff 3
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+
 
 
 </section>

@@ -7,8 +7,6 @@ function mainCtrl($scope, $http, appSettings) {
         console.log($scope.latestVersion);
     });
 
-
-
     $scope.currentVersion = '';
     $scope.updateAvailable = false;
 

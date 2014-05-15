@@ -399,10 +399,6 @@ aside header input {
     border-radius: 21px;
 }
 
-#empty {
-    font-size: 30px
-}
-
 .the-comments span {
     height: 50%;
     margin: 10px 0;
@@ -656,16 +652,6 @@ header input.edaitable {
 .main {
     position: relative;
     z-index: 1;
-}
-
-.updateAvailable {
-    border: 1px solid green;
-    background: lightgreen;
-    padding: 9px;
-    display: block;
-    font-size: 16px;
-    color: green;
-    border-radius: 3px;
 }
 
 ul.logos {
@@ -1102,4 +1088,124 @@ input[type="range"] {
 
 .special-editor-markdown {
     padding: 10px 20px;
+}
+
+.updateAvailable {
+    padding: 5px 10px;
+    display: inherit;
+    font-size: 16px;
+    color: green;
+}
+
+.main header.update {
+    /*background: lightgreen;*/
+    background: -webkit-linear-gradient(top, #F2F2F2, lightgreen);
+}
+
+.main header.update .updateAvailable a {
+    background: -webkit-linear-gradient(top, lightgreen, #468847);
+    padding: 5px 10px;
+    color: azure;
+    text-shadow: 1px 1px 2px #555;
+    border-radius: 3px;
+    border: 1px solid green;
+}
+
+.main header.update .updateAvailable a:hover {
+    background: green;
+    padding: 5px 10px;
+    color: lightgreen;
+    text-shadow: 1px 1px 2px #333;
+    border-radius: 3px;
+    box-shadow: 1px 1px 10px #333 inset;
+}
+
+#empty {
+}
+
+.dash-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: flex-start;
+}
+
+.dash-item {
+    align-self: flex-start;
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.dash-item:nth-child(1) {
+    -webkit-flex: 0 0 40%;
+}
+
+.dash-item:nth-child(2) {
+    -webkit-flex: 0 0 55%;
+    margin: 0px 0px 0px 5%;
+}
+
+.dash-container p {
+    line-height: 10px;
+}
+
+.dash-container .text-xxx-large {
+    font-size: 32px;
+}
+
+.dash-container .text-xx-large {
+    font-size: 22px;
+}
+
+.dash-container .text-x-large {
+    font-size: 18px;
+}
+
+.dashboard .tabs {
+    position: relative;
+    min-height: 200px;
+    clear: both;
+}
+
+.dashboard .tab {
+    float: left;
+}
+
+.dashboard .tab label {
+    background: #eee;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-left: -1px;
+    position: relative;
+    left: 1px;
+}
+
+.dashboard .tab [type=radio] {
+    display: none;
+}
+
+.dashboard .tab .content {
+    position: absolute;
+    top: 47px;
+    left: 0;
+    background: white;
+    right: 0;
+    bottom: 0;
+    padding: 0 10px;
+    border-top: 1px solid #ccc;
+    overflow: auto;
+}
+
+.dashboard [type=radio]:checked ~ label {
+    background: white;
+    border-bottom: 1px solid white;
+    z-index: 2;
+}
+
+.dashboard [type=radio]:checked ~ label ~ .content {
+    z-index: 1;
 }
