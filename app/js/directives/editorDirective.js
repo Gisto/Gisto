@@ -4,9 +4,13 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
     return {
         restrict: 'E',
         template: '<div ng-if="showmd" class="special-editor-markdown" ng-bind-html-unsafe="file.content | markDown"></div>' +
-        '<pre id="editor-{{$index}}">{{file.content}}</pre>' +
+        '<pre class="editor-raw" id="editor-{{$index}}">{{file.content}}</pre>' +
         '<div data-ng-if="editor_ext.statusbar" id="statusBar-{{$index}}"><i class="icon-info-sign"></i> </div>',
+        scope: {
+            file: '='
+        },
         link: function ($scope, $element, $attrs) {
+            console.log($scope);
             $scope.showmd = false;
             if ($attrs.language === 'markdown') {
                 $scope.showmd = true;
@@ -15,11 +19,16 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
 
                 $timeout(function () {
 
+                    console.log('directive file', $scope.file);
+                    console.log('the element', $element.find('.editor-raw'));
+
                     var lang = $attrs.language,
                         font = $attrs.font,
                         indexed = $attrs.index,
-                        editor = ace.edit('editor-' + $attrs.index),
+                        editor = ace.edit($element.find('pre')[0]),
                         theme = $attrs.theme;
+
+                    console.log($attrs.index);
 
                     // Emmet
                     if (lang === 'html' && appSettingsResult.editor_ext.emmet) {
@@ -72,6 +81,12 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                             }
                         });
                     });
+
+                    $scope.$watch('file', function(newValue) {
+                       if (angular.isDefined(newValue)) {
+                           //editor.setValue(newValue, 0);
+                       }
+                    }, true);
 
                 }, 0);
             });

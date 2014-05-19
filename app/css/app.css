@@ -1103,3 +1103,13 @@ input[type="range"] {
 .special-editor-markdown {
     padding: 10px 20px;
 }
+
+.editor-btn {
+    background: #555;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    margin: 0 0 0 5px;
+    border: 1px solid #666;
+}
