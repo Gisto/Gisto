@@ -5,8 +5,9 @@
     .gist_date_meta {
         display: none;
     }
-    div.toolbox span  {
-        width:100px !important;
+
+    div.toolbox span {
+        width: 100px !important;
     }
 }
 
@@ -25,7 +26,7 @@ body *, :not(input) {
     box-sizing: border-box;
 }
 
-*:focus,*:hover {
+*:focus, *:hover {
     outline: none;
     -webkit-transition: all 0.15s ease-in;
     transition: all 0.15s ease-in;
@@ -72,7 +73,7 @@ body {
 }
 
 /* float clearing for IE7 */
-*+html .clearfix {
+* + html .clearfix {
     min-height: 1%;
 }
 
@@ -338,8 +339,8 @@ div.comments i {
     font-size: 14px;
     cursor: pointer;
     position: relative;
-    top:0;
-    right:inherit;
+    top: 0;
+    right: inherit;
     margin: 0 auto;
     z-index: 10;
     border-radius: 3px;
@@ -403,7 +404,7 @@ aside header input {
 }
 
 .the-comments span {
-    height:50%;
+    height: 50%;
     margin: 10px 0;
     padding: 0px 10px;
     display: block;
@@ -761,13 +762,13 @@ details > summary {
 
 .notification div:after {
     border-width: 10px;
-    left: 95%;
+    left: 8%;
     margin-left: -10px;
 }
 
 .notification div:before {
     border-width: 11px;
-    left: 95%;
+    left: 8%;
     margin-left: -11px;
 }
 
@@ -799,6 +800,58 @@ details > summary {
     font-size: 12px;
 }
 
+.is-fork {
+    display: inline-block;
+}
+
+.notification-forks div {
+    position: absolute;
+    top: 50px;
+    left: -92px;
+    white-space: nowrap;
+    z-index: 9;
+    font-size: 9pt;
+    line-height: 20px;
+    padding: 5px;
+    text-shadow: none;
+    border-radius: 5px;
+    width: 210px;
+}
+
+.notification-forks div:before {
+    border-width: 11px;
+    left: 50%;
+    margin-left: -11px;
+}
+
+.notification-forks div:after {
+    border-width: 10px;
+    left: 50%;
+    margin-left: -10px;
+}
+
+.notification-forks div img {
+    float: left;
+    padding: 5px 10px 0 0;
+}
+
+.notification-forks div p {
+    padding: 0 10px;
+    line-height: 27px;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+.notification-forks div b {
+    font-size: 20px;
+    line-height: 0;
+}
+
+.notification-forks cite {
+    white-space: initial;
+    text-transform: capitalize;
+}
+
 .date_meta .notification div {
     position: absolute;
     top: 96px;
@@ -810,14 +863,17 @@ details > summary {
     text-shadow: none;
     border-radius: 5px;
     min-height: 106px;
-    width:210px;
+    width: 210px;
 }
+
 .date_meta .notification ul {
-    width:200px;
+    width: 200px;
 }
+
 .date_meta .notification li:first-child {
-    display:none;
+    display: none;
 }
+
 .date_meta .notification li {
     width: 180px;
     float: left;
@@ -829,12 +885,12 @@ details > summary {
 
 .date_meta .notification div:after {
     border-width: 10px;
-    margin-left: -136px;
+    margin-left: 45px;
 }
 
 .date_meta .notification div:before {
     border-width: 11px;
-    margin-left: -136px;
+    margin-left: 45px;
 }
 
 .date_meta .notification a,
@@ -894,7 +950,7 @@ details > summary {
 }
 
 .remove-notification:hover {
-    color:#fff;
+    color: #fff;
 }
 
 .the-gist pre {
@@ -940,7 +996,7 @@ details {
     margin: 9px 0px 0px 0px;
     text-transform: lowercase;
     font-size: 12px;
-    width:170px;
+    width: 170px;
 }
 
 div.revision-drop-down a p b {
@@ -955,21 +1011,21 @@ div.revision-drop-down a p {
     padding-top: 0;
     padding-bottom: 0;
     margin-left: 10px;
-    color:#ccc;
+    color: #ccc;
 }
+
 div.revision-drop-down a:hover {
-    background:transparent !important;
+    background: transparent !important;
     border: none !important;
 }
 
 div.revision-drop-down a:last-child p {
-    border:none;
+    border: none;
 }
 
 div.revision-drop-down a p:hover {
-    color:#fff;
+    color: #fff;
 }
-
 
 .favicon {
     position: relative;
@@ -1000,13 +1056,11 @@ a.auth-help:hover {
     transition: all 0.30s ease-in;
 }
 
-
-
 a.auth-help:hover div {
-    display:block;
-    zoom:normal !important;
-    font-weight: 100  !important;
-    text-shadow: none  !important;
+    display: block;
+    zoom: normal !important;
+    font-weight: 100 !important;
+    text-shadow: none !important;
 }
 
 a.auth-help div {
@@ -1021,8 +1075,8 @@ a.auth-help div {
     margin-right: -180px;
     padding: 30px;
     box-shadow: 0px 0px 10px #333;
-    display:none;
-    opacity:0.95;
+    display: none;
+    opacity: 0.95;
 }
 
 a.auth-help div {
@@ -1030,9 +1084,10 @@ a.auth-help div {
 }
 
 editor > div {
-    padding:5px;
+    padding: 5px;
     border-top: 1px solid #ccc;
 }
+
 .ace_status-indicator {
     float: right;
 }
