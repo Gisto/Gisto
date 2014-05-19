@@ -249,6 +249,54 @@ angular.module('gisto.service.gitHubAPI', [
                 return deferred.promise;
             },
 
+            // GET /users/:user/followers
+            followers: function (callback) {
+                appSettings.loadSettings().then(function (result) {
+                    var followers = result['followers'];
+                    if (!followers) {
+                        followers = {
+                            list: [],
+                            lastUpdated: 0
+                        };
+                    }
+
+                    var yesterday = new Date().getTime() - 86400000;
+                    if (followers && followers.lastUpdated < yesterday) {
+                        requestHandler({
+                            method: 'GET',
+                            url: 'http://api.github.com/user/followers',
+                            headers: {
+                                Authorization: 'token ' + result['token']
+                            }
+                        }).success(function (data) {
+
+                            data = data.map(function (item) {
+                                return item.login
+                            });
+
+                            angular.forEach(data, function (item) {
+                                if (followers.list.indexOf(item) === -1) {
+                                    followers.list.push(item);
+                                }
+                            });
+
+                            followers.lastUpdated = new Date().getTime();
+                            appSettings.set({followers: followers});
+
+                            return callback({
+                                data: followers.list
+                            });
+                        });
+                    }
+
+                    return callback({
+                        data: followers.list
+                    });
+
+
+                });
+            },
+
             // GET /gists/:id/:revision
             history: function (id, revId) {
 
@@ -693,4 +741,5 @@ angular.module('gisto.service.gitHubAPI', [
 
         return api;
     });
-});
+})
+;
