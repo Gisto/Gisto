@@ -5,7 +5,7 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.appSettings',
     'gisto.service.requestHandler'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $timeout) {
         var api_url = 'https://api.github.com/gists',
             token = appSettings.get('token');
         var api = {
@@ -215,17 +215,20 @@ angular.module('gisto.service.gitHubAPI', [
                         data.lastUpdated = new Date();
                         console.log(data.lastUpdated);
 
+                        var tout = 0;
                         // Get files which are more than 1MB in size
-                        angular.forEach(data.files, function(filedata,filename){
-                            if(filedata.truncated === true) {
-                                $http.get(filedata.raw_url).success(function(rawFile){
-                                    data.files[filename].content = rawFile;
-                                    console.warn('[--RAW FILE '+filename+'--]',rawFile);
+                        angular.forEach(data.files, function (filedata, filename) {
+                            if (filedata.truncated === true) {
+                                tout = 2000;
+                                $http.get(filedata.raw_url).then(function (result) {
+                                    data.files[filename].content = result.data;
+                                    console.warn('[--RAW FILE ' + filename + '--]', result.data);
                                 });
                             }
                         });
-
-                        gist.single = data; // update the current gist with the new data
+                        $timeout(function () {
+                            gist.single = data; // update the current gist with the new data
+                        }, tout);
 
                         gist.single._original = angular.copy(data); //backup original gist
 

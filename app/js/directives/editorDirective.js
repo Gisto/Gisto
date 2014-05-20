@@ -11,7 +11,9 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
             if ($attrs.language === 'markdown') {
                 $scope.showmd = true;
             }
+
             appSettings.loadSettings().then(function (appSettingsResult) {
+
 
                 $timeout(function () {
 
