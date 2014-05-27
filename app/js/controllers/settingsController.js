@@ -1,6 +1,6 @@
 'use strict';
 
-function settingsCtrl($scope, appSettings, $rootScope) {
+function settingsCtrl($scope, appSettings, $http, $location, $timeout) {
     $scope.themes = appSettings.theme_list;
     $scope.editor_themes = appSettings.editor_theme_list;
     $scope.font_sizes = appSettings.font_size;
@@ -27,9 +27,9 @@ function settingsCtrl($scope, appSettings, $rootScope) {
 
 
     /*angular.element('.the-gist pre').css({
-        'min-height': $scope.min_height + 'px',
-        'max-height': $scope.max_height + 'px'
-    });*/
+     'min-height': $scope.min_height + 'px',
+     'max-height': $scope.max_height + 'px'
+     });*/
     $scope.update_settings = function () {
         var data = {};
         data.theme = $scope.theme;
@@ -50,6 +50,40 @@ function settingsCtrl($scope, appSettings, $rootScope) {
             } else {
                 console.log('NOT SAVED SETTINGS');
             }
+        });
+    };
+
+    $scope.import_settings = function (file) {
+        var chooser = document.querySelector(file);
+        chooser.addEventListener("change", function (evt) {
+            console.log('NOW WE KNOW THE FILE PATH', this.value);
+            var importFile = evt.target.value;
+            $timeout(function () {
+                $http.get(importFile).then(function (incomingSettings) {
+                    console.log('SETTING FILE imported', incomingSettings);
+                    // Load new settings into Gisto
+                    appSettings.loadSettings().then(function (oldSettings) {
+                        console.info('SETTING FILE old', oldSettings.token);
+                        incomingSettings.data.token = oldSettings.token;
+                        console.info('SETTING FILE (NEW)', incomingSettings.data);
+                        localStorage.settings = JSON.stringify(incomingSettings.data);
+                        console.info('NEW SETTING', JSON.stringify(incomingSettings.data));
+                        window.location.reload();
+                    });
+                });
+            }, 0);
+        }, false);
+        chooser.click();
+    };
+
+    $scope.export_settings = function () {
+        appSettings.loadSettings().then(function (result) {
+            result['token'] = '';
+            var json = JSON.stringify(result, null, 2);
+            var blob = new Blob([json], {type: "octet/stream"});
+            console.warn('BLOB', blob);
+            var url = URL.createObjectURL(blob);
+            window.location.assign(url);
         });
     };
 }

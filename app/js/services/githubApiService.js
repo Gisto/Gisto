@@ -146,6 +146,8 @@ angular.module('gisto.service.gitHubAPI', [
                         gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
+                        console.log('-------------------------- LIST --------------------------',gistData.list);
+
                         var header = headers();
                         if (header.link) {
                             var links = header.link.split(',');
