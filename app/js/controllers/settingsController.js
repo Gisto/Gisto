@@ -1,6 +1,6 @@
 'use strict';
 
-function settingsCtrl($scope, appSettings, $http, $location, $timeout) {
+function settingsCtrl($scope, appSettings, $http, $timeout) {
     $scope.themes = appSettings.theme_list;
     $scope.editor_themes = appSettings.editor_theme_list;
     $scope.font_sizes = appSettings.font_size;
@@ -65,8 +65,10 @@ function settingsCtrl($scope, appSettings, $http, $location, $timeout) {
                     appSettings.loadSettings().then(function (oldSettings) {
                         console.info('SETTING FILE old', oldSettings.token);
                         incomingSettings.data.token = oldSettings.token;
+                        incomingSettings.data.version = oldSettings.version;
+                        incomingSettings.data.timestamp = oldSettings.timestamp;
                         console.info('SETTING FILE (NEW)', incomingSettings.data);
-                        localStorage.settings = JSON.stringify(incomingSettings.data);
+                        appSettings.set(incomingSettings.data);
                         console.info('NEW SETTING', JSON.stringify(incomingSettings.data));
                         window.location.reload();
                     });
@@ -79,6 +81,9 @@ function settingsCtrl($scope, appSettings, $http, $location, $timeout) {
     $scope.export_settings = function () {
         appSettings.loadSettings().then(function (result) {
             result['token'] = '';
+            result['last_modified'] = '';
+            result['version'] = '';
+            result['timestamp'] = '';
             var json = JSON.stringify(result, null, 2);
             var blob = new Blob([json], {type: "octet/stream"});
             console.warn('BLOB', blob);
