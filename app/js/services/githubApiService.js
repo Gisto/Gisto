@@ -5,7 +5,7 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.appSettings',
     'gisto.service.requestHandler'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q) {
         var api_url = 'https://api.github.com/gists',
             token = appSettings.get('token');
         var api = {
@@ -146,8 +146,6 @@ angular.module('gisto.service.gitHubAPI', [
                         gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
                         // localStorage.gistsLastUpdated = data.headers['last-modified'];
 
-                        console.log('-------------------------- LIST --------------------------', gistData.list);
-
                         var header = headers();
                         if (header.link) {
                             var links = header.link.split(',');
@@ -193,19 +191,16 @@ angular.module('gisto.service.gitHubAPI', [
 
                 var deferred = $q.defer();
 
-
                 appSettings.loadSettings().then(function (result) {
 
                     var gist = gistData.getGistById(id) || {}; // get the currently viewed gist or an empty object to apply the data
-
 
                     requestHandler({
                         method: 'GET',
                         url: api_url + '/' + id,
                         headers: {
                             Authorization: 'token ' + result['token']
-                        },
-                        stopNotification: true
+                        }
                     }).success(function (data, status, headers, config) {
                         api.is_starred(data.id, function (response) {
                             if (response.status === 204) {
@@ -232,8 +227,8 @@ angular.module('gisto.service.gitHubAPI', [
 
                         gist.single = data; // update the current gist with the new data
                         gist.single._original = angular.copy(data); //backup original gist
-                        deferred.resolve(gist);
 
+                        deferred.resolve(gist);
 
                     }).error(function (data, status, headers, config) {
                         console.log({
