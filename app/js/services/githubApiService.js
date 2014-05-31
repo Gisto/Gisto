@@ -5,7 +5,7 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.appSettings',
     'gisto.service.requestHandler'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope) {
         var api_url = 'https://api.github.com/gists',
             token = appSettings.get('token');
         var api = {
