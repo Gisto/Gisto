@@ -1,6 +1,33 @@
-body section {
-    -webkit-animation: fadein 1s;
-    animation: fadein 1s;
+/*body section {*/
+    /*-webkit-animation: fadein 1s;*/
+    /*animation: fadein 1s;*/
+/*}*/
+
+
+.view-animation.ng-enter,
+.view-animation.ng-leave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+.view-animation.ng-enter {
+    transition: ease-out all 0.2s 0.3s;
+}
+
+.view-animation.ng-leave {
+    transition: 0.2s ease-out all;
+}
+
+.view-animation.ng-enter,
+.view-animation.ng-leave.ng-enter-active {
+    opacity: 0;
+}
+
+.view-animation.ng-leave,
+.view-animation.ng-enter.ng-enter-active {
+    opacity: 1;
 }
 
 @keyframes fadein {
@@ -13,7 +40,6 @@ body section {
 }
 
 @-webkit-keyframes fadein {
-    /* Safari and Chrome */
     from {
         opacity: 0;
     }
@@ -22,8 +48,26 @@ body section {
     }
 }
 
-.animate-list-enter,
-.animate-list-leave {
+@keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.animate-list.ng-enter,
+.animate-list.ng-leave {
     -webkit-animation-duration: 0.5s;
     animation-duration: 0.5s;
     -webkit-animation-fill-mode: both;
@@ -33,8 +77,8 @@ body section {
     height: auto;
 }
 
-.animate-list-leave.animate-list-leave-active,
-.animate-list-enter {
+.animate-list.ng-leave.ng-leave-active,
+.animate-list.ng-enter {
     -webkit-animation-name: listOut;
     animation-name: listOut;
     top: 0;
@@ -62,8 +106,8 @@ body section {
     }
 }
 
-.animate-list-enter.animate-list-enter-active,
-.animate-list-leave {
+.animate-list.ng-enter.ng-enter-active,
+.animate-list.ng-leave {
     -webkit-animation-name: listIn;
     animation-name: listIn;
 }
@@ -92,16 +136,16 @@ body section {
 
 /**/
 
-.animate-star-enter,
-.animate-star-leave {
+.animate-star.ng-enter,
+.animate-star.ng-leave {
     -webkit-animation-duration: 2s;
     animation-duration: 2s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
 
-.animate-star-leave.animate-star-leave-active,
-.animate-star-leave {
+.animate-star.ng-leave.ng-leave-active,
+.animate-star.ng-leave {
     -webkit-animation-name: starOut;
     animation-name: starOut;
 }
@@ -124,8 +168,8 @@ body section {
     }
 }
 
-.animate-star-enter.animate-star-enter-active,
-.animate-star-leave {
+.animate-star.ng-enter.ng-enter-active,
+.animate-star.ng-leave {
     -webkit-animation-name: starIn;
     animation-name: starIn;
 }

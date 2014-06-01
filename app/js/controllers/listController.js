@@ -1,10 +1,14 @@
 'use strict';
 
-function listGistCtrl($scope, ghAPI, gistData, notificationService) {
+function listGistCtrl($scope, ghAPI, gistData, $location) {
     $scope.gists = gistData.list;
     $scope.onlineStatus = {
        state: "Offline",
        status: false
+    };
+
+    $scope.navigateToGist = function(gistId) {
+        $location.url('gist/' + gistId);
     };
 
     $scope.$on('ApplicationState', function(e, data) {

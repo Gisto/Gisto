@@ -2,6 +2,9 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('gisto', [
+        'ngRoute',
+        'ngAnimate',
+        'ngSanitize',
         'ui.utils',
         'gisto.filter.removeTags',
         'gisto.filter.truncate',
@@ -61,6 +64,6 @@ angular.module('gisto', [
         $routeProvider.otherwise({
             redirectTo: '/'
         });
-    }]).run(function($rootScope) {
+    }]).run(function($rootScope, $animate) {
         $rootScope.gistoReady = false;
     });
