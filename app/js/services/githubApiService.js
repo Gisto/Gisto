@@ -138,6 +138,13 @@ angular.module('gisto.service.gitHubAPI', [
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
                             data[item].filesCount = Object.keys(data[item].files).length;
+                            angular.forEach(data[item].files,function(fileSize){
+                                if(fileSize.size > 1048576) {
+                                    data[item].bigFile = true;
+                                    console.info(' --- file size',fileSize.size);
+                                }
+                            });
+                            console.info('data[item]',data[item]);
                         }
 
                         // Set lastUpdated for 60 sec cache
