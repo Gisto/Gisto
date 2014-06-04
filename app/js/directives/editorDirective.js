@@ -4,31 +4,27 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
     return {
         restrict: 'E',
         template: '<div ng-if="showmd" class="special-editor-markdown" ng-bind-html-unsafe="file.content | markDown"></div>' +
-        '<pre class="editor-raw" id="editor-{{$index}}">{{file.content}}</pre>' +
+        '<pre id="editor-{{$index}}">{{file.content}}</pre>' +
         '<div data-ng-if="editor_ext.statusbar" id="statusBar-{{$index}}"><i class="icon-info-sign"></i> </div>',
-        scope: {
-            file: '='
-        },
         link: function ($scope, $element, $attrs) {
-            console.log($scope);
             $scope.showmd = false;
             if ($attrs.language === 'markdown') {
                 $scope.showmd = true;
             }
+
+
             appSettings.loadSettings().then(function (appSettingsResult) {
+
 
                 $timeout(function () {
 
-                    console.log('directive file', $scope.file);
-                    console.log('the element', $element.find('.editor-raw'));
-
                     var lang = $attrs.language,
-                        font = $attrs.font,
+                        font = parseInt(appSettingsResult.font_size),
                         indexed = $attrs.index,
-                        editor = ace.edit($element.find('pre')[0]),
-                        theme = $attrs.theme;
-
-                    console.log($attrs.index);
+                        editor = ace.edit('editor-' + $attrs.index),
+                        session = editor.getSession(),
+                        theme = $attrs.theme,
+                        inUpdateProcess = false;
 
                     // Emmet
                     if (lang === 'html' && appSettingsResult.editor_ext.emmet) {
@@ -74,6 +70,13 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                     console.log('min_lines', appSettingsResult.min_lines);
 
                     editor.on('change', function (data) {
+
+                        // change coming from manually changing the value using the api
+                        // skip the update
+                        if (inUpdateProcess) {
+                            return;
+                        }
+
                         $scope.$apply(function () {
                             $scope.file.content = editor.getValue();
                             if (!$scope.edit) {
@@ -82,11 +85,15 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                         });
                     });
 
-                    $scope.$watch('file', function(newValue) {
-                       if (angular.isDefined(newValue)) {
-                           //editor.setValue(newValue, 0);
-                       }
-                    }, true);
+                    // listen to ngModel render and update the session
+                    $scope.$on('ace-update', function(e, updatedFile) {
+                        if ($scope.file.filename === updatedFile) {
+                            inUpdateProcess = true;
+                            session.setValue($scope.file.content);
+                            inUpdateProcess = false;
+                        }
+                    });
+
 
                 }, 0);
             });
