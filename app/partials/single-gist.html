@@ -210,8 +210,6 @@
                 </span>
             </span>
 
-            <button class="editor-btn" ng-click="loadRawFile(file)">Load file</button>
-
             <a data-ng-click="deleteFileConfirm(file.filename)" data-file-index="{{$index}}"
                title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
 
@@ -230,12 +228,10 @@
 
         </div>
 
-
-        <editor show-md-pan="true" language="{{file.language | codeLanguage}}"
-                file="file"
-                font="{{font_size}}"
+        <editor data-ng-controller="settingsCtrl" show-md-pan="true" language="{{file.language | codeLanguage}}"
                 theme="{{editor_theme}}"
-                index="{{$index}}"></editor>
+                index="{{$index}}"
+                ></editor>
 
     </div>
 

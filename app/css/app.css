@@ -6,7 +6,7 @@
         display: none;
     }
 
-    div.toolbox span {
+    div.toolbox:not(.wide) span {
         width: 100px !important;
     }
 }

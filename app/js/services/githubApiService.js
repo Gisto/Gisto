@@ -5,7 +5,7 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.appSettings',
     'gisto.service.requestHandler'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope) {
         var api_url = 'https://api.github.com/gists',
             token = appSettings.get('token');
         var api = {
@@ -215,12 +215,15 @@ angular.module('gisto.service.gitHubAPI', [
                         data.lastUpdated = new Date();
                         console.log(data.lastUpdated);
 
-                        angular.forEach(data.files, function(file) {
-                            if (file.truncated) {
-                                file.content = 'This file has been truncated.';
+                        // Get files which are more than 1MB in size
+                        angular.forEach(data.files, function (filedata, filename) {
+                            if (filedata.truncated === true) {
+                                requestHandler.get(filedata.raw_url, {stopNotification: true}).success(function (result) {
+                                    data.files[filename].content = result;
+                                    $rootScope.$broadcast('ace-update', filename);
+                                });
                             }
                         });
-
 
                         gist.single = data; // update the current gist with the new data
                         gist.single._original = angular.copy(data); //backup original gist
@@ -243,23 +246,6 @@ angular.module('gisto.service.gitHubAPI', [
                 });
 
                 return deferred.promise;
-            },
-
-            loadRawContent: function(file) {
-
-                var defer = $q.defer();
-
-                requestHandler.get(file.raw_url).success(function(response) {
-                  console.log('raw loaded');
-                  defer.resolve(response);
-
-                 //file.content = response.data;
-                 //file.loadedRawContent = true;
-              }).error(function(error) {
-                    defer.reject(error);
-                });
-                console.log(defer.promise);
-                return defer.promise;
             },
 
             // GET /users/:user/followers
