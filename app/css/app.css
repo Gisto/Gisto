@@ -762,13 +762,13 @@ details > summary {
 
 .notification div:after {
     border-width: 10px;
-    left: 8%;
+    right: 4%;
     margin-left: -10px;
 }
 
 .notification div:before {
     border-width: 11px;
-    left: 8%;
+    right: 4%;
     margin-left: -11px;
 }
 
