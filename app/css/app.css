@@ -1113,3 +1113,11 @@ input[type="range"] {
     margin: 0 0 0 5px;
     border: 1px solid #666;
 }
+
+aside ul li cite {
+    color: #fff;
+    background: goldenrod;
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
