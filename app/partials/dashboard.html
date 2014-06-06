@@ -19,34 +19,16 @@
 
                 <div class="tab">
                     <input type="radio" id="tab-1" name="tab-group-1" checked>
-                    <label for="tab-1">Changelog</label>
-
+                    <label for="tab-1">News</label>
                     <div class="content">
-                        <h2>
-                            <a name="user-content-024b" class="anchor" href="#024b"><span class="octicon octicon-link"></span></a>0.2.4b</h2>
-
-                        <ul class="task-list">
-                            <li>Fix: Editor overflow where pasted text would appear visually broken</li>
-                            <li>Fix: Better controll of editor size - line based</li>
-                            <li>Update: ACE editor with additions to 2 new themes and a few new highlighters</li>
-                            <li>Fix: When Cancelling a gist edit now the gist is returned to original state</li>
-                            <li>New: Emmet and status bar plugins to ace editor</li>
-                            <li>New: Drag &amp; drop support for folders and sub-folders</li>
-                            <li>New: Auto completion to ace editor (enable from settings)</li>
-                            <li>New: Range selector to control application size in settings. Fixes #69</li>
-                            <li>New: Confirmation when deleting a file from a gist. Fixes #76.</li>
-                            <li>Update: Comments are now paginated due to changes in GitHub API.</li>
-                        </ul><h2>
-
+                        <pre>{{license}}</pre>
                     </div>
                 </div>
 
                 <div class="tab">
                     <input type="radio" id="tab-2" name="tab-group-1">
-                    <label for="tab-2">News</label>
-
-                    <div class="content">
-                        stuff 2
+                    <label for="tab-2">Changes</label>
+                    <div class="content" ng-bind-html-unsafe="changes | markDown">
                     </div>
                 </div>
 
@@ -55,7 +37,12 @@
                     <label for="tab-3">Issues</label>
 
                     <div class="content">
-                        stuff 3
+                        <ul>
+                        <li ng-repeat="issue in issues">
+                            <span class="pills gist-comment {{issue.state}}">{{issue.state}}</span> {{issue.updated_at | date:'medium'}}<br />
+                            <a to-url="{{issue.html_url}}">{{issue.title}}</a> - #{{issue.number}}
+                        </li>
+                        </ul>
                     </div>
                 </div>
 

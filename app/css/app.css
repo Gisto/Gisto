@@ -1142,6 +1142,7 @@ input[type="range"] {
     background: #f2f2f2;
     padding: 20px;
     border-radius: 3px;
+    box-shadow: 0px 0px 20px #ccc inset;
 }
 
 .dash-item:nth-child(1) {
@@ -1200,7 +1201,7 @@ input[type="range"] {
     right: 0;
     bottom: 0;
     padding: 0 10px;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #fff;
     overflow: auto;
 }
 
@@ -1208,8 +1209,33 @@ input[type="range"] {
     background: white;
     border-bottom: 1px solid white;
     z-index: 2;
+    box-shadow: 0px 0px 12px #999;
+    top: 0px;
+    border-radius: 3px 3px 0 0;
 }
 
 .dashboard [type=radio]:checked ~ label ~ .content {
-    z-index: 1;
+    z-index: 2;
+}
+
+.dashboard :not(checked) .tab label {
+    top:5px;
+}
+
+.dashboard .tab ul li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    list-style-type: none;
+    line-height: 20px;
+    margin: 0;
+}
+
+.dashboard .tab ul li span.open {
+    color:red;
+    font-weight: 700;
+}
+
+.dashboard .tab ul li span.closed {
+    color:green;
+    font-weight: 700;
 }

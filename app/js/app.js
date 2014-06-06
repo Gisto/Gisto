@@ -31,7 +31,7 @@ angular.module('gisto', [
         window.ioSocket = socket;
 
         $routeProvider.when('/', {
-            templateUrl: 'partials/empty.html',
+            templateUrl: 'partials/dashboard.html',
             controller: mainCtrl
         });
         $routeProvider.when('/login', {

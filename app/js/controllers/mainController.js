@@ -1,6 +1,6 @@
 'use strict';
 
-function mainCtrl($scope, $http, appSettings) {
+function mainCtrl($scope, $http, appSettings, $q) {
 
     appSettings.loadSettings().then(function(result) {
         $scope.latestVersion = appSettings.get('latestVersion');
@@ -14,10 +14,18 @@ function mainCtrl($scope, $http, appSettings) {
         gui.Shell.openExternal('http://www.gistoapp.com');
     };
 
-    // get the current version number
-    $http.get('./package.json').success(function (data) {
-        $scope.currentVersion = data.version;
-        console.log('package json', data);
+    $q.all([
+        $http.get('./package.json'),
+        $http.get('https://raw.githubusercontent.com/Gisto/Gisto/master/changelog.md'),
+        $http.get('https://raw.githubusercontent.com/Gisto/Gisto/master/LICENSE'), // need to be news feed of some sort
+        $http.get('https://api.github.com/repos/gisto/gisto/issues?state=all')
+    ]).then(function(mainData){
+        $scope.currentVersion = mainData[0].data.version;
+        $scope.changes = mainData[1].data;
+        $scope.license = mainData[2].data;
+        $scope.issues = mainData[3].data;
+    },function(err){
+        console.warn('$q error',err);
     });
 
     var timestamp = new Date().getTime() - 86400000; // 1 day ago
