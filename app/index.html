@@ -53,6 +53,9 @@
                 <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
                 <i class="icon-file"></i>
                 <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
+
+                <span ng-if="gist.bigFile" class="pils gist-comment" title="This gist contains file over 1mb"><i class="icon-warning-sign"></i> big file</span>
+
                 <p>
                     <span data-ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag |
                         removeTagSymbol}} </i></span>
@@ -82,11 +85,11 @@
 <script data-ng-if="editor_ext.statusbar" src="lib/ace/ext-statusbar.js"></script>
 <script data-ng-if="editor_ext.autocompletion" src="lib/ace/ext-language_tools.js"></script>
 
-<!-- env:prod -->
+<!-- env:prod --#>
 <script src="js/gisto.min.js"></script>
 <!-- env:prod:end -->
 
-<!-- env:dev --#>
+<!-- env:dev -->
 <script src="lib/jquery/jquery.js"></script>
 <script src="lib/socket-io/socket.io.min.js"></script>
 <script src="lib/angular/angular.js"></script>
