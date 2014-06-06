@@ -215,18 +215,23 @@ angular.module('gisto.service.gitHubAPI', [
                         data.lastUpdated = new Date();
                         console.log(data.lastUpdated);
 
+                        gist.single = data; // update the current gist with the new data
+                        gist.single._original = angular.copy(data); //backup original gist
+
                         // Get files which are more than 1MB in size
                         angular.forEach(data.files, function (filedata, filename) {
                             if (filedata.truncated === true) {
                                 requestHandler.get(filedata.raw_url, {stopNotification: true}).success(function (result) {
                                     data.files[filename].content = result;
+                                    // push the data to history as well as it is the original
+                                    // content of the gist
+                                    gist.single._original.files[filename].content = result;
                                     $rootScope.$broadcast('ace-update', filename);
                                 });
                             }
                         });
 
-                        gist.single = data; // update the current gist with the new data
-                        gist.single._original = angular.copy(data); //backup original gist
+
 
                         deferred.resolve(gist);
 
