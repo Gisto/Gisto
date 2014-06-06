@@ -11,15 +11,20 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
             if ($attrs.language === 'markdown') {
                 $scope.showmd = true;
             }
+
+
             appSettings.loadSettings().then(function (appSettingsResult) {
+
 
                 $timeout(function () {
 
                     var lang = $attrs.language,
-                        font = $attrs.font,
+                        font = parseInt(appSettingsResult.font_size),
                         indexed = $attrs.index,
                         editor = ace.edit('editor-' + $attrs.index),
-                        theme = $attrs.theme;
+                        session = editor.getSession(),
+                        theme = $attrs.theme,
+                        inUpdateProcess = false;
 
                     // Emmet
                     if (lang === 'html' && appSettingsResult.editor_ext.emmet) {
@@ -65,6 +70,13 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                     console.log('min_lines', appSettingsResult.min_lines);
 
                     editor.on('change', function (data) {
+
+                        // change coming from manually changing the value using the api
+                        // skip the update
+                        if (inUpdateProcess) {
+                            return;
+                        }
+
                         $scope.$apply(function () {
                             $scope.file.content = editor.getValue();
                             if (!$scope.edit) {
@@ -72,6 +84,16 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                             }
                         });
                     });
+
+                    // listen to ngModel render and update the session
+                    $scope.$on('ace-update', function(e, updatedFile) {
+                        if ($scope.file.filename === updatedFile) {
+                            inUpdateProcess = true;
+                            session.setValue($scope.file.content);
+                            inUpdateProcess = false;
+                        }
+                    });
+
 
                 }, 0);
             });

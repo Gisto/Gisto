@@ -309,7 +309,7 @@ ul li .the-star i {
 
 .notification div:before {
     border-color: rgba(191, 191, 191, 0);
-    border-bottom-color: #bfbfbf;
+    border-bottom-color: #555;
 }
 
 .notification ul li {
@@ -337,4 +337,19 @@ ul li .the-star i {
 details[open] {
     color: #fff;
     background: -webkit-linear-gradient(top, #6D6D6D, #3C3C3C);
+}
+
+.notification-forks div p, .notification-forks div a {
+    text-shadow: 1px 1px 1px #000;
+    color:#fff;
+}
+
+.login-form h1 {
+    color: #555;
+    text-shadow: 1px 1px 2px #fff;
+}
+
+.login p {
+    font-size: 16px;
+    color: #555;
 }

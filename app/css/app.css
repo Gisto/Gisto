@@ -6,7 +6,7 @@
         display: none;
     }
 
-    div.toolbox span {
+    div.toolbox:not(.wide) span {
         width: 100px !important;
     }
 }
@@ -748,13 +748,13 @@ details > summary {
 
 .notification div:after {
     border-width: 10px;
-    left: 8%;
+    right: 4%;
     margin-left: -10px;
 }
 
 .notification div:before {
     border-width: 11px;
-    left: 8%;
+    right: 4%;
     margin-left: -11px;
 }
 
@@ -826,6 +826,10 @@ details > summary {
     line-height: 27px;
     font-size: 14px;
     text-shadow: 1px 1px 1px #fff;
+}
+
+.notification-forks img {
+    width: 50px;
 }
 
 .notification-forks div b {
