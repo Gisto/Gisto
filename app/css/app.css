@@ -1143,6 +1143,7 @@ input[type="range"] {
     padding: 20px;
     border-radius: 3px;
     box-shadow: 0px 0px 20px #ccc inset;
+    box-shadow: 0px 0px 20px #ccc inset;
 }
 
 .dash-item:nth-child(1) {
