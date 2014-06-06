@@ -1,6 +1,6 @@
 'use strict';
 
-function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService, appSettings) {
+function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService, appSettings, $filter) {
 
     $scope.gist = gistData.getGistById($routeParams.gistId);
 
@@ -53,6 +53,14 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
             }, 2500);
         }
 
+    };
+
+    $scope.buildFileLink = function(gist, file) {
+        return $filter('dotToDash')('https://gist.github.com/' + gist.single.owner.login + '/' + gist.single.id + '/#file-' + file.filename);
+    };
+
+    $scope.buildGistLink = function(gist) {
+        return $filter('dotToDash')('https://gist.github.com/' + gist.owner.login + '/' + gist.id +'.js');
     };
 
     $scope.copyToClipboard = function (data, message, type) {

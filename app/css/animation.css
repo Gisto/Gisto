@@ -68,16 +68,16 @@
 
 /**/
 
-.animate-star.ng-enter,
-.animate-star.ng-leave {
+.animate-starred.ng-enter,
+.animate-starred.ng-leave {
     -webkit-animation-duration: 2s;
     animation-duration: 2s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
 
-.animate-star.ng-leave.ng-leave-active,
-.animate-star.ng-leave {
+.animate-starred.ng-leave.ng-leave-active,
+.animate-starred.ng-leave {
     -webkit-animation-name: starOut;
     animation-name: starOut;
 }
@@ -100,8 +100,8 @@
     }
 }
 
-.animate-star.ng-enter.ng-enter-active,
-.animate-star.ng-leave {
+.animate-starred.ng-enter.ng-enter-active,
+.animate-starred.ng-leave {
     -webkit-animation-name: starIn;
     animation-name: starIn;
 }
