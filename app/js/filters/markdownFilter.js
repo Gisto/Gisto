@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('gisto.filter.markDown', []).filter('markDown', function ($compile, $rootScope) {
+angular.module('gisto.filter.markDown', []).filter('markDown', function () {
     return function (input) {
         if (typeof input === 'undefined') {
             return;
