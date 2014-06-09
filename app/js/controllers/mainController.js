@@ -1,6 +1,6 @@
 'use strict';
 
-function mainCtrl($scope, $http, appSettings, $q) {
+function mainCtrl($scope, $http, appSettings, $q, gistData) {
 
     appSettings.loadSettings().then(function(result) {
         $scope.latestVersion = appSettings.get('latestVersion');
@@ -13,6 +13,12 @@ function mainCtrl($scope, $http, appSettings, $q) {
     $scope.gotoSite = function () {
         gui.Shell.openExternal('http://www.gistoapp.com');
     };
+
+    $scope.gists = gistData.list;
+
+    $scope.$watch('gists', function(val){
+            $scope.private = val;
+    });
 
     $q.all([
         $http.get('./package.json'),
