@@ -4,8 +4,8 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
     return {
         restrict: 'E',
         template: '<div ng-if="showmd" class="special-editor-markdown" ng-bind-html-unsafe="file.content | markDown"></div>' +
-        '<pre id="editor-{{$index}}">{{file.content}}</pre>' +
-        '<div data-ng-if="editor_ext.statusbar" id="statusBar-{{$index}}"><i class="icon-info-sign"></i> </div>',
+            '<pre id="editor-{{$index}}">{{file.content}}</pre>' +
+            '<div data-ng-if="editor_ext.statusbar" id="statusBar-{{$index}}"><i class="icon-info-sign"></i> </div>',
         link: function ($scope, $element, $attrs) {
             $scope.showmd = false;
             if ($attrs.language === 'markdown') {
@@ -77,16 +77,19 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                             return;
                         }
 
-                        $scope.$apply(function () {
-                            $scope.file.content = editor.getValue();
-                            if (!$scope.edit) {
-                                $scope.enableEdit();
-                            }
-                        });
+                        // only react to user actions
+                        if (editor.curOp && editor.curOp.command.name) {
+                            $scope.$apply(function () {
+                                $scope.file.content = editor.getValue();
+                                if (!$scope.edit) {
+                                    $scope.enableEdit();
+                                }
+                            });
+                        }
                     });
 
                     // listen to ngModel render and update the session
-                    $scope.$on('ace-update', function(e, updatedFile) {
+                    $scope.$on('ace-update', function (e, updatedFile) {
                         if ($scope.file.filename === updatedFile) {
                             inUpdateProcess = true;
                             session.setValue($scope.file.content);
