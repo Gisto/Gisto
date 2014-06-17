@@ -20,11 +20,11 @@
         </div>
     </div>
 
-    <span data-ng-switch on="gist.single.starred">
-        <span data-ng-switch-when="true">
+    <span data-ng-switch on="gist.single.starred" class="star-switch">
+        <span data-ng-switch-when="true" class="animate-star-button">
     <a data-ng-click="unstar()" title="unStar"><i class="star icon-star"></i></a>
         </span>
-        <span class="" data-ng-switch-default>
+        <span class="animate-star-button" data-ng-switch-default>
     <a data-ng-click="star()" title="Star"><i class="star icon-star-empty"></i></a>
         </span>
 </span>

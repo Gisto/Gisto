@@ -124,6 +124,24 @@
     }
 }
 
+.animate-star-button.ng-enter,
+.animate-star-button.ng-leave {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: linear 0s;
+}
+
+.animate-star-button.ng-enter,
+.animate-star-button.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+.animate-star-button.ng-leave,
+.animate-star-button.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
 .view-animation.ng-enter,
 .view-animation.ng-leave {
          position: absolute;
