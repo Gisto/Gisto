@@ -138,6 +138,13 @@ angular.module('gisto.service.gitHubAPI', [
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
                             data[item].filesCount = Object.keys(data[item].files).length;
+                            angular.forEach(data[item].files,function(fileSize){
+                                if(fileSize.size > 1048576) {
+                                    data[item].bigFile = true;
+                                    console.info(' --- file size',fileSize.size);
+                                }
+                            });
+                            console.info('data[item]',data[item]);
                         }
 
                         // Set lastUpdated for 60 sec cache
@@ -215,18 +222,23 @@ angular.module('gisto.service.gitHubAPI', [
                         data.lastUpdated = new Date();
                         console.log(data.lastUpdated);
 
+                        gist.single = data; // update the current gist with the new data
+                        gist.single._original = angular.copy(data); //backup original gist
+
                         // Get files which are more than 1MB in size
                         angular.forEach(data.files, function (filedata, filename) {
                             if (filedata.truncated === true) {
                                 requestHandler.get(filedata.raw_url, {stopNotification: true}).success(function (result) {
                                     data.files[filename].content = result;
+                                    // push the data to history as well as it is the original
+                                    // content of the gist
+                                    gist.single._original.files[filename].content = result;
                                     $rootScope.$broadcast('ace-update', filename);
                                 });
                             }
                         });
 
-                        gist.single = data; // update the current gist with the new data
-                        gist.single._original = angular.copy(data); //backup original gist
+
 
                         deferred.resolve(gist);
 

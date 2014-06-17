@@ -762,13 +762,13 @@ details > summary {
 
 .notification div:after {
     border-width: 10px;
-    left: 8%;
+    right: 4%;
     margin-left: -10px;
 }
 
 .notification div:before {
     border-width: 11px;
-    left: 8%;
+    right: 4%;
     margin-left: -11px;
 }
 
@@ -840,6 +840,10 @@ details > summary {
     line-height: 27px;
     font-size: 14px;
     text-shadow: 1px 1px 1px #fff;
+}
+
+.notification-forks img {
+    width: 50px;
 }
 
 .notification-forks div b {
@@ -1102,6 +1106,16 @@ input[type="range"] {
 
 .special-editor-markdown {
     padding: 10px 20px;
+}
+
+.editor-btn {
+    background: #555;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    margin: 0 0 0 5px;
+    border: 1px solid #666;
 }
 
 .star-switch {

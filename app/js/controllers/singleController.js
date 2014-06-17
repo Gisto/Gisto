@@ -21,6 +21,20 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         $scope.followers_array = response.data;
     });
 
+    $scope.loadRawFile = function(file) {
+//        $scope.$apply(function() {
+//            ghAPI.loadRawContent(file).then(function(response) {
+//                file.content = response;
+//            });
+//        });
+
+        ghAPI.loadRawContent(file).then(function(response) {
+            file.content = response;
+            file.loadedRawContent = true;
+        });
+
+    };
+
     $scope.share = function () {
         if ($scope.userToShare) {
             notificationService.send('sendNotification', { recipient: $scope.userToShare, gistId: $scope.gist.id, name: $scope.gist.description, gravatar_id: appSettings.get('gravatar_id')});
