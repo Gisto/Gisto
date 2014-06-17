@@ -2,7 +2,7 @@
     <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
     <span class="type {{isPublic | publicOrPrivet}}"><i class="icon-{{isPublic | publicOrPrivet}}"></i></span>
-    {{description}}
+    {{description | truncate:80}}
 </header>
 
 <div class="messenger edit">
