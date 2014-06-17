@@ -60,7 +60,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
     };
 
     $scope.buildGistLink = function(gist) {
-        return $filter('dotToDash')('https://gist.github.com/' + gist.owner.login + '/' + gist.id +'.js');
+        return 'https://gist.github.com/' + gist.owner.login + '/' + gist.id +'.js';
     };
 
     $scope.copyToClipboard = function (data, message, type) {
