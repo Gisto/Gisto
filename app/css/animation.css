@@ -151,11 +151,11 @@
 
 
 .view-animation.ng-enter {
-         transition: linear 0.1s;
+         transition: linear 0s;
 }
 
 .view-animation.ng-leave {
-         transition: linear 0.1s;
+         transition: linear 0s;
 }
 
 .view-animation.ng-enter,
