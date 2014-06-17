@@ -1,48 +1,48 @@
 {
-  "name": "gisto",
-  "version": "0.2.4b",
-  "description": "Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may thing of Gisto as Evernote for code.",
-  "homepage": "http://www.gistoapp.com/",
-  "main": "app/index.html",
-  "dependencies": {
-    "gulp": "~3.6.0"
-  },
-  "devDependencies": {
-    "gulp-concat-sourcemap": "~1.2.1",
-    "gulp-connect": "~2.0.5",
-    "gulp-strip-debug": "~0.3.0",
-    "gulp-util": "~2.2.14",
-    "node-webkit-builder": "0.0.2",
-    "yargs": "~1.2.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gisto/gisto.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gisto/gisto/issues"
-  },
-  "keywords": [
-    "gisto",
-    "gist",
-    "code",
-    "snippets"
-  ],
-  "author": [
-    {
-      "name": "Maayan Glikser",
-      "url": "http://www.glikm.com"
+    "name": "gisto",
+    "version": "0.2.5b",
+    "description": "Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may thing of Gisto as Evernote for code.",
+    "homepage": "http://www.gistoapp.com/",
+    "main": "app/index.html",
+    "dependencies": {
+        "gulp": "~3.6.0"
     },
-    {
-      "name": "Sasha Khamkov",
-      "url": "http://www.sanusart.com"
-    }
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/gisto/gisto/blob/master/LICENSE"
-    }
-  ],
-  "readmeFilename": "README.md"
+    "devDependencies": {
+        "gulp-concat-sourcemap": "~1.2.1",
+        "gulp-connect": "~2.0.5",
+        "gulp-strip-debug": "~0.3.0",
+        "gulp-util": "~2.2.14",
+        "node-webkit-builder": "0.0.2",
+        "yargs": "~1.2.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gisto/gisto.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gisto/gisto/issues"
+    },
+    "keywords": [
+        "gisto",
+        "gist",
+        "code",
+        "snippets"
+    ],
+    "author": [
+        {
+            "name": "Maayan Glikser",
+            "url": "http://www.glikm.com"
+        },
+        {
+            "name": "Sasha Khamkov",
+            "url": "http://www.sanusart.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/gisto/gisto/blob/master/LICENSE"
+        }
+    ],
+    "readmeFilename": "README.md"
 }

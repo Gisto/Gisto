@@ -1,3 +1,24 @@
+0.2.5b
+-----------------
+- FEATURE (settings): add export/import of user settings
+- FEATURE (settings): add export/import of user settings
+- FEATURE (single gist): show fork info if gist is forked
+- FEATURE (share gist): add auto-completion to share gist
+- FEATURE (editor): add preview of markdown
+- UI (big files): add indication of big file
+- UI (css): add markdown css
+- UI (css): update text fields to reflect valid/invalid state
+- FIX (editor): fix font size settings issue
+- FIX (dotfiles in gist): fix links of dotfiles
+- FIX (gist API): gisto fail to handle files >1MB
+- FIX (deleting a file): local copies of files now properly delete when not yet saved to GitHub
+- FIX (drag & drop): drag area disappears on drag cancel
+- FIX: Files that do not exist in github do not send a patch request upon deletion.
+- FIX: Fix not being able to save when there is an empty file in create screen.
+- FIX (single gist): notify upon Error when creating gist + validate filename with regex.
+- FIX (single gist): URLs of gist API for single gist view.
+- FIX (single gist): #81 where username was incorrectly pulled from json causing gist file url appear with no username parameter thus double slash.
+
 0.2.4b
 -----------------
 - Fix: Editor overflow where pasted text would appear visually broken
