@@ -4,7 +4,11 @@ function sharedCtrl($scope, ghAPI, gistData, $routeParams, $location, notificati
 
     $scope.author = $routeParams.user;
 
-    $scope.gist = ghAPI.gist($routeParams.id);
+    ghAPI.gist($routeParams.id).then(function(gist) {
+        $scope.gist = gist;
+    });
+
+    console.log($scope.gist);
 
     $scope.fork = function() {
         ghAPI.fork($routeParams.id).then(function(data) {
