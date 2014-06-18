@@ -217,7 +217,7 @@
                     class="icon-pencil icon-rotate-90"></i></a>
             <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
                     class="icon-download-alt"></i></a>
-            <a to-url="https://gist.github.com/{{ gist.single.owner.login }}/{{ gist.single.id }}/#file-{{ file.filename | dotToDash }}"
+            <a to-url="https://gist.github.com/{{ gist.single.owner.login }}/{{ gist.single.id }}/#file-{{ file.filename | dotToDash | lowercase }}"
                title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
             <a ng-click="copyToClipboard('https://gist.github.com/{{ gist.single.owner.login }}/{{ gist.single.id }}/#file-{{ file.filename | dotToDash }}', 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>
