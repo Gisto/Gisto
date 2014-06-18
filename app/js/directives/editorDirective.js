@@ -49,6 +49,11 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                         var statusBar = new StatusBar(editor, document.getElementById('statusBar-' + $attrs.index));
                     }
 
+                    // VIM mode
+                    if(appSettingsResult.editor_vim_mode) {
+                        editor.setKeyboardHandler("ace/keyboard/vim");
+                    }
+
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
                     editor.setFontSize(font);
