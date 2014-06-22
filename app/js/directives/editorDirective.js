@@ -74,6 +74,18 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                     console.log('max_lines', appSettingsResult.max_lines);
                     console.log('min_lines', appSettingsResult.min_lines);
 
+
+                    editor.on('paste', function(text) {
+                        // delay the change event to the end of the call stack
+                        // and fire a change event with an extra parameter indicating
+                        // that this is a paste event and continue to update the reference
+                        // to angular file model.
+                        $timeout(function() {
+                            editor._emit('change', {target: editor, pasteEvent: true});
+                        },0);
+
+                    });
+
                     editor.on('change', function (data) {
 
                         // change coming from manually changing the value using the api
@@ -83,7 +95,7 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                         }
 
                         // only react to user actions
-                        if (editor.curOp && editor.curOp.command.name) {
+                        if (data.pasteEvent || editor.curOp && editor.curOp.command.name) {
                             $scope.$apply(function () {
                                 $scope.file.content = editor.getValue();
                                 if (!$scope.edit) {
