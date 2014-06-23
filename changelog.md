@@ -1,3 +1,12 @@
+0.2.6b
+-----------------
+- FEATURE (editor): add vim mode
+- FIX (create gist): Fix text overflowing from the description field 
+- FIX (single gist): wrong direct link for uppercase characters in filename or extension
+- FIX (editor): paste now updates correctly in the angular file model
+- FIX (edit mode): Edit mode is now canceled upon route change
+- FIX (Open file in browser): Open file in browser is now opening correctly
+
 0.2.5b
 -----------------
 - FEATURE (settings): add export/import of user settings
