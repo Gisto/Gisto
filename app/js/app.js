@@ -11,6 +11,7 @@ angular.module('gisto', [
         'gisto.filter.codeLanguage',
         'gisto.filter.removeTagSymbol',
         'gisto.filter.dotToDash',
+        'gisto.filter.encodeUrl',
         'gisto.directive.scrollTo',
         'gisto.directive.editor',
         'gisto.directive.toUrl',
