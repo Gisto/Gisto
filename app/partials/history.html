@@ -111,9 +111,9 @@
 
             <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
                     class="icon-download-alt"></i></a>
-            <a to-url="https://gist.github.com/{{ gist.history.user.login }}/{{ gist.history.id }}/{{ gist.history.history[0].version }}/#file-{{ file.filename | dotToDash | lowercase | encodeUrl }}"
+            <a to-url="https://gist.github.com/{{ gist.history.owner.login }}/{{ gist.history.id }}/{{ gist.history.history[0].version }}/#file-{{ file.filename | githubFileName }}"
                title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
-            <a ng-click="copyToClipboard('https://gist.github.com/{{ gist.history.user.login }}/{{ gist.history.id }}/{{ gist.history.history[0].version }}/#file-{{ file.filename | dotToDash }}', 'Direct link copied to clipboard')"
+            <a ng-click="copyToClipboard('https://gist.github.com/{{ gist.history.owner.login }}/{{ gist.history.id }}/{{ gist.history.history[0].version }}/#file-{{ file.filename | githubFileName }}', 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
         </div>
