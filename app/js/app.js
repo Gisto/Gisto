@@ -63,4 +63,8 @@ angular.module('gisto', [
         });
     }]).run(function($rootScope) {
         $rootScope.gistoReady = false;
+
+       $rootScope.$on('$routeChangeStart', function() {
+          $rootScope.edit = false;
+       });
     });
