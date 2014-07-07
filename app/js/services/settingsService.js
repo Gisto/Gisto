@@ -45,6 +45,7 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 theme: 'default',
                 editor_theme: 'tomorrow',
                 editor_ext: [],
+                editor_vim_mode: false,
                 min_lines: 0,
                 max_lines: 50
             },

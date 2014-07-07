@@ -14,6 +14,7 @@ angular.module('gisto', [
         'gisto.filter.codeLanguage',
         'gisto.filter.removeTagSymbol',
         'gisto.filter.dotToDash',
+        'gisto.filter.githubFileName',
         'gisto.directive.scrollTo',
         'gisto.directive.editor',
         'gisto.directive.toUrl',
@@ -72,4 +73,8 @@ angular.module('gisto', [
         });
     }]).run(function($rootScope, $animate) {
         $rootScope.gistoReady = false;
+
+       $rootScope.$on('$routeChangeStart', function() {
+          $rootScope.edit = false;
+       });
     });
