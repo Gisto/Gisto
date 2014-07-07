@@ -70,7 +70,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
     };
 
     $scope.buildFileLink = function(gist, file) {
-        return $filter('dotToDash')('https://gist.github.com/' + gist.single.owner.login + '/' + gist.single.id + '/#file-' + file.filename);
+        return $filter('githubFileName')('https://gist.github.com/' + gist.single.owner.login + '/' + gist.single.id + '/#file-' + file.filename);
     };
 
     $scope.buildGistLink = function(gist) {

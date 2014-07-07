@@ -4,12 +4,12 @@ function singleGistHistoryCtrl($scope, $routeParams, gistData, ghAPI, $filter) {
     $scope.gist = gistData.getGistById($routeParams.gistId);
     $scope.version_hash = $routeParams.gistRevisionId;
 
-    var dotToDash = $filter('dotToDash');
+    var githubFileName = $filter('githubFileName');
 
     ghAPI.history($routeParams.gistId,$routeParams.gistRevisionId);
 
     $scope.buildHistoryLink = function(gist,file) {
-        return 'https://gist.github.com/' + gist.history.owner.login + '/' + gist.history.id + '/' + gist.history.history[0].version + '/#file-' + dotToDash(file.filename);
+        return 'https://gist.github.com/' + gist.history.owner.login + '/' + gist.history.id + '/' + gist.history.history[0].version + '/#file-' + githubFileName(file.filename);
     };
 
     $scope.copyToClipboard = function (data, message,type) {
