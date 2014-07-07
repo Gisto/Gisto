@@ -20,7 +20,7 @@ var clients = [];
 io.sockets.on('connection', function(client) {
 
     console.log('client connected');
-    io.sockets.socket(client.id).emit('identify');
+    io.sockets.to(client.id).emit('identify');
 
     client.on('registerClient', function(data) {
         console.log(data);
@@ -43,7 +43,7 @@ io.sockets.on('connection', function(client) {
             } else {
 
                 notifications.forEach(function(notification) {
-                    io.sockets.socket(client.id).emit('receiveNotification', notification);
+                    io.sockets.to(client.id).emit('receiveNotification', notification);
                 });
             }
         });
@@ -84,7 +84,7 @@ io.sockets.on('connection', function(client) {
 
             for (var i = 0, limit = recipient.length; i < limit; i++) {
                 console.log('sending notification: ' + i);
-                io.sockets.socket(recipient[i].id).emit('notificationRead', {
+                io.sockets.to(recipient[i].id).emit('notificationRead', {
                     gistId: item.gistId
                 });
             }
@@ -106,7 +106,7 @@ io.sockets.on('connection', function(client) {
         if (recipient && recipient.length > 0) {
 
             for (var i = 0, limit = recipient.length; i < limit; i++) {
-                io.sockets.socket(recipient[i].id).emit('receiveNotification', data);
+                io.sockets.to(recipient[i].id).emit('receiveNotification', data);
             }
         }
 

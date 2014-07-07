@@ -20,17 +20,17 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
             },
             logout: function() {
                 console.log('log out');
-                window.ioSocket.socket.disconnect();
+                socket.disconnect();
             },
             login: function() {
-                window.ioSocket.socket.connect();
+                //window.ioSocket.socket.connect();
             },
             send: function(e, data) {
-                if (!window.ioSocket.socket.connected) {
-                    // notify
-                    $rootScope.$broadcast('serverFailure');
-                    return;
-                }
+//                if (!window.ioSocket.socket.connected) {
+//                    // notify
+//                    $rootScope.$broadcast('serverFailure');
+//                    return;
+//                }
 
                 socket.emit(e,data);
             },
@@ -59,11 +59,11 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
             },
             remove: function (id) {
 
-                if (!window.ioSocket.socket.connected) {
-                    // notify
-                    $rootScope.$broadcast('serverFailure');
-                    return;
-                }
+//                if (!window.ioSocket.socket.connected) {
+//                    // notify
+//                    $rootScope.$broadcast('serverFailure');
+//                    return;
+//                }
 
                 var gist = this.notifications.filter(function (item) {
                     console.log('filter', item, id);

@@ -76,26 +76,26 @@
 
 <!--SCRIPTS-->
 
-<script src="lib/ace/ace.js"></script>
+<script src="lib/ace-builds/src-min-noconflict/ace.js"></script>
 
-<script data-ng-if="editor_ext.emmet" src="lib/ace/ext-emmet.js"></script>
-<script data-ng-if="editor_ext.emmet" src="lib/emmet.js"></script>
-<script data-ng-if="editor_ext.statusbar" src="lib/ace/ext-statusbar.js"></script>
-<script data-ng-if="editor_ext.autocompletion" src="lib/ace/ext-language_tools.js"></script>
+<script data-ng-if="editor_ext.emmet" src="lib/ace-builds/src-min-noconflict/ext-emmet.js"></script>
+<script data-ng-if="editor_ext.emmet" src="lib/emmet/emmet.min.js"></script>
+<script data-ng-if="editor_ext.statusbar" src="lib/ace-builds/src-min-noconflict/ext-statusbar.js"></script>
+<script data-ng-if="editor_ext.autocompletion" src="lib/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
 
 <!-- env:prod --#>
 <script src="js/gisto.min.js"></script>
 <!-- env:prod:end -->
 
 <!-- env:dev -->
-<script src="lib/jquery/jquery.js"></script>
-<script src="lib/socket-io/socket.io.min.js"></script>
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/socket.io-client/socket.io.js"></script>
 <script src="lib/angular/angular.js"></script>
-<script src="lib/angular/angular-route.js"></script>
-<script src="lib/angular/angular-animate.js"></script>
-<script src="lib/angular/angular-sanitize.js"></script>
-<script src="lib/angular-ui/ui-utils.min.js"></script>
-<script src="lib/socket-io/socket.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+<script src="lib/angular-animate/angular-animate.js"></script>
+<script src="lib/angular-sanitize/angular-sanitize.js"></script>
+<script src="lib/angular-ui-utils/ui-utils.min.js"></script>
+<script src="lib/angular-socket-io/socket.min.js"></script>
 <script src="js/app.js"></script>
 <script src="js/services/settingsService.js"></script>
 <script src="js/services/gistDataService.js"></script>
@@ -124,7 +124,7 @@
 <script src="js/directives/editorDirective.js"></script>
 <script src="js/directives/scrollDirective.js"></script>
 <script src="js/directives/goToUrlDirective.js"></script>
-<script src="lib/showdown.js"></script>
+<script src="lib/showdown/compressed/showdown.js"></script>
 <!-- env:dev:end -->
 
 </body>
