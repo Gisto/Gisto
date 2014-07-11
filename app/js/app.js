@@ -29,7 +29,8 @@ angular.module('gisto', [
     factory('socket', function (socketFactory) {
         return socketFactory({
             //prefix: '',
-            ioSocket: io.connect('http://localhost:3000')
+            //ioSocket: io.connect('http://localhost:3001') //development
+            ioSocket: io.connect('http://server.gistoapp.com:3001')
         });
     }).
     config(['$routeProvider', function ($routeProvider) {
