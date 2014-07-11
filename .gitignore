@@ -85,3 +85,5 @@ bin
 app/config.json
 server/config.js
 
+# commit .bowerrc
+!.bowerrc
