@@ -107,7 +107,19 @@ gulp.task('server', function () {
  * Use: gulp concat
  */
 gulp.task('concat', function () {
-    gulp.src(['./app/lib/jquery/*.js', './app/lib/angular/*.js', './app/lib/socket-io/*.js', './app/lib/angular-ui/*.js', './app/js/*/*.js', './app/js/app.js', './app/lib/showdown.js'])
+    gulp.src([
+    'app/lib/jquery/dist/jquery.min.js',
+    'app/lib/socket.io-client/socket.io.js',
+    'app/lib/angular/angular.js',
+    'app/lib/angular-route/angular-route.js',
+    'app/lib/angular-animate/angular-animate.js',
+    'app/lib/angular-sanitize/angular-sanitize.js',
+    'app/lib/angular-ui-utils/ui-utils.min.js',
+    'app/lib/angular-socket-io/socket.min.js',
+    'app/lib/showdown/compressed/showdown.js',
+    'app/js/*.js',
+    '!app/js/gisto.min.js'
+    ])
         .pipe(strip_log())
         .pipe(concat('gisto.min.js'))
         .pipe(gulp.dest('./app/js/'));
@@ -119,7 +131,7 @@ gulp.task('concat', function () {
  * Build binaries for specified platform
  * Use: gulp build --os=win|osx|linux32|linux64|all
  */
-gulp.task('build', [/*'prod'*/], function () {
+gulp.task('build', ['prod'], function () {
     var os = argv.os;
     if (!os) {
         return gutil.log(gutil.colors.red('NOTE'), gutil.colors.white('Please specify platform (Use: gulp build --os=win|osx|linux32|linux64|all)'));
