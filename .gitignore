@@ -84,6 +84,7 @@ bin
 ## Gisto Specific ##
 app/config.json
 server/config.js
+app/lib
 
 # commit .bowerrc
 !.bowerrc

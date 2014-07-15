@@ -69,6 +69,12 @@ angular.module('gisto', [
             templateUrl: 'partials/shared.html',
             controller: sharedCtrl
         });
+
+        $routeProvider.when('/loading', {
+            templateUrl: 'partials/loading.html',
+            controller: loadingCtrl
+        });
+
         $routeProvider.otherwise({
             redirectTo: '/'
         });

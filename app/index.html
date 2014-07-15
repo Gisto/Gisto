@@ -21,7 +21,7 @@
 
 </head>
 
-<body ng-style="body_zoom()" class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute}">
+<body ng-style="body_zoom()" class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute || !$root.gistoReady}">
 <aside class="flex" data-ng-if="$root.gistoReady" data-ng-controller="listGistCtrl"
        data-ng-hide="edit">
 
@@ -66,6 +66,7 @@
     <footer class="flex">
         <div>
             <span>Total {{filteredGists.length}} gists</span>
+            <span ng-if="enterpriseMode" title="Enterprise mode"><i class="icon-briefcase" style="font-size: 14px;"></i> Enterprise mode &nbsp;</span>
             <span title="Gisto server status"><i class="icon-globe"
                               ng-class="{offline: !onlineStatus.status, online: onlineStatus.status }"></i> {{ onlineStatus.state }}</span>
         </div>
@@ -90,7 +91,7 @@
 <!-- env:dev -->
 <script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/socket.io-client/socket.io.js"></script>
-<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular.min.js"></script>
 <script src="lib/angular-route/angular-route.js"></script>
 <script src="lib/angular-animate/angular-animate.js"></script>
 <script src="lib/angular-sanitize/angular-sanitize.js"></script>
@@ -114,6 +115,7 @@
 <script src="js/controllers/settingsController.js"></script>
 <script src="js/controllers/sharedController.js"></script>
 <script src="js/controllers/footerController.js"></script>
+<script src="js/controllers/loadingController.js"></script>
 <script src="js/filters/markdownFilter.js"></script>
 <script src="js/filters/removeTagSymbolFilter.js"></script>
 <script src="js/filters/removeTagsFilter.js"></script>

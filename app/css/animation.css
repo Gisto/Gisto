@@ -167,3 +167,17 @@
 .view-animation.ng-enter.ng-enter-active {
          opacity: 1;
 }
+
+
+.login-animation.ng-hide-add,
+.login-animation.ng-hide-remove {
+    -webkit-transition:0s linear all;
+    transition:0s linear all;
+
+    /* remember to add this */
+    display:block!important;
+    opacity:1;
+}
+.login-animation.ng-hide {
+    opacity:0;
+}
