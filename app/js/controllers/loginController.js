@@ -1,29 +1,88 @@
 'use strict';
 
-function loginCtrl($scope, ghAPI, appSettings, $location) {
+function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
 
     $scope.tokenAttempts = 0;
     $scope.useManualToken = false;
+    $scope.active_endpoint = 'public';
 
-    $scope.toggleManualToken = function() {
-      $scope.useManualToken = !$scope.useManualToken;
+    $rootScope.enterpriseMode = false;
+
+    $scope.toggleManualToken = function () {
+        $scope.useManualToken = !$scope.useManualToken;
     };
 
-    $scope.step1 = function() {
+    $scope.step1 = function () {
         $scope.step2 = false;
     };
+
+    $scope.showEnterprise = function () {
+        $scope.showEnterpriseSetup = true;
+    };
+
+    $scope.hideEnterprise = function () {
+        $scope.showEnterpriseSetup = false;
+    };
+
+    $scope.saveEnterpriseConfig = function () {
+
+
+        appSettings.loadSettings(function (settings) {
+
+            settings.endpoints['enterprise'] = {
+                api_url: $scope.enterprise.api_url,
+                client_id: $scope.enterprise.client_id,
+                client_secret: $scope.enterprise.client_secret
+            };
+
+            // save changes to settings
+            appSettings.set(settings.endpoints);
+
+            // update running instance of GitHub API service
+            ghApi.setEndpoint('enterprise', settings.endpoints['enterprise']);
+        });
+        $scope.hideEnterprise();
+    };
+
+    $scope.toggleEnterpriseMode = function () {
+        $scope.active_endpoint = $scope.active_endpoint === 'enterprise' ? 'public' : 'enterprise';
+        ghAPI.setActiveEndpoint($scope.active_endpoint);
+        console.log($scope.active_endpoint);
+
+        // save the default endpoint
+        appSettings.set({
+            active_endpoint: $scope.active_endpoint
+        });
+    };
+
+    // watch for changes on the active endpoint and update the enterprise state
+    $scope.$watch(function() {
+        return $scope.active_endpoint
+    }, function(value) {
+        console.log('watch value changed', value);
+        $rootScope.enterpriseMode = value === 'enterprise';
+    })
+
+
+
+    appSettings.loadSettings().then(function (settings) {
+        $scope.enterprise = settings.endpoints['enterprise'];
+        $scope.active_endpoint = settings.active_endpoint;
+    });
 
     function handleLogin(response) {
         if (response.status === 201) {
             console.log(response);
 
-            appSettings.loadSettings().then(function(result) {
+            appSettings.loadSettings().then(function (result) {
 
                 appSettings.set({
                     token: response.data.token
                 });
+                ghAPI.setToken(response.data.token);
+
                 console.log('saved token');
-                window.location.href = '#/';
+                $location.url('/');
             });
 
         } else if (response.status === 401 && response.headers['x-github-otp']) {
@@ -55,18 +114,20 @@ function loginCtrl($scope, ghAPI, appSettings, $location) {
         ghAPI.login($scope.user, $scope.pass, handleLogin, $scope.code);
     };
 
-    $scope.manualLogin = function() {
+    $scope.manualLogin = function () {
 
-        ghAPI.isTokenValid($scope.manualToken).then(function() {
+        ghAPI.isTokenValid($scope.manualToken).then(function () {
             // token is valid save and redirect to homepage
-            appSettings.loadSettings().then(function(result) {
-               appSettings.set({
-                   token: $scope.manualToken
-               });
-               $location.url('/');
+            appSettings.loadSettings().then(function (result) {
+                appSettings.set({
+                    token: $scope.manualToken
+                });
+                ghAPI.setToken($scope.manualToken);
+
+                $location.url('/');
             });
 
-        }, function(error) {
+        }, function (error) {
             $('.warn').slideDown('slow');
             $('.warn span').text('Log-in failed - Token is invalid');
             setTimeout(function () {

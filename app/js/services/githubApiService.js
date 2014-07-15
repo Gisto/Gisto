@@ -6,9 +6,34 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.requestHandler'
 ], function ($provide) {
     $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope) {
-        var api_url = 'https://api.github.com/gists',
-            token = appSettings.get('token');
+        var token = appSettings.get('token'),
+            active_endpoint = appSettings.get('active_endpoint'),
+            endpoints = {
+              'public': {
+                  api_url: '',
+                  client_id: '',
+                  client_secret: ''
+              },
+              'enterprise': {
+                  api_url: '',
+                  client_id: '',
+                  client_secret: ''
+              }
+
+            };
+
         var api = {
+
+            setEndpoint: function(endpoint, data) {
+                console.log(endpoint, data);
+              angular.forEach(data, function(value, key) {
+                   endpoints[endpoint][key] = value;
+                });
+            },
+
+            setActiveEndpoint: function(activeEndpoint) {
+              active_endpoint = activeEndpoint
+            },
 
             setToken: function (newToken) {
                 token = newToken;
@@ -30,7 +55,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'GET',
-                        url: 'https://api.github.com/user',
+                        url: endpoints[active_endpoint].api_url + '/user',
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
@@ -60,7 +85,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                 requestHandler({
                     method: 'GET',
-                    url: 'https://api.github.com/user',
+                    url: endpoints[active_endpoint].api_url + '/user',
                     headers: {
                         Authorization: 'token ' + token
                     }
@@ -85,18 +110,18 @@ angular.module('gisto.service.gitHubAPI', [
                 if (twoStepAuthCode) {
                     headers['X-GitHub-OTP'] = twoStepAuthCode;
                 }
-                $http.get('./config.json').then(function (conf) {
+                console.log(endpoints, active_endpoint);
                     requestHandler({
                         method: 'POST',
-                        url: 'https://api.github.com/authorizations',
+                        url: endpoints[active_endpoint].api_url + '/authorizations',
                         data: {
                             "scopes": [
                                 "gist"
                             ],
                             note: "Gisto - Snippets made simple",
                             note_url: "http://www.gistoapp.com",
-                            client_id: conf.data['client_id'],
-                            client_secret: conf.data['client_secret']
+                            client_id: endpoints[active_endpoint].client_id,
+                            client_secret: endpoints[active_endpoint].client_secret
                         },
                         headers: headers
                     }).success(function (data, status, headers, config) {
@@ -114,15 +139,14 @@ angular.module('gisto.service.gitHubAPI', [
                             config: config
                         });
                     });
-                });
             },
 
             // GET /gists
             gists: function (updateOnly, pageNumber) {
-                appSettings.loadSettings().then(function (result) {
-                    var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
+                    console.log(endpoints, active_endpoint);
+                    var url = pageNumber ? endpoints[active_endpoint].api_url + '/gists?page=' + pageNumber : endpoints[active_endpoint].api_url + '/gists',
                         headers = {
-                            Authorization: 'token ' + result['token']
+                            Authorization: 'token ' + token
                         };
 
                     if (updateOnly) {
@@ -138,13 +162,12 @@ angular.module('gisto.service.gitHubAPI', [
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
                             data[item].filesCount = Object.keys(data[item].files).length;
-                            angular.forEach(data[item].files,function(fileSize){
-                                if(fileSize.size > 1048576) {
+                            angular.forEach(data[item].files, function (fileSize) {
+                                if (fileSize.size > 1048576) {
                                     data[item].bigFile = true;
-                                    console.info(' --- file size',fileSize.size);
+                                    console.info(' --- file size', fileSize.size);
                                 }
                             });
-                            console.info('data[item]',data[item]);
                         }
 
                         // Set lastUpdated for 60 sec cache
@@ -187,10 +210,6 @@ angular.module('gisto.service.gitHubAPI', [
                             config: config
                         });
                     });
-
-                }, function (error) {
-                    console.log('could not get token');
-                });
             },
 
             // GET /gists/:id
@@ -198,15 +217,13 @@ angular.module('gisto.service.gitHubAPI', [
 
                 var deferred = $q.defer();
 
-                appSettings.loadSettings().then(function (result) {
-
                     var gist = gistData.getGistById(id) || {}; // get the currently viewed gist or an empty object to apply the data
 
                     requestHandler({
                         method: 'GET',
-                        url: api_url + '/' + id,
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id,
                         headers: {
-                            Authorization: 'token ' + result['token']
+                            Authorization: 'token ' + token
                         }
                     }).success(function (data, status, headers, config) {
                         api.is_starred(data.id, function (response) {
@@ -239,7 +256,6 @@ angular.module('gisto.service.gitHubAPI', [
                         });
 
 
-
                         deferred.resolve(gist);
 
                     }).error(function (data, status, headers, config) {
@@ -252,10 +268,6 @@ angular.module('gisto.service.gitHubAPI', [
 
                         deferred.reject(status);
                     });
-
-                }, function (error) {
-                    deferred.reject('could not get token');
-                });
 
                 return deferred.promise;
             },
@@ -275,7 +287,7 @@ angular.module('gisto.service.gitHubAPI', [
                     if (followers && followers.lastUpdated < yesterday) {
                         requestHandler({
                             method: 'GET',
-                            url: 'http://api.github.com/user/followers',
+                            url: endpoints[active_endpoint].api_url + '/user/followers',
                             headers: {
                                 Authorization: 'token ' + result['token']
                             }
@@ -319,7 +331,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'GET',
-                        url: api_url + '/' + id + '/' + revId,
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id + '/' + revId,
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
@@ -366,7 +378,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'POST',
-                        url: api_url,
+                        url: endpoints[active_endpoint].api_url + '/gists',
                         data: data,
                         headers: {
                             Authorization: 'token ' + result['token']
@@ -399,7 +411,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'PATCH',
-                        url: api_url + '/' + id,
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id,
                         data: data,
                         headers: {
                             Authorization: 'token ' + result['token']
@@ -432,7 +444,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'DELETE',
-                        url: api_url + '/' + id,
+                        url: endpoints[active_endpoint].api_url + '/gists//' + id,
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
@@ -465,7 +477,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'GET',
-                        url: api_url + '/' + id + '/comments?page=' + pageNumber,
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id + '/comments?page=' + pageNumber,
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
@@ -514,7 +526,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'POST',
-                        url: api_url + '/' + id + '/comments',
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id + '/comments',
                         data: data,
                         headers: {
                             Authorization: 'token ' + result['token']
@@ -547,7 +559,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'DELETE',
-                        url: api_url + '/' + gist_id + '/comments' + '/' + comment_id,
+                        url: endpoints[active_endpoint].api_url + '/gists/' + gist_id + '/comments' + '/' + comment_id,
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
@@ -577,7 +589,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                 appSettings.loadSettings().then(function (result) {
 
-                    var url = pageNumber ? api_url + '/starred' + '?page=' + pageNumber : api_url + '/starred';
+                    var url = pageNumber ? endpoints[active_endpoint].api_url + '/gists/starred' + '?page=' + pageNumber : endpoints[active_endpoint].api_url + '/starred';
                     requestHandler({
                         method: 'GET',
                         url: url,
@@ -631,7 +643,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'PUT',
-                        url: api_url + '/' + id + '/star',
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id + '/star',
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
@@ -663,7 +675,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'DELETE',
-                        url: api_url + '/' + id + '/star',
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id + '/star',
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
@@ -695,7 +707,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'get',
-                        url: api_url + '/' + id + '/star',
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id + '/star',
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
@@ -730,7 +742,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'post',
-                        url: api_url + '/' + id + '/forks',
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id + '/forks',
                         headers: {
                             Authorization: 'token ' + result['token']
                         }

@@ -1,6 +1,10 @@
 'use strict';
 
-function mainCtrl($scope, $http, appSettings) {
+function mainCtrl($scope, $http, appSettings, $rootScope) {
+
+    // set as gisto ready and enable the sidebar
+    // this is done to prevent doing calls before gisto is ready to talk to github
+    $rootScope.gistoReady = true;
 
     appSettings.loadSettings().then(function(result) {
         $scope.latestVersion = appSettings.get('latestVersion');
