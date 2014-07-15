@@ -81,9 +81,10 @@ node_modules
 cache
 bin
 
-## Gisto Specific ##
+### Gisto Specific ###
 app/config.json
 server/config.js
 
-# commit .bowerrc
+### Bower ###
 !.bowerrc
+app/lib
