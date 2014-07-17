@@ -18,6 +18,7 @@ angular.module('gisto', [
         'gisto.directive.scrollTo',
         'gisto.directive.editor',
         'gisto.directive.toUrl',
+        'gisto.directive.disableAnimate',
         'gisto.service.gistData',
         'gisto.service.requestHandler',
         'gisto.service.gitHubAPI',
