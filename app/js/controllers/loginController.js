@@ -26,8 +26,13 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
 
     $scope.saveEnterpriseConfig = function () {
 
+        console.log('saving enterprise settings');
+        appSettings.loadSettings().then(function (settings) {
 
-        appSettings.loadSettings(function (settings) {
+            // strip last slash on api url
+            if ($scope.enterprise.api_url.slice(-1) === '/') {
+                $scope.enterprise.api_url = $scope.enterprise.api_url.slice(0, -1);
+            }
 
             settings.endpoints['enterprise'] = {
                 api_url: $scope.enterprise.api_url,
@@ -35,11 +40,14 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
                 client_secret: $scope.enterprise.client_secret
             };
 
+            console.log('attempting to save', settings.endpoints['enterprise']);
+
             // save changes to settings
             appSettings.set(settings.endpoints);
 
+            console.log('attempting to update ghapi');
             // update running instance of GitHub API service
-            ghApi.setEndpoint('enterprise', settings.endpoints['enterprise']);
+            ghAPI.setEndpoint('enterprise', settings.endpoints['enterprise']);
         });
         $scope.hideEnterprise();
     };

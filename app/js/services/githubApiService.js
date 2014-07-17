@@ -25,10 +25,12 @@ angular.module('gisto.service.gitHubAPI', [
         var api = {
 
             setEndpoint: function(endpoint, data) {
-                console.log(endpoint, data);
+                console.log('setting endpoint', endpoint, data);
               angular.forEach(data, function(value, key) {
                    endpoints[endpoint][key] = value;
                 });
+
+                console.log(endpoints);
             },
 
             setActiveEndpoint: function(activeEndpoint) {
