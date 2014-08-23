@@ -159,7 +159,7 @@
         </span>
     </span>
 
-    <a to-url="http://plnkr.co/edit/gist:{{gist.single.id}}?p=preview"
+    <a data-ng-if="!$parent.enterpriseMode" to-url="http://plnkr.co/edit/gist:{{gist.single.id}}?p=preview"
        title="Open gist in 'plunker'">Plunker</a>
 
     <a class="share-drop-down" data-ng-click="dropdown.share.show=!dropdown.share.show" title="Share this Gist">Share
@@ -173,8 +173,8 @@
         </div>
     </a>
 
-    <a data-ng-href="https://gist.github.com/{{gist.owner.login}}/{{gist.single.id}}/download"
-       download="gist.tar.gz" title="Download this gist as single tarball">Download</a>
+    <a data-ng-if="!$parent.enterpriseMode" data-ng-href="{{ buildDownloadLink(gist) }}"
+       title="Download this gist as single tarball">Download</a>
     <a data-ng-click="copyToClipboard(gist.id, 'Gist ID hash copied to clipboard')"
        title="Copy Gist ID hash to clipboard">Gist ID</a>
     <a data-ng-click="copyToClipboard(buildGistLink(gist), 'Embed code copied to clipboard','embed')"
@@ -215,9 +215,9 @@
 
             <a data-ng-click="enableEdit(gist.files ,gist.description)" title="Edit"><i
                     class="icon-pencil icon-rotate-90"></i></a>
-            <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
+            <a data-ng-if="!$parent.enterpriseMode" href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
                     class="icon-download-alt"></i></a>
-            <a to-url="https://gist.github.com/{{ gist.owner.login }}/{{ gist.single.id }}/#file-{{ file.filename | githubFileName }}"
+            <a to-url="{{ buildFileLink(gist, file) }}"
                title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
             <a ng-click="copyToClipboard(buildFileLink(gist, file), 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>

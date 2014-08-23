@@ -77,7 +77,7 @@
 </date>
     </span>
 
-    <a to-url="https://gist.github.com/{{gist.user.login}}/{{gist.single.id}}/{{gist.history.history[0].version}}"
+    <a to-url="{{ buildHistoryLink(gist) }}"
        title="Open gist in browser">Open in browser</a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
@@ -109,9 +109,9 @@
 
 
 
-            <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
+            <a data-ng-if="!$parent.enterpriseMode" href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
                     class="icon-download-alt"></i></a>
-            <a to-url="https://gist.github.com/{{ gist.history.owner.login }}/{{ gist.history.id }}/{{ gist.history.history[0].version }}/#file-{{ file.filename | githubFileName }}"
+            <a to-url="{{buildHistoryLink(gist,file)}}"
                title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
             <a ng-click="copyToClipboard(buildHistoryLink(gist,file), 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="icon-link"></i></a>

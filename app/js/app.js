@@ -25,7 +25,8 @@ angular.module('gisto', [
         'gisto.service.appSettings',
         'btford.socket-io',
         'gisto.service.notificationService',
-        'gisto.service.onlineStatusService'
+        'gisto.service.onlineStatusService',
+        'gisto.service.githubUrlBuilder'
     ]).
     factory('socket', function (socketFactory) {
         return socketFactory({

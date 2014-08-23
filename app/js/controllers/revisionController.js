@@ -1,6 +1,6 @@
 'use strict';
 
-function singleGistHistoryCtrl($scope, $routeParams, gistData, ghAPI, $filter) {
+function singleGistHistoryCtrl($scope, $routeParams, gistData, ghAPI, $filter, githubUrlBuilderService) {
     $scope.gist = gistData.getGistById($routeParams.gistId);
     $scope.version_hash = $routeParams.gistRevisionId;
 
@@ -8,9 +8,7 @@ function singleGistHistoryCtrl($scope, $routeParams, gistData, ghAPI, $filter) {
 
     ghAPI.history($routeParams.gistId,$routeParams.gistRevisionId);
 
-    $scope.buildHistoryLink = function(gist,file) {
-        return 'https://gist.github.com/' + gist.history.owner.login + '/' + gist.history.id + '/' + gist.history.history[0].version + '/#file-' + githubFileName(file.filename);
-    };
+    $scope.buildHistoryLink = githubUrlBuilderService.buildHistoryLink;
 
     $scope.copyToClipboard = function (data, message,type) {
         message = message || 'Content of a file <b>' + data.filename + '</b> copied to clipboard';
