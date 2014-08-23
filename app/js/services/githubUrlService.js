@@ -1,0 +1,45 @@
+'use strict';
+
+angular.module('gisto.service.githubUrlBuilder', [], function ($provide) {
+    $provide.factory('githubUrlBuilderService', function (ghAPI, $filter, $rootScope) {
+
+        var githubFileNameFilter = $filter('githubFileName');
+        var publicGithubUrl = 'https://gist.github.com/';
+        var baseUrl = publicGithubUrl;
+
+        $rootScope.$watch('enterpriseMode', function(enterpriseMode, oldMode) {
+            if (enterpriseMode) {
+                var endpoint = ghAPI.getEndpoint();
+                console.log(endpoint);
+                if (endpoint.hasOwnProperty('api_url')) {
+                    baseUrl = endpoint.api_url.replace('/api/v3', '/gist/');
+                    console.log(baseUrl);
+                }
+            } else {
+                baseUrl = publicGithubUrl;
+            }
+        });
+
+        var service = {
+            buildFileLink: function(gist, file) {
+                return baseUrl + gist.single.owner.login + '/' + gist.single.id + '/#file-' + githubFileNameFilter(file.filename);
+            },
+            buildGistLink: function(gist) {
+                return baseUrl + gist.owner.login + '/' + gist.id +'.js';
+            },
+            buildHistoryLink: function(gist, file) {
+                var url = baseUrl + gist.history.owner.login + '/' + gist.history.id + '/' + gist.history.history[0].version;
+                if (file) {
+                    url +='/#file-' + githubFileNameFilter(file.filename);
+                }
+                return url;
+            },
+            buildDownloadLink: function(gist) {
+                return baseUrl + gist.owner.login + '/' + gist.id + '/download';
+            }
+
+        };
+
+        return service;
+    });
+});

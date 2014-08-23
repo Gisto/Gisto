@@ -24,6 +24,11 @@ angular.module('gisto.service.gitHubAPI', [
 
         var api = {
 
+            getEndpoint: function(endpoint) {
+              endpoint = endpoint || active_endpoint;
+                return endpoints[endpoint];
+            },
+
             setEndpoint: function(endpoint, data) {
                 console.log('setting endpoint', endpoint, data);
               angular.forEach(data, function(value, key) {
@@ -245,10 +250,10 @@ angular.module('gisto.service.gitHubAPI', [
                         gist.single._original = angular.copy(data); //backup original gist
 
                         // Get files which are more than 1MB in size
-                        angular.forEach(data.files, function (filedata, filename) {
+                        angular.forEach(gist.single.files, function (filedata, filename) {
                             if (filedata.truncated === true) {
                                 requestHandler.get(filedata.raw_url, {stopNotification: true}).success(function (result) {
-                                    data.files[filename].content = result;
+                                    gist.single.files[filename].content = result;
                                     // push the data to history as well as it is the original
                                     // content of the gist
                                     gist.single._original.files[filename].content = result;

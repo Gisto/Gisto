@@ -1,6 +1,6 @@
 'use strict';
 
-function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService, appSettings, $filter) {
+function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService, appSettings, $filter, githubUrlBuilderService) {
 
     $scope.gist = gistData.getGistById($routeParams.gistId);
 
@@ -69,13 +69,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
     };
 
-    $scope.buildFileLink = function(gist, file) {
-        return $filter('githubFileName')('https://gist.github.com/' + gist.single.owner.login + '/' + gist.single.id + '/#file-' + file.filename);
-    };
-
-    $scope.buildGistLink = function(gist) {
-        return 'https://gist.github.com/' + gist.owner.login + '/' + gist.id +'.js';
-    };
+    $scope.buildFileLink = githubUrlBuilderService.buildFileLink;
+    $scope.buildGistLink = githubUrlBuilderService.buildGistLink;
+    $scope.buildDownloadLink = githubUrlBuilderService.buildDownloadLink;
 
     $scope.copyToClipboard = function (data, message, type) {
         message = message || 'Content of a file <b>' + data.filename + '</b> copied to clipboard';
