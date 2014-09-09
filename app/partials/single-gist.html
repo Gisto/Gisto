@@ -179,7 +179,9 @@
        title="Copy Gist ID hash to clipboard">Gist ID</a>
     <a data-ng-click="copyToClipboard(buildGistLink(gist), 'Embed code copied to clipboard','embed')"
        title="Copy embed code to clipboard">Embed</a>
-    <a to-url="{{gist.single.html_url}}" href="" title="Open Gist in browser">Open in browser</a>
+    <a data-ng-click="copyToClipboard(gist.single.html_url, 'Gist URL copied to clipboard')"
+       title="Copy Gist ID hash to clipboard">Gist URL</a>
+    <a to-url="{{gist.single.html_url}}" href="" title="Open Gist in browser">Open in web</a>
     <a data-ng-click="warnDeleteGist()" href="" title="Delete this gist">Remove</a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
