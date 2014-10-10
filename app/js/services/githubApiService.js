@@ -159,7 +159,7 @@ angular.module('gisto.service.gitHubAPI', [
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
-                                    var nextPage = link.match(/\?page=(\d)/)[1];
+                                    var nextPage = link.match(/\?page=(\d+)/)[1];
 
                                     if (!pageNumber || nextPage > pageNumber) {
                                         api.gists(null, nextPage);
@@ -477,7 +477,7 @@ angular.module('gisto.service.gitHubAPI', [
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
-                                    var nextPage = link.match(/\?page=(\d)/)[1];
+                                    var nextPage = link.match(/\?page=(\d+)/)[1];
 
                                     if (!pageNumber || nextPage > pageNumber) {
                                         api.comments(id, callback, nextPage);
@@ -600,7 +600,7 @@ angular.module('gisto.service.gitHubAPI', [
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
-                                    var nextPage = link.match(/\?page=(\d)/)[1];
+                                    var nextPage = link.match(/\?page=(\d+)/)[1];
 
                                     if (!pageNumber || nextPage > pageNumber) {
                                         api.starred(callback, nextPage);
