@@ -119,7 +119,6 @@ angular.module('gisto.service.gitHubAPI', [
 
             // GET /gists
             gists: function (updateOnly, pageNumber) {
-				console.log(pageNumber);				
                 appSettings.loadSettings().then(function (result) {
                     var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
                         headers = {
