@@ -135,23 +135,18 @@ angular.module('gisto.service.gitHubAPI', [
                         headers: headers
                     }).success(function (data, status, headers, config) {
                         for (var item in data) { // process and arrange data
-							
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
-                            data[item].filesCount = Object.keys(data[item].files).length;							
-							//if(data[item].filesCount > 0) {
-								//console.log( Object.keys(data[item].files)[0]);
-								data[item].filename = Object.keys(data[item].files)[0];
-							//}
+                            data[item].filesCount = Object.keys(data[item].files).length;
                             angular.forEach(data[item].files,function(fileSize){
                                 if(fileSize.size > 1048576) {
                                     data[item].bigFile = true;
                                     console.info(' --- file size',fileSize.size);
                                 }
                             });
-                            //c onsole.info('data[item]',data[item]);
+                            console.info('data[item]',data[item]);
                         }
-
+						
                         // Set lastUpdated for 60 sec cache
                         data.lastUpdated = new Date();
 
