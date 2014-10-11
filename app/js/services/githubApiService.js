@@ -65,7 +65,7 @@ angular.module('gisto.service.gitHubAPI', [
                         Authorization: 'token ' + token
                     }
                 }).success(function (data) {
-                    console.log(data);
+                    //c onsole.log(data);
                     deferred.resolve(true);
                 }).error(function (error) {
                     console.log('Could not verify token', error);
@@ -119,6 +119,7 @@ angular.module('gisto.service.gitHubAPI', [
 
             // GET /gists
             gists: function (updateOnly, pageNumber) {
+				console.log(pageNumber);				
                 appSettings.loadSettings().then(function (result) {
                     var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
                         headers = {
@@ -135,16 +136,21 @@ angular.module('gisto.service.gitHubAPI', [
                         headers: headers
                     }).success(function (data, status, headers, config) {
                         for (var item in data) { // process and arrange data
+							
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
-                            data[item].filesCount = Object.keys(data[item].files).length;
+                            data[item].filesCount = Object.keys(data[item].files).length;							
+							//if(data[item].filesCount > 0) {
+								//console.log( Object.keys(data[item].files)[0]);
+								data[item].filename = Object.keys(data[item].files)[0];
+							//}
                             angular.forEach(data[item].files,function(fileSize){
                                 if(fileSize.size > 1048576) {
                                     data[item].bigFile = true;
                                     console.info(' --- file size',fileSize.size);
                                 }
                             });
-                            console.info('data[item]',data[item]);
+                            //c onsole.info('data[item]',data[item]);
                         }
 
                         // Set lastUpdated for 60 sec cache
@@ -158,6 +164,7 @@ angular.module('gisto.service.gitHubAPI', [
                             var links = header.link.split(',');
                             for (var link in links) {
                                 link = links[link];
+								console.log(link);
                                 if (link.indexOf('rel="next') > -1) {
                                     var nextPage = link.match(/\?page=(\d+)/)[1];
 
@@ -165,7 +172,16 @@ angular.module('gisto.service.gitHubAPI', [
                                         api.gists(null, nextPage);
                                         return; // end the function before it reaches starred gist list call
                                     }
-                                }
+                                } else {
+									// if the user has more than 10 pages, then we only get back the last page number
+									var lastPage = parseInt(link.match(/\?page=(\d+)/)[1]);
+									// we have to iterate until we reach the last page
+									if(lastPage > pageNumber) {
+										var nextPage = parseInt(pageNumber) + 1;
+                                        api.gists(null, nextPage);
+                                        return; // end the function before it reaches starred gist list call										
+									}									
+								}
                             }
                         }
 
