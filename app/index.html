@@ -20,6 +20,7 @@
             window.gui = require('nw.gui');
             var clipboard = window.gui.Clipboard.get();
         }
+	
     </script>
 
 </head>
@@ -32,7 +33,7 @@
         <h1 title="Gist desktop app"><a href="#/">
             <i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i>
         </a></h1>
-        <input list="gistDataList" type="text" data-ng-model="search" class="search-query" placeholder="Search gists">
+        <input list="gistDataList" type="text" ng-model="search" class="search-query" placeholder="Search gists">
         <!--
         <datalist id="gistDataList">
             <option data-ng-repeat="gist in gists" value="{{(gist.description | removeTags) || 'Untitled'}}"></option>
@@ -42,7 +43,7 @@
 
     <ul>
         <li id="gist-{{gist.id}}" class="animate-list"
-            data-ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
+            data-ng-repeat="gist in filteredGists = (gists | gistsearch:search) | orderBy:'-created_at'">
             <a ui-route="/gist/{{gist.id}}" data-ng-class="{active: $uiRoute}"
                ng-click="navigateToGist(gist.id)">
                 <h3>
@@ -55,7 +56,7 @@
                 <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
                 <i class="icon-file"></i>
                 <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
-
+				{{gist.filename}}
                 <span ng-if="gist.bigFile" class="pils gist-comment" title="This gist contains file over 1mb"><i class="icon-warning-sign"></i> big file</span>
 
                 <p>
@@ -125,6 +126,7 @@
 <script src="js/filters/publicOrPrivateFilter.js"></script>
 <script src="js/filters/dotToDash.js"></script>
 <script src="js/filters/githubFileName.js"></script>
+<script src="js/filters/gistsearchFilter.js"></script>
 <script src="js/directives/editorDirective.js"></script>
 <script src="js/directives/scrollDirective.js"></script>
 <script src="js/directives/goToUrlDirective.js"></script>

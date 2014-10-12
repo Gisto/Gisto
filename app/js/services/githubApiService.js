@@ -116,9 +116,11 @@ angular.module('gisto.service.gitHubAPI', [
                     });
                 });
             },
-
+			
             // GET /gists
-            gists: function (updateOnly, pageNumber) {
+            gists: function (updateOnly, pageNumber) {			
+
+
                 appSettings.loadSettings().then(function (result) {
                     var url = pageNumber ? api_url + '?page=' + pageNumber : api_url,
                         headers = {
@@ -134,19 +136,25 @@ angular.module('gisto.service.gitHubAPI', [
                         url: url,
                         headers: headers
                     }).success(function (data, status, headers, config) {
-                        for (var item in data) { // process and arrange data
+						
+						for (var item in data) { // process and arrange data							
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
-                            data[item].filesCount = Object.keys(data[item].files).length;
+                            data[item].filesCount = Object.keys(data[item].files).length;							
+							if(data[item].filesCount > 0) {
+								// save the first filename
+								// todo why not store all filenames?
+								data[item].filename = Object.keys(data[item].files)[0];								
+							}
                             angular.forEach(data[item].files,function(fileSize){
                                 if(fileSize.size > 1048576) {
                                     data[item].bigFile = true;
                                     console.info(' --- file size',fileSize.size);
                                 }
                             });
-                            console.info('data[item]',data[item]);
+                            //c onsole.info('data[item]',data[item]);
                         }
-						
+
                         // Set lastUpdated for 60 sec cache
                         data.lastUpdated = new Date();
 
@@ -158,7 +166,7 @@ angular.module('gisto.service.gitHubAPI', [
                             var links = header.link.split(',');
                             for (var link in links) {
                                 link = links[link];
-								console.log(link);
+								//c onsole.log(link);
                                 if (link.indexOf('rel="next') > -1) {
                                     var nextPage = link.match(/\?page=(\d+)/)[1];
 
@@ -188,6 +196,9 @@ angular.module('gisto.service.gitHubAPI', [
                                 }
                             }
                         });
+						
+						//console.log("categories?");
+						//console.log(gistData.categories);
 
                     }).error(function (data, status, headers, config) {
                         console.log({

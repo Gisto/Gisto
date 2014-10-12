@@ -15,6 +15,7 @@ angular.module('gisto', [
         'gisto.filter.removeTagSymbol',
         'gisto.filter.dotToDash',
         'gisto.filter.githubFileName',
+		'gisto.filter.gistsearch',
         'gisto.directive.scrollTo',
         'gisto.directive.editor',
         'gisto.directive.toUrl',
