@@ -144,7 +144,7 @@ angular.module('gisto.service.gitHubAPI', [
                                     console.info(' --- file size',fileSize.size);
                                 }
                             });
-                            console.info('data[item]',data[item]);
+                            //console.info('data[item]',data[item]);
                         }
 
                         // Set lastUpdated for 60 sec cache
@@ -159,8 +159,7 @@ angular.module('gisto.service.gitHubAPI', [
                             for (var link in links) {
                                 link = links[link];
                                 if (link.indexOf('rel="next') > -1) {
-                                    var nextPage = link.match(/\?page=(\d+)/)[1];
-
+                                    var nextPage = parseInt(link.match(/\?page=(\d+)/)[1], 10);
                                     if (!pageNumber || nextPage > pageNumber) {
                                         api.gists(null, nextPage);
                                         return; // end the function before it reaches starred gist list call
