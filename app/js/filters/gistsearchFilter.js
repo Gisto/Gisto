@@ -33,25 +33,13 @@ angular.module('gisto.filter.gistsearch', []).filter('gistsearch', function () {
 			var cItem = items[i];			
 		
 			var matchesAllSearchTerms = true;
-			var cDescription = "";
-			var cFilename = "";
+			var atLeastOneFileMatchesTerms = false;
 			for (var j = 0; j < searchTermsArr.length; j++) {	
 				var cSearchTerm = searchTermsArr[j].toLowerCase(); 
 				
-				cDescription = "";
-				if(items[i].description !== undefined) {
-					cDescription = items[i].description + "";
-					cDescription = cDescription.toLowerCase();
-				}
-				
-				cFilename = "";
-				if(items[i].filename !== undefined) {
-					cFilename = items[i].filename + "";
-					cFilename = cFilename.toLowerCase();
-				}				
-				
-				if(cDescription.indexOf(cSearchTerm) < 0 && cFilename.indexOf(cSearchTerm) < 0) {
+				if(!descriptionMatchesTerm(items[i], cSearchTerm) && !atLeastOneFileNameMatchesTerm(items[i], cSearchTerm)) {
 					matchesAllSearchTerms = false;
+					break;
 				}			
 			}
 			
@@ -64,4 +52,30 @@ angular.module('gisto.filter.gistsearch', []).filter('gistsearch', function () {
 		return filtered;;
 	};
 	
+	function descriptionMatchesTerm(item, term) {
+		if(item.description === undefined) { return false; }
+
+		var cDescription = item.description + "";
+		cDescription = cDescription.toLowerCase();		
+		if (cDescription.indexOf(term) < 0) {
+			return false;
+		} else {
+			return true;		
+		}	
+	}	
+	
+	function atLeastOneFileNameMatchesTerm(item, term) {
+		if(item.filesCount == 0) { return false; }
+
+		var cFilename = "";		
+		for (var i = 0; i < item.filesCount; i++) {	
+			cFilename = Object.keys(item.files)[i];
+			cFilename = cFilename.toLowerCase();						
+			if(cFilename.indexOf(term) >= 0) {
+				return true;
+			}							
+		}	
+		
+		return false;
+	}
 });
