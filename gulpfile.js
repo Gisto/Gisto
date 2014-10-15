@@ -111,13 +111,14 @@ gulp.task('concat', function () {
     'app/lib/jquery/dist/jquery.min.js',
     'app/lib/socket.io-client/socket.io.js',
     'app/lib/angular/angular.js',
-    'app/lib/angular-route/angular-route.js',
+    'app/lib/angular-route/angular-route.min.js',
     'app/lib/angular-animate/angular-animate.js',
     'app/lib/angular-sanitize/angular-sanitize.js',
     'app/lib/angular-ui-utils/ui-utils.min.js',
     'app/lib/angular-socket-io/socket.min.js',
     'app/lib/showdown/compressed/showdown.js',
-    'app/js/*.js',
+    'app/js/app.js',
+    'app/js/**/*.js',
     '!app/js/gisto.min.js'
     ])
         .pipe(strip_log())
