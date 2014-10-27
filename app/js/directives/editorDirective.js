@@ -4,7 +4,7 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
     return {
         restrict: 'E',
         template: '<div ng-if="showmd" class="special-editor-markdown" ng-bind-html="file.content | markDown"></div>' +
-        '<pre ng-style="no_zoom()" id="editor-{{$index}}">{{file.content}}</pre>' +
+        '<pre id="editor-{{$index}}">{{file.content}}</pre>' +
         '<div data-ng-if="editor_ext.statusbar" id="statusBar-{{$index}}"><i class="icon-info-sign"></i> </div>',
         link: function ($scope, $element, $attrs) {
             $scope.showmd = false;
