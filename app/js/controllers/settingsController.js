@@ -26,7 +26,6 @@ function settingsCtrl($scope, appSettings, $http, $timeout) {
         console.log('body zoom', $scope.ui_zoom);
     };
 
-
     /*angular.element('.the-gist pre').css({
      'min-height': $scope.min_height + 'px',
      'max-height': $scope.max_height + 'px'
