@@ -23,7 +23,12 @@ function settingsCtrl($scope, appSettings, $http, $timeout) {
         return{
             zoom: $scope.ui_zoom + '%'
         };
-        console.log('body zoom', $scope.ui_zoom);
+    };
+
+    $scope.no_zoom = function () {
+        return{
+            zoom: 'document'
+        };
     };
 
 
