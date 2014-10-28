@@ -79,7 +79,7 @@ and...
 
 Installations can be downloaded from website: [www.gistoapp.com](http://www.gistoapp.com)
 
-#### Othere install options
+#### Other install options
 
 via **Homebrew cask**:
 
