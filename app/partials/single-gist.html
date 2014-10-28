@@ -257,7 +257,7 @@
                      class="comment_gravatar"
                      title="{{comment.user.login}}"/>
                 <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
-            <div class="blockquote" data-ng-bind-html-unsafe="comment.body | markDown"></div>
+            <div class="blockquote" data-ng-bind-html="comment.body | markDown"></div>
         </span>
 
         <div data-ng-if="showComments">
