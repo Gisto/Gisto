@@ -75,11 +75,21 @@ and...
 * [showdown](https://github.com/coreyti/showdown)
 * [Font-Awesome](http://fortawesome.github.io/Font-Awesome/)
 
-## Downloads
+## Download and install
 
-From website: [www.gistoapp.com](http://www.gistoapp.com)
+Installations can be downloaded from website: [www.gistoapp.com](http://www.gistoapp.com)
 
-P.S. If you *really want* - you can also package Gisto by yourself (see "Packaging instructions" bellow).
+#### Othere install options
+
+via **Homebrew cask**:
+
+`$ brew cask install gisto`
+
+via **Archlinux AUR**:
+
+`$ yaourt -S gisto`
+
+P.S. If you *really want* - you can also package Gisto by yourself (see info on "Packaging instructions" bellow).
 
 ## Packaging instructions
 
