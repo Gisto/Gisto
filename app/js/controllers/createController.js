@@ -167,7 +167,11 @@ function createGistCtrl($scope, $rootScope, ghAPI, gistData) {
                 $rootScope.edit = false;
                 $('.ok').slideDown('slow');
                 $('.ok span').text('Gist saved');
+
                 newGist.tags = $scope.description ? $scope.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                newGist.filesCount = Object.keys(response.data.files).length;
+                newGist.comments = 0;
+
                 gistData.list.unshift(newGist);
 
                 window.location.href = "#/gist/" + response.data.id;
