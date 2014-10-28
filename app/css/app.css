@@ -728,13 +728,14 @@ details > summary {
     margin: 9px 0px 0px 0px;
     text-transform: lowercase;
     font-size: 12px;
+    z-index:4;
 }
 
 .notification div {
     position: absolute;
     top: 35px;
     right: 0;
-    z-index: 9;
+    z-index: 4;
     font-size: 9pt;
     line-height: 20px;
     padding: 5px;
@@ -767,6 +768,11 @@ details > summary {
     border-width: 11px;
     right: 4%;
     margin-left: -11px;
+}
+
+.date_meta .notification div:before,
+.date_meta .notification div:after {
+    left: 8%;
 }
 
 .notification ul {
@@ -1118,4 +1124,8 @@ input[type="range"] {
 
 .star-switch {
     position: relative;
+}
+
+.ace_scrollbar {
+    z-index: 3 !important;
 }
