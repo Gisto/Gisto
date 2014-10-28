@@ -21,7 +21,7 @@ var env_option = {
  * Get Gisto version
  * Use: gulp version
  */
-gulp.task('version', function() {
+gulp.task('version', function () {
     gutil.log('Version', gutil.colors.green(pkg_json.version));
 });
 
@@ -31,9 +31,9 @@ gulp.task('version', function() {
  * Change Gisto version
  * Use: gulp version_bump --to=0.2.4b
  */
-gulp.task('version_bump', function() {
+gulp.task('version_bump', function () {
     var files = ['./package.json', './app/package.json'];
-    files.forEach(function(file) {
+    files.forEach(function (file) {
         var content = JSON.parse(fs.readFileSync(file));
         content.version = argv.to;
         fs.writeFileSync(file, JSON.stringify(content, null, 4));
@@ -46,9 +46,9 @@ gulp.task('version_bump', function() {
  * Change Gisto environment to "development"
  * Use: gulp dev
  */
-gulp.task('dev', function() {
+gulp.task('dev', function () {
     var files = ['./app/index.html'];
-    files.forEach(function(file) {
+    files.forEach(function (file) {
         var content = fs.readFileSync(file, "utf8")
             .replace('<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_dev + ' -->')
             .replace('<!-- ' + env_option.env_prod + ' -->', '<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>')
@@ -69,9 +69,9 @@ gulp.task('dev', function() {
  * Change Gisto environment to "production", also concatenates files and remove console logs
  * Use: gulp prod
  */
-gulp.task('prod', ['concat'], function() {
+gulp.task('prod', ['concat'], function () {
     var files = ['./app/index.html'];
-    files.forEach(function(file) {
+    files.forEach(function (file) {
         var content = fs.readFileSync(file, "utf8")
             .replace('<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_prod + ' -->')
             .replace('<!-- ' + env_option.env_dev + ' -->', '<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>')
@@ -92,7 +92,7 @@ gulp.task('prod', ['concat'], function() {
  * Serves the app on specified port or 8080 if --port parameter omitted
  * Use: gulp server OR gulp server --port=80 (defalts to 8080)
  */
-gulp.task('server', function() {
+gulp.task('server', function () {
     connect.server({
         root: './app',
         port: argv.port || '8080',
@@ -106,8 +106,21 @@ gulp.task('server', function() {
  * concatenates files and remove console logs, also used by other functions here
  * Use: gulp concat
  */
-gulp.task('concat', function() {
-    gulp.src(['./app/lib/jquery/*.js', './app/lib/angular/*.js', './app/lib/socket-io/*.js', './app/lib/angular-ui/*.js', './app/js/*/*.js', './app/js/app.js', './app/lib/showdown.js'])
+gulp.task('concat', function () {
+    gulp.src([
+    'app/lib/jquery/dist/jquery.min.js',
+    'app/lib/socket.io-client/socket.io.js',
+    'app/lib/angular/angular.js',
+    'app/lib/angular-route/angular-route.min.js',
+    'app/lib/angular-animate/angular-animate.js',
+    'app/lib/angular-sanitize/angular-sanitize.js',
+    'app/lib/angular-ui-utils/ui-utils.min.js',
+    'app/lib/angular-socket-io/socket.min.js',
+    'app/lib/showdown/compressed/showdown.js',
+    'app/js/app.js',
+    'app/js/**/*.js',
+    '!app/js/gisto.min.js'
+    ])
         .pipe(strip_log())
         .pipe(concat('gisto.min.js'))
         .pipe(gulp.dest('./app/js/'));
@@ -119,7 +132,7 @@ gulp.task('concat', function() {
  * Build binaries for specified platform
  * Use: gulp build --os=win|osx|linux32|linux64|all
  */
-gulp.task('build', ['prod'], function() {
+gulp.task('build', ['prod'], function () {
     var os = argv.os;
     if (!os) {
         return gutil.log(gutil.colors.red('NOTE'), gutil.colors.white('Please specify platform (Use: gulp build --os=win|osx|linux32|linux64|all)'));
@@ -141,10 +154,10 @@ gulp.task('build', ['prod'], function() {
     var pathToNwsnapshot = nw.options.cacheDir + '/' + nw.options.version + '/' + os + '/nwsnapshot';
     //return gutil.log(gutil.colors.green('XXXX: ' + pathToNwsnapshot));
 
-    nw.build().then(function() {
+    nw.build().then(function () {
         // Build OK
     }).
-        catch (function(error) {
+        catch(function (error) {
         console.error(error);
     });
 
@@ -156,7 +169,7 @@ gulp.task('build', ['prod'], function() {
  * Will be used for releases
  * Use: gulp release
  */
-gulp.task('release', ['concat'], function() {
+gulp.task('release', ['concat'], function () {
     // Do stuff
 });
 
