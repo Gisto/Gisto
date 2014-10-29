@@ -59,13 +59,13 @@
             <p>Limit editor height to <input type="text" data-ng-model="max_lines"/> <b>lines</b> (<i>Default 50</i>)
             </p>
 
-            <p><input type="checkbox" data-ng-model="editor_ext.emmet"/> Enable 'Emmet' for <i>.html</i> files
+            <p><input class="toggle" id="emmet" type="checkbox" data-ng-model="editor_ext.emmet"/><label for="emmet"></label> Enable 'Emmet' for <i>.html</i> files
             </p>
-            <p><input type="checkbox" data-ng-model="editor_ext.statusbar"/> Enable status bar
+            <p><input class="toggle" id="statusbar" type="checkbox" data-ng-model="editor_ext.statusbar"/><label for="statusbar"></label> Enable status bar
             </p>
-            <p><input type="checkbox" data-ng-model="editor_ext.autocompletion"/> Enable auto-completion
+            <p><input class="toggle" id="autocompletion" type="checkbox" data-ng-model="editor_ext.autocompletion"/><label for="autocompletion"> Enable auto-completion
             </p>
-            <p><input type="checkbox" data-ng-model="editor_vim_mode"/> Enable Vim mode
+            <p><input class="toggle" id="vim_mode" type="checkbox" data-ng-model="editor_vim_mode"/><label for="vim_mode"> Enable Vim mode
             </p>
         </details>
 
