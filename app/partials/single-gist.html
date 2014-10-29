@@ -3,14 +3,14 @@
     <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
     <div class="is-fork" data-ng-if="gist.single.fork_of">
-        <a data-ng-click="dropdown.forks.show=!dropdown.forks.show" title="fork"><i class="star icon-code-fork"></i></a>
+        <a data-ng-click="dropdown.forks.show=!dropdown.forks.show" title="fork"><i class="star fa fa-code-fork"></i></a>
 
         <div class="notification notification-forks" data-ng-show="dropdown.forks.show">
             <div>
                 <p><cite>{{ gist.single.fork_of.description | removeTags}}</cite>
                     <br />
                     <a to-url="{{ gist.single.fork_of.html_url }}"><i
-                        class="icon-github"></i> {{ (gist.single.fork_of.id | truncate : 7 : '') }}</a>
+                        class="fa fa-github"></i> {{ (gist.single.fork_of.id | truncate : 7 : '') }}</a>
                     <img data-ng-src="{{ gist.single.fork_of.owner.avatar_url }}s=40">
                     <br/>
                     <b><a href="{{ gist.single.fork_of.owner.html_url }}">{{ gist.single.fork_of.owner.login }}</a></b>
@@ -22,19 +22,19 @@
 
     <span data-ng-switch on="gist.single.starred" class="star-switch">
         <span data-ng-switch-when="true" class="animate-star-button">
-    <a data-ng-click="unstar()" title="unStar"><i class="star icon-star"></i></a>
+    <a data-ng-click="unstar()" title="unStar"><i class="star fa fa-star"></i></a>
         </span>
         <span class="animate-star-button" data-ng-switch-default>
-    <a data-ng-click="star()" title="Star"><i class="star icon-star-empty"></i></a>
+    <a data-ng-click="star()" title="Star"><i class="star fa fa-star-o"></i></a>
         </span>
 </span>
 
 <span data-ng-switch on="gist.public">
     <span data-ng-switch-when="true">
-        <a data-ng-click="warnStateChange('private')" title="Make private"><i class="star icon-unlock"></i></a>
+        <a data-ng-click="warnStateChange('private')" title="Make private"><i class="star fa fa-unlock"></i></a>
     </span>
     <span class="" data-ng-switch-default>
-        <a data-ng-click="warnStateChange('public')" title="Make public"><i class="star icon-lock"></i></a>
+        <a data-ng-click="warnStateChange('public')" title="Make public"><i class="star fa fa-lock"></i></a>
     </span>
 </span>
 
@@ -51,63 +51,63 @@
 </header>
 
 <div class="messenger template">
-    <i class="icon-lightbulb"></i>
+    <i class="fa fa-lightbulb-o"></i>
     <span>Simple notification</span>
 </div>
 
 <div class="messenger info template">
-    <i class="icon-info-sign"> </i>
+    <i class="fa fa-info-circle"> </i>
     <span>Informative notification</span>
 </div>
 
 <div class="messenger warn template">
-    <i class="icon-warning-sign"> </i>
+    <i class="fa fa-exclamation-triangle"> </i>
     <span>Warning</span>
 </div>
 
 <div class="messenger ok template">
-    <i class="icon-ok-sign"> </i>
+    <i class="fa fa-check-circle"> </i>
     <span>Success</span>
 </div>
 
 <div class="messenger loading template">
-    <i class="icon-spin icon-spinner"> </i>
+    <i class="fa-spin fa fa-spinner"> </i>
     <span>Loading...</span>
 </div>
 
 <div class="messenger edit template">
-    <i class="icon-edit"> </i>
+    <i class="fa fa-pencil-square-o"> </i>
     <span>Edit mode <b>on</b> <a href="" data-ng-click="update()">update</a> | <a data-ng-click="disableEdit()"
                                                                                   title="changes wont be saved">cancel</a></span>
 </div>
 
 <div class="messenger drop template">
-    <i class="icon-edit"> </i>
+    <i class="fa fa-pencil-square-o"> </i>
     <span>Drag detected - now drop!</span>
 </div>
 
 <div class="messenger delete warn">
-    <i class="icon-warning-sign"> </i>
+    <i class="fa fa-exclamation-triangle"> </i>
     <span>Are you sure you want to <b>delete</b> this gist? | <a href="" data-ng-click="del()">Yes!</a>
         <a href="" data-ng-click="cancelDeleteGist()">Cancel</a></span>
 </div>
 
 <div class="messenger delete-file warn">
-    <i class="icon-warning-sign"> </i>
+    <i class="fa fa-exclamation-triangle"> </i>
     <span>Are you sure you want to <b>delete</b> {{ fileToDelete }}? | <a href=""
                                                                           data-ng-click="deleteFile(fileToDelete)">Yes!</a>
         <a href="" data-ng-click="cancelDeleteFile()">Cancel</a></span>
 </div>
 
 <div class="messenger state warn">
-    <i class="icon-warning-sign"> </i>
+    <i class="fa fa-exclamation-triangle"> </i>
     <span>Are you sure you want to make this gist <b>{{state}}</b>? <br/>This will delete and recreate the gist as {{state}}, comments and revisions will be lost <a
             href="" data-ng-click="changeState(state)">Yes!</a>
         <a href="" data-ng-click="cancelStateChange()">Cancel</a></span>
 </div>
 
 <div class="messenger warn notification-error">
-    <i class="icon-warning-sign"> </i>
+    <i class="fa fa-exclamation-triangle"> </i>
     <span>Server connection lost, please try again later.</span>
 </div>
 
@@ -117,7 +117,7 @@
 
         <b>Revisions:</b> <i title="Click to browse revisions"
                              data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}}
-        <code class="icon-sort-down"></code></i>
+        <code class="fa fa-sort-asc"></code></i>
 
 <date class="gist_date_meta">
     <b>Created:</b> <i>{{ gist.single.created_at |
@@ -134,8 +134,8 @@
                             <p data-ng-hide="$index==0" data-ng-hide="$index==0">
                                 <b>Rev. {{ revision.version | truncate : 7 : ''}}</b><br/>
                                 {{ revision.committed_at | date:'dd/MM/yyyy HH:mm:ss'}}<br/>
-                                {{ revision.change_status.total }} Changes: <code class="icon-plus-sign-alt"></code> {{
-                                revision.change_status.additions }}, <code class="icon-minus-sign-alt"></code> {{
+                                {{ revision.change_status.total }} Changes: <code class="fa fa-plus-square"></code> {{
+                                revision.change_status.additions }}, <code class="fa fa-minus-square"></code> {{
                                 revision.change_status.deletions }}
                             </p>
                         </a>
@@ -185,11 +185,11 @@
     <a data-ng-click="warnDeleteGist()" href="" title="Delete this gist">Remove</a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
-        <i class="icon-sort-down"></i>
+        <i class="fa fa-sort-asc"></i>
 
         <div data-ng-show="dropdown.show">
             <p class="scroller" data-ng-repeat="file in gist.single.files" scroll-to="file-{{$index}}"><i
-                    class="icon-file"></i> {{file.filename}}</p>
+                    class="fa fa-file"></i> {{file.filename}}</p>
         </div>
     </a>
 
@@ -208,25 +208,25 @@
                     <input class="edaitable" data-ng-model="file.filename">
                 </span>
                 <span data-ng-switch-default>
-                    <i class="icon-file-alt"></i> {{file.filename}}
+                    <i class="fa fa-file-o"></i> {{file.filename}}
                 </span>
             </span>
 
             <a data-ng-click="deleteFileConfirm(file.filename)" data-file-index="{{$index}}"
-               title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
+               title="Delete {{file.filename}}"><i class="fa fa-times"></i></a>
 
             <a data-ng-click="enableEdit(gist.files ,gist.description)" title="Edit"><i
-                    class="icon-pencil icon-rotate-90"></i></a>
+                    class="fa fa-pencil fa-rotate-90"></i></a>
             <a href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
-                    class="icon-download-alt"></i></a>
+                    class="fa fa-download"></i></a>
             <a to-url="https://gist.github.com/{{ gist.owner.login }}/{{ gist.single.id }}/#file-{{ file.filename | githubFileName }}"
-               title="Open file at GitHub Gist website"><i class="icon-github"></i></a>
+               title="Open file at GitHub Gist website"><i class="fa fa-github"></i></a>
             <a ng-click="copyToClipboard(buildFileLink(gist, file), 'Direct link copied to clipboard')"
-               title="Copy direct link to clipboard"><i class="icon-link"></i></a>
-            <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="icon-paper-clip"></i></a>
+               title="Copy direct link to clipboard"><i class="fa fa-link"></i></a>
+            <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="fa fa-paperclip"></i></a>
 
             <a data-ng-if="file.language=='Markdown'" data-ng-click="markDownPreviewToggle()"
-               title="Toggle markdown preview"><i class="icon-eye-open"></i></a>
+               title="Toggle markdown preview"><i class="fa fa-eye"></i></a>
 
         </div>
 
@@ -244,19 +244,19 @@
 <div class="comments">
 
 <span class="clicky" data-ng-click="showComments=!showComments">
-    <b><span class="icon-comments"></span> {{gist.comments}}</b> Comment(s)
-    <i data-ng-if="!showComments" class="icon-arrow-up"> Show</i>
-    <i data-ng-if="showComments" class="icon-arrow-down"> Hide</i>
+    <b><span class="fa fa-comments"></span> {{gist.comments}}</b> Comment(s)
+    <i data-ng-if="!showComments" class="fa fa-arrow-up"> Show</i>
+    <i data-ng-if="showComments" class="fa fa-arrow-down"> Hide</i>
 </span>
 
     <div data-ng-controller="commentsGistCtrl" class="the-comments">
         <span class="comment-holder" data-ng-repeat="comment in comments" data-ng-show="showComments">
-            <a class="trash" data-ng-click="delete_comment(gist.single.id,comment.id,$index)"><i class="icon-trash"></i></a>
+            <a class="trash" data-ng-click="delete_comment(gist.single.id,comment.id,$index)"><i class="fa fa-trash-o"></i></a>
             <p>
                 <img data-ng-src="{{comment.user.avatar_url || 'https://secure.gravatar.com/avatar/'}}"
                      class="comment_gravatar"
                      title="{{comment.user.login}}"/>
-                <b>{{comment.user.login}}</b> <b class="icon-time"></b> {{comment.created_at | date}}</p>
+                <b>{{comment.user.login}}</b> <b class="fa fa-clock-o"></b> {{comment.created_at | date}}</p>
             <div class="blockquote" data-ng-bind-html="comment.body | markDown"></div>
         </span>
 
@@ -268,7 +268,7 @@
         </span>
 
         <span class="comment-text-holder">
-            <a class="preview" data-ng-click="showPreview=!showPreview"><i class="icon-eye-open"></i></a>
+            <a class="preview" data-ng-click="showPreview=!showPreview"><i class="fa fa-eye"></i></a>
             <textarea class="comment-text" data-ng-model="comment_body">
 
             </textarea>
