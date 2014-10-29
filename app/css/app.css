@@ -1129,3 +1129,26 @@ input[type="range"] {
 .ace_scrollbar {
     z-index: 3 !important;
 }
+
+input[type=checkbox].toggle {
+    display: none;
+}
+
+input[type=checkbox].toggle + label:before {
+    content: "\f204";
+}
+
+input[type=checkbox].toggle:checked + label:before {
+    content: "\f205";
+}
+
+input[type=checkbox].toggle:checked + label:before,
+input[type=checkbox].toggle + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+    letter-spacing: 5px;
+    font-size: 26px;
+    top: 4px;
+    position: relative;
+    cursor: pointer;
+}
