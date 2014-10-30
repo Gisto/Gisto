@@ -117,7 +117,7 @@
 
         <b>Revisions:</b> <i title="Click to browse revisions"
                              data-ng-click="dropdown.revisions.show=!dropdown.revisions.show">{{gist.single.history.length}}
-        <code class="fa fa-sort-asc"></code></i>
+        <code class="fa fa-sort-down"></code></i>
 
 <date class="gist_date_meta">
     <b>Created:</b> <i>{{ gist.single.created_at |
@@ -180,12 +180,12 @@
     <a data-ng-click="copyToClipboard(buildGistLink(gist), 'Embed code copied to clipboard','embed')"
        title="Copy embed code to clipboard">Embed</a>
     <a data-ng-click="copyToClipboard(gist.single.html_url, 'Gist URL copied to clipboard')"
-       title="Copy Gist ID hash to clipboard">Gist URL</a>
+       title="Copy Gist URL to clipboard">Gist URL</a>
     <a to-url="{{gist.single.html_url}}" href="" title="Open Gist in browser">Open in web</a>
     <a data-ng-click="warnDeleteGist()" href="" title="Delete this gist">Remove</a>
 
     <a class="files-drop-down" data-ng-click="dropdown.show=!dropdown.show" title="List files">
-        <i class="fa fa-sort-asc"></i>
+        <i class="fa fa-sort-down"></i>
 
         <div data-ng-show="dropdown.show">
             <p class="scroller" data-ng-repeat="file in gist.single.files" scroll-to="file-{{$index}}"><i
