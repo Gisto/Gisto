@@ -1,6 +1,6 @@
 'use strict';
 
-function settingsCtrl($scope, appSettings, $http, $timeout, $window) {
+function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope) {
     $scope.themes = appSettings.theme_list;
     $scope.editor_themes = appSettings.editor_theme_list;
     $scope.font_sizes = appSettings.font_size;
@@ -73,7 +73,8 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window) {
                         console.info('SETTING FILE (NEW)', incomingSettings.data);
                         appSettings.set(incomingSettings.data);
                         console.info('NEW SETTING', JSON.stringify(incomingSettings.data));
-                        window.location.reload();
+                        $rootScope.gistoReady = false;
+                        $window.location.href = 'index.html#/loading';
                     });
                 });
             }, 0);
