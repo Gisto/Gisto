@@ -54,6 +54,11 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                         editor.setKeyboardHandler("ace/keyboard/vim");
                     }
 
+                    // word wrap
+                    if(appSettingsResult.editor_word_wrap) {
+                        editor.getSession().setUseWrapMode(true);
+                    }
+
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
                     editor.setFontSize(font);

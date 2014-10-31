@@ -6,7 +6,7 @@
 </header>
 
 <div class="messenger edit">
-    <i class="icon-edit"> </i>
+    <i class="fa fa-pencil-square-o"> </i>
     <span>Edit mode <b>on</b> <a href="" data-ng-click="save()">save</a> | <a data-ng-click="disableEdit()"
                                                                                   title="changes wont be saved">cancel</a></span>
 </div>
@@ -16,13 +16,13 @@
 </div>
 
 <div class="messenger delete-file warn">
-    <i class="icon-warning-sign"> </i>
+    <i class="fa fa-exclamation-triangle"> </i>
     <span>Are you sure you want to <b>delete</b> {{ fileToDelete }}? | <a href="" data-ng-click="deleteFile(fileToDelete)">Yes!</a>
         <a href="" data-ng-click="cancelDeleteFile()">Cancel</a></span>
 </div>
 
 <div class="messenger warn notification-error">
-    <i class="icon-warning-sign"> </i>
+    <i class="fa fa-exclamation-triangle"> </i>
     <span>Server connection lost, please try again later.</span>
 </div>
 
@@ -39,7 +39,7 @@
     <h1>Create gist</h1>
     <input ui-keydown="{'ctrl-83':'save($event)'}" type="text" data-ng-model="description" class="desc"
            placeholder="Description">
-    <input type="checkbox" data-ng-model="isPublic"> Public
+    <input class="toggle" id="isItPublic" type="checkbox" data-ng-model="isPublic"><label for="isItPublic"></label> Public
 
     <div data-ng-repeat="file in files">
         <input ui-keydown="{'ctrl-83':'save($event)'}" ng-pattern="/^[A-Za-z0-9\.\-\_\ ]*$/" type="text" data-ng-model="file.filename" placeholder="Filename">
@@ -47,9 +47,9 @@
         <div class="the-gist" onload="initEditors()">
 
             <div class="the-gist-name">
-                <i class="icon-file-alt"></i> <b>{{file.filename || 'filename'}}</b>
+                <i class="fa fa-file-o"></i> <b>{{file.filename || 'filename'}}</b>
                 <a data-ng-click="deleteFile($index)" data-file-index="{{$index}}"
-                   title="Delete {{file.filename}}"><i class="icon-remove"></i></a>
+                   title="Delete {{file.filename}}"><i class="fa fa-times"></i></a>
             </div>
             <editor ui-keydown="{'ctrl-83':'save($event)'}" language="html" index="{{$index}}"
                     data-ng-model="file.content"></editor>

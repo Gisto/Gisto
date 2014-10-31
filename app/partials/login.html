@@ -1,16 +1,16 @@
 <div class="login-form">
 
     <header>
-        <h1><i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i></h1>
+        <h1><i class="fa fa-angle-left"></i>/Gisto<i class="fa fa-angle-right"></i></h1>
     </header>
 
     <div class="messenger warn">
-        <i class="icon-warning-sign"> </i>
+        <i class="fa fa-exclamation-triangle"> </i>
         <span>Warning</span>
     </div>
 
     <div class="messenger info">
-        <i class="icon-info-sign"> </i>
+        <i class="fa fa-info-circle"> </i>
         <span>2 Factor authentication token needed</span>
     </div>
 
@@ -25,7 +25,7 @@
 
         </div>
         <input type="submit" value="login"/>
-        <p data-ng-show="step2"><a href="#" data-ng-click="step1()"><i class="icon-arrow-left"></i> Re-enter username/password</a></p>
+        <p data-ng-show="step2"><a href="#" data-ng-click="step1()"><i class="fa fa-arrow-left"></i> Re-enter username/password</a></p>
 
         <p>No account yet? Sign-up at <a to-url="https://github.com/signup/free" href="">GitHub</a></p>
         <p><a data-ng-click="toggleManualToken()">Enter Existing Access Token</a></p>
@@ -37,7 +37,7 @@
         </p>
 
 
-        <i data-ng-show="spinner" class="spiner icon-spinner icon-spin"></i>
+        <i data-ng-show="spinner" class="spiner fa fa-spinner fa-spin"></i>
     </form>
 
     <form data-ng-show="showEnterpriseSetup" class="login-animation">

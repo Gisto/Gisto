@@ -30,7 +30,7 @@
 
     <header class="flex">
         <h1 title="Gist desktop app"><a href="#/">
-            <i class="icon-angle-left"></i>/Gisto<i class="icon-angle-right"></i>
+            <i class="fa fa-angle-left"></i>/Gisto<i class="fa fa-angle-right"></i>
         </a></h1>
         <input list="gistDataList" type="text" data-ng-model="search" class="search-query" placeholder="Search gists">
         <!--
@@ -51,15 +51,15 @@
                 </h3>
 
                 <div data-ng-if="gist.has_star" class="the-star animate-starred">
-                    <i class="icon-star"></i></div>
-                <span class="pills gist-comment"><i class="icon-comments"></i> {{gist.comments}} Comment(s)</span>
-                <i class="icon-file"></i>
+                    <i class="fa fa-star"></i></div>
+                <span class="pills gist-comment"><i class="fa fa-comments"></i> {{gist.comments}} Comment(s)</span>
+                <i class="fa fa-file"></i>
                 <ng-pluralize count="gist.filesCount" when="{'one': '1 file', 'other': '{} files'}"></ng-pluralize>
 
-                <span ng-if="gist.bigFile" class="pils gist-comment" title="This gist contains file over 1mb"><i class="icon-warning-sign"></i> big file</span>
+                <span ng-if="gist.bigFile" class="pils gist-comment" title="This gist contains file over 1mb"><i class="fa fa-exclamation-triangle"></i> big file</span>
 
                 <p>
-                    <span data-ng-repeat="tag in gist.tags" class="pills"><i class="icon-tags"></i><i> {{tag |
+                    <span data-ng-repeat="tag in gist.tags" class="pills"><i class="fa fa-tags"></i><i> {{tag |
                         removeTagSymbol}} </i></span>
                 </p>
             </a>
@@ -70,7 +70,7 @@
         <div>
             <span>Total {{filteredGists.length}} gists</span>
             <span ng-if="enterpriseMode" title="Enterprise mode"><i class="icon-briefcase" style="font-size: 14px;"></i> Enterprise mode &nbsp;</span>
-            <span title="Gisto server status"><i class="icon-globe"
+            <span title="Gisto server status"><i class="fa fa-globe"
                               ng-class="{offline: !onlineStatus.status, online: onlineStatus.status }"></i> {{ onlineStatus.state }}</span>
         </div>
     </footer>
