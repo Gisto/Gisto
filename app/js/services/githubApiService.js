@@ -451,7 +451,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                     requestHandler({
                         method: 'DELETE',
-                        url: endpoints[active_endpoint].api_url + '/gists//' + id,
+                        url: endpoints[active_endpoint].api_url + '/gists/' + id,
                         headers: {
                             Authorization: 'token ' + result['token']
                         }
