@@ -735,7 +735,7 @@ details > summary {
     position: absolute;
     top: 35px;
     right: 0;
-    z-index: 4;
+    z-index: 6;
     font-size: 9pt;
     line-height: 20px;
     padding: 5px;
