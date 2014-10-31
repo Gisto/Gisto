@@ -1,6 +1,6 @@
 'use strict';
 
-function settingsCtrl($scope, appSettings, $http, $timeout) {
+function settingsCtrl($scope, appSettings, $http, $timeout, $window) {
     $scope.themes = appSettings.theme_list;
     $scope.editor_themes = appSettings.editor_theme_list;
     $scope.font_sizes = appSettings.font_size;
@@ -49,7 +49,7 @@ function settingsCtrl($scope, appSettings, $http, $timeout) {
         var saved = appSettings.set(data, function (response) {
             if (response.status === 'ok') {
                 console.log('SAVED SETTINGS');
-                window.location.reload();
+                $window.location.href = 'index.html#/loading';
             } else {
                 console.log('NOT SAVED SETTINGS');
             }
