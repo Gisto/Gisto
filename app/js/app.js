@@ -1,5 +1,15 @@
 'use strict';
 
+// Create placeholder menu in node-webkit as without one copy/paste is not available on osx.
+var win = window.gui.Window.get();
+var nativeMenuBar = new window.gui.Menu({ type: "menubar" });
+try {
+    nativeMenuBar.createMacBuiltin("Gisto");
+    win.menu = nativeMenuBar;
+} catch (ex) {
+    console.log(ex.message);
+}
+
 // Declare app level module which depends on filters, and services
 angular.module('gisto', [
         'ngRoute',
