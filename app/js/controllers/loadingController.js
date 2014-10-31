@@ -51,7 +51,21 @@ function loadingCtrl(appSettings, $location, $http, ghAPI, $rootScope) {
         if (settings.token) {
             // set existing token and redirect to main page
             ghAPI.setToken(settings.token);
-            $location.url('/');
+
+            // attempt to verify that the token is actually valid and not expired
+            ghAPI.isTokenValid(settings.token).then(function(isVerified) {
+                if (isVerified) {
+                    $location.url('/');
+                } else {
+                    // token invalid -  redirect back to login screen
+                    $location.url('/login');
+                }
+            }, function(error) {
+                // token invalid -  redirect back to login screen
+                $location.url('/login');
+            });
+
+
         } else {
             // no saved token redirect to login page
             $location.url('/login');
