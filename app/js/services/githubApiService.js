@@ -596,7 +596,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                 appSettings.loadSettings().then(function (result) {
 
-                    var url = pageNumber ? endpoints[active_endpoint].api_url + '/gists/starred' + '?page=' + pageNumber : endpoints[active_endpoint].api_url + '/starred';
+                    var url = pageNumber ? endpoints[active_endpoint].api_url + '/gists/starred' + '?page=' + pageNumber : endpoints[active_endpoint].api_url + '/gists/starred';
                     requestHandler({
                         method: 'GET',
                         url: url,

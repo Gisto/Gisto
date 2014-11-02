@@ -46,7 +46,7 @@
             <a ui-route="/gist/{{gist.id}}" data-ng-class="{active: $uiRoute}"
                ng-click="navigateToGist(gist.id)">
                 <h3>
-                    <i class="icon-{{gist.public | publicOrPrivet}}"></i>
+                    <i class="fa fa-{{gist.public | publicOrPrivet}}"></i>
                     {{(gist.description | removeTags) || 'Untitled'}}
                 </h3>
 
@@ -69,7 +69,7 @@
     <footer class="flex">
         <div>
             <span>Total {{filteredGists.length}} gists</span>
-            <span ng-if="enterpriseMode" title="Enterprise mode"><i class="icon-briefcase" style="font-size: 14px;"></i> Enterprise mode &nbsp;</span>
+            <span ng-if="enterpriseMode" title="Enterprise mode"><i class="fa fa-briefcase" style="font-size: 14px;"></i> Enterprise mode &nbsp;</span>
             <span title="Gisto server status"><i class="fa fa-globe"
                               ng-class="{offline: !onlineStatus.status, online: onlineStatus.status }"></i> {{ onlineStatus.state }}</span>
         </div>
