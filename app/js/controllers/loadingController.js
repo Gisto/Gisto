@@ -71,6 +71,11 @@ function loadingCtrl(appSettings, $location, $http, ghAPI, $rootScope) {
             $location.url('/login');
         }
 
+        // gisto is ready show the window
+        win.show();
+
+
+
     });
 
 }

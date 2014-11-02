@@ -14,7 +14,8 @@
         "toolbar": true,
         "width": 1200,
         "height": 600,
-        "position": "center"
+        "position": "center",
+        "show": false
     },
     "webkit": {
         "plugin": false
