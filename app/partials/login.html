@@ -26,16 +26,10 @@
         </div>
         <input type="submit" value="login"/>
         <p data-ng-show="step2"><a href="#" data-ng-click="step1()"><i class="fa fa-arrow-left"></i> Re-enter username/password</a></p>
-
+        <p>- Or -</p>
+        <p><a class="login-mode-btn" data-ng-click="toggleManualToken()">Enter Access Token</a>
+            <a data-ng-if="enterpriseMode" class="login-mode-btn" data-ng-click="showEnterprise()">Enterprise Setup</a></p>
         <p>No account yet? Sign-up at <a to-url="https://github.com/signup/free" href="">GitHub</a></p>
-        <p><a data-ng-click="toggleManualToken()">Enter Existing Access Token</a></p>
-        <p><a data-ng-click="showEnterprise()" class="enterprise-button">Enterprise Setup</a>
-        <a data-ng-click="toggleEnterpriseMode()" class="enterprise-button">
-            <span data-ng-show="enterpriseMode" disable-animate>Enterprise Mode</span>
-            <span data-ng-show="!enterpriseMode" disable-animate>GitHub Mode</span>
-        </a>
-        </p>
-
 
         <i data-ng-show="spinner" class="spiner fa fa-spinner fa-spin"></i>
     </form>
@@ -55,10 +49,18 @@
         <p>You can generate access token at <a to-url="https://github.com/settings/applications">GitHub</a></p>
     </form>
 
+    <p>
+        <input id="enterprizeMode" class="toggle" data-ng-click="toggleEnterpriseMode()" data-ng-model="enterpriseMode" type="checkbox">
+        <label for="enterprizeMode" class=""></label> Enterprise mode {{enterpriseMode === true ? 'on':'off'}}
+    </p>
 
 
     <a class="auth-help" href="#"> ? <div>
 
+        <span data-ng-if="enterpriseMode">
+    Enterprise stuff here...
+    </span>
+        <span data-ng-if="!enterpriseMode">
         Gisto authenticates to GitHub by using basic authentication over SSL and retrieving an oAuth2 token. Thus the need for your GitHub user and password.
         <br /><br />
         Gisto <em>only saves</em> the oAuth2 token received after authenticating and <em>nothing else</em>.
@@ -67,6 +69,9 @@
         from the account settings at GitHub and login using the generated token.
         <br/><br/>
         This token will be saved permanently until you log out.
+        <br/><br/>
+        To use Gisto in <b>enterprise</b> mode, please use the switch above to turn it on.
+    </span>
     </div></a>
 
 
