@@ -35,7 +35,7 @@
     </form>
 
     <form data-ng-show="showEnterpriseSetup" class="login-animation">
-        <input type="text" data-ng-model="enterprise.api_url" placeholder="API URL (https://ghe.local/api/v3" />
+        <input type="text" data-ng-model="enterprise.api_url" placeholder="API URL https://g.local/api/v3" />
         <input type="text" data-ng-model="enterprise.client_id" placeholder="Client ID" />
         <input type="text" data-ng-model="enterprise.client_secret" placeholder="Client Secret" />
         <p><button data-ng-click="saveEnterpriseConfig()">Save</button></p>
@@ -65,8 +65,23 @@
     <a class="auth-help" href="#"> ? <div>
 
         <span data-ng-if="enterpriseMode">
-    Enterprise stuff here...
-    </span>
+            In order to connect to your GitHub Enterprise instance please fill the following fields:
+            <br />
+            API Url, Client Id and Client Secret.
+            <br /><br/>
+            In order to get the Client Id and Secret you need to open an application in your GitHub account
+            or get them from the person who has opened an application in your organization for Gisto.
+            <br/>
+            API url is your instance address plus /api/v3 e.g: http://ghe.local/api/v3
+            <br /><br/>
+            To open an application please go to Account Settings -> Applications and click Register new application
+            <br />
+            In the application name type in Gisto
+            And type in http://www.gistoapp.com in the homepage url.
+            <br />
+            Once you save the application the Client Id and Client Secret tokens should be visible at the
+            top of the screen.
+        </span>
         <span data-ng-if="!enterpriseMode">
         Gisto authenticates to GitHub by using basic authentication over SSL and retrieving an oAuth2 token. Thus the need for your GitHub user and password.
         <br /><br />
