@@ -939,6 +939,11 @@ details > summary {
     padding: 3px;
 }
 
+/* Removes arrows on webkit for elements like datalist */
+.share-drop-down div input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
 .share-drop-down div input[type="submit"] {
     border: none;
     border-radius: 3px;
