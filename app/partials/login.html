@@ -26,7 +26,7 @@
         </div>
         <input type="submit" value="login"/>
         <p data-ng-show="step2"><a href="#" data-ng-click="step1()"><i class="fa fa-arrow-left"></i> Re-enter username/password</a></p>
-        <p>- Or -</p>
+
         <p><a class="login-mode-btn" data-ng-click="toggleManualToken()">Enter Access Token</a>
             <a data-ng-if="enterpriseMode" class="login-mode-btn" data-ng-click="showEnterprise()">Enterprise Setup</a></p>
         <p>No account yet? Sign-up at <a to-url="https://github.com/signup/free" href="">GitHub</a></p>
@@ -49,10 +49,17 @@
         <p>You can generate access token at <a to-url="https://github.com/settings/applications">GitHub</a></p>
     </form>
 
-    <p>
-        <input id="enterprizeMode" class="toggle" data-ng-click="toggleEnterpriseMode()" data-ng-model="enterpriseMode" type="checkbox">
-        <label for="enterprizeMode" class=""></label> Enterprise mode {{enterpriseMode === true ? 'on':'off'}}
-    </p>
+
+        <label>
+            <input type="checkbox" data-ng-click="toggleEnterpriseMode()" data-ng-model="enterpriseMode" class="ios-switch tinyswitch" checked />
+            <div>
+                <div></div>
+            </div>
+            Enterprise mode {{enterpriseMode === true ? 'on':'off'}}
+        </label>
+
+        <!--<input id="enterprizeMode" class="toggle" data-ng-click="toggleEnterpriseMode()" data-ng-model="enterpriseMode" type="checkbox">
+        <label for="enterprizeMode" class=""></label> Enterprise mode {{enterpriseMode === true ? 'on':'off'}}-->
 
 
     <a class="auth-help" href="#"> ? <div>
