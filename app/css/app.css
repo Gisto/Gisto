@@ -1272,18 +1272,19 @@ input[type="checkbox"].green.iosw-switch:checked + div > div {
 }
 
 .login-mode-btn {
-    border: 1px solid #555;
+    border: 1px solid #A7A7A7;
     padding: 5px 10px;
     border-radius: 3px;
-    color: #000;
+    color: #333;
     width: 148px;
     display: inline-block;
+    margin: 0px 0 0 0;
     font-size: 14px !important;
-    background: rgba(255,255,255,.2);
+    background: rgba(209, 209, 209, 0.64);
 }
 
-/*
+
 .login-mode-btn:hover {
-    background: rgba(255,255,255,.1);
-    box-shadow: 0px 0px 5px #555,0px 5px 15px #fff inset;
-}*/
+    border: 1px solid #7A7979;
+    transition: border 1s;
+}
