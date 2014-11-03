@@ -169,6 +169,14 @@ angular.module('gisto.service.gitHubAPI', [
                             data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
                             data[item].single = {};
                             data[item].filesCount = Object.keys(data[item].files).length;
+
+                            /*
+                                check if the gists contains file over 1MB
+                                if they do mark them as gists with big files
+                                the check is done using a byte size comparison 1048576 = 1MB
+                                due to the gist list api does not return if the file
+                                is going to be truncated or not, so we have to measure each file size in bytes.
+                            */
                             angular.forEach(data[item].files, function (fileSize) {
                                 if (fileSize.size > 1048576) {
                                     data[item].bigFile = true;
