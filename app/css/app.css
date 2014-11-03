@@ -1170,6 +1170,10 @@ input[type=checkbox].toggle + label:before {
     cursor: pointer;
 }*/
 
+/*
+Toggles by Bandar Raffah from http://codepen.io/BandarRaffah/pen/ibwje
+*/
+
 input[type="checkbox"].ios-switch {
     position: absolute;
     opacity: 0;
