@@ -184,7 +184,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                 ghAPI.delete($scope.gist.single.id);
                 gistData.list.splice(gistData.list.indexOf(gistData.getGistById($scope.gist.single.id)), 1);
 
-                newGist.tags = newGist.description ? newGist.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                newGist.tags = newGist.description ? $filter('matchTags')(newGist.description) : [];
                 newGist.files = response.data.files;
                 newGist.comments = 0;
                 newGist.filesCount = Object.keys(newGist.files).length;
@@ -511,7 +511,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                     $rootScope.edit = false;
                     $scope.gist.single.files = response.data.files;
                     $scope.gist.single.history = response.data.history;
-                    $scope.gist.tags = $scope.gist.description ? $scope.gist.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                    $scope.gist.tags = $scope.gist.description ? $filter('matchTags')($scope.gist.description) : [];
                     $scope.gist.filesCount = Object.keys($scope.gist.single.files).length;
                     setTimeout(function () {
                         $('.ok').slideUp();

@@ -23,6 +23,7 @@ angular.module('gisto', [
         'gisto.filter.markDown',
         'gisto.filter.codeLanguage',
         'gisto.filter.removeTagSymbol',
+        'gisto.filter.matchTags',
         'gisto.filter.dotToDash',
         'gisto.filter.githubFileName',
         'gisto.directive.scrollTo',

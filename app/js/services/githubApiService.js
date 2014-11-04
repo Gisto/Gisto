@@ -3,9 +3,10 @@
 angular.module('gisto.service.gitHubAPI', [
     'gisto.service.gistData',
     'gisto.service.appSettings',
-    'gisto.service.requestHandler'
+    'gisto.service.requestHandler',
+    'gisto.filter.matchTags'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope,$filter) {
         var token = appSettings.get('token'),
             active_endpoint = appSettings.get('active_endpoint'),
             endpoints = {
@@ -166,7 +167,7 @@ angular.module('gisto.service.gitHubAPI', [
                         headers: headers
                     }).success(function (data, status, headers, config) {
                         for (var item in data) { // process and arrange data
-                            data[item].tags = data[item].description ? data[item].description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                            data[item].tags = data[item].description ? $filter('matchTags')(data[item].description) : [];
                             data[item].single = {};
                             data[item].filesCount = Object.keys(data[item].files).length;
 
