@@ -20,18 +20,37 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
         $scope.showEnterpriseSetup = true;
     };
 
+    function isEnterpriseAndEmpty() {
+        console.log('isEnterprise', $scope.active_endpoint === 'enterprise' && (!$scope.enterprise.api_url || !$scope.enterprise.client_id || !$scope.enterprise.client_secret));
+        return $scope.active_endpoint === 'enterprise' && (!$scope.enterprise.api_url || !$scope.enterprise.client_id || !$scope.enterprise.client_secret);
+    }
+
     $scope.hideEnterprise = function () {
+
+        if (isEnterpriseAndEmpty()) {
+            $scope.toggleEnterpriseMode();
+        }
+
         $scope.showEnterpriseSetup = false;
     };
 
     $scope.saveEnterpriseConfig = function () {
 
-        console.log('saving enterprise settings');
         appSettings.loadSettings().then(function (settings) {
 
             // strip last slash on api url
             if ($scope.enterprise.api_url.slice(-1) === '/') {
                 $scope.enterprise.api_url = $scope.enterprise.api_url.slice(0, -1);
+            }
+
+            // check if /api/v3 is missing from the url and add it
+            if ($scope.enterprise.api_url && $scope.enterprise.api_url.toLowerCase().indexOf('/api/v3') === -1) {
+                $scope.enterprise.api_url += '/api/v3';
+            }
+
+            // check for http(s) protocol and add if missing (assuming http is used)
+            if ($scope.enterprise.api_url && $scope.enterprise.api_url.search(/^http(s?):\/\//i) === -1) {
+                $scope.enterprise.api_url = 'http://' + $scope.enterprise.api_url;
             }
 
             settings.endpoints['enterprise'] = {
@@ -61,6 +80,11 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
         appSettings.set({
             active_endpoint: $scope.active_endpoint
         });
+
+
+        if (isEnterpriseAndEmpty()) {
+            $scope.showEnterprise();
+        }
     };
 
     // watch for changes on the active endpoint and update the enterprise state
