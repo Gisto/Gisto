@@ -91,10 +91,18 @@ angular.module('gisto', [
         $routeProvider.otherwise({
             redirectTo: '/'
         });
-    }]).run(function($rootScope, $animate) {
+    }]).run(function($rootScope, $timeout) {
         $rootScope.gistoReady = false;
 
        $rootScope.$on('$routeChangeStart', function() {
           $rootScope.edit = false;
        });
+
+        // gisto is ready show the window
+        // delay the window by a small amount in order to
+        // prevent flickering while settings are loaded.
+        $timeout(function() {
+            win.show();
+        },300);
+
     });
