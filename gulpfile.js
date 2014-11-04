@@ -110,7 +110,7 @@ gulp.task('concat', function () {
     gulp.src([
     'app/lib/jquery/dist/jquery.min.js',
     'app/lib/socket.io-client/socket.io.js',
-    'app/lib/angular/angular.js',
+    'app/lib/angular/angular.min.js',
     'app/lib/angular-route/angular-route.min.js',
     'app/lib/angular-animate/angular-animate.js',
     'app/lib/angular-sanitize/angular-sanitize.js',
