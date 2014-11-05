@@ -31,6 +31,7 @@ angular.module('gisto', [
         'gisto.directive.toUrl',
         'gisto.directive.disableAnimate',
         'gisto.directive.toggle',
+        'gisto.directive.styleLoader',
         'gisto.service.gistData',
         'gisto.service.requestHandler',
         'gisto.service.gitHubAPI',
