@@ -55,7 +55,8 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                         client_secret: ''
                     }
                 },
-                active_endpoint: 'public'
+                active_endpoint: 'public',
+                anim: 1
             },
 
             loadSettings: function () {
@@ -78,6 +79,8 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                     // mark settings as loaded for further checks
                     settings.dataLoaded = true;
 
+                    // emit to rootScope that settings has been updated.
+                    $rootScope.$emit('settings.update');
                     defer.resolve(settings.data);
                 }
                 //}, 2500); // uncomment when you want to simulate loading delay
@@ -150,6 +153,8 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 settings.data['last_modified'] = new Date().toUTCString();
                 localStorage.settings = JSON.stringify(settings.data);
 
+                // emit to rootScope that settings has been updated.
+                $rootScope.$emit('settings.update');
                 if (callback) {
                     return callback({
                         status: 'ok'

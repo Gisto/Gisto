@@ -46,14 +46,7 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
         data.ui_zoom = $scope.ui_zoom;
         data.min_lines = $scope.min_lines;
         data.max_lines = $scope.max_lines;
-        var saved = appSettings.set(data, function (response) {
-            if (response.status === 'ok') {
-                console.log('SAVED SETTINGS');
-                $window.location.href = 'index.html#/loading';
-            } else {
-                console.log('NOT SAVED SETTINGS');
-            }
-        });
+        appSettings.set(data);
     };
 
     $scope.import_settings = function (file) {
@@ -73,8 +66,6 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
                         console.info('SETTING FILE (NEW)', incomingSettings.data);
                         appSettings.set(incomingSettings.data);
                         console.info('NEW SETTING', JSON.stringify(incomingSettings.data));
-                        $rootScope.gistoReady = false;
-                        $window.location.href = 'index.html#/loading';
                     });
                 });
             }, 0);

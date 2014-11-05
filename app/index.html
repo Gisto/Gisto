@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="gisto" data-ng-controller="settingsCtrl">
-<head data-ng-controller="settingsCtrl">
+<html lang="en" data-ng-app="gisto">
+<head>
     <meta charset="utf-8">
     <title>Gisto</title>
     <meta name="viewport" content="width=device-width">
@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/markdown.css">
-    <link rel="stylesheet" data-ng-href="themes/{{theme}}/theme.css">
-    <link rel="stylesheet" data-ng-if="anim==1" data-ng-href="css/animation.css">
+    <style-loader></style-loader>
 
     <script>
         /**
@@ -134,6 +133,7 @@
 <script src="js/directives/goToUrlDirective.js"></script>
 <script src="js/directives/disableAnimateDirective.js"></script>
 <script src="js/directives/toggleDirective.js"></script>
+<script src="js/directives/styleLoaderDirective.js"></script>
 <script src="lib/showdown/compressed/showdown.js"></script>
 <!-- env:dev:end -->
 

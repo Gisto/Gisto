@@ -181,10 +181,10 @@ angular.module('gisto.service.gitHubAPI', [
                             angular.forEach(data[item].files, function (fileSize) {
                                 if (fileSize.size > 1048576) {
                                     data[item].bigFile = true;
-                                    console.info(' --- file size', fileSize.size);
+                                    //console.info(' --- file size', fileSize.size);
                                 }
                             });
-                            console.info('data[item]',data[item]);
+                            //console.info('data[item]',data[item]);
                         }
 
                         // Set lastUpdated for 60 sec cache
