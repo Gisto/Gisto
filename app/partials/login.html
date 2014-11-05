@@ -17,8 +17,8 @@
     <form data-ng-submit="submit()" class="login-animation" data-ng-show="!useManualToken && !showEnterpriseSetup">
 
         <div data-ng-hide="step2">
-            <input type="text" data-ng-model="user" placeholder="GitHub username/e-mail" required autofocus>
-            <input type="password" data-ng-model="pass" placeholder="GitHub password" required/>
+            <input type="text" data-ng-model="user" placeholder="{{enterpriseMode === true ? 'Enterprise ':'GitHub '}}username/e-mail" required autofocus>
+            <input type="password" data-ng-model="pass" placeholder="{{enterpriseMode === true ? 'Enterprise ':'GitHub '}}password" required/>
         </div>
         <div data-ng-show="step2">
             <input type="text" data-ng-model="code" placeholder="Authenticator token">
