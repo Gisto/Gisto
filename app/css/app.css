@@ -1098,7 +1098,8 @@ a.auth-help div {
 
 editor > div {
     padding: 5px;
-    border-top: 1px solid #ccc;
+    border-top: 1px dashed #ccc;
+    overflow: auto;
 }
 
 .ace_status-indicator {
