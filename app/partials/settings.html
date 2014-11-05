@@ -41,7 +41,7 @@
         </details>
 
         <details>
-            <summary>editor</summary>
+            <summary>Editor</summary>
 
             <p>set editor theme to <select data-ng-model="editor_theme">
                 <option data-ng-repeat="editor_theme in editor_themes">{{editor_theme}}</option>
@@ -59,25 +59,15 @@
             <p>limit editor height to <input type="text" data-ng-model="max_lines"/> <b>lines</b> (<i>default 50</i>)
             </p>
 
-            <label><input type="checkbox" data-ng-model="editor_ext.emmet" class="ios-switch tinyswitch" /><div><div></div></div>
-                enable 'emmet' for <i>.html</i> files
-            </label>
+            <toggle data-ng-model="editor_ext.emmet" text="enable 'emmet' for <i>.html</i> files"></toggle>
             <br/>
-            <label><input type="checkbox" data-ng-model="editor_ext.statusbar" class="ios-switch tinyswitch" /><div><div></div></div>
-                enable status bar
-            </label>
+            <toggle data-ng-model="editor_ext.statusbar" text="enable status bar"></toggle>
             <br/>
-            <label><input type="checkbox" data-ng-model="editor_ext.autocompletion" class="ios-switch tinyswitch" /><div><div></div></div>
-                enable auto-completion
-            </label>
+            <toggle data-ng-model="editor_ext.autocompletion" text="enable auto-completion"></toggle>
             <br/>
-            <label><input type="checkbox" data-ng-model="editor_vim_mode" class="ios-switch tinyswitch" /><div><div></div></div>
-                enable vim mode
-            </label>
+            <toggle data-ng-model="editor_vim_mode" text="enable vim mode"></toggle>
             <br/>
-            <label><input type="checkbox" data-ng-model="editor_word_wrap" class="ios-switch tinyswitch" /><div><div></div></div>
-                enable word wrap
-            </label>
+            <toggle data-ng-model="editor_word_wrap" text="enable word wrap"></toggle>
 
         </details>
 

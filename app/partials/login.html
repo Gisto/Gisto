@@ -49,18 +49,7 @@
         <p>You can generate access token at <a to-url="https://github.com/settings/applications">GitHub</a></p>
     </form>
 
-
-        <label>
-            <input type="checkbox" data-ng-click="toggleEnterpriseMode()" data-ng-model="enterpriseMode" class="ios-switch tinyswitch" />
-            <div>
-                <div></div>
-            </div>
-            Enterprise mode {{enterpriseMode === true ? 'on':'off'}}
-        </label>
-
-        <!--<input id="enterprizeMode" class="toggle" data-ng-click="toggleEnterpriseMode()" data-ng-model="enterpriseMode" type="checkbox">
-        <label for="enterprizeMode" class=""></label> Enterprise mode {{enterpriseMode === true ? 'on':'off'}}-->
-
+    <toggle data-ng-click="toggleEnterpriseMode()" data-ng-model="enterpriseMode" text="Enterprise mode"></toggle> {{enterpriseMode === true ? 'on':'off'}}
 
     <a class="auth-help"> ? <div>
 
