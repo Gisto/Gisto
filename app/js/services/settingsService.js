@@ -44,7 +44,7 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 avatarUrl: 'https://secure.gravatar.com/avatar/',
                 theme: 'default',
                 editor_theme: 'tomorrow',
-                editor_ext: [],
+                editor_ext: { emmet: false, statusbar: false, autocompletion: false },
                 editor_vim_mode: false,
                 min_lines: 0,
                 max_lines: 50,
