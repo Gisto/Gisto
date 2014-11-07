@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/markdown.css">
-    <style-loader></style-loader>
+    <resource-loader></resource-loader>
 
     <script>
         /**
@@ -80,11 +80,7 @@
 <!--SCRIPTS-->
 
 <script src="lib/ace-builds/src-min-noconflict/ace.js"></script>
-
-<script data-ng-if="editor_ext.emmet" src="lib/ace-builds/src-min-noconflict/ext-emmet.js"></script>
-<script data-ng-if="editor_ext.emmet" src="lib/emmet/emmet.min.js"></script>
-<script data-ng-if="editor_ext.statusbar" src="lib/ace-builds/src-min-noconflict/ext-statusbar.js"></script>
-<script data-ng-if="editor_ext.autocompletion" src="lib/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+<resource-loader position="footer"></resource-loader>
 
 <!-- env:prod --#>
 <script src="js/gisto.min.js"></script>
@@ -133,7 +129,7 @@
 <script src="js/directives/goToUrlDirective.js"></script>
 <script src="js/directives/disableAnimateDirective.js"></script>
 <script src="js/directives/toggleDirective.js"></script>
-<script src="js/directives/styleLoaderDirective.js"></script>
+<script src="js/directives/resourceLoaderDirective.js"></script>
 <script src="lib/showdown/compressed/showdown.js"></script>
 <!-- env:dev:end -->
 

@@ -15,7 +15,6 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
 
             appSettings.loadSettings().then(function (appSettingsResult) {
 
-
                 $timeout(function () {
 
                     var lang = $attrs.language,
@@ -33,7 +32,12 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                         editor.setOptions({
                             enableEmmet: true
                         });
+                    } else {
+                        editor.setOptions({
+                            enableEmmet: false
+                        });
                     }
+
                     // Auto-completion
                     if (appSettingsResult.editor_ext.emmet) {
                         console.log('language tools should be loaded');
