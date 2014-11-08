@@ -215,7 +215,7 @@
             <a data-ng-click="deleteFileConfirm(file.filename)" data-file-index="{{$index}}"
                title="Delete {{file.filename}}"><i class="fa fa-times"></i></a>
 
-            <a data-ng-click="enableEdit(gist.files ,gist.description)" title="Edit"><i
+            <a data-ng-click="enableEdit(gist.single.files ,gist.description)" title="Edit"><i
                     class="fa fa-pencil fa-rotate-90"></i></a>
             <a data-ng-if="!$parent.enterpriseMode" href="{{file.raw_url}}" download="{{file.filename}}" title="Download"><i
                     class="fa fa-download"></i></a>
