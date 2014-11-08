@@ -19,7 +19,7 @@ aside header,
     border-bottom: 1px solid hsl(0, 0%, 60%);
     text-shadow: 1px 1px 1px #fff;
     width: 100%;
-    height: 52px;
+    min-height: 52px;
 }
 
 div.toolbox {
