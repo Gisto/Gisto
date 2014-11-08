@@ -478,6 +478,7 @@ div.main .the-comments .comment_gravatar {
     background: transparent;
     text-align: center;
     position: relative;
+    color: #555;
 }
 
 .login p {
