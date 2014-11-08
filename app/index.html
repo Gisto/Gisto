@@ -23,7 +23,7 @@
 
 </head>
 
-<body ng-style="body_zoom()" class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute || !$root.gistoReady}">
+<body ng-style="{zoom: ui_zoom + '%'}" class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute || !$root.gistoReady}">
 <aside class="flex" data-ng-if="$root.gistoReady" data-ng-controller="listGistCtrl"
        data-ng-hide="edit">
 
