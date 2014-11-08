@@ -473,13 +473,15 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         }
 
         // Remove old files if files renamed
-        var oldFiles = $(Object.keys($scope.old_object)).not(Object.keys(data.files)).get();
-        console.warn('---------- DIFF',oldFiles);
+        if ($scope.old_object) {
+            var oldFiles = $(Object.keys($scope.old_object)).not(Object.keys(data.files)).get();
 
-        oldFiles.forEach(function(fileToRemove){
-            console.log('fileToRemove',fileToRemove);
-            data.files[fileToRemove] = null;
-        });
+            oldFiles.forEach(function(fileToRemove){
+                console.log('fileToRemove',fileToRemove);
+                data.files[fileToRemove] = null;
+            });
+        }
+
 
         console.log('data.files',data.files)
 
@@ -513,6 +515,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                     $scope.gist.single.history = response.data.history;
                     $scope.gist.tags = $scope.gist.description ? $filter('matchTags')($scope.gist.description) : [];
                     $scope.gist.filesCount = Object.keys($scope.gist.single.files).length;
+
                     setTimeout(function () {
                         $('.ok').slideUp();
                     }, 2500);
