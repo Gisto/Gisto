@@ -47,6 +47,10 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
         data.min_lines = $scope.min_lines;
         data.max_lines = $scope.max_lines;
         appSettings.set(data);
+        $('.ok').slideDown('slow');
+        setTimeout(function () {
+            $('.ok').slideUp();
+        }, 2500);
     };
 
     $scope.import_settings = function (file) {
@@ -66,6 +70,10 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
                         console.info('SETTING FILE (NEW)', incomingSettings.data);
                         appSettings.set(incomingSettings.data);
                         console.info('NEW SETTING', JSON.stringify(incomingSettings.data));
+                        $('.ok').slideDown('slow');
+                        setTimeout(function () {
+                            $('.ok').slideUp();
+                        }, 2500);
                     });
                 });
             }, 0);
