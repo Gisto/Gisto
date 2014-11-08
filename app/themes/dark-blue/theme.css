@@ -38,6 +38,8 @@ aside header,
     border-top: 1px solid #9B9B9B;
     border-bottom: 1px solid #000;
     text-shadow: 1px 1px 1px #000;
+    width: 100%;
+    min-height: 52px;
 }
 
 div.toolbox {
