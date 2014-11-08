@@ -15,7 +15,7 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
         $scope.editor_ext = result['editor_ext'] || {};
         $scope.editor_vim_mode = result['editor_vim_mode'] || false;
         $scope.editor_word_wrap = result['editor_word_wrap'] || false;
-        $scope.ui_zoom = result['ui_zoom'] || 100;
+        $rootScope.ui_zoom = $scope.ui_zoom = result['ui_zoom'] || 100;
     }, function (error) {
         console.log('could not load settings');
     });
@@ -43,7 +43,7 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
         data.editor_word_wrap = $scope.editor_word_wrap;
         data.editor_theme = $scope.editor_theme;
         data.font_size = $scope.font_size;
-        data.ui_zoom = $scope.ui_zoom;
+        $rootScope.ui_zoom = data.ui_zoom = $scope.ui_zoom;
         data.min_lines = $scope.min_lines;
         data.max_lines = $scope.max_lines;
         appSettings.set(data);

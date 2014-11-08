@@ -22,6 +22,9 @@ function loadingCtrl(appSettings, $location, $http, ghAPI, $rootScope) {
 
             if (settings) {
 
+                // load initial ui settings
+                $rootScope.ui_zoom = settings.ui_zoom;
+
                 // load enterprise endpoints
                 var enterpriseEndpoint = {
                     api_url: settings.endpoints['enterprise'].api_url,
