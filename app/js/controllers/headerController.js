@@ -1,6 +1,6 @@
 'use strict';
 
-function headerController($scope, notificationService, $location, appSettings, gistData, onlineStatus, $rootScope) {
+function headerController($scope, notificationService, $location, appSettings, gistData, onlineStatus, $rootScope, ghAPI) {
 
     notificationService.login();
 
@@ -12,6 +12,18 @@ function headerController($scope, notificationService, $location, appSettings, g
     $scope.settings = appSettings.data;
 
     $scope.notifications = notificationService.notifications;
+
+    $scope.updateGists = function() {
+        var indicator = $('.gist-update-btn');
+        indicator.addClass('fa-spin');
+
+        ghAPI.startUpdate().then(function() {
+            indicator.removeClass('fa-spin');
+        });
+    };
+
+    // every 10 minutes run an update to check for updates in gists
+    setInterval($scope.updateGists, 60 * 10 * 1000);
 
     $scope.logOut = function () {
 
