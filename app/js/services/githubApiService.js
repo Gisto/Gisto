@@ -6,8 +6,9 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.requestHandler',
     'gisto.filter.matchTags'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope,$filter) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route) {
         var token = appSettings.get('token'),
+            lastGistsUpdate = null,
             active_endpoint = appSettings.get('active_endpoint'),
             endpoints = {
               'public': {
@@ -23,7 +24,14 @@ angular.module('gisto.service.gitHubAPI', [
 
             };
 
+
+
         var api = {
+
+            // update function for polling gists updates
+            startUpdate: function() {
+              return api.gists(true);
+            },
 
             getEndpoint: function(endpoint) {
               endpoint = endpoint || active_endpoint;
@@ -150,15 +158,15 @@ angular.module('gisto.service.gitHubAPI', [
             },
 
             // GET /gists
-            gists: function (updateOnly, pageNumber) {
-                    console.log(endpoints, active_endpoint);
+            gists: function (updateOnly, pageNumber, deferred) {
+                    var deferred = deferred || $q.defer();
                     var url = pageNumber ? endpoints[active_endpoint].api_url + '/gists?page=' + pageNumber : endpoints[active_endpoint].api_url + '/gists',
                         headers = {
                             Authorization: 'token ' + token
                         };
 
-                    if (updateOnly) {
-                        headers['If-Modified-Since'] = localStorage.gistsLastUpdated;
+                    if (updateOnly && lastGistsUpdate) {
+                        headers['If-Modified-Since'] = lastGistsUpdate;
                     }
 
                     requestHandler({
@@ -190,10 +198,41 @@ angular.module('gisto.service.gitHubAPI', [
                         // Set lastUpdated for 60 sec cache
                         data.lastUpdated = new Date();
 
-                        gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
-                        // localStorage.gistsLastUpdated = data.headers['last-modified'];
+                        if (updateOnly) {
+
+                            // get the current gist id being edited if there is one.
+                            var editInProgressGistId = $route.current.params['gistId'] || null;
+
+                            // apply update for gists
+                            data.forEach(function(newGist) {
+
+                                // only update gists which are currently not being worked on.
+                                // in the future pop a notification to notify the user.
+                                if (editInProgressGistId && editInProgressGistId === newGist.id) {
+                                    return;
+                                }
+
+                                var gist = gistData.getGistById(newGist.id);
+
+                                if (gist) {
+                                    angular.forEach(gist, function(value, key) {
+                                        gist[key] = newGist[key];
+                                    });
+                                } else {
+                                    // can't find a match, assume new gist
+                                    gistData.list.push(newGist);
+                                }
+
+                            });
+                        } else {
+                            // push new gists to the list
+                            gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
+                        }
+
+
 
                         var header = headers();
+                        lastGistsUpdate = header['last-modified'];
                         if (header.link) {
                             var links = header.link.split(',');
                             for (var link in links) {
@@ -201,12 +240,15 @@ angular.module('gisto.service.gitHubAPI', [
                                 if (link.indexOf('rel="next') > -1) {
                                     var nextPage = parseInt(link.match(/\?page=(\d+)/)[1], 10);
                                     if (!pageNumber || nextPage > pageNumber) {
-                                        api.gists(null, nextPage);
+                                        api.gists(updateOnly, nextPage, deferred);
                                         return; // end the function before it reaches starred gist list call
                                     }
                                 }
                             }
                         }
+
+                        // resolve the promise when finished getting all the gists from paginated results
+                        deferred.resolve();
 
                         // end of the paging calls
                         api.starred(function (response) {
@@ -225,7 +267,11 @@ angular.module('gisto.service.gitHubAPI', [
                             headers: headers(),
                             config: config
                         });
+
+                        deferred.reject([data, status, headers, config]);
                     });
+
+                return deferred.promise;
             },
 
             // GET /gists/:id

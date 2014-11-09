@@ -1299,3 +1299,10 @@ input[type="checkbox"].green.iosw-switch:checked + div > div {
     border: 1px solid #7A7979;
     transition: border 1s;
 }
+
+.header-btn {
+    border: 1px solid #999;
+    background: #f2f2f2;
+    color: #555;
+    border-radius: 3px;
+}
