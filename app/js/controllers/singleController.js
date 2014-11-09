@@ -466,24 +466,11 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
         };
 
         for (var file in $scope.gist.single.files) {
-            data.files[$scope.gist.single.files[file].filename] = {
+            data.files[file] = {
                 content: $scope.gist.single.files[file].content,
                 filename: $scope.gist.single.files[file].filename
             };
         }
-
-        // Remove old files if files renamed
-        if ($scope.old_object) {
-            var oldFiles = $(Object.keys($scope.old_object)).not(Object.keys(data.files)).get();
-
-            oldFiles.forEach(function(fileToRemove){
-                console.log('fileToRemove',fileToRemove);
-                data.files[fileToRemove] = null;
-            });
-        }
-
-
-        console.log('data.files',data.files)
 
         if (angular.equals($scope.old_object, $scope.gist.single.files) && angular.equals($scope.old_description, $scope.gist.description)) {
             $('.warn.template span').text('No changes to save.');
