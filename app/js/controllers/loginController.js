@@ -28,7 +28,7 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
     $scope.hideEnterprise = function () {
 
         if (isEnterpriseAndEmpty()) {
-            $scope.toggleEnterpriseMode();
+            $scope.enterpriseMode = false;
         }
 
         $scope.showEnterpriseSetup = false;
@@ -71,8 +71,16 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
         $scope.hideEnterprise();
     };
 
-    $scope.toggleEnterpriseMode = function () {
-        $scope.active_endpoint = $scope.active_endpoint === 'enterprise' ? 'public' : 'enterprise';
+    // watch for changes on the active endpoint and update the enterprise state
+    $scope.$watch(function() {
+        return $scope.active_endpoint
+    }, function(value) {
+        console.log('watch value changed', value);
+        $rootScope.enterpriseMode = value === 'enterprise';
+    });
+
+    $scope.$watch('enterpriseMode', function(isEnterprise) {
+        $scope.active_endpoint = isEnterprise ? 'enterprise' : 'public';
         ghAPI.setActiveEndpoint($scope.active_endpoint);
         console.log($scope.active_endpoint);
 
@@ -85,15 +93,7 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
         if (isEnterpriseAndEmpty()) {
             $scope.showEnterprise();
         }
-    };
-
-    // watch for changes on the active endpoint and update the enterprise state
-    $scope.$watch(function() {
-        return $scope.active_endpoint
-    }, function(value) {
-        console.log('watch value changed', value);
-        $rootScope.enterpriseMode = value === 'enterprise';
-    })
+    });
 
 
 
