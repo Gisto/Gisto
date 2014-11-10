@@ -1172,6 +1172,10 @@ input[type=checkbox].toggle + label:before {
     cursor: pointer;
 }*/
 
+toggle {
+    position: relative;
+}
+
 /*
 Toggles by Bandar Raffah from http://codepen.io/BandarRaffah/pen/ibwje
 */
