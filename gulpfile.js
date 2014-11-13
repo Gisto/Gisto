@@ -15,6 +15,31 @@ var env_option = {
     blocking_char: '#'
 };
 
+// Gisto JS files for "concat" and "dist"
+var gisto_js_files = [
+    'app/lib/jquery/dist/jquery.min.js',
+    'app/lib/socket.io-client/socket.io.js',
+    'app/lib/angular/angular.min.js',
+    'app/lib/angular-route/angular-route.min.js',
+    'app/lib/angular-animate/angular-animate.js',
+    'app/lib/angular-sanitize/angular-sanitize.js',
+    'app/lib/angular-ui-utils/ui-utils.min.js',
+    'app/lib/angular-socket-io/socket.min.js',
+    'app/lib/showdown/compressed/showdown.js',
+    'app/lib/emmet/emmet.min.js',
+    'app/js/app.js',
+    'app/js/**/*.js',
+    '!app/js/gisto.min.js'
+];
+
+var gisto_css_files = [
+    'app/lib/normalize.css/normalize.css',
+    'app/lib/font-awesome/css/font-awesome.min.css',
+    'app/css/app.css',
+    'app/css/markdown.css',
+    '!app/css/gisto.css'
+];
+
 /**
  * version
  *
@@ -50,10 +75,10 @@ gulp.task('dev', function () {
     var files = ['./app/index.html'];
     files.forEach(function (file) {
         var content = fs.readFileSync(file, "utf8")
-            .replace('<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_dev + ' -->')
-            .replace('<!-- ' + env_option.env_prod + ' -->', '<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>')
-            .replace('/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/', '/* ' + env_option.env_dev + ' */')
-            .replace('/* ' + env_option.env_prod + ' */', '/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/');
+            .replace(new RegExp("<\!-- " + env_option.env_dev + " --" + env_option.blocking_char + ">","gi"), '<!-- ' + env_option.env_dev + ' -->')
+            .replace(new RegExp("<\!-- " + env_option.env_prod + " -->","gi"), '<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>')
+            .replace(new RegExp("\/\* " + env_option.env_dev + " \*" + env_option.blocking_char + '/',"gi"), '/* ' + env_option.env_dev + ' */')
+            .replace(new RegExp("\/\* " + env_option.env_prod + " \*\/","gi"), '/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/');
         fs.writeFileSync(file, content);
     });
     // Toggle "toolbar"
@@ -73,10 +98,10 @@ gulp.task('prod', ['concat'], function () {
     var files = ['./app/index.html'];
     files.forEach(function (file) {
         var content = fs.readFileSync(file, "utf8")
-            .replace('<!-- ' + env_option.env_prod + ' --' + env_option.blocking_char + '>', '<!-- ' + env_option.env_prod + ' -->')
-            .replace('<!-- ' + env_option.env_dev + ' -->', '<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>')
-            .replace('/* ' + env_option.env_prod + ' *' + env_option.blocking_char + '/', '/* ' + env_option.env_prod + ' */')
-            .replace('/* ' + env_option.env_dev + ' */', '/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/');
+            .replace(new RegExp("<\!-- " + env_option.env_prod + " --" + env_option.blocking_char + ">","gi"), '<!-- ' + env_option.env_prod + ' -->')
+            .replace(new RegExp("<\!-- " + env_option.env_dev + " -->","gi"), '<!-- ' + env_option.env_dev + ' --' + env_option.blocking_char + '>')
+            .replace(new RegExp("\/\* " + env_option.env_prod + " \*" + env_option.blocking_char + '/',"gi"), '/* ' + env_option.env_prod + ' */')
+            .replace(new RegExp("\/\* " + env_option.env_dev + " \*\/","gi"), '/* ' + env_option.env_dev + ' *' + env_option.blocking_char + '/');
         fs.writeFileSync(file, content);
     });
     // Toggle "toolbar"
@@ -107,23 +132,41 @@ gulp.task('server', function () {
  * Use: gulp concat
  */
 gulp.task('concat', function () {
-    gulp.src([
-    'app/lib/jquery/dist/jquery.min.js',
-    'app/lib/socket.io-client/socket.io.js',
-    'app/lib/angular/angular.min.js',
-    'app/lib/angular-route/angular-route.min.js',
-    'app/lib/angular-animate/angular-animate.js',
-    'app/lib/angular-sanitize/angular-sanitize.js',
-    'app/lib/angular-ui-utils/ui-utils.min.js',
-    'app/lib/angular-socket-io/socket.min.js',
-    'app/lib/showdown/compressed/showdown.js',
-    'app/js/app.js',
-    'app/js/**/*.js',
-    '!app/js/gisto.min.js'
-    ])
+    gulp.src(gisto_js_files)
         .pipe(strip_log())
         .pipe(concat('gisto.min.js'))
         .pipe(gulp.dest('./app/js/'));
+    gulp.src(gisto_css_files)
+        .pipe(concat('gisto.css'))
+        .pipe(gulp.dest('./app/css/'));
+});
+
+gulp.task('dist', ['prod'], function () {
+    gulp.src([
+        'app/**',
+        '!app/js/**',
+        '!app/lib/**',
+        '!app/css/**',
+        '!app/config.json.sample'
+    ])
+        .pipe(gulp.dest('./dist/'));
+    gulp.src([
+        'app/js/gisto.min.js'
+    ])
+        .pipe(gulp.dest('./dist/js/'));
+    gulp.src([
+        'app/lib/ace-builds/src-min-noconflict/**'
+    ])
+        .pipe(gulp.dest('./dist/lib/ace-builds/src-min-noconflict'));
+    gulp.src([
+        'app/css/gisto.css',
+        'app/css/animation.css'
+    ])
+        .pipe(gulp.dest('./dist/css/'));
+    gulp.src([
+        'app/lib/font-awesome/fonts/**'
+    ])
+        .pipe(gulp.dest('./dist/fonts/'));
 });
 
 /**
@@ -174,4 +217,4 @@ gulp.task('release', ['concat'], function () {
 });
 
 // Default task
-gulp.task('default', ['version', 'dev', 'server']);
+gulp.task('default', ['version', 'dev']);

@@ -5,10 +5,16 @@
     <title>Gisto</title>
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
+    <!-- env:prod --#>
+    <link rel="stylesheet" href="css/gisto.css">
+    <!-- env:prod:end -->
+
+    <!-- env:dev -->
+    <link rel="stylesheet" href="lib/normalize.css/normalize.css">
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/markdown.css">
+    <!-- env:dev:end -->
     <resource-loader></resource-loader>
 
     <script>
@@ -79,9 +85,6 @@
 
 <!--SCRIPTS-->
 
-<script src="lib/ace-builds/src-min-noconflict/ace.js"></script>
-<resource-loader position="footer"></resource-loader>
-
 <!-- env:prod --#>
 <script src="js/gisto.min.js"></script>
 <!-- env:prod:end -->
@@ -95,6 +98,7 @@
 <script src="lib/angular-sanitize/angular-sanitize.js"></script>
 <script src="lib/angular-ui-utils/ui-utils.min.js"></script>
 <script src="lib/angular-socket-io/socket.min.js"></script>
+<script src="lib/emmet/emmet.js"></script>
 <script src="js/app.js"></script>
 <script src="js/services/settingsService.js"></script>
 <script src="js/services/gistDataService.js"></script>
@@ -132,6 +136,9 @@
 <script src="js/directives/resourceLoaderDirective.js"></script>
 <script src="lib/showdown/compressed/showdown.js"></script>
 <!-- env:dev:end -->
+
+<script src="lib/ace-builds/src-min-noconflict/ace.js"></script>
+<resource-loader position="footer"></resource-loader>
 
 </body>
 </html>

@@ -3,7 +3,9 @@
 angular.module('gisto.directive.resourceLoader', []).directive('resourceLoader', ['appSettings', '$rootScope', function (appSettings, $rootScope) {
 
     var headerTemplate = '<link rel="stylesheet" href="themes/{{theme}}/theme.css" /><link rel="stylesheet" href="css/animation.css" ng-if="animation"/>';
-    var footerTemplate = '<script data-ng-if="editor_ext.emmet" src="lib/ace-builds/src-min-noconflict/ext-emmet.js"></script>\n<script data-ng-if="editor_ext.emmet" src="lib/emmet/emmet.min.js"></script>\n<script data-ng-if="editor_ext.statusbar" src="lib/ace-builds/src-min-noconflict/ext-statusbar.js"></script>\n<script data-ng-if="editor_ext.autocompletion" src="lib/ace-builds/src-min-noconflict/ext-language_tools.js"></script>';
+    var footerTemplate = '<script data-ng-if="editor_ext.emmet" src="lib/ace-builds/src-min-noconflict/ext-emmet.js"></script>'+
+        '<script data-ng-if="editor_ext.statusbar" src="lib/ace-builds/src-min-noconflict/ext-statusbar.js"></script>'+
+        '<script data-ng-if="editor_ext.autocompletion" src="lib/ace-builds/src-min-noconflict/ext-language_tools.js"></script>';
 
     return {
         restrict: 'E',

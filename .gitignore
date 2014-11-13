@@ -91,3 +91,5 @@ app/lib
 app/lib
 app/js/gisto.min.js
 app/js/gisto.min.js.map
+app/css/gisto.css.map
+app/css/gisto.css
