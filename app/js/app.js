@@ -11,7 +11,7 @@ try {
 }
 
 // Declare app level module which depends on filters, and services
-angular.module('gisto', [
+var app = angular.module('gisto', [
         'ngRoute',
         'ngAnimate',
         'ngSanitize',
@@ -42,19 +42,16 @@ angular.module('gisto', [
         'gisto.service.githubUrlBuilder'
     ]).
     factory('socket', function (socketFactory) {
+        //var socket = io.connect('http://localhost:3001');
+        var socket = io.connect('http://server.gistoapp.com:3001');
+        // save the socket as a reference for use later
+        window.socketIO = socket;
         return socketFactory({
             //prefix: '',
-            //ioSocket: io.connect('http://localhost:3001') //development
-            ioSocket: io.connect('http://server.gistoapp.com:3001')
+            ioSocket: socket
         });
     }).
     config(['$routeProvider', function ($routeProvider) {
-
-        // connect to notification server
-//        var socket = io.connect('http://localhost:3000'); // development
-//        var socket = io.connect('http://server.gistoapp.com:3000'); // production
-//        socketProvider.ioSocket(socket);
-//        window.ioSocket = socket;
 
         $routeProvider.when('/', {
             templateUrl: 'partials/empty.html',

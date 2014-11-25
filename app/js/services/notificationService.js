@@ -1,39 +1,51 @@
 'use strict';
 
 angular.module('gisto.service.notificationService', [], function ($provide) {
-    $provide.factory('notificationService', function (ghAPI, socket, $rootScope, $http, $q) {
+    $provide.factory('notificationService', function (ghAPI, socket, $rootScope, $http, $q, appSettings) {
+
+        var hashString = function(text) {
+            var hash = 0, i, chr, len;
+            if (text.length == 0) return text;
+            for (i = 0, len = text.length; i < len; i++) {
+                chr   = text.charCodeAt(i);
+                hash  = ((hash << 5) - hash) + chr;
+                hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        };
+
         var service = {
             notifications: [],
             isOnline: false,
             token: '',
+            endpoint: '',
 
             register: function () {
              // register for notifications on the server.
                 $q.all([
                     $http.get('./config.json'),
-                    ghAPI.getLoggedInUser()
+                    ghAPI.getLoggedInUser(),
+                    appSettings.loadSettings()
                 ]).then(function(data) {
                         service.token = data[0].data.server_token;
-                    console.log('testing notifications');
-                        console.log({ user: data[1].login, token: service.token });
-                        socket.emit('registerClient', { user: data[1].login, token: service.token });
+                        var settings = data[2];
+                        service.endpoint = settings.active_endpoint === 'enterprise' ? settings.endpoints['enterprise'].api_url : 'https://api.github.com';
+                        socket.emit('registerClient', { user: data[1].login, token: service.token, endpoint: hashString(service.endpoint) });
                         $rootScope.$broadcast('ApplicationState', { online: true });
                 });
             },
             logout: function() {
                 console.log('log out');
-                socket.disconnect();
+                socketIO.io.disconnect();
             },
             login: function() {
-                //window.ioSocket.socket.connect();
+                // reset the reconnecting flag as it gets stuck on true when disconnected.
+                socketIO.io.reconnecting = false;
+                socketIO.io.reconnect();
             },
             send: function(e, data) {
-//                if (!window.ioSocket.socket.connected) {
-//                    // notify
-//                    $rootScope.$broadcast('serverFailure');
-//                    return;
-//                }
-
+                // add endpoint hash to the data object
+                data.endpoint = hashString(service.endpoint);
                 socket.emit(e,data);
             },
             forward: socket.forward,

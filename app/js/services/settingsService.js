@@ -53,6 +53,11 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                         api_url: '',
                         client_id: '',
                         client_secret: ''
+                    },
+                    'public': {
+                        api_url: 'https://api.github.com',
+                        client_id: '',
+                        client_secret: ''
                     }
                 },
                 active_endpoint: 'public',
