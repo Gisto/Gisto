@@ -16,6 +16,8 @@ var app = angular.module('gisto', [
         'ngAnimate',
         'ngSanitize',
         'ui.utils',
+        'angulartics',
+        'angulartics.google.analytics',
         'gisto.filter.removeTags',
         'gisto.filter.truncate',
         'gisto.filter.publicOrPrivet',
@@ -90,7 +92,7 @@ var app = angular.module('gisto', [
         $routeProvider.otherwise({
             redirectTo: '/'
         });
-    }]).run(function($rootScope, $timeout) {
+    }]).run(function($rootScope, $timeout, $http) {
         $rootScope.gistoReady = false;
 
        $rootScope.$on('$routeChangeStart', function() {
@@ -103,5 +105,9 @@ var app = angular.module('gisto', [
         $timeout(function() {
             win.show();
         },300);
+
+        $http.get('./package.json').then(function(response) {
+            ga('set', 'appVersion', response.data.version);
+        });
 
     });
