@@ -169,7 +169,7 @@
             <datalist id="followersData">
                 <option data-ng-repeat="follow in followers_array" value="{{ follow }}"></option>
             </datalist>
-            <input type="submit" value="share" data-ng-click="share()"/>
+            <input type="submit" value="share" data-ng-click="share()" data-analytics-on="click" data-analytics-category="Collaboration" data-analytics-action="Share" />
         </div>
     </a>
 
