@@ -2,18 +2,14 @@
 var app = require('express')(),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
-    clientToken = require('./config.js').clientToken,
-    analytics = require('nodealytics');
+    clientToken = require('./config.js').clientToken;
 
 var databaseUrl = "gisto",
     collections = ["notifications"],
     db = require('mongojs').connect(databaseUrl, collections);
 
-analytics.initialize('UA-40972813-1', 'gistoapp.com', function() {
-    //MORE GOOGLE ANALYTICS CODE HERE
-});
-
 server.listen(3001);
+console.log('server started');
 
 var clients = [];
 
@@ -32,11 +28,16 @@ io.sockets.on('connection', function(client) {
 
         console.log('registering client: ' + data.user);
         this.user = data.user;
+        // assign the endpoint or the default endpoint (hash of api.github.com)
+        this.endpoint = data.endpoint || '372908505';
         clients.push(client);
+
+        console.log({recipient: data.user, endpoint: data.endpoint});
 
         // check for existing notifications
         db.notifications.find({
-            recipient: data.user
+            recipient: data.user,
+            endpoint: data.endpoint
         }, function(err, notifications) {
             if (err || !notifications) {
                 console.log('no pending notifications');
@@ -47,19 +48,6 @@ io.sockets.on('connection', function(client) {
                 });
             }
         });
-
-        var userAgent = data['useragent'] || 'application';
-
-        if (userAgent !== 'plugin') {
-            analytics.trackEvent('clientLogin', data.user, function(err, resp) {
-                if (!err && resp.statusCode === 200) {
-                    console.log('Event has been tracked');
-                }
-            });
-            console.log('track login');
-        }
-
-
     });
 
     client.on('disconnect', function() {
@@ -74,11 +62,12 @@ io.sockets.on('connection', function(client) {
         // remove notification from database
         db.notifications.remove({
             recipient: client.user,
+            endpoint: client.endpoint,
             gistId: item.gistId
         }, false);
 
         // send all clients that the notification has been read.
-        var recipient = getAllClientSockets(clients, client.user);
+        var recipient = getAllClientSockets(clients, client.user, client.endpoint);
 
         if (recipient && recipient.length > 0) {
 
@@ -94,7 +83,7 @@ io.sockets.on('connection', function(client) {
 
     client.on('sendNotification', function(data) {
 
-        var recipient = getAllClientSockets(clients, data.recipient);
+        var recipient = getAllClientSockets(clients, data.recipient, data.endpoint);
         console.log('clients', recipient);
 
         // add the sender
@@ -123,8 +112,8 @@ io.sockets.on('connection', function(client) {
     });
 });
 
-function getAllClientSockets(clients, username) {
+function getAllClientSockets(clients, username, endpoint) {
     return clients.filter(function(item) {
-        return item.user === username;
+        return item.user === username && item.endpoint === endpoint;
     });
 } 
