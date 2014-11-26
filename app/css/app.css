@@ -938,6 +938,7 @@ details > summary {
 .share-drop-down div input[type="text"] {
     border: none;
     padding: 3px;
+    color: #555;
 }
 
 /* Removes arrows on webkit for elements like datalist */
@@ -951,6 +952,7 @@ details > summary {
     padding: 3px 5px;
     text-transform: uppercase;
     float: right;
+    color: #555;
 }
 
 .remove-notification {
