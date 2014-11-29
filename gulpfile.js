@@ -26,6 +26,8 @@ var gisto_js_files = [
     'app/lib/angular-ui-utils/ui-utils.min.js',
     'app/lib/angular-socket-io/socket.min.js',
     'app/lib/showdown/compressed/showdown.js',
+    'app/lib/angulartics/dist/angulartics.min.js',
+    'app/lib/angulartics/dist/angulartics-ga.min.js',
     'app/lib/emmet/emmet.min.js',
     'app/js/app.js',
     'app/js/**/*.js',
