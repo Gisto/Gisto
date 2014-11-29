@@ -1,7 +1,5 @@
 <header>
 
-    <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
-
     <span data-ng-switch on="gist.history.starred">
         <span data-ng-switch-when="true">
     <a data-ng-click="unstar()" title="unStar"><i class="star fa fa-star"></i></a>
@@ -13,7 +11,7 @@
 
     <span class="type {{gist.public | publicOrPrivet}}"><i class="fa fa-{{gist.public | publicOrPrivet}}"></i></span>
 
-    <span data-ng-switch on="edit">
+    <span class="gist-title" data-ng-switch on="edit">
         <span data-ng-switch-when="true">
             <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" data-ng-model="gist.description">
         </span>
@@ -22,6 +20,7 @@
         </span>
     </span>
 
+    <ng-include class="flex-row" src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
 </header>
 

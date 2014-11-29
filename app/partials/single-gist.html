@@ -1,6 +1,6 @@
 <header>
 
-    <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
+
 
     <div class="is-fork" data-ng-if="gist.single.fork_of">
         <a data-ng-click="dropdown.forks.show=!dropdown.forks.show" title="fork"><i class="star fa fa-code-fork"></i></a>
@@ -38,15 +38,16 @@
     </span>
 </span>
 
-    <span data-ng-switch on="edit">
+    <span class="gist-title" data-ng-switch on="edit">
         <span data-ng-switch-when="true">
             <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" data-ng-model="gist.description">
         </span>
         <span class="title" data-ng-switch-default>
-            {{(gist.description | removeTags | truncate:80) || 'Untitled'}}
+            {{(gist.description | removeTags) || 'Untitled'}}
         </span>
     </span>
 
+    <ng-include class="flex-row " src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
 </header>
 
