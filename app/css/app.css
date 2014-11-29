@@ -1333,3 +1333,7 @@ header > ng-include > a {
     top: 0;
     padding: 10px 3px;
 }
+
+input,select {
+    color:initial;
+}
