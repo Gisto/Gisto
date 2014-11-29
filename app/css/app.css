@@ -253,8 +253,10 @@ div.main header .button {
     /* margin: 10px 0px 0px 5px; */
 }
 
-div.main header .button i {
+div.main header .button > i,
+div.main header .button > span.settings {
     padding: 6px;
+    line-height: 21px;
     border-radius: 3px;
     text-decoration: none;
     position: relative;
@@ -262,9 +264,10 @@ div.main header .button i {
 }
 
 div.main header a .notify span {
-    border: 3px solid #C00;
+    border: 3px solid #c00;
     position: absolute;
-    left: 0;
+    left: 0px;
+    line-height: 5px;
     color: #FFF;
     font-size: 8px;
     background: #C00;
@@ -272,6 +275,7 @@ div.main header a .notify span {
     padding: 0;
     text-shadow: none;
     box-shadow: 1px 1px 0px #F2F2F2;
+    border-radius: 50%;
 }
 
 div.main img.gravatar {
