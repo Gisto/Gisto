@@ -1,16 +1,24 @@
 <header>
 
-    <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
+    <span data-ng-switch on="gist.public">
+        <span data-ng-switch-when="true">
+            <a data-ng-click="warnStateChange('private')" title="Make private"><i class="star fa fa-unlock"></i></a>
+        </span>
+        <span class="" data-ng-switch-default>
+            <a data-ng-click="warnStateChange('public')" title="Make public"><i class="star fa fa-lock"></i></a>
+        </span>
+    </span>
 
-    <span data-ng-switch on="edit">
+    <span class="gist-title" data-ng-switch on="edit">
         <span data-ng-switch-when="true">
             <input ui-keydown="{'ctrl-83':'update($event)'}" class="edaitable" data-ng-model="gist.description">
         </span>
         <span class="title" data-ng-switch-default>
-            {{ (gist.single.description | removeTags | truncate:80) || 'Untitled' }}
+            {{ (gist.single.description | removeTags) || 'Untitled' }}
         </span>
     </span>
 
+    <ng-include class="flex-row" src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
 </header>
 

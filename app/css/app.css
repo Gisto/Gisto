@@ -52,7 +52,7 @@ html {
 }
 
 body {
-    display: -webkit-flex;
+    display: flex;
     margin: 0;
     height: 100%;
     -webkit-user-select: none;
@@ -89,8 +89,18 @@ body {
 }
 
 .flex {
-    display: -webkit-flex;
-    -webkit-flex-direction: column;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
 }
 
 h1 {
@@ -119,6 +129,9 @@ aside header,
     padding: 0px 10px;
     text-align: left;
     line-height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    height:52px;
 }
 
 div.toolbox {
@@ -170,12 +183,12 @@ div.toolbox a {
 }
 
 aside {
-    -webkit-flex: 0 0 30%;
+    flex: 0 0 30%;
     height: 100%;
 }
 
 aside ul {
-    -webkit-flex: 1;
+    flex: 1;
     overflow-y: scroll;
     margin: 0;
     padding: 0px;
@@ -211,16 +224,16 @@ aside footer,
 }
 
 aside footer div {
-    display: -webkit-flex;
-    -webkit-flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 aside footer span:first-child {
-    -webkit-flex: 1 0 0;
+    flex: 1 0 0;
 }
 
 .main {
-    -webkit-flex: 1;
+    flex: 1;
 }
 
 menu {
@@ -228,7 +241,7 @@ menu {
 }
 
 .main section {
-    -webkit-flex: 1;
+    flex: 1;
     overflow-y: scroll;
     padding: 20px;
     min-height: 0;
@@ -236,8 +249,8 @@ menu {
 }
 
 div.main header .button {
-    float: right;
-    margin: 10px 0px 0px 5px;
+    /* float: right; */
+    /* margin: 10px 0px 0px 5px; */
 }
 
 div.main header .button i {
@@ -262,9 +275,9 @@ div.main header a .notify span {
 }
 
 div.main img.gravatar {
-    top: 0px;
-    padding: 0px;
+    margin: 10px 3px 0 0;
     width: 34px;
+    height: 34px;
     border-radius: 3px;
     text-decoration: none;
 }
@@ -623,7 +636,7 @@ section h1 {
 header input.edaitable {
     margin: 0;
     padding: 5px;
-    width: 50%;
+    width: 100%;
     border-radius: 3px;
 }
 
@@ -787,7 +800,7 @@ details > summary {
 
 .notification ul img {
     float: left;
-    margin: 0px 0px 0px -44px;
+    margin: 0px 0px 0px -44px !important;
     position: absolute;
 }
 
@@ -1132,7 +1145,7 @@ input[type="range"] {
 }
 
 .star-switch {
-    position: relative;
+    /* position: relative; */
 }
 
 .enterprise-button {
@@ -1306,9 +1319,17 @@ input[type="checkbox"].green.iosw-switch:checked + div > div {
     transition: border 1s;
 }
 
-.header-btn {
-    border: 1px solid #999;
-    background: #f2f2f2;
-    color: #555;
-    border-radius: 3px;
+header .gist-title {
+    flex: 1;
+}
+
+header > span,
+header > span > a{
+    padding: 2px;
+}
+
+header > ng-include > a {
+    position: relative;
+    top: 0;
+    padding: 10px 3px;
 }

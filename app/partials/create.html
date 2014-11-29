@@ -1,8 +1,8 @@
 <header>
-    <ng-include src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
     <span class="type {{isPublic | publicOrPrivet}}"><i class="icon-{{isPublic | publicOrPrivet}}"></i></span>
-    {{description | truncate:80}}
+    <span class="gist-title">{{description | truncate:80}}</span>
+    <ng-include class="flex-row" src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 </header>
 
 <div class="messenger edit">
