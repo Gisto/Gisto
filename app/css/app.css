@@ -975,8 +975,8 @@ details > summary {
 .remove-notification {
     color: #C00;
     position: absolute !important;
-    top: 0px;
-    right: 0px;
+    top: 3px;
+    right: 3px;
     z-index: 99999;
     font-size: 13px;
 }

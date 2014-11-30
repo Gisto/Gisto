@@ -37,7 +37,8 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
     $scope.share = function () {
         if ($scope.userToShare) {
-            notificationService.send('sendNotification', { recipient: $scope.userToShare, gistId: $scope.gist.id, name: $scope.gist.description, gravatar_id: appSettings.get('gravatar_id')});
+            appSettings.loadSettings().then(function (result) {
+            notificationService.send('sendNotification', { recipient: $scope.userToShare, gistId: $scope.gist.id, name: $scope.gist.description, avatar: result["avatarUrl"]});
 
             $scope.followers_array.push($scope.userToShare);
 
@@ -45,7 +46,6 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
                 return index == self.indexOf(elem);
             });
 
-            appSettings.loadSettings().then(function (result) {
                 var followersObj = {
                     list: [],
                     lastUpdated: result['followers'].lastUpdated
