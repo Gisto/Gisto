@@ -25,6 +25,7 @@
             window.gui = require('nw.gui');
             var clipboard = window.gui.Clipboard.get();
         }
+	
     </script>
 
     <script>
@@ -52,7 +53,7 @@
         <h1 title="Gist desktop app"><a href="#/">
             &lt;/Gisto&gt;
         </a></h1>
-        <input list="gistDataList" type="text" data-ng-model="search" class="search-query" placeholder="Search gists">
+        <input list="gistDataList" type="text" ng-model="search" class="search-query" placeholder="Search gists">
         <!--
         <datalist id="gistDataList">
             <option data-ng-repeat="gist in gists" value="{{(gist.description | removeTags) || 'Untitled'}}"></option>
@@ -62,7 +63,7 @@
 
     <ul>
         <li id="gist-{{gist.id}}" class="animate-list"
-            data-ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
+            data-ng-repeat="gist in filteredGists = (gists | gistsearch:search) | orderBy:'-created_at'">
             <a ui-route="/gist/{{gist.id}}" data-ng-class="{active: $uiRoute}"
                ng-click="navigateToGist(gist.id)">
                 <h3>
@@ -145,6 +146,7 @@
 <script src="js/filters/dotToDash.js"></script>
 <script src="js/filters/matchTagsFilter.js"></script>
 <script src="js/filters/githubFileName.js"></script>
+<script src="js/filters/gistsearchFilter.js"></script>
 <script src="js/directives/editorDirective.js"></script>
 <script src="js/directives/scrollDirective.js"></script>
 <script src="js/directives/goToUrlDirective.js"></script>
