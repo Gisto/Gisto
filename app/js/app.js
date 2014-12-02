@@ -18,6 +18,7 @@ var app = angular.module('gisto', [
         'ui.utils',
         'angulartics',
         'angulartics.google.analytics',
+        'cfp.hotkeys',
         'gisto.filter.removeTags',
         'gisto.filter.truncate',
         'gisto.filter.publicOrPrivet',

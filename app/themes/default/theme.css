@@ -79,7 +79,7 @@ aside ul li a.active {
     text-shadow: 1px 1px 5px #555;
 }
 
-aside ul li a:hover {
+.focused, aside ul li a:hover {
     background: #999;
 }
 
