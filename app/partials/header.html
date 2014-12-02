@@ -17,7 +17,7 @@
 
                     <p data-ng-switch-when="share" data-ng-click="loadExternalGist(item.gistId, item.sender)">
                         <i data-ng-click="reject(item.gistId);" class="fa fa-trash-o remove-notification"></i>
-                        <img data-ng-src="{{item.avatar}}" class="gravatar"
+                        <img data-ng-src="{{item.avatar || 'https://avatars0.githubusercontent.com/u/4052707?v=3'}}" class="gravatar"
                              title="{{single.user.login}}"/>
                         <cite><strong>{{ item.sender }}</strong> shared:</cite><br/>
                         <strong>{{ item.name | removeTags }}</strong> with you.
