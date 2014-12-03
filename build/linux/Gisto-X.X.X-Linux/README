@@ -1,36 +1,27 @@
-********************************************************************************
+------------------------------------------------------------
+GISTO - Snippets made awesome [http://www.gistoapp.com]
+------------------------------------------------------------
 
-	GISTO - Snippets made awesome [http://www.gistoapp.com]
-
-********************************************************************************
-
-
-
-===( Installation )=============================================================
+------------------------------------------------------------
+INSTALL
+------------------------------------------------------------
 
 To install Gisto run "sudo ./setup" in terminal.
 
-
-===( Uninstall )================================================================
+------------------------------------------------------------
+UNINSTALL
+------------------------------------------------------------
 
 To remove all Gisto components run "sudo ./setup --uninstall" in terminal.
 
-
-===( Source )===================================================================
-
-https://github.com/Gisto/Gisto
-
-
-===( Bugs & issues )============================================================
-
-https://github.com/Gisto/Gisto/issues
-
-
-===( License )==================================================================
+------------------------------------------------------------
+LICENSE
+------------------------------------------------------------
 
 The MIT License
 
-Copyright (c) 2014 Sasha Khamkov and Maayan Glikser
+Copyright (c) 2014 Sasha Khamkov | http://www.sanusart.com
+Copyright (c) 2014 Maayan Glikser | http://www.glikm.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
