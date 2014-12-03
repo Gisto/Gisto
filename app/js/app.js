@@ -25,6 +25,7 @@ var app = angular.module('gisto', [
         'gisto.directive.disableAnimate',
         'gisto.directive.toggle',
         'gisto.directive.resourceLoader',
+        'gisto.directive.hotkeysPager',
         'gisto.service.gistData',
         'gisto.service.requestHandler',
         'gisto.service.gitHubAPI',

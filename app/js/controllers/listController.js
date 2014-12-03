@@ -31,62 +31,26 @@ function listGistCtrl($scope, ghAPI, gistData, $location, hotkeys) {
         ghAPI.gists();
     }
 
-    var highlightedGist;
-    var gistIndex;
 
     var searchFocusKeys = ['ctrl+f', 'command+f'];
-    if (window.process.platform == 'darwin') {
+    if (window.process.platform === 'darwin') {
         searchFocusKeys.reverse();
     }
+
     hotkeys.bindTo($scope)
         .add({
             combo: searchFocusKeys,
             description: 'Focus search bar',
-            callback: function() {
-               $('#gist-search').focus();
-            }
-        }).add({
-           combo: 'up',
-            description: 'Highlight previous gist on the list',
-            callback: function() {
-               if (!$scope.filteredGists) {
-                   return;
-               }
+            allowIn: ['INPUT'],
+            callback: function () {
+                var element = $('#gist-search');
 
-               if (!highlightedGist) {
-                   gistIndex = 0;
-                   console.log($scope.filteredGists[0].id);
-                   highlightedGist = $scope.filteredGists[0].id;
-                   var id = '#gist-' + $scope.filteredGists[0].id;
-                   var $element = $(id);
-                   console.log($element);
-                   $element.find('a').addClass('focused');
-               }
-            }
-        }).add({
-            combo: 'down',
-            description: 'Highlight next gist on the list',
-            callback: function() {
-
-                if (!highlightedGist) {
-                    gistIndex = 0;
-                    console.log($scope.filteredGists[0].id);
-                    highlightedGist = $scope.filteredGists[0].id;
-                    var id = '#gist-' + $scope.filteredGists[0].id;
-                    var $element = $(id);
-                    console.log($element);
-                    $element.find('a').addClass('focused');
-
-                    return; // only do default behaviour do not increase index again
+                if (element.is(':focus')) {
+                    element.blur();
+                } else {
+                    element.focus();
                 }
 
-
-                if (gistIndex < $scope.filteredGists.length) {
-                    $('aside ul li a').removeClass('focused');
-                    var gist = $scope.filteredGists[++gistIndex].id;
-                    $('#gist-' + gist).find('a').addClass('focused');
-                    highlightedGist = gist;
-                }
             }
         });
 }

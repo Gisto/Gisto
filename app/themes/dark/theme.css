@@ -76,6 +76,8 @@ aside ul li a > h3 {
     color: #ccc;
     text-shadow: 1px 1px 1px #000;
 }
+
+aside ul li.focused a > h3,
 aside ul li a:hover > h3 {
     color: #fff;
 }
@@ -84,6 +86,7 @@ aside ul li a.active > h3 {
     color: #fff;
 }
 
+aside ul li.focused a,
 aside ul li a:hover,
 aside ul li a.active {
     box-shadow: 0px 1px 8px #2C2C2C inset;
@@ -91,6 +94,7 @@ aside ul li a.active {
     text-shadow: 1px 1px 5px #000;
 }
 
+aside ul li.focused a,
 aside ul li a:hover {
     background: #999;
 }
@@ -214,6 +218,7 @@ aside ul li a > span.pills {
     color: #555;
 }
 
+aside ul li.focused a > span.pills,
 aside ul li a:hover > span.pills {
     color: #555;
 }

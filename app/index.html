@@ -77,8 +77,8 @@
         -->
     </header>
 
-    <ul>
-        <li id="gist-{{gist.id}}" class="animate-list"
+    <ul data-hotkeys-pager="navigateToGist" style="position:relative;">
+        <li data-hotkeys-pager-item="{{gist.id}}" id="gist-{{gist.id}}" class="animate-list"
             data-ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
             <a ui-route="/gist/{{gist.id}}" data-ng-class="{active: $uiRoute}"
                ng-click="navigateToGist(gist.id)">
@@ -169,6 +169,7 @@
 <script src="js/directives/disableAnimateDirective.js"></script>
 <script src="js/directives/toggleDirective.js"></script>
 <script src="js/directives/resourceLoaderDirective.js"></script>
+<script src="js/directives/hotkeysPagerDirective.js"></script>
 <script src="lib/showdown/compressed/showdown.js"></script>
 <!-- env:dev:end -->
 
