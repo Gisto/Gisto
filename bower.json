@@ -38,6 +38,7 @@
     "emmet": "https://github.com/emmetio/textarea.git",
     "font-awesome": "~4.2.0",
     "normalize.css": "~3.0.2",
-    "angulartics": "~0.17.1"
+    "angulartics": "~0.17.1",
+    "trackjs": "~2.1.6"
   }
 }
