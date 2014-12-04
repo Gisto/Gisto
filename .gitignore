@@ -85,6 +85,10 @@ bin
 app/config.json
 server/config.js
 app/lib
+build/linux/Gisto-X.X.X-Linux/gisto/gisto-bin
+build/linux/Gisto-X.X.X-Linux/gisto/icudtl.dat
+build/linux/Gisto-X.X.X-Linux/gisto/libffmpegsumo.so
+build/linux/Gisto-X.X.X-Linux/gisto/nw.pak
 
 ### Bower ###
 !.bowerrc

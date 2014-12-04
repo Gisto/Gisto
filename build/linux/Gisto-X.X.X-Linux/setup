@@ -18,12 +18,15 @@ remove_previous_version () {
 }
 
 check_dependencies_and_run () {
+
 	printf "\n\n\n\e[43m  \e[0m Checking for dependencies.\n\n\n"
+
 	for i in `find /bin /usr/bin -name "gconftool*"`; do
 		if [[ ${i} =~ "gconf" ]]; then
 			DEPS='OK'
 		fi
 	done;
+
 	if [[ $DEPS = 'OK' ]]; then
 	    remove_previous_version;
 		install_gisto;
@@ -36,10 +39,28 @@ install_gisto () {
 	printf "\e[42m  \e[0m It seems that all dependencies met, Install? [y/n]"
 	read INST
 	if [ $INST = 'y' -o $INST = 'Y' ]; then
-		printf "\n\n\n\e[43m  \e[0m INSTALLING...\n\n\n"
-		/bin/cp -rv gisto /opt
-		/bin/cp -rv share /usr
-		/bin/ln -s /opt/gisto/bin/gisto /usr/bin/gisto
+        printf "\n\n\n\e[43m  \e[0m INSTALLING...\n\n\n"
+        /bin/cp -rv gisto /opt
+        /bin/cp -rv share /usr
+        /bin/ln -s /opt/gisto/gisto /usr/bin/gisto
+
+        paths=(
+          "/lib/x86_64-linux-gnu/libudev.so.1" # Ubuntu, Xubuntu, Mint
+          "/usr/lib64/libudev.so.1" # SUSE, Fedora
+          "/usr/lib/libudev.so.1" # Arch, Fedora 32bit
+          "/lib/i386-linux-gnu/libudev.so.1" # Ubuntu 32bit
+        )
+
+        for i in "${paths[@]}"
+        do
+          if [ -f $i ]
+          then
+            mkdir /opt/gisto/lib
+            ln -sf "$i" /opt/gisto/lib/libudev.so.0
+            break
+          fi
+        done
+
 		printf "\n\n\n\e[42m  \e[0m Congrats! You can now find \e[1;37m</Gisto>\e[0m in your menu.\n\n\n"
 	fi
 }
