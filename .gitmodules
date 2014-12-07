@@ -1,0 +1,6 @@
+[submodule "build/script"]
+	path = build/script
+	url = https://github.com/Gisto/node-webkit-bash-builder.git
+[submodule "scripts"]
+	path = scripts
+	url = https://github.com/Gisto/node-webkit-bash-builder.git
