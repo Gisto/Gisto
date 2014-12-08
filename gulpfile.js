@@ -6,7 +6,6 @@ var argv = require('yargs').argv;
 var concat = require('gulp-concat-sourcemap');
 var strip_log = require('gulp-strip-debug');
 var connect = require('gulp-connect');
-var NwBuilder = require('node-webkit-builder');
 
 // Options to switch environment (dev/prod)
 var env_option = {
@@ -169,43 +168,6 @@ gulp.task('dist', ['prod'], function () {
         'app/lib/font-awesome/fonts/**'
     ])
         .pipe(gulp.dest('./dist/fonts/'));
-});
-
-/**
- * build
- *
- * Build binaries for specified platform
- * Use: gulp build --os=win|osx|linux32|linux64|all
- */
-gulp.task('build', ['prod'], function () {
-    var os = argv.os;
-    if (!os) {
-        return gutil.log(gutil.colors.red('NOTE'), gutil.colors.white('Please specify platform (Use: gulp build --os=win|osx|linux32|linux64|all)'));
-    }
-    if (os === 'all') {
-        os = 'win,osx,linux32,linux64';
-    }
-    os.split(',');
-
-    var nw = new NwBuilder({
-        files: './app/**',
-        buildDir: "./bin",
-        winIco: "./app/icon.ico",
-        version: '0.9.2',
-        platforms: os
-    });
-
-    gutil.log(gutil.colors.green('Building for: ' + os));
-    var pathToNwsnapshot = nw.options.cacheDir + '/' + nw.options.version + '/' + os + '/nwsnapshot';
-    //return gutil.log(gutil.colors.green('XXXX: ' + pathToNwsnapshot));
-
-    nw.build().then(function () {
-        // Build OK
-    }).
-        catch(function (error) {
-        console.error(error);
-    });
-
 });
 
 /**
