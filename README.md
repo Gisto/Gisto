@@ -103,7 +103,7 @@ Pull requests are welcome as well.
 
 ## Documentation
 
-See [Docs](http://www.gistoapp.com/documentation/) section on gisto site.
+See [Docs](http://www.gistoapp.com/documentation/) section on Gisto site.
 
 ## License
 
