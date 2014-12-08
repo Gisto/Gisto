@@ -95,7 +95,7 @@ gulp.task('dev', function () {
  * Change Gisto environment to "production", also concatenates files and remove console logs
  * Use: gulp prod
  */
-gulp.task('prod', ['concat'], function () {
+gulp.task('prod', ['concat_js','concat_css'], function () {
     var files = ['./app/index.html'];
     files.forEach(function (file) {
         var content = fs.readFileSync(file, "utf8")
@@ -132,14 +132,24 @@ gulp.task('server', function () {
  * concatenates files and remove console logs, also used by other functions here
  * Use: gulp concat
  */
-gulp.task('concat', function () {
-    gulp.src(gisto_js_files)
+gulp.task('concat_js', function () {
+    var js = gulp.src(gisto_js_files)
         .pipe(strip_log())
         .pipe(concat('gisto.min.js'))
         .pipe(gulp.dest('./app/js/'));
-    gulp.src(gisto_css_files)
+	return js;
+});
+/**
+ * concat
+ *
+ * concatenates files and remove console logs, also used by other functions here
+ * Use: gulp concat
+ */
+gulp.task('concat_css', function () {
+    var css = gulp.src(gisto_css_files)
         .pipe(concat('gisto.css'))
         .pipe(gulp.dest('./app/css/'));
+	return css;
 });
 
 gulp.task('dist', ['prod'], function () {
@@ -176,7 +186,7 @@ gulp.task('dist', ['prod'], function () {
  * Will be used for releases
  * Use: gulp release
  */
-gulp.task('release', ['concat'], function () {
+gulp.task('release', ['concat_js','concat_css'], function () {
     // Do stuff
 });
 

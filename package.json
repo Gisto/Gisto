@@ -9,7 +9,6 @@
     "gulp-connect": "^2.0.6",
     "gulp-strip-debug": "^0.3.0",
     "gulp-util": "^2.2.20",
-    "node-webkit-builder": "git://github.com/gisto/node-webkit-builder",
     "yargs": "^1.2.6"
   },
   "scripts": {
