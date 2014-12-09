@@ -50,6 +50,7 @@ var app = angular.module('gisto', [
                 if ($window.trackJs) {
                     $window.trackJs.track(exception);
                 }
+                $delegate(exception, cause);
             };
         }]);
 
