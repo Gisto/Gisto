@@ -6,6 +6,21 @@
 |:------|:------|
 | <img src="http://gistoapp.com/images/lite_theme.png" width="400px" alt="Gisto"> | <img src="http://gistoapp.com/images/dark_theme.png" width="400px" alt="Gisto"> |
 
+## Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Privacy/authentication](#privacyauthentication)
+- [Status](#status)
+- [Made of](#made-of)
+- [Download and install](#download-and-install)
+- [Other install options](#other-install-options)
+- ["Nightly" builds](#nightly-builds)
+- [Issues, bug reporting and pull requests](#issues-bug-reporting-and-pull-requests)
+- [Documentation](#documentation)
+- [License](#license)
+- [Development](#development)
+- [Contributors and mentions](#contributors-and-mentions)
 
 ## About
 
@@ -89,11 +104,15 @@ via **Archlinux AUR**:
 
 `$ yaourt -S gisto`
 
-P.S. If you *really want* - you can also package Gisto by yourself (see info on "Packaging instructions" bellow).
+P.S. If you *really want* - you can also package Gisto by yourself (See [Docs](http://www.gistoapp.com/documentation/) section on Gisto site).
 
-## Packaging instructions
+## "Nightly" builds
 
-Gisto depends on [node-webkit](https://github.com/rogerwang/node-webkit) project. Build instructions for your platform may be found on the projects [Wiki](https://github.com/rogerwang/node-webkit/wiki/How-to-package-and-distribute-your-apps#make-a-package).
+Gisto "nightly" builds are automatic builds triggered by commits to "master" branch
+
+> Please note that these are not stable releases. Bugs are possible. Those builds lacks the usual installers you may get in the regular releases. 
+
+"Nightly" builds for all platforms are avaliable at: [build.gistoapp.com](http://build.gistoapp.com/)
 
 ## Issues, bug reporting and pull requests
 
