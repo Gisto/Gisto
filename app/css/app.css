@@ -602,6 +602,11 @@ aside ul li a span.public {
     text-transform: uppercase;
 }
 
+aside ul li, aside ul li a {
+    -webkit-transition: none;
+    transition: none;
+}
+
 aside ul li a p {
     margin: 10px 0px 0;
 }

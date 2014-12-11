@@ -72,6 +72,7 @@ aside ul li a {
     border-top: 1px solid #fff;
 }
 
+aside ul li.focused a,
 aside ul li a:hover,
 aside ul li a.active {
     box-shadow: 0px 1px 8px #555 inset;
@@ -79,7 +80,7 @@ aside ul li a.active {
     text-shadow: 1px 1px 5px #555;
 }
 
-aside ul li a:hover {
+aside ul li.focused, aside ul li a:hover {
     background: #999;
 }
 
@@ -214,6 +215,7 @@ aside ul li a span {
     color: #555;
 }
 
+aside ul li.focused span.pills
 aside ul li a:hover span.pills {
     color: #555;
 }

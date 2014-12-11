@@ -1,6 +1,6 @@
 'use strict';
 
-function listGistCtrl($scope, ghAPI, gistData, $location) {
+function listGistCtrl($scope, ghAPI, gistData, $location, hotkeys) {
     $scope.gists = gistData.list;
     $scope.onlineStatus = {
        state: "Offline",
@@ -30,4 +30,27 @@ function listGistCtrl($scope, ghAPI, gistData, $location) {
     } else {
         ghAPI.gists();
     }
+
+
+    var searchFocusKeys = ['ctrl+f', 'command+f'];
+    if (window.process.platform === 'darwin') {
+        searchFocusKeys.reverse();
+    }
+
+    hotkeys.bindTo($scope)
+        .add({
+            combo: searchFocusKeys,
+            description: 'Focus search bar',
+            allowIn: ['INPUT'],
+            callback: function () {
+                var element = $('#gist-search');
+
+                if (element.is(':focus')) {
+                    element.blur();
+                } else {
+                    element.focus();
+                }
+
+            }
+        });
 }

@@ -28,6 +28,7 @@ var gisto_js_files = [
     'app/lib/angulartics/dist/angulartics.min.js',
     'app/lib/angulartics/dist/angulartics-ga.min.js',
     'app/lib/emmet/emmet.min.js',
+    'app/lib/angular-hotkeys/build/hotkeys.min.js',
     'app/js/app.js',
     'app/js/**/*.js',
     '!app/js/gisto.min.js'
@@ -36,6 +37,7 @@ var gisto_js_files = [
 var gisto_css_files = [
     'app/lib/normalize.css/normalize.css',
     'app/lib/font-awesome/css/font-awesome.min.css',
+    'app/lib/angular-hotkeys/build/hotkeys.min.css',
     'app/css/app.css',
     'app/css/markdown.css',
     '!app/css/gisto.css'
