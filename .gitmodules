@@ -1,3 +1,4 @@
 [submodule "build/script"]
 	path = build/script
 	url = https://github.com/Gisto/node-webkit-bash-builder.git
+	ignore = dirty
