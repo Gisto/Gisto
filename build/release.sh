@@ -36,6 +36,8 @@ mkosx () {
             cd ${WORKING_DIR}/libdmg-hfsplus && cmake . && make
         fi
         cd ${BUILD_DIR}
+        ln -s /Applications Applications && mv Applications ${BUILD_DIR}/script/TMP/osx-${arch}/latest-git
+        cp -r ${BUILD_DIR}/resources/osx/.background ${BUILD_DIR}/resources/osx/.DS_Store ${BUILD_DIR}/script/TMP/osx-${arch}/latest-git
         genisoimage -D -V "Gisto ${1}" -no-pad -r -apple -o ${WORKING_DIR}/gisto-${1}-${arch}-uncompressed.dmg ${BUILD_DIR}/script/TMP/osx-${arch}/latest-git
         ${WORKING_DIR}/libdmg-hfsplus/dmg/dmg dmg ${WORKING_DIR}/gisto-${1}-${arch}-uncompressed.dmg ${WORKING_DIR}/gisto-${1}-OSX-${arch}.dmg
         printf "\nDone OSX ${arch}\n"

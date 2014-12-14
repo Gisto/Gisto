@@ -81,6 +81,9 @@ node_modules
 cache
 bin
 
+### Bower ###
+!.bowerrc
+
 ### Gisto Specific ###
 app/config.json
 server/config.js
@@ -89,13 +92,11 @@ build/linux/Gisto-X.X.X-Linux/gisto/gisto-bin
 build/linux/Gisto-X.X.X-Linux/gisto/icudtl.dat
 build/linux/Gisto-X.X.X-Linux/gisto/libffmpegsumo.so
 build/linux/Gisto-X.X.X-Linux/gisto/nw.pak
-
-### Bower ###
-!.bowerrc
-app/lib
 app/js/gisto.min.js
 app/js/gisto.min.js.map
 app/css/gisto.css.map
 app/css/gisto.css
 build/TMP
 build/script/TMP
+!build/resources/osx/.DS_Store
+!build/resources/osx/.background
