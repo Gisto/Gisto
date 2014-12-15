@@ -21,6 +21,7 @@ architechture="x64 ia32"
 mklinux () {
     for arch in ${architechture[@]}; do
         cp -r ${BUILD_DIR}/resources/linux/Gisto-X.X.X-Linux ${WORKING_DIR} && mv ${WORKING_DIR}/Gisto-X.X.X-Linux ${WORKING_DIR}/Gisto-${1}-linux_${arch}
+        mv ${BUILD_DIR}/script/TMP/linux-${arch}/latest-git/gisto ${BUILD_DIR}/script/TMP/linux-${arch}/latest-git/gisto-bin
         cp -r ${BUILD_DIR}/script/TMP/linux-${arch}/latest-git/* ${WORKING_DIR}/Gisto-${1}-linux_${arch}/gisto
         tar -C ${WORKING_DIR} -czf ${WORKING_DIR}/Gisto-${1}-linux_${arch}.tar.gz Gisto-${1}-linux_${arch}
         printf "\nDone Linux ${arch}\n"
@@ -43,6 +44,18 @@ mkosx () {
         printf "\nDone OSX ${arch}\n"
     done
     rm -rf ${WORKING_DIR}/libdmg-hfsplus ${WORKING_DIR}/gisto-${1}-{x64,ia32}-uncompressed.dmg;
+}
+
+mkwindows() {
+    for arch in ${architechture[@]}; do
+        if [[ ! -d "${WORKING_DIR}/installjammer" ]]; then
+            git clone https://github.com/damoncourtney/installjammer.git
+            cd installjammer
+            git checkout v1.2.14
+        fi
+        cd ${WORKING_DIR}
+        ./installjammer/installjammer -DAppName Gisto --quick-build --platform Windows --build win_gisto.mpi
+    done
 }
 
 prepare() {
@@ -68,8 +81,14 @@ if [[ ${1} = "--osx" ]]; then
     mkosx ${2};
 fi
 
+if [[ ${1} = "--windows" ]]; then
+    prepare ${2};
+    mkwindows ${2};
+fi
+
 if [[ ${1} = "--all" ]]; then
     prepare ${2};
     mkosx ${2};
     mklinux ${2};
+    mkwindows ${2};
 fi
