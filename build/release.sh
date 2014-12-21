@@ -89,8 +89,13 @@ prepare() {
     cd ${PROJECT_DIR}
     gulp version_bump --to=${1}
     gulp dist && gulp dev
-    cd ${BUILD_DIR}/script
-    ./node-webkit-build.sh --build
+    build/script/node-webkit-build.sh \
+        --src=${PROJECT_DIR}/dist \
+        --name=gisto \
+        --win-icon=${PROJECT_DIR}/app/icon.ico \
+        --osx-icon=${PROJECT_DIR}/build/resources/osx/gisto.icns \
+        --osx-plist=${PROJECT_DIR}/build/resources/osx/Info.plist \
+        --build
     cd ${BUILD_DIR}
 }
 
