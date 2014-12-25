@@ -98,5 +98,6 @@ app/css/gisto.css.map
 app/css/gisto.css
 build/TMP
 build/script/TMP
+build/script
 !build/resources/osx/.DS_Store
 !build/resources/osx/.background
