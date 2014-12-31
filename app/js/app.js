@@ -47,15 +47,6 @@ var app = angular.module('gisto', [
     }).
     config(['$routeProvider','$provide', function ($routeProvider,$provide) {
 
-        $provide.decorator("$exceptionHandler", ["$delegate", "$window", function ($delegate, $window) {
-            return function (exception, cause) {
-                if ($window.trackJs) {
-                    $window.trackJs.track(exception);
-                }
-                $delegate(exception, cause);
-            };
-        }]);
-
         $routeProvider.when('/', {
             templateUrl: 'partials/empty.html',
             controller: mainCtrl

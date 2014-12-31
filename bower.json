@@ -39,7 +39,6 @@
     "font-awesome": "~4.2.0",
     "normalize.css": "~3.0.2",
     "angulartics": "~0.17.1",
-    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.4.5",
-    "trackjs": "~2.1.6"
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#~1.4.5"
   }
 }

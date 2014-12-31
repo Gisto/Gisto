@@ -15,7 +15,7 @@
 - [Made of](#made-of)
 - [Download and install](#download-and-install)
 - [Other install options](#other-install-options)
-- ["Nightly" builds](#nightly-builds)
+- ["Nightly" builds](#nightly-builds) [![Build Status](https://drone.io/github.com/Gisto/Gisto/status.png)](https://drone.io/github.com/Gisto/Gisto/latest)
 - [Issues, bug reporting and pull requests](#issues-bug-reporting-and-pull-requests)
 - [Documentation](#documentation)
 - [License](#license)
