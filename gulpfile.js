@@ -180,10 +180,6 @@ gulp.task('dist', ['prod'], function () {
         'app/lib/font-awesome/fonts/**'
     ])
         .pipe(gulp.dest('./dist/fonts/'));
-    gulp.src([
-        'app/lib/trackjs/tracker.js'
-    ])
-        .pipe(gulp.dest('./dist/lib/trackjs/'));
 });
 
 /**
