@@ -10,10 +10,13 @@
         "node-webkit"
     ],
     "window": {
+        "title": "Gisto",
         "icon": "icon.png",
         "toolbar": true,
         "width": 1200,
         "height": 600,
+        "min_width": 1200,
+        "min_height": 600,
         "position": "center",
         "show": false
     },
