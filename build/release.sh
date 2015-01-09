@@ -11,6 +11,7 @@ WORKING_DIR="${BUILD_DIR}/TMP"
 PROJECT_DIR=`dirname ${BUILD_DIR}`
 VERSION="${1}"
 
+
 if [[ ! -f "${WORKING_DIR}" ]]; then
     mkdir -p TMP
 fi
@@ -22,12 +23,29 @@ architechture="ia32 x64"
 usage() {
     printf "\n--- Gisto release script ----------------------------\n\n"
     printf "\tBuild installers for Windows, Linux and OSX\n"
+    printf "\n--- DEPENDENCIES ------------------------------------\n\n"
+    printf "\tCMAKE\n"
+    printf "\tNSIS\n"
     printf "\n--- USAGE -------------------------------------------\n\n"
     printf "\tBuilding: \n\t$ ./release.sh --all [--linux|--osx|--windows|--all] 0.2.6b\n"
     printf "\tCleaning: \n\t$ ./release.sh --clean\n"
     printf "\tHelp: \n\t$ ./release.sh --help"
     printf "\n-----------------------------------------------------\n"
 }
+
+check_dependencies() {
+    # Check if CMAKE is present
+    if [[ "`cmake --version`" =~ "cmake version" && "`makensis`" =~ "MakeNSIS" ]]; then
+        echo 'OK';
+    else
+        echo 'NO';
+    fi
+}
+
+if [[ `check_dependencies` = "NO" ]]; then
+    printf "\nNOTE! CMAKE and/or NSIS is missing in the system\n\n";
+    exit 1;
+fi
 
 mklinux () {
     for arch in ${architechture[@]}; do
@@ -105,6 +123,7 @@ fi
 
 if [[ ${1} = "--clean" ]]; then
     rm -rf ${WORKING_DIR}
+    rm -rf ${PROJECT_DIR}/build/script/TMP
 fi
 
 if [[ ${1} = "--linux" ]]; then
