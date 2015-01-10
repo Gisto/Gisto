@@ -2,11 +2,11 @@
 var app = require('express')(),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
-    clientToken = require('./config.js').clientToken;
+    clientToken = require('./config.js').clientToken,
+    connectionString = require('./config.js').connectionString;
 
-var databaseUrl = "gisto",
-    collections = ["notifications"],
-    db = require('mongojs').connect(databaseUrl, collections);
+var collections = ["notifications"],
+    db = require('mongojs').connect(connectionString, collections);
 
 server.listen(3001);
 console.log('server started');

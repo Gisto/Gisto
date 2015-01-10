@@ -36,8 +36,8 @@ var app = angular.module('gisto', [
     'gisto.service.githubUrlBuilder'
 ]).
     factory('socket', function (socketFactory) {
-        //var socket = io.connect('http://localhost:3001');
-        var socket = io.connect('http://server.gistoapp.com:3001');
+        var socket = io.connect('http://gisto-server.jit.su:80');
+        //var socket = io.connect('http://server.gistoapp.com:3001');
         // save the socket as a reference for use later
         window.socketIO = socket;
         return socketFactory({
