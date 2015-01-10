@@ -2,39 +2,39 @@
 
 // Declare app level module which depends on filters, and services
 var app = angular.module('gisto', [
-        'ngRoute',
-        'ngAnimate',
-        'ngSanitize',
-        'ui.utils',
-        'angulartics',
-        'angulartics.google.analytics',
-        'cfp.hotkeys',
-        'gisto.filter.removeTags',
-        'gisto.filter.truncate',
-        'gisto.filter.publicOrPrivet',
-        'gisto.filter.removeTags',
-        'gisto.filter.markDown',
-        'gisto.filter.codeLanguage',
-        'gisto.filter.removeTagSymbol',
-        'gisto.filter.matchTags',
-        'gisto.filter.dotToDash',
-        'gisto.filter.githubFileName',
-        'gisto.directive.scrollTo',
-        'gisto.directive.editor',
-        'gisto.directive.toUrl',
-        'gisto.directive.disableAnimate',
-        'gisto.directive.toggle',
-        'gisto.directive.resourceLoader',
-        'gisto.directive.hotkeysPager',
-        'gisto.service.gistData',
-        'gisto.service.requestHandler',
-        'gisto.service.gitHubAPI',
-        'gisto.service.appSettings',
-        'btford.socket-io',
-        'gisto.service.notificationService',
-        'gisto.service.onlineStatusService',
-        'gisto.service.githubUrlBuilder'
-    ]).
+    'ngRoute',
+    'ngAnimate',
+    'ngSanitize',
+    'ui.utils',
+    'angulartics',
+    'angulartics.google.analytics',
+    'cfp.hotkeys',
+    'gisto.filter.removeTags',
+    'gisto.filter.truncate',
+    'gisto.filter.publicOrPrivet',
+    'gisto.filter.removeTags',
+    'gisto.filter.markDown',
+    'gisto.filter.codeLanguage',
+    'gisto.filter.removeTagSymbol',
+    'gisto.filter.matchTags',
+    'gisto.filter.dotToDash',
+    'gisto.filter.githubFileName',
+    'gisto.directive.scrollTo',
+    'gisto.directive.editor',
+    'gisto.directive.toUrl',
+    'gisto.directive.disableAnimate',
+    'gisto.directive.toggle',
+    'gisto.directive.resourceLoader',
+    'gisto.directive.hotkeysPager',
+    'gisto.service.gistData',
+    'gisto.service.requestHandler',
+    'gisto.service.gitHubAPI',
+    'gisto.service.appSettings',
+    'btford.socket-io',
+    'gisto.service.notificationService',
+    'gisto.service.onlineStatusService',
+    'gisto.service.githubUrlBuilder'
+]).
     factory('socket', function (socketFactory) {
         //var socket = io.connect('http://localhost:3001');
         var socket = io.connect('http://server.gistoapp.com:3001');
@@ -45,7 +45,7 @@ var app = angular.module('gisto', [
             ioSocket: socket
         });
     }).
-    config(['$routeProvider','$provide', function ($routeProvider,$provide) {
+    config(['$routeProvider', '$provide', function ($routeProvider, $provide) {
 
         $routeProvider.when('/', {
             templateUrl: 'partials/empty.html',
@@ -84,6 +84,16 @@ var app = angular.module('gisto', [
         $routeProvider.otherwise({
             redirectTo: '/'
         });
+
+        $provide.decorator('$exceptionHandler', ['$log', '$delegate', function ($log, $delegate) {
+            return function (exception, cause) {
+                $delegate(exception, cause);
+                // Sending cought exception to Bugsnag
+                Bugsnag.notifyException(exception);
+            };
+        }
+        ]);
+
     }]).run(function ($rootScope, $timeout, $http) {
         $rootScope.gistoReady = false;
 
