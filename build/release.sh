@@ -24,8 +24,8 @@ usage() {
     printf "\n--- Gisto release script ----------------------------\n\n"
     printf "\tBuild installers for Windows, Linux and OSX\n"
     printf "\n--- DEPENDENCIES ------------------------------------\n\n"
-    printf "\tCMAKE\n"
-    printf "\tNSIS\n"
+    printf "\tCMAKE (used formaking libdmg-hfsplus from source)\n"
+    printf "\tNSIS (for windows installer creation)\n"
     printf "\n--- USAGE -------------------------------------------\n\n"
     printf "\tBuilding: \n\t$ ./release.sh --all [--linux|--osx|--windows|--all] 0.2.6b\n"
     printf "\tCleaning: \n\t$ ./release.sh --clean\n"
@@ -110,6 +110,7 @@ prepare() {
     build/script/node-webkit-build.sh \
         --src=${PROJECT_DIR}/dist \
         --name=gisto \
+        --nw=0.11.5 \
         --win-icon=${PROJECT_DIR}/app/icon.ico \
         --osx-icon=${PROJECT_DIR}/build/resources/osx/gisto.icns \
         --osx-plist=${PROJECT_DIR}/build/resources/osx/Info.plist \

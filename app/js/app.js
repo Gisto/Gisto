@@ -9,6 +9,7 @@ var app = angular.module('gisto', [
     'angulartics',
     'angulartics.google.analytics',
     'cfp.hotkeys',
+    'angular-bugsnag',
     'gisto.filter.removeTags',
     'gisto.filter.truncate',
     'gisto.filter.publicOrPrivet',
@@ -35,17 +36,18 @@ var app = angular.module('gisto', [
     'gisto.service.onlineStatusService',
     'gisto.service.githubUrlBuilder'
 ]).
-    factory('socket', function (socketFactory) {
-        var socket = io.connect('http://gisto-server.jit.su:80');
-        //var socket = io.connect('http://server.gistoapp.com:3001');
-        // save the socket as a reference for use later
-        window.socketIO = socket;
-        return socketFactory({
-            //prefix: '',
-            ioSocket: socket
-        });
-    }).
-    config(['$routeProvider', '$provide', function ($routeProvider, $provide) {
+    config(['$routeProvider', 'bugsnagProvider', function ($routeProvider, bugsnagProvider) {
+
+        bugsnagProvider
+            .apiKey('ebc2d2615f3d6477bf3e2a55bfc86724')
+            .releaseStage('production')
+            .appVersion('0.2.6b')
+            .beforeNotify(['$log', function ($log) {
+                return function (error, metaData) {
+                    $log.debug(error.name);
+                    return true;
+                };
+            }]);
 
         $routeProvider.when('/', {
             templateUrl: 'partials/empty.html',
@@ -85,16 +87,18 @@ var app = angular.module('gisto', [
             redirectTo: '/'
         });
 
-        $provide.decorator('$exceptionHandler', ['$log', '$delegate', function ($log, $delegate) {
-            return function (exception, cause) {
-                $delegate(exception, cause);
-                // Sending cought exception to Bugsnag
-                Bugsnag.notifyException(exception);
-            };
-        }
-        ]);
 
-    }]).run(function ($rootScope, $timeout, $http) {
+    }]).
+    factory('socket', function (socketFactory) {
+        var socket = io.connect('http://gisto-server.jit.su:80');
+        //var socket = io.connect('http://server.gistoapp.com:3001');
+        // save the socket as a reference for use later
+        window.socketIO = socket;
+        return socketFactory({
+            //prefix: '',
+            ioSocket: socket
+        });
+    }).run(function ($rootScope, $timeout, $http) {
         $rootScope.gistoReady = false;
 
         $rootScope.$on('$routeChangeStart', function () {

@@ -19,6 +19,7 @@ var gisto_js_files = [
     'app/lib/jquery/dist/jquery.min.js',
     'app/lib/socket.io-client/socket.io.js',
     'app/lib/angular/angular.min.js',
+    'app/lib/angular-bugsnag/dist/angular-bugsnag.min.js',
     'app/lib/angular-route/angular-route.min.js',
     'app/lib/angular-animate/angular-animate.js',
     'app/lib/angular-sanitize/angular-sanitize.js',
@@ -60,12 +61,18 @@ gulp.task('version', function () {
  * Use: gulp version_bump --to=0.2.4b
  */
 gulp.task('version_bump', function () {
-    var files = ['./package.json', './app/package.json'];
+    var files = ['./package.json', './bower.json', './app/package.json'],
+        oldVersion = pkg_json.version;
     files.forEach(function (file) {
         var content = JSON.parse(fs.readFileSync(file));
         content.version = argv.to;
         fs.writeFileSync(file, JSON.stringify(content, null, 4));
     });
+    var appjs = fs.readFileSync('./app/js/app.js','utf8')
+        .toString()
+        .replace(".appVersion('" + oldVersion + "')",".appVersion('" + argv.to + "')");
+    fs.writeFileSync('./app/js/app.js',appjs);
+    gutil.log('Version changed from: ', gutil.colors.green(oldVersion), ' to: ', gutil.colors.green(argv.to));
 });
 
 /**
