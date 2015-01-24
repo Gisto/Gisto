@@ -203,7 +203,6 @@
     <div class="the-gist" data-ng-repeat="file in gist.single.files" onload="initEditors()">
         <div id="file-{{$index}}" class="the-gist-name">
 
-
             <span data-ng-switch on="edit">
                 <span data-ng-switch-when="true">
                     <input class="edaitable" data-ng-model="file.filename">
@@ -226,12 +225,15 @@
                title="Copy direct link to clipboard"><i class="fa fa-link"></i></a>
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="fa fa-paperclip"></i></a>
 
+            <a  data-ng-click="fileShown=!fileShown" title="Show/Hide file content">
+                <i class="fa" data-ng-class="{'fa-toggle-off': fileShown, 'fa-toggle-on': !fileShown}"></i>
+            </a>
             <a data-ng-if="file.language=='Markdown'" data-ng-click="markDownPreviewToggle()"
                title="Toggle markdown preview"><i class="fa fa-eye"></i></a>
 
         </div>
 
-        <editor data-ng-controller="settingsCtrl" show-md-pan="true" language="{{file.language | codeLanguage}}"
+        <editor data-ng-show="!fileShown" data-ng-controller="settingsCtrl" show-md-pan="true" language="{{file.language | codeLanguage}}"
                 theme="{{editor_theme}}"
                 index="{{$index}}"
                 ></editor>
