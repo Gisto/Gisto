@@ -71,6 +71,8 @@ function loadingCtrl(appSettings, $location, $http, ghAPI, $rootScope) {
                 // no saved token redirect to login page
                 $location.url('/login');
             }
+        }, function(error) {
+            $location.url('/login');
         });
 
 

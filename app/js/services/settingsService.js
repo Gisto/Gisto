@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gisto.service.appSettings', [], function ($provide) {
-    $provide.factory('appSettings', function ($rootScope, $q, $timeout, $window) {
+    $provide.factory('appSettings', function ($rootScope, $q, $timeout, $window, $location) {
         var settings = {
 
             theme_list: ['default', 'gisto', 'nite', 'dark', 'dark-blue'],
@@ -121,9 +121,9 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                         return true;
                     }
 
-                    window.location.href = '#/login';
+                    $location.url('/loading');
                 }, function (error) {
-                    window.location.href = '#/login';
+                    $location.url('/loading');
                 });
             },
 
@@ -138,7 +138,7 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                     followers: null
                 });
 
-                $window.location.href = 'index.html#/loading';
+                $location.url('/loading');
             },
 
             getAll: function () {
