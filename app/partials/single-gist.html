@@ -226,7 +226,7 @@
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="fa fa-paperclip"></i></a>
 
             <a  data-ng-click="fileShown=!fileShown" title="Show/Hide file content">
-                <i class="fa" data-ng-class="{'fa-toggle-off': fileShown, 'fa-toggle-on': !fileShown}"></i>
+                <i class="fa" data-ng-class="{'fa-expand': fileShown, 'fa-compress': !fileShown}"></i>
             </a>
             <a data-ng-if="file.language=='Markdown'" data-ng-click="markDownPreviewToggle()"
                title="Toggle markdown preview"><i class="fa fa-eye"></i></a>
