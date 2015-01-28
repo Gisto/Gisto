@@ -36,21 +36,13 @@ rsync -avc -e ssh ${DRONE_BUILD_DIR}/build/script/TMP/${DATE_NOW} ${DRONE_BUILD_
 ### CMD Arguments
 while true; do
   case $1 in
-    --version )
+    --version=* )
         ENV_VAR_GISTO_VERSION="${1#*=}";
         shift
         ;;
     --nwjs=* )
         ENV_VAR_NWJS_VERSION="${1#*=}";
         shift
-        ;;
-    -- )
-        shift;
-        break
-        ;;
-    -* )
-        printf 'Hmmm, unknown option: "%s".\n' "${1}";
-        exit 0
         ;;
   esac
 done
