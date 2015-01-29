@@ -21,16 +21,34 @@ cd TMP
 architechture="ia32 x64"
 
 usage() {
-    printf "\n--- Gisto release script ----------------------------\n\n"
-    printf "\tBuild installers for Windows, Linux and OSX\n"
-    printf "\n--- DEPENDENCIES ------------------------------------\n\n"
-    printf "\tCMAKE (used formaking libdmg-hfsplus from source)\n"
-    printf "\tNSIS (for windows installer creation)\n"
-    printf "\n--- USAGE -------------------------------------------\n\n"
-    printf "\tBuilding: \n\t$ ./release.sh --all [--linux|--osx|--windows|--all] 0.2.6b\n"
-    printf "\tCleaning: \n\t$ ./release.sh --clean\n"
-    printf "\tHelp: \n\t$ ./release.sh --help"
-    printf "\n-----------------------------------------------------\n"
+clear && cat <<EOF
+
+NAME
+
+    Gisto release script
+
+DESCRIPTION
+
+    Build installers for Windows, Linux and OSX
+
+DEPENDENCIES
+
+    CMAKE
+        used formaking libdmg-hfsplus from source
+    NSIS
+        for windows installer creation
+    genisoimage (cdrkit)
+        for OSX installer creation
+
+USAGE
+    Building:
+            $ ./release.sh --all [--linux|--osx|--windows|--all] 0.2.6b
+    Cleaning:
+            $ ./release.sh --clean
+    Help:
+            $ ./release.sh --help
+
+EOF
 }
 
 check_dependencies() {
@@ -42,10 +60,6 @@ check_dependencies() {
     fi
 }
 
-if [[ `check_dependencies` = "NO" ]]; then
-    printf "\nNOTE! CMAKE and/or NSIS is missing in the system\n\n";
-    exit 1;
-fi
 
 mklinux () {
     for arch in ${architechture[@]}; do
@@ -60,6 +74,10 @@ mklinux () {
 }
 
 mkosx () {
+    if [[ `check_dependencies` = "NO" ]]; then
+        printf "\nNOTE! CMAKE and/or NSIS is missing in the system\n\n";
+        exit 1;
+    fi
     for arch in ${architechture[@]}; do
         if [[ ! -d "${WORKING_DIR}/libdmg-hfsplus" ]]; then
             git clone --depth 1 https://github.com/erwint/libdmg-hfsplus ${WORKING_DIR}/libdmg-hfsplus
@@ -76,11 +94,11 @@ mkosx () {
 }
 
 mkwindows() {
+    if [[ `check_dependencies` = "NO" ]]; then
+        printf "\nNOTE! CMAKE and/or NSIS is missing in the system\n\n";
+        exit 1;
+    fi
     for arch in ${architechture[@]}; do
-        # NOTE need to 
-        # - see how to compile nsis bins here upon release
-        # - remove locals folder
-        # - see how to separate x64 and ia32 in installer
         cd ${WORKING_DIR}
         cp -r ${BUILD_DIR}/resources/windows/gisto.nsi ${WORKING_DIR}
         cp -r ${PROJECT_DIR}/app/icon.ico ${BUILD_DIR}/script/TMP/win-${arch}/latest-git/
@@ -107,44 +125,40 @@ prepare() {
     cd ${PROJECT_DIR}
     gulp version_bump --to=${1}
     gulp dist && gulp dev
-    build/script/node-webkit-build.sh \
+    build/script/nwjs-build.sh \
         --src=${PROJECT_DIR}/dist \
         --name=gisto \
-        --nw=0.11.5 \
+        --nw=0.11.6 \
         --win-icon=${PROJECT_DIR}/app/icon.ico \
         --osx-icon=${PROJECT_DIR}/build/resources/osx/gisto.icns \
         --osx-plist=${PROJECT_DIR}/build/resources/osx/Info.plist \
+        --target="${2}" \
+        --libudev \
         --build
     cd ${BUILD_DIR}
 }
 
-if [[ ${1} = "--help" || ${1} = "-h" ]]; then
+if [[ ${2} = "" ]];then
+    printf "\nVersion is requered 2nd parameter\n"
+elif [[ ${1} = "--help" || ${1} = "-h" ]]; then
     usage;
-fi
-
-if [[ ${1} = "--clean" ]]; then
+elif [[ ${1} = "--clean" ]]; then
     rm -rf ${WORKING_DIR}
     rm -rf ${PROJECT_DIR}/build/script/TMP
-fi
-
-if [[ ${1} = "--linux" ]]; then
-    prepare ${2};
+elif [[ ${1} = "--linux" ]]; then
+    prepare ${2} "0 1";
     mklinux ${2};
-fi
-
-if [[ ${1} = "--osx" ]]; then
-    prepare ${2};
+elif [[ ${1} = "--osx" ]]; then
+    prepare ${2} "4 5";
     mkosx ${2};
-fi
-
-if [[ ${1} = "--windows" ]]; then
-    prepare ${2};
+elif [[ ${1} = "--windows" ]]; then
+    prepare ${2} "2 3";
     mkwindows ${2};
-fi
-
-if [[ ${1} = "--all" ]]; then
-    prepare ${2};
+elif [[ ${1} = "--all" ]]; then
+    prepare ${2} "0 1 2 3 4 5";
     mkosx ${2};
     mklinux ${2};
     mkwindows ${2};
+else
+    usage;
 fi
