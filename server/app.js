@@ -2,13 +2,12 @@
 var app = require('express')(),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
-    clientToken = require('./config.js').clientToken,
-    connectionString = require('./config.js').connectionString;
+    config = require('./config.js');
 
 var collections = ["notifications"],
-    db = require('mongojs').connect(connectionString, collections);
+    db = require('mongojs').connect(config.connectionString, collections);
 
-server.listen(3001);
+server.listen(3002);
 console.log('server started');
 
 var clients = [];
@@ -20,7 +19,7 @@ io.sockets.on('connection', function(client) {
 
     client.on('registerClient', function(data) {
         console.log(data);
-        if (!data.hasOwnProperty('token') || data.token !== clientToken) {
+        if (!data.hasOwnProperty('token') || data.token !== config.clientToken) {
             console.log('failed authentication');
             client.disconnect();
             return;
@@ -29,7 +28,7 @@ io.sockets.on('connection', function(client) {
         console.log('registering client: ' + data.user);
         this.user = data.user;
         // assign the endpoint or the default endpoint (hash of api.github.com)
-        this.endpoint = data.endpoint || '372908505';
+        this.endpoint = data.endpoint || config.clientId;
         clients.push(client);
 
         console.log({recipient: data.user, endpoint: data.endpoint});

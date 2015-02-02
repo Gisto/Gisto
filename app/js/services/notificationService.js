@@ -3,17 +3,6 @@
 angular.module('gisto.service.notificationService', [], function ($provide) {
     $provide.factory('notificationService', function (ghAPI, socket, $rootScope, $http, $q, appSettings) {
 
-        var hashString = function(text) {
-            var hash = 0, i, chr, len;
-            if (text.length == 0) return text;
-            for (i = 0, len = text.length; i < len; i++) {
-                chr   = text.charCodeAt(i);
-                hash  = ((hash << 5) - hash) + chr;
-                hash |= 0; // Convert to 32bit integer
-            }
-            return hash;
-        };
-
         var service = {
             notifications: [],
             isOnline: false,
@@ -27,11 +16,12 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                     ghAPI.getLoggedInUser(),
                     appSettings.loadSettings()
                 ]).then(function(data) {
-                        service.token = data[0].data.server_token;
-                        var settings = data[2];
-                        service.endpoint = settings.active_endpoint === 'enterprise' ? settings.endpoints['enterprise'].api_url : 'https://api.github.com';
-                        socket.emit('registerClient', { user: data[1].login, token: service.token, endpoint: hashString(service.endpoint) });
-                        $rootScope.$broadcast('ApplicationState', { online: true });
+                    var config = data[0].data;
+                    var settings = data[2];
+                    service.token = data[0].data.server_token;
+                    service.endpoint = settings.active_endpoint === 'enterprise' ? settings.endpoints['enterprise'].client_id : config.client_id;
+                    socket.emit('registerClient', { user: data[1].login, token: service.token, endpoint: service.endpoint });
+                    $rootScope.$broadcast('ApplicationState', { online: true });
                 });
             },
             logout: function() {
@@ -44,8 +34,8 @@ angular.module('gisto.service.notificationService', [], function ($provide) {
                 socketIO.io.reconnect();
             },
             send: function(e, data) {
-                // add endpoint hash to the data object
-                data.endpoint = hashString(service.endpoint);
+                // add endpoint to the data object
+                data.endpoint = service.endpoint;
                 socket.emit(e,data);
             },
             forward: socket.forward,
