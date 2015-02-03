@@ -7,7 +7,7 @@ var app = require('express')(),
 var collections = ["notifications"],
     db = require('mongojs').connect(config.connectionString, collections);
 
-server.listen(3002);
+server.listen(3001);
 console.log('server started');
 
 var clients = [];
