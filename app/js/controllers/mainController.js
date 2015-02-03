@@ -57,7 +57,10 @@ function mainCtrl($scope, $http, appSettings, $rootScope) {
 
     $scope.$watch('currentVersion + latestVersion', function () {
         console.log('watch', $scope.currentVersion, $scope.latestVersion);
-        if ($scope.currentVersion && $scope.latestVersion && $scope.currentVersion !== $scope.latestVersion.version) {
+        var dotRemover = /\./g;
+        var ours = $scope.currentVersion.replace(dotRemover, '');
+        var newer = $scope.latestVersion.version.replace(dotRemover, '');
+        if ($scope.currentVersion && $scope.latestVersion && parseInt(newer) > parseInt(ours)) {
             $scope.updateAvailable = true;
         }
     });
