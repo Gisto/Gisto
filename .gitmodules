@@ -2,3 +2,6 @@
 	path = build/script
 	url = https://github.com/Gisto/nwjs-shell-builder.git
 	ignore = dirty
+[submodule "server"]
+	path = server
+	url = git@github.com:Gisto/notification-server.git
