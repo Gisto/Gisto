@@ -1,3 +1,0 @@
-exports.clientToken = '';
-exports.connectionString = '';
-exports.clientId = '';
