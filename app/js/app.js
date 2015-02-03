@@ -40,7 +40,7 @@ var app = angular.module('gisto', [
 
         bugsnagProvider
             .apiKey('ebc2d2615f3d6477bf3e2a55bfc86724')
-            .releaseStage('production')
+            .releaseStage('development')
             .appVersion('0.2.6b')
             .beforeNotify(['$log', function ($log) {
                 return function (error, metaData) {

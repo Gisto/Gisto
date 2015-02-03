@@ -35,6 +35,7 @@ var gisto_js_files = [
     '!app/js/gisto.min.js'
 ];
 
+// Gisto CSS files for "concat" and "dist"
 var gisto_css_files = [
     'app/lib/normalize.css/normalize.css',
     'app/lib/font-awesome/css/font-awesome.min.css',
@@ -96,6 +97,12 @@ gulp.task('dev', function () {
     var content = JSON.parse(fs.readFileSync(file));
     content.window.toolbar = true;
     fs.writeFileSync(file, JSON.stringify(content, null, 4));
+    // bugSnag to to development
+    var appjs = fs.readFileSync('./app/js/app.js','utf8')
+        .toString()
+        .replace(".releaseStage('production')",".releaseStage('development')");
+    fs.writeFileSync('./app/js/app.js',appjs);
+    gutil.log('Set BugSnag ' + gutil.colors.green('releaseStage') + ' to:', gutil.colors.green('development'));
 });
 
 /**
@@ -119,6 +126,12 @@ gulp.task('prod', ['concat_js','concat_css'], function () {
     var content = JSON.parse(fs.readFileSync(file));
     content.window.toolbar = false;
     fs.writeFileSync(file, JSON.stringify(content, null, 4));
+    // bugSnag to production
+    var appjs = fs.readFileSync('./app/js/app.js','utf8')
+        .toString()
+        .replace(".releaseStage('development')",".releaseStage('production')");
+    fs.writeFileSync('./app/js/app.js',appjs);
+    gutil.log('Set BugSnag ' + gutil.colors.green('releaseStage') + ' to:', gutil.colors.green('production'));
 });
 
 /**
