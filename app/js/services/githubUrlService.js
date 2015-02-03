@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gisto.service.githubUrlBuilder', [], function ($provide) {
-    $provide.factory('githubUrlBuilderService', function (ghAPI, $filter, $rootScope) {
+    $provide.factory('githubUrlBuilderService', function (ghAPI, $filter, $rootScope, $routeParams) {
 
         var githubFileNameFilter = $filter('githubFileName');
         var publicGithubUrl = 'https://gist.github.com/';
@@ -28,7 +28,8 @@ angular.module('gisto.service.githubUrlBuilder', [], function ($provide) {
                 return baseUrl + gist.owner.login + '/' + gist.id +'.js';
             },
             buildHistoryLink: function(gist, file) {
-                var url = baseUrl + gist.history.owner.login + '/' + gist.history.id + '/' + gist.history.history[0].version;
+                console.warn(gist);
+                var url = baseUrl + gist.owner.login + '/' + gist.id + '/' + $routeParams.gistRevisionId;
                 if (file) {
                     url +='/#file-' + githubFileNameFilter(file.filename);
                 }
