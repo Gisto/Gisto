@@ -511,20 +511,23 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-
-                        return callback({
-                            data: data,
-                            status: status,
-                            headers: headers(),
-                            config: config
-                        });
+                        if (callback) {
+                            return callback({
+                                data: data,
+                                status: status,
+                                headers: headers(),
+                                config: config
+                            });
+                        }
                     }).error(function (data, status, headers, config) {
-                        return callback({
-                            data: data,
-                            status: status,
-                            headers: headers(),
-                            config: config
-                        });
+                        if (callback) {
+                            return callback({
+                                data: data,
+                                status: status,
+                                headers: headers(),
+                                config: config
+                            });
+                        }
                     });
 
                 }, function (error) {
