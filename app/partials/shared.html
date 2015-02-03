@@ -97,7 +97,7 @@
                 </span>
             </span>
 
-            <a to-url="https://gist.github.com/{{ gist.single.owner.login }}/{{ gist.single.id }}/#file-{{ file.filename | dotToDash}}"
+            <a to-url="{{ buildFileLink(gist, file) }}"
                title="Open file at GitHub Gist website"><i class="fa fa-github"></i></a>
 
         </div>

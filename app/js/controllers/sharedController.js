@@ -1,12 +1,14 @@
 'use strict';
 
-function sharedCtrl($scope, ghAPI, gistData, $routeParams, $location, notificationService, $window) {
+function sharedCtrl($scope, ghAPI, gistData, $routeParams, $location, notificationService, $window, githubUrlBuilderService) {
 
     $scope.author = $routeParams.user;
 
     ghAPI.gist($routeParams.id).then(function(gist) {
         $scope.gist = gist;
     });
+
+    $scope.buildFileLink = githubUrlBuilderService.buildFileLink;
 
     console.log($scope.gist);
 
