@@ -39,6 +39,8 @@ DEPENDENCIES
         for windows installer creation
     genisoimage (cdrkit)
         for OSX installer creation
+    dpkg
+        for Debian package creation
 
 USAGE
     Building:
@@ -63,14 +65,28 @@ check_dependencies() {
 
 mklinux () {
     for arch in ${architechture[@]}; do
-        cp -r ${BUILD_DIR}/resources/linux/Gisto-X.X.X-Linux ${WORKING_DIR} && mv ${WORKING_DIR}/Gisto-X.X.X-Linux ${WORKING_DIR}/Gisto-${1}-linux_${arch}
-        mv -T ${BUILD_DIR}/script/TMP/linux-${arch}/latest-git/gisto ${BUILD_DIR}/script/TMP/linux-${arch}/latest-git/gisto-bin
+        cp -r ${BUILD_DIR}/resources/linux/Gisto-X.X.X-Linux ${WORKING_DIR}/Gisto-${1}-linux_${arch}
         cp -r ${BUILD_DIR}/script/TMP/linux-${arch}/latest-git/* ${WORKING_DIR}/Gisto-${1}-linux_${arch}/gisto
         tar -C ${WORKING_DIR} -czf ${WORKING_DIR}/Gisto-${1}-Linux-${arch}.tar.gz Gisto-${1}-linux_${arch}
         printf "\nDone Linux ${arch}\n"
+        # DEB
+        local GISTO_DEB_NAME="gisto_${1}-1_${arch}";
+        cp -r ${BUILD_DIR}/resources/linux/Gisto-X.X.X-Linux ${WORKING_DIR}/${GISTO_DEB_NAME}
+        cp -r ${BUILD_DIR}/resources/DEBIAN ${WORKING_DIR}/${GISTO_DEB_NAME}
+        mkdir -p ${WORKING_DIR}/${GISTO_DEB_NAME}/{opt,usr/bin}
+        mv ${WORKING_DIR}/${GISTO_DEB_NAME}/gisto ${WORKING_DIR}/${GISTO_DEB_NAME}/opt
+        mv ${WORKING_DIR}/${GISTO_DEB_NAME}/share ${WORKING_DIR}/${GISTO_DEB_NAME}/usr
+        ln -s /opt/gisto/gisto ${WORKING_DIR}/${GISTO_DEB_NAME}/usr/bin/gisto
+        cp -r ${BUILD_DIR}/script/TMP/linux-${arch}/latest-git/* ${WORKING_DIR}/${GISTO_DEB_NAME}/opt/gisto
+        rm ${WORKING_DIR}/${GISTO_DEB_NAME}/{setup,README}
+        replace GISTO_REPLACE_VERSION ${1} -- ${WORKING_DIR}/${GISTO_DEB_NAME}/DEBIAN/control;
+        dpkg-deb -b ${WORKING_DIR}/${GISTO_DEB_NAME}
+        rm -rf ${WORKING_DIR}/${GISTO_DEB_NAME}
+        printf "\nDone Debian .deb ${arch}\n"
     done
     # clean
     rm -rf ${WORKING_DIR}/Gisto-${1}-linux_{x64,ia32}
+    printf "\nClened\n"
 }
 
 mkosx () {
@@ -138,7 +154,7 @@ prepare() {
     cd ${BUILD_DIR}
 }
 
-if [[ ${2} = "" ]];then
+if [[ ${1} != "--clean" && ${2} = "" ]];then
     printf "\nVersion is requered 2nd parameter\n"
 elif [[ ${1} = "--help" || ${1} = "-h" ]]; then
     usage;

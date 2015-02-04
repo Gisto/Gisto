@@ -1,5 +1,5 @@
 Package: gisto
-Version: 0.2.6b-1
+Version: GISTO_REPLACE_VERSION-1
 Architecture: all
 Section: Editors, Development
 Priority: optional
