@@ -5,3 +5,4 @@
 [submodule "server"]
 	path = server
 	url = git@github.com:Gisto/notification-server.git
+	ignore = dirty
