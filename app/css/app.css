@@ -302,7 +302,9 @@ div.comments .clicky {
     cursor: pointer;
 }
 
-div.comments i {
+div.comments .clicky > div {
+    flex: inherit;
+    display: inline-block;
     float: right;
 }
 
