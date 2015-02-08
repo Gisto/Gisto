@@ -56,6 +56,9 @@ function mainCtrl($scope, $http, appSettings, $rootScope) {
     }
 
     $scope.$watch('currentVersion + latestVersion', function () {
+        if (!$scope.currentVersion || !$scope.latestVersion) {
+            return;
+        }
         console.log('watch', $scope.currentVersion, $scope.latestVersion);
         var dotRemover = /\./g;
         var ours = $scope.currentVersion.replace(dotRemover, '');
