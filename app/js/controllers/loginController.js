@@ -14,6 +14,8 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
 
     $scope.step1 = function () {
         $scope.step2 = false;
+        $scope.user = '';
+        $scope.pass = '';
     };
 
     $scope.showEnterprise = function () {
@@ -122,6 +124,9 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
             $scope.spinner = false;
             if ($scope.tokenAttempts === 0) {
                 $('.info').slideDown();
+                setTimeout(function () {
+                    $('.info').slideUp();
+                }, 2500);
             } else {
                 $('.info').slideUp();
                 $('.warn').slideDown().find('span').text('Authenticator token incorrect');

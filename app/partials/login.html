@@ -14,7 +14,7 @@
         <span>2 Factor authentication token needed</span>
     </div>
 
-    <form data-ng-submit="submit()" class="login-animation" data-ng-show="!useManualToken && !showEnterpriseSetup">
+    <form data-ng-submit="submit()" class="login-animation" disable-animate data-ng-show="!useManualToken && !showEnterpriseSetup">
 
         <div data-ng-hide="step2">
             <input type="text" data-ng-model="user" placeholder="{{enterpriseMode === true ? 'Enterprise ':'GitHub '}}username/e-mail" required autofocus>
@@ -22,10 +22,10 @@
         </div>
         <div data-ng-show="step2">
             <input type="text" data-ng-model="code" placeholder="Authenticator token">
-
         </div>
+
         <input type="submit" value="login"/>
-        <p data-ng-show="step2"><a href="#" data-ng-click="step1()"><i class="fa fa-arrow-left"></i> Re-enter username/password</a></p>
+        <p data-ng-show="step2"><a class="login-form-btn" data-ng-click="step1()">Re-enter username/password</a></p>
 
         <p><a class="login-mode-btn" data-ng-click="toggleManualToken()">Enter Access Token</a>
             <a data-ng-if="enterpriseMode" class="login-mode-btn" data-ng-click="showEnterprise()">Enterprise Setup</a></p>
