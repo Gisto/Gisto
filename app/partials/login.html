@@ -38,11 +38,6 @@
         <input type="text" data-ng-model="enterprise.api_url" placeholder="API Url http://gh.local/api/v3" />
         <input type="text" data-ng-model="enterprise.client_id" placeholder="Client ID" />
         <input type="text" data-ng-model="enterprise.client_secret" placeholder="Client Secret" />
-        <input type="text" data-ng-show="share_server.active" data-ng-model="share_server.connection_string" placeholder="Server Connections string" />
-
-
-        <toggle data-ng-model="share_server.active" text="Custom notifications server"></toggle>
-
         <p><button data-ng-click="saveEnterpriseConfig()">Save</button></p>
         <p><button data-ng-click="hideEnterprise()">Cancel</button></p>
     </form>
