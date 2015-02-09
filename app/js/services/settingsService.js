@@ -61,7 +61,11 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                     }
                 },
                 active_endpoint: 'public',
-                anim: 1
+                anim: 1,
+                share_server: {
+                    connection_string: "http://server.gistoapp.com:3001",
+                    token: ""
+                }
             },
 
             loadSettings: function () {
@@ -146,9 +150,7 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
             },
 
             get: function (name) {
-                if (settings.isLoggedIn()) {
-                    return settings.data[name];
-                }
+                return settings.data[name];
             },
 
             set: function (data, callback) {

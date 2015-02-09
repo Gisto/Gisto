@@ -55,16 +55,22 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
                 $scope.enterprise.api_url = 'http://' + $scope.enterprise.api_url;
             }
 
+            settings.share_server = {
+                active: $scope.share_server.active,
+                connection_string: $scope.share_server.connection_string
+            };
+
             settings.endpoints['enterprise'] = {
                 api_url: $scope.enterprise.api_url,
                 client_id: $scope.enterprise.client_id,
                 client_secret: $scope.enterprise.client_secret
             };
 
+            console.log('attempting to save settings', settings);
             console.log('attempting to save', settings.endpoints['enterprise']);
 
             // save changes to settings
-            appSettings.set(settings.endpoints);
+            appSettings.set(settings);
 
             console.log('attempting to update ghapi');
             // update running instance of GitHub API service

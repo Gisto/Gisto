@@ -34,7 +34,8 @@ var app = angular.module('gisto', [
     'btford.socket-io',
     'gisto.service.notificationService',
     'gisto.service.onlineStatusService',
-    'gisto.service.githubUrlBuilder'
+    'gisto.service.githubUrlBuilder',
+    'gisto.service.socket'
 ]).
     config(['$routeProvider', 'bugsnagProvider', function ($routeProvider, bugsnagProvider) {
 
@@ -89,16 +90,7 @@ var app = angular.module('gisto', [
 
 
     }]).
-    factory('socket', function (socketFactory) {
-        //var socket = io.connect('http://localhost:3001');
-        var socket = io.connect('http://server.gistoapp.com:3001');
-        // save the socket as a reference for use later
-        window.socketIO = socket;
-        return socketFactory({
-            //prefix: '',
-            ioSocket: socket
-        });
-    }).run(function ($rootScope, $timeout, $http) {
+    run(function ($rootScope, $timeout, $http) {
         $rootScope.gistoReady = false;
 
         $rootScope.$on('$routeChangeStart', function () {
