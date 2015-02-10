@@ -98,7 +98,7 @@ var app = angular.module('gisto', [
             //prefix: '',
             ioSocket: socket
         });
-    }).run(function ($rootScope, $timeout, $http) {
+    }).run(function ($rootScope, $timeout, $http, $analytics) {
         $rootScope.gistoReady = false;
 
         $rootScope.$on('$routeChangeStart', function () {
@@ -113,7 +113,7 @@ var app = angular.module('gisto', [
         }, 300);
 
         $http.get('./package.json').then(function (response) {
-            ga('set', 'appVersion', response.data.version);
+            $analytics.eventTrack('app open', {  category: 'application', label: response.data.version });
         });
 
     });
