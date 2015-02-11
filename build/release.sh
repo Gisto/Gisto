@@ -147,8 +147,9 @@ prepare() {
         --nw=0.11.6 \
         --win-icon=${PROJECT_DIR}/app/icon.ico \
         --osx-icon=${PROJECT_DIR}/build/resources/osx/gisto.icns \
-        --osx-plist=${PROJECT_DIR}/build/resources/osx/Info.plist \
+        --CFBundleIdentifier=com.gistoapp
         --target="${2}" \
+        --version="${1}" \
         --libudev \
         --build
     cd ${BUILD_DIR}

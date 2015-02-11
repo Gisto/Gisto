@@ -24,7 +24,7 @@ start () {
     echo "{\"client_id\":\"$ENV_VAR_GISTO_CLIENT_ID\",\"client_secret\":\"$ENV_VAR_GISTO_CLIENT_SECRET\",\"server_token\":\"$ENV_VAR_GISTO_SERVER_TOKEN\"}" >> dist/config.json
 
     # Build
-    ${DRONE_BUILD_DIR}/build/script/nwjs-build.sh --src=${DRONE_BUILD_DIR}/dist --name=gisto --win-icon=${DRONE_BUILD_DIR}/app/icon.ico --osx-icon=${DRONE_BUILD_DIR}/build/resources/osx/gisto.icns --osx-plist=${DRONE_BUILD_DIR}/build/resources/osx/Info.plist --nw=${ENV_VAR_NWJS_VERSION} --libudev --build
+    ${DRONE_BUILD_DIR}/build/script/nwjs-build.sh --src=${DRONE_BUILD_DIR}/dist --name=gisto --win-icon=${DRONE_BUILD_DIR}/app/icon.ico --osx-icon=${DRONE_BUILD_DIR}/build/resources/osx/gisto.icns --CFBundleIdentifier=com.gistoapp --version=${ENV_VAR_GISTO_VERSION} --nw=${ENV_VAR_NWJS_VERSION} --libudev --build
 
     # Prepare
     printf "### git commit(s) from: ${DATE_NOW}\n\n---\n\n${ENV_VAR_GISTO_COMMIT_MESSAGE}" >> ${DRONE_BUILD_DIR}/build/script/TMP/output/_h5ai.header.md
