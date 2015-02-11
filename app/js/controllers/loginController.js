@@ -58,7 +58,9 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
             settings.endpoints['enterprise'] = {
                 api_url: $scope.enterprise.api_url,
                 client_id: $scope.enterprise.client_id,
-                client_secret: $scope.enterprise.client_secret
+                client_secret: $scope.enterprise.client_secret,
+                share_server_on: $scope.enterprise.share_server_on,
+                share_server_conn_string: $scope.enterprise.share_server_conn_string
             };
 
             console.log('attempting to save', settings.endpoints['enterprise']);

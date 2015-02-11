@@ -52,7 +52,9 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                     'enterprise': {
                         api_url: '',
                         client_id: '',
-                        client_secret: ''
+                        client_secret: '',
+                        share_server_on: '',
+                        share_server_conn_string: ''
                     },
                     'public': {
                         api_url: 'https://api.github.com',
@@ -146,9 +148,7 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
             },
 
             get: function (name) {
-                if (settings.isLoggedIn()) {
-                    return settings.data[name];
-                }
+                return settings.data[name];
             },
 
             set: function (data, callback) {
