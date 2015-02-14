@@ -5,7 +5,6 @@ var fs = require('fs');
 var argv = require('yargs').argv;
 var concat = require('gulp-concat-sourcemap');
 var strip_log = require('gulp-strip-debug');
-var connect = require('gulp-connect');
 
 // Options to switch environment (dev/prod)
 var env_option = {
@@ -132,20 +131,6 @@ gulp.task('prod', ['concat_js','concat_css'], function () {
         .replace(".releaseStage('development')",".releaseStage('production')");
     fs.writeFileSync('./app/js/app.js',appjs);
     gutil.log('Set BugSnag ' + gutil.colors.green('releaseStage') + ' to:', gutil.colors.green('production'));
-});
-
-/**
- * server
- *
- * Serves the app on specified port or 8080 if --port parameter omitted
- * Use: gulp server OR gulp server --port=80 (defalts to 8080)
- */
-gulp.task('server', function () {
-    connect.server({
-        root: './app',
-        port: argv.port || '8080',
-        livereload: true
-    });
 });
 
 /**
