@@ -140,6 +140,10 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                     followers: null
                 });
 
+                // disconnect from notifications server
+                console.log('logging out');
+                window.socketIO.close();
+
                 $location.url('/loading');
             },
 
