@@ -38,8 +38,10 @@
         <input type="text" data-ng-model="enterprise.api_url" placeholder="API Url http://gh.local/api/v3" />
         <input type="text" data-ng-model="enterprise.client_id" placeholder="Client ID" />
         <input type="text" data-ng-model="enterprise.client_secret" placeholder="Client Secret" />
+        <input data-ng-if="enterprise.share_server_on" type="text" data-ng-model="enterprise.share_server_conn_string" placeholder="mongodb://[server]/user:[port]" />
         <p><button data-ng-click="saveEnterpriseConfig()">Save</button></p>
         <p><button data-ng-click="hideEnterprise()">Cancel</button></p>
+        <toggle data-ng-model="enterprise.share_server_on" text="Custom notification server"></toggle> {{enterprise.share_server_on === true ? 'on':'off'}}
     </form>
 
     <form data-ng-show="useManualToken" class="login-animation">
@@ -48,7 +50,6 @@
         <p><button data-ng-click="toggleManualToken()">Cancel</button></p>
         <p>You can generate access token at <a to-url="https://github.com/settings/applications">GitHub</a></p>
     </form>
-
     <toggle data-ng-model="enterpriseMode" text="Enterprise mode"></toggle> {{enterpriseMode === true ? 'on':'off'}}
 
     <a class="auth-help"> ? <div>

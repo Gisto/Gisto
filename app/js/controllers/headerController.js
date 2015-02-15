@@ -49,14 +49,16 @@ function headerController($scope, notificationService, $location, appSettings, g
     $scope.$on('socket:disconnect', function(e) {
        console.log('disconnected');
         notificationService.disconnected();
+        // attempt to re login on disconnection
+        notificationService.login();
     });
 
     $scope.$on('socket:identify', function(e, data) {
         // identify to the server
         console.log('recieved identify request');
         notificationService.register();
-
     });
+    notificationService.register();
 
     $scope.$on('socket:receiveNotification', function(e, data) {
         console.log('recieve: ' , data);

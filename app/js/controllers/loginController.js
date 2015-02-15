@@ -58,7 +58,9 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
             settings.endpoints['enterprise'] = {
                 api_url: $scope.enterprise.api_url,
                 client_id: $scope.enterprise.client_id,
-                client_secret: $scope.enterprise.client_secret
+                client_secret: $scope.enterprise.client_secret,
+                share_server_on: $scope.enterprise.share_server_on,
+                share_server_conn_string: $scope.enterprise.share_server_conn_string
             };
 
             console.log('attempting to save', settings.endpoints['enterprise']);
@@ -69,6 +71,15 @@ function loginCtrl($scope, ghAPI, appSettings, $location, $rootScope) {
             console.log('attempting to update ghapi');
             // update running instance of GitHub API service
             ghAPI.setEndpoint('enterprise', settings.endpoints['enterprise']);
+
+            // if socketIO is already set (not first run) change the url for the socketIO server
+            // and reset the connection flag so it will login back
+            // once the user logs in.
+            if ($scope.enterprise.share_server_on && window.socketIO) {
+                window.socketIO.io.close();
+                window.socketIO.io.uri = $scope.enterprise.share_server_conn_string;
+                window.socketIO.io.reconnecting = false;
+            }
         });
         $scope.hideEnterprise();
     };
