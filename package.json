@@ -1,52 +1,50 @@
 {
-  "name": "gisto",
-  "version": "0.2.6b",
-  "description": "Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may thing of Gisto as Evernote for code.",
-  "homepage": "http://www.gistoapp.com/",
-  "main": "app/index.html",
-  "devDependencies": {
-    "gulp-concat-sourcemap": "^1.3.1",
-    "gulp-strip-debug": "^0.3.0",
-    "gulp-util": "^2.2.20",
-    "nw": "^0.12.0-alpha2",
-    "yargs": "^1.2.6"
-  },
-  "scripts": {
-    "postinstall": "bower install",
-    "start": "nw app"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gisto/gisto.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gisto/gisto/issues"
-  },
-  "keywords": [
-    "gisto",
-    "gist",
-    "code",
-    "snippets"
-  ],
-  "author": [
-    {
-      "name": "Maayan Glikser",
-      "url": "http://www.glikm.com"
+    "name": "gisto",
+    "version": "0.2.6b",
+    "description": "Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may thing of Gisto as Evernote for code.",
+    "homepage": "http://www.gistoapp.com/",
+    "main": "app/index.html",
+    "devDependencies": {
+        "bower": "^1.3.12",
+        "gulp": "^3.8.11",
+        "gulp-concat-sourcemap": "^1.3.1",
+        "gulp-strip-debug": "^1.0.2",
+        "gulp-util": "^3.0.3",
+        "nodewebkit": "^0.11.6",
+        "yargs": "^3.0.4"
     },
-    {
-      "name": "Sasha Khamkov",
-      "url": "http://www.sanusart.com"
-    }
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/gisto/gisto/blob/master/LICENSE"
-    }
-  ],
-  "readmeFilename": "README.md",
-  "dependencies": {
-    "bower": "^1.3.8",
-    "gulp": "^3.8.6"
-  }
+    "scripts": {
+        "postinstall": "./node_modules/bower/bin/bower install",
+        "start": "./node_modules/nodewebkit/bin/nodewebkit app"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gisto/gisto.git"
+    },
+    "bugs": {
+        "url": "https://github.com/gisto/gisto/issues"
+    },
+    "keywords": [
+        "gisto",
+        "gist",
+        "code",
+        "snippets"
+    ],
+    "author": [
+        {
+            "name": "Maayan Glikser",
+            "url": "http://www.glikm.com"
+        },
+        {
+            "name": "Sasha Khamkov",
+            "url": "http://www.sanusart.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/gisto/gisto/blob/master/LICENSE"
+        }
+    ],
+    "readmeFilename": "README.md"
 }
