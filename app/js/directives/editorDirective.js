@@ -20,7 +20,7 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                     var lang = $attrs.language,
                         font = parseInt(appSettingsResult.font_size),
                         indexed = $attrs.index,
-                        editor = ace.edit('editor-' + $attrs.index),
+                        editor = ace.edit($element.find('pre')[0]),
                         session = editor.getSession(),
                         theme = $attrs.theme,
                         inUpdateProcess = false;
