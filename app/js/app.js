@@ -37,7 +37,7 @@ var app = angular.module('gisto', [
     'gisto.service.githubUrlBuilder',
     'gisto.service.socket'
 ]).
-    config(['$routeProvider', 'bugsnagProvider', function ($routeProvider, bugsnagProvider) {
+    config(['$routeProvider', 'bugsnagProvider', '$httpProvider', function ($routeProvider, bugsnagProvider, $httpProvider) {
 
         bugsnagProvider
             .apiKey('ebc2d2615f3d6477bf3e2a55bfc86724')
@@ -49,6 +49,8 @@ var app = angular.module('gisto', [
                     return true;
                 };
             }]);
+
+        $httpProvider.interceptors.push('bugsnagHttpInterceptor');
 
         $routeProvider.when('/', {
             templateUrl: 'partials/empty.html',
