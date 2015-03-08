@@ -4,8 +4,7 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
     return {
         restrict: 'E',
         template: '<div ng-if="showmd" class="special-editor-markdown" ng-bind-html="file.content | markDown"></div>' +
-        '<pre id="editor-{{$index}}" class="editor">{{file.content}}</pre>' +
-        '<div data-ng-if="editor_ext.statusbar" id="statusBar-{{$index}}"><i class="icon-info-sign"></i> </div>',
+        '<pre id="editor-{{$index}}" class="editor">{{file.content}}</pre>',
         link: function ($scope, $element, $attrs) {
             $scope.showmd = false;
             if ($attrs.language === 'markdown') {
@@ -49,8 +48,10 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                     }
                     // Status bar
                     if (appSettingsResult.editor_ext.statusbar) {
+                        var statusBarElement = angular.element('<div><i class="icon-info-sign"></i> </div>');
+                        $element.append(statusBarElement);
                         var StatusBar = ace.require('ace/ext/statusbar').StatusBar;
-                        var statusBar = new StatusBar(editor, document.getElementById('statusBar-' + $attrs.index));
+                        new StatusBar(editor, statusBarElement[0]);
                     }
 
                     // VIM mode
