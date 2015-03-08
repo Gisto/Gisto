@@ -17,7 +17,8 @@ start () {
     sudo apt-get install zip unzip nsis rsync ssh-askpass
     npm install --silent
 
-    # Prepare dist
+    # Prepare dist folder
+    $DRONE_BUILD_DIR/node_modules/gulp/bin/gulp.js version_bump --to=${ENV_VAR_GISTO_VERSION}-${DATE_NOW}
     $DRONE_BUILD_DIR/node_modules/gulp/bin/gulp.js dist
 
     # Write config.json
