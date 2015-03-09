@@ -10,6 +10,7 @@ var app = angular.module('gisto', [
     'angulartics.google.analytics',
     'cfp.hotkeys',
     'angular-bugsnag',
+    'hc.marked',
     'gisto.filter.removeTags',
     'gisto.filter.truncate',
     'gisto.filter.publicOrPrivet',

@@ -29,6 +29,8 @@ var gisto_js_files = [
     'app/lib/angulartics/dist/angulartics-ga.min.js',
     'app/lib/emmet/emmet.min.js',
     'app/lib/angular-hotkeys/build/hotkeys.min.js',
+    'app/lib/marked/lib/marked.js',
+    'app/lib/angular-marked/angular-marked.min.js',
     'app/js/app.js',
     'app/js/**/*.js',
     '!app/js/gisto.min.js'
