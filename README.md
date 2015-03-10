@@ -1,5 +1,7 @@
 # \</Gisto\>
 
+[![Join the chat at https://gitter.im/Gisto/Gisto](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Gisto/Gisto?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ###### Snippets made awesome
 
 | Light theme | Dark theme |
