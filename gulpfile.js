@@ -182,7 +182,7 @@ gulp.task('dist', ['prod'], function () {
     gulp.src([
         'app/lib/bugsnag/src/bugsnag.js'
     ])
-        .pipe(gulp.dest('./dist/lib/bugsnag/src/bugsnag.js'));
+        .pipe(gulp.dest('./dist/lib/bugsnag/src/'));
     gulp.src([
         'app/css/gisto.css',
         'app/css/animation.css'
