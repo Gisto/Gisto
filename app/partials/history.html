@@ -114,7 +114,7 @@
                title="Open file at GitHub Gist website"><i class="fa fa-github"></i></a>
             <a ng-click="copyToClipboard(buildHistoryLink(gist,file), 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="fa fa-link"></i></a>
-            <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="fa fa-paperclip"></i></a>
+            <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="fa fa-copy"></i></a>
         </div>
 
         <editor data-ng-controller="settingsCtrl" language="{{file.language | codeLanguage}}" font="{{font_size}}"
