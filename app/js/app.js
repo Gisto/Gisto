@@ -41,7 +41,7 @@ var app = angular.module('gisto', [
     config(['$routeProvider', 'bugsnagProvider', '$httpProvider', function ($routeProvider, bugsnagProvider, $httpProvider) {
 
         bugsnagProvider
-            .apiKey('ebc2d2615f3d6477bf3e2a55bfc86724')
+            .apiKey('[API_KEY]')
             .releaseStage('development')
             .appVersion('0.2.6b')
             .beforeNotify(['$log', function ($log) {

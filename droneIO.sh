@@ -1,9 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+get_value_by_key() {
+    JSON_FILE=${1}
+    KEY=${2}
+    REGEX="(?<=\"${KEY}\":.\")[^\"]*"
+    JSON_VALUE=$(cat ${JSON_FILE} | grep -Po ${REGEX})
+    echo ${JSON_VALUE}
+}
 
 # Start
 
 # Vars
-ENV_VAR_GISTO_VERSION="0.2.6b" # or set with `droneIO.sh --version=0.2.6b`
+ENV_VAR_GISTO_VERSION=$(get_value_by_key $DRONE_BUILD_DIR/package.json version) # or set with `droneIO.sh --version=0.2.6b`
 ENV_VAR_NWJS_VERSION="0.11.6" # or set with `droneIO.sh --nwjs=0.11.6`
 ENV_VAR_GISTO_COMMIT_MESSAGE="$(git log --format='#### %B%n[View on GitHub](https://github.com/Gisto/Gisto/commit/%H)%n%n---' --since=1am)"
 DATE_NOW=$(date +"%Y%m%d")
@@ -18,7 +26,7 @@ start () {
     npm install --silent
 
     # Prepare dist folder
-    $DRONE_BUILD_DIR/node_modules/gulp/bin/gulp.js version_bump --to=${ENV_VAR_GISTO_VERSION}-${DATE_NOW}
+    $DRONE_BUILD_DIR/node_modules/gulp/bin/gulp.js version_bump --to=${ENV_VAR_GISTO_VERSION}-${DATE_NOW} --bugsnag_api_key=${ENV_VAR_GISTO_BUGSNAG_API_KEY}
     $DRONE_BUILD_DIR/node_modules/gulp/bin/gulp.js dist
 
     # Write config.json

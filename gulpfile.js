@@ -60,7 +60,7 @@ gulp.task('version', function () {
  * version_bump
  *
  * Change Gisto version
- * Use: gulp version_bump --to=0.2.4b
+ * Use: gulp version_bump --to=0.2.4b --bugsnag_api_key=[API KEY]
  */
 gulp.task('version_bump', function () {
     var files = ['./package.json', './bower.json', './app/package.json'],
@@ -72,7 +72,8 @@ gulp.task('version_bump', function () {
     });
     var appjs = fs.readFileSync('./app/js/app.js','utf8')
         .toString()
-        .replace(".appVersion('" + oldVersion + "')",".appVersion('" + argv.to + "')");
+        .replace(".appVersion('" + oldVersion + "')",".appVersion('" + argv.to + "')")
+        .replace(".apiKey('[API_KEY]')",".apiKey('" + argv.bugsnag_api_key + "')");
     fs.writeFileSync('./app/js/app.js',appjs);
     gutil.log('Version changed from: ', gutil.colors.green(oldVersion), ' to: ', gutil.colors.green(argv.to));
 });
@@ -178,6 +179,10 @@ gulp.task('dist', ['prod'], function () {
         'app/lib/ace-builds/src-min-noconflict/**'
     ])
         .pipe(gulp.dest('./dist/lib/ace-builds/src-min-noconflict'));
+    gulp.src([
+        'app/lib/bugsnag/src/bugsnag.js'
+    ])
+        .pipe(gulp.dest('./dist/lib/bugsnag/src/bugsnag.js'));
     gulp.src([
         'app/css/gisto.css',
         'app/css/animation.css'
