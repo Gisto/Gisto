@@ -175,6 +175,9 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
 
                 var newGist = {
                     id: response.data.id,
+                    owner: {
+                        login: response.data.owner.login
+                    },
                     description: response.data.description,
                     "public": response.data.public,
                     files: {}
