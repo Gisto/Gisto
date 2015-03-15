@@ -160,6 +160,9 @@ function createGistCtrl($scope, $rootScope, ghAPI, gistData) {
             } else if (response.status === 201) {
                 var newGist = {
                     id: response.data.id,
+                    owner: {
+                        login: response.data.owner.login
+                    },
                     description: $scope.description,
                     "public": $scope.isPublic,
                     files: {}
