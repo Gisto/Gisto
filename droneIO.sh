@@ -12,7 +12,7 @@ get_value_by_key() {
 
 # Vars
 ENV_VAR_GISTO_VERSION=$(get_value_by_key $DRONE_BUILD_DIR/package.json version) # or set with `droneIO.sh --version=0.2.6b`
-ENV_VAR_NWJS_VERSION="0.11.6" # or set with `droneIO.sh --nwjs=0.11.6`
+ENV_VAR_NWJS_VERSION="0.12.0" # or set with `droneIO.sh --nwjs=0.11.6`
 ENV_VAR_GISTO_COMMIT_MESSAGE="$(git log --format='#### %B%n[View on GitHub](https://github.com/Gisto/Gisto/commit/%H)%n%n---' --since=1am)"
 DATE_NOW=$(date +"%Y%m%d")
 
