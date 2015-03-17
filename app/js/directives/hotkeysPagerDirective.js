@@ -57,11 +57,11 @@ function hotkeysPager(hotkeys) {
              */
             vm.updateIndex = function(element, newIndex) {
                 var filteredItems = items.filter(function(item) {
-                   return item.element === element
+                    return item.element === element
                 });
 
                 filteredItems.forEach(function(item) {
-                   item.index = newIndex;
+                    item.index = newIndex;
                 });
 
                 vm.clearSelection();
@@ -165,8 +165,8 @@ function hotkeysPager(hotkeys) {
                 }
             };
 
-            var nextHotkeys = ['ctrl+up', 'command+up'],
-                prevHotkeys = ['ctrl+down', 'command+down'];
+            var nextHotkeys = ['ctrl+down', 'command+down'],
+                prevHotkeys = ['ctrl+up', 'command+up'];
 
             if (window.process.platform === 'darwin') {
                 nextHotkeys.reverse();
@@ -179,13 +179,13 @@ function hotkeysPager(hotkeys) {
                     combo: nextHotkeys,
                     description: 'Highlight next gist on the list',
                     allowIn: ['INPUT'],
-                    callback: vm.prev
+                    callback: vm.next
                 })
                 .add({
                     combo: prevHotkeys,
                     description: 'Highlight previous gist on the list',
                     allowIn: ['INPUT'],
-                    callback: vm.next
+                    callback: vm.prev
                 })
                 .add({
                     combo: 'enter',
@@ -214,7 +214,7 @@ function hotkeysPagerItem() {
             });
 
             scope.$on('$destroy', function() {
-               ctrl.removeItem(element);
+                ctrl.removeItem(element);
             });
         }
     }
