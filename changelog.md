@@ -1,3 +1,31 @@
+0.3.0
+-----------------
+- FEATURE (gist polling): Add polling to update changed gists
+- FEATURE (enterprise): Add GitHub Enterprise support
+- FEATURE (enterprise): Add ability to use a custom notification server
+- FEATURE (hotkeys): Add keyboard shortcuts, press ? to see available shortcuts
+- FEATURE (toggle file content): You can now fold and unfold certain file in gists
+- FEATURE (editor): Add option to wrap editor lines
+- FEATURE (single gist): Add "Copy link to clipboard" for whole gist
+- FEATURE (editor): Add .adoc and .asciidoc syntax highlighting
+- IMPROVE (settings): Settings changes are now reflected immediately
+- IMPROVE (version checking): Better version checking
+- UI (settings): Change checkboxes to toggles in settings screen
+- UI (settings): Add indication that settings were saved or imported.
+- UI (theme): Fix input and select colors on dark themes
+- UI (notifications): Add default avatar to Gisto share notifications
+- UI (fonts): Fix default fonts in windows
+- UI (revisions dialog): Fix Revisions popup UI location
+- FIX (gists pagination): Fix gists pagination to pull all pages instead of stopping at 10 pages resulting in not all gists shown.
+- FIX (editor) Ace Editor cursor wrongly placed when UI zoom is other than 100%
+- FIX (API): Fix Delete not generating correct url
+- FIX (gist list): Fix icons (star and private) not showing in gist list
+- FIX (rename gist files): Prevent files from duplicating themselves when being renamed
+- FIX (tags): Allow use of tags such as C# F#
+- FIX (settings): Fix settings screen is not able to scroll down
+- FIX (revisions): Fix revision history link
+- FIX (shared gist view): Fix links to the gist when viewing a shared gist
+
 0.2.6b
 -----------------
 - FEATURE (editor): add vim mode
