@@ -1,6 +1,6 @@
 {
     "name": "gisto",
-    "version": "0.2.6b",
+    "version": "0.3.0",
     "description": "Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may thing of Gisto as Evernote for code.",
     "homepage": "http://www.gistoapp.com/",
     "main": "app/index.html",
@@ -10,7 +10,7 @@
         "gulp-concat-sourcemap": "^1.3.1",
         "gulp-strip-debug": "^1.0.2",
         "gulp-util": "^3.0.3",
-        "nodewebkit": "^0.11.6",
+        "nw": "^0.12.0",
         "yargs": "^3.0.4"
     },
     "scripts": {
