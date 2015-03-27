@@ -156,7 +156,7 @@ prepare() {
 }
 
 if [[ ${1} != "--clean" && ${2} = "" ]];then
-    printf "\nVersion is requered 2nd parameter\n"
+    printf "\nVersion is required 2nd parameter\n"
 elif [[ ${1} = "--help" || ${1} = "-h" ]]; then
     usage;
 elif [[ ${1} = "--clean" ]]; then
