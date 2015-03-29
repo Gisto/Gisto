@@ -106,6 +106,10 @@ via **Archlinux AUR**:
 
 `$ yaourt -S gisto`
 
+via **SlackBuilds.org (Slackware)**:
+
+`# sbopkg -i gisto`
+
 P.S. If you *really want* - you can also package Gisto by yourself (See [Docs](http://www.gistoapp.com/documentation/) section on Gisto site).
 
 ## "Nightly" builds
