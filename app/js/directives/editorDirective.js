@@ -66,6 +66,7 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
 
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
+                    editor.getSession().setTabSize( parseInt(appSettingsResult.editor_tab_size) );
                     editor.setFontSize(font);
                     editor.setShowPrintMargin(false);
                     editor.renderer.setShowGutter(true);
@@ -77,6 +78,7 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                     editor.resize(true);
 
                     console.log('language:', lang);
+                    console.log('tab size:', lang);
                     console.log('Theme:', theme);
                     console.log('Font size:', font);
                     console.log('renderer.lineHeight', editor.renderer.lineHeight);

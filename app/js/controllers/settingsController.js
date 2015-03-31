@@ -12,6 +12,7 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
         $scope.max_lines = result['max_lines'] || '50';
         $scope.theme = result['theme'] || 'default';
         $scope.anim = result['anim'] || 1;
+        $scope.editor_tab_size = result['editor_tab_size'] || '4';
         $scope.editor_ext = result['editor_ext'] || {};
         $scope.editor_vim_mode = result['editor_vim_mode'] || false;
         $scope.editor_word_wrap = result['editor_word_wrap'] || false;
@@ -40,6 +41,7 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
             data.editor_ext[key] = $scope.editor_ext[key];
         }
         data.editor_vim_mode = $scope.editor_vim_mode;
+        data.editor_tab_size = $scope.editor_tab_size;
         data.editor_word_wrap = $scope.editor_word_wrap;
         data.editor_theme = $scope.editor_theme;
         data.font_size = $scope.font_size;
