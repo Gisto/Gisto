@@ -226,6 +226,8 @@
                title="Open file at GitHub Gist website"><i class="fa fa-github"></i></a>
             <a ng-click="copyToClipboard(buildFileLink(gist, file), 'Direct link copied to clipboard')"
                title="Copy direct link to clipboard"><i class="fa fa-link"></i></a>
+            <a ng-click="copyToClipboard(buildFileRawUrlLink(file), 'Raw URL copied to clipboard')"
+               title="Copy raw URL to clipboard"><i class="fa fa-code"></i></a>
             <a data-ng-click="copyToClipboard(file)" title="Copy to clip-board"><i class="fa fa-copy"></i></a>
 
             <a  data-ng-click="fileShown=!fileShown" title="Show/Hide file content">

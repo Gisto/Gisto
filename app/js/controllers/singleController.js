@@ -70,6 +70,7 @@ function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notif
     };
 
     $scope.buildFileLink = githubUrlBuilderService.buildFileLink;
+    $scope.buildFileRawUrlLink = githubUrlBuilderService.buildFileRawUrlLink;
     $scope.buildGistLink = githubUrlBuilderService.buildGistLink;
     $scope.buildDownloadLink = githubUrlBuilderService.buildDownloadLink;
 

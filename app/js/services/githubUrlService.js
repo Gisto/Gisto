@@ -24,6 +24,9 @@ angular.module('gisto.service.githubUrlBuilder', [], function ($provide) {
             buildFileLink: function(gist, file) {
                 return baseUrl + gist.single.owner.login + '/' + gist.single.id + '/#file-' + githubFileNameFilter(file.filename);
             },
+            buildFileRawUrlLink: function(file) {
+                return file.raw_url;
+            },
             buildGistLink: function(gist) {
                 return baseUrl + gist.owner.login + '/' + gist.id +'.js';
             },
