@@ -1,10 +1,12 @@
 'use strict';
 
-function createGistCtrl($scope, $rootScope, ghAPI, gistData) {
+function createGistCtrl($scope, $rootScope, ghAPI, gistData, appSettings) {
 
     $scope.description = '';
 
-    $scope.isPublic = false;
+    appSettings.loadSettings().then(function (defaults) {
+        $scope.isPublic = !!defaults.new_gist_public;
+    });
     $scope.files = [
         {
             filename: '',

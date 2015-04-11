@@ -1,6 +1,6 @@
 <header>
 
-    <span class="type {{isPublic | publicOrPrivet}}"><i class="icon-{{isPublic | publicOrPrivet}}"></i></span>
+    <span class="type {{isPublic | publicOrPrivet}}"><i class="fa fa-{{isPublic | publicOrPrivet}}"></i></span>
     <span class="gist-title">{{description | truncate:80}}</span>
     <ng-include class="flex-row" src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 </header>
@@ -39,7 +39,7 @@
     <h1>Create gist</h1>
     <input ui-keydown="{'ctrl-83':'save($event)'}" type="text" data-ng-model="description" class="desc"
            placeholder="Description">
-    <input class="toggle" id="isItPublic" type="checkbox" data-ng-model="isPublic"><label for="isItPublic"></label> Public
+    <input class="toggle" id="isItPublic" ng-checked="isPublic" type="checkbox" data-ng-model="isPublic"><label for="isItPublic"></label> Public
 
     <div data-ng-repeat="file in files">
         <input ui-keydown="{'ctrl-83':'save($event)'}" ng-pattern="/^[A-Za-z0-9\.\-\_\ ]*$/" type="text" data-ng-model="file.filename" placeholder="Filename">

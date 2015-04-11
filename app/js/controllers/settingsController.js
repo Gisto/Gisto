@@ -7,6 +7,7 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
 
     appSettings.loadSettings().then(function (result) {
         $scope.editor_theme = result['editor_theme'] || 'tomorrow';
+        $scope.new_gist_public = result['new_gist_public'] || false;
         $scope.font_size = result['font_size'] || '13';
         $scope.min_lines = result['min_lines'] || '0';
         $scope.max_lines = result['max_lines'] || '50';
@@ -35,6 +36,7 @@ function settingsCtrl($scope, appSettings, $http, $timeout, $window, $rootScope)
     $scope.update_settings = function () {
         var data = {};
         data.theme = $scope.theme;
+        data.new_gist_public = $scope.new_gist_public;
         data.anim = $scope.anim;
         data.editor_ext = {};
         for (var key in $scope.editor_ext) {
