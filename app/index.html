@@ -96,7 +96,7 @@
                 <span ng-if="gist.bigFile" class="pils gist-comment" title="This gist contains file over 1mb"><i class="fa fa-exclamation-triangle"></i> big file</span>
 
                 <p>
-                    <span data-ng-repeat="tag in gist.tags" class="pills"><i class="fa fa-tags"></i><i> {{tag |
+                    <span data-ng-repeat="tag in gist.tags track by $index" class="pills"><i class="fa fa-tags"></i><i> {{tag |
                         removeTagSymbol}} </i></span>
                 </p>
             </a>
