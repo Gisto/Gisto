@@ -69,8 +69,6 @@ You can find out more at the [F.A.Q.](http://www.gistoapp.com/faq/) section
 
 ## Status
 
-Gisto is currently in it's Beta.
-
 Please see the [change.log](http://www.gistoapp.com/changelog/) for more detailed info regarding new features, bug fixes and releases.
 
 It is still under heavily development towards the full release. 
