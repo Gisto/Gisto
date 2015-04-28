@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('gisto')
-        .controller('createGistCtrl', ['$scope', '$rootScope', 'ghAPI', 'gistData', 'appSettings', createGistCtrl]);
+        .controller('createGistCtrl', ['$scope', '$rootScope', 'ghAPI', 'gistData', 'appSettings', '$timeout', createGistCtrl]);
 
-    function createGistCtrl($scope, $rootScope, ghAPI, gistData, appSettings) {
+    function createGistCtrl($scope, $rootScope, ghAPI, gistData, appSettings, $timeout) {
 
         $scope.description = '';
 
@@ -154,6 +154,15 @@
                 data.files[$scope.files[file].filename] = {
                     content: $scope.files[file].content
                 };
+            }
+
+            // check if the gist has files
+            if (!data.files.length) {
+                $('.files-error').slideDown('slow');
+                $timeout(function() {
+                    $('.files-error').slideUp();
+                }, 2500);
+                return;
             }
 
             ghAPI.create(data, function (response) {

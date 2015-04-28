@@ -147,10 +147,11 @@ function hotkeysPager(hotkeys) {
 
             /**
              * If an enter action is provided runs the function with
-             * the current item intentifier
+             * the current item identifier
              */
             vm.enter = function () {
                 if ($attrs.hotkeysPager) {
+                    console.log({currentIndex: currentIndex, gist: items[currentIndex]});
                     $scope[$attrs.hotkeysPager](items[currentIndex].id);
                 }
             };
