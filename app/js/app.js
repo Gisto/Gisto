@@ -38,7 +38,10 @@ var app = angular.module('gisto', [
     'gisto.service.githubUrlBuilder',
     'gisto.service.socket'
 ]).
-    config(['$routeProvider', 'bugsnagProvider', '$httpProvider', function ($routeProvider, bugsnagProvider, $httpProvider) {
+    config(['$routeProvider', 'bugsnagProvider', '$httpProvider', '$compileProvider',
+        function ($routeProvider, bugsnagProvider, $httpProvider, $compileProvider) {
+
+        $compileProvider.debugInfoEnabled(false);
 
         bugsnagProvider
             .apiKey('[API_KEY]')
@@ -55,36 +58,36 @@ var app = angular.module('gisto', [
 
         $routeProvider.when('/', {
             templateUrl: 'partials/empty.html',
-            controller: mainCtrl
+            controller: 'mainCtrl'
         });
         $routeProvider.when('/login', {
             name: 'login',
             templateUrl: 'partials/login.html',
-            controller: loginCtrl
+            controller: 'loginCtrl'
         });
         $routeProvider.when('/settings', {
             templateUrl: 'partials/settings.html'
         });
         $routeProvider.when('/gist/:gistId', {
             templateUrl: 'partials/single-gist.html',
-            controller: singleGistCtrl
+            controller: 'singleGistCtrl'
         });
         $routeProvider.when('/history/:gistId/rev/:gistRevisionId', {
             templateUrl: 'partials/history.html',
-            controller: singleGistHistoryCtrl
+            controller: 'singleGistHistoryCtrl'
         });
         $routeProvider.when('/create', {
             templateUrl: 'partials/create.html',
-            controller: createGistCtrl
+            controller: 'createGistCtrl'
         });
         $routeProvider.when('/shared/:user/:id', {
             templateUrl: 'partials/shared.html',
-            controller: sharedCtrl
+            controller: 'sharedCtrl'
         });
 
         $routeProvider.when('/loading', {
             templateUrl: 'partials/loading.html',
-            controller: loadingCtrl
+            controller: 'loadingCtrl'
         });
 
         $routeProvider.otherwise({
