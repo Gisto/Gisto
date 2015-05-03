@@ -36,9 +36,9 @@
         }
 
         function shouldNotSendError(rejection) {
-            return isGitHubStarNotFound(rejection) &&
-                    isConnectionTimeout(rejection) &&
-                    isAuthorizationError(rejection) &&
+            return isGitHubStarNotFound(rejection) ||
+                    isConnectionTimeout(rejection) ||
+                    isAuthorizationError(rejection) ||
                     isRateLimitReached(rejection);
         }
 
@@ -55,7 +55,7 @@
         }
 
         function isRateLimitReached(rejection) {
-            return rejection.headers()['x-ratelimit-remaining'] === 0;
+            return rejection.headers()['x-ratelimit-remaining'] === "0";
         }
     }
 })();
