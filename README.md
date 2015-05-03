@@ -14,7 +14,7 @@
 - [Features](#features)
 - [Privacy/authentication](#privacyauthentication)
 - [Status](#status)
-- [Made of](#made-of)
+- [Made using](#made-using)
 - [Download and install](#download-and-install)
 - [Other install options](#other-install-options)
 - ["Nightly" builds](#nightly-builds) [![Build Status](https://drone.io/github.com/Gisto/Gisto/status.png)](https://drone.io/github.com/Gisto/Gisto/latest)
@@ -26,13 +26,8 @@
 
 ## About
 
-Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily.
-
-Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account!
-
-Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. 
-
-You may think of Gisto as Evernote for code.
+Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor. 
+All your data is stored on GitHub and you can access it from GitHub Gists at any time with changes carrying over to Gisto
 
 #### Gisto is now available to [download](https://github.com/Gisto/Gisto#downloads) on: Windows, OSX and Linux
 
@@ -42,14 +37,12 @@ You may think of Gisto as Evernote for code.
 * Gist tagging
 * Quick in-place editing
 * Drag & drop to create gist/add file
-* Search filter gists
+* Search gists
 * Clipboard support
 * Revision browser
 * Change gist public/private state
 * UI Themes
-* Copy to clipboard
-* Fast share gist with another Gisto user
-* Direct GitHub access
+* Fast sharing gist with other Gisto users
 * 3 ways of authentication (basic, Two-Factor Authentication (2FA) and with oAuth2 token directly)
 * Offline access to gists (Will be integrated into full release)
 
@@ -71,28 +64,21 @@ You can find out more at the [F.A.Q.](http://www.gistoapp.com/faq/) section
 
 Please see the [change.log](http://www.gistoapp.com/changelog/) for more detailed info regarding new features, bug fixes and releases.
 
-It is still under heavily development towards the full release. 
-Various features will be left out from the alpha release.
+## Made using
 
-## Made of
-
-Gisto made using HTML5/CSS3 and:
+Gisto is made using various open source projects such as
 
 * [Angular.js](http://angularjs.org/) 
 * [Node.js](http://nodejs.org/)
 * [node-webkit](https://github.com/rogerwang/node-webkit)
-
-and...
-
+* [Ace editor](http://ajaxorg.github.io/ace/)
 * [Angular UI](http://angular-ui.github.io/)
 * [jQuery](http://jquery.com/)
-* [Ace editor](http://ajaxorg.github.io/ace/)
-* [showdown](https://github.com/coreyti/showdown)
 * [Font-Awesome](http://fortawesome.github.io/Font-Awesome/)
 
 ## Download and install
 
-Installations can be downloaded from website: [www.gistoapp.com](http://www.gistoapp.com)
+You can download Gisto at: [www.gistoapp.com](http://www.gistoapp.com)
 
 #### Other install options
 
