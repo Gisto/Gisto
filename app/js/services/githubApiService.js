@@ -812,7 +812,9 @@ angular.module('gisto.service.gitHubAPI', [
                             Authorization: 'token ' + result['token']
                         }
                     }).success(function (data, status, headers, config) {
-                        gistData.list.push(data);
+                        data.tags = data.description ? data.description.match(/(#[A-Za-z0-9\-\_]+)/g) : [];
+                        data.filesCount = Object.keys(data.files).length;
+                        gistData.list.unshift(data);
                         deferred.resolve(data);
                     }).error(function (data, status, headers, config) {
                         deferred.reject(data);
