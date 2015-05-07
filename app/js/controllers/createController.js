@@ -157,7 +157,7 @@
             }
 
             // check if the gist has files
-            if (!data.files.length) {
+            if (!Object.keys(data.files).length) {
                 $('.files-error').slideDown('slow');
                 $timeout(function() {
                     $('.files-error').slideUp();
