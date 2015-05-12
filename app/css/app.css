@@ -336,17 +336,31 @@ div.comments .clicky > div {
     font-size: 20px;
 }
 
+.messangers {
+    position: absolute;
+    display: inline;
+    height: auto;
+    bottom: 75px;
+    background: transparent;
+    right: 40px;
+    z-index: 9999;
+    text-align: right;
+    float: right;
+    width: 100%;
+}
+
 .messenger {
     display: none;
     padding: 10px;
     font-size: 14px;
-    cursor: pointer;
-    position: absolute;
     bottom: 75px;
     z-index: 10;
+    float: right;
     right: 20px;
+    /* width: 100%; */
     border-radius: 3px;
     box-shadow: 1px 1px 5px #000;
+    margin: 10px 0px 0px 10px;
 }
 
 .login .messenger {

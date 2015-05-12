@@ -50,66 +50,68 @@
     <ng-include class="flex-row " src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
 </header>
+<div class="messangers">
+    <div class="messenger template">
+        <i class="fa fa-lightbulb-o"></i>
+        <span>Simple notification</span>
+    </div>
 
-<div class="messenger template">
-    <i class="fa fa-lightbulb-o"></i>
-    <span>Simple notification</span>
-</div>
+    <div class="messenger info template">
+        <i class="fa fa-info-circle"> </i>
+        <span>Informative notification</span>
+    </div>
 
-<div class="messenger info template">
-    <i class="fa fa-info-circle"> </i>
-    <span>Informative notification</span>
-</div>
+    <div class="messenger warn template">
+        <i class="fa fa-exclamation-triangle"> </i>
+        <span>Warning</span>
+    </div>
 
-<div class="messenger warn template">
-    <i class="fa fa-exclamation-triangle"> </i>
-    <span>Warning</span>
-</div>
+    <div class="messenger ok template">
+        <i class="fa fa-check-circle"> </i>
+        <span>Success</span>
+    </div>
 
-<div class="messenger ok template">
-    <i class="fa fa-check-circle"> </i>
-    <span>Success</span>
-</div>
+    <div class="messenger loading template">
+        <i class="fa-spin fa fa-spinner"> </i>
+        <span>Loading...</span>
+    </div>
 
-<div class="messenger loading template">
-    <i class="fa-spin fa fa-spinner"> </i>
-    <span>Loading...</span>
-</div>
-
-<div class="messenger edit template">
-    <i class="fa fa-pencil-square-o"> </i>
+    <div class="messenger edit template">
+        <i class="fa fa-pencil-square-o"> </i>
     <span>Edit mode <b>on</b> <a href="" data-ng-click="update()">update</a> | <a data-ng-click="disableEdit()"
                                                                                   title="changes wont be saved">cancel</a></span>
-</div>
+    </div>
 
-<div class="messenger drop template">
-    <i class="fa fa-pencil-square-o"> </i>
-    <span>Drag detected - now drop!</span>
-</div>
+    <div class="messenger drop template">
+        <i class="fa fa-pencil-square-o"> </i>
+        <span>Drag detected - now drop!</span>
+    </div>
 
-<div class="messenger delete warn">
-    <i class="fa fa-exclamation-triangle"> </i>
+    <div class="messenger delete warn">
+        <i class="fa fa-exclamation-triangle"> </i>
     <span>Are you sure you want to <b>delete</b> this gist? | <a href="" data-ng-click="del()">Yes!</a>
         <a href="" data-ng-click="cancelDeleteGist()">Cancel</a></span>
-</div>
+    </div>
 
-<div class="messenger delete-file warn">
-    <i class="fa fa-exclamation-triangle"> </i>
+    <div class="messenger delete-file warn">
+        <i class="fa fa-exclamation-triangle"> </i>
     <span>Are you sure you want to <b>delete</b> {{ fileToDelete }}? | <a href=""
                                                                           data-ng-click="deleteFile(fileToDelete)">Yes!</a>
         <a href="" data-ng-click="cancelDeleteFile()">Cancel</a></span>
-</div>
+    </div>
 
-<div class="messenger state warn">
-    <i class="fa fa-exclamation-triangle"> </i>
+    <div class="messenger state warn">
+        <i class="fa fa-exclamation-triangle"> </i>
     <span>Are you sure you want to make this gist <b>{{state}}</b>? <br/>This will delete and recreate the gist as {{state}}, comments and revisions will be lost <a
             href="" data-ng-click="changeState(state)">Yes!</a>
         <a href="" data-ng-click="cancelStateChange()">Cancel</a></span>
-</div>
+    </div>
 
-<div class="messenger warn notification-error">
-    <i class="fa fa-exclamation-triangle"> </i>
-    <span>Server connection lost, please try again later.</span>
+    <div class="messenger warn notification-error">
+        <i class="fa fa-exclamation-triangle"> </i>
+        <span>Server connection lost, please try again later.</span>
+    </div>
+
 </div>
 
 <div class="toolbox">
