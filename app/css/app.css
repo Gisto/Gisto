@@ -1364,3 +1364,10 @@ header > ng-include > a {
 input,select {
     color:initial;
 }
+
+.the-gist-name select {
+    position: relative;
+    right: 0px;
+    float: right;
+    height: 21px;
+}

@@ -11,7 +11,6 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                 $scope.showmd = true;
             }
 
-
             appSettings.loadSettings().then(function (appSettingsResult) {
 
                 $timeout(function () {
@@ -23,6 +22,13 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                         session = editor.getSession(),
                         theme = $attrs.theme,
                         inUpdateProcess = false;
+
+                    // Observe changes to syntax attribute on <editor> element (on create gist partial only)
+                    $attrs.$observe('syntax', function(newSyntax){
+                        // Refresh the ace session with new syntax mode
+                        editor.getSession().setMode("ace/mode/" + newSyntax);
+                        console.log('new syntax',newSyntax);
+                    });
 
                     // Emmet
                     if (lang === 'html' && appSettingsResult.editor_ext.emmet) {

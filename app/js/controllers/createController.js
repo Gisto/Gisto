@@ -2,11 +2,13 @@
     'use strict';
 
     angular.module('gisto')
-        .controller('createGistCtrl', ['$scope', '$rootScope', 'ghAPI', 'gistData', 'appSettings', '$timeout', createGistCtrl]);
+        .controller('createGistCtrl', ['$scope', '$rootScope', 'ghAPI', 'gistData', 'appSettings', '$timeout', 'syntaxRepository', createGistCtrl]);
 
-    function createGistCtrl($scope, $rootScope, ghAPI, gistData, appSettings, $timeout) {
+    function createGistCtrl($scope, $rootScope, ghAPI, gistData, appSettings, $timeout, syntaxRepository) {
 
         $scope.description = '';
+
+        $scope.syntaxRepo = syntaxRepository.syntaxes;
 
         appSettings.loadSettings().then(function (defaults) {
             $scope.isPublic = !!defaults.new_gist_public;

@@ -32,6 +32,7 @@ var app = angular.module('gisto', [
     'gisto.service.requestHandler',
     'gisto.service.gitHubAPI',
     'gisto.service.appSettings',
+    'gisto.service.syntaxRepository',
     'btford.socket-io',
     'gisto.service.notificationService',
     'gisto.service.onlineStatusService',
