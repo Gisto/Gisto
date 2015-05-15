@@ -344,9 +344,9 @@ div.comments .clicky > div {
     background: transparent;
     right: 40px;
     z-index: 9999;
-    text-align: right;
+    text-align: left;
     float: right;
-    width: 100%;
+    width: 50%;
 }
 
 .messenger {
