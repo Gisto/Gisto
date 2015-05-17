@@ -59,8 +59,7 @@
                 <i class="fa fa-file-o"></i> <b>{{file.filename || 'filename'}}</b>
                 <a data-ng-click="deleteFile($index)" data-file-index="{{$index}}"
                    title="Delete {{file.filename}}"><i class="fa fa-times"></i></a>
-                <select ng-model="syntax">
-                    <option ng-repeat="(syntaxNiceName,syntaxValue) in syntaxRepo" value="{{syntaxValue}}">{{syntaxNiceName}}</option>
+                <select ng-init="syntax='html'" ng-model="syntax" ng-options="opt.value as opt.name for opt in syntaxRepo">
                 </select>
             </div>
             <editor ui-keydown="{'ctrl-83':'save($event)'}" syntax="{{syntax}}" language="html" index="{{$index}}"

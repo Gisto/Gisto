@@ -8,7 +8,14 @@
 
         $scope.description = '';
 
-        $scope.syntaxRepo = syntaxRepository.syntaxes;
+        $scope.syntaxRepo = [];
+        Object.keys(syntaxRepository.syntaxes).forEach(function (key) {
+            $scope.syntaxRepo.push({
+                name: key,
+                value: syntaxRepository.syntaxes[key]
+            });
+        });
+        console.log('$scope.syntaxRepo',$scope.syntaxRepo);
 
         appSettings.loadSettings().then(function (defaults) {
             $scope.isPublic = !!defaults.new_gist_public;
