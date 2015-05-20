@@ -31,6 +31,7 @@ var gisto_js_files = [
     'app/lib/angular-hotkeys/build/hotkeys.min.js',
     'app/lib/marked/lib/marked.js',
     'app/lib/angular-marked/angular-marked.min.js',
+    'app/lib/angular-ui-select/dist/select.min.js',
     'app/js/app.js',
     'app/js/**/*.js',
     '!app/js/gisto.min.js'
@@ -41,6 +42,8 @@ var gisto_css_files = [
     'app/lib/normalize.css/normalize.css',
     'app/lib/font-awesome/css/font-awesome.min.css',
     'app/lib/angular-hotkeys/build/hotkeys.min.css',
+    'app/lib/angular-ui-select/dist/select.min.css',
+    'app/lib/selectize/dist/css/selectize.default.css',
     'app/css/app.css',
     'app/css/markdown.css',
     '!app/css/gisto.css'
