@@ -1371,3 +1371,16 @@ input,select {
     float: right;
     height: 21px;
 }
+
+.selectize-input {
+    padding: 3px 8px;
+    height: 29px;
+    position: relative;
+    bottom: 3px;
+}
+
+.the-gist .ui-select-container {
+    width: 150px;
+    float: right;
+    height: 20px;
+}

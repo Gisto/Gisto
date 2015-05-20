@@ -7,6 +7,12 @@
     function createGistCtrl($scope, $rootScope, ghAPI, gistData, appSettings, $timeout, syntaxRepository) {
 
         $scope.description = '';
+        $scope.syntax = {
+            name: {
+                name: "HTML",
+                value: "html"
+            }
+        };
 
         $scope.syntaxRepo = [];
         Object.keys(syntaxRepository.syntaxes).forEach(function (key) {

@@ -4,7 +4,7 @@ angular.module('gisto.service.syntaxRepository', [], function ($provide) {
     $provide.service('syntaxRepository', function () {
         var syntax = {
             syntaxes: {
-                null: "text",
+                "text": "text",
                 "ABAP": "abap",
                 "ActionScript": "actionscript",
                 "Ada": "ada",

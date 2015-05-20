@@ -59,10 +59,15 @@
                 <i class="fa fa-file-o"></i> <b>{{file.filename || 'filename'}}</b>
                 <a data-ng-click="deleteFile($index)" data-file-index="{{$index}}"
                    title="Delete {{file.filename}}"><i class="fa fa-times"></i></a>
-                <select ng-init="syntax='html'" ng-model="syntax" ng-options="opt.value as opt.name for opt in syntaxRepo">
-                </select>
+
+                <ui-select ng-model="syntax.name" theme="selectize" append-to-body="true">
+                    <ui-select-match placeholder="Select a language">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="language as language in syntaxRepo | filter: $select.search">
+                        <div ng-bind-html="language.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
             </div>
-            <editor ui-keydown="{'ctrl-83':'save($event)'}" syntax="{{syntax}}" language="html" index="{{$index}}"
+            <editor ui-keydown="{'ctrl-83':'save($event)'}" syntax="{{syntax.name.value}}" language="html" index="{{$index}}"
                     data-ng-model="file.content"></editor>
         </div>
 

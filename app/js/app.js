@@ -11,6 +11,7 @@ var app = angular.module('gisto', [
     'cfp.hotkeys',
     'angular-bugsnag',
     'hc.marked',
+    'ui.select',
     'gisto.filter.removeTags',
     'gisto.filter.truncate',
     'gisto.filter.publicOrPrivet',
