@@ -85,6 +85,7 @@ bin
 !.bowerrc
 
 ### Gisto Specific ###
+app/gisto.json
 app/config.json
 server/config.js
 app/lib
