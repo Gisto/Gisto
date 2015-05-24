@@ -21,8 +21,7 @@
             get: get,
             remove: remove,
             find: find,
-            findOne: findOne,
-            getGist: getGist
+            findOne: findOne
         };
 
         init();
@@ -53,8 +52,6 @@
             });
         }
 
-        // look ma, no internet.
-
         function insert(gist) {
             return gistCollection.insert(gist);
         }
@@ -77,10 +74,6 @@
 
         function findOne(query) {
             return gistCollection.findOne(query);
-        }
-
-        function getGist(gistId) {
-            return gistCollection.findOne({id: gistId});
         }
 
     }

@@ -6,7 +6,7 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.requestHandler',
     'gisto.filter.matchTags'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route, databaseFactory, onlineStatus) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route, databaseFactory, onlineStatus, Gist) {
         var token = appSettings.get('token'),
             lastGistsUpdate = null,
             active_endpoint = appSettings.get('active_endpoint'),
@@ -194,14 +194,6 @@ angular.module('gisto.service.gitHubAPI', [
                                         //console.info(' --- file size', fileSize.size);
                                     }
                                 });
-                                //console.info('data[item]',data[item]);
-                                if (databaseFactory.findOne(data[item])) {
-                                    console.log('gist in memory');
-                                } else {
-                                    console.log('saving gist in memory');
-                                    databaseFactory.insert(data[item]);
-                                }
-
                             }
 
                             // Set lastUpdated for 60 sec cache
@@ -244,6 +236,8 @@ angular.module('gisto.service.gitHubAPI', [
                             lastGistsUpdate = header['last-modified'];
                             if (header.link) {
                                 var links = header.link.split(',');
+
+                                var endOfPagination = false;
                                 for (var link in links) {
                                     link = links[link];
                                     if (link.indexOf('rel="next') > -1) {
@@ -255,6 +249,8 @@ angular.module('gisto.service.gitHubAPI', [
                                     }
                                 }
                             }
+
+                            api.aggregateGists();
 
                             // resolve the promise when finished getting all the gists from paginated results
                             deferred.resolve();
@@ -292,6 +288,33 @@ angular.module('gisto.service.gitHubAPI', [
 
             },
 
+            aggregateGists: function () {
+
+                gistData.list.forEach(function(gist) {
+                   // check if there is a matching gist in the database
+                    var localGist = databaseFactory.findOne({id: gist.id});
+
+                    // if no local gist
+                    if (!localGist) {
+                        // get the gist and save in database
+                        console.log('no local gist detected, fetching:', gist.description);
+                        api.gist(gist.id);
+                    } else {
+                        // if local gist found
+                        // check the gist contents are the same by checking updated_at
+
+                        // if they are not the same
+                        if (localGist.updated_at !== gist.updated_at) {
+                            // ask user which version to keep
+                            console.warn('GIST CONFLICT DETECTED', {
+                                localGistTimestamp: localGist.updated_at,
+                                remoteGistTimestamp: gist.updated_at
+                            });
+                        }
+                    }
+                });
+            },
+
             // GET /gists/:id
             gist: function (id) {
 
@@ -317,7 +340,6 @@ angular.module('gisto.service.gitHubAPI', [
 
                         // save timestamp of pull
                         data.lastUpdated = new Date();
-                        console.log(data.lastUpdated);
 
                         gist.single = data; // update the current gist with the new data
                         gist.single._original = angular.copy(data); //backup original gist
@@ -335,7 +357,11 @@ angular.module('gisto.service.gitHubAPI', [
                             }
                         });
 
-                        databaseFactory.update(gist);
+                        if (databaseFactory.findOne({id: gist.id})) {
+                            databaseFactory.update(gist);
+                        } else {
+                            databaseFactory.insert(gist);
+                        }
 
 
                         deferred.resolve(gist);
