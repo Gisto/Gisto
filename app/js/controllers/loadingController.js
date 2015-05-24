@@ -67,7 +67,12 @@
                         }
                     }, function (error) {
                         // token invalid -  redirect back to login screen
-                        $location.url('/login');
+                        if (error && error.message === 'Bad credentials') {
+                            $location.url('/login');
+                        }
+
+                        // offline mode redirect to main screen
+                        $location.url('/');
                     });
 
 

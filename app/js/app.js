@@ -12,6 +12,7 @@ var app = angular.module('gisto', [
     'angular-bugsnag',
     'hc.marked',
     'ui.select',
+    'lokijs',
     'gisto.filter.removeTags',
     'gisto.filter.truncate',
     'gisto.filter.publicOrPrivet',

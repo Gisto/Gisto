@@ -44,6 +44,7 @@
     "marked": "~0.3.3",
     "bugsnag": "~2.4.7",
     "angular-ui-select": "~0.11.2",
-    "selectize": "~0.12.1"
+    "selectize": "~0.12.1",
+    "lokijs": "~1.2.5"
   }
 }

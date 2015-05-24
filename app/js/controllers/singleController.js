@@ -3,13 +3,13 @@
 
     angular.module('gisto')
         .controller('singleGistCtrl', ['$scope', '$routeParams', 'gistData', 'ghAPI', '$rootScope',
-            'notificationService', 'appSettings', '$filter', 'githubUrlBuilderService', singleGistCtrl]);
+            'notificationService', 'appSettings', '$filter', 'githubUrlBuilderService', 'onlineStatus', singleGistCtrl]);
 
-    function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService, appSettings, $filter, githubUrlBuilderService) {
+    function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService, appSettings, $filter, githubUrlBuilderService, onlineStatus) {
 
         $scope.gist = gistData.getGistById($routeParams.gistId);
 
-        if ($scope.gist.hasOwnProperty('single') && $scope.gist.single.hasOwnProperty('lastUpdated')) {
+        if ($scope.gist.hasOwnProperty('single') && $scope.gist.single.hasOwnProperty('lastUpdated') && onlineStatus.isOnline()) {
             console.log($scope.gist.single.lastUpdated);
             var now = new Date();
             var seconds = Math.round((now.getTime() - $scope.gist.single.lastUpdated.getTime()) / 1000);

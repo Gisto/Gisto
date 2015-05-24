@@ -6,7 +6,7 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.requestHandler',
     'gisto.filter.matchTags'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route, databaseFactory, onlineStatus) {
         var token = appSettings.get('token'),
             lastGistsUpdate = null,
             active_endpoint = appSettings.get('active_endpoint'),
@@ -23,8 +23,6 @@ angular.module('gisto.service.gitHubAPI', [
               }
 
             };
-
-
 
         var api = {
 
@@ -110,7 +108,7 @@ angular.module('gisto.service.gitHubAPI', [
                     deferred.resolve(true);
                 }).error(function (error) {
                     console.log('Could not verify token', error);
-                    deferred.reject(false);
+                    deferred.reject(error);
                 });
 
                 return deferred.promise;
@@ -160,118 +158,138 @@ angular.module('gisto.service.gitHubAPI', [
             // GET /gists
             gists: function (updateOnly, pageNumber, deferred) {
                     var deferred = deferred || $q.defer();
-                    var url = pageNumber ? endpoints[active_endpoint].api_url + '/gists?page=' + pageNumber : endpoints[active_endpoint].api_url + '/gists',
-                        headers = {
-                            Authorization: 'token ' + token
-                        };
 
-                    if (updateOnly && lastGistsUpdate) {
-                        headers['If-Modified-Since'] = lastGistsUpdate;
-                    }
+                    if (onlineStatus.isOnline()) {
+                        console.log('online');
 
-                    requestHandler({
-                        method: 'GET',
-                        url: url,
-                        headers: headers
-                    }).success(function (data, status, headers, config) {
-                        for (var item in data) { // process and arrange data
-                            data[item].tags = data[item].description ? $filter('matchTags')(data[item].description) : [];
-                            data[item].single = {};
-                            data[item].filesCount = Object.keys(data[item].files).length;
+                        var url = pageNumber ? endpoints[active_endpoint].api_url + '/gists?page=' + pageNumber : endpoints[active_endpoint].api_url + '/gists',
+                            headers = {
+                                Authorization: 'token ' + token
+                            };
 
-                            /*
-                                check if the gists contains file over 1MB
-                                if they do mark them as gists with big files
-                                the check is done using a byte size comparison 1048576 = 1MB
-                                due to the gist list api does not return if the file
-                                is going to be truncated or not, so we have to measure each file size in bytes.
-                            */
-                            angular.forEach(data[item].files, function (fileSize) {
-                                if (fileSize.size > 1048576) {
-                                    data[item].bigFile = true;
-                                    //console.info(' --- file size', fileSize.size);
-                                }
-                            });
-                            //console.info('data[item]',data[item]);
+                        if (updateOnly && lastGistsUpdate) {
+                            headers['If-Modified-Since'] = lastGistsUpdate;
                         }
 
-                        // Set lastUpdated for 60 sec cache
-                        data.lastUpdated = new Date();
+                        requestHandler({
+                            method: 'GET',
+                            url: url,
+                            headers: headers
+                        }).success(function (data, status, headers, config) {
+                            for (var item in data) { // process and arrange data
+                                data[item].tags = data[item].description ? $filter('matchTags')(data[item].description) : [];
+                                data[item].single = {};
+                                data[item].filesCount = Object.keys(data[item].files).length;
 
-                        if (updateOnly) {
-
-                            // get the current gist id being edited if there is one.
-                            var editInProgressGistId = $route.current.params['gistId'] || null;
-
-                            // apply update for gists
-                            data.forEach(function(newGist) {
-
-                                // only update gists which are currently not being worked on.
-                                // in the future pop a notification to notify the user.
-                                if (editInProgressGistId && editInProgressGistId === newGist.id) {
-                                    return;
-                                }
-
-                                var gist = gistData.getGistById(newGist.id);
-
-                                if (gist) {
-                                    angular.forEach(gist, function(value, key) {
-                                        gist[key] = newGist[key];
-                                    });
+                                /*
+                                 check if the gists contains file over 1MB
+                                 if they do mark them as gists with big files
+                                 the check is done using a byte size comparison 1048576 = 1MB
+                                 due to the gist list api does not return if the file
+                                 is going to be truncated or not, so we have to measure each file size in bytes.
+                                 */
+                                angular.forEach(data[item].files, function (fileSize) {
+                                    if (fileSize.size > 1048576) {
+                                        data[item].bigFile = true;
+                                        //console.info(' --- file size', fileSize.size);
+                                    }
+                                });
+                                //console.info('data[item]',data[item]);
+                                if (databaseFactory.findOne(data[item])) {
+                                    console.log('gist in memory');
                                 } else {
-                                    // can't find a match, assume new gist
-                                    gistData.list.push(newGist);
+                                    console.log('saving gist in memory');
+                                    databaseFactory.insert(data[item]);
                                 }
 
-                            });
-                        } else {
-                            // push new gists to the list
-                            gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
-                        }
+                            }
+
+                            // Set lastUpdated for 60 sec cache
+                            data.lastUpdated = new Date();
+
+                            if (updateOnly) {
+
+                                // get the current gist id being edited if there is one.
+                                var editInProgressGistId = $route.current.params['gistId'] || null;
+
+                                // apply update for gists
+                                data.forEach(function(newGist) {
+
+                                    // only update gists which are currently not being worked on.
+                                    // in the future pop a notification to notify the user.
+                                    if (editInProgressGistId && editInProgressGistId === newGist.id) {
+                                        return;
+                                    }
+
+                                    var gist = gistData.getGistById(newGist.id);
+
+                                    if (gist) {
+                                        angular.forEach(gist, function(value, key) {
+                                            gist[key] = newGist[key];
+                                        });
+                                    } else {
+                                        // can't find a match, assume new gist
+                                        gistData.list.push(newGist);
+                                    }
+
+                                });
+                            } else {
+                                // push new gists to the list
+                                gistData.list.push.apply(gistData.list, data); // transfer the data to the data service
+                            }
 
 
 
-                        var header = headers();
-                        lastGistsUpdate = header['last-modified'];
-                        if (header.link) {
-                            var links = header.link.split(',');
-                            for (var link in links) {
-                                link = links[link];
-                                if (link.indexOf('rel="next') > -1) {
-                                    var nextPage = parseInt(link.match(/\?page=(\d+)/)[1], 10);
-                                    if (!pageNumber || nextPage > pageNumber) {
-                                        api.gists(updateOnly, nextPage, deferred);
-                                        return; // end the function before it reaches starred gist list call
+                            var header = headers();
+                            lastGistsUpdate = header['last-modified'];
+                            if (header.link) {
+                                var links = header.link.split(',');
+                                for (var link in links) {
+                                    link = links[link];
+                                    if (link.indexOf('rel="next') > -1) {
+                                        var nextPage = parseInt(link.match(/\?page=(\d+)/)[1], 10);
+                                        if (!pageNumber || nextPage > pageNumber) {
+                                            api.gists(updateOnly, nextPage, deferred);
+                                            return; // end the function before it reaches starred gist list call
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        // resolve the promise when finished getting all the gists from paginated results
-                        deferred.resolve();
+                            // resolve the promise when finished getting all the gists from paginated results
+                            deferred.resolve();
 
-                        // end of the paging calls
-                        api.starred(function (response) {
-                            for (var s in response.data) {
-                                var gist = gistData.getGistById(response.data[s].id);
-                                if (gist) {
-                                    gist.has_star = true;
+                            // end of the paging calls
+                            api.starred(function (response) {
+                                for (var s in response.data) {
+                                    var gist = gistData.getGistById(response.data[s].id);
+                                    if (gist) {
+                                        gist.has_star = true;
+                                    }
                                 }
-                            }
+                            });
+
+                        }).error(function (data, status, headers, config) {
+                            console.log({
+                                data: data,
+                                status: status,
+                                headers: headers(),
+                                config: config
+                            });
+
+                            deferred.reject([data, status, headers, config]);
                         });
 
-                    }).error(function (data, status, headers, config) {
-                        console.log({
-                            data: data,
-                            status: status,
-                            headers: headers(),
-                            config: config
-                        });
 
-                        deferred.reject([data, status, headers, config]);
-                    });
+                    } else {
+                        console.log('offline');
+                        var gists = databaseFactory.find();
+                        gistData.list.push.apply(gistData.list, gists);
+                        deferred.resolve();
+                    }
 
                 return deferred.promise;
+
             },
 
             // GET /gists/:id
@@ -316,6 +334,8 @@ angular.module('gisto.service.gitHubAPI', [
                                 });
                             }
                         });
+
+                        databaseFactory.update(gist);
 
 
                         deferred.resolve(gist);
