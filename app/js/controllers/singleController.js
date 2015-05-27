@@ -9,22 +9,28 @@
 
         $scope.gist = gistData.getGistById($routeParams.gistId);
 
-        if ($scope.gist.hasOwnProperty('single') && $scope.gist.single.hasOwnProperty('lastUpdated') && onlineStatus.isOnline()) {
+        if ($scope.gist.hasOwnProperty('single') && $scope.gist.single.hasOwnProperty('lastUpdated')) {
             console.log($scope.gist.single.lastUpdated);
             var now = new Date();
-            var seconds = Math.round((now.getTime() - $scope.gist.single.lastUpdated.getTime()) / 1000);
+            var lastUpdated = $scope.gist.single.lastUpdated;
+            if (!angular.isDate(lastUpdated)) {
+                lastUpdated = new Date($scope.gist.single.lastUpdated);
+            }
+            var seconds = Math.round((now.getTime() - lastUpdated.getTime()) / 1000);
             console.log(seconds + ' have passed since last updated');
-            if (seconds > 60) {
+            if (seconds > 60 && onlineStatus.isOnline()) {
                 ghAPI.gist($routeParams.gistId);
             }
-        } else {
+        } else if (onlineStatus.isOnline()) {
             ghAPI.gist($routeParams.gistId);
         }
 
-        ghAPI.followers(function (response) {
-            console.log('response followers', response);
-            $scope.followers_array = response.data;
-        });
+        if (onlineStatus.isOnline()) {
+            ghAPI.followers(function (response) {
+                console.log('response followers', response);
+                $scope.followers_array = response.data;
+            });
+        }
 
         $scope.loadRawFile = function (file) {
 //        $scope.$apply(function() {

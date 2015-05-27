@@ -2,17 +2,19 @@
     'use strict';
 
     angular.module('gisto')
-        .controller('commentsGistCtrl', ['$scope', '$routeParams', 'ghAPI', commentsGistCtrl]);
+        .controller('commentsGistCtrl', ['$scope', '$routeParams', 'ghAPI', 'onlineStatus', commentsGistCtrl]);
 
-    function commentsGistCtrl($scope, $routeParams, ghAPI) {
+    function commentsGistCtrl($scope, $routeParams, ghAPI, onlineStatus) {
         $scope.comments = [];
-        ghAPI.comments($routeParams.gistId, function (response) {
-            if (response.status === 200) {
-                $scope.comments.push.apply($scope.comments, response.data);
-            } else {
-                console.warn('[!!!] >>> Comments not loaded - server responded with error.');
-            }
-        });
+        if (onlineStatus.isOnline()) {
+            ghAPI.comments($routeParams.gistId, function (response) {
+                if (response.status === 200) {
+                    $scope.comments.push.apply($scope.comments, response.data);
+                } else {
+                    console.warn('[!!!] >>> Comments not loaded - server responded with error.');
+                }
+            });
+        }
 
         $scope.add_comment = function(data){
             console.log('COMMENT BODY',data);

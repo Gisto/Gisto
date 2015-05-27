@@ -6,7 +6,7 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.requestHandler',
     'gisto.filter.matchTags'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route, databaseFactory, onlineStatus, Gist) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route, databaseFactory, onlineStatus) {
         var token = appSettings.get('token'),
             lastGistsUpdate = null,
             active_endpoint = appSettings.get('active_endpoint'),
