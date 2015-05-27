@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('gisto')
-        .controller('loadingCtrl', ['appSettings', '$location', '$http', 'ghAPI', '$rootScope', loadingCtrl]);
+        .controller('loadingCtrl', ['appSettings', '$location', '$http', 'ghAPI', '$rootScope', 'databaseFactory', loadingCtrl]);
 
-    function loadingCtrl(appSettings, $location, $http, ghAPI, $rootScope) {
+    function loadingCtrl(appSettings, $location, $http, ghAPI, $rootScope, databaseFactory) {
 
         /**
          * Application bootstrapping controller, load all the settings and configures services

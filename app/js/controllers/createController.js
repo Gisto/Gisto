@@ -189,7 +189,10 @@
                         },
                         description: $scope.description,
                         "public": $scope.isPublic,
-                        files: {}
+                        files: response.data.files,
+                        single: {
+                            files: response.data.files
+                        }
                     };
                     $rootScope.edit = false;
                     $('.ok').slideDown('slow');

@@ -13,6 +13,7 @@
         var fs = require('fs');
         var DB_FILE = './gisto.json';
         var gistCollection = null;
+        var changesCollection = null;
         var db = null;
 
         var service = {
@@ -21,7 +22,8 @@
             get: get,
             remove: remove,
             find: find,
-            findOne: findOne
+            findOne: findOne,
+            addToQueue: addToQueue
         };
 
         init();
@@ -45,9 +47,11 @@
                 if (exists) {
                     db.loadDatabase({}, function(data) {
                         gistCollection = db.getCollection('gists');
+                        changesCollection = db.getCollection('changes');
                     });
                 } else {
                     gistCollection = db.addCollection('gists');
+                    changesCollection = db.addCollection('changes');
                 }
             });
         }
@@ -74,6 +78,14 @@
 
         function findOne(query) {
             return gistCollection.findOne(query);
+        }
+
+        function addToQueue(action, item) {
+            console.log('added to queue', action, item);
+            return changesCollection.insert({
+                action: action,
+                item: item
+            });
         }
 
     }

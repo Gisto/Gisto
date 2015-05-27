@@ -479,10 +479,53 @@ angular.module('gisto.service.gitHubAPI', [
                 return deferred.promise;
             },
 
+            generateUUID: function(){
+                var d = new Date().getTime();
+                var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    var r = (d + Math.random()*16)%16 | 0;
+                    d = Math.floor(d/16);
+                    return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+                });
+                return uuid;
+            },
+
             // POST /gists
             create: function (data, callback) {
 
+
+
                 appSettings.loadSettings().then(function (result) {
+
+
+                    if (!onlineStatus.isOnline()) {
+                        var files = {};
+                        angular.forEach(data.files, function(value, key) {
+                            files[key] = {
+                                filename: key,
+                                content: value.content
+                            };
+                        });
+                        var id = api.generateUUID();
+                        var gist = angular.extend(data,{
+                            id: id,
+                            owner: {
+                                login: result.username
+                            },
+                            lastUpdated: new Date(),
+                            files: files,
+                            single: {
+                                files: files
+                            }
+                        });
+
+                        databaseFactory.addToQueue('create', id);
+                        databaseFactory.insert(gist);
+
+                        return callback({
+                            data: gist,
+                            status: 201
+                        });
+                    }
 
                     requestHandler({
                         method: 'POST',
