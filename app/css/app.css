@@ -979,6 +979,7 @@ details > summary {
     border: none;
     padding: 3px;
     color: #555;
+    width: 115px;
 }
 
 /* Removes arrows on webkit for elements like datalist */
