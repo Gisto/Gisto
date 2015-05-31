@@ -1,3 +1,17 @@
+0.3.1
+-----------------
+- FEATURE (jsbin support): Add support to open Gists with JSBIN - Thanks to @ryanpcmcquen
+- FEATURE (editor indentation): Add ability to adjust how many spaces are the editor indentation.
+- FEATURE (single gist): Add an option to copy raw gist url to the clipboard.
+- FEATURE (gist creation): Add an option to set defaults for public or private for new gists.
+- FEATURE (gist creation): Add language (syntax highlighting) dropdown to create gist screen.
+- FIX (tags): Fix duplicates error when a gist has 2 tags with the same name.
+- FIX (gist creation): Add validation to disallow creating gists with no files.
+- FIX (fork): Fix tags not showing in the list after forking a gist.
+- FIX (notification messages): Fix notifications overlapping if there is more than one notification active at a time.
+- IMPROVE (angular): Update angular to version 1.3.5
+- IMPROVE (syntax highlighting): Update syntax highlighters to support more languages.
+
 0.3.0
 -----------------
 - FEATURE (gist polling): Add polling to update changed gists
