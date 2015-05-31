@@ -10,6 +10,7 @@ BUILD_DIR=`pwd`
 WORKING_DIR="${BUILD_DIR}/TMP"
 PROJECT_DIR=`dirname ${BUILD_DIR}`
 VERSION="${1}"
+NW_VERSION="0.12.2"
 
 
 if [[ ! -f "${WORKING_DIR}" ]]; then
@@ -139,12 +140,12 @@ mkwindows() {
 
 prepare() {
     cd ${PROJECT_DIR}
-    gulp version_bump --to=${1}
+    gulp version_bump --to=${1} --bugsnag_api_key="${3}"
     gulp dist
     build/script/nwjs-build.sh \
         --src=${PROJECT_DIR}/dist \
         --name=gisto \
-        --nw=0.12.2 \
+        --nw=${NW_VERSION} \
         --win-icon=${PROJECT_DIR}/app/icon.ico \
         --osx-icon=${PROJECT_DIR}/build/resources/osx/gisto.icns \
         --CFBundleIdentifier=com.gistoapp \
@@ -163,16 +164,16 @@ elif [[ ${1} = "--clean" ]]; then
     rm -rf ${WORKING_DIR}
     rm -rf ${PROJECT_DIR}/build/script/TMP
 elif [[ ${1} = "--linux" ]]; then
-    prepare ${2} "0 1";
+    prepare ${2} "0 1" ${3};
     mklinux ${2};
 elif [[ ${1} = "--osx" ]]; then
-    prepare ${2} "4 5";
+    prepare ${2} "4 5" ${3};
     mkosx ${2};
 elif [[ ${1} = "--windows" ]]; then
-    prepare ${2} "2 3";
+    prepare ${2} "2 3" ${3};
     mkwindows ${2};
 elif [[ ${1} = "--all" ]]; then
-    prepare ${2} "0 1 2 3 4 5";
+    prepare ${2} "0 1 2 3 4 5" ${3};
     mkosx ${2};
     mklinux ${2};
     mkwindows ${2};

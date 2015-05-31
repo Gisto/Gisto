@@ -76,9 +76,11 @@ gulp.task('version_bump', function () {
     var appjs = fs.readFileSync('./app/js/app.js','utf8')
         .toString()
         .replace(".appVersion('" + oldVersion + "')",".appVersion('" + argv.to + "')")
-        .replace(".apiKey('[API_KEY]')",".apiKey('" + argv.bugsnag_api_key + "')");
+        .replace(".apiKey('[API_KEY]')",".apiKey('" + argv.bugsnag_api_key + "')")
+        .replace(".releaseStage('development')",".releaseStage('production')");
     fs.writeFileSync('./app/js/app.js',appjs);
     gutil.log('Version changed from: ', gutil.colors.green(oldVersion), ' to: ', gutil.colors.green(argv.to));
+    gutil.log('Set BugSnag ' + gutil.colors.green('releaseStage') + ' to:', gutil.colors.green('production'));
 });
 
 /**
@@ -131,12 +133,6 @@ gulp.task('prod', ['concat_js','concat_css'], function () {
     var content = JSON.parse(fs.readFileSync(file));
     content.window.toolbar = false;
     fs.writeFileSync(file, JSON.stringify(content, null, 4));
-    // bugSnag to production
-    var appjs = fs.readFileSync('./app/js/app.js','utf8')
-        .toString()
-        .replace(".releaseStage('development')",".releaseStage('production')");
-    fs.writeFileSync('./app/js/app.js',appjs);
-    gutil.log('Set BugSnag ' + gutil.colors.green('releaseStage') + ' to:', gutil.colors.green('production'));
 });
 
 /**
