@@ -363,6 +363,21 @@ div.comments .clicky > div {
     margin: 10px 0px 0px 10px;
 }
 
+.login .messengers {
+    position: relative;
+    display: block;
+    height: auto;
+    float:none;
+    right: 0;
+    bottom: 0px;
+    background: transparent;
+    z-index: 9999;
+    text-align: left;
+    width: 100%;
+    overflow: auto;
+    margin: 0 auto;
+}
+
 .login .messenger {
     display: none;
     padding: 10px;
@@ -371,10 +386,12 @@ div.comments .clicky > div {
     position: relative;
     top: 0;
     right: inherit;
-    margin: 0 auto;
+    margin: 10px auto;
     z-index: 10;
     border-radius: 3px;
     box-shadow: 1px 1px 5px #000;
+    width: 80%;
+    float: none;
 }
 
 .login .messenger i {
