@@ -3,9 +3,9 @@
 
     angular.module('gisto')
         .controller('singleGistCtrl', ['$scope', '$routeParams', 'gistData', 'ghAPI', '$rootScope',
-            'notificationService', 'appSettings', '$filter', 'githubUrlBuilderService', 'onlineStatus', singleGistCtrl]);
+            'notificationService', 'appSettings', '$filter', 'githubUrlBuilderService', 'onlineStatus', 'databaseFactory', singleGistCtrl]);
 
-    function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService, appSettings, $filter, githubUrlBuilderService, onlineStatus) {
+    function singleGistCtrl($scope, $routeParams, gistData, ghAPI, $rootScope, notificationService, appSettings, $filter, githubUrlBuilderService, onlineStatus, databaseFactory) {
 
         $scope.gist = gistData.getGistById($routeParams.gistId);
 

@@ -560,6 +560,31 @@ angular.module('gisto.service.gitHubAPI', [
 
                 appSettings.loadSettings().then(function (result) {
 
+                    if (!onlineStatus.isOnline()) {
+
+                        var gist = databaseFactory.findOne({id: id});
+
+                        if (gist) {
+                            gist.description = data.description;
+                            gist.single.files = angular.extend(data.files, gist.single.files);
+                            gist.lastUpdated = new Date();
+
+                            databaseFactory.addToQueue('update', id);
+                            databaseFactory.update(gist);
+
+                            return callback({
+                                data: gist,
+                                status: 200
+                            });
+                        }
+
+                        // something went wrong, return error response
+                        return callback({
+                            status: 500
+                        });
+
+                    }
+
                     requestHandler({
                         method: 'PATCH',
                         url: endpoints[active_endpoint].api_url + '/gists/' + id,
