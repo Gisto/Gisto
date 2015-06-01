@@ -163,10 +163,13 @@
     </span>
 
     <a data-ng-if="!$parent.enterpriseMode" to-url="http://plnkr.co/edit/gist:{{gist.single.id}}?p=preview"
-       title="Open gist in 'plunker'">Plunker</a>
+       title="Open gist in 'plunker'">plunker.png</a>
 
     <a data-ng-if="!$parent.enterpriseMode" to-url="http://jsbin.com/gist/{{gist.single.id}}"
-       title="Open gist in 'JS Bin'">JS Bin</a>
+       title="Open gist in 'JS Bin'">dave.min.svg</a>
+
+    <a data-ng-if="!$parent.enterpriseMode" to-url="http://jsfiddle.net/gh/gist/library/pure/{{gist.single.id}}/"
+       title="Open gist in 'JSFiddle', note that all files must be named fiddle.*"><i class="fa fa-jsfiddle"></i></a>
 
     <a class="share-drop-down" data-ng-click="dropdown.share.show=!dropdown.share.show" title="Share this Gist">Share
         <div data-ng-show="dropdown.share.show">
