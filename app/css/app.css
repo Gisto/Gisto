@@ -789,6 +789,33 @@ details > summary {
     z-index:4;
 }
 
+.open-with-drop-down {
+    position: relative;
+    margin: 0px 4px 0px 0px;
+}
+
+.open-with-drop-down div {
+    position: absolute;
+    left: 0px;
+    top: 15px;
+    /*width: 200px;*/
+    background: #555;
+    text-align: left;
+    padding: 0 10px;
+    margin: 9px 0px 0px 0px;
+    text-transform: lowercase;
+    font-size: 12px;
+    z-index:4;
+}
+
+.open-with-drop-down div span {
+    padding: 5px 0;
+}
+
+.open-with-drop-down div span i {
+    background: transparent !important;
+}
+
 .notification div {
     position: absolute;
     top: 35px;

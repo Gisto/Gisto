@@ -44,8 +44,8 @@ var gisto_css_files = [
     'app/lib/angular-hotkeys/build/hotkeys.min.css',
     'app/lib/angular-ui-select/dist/select.min.css',
     'app/lib/selectize/dist/css/selectize.default.css',
-    'app/css/app.css',
-    'app/css/markdown.css',
+    'app/css/*.css',
+    '!app/css/animation.css',
     '!app/css/gisto.css'
 ];
 
