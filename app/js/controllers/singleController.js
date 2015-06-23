@@ -214,6 +214,10 @@
 
         }
 
+        $scope.formateCode = function(file){
+            $rootScope.$broadcast('tidy', { type: file.type, name: file.filename});
+        };
+
         $scope.markDownPreviewToggle = function () {
             $('.special-editor-markdown').slideToggle('slow');
         }

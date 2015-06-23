@@ -251,6 +251,8 @@
             <a data-ng-if="file.language=='Markdown'" data-ng-click="markDownPreviewToggle()"
                title="Toggle markdown preview"><i class="fa fa-eye"></i></a>
 
+            <a data-ng-if="file.language=='CSS' || file.language=='HTML' || file.language=='XML' || file.language=='JavaScript' || file.language=='JSON'" data-ng-click="formateCode(file)" class="tidy" title="Tidy code"><small>tidy</small></a>
+
         </div>
 
         <editor data-ng-show="!fileShown" data-ng-controller="settingsCtrl" show-md-pan="true" language="{{file.language | codeLanguage}}"

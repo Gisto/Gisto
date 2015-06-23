@@ -336,6 +336,23 @@ div.comments .clicky > div {
     font-size: 20px;
 }
 
+.the-gist-name a.tidy {
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: capitalize;
+    border-radius: 3px;
+    margin: 0px 10px 0px 0px;
+}
+
+.the-gist-name a.tidy:hover {
+    background: #fff;
+    color:#555;
+}
+
 .messengers {
     position: absolute;
     display: inline;
