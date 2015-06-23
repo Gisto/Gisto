@@ -36,7 +36,7 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                         if ($scope.tidyFileType === 'text/css' && $scope.tidyFIleName === $scope.file.filename) {
                             editor.setValue(css_beautify($scope.file.content));
                         }
-                        if ($scope.tidyFileType === 'text/html' || $scope.tidyFileType === 'application/xml' && $scope.tidyFIleName === $scope.file.filename) {
+                        if (($scope.tidyFileType === 'text/html' || $scope.tidyFileType === 'application/xml') && $scope.tidyFIleName === $scope.file.filename) {
                             editor.setValue(html_beautify($scope.file.content));
                         }
                         if ($scope.tidyFileType === 'application/javascript' && $scope.tidyFIleName === $scope.file.filename) {
