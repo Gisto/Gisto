@@ -261,6 +261,7 @@ div.main header .button > span.settings {
     text-decoration: none;
     position: relative;
     display: inherit;
+    z-index: 99;
 }
 
 div.main header a .notify span {
@@ -269,7 +270,7 @@ div.main header a .notify span {
     left: 0px;
     line-height: 5px;
     color: #FFF;
-    font-size: 8px;
+    font-size: 7px;
     background: #C00;
     top: 0;
     padding: 0;
