@@ -120,10 +120,6 @@
 
 <!--SCRIPTS-->
 
-<!-- env:prod --#>
-<script src="js/gisto.min.js"></script>
-<!-- env:prod:end -->
-
 <!-- env:dev -->
 <script src="../node_modules/bugsnag-js/src/bugsnag.js"></script>
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -203,9 +199,14 @@
 <script src="js/directives/toggleDirective.js"></script>
 <script src="js/directives/resourceLoaderDirective.js"></script>
 <script src="js/directives/hotkeysPagerDirective.js"></script>
+<script src="../node_modules/ace-builds/src-min-noconflict/ace.js"></script>
 <!-- env:dev:end -->
 
-<script src="../node_modules/ace-builds/src-min-noconflict/ace.js"></script>
+<!-- env:prod --#>
+<script src="js/gisto.min.js"></script>
+<script src="node_modules/ace-builds/src-min-noconflict/ace.js"></script>
+<!-- env:prod:end -->
+
 <resource-loader position="footer"></resource-loader>
 </body>
 </html>
