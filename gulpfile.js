@@ -15,6 +15,7 @@ var env_option = {
 
 // Gisto JS files for "concat" and "dist"
 var gisto_js_files = [
+    'node_modules/bugsnag-js/src/bugsnag.js',
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/socket.io-client/socket.io.js',
     'node_modules/angular/angular.js',
