@@ -11,7 +11,7 @@
     function databaseFactory(Loki) {
 
         var fs = require('fs');
-        var DB_FILE = './gisto.json';
+        var DB_FILE = 'gisto.json';
         var gistCollection = null;
         var changesCollection = null;
         var db = null;
@@ -28,6 +28,12 @@
 
         init();
 
+        var gui = require('nw.gui');
+        gui.Window.get().on('close', function() {
+            db.close();
+            this.close(true); // don't forget this line, else you can't close window
+        });
+
         return service;
 
         ////////////////
@@ -40,27 +46,31 @@
 
             db = new Loki(DB_FILE, {
                 env: 'NODEJS',
-                autosave: true
-            });
+                autoload: true,
+                autosave : true,
+                autosaveInterval : 5000,
+                autoloadCallback: function() {
+                    gistCollection = db.getCollection('gists');
+                    //changesCollection = db.getCollection('changes');
 
-            fs.exists(DB_FILE, function(exists) {
-                if (exists) {
-                    db.loadDatabase({}, function(data) {
-                        gistCollection = db.getCollection('gists');
-                        changesCollection = db.getCollection('changes');
-                    });
-                } else {
-                    gistCollection = db.addCollection('gists');
-                    changesCollection = db.addCollection('changes');
+                    if (gistCollection === null) {
+                        gistCollection = db.addCollection('gists');
+                    }
+
+                    //if (changesCollection === null) {
+                    //    changesCollection = db.addCollection('changes');
+                    //}
                 }
             });
         }
 
         function insert(gist) {
+            delete gist.$$hashKey;
             return gistCollection.insert(gist);
         }
 
         function update(gist) {
+            delete gist.$$hashKey;
             return gistCollection.update(gist);
         }
 
@@ -73,6 +83,7 @@
         }
 
         function find(query) {
+            query = query || {};
             return gistCollection.find(query);
         }
 
@@ -82,10 +93,10 @@
 
         function addToQueue(action, item) {
             console.log('added to queue', action, item);
-            return changesCollection.insert({
-                action: action,
-                item: item
-            });
+            //return changesCollection.insert({
+            //    action: action,
+            //    item: item
+            //});
         }
 
     }

@@ -560,13 +560,18 @@ angular.module('gisto.service.gitHubAPI', [
 
                 appSettings.loadSettings().then(function (result) {
 
-                    if (!onlineStatus.isOnline()) {
+                    if (true) {//!onlineStatus.isOnline()) {
 
                         var gist = databaseFactory.findOne({id: id});
 
                         if (gist) {
                             gist.description = data.description;
-                            gist.single.files = angular.extend(data.files, gist.single.files);
+                            //gist.single.files = angular.extend(data.files, gist.single.files);
+                            _.each(gist.single.files, function(file, key) {
+                                //angular.extend(file, data.files[key]);
+                                //file.notContent = file.content;
+                                file.content = data.files[key].content;
+                            });
                             gist.lastUpdated = new Date();
 
                             databaseFactory.addToQueue('update', id);
