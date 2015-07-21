@@ -23,11 +23,12 @@ start () {
 
     # Dependencies
     sudo apt-get install zip unzip nsis rsync ssh-askpass
+    npm install --global bower gulp grunt
     npm install --silent
 
     # Prepare dist folder
-    $DRONE_BUILD_DIR/node_modules/gulp/bin/gulp.js version_bump --to=${ENV_VAR_GISTO_VERSION}-${DATE_NOW} --bugsnag_api_key=${ENV_VAR_GISTO_BUGSNAG_API_KEY}
-    $DRONE_BUILD_DIR/node_modules/gulp/bin/gulp.js dist
+    $DRONE_BUILD_DIR/node_modules/.bin/gulp version_bump --to=${ENV_VAR_GISTO_VERSION}-${DATE_NOW} --bugsnag_api_key=${ENV_VAR_GISTO_BUGSNAG_API_KEY}
+    $DRONE_BUILD_DIR/node_modules/.bin/gulp dist
 
     # Write config.json
     echo "{\"client_id\":\"$ENV_VAR_GISTO_CLIENT_ID\",\"client_secret\":\"$ENV_VAR_GISTO_CLIENT_SECRET\",\"server_token\":\"$ENV_VAR_GISTO_SERVER_TOKEN\"}" >> dist/config.json

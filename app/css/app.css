@@ -261,6 +261,7 @@ div.main header .button > span.settings {
     text-decoration: none;
     position: relative;
     display: inherit;
+    z-index: 99;
 }
 
 div.main header a .notify span {
@@ -269,7 +270,7 @@ div.main header a .notify span {
     left: 0px;
     line-height: 5px;
     color: #FFF;
-    font-size: 8px;
+    font-size: 7px;
     background: #C00;
     top: 0;
     padding: 0;
@@ -336,7 +337,24 @@ div.comments .clicky > div {
     font-size: 20px;
 }
 
-.messangers {
+.the-gist-name a.tidy {
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: capitalize;
+    border-radius: 3px;
+    margin: 0px 10px 0px 0px;
+}
+
+.the-gist-name a.tidy:hover {
+    background: #fff;
+    color:#555;
+}
+
+.messengers {
     position: absolute;
     display: inline;
     height: auto;
@@ -363,6 +381,21 @@ div.comments .clicky > div {
     margin: 10px 0px 0px 10px;
 }
 
+.login .messengers {
+    position: relative;
+    display: block;
+    height: auto;
+    float:none;
+    right: 0;
+    bottom: 0px;
+    background: transparent;
+    z-index: 9999;
+    text-align: left;
+    width: 100%;
+    overflow: auto;
+    margin: 0 auto;
+}
+
 .login .messenger {
     display: none;
     padding: 10px;
@@ -371,10 +404,12 @@ div.comments .clicky > div {
     position: relative;
     top: 0;
     right: inherit;
-    margin: 0 auto;
+    margin: 10px auto;
     z-index: 10;
     border-radius: 3px;
     box-shadow: 1px 1px 5px #000;
+    width: 80%;
+    float: none;
 }
 
 .login .messenger i {
@@ -772,6 +807,33 @@ details > summary {
     z-index:4;
 }
 
+.open-with-drop-down {
+    position: relative;
+    margin: 0px 4px 0px 0px;
+}
+
+.open-with-drop-down div {
+    position: absolute;
+    left: 0px;
+    top: 15px;
+    /*width: 200px;*/
+    background: #555;
+    text-align: left;
+    padding: 0 10px;
+    margin: 9px 0px 0px 0px;
+    text-transform: lowercase;
+    font-size: 12px;
+    z-index:4;
+}
+
+.open-with-drop-down div span {
+    padding: 5px 0;
+}
+
+.open-with-drop-down div span i {
+    background: transparent !important;
+}
+
 .notification div {
     position: absolute;
     top: 35px;
@@ -979,6 +1041,7 @@ details > summary {
     border: none;
     padding: 3px;
     color: #555;
+    width: 115px;
 }
 
 /* Removes arrows on webkit for elements like datalist */

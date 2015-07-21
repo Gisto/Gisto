@@ -23,11 +23,36 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                         theme = $attrs.theme,
                         inUpdateProcess = false;
 
+
+                    $scope.$on('tidy', function (event, args) {
+
+                        if (!$scope.edit) {
+                            $scope.enableEdit();
+                        }
+
+                        $scope.tidyFileType = args.type;
+                        $scope.tidyFIleName = args.name;
+
+                        if ($scope.tidyFileType === 'text/css' && $scope.tidyFIleName === $scope.file.filename) {
+                            editor.setValue(css_beautify($scope.file.content));
+                        }
+                        if (($scope.tidyFileType === 'text/html' || $scope.tidyFileType === 'application/xml') && $scope.tidyFIleName === $scope.file.filename) {
+                            editor.setValue(html_beautify($scope.file.content));
+                        }
+                        if ($scope.tidyFileType === 'application/javascript' && $scope.tidyFIleName === $scope.file.filename) {
+                            editor.setValue(js_beautify($scope.file.content));
+                        }
+                        if ($scope.tidyFileType === 'application/json' && $scope.tidyFIleName === $scope.file.filename) {
+                            editor.setValue(JSON.stringify(JSON.parse($scope.file.content), null, '\t'));
+                        }
+                        $scope.file.content = editor.getValue();
+                    });
+
                     // Observe changes to syntax attribute on <editor> element (on create gist partial only)
-                    $attrs.$observe('syntax', function(newSyntax){
+                    $attrs.$observe('syntax', function (newSyntax) {
                         // Refresh the ace session with new syntax mode
                         editor.getSession().setMode("ace/mode/" + newSyntax);
-                        console.log('new syntax',newSyntax);
+                        console.log('new syntax', newSyntax);
                     });
 
                     // Emmet
@@ -61,18 +86,18 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                     }
 
                     // VIM mode
-                    if(appSettingsResult.editor_vim_mode) {
+                    if (appSettingsResult.editor_vim_mode) {
                         editor.setKeyboardHandler("ace/keyboard/vim");
                     }
 
                     // word wrap
-                    if(appSettingsResult.editor_word_wrap) {
+                    if (appSettingsResult.editor_word_wrap) {
                         editor.getSession().setUseWrapMode(true);
                     }
 
                     editor.setTheme("ace/theme/" + theme);
                     editor.getSession().setMode("ace/mode/" + lang);
-                    editor.getSession().setTabSize( parseInt(appSettingsResult.editor_tab_size) );
+                    editor.getSession().setTabSize(parseInt(appSettingsResult.editor_tab_size));
                     editor.setFontSize(font);
                     editor.setShowPrintMargin(false);
                     editor.renderer.setShowGutter(true);
@@ -93,16 +118,17 @@ angular.module('gisto.directive.editor', []).directive('editor', ['$timeout', 'a
                     console.log('min_lines', appSettingsResult.min_lines);
 
 
-                    editor.on('paste', function(text) {
+                    editor.on('paste', function (text) {
                         // delay the change event to the end of the call stack
                         // and fire a change event with an extra parameter indicating
                         // that this is a paste event and continue to update the reference
                         // to angular file model.
-                        $timeout(function() {
+                        $timeout(function () {
                             editor._emit('change', {target: editor, pasteEvent: true});
-                        },0);
+                        }, 0);
 
                     });
+
 
                     editor.on('change', function (data) {
 

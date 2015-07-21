@@ -15,23 +15,45 @@ var env_option = {
 
 // Gisto JS files for "concat" and "dist"
 var gisto_js_files = [
-    'app/lib/jquery/dist/jquery.min.js',
-    'app/lib/socket.io-client/socket.io.js',
-    'app/lib/angular/angular.min.js',
-    'app/lib/angular-bugsnag/dist/angular-bugsnag.min.js',
-    'app/lib/angular-route/angular-route.min.js',
-    'app/lib/angular-animate/angular-animate.js',
-    'app/lib/angular-sanitize/angular-sanitize.js',
-    'app/lib/angular-ui-utils/ui-utils.min.js',
-    'app/lib/angular-socket-io/socket.min.js',
-    'app/lib/showdown/compressed/Showdown.js',
-    'app/lib/angulartics/dist/angulartics.min.js',
-    'app/lib/angulartics/dist/angulartics-ga.min.js',
-    'app/lib/emmet/emmet.min.js',
-    'app/lib/angular-hotkeys/build/hotkeys.min.js',
-    'app/lib/marked/lib/marked.js',
-    'app/lib/angular-marked/angular-marked.min.js',
-    'app/lib/angular-ui-select/dist/select.min.js',
+    'node_modules/bugsnag-js/src/bugsnag.js',
+    'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/socket.io-client/socket.io.js',
+    'node_modules/angular/angular.js',
+    'node_modules/angular-bugsnag/dist/angular-bugsnag.js',
+    'node_modules/angular-route/angular-route.min.js',
+    'node_modules/angular-animate/angular-animate.js',
+    'node_modules/angular-sanitize/angular-sanitize.js',
+    'node_modules/angular-ui-utils/modules/utils.js',
+    'node_modules/angular-ui-utils/modules/alias/alias.js',
+    'node_modules/angular-ui-utils/modules/highlight/highlight.js',
+    'node_modules/angular-ui-utils/modules/indeterminate/indeterminate.js',
+    'node_modules/angular-ui-utils/modules/keypress/keypress.js',
+    'node_modules/angular-ui-utils/modules/route/route.js',
+    'node_modules/angular-ui-utils/modules/showhide/showhide.js',
+    'node_modules/angular-ui-utils/modules/validate/validate.js',
+    'node_modules/angular-ui-utils/modules/event/event.js',
+    'node_modules/angular-ui-utils/modules/ie-shiv/ie-shiv.js',
+    'node_modules/angular-ui-utils/modules/inflector/inflector.js',
+    'node_modules/angular-ui-utils/modules/mask/mask.js',
+    'node_modules/angular-ui-utils/modules/scroll/scroll.js',
+    'node_modules/angular-ui-utils/modules/scroll/scroll-jqlite.js',
+    'node_modules/angular-ui-utils/modules/unique/unique.js',
+    'node_modules/angular-ui-utils/modules/format/format.js',
+    'node_modules/angular-ui-utils/modules/include/include.js',
+    'node_modules/angular-ui-utils/modules/jq/jq.js',
+    'node_modules/angular-ui-utils/modules/reset/reset.js',
+    'node_modules/angular-ui-utils/modules/scrollfix/scrollfix.js',
+    'node_modules/angular-socket-io/socket.min.js',
+    'node_modules/angulartics/dist/angulartics.min.js',
+    'node_modules/angulartics/dist/angulartics-ga.min.js',
+    'node_modules/angular-hotkeys/build/hotkeys.min.js',
+    'node_modules/marked/lib/marked.js',
+    'node_modules/angular-marked/angular-marked.min.js',
+    'node_modules/ui-select/dist/select.js',
+    'node_modules/emmet/emmet.js',
+    'node_modules/js-beautify/js/lib/beautify.js',
+    'node_modules/js-beautify/js/lib/beautify-css.js',
+    'node_modules/js-beautify/js/lib/beautify-html.js',
     'app/js/app.js',
     'app/js/**/*.js',
     '!app/js/gisto.min.js'
@@ -39,13 +61,13 @@ var gisto_js_files = [
 
 // Gisto CSS files for "concat" and "dist"
 var gisto_css_files = [
-    'app/lib/normalize.css/normalize.css',
-    'app/lib/font-awesome/css/font-awesome.min.css',
-    'app/lib/angular-hotkeys/build/hotkeys.min.css',
-    'app/lib/angular-ui-select/dist/select.min.css',
-    'app/lib/selectize/dist/css/selectize.default.css',
-    'app/css/app.css',
-    'app/css/markdown.css',
+    'node_modules/normalize.css/normalize.css',
+    'node_modules/font-awesome/css/font-awesome.css',
+    'node_modules/angular-hotkeys/build/hotkeys.min.css',
+    'node_modules/ui-select/dist/select.min.css',
+    'node_modules/selectize/dist/css/selectize.default.css',
+    'app/css/*.css',
+    '!app/css/animation.css',
     '!app/css/gisto.css'
 ];
 
@@ -66,7 +88,7 @@ gulp.task('version', function () {
  * Use: gulp version_bump --to=0.2.4b --bugsnag_api_key=[API KEY]
  */
 gulp.task('version_bump', function () {
-    var files = ['./package.json', './bower.json', './app/package.json'],
+    var files = ['./package.json', './app/package.json'],
         oldVersion = pkg_json.version;
     files.forEach(function (file) {
         var content = JSON.parse(fs.readFileSync(file));
@@ -76,9 +98,11 @@ gulp.task('version_bump', function () {
     var appjs = fs.readFileSync('./app/js/app.js','utf8')
         .toString()
         .replace(".appVersion('" + oldVersion + "')",".appVersion('" + argv.to + "')")
-        .replace(".apiKey('[API_KEY]')",".apiKey('" + argv.bugsnag_api_key + "')");
+        .replace(".apiKey('[API_KEY]')",".apiKey('" + argv.bugsnag_api_key + "')")
+        .replace(".releaseStage('development')",".releaseStage('production')");
     fs.writeFileSync('./app/js/app.js',appjs);
     gutil.log('Version changed from: ', gutil.colors.green(oldVersion), ' to: ', gutil.colors.green(argv.to));
+    gutil.log('Set BugSnag ' + gutil.colors.green('releaseStage') + ' to:', gutil.colors.green('production'));
 });
 
 /**
@@ -131,12 +155,6 @@ gulp.task('prod', ['concat_js','concat_css'], function () {
     var content = JSON.parse(fs.readFileSync(file));
     content.window.toolbar = false;
     fs.writeFileSync(file, JSON.stringify(content, null, 4));
-    // bugSnag to production
-    var appjs = fs.readFileSync('./app/js/app.js','utf8')
-        .toString()
-        .replace(".releaseStage('development')",".releaseStage('production')");
-    fs.writeFileSync('./app/js/app.js',appjs);
-    gutil.log('Set BugSnag ' + gutil.colors.green('releaseStage') + ' to:', gutil.colors.green('production'));
 });
 
 /**
@@ -169,7 +187,6 @@ gulp.task('dist', ['prod'], function () {
     gulp.src([
         'app/**',
         '!app/js/**',
-        '!app/lib/**',
         '!app/css/**',
         '!app/config.json.sample'
     ])
@@ -179,20 +196,20 @@ gulp.task('dist', ['prod'], function () {
     ])
         .pipe(gulp.dest('./dist/js/'));
     gulp.src([
-        'app/lib/ace-builds/src-min-noconflict/**'
+        'node_modules/ace-builds/src-min-noconflict/**'
     ])
-        .pipe(gulp.dest('./dist/lib/ace-builds/src-min-noconflict'));
+        .pipe(gulp.dest('./dist/node_modules/ace-builds/src-min-noconflict'));
     gulp.src([
-        'app/lib/bugsnag/src/bugsnag.js'
+        'node_modules/bugsnag-js/src/bugsnag.js'
     ])
-        .pipe(gulp.dest('./dist/lib/bugsnag/src/'));
+        .pipe(gulp.dest('./dist/node_modules/bugsnag-js/src/'));
     gulp.src([
         'app/css/gisto.css',
         'app/css/animation.css'
     ])
         .pipe(gulp.dest('./dist/css/'));
     gulp.src([
-        'app/lib/font-awesome/fonts/**'
+        'node_modules/font-awesome/fonts/**'
     ])
         .pipe(gulp.dest('./dist/fonts/'));
 });

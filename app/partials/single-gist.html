@@ -50,7 +50,7 @@
     <ng-include class="flex-row " src="'partials/header.html'" data-ng-controller="headerController"></ng-include>
 
 </header>
-<div class="messangers">
+<div class="messengers">
     <div class="messenger template">
         <i class="fa fa-lightbulb-o"></i>
         <span>Simple notification</span>
@@ -162,11 +162,24 @@
         </span>
     </span>
 
-    <a data-ng-if="!$parent.enterpriseMode" to-url="http://plnkr.co/edit/gist:{{gist.single.id}}?p=preview"
-       title="Open gist in 'plunker'">Plunker</a>
 
-    <a data-ng-if="!$parent.enterpriseMode" to-url="http://jsbin.com/gist/{{gist.single.id}}"
-       title="Open gist in 'JS Bin'">JS Bin</a>
+<a data-ng-if="!$parent.enterpriseMode" class="open-with-drop-down" data-ng-click="open_with.show=!open_with.show" title="Open Gist in external service">
+    Open with <i class="fa fa-sort-down"></i>
+    <div data-ng-show="open_with.show">
+
+        <span to-url="http://plnkr.co/edit/gist:{{gist.single.id}}?p=preview"
+           title="Open gist in 'plunker'"><i class="icon-plunker"></i> Plunker
+        </span>
+
+        <span to-url="http://jsbin.com/gist/{{gist.single.id}}"
+           title="Open gist in 'JS Bin'"><i class="icon-jsbin"></i> JS Bin
+        </span>
+        <span to-url="http://jsfiddle.net/gh/gist/library/pure/{{gist.single.id}}/"
+              title="Open gist in 'jsfiddle', Please note that jsfiddle need very specific Gist structure, see: http://doc.jsfiddle.net/"><i class="fa fa-jsfiddle"></i> jsfiddle
+        </span>
+
+    </div>
+</a>
 
     <a class="share-drop-down" data-ng-click="dropdown.share.show=!dropdown.share.show" title="Share this Gist">Share
         <div data-ng-show="dropdown.share.show">
@@ -237,6 +250,12 @@
             </a>
             <a data-ng-if="file.language=='Markdown'" data-ng-click="markDownPreviewToggle()"
                title="Toggle markdown preview"><i class="fa fa-eye"></i></a>
+
+            <a data-ng-if="file.language=='CSS'" data-ng-click="formateCode(file)" class="tidy" title="Tidy code"><small>tidy</small></a>
+            <a data-ng-if="file.language=='HTML'" data-ng-click="formateCode(file)" class="tidy" title="Tidy code"><small>tidy</small></a>
+            <a data-ng-if="file.language=='XML'" data-ng-click="formateCode(file)" class="tidy" title="Tidy code"><small>tidy</small></a>
+            <a data-ng-if="file.language=='JavaScript'" data-ng-click="formateCode(file)" class="tidy" title="Tidy code"><small>tidy</small></a>
+            <a data-ng-if="file.language=='JSON'" data-ng-click="formateCode(file)" class="tidy" title="Tidy code"><small>tidy</small></a>
 
         </div>
 
