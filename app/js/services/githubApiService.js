@@ -279,9 +279,10 @@ angular.module('gisto.service.gitHubAPI', [
 
                     } else {
                         console.log('offline');
-                        var gists = databaseFactory.find();
-                        gistData.list.push.apply(gistData.list, gists);
-                        deferred.resolve();
+                        databaseFactory.find().then(function(gists) {
+                            gistData.list.push.apply(gistData.list, gists);
+                            deferred.resolve();
+                        });
                     }
 
                 return deferred.promise;
@@ -292,26 +293,28 @@ angular.module('gisto.service.gitHubAPI', [
 
                 gistData.list.forEach(function(gist) {
                    // check if there is a matching gist in the database
-                    var localGist = databaseFactory.findOne({id: gist.id});
+                    databaseFactory.findOne({id: gist.id}).then(function(localGist) {
+                        // if no local gist
+                        if (!localGist) {
+                            // get the gist and save in database
+                            console.log('no local gist detected, fetching:', gist.description);
+                            api.gist(gist.id);
+                        } else {
+                            // if local gist found
+                            // check the gist contents are the same by checking updated_at
 
-                    // if no local gist
-                    if (!localGist) {
-                        // get the gist and save in database
-                        console.log('no local gist detected, fetching:', gist.description);
-                        api.gist(gist.id);
-                    } else {
-                        // if local gist found
-                        // check the gist contents are the same by checking updated_at
-
-                        // if they are not the same
-                        if (localGist.updated_at !== gist.updated_at) {
-                            // ask user which version to keep
-                            console.warn('GIST CONFLICT DETECTED', {
-                                localGistTimestamp: localGist.updated_at,
-                                remoteGistTimestamp: gist.updated_at
-                            });
+                            // if they are not the same
+                            if (localGist.updated_at !== gist.updated_at) {
+                                // ask user which version to keep
+                                console.warn('GIST CONFLICT DETECTED', {
+                                    localGistTimestamp: localGist.updated_at,
+                                    remoteGistTimestamp: gist.updated_at
+                                });
+                            }
                         }
-                    }
+                    });
+
+
                 });
             },
 
@@ -357,11 +360,13 @@ angular.module('gisto.service.gitHubAPI', [
                             }
                         });
 
-                        if (databaseFactory.findOne({id: gist.id})) {
-                            databaseFactory.update(gist);
+                        databaseFactory.findOne({id: gist.id}).then(function(localGist) {
+                        if(localGist) {
+                                databaseFactory.update(gist);
                         } else {
                             databaseFactory.insert(gist);
                         }
+                    });
 
 
                         deferred.resolve(gist);
@@ -562,30 +567,25 @@ angular.module('gisto.service.gitHubAPI', [
 
                     if (true) {//!onlineStatus.isOnline()) {
 
-                        var gist = databaseFactory.findOne({id: id});
+                        databaseFactory.findOne({id: id}).then(function(gist) {
+                            if (gist) {
+                                gist.description = data.description;
+                                //gist.single.files = angular.extend(data.files, gist.single.files);
+                                _.each(gist.single.files, function(file, key) {
+                                    //angular.extend(file, data.files[key]);
+                                    //file.notContent = file.content;
+                                    file.content = data.files[key].content;
+                                });
+                                gist.lastUpdated = new Date();
 
-                        if (gist) {
-                            gist.description = data.description;
-                            //gist.single.files = angular.extend(data.files, gist.single.files);
-                            _.each(gist.single.files, function(file, key) {
-                                //angular.extend(file, data.files[key]);
-                                //file.notContent = file.content;
-                                file.content = data.files[key].content;
-                            });
-                            gist.lastUpdated = new Date();
+                                databaseFactory.addToQueue('update', id);
+                                databaseFactory.update(gist);
 
-                            databaseFactory.addToQueue('update', id);
-                            databaseFactory.update(gist);
-
-                            return callback({
-                                data: gist,
-                                status: 200
-                            });
-                        }
-
-                        // something went wrong, return error response
-                        return callback({
-                            status: 500
+                                return callback({
+                                    data: gist,
+                                    status: 200
+                                });
+                            }
                         });
 
                     }

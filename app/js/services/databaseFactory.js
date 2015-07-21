@@ -1,14 +1,16 @@
 (function () {
     'use strict';
 
+    var minimongo = require('minimongo');
+
     angular
         .module('gisto')
         .factory('databaseFactory', databaseFactory);
 
-    databaseFactory.$inject = ['Loki'];
+    databaseFactory.$inject = ['$q'];
 
     /* @ngInject */
-    function databaseFactory(Loki) {
+    function databaseFactory($q) {
 
         var fs = require('fs');
         var DB_FILE = 'gisto.json';
@@ -28,11 +30,11 @@
 
         init();
 
-        var gui = require('nw.gui');
-        gui.Window.get().on('close', function() {
-            db.close();
-            this.close(true); // don't forget this line, else you can't close window
-        });
+        //var gui = require('nw.gui');
+        //gui.Window.get().on('close', function() {
+        //    db.close();
+        //    this.close(true); // don't forget this line, else you can't close window
+        //});
 
         return service;
 
@@ -44,38 +46,26 @@
          */
         function init() {
 
-            db = new Loki(DB_FILE, {
-                env: 'NODEJS',
-                autoload: true,
-                autosave : true,
-                autosaveInterval : 5000,
-                autoloadCallback: function() {
-                    gistCollection = db.getCollection('gists');
-                    //changesCollection = db.getCollection('changes');
+            var LocalDb = minimongo.LocalStorageDb;
 
-                    if (gistCollection === null) {
-                        gistCollection = db.addCollection('gists');
-                    }
+            db = new LocalDb({namespace: 'gisto'});
 
-                    //if (changesCollection === null) {
-                    //    changesCollection = db.addCollection('changes');
-                    //}
-                }
-            });
+            db.addCollection('gists');
+            db.addCollection('changes');
         }
 
         function insert(gist) {
             delete gist.$$hashKey;
-            return gistCollection.insert(gist);
+            return gistCollection.upsert(gist);
         }
 
         function update(gist) {
             delete gist.$$hashKey;
-            return gistCollection.update(gist);
+            return gistCollection.upsert(gist);
         }
 
         function get(id) {
-            return gistCollection.get(id);
+            return gistCollection.findOne({id: id});
         }
 
         function remove(idOrObject) {
@@ -83,12 +73,18 @@
         }
 
         function find(query) {
+            var defer = $q.defer();
             query = query || {};
-            return gistCollection.find(query);
+            gistCollection.find(query).fetch(success.bind(defer), error.bind(defer));
+
+            return defer.promise;
         }
 
         function findOne(query) {
-            return gistCollection.findOne(query);
+            var defer = $q.defer();
+            gistCollection.findOne(query, success.bind(defer), error.bind(defer));
+
+            return defer.promise;
         }
 
         function addToQueue(action, item) {
@@ -97,6 +93,14 @@
             //    action: action,
             //    item: item
             //});
+        }
+
+        function success(data) {
+            this.resolve(data);
+        }
+
+        function error(error) {
+            this.reject(error);
         }
 
     }
