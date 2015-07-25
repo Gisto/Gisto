@@ -588,6 +588,8 @@ angular.module('gisto.service.gitHubAPI', [
                             }
                         });
 
+                        // exit function, do not try to perform http requests
+                        return;
                     }
 
                     requestHandler({

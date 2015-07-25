@@ -12,8 +12,6 @@
     /* @ngInject */
     function databaseFactory($q) {
 
-        var fs = require('fs');
-        var DB_FILE = 'gisto.json';
         var gistCollection = null;
         var changesCollection = null;
         var db = null;
@@ -29,12 +27,6 @@
         };
 
         init();
-
-        //var gui = require('nw.gui');
-        //gui.Window.get().on('close', function() {
-        //    db.close();
-        //    this.close(true); // don't forget this line, else you can't close window
-        //});
 
         return service;
 
@@ -52,6 +44,9 @@
 
             db.addCollection('gists');
             db.addCollection('changes');
+
+            gistCollection = db.gists;
+            changesCollection = db.changes;
         }
 
         function insert(gist) {
@@ -89,10 +84,10 @@
 
         function addToQueue(action, item) {
             console.log('added to queue', action, item);
-            //return changesCollection.insert({
-            //    action: action,
-            //    item: item
-            //});
+            return changesCollection.upsert({
+                action: action,
+                item: item
+            });
         }
 
         function success(data) {
