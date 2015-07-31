@@ -25,8 +25,7 @@
             findOne: findOne,
             addToQueue: addToQueue,
             getChanges: getChanges,
-            removeChange: removeChange,
-            syncChanges: syncChanges
+            removeChange: removeChange
         };
 
         init();
@@ -67,7 +66,7 @@
         }
 
         function get(id) {
-            return gistCollection.findOne({id: id});
+            return findOne({id: id});
         }
 
         function remove(idOrObject) {
@@ -105,10 +104,6 @@
 
         function removeChange(id) {
             changesCollection.remove(id);
-        }
-
-        function syncChanges() {
-
         }
 
         function success(data) {

@@ -329,7 +329,8 @@ angular.module('gisto.service.gitHubAPI', [
                         method: 'GET',
                         url: endpoints[active_endpoint].api_url + '/gists/' + id,
                         headers: {
-                            Authorization: 'token ' + token
+                            Authorization: 'token ' + token,
+                            'Cache-Control': 'no-cache'
                         }
                     }).success(function (data, status, headers, config) {
                         api.is_starred(data.id, function (response) {
@@ -565,20 +566,27 @@ angular.module('gisto.service.gitHubAPI', [
 
                 databaseFactory.findOne({id: id}).then(function (gist) {
                     if (gist) {
+                        var originalGist = gistData.getGistById(id);
+
                         gist.description = data.description;
+                        originalGist.description = data.description;
                         //gist.single.files = angular.extend(data.files, gist.single.files);
                         _.each(gist.single.files, function (file, key) {
                             //angular.extend(file, data.files[key]);
                             //file.notContent = file.content;
                             file.content = data.files[key].content;
+                            originalGist.single.files[key].content = data.files[key].content;
                         });
 
                         if (localEdit) {
                             gist.lastUpdated = new Date();
+                            originalGist.lastUpdated = new Date();
                             databaseFactory.addToQueue('update', id);
                         }
 
                         databaseFactory.update(gist);
+
+
 
                         defer.resolve(gist);
                     }
@@ -999,31 +1007,33 @@ angular.module('gisto.service.gitHubAPI', [
 
                     changes.forEach(function(change) {
 
-                        var gist = gistData.getGistById(change.item);
+                        var gist = databaseFactory.get(change.item).then(function(gist) {
+                            console.log(gist);
 
-                        api.commits(change.item).then(function(gistCommits) {
-                            var serverDate =  moment(_.first(gistCommits).committed_at);
-                            var clientDate = moment(gist.lastUpdated);
+                            api.commits(change.item).then(function(gistCommits) {
+                                var serverDate = moment(_.first(gistCommits).committed_at);
+                                var clientDate = moment(gist.lastUpdated);
 
-                            console.log({
-                                serverDate: serverDate,
-                                clientDate: clientDate
-                            });
-                            if (serverDate.isBefore(clientDate)) {
-                                // update the server
-                                var data = {
-                                    description: gist.description,
-                                    id: gist.id,
-                                    files: gist.single.files
-                                };
-                                api.edit(gist.id, data, function() {
-                                    console.log('synced change, removing: ', change._id);
-                                    databaseFactory.removeChange(change._id);
+                                console.log({
+                                    serverDate: serverDate,
+                                    clientDate: clientDate
                                 });
-                            } else {
-                                // gist conflict detected
-                                console.warn('CONFLICT DETECTED');
-                            }
+                                if (serverDate.isBefore(clientDate)) {
+                                    // update the server
+                                    var data = {
+                                        description: gist.description,
+                                        id: gist.id,
+                                        files: gist.single.files
+                                    };
+                                    api.edit(gist.id, data, function() {
+                                        console.log('synced change, removing: ', change._id);
+                                        databaseFactory.removeChange(change._id);
+                                    });
+                                } else {
+                                    // gist conflict detected
+                                    console.warn('CONFLICT DETECTED');
+                                }
+                            });
                         });
 
                     });
