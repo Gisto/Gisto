@@ -54,6 +54,7 @@ var gisto_js_files = [
     'node_modules/js-beautify/js/lib/beautify.js',
     'node_modules/js-beautify/js/lib/beautify-css.js',
     'node_modules/js-beautify/js/lib/beautify-html.js',
+    'node_modules/moment/moment.js',
     'app/js/app.js',
     'app/js/**/*.js',
     '!app/js/gisto.min.js'

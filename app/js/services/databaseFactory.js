@@ -23,7 +23,10 @@
             remove: remove,
             find: find,
             findOne: findOne,
-            addToQueue: addToQueue
+            addToQueue: addToQueue,
+            getChanges: getChanges,
+            removeChange: removeChange,
+            syncChanges: syncChanges
         };
 
         init();
@@ -47,15 +50,19 @@
 
             gistCollection = db.gists;
             changesCollection = db.changes;
+
+            window.cc = changesCollection;
         }
 
         function insert(gist) {
             delete gist.$$hashKey;
+            gist._id = gist.id;
             return gistCollection.upsert(gist);
         }
 
         function update(gist) {
             delete gist.$$hashKey;
+            gist._id = gist.id;
             return gistCollection.upsert(gist);
         }
 
@@ -88,6 +95,20 @@
                 action: action,
                 item: item
             });
+        }
+
+        function getChanges() {
+            var defer = $q.defer();
+            changesCollection.find().fetch(success.bind(defer), error.bind(defer));
+            return defer.promise;
+        }
+
+        function removeChange(id) {
+            changesCollection.remove(id);
+        }
+
+        function syncChanges() {
+
         }
 
         function success(data) {
