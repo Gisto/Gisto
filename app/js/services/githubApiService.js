@@ -162,10 +162,7 @@ angular.module('gisto.service.gitHubAPI', [
                     if (onlineStatus.isOnline()) {
                         console.log('online');
 
-                        databaseFactory.find().then(function(gists) {
-                            gistData.list.push.apply(gistData.list, gists);
-                            return true;
-                        }).then(function() {
+                        databaseFactory.find().then(function() {
 
                             var url = pageNumber ? endpoints[active_endpoint].api_url + '/gists?page=' + pageNumber : endpoints[active_endpoint].api_url + '/gists',
                                 headers = {
@@ -204,8 +201,6 @@ angular.module('gisto.service.gitHubAPI', [
                                 // Set lastUpdated for 60 sec cache
                                 data.lastUpdated = new Date();
 
-
-
                                 // get the current gist id being edited if there is one.
                                 var editInProgressGistId = $route.current.params['gistId'] || null;
 
@@ -219,8 +214,9 @@ angular.module('gisto.service.gitHubAPI', [
                                     }
 
                                     var gist = gistData.getGistById(newGist.id);
-
+                                    console.log(newGist.id, gist);
                                     if (!gist) {
+                                        console.log('could not find gist');
                                         // can't find a match, assume new gist
                                         gistData.list.push(newGist);
                                     }
@@ -300,10 +296,12 @@ angular.module('gisto.service.gitHubAPI', [
                             api.gist(gist.id);
                         } else {
                             // if local gist found
-                            // check the gist contents are the same by checking updated_at
+                            // check the gist dates to determine which is newer
 
-                            // if they are not the same
-                            if (localGist.updated_at !== gist.updated_at) {
+                            var serverDate = moment(gist.updated_at);
+                            var clientDate = moment(localGist.lastUpdated);
+
+                            if (serverDate.isBefore(clientDate)) {
                                 // ask user which version to keep
                                 console.warn('GIST CONFLICT DETECTED', {
                                     localGistTimestamp: localGist.updated_at,
