@@ -49,8 +49,6 @@
 
             gistCollection = db.gists;
             changesCollection = db.changes;
-
-            window.cc = changesCollection;
         }
 
         function insert(gist) {
