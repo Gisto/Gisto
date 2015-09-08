@@ -491,6 +491,11 @@
                     continue;
                 }
 
+                // update key name if its a new file that has been renamed.
+                if (currentFile.newFile && file !== currentFile.filename) {
+                    file = currentFile.filename;
+                }
+
                 data.files[file] = {
                     content: currentFile.content,
                     filename: currentFile.filename
