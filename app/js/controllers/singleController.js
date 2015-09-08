@@ -485,9 +485,9 @@
 
             for (var file in $scope.gist.single.files) {
 
-                // make sure we don't send delete instruction for new files
+                // make sure we don't send delete instruction for empty files
                 var currentFile = $scope.gist.single.files[file];
-                if (currentFile.newFile && (currentFile.content === null || currentFile.content === undefined)) {
+                if (currentFile.content === null || currentFile.content === undefined) {
                     continue;
                 }
 

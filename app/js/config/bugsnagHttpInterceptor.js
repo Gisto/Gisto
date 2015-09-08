@@ -23,7 +23,7 @@
                         statusText: rejection.statusText,
                         url: rejection.config.url,
                         method: rejection.config.method,
-                        data: rejection.config.data
+                        data: JSON.stringify(rejection.config.data)
                     },
                     headers: {
                         headers: rejection.headers()
