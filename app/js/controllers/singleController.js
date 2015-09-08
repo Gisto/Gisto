@@ -493,6 +493,11 @@
 
                 // update key name if its a new file that has been renamed.
                 if (currentFile.newFile && file !== currentFile.filename) {
+                    // update local copy
+                    $scope.gist.single.files[currentFile.filename] = currentFile;
+                    delete $scope.gist.single.files[file];
+
+                    // update key name
                     file = currentFile.filename;
                 }
 

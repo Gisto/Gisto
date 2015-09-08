@@ -22,8 +22,7 @@
                         status: rejection.status,
                         statusText: rejection.statusText,
                         url: rejection.config.url,
-                        method: rejection.config.method,
-                        data: JSON.stringify(rejection.config.data)
+                        method: rejection.config.method
                     },
                     headers: {
                         headers: rejection.headers()
