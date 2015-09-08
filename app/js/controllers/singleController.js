@@ -484,9 +484,16 @@
             };
 
             for (var file in $scope.gist.single.files) {
+
+                // make sure we don't send delete instruction for new files
+                var currentFile = $scope.gist.single.files[file];
+                if (currentFile.newFile && (currentFile.content === null || currentFile.content === undefined)) {
+                    continue;
+                }
+
                 data.files[file] = {
-                    content: $scope.gist.single.files[file].content,
-                    filename: $scope.gist.single.files[file].filename
+                    content: currentFile.content,
+                    filename: currentFile.filename
                 };
             }
 
