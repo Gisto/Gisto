@@ -15,13 +15,15 @@
         };
 
         function handleError(rejection) {
+            console.log(rejection);
             if (!shouldNotSendError(rejection)) {
                 bugsnag.notify("AjaxError", rejection.status + ' on ' + rejection.config.url, {
                     request: {
                         status: rejection.status,
                         statusText: rejection.statusText,
                         url: rejection.config.url,
-                        method: rejection.config.method
+                        method: rejection.config.method,
+                        data: rejection.config.data
                     },
                     headers: {
                         headers: rejection.headers()
