@@ -1,7 +1,11 @@
 (function () {
     'use strict';
 
-    var minimongo = require('minimongo');
+    var LinvoDB = require("linvodb3");
+    LinvoDB.defaults.store = { db: require("medeadown") };
+
+    // on OSX: ~/Library/Application Support/Gisto
+    LinvoDB.dbPath = require('nw.gui').App.dataPath;
 
     angular
         .module('gisto')
@@ -9,12 +13,10 @@
 
     databaseFactory.$inject = ['$q'];
 
-    /* @ngInject */
     function databaseFactory($q) {
 
         var gistCollection = null;
         var changesCollection = null;
-        var db = null;
 
         var service = {
             insert: insert,
@@ -34,61 +36,48 @@
 
         ////////////////
 
-        /**
-         * Checks if the database file exists and loads it.
-         * otherwise generates a DB file and initializes the database.
-         */
         function init() {
-
-            var LocalDb = minimongo.LocalStorageDb;
-
-            db = new LocalDb({namespace: 'gisto'});
-
-            db.addCollection('gists');
-            db.addCollection('changes');
-
-            gistCollection = db.gists;
-            changesCollection = db.changes;
+            gistCollection = new LinvoDB("gists", {});
+            changesCollection = new LinvoDB("changes", {});
         }
 
         function insert(gist) {
             delete gist.$$hashKey;
-            gist._id = gist.id;
-            return gistCollection.upsert(gist);
+            console.log('saving', gist.id);
+            return gistCollection.insert(gist);
         }
 
         function update(gist) {
             delete gist.$$hashKey;
-            gist._id = gist.id;
-            return gistCollection.upsert(gist);
+            return gistCollection.update({ id: gist.id }, gist);
         }
 
         function get(id) {
             return findOne({id: id});
         }
 
-        function remove(idOrObject) {
-            return gistCollection.remove(idOrObject);
+        function remove(id) {
+            return gistCollection.remove({ id: id });
         }
 
         function find(query) {
             var defer = $q.defer();
             query = query || {};
-            gistCollection.find(query).fetch(success.bind(defer), error.bind(defer));
+            gistCollection.find(query, dbCallback.bind(defer));
 
             return defer.promise;
         }
 
         function findOne(query) {
             var defer = $q.defer();
-            gistCollection.findOne(query, success.bind(defer), error.bind(defer));
+            gistCollection.findOne(query, dbCallback.bind(defer));
 
             return defer.promise;
         }
 
         function addToQueue(action, item) {
             console.log('added to queue', action, item);
-            return changesCollection.upsert({
+            return changesCollection.insert({
                 action: action,
                 item: item
             });
@@ -96,7 +85,7 @@
 
         function getChanges() {
             var defer = $q.defer();
-            changesCollection.find().fetch(success.bind(defer), error.bind(defer));
+            changesCollection.find({}, dbCallback.bind(defer));
             return defer.promise;
         }
 
@@ -104,13 +93,8 @@
             changesCollection.remove(id);
         }
 
-        function success(data) {
-            this.resolve(data);
+        function dbCallback(err, docs) {
+            this.resolve(docs);
         }
-
-        function error(error) {
-            this.reject(error);
-        }
-
     }
 })();

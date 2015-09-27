@@ -49,7 +49,7 @@ var app = angular.module('gisto', [
     config(['$routeProvider', 'bugsnagProvider', '$httpProvider', '$compileProvider',
         function ($routeProvider, bugsnagProvider, $httpProvider, $compileProvider) {
 
-        $compileProvider.debugInfoEnabled(false);
+        $compileProvider.debugInfoEnabled(true);
 
         bugsnagProvider
             .apiKey('[API_KEY]')
