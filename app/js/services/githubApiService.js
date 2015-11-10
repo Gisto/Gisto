@@ -213,7 +213,7 @@ angular.module('gisto.service.gitHubAPI', [
                                 }
 
                                 var gist = gistData.getGistById(newGist.id);
-                                console.log(newGist.id, gist);
+
                                 if (!gist) {
                                     console.log('could not find gist');
                                     // can't find a match, assume new gist
@@ -293,7 +293,7 @@ angular.module('gisto.service.gitHubAPI', [
                             // check the gist dates to determine which is newer
 
                             var serverDate = moment(gist.updated_at);
-                            var clientDate = moment(localGist.lastUpdated);
+                            var clientDate = moment(localGist.updated_at);
 
                             if (serverDate.isBefore(clientDate)) {
                                 // TODO: CONFLICT ask user which version to keep
@@ -569,8 +569,8 @@ angular.module('gisto.service.gitHubAPI', [
                         });
 
                         if (localEdit) {
-                            gist.lastUpdated = new Date();
-                            originalGist.lastUpdated = new Date();
+                            gist.updated_at = new Date();
+                            originalGist.updated_at = new Date();
                             databaseFactory.addToQueue('update', id);
                         }
 
@@ -1000,7 +1000,7 @@ angular.module('gisto.service.gitHubAPI', [
 
                             api.commits(change.item).then(function (gistCommits) {
                                 var serverDate = moment(_.first(gistCommits).committed_at);
-                                var clientDate = moment(gist.lastUpdated);
+                                var clientDate = moment(gist.updated_at);
 
                                 console.log({
                                     serverDate: serverDate,

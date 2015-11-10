@@ -15,6 +15,12 @@
 
     function databaseFactory($q) {
 
+        // regex for serializing key names in objects before we save them in the database.
+        // we need to serialize key names as the database does not support keys with dots (my.key)
+        var serializeKeyRegex = /\./g;
+        var deserializeKeyRegex = /!@\/\/\/@!/g;
+        var dotSymbol = '!@///@!';
+
         var gistCollection = null;
         var changesCollection = null;
 
@@ -44,12 +50,19 @@
         function insert(gist) {
             delete gist.$$hashKey;
             console.log('saving', gist.id);
-            return gistCollection.insert(gist);
+
+            var serializedGist =  serialize(gist);
+            console.info('**********', serializedGist);
+
+            return gistCollection.insert(serializedGist, function(err, newDocs) {
+                if (err) console.log(err);
+            });
         }
 
         function update(gist) {
             delete gist.$$hashKey;
-            return gistCollection.update({ id: gist.id }, gist);
+
+            gistCollection.update({id: gist.id}, serialize(gist), {}, angular.noop);
         }
 
         function get(id) {
@@ -94,7 +107,34 @@
         }
 
         function dbCallback(err, docs) {
-            this.resolve(docs);
+
+            if (_.isArray(docs)) {
+                return this.resolve(
+                    (docs).map(function(doc) {
+                        return deserialize(doc);
+                    })
+                );
+            }
+
+            this.resolve(deserialize(docs));
+        }
+
+        function serialize(data) {
+            if (data) {
+                return JSON.parse(
+                    JSON.stringify(data)
+                        .replace(serializeKeyRegex, dotSymbol)
+                );
+            }
+        }
+
+        function deserialize(data) {
+            if (data) {
+                return JSON.parse(
+                    JSON.stringify(data)
+                        .replace(deserializeKeyRegex, '.')
+                );
+            }
         }
     }
 })();
