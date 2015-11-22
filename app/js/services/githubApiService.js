@@ -1001,12 +1001,10 @@ angular.module('gisto.service.gitHubAPI', [
                             api.commits(change.item).then(function (gistCommits) {
                                 var serverDate = moment(_.first(gistCommits).committed_at);
                                 var clientDate = moment(gist.updated_at);
+                                var lastCommit = _.first(_.at(gistCommits, 1));
+                                var lastCommitDate = lastCommit ? moment(lastCommit.committed_at) : null;
 
-                                console.log({
-                                    serverDate: serverDate,
-                                    clientDate: clientDate
-                                });
-                                if (serverDate.isBefore(clientDate)) {
+                                if (clientDate.isAfter(serverDate)) {
                                     // update the server
                                     var data = {
                                         description: gist.description,
@@ -1017,9 +1015,11 @@ angular.module('gisto.service.gitHubAPI', [
                                         console.log('synced change, removing: ', change._id);
                                         databaseFactory.removeChange(change._id);
                                     });
-                                } else {
-                                    // TODO: gist conflict detected, resolve conflicts
-                                    console.warn('CONFLICT DETECTED');
+                                }
+
+                                if (clientDate.isBefore(serverDate) && clientDate.isAfter(lastCommitDate)) {
+                                    // TODO: handle gist conflict
+                                    console.warn('********** GIST CONFLICT ***********');
                                 }
                             });
                         });
