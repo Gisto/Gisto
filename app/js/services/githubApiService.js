@@ -228,8 +228,22 @@ angular.module('gisto.service.gitHubAPI', [
                                 var links = header.link.split(',');
 
                                 var endOfPagination = false;
+                                links = _(links).reverse().value();
                                 for (var link in links) {
                                     link = links[link];
+
+                                    if (link.indexOf('rel="last') > -1) {
+                                        var lastPage = parseInt(link.match(/\?page=(\d+)/)[1], 10);
+
+                                        // if there are more than 2000 gists warn the user
+                                        if (lastPage > (2000 / 30)) {
+                                            console.warn('***** OVER LIMIT *****');
+                                            // TODO: warn user when over 2000 gists
+                                            return;
+                                        }
+                                    }
+
+
                                     if (link.indexOf('rel="next') > -1) {
                                         var nextPage = parseInt(link.match(/\?page=(\d+)/)[1], 10);
                                         if (!pageNumber || nextPage > pageNumber) {
