@@ -1464,6 +1464,11 @@ input,select {
     margin-left: -40%;
 }
 
+.modal-window.modal-small {
+    width: 60%;
+    height: 50%;
+}
+
 .modal-overlay {
     background: #ADC9D2;
     width: 100%;

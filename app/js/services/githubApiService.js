@@ -9,6 +9,8 @@ angular.module('gisto.service.gitHubAPI', [
     $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route, databaseFactory, onlineStatus, ModalService) {
         var token = appSettings.get('token'),
             lastGistsUpdate = null,
+            notifiedOfflineCache = false,
+            aggregateGists = false,
             active_endpoint = appSettings.get('active_endpoint'),
             endpoints = {
                 'public': {
@@ -236,23 +238,31 @@ angular.module('gisto.service.gitHubAPI', [
                                         var lastPage = parseInt(link.match(/\?page=(\d+)/)[1], 10);
 
                                         // if there are more than 2000 gists warn the user
-                                        //if (lastPage > (2000 / 30)) {
-                                        if (lastPage > 4) {
-                                            console.warn('***** OVER LIMIT *****');
-                                            // TODO: warn user when over 2000 gists
-
-
+                                        if (lastPage > (2000 / 30) && notifiedOfflineCache) {
+                                        //if (lastPage > 1 && !notifiedOfflineCache) {
                                             ModalService.showModal({
                                                 templateUrl: "js/modals/yesno/yesno.html",
-                                                controller: "YesNoController"
+                                                controller: "YesNoController",
+                                                inputs: {
+                                                    title: 'Caution: caching offline gists may cause service disruptions',
+                                                    description: [
+                                                        'You are about to cache more than 2000 gists.',
+                                                        'Due to GitHub rate limiting that allows only 5000 calls',
+                                                        'per hour, you may experience issues with Gisto',
+                                                        'until your rate limit has renewed.',
+                                                        'Are you sure you want to do this?'
+                                                    ].join(' ')
+                                                }
                                             }).then(function(modal) {
                                                 return modal.close;
                                             }).then(function(result) {
-                                                var message = result ? "You said Yes" : "You said No";
-                                                console.log(message);
-                                            });
+                                                if (result) {
+                                                    aggregateGists = true;
+                                                    notifiedOfflineCache = true;
+                                                }
 
-                                            return;
+                                                return api.gists(updateOnly, pageNumber, deferred);
+                                            });
                                         }
                                     }
 
@@ -267,7 +277,10 @@ angular.module('gisto.service.gitHubAPI', [
                                 }
                             }
 
-                            api.aggregateGists();
+                            if (aggregateGists) {
+                                api.aggregateGists();
+                            }
+
 
                             // resolve the promise when finished getting all the gists from paginated results
                             deferred.resolve();
