@@ -1,10 +1,5 @@
 'use strict';
 
-//var module = angular.module('lokijs', [])
-//    .factory('Loki', function Loki() {
-//        return window.loki;
-//    });
-
 // Declare app level module which depends on filters, and services
 var app = angular.module('gisto', [
     'ngRoute',
@@ -17,7 +12,6 @@ var app = angular.module('gisto', [
     'angular-bugsnag',
     'hc.marked',
     'ui.select',
-    'lokijs',
     'angularModalService',
     'gisto.filter.removeTags',
     'gisto.filter.truncate',
