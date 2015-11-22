@@ -2,7 +2,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" ng-click="close(false)" data-dismiss="modal"
+                        aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Yes or No?</h4>
             </div>
             <div class="modal-body">
@@ -14,4 +15,13 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal-overlay"></div>
+<div class="modal-window">
+    <div class="modal-close" ng-click="hideModal()"><i class="fa fa-close"></i></div>
+    <h1>Yes or no</h1>
+
+    <button type="button" ng-click="close(false)">No</button>
+    <button type="button" ng-click="close(true)">Yes</button>
 </div>
