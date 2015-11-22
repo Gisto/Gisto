@@ -47,6 +47,7 @@
     "angular-bugsnag": "wmluke/angular-bugsnag",
     "angular-hotkeys": "^1.4.5",
     "angular-marked": "0.0.17",
+    "angular-modal-service": "^0.6.9",
     "angular-route": "^1.3.15",
     "angular-sanitize": "^1.3.15",
     "angular-socket-io": "^0.7.0",

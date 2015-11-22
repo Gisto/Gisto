@@ -18,6 +18,7 @@ var app = angular.module('gisto', [
     'hc.marked',
     'ui.select',
     'lokijs',
+    'angularModalService',
     'gisto.filter.removeTags',
     'gisto.filter.truncate',
     'gisto.filter.publicOrPrivet',

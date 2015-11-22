@@ -6,7 +6,7 @@ angular.module('gisto.service.gitHubAPI', [
     'gisto.service.requestHandler',
     'gisto.filter.matchTags'
 ], function ($provide) {
-    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route, databaseFactory, onlineStatus) {
+    $provide.factory('ghAPI', function ($http, gistData, appSettings, requestHandler, $q, $rootScope, $filter, $route, databaseFactory, onlineStatus, ModalService) {
         var token = appSettings.get('token'),
             lastGistsUpdate = null,
             active_endpoint = appSettings.get('active_endpoint'),
@@ -236,9 +236,22 @@ angular.module('gisto.service.gitHubAPI', [
                                         var lastPage = parseInt(link.match(/\?page=(\d+)/)[1], 10);
 
                                         // if there are more than 2000 gists warn the user
-                                        if (lastPage > (2000 / 30)) {
+                                        //if (lastPage > (2000 / 30)) {
+                                        if (lastPage > 4) {
                                             console.warn('***** OVER LIMIT *****');
                                             // TODO: warn user when over 2000 gists
+
+
+                                            ModalService.showModal({
+                                                templateUrl: "js/modals/yesno/yesno.html",
+                                                controller: "YesNoController"
+                                            }).then(function(modal) {
+                                                return modal.close;
+                                            }).then(function(result) {
+                                                var message = result ? "You said Yes" : "You said No";
+                                                console.log(message);
+                                            });
+
                                             return;
                                         }
                                     }
