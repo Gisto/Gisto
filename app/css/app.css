@@ -1290,6 +1290,11 @@ input, select {
   border-bottom: 1px solid hsl(0, 0%, 60%);
   text-shadow: 1px 1px 1px #fff;
 }
+
+.modal-window .button-group {
+  text-align: center;
+}
+
 .modal-window button {
   border: 1px solid #555;
   background: #fff;
