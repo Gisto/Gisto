@@ -53,7 +53,7 @@
     "angular-ui-utils": "^0.1.1",
     "angulartics": "^0.18.0",
     "bugsnag-js": "bugsnag/bugsnag-js",
-    "emmet": "github:cloud9ide/emmet-core",
+    "emmet": "cloud9ide/emmet-core",
     "font-awesome": "^4.3.0",
     "jquery": "^2.1.4",
     "js-beautify": "^1.5.10",
