@@ -263,6 +263,8 @@ angular.module('gisto.service.gitHubAPI', [
 
                                                 return api.gists(updateOnly, pageNumber, deferred);
                                             });
+                                        } else {
+                                            aggregateGists = true;
                                         }
                                     }
 
