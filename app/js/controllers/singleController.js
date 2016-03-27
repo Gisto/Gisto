@@ -490,9 +490,26 @@
             };
 
             for (var file in $scope.gist.single.files) {
+
+                // make sure we don't send delete instruction for empty files
+                var currentFile = $scope.gist.single.files[file];
+                if (currentFile.content === null || currentFile.content === undefined) {
+                    continue;
+                }
+
+                // update key name if its a new file that has been renamed.
+                if (currentFile.newFile && file !== currentFile.filename) {
+                    // update local copy
+                    $scope.gist.single.files[currentFile.filename] = currentFile;
+                    delete $scope.gist.single.files[file];
+
+                    // update key name
+                    file = currentFile.filename;
+                }
+
                 data.files[file] = {
-                    content: $scope.gist.single.files[file].content,
-                    filename: $scope.gist.single.files[file].filename
+                    content: currentFile.content,
+                    filename: currentFile.filename
                 };
             }
 

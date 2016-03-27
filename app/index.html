@@ -43,7 +43,15 @@
                 }
             }
         }
-
+        // Disable drag into. Will still work for specific areas.
+        document.body.addEventListener('dragover', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+        }, false);
+        document.body.addEventListener('drop', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+        }, false);
 
     </script>
 
@@ -64,7 +72,7 @@
 
 </head>
 
-<body ng-style="{zoom: ui_zoom + '%'}" class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute || !$root.gistoReady}">
+<body ondragstart="return false;" ondrop="return false;" ng-style="{zoom: ui_zoom + '%'}" class="ng-cloak" ui-route="/login" data-ng-class="{login: $uiRoute || !$root.gistoReady}">
 <aside class="flex" data-ng-if="$root.gistoReady" data-ng-controller="listGistCtrl"
        data-ng-hide="edit">
 
