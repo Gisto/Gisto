@@ -21,6 +21,10 @@
         $scope.notifications = notificationService.notifications;
 
         $scope.updateGists = function () {
+            if (!onlineStatus.isOnline()) {
+                return;
+            }
+
             var indicator = $('.gist-update-btn');
             indicator.addClass('fa-spin');
 

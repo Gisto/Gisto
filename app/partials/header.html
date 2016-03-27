@@ -35,7 +35,7 @@
 
 <a class="button" onclick="document.location.href = '#/create'" title="Create new Gist"><i class="create fa fa-file"></i></a>
 
-<a class="button settings" data-ng-click="updateGists()"><span class="settings"><i class="fa fa-refresh gist-update-btn"></i></span></a>
+<a class="button settings" data-ng-class="{ disabled: onlineStatus.isOnline() }" data-ng-disabled="onlineStatus.isOnline()" data-ng-click="updateGists()"><span class="settings"><i class="fa fa-refresh gist-update-btn"></i></span></a>
 
 <a class="button" onclick="document.location.href = '#/settings'" title="General settings"><i class="settings fa fa-cog"></i></a>
 

@@ -223,6 +223,7 @@ div.main header .button > i, div.main header .button > span.settings {
   position: relative;
   display: inherit;
   z-index: 99;
+  cursor: not-allowed;
 }
 div.main header a .notify span {
   border: 3px solid #c00;
