@@ -119,6 +119,7 @@
         });
 
         function handleLogin(response) {
+          console.log('----- response ----->',response);
             if (response.status === 201) {
                 console.log(response);
 
@@ -143,14 +144,14 @@
                     }, 2500);
                 } else {
                     $('.info').slideUp();
-                    $('.warn').slideDown().find('span').text('Authenticator token incorrect');
+                    $('.warn').slideDown().find('span').text('Authenticator token incorrect, response code ' + response.status);
                 }
                 console.log(response);
             } else {
                 $scope.spinner = false;
                 console.warn('[!!!] >>> Log-in failed - server responded with error.');
                 $('.warn').slideDown('slow');
-                $('.warn span').text('Log-in failed - server responded with error');
+                $('.warn span').text('Log-in failed - ' + response.data.message + ': ' + response.status);
                 setTimeout(function () {
                     $('.warn').slideUp();
                 }, 2500);
