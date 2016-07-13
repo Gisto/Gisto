@@ -90,7 +90,7 @@
 
     <ul data-hotkeys-pager="navigateToGist" style="position:relative;">
         <li data-hotkeys-pager-item="{{gist.id}}" id="gist-{{gist.id}}" class="animate-list"
-            data-ng-repeat="gist in filteredGists = (gists | filter:search) | orderBy:'-created_at'">
+            data-ng-repeat="gist in filteredGists = (gists | gistFilter: search ) | orderBy:'-created_at'">
             <a ui-route="/gist/{{gist.id}}" data-ng-class="{active: $uiRoute}"
                ng-click="navigateToGist(gist.id)">
                 <h3>
@@ -200,6 +200,7 @@
 <script src="js/filters/dotToDash.js"></script>
 <script src="js/filters/matchTagsFilter.js"></script>
 <script src="js/filters/githubFileName.js"></script>
+<script src="js/filters/gistFilter.js"></script>
 <script src="js/directives/editorDirective.js"></script>
 <script src="js/directives/scrollDirective.js"></script>
 <script src="js/directives/goToUrlDirective.js"></script>

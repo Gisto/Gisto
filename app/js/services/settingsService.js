@@ -45,6 +45,7 @@ angular.module('gisto.service.appSettings', [], function ($provide) {
                 theme: 'default',
                 editor_theme: 'tomorrow',
                 new_gist_public: false,
+                gist_cs_wrap_search: false,
                 editor_ext: { emmet: false, statusbar: false, autocompletion: false },
                 editor_vim_mode: false,
                 min_lines: 0,

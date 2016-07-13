@@ -22,6 +22,7 @@
             $scope.editor_vim_mode = result['editor_vim_mode'] || false;
             $scope.editor_word_wrap = result['editor_word_wrap'] || false;
             $rootScope.ui_zoom = $scope.ui_zoom = result['ui_zoom'] || 100;
+            $rootScope.gist_cs_wrap_search = $scope.gist_cs_wrap_search = result['gist_cs_wrap_search'] || false;
         }, function (error) {
             console.log('could not load settings');
         });
@@ -54,6 +55,7 @@
             $rootScope.ui_zoom = data.ui_zoom = $scope.ui_zoom;
             data.min_lines = $scope.min_lines;
             data.max_lines = $scope.max_lines;
+            data.gist_cs_wrap_search = $scope.gist_cs_wrap_search;
             appSettings.set(data);
             $('.ok').slideDown('slow');
             setTimeout(function () {
