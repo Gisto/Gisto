@@ -17,7 +17,7 @@
 - [Made using](#made-using)
 - [Download and install](#download-and-install)
 - [Other install options](#other-install-options)
-- ["Nightly" builds](#nightly-builds) [![Build Status](https://drone.io/github.com/Gisto/Gisto/status.png)](https://drone.io/github.com/Gisto/Gisto/latest)
+- ["Nightly" builds](#nightly-builds) [![Build Status](https://circleci.com/gh/Gisto/Gisto.svg?circle-token=a22d02e6933342b0dfce682a5934de677e22f490)](https://circleci.com/gh/Gisto/Gisto/tree/master)
 - [Issues, bug reporting and pull requests](#issues-bug-reporting-and-pull-requests)
 - [Documentation](#documentation)
 - [License](#license)

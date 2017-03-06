@@ -1,0 +1,5 @@
+deployment:
+  all:
+    branch: /.*/
+    commands:
+      - ./CI.sh

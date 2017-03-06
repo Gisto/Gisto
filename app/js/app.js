@@ -23,6 +23,7 @@ var app = angular.module('gisto', [
     'gisto.filter.matchTags',
     'gisto.filter.dotToDash',
     'gisto.filter.githubFileName',
+    'gisto.filter.gist',
     'gisto.directive.scrollTo',
     'gisto.directive.editor',
     'gisto.directive.toUrl',
