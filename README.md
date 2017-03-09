@@ -17,7 +17,7 @@
 - [Made using](#made-using)
 - [Download and install](#download-and-install)
 - [Other install options](#other-install-options)
-- ["Nightly" builds](#nightly-builds) [![Build Status](https://circleci.com/gh/Gisto/Gisto.svg?circle-token=a22d02e6933342b0dfce682a5934de677e22f490)](https://circleci.com/gh/Gisto/Gisto/tree/master)
+- ["Nightly" builds](#nightly-builds) [![Build Status](https://circleci.com/gh/sitecues/sitecues-core.svg?style=svg&circle-token=acc2259949dc35d324ffff96186e5874a4b1ef4f)](https://circleci.com/gh/Gisto/Gisto/tree/master)
 - [Issues, bug reporting and pull requests](#issues-bug-reporting-and-pull-requests)
 - [Documentation](#documentation)
 - [License](#license)
