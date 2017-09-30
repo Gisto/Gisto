@@ -1,0 +1,12 @@
+$border-color: #ccc;
+
+$color-regular: #3F84A8;
+$color-danger: tomato;
+$color-success: cadetblue;
+
+$border-color-light: $border-color;
+
+$header-color: #fff;
+$header-bg: $color-regular;
+$header-bg-lightest: rgba($header-bg, 0.1);
+$bg: lighten($header-bg, 45%);

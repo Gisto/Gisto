@@ -1,0 +1,19 @@
+user {
+  padding: 0 10px;
+  a {
+    color: $header-color;
+  }
+  img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid $header-color;
+  }
+  &:hover {
+    transition: all .3s ease-out;
+    &:hover {
+      color: tomato;
+    }
+  }
+}

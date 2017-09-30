@@ -1,0 +1,57 @@
+gist-item {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  position: relative;
+  color: #fff;
+  margin: 0 0 10px 0;
+  cursor: pointer;
+  transition: all .3s ease-out;
+  background: rgba(255, 255, 255, 0.2);
+  opacity: .6;
+  &:hover {
+    opacity: 1;
+  }
+  &[active] {
+    background: $bg;
+    color: #3F84A8;
+    opacity: 1;
+    tag {}
+    star {}
+    files {}
+  }
+  tag {
+    font-size: 12px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  star {
+    position: absolute;
+    left: 20px;
+    font-size: 12px;
+    padding: 5px;
+    top: 0;
+  }
+  fork {
+    @extend star;
+    left: 40px;
+  }
+  files {
+    display: none;
+    position: absolute;
+    top: 5px;
+    font-size: 12px;
+    right: 0;
+    width: 40px;
+  }
+  gist-name {
+    padding: 15px 0 0;
+  }
+  gist-private {
+    font-size: 12px;
+    position: absolute;
+    left: 10px;
+    top: 5px;
+  }
+}
