@@ -11,6 +11,8 @@ import { SubHeaderComponent } from './gisto/sub-header/sub-header.component';
 import { MainComponent } from './gisto/main/main.component';
 import { SidebarComponent } from './gisto/main/sidebar/sidebar.component';
 import { ContentComponent } from './gisto/main/content/content.component';
+import { UserComponent } from './gisto/header/user/user.component';
+import { AppSettingsComponent } from './gisto/header/app-settings/app-settings.component';
 
 export function highlightJsFactory() {
   return hljs;
@@ -24,7 +26,9 @@ export function highlightJsFactory() {
     SubHeaderComponent,
     MainComponent,
     SidebarComponent,
-    ContentComponent
+    ContentComponent,
+    UserComponent,
+    AppSettingsComponent
   ],
   imports: [
     HighlightJsModule.forRoot({

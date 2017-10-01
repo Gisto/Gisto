@@ -11,13 +11,19 @@ export class ContentComponent implements OnInit {
 
   private singleGist;
   private files = [];
+  private showMwnu = false;
 
   constructor(private githubApiService: GithubApiService) {}
+  
+  showMenuForFile = (i) => {
+    this.showMwnu = this.showMwnu !== i ? this.showMwnu = i : this.showMwnu = false;
+  };
 
   getGist(id) {
     let files = [];
     this.githubApiService.getGist(id).then( res => {
       this.singleGist = res;
+      // Handle files
       Object.keys(this.singleGist.files)
       .forEach((file) => this.files.push(this.singleGist.files[file]));
     });
