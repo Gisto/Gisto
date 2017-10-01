@@ -1,40 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { GithubApiService } from '../../../github-api.service';
 
 @Component({
   selector: 'sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  providers: [GithubApiService]
 })
-export class SidebarComponent {
 
-  constructor() { }
+export class SidebarComponent implements OnInit {
 
-  gists = [
-    {
-      name: 'this is a name',
-      star: true,
-      private: true,
-      fork: true,
-      tags: ['js', 'es6'],
-      files: 3
-    },
-    {
-      name: 'this is gist with some long name that has long title and shit',
-      star: false,
-      private: true,
-      fork: true,
-      tags: ['js', 'es6'],
-      files: 3,
-      active: true
-    },
-    {
-      name: 'some gist here',
-      star: true,
-      private: true,
-      fork: true,
-      tags: ['js', 'es6'],
-      files: 3
-    }
-  ];
+  gists = [];
+  gist = {};
+
+  constructor(private githubApiService: GithubApiService) {}
+
+  getGists() {
+    this.githubApiService.getGists().then( res => {
+      this.gists = res;
+    });
+  }
+
+  onClick(id) {
+    this.githubApiService.getGist(id).then( res => {
+      this.gist = res;
+    });
+  }
+
+  ngOnInit(): void {
+    this.getGists();
+  }
 
 }

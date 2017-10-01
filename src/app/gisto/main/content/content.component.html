@@ -1,0 +1,29 @@
+<gist *ngFor="let file of files">
+    <gist-header>
+        <gist-file-icon>
+            <span class="fa-stack">
+                <i class="fa fa-file-o"></i>
+                <strong style="font-size: 8px;" class="fa-stack-1x fa-stack-text file-text">{{ file.filename.split('.')[1] }}</strong>
+            </span>
+        </gist-file-icon>
+        <gist-file-name>
+            &nbsp;&nbsp;{{ file.filename }}
+        </gist-file-name>
+        <gist-utils>
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            <ul *ngIf="">
+                <li>Edit</li>
+                <li>Open on web</li>
+                <li>Download</li>
+                <li>Copy to clipboard</li>
+                <li>Delete</li>
+            </ul>
+        </gist-utils>
+        <gist-utils>
+            <i class="fa fa-angle-up" aria-hidden="true"></i>
+        </gist-utils>
+    </gist-header>
+    <gist-body>
+        <pre><code mwlHighlightJs [source]="file.content" language="{{ file.language }}" class="js"></code></pre>
+    </gist-body>
+</gist>

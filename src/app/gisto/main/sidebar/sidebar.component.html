@@ -1,16 +1,16 @@
 <gist-list>
   
-  <gist-item [attr.active]="gist.active" *ngFor="let gist of gists">
-      <gist-private><i class="fa fa-lock" aria-hidden="true"></i></gist-private>
+  <gist-item *ngFor="let gist of gists">
+      <gist-private><i class="fa {{ gist.public ? 'fa-unlock' : 'fa-lock' }}" aria-hidden="true"></i></gist-private>
       <star *ngIf="gist.star"><i class="fa fa-star" aria-hidden="true"></i></star>
-      <fork *ngIf="gist.fork"><i class="fa fa-code-fork" aria-hidden="true"></i></fork>
+      <!-- <fork *ngIf="gist.fork"><i class="fa fa-code-fork" aria-hidden="true"></i></fork> -->
       <files>{{ gist.files }} files</files>
-      <tag><i class="fa fa-tag" aria-hidden="true"></i> 
+      <!-- <tag><i class="fa fa-tag" aria-hidden="true"></i> 
         <span>
           <i>{{ gist.tags.join(', ') }}</i>
         </span>
-      </tag>
-      <gist-name>{{ gist.name }}</gist-name>
+      </tag> -->
+      <gist-name (click)="onClick(gist.id)">{{ gist.description || 'untitled' }}</gist-name>
   </gist-item>
   
 </gist-list>
