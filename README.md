@@ -37,7 +37,7 @@ to be added ...
 
 **v1**: Please see the [change.log](http://www.gistoapp.com/changelog/) for more detailed info regarding new features, bug fixes and releases.
 
-**v2**: Development staarted
+**v2**: Development started
 
 ## Made using
 
