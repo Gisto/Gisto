@@ -43,13 +43,7 @@ to be added ...
 
 Gisto is made using various open source projects such as
 
-* [Angular](http://angularjs.org/) 
-* [Node.js](http://nodejs.org/)
-* [node-webkit](https://github.com/rogerwang/node-webkit)
-* [Ace editor](http://ajaxorg.github.io/ace/)
-* [Angular UI](http://angular-ui.github.io/)
-* [jQuery](http://jquery.com/)
-* [Font-Awesome](http://fortawesome.github.io/Font-Awesome/)
+to be added ...
 
 ## Download and install
 
