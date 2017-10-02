@@ -8,5 +8,6 @@ $border-color-light: $border-color;
 
 $header-color: #fff;
 $header-bg: $color-regular;
+$header-bg-light: rgba($header-bg, 0.5);
 $header-bg-lightest: rgba($header-bg, 0.1);
 $bg: lighten($header-bg, 45%);
