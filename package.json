@@ -1,6 +1,6 @@
 {
-  "name": "g2",
-  "version": "0.0.0",
+  "name": "gisto",
+  "version": "2.0.0-wip",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
