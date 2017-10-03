@@ -23,7 +23,12 @@ gist-item {
   }
 
   &:hover {
+    transition: all 0.3s;
     opacity: 1;
+    & gist-private i {
+      transition: all 0.3s;
+      transform: scale(1.5);
+    }
   }
   &[active] {
     background: $bg;
