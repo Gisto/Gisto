@@ -1,14 +1,27 @@
 gist-item {
   display: flex;
-  padding: 10px;
-  flex-direction: column;
+  padding: 7px;
+  flex-direction: row;
   position: relative;
   color: #fff;
-  margin: 0 0 10px 0;
+  margin: 0;
   cursor: pointer;
   transition: all .3s ease-out;
   background: rgba(255, 255, 255, 0.2);
   opacity: .6;
+  align-items: center;
+
+  &::after {
+    position: absolute;
+    display: none;
+    content: '';
+    width: 80%;
+    height: 1px;
+    background-color: #fff;
+    bottom: 0;
+    left: 10%
+  }
+
   &:hover {
     opacity: 1;
   }
@@ -46,12 +59,14 @@ gist-item {
     width: 40px;
   }
   gist-name {
-    padding: 15px 0 0;
+    padding: 0 10px 0;
   }
   gist-private {
     font-size: 12px;
-    position: absolute;
-    left: 10px;
-    top: 5px;
+    border-radius: 50%;
+    padding: 10px;
+    min-width: 10px;
+    text-align: center;
+    background: #000;
   }
 }
