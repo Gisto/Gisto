@@ -59,14 +59,13 @@ gist-item {
     width: 40px;
   }
   gist-name {
-    padding: 0 10px 0;
+    padding: 0 10px 0 20px;
   }
   gist-private {
-    font-size: 12px;
+    font-size: 22px;
     border-radius: 50%;
     padding: 10px;
     min-width: 10px;
     text-align: center;
-    background: #000;
   }
 }
