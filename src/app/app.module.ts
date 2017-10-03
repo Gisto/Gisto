@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import * as hljs from 'highlight.js';
 import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
@@ -18,6 +19,11 @@ export function highlightJsFactory() {
   return hljs;
 }
 
+const appRoutes: Routes = [
+    { path: 'main', component: ContentComponent },
+    { path: '',   redirectTo: '/main', pathMatch: 'full' },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +37,10 @@ export function highlightJsFactory() {
     AppSettingsComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+        { enableTracing: true } // <-- debugging purposes only
+    ),
     HighlightJsModule.forRoot({
       provide: HIGHLIGHT_JS,
       useFactory: highlightJsFactory
