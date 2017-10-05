@@ -20,7 +20,8 @@ export function highlightJsFactory() {
 }
 
 const appRoutes: Routes = [
-    { path: 'main', component: ContentComponent },
+    { path: 'main', component: MainComponent },
+    { path: 'gist/:id', component: ContentComponent },
     { path: '',   redirectTo: '/main', pathMatch: 'full' },
 ];
 

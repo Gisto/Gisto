@@ -7,10 +7,12 @@ export class GithubApiService {
 
   private baseUrl = 'https://api.github.com/gists';
   private headers = new Headers();
+  private token = localStorage.getItem('api-token');
 
-  constructor(private http: Http) {
+    constructor(private http: Http) {
+
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'token TOKEN-HERE');
+    this.headers.append('Authorization', `token ${this.token}`);
   }
 
   getGists(): Promise<any[]> {

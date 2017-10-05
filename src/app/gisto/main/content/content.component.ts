@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubApiService } from '../../../github-api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'content',
@@ -12,9 +13,10 @@ export class ContentComponent implements OnInit {
   private singleGist;
   private files = [];
   private showMwnu = false;
+  private gistId = '';
 
-  constructor(private githubApiService: GithubApiService) {}
-  
+  constructor(private githubApiService: GithubApiService, private route: ActivatedRoute) {}
+
   showMenuForFile = (i) => {
     this.showMwnu = this.showMwnu !== i ? this.showMwnu = i : this.showMwnu = false;
   };
@@ -30,7 +32,8 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getGist('98a6b0f17cbdcdc7dd29d061a49561f0');
+    this.gistId = this.route.snapshot.params['id'];
+    this.getGist(this.gistId);
   }
 
 }
