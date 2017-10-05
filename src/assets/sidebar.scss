@@ -5,5 +5,10 @@ sidebar {
   padding: 0;
   gist-list {
     background: $bg;
+    gist-name {
+      a {
+        color: #fff;
+      }
+    }
   }
 }
