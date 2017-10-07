@@ -1,10 +1,10 @@
 <gist-list>
 
-    <gist-item *ngFor="let gist of gists">
+    <gist-item routerLink="/gist/{{ gist.id }}" routerLinkActive="active" *ngFor="let gist of gists">
         <gist-private><i class="fa {{ gist.public ? 'fa-unlock' : 'fa-lock' }}" aria-hidden="true"></i></gist-private>
         <star *ngIf="gist.star"><i class="fa fa-star" aria-hidden="true"></i></star>
         <gist-name (click)="onClick(gist.id)">
-            <a routerLink="/gist/{{ gist.id }}" routerLinkActive="active">
+            <a>
                 {{ gist.description || 'untitled' }}
             </a>
         </gist-name>

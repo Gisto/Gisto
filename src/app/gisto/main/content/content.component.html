@@ -10,7 +10,7 @@
       &nbsp;&nbsp;{{ file.filename }}
     </gist-file-name>
     <gist-utils>
-      <i (click) = "showMenuForFile(i)" class="fa fa-ellipsis-v" aria-hidden="true"></i>
+      <i (click)="showMenuForFile(i)" class="fa fa-ellipsis-v" aria-hidden="true"></i>
       <ul *ngIf="showMwnu===i">
         <li>Edit</li>
         <li>Open on web</li>
@@ -24,6 +24,6 @@
     </gist-utils>
   </gist-header>
   <gist-body>
-    <pre><code mwlHighlightJs [source]="file.content" language="{{ file.language }}" class="js"></code></pre>
+    <pre><code mwlHighlightJs [source]="file.content" language="{{ file.language || 'tex' }}"></code></pre>
   </gist-body>
 </gist>

@@ -1,6 +1,7 @@
+import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { GithubApiService } from '../../../github-api.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'content',
@@ -15,25 +16,23 @@ export class ContentComponent implements OnInit {
   private showMwnu = false;
   private gistId = '';
 
-  constructor(private githubApiService: GithubApiService, private route: ActivatedRoute) {}
+  constructor(
+    private githubApiService: GithubApiService, private route: ActivatedRoute) { }
 
   showMenuForFile = (i) => {
     this.showMwnu = this.showMwnu !== i ? this.showMwnu = i : this.showMwnu = false;
   };
 
-  getGist(id) {
-    let files = [];
-    this.githubApiService.getGist(id).then( res => {
-      this.singleGist = res;
-      // Handle files
-      Object.keys(this.singleGist.files)
-      .forEach((file) => this.files.push(this.singleGist.files[file]));
-    });
-  }
-
   ngOnInit(): void {
-    this.gistId = this.route.snapshot.params['id'];
-    this.getGist(this.gistId);
+    this.route.paramMap
+      .switchMap((params: ParamMap) => this.githubApiService.getGist(params.get('id')))
+      .subscribe((gist) => {
+        this.singleGist = {};
+        this.files = [];
+        this.singleGist = gist;
+        Object.keys(this.singleGist.files)
+          .forEach((file) => this.files.push(this.singleGist.files[file]));
+      });
   }
 
 }

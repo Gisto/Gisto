@@ -30,13 +30,17 @@ gist-item {
       transform: scale(1.5);
     }
   }
-  &[active] {
+  &[active], 
+  &.active {
     background: $bg;
-    color: #3F84A8;
     opacity: 1;
+    color: #3F84A8;
     tag {}
     star {}
     files {}
+    a {
+      color: #3F84A8;
+    }
   }
   tag {
     font-size: 12px;
