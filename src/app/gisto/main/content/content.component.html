@@ -13,8 +13,8 @@
       <i (click)="showMenuForFile(i)" class="fa fa-ellipsis-v" aria-hidden="true"></i>
       <ul *ngIf="showMwnu===i">
         <li>Edit</li>
-        <li>Open on web</li>
-        <li>Download</li>
+        <li><a target="_new" href="https://gist.github.com/{{ singleGist.owner.login }}/{{ singleGist.id }}#file-{{ file.filename }}">Open on web</a></li>
+        <li><a download="{{ file.filename }}" href="{{ file_raw }}">Download</a></li>
         <li>Copy to clipboard</li>
         <li>Delete</li>
       </ul>

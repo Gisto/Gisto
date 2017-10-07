@@ -37,6 +37,7 @@ gist {
     border-radius: 3px;
     overflow: auto;
     width: calc(100vw - 380px);
+    max-height: 400px;
     pre {
       white-space: pre-wrap;
     }
