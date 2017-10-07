@@ -10,7 +10,6 @@ export class GithubApiService {
   private token = localStorage.getItem('api-token');
 
     constructor(private http: Http) {
-
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Authorization', `token ${this.token}`);
   }
