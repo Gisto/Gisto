@@ -35,6 +35,8 @@ gist {
   gist-body {
     padding: 0 20px;
     border-radius: 3px;
+    overflow: auto;
+    width: calc(100vw - 380px);
     pre {
       white-space: pre-wrap;
     }
