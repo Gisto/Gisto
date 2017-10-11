@@ -14,6 +14,7 @@ import { SidebarComponent } from './gisto/main/sidebar/sidebar.component';
 import { ContentComponent } from './gisto/main/content/content.component';
 import { UserComponent } from './gisto/header/user/user.component';
 import { AppSettingsComponent } from './gisto/header/app-settings/app-settings.component';
+import { SettingsComponent } from './gisto/main/settings/settings.component';
 
 export function highlightJsFactory() {
   return hljs;
@@ -22,6 +23,7 @@ export function highlightJsFactory() {
 const appRoutes: Routes = [
     { path: 'main', component: ContentComponent },
     { path: 'gist/:id', component: ContentComponent },
+    { path: 'settings', component: SettingsComponent },
     { path: '',   redirectTo: '/main', pathMatch: 'full' },
 ];
 
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     SidebarComponent,
     ContentComponent,
     UserComponent,
-    AppSettingsComponent
+    AppSettingsComponent,
+    SettingsComponent
   ],
   imports: [
     RouterModule.forRoot(

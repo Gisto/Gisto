@@ -1,0 +1,23 @@
+<h2>Gisto settings</h2>
+
+<h3>Look & feel</h3>
+
+<p>Color
+  <input type="color" value="#3F84A8"/>
+</p>
+
+<p>Theme
+<select>
+  <option *ngFor="let theme of themes" value="{{ theme.value }}">{{ theme.displayName }}</option>
+</select>
+</p>
+
+<p>Animations
+<select>
+    <option *ngFor="let animation of animations" value="{{ animation.value }}">{{ animation.displayName }}</option>
+  </select>
+</p>
+
+<h3>Editor</h3>
+
+<h3>Defaults</h3>
