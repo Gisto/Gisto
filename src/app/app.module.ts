@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { MobxAngularModule } from 'mobx-angular';
 import * as hljs from 'highlight.js';
 import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
 
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
       useFactory: highlightJsFactory
     }),
     BrowserModule,
-    HttpModule
+    HttpModule,
+    MobxAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent],
