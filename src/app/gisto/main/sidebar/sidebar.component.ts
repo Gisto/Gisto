@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubApiService } from '../../../github-api.service';
+import { GistsStore } from '../../../store/gists';
 
 @Component({
   selector: 'sidebar',
@@ -13,7 +14,7 @@ export class SidebarComponent implements OnInit {
   gists = [];
   gist = {};
 
-  constructor(private githubApiService: GithubApiService) {}
+  constructor(private githubApiService: GithubApiService, private gistStore: GistsStore) {}
 
   getGists() {
     this.githubApiService.getGists().then( res => {
@@ -24,6 +25,7 @@ export class SidebarComponent implements OnInit {
   onClick(id) {
     this.githubApiService.getGist(id).then( res => {
       this.gist = res;
+      this.gistStore.setCurrentGist(this.gist);
     });
   }
 

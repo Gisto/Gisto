@@ -9,24 +9,27 @@
   </button>
 </sub-controlls>
 <gist-title title="This is the gist description #css #js #javascript">
-This is the gist description <title-tag>#css</title-tag> <title-tag>#js</title-tag> <title-tag>#javascript</title-tag>
+{{ gistStore.current.description || 'untitled' }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
 </gist-title>
 <gist-utils>
   <i class="fa fa-pencil color-success"></i>
 </gist-utils>
 <gist-utils>
-  <i class="fa fa-lock" aria-hidden="true"></i>
+  <i class="fa {{ gistStore.current.public ? 'fa-unlock' : 'fa-lock'}}" aria-hidden="true"></i>
 </gist-utils>
 <gist-utils>
   <i class="fa fa-trash-o color-danger"></i>
 </gist-utils>
 <gist-utils>
+  <i class="fa fa-comment-o"></i> {{ gistStore.current.comments || 0 }}
+</gist-utils>
+<gist-utils (click)="toggleMenu()">
   <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-  <!-- <ul>
+  <ul *ngIf="showMenu">
       <li>Edit</li>
       <li>Open on web</li>
       <li>Download</li>
       <li>Copy to clipboard</li>
-      <li>Delete</li>
-  </ul> -->
+      <li class="color-danger">Delete</li>
+  </ul>
 </gist-utils>
