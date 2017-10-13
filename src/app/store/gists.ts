@@ -8,7 +8,7 @@ export class GistsStore {
 
   @computed get currentGist () {
     return this.current;
-  };
+  }
 
   @action setCurrentGist(gist) {
     const regex = /#(\d*[A-Za-z_0-9]+\d*)/g;
