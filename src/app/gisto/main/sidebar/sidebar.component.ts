@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GithubApiService } from '../../../github-api.service';
 import { GistsStore } from '../../../store/gists';
+import { values } from 'lodash/fp';
 
 @Component({
   selector: 'sidebar',
@@ -9,28 +10,14 @@ import { GistsStore } from '../../../store/gists';
   providers: [GithubApiService]
 })
 
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
 
-  gists = [];
-  gist = {};
+  values: any = values;
 
-  constructor(private githubApiService: GithubApiService, private gistStore: GistsStore) {}
-
-  getGists() {
-    this.githubApiService.getGists().then( res => {
-      this.gists = res;
-    });
-  }
+  constructor(public gistStore: GistsStore) {}
 
   onClick(id) {
-    this.githubApiService.getGist(id).then( res => {
-      this.gist = res;
-      this.gistStore.setCurrentGist(this.gist);
-    });
-  }
-
-  ngOnInit(): void {
-    this.getGists();
+    this.gistStore.setCurrentGist(id);
   }
 
 }

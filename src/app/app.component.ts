@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { SettingsStore } from './store/settings';
-import { GistsStore } from './store/gists';
+import {Component, OnInit} from '@angular/core';
+import {SettingsStore} from './store/settings';
+import {GistsStore} from './store/gists';
+import {GithubApiService} from './github-api.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,16 @@ import { GistsStore } from './store/gists';
   styleUrls: ['./app.component.scss'],
   providers: [
     SettingsStore,
-    GistsStore
+    GistsStore,
+    GithubApiService
   ]
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit {
+
+  constructor(private githubApiService: GithubApiService) {
+  }
+
+  ngOnInit(): void {
+    this.githubApiService.getGists();
+  }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { GistsStore } from "./store/gists";
 
 @Injectable()
 export class GithubApiService {
@@ -9,16 +10,17 @@ export class GithubApiService {
   private headers = new Headers();
   private token = localStorage.getItem('api-token');
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private gistsStore: GistsStore) {
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Authorization', `token ${this.token}`);
   }
 
-  getGists(): Promise<any[]> {
+  getGists() {
     return this.http
       .get(this.baseUrl, { headers: this.headers })
       .toPromise()
-      .then(response => response.json());
+      .then(response => response.json())
+      .then(results => this.gistsStore.setGists(results));
   }
 
   getGist(id): Promise<any[]> {
