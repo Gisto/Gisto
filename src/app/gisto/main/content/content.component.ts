@@ -1,43 +1,27 @@
-import 'rxjs/add/operator/switchMap';
-import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { GithubApiService } from '../../../github-api.service';
-import {Subscription} from "rxjs/Subscription";
+import { GistsStore } from '../../../store/gists';
+import { values } from 'lodash/fp';
 
 @Component({
   selector: 'content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss'],
-  providers: [GithubApiService]
+  styleUrls: ['./content.component.scss']
 })
-export class ContentComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
-  private singleGist;
-  private files = [];
-  private showMwnu = false;
-  private gistId = '';
+export class ContentComponent {
 
-  constructor(
-    private githubApiService: GithubApiService, private route: ActivatedRoute) { }
+  values: any = values;
+
+  private showMwnu = false;
+
+  constructor(private githubApiService: GithubApiService,
+              private route: ActivatedRoute,
+              private gistStore: GistsStore) {
+  }
 
   showMenuForFile = (i) => {
     this.showMwnu = this.showMwnu !== i ? this.showMwnu = i : this.showMwnu = false;
-  };
-
-  ngOnInit(): void {
-    this.subscription = this.route.paramMap
-      .switchMap((params: ParamMap) => this.githubApiService.getGist(params.get('id')))
-      .subscribe((gist) => {
-        this.singleGist = {};
-        this.files = [];
-        this.singleGist = gist;
-        Object.keys(this.singleGist.files)
-          .forEach((file) => this.files.push(this.singleGist.files[file]));
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
 }

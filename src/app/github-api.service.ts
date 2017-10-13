@@ -23,10 +23,11 @@ export class GithubApiService {
       .then(results => this.gistsStore.setGists(results));
   }
 
-  getGist(id): Promise<any[]> {
+  getGist(id) {
     return this.http
       .get(`${this.baseUrl}/${id}`, { headers: this.headers })
       .toPromise()
-      .then(response => response.json());
+      .then(response => response.json())
+      .then(results => this.gistsStore.setCurrentGist(results));
   }
 }

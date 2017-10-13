@@ -14,10 +14,10 @@ export class SidebarComponent {
 
   values: any = values;
 
-  constructor(public gistStore: GistsStore) {}
+  constructor(private gistStore: GistsStore, private githubApiService: GithubApiService) {}
 
   onClick(id) {
-    this.gistStore.setCurrentGist(id);
+    this.githubApiService.getGist(id);
   }
 
 }

@@ -1,4 +1,4 @@
-<gist *ngFor="let file of files; index as i">
+<gist *ngFor="let file of values(gistStore.currentGist.files); index as i">
   <gist-header>
     <gist-file-icon>
       <span class="fa-stack">
@@ -12,11 +12,11 @@
     <gist-utils>
       <i (click)="showMenuForFile(i)" class="fa fa-ellipsis-v" aria-hidden="true"></i>
       <ul *ngIf="showMwnu===i">
-        <li>Edit</li>
-        <li><a target="_new" href="https://gist.github.com/{{ singleGist.owner.login }}/{{ singleGist.id }}#file-{{ file.filename }}">Open on web</a></li>
-        <li><a download="{{ file.filename }}" href="{{ file_raw }}">Download</a></li>
+        <li class="color-success">Edit</li>
+        <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
+        <li><a download="{{ file.filename }}" href="{{ file.file_raw }}">Download</a></li>
         <li>Copy to clipboard</li>
-        <li>Delete</li>
+        <li class="color-danger">Delete</li>
       </ul>
     </gist-utils>
     <gist-utils>

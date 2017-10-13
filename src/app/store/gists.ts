@@ -15,8 +15,9 @@ export class GistsStore {
     this.gists = keyBy('id', { ...gists });
   }
 
-  @action setCurrentGist(id) {
-    const gist = this.gists[id];
+  @action setCurrentGist(result) {
+    this.gists[result.id] = result;
+    const gist = this.gists[result.id];
     // TODO: use only id and pull from pool of this.gists
     // TODO: extract all this pasta into util functions or pipes
     const regex = /#(\d*[A-Za-z_0-9]+\d*)/g;
