@@ -1,18 +1,29 @@
 import { Injectable } from '@angular/core';
 import { observable, action, computed } from 'mobx-angular';
-import { set, keyBy, merge, map } from 'lodash/fp';
+import { set, get, keyBy, merge, map, includes } from 'lodash/fp';
 
 @Injectable()
 export class GistsStore {
   @observable gists = {};
+  @observable staredGists = [];
   @observable current = {};
+  @observable filter = '';
 
   @computed get currentGist () {
     return this.current;
   }
 
+  @action setFilter(filter) {
+    this.filter = filter;
+  }
+
   @action setGists(gists) {
+    gists.map(gist => gist.star = includes(gist.id, this.staredGists));
     this.gists = keyBy('id', { ...gists });
+  }
+
+  @action setStarsOnGists(stared) {
+    this.staredGists.push(stared.map(gist => gist.id));
   }
 
   @action setCurrentGist(result) {
@@ -24,6 +35,6 @@ export class GistsStore {
     const description = gist.description;
     gist.tags = description.match(regex);
     gist.description = gist.description.split('#')[0];
-    this.current = gist;
+    this.current = merge(gist, get(result.id, this.gists));
   }
 }

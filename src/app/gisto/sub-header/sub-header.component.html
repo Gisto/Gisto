@@ -1,7 +1,9 @@
 <sub-controlls>
   <search>
       <div><i class="fa fa-search" aria-hidden="true"></i></div>
-      <input type="search" placeholder="search..."/>
+      <input type="search"
+             placeholder="search {{ size(gistStore.gists) }} gists"
+             #searchBox (keyup)="updateFilter(searchBox.value)" />
       <i class="fa fa-angle-down" aria-hidden="true"></i>
   </search>
   <button>

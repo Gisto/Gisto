@@ -20,5 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.githubApiService.getGists();
+    this.githubApiService.getStaredGists();
+
   }
 }

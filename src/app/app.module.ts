@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MobxAngularModule } from 'mobx-angular';
 import * as hljs from 'highlight.js';
 import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
+import { GistSearchPipe } from './pipes/search.pipe';
 
 import { AppComponent } from './app.component';
 import { GistoComponent } from './gisto/gisto.component';
@@ -39,12 +40,14 @@ const appRoutes: Routes = [
     ContentComponent,
     UserComponent,
     AppSettingsComponent,
-    SettingsComponent
+    SettingsComponent,
+
+    GistSearchPipe
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
-        { enableTracing: true } // <-- debugging purposes only
+        { enableTracing: false } // <-- debugging purposes only
     ),
     HighlightJsModule.forRoot({
       provide: HIGHLIGHT_JS,
