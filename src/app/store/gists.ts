@@ -31,15 +31,14 @@ export class GistsStore {
   }
 
   @action setCurrentGist(result) {
-    if (this.gists[result.id]) {
-      this.gists[result.id] = merge(this.gists[result.id], result);
-    }
+    this.gists[result.id] = merge(this.gists[result.id], result);
     const gist = this.gists[result.id];
     // TODO: use only id and pull from pool of this.gists
     // TODO: extract all this pasta into util functions or pipes
     const regex = /#(\d*[A-Za-z_0-9]+\d*)/g;
     const description = gist.description;
     gist.tags = description.match(regex);
+    gist.lastViewed = Math.floor(Date.now() / 1000);
     gist.description = gist.description.split('#')[0];
     this.current = merge(this.gists[result.id], gist);
   }
