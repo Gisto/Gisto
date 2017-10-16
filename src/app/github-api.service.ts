@@ -6,7 +6,7 @@ export class GithubApiService {
 
   private baseUrl = 'https://api.github.com/gists';
   private headers = new Headers();
-  private token = localStorage.getItem('api-token') || 'a99a26ae7826e625056f3b78e73d5265123ec593';
+  private token = localStorage.getItem('api-token');
 
   constructor(private gistsStore: GistsStore) {
     this.headers.append('Content-Type', 'application/json');
