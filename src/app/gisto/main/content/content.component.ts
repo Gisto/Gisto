@@ -23,10 +23,10 @@ export class ContentComponent {
 
   showMenuForFile = (i) => {
     this.showMenu = this.showMenu !== i ? this.showMenu = i : this.showMenu = false;
-  };
+  }
 
   toggleFileContent = (i) => {
     this.showFileContent = this.showFileContent !== i ? this.showFileContent = i : this.showFileContent = false;
-  };
+  }
 
 }
