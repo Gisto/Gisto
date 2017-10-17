@@ -24,6 +24,13 @@
     </gist-utils>
   </gist-header>
   <gist-body>
-    <pre><code mwlHighlightJs [source]="file.content" language="{{ file.language || 'tex' }}"></code></pre>
+    <td-code-editor
+      class="editor"
+      theme="vs"
+      flex
+      language="{{ file.language.toLowerCase() || 'text' }}"
+      [value]="file.content"
+      [editorOptions]="{ readOnly: true, scrollBeyondLastLine: false }"></td-code-editor>
+
   </gist-body>
 </gist>

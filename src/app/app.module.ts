@@ -3,9 +3,8 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { MobxAngularModule } from 'mobx-angular';
-import * as hljs from 'highlight.js';
-import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
 import { GistSearchPipe } from './pipes/search.pipe';
+import { CovalentCodeEditorModule } from '@covalent/code-editor';
 
 import { AppComponent } from './app.component';
 import { GistoComponent } from './gisto/gisto.component';
@@ -18,15 +17,11 @@ import { UserComponent } from './gisto/header/user/user.component';
 import { AppSettingsComponent } from './gisto/header/app-settings/app-settings.component';
 import { SettingsComponent } from './gisto/main/settings/settings.component';
 
-export function highlightJsFactory() {
-  return hljs;
-}
-
 const appRoutes: Routes = [
     { path: 'main', component: ContentComponent },
     { path: 'gist/:id', component: ContentComponent },
     { path: 'settings', component: SettingsComponent },
-    { path: '',   redirectTo: '/main', pathMatch: 'full' },
+    { path: '', redirectTo: '/main', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -49,13 +44,10 @@ const appRoutes: Routes = [
       appRoutes,
         { enableTracing: false } // <-- debugging purposes only
     ),
-    HighlightJsModule.forRoot({
-      provide: HIGHLIGHT_JS,
-      useFactory: highlightJsFactory
-    }),
     BrowserModule,
     HttpModule,
-    MobxAngularModule
+    MobxAngularModule,
+    CovalentCodeEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

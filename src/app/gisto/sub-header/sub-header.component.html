@@ -25,6 +25,9 @@
 <gist-utils>
   <i class="fa fa-comment-o"></i> {{ gistStore.current.comments || 0 }}
 </gist-utils>
+<gist-utils>
+  <i class="fa {{ gistStore.current.star ? 'fa-star' : 'fa-star-o'}}"></i>
+</gist-utils>
 <gist-utils (click)="toggleMenu()">
   <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
   <ul *ngIf="showMenu">

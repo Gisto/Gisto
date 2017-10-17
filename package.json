@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "@covalent/code-editor": "^1.0.0-beta.2",
     "angular-highlight-js": "^2.0.0",
     "core-js": "^2.4.1",
     "highlight.js": "^9.12.0",

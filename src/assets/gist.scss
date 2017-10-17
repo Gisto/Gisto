@@ -33,13 +33,12 @@ gist {
     }
   }
   gist-body {
-    padding: 0 20px;
     border-radius: 3px;
     overflow: auto;
-    width: calc(100vw - 380px);
-    max-height: calc(100vh - 210px);
-    pre {
-      white-space: pre-wrap;
+    > .editor {
+      width: calc(100vw - 342px);
+      height: calc(100vh - 210px);
     }
+
   }
 }

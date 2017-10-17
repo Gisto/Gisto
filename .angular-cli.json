@@ -10,7 +10,12 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "fonts"
+        "fonts",
+        {
+          "glob": "**/*",
+          "input": "../node_modules/@covalent/code-editor/assets/monaco",
+          "output": "./assets/monaco/"
+        }
       ],
       "index": "index.html",
       "main": "main.ts",
