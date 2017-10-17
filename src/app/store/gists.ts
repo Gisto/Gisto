@@ -20,7 +20,7 @@ export class GistsStore {
     this.filter = filter;
   }
 
-  proccessGist(gist) {
+  processGist(gist) {
     gist.star = this.staredGists.indexOf(gist.id) !== -1;
     const regex = /#(\d*[A-Za-z_0-9]+\d*)/g;
     const description = gist.description;
@@ -32,7 +32,7 @@ export class GistsStore {
 
   @action setGists(gists) {
     gists.map(gist => {
-      this.proccessGist(gist);
+      this.processGist(gist);
     });
     this.gists = keyBy('id', { ...gists });
   }
@@ -44,7 +44,7 @@ export class GistsStore {
   @action setCurrentGist(result) {
     this.gists[result.id] = merge(this.gists[result.id], result);
     const gist = this.gists[result.id];
-    this.proccessGist(gist);
+    this.processGist(gist);
     this.current = merge(this.gists[result.id], gist);
   }
 }
