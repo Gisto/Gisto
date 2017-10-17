@@ -13,7 +13,8 @@ export class ContentComponent {
 
   values: any = values;
 
-  private showMwnu = false;
+  private showMenu = false;
+  private showFileContent = true;
 
   constructor(private githubApiService: GithubApiService,
               private route: ActivatedRoute,
@@ -21,7 +22,11 @@ export class ContentComponent {
   }
 
   showMenuForFile = (i) => {
-    this.showMwnu = this.showMwnu !== i ? this.showMwnu = i : this.showMwnu = false;
-  }
+    this.showMenu = this.showMenu !== i ? this.showMenu = i : this.showMenu = false;
+  };
+
+  toggleFileContent = (i) => {
+    this.showFileContent = this.showFileContent !== i ? this.showFileContent = i : this.showFileContent = false;
+  };
 
 }

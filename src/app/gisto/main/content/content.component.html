@@ -10,8 +10,8 @@
       &nbsp;&nbsp;{{ file.filename }}
     </gist-file-name>
     <gist-utils>
-      <i (click)="showMenuForFile(i)" class="fa fa-ellipsis-v" aria-hidden="true"></i>
-      <ul *ngIf="showMwnu===i">
+      <i (click)="showMenuForFile(i)" class="fa {{ showMenu===i ? 'fa-close' : 'fa-ellipsis-v' }}" aria-hidden="true"></i>
+      <ul *ngIf="showMenu===i">
         <li class="color-success">Edit</li>
         <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
         <li><a download="{{ file.filename }}" href="{{ file.file_raw }}">Download</a></li>
@@ -19,11 +19,11 @@
         <li class="color-danger">Delete</li>
       </ul>
     </gist-utils>
-    <gist-utils>
-      <i class="fa fa-angle-up" aria-hidden="true"></i>
+    <gist-utils (click)="toggleFileContent(i)">
+      <i class="fa {{ showFileContent===i ? 'fa-angle-up' : 'fa-angle-down' }}" aria-hidden="true"></i>
     </gist-utils>
   </gist-header>
-  <gist-body>
+  <gist-body *ngIf="showFileContent || showFileContent===i">
     <td-code-editor
       class="editor"
       theme="vs"
