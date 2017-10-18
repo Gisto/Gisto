@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UiStore } from '../../store/ui';
 
 @Component({
   selector: 'main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
 
-  constructor() { }
+export class MainComponent {
 
-  ngOnInit() {
-  }
-
+  constructor(private uiStore: UiStore) { }
 }

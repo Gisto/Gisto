@@ -9,8 +9,8 @@
     <gist-file-name>
       &nbsp;&nbsp;{{ file.filename }}
     </gist-file-name>
-    <gist-utils>
-      <i (click)="showMenuForFile(i)" class="fa {{ showMenu===i ? 'fa-close' : 'fa-ellipsis-v' }}" aria-hidden="true"></i>
+    <gist-utils (click)="showMenuForFile(i)">
+      <i class="fa {{ showMenu===i ? 'fa-close' : 'fa-ellipsis-v' }}" aria-hidden="true"></i>
       <ul *ngIf="showMenu===i">
         <li class="color-success">Edit</li>
         <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>

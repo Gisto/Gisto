@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UiStore } from '../../store/ui';
 
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  constructor(private uiStore: UiStore) { }
 
-  ngOnInit() {
+  toggleSideBar() {
+    this.uiStore.toggleSideBar();
   }
 
 }

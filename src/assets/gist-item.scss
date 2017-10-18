@@ -30,7 +30,7 @@ gist-item {
       transform: scale(1.5);
     }
   }
-  &[active], 
+  &[active],
   &.active {
     background: $bg;
     opacity: 1;
@@ -43,21 +43,22 @@ gist-item {
     }
   }
   tag {
-    font-size: 12px;
     position: absolute;
-    top: 5px;
-    right: 10px;
+    left: 40px;
+    font-size: 12px;
+    padding: 0;
+    transform: translate(50%, 0);
   }
   star {
     position: absolute;
-    left: 20px;
+    left: 40px;
     font-size: 12px;
-    padding: 5px;
-    top: 0;
+    padding: 0;
+    transform: translate(50%, 0);
   }
   fork {
     @extend star;
-    left: 40px;
+    top: 50px;
   }
   files {
     display: none;

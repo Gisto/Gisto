@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { GistsStore } from './store/gists';
+import {Injectable} from '@angular/core';
+import {GistsStore} from './store/gists';
 
 @Injectable()
 export class GithubApiService {
@@ -13,10 +13,17 @@ export class GithubApiService {
     this.headers.append('Authorization', `token ${this.token}`);
   }
 
-  getGists() {
-    return fetch(this.baseUrl, {headers: this.headers})
-      .then(response => response.json())
-      .then(results => this.gistsStore.setGists(results));
+  getGists(page = 1) {
+    return fetch(`${this.baseUrl}?page=${page}`, {headers: this.headers})
+      .then(response => {
+        if (response.headers.get('Link').match(/next/ig)) {
+          this.getGists(page + 1);
+        }
+        return response.json();
+      })
+      .then(results => {
+        return this.gistsStore.setGists(results);
+      });
   }
 
   getStaredGists() {

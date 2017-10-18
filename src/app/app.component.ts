@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SettingsStore } from './store/settings';
 import { GistsStore } from './store/gists';
 import { UserStore } from './store/user';
+import { UiStore } from './store/ui';
 import { GithubApiService } from './github-api.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { GithubApiService } from './github-api.service';
     SettingsStore,
     GistsStore,
     UserStore,
+    UiStore,
     GithubApiService
   ]
 })

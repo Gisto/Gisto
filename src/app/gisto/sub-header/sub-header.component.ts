@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GistsStore } from '../../store/gists';
+import { UiStore } from '../../store/ui';
 import { size } from 'lodash/fp';
 
 @Component({
@@ -13,7 +14,7 @@ export class SubHeaderComponent {
 
   private showMenu = false;
 
-  constructor(private gistStore: GistsStore) { }
+  constructor(private gistStore: GistsStore, private uiStore: UiStore) { }
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
