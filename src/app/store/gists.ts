@@ -55,4 +55,8 @@ export class GistsStore {
     this.processGist(gist);
     this.current = merge(this.gists[result.id], gist);
   }
+
+  @action expandCollapseFile(gistId, file) {
+    this.gists[gistId].files[file].collapsed = !this.gists[gistId].files[file].collapsed;
+  }
 }

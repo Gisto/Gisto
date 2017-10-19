@@ -19,11 +19,11 @@
         <li class="color-danger">Delete</li>
       </ul>
     </gist-utils>
-    <gist-utils (click)="toggleFileContent(i)">
-      <i class="fa {{ showFileContent===i ? 'fa-angle-up' : 'fa-angle-down' }}" aria-hidden="true"></i>
+    <gist-utils (click)="toggleFileContent(gistStore.currentGist.id, file.filename)">
+      <i class="fa {{ gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed ? 'fa-angle-down' : 'fa-angle-up' }}" aria-hidden="true"></i>
     </gist-utils>
   </gist-header>
-  <gist-body *ngIf="showFileContent || showFileContent===i">
+  <gist-body *ngIf="!gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed">
     <td-code-editor
       class="editor"
       theme="vs"

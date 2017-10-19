@@ -25,8 +25,8 @@ export class ContentComponent {
     this.showMenu = this.showMenu !== i ? this.showMenu = i : this.showMenu = false;
   }
 
-  toggleFileContent = (i) => {
-    this.showFileContent = this.showFileContent !== i ? this.showFileContent = i : this.showFileContent = false;
+  toggleFileContent = (gistId, fileName) => {
+    this.gistStore.expandCollapseFile(gistId, fileName);
   }
 
 }

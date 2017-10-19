@@ -10,7 +10,7 @@
       <i class="fa fa-plus" aria-hidden="true"></i> New gist
   </button>
 </sub-controlls>
-<gist-title title="This is the gist description #css #js #javascript">
+<gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">
 {{ gistStore.current.description || 'untitled' }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
 </gist-title>
 <gist-utils>
