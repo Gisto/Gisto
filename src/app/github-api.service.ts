@@ -1,5 +1,7 @@
-import {Injectable} from '@angular/core';
-import {GistsStore} from './store/gists';
+import { Injectable } from '@angular/core';
+import { GistsStore } from './store/gists';
+import { UiStore } from './store/ui';
+
 
 @Injectable()
 export class GithubApiService {
@@ -8,7 +10,7 @@ export class GithubApiService {
   private headers = new Headers();
   private token = localStorage.getItem('api-token');
 
-  constructor(private gistsStore: GistsStore) {
+  constructor(private gistsStore: GistsStore, private uiStore: UiStore) {
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Authorization', `token ${this.token}`);
   }
@@ -16,12 +18,14 @@ export class GithubApiService {
   getGists(page = 1) {
     return fetch(`${this.baseUrl}?page=${page}`, {headers: this.headers})
       .then(response => {
+        this.uiStore.loading = true;
         if (response.headers.get('Link').match(/next/ig)) {
           this.getGists(page + 1);
         }
         return response.json();
       })
       .then(results => {
+        this.uiStore.loading = false;
         return this.gistsStore.setGists(results);
       });
   }

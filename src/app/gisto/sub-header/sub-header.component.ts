@@ -23,4 +23,8 @@ export class SubHeaderComponent {
   updateFilter(value) {
     this.gistStore.setFilter(value);
   }
+
+  toggleEditOrSaveMode() {
+    this.uiStore.isEdit ? this.uiStore.unsetModeToEdit() : this.uiStore.setModeToEdit();
+  }
 }

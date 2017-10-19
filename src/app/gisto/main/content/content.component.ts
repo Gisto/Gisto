@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GithubApiService } from '../../../github-api.service';
 import { GistsStore } from '../../../store/gists';
+import { UiStore } from '../../../store/ui';
 import { values } from 'lodash/fp';
 
 @Component({
@@ -18,7 +19,8 @@ export class ContentComponent {
 
   constructor(private githubApiService: GithubApiService,
               private route: ActivatedRoute,
-              private gistStore: GistsStore) {
+              private gistStore: GistsStore,
+              private uiStore: UiStore) {
   }
 
   showMenuForFile = (i) => {

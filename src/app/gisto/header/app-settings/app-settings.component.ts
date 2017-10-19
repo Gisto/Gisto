@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UiStore } from '../../../store/ui';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './app-settings.component.html',
   styleUrls: ['./app-settings.component.scss']
 })
-export class AppSettingsComponent implements OnInit {
+export class AppSettingsComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private uiStore: UiStore) {}
 
 }

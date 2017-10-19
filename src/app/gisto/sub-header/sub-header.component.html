@@ -2,7 +2,7 @@
   <search>
       <div><i class="fa fa-search" aria-hidden="true"></i></div>
       <input type="search"
-             placeholder="search {{ size(gistStore.gists) }} gists"
+             placeholder="{{ uiStore.loading ? 'Loading...' : 'search ' + size(gistStore.gists) + ' gists' }}"
              #searchBox (keyup)="updateFilter(searchBox.value)" />
       <i class="fa fa-angle-down" aria-hidden="true"></i>
   </search>
@@ -11,10 +11,10 @@
   </button>
 </sub-controlls>
 <gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">
-{{ gistStore.current.description || 'untitled' }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
+{{ gistStore.current.description }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
 </gist-title>
-<gist-utils>
-  <i class="fa fa-pencil color-success"></i>
+<gist-utils (click)="toggleEditOrSaveMode()">
+  <i class="fa {{ uiStore.isEdit ? 'fa-save' : 'fa-pencil' }} fa-pencil color-success"></i>
 </gist-utils>
 <gist-utils>
   <i class="fa {{ gistStore.current.public ? 'fa-unlock' : 'fa-lock'}}" aria-hidden="true"></i>

@@ -30,7 +30,7 @@
       flex
       language="{{ file.language.toLowerCase() || 'text' }}"
       [value]="file.content"
-      [editorOptions]="{ readOnly: true, scrollBeyondLastLine: false }"></td-code-editor>
+      [editorOptions]="{ readOnly: uiStore.editMode, scrollBeyondLastLine: false }"></td-code-editor>
 
   </gist-body>
 </gist>

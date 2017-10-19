@@ -7,6 +7,10 @@ export class UiStore {
   @observable editMode = false;
   @observable sideBar = true;
 
+  @computed get isEdit() {
+    return this.editMode;
+  }
+
   @action toggleSideBar = () => this.sideBar = !this.sideBar;
 
   @action setModeToEdit() {
