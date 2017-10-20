@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { observable, action } from 'mobx-angular';
+import { observable, action, computed } from 'mobx-angular';
 
 @Injectable()
 export class SettingsStore {
   @observable color = '#ff0000';
-  @observable theme = 'lite';
+  @observable theme = 'vs';
   @observable animations = 'enabled';
 
   @action setColor(value) {
@@ -13,6 +13,10 @@ export class SettingsStore {
 
   @action setTheme(value) {
     this.theme = value;
+  }
+
+  @computed get getTheme() {
+    return this.theme;
   }
 
   @action setAnimation(value) {

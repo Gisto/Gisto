@@ -10,7 +10,7 @@
 
   <p>Theme
     <select (change)="changeTheme($event)">
-      <option *ngFor="let theme of themes" value="{{ theme.value }}" [attr.selected]="settings.theme==theme.value">{{ theme.displayName }}</option>
+      <option *ngFor="let theme of themes" value="{{ theme.value }}" [attr.selected]="settings.getTheme==theme.value">{{ theme.displayName }}</option>
     </select>
   </p>
 

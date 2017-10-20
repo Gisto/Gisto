@@ -14,9 +14,8 @@ export class SettingsComponent {
   color = this.settings.color;
 
   themes = [
-    { value: 'default', displayName: 'Default' },
-    { value: 'lite', displayName: 'Light' },
-    { value: 'dark', displayName: 'Dark' }
+    { value: 'vs', displayName: 'Light' },
+    { value: 'vs-dark', displayName: 'Dark' }
   ];
 
   animations = [
@@ -29,6 +28,7 @@ export class SettingsComponent {
   }
 
   changeTheme(theme) {
+    console.log('%c LOG ', 'background: #555; color: tomato', theme.target.value);
     this.settings.setTheme(theme.target.value);
   }
 

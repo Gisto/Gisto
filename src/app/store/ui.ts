@@ -15,10 +15,12 @@ export class UiStore {
 
   @action setModeToEdit() {
     this.editMode = true;
+    this.toggleSideBar();
   }
 
   @action unsetModeToEdit() {
     this.editMode = false;
+    this.toggleSideBar();
   }
 
 }
