@@ -29,6 +29,8 @@
     "mobx": "^3.3.1",
     "mobx-angular": "^1.8.1",
     "rxjs": "^5.4.2",
+    "superagent": "^3.7.0",
+    "superagent-no-cache": "^0.1.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

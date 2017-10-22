@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UserStore } from '../../../store/user';
+import { SettingsStore } from '../../../store/settings';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'user',
@@ -8,6 +10,12 @@ import { UserStore } from '../../../store/user';
 })
 export class UserComponent {
 
-  constructor(private userStore: UserStore) {}
+  constructor(private userStore: UserStore, private settings: SettingsStore, private router: Router) {}
+
+  logOut() {
+    console.log('%c LOG-out ', 'background: #555; color: tomato');
+    this.settings.logOut();
+    this.router.navigate(['/main']);
+  }
 
 }

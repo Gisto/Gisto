@@ -4,7 +4,7 @@ import { GistsStore } from './store/gists';
 import { UserStore } from './store/user';
 import { UiStore } from './store/ui';
 import { GithubApiService } from './github-api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +20,23 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private githubApiService: GithubApiService, private router: Router) {}
+  constructor(
+    private githubApiService: GithubApiService,
+    private router: Router,
+    private settings: SettingsStore,
+    private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.router.navigate(['/main']);
-    this.githubApiService.getGists();
-    this.githubApiService.getStaredGists();
+  login() {
+    if(!this.settings.isLoggedIn) {
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/main']);
+      this.githubApiService.getGists();
+      this.githubApiService.getStaredGists();
+    }
+  }
+
+  ngOnInit () {
+    this.login();
   }
 }

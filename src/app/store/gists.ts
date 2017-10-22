@@ -1,9 +1,27 @@
 import { Injectable } from '@angular/core';
 import { observable, action, computed } from 'mobx-angular';
-import { set, get, keyBy, merge, map, includes, isEmpty } from 'lodash/fp';
+import { set, get, keyBy, merge, map, includes, isEmpty, omit } from 'lodash/fp';
 
 @Injectable()
 export class GistsStore {
+
+  processGist(gist) {
+    gist.star = false;
+    gist.star = this.staredGists.findIndex(id => gist.id === id) !== -1;
+    gist.lastViewed = Math.floor(Date.now() / 1000);
+
+    if (!isEmpty(gist.description)) {
+      const regex = /#(\d*[A-Za-z_0-9]+\d*)/g;
+      const description = gist.description;
+      gist.tags = description.match(regex);
+      gist.description = gist.tags ? gist.description.split(gist.tags[0])[0] : gist.description;
+    } else {
+      gist.description = 'untitled';
+    }
+
+    return gist;
+  }
+
   @observable gists = {};
   @observable staredGists = [];
   @observable current = {};
@@ -19,23 +37,6 @@ export class GistsStore {
 
   @action setFilter(filter) {
     this.filter = filter;
-  }
-
-  processGist(gist) {
-    gist.star = this.staredGists.indexOf(gist.id) !== -1;
-    gist.lastViewed = Math.floor(Date.now() / 1000);
-
-    if (!isEmpty(gist.description)) {
-      const regex = /#(\d*[A-Za-z_0-9]+\d*)/g;
-      const description = gist.description;
-      gist.tags = description.match(regex);
-      gist.description = gist.tags ? gist.description.split(gist.tags[0])[0] : gist.description;
-      gist.lastUpdated = Math.floor(Date.now() / 1000);
-    } else {
-      gist.description = 'untitled';
-    }
-
-    return gist;
   }
 
   @action setGists(gists) {
@@ -58,5 +59,10 @@ export class GistsStore {
 
   @action expandCollapseFile(gistId, file) {
     this.gists[gistId].files[file].collapsed = !this.gists[gistId].files[file].collapsed;
+  }
+
+  @action deleteGist(id) {
+    delete this.gists[id];
+    this.setGists(this.gists);
   }
 }

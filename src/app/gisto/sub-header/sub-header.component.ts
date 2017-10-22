@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GistsStore } from '../../store/gists';
 import { UiStore } from '../../store/ui';
 import { size } from 'lodash/fp';
+import { GithubApiService } from '../../github-api.service';
 
 @Component({
   selector: 'sub-header',
@@ -14,7 +15,7 @@ export class SubHeaderComponent {
 
   private showMenu = false;
 
-  constructor(private gistStore: GistsStore, private uiStore: UiStore) { }
+  constructor(private gistStore: GistsStore, private uiStore: UiStore, private githubApiService: GithubApiService) { }
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
@@ -27,4 +28,17 @@ export class SubHeaderComponent {
   toggleEditOrSaveMode() {
     this.uiStore.isEdit ? this.uiStore.unsetModeToEdit() : this.uiStore.setModeToEdit();
   }
+
+  star(id) {
+    this.githubApiService.starGist(id);
+  }
+
+  unStar(id) {
+    this.githubApiService.unStarGist(id);
+  }
+
+  delete(id) {
+    this.githubApiService.deleteGist(id);
+  }
+
 }

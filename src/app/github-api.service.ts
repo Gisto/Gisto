@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { GistsStore } from './store/gists';
-import { UiStore } from './store/ui';
-
+import {Injectable} from '@angular/core';
+import {GistsStore} from './store/gists';
+import {UiStore} from './store/ui';
+import * as API from 'superagent';
 
 @Injectable()
 export class GithubApiService {
@@ -9,6 +9,7 @@ export class GithubApiService {
   private baseUrl = 'https://api.github.com/gists';
   private headers = new Headers();
   private token = localStorage.getItem('api-token');
+  private _headers = {'Content-Type': 'application/json', 'Authorization': `token ${this.token}`};
 
   constructor(private gistsStore: GistsStore, private uiStore: UiStore) {
     this.headers.append('Content-Type', 'application/json');
@@ -16,29 +17,64 @@ export class GithubApiService {
   }
 
   getGists(page = 1) {
-    return fetch(`${this.baseUrl}?page=${page}`, {headers: this.headers})
-      .then(response => {
-        this.uiStore.loading = true;
-        if (response.headers.get('Link').match(/next/ig)) {
+    this.uiStore.loading = true;
+    API.get(`${this.baseUrl}?page=${page}`)
+      .set(this._headers)
+      .end((error, result) => {
+        if (result.headers.link.match(/next/ig)) {
           this.getGists(page + 1);
         }
-        return response.json();
-      })
-      .then(results => {
         this.uiStore.loading = false;
-        return this.gistsStore.setGists(results);
+        this.gistsStore.setGists(result.body);
       });
   }
 
   getStaredGists() {
-    return fetch(`${this.baseUrl}/starred`, {headers: this.headers})
-      .then(response => response.json())
-      .then(results => this.gistsStore.setStarsOnGists(results));
+    API.get(`${this.baseUrl}/starred`)
+      .set(this._headers)
+      .end((error, result) => this.gistsStore.setStarsOnGists(result.body));
   }
 
   getGist(id) {
-    return fetch(`${this.baseUrl}/${id}`, {headers: this.headers})
-      .then(response => response.json())
-      .then(result => this.gistsStore.setCurrentGist(result));
+    this.uiStore.loading = true;
+    API.get(`${this.baseUrl}/${id}`)
+      .set(this._headers)
+      .end((error, result) => {
+        this.uiStore.loading = false;
+        this.gistsStore.setCurrentGist(result.body);
+      });
   }
+
+  starGist(id) {
+    this.uiStore.loading = true;
+    API.put(`${this.baseUrl}/${id}/star`)
+      .set(this._headers)
+      .end((error) => {
+        this.uiStore.loading = false;
+        this.getStaredGists();
+        this.getGist(id);
+      });
+  }
+
+  unStarGist(id) {
+    this.uiStore.loading = true;
+    API.del(`${this.baseUrl}/${id}/star`)
+      .set(this._headers)
+      .end((error) => {
+        this.uiStore.loading = false;
+        this.getStaredGists();
+        this.getGist(id);
+      });
+  }
+
+  deleteGist(id) {
+    this.uiStore.loading = true;
+    API.del(`${this.baseUrl}/${id}`)
+      .set(this._headers)
+      .end((error) => {
+        this.uiStore.loading = false;
+        this.gistsStore.deleteGist(id);
+      });
+  }
+
 }

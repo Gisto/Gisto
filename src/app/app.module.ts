@@ -16,12 +16,14 @@ import { ContentComponent } from './gisto/main/content/content.component';
 import { UserComponent } from './gisto/header/user/user.component';
 import { AppSettingsComponent } from './gisto/header/app-settings/app-settings.component';
 import { SettingsComponent } from './gisto/main/settings/settings.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
+    { path: 'login', component: LoginComponent },
     { path: 'main', component: ContentComponent },
     { path: 'gist/:id', component: ContentComponent },
     { path: 'settings', component: SettingsComponent },
-    { path: '', redirectTo: '/main', pathMatch: 'full' },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -37,7 +39,9 @@ const appRoutes: Routes = [
     AppSettingsComponent,
     SettingsComponent,
 
-    GistSearchPipe
+    GistSearchPipe,
+
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(

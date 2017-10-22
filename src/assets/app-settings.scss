@@ -1,4 +1,7 @@
 app-settings {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
   i {
     margin: 0 20px 0 0;
     font-size: 24px;
