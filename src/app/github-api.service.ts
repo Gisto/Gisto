@@ -7,14 +7,10 @@ import * as API from 'superagent';
 export class GithubApiService {
 
   private baseUrl = 'https://api.github.com/gists';
-  private headers = new Headers();
-  private token = localStorage.getItem('api-token');
-  private _headers = {'Content-Type': 'application/json', 'Authorization': `token ${this.token}`};
+  private token: string = localStorage.getItem('api-token');
+  private _headers: object = {'Content-Type': 'application/json', 'Authorization': `token ${this.token}`};
 
-  constructor(private gistsStore: GistsStore, private uiStore: UiStore) {
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', `token ${this.token}`);
-  }
+  constructor(private gistsStore: GistsStore, private uiStore: UiStore) {}
 
   getGists(page = 1) {
     this.uiStore.loading = true;
@@ -51,8 +47,7 @@ export class GithubApiService {
       .set(this._headers)
       .end((error) => {
         this.uiStore.loading = false;
-        this.getStaredGists();
-        this.getGist(id);
+        this.gistsStore.star(id);
       });
   }
 
@@ -62,8 +57,7 @@ export class GithubApiService {
       .set(this._headers)
       .end((error) => {
         this.uiStore.loading = false;
-        this.getStaredGists();
-        this.getGist(id);
+        this.gistsStore.unStar(id);
       });
   }
 

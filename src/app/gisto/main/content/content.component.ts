@@ -29,6 +29,10 @@ export class ContentComponent {
     this.showMenu = this.showMenu !== i ? this.showMenu = i : this.showMenu = false;
   }
 
+  toggleEditOrSaveMode = () => {
+    this.uiStore.isEdit ? this.uiStore.unsetModeToEdit() : this.uiStore.setModeToEdit();
+  }
+
   toggleFileContent = (gistId, fileName) => {
     this.gistStore.expandCollapseFile(gistId, fileName);
   }

@@ -5,6 +5,11 @@ import { set, get, keyBy, merge, map, includes, isEmpty, omit } from 'lodash/fp'
 @Injectable()
 export class GistsStore {
 
+  @observable gists = {};
+  @observable staredGists = [];
+  @observable current = {};
+  @observable filter = '';
+
   processGist(gist) {
     gist.star = false;
     gist.star = this.staredGists.findIndex(id => gist.id === id) !== -1;
@@ -21,11 +26,6 @@ export class GistsStore {
 
     return gist;
   }
-
-  @observable gists = {};
-  @observable staredGists = [];
-  @observable current = {};
-  @observable filter = '';
 
   @computed get currentGist () {
     return this.current;
@@ -50,15 +50,27 @@ export class GistsStore {
     this.staredGists = stared.map(gist => gist.id);
   }
 
-  @action setCurrentGist(result) {
+  @action setCurrentGist(result, proccess = false) {
     this.gists[result.id] = merge(this.gists[result.id], result);
     const gist = this.gists[result.id];
-    this.processGist(gist);
+    if (proccess) {
+      this.processGist(gist);
+    }
     this.current = merge(this.gists[result.id], gist);
   }
 
   @action expandCollapseFile(gistId, file) {
     this.gists[gistId].files[file].collapsed = !this.gists[gistId].files[file].collapsed;
+  }
+
+  @action star(id) {
+    this.gists[id].star = true;
+    this.setCurrentGist(this.gists[id], false);
+  }
+
+  @action unStar(id) {
+    this.gists[id].star = false;
+    this.setCurrentGist(this.gists[id], false);
   }
 
   @action deleteGist(id) {

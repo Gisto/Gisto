@@ -12,7 +12,7 @@
     <gist-utils (click)="showMenuForFile(i)">
       <i class="fa {{ showMenu===i ? 'fa-close' : 'fa-ellipsis-v' }}" aria-hidden="true"></i>
       <ul *ngIf="showMenu===i">
-        <li (click)="toggleEditOrSaveMode()"class="color-success">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
+        <li (click)="toggleEditOrSaveMode()" class="color-success">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
         <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
         <li><a download="{{ file.filename }}" href="{{ file.file_raw }}">Download</a></li>
         <li>Copy to clipboard</li>
