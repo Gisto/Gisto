@@ -18,25 +18,6 @@ import { Router, ActivatedRoute } from '@angular/router';
     GithubApiService
   ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  constructor(
-    private githubApiService: GithubApiService,
-    private router: Router,
-    private settings: SettingsStore,
-    private route: ActivatedRoute) {}
-
-  login() {
-    if(!this.settings.isLoggedIn) {
-      this.router.navigate(['/login']);
-    } else {
-      this.router.navigate(['/main']);
-      this.githubApiService.getGists();
-      this.githubApiService.getStaredGists();
-    }
-  }
-
-  ngOnInit () {
-    this.login();
-  }
 }

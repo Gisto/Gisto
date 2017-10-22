@@ -21,7 +21,7 @@ export class SettingsStore {
   }
 
   @computed get isLoggedIn() {
-    return this.auth_token === localStorage.getItem('api-token') && this.auth_token !== '';
+    return Boolean(this.auth_token);
   }
 
   @action setAnimation(value) {
