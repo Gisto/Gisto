@@ -1,5 +1,15 @@
 <i class="fa fa-info-circle" aria-hidden="true"></i>
-<i class="fa fa-bell-o" aria-hidden="true"></i>
+
+<gist-utils (click)="showNotifications=!showNotifications">
+  <i class="fa fa-bell-o" aria-hidden="true"></i>
+  <ul *ngIf="showNotifications">
+    <li>This is notification.</li>
+    <li>sdfsdf</li>
+    <li>sdfsdf</li>
+    <li>sdfsdf</li>
+  </ul>
+</gist-utils>
+
 <a routerLink="settings">
     <i class="fa fa-cog {{ uiStore.loading && 'fa-spin' }}" aria-hidden="true"></i>
 </a>

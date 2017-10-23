@@ -152,7 +152,8 @@ gist-utils {
       }
     }
   }
-  user & {
+  user &,
+  app-settings & {
     i {
       color: #fff;
     }
