@@ -15,7 +15,7 @@ export class UserComponent {
   logOut() {
     console.log('%c LOG-out ', 'background: #555; color: tomato');
     this.settings.logOut();
-    this.router.navigate(['/main']);
+    this.router.navigate(['/login']);
   }
 
 }

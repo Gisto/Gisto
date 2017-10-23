@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { MobxAngularModule } from 'mobx-angular';
 import { GistSearchPipe } from './pipes/search.pipe';
@@ -17,12 +17,30 @@ import { UserComponent } from './gisto/header/user/user.component';
 import { AppSettingsComponent } from './gisto/header/app-settings/app-settings.component';
 import { SettingsComponent } from './gisto/main/settings/settings.component';
 import { LoginComponent } from './login/login.component';
+import { GithubAuthorizationService } from "./github-authorization.service";
+import { SettingsStore } from "./store/settings";
+import { AuthGuard } from "./auth-guard.guard";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'main', component: ContentComponent },
-    { path: 'gist/:id', component: ContentComponent },
-    { path: 'settings', component: SettingsComponent },
+    {
+      path: 'main',
+      component: GistoComponent,
+      data: { requiresLogin: true },
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'gist/:id',
+      component: GistoComponent,
+      data: { requiresLogin: true },
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'settings',
+      component: SettingsComponent,
+      data: { requiresLogin: true },
+      canActivate: [AuthGuard]
+    },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
@@ -53,7 +71,7 @@ const appRoutes: Routes = [
     MobxAngularModule,
     CovalentCodeEditorModule
   ],
-  providers: [],
+  providers: [GithubAuthorizationService, SettingsStore, AuthGuard],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ]
 })

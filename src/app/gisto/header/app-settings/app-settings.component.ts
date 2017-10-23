@@ -8,6 +8,6 @@ import { UiStore } from '../../../store/ui';
 })
 export class AppSettingsComponent {
 
-  constructor(private uiStore: UiStore) {}
+  constructor(public uiStore: UiStore) {}
 
 }

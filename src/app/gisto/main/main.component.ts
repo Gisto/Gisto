@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { UiStore } from '../../store/ui';
+import {UiStore} from "../../store/ui";
+import {GithubApiService} from "../../github-api.service";
+import {SettingsStore} from "../../store/settings";
 
 @Component({
   selector: 'main',
@@ -9,5 +11,16 @@ import { UiStore } from '../../store/ui';
 
 export class MainComponent {
 
-  constructor(private uiStore: UiStore) { }
+  constructor(
+    public uiStore: UiStore,
+    private githubApiService: GithubApiService,
+    private settings: SettingsStore,
+  ) {}
+
+  ngOnInit () {
+    if(this.settings.isLoggedIn) {
+      this.githubApiService.getGists();
+      this.githubApiService.getStaredGists();
+    }
+  }
 }
