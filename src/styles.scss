@@ -61,6 +61,10 @@ body {
   flex: 1;
   color: #555;
   position: fixed;
+
+  .content-wrapper {
+    margin: 0 20px;
+  }
 }
 
 *:focus {
