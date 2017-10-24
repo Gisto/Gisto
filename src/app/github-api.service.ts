@@ -1,20 +1,22 @@
-import {Injectable} from '@angular/core';
-import {GistsStore} from './store/gists';
-import {UiStore} from './store/ui';
+import { Injectable } from '@angular/core';
+import { GistsStore } from './store/gists';
+import { UiStore } from './store/ui';
+import { UserStore } from './store/user';
 import * as API from 'superagent';
 
 @Injectable()
 export class GithubApiService {
 
-  private baseUrl = 'https://api.github.com/gists';
   private token: string = localStorage.getItem('api-token');
-  private _headers: object = {'Content-Type': 'application/json', 'Authorization': `token ${this.token}`};
+  private _headers: object = { 'Content-Type': 'application/json', 'Authorization': `token ${this.token}` };
 
-  constructor(private gistsStore: GistsStore, private uiStore: UiStore) {}
+  constructor(private gistsStore: GistsStore, private uiStore: UiStore, private userStore: UserStore) { }
 
-  getGists(page = 1) {
+  baseUrl = (path = 'gists') => `https://api.github.com/${path}`;
+
+  getGists(page: number = 1) {
     this.uiStore.loading = true;
-    API.get(`${this.baseUrl}?page=${page}`)
+    API.get(`${this.baseUrl()}?page=${page}`)
       .set(this._headers)
       .end((error, result) => {
         if (result.headers.link.match(/next/ig)) {
@@ -26,14 +28,14 @@ export class GithubApiService {
   }
 
   getStaredGists() {
-    API.get(`${this.baseUrl}/starred`)
+    API.get(`${this.baseUrl()}/starred`)
       .set(this._headers)
       .end((error, result) => this.gistsStore.setStarsOnGists(result.body));
   }
 
-  getGist(id) {
+  getGist(id: string) {
     this.uiStore.loading = true;
-    API.get(`${this.baseUrl}/${id}`)
+    API.get(`${this.baseUrl()}/${id}`)
       .set(this._headers)
       .end((error, result) => {
         this.uiStore.loading = false;
@@ -41,9 +43,9 @@ export class GithubApiService {
       });
   }
 
-  starGist(id) {
+  starGist(id: string) {
     this.uiStore.loading = true;
-    API.put(`${this.baseUrl}/${id}/star`)
+    API.put(`${this.baseUrl()}/${id}/star`)
       .set(this._headers)
       .end((error) => {
         this.uiStore.loading = false;
@@ -51,9 +53,9 @@ export class GithubApiService {
       });
   }
 
-  unStarGist(id) {
+  unStarGist(id: string) {
     this.uiStore.loading = true;
-    API.del(`${this.baseUrl}/${id}/star`)
+    API.del(`${this.baseUrl()}/${id}/star`)
       .set(this._headers)
       .end((error) => {
         this.uiStore.loading = false;
@@ -61,13 +63,23 @@ export class GithubApiService {
       });
   }
 
-  deleteGist(id) {
+  deleteGist(id: string) {
     this.uiStore.loading = true;
-    API.del(`${this.baseUrl}/${id}`)
+    API.del(`${this.baseUrl()}/${id}`)
       .set(this._headers)
       .end((error) => {
         this.uiStore.loading = false;
         this.gistsStore.deleteGist(id);
+      });
+  }
+
+  getUser() {
+    this.uiStore.loading = true;
+    API.get(this.baseUrl('user'))
+      .set(this._headers)
+      .end((error, result) => {
+        this.uiStore.loading = false;
+        this.userStore.setUser(result.body);
       });
   }
 
