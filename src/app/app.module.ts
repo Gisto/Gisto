@@ -58,8 +58,7 @@ const appRoutes: Routes = [
     SettingsComponent,
 
     GistSearchPipe,
-
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot(

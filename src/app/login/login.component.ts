@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   navigateToMainScreen() {
+    this.githubApiService.getUser();
     this.githubApiService.getGists();
     this.githubApiService.getStaredGists();
     this.router.navigate(['/main']);
