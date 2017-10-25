@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { GithubAuthorizationService } from "./github-authorization.service";
 import { SettingsStore } from "./store/settings";
 import { AuthGuard } from "./auth-guard.guard";
+import { GistUtilsComponent } from './gisto/common/gist-utils/gist-utils.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
 
     GistSearchPipe,
     LoginComponent,
+    GistUtilsComponent,
   ],
   imports: [
     RouterModule.forRoot(

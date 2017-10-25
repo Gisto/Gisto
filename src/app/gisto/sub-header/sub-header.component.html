@@ -6,35 +6,33 @@
              #searchBox (keyup)="updateFilter(searchBox.value)" />
       <i class="fa fa-angle-down" aria-hidden="true"></i>
   </search>
-  <button>
-      <i class="fa fa-plus" aria-hidden="true"></i> New gist
-  </button>
+  <button><i class="fa fa-plus" aria-hidden="true"></i> New gist</button>
 </sub-controlls>
+
 <gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">
   <strong *ngIf="uiStore.editMode">Edit: </strong> {{ gistStore.current.description }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
 </gist-title>
-<gist-utils (click)="toggleEditOrSaveMode()">
-  <i class="fa {{ uiStore.isEdit ? 'fa-save' : 'fa-pencil' }} fa-pencil color-success"></i>
-</gist-utils>
-<gist-utils>
-  <i class="fa {{ gistStore.current.public ? 'fa-unlock' : 'fa-lock'}}" aria-hidden="true"></i>
-</gist-utils>
-<gist-utils (click)="delete(gistStore.current.id)">
-  <i class="fa fa-trash-o color-danger"></i>
-</gist-utils>
+
+<gist-utils icon="{{ uiStore.isEdit ? 'fa-save' : 'fa-pencil' }}" (click)="toggleEditOrSaveMode()" cssClass="color-success"></gist-utils>
+
+<gist-utils icon="{{ gistStore.current.public ? 'fa-unlock' : 'fa-lock'}}"></gist-utils>
+
+<gist-utils (click)="delete(gistStore.current.id)" icon="fa-trash-o" cssClass="color-danger"></gist-utils>
+
 <gist-utils>
   <i class="fa fa-comment-o"></i> {{ gistStore.current.comments || 0 }}
 </gist-utils>
-<gist-utils (click)="gistStore.current.star ? unStar(gistStore.current.id) : star(gistStore.current.id)">
-  <i class="fa {{ gistStore.current.star ? 'fa-star' : 'fa-star-o'}}"></i>
+
+<gist-utils icon="{{ gistStore.current.star ? 'fa-star' : 'fa-star-o'}}" 
+  (click)="gistStore.current.star ? unStar(gistStore.current.id) : star(gistStore.current.id)">
 </gist-utils>
-<gist-utils (click)="toggleMenu()">
-  <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+
+<gist-utils (click)="toggleMenu()" cssClass="fa-ellipsis-v">
   <ul *ngIf="showMenu">
-      <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
-      <li>Open on web</li>
-      <li>Download</li>
-      <li>Copy to clipboard</li>
-      <li class="color-danger">Delete</li>
+    <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
+    <li>Open on web</li>
+    <li>Download</li>
+    <li>Copy to clipboard</li>
+    <li class="color-danger">Delete</li>
   </ul>
 </gist-utils>
