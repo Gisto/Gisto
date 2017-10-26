@@ -5,10 +5,4 @@ import { Component, ViewChildren } from '@angular/core';
   templateUrl: './gist-utils.component.html',
   inputs: ['icon', 'cssClass']
 })
-export class GistUtilsComponent {
-
-  constructor() {}
-
-  @ViewChildren('ul') ul: Node
-
-}
+export class GistUtilsComponent { }
