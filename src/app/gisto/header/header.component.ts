@@ -10,8 +10,4 @@ export class HeaderComponent {
 
   constructor(private uiStore: UiStore) { }
 
-  toggleSideBar() {
-    this.uiStore.toggleSideBar();
-  }
-
 }

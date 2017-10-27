@@ -7,11 +7,11 @@ import { SettingsStore } from '../../../store/settings';
 import { values } from 'lodash/fp';
 
 @Component({
-  selector: 'content',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss']
+  selector: 'gist',
+  templateUrl: './gist.component.html',
+  styleUrls: ['./gist.component.scss']
 })
-export class ContentComponent {
+export class GistComponent {
 
   values: any = values;
 

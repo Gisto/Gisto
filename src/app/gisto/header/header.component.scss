@@ -1,0 +1,10 @@
+@import "../../../assets/colors.scss";
+
+:host {
+  background: $header-bg;
+  line-height: 50px;
+  color: $header-color;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

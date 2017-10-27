@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  margin: 0 30px 0 0;
+  flex-direction: row;
+  align-items: baseline;
+  i {
+    margin: 0 15px;
+    font-size: 24px;
+  }
+}

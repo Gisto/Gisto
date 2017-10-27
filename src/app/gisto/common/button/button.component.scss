@@ -1,4 +1,6 @@
-button {
+@import "../../../../assets/colors";
+
+:host {
   background: $header-bg;
   border: 1px solid $header-bg;
   color: #fff;

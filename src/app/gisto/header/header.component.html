@@ -1,8 +1,4 @@
-<logo *ngIf="uiStore.sideBar">
-    <a routerLink="/main" routerLinkActive="active">&lt;/Gisto&gt;</a>
-</logo>
-<header-main>
-        <a (click)="toggleSideBar()" class="toggle-side-pannels"><i class="fa fa-bars" aria-hidden="true"></i></a>
-</header-main>
+<logo *ngIf="uiStore.sideBar"></logo>
+<header-main></header-main>
 <app-settings></app-settings>
 <user></user>

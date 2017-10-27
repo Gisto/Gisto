@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import { SettingsStore } from '../store/settings';
-import {GithubAuthorizationService} from "../github-authorization.service";
-import {GithubApiService} from "../github-api.service";
+import { GithubAuthorizationService } from '../github-authorization.service';
+import { GithubApiService } from '../github-api.service';
 
 @Component({
   selector: 'login',

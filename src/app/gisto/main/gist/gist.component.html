@@ -1,4 +1,4 @@
-<gist *ngFor="let file of values(gistStore.currentGist.files); index as i">
+<div *ngFor="let file of values(gistStore.currentGist.files); index as i">
   <gist-header>
     <gist-file-icon>
       <span class="fa-stack">
@@ -30,6 +30,5 @@
       language="{{ file.language.toLowerCase() || 'text' }}"
       [value]="file.content"
       [editorOptions]="{ readOnly: uiStore.editMode, scrollBeyondLastLine: false }"></td-code-editor>
-
   </gist-body>
-</gist>
+</div>

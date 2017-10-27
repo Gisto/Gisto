@@ -1,4 +1,7 @@
-gist {
+@import "../../../../assets/colors";
+
+:host {
+  overflow: auto;
   background: #fff;
   margin: 20px;
   font-weight: 100;
@@ -7,6 +10,7 @@ gist {
   flex-direction: column;
   border-radius: 3px;
   box-shadow: 0 0 10px $border-color;
+  flex: 1;
 
   gist-header {
     display: flex;

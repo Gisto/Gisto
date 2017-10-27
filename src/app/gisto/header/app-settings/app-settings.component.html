@@ -9,6 +9,4 @@
   </ul>
 </gist-utils>
 
-<a routerLink="/settings">
-    <i class="fa fa-cog {{ uiStore.loading && 'fa-spin' }}" aria-hidden="true"></i>
-</a>
+<gist-utils routerLink="/settings" icon="fa-cog" cssClass="{{ uiStore.loading && 'fa-spin' }}"></gist-utils>

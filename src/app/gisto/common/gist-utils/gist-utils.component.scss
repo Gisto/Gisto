@@ -1,0 +1,54 @@
+@import "../../../../assets/colors";
+
+:host {
+  width: 50px;
+  text-align: center;
+  padding: 0;
+  border-left: 1px solid rgba($header-bg, 0.2);
+  position: relative;
+  cursor: pointer;
+  color: $header-bg;
+  &:hover {
+    background: rgba($border-color-light, .2);
+  }
+  &:last-child {
+    margin: 0 -20px 0 0;
+  }
+  ::ng-deep ul {
+    position: absolute;
+    background: #fff;
+    right: -1px;
+    top: 51px;
+    border: 1px solid $border-color-light;
+    border-top: 0;
+    line-height: 21px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 5px 10px $border-color-light;
+    z-index: 4;
+    li {
+      border-bottom: 1px dotted $border-color-light;
+      margin: 0;
+      padding: 5px 20px;
+      white-space: nowrap;
+      text-align: left;
+      &:hover {
+        background: rgba($border-color-light, .5);
+        cursor: pointer;
+      }
+    }
+  }
+  user &,
+  app-settings & {
+    i {
+      color: #fff;
+    }
+    ul {
+      top: 37px;
+      a, i {
+        color: inherit;
+      }
+    }
+  }
+}
