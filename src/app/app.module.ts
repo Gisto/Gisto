@@ -2,8 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { HttpModule } from '@angular/http';
+
 import { MobxAngularModule } from 'mobx-angular';
+import { MarkdownModule } from 'angular2-markdown';
+
 import { GistSearchPipe } from './pipes/search.pipe';
+import { CleanTagsPipe } from './pipes/cleanTags.pipe';
+
 import { CovalentCodeEditorModule } from '@covalent/code-editor';
 
 import { AppComponent } from './app.component';
@@ -62,6 +67,8 @@ const appRoutes: Routes = [
     SettingsComponent,
 
     GistSearchPipe,
+    CleanTagsPipe,
+
     LoginComponent,
     GistUtilsComponent,
     ButtonComponent,
@@ -76,7 +83,8 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     MobxAngularModule,
-    CovalentCodeEditorModule
+    CovalentCodeEditorModule,
+    MarkdownModule.forRoot()
   ],
   providers: [GithubAuthorizationService, SettingsStore, AuthGuard],
   bootstrap: [AppComponent],

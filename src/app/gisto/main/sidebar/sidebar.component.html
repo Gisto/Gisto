@@ -8,7 +8,7 @@
     <star *ngIf="gist.star"><i class="fa fa-star" aria-hidden="true"></i></star>
     <gist-name>
       <a>
-        {{ gist.description }}
+        {{ gist.description | cleanTags }}
       </a>
     </gist-name>
   </gist-item>

@@ -2,15 +2,18 @@
 
 :host {
   overflow: auto;
-  background: #fff;
-  margin: 20px;
-  font-weight: 100;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  border-radius: 3px;
-  box-shadow: 0 0 10px $border-color;
-  flex: 1;
+  
+  > div {
+    background: #fff;
+    margin: 20px;
+    font-weight: 100;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+    box-shadow: 0 0 10px $border-color;
+    flex: 1;
+  }
 
   gist-header {
     display: flex;
@@ -43,6 +46,12 @@
     > .editor {
       width: calc(100vw - 342px);
       height: calc(100vh - 210px);
+    }
+
+    markdown {
+      margin: 0 20px;
+      width: calc(100vw - 380px);
+      display: block;
     }
 
   }

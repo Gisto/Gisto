@@ -1,16 +1,23 @@
-<div *ngFor="let file of values(gistStore.currentGist.files); index as i">
+<div *ngFor="let file of values(gistStore.currentGist.files); index as fileIndex">
   <gist-header>
     <gist-file-icon>
       <span class="fa-stack">
         <i class="fa fa-file-o"></i>
-        <strong style="font-size: 8px;" class="fa-stack-1x fa-stack-text file-text">{{ file.filename.split('.')[1] }}</strong>
+        <strong style="font-size: 8px;" class="fa-stack-1x fa-stack-text file-text">
+          {{ file.filename.split('.')[1] }}
+        </strong>
       </span>
     </gist-file-icon>
-    <gist-file-name>
-      {{ file.filename }}
-    </gist-file-name>
-    <gist-utils icon="{{ showMenu===i ? 'fa-close' : 'fa-ellipsis-v' }}" (click)="showMenuForFile(i)">
-      <ul *ngIf="showMenu===i">
+
+    <gist-file-name>{{ file.filename }}</gist-file-name>
+
+    <gist-utils
+      *ngIf="file.language.toLowerCase() === 'markdown'"
+      icon="fa {{ showMarkDown === fileIndex ? 'fa-eye' : 'fa-eye-slash' }}"
+      (click)="toggleMarkDown(fileIndex)">
+    </gist-utils>
+    <gist-utils icon="{{ showMenu === fileIndex ? 'fa-close' : 'fa-ellipsis-v' }}" (click)="showMenuForFile(fileIndex)">
+      <ul *ngIf="showMenu === fileIndex">
         <li (click)="toggleEditOrSaveMode()" class="color-success">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
         <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
         <li><a download="{{ file.filename }}" href="{{ file.file_raw }}">Download</a></li>
@@ -18,11 +25,14 @@
         <li class="color-danger">Delete</li>
       </ul>
     </gist-utils>
-    <gist-utils icon="{{ gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed ? 'fa-angle-down' : 'fa-angle-up' }}" 
+    <gist-utils icon="{{ gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed ? 'fa-angle-down' : 'fa-angle-up' }}"
                 (click)="toggleFileContent(gistStore.currentGist.id, file.filename)">
     </gist-utils>
   </gist-header>
   <gist-body *ngIf="!gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed">
+    <markdown *ngIf="file.language.toLowerCase() === 'markdown' && showMarkDown === fileIndex">
+      {{ file.content }}
+    </markdown>
     <td-code-editor
       class="editor"
       theme="{{ settingsStore.theme }}"

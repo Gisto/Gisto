@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { UiStore } from "../../store/ui";
 import { GithubApiService } from "../../github-api.service";
+import { UiStore } from "../../store/ui";
 import { SettingsStore } from "../../store/settings";
+import { GistsStore } from "../../store/gists";
 
 @Component({
   selector: 'main',
@@ -14,7 +15,8 @@ export class MainComponent {
   constructor(
     public uiStore: UiStore,
     private githubApiService: GithubApiService,
-    private settingsStore: SettingsStore
+    private settingsStore: SettingsStore,
+    private gistsStore: GistsStore
   ) { }
 
   ngOnInit() {

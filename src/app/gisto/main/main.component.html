@@ -1,6 +1,6 @@
 <sidebar *ngIf="uiStore.sideBar"></sidebar>
 <content-wrapper>
-  <gist></gist>
+  <gist *ngIf="gistsStore.current.id"></gist>
 <!--<comments>-->
   <!--<i class="fa fa-comment-o" aria-hidden="true"></i> 7-->
 <!--</comments>-->

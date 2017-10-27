@@ -10,7 +10,7 @@
 </sub-controlls>
 
 <gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">
-  <strong *ngIf="uiStore.editMode">Edit: </strong> {{ gistStore.current.description }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
+  <strong *ngIf="uiStore.editMode">Edit: </strong> {{ gistStore.current.description | cleanTags }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
 </gist-title>
 
 <gist-utils icon="{{ uiStore.isEdit ? 'fa-save' : 'fa-pencil' }}" (click)="toggleEditOrSaveMode()" cssClass="color-success"></gist-utils>
@@ -23,7 +23,7 @@
   <i class="fa fa-comment-o"></i> {{ gistStore.current.comments || 0 }}
 </gist-utils>
 
-<gist-utils icon="{{ gistStore.current.star ? 'fa-star' : 'fa-star-o'}}" 
+<gist-utils icon="{{ gistStore.current.star ? 'fa-star' : 'fa-star-o'}}"
   (click)="gistStore.current.star ? unStar(gistStore.current.id) : star(gistStore.current.id)">
 </gist-utils>
 

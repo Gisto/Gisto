@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { GithubApiService } from '../../../github-api.service';
 import { GistsStore } from '../../../store/gists';
 import { UiStore } from '../../../store/ui';
@@ -15,26 +14,28 @@ export class GistComponent {
 
   values: any = values;
 
-  private showMenu = false;
-  private showFileContent = true;
+  public showMenu: number = null;
+  public showMarkDown: number = null;
 
-  constructor(private githubApiService: GithubApiService,
-              private route: ActivatedRoute,
-              private gistStore: GistsStore,
-              private uiStore: UiStore,
-              private settingsStore: SettingsStore) {
+  constructor(public gistStore: GistsStore,
+              public uiStore: UiStore,
+              public settingsStore: SettingsStore) {
   }
 
-  showMenuForFile = (i) => {
-    this.showMenu = this.showMenu !== i ? this.showMenu = i : this.showMenu = false;
+  showMenuForFile = (fileIndex: number) => {
+    this.showMenu = this.showMenu !== fileIndex ? this.showMenu = fileIndex : this.showMenu = null;
   }
 
   toggleEditOrSaveMode = () => {
     this.uiStore.isEdit ? this.uiStore.unsetModeToEdit() : this.uiStore.setModeToEdit();
   }
 
-  toggleFileContent = (gistId, fileName) => {
+  toggleFileContent = (gistId: string, fileName: string) => {
     this.gistStore.expandCollapseFile(gistId, fileName);
+  }
+
+  toggleMarkDown = (fileIndex: number) => {
+    this.showMarkDown = this.showMarkDown !== fileIndex ? this.showMarkDown = fileIndex : this.showMarkDown = null;
   }
 
 }

@@ -19,7 +19,6 @@ export class GistsStore {
       const regex = /#(\d*[A-Za-z_0-9]+\d*)/g;
       const description = gist.description;
       gist.tags = description.match(regex);
-      gist.description = gist.tags ? gist.description.split(gist.tags[0])[0] : gist.description;
     } else {
       gist.description = 'untitled';
     }
