@@ -10,14 +10,27 @@
 </sub-controlls>
 
 <gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">
-  <strong *ngIf="uiStore.editMode">Edit: </strong> {{ gistStore.current.description | cleanTags }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
+
+  <div *ngIf="uiStore.editMode; then editDescription else showDescription"></div>
+  <ng-template #editDescription>
+    <strong *ngIf="uiStore.editMode">Edit: </strong> <input #description (keyup)="changeLocalDescription(description.value)" placeholder="untitled" [value]="gistStore.current.description" />
+  </ng-template>
+  <ng-template #showDescription>
+    {{ gistStore.current.description | cleanTags }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
+  </ng-template>
+
 </gist-title>
 
-<gist-utils icon="{{ uiStore.isEdit ? 'fa-save' : 'fa-pencil' }}" (click)="toggleEditOrSaveMode()" cssClass="color-success"></gist-utils>
+<gist-utils *ngIf="uiStore.isEdit" icon="fa-save" (click)="save(gistStore.current.id)" cssClass="color-success"></gist-utils>
+
+<gist-utils
+  icon="{{ uiStore.isEdit ? 'fa-ban' : 'fa-pencil' }}"
+  (click)="toggleEditOrSaveMode()"
+  cssClass="{{ uiStore.isEdit ? 'color-danger' : 'color-success'}}"></gist-utils>
 
 <gist-utils icon="{{ gistStore.current.public ? 'fa-unlock' : 'fa-lock'}}"></gist-utils>
 
-<gist-utils (click)="delete(gistStore.current.id)" icon="fa-trash-o" cssClass="color-danger"></gist-utils>
+<gist-utils (click)="deleteGist(gistStore.current.id)" icon="fa-trash-o" cssClass="color-danger"></gist-utils>
 
 <gist-utils>
   <i class="fa fa-comment-o"></i> {{ gistStore.current.comments || 0 }}
@@ -30,7 +43,7 @@
 <gist-utils (click)="toggleMenu()" cssClass="fa-ellipsis-v">
   <ul *ngIf="showMenu">
     <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
-    <li>Open on web</li>
+    <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}">Open on web</a></li>
     <li>Download</li>
     <li>Copy to clipboard</li>
     <li class="color-danger">Delete</li>

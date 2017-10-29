@@ -9,7 +9,15 @@
       </span>
     </gist-file-icon>
 
-    <gist-file-name>{{ file.filename }}</gist-file-name>
+    <gist-file-name>
+      <div *ngIf="uiStore.editMode; then editFileName else showFileName"></div>
+      <ng-template #editFileName>
+        <strong *ngIf="uiStore.editMode"></strong> <input #filenameInput (keyup)="changeFile(file.filename, filenameInput.value)" placeholder="untitled" [value]="gistStore.currentGist.files[file.filename].filename" />
+      </ng-template>
+      <ng-template #showFileName>
+        {{ file.filename }}
+      </ng-template>
+    </gist-file-name>
 
     <gist-utils
       *ngIf="file.language.toLowerCase() === 'markdown'"
@@ -18,7 +26,6 @@
     </gist-utils>
     <gist-utils icon="{{ showMenu === fileIndex ? 'fa-close' : 'fa-ellipsis-v' }}" (click)="showMenuForFile(fileIndex)">
       <ul *ngIf="showMenu === fileIndex">
-        <li (click)="toggleEditOrSaveMode()" class="color-success">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
         <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
         <li><a download="{{ file.filename }}" href="{{ file.file_raw }}">Download</a></li>
         <li>Copy to clipboard</li>
@@ -35,8 +42,10 @@
     </markdown>
     <td-code-editor
       class="editor"
+      #fileContent
       theme="{{ settingsStore.theme }}"
-      flex
+      (keyup)="changeFileContent(file.filename, fileContent.value)"
+      automaticLayout
       language="{{ file.language.toLowerCase() || 'text' }}"
       [value]="file.content"
       [editorOptions]="{ readOnly: uiStore.editMode, scrollBeyondLastLine: false }"></td-code-editor>

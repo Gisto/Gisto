@@ -39,7 +39,7 @@ export class GithubApiService {
       .set(this._headers)
       .end((error, result) => {
         this.uiStore.loading = false;
-        this.gistsStore.setCurrentGist(result.body);
+        this.gistsStore.setCurrentGist(result.body, true);
       });
   }
 
@@ -70,6 +70,17 @@ export class GithubApiService {
       .end((error) => {
         this.uiStore.loading = false;
         this.gistsStore.deleteGist(id);
+      });
+  }
+
+  updateGist(id: string) {
+    this.uiStore.loading = true;
+    API.patch(`${this.baseUrl()}/${id}`)
+      .set(this._headers)
+      .send(this.gistsStore.localEdit)
+      .end((error, result) => {
+        this.uiStore.loading = false;
+        this.gistsStore.setCurrentGist(result.body, true);
       });
   }
 

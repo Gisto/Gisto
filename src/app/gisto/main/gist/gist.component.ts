@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GithubApiService } from '../../../github-api.service';
 import { GistsStore } from '../../../store/gists';
 import { UiStore } from '../../../store/ui';
 import { SettingsStore } from '../../../store/settings';
@@ -17,17 +16,14 @@ export class GistComponent {
   public showMenu: number = null;
   public showMarkDown: number = null;
 
-  constructor(public gistStore: GistsStore,
-              public uiStore: UiStore,
-              public settingsStore: SettingsStore) {
-  }
+  constructor(
+    public gistStore: GistsStore,
+    public uiStore: UiStore,
+    public settingsStore: SettingsStore
+  ) {}
 
   showMenuForFile = (fileIndex: number) => {
     this.showMenu = this.showMenu !== fileIndex ? this.showMenu = fileIndex : this.showMenu = null;
-  }
-
-  toggleEditOrSaveMode = () => {
-    this.uiStore.isEdit ? this.uiStore.unsetModeToEdit() : this.uiStore.setModeToEdit();
   }
 
   toggleFileContent = (gistId: string, fileName: string) => {
@@ -36,6 +32,15 @@ export class GistComponent {
 
   toggleMarkDown = (fileIndex: number) => {
     this.showMarkDown = this.showMarkDown !== fileIndex ? this.showMarkDown = fileIndex : this.showMarkDown = null;
+  }
+
+  changeFile(filename, value) {
+    this.gistStore.changeLocalDataFile(filename, value);
+  }
+
+  changeFileContent(filename, value) {
+    console.log('%c LOG ', 'background: #555; color: tomato', filename, value);
+    this.gistStore.changeLocalDataContent(filename, value);
   }
 
 }

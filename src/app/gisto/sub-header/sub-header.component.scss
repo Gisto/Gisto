@@ -55,6 +55,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
+    input {
+      width: 100%;
+      margin: 5px;
+      padding: 5px;
+      border: none;
+      border-bottom: 1px solid #4083a7;
+      color: #4083a7;
+    }
 
     &:after {
       content: "";

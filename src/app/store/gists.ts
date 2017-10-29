@@ -7,7 +7,8 @@ export class GistsStore {
 
   @observable gists = {};
   @observable staredGists = [];
-  @observable current = {};
+  @observable current = <any>{};
+  @observable localEdit = <any>{};
   @observable filter = '';
 
   processGist(gist) {
@@ -38,6 +39,41 @@ export class GistsStore {
     this.filter = filter;
   }
 
+
+  @action changeLocalDataDescription(description) {
+    this.setLocalData(this.currentGist.id);
+    this.localEdit.description = description;
+  }
+
+  @action changeLocalDataFile(filename, value) {
+    this.setLocalData(this.currentGist.id);
+    this.localEdit.files[filename] = {
+      filename: value,
+      content: this.localEdit.files[filename].content
+    };
+  }
+
+  @action changeLocalDataContent(filename, value) {
+    this.setLocalData(this.currentGist.id);
+    this.localEdit.files[filename] = {
+      filename: this.localEdit.files[filename].filename,
+      content: value
+    };
+  }
+
+  @action setLocalData(id) {
+    if (Object.keys(this.localEdit).length === 0) {
+      this.localEdit = {
+        description: this.gists[id].description,
+        files: this.gists[id].files
+      };
+    }
+  }
+
+  @action clearLocalData() {
+    this.localEdit = {};
+  }
+
   @action setGists(gists) {
     gists.map(gist => {
       this.processGist(gist);
@@ -55,7 +91,7 @@ export class GistsStore {
     if (proccess) {
       this.processGist(gist);
     }
-    this.current = merge(this.gists[result.id], gist);
+    this.current = gist;
   }
 
   @action expandCollapseFile(gistId, file) {

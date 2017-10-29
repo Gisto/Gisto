@@ -8,6 +8,7 @@ import { MarkdownModule } from 'angular2-markdown';
 
 import { GistSearchPipe } from './pipes/search.pipe';
 import { CleanTagsPipe } from './pipes/cleanTags.pipe';
+import { SortByPipe } from './pipes/sortBy.pipe';
 
 import { CovalentCodeEditorModule } from '@covalent/code-editor';
 
@@ -68,6 +69,7 @@ const appRoutes: Routes = [
 
     GistSearchPipe,
     CleanTagsPipe,
+    SortByPipe,
 
     LoginComponent,
     GistUtilsComponent,

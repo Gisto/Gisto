@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { GistsStore } from '../../store/gists';
-import { UiStore } from '../../store/ui';
-import { size } from 'lodash/fp';
-import { GithubApiService } from '../../github-api.service';
+import {Component} from '@angular/core';
+import {GistsStore} from '../../store/gists';
+import {UiStore} from '../../store/ui';
+import {size} from 'lodash/fp';
+import {GithubApiService} from '../../github-api.service';
+import {set} from 'lodash/fp';
 
 @Component({
   selector: 'sub-header',
@@ -15,7 +16,11 @@ export class SubHeaderComponent {
 
   private showMenu = false;
 
-  constructor(private gistStore: GistsStore, private uiStore: UiStore, private githubApiService: GithubApiService) { }
+  constructor(
+    private gistStore: GistsStore,
+    private uiStore: UiStore,
+    private githubApiService: GithubApiService
+  ) {}
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
@@ -26,7 +31,12 @@ export class SubHeaderComponent {
   }
 
   toggleEditOrSaveMode() {
-    this.uiStore.isEdit ? this.uiStore.unsetModeToEdit() : this.uiStore.setModeToEdit();
+    if (this.uiStore.isEdit) {
+      this.uiStore.unsetModeToEdit();
+      this.gistStore.clearLocalData();
+    } else {
+      this.uiStore.setModeToEdit();
+    }
   }
 
   star(id) {
@@ -37,8 +47,17 @@ export class SubHeaderComponent {
     this.githubApiService.unStarGist(id);
   }
 
-  delete(id) {
+  deleteGist(id) {
     this.githubApiService.deleteGist(id);
+  }
+
+  changeLocalDescription(description) {
+    this.gistStore.changeLocalDataDescription(description);
+  }
+
+  save(id) {
+    this.githubApiService.updateGist(id);
+    this.toggleEditOrSaveMode();
   }
 
 }
