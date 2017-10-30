@@ -12,7 +12,7 @@ import { values } from 'lodash/fp';
 
 export class SidebarComponent {
 
-  values: any = values;
+  values: void = values;
 
   constructor(private gistStore: GistsStore, private githubApiService: GithubApiService) {}
 

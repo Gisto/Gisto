@@ -23,7 +23,7 @@
       <ul *ngIf="showMenu === fileIndex">
         <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
         <li><a download="{{ file.filename }}" href="{{ file.file_raw }}">Download</a></li>
-        <li (click)="copyToClipboard(file.content)">Copy to clipboard</li>
+        <li CopyToClipBoard string="{{ file.content }}">Copy file content to clipboard</li>
         <li class="color-danger">Delete</li>
       </ul>
     </gist-utils>

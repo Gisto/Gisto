@@ -30,6 +30,7 @@ import { GistUtilsComponent } from './gisto/common/gist-utils/gist-utils.compone
 import { ButtonComponent } from './gisto/common/button/button.component';
 import { LogoComponent } from './gisto/header/logo/logo.component';
 import { HeaderMainComponent } from './gisto/header/header-main/header-main.component';
+import { CopyToClipBoardDirective } from './directives/copy-to-clip-board.directive';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -66,16 +67,17 @@ const appRoutes: Routes = [
     UserComponent,
     AppSettingsComponent,
     SettingsComponent,
-
-    GistSearchPipe,
-    CleanTagsPipe,
-    SortByPipe,
-
     LoginComponent,
     GistUtilsComponent,
     ButtonComponent,
     LogoComponent,
     HeaderMainComponent,
+
+    CopyToClipBoardDirective,
+
+    GistSearchPipe,
+    CleanTagsPipe,
+    SortByPipe
   ],
   imports: [
     RouterModule.forRoot(
