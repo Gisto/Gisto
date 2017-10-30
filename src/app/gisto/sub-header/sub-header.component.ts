@@ -16,6 +16,8 @@ export class SubHeaderComponent {
 
   private showMenu = false;
 
+  public localDescription: string;
+  
   constructor(
     private gistStore: GistsStore,
     private uiStore: UiStore,

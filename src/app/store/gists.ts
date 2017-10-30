@@ -49,6 +49,7 @@ export class GistsStore {
     this.setLocalData(this.currentGist.id);
     this.localEdit.files[filename] = {
       filename: value,
+      language: this.localEdit.files[filename].language,
       content: this.localEdit.files[filename].content
     };
   }
@@ -57,6 +58,7 @@ export class GistsStore {
     this.setLocalData(this.currentGist.id);
     this.localEdit.files[filename] = {
       filename: this.localEdit.files[filename].filename,
+      language: this.localEdit.files[filename].language,
       content: value
     };
   }

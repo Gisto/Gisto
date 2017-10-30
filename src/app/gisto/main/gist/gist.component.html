@@ -10,17 +10,12 @@
     </gist-file-icon>
 
     <gist-file-name>
-      <div *ngIf="uiStore.editMode; then editFileName else showFileName"></div>
-      <ng-template #editFileName>
-        <strong *ngIf="uiStore.editMode"></strong> <input #filenameInput (keyup)="changeFile(file.filename, filenameInput.value)" placeholder="untitled" [value]="gistStore.currentGist.files[file.filename].filename" />
-      </ng-template>
-      <ng-template #showFileName>
-        {{ file.filename }}
-      </ng-template>
+        <input *ngIf="uiStore.editMode" #filenameInput (keyup)="changeFile(file.filename, filenameInput.value)" placeholder="untitled" [value]="file.filename" />
+        <span *ngIf="!uiStore.editMode">{{ file.filename }}</span>
     </gist-file-name>
 
     <gist-utils
-      *ngIf="file.language.toLowerCase() === 'markdown'"
+      *ngIf="!uiStore.editMode && file.language.toLowerCase() === 'markdown'"
       icon="fa {{ showMarkDown === fileIndex ? 'fa-eye' : 'fa-eye-slash' }}"
       (click)="toggleMarkDown(fileIndex)">
     </gist-utils>
@@ -28,7 +23,7 @@
       <ul *ngIf="showMenu === fileIndex">
         <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
         <li><a download="{{ file.filename }}" href="{{ file.file_raw }}">Download</a></li>
-        <li>Copy to clipboard</li>
+        <li (click)="copyToClipboard(file.content)">Copy to clipboard</li>
         <li class="color-danger">Delete</li>
       </ul>
     </gist-utils>
@@ -36,8 +31,8 @@
                 (click)="toggleFileContent(gistStore.currentGist.id, file.filename)">
     </gist-utils>
   </gist-header>
-  <gist-body *ngIf="!gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed">
-    <markdown *ngIf="file.language.toLowerCase() === 'markdown' && showMarkDown === fileIndex">
+  <gist-body *ngIf="uiStore.editMode || !gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed">
+    <markdown *ngIf="!uiStore.editMode && file.language.toLowerCase() === 'markdown' && showMarkDown === fileIndex && !uiStore.editMode">
       {{ file.content }}
     </markdown>
     <td-code-editor

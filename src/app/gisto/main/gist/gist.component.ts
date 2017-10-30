@@ -39,8 +39,11 @@ export class GistComponent {
   }
 
   changeFileContent(filename, value) {
-    console.log('%c LOG ', 'background: #555; color: tomato', filename, value);
     this.gistStore.changeLocalDataContent(filename, value);
+  }
+
+  copyToClipboard(text) {
+    alert(text);
   }
 
 }
