@@ -45,8 +45,8 @@
     <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
     <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}">Open on web</a></li>
     <li>Download</li>
-    <li CopyToClipBoard string="{{ gistStore.currentGist.id }}">Copy Gist ID to clipboard</li>
-    <li CopyToClipBoard string="{{ gistStore.currentGist.html_url }}">Copy Gist URL to clipboard</li>
+    <li CopyToClipBoardDirective clipboardData="{{ gistStore.currentGist.id }}">Copy Gist ID to clipboard</li>
+    <li CopyToClipBoardDirective clipboardData="{{ gistStore.currentGist.html_url }}">Copy Gist URL to clipboard</li>
     <li class="color-danger">Delete</li>
   </ul>
 </gist-utils>

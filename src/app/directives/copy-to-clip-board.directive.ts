@@ -1,19 +1,19 @@
 import { Directive, HostListener, Input } from '@angular/core';
 
 /**
- * @Usage: <a CopyToClipBoard string="I am to be copied">Copy to Clipboard</a>
+ * @Usage: <a CopyToClipBoardDirective clipboardData="I am to be copied">Copy to Clipboard</a>
  */
 
 @Directive({
-  selector: '[CopyToClipBoard]'
+  selector: '[CopyToClipBoardDirective]'
 })
 export class CopyToClipBoardDirective {
 
-  @Input() string: string;
+  @Input() clipboardData: string;
 
   @HostListener('click') onClick() {
     function handleCopy(event) {
-      event.clipboardData.setData('text/plain', this.string);
+      event.clipboardData.setData('text/plain', this.clipboardData);
       event.preventDefault();
       document.removeEventListener('copy', handleCopy, true);
     }
