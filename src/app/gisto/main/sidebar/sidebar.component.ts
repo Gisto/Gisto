@@ -14,7 +14,7 @@ export class SidebarComponent {
 
   values: void = values;
 
-  constructor(private gistStore: GistsStore, private githubApiService: GithubApiService) {}
+  constructor(public gistStore: GistsStore, private githubApiService: GithubApiService) {}
 
   onClick(id) {
     this.githubApiService.getGist(id);
