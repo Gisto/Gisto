@@ -10,7 +10,11 @@
     </gist-file-icon>
 
     <gist-file-name>
-        <input *ngIf="uiStore.editMode" #filenameInput (keyup)="changeFile(file.filename, filenameInput.value)" placeholder="untitled" [value]="file.filename" />
+        <input *ngIf="uiStore.editMode"
+               #filenameInput
+               (keyup)="changeFile(file.filename, filenameInput.value)"
+               placeholder="untitled"
+               [value]="file.filename" />
         <span *ngIf="!uiStore.editMode">{{ file.filename }}</span>
     </gist-file-name>
 

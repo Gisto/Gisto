@@ -1,8 +1,0 @@
-<img src="{{ userStore.user.avatar_url }}"
-alt="">
-<gist-utils (click)="showUserMenu=!showUserMenu">
-  <a>{{ userStore.user.name || userStore.user.login }}</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
-  <ul *ngIf="showUserMenu">
-    <li><a (click)="logOut()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log-out</a></li>
-  </ul>
-</gist-utils>

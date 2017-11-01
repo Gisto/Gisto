@@ -6,7 +6,17 @@ import { GithubApiService } from '../github-api.service';
 
 @Component({
   selector: 'login',
-  templateUrl: './login.component.html',
+  template: `
+    <div *mobxAutorun>
+      <h1>
+        Log in (paste token):
+      </h1>
+
+      <input #token/>
+      <a (click)="login()">Log-in</a>
+    </div>
+
+  `,
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {

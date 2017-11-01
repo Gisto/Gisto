@@ -5,15 +5,23 @@ import { Router} from '@angular/router';
 
 @Component({
   selector: 'user',
-  templateUrl: './user.component.html',
+  template: `
+    <img src="{{ userStore.user.avatar_url }}"
+         alt="">
+    <gist-utils (click)="showUserMenu=!showUserMenu">
+      <a>{{ userStore.user.name || userStore.user.login }}</a> <i class="fa fa-angle-down" aria-hidden="true"></i>
+      <ul *ngIf="showUserMenu">
+        <li><a (click)="logOut()"><i class="fa fa-sign-out" aria-hidden="true"></i> Log-out</a></li>
+      </ul>
+    </gist-utils>
+  `,
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
 
-  constructor(private userStore: UserStore, private settings: SettingsStore, private router: Router) {}
+  constructor(public userStore: UserStore, public settings: SettingsStore, private router: Router) {}
 
   logOut() {
-    console.log('%c LOG-out ', 'background: #555; color: tomato');
     this.settings.logOut();
     this.router.navigate(['/login']);
   }

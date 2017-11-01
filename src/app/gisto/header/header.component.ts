@@ -3,11 +3,16 @@ import { UiStore } from '../../store/ui';
 
 @Component({
   selector: 'header',
-  templateUrl: './header.component.html',
+  template: `
+    <logo *ngIf="uiStore.sideBar"></logo>
+    <header-main></header-main>
+    <app-settings></app-settings>
+    <user></user>
+  `,
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
 
-  constructor(private uiStore: UiStore) { }
+  constructor(public uiStore: UiStore) { }
 
 }
