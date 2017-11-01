@@ -1,0 +1,18 @@
+@import '../../../../assets/colors';
+
+:host {
+  padding: 10px 20px;
+  background: $header-bg;
+  color: #fff;
+  width: 300px;
+  right: -300px;
+  position: absolute;
+  overflow: auto;
+  height: 100%;
+  box-shadow: 0 1px 2px #555;
+  animation: slide 0.5s forwards;
+}
+
+@keyframes slide {
+  100% { right: 0; }
+}

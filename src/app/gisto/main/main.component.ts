@@ -1,22 +1,28 @@
-import { Component } from '@angular/core';
-import { GithubApiService } from "../../github-api.service";
-import { UiStore } from "../../store/ui";
-import { SettingsStore } from "../../store/settings";
-import { GistsStore } from "../../store/gists";
+import { Component, OnInit } from '@angular/core';
+import { GithubApiService } from '../../github-api.service';
+import { UiStore } from '../../store/ui';
+import { SettingsStore } from '../../store/settings';
+import { GistsStore } from '../../store/gists';
 
 @Component({
   selector: 'main',
-  templateUrl: './main.component.html',
+  template: `
+    <sidebar *ngIf="uiStore.sideBar"></sidebar>
+    <content-wrapper>
+      <gist *ngIf="gistsStore.current.id"></gist>
+    </content-wrapper>
+    <comments *ngIf="gistsStore.current.comments > 0 && uiStore.comments"></comments>
+  `,
   styleUrls: ['./main.component.scss']
 })
 
-export class MainComponent {
+export class MainComponent implements OnInit {
 
   constructor(
     public uiStore: UiStore,
     private githubApiService: GithubApiService,
     private settingsStore: SettingsStore,
-    private gistsStore: GistsStore
+    public gistsStore: GistsStore
   ) { }
 
   ngOnInit() {

@@ -32,7 +32,7 @@
 
 <gist-utils (click)="deleteGist(gistStore.current.id)" icon="fa-trash-o" cssClass="color-danger"></gist-utils>
 
-<gist-utils>
+<gist-utils (click)="toggleComments()">
   <i class="fa fa-comment-o"></i> {{ gistStore.current.comments || 0 }}
 </gist-utils>
 
@@ -45,8 +45,8 @@
     <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
     <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}">Open on web</a></li>
     <li>Download</li>
-    <li CopyToClipBoardDirective clipboardData="{{ gistStore.currentGist.id }}">Copy Gist ID to clipboard</li>
-    <li CopyToClipBoardDirective clipboardData="{{ gistStore.currentGist.html_url }}">Copy Gist URL to clipboard</li>
+    <li CopyToClipBoard="{{ gistStore.currentGist.id }}">Copy Gist ID to clipboard</li>
+    <li CopyToClipBoard="{{ gistStore.currentGist.html_url }}">Copy Gist URL to clipboard</li>
     <li class="color-danger">Delete</li>
   </ul>
 </gist-utils>

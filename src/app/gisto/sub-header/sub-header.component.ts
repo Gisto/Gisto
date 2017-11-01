@@ -14,13 +14,11 @@ export class SubHeaderComponent {
 
   size: any = size;
 
-  private showMenu = false;
+  public showMenu = false;
 
-  public localDescription: string;
-  
   constructor(
-    private gistStore: GistsStore,
-    private uiStore: UiStore,
+    public gistStore: GistsStore,
+    public uiStore: UiStore,
     private githubApiService: GithubApiService
   ) {}
 
@@ -39,6 +37,10 @@ export class SubHeaderComponent {
     } else {
       this.uiStore.setModeToEdit();
     }
+  }
+
+  toggleComments() {
+    this.uiStore.toggleCommentsBar();
   }
 
   star(id) {

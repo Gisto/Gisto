@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'gist-utils',
-  templateUrl: './gist-utils.component.html',
-  styleUrls: ['./gist-utils.component.scss'],
-  inputs: ['icon', 'cssClass']
+  template: `
+    <i class="fa {{ icon }} {{ cssClass }}"></i>
+    <ng-content></ng-content>
+  `,
+  styleUrls: ['./gist-utils.component.scss']
 })
 
-export class GistUtilsComponent { }
+export class GistUtilsComponent {
+  @Input() icon: string;
+  @Input() cssClass: string;
+}
