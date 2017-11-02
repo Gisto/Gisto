@@ -5,9 +5,9 @@ import { observable, action } from 'mobx-angular';
 @Injectable()
 export class UserStore {
 
-  @observable user = {};
+  @observable user: object = {};
 
-  @action setUser(data) {
+  @action setUser(data: object) {
     this.user = data;
   }
 }

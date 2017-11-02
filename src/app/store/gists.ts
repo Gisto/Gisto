@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { observable, action, computed } from 'mobx-angular';
-import { set, get, keyBy, merge, map, includes, isEmpty, omit } from 'lodash/fp';
+import { set, get, keyBy, merge, map, includes, isEmpty, omit, size } from 'lodash/fp';
 
 @Injectable()
 export class GistsStore {
@@ -24,6 +24,7 @@ export class GistsStore {
       gist.description = 'untitled';
     }
 
+    gist.comments = gist.comments === 0 ? {} : size(gist.comments);
     return gist;
   }
 
@@ -113,5 +114,10 @@ export class GistsStore {
   @action deleteGist(id) {
     delete this.gists[id];
     this.setGists(this.gists);
+  }
+
+  @action setComments(id, comments) {
+    this.gists[id].comments = keyBy('id', comments);
+    this.setCurrentGist(this.gists[id], false);
   }
 }

@@ -8,9 +8,21 @@
   right: -300px;
   position: absolute;
   overflow: auto;
-  height: 100%;
+  height: calc(100vh - 120px);
   box-shadow: 0 1px 2px #555;
   animation: slide 0.5s forwards;
+
+  .comment {
+    margin-bottom: 30px;
+
+    div[Markdown] {
+      background: $bg;
+      padding: 1px 10px;
+      margin: 10px 0;
+      color: $color-regular;
+      line-height: 21px;
+    }
+  }
 }
 
 @keyframes slide {

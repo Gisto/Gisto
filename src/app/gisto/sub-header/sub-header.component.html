@@ -33,7 +33,7 @@
 <gist-utils (click)="deleteGist(gistStore.current.id)" icon="fa-trash-o" cssClass="color-danger"></gist-utils>
 
 <gist-utils (click)="toggleComments()">
-  <i class="fa fa-comment-o"></i> {{ gistStore.current.comments || 0 }}
+  <i class="fa fa-comment-o"></i> {{ size(gistStore.current.comments) }}
 </gist-utils>
 
 <gist-utils icon="{{ gistStore.current.star ? 'fa-star' : 'fa-star-o'}}"

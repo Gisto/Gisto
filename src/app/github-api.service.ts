@@ -39,6 +39,7 @@ export class GithubApiService {
       .set(this._headers)
       .end((error, result) => {
         this.uiStore.loading = false;
+        this.getComments(id);
         this.gistsStore.setCurrentGist(result.body, true);
       });
   }
@@ -91,6 +92,16 @@ export class GithubApiService {
       .end((error, result) => {
         this.uiStore.loading = false;
         this.userStore.setUser(result.body);
+      });
+  }
+
+  getComments(id: string) {
+    this.uiStore.loading = true;
+    API.get(`${this.baseUrl()}/${id}/comments`)
+      .set(this._headers)
+      .end((error, result) => {
+        this.uiStore.loading = false;
+        this.gistsStore.setComments(id, result.body);
       });
   }
 

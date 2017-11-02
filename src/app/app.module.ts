@@ -32,6 +32,7 @@ import { LogoComponent } from './gisto/header/logo/logo.component';
 import { HeaderMainComponent } from './gisto/header/header-main/header-main.component';
 import { CopyToClipBoardDirective } from './directives/copy-to-clip-board.directive';
 import { CommentsComponent } from './gisto/main/comments/comments.component';
+import { DateComponent } from './gisto/common/date/date.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     GistSearchPipe,
     CleanTagsPipe,
     SortByPipe,
-    CommentsComponent
+    CommentsComponent,
+    DateComponent
   ],
   imports: [
     RouterModule.forRoot(
