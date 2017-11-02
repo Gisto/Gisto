@@ -3,6 +3,7 @@ import { GistsStore } from '../../../store/gists';
 import { UiStore } from '../../../store/ui';
 import { SettingsStore } from '../../../store/settings';
 import { values } from 'lodash/fp';
+import { AceEditorDirective } from 'ng2-ace';
 
 @Component({
   selector: 'gist',
@@ -15,6 +16,7 @@ export class GistComponent {
 
   public showMenu: number = null;
   public showMarkDown: number = null;
+  options:any = { maxLines: 1000, printMargin: false };
 
   constructor(
     public gistStore: GistsStore,

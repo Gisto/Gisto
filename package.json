@@ -4,11 +4,12 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "concurrently \"ng serve\" \"npm run electron\"",
+    "electron": "electron ./src/electron.dev"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,7 @@
     "lodash": "^4.17.4",
     "mobx": "^3.3.1",
     "mobx-angular": "^1.8.1",
+    "ng2-ace-editor": "^0.3.1",
     "rxjs": "^5.4.2",
     "superagent": "^3.7.0",
     "superagent-no-cache": "^0.1.1",
@@ -42,6 +44,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.1.1",
+    "concurrently": "^3.5.0",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",

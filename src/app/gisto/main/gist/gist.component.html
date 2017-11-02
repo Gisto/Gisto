@@ -39,14 +39,26 @@
     <markdown *ngIf="!uiStore.editMode && file.language.toLowerCase() === 'markdown' && showMarkDown === fileIndex && !uiStore.editMode">
       {{ file.content }}
     </markdown>
-    <td-code-editor
-      class="editor"
+    <div ace-editor
+         class="editor"
+      [(text)]="file.content"
+      [mode]="'sql'"
+      [options]="options"
+         theme="Chrome"
+      [readOnly]="false"
+      [autoUpdateContent]="true"
+      [durationBeforeCallback]="1000"
       #fileContent
-      theme="{{ settingsStore.theme }}"
-      (keyup)="changeFileContent(file.filename, fileContent.value)"
-      automaticLayout
-      language="{{ file.language.toLowerCase() || 'text' }}"
-      [value]="file.content"
-      [editorOptions]="{ readOnly: uiStore.editMode, scrollBeyondLastLine: false }"></td-code-editor>
+      (textChanged)="changeFileContent(file.filename, fileContent.value)">
+    </div>
+    <!--<td-code-editor-->
+      <!--class="editor"-->
+      <!--#fileContent-->
+      <!--theme="{{ settingsStore.theme }}"-->
+      <!--(keyup)="changeFileContent(file.filename, fileContent.value)"-->
+      <!--automaticLayout-->
+      <!--language="{{ file.language.toLowerCase() || 'text' }}"-->
+      <!--[value]="file.content"-->
+      <!--[editorOptions]="{ readOnly: uiStore.editMode, scrollBeyondLastLine: false }"></td-code-editor>-->
   </gist-body>
 </div>

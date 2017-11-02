@@ -11,6 +11,8 @@ import { CleanTagsPipe } from './pipes/cleanTags.pipe';
 import { SortByPipe } from './pipes/sortBy.pipe';
 
 import { CovalentCodeEditorModule } from '@covalent/code-editor';
+import { AceEditorModule } from 'ng2-ace-editor';
+
 
 import { AppComponent } from './app.component';
 import { GistoComponent } from './gisto/gisto.component';
@@ -84,6 +86,7 @@ const appRoutes: Routes = [
     DateComponent
   ],
   imports: [
+    AceEditorModule,
     RouterModule.forRoot(
       appRoutes,
         { enableTracing: false } // <-- debugging purposes only
