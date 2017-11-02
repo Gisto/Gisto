@@ -40,16 +40,15 @@
       {{ file.content }}
     </markdown>
     <div ace-editor
-         class="editor"
-      [(text)]="file.content"
-      [mode]="'sql'"
-      [options]="options"
-         theme="Chrome"
-      [readOnly]="false"
-      [autoUpdateContent]="true"
-      [durationBeforeCallback]="1000"
-      #fileContent
-      (textChanged)="changeFileContent(file.filename, fileContent.value)">
+       class="editor"
+       [(text)]="file.content"
+       [mode]="'sql'"
+       [options]="options"
+       theme="Chrome"
+       [readOnly]="false"
+       [autoUpdateContent]="true"
+       [durationBeforeCallback]="1000"
+       (textChanged)="changeFileContent(file.filename, $event)">
     </div>
     <!--<td-code-editor-->
       <!--class="editor"-->

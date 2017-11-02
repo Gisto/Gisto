@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "concurrently \"ng serve\" \"npm run electron\"",
+    "start": "concurrently \"ng serve --base-href=\".\" \" \"npm run electron\"",
     "electron": "electron ./src/electron.dev"
   },
   "private": true,
