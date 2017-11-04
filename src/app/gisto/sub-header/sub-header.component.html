@@ -6,7 +6,7 @@
              #searchBox (keyup)="updateFilter(searchBox.value)" />
       <i class="fa fa-angle-down" aria-hidden="true"></i>
   </search>
-  <button><i class="fa fa-plus" aria-hidden="true"></i> New gist</button>
+  <button icon="fa-plus">New gist</button>
 </sub-controlls>
 
 <gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">

@@ -105,4 +105,15 @@ export class GithubApiService {
       });
   }
 
+  addComment(id: string, body: string) {
+    this.uiStore.loading = true;
+    API.post(`${this.baseUrl()}/${id}/comments`)
+      .set(this._headers)
+      .send({ body })
+      .end((error, result) => {
+        this.uiStore.loading = false;
+        this.getComments(id);
+      });
+  }
+
 }

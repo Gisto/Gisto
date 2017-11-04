@@ -1,17 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'button',
   template: `
-    <i class="fa fa-plus" aria-hidden="true"></i> New gist
+    <i class="fa {{ icon }}" aria-hidden="true"></i> <ng-content></ng-content>
   `,
   styleUrls: ['./button.component.scss']
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Input() icon: string;
 
 }

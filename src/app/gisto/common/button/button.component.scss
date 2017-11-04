@@ -9,4 +9,9 @@
   margin: 10px 0;
   font-weight: 100;
   font-size: 14px;
+  &[invert] {
+    background: #fff;
+    border: 1px solid #fff;
+    color: $header-bg;
+  }
 }

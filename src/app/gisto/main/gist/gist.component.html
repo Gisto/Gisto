@@ -42,10 +42,9 @@
     <div ace-editor
        class="editor"
        [(text)]="file.content"
-       [mode]="'sql'"
-       [options]="options"
-       theme="Chrome"
-       [readOnly]="false"
+       mode="{{ file.language.toLowerCase() || 'text' }}"
+       theme="chrome"
+       [readOnly]="!uiStore.editMode"
        [autoUpdateContent]="true"
        [durationBeforeCallback]="1000"
        (textChanged)="changeFileContent(file.filename, $event)">

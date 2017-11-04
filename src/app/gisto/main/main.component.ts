@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { size } from 'lodash/fp';
 import { GithubApiService } from '../../github-api.service';
 import { UiStore } from '../../store/ui';
 import { SettingsStore } from '../../store/settings';
@@ -12,14 +11,12 @@ import { GistsStore } from '../../store/gists';
     <content-wrapper>
       <gist *ngIf="gistsStore.current.id"></gist>
     </content-wrapper>
-    <comments *ngIf="size(gistsStore.current.comments) > 0 && uiStore.comments"></comments>
+    <comments *ngIf="uiStore.comments"></comments>
   `,
   styleUrls: ['./main.component.scss']
 })
 
 export class MainComponent implements OnInit {
-
-  size: any = size;
 
   constructor(
     public uiStore: UiStore,

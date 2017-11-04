@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { FormsModule }   from '@angular/forms';
 
 import { MobxAngularModule } from 'mobx-angular';
 import { MarkdownModule } from 'angular2-markdown';
@@ -86,16 +87,18 @@ const appRoutes: Routes = [
     DateComponent
   ],
   imports: [
-    AceEditorModule,
     RouterModule.forRoot(
       appRoutes,
         { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
     HttpModule,
+    FormsModule,
+
     MobxAngularModule,
     CovalentCodeEditorModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    AceEditorModule,
   ],
   providers: [GithubAuthorizationService, SettingsStore, AuthGuard],
   bootstrap: [AppComponent],

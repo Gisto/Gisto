@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { observable, action, computed } from 'mobx-angular';
-import { set, get, keyBy, merge, map, includes, isEmpty, omit, size } from 'lodash/fp';
+import { set, get, keyBy, merge, map, includes, isEmpty, omit, size, head } from 'lodash/fp';
 
 @Injectable()
 export class GistsStore {
@@ -114,6 +114,7 @@ export class GistsStore {
   @action deleteGist(id) {
     delete this.gists[id];
     this.setGists(this.gists);
+    console.log('%c LOG ', 'background: #555; color: tomato', this.gists['5944686']);
   }
 
   @action setComments(id, comments) {
