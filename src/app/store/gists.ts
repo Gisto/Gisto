@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { observable, action, computed } from 'mobx-angular';
+import { observable, action, computed } from 'mobx';
 import { set, get, keyBy, merge, map, includes, isEmpty, omit, size, head } from 'lodash/fp';
 
 @Injectable()
@@ -32,6 +32,10 @@ export class GistsStore {
     return this.current;
   }
 
+  @computed get getGists () {
+    return this.gists;
+  }
+
   @computed get currentTimestamp () {
     return Math.floor(Date.now() / 1000);
   }
@@ -39,7 +43,6 @@ export class GistsStore {
   @action setFilter(filter) {
     this.filter = filter;
   }
-
 
   @action changeLocalDataDescription(description) {
     this.setLocalData(this.currentGist.id);

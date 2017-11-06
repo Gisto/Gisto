@@ -20,6 +20,8 @@ import { UiStore } from '../../../store/ui';
 
 export class AppSettingsComponent {
 
+  public showNotifications;
+
   constructor(public uiStore: UiStore) {}
 
 }

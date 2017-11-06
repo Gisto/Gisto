@@ -27,7 +27,7 @@ import { values } from 'lodash/fp';
 
 export class SidebarComponent {
 
-  values: object = values;
+  public values: any = values;
 
   constructor(public gistStore: GistsStore, private githubApiService: GithubApiService) {}
 

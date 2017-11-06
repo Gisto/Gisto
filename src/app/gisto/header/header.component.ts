@@ -8,9 +8,7 @@ import { UserStore } from '../../store/user';
     <logo *ngIf="uiStore.sideBar"></logo>
     <header-main></header-main>
     <app-settings></app-settings>
-    <user [avatar]="userStore.user.avatar_url"
-          name="{{ userStore.user.name || userStore.user.login }}"
-          [manage]="true"></user>
+    <user [user]="userStore.user" [manage]="true"></user>
   `,
   styleUrls: ['./header.component.scss']
 })

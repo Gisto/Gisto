@@ -2,18 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { MobxAngularModule } from 'mobx-angular';
 import { MarkdownModule } from 'angular2-markdown';
+import { CovalentCodeEditorModule } from '@covalent/code-editor';
+import { AceEditorModule } from 'ng2-ace-editor';
 
 import { GistSearchPipe } from './pipes/search.pipe';
 import { CleanTagsPipe } from './pipes/cleanTags.pipe';
 import { SortByPipe } from './pipes/sortBy.pipe';
 
-import { CovalentCodeEditorModule } from '@covalent/code-editor';
-import { AceEditorModule } from 'ng2-ace-editor';
-
+import { CopyToClipBoardDirective } from './directives/copy-to-clip-board.directive';
 
 import { AppComponent } from './app.component';
 import { GistoComponent } from './gisto/gisto.component';
@@ -28,14 +28,15 @@ import { SettingsComponent } from './gisto/main/settings/settings.component';
 import { LoginComponent } from './login/login.component';
 import { GithubAuthorizationService } from './github-authorization.service';
 import { SettingsStore } from './store/settings';
+import { NotificationsStore } from './store/notifications';
 import { AuthGuard } from './auth-guard.guard';
 import { GistUtilsComponent } from './gisto/common/gist-utils/gist-utils.component';
 import { ButtonComponent } from './gisto/common/button/button.component';
 import { LogoComponent } from './gisto/header/logo/logo.component';
 import { HeaderMainComponent } from './gisto/header/header-main/header-main.component';
-import { CopyToClipBoardDirective } from './directives/copy-to-clip-board.directive';
 import { CommentsComponent } from './gisto/main/comments/comments.component';
 import { DateComponent } from './gisto/common/date/date.component';
+import { NotificationsComponent } from './gisto/main/notifications/notifications.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -77,6 +78,7 @@ const appRoutes: Routes = [
     ButtonComponent,
     LogoComponent,
     HeaderMainComponent,
+    NotificationsComponent,
 
     CopyToClipBoardDirective,
 
@@ -100,7 +102,12 @@ const appRoutes: Routes = [
     MarkdownModule.forRoot(),
     AceEditorModule,
   ],
-  providers: [GithubAuthorizationService, SettingsStore, AuthGuard],
+  providers: [
+    SettingsStore,
+    NotificationsStore,
+    GithubAuthorizationService,
+    AuthGuard
+  ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ]
 })

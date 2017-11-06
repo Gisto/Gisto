@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { GistsStore } from './store/gists';
 import { UiStore } from './store/ui';
 import { UserStore } from './store/user';
+import { NotificationsStore } from './store/notifications';
 import * as API from 'superagent';
 
 @Injectable()
@@ -10,7 +11,12 @@ export class GithubApiService {
   private token: string = localStorage.getItem('api-token');
   private _headers: object = { 'Content-Type': 'application/json', 'Authorization': `token ${this.token}` };
 
-  constructor(private gistsStore: GistsStore, private uiStore: UiStore, private userStore: UserStore) { }
+  constructor(
+    private gistsStore: GistsStore,
+    private uiStore: UiStore,
+    private userStore: UserStore,
+    private notificationsStore: NotificationsStore
+    ) { }
 
   baseUrl = (path = 'gists') => `https://api.github.com/${path}`;
 
@@ -51,6 +57,7 @@ export class GithubApiService {
       .end((error) => {
         this.uiStore.loading = false;
         this.gistsStore.star(id);
+        this.notificationsStore.addNotification('success', 'Star', this.gistsStore.current.description + ' starred');
       });
   }
 
@@ -61,6 +68,7 @@ export class GithubApiService {
       .end((error) => {
         this.uiStore.loading = false;
         this.gistsStore.unStar(id);
+        this.notificationsStore.addNotification('success', 'Star removed', 'From: ' + this.gistsStore.current.description);
       });
   }
 
@@ -92,6 +100,7 @@ export class GithubApiService {
       .end((error, result) => {
         this.uiStore.loading = false;
         this.userStore.setUser(result.body);
+        this.notificationsStore.addNotification('info', 'Welcome', result.body.name, null);
       });
   }
 

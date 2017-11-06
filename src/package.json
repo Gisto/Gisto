@@ -4,5 +4,11 @@
     "version": "1.0.0",
     "description": "Angular CLI + Electron",
     "main": "electron.prod.js",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "@angular/cli": "^1.5.0"
+    },
+    "dependencies": {
+        "jasmine": "^2.8.0"
+    }
 }
