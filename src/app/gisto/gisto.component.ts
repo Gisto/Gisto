@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'gisto',
@@ -9,11 +9,4 @@ import { Component, OnInit } from '@angular/core';
   `,
   styleUrls: ['./gisto.component.scss']
 })
-export class GistoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class GistoComponent {}

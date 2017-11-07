@@ -4,7 +4,7 @@
       <span class="fa-stack">
         <i class="fa fa-file-o"></i>
         <strong style="font-size: 8px;" class="fa-stack-1x fa-stack-text file-text">
-          {{ file.filename.split('.')[1] }}
+          {{ file.filename.split('.')[1] || 'txt' }}
         </strong>
       </span>
     </gist-file-icon>
@@ -18,8 +18,9 @@
         <span *ngIf="!uiStore.editMode">{{ file.filename }}</span>
     </gist-file-name>
 
+    <div class="gist-language">{{ file.language || 'Text' }}</div>
     <gist-utils
-      *ngIf="!uiStore.editMode && file.language.toLowerCase() === 'markdown'"
+      *ngIf="!uiStore.editMode && file.language && file.language.toLowerCase() === 'markdown'"
       icon="fa {{ showMarkDown === fileIndex ? 'fa-eye' : 'fa-eye-slash' }}"
       (click)="toggleMarkDown(fileIndex)">
     </gist-utils>
@@ -36,13 +37,13 @@
     </gist-utils>
   </gist-header>
   <gist-body *ngIf="uiStore.editMode || !gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed">
-    <markdown *ngIf="!uiStore.editMode && file.language.toLowerCase() === 'markdown' && showMarkDown === fileIndex && !uiStore.editMode">
+    <markdown *ngIf="!uiStore.editMode && file.language && file.language.toLowerCase() === 'markdown' && showMarkDown === fileIndex && !uiStore.editMode">
       {{ file.content }}
     </markdown>
     <div ace-editor
        class="editor"
        [(text)]="file.content"
-       mode="{{ file.language.toLowerCase() || 'text' }}"
+       mode="{{ file.language && file.language.toLowerCase() || 'text' }}"
        theme="chrome"
        [readOnly]="!uiStore.editMode"
        [autoUpdateContent]="true"
