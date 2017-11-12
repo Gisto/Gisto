@@ -13,7 +13,7 @@ export class GistsStore {
   @observable filter = '';
 
   constructor(private uiStore: UiStore) {
-    this.setLocalDataReaction();
+    this.localDataReaction();
   }
 
   private processGist(gist) {
@@ -33,10 +33,12 @@ export class GistsStore {
     return gist;
   }
 
-  private setLocalDataReaction() {
-    reaction(() => this.uiStore.editMode, (edit) => {
-      (edit) ? this.setLocalData() : this.clearLocalData();
-    });
+  private localDataReaction() {
+    reaction(
+      () => this.uiStore.editMode,
+      (edit) => edit ? this.setLocalData() : this.clearLocalData(),
+      { name: 'localDataReaction' }
+    );
   }
 
   @computed get currentGist () {
@@ -79,7 +81,7 @@ export class GistsStore {
 
   @action deleteLocalFile(filename) {
     this.localEdit.files[filename] = null;
-  };
+  }
 
   @action setLocalData() {
     if (Object.keys(this.localEdit).length === 0) {
