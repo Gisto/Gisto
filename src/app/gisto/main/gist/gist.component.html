@@ -29,7 +29,7 @@
         <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
         <li><a download="{{ file.filename }}" href="{{ file.file_raw }}">Download</a></li>
         <li CopyToClipBoard="{{ file.content }}">Copy file content to clipboard</li>
-        <li class="color-danger">Delete</li>
+        <li (click)="deleteFile(file.filename)" class="color-danger">Delete</li>
       </ul>
     </gist-utils>
     <gist-utils icon="{{ gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed ? 'fa-angle-down' : 'fa-angle-up' }}"
@@ -43,21 +43,11 @@
     <div ace-editor
        class="editor"
        [(text)]="file.content"
-       mode="{{ file.language && file.language.toLowerCase() || 'text' }}"
+       mode="{{ file.language && getSyntax(file.language) || 'text' }}"
        theme="chrome"
        [readOnly]="!uiStore.editMode"
-       [autoUpdateContent]="true"
-       [durationBeforeCallback]="1000"
+       [autoUpdateContent]="false"
        (textChanged)="changeFileContent(file.filename, $event)">
     </div>
-    <!--<td-code-editor-->
-      <!--class="editor"-->
-      <!--#fileContent-->
-      <!--theme="{{ settingsStore.theme }}"-->
-      <!--(keyup)="changeFileContent(file.filename, fileContent.value)"-->
-      <!--automaticLayout-->
-      <!--language="{{ file.language.toLowerCase() || 'text' }}"-->
-      <!--[value]="file.content"-->
-      <!--[editorOptions]="{ readOnly: uiStore.editMode, scrollBeyondLastLine: false }"></td-code-editor>-->
   </gist-body>
 </div>

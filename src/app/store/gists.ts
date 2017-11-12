@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, reaction, toJS } from 'mobx';
+import { UiStore } from './ui';
 import { set, get, keyBy, merge, map, includes, isEmpty, omit, size, head } from 'lodash/fp';
 
 @Injectable()
@@ -11,7 +12,11 @@ export class GistsStore {
   @observable localEdit = <any>{};
   @observable filter = '';
 
-  processGist(gist) {
+  constructor(private uiStore: UiStore) {
+    this.setLocalDataReaction();
+  }
+
+  private processGist(gist) {
     gist.star = false;
     gist.star = this.staredGists.findIndex(id => gist.id === id) !== -1;
     gist.lastViewed = Math.floor(Date.now() / 1000);
@@ -26,6 +31,12 @@ export class GistsStore {
 
     gist.comments = gist.comments === 0 ? {} : size(gist.comments);
     return gist;
+  }
+
+  private setLocalDataReaction() {
+    reaction(() => this.uiStore.editMode, (edit) => {
+      (edit) ? this.setLocalData(this.currentGist.id) : this.clearLocalData();
+    });
   }
 
   @computed get currentGist () {
@@ -45,33 +56,36 @@ export class GistsStore {
   }
 
   @action changeLocalDataDescription(description) {
-    this.setLocalData(this.currentGist.id);
     this.localEdit.description = description;
   }
 
   @action changeLocalDataFile(filename, value) {
-    this.setLocalData(this.currentGist.id);
     this.localEdit.files[filename] = {
       filename: value,
       language: this.localEdit.files[filename].language,
-      content: this.localEdit.files[filename].content
+      content: this.localEdit.files[filename].content,
+      collapsed: false
     };
   }
 
   @action changeLocalDataContent(filename, value) {
-    this.setLocalData(this.currentGist.id);
     this.localEdit.files[filename] = {
       filename: this.localEdit.files[filename].filename,
       language: this.localEdit.files[filename].language,
-      content: value
+      content: value,
+      collapsed: false
     };
   }
 
-  @action setLocalData(id) {
+  @action deleteLocalFile(filename) {
+    this.localEdit.files[filename] = null;
+  };
+
+  @action setLocalData() {
     if (Object.keys(this.localEdit).length === 0) {
       this.localEdit = {
-        description: this.gists[id].description,
-        files: this.gists[id].files
+        description: this.currentGist.description,
+        files: this.currentGist.files
       };
     }
   }
