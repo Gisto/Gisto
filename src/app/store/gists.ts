@@ -35,7 +35,7 @@ export class GistsStore {
 
   private setLocalDataReaction() {
     reaction(() => this.uiStore.editMode, (edit) => {
-      (edit) ? this.setLocalData(this.currentGist.id) : this.clearLocalData();
+      (edit) ? this.setLocalData() : this.clearLocalData();
     });
   }
 
