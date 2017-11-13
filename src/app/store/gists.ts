@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { observable, action, computed, reaction, toJS } from 'mobx';
+import { observable, action, computed, reaction } from 'mobx';
 import { UiStore } from './ui';
+import { tagRegex as TAG_REGEX } from '../constants/config';
 import { set, get, keyBy, merge, map, includes, isEmpty, omit, size, head } from 'lodash/fp';
 
 @Injectable()
@@ -22,9 +23,8 @@ export class GistsStore {
     gist.lastViewed = Math.floor(Date.now() / 1000);
 
     if (!isEmpty(gist.description)) {
-      const regex = /#(\d*[A-Za-z_0-9]+\d*)/g;
       const description = gist.description;
-      gist.tags = description.match(regex);
+      gist.tags = description.match(TAG_REGEX);
     } else {
       gist.description = 'untitled';
     }
@@ -133,7 +133,6 @@ export class GistsStore {
   @action deleteGist(id) {
     delete this.gists[id];
     this.setGists(this.gists);
-    console.log('%c LOG ', 'background: #555; color: tomato', this.gists['5944686']);
   }
 
   @action setComments(id, comments) {
