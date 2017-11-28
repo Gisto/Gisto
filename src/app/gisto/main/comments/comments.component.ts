@@ -34,7 +34,7 @@ import { GithubApiService } from '../../../github-api.service';
 
 export class CommentsComponent {
   values: any = values;
-  styles = {'display': 'block', 'margin': '0 0 0 40px', 'font-size': '10px'};
+  styles = { 'display': 'block', 'margin': '0 0 0 40px', 'font-size': '10px' };
   public newComment = '';
 
   constructor(public gistsStore: GistsStore, private githubApiService: GithubApiService) {

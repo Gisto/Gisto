@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { observable, action, computed, reaction } from 'mobx';
 import { UiStore } from './ui';
-import { tagRegex as TAG_REGEX } from '../constants/config';
+import { snippetStructure } from '../helpers/gist-structure';
 import { set, get, keyBy, merge, map, includes, isEmpty, omit, size, head } from 'lodash/fp';
 
 @Injectable()
@@ -20,17 +20,8 @@ export class GistsStore {
   private processGist(gist) {
     gist.star = false;
     gist.star = this.staredGists.findIndex(id => gist.id === id) !== -1;
-    gist.lastViewed = Math.floor(Date.now() / 1000);
 
-    if (!isEmpty(gist.description)) {
-      const description = gist.description;
-      gist.tags = description.match(TAG_REGEX);
-    } else {
-      gist.description = 'untitled';
-    }
-
-    gist.comments = gist.comments === 0 ? {} : size(gist.comments);
-    return gist;
+    return snippetStructure(gist);
   }
 
   private localDataReaction() {
