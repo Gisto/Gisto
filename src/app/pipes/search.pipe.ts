@@ -4,6 +4,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class GistSearchPipe implements PipeTransform {
   transform(gists, string) {
+    if (!string) {
+      return gists;
+    }
+
     return gists.filter(gist => gist.description.match(string));
   }
 }

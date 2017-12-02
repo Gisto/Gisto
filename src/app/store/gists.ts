@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { observable, action, computed, reaction } from 'mobx';
 import { UiStore } from './ui';
 import { snippetStructure } from '../helpers/gist-structure';
-import { set, get, keyBy, merge, map, includes, isEmpty, omit, size, head } from 'lodash/fp';
+import { set, get, keyBy, merge, map, includes, isEmpty, omit, size, head, assign } from 'lodash/fp';
 
 @Injectable()
 export class GistsStore {
@@ -88,10 +88,8 @@ export class GistsStore {
   }
 
   @action setGists(gists) {
-    gists.map(gist => {
-      this.processGist(gist);
-    });
-    this.gists = merge(keyBy('id', { ...gists }), this.gists);
+    let gistList = map(gist => this.processGist(gist), gists);
+    this.gists = assign(keyBy('id', gistList), this.getGists);
   }
 
   @action setStarsOnGists(stared) {
@@ -101,10 +99,7 @@ export class GistsStore {
   @action setCurrentGist(result, proccess = false) {
     this.gists[result.id] = merge(this.gists[result.id], result);
     const gist = this.gists[result.id];
-    if (proccess) {
-      this.processGist(gist);
-    }
-    this.current = gist;
+    this.current = this.processGist(gist);
   }
 
   @action expandCollapseFile(gistId, file) {

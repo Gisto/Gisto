@@ -9,7 +9,7 @@ import { values } from 'lodash/fp';
     <gist-list>
       <gist-item routerLink="/gist/{{ gist.id }}"
                  routerLinkActive="active"
-                 *ngFor="let gist of values(gistStore.gists) | searchFilter: gistStore.filter | sortBy: 'created_at' : 'DESC'"
+                 *ngFor="let gist of values(gistStore.gists) | searchFilter: gistStore.filter | sortBy: 'created' : 'DESC'"
                  (click)="onClick(gist.id)">
         <gist-private><i class="fa {{ gist.public ? 'fa-unlock' : 'fa-lock' }}" aria-hidden="true"></i></gist-private>
         <star *ngIf="gist.star"><i class="fa fa-star" aria-hidden="true"></i></star>

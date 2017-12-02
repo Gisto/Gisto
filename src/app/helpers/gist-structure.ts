@@ -41,6 +41,8 @@ const prepareFiles = (snippet: Gist) => {
   return snippet.files;
 };
 
+const toUnixTimeStamp = (date) => Math.floor(new Date(date).getTime() / 1000);
+
 export const snippetStructure = (snippet) => {
   const gist = {
     description: prepareDescription(snippet),
@@ -56,9 +58,9 @@ export const snippetStructure = (snippet) => {
     username: snippet.owner.login,
     truncated: snippet.truncated,
     fork: size(snippet.forks),
-    created: snippet.created_at,
-    updated: snippet.updated_at,
-    viewed: Math.floor(Date.now() / 1000)
+    created: toUnixTimeStamp(snippet.created_at),
+    updated: toUnixTimeStamp(snippet.updated_at),
+    viewed: toUnixTimeStamp(new Date().getTime())
   };
 
   console.log('snippet', gist);
