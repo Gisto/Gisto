@@ -88,7 +88,7 @@ export class GistsStore {
   }
 
   @action setGists(gists) {
-    let gistList = map(gist => this.processGist(gist), gists);
+    const gistList = map(gist => this.processGist(gist), gists);
     this.gists = assign(keyBy('id', gistList), this.getGists);
   }
 
@@ -99,7 +99,7 @@ export class GistsStore {
   @action setCurrentGist(result, proccess = false) {
     this.gists[result.id] = merge(this.gists[result.id], result);
     const gist = this.gists[result.id];
-    this.current = this.processGist(gist);
+    this.current = proccess ? this.processGist(gist) : gist;
   }
 
   @action expandCollapseFile(gistId, file) {
