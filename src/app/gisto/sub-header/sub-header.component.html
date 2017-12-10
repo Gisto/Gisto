@@ -43,10 +43,13 @@
 <gist-utils (click)="toggleMenu()" cssClass="fa-ellipsis-v">
   <ul *ngIf="showMenu">
     <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
-    <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}">Open on web</a></li>
+    <li><a target="_new" [href]="setOpenOnWebUrl()">Open on web</a></li>
     <li>Download</li>
     <li CopyToClipBoard="{{ gistStore.currentGist.id }}">Copy Gist ID to clipboard</li>
     <li CopyToClipBoard="{{ gistStore.currentGist.html_url }}">Copy Gist URL to clipboard</li>
+    <li CopyToClipBoard="{{ setHttpsCloneUrl() }}">Copy HTTPS clone URL to clipboard</li>
+    <li CopyToClipBoard="{{ setSSHCloneUrl() }}">Copy SSH clone URL to clipboard</li>
+    <li><a [href]="setGithubDesktopUrl()">Open in GitHub desktop</a></li>
     <li class="color-danger">Delete</li>
   </ul>
 </gist-utils>

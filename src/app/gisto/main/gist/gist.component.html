@@ -1,4 +1,4 @@
-<div *ngFor="let file of values(gistStore.currentGist.files); index as fileIndex">
+<div *ngFor="let file of gistStore.currentGist.files; index as fileIndex">
   <gist-header>
     <gist-file-icon>
       <span class="fa-stack">
@@ -26,28 +26,28 @@
     </gist-utils>
     <gist-utils icon="{{ showMenu === fileIndex ? 'fa-close' : 'fa-ellipsis-v' }}" (click)="showMenuForFile(fileIndex)">
       <ul *ngIf="showMenu === fileIndex">
-        <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.owner.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
+        <li><a target="_new" href="https://gist.github.com/{{ gistStore.currentGist.login }}/{{ gistStore.currentGist.id }}#file-{{ file.filename }}">Open on web</a></li>
         <li><a download="{{ file.filename }}" href="{{ file.file_raw }}">Download</a></li>
         <li CopyToClipBoard="{{ file.content }}">Copy file content to clipboard</li>
         <li (click)="deleteFile(file.filename)" class="color-danger">Delete</li>
       </ul>
     </gist-utils>
-    <gist-utils icon="{{ gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed ? 'fa-angle-down' : 'fa-angle-up' }}"
-                (click)="toggleFileContent(gistStore.currentGist.id, file.filename)">
+    <gist-utils icon="{{ gistStore.gists[gistStore.currentGist.id].files[fileIndex].collapsed ? 'fa-angle-down' : 'fa-angle-up' }}"
+                (click)="toggleFileContent(gistStore.currentGist.id, fileIndex)">
     </gist-utils>
   </gist-header>
-  <gist-body *ngIf="uiStore.editMode || !gistStore.gists[gistStore.currentGist.id].files[file.filename].collapsed">
+  <gist-body *ngIf="uiStore.editMode || !gistStore.gists[gistStore.currentGist.id].files[fileIndex].collapsed">
     <markdown *ngIf="!uiStore.editMode && file.language && file.language.toLowerCase() === 'markdown' && showMarkDown === fileIndex && !uiStore.editMode">
       {{ file.content }}
     </markdown>
-    <div ace-editor
-       class="editor"
-       [(text)]="file.content"
-       mode="{{ file.language && getSyntax(file.language) || 'text' }}"
-       theme="chrome"
-       [readOnly]="!uiStore.editMode"
-       [autoUpdateContent]="false"
-       (textChanged)="changeFileContent(file.filename, $event)">
-    </div>
+    <td-code-editor class="editor"
+                    flex
+                    theme="vs"
+                    language="{{ file.language && getSyntax(file.language) || 'text' }}"
+                    value="{{ file.content }}"
+                    automaticLayout
+                    [editorOptions]="{}"
+                    (change)="changeFileContent(file.filename, $event)">
+    </td-code-editor>
   </gist-body>
 </div>

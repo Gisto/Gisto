@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
+import {size} from 'lodash/fp';
+import { DomSanitizer } from '@angular/platform-browser';
 import {GistsStore} from '../../store/gists';
 import {UiStore} from '../../store/ui';
-import {size} from 'lodash/fp';
 import {GithubApiService} from '../../github-api.service';
-import {set} from 'lodash/fp';
+import { set } from 'lodash/fp';
+import * as CONF from '../../constants/config';
 
 @Component({
   selector: 'sub-header',
@@ -19,8 +21,26 @@ export class SubHeaderComponent {
   constructor(
     public gistStore: GistsStore,
     public uiStore: UiStore,
-    private githubApiService: GithubApiService
+    private githubApiService: GithubApiService,
+    private sanitizer: DomSanitizer
   ) {}
+
+  setOpenOnWebUrl() {
+    return `${CONF.defaultEndpointURL}/${this.gistStore.currentGist.username}/${this.gistStore.currentGist.id}`;
+  }
+
+  setGithubDesktopUrl() {
+    const url = `x-github-client://openRepo/${CONF.defaultEndpointURL}/${this.gistStore.currentGist.id}`;
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
+  setHttpsCloneUrl() {
+    return `${CONF.defaultEndpointURL}/${this.gistStore.currentGist.id}.git`;
+  }
+
+  setSSHCloneUrl() {
+      return `git@gist.github.com:${this.gistStore.currentGist.id}.git`;
+  }
 
   toggleMenu() {
     this.showMenu = !this.showMenu;

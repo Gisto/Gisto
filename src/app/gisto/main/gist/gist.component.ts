@@ -25,8 +25,8 @@ export class GistComponent {
   showMenuForFile = (fileIndex: number) =>
     this.showMenu = this.showMenu !== fileIndex ? this.showMenu = fileIndex : this.showMenu = null;
 
-  toggleFileContent = (gistId: string, fileName: string) =>
-    this.gistStore.expandCollapseFile(gistId, fileName);
+  toggleFileContent = (gistId: string, index: number) =>
+    this.gistStore.expandCollapseFile(gistId, index);
 
   toggleMarkDown = (fileIndex: number) =>
     this.showMarkDown = this.showMarkDown !== fileIndex ? this.showMarkDown = fileIndex : this.showMarkDown = null;

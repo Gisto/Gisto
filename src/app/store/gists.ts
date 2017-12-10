@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { observable, action, computed, reaction } from 'mobx';
+import { observable, action, computed, reaction, toJS } from 'mobx';
 import { UiStore } from './ui';
 import { snippetStructure } from '../helpers/gist-structure';
 import { set, get, keyBy, merge, map, includes, isEmpty, omit, size, head, assign } from 'lodash/fp';
@@ -90,6 +90,7 @@ export class GistsStore {
   @action setGists(gists) {
     const gistList = map(gist => this.processGist(gist), gists);
     this.gists = assign(keyBy('id', gistList), this.getGists);
+    console.log('%c LOG ', 'background: #555; color: tomato', gistList);
   }
 
   @action setStarsOnGists(stared) {
@@ -97,13 +98,15 @@ export class GistsStore {
   }
 
   @action setCurrentGist(result, proccess = false) {
-    this.gists[result.id] = merge(this.gists[result.id], result);
+    const newResult = proccess ? this.processGist(result) : result;
     const gist = this.gists[result.id];
+
+    this.gists[result.id] = merge(this.gists[result.id], newResult);
     this.current = proccess ? this.processGist(gist) : gist;
   }
 
-  @action expandCollapseFile(gistId, file) {
-    this.gists[gistId].files[file].collapsed = !this.gists[gistId].files[file].collapsed;
+  @action expandCollapseFile(gistId, index) {
+    this.gists[gistId].files[index].collapsed = !this.gists[gistId].files[index].collapsed;
   }
 
   @action star(id) {

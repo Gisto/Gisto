@@ -1,7 +1,8 @@
-import { size, isEmpty } from 'lodash';
+import { size, isEmpty, map } from 'lodash';
 import * as CONF from '../constants/config';
 
 interface Gist {
+  service: string,
   description: string;
   star: boolean;
   tags: string[];
@@ -19,7 +20,7 @@ interface Gist {
   fork: any;
 }
 
-const prepareTags = (snippet: Gist) => {
+const prepareTags = (snippet) => {
   if (!isEmpty(snippet.description) || snippet.description !== CONF.defaultSnippetDescription) {
     return snippet.description.match(CONF.tagRegex);
   }
@@ -27,7 +28,7 @@ const prepareTags = (snippet: Gist) => {
   return [];
 };
 
-const prepareDescription = (snippet: Gist) => {
+const prepareDescription = (snippet) => {
   if (!isEmpty(snippet.description)) {
     return snippet.description;
   }
@@ -35,34 +36,32 @@ const prepareDescription = (snippet: Gist) => {
   return CONF.defaultSnippetDescription;
 };
 
-const prepareFiles = (snippet: Gist) => {
-  console.log(' ->>>>> gonna prepare files');
-  // TODO: prepare files
-  return snippet.files;
-};
+const getService = (snippet) => snippet.url.match(/github\.com/gi) ? 'GITHUB' : 'NOT-GITHUB-FOR-NOW';
 
 const toUnixTimeStamp = (date) => Math.floor(new Date(date).getTime() / 1000);
 
-export const snippetStructure = (snippet) => {
-  const gist = {
-    description: prepareDescription(snippet),
-    id: snippet.id,
-    star: snippet.star,
-    tags: prepareTags(snippet),
-    files: prepareFiles(snippet),
-    public: snippet.public,
-    url: snippet.url,
-    htmlUrl: snippet.html_url,
-    comments: snippet.comments,
-    avatarUrl: snippet.owner.avatar_url,
-    username: snippet.owner.login,
-    truncated: snippet.truncated,
-    fork: size(snippet.forks),
-    created: toUnixTimeStamp(snippet.created_at),
-    updated: toUnixTimeStamp(snippet.updated_at),
-    viewed: toUnixTimeStamp(new Date().getTime())
-  };
+const prepareFiles = (snippet) => map(snippet.files, (file) => ({
+  collapsed: false,
+  viewed: toUnixTimeStamp(new Date().getTime()),
+  ...file
+}));
 
-  console.log('snippet', gist);
-  return gist;
-};
+export const snippetStructure = (snippet) => ({
+  service: getService(snippet),
+  description: prepareDescription(snippet),
+  id: snippet.id,
+  star: snippet.star,
+  tags: prepareTags(snippet),
+  files: prepareFiles(snippet),
+  public: snippet.public,
+  url: snippet.url,
+  htmlUrl: snippet.html_url,
+  comments: snippet.comments,
+  avatarUrl: snippet.owner.avatar_url,
+  username: snippet.owner.login,
+  truncated: snippet.truncated,
+  fork: size(snippet.forks),
+  created: toUnixTimeStamp(snippet.created_at),
+  updated: toUnixTimeStamp(snippet.updated_at),
+  viewed: toUnixTimeStamp(new Date().getTime())
+});
