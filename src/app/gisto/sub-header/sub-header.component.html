@@ -1,12 +1,12 @@
 <sub-controlls *ngIf="uiStore.sideBar">
   <search>
-      <div><i class="fa fa-search" aria-hidden="true"></i></div>
+      <div><icon icon="search" size="20" color="#3F84A8"></icon></div>
       <input type="search"
              placeholder="{{ uiStore.loading ? 'Loading...' : 'search ' + size(gistStore.gists) + ' gists' }}"
              #searchBox (keyup)="updateFilter(searchBox.value)" />
       <i class="fa fa-angle-down" aria-hidden="true"></i>
   </search>
-  <button icon="fa-plus">New gist</button>
+  <button icon="add" size="22" color="white">New gist</button>
 </sub-controlls>
 
 <gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">
@@ -21,26 +21,28 @@
 
 </gist-title>
 
-<gist-utils *ngIf="uiStore.isEdit" icon="fa-save" (click)="save(gistStore.current.id)" cssClass="color-success"></gist-utils>
+<gist-utils *ngIf="uiStore.isEdit" icon="check" color="#5F9EA0" (click)="save(gistStore.current.id)" cssClass="color-success"></gist-utils>
 
 <gist-utils
-  icon="{{ uiStore.isEdit ? 'fa-ban' : 'fa-pencil' }}"
+  icon="{{ uiStore.isEdit ? 'cancel' : 'edit' }}"
+  color="{{ uiStore.isEdit ? 'red' : '#3F84A8' }}"
+  rotate="{{ uiStore.isEdit ? '45deg' : '0deg' }}"
   (click)="toggleEditOrSaveMode()"
   cssClass="{{ uiStore.isEdit ? 'color-danger' : 'color-success'}}"></gist-utils>
 
-<gist-utils icon="{{ gistStore.current.public ? 'fa-unlock' : 'fa-lock'}}"></gist-utils>
+<gist-utils icon="{{ gistStore.current.public ? 'unlock' : 'lock'}}" color="#3F84A8"></gist-utils>
 
-<gist-utils (click)="deleteGist(gistStore.current.id)" icon="fa-trash-o" cssClass="color-danger"></gist-utils>
+<gist-utils (click)="deleteGist(gistStore.current.id)" icon="delete" color="#FF6347" cssClass="color-danger"></gist-utils>
 
-<gist-utils (click)="toggleComments()">
-  <i class="fa fa-comment-o"></i> {{ size(gistStore.current.comments) }}
+<gist-utils (click)="toggleComments()" icon="chat" color="#3F84A8">
+  {{ size(gistStore.current.comments) }}
 </gist-utils>
 
-<gist-utils icon="{{ gistStore.current.star ? 'fa-star' : 'fa-star-o'}}"
+<gist-utils icon="{{ gistStore.current.star ? 'star-full' : 'star-empty' }}" color="#3F84A8"
   (click)="gistStore.current.star ? unStar(gistStore.current.id) : star(gistStore.current.id)">
 </gist-utils>
 
-<gist-utils (click)="toggleMenu()" cssClass="fa-ellipsis-v">
+<gist-utils (click)="toggleMenu()" icon="ellipsis" color="#3F84A8">
   <ul *ngIf="showMenu">
     <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
     <li><a target="_new" [href]="setOpenOnWebUrl()">Open on web</a></li>

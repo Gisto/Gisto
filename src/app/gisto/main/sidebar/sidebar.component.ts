@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GithubApiService } from '../../../github-api.service';
 import { GistsStore } from '../../../store/gists';
 import { values } from 'lodash/fp';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sidebar',
@@ -9,10 +10,15 @@ import { values } from 'lodash/fp';
     <gist-list>
       <gist-item routerLink="/gist/{{ gist.id }}"
                  routerLinkActive="active"
-                 *ngFor="let gist of values(gistStore.gists) | searchFilter: gistStore.filter | sortBy: 'created' : 'DESC'"
+                 *ngFor="let gist of gistStore.gists | searchFilter: gistStore.filter | sortBy: 'created' : 'DESC'"
                  (click)="onClick(gist.id)">
-        <gist-private><i class="fa {{ gist.public ? 'fa-unlock' : 'fa-lock' }}" aria-hidden="true"></i></gist-private>
-        <star *ngIf="gist.star"><i class="fa fa-star" aria-hidden="true"></i></star>
+        <gist-private><icon icon="{{ gist.public ? 'unlock' : 'lock' }}"
+                            color="{{ isActive(gist.id) ? '#3F84A8' : '#fff' }}"
+                            size="32"></icon></gist-private>
+        <star *ngIf="gist.star">
+            <icon icon="star-full"
+                  color="{{ isActive(gist.id) ? '#3F84A8' : '#fff' }}"
+                  size="14"></icon></star>
         <gist-name>
           <a>
             {{ gist.description | cleanTags }}
@@ -29,10 +35,12 @@ export class SidebarComponent {
 
   public values: any = values;
 
-  constructor(public gistStore: GistsStore, private githubApiService: GithubApiService) {}
+  constructor(public gistStore: GistsStore, private githubApiService: GithubApiService, private router: Router) {}
 
   onClick(id) {
     this.githubApiService.getGist(id);
   }
+
+  isActive = (id) => this.router.isActive('/gist/' + id, true);
 
 }

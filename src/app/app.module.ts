@@ -32,6 +32,7 @@ import { NotificationsStore } from './store/notifications';
 import { AuthGuard } from './auth-guard.guard';
 import { GistUtilsComponent } from './gisto/common/gist-utils/gist-utils.component';
 import { ButtonComponent } from './gisto/common/button/button.component';
+import { IconComponent } from './gisto/common/icon/icon.component';
 import { LogoComponent } from './gisto/header/logo/logo.component';
 import { HeaderMainComponent } from './gisto/header/header-main/header-main.component';
 import { CommentsComponent } from './gisto/main/comments/comments.component';
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
     LoginComponent,
     GistUtilsComponent,
     ButtonComponent,
+    IconComponent,
     LogoComponent,
     HeaderMainComponent,
     NotificationsComponent,
@@ -85,6 +87,7 @@ const appRoutes: Routes = [
     GistSearchPipe,
     CleanTagsPipe,
     SortByPipe,
+
     CommentsComponent,
     DateComponent
   ],

@@ -5,7 +5,7 @@ import { UiStore } from '../../../store/ui';
   selector: 'header-main',
   template: `
     <a (click)="toggleSideBar()" class="toggle-side-pannels">
-      <i class="fa fa-bars" aria-hidden="true"></i>
+      <icon icon="menu"></icon>
     </a>
   `,
   styleUrls: ['./header-main.component.scss']

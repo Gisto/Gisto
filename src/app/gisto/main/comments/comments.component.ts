@@ -25,7 +25,12 @@ import { GithubApiService } from '../../../github-api.service';
       <div>
         <textarea #newCommentText [(ngModel)]="newComment"></textarea>
       </div>
-      <button invert (click)="addNewComment(gistsStore.current.id, newCommentText.value)" icon="fa-plus">Add new
+      <button invert
+              (click)="addNewComment(gistsStore.current.id, newCommentText.value)"
+              icon="add"
+              size="22"
+              color="#3F84A8">
+        Add new
       </button>
     </div>
   `,

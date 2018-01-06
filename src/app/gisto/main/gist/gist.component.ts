@@ -4,6 +4,7 @@ import { UiStore } from '../../../store/ui';
 import { values } from 'lodash/fp';
 import { AceEditorDirective } from 'ng2-ace';
 import { syntaxMap } from '../../../constants/syntax';
+import { defaultEndpointURL } from '../../../constants/config';
 
 @Component({
   selector: 'gist',
@@ -43,4 +44,5 @@ export class GistComponent {
   getSyntax = (language) =>
     syntaxMap[language];
 
+  getDefaultEndpointURL = () => defaultEndpointURL;
 }
