@@ -28,7 +28,6 @@ export class SettingsComponent {
   }
 
   changeTheme(theme) {
-    console.log('%c LOG ', 'background: #555; color: tomato', theme.target.value);
     this.settings.setTheme(theme.target.value);
   }
 
