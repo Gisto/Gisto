@@ -32,14 +32,14 @@ export class NotificationsComponent {
 
   toggleClose = (index: number) => {
     this.showClose = this.showClose !== index ? this.showClose = index : this.showClose = null;
-  }
+  };
 
   mapIconsByType(type) {
     switch (type) {
       case 'success':
         return 'check';
       case 'error':
-        return 'fa-exclamation-triangle';
+        return 'warning';
       case 'info':
       case 'warn':
         return 'info';

@@ -7,7 +7,7 @@ import { UiStore } from '../../../store/ui';
     <a (click)="toggleSideBar()" class="toggle-side-pannels">
       <icon icon="menu"></icon>
     </a>
-    <span *ngIf="uiStore.loading">Loading...</span>
+    <span *ngIf="uiStore.loading"><icon icon="activity" color="#fff"></icon>Loading...</span>
   `,
   styleUrls: ['./header-main.component.scss']
 })

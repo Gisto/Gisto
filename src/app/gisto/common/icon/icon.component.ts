@@ -58,7 +58,8 @@ export class IconComponent {
       'arrow-down': 'ios-arrow-down.svg',
       'arrow-left': 'ios-arrow-back.svg',
       'arrow-right': 'ios-arrow-forward.svg',
-      menu: 'ios-menu-outline.svg'
+      menu: 'ios-menu-outline.svg',
+      activity: 'ios-pulse-outline.svg'
     };
 
 }
