@@ -10,9 +10,9 @@ import { NotificationsStore } from '../../../store/notifications';
          (mouseleave)="toggleClose(notificationIndex)">
       <div class="notification-icon">
 
-        <i *ngIf="showClose !== notificationIndex" class="fa {{ mapIconsByType(notification.type) }}"></i>
+        <icon *ngIf="showClose !== notificationIndex" icon="{{ mapIconsByType(notification.type) }}" color="#fff"></icon>
         <a *ngIf="showClose === notificationIndex" class="close" (click)="removeNotification(notification.id)">
-          <i class="fa fa-times"></i>
+          <icon icon="cancel" color="#fff"></icon>
         </a>
 
       </div>
@@ -37,13 +37,13 @@ export class NotificationsComponent {
   mapIconsByType(type) {
     switch (type) {
       case 'success':
-        return 'fa-check';
+        return 'check';
       case 'error':
         return 'fa-exclamation-triangle';
       case 'info':
       case 'warn':
-        return 'fa-exclamation-circle';
-      default: return 'fa-info';
+        return 'info';
+      default: return 'info';
     }
   }
 

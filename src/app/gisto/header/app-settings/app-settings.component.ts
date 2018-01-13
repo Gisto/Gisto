@@ -4,8 +4,8 @@ import { UiStore } from '../../../store/ui';
 @Component({
   selector: 'app-settings',
   template: `
-    <gist-utils icon="info"></gist-utils>
-    <gist-utils icon="notification" (click)="showNotifications = !showNotifications">
+    <gist-utils icon="info" color="#fff"></gist-utils>
+    <gist-utils icon="notification" color="#fff" (click)="showNotifications = !showNotifications">
       <ul *ngIf="showNotifications">
         <li>This is notification.</li>
         <li>sdfsdf</li>
@@ -13,8 +13,8 @@ import { UiStore } from '../../../store/ui';
         <li>sdfsdf</li>
       </ul>
     </gist-utils>
-    <gist-utils icon="globe"></gist-utils>
-    <gist-utils routerLink="/settings" icon="cog"></gist-utils>
+    <gist-utils icon="globe" color="#fff"></gist-utils>
+    <gist-utils routerLink="/settings" icon="cog" color="#fff"></gist-utils>
   `,
   styleUrls: ['./app-settings.component.scss']
 })
