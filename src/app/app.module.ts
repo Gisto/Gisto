@@ -38,6 +38,7 @@ import { HeaderMainComponent } from './gisto/header/header-main/header-main.comp
 import { CommentsComponent } from './gisto/main/comments/comments.component';
 import { DateComponent } from './gisto/common/date/date.component';
 import { NotificationsComponent } from './gisto/main/notifications/notifications.component';
+import { DashboardComponent } from './gisto/main/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
     LogoComponent,
     HeaderMainComponent,
     NotificationsComponent,
+    DashboardComponent,
 
     CopyToClipBoardDirective,
 

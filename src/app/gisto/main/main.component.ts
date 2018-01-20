@@ -10,6 +10,7 @@ import { GistsStore } from '../../store/gists';
     <sidebar *ngIf="uiStore.sideBar"></sidebar>
     <content-wrapper>
       <gist *ngIf="gistsStore.current.id"></gist>
+      <dashboard *ngIf="!gistsStore.current.id"></dashboard>
     </content-wrapper>
     <comments *ngIf="uiStore.comments"></comments>
     <notifications></notifications>

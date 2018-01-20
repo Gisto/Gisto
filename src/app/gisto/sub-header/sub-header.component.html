@@ -9,49 +9,53 @@
   <button icon="add" size="22" color="white">New gist</button>
 </sub-controlls>
 
-<gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">
+<ng-container *ngIf="gistStore.current.id">
 
-  <div *ngIf="uiStore.editMode; then editDescription else showDescription"></div>
-  <ng-template #editDescription>
-    <strong *ngIf="uiStore.editMode">Edit: </strong> <input #description (keyup)="changeLocalDescription(description.value)" placeholder="untitled" [value]="gistStore.current.description" />
-  </ng-template>
-  <ng-template #showDescription>
-    {{ gistStore.current.description | cleanTags }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
-  </ng-template>
+  <gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">
 
-</gist-title>
+    <div *ngIf="uiStore.editMode; then editDescription else showDescription"></div>
+    <ng-template #editDescription>
+      <strong *ngIf="uiStore.editMode">Edit: </strong> <input #description (keyup)="changeLocalDescription(description.value)" placeholder="untitled" [value]="gistStore.current.description" />
+    </ng-template>
+    <ng-template #showDescription>
+      {{ gistStore.current.description | cleanTags }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
+    </ng-template>
 
-<gist-utils *ngIf="uiStore.isEdit" icon="check" color="#5F9EA0" (click)="save(gistStore.current.id)" cssClass="color-success"></gist-utils>
+  </gist-title>
 
-<gist-utils
-  icon="{{ uiStore.isEdit ? 'cancel' : 'edit' }}"
-  color="{{ uiStore.isEdit ? 'red' : '#3F84A8' }}"
-  rotate="{{ uiStore.isEdit ? '45deg' : '0deg' }}"
-  (click)="toggleEditOrSaveMode()"
-  cssClass="{{ uiStore.isEdit ? 'color-danger' : 'color-success'}}"></gist-utils>
+  <gist-utils *ngIf="uiStore.isEdit" icon="check" color="#5F9EA0" (click)="save(gistStore.current.id)" cssClass="color-success"></gist-utils>
 
-<gist-utils icon="{{ gistStore.current.public ? 'unlock' : 'lock'}}" color="#3F84A8"></gist-utils>
+  <gist-utils
+    icon="{{ uiStore.isEdit ? 'cancel' : 'edit' }}"
+    color="{{ uiStore.isEdit ? 'red' : '#3F84A8' }}"
+    rotate="{{ uiStore.isEdit ? '45deg' : '0deg' }}"
+    (click)="toggleEditOrSaveMode()"
+    cssClass="{{ uiStore.isEdit ? 'color-danger' : 'color-success'}}"></gist-utils>
 
-<gist-utils (click)="deleteGist(gistStore.current.id)" icon="delete" color="#FF6347" cssClass="color-danger"></gist-utils>
+  <gist-utils icon="{{ gistStore.current.public ? 'unlock' : 'lock'}}" color="#3F84A8"></gist-utils>
 
-<gist-utils (click)="toggleComments()" icon="chat" color="#3F84A8">
-  {{ size(gistStore.current.comments) }}
-</gist-utils>
+  <gist-utils (click)="deleteGist(gistStore.current.id)" icon="delete" color="#FF6347" cssClass="color-danger"></gist-utils>
 
-<gist-utils icon="{{ gistStore.current.star ? 'star-full' : 'star-empty' }}" color="#3F84A8"
-  (click)="gistStore.current.star ? unStar(gistStore.current.id) : star(gistStore.current.id)">
-</gist-utils>
+  <gist-utils (click)="toggleComments()" icon="chat" color="#3F84A8">
+    {{ size(gistStore.current.comments) }}
+  </gist-utils>
 
-<gist-utils (click)="toggleMenu()" icon="ellipsis" color="#3F84A8">
-  <ul *ngIf="showMenu">
-    <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
-    <li><a target="_new" [href]="setOpenOnWebUrl()">Open on web</a></li>
-    <li>Download</li>
-    <li CopyToClipBoard="{{ gistStore.currentGist.id }}">Copy Gist ID to clipboard</li>
-    <li CopyToClipBoard="{{ gistStore.currentGist.html_url }}">Copy Gist URL to clipboard</li>
-    <li CopyToClipBoard="{{ setHttpsCloneUrl() }}">Copy HTTPS clone URL to clipboard</li>
-    <li CopyToClipBoard="{{ setSSHCloneUrl() }}">Copy SSH clone URL to clipboard</li>
-    <li><a [href]="setGithubDesktopUrl()">Open in GitHub desktop</a></li>
-    <li class="color-danger">Delete</li>
-  </ul>
-</gist-utils>
+  <gist-utils icon="{{ gistStore.current.star ? 'star-full' : 'star-empty' }}" color="#3F84A8"
+    (click)="gistStore.current.star ? unStar(gistStore.current.id) : star(gistStore.current.id)">
+  </gist-utils>
+
+  <gist-utils (click)="toggleMenu()" icon="ellipsis" color="#3F84A8">
+    <ul *ngIf="showMenu">
+      <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
+      <li><a target="_new" [href]="setOpenOnWebUrl()">Open on web</a></li>
+      <li>Download</li>
+      <li CopyToClipBoard="{{ gistStore.currentGist.id }}">Copy Gist ID to clipboard</li>
+      <li CopyToClipBoard="{{ gistStore.currentGist.html_url }}">Copy Gist URL to clipboard</li>
+      <li CopyToClipBoard="{{ setHttpsCloneUrl() }}">Copy HTTPS clone URL to clipboard</li>
+      <li CopyToClipBoard="{{ setSSHCloneUrl() }}">Copy SSH clone URL to clipboard</li>
+      <li><a [href]="setGithubDesktopUrl()">Open in GitHub desktop</a></li>
+      <li class="color-danger">Delete</li>
+    </ul>
+  </gist-utils>
+
+</ng-container>

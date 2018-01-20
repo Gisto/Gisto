@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UiStore } from '../../store/ui';
 import { UserStore } from '../../store/user';
+import {GistsStore} from '../../store/gists';
 
 @Component({
   selector: 'header',

@@ -1,0 +1,59 @@
+@import '../../../../assets/colors';
+
+:host {
+  flex: 1;
+  padding: 30px;
+
+  cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    card {
+      background: #fff;
+      padding: 20px;
+      margin: 0 20px;
+      width: 100%;
+      font-weight: 100;
+      border-radius: 3px;
+      box-shadow: 0 0 10px #ccc;
+      flex-direction: column;
+      display: flex;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+
+      heading {
+        text-align: left;
+        //font-size: 10px;
+      }
+      number {
+        text-align: right;
+        font-size: 52px;
+        font-weight: 100;
+        color: $color-regular;
+      }
+
+      progress {
+        -webkit-appearance: none;
+        border: none;
+        height: 5px;
+
+        &::-webkit-progress-bar {
+          background: #fff;
+          border: 1px solid #ccc;
+          border-radius: 50px;
+          padding: 1px;
+        }
+
+        &::-webkit-progress-value {
+          border-radius: 50px;
+          background: $color-regular;
+        }
+      }
+    }
+  }
+
+}

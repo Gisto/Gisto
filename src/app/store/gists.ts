@@ -104,6 +104,10 @@ export class GistsStore {
     this.current = proccess ? this.processGist(gist) : gist;
   }
 
+  @action clearCurrentGist() {
+    return this.current = {};
+  }
+
   @action expandCollapseFile(gistId, index) {
     this.gists[gistId].files[index].collapsed = !this.gists[gistId].files[index].collapsed;
   }
