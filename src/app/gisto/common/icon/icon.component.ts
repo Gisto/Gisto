@@ -27,17 +27,17 @@ export class IconComponent {
 
     @Input() icon: string;
     @Input() cssClass: string;
-    @Input() size: string = '22';
-    @Input() color: string = '#fff';
-    @Input() rotate: string = '0deg';
+    @Input() size = '22';
+    @Input() color = '#fff';
+    @Input() rotate = '0deg';
 
     ICONS: Object = {
       add: 'ios-add.svg',
-      globe: 'ios-globe.svg',
+      globe: 'ios-globe-outline.svg',
       cog: 'ios-settings-outline.svg',
       info: 'ios-information-circle-outline.svg',
-      success: 'ios-information-circle-outline.svg',
-      error: 'ios-information-circle-outline.svg',
+      success: 'ios-checkmark-circle-outline.svg',
+      error: 'ios-close-circle-outline.svg',
       warn: 'ios-information-circle-outline.svg',
       notification: 'ios-notifications-outline.svg',
       lock: 'ios-lock-outline.svg',

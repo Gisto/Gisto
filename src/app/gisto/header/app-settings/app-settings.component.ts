@@ -13,7 +13,7 @@ import { UiStore } from '../../../store/ui';
         <li>sdfsdf</li>
       </ul>
     </gist-utils>
-    <gist-utils icon="globe" color="#fff"></gist-utils>
+    <gist-utils icon="globe" [color]="online()"></gist-utils>
     <gist-utils routerLink="/settings" icon="cog" color="#fff"></gist-utils>
   `,
   styleUrls: ['./app-settings.component.scss']
@@ -25,4 +25,5 @@ export class AppSettingsComponent {
 
   constructor(public uiStore: UiStore) {}
 
+  online = () => navigator.onLine ? '#fff' : 'tomato';
 }
