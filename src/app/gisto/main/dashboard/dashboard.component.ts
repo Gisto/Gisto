@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GistsStore } from '../../../store/gists';
-import { size, filter } from 'lodash/fp';
+import { size, filter, map, groupBy, flattenDeep, values, keys } from 'lodash/fp';
+import { toJS } from 'mobx';
 
 @Component({
   selector: 'dashboard',
@@ -29,10 +30,25 @@ import { size, filter } from 'lodash/fp';
         </number>
       </card>
     </cards>
+    <cards>
+      <card>
+        <heading>Language files of Snippets</heading>
+        <languages>
+          <language *ngFor="let language of getLanguages() | sortBy: 'language[0].language'">
+            <heading>{{ language[0].language || 'undetected' }}</heading>
+              <number>
+                {{ size(language) }} 
+              </number>
+          </language>
+        </languages>
+      </card>
+    </cards>
   `,
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+
+  size: any = size;
 
   constructor(public gistsStore: GistsStore) { }
 
@@ -45,6 +61,21 @@ export class DashboardComponent {
     const percents = (percentOf / this.totalSnippets()) * 100;
 
     return `linear-gradient(to right, #e5f6ff ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`;
-  };
+  }
+
+  getLanguages = () => {
+    const files = map('files', toJS(this.gistsStore.gists));
+    const grouped = groupBy('language', flattenDeep(files));
+    const remaped = map((g) => {
+      return {
+        language: keys(g),
+        ...g
+      };
+    }, grouped);
+
+    return remaped;
+  }
+
+  log = (t) => console.log('%c LOG ', 'background: #555; color: tomato', t);
 
 }

@@ -3,11 +3,13 @@
 :host {
   flex: 1;
   padding: 30px;
+  overflow: auto;
 
   cards {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 20px;
     card {
       background: #fff;
       padding: 20px;
@@ -53,6 +55,37 @@
           background: $color-regular;
         }
       }
+
+      languages {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        language {
+          color: $color-regular;
+          padding: 10px;
+          border: 1px solid $color-regular;
+          border-radius: 3px;
+          margin: 0 15px 10px 0;
+          flex-direction: column;
+          display: flex;
+          min-width: 100px;
+
+          heading {
+            text-align: left;
+            font-size: 12px;
+          }
+          number {
+            text-align: right;
+            font-size: 32px;
+            font-weight: 100;
+            color: $color-regular;
+          }
+        }
+      }
+
     }
   }
 
