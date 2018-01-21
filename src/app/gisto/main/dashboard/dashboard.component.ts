@@ -35,10 +35,10 @@ import { toJS } from 'mobx';
         <heading>Language files of Snippets</heading>
         <languages>
           <language *ngFor="let language of getLanguages() | sortBy: 'language[0].language'">
-            <heading>{{ language[0].language || 'undetected' }}</heading>
-              <number>
-                {{ size(language) }} 
-              </number>
+            <heading>{{ language[0].language || 'Other' }}</heading>
+            <number>
+              {{ size(language) }}
+            </number>
           </language>
         </languages>
       </card>
@@ -66,16 +66,12 @@ export class DashboardComponent {
   getLanguages = () => {
     const files = map('files', toJS(this.gistsStore.gists));
     const grouped = groupBy('language', flattenDeep(files));
-    const remaped = map((g) => {
+
+    return map((file) => {
       return {
-        language: keys(g),
-        ...g
+        language: keys(file),
+        ...file
       };
     }, grouped);
-
-    return remaped;
   }
-
-  log = (t) => console.log('%c LOG ', 'background: #555; color: tomato', t);
-
 }
