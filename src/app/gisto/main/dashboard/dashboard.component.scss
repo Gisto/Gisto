@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     card {
       background: #fff;
       padding: 20px;
@@ -29,7 +29,8 @@
 
       heading {
         text-align: left;
-        //font-size: 10px;
+        font-size: 18px;
+        color: $color-regular;
       }
       number {
         text-align: right;
@@ -68,24 +69,49 @@
           padding: 10px;
           border: 1px solid $color-regular;
           border-radius: 3px;
-          margin: 0 15px 10px 0;
+          margin: 0 0 10px 0;
           flex-direction: column;
           display: flex;
-          min-width: 100px;
+          width: 42%;
 
           heading {
-            text-align: left;
             font-size: 12px;
+            font-weight: 600;
           }
           number {
-            text-align: right;
-            font-size: 32px;
+            text-align: left;
             font-weight: 100;
+            font-size: 12px;
             color: $color-regular;
           }
         }
       }
 
+      .wrap {
+        overflow: auto;
+        height: -webkit-fill-available;
+        margin: 10px 0 0 0;
+      }
+
+      .starred {
+        margin: 10px 0;
+        border-top: 1px dotted #ccc;
+        padding: 20px 0 5px;
+        display: flex;
+
+        &:first-of-type {
+          border: none;
+          padding: 10px 0 0;
+        }
+
+        > .text {
+          margin: 0 0 0 20px;
+        }
+
+        tag {
+          color: $header-bg-light;
+        }
+      }
     }
   }
 
