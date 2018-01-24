@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import {GistsStore} from '../../store/gists';
 import {UiStore} from '../../store/ui';
 import {GithubApiService} from '../../github-api.service';
-import { set, compact, uniq } from 'lodash/fp';
+import { set, compact, uniq, startCase } from 'lodash/fp';
 import * as CONF from '../../constants/config';
 
 @Component({
@@ -17,6 +17,7 @@ export class SubHeaderComponent {
   size: any = size;
   compact: any = compact;
   uniq: any = uniq;
+  startCase: any = startCase;
 
   public showMenu = false;
 
@@ -48,8 +49,8 @@ export class SubHeaderComponent {
     this.showMenu = !this.showMenu;
   }
 
-  updateFilter(value) {
-    this.gistStore.setFilter(value);
+  updateFilter(value, type) {
+    this.gistStore.setFilter(value, type);
   }
 
   toggleEditOrSaveMode() {

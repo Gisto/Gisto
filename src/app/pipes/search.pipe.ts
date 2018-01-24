@@ -1,14 +1,22 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { filter } from 'lodash/fp';
+import { filter, includes } from 'lodash/fp';
 
 @Pipe({ name: 'searchFilter' })
 
 export class GistSearchPipe implements PipeTransform {
-  transform(gists, string) {
-    if (!string) {
-      return gists;
+  transform(snippets, needle, type = 'freeText') {
+    if (!needle) {
+      return snippets;
     }
 
-    return filter(gist => gist.description.match(string), gists);
+    if (type === 'freeText') {
+      return filter((snippet) => snippet.description.match(needle) || includes(needle, snippet.languages), snippets);
+    }
+
+    if (type === 'fileType') {
+      return filter((snippet) => includes(needle, snippet.languages), snippets);
+    }
+
+    return snippets;
   }
 }

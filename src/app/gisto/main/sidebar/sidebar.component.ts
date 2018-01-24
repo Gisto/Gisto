@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
     <gist-list>
       <gist-item routerLink="/gist/{{ gist.id }}"
                  routerLinkActive="active"
-                 *ngFor="let gist of gistStore.gists | searchFilter: gistStore.filter | sortBy: 'created' : 'DESC'"
+                 *ngFor="let gist of gistStore.gists | searchFilter: gistStore.filter : gistStore.filterType | sortBy: 'created' : 'DESC'"
                  (click)="onClick(gist.id)">
         <gist-private><icon icon="{{ gist.public ? 'unlock' : 'lock' }}"
                             color="{{ isActive(gist.id) ? '#3F84A8' : '#fff' }}"

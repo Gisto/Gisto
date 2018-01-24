@@ -12,6 +12,7 @@ export class GistsStore {
   @observable current = <any>{};
   @observable localEdit = <any>{};
   @observable filter = '';
+  @observable filterType = 'freeText';
 
   constructor(private uiStore: UiStore) {
     this.localDataReaction();
@@ -44,8 +45,9 @@ export class GistsStore {
     return Math.floor(Date.now() / 1000);
   }
 
-  @action setFilter(filter) {
+  @action setFilter(filter, type = 'freeText') {
     this.filter = filter;
+    this.filterType = type;
   }
 
   @action changeLocalDataDescription(description) {

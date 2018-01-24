@@ -1,9 +1,11 @@
 <sub-controlls *ngIf="uiStore.sideBar">
   <search>
       <div><icon icon="search" size="20" color="#3F84A8"></icon></div>
+      <span class="search-type-label">{{ startCase(gistStore.filterType) }}</span>
       <input type="search"
+             [value]="gistStore.filter"
              placeholder="{{ uiStore.loading ? 'Loading...' : 'search ' + size(gistStore.gists) + ' gists' }}"
-             #searchBox (keyup)="updateFilter(searchBox.value)" />
+             #searchBox (keyup)="updateFilter(searchBox.value, 'freeText')" />
       <i class="fa fa-angle-down" aria-hidden="true"></i>
   </search>
   <button icon="add" size="22" color="white">New gist</button>

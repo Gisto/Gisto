@@ -9,34 +9,41 @@ import { Router } from '@angular/router';
   selector: 'dashboard',
   template: `
     <cards>
+      
       <card>
         <heading>Total snippets</heading>
         <number>{{ totalSnippets() }}</number>
       </card>
+      
       <card [ngStyle]="{'background': linearGradient(publicSnippets())}">
         <heading>Public snippets</heading>
         <number>
           {{ publicSnippets() }}
         </number>
       </card>
+      
       <card [ngStyle]="{'background': linearGradient(privateSnippets())}">
         <heading>Private snippets</heading>
         <number>
           {{ privateSnippets() }}
         </number>
       </card>
+      
       <card [ngStyle]="{'background': linearGradient(starredSnippets())}">
         <heading>Starred snippets</heading>
         <number>
           {{ starredSnippets() }}
         </number>
       </card>
+      
     </cards>
     <cards>
+      
       <card>
         <heading>Language files of Snippets</heading>
         <languages>
-          <language *ngFor="let language of getLanguages() | sortBy: 'language.length'">
+          <language *ngFor="let language of getLanguages() | sortBy: 'language.length'" 
+                    (click)="updateFilter(language[0].language, 'fileType')">
             <heading>{{ language[0].language || 'Other' }}</heading>
             <number>
               {{ size(language) }}
@@ -44,6 +51,7 @@ import { Router } from '@angular/router';
           </language>
         </languages>
       </card>
+      
       <card>
         <heading>Starred ({{ size(starredList()) }})</heading>
         <div class="wrap">
@@ -101,4 +109,9 @@ export class DashboardComponent {
   }
 
   starredList = () => filter({ star: true }, this.gistsStore.gists);
+
+  updateFilter = (value, type) => {
+    this.gistsStore.filter = value;
+    this.gistsStore.filterType = type;
+  };
 }
