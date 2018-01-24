@@ -1,8 +1,8 @@
-import { size, isEmpty, map } from 'lodash';
+import { size, isEmpty, map, values } from 'lodash';
 import * as CONF from '../constants/config';
 
 interface Gist {
-  service: string,
+  service: string;
   description: string;
   star: boolean;
   tags: string[];
@@ -46,6 +46,8 @@ const prepareFiles = (snippet) => map(snippet.files, (file) => ({
   ...file
 }));
 
+const prepareLanguages = (snippet) => map(snippet.files, 'language');
+
 export const snippetStructure = (snippet) => ({
   service: getService(snippet),
   description: prepareDescription(snippet),
@@ -53,6 +55,7 @@ export const snippetStructure = (snippet) => ({
   star: snippet.star,
   tags: prepareTags(snippet),
   files: prepareFiles(snippet),
+  languages: prepareLanguages(snippet),
   public: snippet.public,
   url: snippet.url,
   htmlUrl: snippet.html_url,

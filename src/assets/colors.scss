@@ -1,6 +1,8 @@
 $border-color: #ccc;
 
-$color-regular: #3F84A8;
+$base-app-color: #3F84A8;
+
+$color-regular: $base-app-color;
 $color-danger: tomato;
 $color-success: cadetblue;
 $color-warning: #e0b01e;
@@ -9,7 +11,7 @@ $color-info: #1c93d2;
 $border-color-light: $border-color;
 
 $header-color: #fff;
-$header-bg: $color-regular;
+$header-bg: $base-app-color;
 $header-bg-light: rgba($header-bg, 0.5);
 $header-bg-lightest: rgba($header-bg, 0.1);
 $bg: lighten($header-bg, 45%);
@@ -18,7 +20,6 @@ $bg: lighten($header-bg, 45%);
 .color-regular {
   color: $color-regular;
 }
-
 .color-info {
   color: $color-info;
 }

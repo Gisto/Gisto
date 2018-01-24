@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import {GistsStore} from '../../store/gists';
 import {UiStore} from '../../store/ui';
 import {GithubApiService} from '../../github-api.service';
-import { set } from 'lodash/fp';
+import { set, compact, uniq } from 'lodash/fp';
 import * as CONF from '../../constants/config';
 
 @Component({
@@ -15,6 +15,8 @@ import * as CONF from '../../constants/config';
 export class SubHeaderComponent {
 
   size: any = size;
+  compact: any = compact;
+  uniq: any = uniq;
 
   public showMenu = false;
 

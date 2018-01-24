@@ -66,13 +66,18 @@
 
         language {
           color: $color-regular;
-          padding: 10px;
-          border: 1px solid $color-regular;
+          padding: 20px;
+          border: 1px solid $bg;
           border-radius: 3px;
-          margin: 0 0 10px 0;
+          margin: 0 5px 10px 0;
           flex-direction: column;
           display: flex;
-          width: 42%;
+          width: 6vw;
+
+          &:hover {
+            background: lighten($base-app-color, 50%);
+            cursor: pointer;
+          }
 
           heading {
             font-size: 12px;
@@ -95,7 +100,7 @@
 
       .starred {
         margin: 10px 0;
-        border-top: 1px dotted #ccc;
+        border-top: 1px dotted $bg;
         padding: 20px 0 5px;
         display: flex;
 

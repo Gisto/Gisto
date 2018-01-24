@@ -18,6 +18,9 @@
       <strong *ngIf="uiStore.editMode">Edit: </strong> <input #description (keyup)="changeLocalDescription(description.value)" placeholder="untitled" [value]="gistStore.current.description" />
     </ng-template>
     <ng-template #showDescription>
+      <span class="language" *ngFor="let language of uniq(gistStore.current.languages)">
+        <span *ngIf="language">{{ language }}</span>
+      </span>
       {{ gistStore.current.description | cleanTags }} <title-tag *ngFor="let tag of gistStore.current.tags"> {{ tag }}</title-tag>
     </ng-template>
 

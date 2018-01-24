@@ -78,5 +78,15 @@
     title-tag {
       color: $header-bg-light;
     }
+
+    .language > span {
+      border: 1px solid #3f83a8;
+      padding: 0 5px;
+      border-radius: 3px;
+      color: #3f83a8;
+      margin: 0 5px 0 0;
+      font-size: 10px;
+      vertical-align: middle;
+    }
   }
 }

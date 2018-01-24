@@ -25,12 +25,12 @@ import { Router } from '@angular/router';
           {{ privateSnippets() }}
         </number>
       </card>
-      <!--<card [ngStyle]="{'background': linearGradient(starredSnippets())}">-->
-        <!--<heading>Starred snippets</heading>-->
-        <!--<number>-->
-          <!--{{ starredSnippets() }}-->
-        <!--</number>-->
-      <!--</card>-->
+      <card [ngStyle]="{'background': linearGradient(starredSnippets())}">
+        <heading>Starred snippets</heading>
+        <number>
+          {{ starredSnippets() }}
+        </number>
+      </card>
     </cards>
     <cards>
       <card>
