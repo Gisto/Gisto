@@ -60,7 +60,8 @@ export class IconComponent {
       'arrow-right': 'ios-arrow-forward.svg',
       menu: 'ios-menu-outline.svg',
       activity: 'ios-pulse-outline.svg',
-      dashboard: 'ios-speedometer-outline.svg'
+      dashboard: 'ios-speedometer-outline.svg',
+      fork: 'ios-git-branch.svg'
     };
 
 }

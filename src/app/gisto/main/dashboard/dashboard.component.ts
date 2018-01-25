@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GistsStore } from '../../../store/gists';
 import { GithubApiService } from '../../../github-api.service';
-import { size, filter, map, groupBy, flattenDeep, values, keys } from 'lodash/fp';
+import { size, filter, map, groupBy, flattenDeep, values, keys, head } from 'lodash/fp';
 import { toJS } from 'mobx';
 import { Router } from '@angular/router';
 
@@ -15,24 +15,17 @@ import { Router } from '@angular/router';
         <number>{{ totalSnippets() }}</number>
       </card>
       
-      <card [ngStyle]="{'background': linearGradient(publicSnippets())}">
+      <card [ngStyle]="{ 'background': linearGradient(publicSnippets()) }">
         <heading>Public snippets</heading>
         <number>
           {{ publicSnippets() }}
         </number>
       </card>
       
-      <card [ngStyle]="{'background': linearGradient(privateSnippets())}">
+      <card [ngStyle]="{ 'background': linearGradient(privateSnippets()) }">
         <heading>Private snippets</heading>
         <number>
           {{ privateSnippets() }}
-        </number>
-      </card>
-      
-      <card [ngStyle]="{'background': linearGradient(starredSnippets())}">
-        <heading>Starred snippets</heading>
-        <number>
-          {{ starredSnippets() }}
         </number>
       </card>
       
@@ -65,7 +58,7 @@ import { Router } from '@angular/router';
               <a routerLink="/gist/{{ snippet.id }}" 
                  (click)="onClick(snippet.id)">
                   {{ snippet.description | cleanTags }}
-              </a> 
+              </a>
               <tag *ngFor="let tag of snippet.tags"> {{ tag }}</tag>
             </div>
           </div>
@@ -75,6 +68,7 @@ import { Router } from '@angular/router';
   `,
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent {
 
   size: any = size;
@@ -86,9 +80,10 @@ export class DashboardComponent {
   }
 
   totalSnippets = () => size(this.gistsStore.gists);
+
   publicSnippets = () => size(filter({ public: true }, this.gistsStore.gists));
+
   privateSnippets = () => size(filter({ public: false }, this.gistsStore.gists));
-  starredSnippets = () => size(filter({ star: true }, this.gistsStore.gists));
 
   linearGradient = (percentOf) => {
     const percents = (percentOf / this.totalSnippets()) * 100;
@@ -113,5 +108,5 @@ export class DashboardComponent {
   updateFilter = (value, type) => {
     this.gistsStore.filter = value;
     this.gistsStore.filterType = type;
-  };
+  }
 }

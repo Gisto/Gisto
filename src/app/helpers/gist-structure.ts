@@ -1,4 +1,4 @@
-import { size, isEmpty, map, values } from 'lodash';
+import { size, isEmpty, map, values, get } from 'lodash';
 import * as CONF from '../constants/config';
 
 interface Gist {
@@ -48,23 +48,29 @@ const prepareFiles = (snippet) => map(snippet.files, (file) => ({
 
 const prepareLanguages = (snippet) => map(snippet.files, 'language');
 
+const prepareFork = (snippet) => snippet.fork_of || {};
+
+const prepareAvatar = (snippet) => get(snippet, 'owner.avatar_url');
+
+const prepareUserName = (snippet) => get(snippet, 'owner.login');
+
 export const snippetStructure = (snippet) => ({
-  service: getService(snippet),
-  description: prepareDescription(snippet),
-  id: snippet.id,
-  star: snippet.star,
-  tags: prepareTags(snippet),
-  files: prepareFiles(snippet),
-  languages: prepareLanguages(snippet),
-  public: snippet.public,
-  url: snippet.url,
-  htmlUrl: snippet.html_url,
-  comments: snippet.comments,
-  avatarUrl: snippet.owner.avatar_url,
-  username: snippet.owner.login,
-  truncated: snippet.truncated,
-  fork: size(snippet.forks),
-  created: toUnixTimeStamp(snippet.created_at),
-  updated: toUnixTimeStamp(snippet.updated_at),
-  viewed: toUnixTimeStamp(new Date().getTime())
+    service: getService(snippet),
+    description: prepareDescription(snippet),
+    id: snippet.id,
+    star: snippet.star,
+    tags: prepareTags(snippet),
+    files: prepareFiles(snippet),
+    languages: prepareLanguages(snippet),
+    public: snippet.public,
+    url: snippet.url,
+    htmlUrl: snippet.html_url,
+    comments: snippet.comments,
+    avatarUrl: prepareAvatar(snippet),
+    username: prepareUserName(snippet),
+    truncated: snippet.truncated,
+    fork: prepareFork(snippet),
+    created: toUnixTimeStamp(snippet.created_at),
+    updated: toUnixTimeStamp(snippet.updated_at),
+    viewed: toUnixTimeStamp(new Date().getTime())
 });

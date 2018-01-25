@@ -90,6 +90,7 @@ export class GistsStore {
   }
 
   @action setGists(gists) {
+    console.log('%c LOG ', 'background: #555; color: tomato', gists);
     const gistList = map(gist => this.processGist(gist), gists);
     this.gists = assign(keyBy('id', gistList), this.getGists);
   }

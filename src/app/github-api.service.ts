@@ -22,7 +22,7 @@ export class GithubApiService {
 
   getGists(page: number = 1) {
     this.uiStore.loading = true;
-    API.get(`${this.baseUrl()}?page=${page}`)
+    API.get(`${this.baseUrl()}?page=${page}&per_page=100`)
       .set(this._headers)
       .end((error, result) => {
         if (result.headers.link.match(/next/ig)) {
@@ -100,7 +100,6 @@ export class GithubApiService {
       .end((error, result) => {
         this.uiStore.loading = false;
         this.userStore.setUser(result.body);
-        this.notificationsStore.addNotification('info', 'Welcome', result.body.name, null);
       });
   }
 

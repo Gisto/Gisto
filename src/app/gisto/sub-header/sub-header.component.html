@@ -15,6 +15,8 @@
 
   <gist-title title="{{ gistStore.current.description }} {{ gistStore.current.tags && gistStore.current.tags.join(', ') }}">
 
+    <icon *ngIf="gistStore.current.fork.id" icon="fork" size="20" color="#3F84A8"></icon>
+
     <div *ngIf="uiStore.editMode; then editDescription else showDescription"></div>
     <ng-template #editDescription>
       <strong *ngIf="uiStore.editMode">Edit: </strong> <input #description (keyup)="changeLocalDescription(description.value)" placeholder="untitled" [value]="gistStore.current.description" />
