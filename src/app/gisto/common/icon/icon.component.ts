@@ -20,7 +20,7 @@ import { Component, Input } from '@angular/core';
         'height': size + 'px',
         '-webkit-mask-image': 'url(../../../../assets/svg/' + ICONS[icon] + ')',
         'transform': 'rotate(' + rotate + ')'
-      }"></span>
+      }"><ng-content></ng-content></span>
     `
 })
 export class IconComponent {
@@ -61,7 +61,8 @@ export class IconComponent {
       menu: 'ios-menu-outline.svg',
       activity: 'ios-pulse-outline.svg',
       dashboard: 'ios-speedometer-outline.svg',
-      fork: 'ios-git-branch.svg'
+      fork: 'ios-git-branch.svg',
+      commit: 'ios-git-commit.svg'
     };
 
 }

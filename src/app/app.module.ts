@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
-import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { MobxAngularModule } from 'mobx-angular';
@@ -9,7 +8,6 @@ import { MarkdownModule } from 'angular2-markdown';
 import { CovalentCodeEditorModule } from '@covalent/code-editor';
 import { AceEditorModule } from 'ng2-ace-editor';
 
-import { GistSearchPipe } from './pipes/search.pipe';
 import { CleanTagsPipe } from './pipes/cleanTags.pipe';
 import { SortByPipe } from './pipes/sortBy.pipe';
 
@@ -86,7 +84,6 @@ const appRoutes: Routes = [
 
     CopyToClipBoardDirective,
 
-    GistSearchPipe,
     CleanTagsPipe,
     SortByPipe,
 
@@ -99,7 +96,6 @@ const appRoutes: Routes = [
         { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
-    HttpModule,
     FormsModule,
 
     MobxAngularModule,

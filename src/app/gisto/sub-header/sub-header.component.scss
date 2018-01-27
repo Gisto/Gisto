@@ -26,6 +26,7 @@
   }
 
   search {
+    position: relative;
     padding: 0 10px;
     flex-direction: row;
     display: flex;
@@ -47,8 +48,43 @@
     .search-type-label {
       position: absolute;
       font-size: 10px;
-      top: 36px;
+      top: 5px;
       left: 50px;
+      height: auto;
+      line-height: 1;
+    }
+
+    .search-suggestions {
+      position: absolute;
+      top: 50px;
+      width: 301px;
+      left: 50px;
+      padding: 10px 20px;
+      margin: 0;
+      background: #fff;
+      box-shadow: 0 0 10px #ccc;
+      overflow: auto;
+      height: calc(100vh - 120px);
+
+      .close {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        color: $color-danger;
+      }
+
+      p {
+        text-align: left;
+        font-size: 18px;
+        color: #3F84A8;
+        padding: 0;
+        margin: 0;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0px;
+      }
     }
   }
 
@@ -93,6 +129,7 @@
       margin: 0 5px 0 0;
       font-size: 10px;
       vertical-align: middle;
+      cursor: pointer;
     }
   }
 }

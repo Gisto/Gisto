@@ -57,16 +57,16 @@
         }
       }
 
-      languages {
+      pills {
         display: flex;
         justify-content: space-between;
         padding: 20px 0;
         flex-direction: row;
         flex-wrap: wrap;
 
-        language {
+        pill {
           color: $color-regular;
-          padding: 20px;
+          padding: 10px 20px;
           border: 1px solid $bg;
           border-radius: 3px;
           margin: 0 5px 10px 0;
@@ -75,18 +75,18 @@
           width: 6vw;
 
           &:hover {
-            background: lighten($base-app-color, 50%);
+            border-color: $base-app-color;
             cursor: pointer;
           }
 
           heading {
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 100;
           }
           number {
             text-align: left;
-            font-weight: 100;
-            font-size: 12px;
+            font-weight: 600;
+            font-size: 16px;
             color: $color-regular;
           }
         }

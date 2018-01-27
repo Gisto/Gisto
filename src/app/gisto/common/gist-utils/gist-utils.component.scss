@@ -14,7 +14,8 @@
   &:last-child {
     margin: 0 -20px 0 0;
   }
-  ::ng-deep ul {
+  ::ng-deep ul,
+  ::ng-deep .drop {
     position: absolute;
     background: #fff;
     right: -1px;
@@ -37,6 +38,20 @@
         background: rgba($border-color-light, .5);
         cursor: pointer;
       }
+    }
+  }
+  ::ng-deep .drop {
+    padding: 5px 20px 20px;
+    left: -1px;
+    text-align: left;
+
+    &.fork {
+      width: 300px;
+      cursor: default;
+    }
+
+    &:hover {
+      cursor: default;
     }
   }
   app-settings & {

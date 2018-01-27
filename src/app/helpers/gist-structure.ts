@@ -4,20 +4,23 @@ import * as CONF from '../constants/config';
 interface Gist {
   service: string;
   description: string;
+  id: string;
   star: boolean;
   tags: string[];
-  files: object[];
-  viewed: number;
-  created: string;
-  updated: string;
-  secret: boolean;
+  files: any;
+  languages: object[];
+  public: boolean;
   url: string;
   htmlUrl: string;
-  comments: number;
+  comments: any;
   avatarUrl: string;
   username: string;
   truncated: boolean;
-  fork: any;
+  fork: object;
+  history: object[];
+  created: number;
+  updated: number;
+  viewed: number;
 }
 
 const prepareTags = (snippet) => {
@@ -28,7 +31,7 @@ const prepareTags = (snippet) => {
   return [];
 };
 
-const prepareDescription = (snippet) => {
+const prepareDescription = (snippet): string => {
   if (!isEmpty(snippet.description)) {
     return snippet.description;
   }
@@ -54,23 +57,26 @@ const prepareAvatar = (snippet) => get(snippet, 'owner.avatar_url');
 
 const prepareUserName = (snippet) => get(snippet, 'owner.login');
 
-export const snippetStructure = (snippet) => ({
-    service: getService(snippet),
-    description: prepareDescription(snippet),
-    id: snippet.id,
-    star: snippet.star,
-    tags: prepareTags(snippet),
-    files: prepareFiles(snippet),
-    languages: prepareLanguages(snippet),
-    public: snippet.public,
-    url: snippet.url,
-    htmlUrl: snippet.html_url,
-    comments: snippet.comments,
-    avatarUrl: prepareAvatar(snippet),
-    username: prepareUserName(snippet),
-    truncated: snippet.truncated,
-    fork: prepareFork(snippet),
-    created: toUnixTimeStamp(snippet.created_at),
-    updated: toUnixTimeStamp(snippet.updated_at),
-    viewed: toUnixTimeStamp(new Date().getTime())
+const prepareHistory = (snippet) => snippet.history || [];
+
+export const snippetStructure = (snippet): Gist => ({
+  service: getService(snippet),
+  description: prepareDescription(snippet),
+  id: snippet.id,
+  star: snippet.star,
+  tags: prepareTags(snippet),
+  files: prepareFiles(snippet),
+  languages: prepareLanguages(snippet),
+  public: snippet.public,
+  url: snippet.url,
+  htmlUrl: snippet.html_url,
+  comments: snippet.comments,
+  avatarUrl: prepareAvatar(snippet),
+  username: prepareUserName(snippet),
+  truncated: snippet.truncated,
+  fork: prepareFork(snippet),
+  history: prepareHistory(snippet),
+  created: toUnixTimeStamp(snippet.created_at),
+  updated: toUnixTimeStamp(snippet.updated_at),
+  viewed: toUnixTimeStamp(new Date().getTime())
 });

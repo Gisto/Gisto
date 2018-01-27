@@ -13,6 +13,7 @@ export class GistsStore {
   @observable localEdit = <any>{};
   @observable filter = '';
   @observable filterType = 'freeText';
+  @observable filterCount = 0;
 
   constructor(private uiStore: UiStore) {
     this.localDataReaction();
@@ -48,6 +49,14 @@ export class GistsStore {
   @action setFilter(filter, type = 'freeText') {
     this.filter = filter;
     this.filterType = type;
+  }
+
+  @computed get getFilterCount() {
+    return this.filterCount;
+  }
+
+  @action setFilterCount(counts) {
+    this.filterCount = counts;
   }
 
   @action changeLocalDataDescription(description) {
@@ -90,7 +99,6 @@ export class GistsStore {
   }
 
   @action setGists(gists) {
-    console.log('%c LOG ', 'background: #555; color: tomato', gists);
     const gistList = map(gist => this.processGist(gist), gists);
     this.gists = assign(keyBy('id', gistList), this.getGists);
   }

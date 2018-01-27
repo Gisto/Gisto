@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { GithubApiService } from '../../../github-api.service';
 import { GistsStore } from '../../../store/gists';
-import { values } from 'lodash/fp';
+import { values, includes, filter, size } from 'lodash/fp';
 import { Router } from '@angular/router';
+import {minimumCharactersToTriggerSearch} from '../../../constants/config';
 
 @Component({
   selector: 'sidebar',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
     <gist-list>
       <gist-item routerLink="/gist/{{ gist.id }}"
                  routerLinkActive="active"
-                 *ngFor="let gist of gistStore.gists | searchFilter: gistStore.filter : gistStore.filterType | sortBy: 'created' : 'DESC'"
+                 *ngFor="let gist of gistsList() | sortBy: 'created' : 'DESC'"
                  (click)="onClick(gist.id)">
         <gist-private><icon icon="{{ gist.public ? 'unlock' : 'lock' }}"
                             color="{{ isActive(gist.id) ? '#3F84A8' : '#fff' }}"
@@ -25,6 +26,7 @@ import { Router } from '@angular/router';
           </a>
         </gist-name>
       </gist-item>
+      
     </gist-list>
   `,
   styleUrls: ['./sidebar.component.scss'],
@@ -35,12 +37,46 @@ export class SidebarComponent {
 
   public values: any = values;
 
-  constructor(public gistStore: GistsStore, private githubApiService: GithubApiService, private router: Router) {}
+  constructor(
+    public gistStore: GistsStore,
+    private githubApiService: GithubApiService,
+    private router: Router) {}
 
   onClick(id) {
     this.githubApiService.getGist(id);
   }
 
-  isActive = (id) => this.router.isActive('/gist/' + id, true);
+  gistsList = () => {
+    let snippets = values(this.gistStore.getGists);
 
+    if (!this.gistStore.filter || this.gistStore.filter === '') {
+      snippets = values(this.gistStore.getGists);
+    }
+
+    if (this.gistStore.filterType === 'freeText' && this.gistStore.filter.length >= minimumCharactersToTriggerSearch) {
+      snippets = filter((snippet) =>
+        snippet.description.match(this.gistStore.filter) || includes(this.gistStore.filter, snippet.languages), this.gistStore.getGists);
+    }
+
+    if (this.gistStore.filterType === 'fileType') {
+      snippets = filter((snippet) =>
+        includes(this.gistStore.filter, snippet.languages), this.gistStore.getGists);
+    }
+
+    if (this.gistStore.filterType === 'tagType') {
+      snippets = filter((snippet) =>
+        includes(this.gistStore.filter, snippet.tags), this.gistStore.getGists);
+    }
+
+    if (this.gistStore.filterType === 'accessType') {
+      snippets = filter((snippet) =>
+        snippet.public === (this.gistStore.filter === 'public'), this.gistStore.getGists);
+    }
+
+    this.gistStore.setFilterCount(size(snippets));
+
+    return snippets;
+  }
+
+  isActive = (id) => this.router.isActive('/gist/' + id, true);
 }

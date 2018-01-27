@@ -22,6 +22,7 @@
       background: rgba(255, 255, 255, 0.2);
       opacity: .6;
       align-items: center;
+      justify-content: space-between;
 
       &::after {
         position: absolute;
@@ -66,9 +67,9 @@
       }
       star {
         position: absolute;
-        left: 40px;
+        left: 50px;
         font-size: 12px;
-        padding: 0;
+        -webkit-transform: translate(50%, 0);
         transform: translate(50%, 0);
       }
       fork {
@@ -84,7 +85,9 @@
         width: 40px;
       }
       gist-name {
-        padding: 0 10px 0 20px;
+        max-width: 215px;
+        flex: 1;
+        text-align: left;
       }
       gist-private {
         font-size: 22px;

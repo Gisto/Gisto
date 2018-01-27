@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GistsStore } from '../../../store/gists';
 import { GithubApiService } from '../../../github-api.service';
-import { size, filter, map, groupBy, flattenDeep, values, keys, head } from 'lodash/fp';
+import { size, filter, map, groupBy, flattenDeep, values, keys, head, uniq, compact, flow } from 'lodash/fp';
 import { toJS } from 'mobx';
 import { Router } from '@angular/router';
 
@@ -15,55 +15,77 @@ import { Router } from '@angular/router';
         <number>{{ totalSnippets() }}</number>
       </card>
       
-      <card [ngStyle]="{ 'background': linearGradient(publicSnippets()) }">
+      <card [ngStyle]="{ 'background': linearGradient(privateSnippets()), cursor: 'pointer' }"
+            (click)="updateFilter('private', 'accessType')" 
+            title="Click to show private snippets only">
+        <heading>Private snippets</heading>
+        <number>
+          {{ privateSnippets() }}
+        </number>
+      </card>
+
+      <card [ngStyle]="{ 'background': linearGradient(publicSnippets()), cursor: 'pointer' }"
+            (click)="updateFilter('public', 'accessType')"
+            title="Click to show public snippets only">
         <heading>Public snippets</heading>
         <number>
           {{ publicSnippets() }}
         </number>
       </card>
       
-      <card [ngStyle]="{ 'background': linearGradient(privateSnippets()) }">
-        <heading>Private snippets</heading>
-        <number>
-          {{ privateSnippets() }}
-        </number>
-      </card>
-      
     </cards>
-    <cards>
-      
+
+    <cards>  
       <card>
-        <heading>Language files of Snippets</heading>
-        <languages>
-          <language *ngFor="let language of getLanguages() | sortBy: 'language.length'" 
-                    (click)="updateFilter(language[0].language, 'fileType')">
+        <heading>File types of Snippets</heading>
+        <pills>
+          <pill *ngFor="let language of getLanguages() | sortBy: 'language.length'"
+                    [ngStyle]="{ 'background': linearGradient(size(language)) }"
+                    (click)="updateFilter(language[0].language, 'fileType')" 
+                    [title]="'Click to show snippets that contain ' + language[0].language + ' files'">
             <heading>{{ language[0].language || 'Other' }}</heading>
             <number>
               {{ size(language) }}
             </number>
-          </language>
-        </languages>
+          </pill>
+        </pills>
       </card>
-      
+
       <card>
         <heading>Starred ({{ size(starredList()) }})</heading>
         <div class="wrap">
           <div class="starred" *ngFor="let snippet of starredList() | sortBy: 'created' : 'DESC'">
             <div>
-              <icon icon="{{ snippet.public ? 'unlock' : 'lock' }}" 
-                    color="#3F84A8" 
+              <icon icon="{{ snippet.public ? 'unlock' : 'lock' }}"
+                    color="#3F84A8"
                     size="22"></icon>
             </div>
             <div class="text">
-              <a routerLink="/gist/{{ snippet.id }}" 
+              <a routerLink="/gist/{{ snippet.id }}"
                  (click)="onClick(snippet.id)">
-                  {{ snippet.description | cleanTags }}
+                {{ snippet.description | cleanTags }}
               </a>
               <tag *ngFor="let tag of snippet.tags"> {{ tag }}</tag>
             </div>
           </div>
         </div>
       </card>
+      
+      
+    </cards>
+    
+    <cards>
+      <card>
+        <heading>Tags</heading>
+        <pills>
+          <pill *ngFor="let tag of getTags()"
+                    (click)="updateFilter(tag, 'tagType')"
+                    [title]="'Click to show snippets that contain ' + tag + ' tag'">
+            <heading>{{ tag }}</heading>
+          </pill>
+        </pills>
+      </card>
+      
     </cards>
   `,
   styleUrls: ['./dashboard.component.scss']
@@ -101,6 +123,18 @@ export class DashboardComponent {
         ...file
       };
     }, grouped);
+  }
+
+  getTags = () => {
+    const tags = map('tags', toJS(this.gistsStore.gists));
+
+    const tagList = flow([
+      flattenDeep,
+      uniq,
+      compact
+    ])(tags);
+
+    return tagList.sort();
   }
 
   starredList = () => filter({ star: true }, this.gistsStore.gists);
