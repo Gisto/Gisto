@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { keyBy } from 'lodash/fp';
 import { GistsStore } from './store/gists';
 import { UiStore } from './store/ui';
 import { UserStore } from './store/user';
@@ -83,11 +84,19 @@ export class GithubApiService {
   }
 
   updateGist(id: string) {
+    const { description, files } = this.gistsStore.localEdit;
+    const gistNewData = {
+      description,
+      files: keyBy('filename', files)
+    };
     this.uiStore.loading = true;
     API.patch(`${this.baseUrl()}/${id}`)
       .set(this._headers)
-      .send(this.gistsStore.localEdit)
+      .send(gistNewData)
       .end((error, result) => {
+        if (error) {
+          return this.notificationsStore.addNotification('error', `Error code: ${error.status}`, error.message);
+        }
         this.uiStore.loading = false;
         this.gistsStore.setCurrentGist(result.body, true);
       });

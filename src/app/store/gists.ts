@@ -109,10 +109,10 @@ export class GistsStore {
 
   @action setCurrentGist(result, proccess = false) {
     const newResult = proccess ? this.processGist(result) : result;
-    const gist = this.gists[result.id];
-
-    this.gists[result.id] = merge(this.gists[result.id], newResult);
-    this.current = proccess ? this.processGist(gist) : gist;
+    const star = this.gists[result.id].star;
+    this.gists[result.id] = newResult;
+    this.gists[result.id].star = star;
+    this.current = proccess ? this.processGist(newResult) : newResult;
   }
 
   @action clearCurrentGist() {
