@@ -21,6 +21,7 @@ Development started
 - [License](#license)
 - [Development](#development)
 - [Contributors and mentions](#contributors-and-mentions)
+- [Screenshots (WIP)](#Dashboard)
 
 ## About
 
@@ -94,6 +95,14 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 #### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+#### Dashboard
+![Dashboard](https://i.imgur.com/s4d0uHL.png)
+
+#### Gist view
+![Gist view](https://i.imgur.com/DCR1zTK.png)
+
+
 
 #### Contributors and mentions
 
