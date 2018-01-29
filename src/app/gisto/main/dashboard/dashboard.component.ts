@@ -54,7 +54,7 @@ import { Router } from '@angular/router';
       <card>
         <heading>Starred ({{ size(starredList()) }})</heading>
         <div class="wrap">
-          <div class="starred" *ngFor="let snippet of starredList() | sortBy: 'created' : 'DESC'">
+          <div class="starred" *ngFor="let snippet of starredList() | sortBy: 'updated' : 'DESC'">
             <div>
               <icon icon="{{ snippet.public ? 'unlock' : 'lock' }}"
                     color="#3F84A8"
@@ -65,7 +65,10 @@ import { Router } from '@angular/router';
                  (click)="onClick(snippet.id)">
                 {{ snippet.description | cleanTags }}
               </a>
-              <tag *ngFor="let tag of snippet.tags"> {{ tag }}</tag>
+              <tag *ngFor="let tag of snippet.tags">
+                <a (click)="updateFilter(tag, 'tagType')"
+                   [title]="'Click to show snippets that contain ' + tag + ' tag'">{{ tag }}</a>
+              </tag>
             </div>
           </div>
         </div>

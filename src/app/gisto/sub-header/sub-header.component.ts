@@ -16,7 +16,7 @@ import { toJS } from 'mobx';
         <div><icon icon="search" size="20" color="#3F84A8"></icon></div>
         <span *ngIf="gistStore.filterType!=='freeText'"
               class="search-type-label">
-        Search by <b>{{ startCase(gistStore?.filterType) }}</b> ({{ gistStore?.filterCount }})
+        Search by <b>{{ startCase(gistStore?.filterType) }}</b> ({{ gistStore?.getFilterCount }})
       </span>
         <input type="search"
                [value]="gistStore.filter"
@@ -25,7 +25,8 @@ import { toJS } from 'mobx';
                (keyup)="updateFilter(searchBox.value, 'freeText')"
                (blur)="newGistText=true"
                (focus)="newGistText=false;showSuggestions=true"/>
-        <div *ngIf="showSuggestions && searchBox.value.length >= 2" class="search-suggestions">
+        <div *ngIf="showSuggestions && gistStore.filterType==='freeText' && searchBox.value.length >= 2" 
+             class="search-suggestions">
           <a class="close" (click)="showSuggestions=false">
             <icon icon="cancel" size="20" color="#3F84A8"></icon>
           </a>
