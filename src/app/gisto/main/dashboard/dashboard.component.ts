@@ -79,7 +79,7 @@ import { Router } from '@angular/router';
     
     <cards>
       <card>
-        <heading>Tags</heading>
+        <heading>Tags ({{ size(getTags()) }})</heading>
         <pills>
           <pill *ngFor="let tag of getTags()"
                     (click)="updateFilter(tag, 'tagType')"
