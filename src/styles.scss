@@ -1,6 +1,14 @@
 @import '~normalize.css';
 @import './assets/colors';
 
+::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+*:hover {
+  transition: all .3s ease-out;
+}
+
 body {
   background: $bg;
   font-family: 'Titillium Web', "Helvetica Neue", Helvetica, Arial, sans-serif;
