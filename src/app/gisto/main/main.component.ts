@@ -13,7 +13,6 @@ import { GistsStore } from '../../store/gists';
       <dashboard *ngIf="!gistsStore.current.id"></dashboard>
     </content-wrapper>
     <comments *ngIf="uiStore.comments"></comments>
-    <notifications></notifications>
   `,
   styleUrls: ['./main.component.scss']
 })

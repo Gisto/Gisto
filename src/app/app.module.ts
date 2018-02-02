@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MobxAngularModule } from 'mobx-angular';
 import { MarkdownModule } from 'angular2-markdown';
@@ -37,12 +37,19 @@ import { CommentsComponent } from './gisto/main/comments/comments.component';
 import { DateComponent } from './gisto/common/date/date.component';
 import { NotificationsComponent } from './gisto/main/notifications/notifications.component';
 import { DashboardComponent } from './gisto/main/dashboard/dashboard.component';
+import { NewComponent } from './gisto/main/new/new.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     {
       path: 'main',
       component: GistoComponent,
+      data: { requiresLogin: true },
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'new',
+      component: NewComponent,
       data: { requiresLogin: true },
       canActivate: [AuthGuard]
     },
@@ -81,6 +88,7 @@ const appRoutes: Routes = [
     HeaderMainComponent,
     NotificationsComponent,
     DashboardComponent,
+    NewComponent,
 
     CopyToClipBoardDirective,
 
@@ -97,6 +105,7 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
 
     MobxAngularModule,
     CovalentCodeEditorModule,

@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { observable, action, computed, reaction, toJS } from 'mobx';
 import { UiStore } from './ui';
 import { snippetStructure } from '../helpers/gist-structure';
-import { set, get, keyBy, merge, map, includes, isEmpty, omit, size, head, assign } from 'lodash/fp';
+import {
+  set, get, keyBy, merge, map, includes, isEmpty, omit, size, head, assign
+} from 'lodash/fp';
 
 @Injectable()
 export class GistsStore {
@@ -109,7 +111,7 @@ export class GistsStore {
 
   @action setCurrentGist(result, proccess = false) {
     const newResult = proccess ? this.processGist(result) : result;
-    const star = this.gists[result.id].star;
+    const star = this.gists[result.id] ? this.gists[result.id].star : false;
     this.gists[result.id] = newResult;
     this.gists[result.id].star = star;
     this.current = proccess ? this.processGist(newResult) : newResult;
@@ -136,6 +138,7 @@ export class GistsStore {
   @action deleteGist(id) {
     delete this.gists[id];
     this.setGists(this.gists);
+    this.current = {};
   }
 
   @action setComments(id, comments) {

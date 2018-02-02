@@ -39,7 +39,10 @@ import { toJS } from 'mobx';
           </ul>
         </div>
       </search>
-      <button icon="add" size="22" color="white">
+      <button icon="add" 
+              size="22" 
+              color="white" 
+              routerLink="/new">
         <span *ngIf="newGistText">New gist</span>
       </button>
     </sub-controlls>
@@ -102,7 +105,6 @@ import { toJS } from 'mobx';
 
       <gist-utils icon="{{ uiStore.isEdit ? 'cancel' : 'edit' }}"
                   color="{{ uiStore.isEdit ? 'red' : '#3F84A8' }}"
-                  rotate="{{ uiStore.isEdit ? '45deg' : '0deg' }}"
                   (click)="toggleEditOrSaveMode()"
                   cssClass="{{ uiStore.isEdit ? 'color-danger' : 'color-success'}}"></gist-utils>
 

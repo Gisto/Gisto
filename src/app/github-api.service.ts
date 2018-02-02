@@ -5,6 +5,7 @@ import { UiStore } from './store/ui';
 import { UserStore } from './store/user';
 import { NotificationsStore } from './store/notifications';
 import * as API from 'superagent';
+import {Routes, RouterModule, Router} from "@angular/router";
 
 @Injectable()
 export class GithubApiService {
@@ -51,6 +52,23 @@ export class GithubApiService {
       });
   }
 
+  createGist(data: object) {
+    this.uiStore.loading = true;
+    API.post(this.baseUrl())
+      .set(this._headers)
+      .send(JSON.stringify(data))
+      .end((error, result) => {
+        this.uiStore.loading = false;
+        if (error) {
+          return this.notificationsStore.addNotification('error', `Error code: ${error.status}`, error.message);
+        }
+        if (result.statusCode === 201) {
+          this.notificationsStore.addNotification('success', result.statusText, result.data.description);
+        }
+        this.gistsStore.setCurrentGist(result.body, true);
+      });
+  }
+
   starGist(id: string) {
     this.uiStore.loading = true;
     API.put(`${this.baseUrl()}/${id}/star`)
@@ -78,8 +96,10 @@ export class GithubApiService {
     API.del(`${this.baseUrl()}/${id}`)
       .set(this._headers)
       .end((error) => {
-        this.uiStore.loading = false;
-        this.gistsStore.deleteGist(id);
+        if (!error) {
+          this.uiStore.loading = false;
+          this.gistsStore.deleteGist(id);
+        }
       });
   }
 
