@@ -3,14 +3,14 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SettingsStore } from '../store/settings';
 import { GithubAuthorizationService } from '../github-authorization.service';
 import { GithubApiService } from '../github-api.service';
-const appVersion = require('../../../package.json').version;
+import { version } from '../helpers/version';
 
 @Component({
   selector: 'login',
   template: `
     <div>
       <logo></logo>
-      <small>v{{ version }}</small>
+      <small>v.{{ version }}</small>
       <button invert (click)="login()">Log-in with Github account</button>
     </div>
 
@@ -19,7 +19,7 @@ const appVersion = require('../../../package.json').version;
 })
 export class LoginComponent implements OnInit {
 
-  version: string = appVersion;
+  version: string = version;
 
   constructor(private router: Router,
               private route: ActivatedRoute,

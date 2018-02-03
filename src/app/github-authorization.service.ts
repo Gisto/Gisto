@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { SettingsStore } from './store/settings';
+import * as request from 'superagent';
 
 @Injectable()
 export class GithubAuthorizationService {
@@ -10,7 +10,7 @@ export class GithubAuthorizationService {
   private clientId = '193ae0478f15bfda404e';
   private scope = ['gist'];
 
-  constructor(private http: HttpClient, private settingsStore: SettingsStore) {
+  constructor(private settingsStore: SettingsStore) {
   }
 
   login() {
@@ -18,8 +18,7 @@ export class GithubAuthorizationService {
   }
 
   fetchAuthToken(code: string) {
-    return this.http.get(`${this.fetchTokenUrl}/${code}`)
-      .toPromise()
-      .then((response) => this.settingsStore.setToken(response.token));
+    return request.get(`${this.fetchTokenUrl}/${code}`)
+      .then((response) => this.settingsStore.setToken(response.body.token));
   }
 }
