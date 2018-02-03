@@ -5,7 +5,7 @@ import { UiStore } from './store/ui';
 import { UserStore } from './store/user';
 import { NotificationsStore } from './store/notifications';
 import * as API from 'superagent';
-import {Routes, RouterModule, Router} from "@angular/router";
+import { Router} from '@angular/router';
 
 @Injectable()
 export class GithubApiService {

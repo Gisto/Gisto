@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MobxAngularModule } from 'mobx-angular';
 import { MarkdownModule } from 'angular2-markdown';
@@ -106,6 +107,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
 
     MobxAngularModule,
     CovalentCodeEditorModule,
