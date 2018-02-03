@@ -130,9 +130,6 @@ export class GithubApiService {
   }
 
   getUser() {
-    console.log('%c HEADERS ', 'background: #555; color: tomato', this._headers());
-    console.log('%c localStorage ', 'background: #555; color: tomato', localStorage);
-    console.log('%c UserStore ', 'background: #555; color: tomato', UserStore);
     this.uiStore.loading = true;
     API.get(this.baseUrl('user'))
       .set(this._headers())
