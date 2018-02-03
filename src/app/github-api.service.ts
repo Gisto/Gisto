@@ -10,8 +10,7 @@ import { Router} from '@angular/router';
 @Injectable()
 export class GithubApiService {
 
-  private token: string = localStorage.getItem('api-token');
-  private _headers: object = { 'Content-Type': 'application/json', 'Authorization': `token ${this.token}` };
+  private token: string;
 
   constructor(
     private gistsStore: GistsStore,
@@ -23,10 +22,16 @@ export class GithubApiService {
 
   baseUrl = (path = 'gists') => `https://api.github.com/${path}`;
 
+  _headers() {
+    this.token = localStorage.getItem('api-token');
+
+    return { 'Content-Type': 'application/json', 'Authorization': `token ${this.token}` };
+  }
+
   getGists(page: number = 1) {
     this.uiStore.loading = true;
     API.get(`${this.baseUrl()}?page=${page}&per_page=100`)
-      .set(this._headers)
+      .set(this._headers())
       .end((error, result) => {
         if (result.headers.link.match(/next/ig)) {
           this.getGists(page + 1);
@@ -38,14 +43,14 @@ export class GithubApiService {
 
   getStaredGists() {
     API.get(`${this.baseUrl()}/starred`)
-      .set(this._headers)
+      .set(this._headers())
       .end((error, result) => this.gistsStore.setStarsOnGists(result.body));
   }
 
   getGist(id: string) {
     this.uiStore.loading = true;
     API.get(`${this.baseUrl()}/${id}`)
-      .set(this._headers)
+      .set(this._headers())
       .end((error, result) => {
         this.uiStore.loading = false;
         this.getComments(id);
@@ -56,7 +61,7 @@ export class GithubApiService {
   createGist(data: object) {
     this.uiStore.loading = true;
     API.post(this.baseUrl())
-      .set(this._headers)
+      .set(this._headers())
       .send(JSON.stringify(data))
       .end((error, result) => {
         this.uiStore.loading = false;
@@ -74,7 +79,7 @@ export class GithubApiService {
   starGist(id: string) {
     this.uiStore.loading = true;
     API.put(`${this.baseUrl()}/${id}/star`)
-      .set(this._headers)
+      .set(this._headers())
       .end((error) => {
         this.uiStore.loading = false;
         this.gistsStore.star(id);
@@ -85,7 +90,7 @@ export class GithubApiService {
   unStarGist(id: string) {
     this.uiStore.loading = true;
     API.del(`${this.baseUrl()}/${id}/star`)
-      .set(this._headers)
+      .set(this._headers())
       .end((error) => {
         this.uiStore.loading = false;
         this.gistsStore.unStar(id);
@@ -96,7 +101,7 @@ export class GithubApiService {
   deleteGist(id: string) {
     this.uiStore.loading = true;
     API.del(`${this.baseUrl()}/${id}`)
-      .set(this._headers)
+      .set(this._headers())
       .end((error) => {
         if (!error) {
           this.uiStore.loading = false;
@@ -113,7 +118,7 @@ export class GithubApiService {
     };
     this.uiStore.loading = true;
     API.patch(`${this.baseUrl()}/${id}`)
-      .set(this._headers)
+      .set(this._headers())
       .send(gistNewData)
       .end((error, result) => {
         if (error) {
@@ -125,9 +130,12 @@ export class GithubApiService {
   }
 
   getUser() {
+    console.log('%c HEADERS ', 'background: #555; color: tomato', this._headers());
+    console.log('%c localStorage ', 'background: #555; color: tomato', localStorage);
+    console.log('%c UserStore ', 'background: #555; color: tomato', UserStore);
     this.uiStore.loading = true;
     API.get(this.baseUrl('user'))
-      .set(this._headers)
+      .set(this._headers())
       .end((error, result) => {
         this.uiStore.loading = false;
         this.userStore.setUser(result.body);
@@ -137,7 +145,7 @@ export class GithubApiService {
   getComments(id: string) {
     this.uiStore.loading = true;
     API.get(`${this.baseUrl()}/${id}/comments`)
-      .set(this._headers)
+      .set(this._headers())
       .end((error, result) => {
         this.uiStore.loading = false;
         this.gistsStore.setComments(id, result.body);
@@ -147,7 +155,7 @@ export class GithubApiService {
   addComment(id: string, body: string) {
     this.uiStore.loading = true;
     API.post(`${this.baseUrl()}/${id}/comments`)
-      .set(this._headers)
+      .set(this._headers())
       .send({ body })
       .end((error, result) => {
         this.uiStore.loading = false;
