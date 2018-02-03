@@ -3,23 +3,23 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SettingsStore } from '../store/settings';
 import { GithubAuthorizationService } from '../github-authorization.service';
 import { GithubApiService } from '../github-api.service';
+const appVersion = require('../../../package.json').version;
 
 @Component({
   selector: 'login',
   template: `
-    <div *mobxAutorun>
-      <h1>
-        Log in (paste token):
-      </h1>
-
-      <input #token/>
-      <a (click)="login()">Log-in</a>
+    <div>
+      <logo></logo>
+      <small>v{{ version }}</small>
+      <button invert (click)="login()">Log-in with Github account</button>
     </div>
 
   `,
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  version: string = appVersion;
 
   constructor(private router: Router,
               private route: ActivatedRoute,

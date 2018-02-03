@@ -1,6 +1,26 @@
 :host {
-    padding: 0 10px;
-    font-size: 22px;
-    width:280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+
+  logo {
+    font-size: 42px;
+    font-weight: 100;
   }
-  
+
+  small {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    font-size: 22px;
+    line-height: 11px;
+    height: 50px;
+    padding: 20px;
+  }
+}
