@@ -17,7 +17,8 @@ export class GithubApiService {
     private gistsStore: GistsStore,
     private uiStore: UiStore,
     private userStore: UserStore,
-    private notificationsStore: NotificationsStore
+    private notificationsStore: NotificationsStore,
+    private router: Router
     ) { }
 
   baseUrl = (path = 'gists') => `https://api.github.com/${path}`;
@@ -63,9 +64,10 @@ export class GithubApiService {
           return this.notificationsStore.addNotification('error', `Error code: ${error.status}`, error.message);
         }
         if (result.statusCode === 201) {
-          this.notificationsStore.addNotification('success', result.statusText, result.data.description);
+          this.router.navigate([`/gist/${result.body.id}`]);
+          this.gistsStore.setCurrentGist(result.body, true);
+          this.notificationsStore.addNotification('success', result.statusText, result.body.description);
         }
-        this.gistsStore.setCurrentGist(result.body, true);
       });
   }
 
