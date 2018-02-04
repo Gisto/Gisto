@@ -7,6 +7,7 @@ import * as request from 'superagent';
 export class GithubAuthorizationService {
 
   private fetchTokenUrl = 'https://gisto-gatekeeper.herokuapp.com/authenticate';
+  private authorizeUrl = 'https://github.com/login/oauth/authorize';
   private clientId = '193ae0478f15bfda404e';
   private scope = ['gist'];
 
@@ -14,7 +15,7 @@ export class GithubAuthorizationService {
   }
 
   login() {
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${this.clientId}&scope=${this.scope.join(' ')}`;
+    window.location.href = `${this.authorizeUrl}?client_id=${this.clientId}&scope=${this.scope.join(' ')}`;
   }
 
   fetchAuthToken(code: string) {
