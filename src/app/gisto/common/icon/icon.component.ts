@@ -62,7 +62,10 @@ export class IconComponent {
       activity: 'ios-pulse-outline.svg',
       dashboard: 'ios-speedometer-outline.svg',
       fork: 'ios-git-branch.svg',
-      commit: 'ios-git-commit.svg'
+      commit: 'ios-git-commit.svg',
+      tag: 'ios-pricetag-outline.svg',
+      file: 'ios-document-outline.svg',
+      book: 'ios-book-outline.svg'
     };
 
 }

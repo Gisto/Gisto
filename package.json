@@ -26,6 +26,7 @@
     "@covalent/code-editor": "^1.0.0-beta.2",
     "@types/lodash": "^4.14.85",
     "angular-highlight-js": "^2.0.1",
+    "angular2-hotkeys": "^2.0.3",
     "angular2-markdown": "^1.6.0",
     "core-js": "^2.4.1",
     "highlight.js": "^9.12.0",

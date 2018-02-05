@@ -7,6 +7,8 @@ import { MobxAngularModule } from 'mobx-angular';
 import { MarkdownModule } from 'angular2-markdown';
 import { CovalentCodeEditorModule } from '@covalent/code-editor';
 import { AceEditorModule } from 'ng2-ace-editor';
+import { HotkeyModule } from 'angular2-hotkeys';
+
 
 import { CleanTagsPipe } from './pipes/cleanTags.pipe';
 import { SortByPipe } from './pipes/sortBy.pipe';
@@ -38,6 +40,7 @@ import { DateComponent } from './gisto/common/date/date.component';
 import { NotificationsComponent } from './gisto/main/notifications/notifications.component';
 import { DashboardComponent } from './gisto/main/dashboard/dashboard.component';
 import { NewComponent } from './gisto/main/new/new.component';
+import { SuperSearchComponent } from './super-search/super-search.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -96,7 +99,8 @@ const appRoutes: Routes = [
     SortByPipe,
 
     CommentsComponent,
-    DateComponent
+    DateComponent,
+    SuperSearchComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -111,6 +115,7 @@ const appRoutes: Routes = [
     CovalentCodeEditorModule,
     MarkdownModule.forRoot(),
     AceEditorModule,
+    HotkeyModule.forRoot()
   ],
   providers: [
     SettingsStore,

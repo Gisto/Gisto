@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { GistsStore } from '../../../store/gists';
 import { UiStore } from '../../../store/ui';
 import { values } from 'lodash/fp';
-import { AceEditorDirective } from 'ng2-ace';
 import { syntaxMap } from '../../../constants/syntax';
 import { defaultEndpointURL } from '../../../constants/config';
 
