@@ -84,7 +84,7 @@ import { Router } from '@angular/router';
           <pill *ngFor="let tag of getTags()"
                     (click)="updateFilter(tag, 'tagType')"
                     [title]="'Click to show snippets that contain ' + tag + ' tag'">
-            <heading>{{ tag }}</heading>
+            <heading><span class="hash">#</span>{{ head(tag.split('#').slice(1)) }}</heading>
           </pill>
         </pills>
       </card>
@@ -97,6 +97,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
 
   size: any = size;
+  head: any = head;
 
   constructor(public gistsStore: GistsStore, private router: Router, private githubApiService: GithubApiService) { }
 

@@ -23,7 +23,7 @@ import {GithubApiService} from '../github-api.service';
           <!--<h4>App ({{ size(routeType) }})</h4>-->
           <div class="result" *ngFor="let route of routeType;">
             <icon [icon]="route.icon" color="#555"></icon>
-            <a (click)="uiStore.superSearch=false" routerLink="/{{ route.route }}">
+            <a (click)="uiStore.superSearch=false;gistStore.current={}" routerLink="/{{ route.route }}">
               {{ route.name }}
             </a>
           </div>
@@ -94,6 +94,12 @@ export class SuperSearchComponent implements OnInit {
       name: 'About Gisto',
       route: '/about',
       icon: 'info'
+    },
+    {
+      nameMatch: ['goto', 'panel', 'dashboard', 'dash', 'main', 'home'],
+      name: 'Dashboard',
+      route: '/main',
+      icon: 'dashboard'
     }
   ];
 
@@ -131,7 +137,6 @@ export class SuperSearchComponent implements OnInit {
 
   ngOnInit () {
     this.onElement = this.renderer.selectRootElement('#superSearchInput');
-
     this.onElement.focus();
   }
 }
