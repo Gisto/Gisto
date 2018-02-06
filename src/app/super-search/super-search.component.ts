@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2, OnInit } from '@angular/core';
 import { values, size, includes, filter, set, get, keyBy } from 'lodash/fp';
 import { minimumCharactersToTriggerSearch } from '../constants/config';
 import { GistsStore } from '../store/gists';
@@ -13,6 +13,7 @@ import {GithubApiService} from '../github-api.service';
             size="32" 
             color="#555"></icon>
       <input #superSearchInput
+             id="superSearchInput"
              (keyup)="searchFilters(superSearchInput.value)"
              placeholder="Search"/>
 
@@ -20,8 +21,8 @@ import {GithubApiService} from '../github-api.service';
 
         <ng-container *ngIf="size(routeType)">
           <!--<h4>App ({{ size(routeType) }})</h4>-->
-          <div tabindex="{{i}}" class="result" *ngFor="let route of routeType;">
-            <icon icon="cog" color="#555"></icon>
+          <div class="result" *ngFor="let route of routeType;">
+            <icon [icon]="route.icon" color="#555"></icon>
             <a (click)="uiStore.superSearch=false" routerLink="/{{ route.route }}">
               {{ route.name }}
             </a>
@@ -65,7 +66,7 @@ import {GithubApiService} from '../github-api.service';
   styleUrls: ['./super-search.component.scss']
 })
 
-export class SuperSearchComponent {
+export class SuperSearchComponent implements OnInit {
 
   get: any = get;
   size: any = size;
@@ -73,26 +74,35 @@ export class SuperSearchComponent {
   fileType: object[];
   tagType: object[];
   routeType: any;
+  onElement: any;
 
   discoverableRoutes: object[] = [
     {
-      nameMatch: ['settings', 'configurations'],
-      name: 'Settings',
-      route: '/settings'
-    },
-    {
-      nameMatch: ['new gist', 'create new', 'new'],
+      nameMatch: ['goto', 'new gist', 'create new', 'new'],
       name: 'Create New Snippet',
-      route: '/new'
+      route: '/new',
+      icon: 'add'
     },
     {
-      nameMatch: ['info', 'about', 'gisto'],
+      nameMatch: ['goto', 'settings', 'configurations'],
+      name: 'Settings',
+      route: '/settings',
+      icon: 'cog'
+    },
+    {
+      nameMatch: ['goto', 'info', 'about', 'gisto'],
       name: 'About Gisto',
-      route: '/about'
+      route: '/about',
+      icon: 'info'
     }
   ];
 
-  constructor(public gistStore: GistsStore, public uiStore: UiStore, private githubApiService: GithubApiService) {}
+  constructor(
+    public gistStore: GistsStore,
+    public uiStore: UiStore,
+    private githubApiService: GithubApiService,
+    private renderer: Renderer2
+  ) {}
 
   searchFilters = (searchTerm) => {
 
@@ -117,5 +127,11 @@ export class SuperSearchComponent {
   onClick = (snippet) => {
     this.uiStore.superSearch = false;
     this.githubApiService.getGist(snippet.id);
+  }
+
+  ngOnInit () {
+    this.onElement = this.renderer.selectRootElement('#superSearchInput');
+
+    this.onElement.focus();
   }
 }
