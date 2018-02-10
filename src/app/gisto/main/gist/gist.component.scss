@@ -3,10 +3,22 @@
 :host {
   overflow: auto;
 
+  input[type="text"] {
+    border: none;
+    border-bottom: 1px solid $base-app-color;
+    padding: 5px;
+    background: transparent;
+    color: $base-app-color;
+  }
+
+  span.edit {
+    color: #555;
+  }
+
   > div {
     background: #fff;
     margin: 20px;
-    font-weight: 100;
+    font-weight: 200;
     width: auto;
     display: flex;
     flex-direction: column;

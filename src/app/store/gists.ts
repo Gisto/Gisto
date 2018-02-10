@@ -3,8 +3,9 @@ import { observable, action, computed, reaction, toJS } from 'mobx';
 import { UiStore } from './ui';
 import { snippetStructure } from '../helpers/gist-structure';
 import {
-  set, get, keyBy, merge, map, includes, isEmpty, omit, size, head, assign
+  set, get, keyBy, merge, map, includes, isEmpty, omit, size, head, assign, find
 } from 'lodash/fp';
+import { v4 } from 'uuid';
 
 @Injectable()
 export class GistsStore {
@@ -18,7 +19,9 @@ export class GistsStore {
   @observable filterCount = 0;
 
   constructor(private uiStore: UiStore) {
+    this.currentGistReaction();
     this.localDataReaction();
+    this.localChangeDataReaction();
   }
 
   private processGist(gist) {
@@ -32,6 +35,22 @@ export class GistsStore {
     reaction(
       () => this.uiStore.editMode,
       (edit) => edit ? this.setLocalData() : this.clearLocalData(),
+      { name: 'localDataReaction' }
+    );
+  }
+
+  private localChangeDataReaction() {
+    reaction(
+      () => this.localEdit.files.map(file => file.filename),
+      () => console.log('%c this.localEdit ', 'background: #555; color: tomato', toJS(this.localEdit)),
+      { name: 'localDataReaction' }
+    );
+  }
+
+  private currentGistReaction () {
+    reaction(
+      () => this.currentGist.id,
+      () => console.log('%c this.currentGist ', 'background: #555; color: tomato', toJS(this.currentGist)),
       { name: 'localDataReaction' }
     );
   }
@@ -65,39 +84,59 @@ export class GistsStore {
     this.localEdit.description = description;
   }
 
-  @action changeLocalDataFile(filename, value) {
-    this.localEdit.files[filename] = {
-      filename: value,
-      language: this.localEdit.files[filename].language,
-      content: this.localEdit.files[filename].content,
-      collapsed: false
-    };
+  @action changeLocalDataFile(file, value, index = 0) {
+    let originalFileName;
+    if (file.isNew) {
+      originalFileName = file.originalFileName;
+    } else {
+      originalFileName = find({ uuid: file.uuid }, toJS(this.currentGist.files)).filename;
+    }
+    const localFile = find({ uuid: file.uuid }, toJS(this.localEdit.files));
+
+    this.localEdit.files[index] = { ...localFile, filename: value, originalFileName };
   }
 
-  @action changeLocalDataContent(filename, value) {
-    this.localEdit.files[filename] = {
-      filename: this.localEdit.files[filename].filename,
-      language: this.localEdit.files[filename].language,
-      content: value,
-      collapsed: false
-    };
+  @action changeLocalDataContent(file, value, index = 0) {
+    let originalFileName;
+    if (file.isNew) {
+      originalFileName = file.originalFileName;
+    } else {
+      originalFileName = find({ uuid: file.uuid }, toJS(this.currentGist.files)).filename;
+    }
+    const localFile = find({ uuid: file.uuid }, toJS(this.localEdit.files));
+
+    this.localEdit.files[index] = { ...localFile, content: value, originalFileName };
   }
 
-  @action deleteLocalFile(filename) {
-    this.localEdit.files[filename] = null;
+  @action deleteLocalFile(uuid, index = 0) {
+    this.localEdit.files[index] = null;
   }
 
   @action setLocalData() {
     if (Object.keys(this.localEdit).length === 0) {
+      const files = this.currentGist.files.map((file) => ({ originalFileName: file.filename, ...file }));
+
       this.localEdit = {
         description: this.currentGist.description,
-        files: this.currentGist.files
+        files
       };
     }
   }
 
   @action clearLocalData() {
     this.localEdit = {};
+  }
+
+  @action addNewFileToLocalEdit() {
+    this.localEdit.files.unshift({
+      originalFileName: 'untitled.txt',
+      isNew: true,
+      filename: 'untitled.txt',
+      content: '',
+      language: null,
+      uuid: v4(),
+      collapsed: false
+    });
   }
 
   @action setGists(gists) {

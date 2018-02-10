@@ -75,7 +75,7 @@ import { toJS } from 'mobx';
         <div *ngIf="uiStore.editMode; then editDescription else showDescription"></div>
         <ng-template #editDescription>
           <strong *ngIf="uiStore.editMode">
-            Edit: 
+            Edit description: 
           </strong> 
           <input #description 
                  (keyup)="changeLocalDescription(description.value)" 
@@ -95,7 +95,7 @@ import { toJS } from 'mobx';
         </ng-template>
 
       </gist-title>
-
+      
       <gist-utils *ngIf="uiStore.isEdit" 
                   icon="check" 
                   color="#5F9EA0" 
@@ -106,11 +106,32 @@ import { toJS } from 'mobx';
       <gist-utils icon="{{ uiStore.isEdit ? 'cancel' : 'edit' }}"
                   color="{{ uiStore.isEdit ? 'red' : '#3F84A8' }}"
                   (click)="toggleEditOrSaveMode()"
-                  cssClass="{{ uiStore.isEdit ? 'color-danger' : 'color-success'}}"></gist-utils>
+                  cssClass="{{ uiStore.isEdit ? 'color-danger' : 'color-success'}}">
+      </gist-utils>
 
-      <gist-utils icon="{{ gistStore.current.public ? 'unlock' : 'lock'}}" color="#3F84A8"></gist-utils>
+      <gist-utils (click)="toggleFileMenu()"
+                  icon="file"
+                  color="#5F9EA0"
+                  cssClass="color-regular">
+        {{ uiStore.isEdit ? size(gistStore.localEdit.files) : size(gistStore.current.files) }}
+        <icon icon="{{ showFileMenu ? 'arrow-up' : 'arrow-down' }}"
+              size="12"
+              *ngIf="uiStore.isEdit"
+              color="#3F84A8"></icon>
+        <ul *ngIf="showFileMenu">
+          <li (click)="addNewFile()">Add new file</li>
+        </ul>
+      </gist-utils>
+      
+      <gist-utils icon="{{ gistStore.current.public ? 'unlock' : 'lock'}}" 
+                  color="#3F84A8">
+      </gist-utils>
 
-      <gist-utils (click)="deleteGist(gistStore.current.id)" icon="delete" color="#FF6347" cssClass="color-danger"></gist-utils>
+      <gist-utils (click)="deleteGist(gistStore.current.id)" 
+                  icon="delete" 
+                  color="#FF6347" 
+                  cssClass="color-danger">
+      </gist-utils>
 
       <gist-utils (click)="toggleComments()" icon="chat" color="#3F84A8">
         {{ size(gistStore.current.comments) }}
@@ -147,6 +168,7 @@ export class SubHeaderComponent {
   get: any = get;
 
   public showMenu = false;
+  public showFileMenu = false;
   public newGistText = true;
   public showSuggestions = false;
 
@@ -176,6 +198,10 @@ export class SubHeaderComponent {
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
+  }
+
+  toggleFileMenu() {
+    this.showFileMenu = !this.showFileMenu;
   }
 
   updateFilter(value, type) {
@@ -228,5 +254,7 @@ export class SubHeaderComponent {
 
     return tagList.sort();
   }
+
+  addNewFile = () => this.gistStore.addNewFileToLocalEdit();
 
 }

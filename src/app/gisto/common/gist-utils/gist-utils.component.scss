@@ -1,7 +1,8 @@
 @import "../../../../assets/colors";
 
 :host {
-  width: 50px;
+  min-width: 25px;
+  padding: 0px 10px !important;
   text-align: center;
   padding: 0;
   border-left: 1px solid rgba($header-bg, 0.2);

@@ -1,5 +1,6 @@
 import { size, isEmpty, map, values, get } from 'lodash';
 import * as CONF from '../constants/config';
+import { v4 } from 'uuid';
 
 interface Gist {
   service: string;
@@ -46,6 +47,7 @@ const toUnixTimeStamp = (date) => Math.floor(new Date(date).getTime() / 1000);
 const prepareFiles = (snippet) => map(snippet.files, (file) => ({
   collapsed: false,
   viewed: toUnixTimeStamp(new Date().getTime()),
+  uuid: v4(),
   ...file
 }));
 

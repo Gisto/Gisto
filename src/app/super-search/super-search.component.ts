@@ -13,14 +13,15 @@ import {GithubApiService} from '../github-api.service';
             size="32" 
             color="#555"></icon>
       <input #superSearchInput
+             type="search"
              id="superSearchInput"
              (keyup)="searchFilters(superSearchInput.value)"
+             (focus)="superSearchInput.value=''"
              placeholder="Search"/>
 
       <div class="suggested-super-results" *ngIf="superSearchInput.value.length > 1">
 
         <ng-container *ngIf="size(routeType)">
-          <!--<h4>App ({{ size(routeType) }})</h4>-->
           <div class="result" *ngFor="let route of routeType;">
             <icon [icon]="route.icon" color="#555"></icon>
             <a (click)="uiStore.superSearch=false;gistStore.current={}" routerLink="/{{ route.route }}">
@@ -30,7 +31,6 @@ import {GithubApiService} from '../github-api.service';
         </ng-container>
         
         <ng-container *ngIf="size(fileType)">
-          <!--<h4>File types results ({{ size(fileType) }})</h4>-->
           <div class="result" *ngFor="let snippet of fileType">
             <icon icon="file" color="#555"></icon>
             <a (click)="onClick(snippet)">
@@ -40,7 +40,6 @@ import {GithubApiService} from '../github-api.service';
         </ng-container>
         
         <ng-container *ngIf="size(tagType)">
-          <!--<h4>Tags results ({{ size(tagType) }})</h4>-->
           <div class="result" *ngFor="let snippet of tagType">
             <icon icon="tag" color="#555"></icon>
             <a (click)="onClick(snippet)">
@@ -50,7 +49,6 @@ import {GithubApiService} from '../github-api.service';
         </ng-container>
 
         <ng-container *ngIf="size(freeText)">
-          <!--<h4>Free text results ({{ size(freeText) }})</h4>-->
           <div class="result" *ngFor="let snippet of freeText">
             <icon icon="book" color="#555"></icon>
             <a (click)="onClick(snippet)">
@@ -74,7 +72,7 @@ export class SuperSearchComponent implements OnInit {
   fileType: object[];
   tagType: object[];
   routeType: any;
-  onElement: any;
+  superSearchInputElement: any;
 
   discoverableRoutes: object[] = [
     {
@@ -136,7 +134,7 @@ export class SuperSearchComponent implements OnInit {
   }
 
   ngOnInit () {
-    this.onElement = this.renderer.selectRootElement('#superSearchInput');
-    this.onElement.focus();
+    this.superSearchInputElement = this.renderer.selectRootElement('#superSearchInput');
+    this.superSearchInputElement.focus();
   }
 }

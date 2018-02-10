@@ -15,7 +15,7 @@
       padding: 20px;
       margin: 0 20px;
       width: 100%;
-      font-weight: 100;
+      font-weight: 200;
       border-radius: 3px;
       box-shadow: 0 0 10px #ccc;
       flex-direction: column;
@@ -35,7 +35,7 @@
       number {
         text-align: right;
         font-size: 52px;
-        font-weight: 100;
+        font-weight: 200;
         color: $color-regular;
       }
 
@@ -81,7 +81,7 @@
 
           heading {
             font-size: 16px;
-            font-weight: 100;
+            font-weight: 200;
           }
           number {
             text-align: left;

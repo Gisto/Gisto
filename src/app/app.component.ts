@@ -29,7 +29,7 @@ export class AppComponent implements OnDestroy {
 
   constructor(private hotkeysService: HotkeysService, public uiStore: UiStore) {
     this.hotkeyShiftSpace = hotkeysService.add(
-      new Hotkey('shift+space', this.hotkeyShiftSpacePressed, [], 'Super search')
+      new Hotkey('shift+space', this.hotkeyShiftSpacePressed, ['INPUT', 'TEXTAREA'], 'Super search')
     );
   }
 

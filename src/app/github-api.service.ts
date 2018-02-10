@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { keyBy } from 'lodash/fp';
+import { keyBy, map, omit } from 'lodash/fp';
 import { GistsStore } from './store/gists';
 import { UiStore } from './store/ui';
 import { UserStore } from './store/user';
 import { NotificationsStore } from './store/notifications';
 import * as API from 'superagent';
 import { Router} from '@angular/router';
+import { normalizeFiles } from './helpers/files';
 
 @Injectable()
 export class GithubApiService {
@@ -114,8 +115,9 @@ export class GithubApiService {
     const { description, files } = this.gistsStore.localEdit;
     const gistNewData = {
       description,
-      files: keyBy('filename', files)
+      files: normalizeFiles(files)
     };
+
     this.uiStore.loading = true;
     API.patch(`${this.baseUrl()}/${id}`)
       .set(this._headers())

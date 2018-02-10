@@ -3,15 +3,19 @@
 
 ::-webkit-input-placeholder {
   color: #ccc;
+  font-weight: 200;
 }
 
 *:hover {
   transition: all .3s ease-out;
 }
 
+* {
+  font-family: 'Titillium Web', 'Helvetica Neue', 'trebuchet ms', Arial, sans-serif;
+}
+
 body {
   background: $bg;
-  font-family: 'Titillium Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 100%;
   height: 100vh;
   width: 100vw;
@@ -48,4 +52,24 @@ gisto, app-root {
   flex-direction: column;
   flex: 1;
   height: 100%;
+}
+
+.color-regular {
+  color: $color-regular;
+}
+
+.color-info {
+  color: $color-info;
+}
+
+.color-danger {
+  color: $color-danger;
+}
+
+.color-success {
+  color: $color-success;
+}
+
+.color-waring {
+  color: $color-warning;
 }
