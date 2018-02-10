@@ -67,7 +67,7 @@ import { defaultEndpointURL } from '../../../constants/config';
                         language="{{ file.language && getSyntax(file.language) || 'text' }}"
                         value="{{ file.content }}"
                         automaticLayout
-                        [editorOptions]="{}"
+                        [editorOptions]="{ readOnly: !uiStore.editMode }"
                         (change)="changeFileContent(file, $event, fileIndex)">
         </td-code-editor>
       </gist-body>
