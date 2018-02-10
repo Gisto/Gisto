@@ -3,7 +3,7 @@ import { GistsStore } from '../../../store/gists';
 import { UiStore } from '../../../store/ui';
 import { values } from 'lodash/fp';
 import { syntaxMap } from '../../../constants/syntax';
-import { defaultEndpointURL } from '../../../constants/config';
+import { defaultEndpointURL, editorConfig } from '../../../constants/config';
 
 @Component({
   selector: 'gist',
@@ -67,7 +67,7 @@ import { defaultEndpointURL } from '../../../constants/config';
                         language="{{ file.language && getSyntax(file.language) || 'text' }}"
                         value="{{ file.content }}"
                         automaticLayout
-                        [editorOptions]="{ readOnly: !uiStore.editMode }"
+                        [editorOptions]="editorConfig(uiStore.editMode)"
                         (change)="changeFileContent(file, $event, fileIndex)">
         </td-code-editor>
       </gist-body>
@@ -79,6 +79,7 @@ import { defaultEndpointURL } from '../../../constants/config';
 export class GistComponent {
 
   values: any = values;
+  editorConfig: any = editorConfig;
 
   public showMenu: number = null;
   public showMarkDown: number = null;
@@ -90,10 +91,6 @@ export class GistComponent {
   filesList = () => this.uiStore.editMode
     ? this.gistStore.localEdit.files
     : this.gistStore.currentGist.files;
-
-  trackByFn(index: any, item: any) {
-    return index;
-  }
 
   showMenuForFile = (fileIndex: number) =>
     this.showMenu = this.showMenu !== fileIndex ? this.showMenu = fileIndex : this.showMenu = null;
