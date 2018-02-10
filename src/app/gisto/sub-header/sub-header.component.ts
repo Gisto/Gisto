@@ -109,7 +109,7 @@ import { toJS } from 'mobx';
                   cssClass="{{ uiStore.isEdit ? 'color-danger' : 'color-success'}}">
       </gist-utils>
 
-      <gist-utils (click)="toggleFileMenu()"
+      <gist-utils (click)="uiStore.isEdit && toggleFileMenu()"
                   icon="file"
                   color="#5F9EA0"
                   cssClass="color-regular">
