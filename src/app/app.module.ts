@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MobxAngularModule } from 'mobx-angular';
 import { MarkdownModule } from 'angular2-markdown';
 import { CovalentCodeEditorModule } from '@covalent/code-editor';
-import { AceEditorModule } from 'ng2-ace-editor';
 import { HotkeyModule } from 'angular2-hotkeys';
 
 
@@ -114,7 +113,6 @@ const appRoutes: Routes = [
     MobxAngularModule,
     CovalentCodeEditorModule,
     MarkdownModule.forRoot(),
-    AceEditorModule,
     HotkeyModule.forRoot()
   ],
   providers: [

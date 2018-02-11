@@ -9,8 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "ng serve --aot",
-    "app": "concurrently \"ng serve --base-href=\".\" \" \"npm run electron\"",
-    "electron": "electron ./src/electron.dev"
+    "app": "ng build --base-href='.' && npm run electron",
+    "electron": "./node_modules/.bin/electron ./dist/"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +48,7 @@
     "@types/node": "^6.0.90",
     "codelyzer": "~3.1.1",
     "concurrently": "^3.5.0",
+    "electron": "^1.8.2",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
