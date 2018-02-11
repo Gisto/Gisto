@@ -13,14 +13,16 @@ import { Component, Input } from '@angular/core';
         'background-color': color,
         'display': 'inline-block',
         'vertical-align': 'middle',
+        'width': size + 'px',
+        'height': size + 'px',
         '-webkit-mask-repeat': 'no-repeat',
         '-webkit-mask-size': 'contain',
         '-webkit-mask-position': 'center',
-        'width': size + 'px',
-        'height': size + 'px',
-        '-webkit-mask-image': 'url(../../../../assets/svg/' + ICONS[icon] + ')',
+        '-webkit-mask-image': 'url(./assets/svg/' + ICONS[icon] + ')',
         'transform': 'rotate(' + rotate + ')'
-      }"><ng-content></ng-content></span>
+      }">
+        <ng-content></ng-content>
+      </span>
     `
 })
 export class IconComponent {
@@ -65,7 +67,9 @@ export class IconComponent {
       commit: 'ios-git-commit.svg',
       tag: 'ios-pricetag-outline.svg',
       file: 'ios-document-outline.svg',
-      book: 'ios-book-outline.svg'
+      book: 'ios-book-outline.svg',
+      code: 'ios-code-working.svg',
+      'code-empty': 'ios-code.svg'
     };
 
 }

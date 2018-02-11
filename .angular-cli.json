@@ -11,6 +11,9 @@
         "assets",
         "favicon.ico",
         "fonts",
+        "package.json",
+        "electron.prod.js",
+        "electron-load.js",
         {
           "glob": "**/*",
           "input": "../node_modules/@covalent/code-editor/assets/monaco",
