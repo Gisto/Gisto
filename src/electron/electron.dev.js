@@ -5,7 +5,7 @@ const url = require('url');
 require('electron-reload')(__dirname);
 
 let win;
-
+let splash;
 const createWindow = () => {
 
   app.dock.setBadge('DEV');
@@ -16,10 +16,14 @@ const createWindow = () => {
       height: 700,
       title: 'dev ' + app.getVersion(),
       icon: 'http://localhost:4200/favicon.ico',
+      show: false,
       "web-preferences": {
         "web-security": false
       }
     });
+
+    splash = new BrowserWindow({width: 484, height: 272, transparent: true, frame: false, alwaysOnTop: true});
+    splash.loadURL(`https://www.letsbackflip.com/wp-content/uploads/2012/11/tennant-buffer.gif`);
 
     // and load the app.
     win.loadURL(url.format({
@@ -27,6 +31,11 @@ const createWindow = () => {
       protocol: 'http:',
       slashes: true
     }));
+
+    win.once('ready-to-show', () => {
+      splash.destroy();
+      win.show();
+    });
 
     win.webContents.openDevTools();
 
