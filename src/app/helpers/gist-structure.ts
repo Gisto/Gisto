@@ -25,7 +25,7 @@ interface Gist {
 }
 
 const prepareTags = (snippet) => {
-  if (!isEmpty(snippet.description) || snippet.description !== CONF.defaultSnippetDescription) {
+  if (!isEmpty(snippet.description)) {
     return snippet.description.match(CONF.tagRegex);
   }
 
