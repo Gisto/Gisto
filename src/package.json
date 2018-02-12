@@ -9,7 +9,7 @@
       "start": "electron ."
     },
     "devDependencies": {
-        "@angular/cli": "^1.5.0"
+        "electron": "^1.8.1"
     },
     "dependencies": {
         "jasmine": "^2.8.0"
