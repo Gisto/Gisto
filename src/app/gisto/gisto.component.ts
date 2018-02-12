@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {GithubApiService} from "../github-api.service";
 
@@ -11,7 +11,7 @@ import {GithubApiService} from "../github-api.service";
   `,
   styleUrls: ['./gisto.component.scss']
 })
-export class GistoComponent {
+export class GistoComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private githubApiService: GithubApiService) {}
 
   ngOnInit() {
