@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "start": "ng serve --aot",
     "app": "ng build --base-href='.' && ./node_modules/.bin/electron ./dist/",
-    "app:dev": "concurrently \"ng serve --base-href='.'\" \"./node_modules/.bin/electron ./src/\""
+    "app:dev": "concurrently \"ng serve --base-href='/'\" \"./node_modules/.bin/electron ./src/\""
   },
   "private": true,
   "dependencies": {

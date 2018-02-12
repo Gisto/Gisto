@@ -3,7 +3,7 @@
     "productName": "Gisto",
     "version": "2.0.0-wip",
     "description": "Snippets made awesome",
-    "main": "electron.prod.js",
+    "main": "electron.dev.js",
     "license": "MIT",
     "scripts": {
       "start": "electron ."

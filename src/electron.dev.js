@@ -9,8 +9,8 @@ let win;
 const createWindow = () => {
   setTimeout(() => {
     win = new BrowserWindow({
-      width: 800,
-      height: 600,
+      width: 1200,
+      height: 700,
       icon: './src/favicon.ico',
       "web-preferences": {
         "web-security": false
