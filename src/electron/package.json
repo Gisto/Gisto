@@ -1,0 +1,8 @@
+{
+  "name": "gisto",
+  "productName": "Gisto",
+  "version": "2.0.0-wip",
+  "description": "Snippets made awesome",
+  "main": "electron.js",
+  "license": "MIT"
+}

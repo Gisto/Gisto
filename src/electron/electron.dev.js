@@ -7,20 +7,15 @@ require('electron-reload')(__dirname);
 let win;
 
 const createWindow = () => {
-  protocol.interceptFileProtocol('file', function(req, callback) {
-    var url = req.url.substr(7);
-    callback({path: path.normalize(__dirname + url)});
-  },function (error) {
-    if (error) {
-      console.error('Failed to register protocol');
-    }
-  });
+
+  app.dock.setBadge('DEV');
 
   setTimeout(() => {
     win = new BrowserWindow({
       width: 1200,
       height: 700,
-      icon: './src/favicon.ico',
+      title: 'dev ' + app.getVersion(),
+      icon: 'http://localhost:4200/favicon.ico',
       "web-preferences": {
         "web-security": false
       }
@@ -28,8 +23,8 @@ const createWindow = () => {
 
     // and load the app.
     win.loadURL(url.format({
-      pathname: 'index.html',
-      protocol: 'file:',
+      pathname: 'localhost:4200',
+      protocol: 'http:',
       slashes: true
     }));
 

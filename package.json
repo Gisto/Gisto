@@ -4,13 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "build": "ng build",
+    "build": "ng build --dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "ng serve --aot",
-    "app": "ng build --base-href='.' && ./node_modules/.bin/electron ./dist/",
-    "app:dev": "concurrently \"ng serve --base-href='/'\" \"./node_modules/.bin/electron ./src/\""
+    "app": "ng build --prod --base-href='.' && NODE_ENV=production  ./node_modules/.bin/electron ./dist/",
+    "app:dev": "concurrently \"ng serve --dev --base-href='/'\" \"./node_modules/.bin/electron ./src/electron/\""
   },
   "private": true,
   "dependencies": {
