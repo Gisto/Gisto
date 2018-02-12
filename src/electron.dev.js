@@ -7,6 +7,15 @@ require('electron-reload')(__dirname);
 let win;
 
 const createWindow = () => {
+  protocol.interceptFileProtocol('file', function(req, callback) {
+    var url = req.url.substr(7);
+    callback({path: path.normalize(__dirname + url)});
+  },function (error) {
+    if (error) {
+      console.error('Failed to register protocol');
+    }
+  });
+
   setTimeout(() => {
     win = new BrowserWindow({
       width: 1200,
@@ -19,8 +28,8 @@ const createWindow = () => {
 
     // and load the app.
     win.loadURL(url.format({
-      pathname: 'localhost:4200',
-      protocol: 'http:',
+      pathname: 'index.html',
+      protocol: 'file:',
       slashes: true
     }));
 
