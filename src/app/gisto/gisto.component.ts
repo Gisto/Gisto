@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute, Params} from "@angular/router";
+import {GithubApiService} from "../github-api.service";
 
 @Component({
   selector: 'gisto',
@@ -9,4 +11,17 @@ import { Component } from '@angular/core';
   `,
   styleUrls: ['./gisto.component.scss']
 })
-export class GistoComponent {}
+export class GistoComponent {
+  constructor(private activatedRoute: ActivatedRoute, private githubApiService: GithubApiService) {}
+
+  ngOnInit() {
+    // subscribe to router event
+    this.activatedRoute.params.subscribe((params: Params) => {
+      const gistId = params['id'];
+
+      if (gistId) {
+        this.githubApiService.getGist(gistId);
+      }
+    });
+  }
+}
