@@ -3,6 +3,7 @@ const path = require('path');
 const url = require('url');
 
 let win;
+let splash;
 
 const createWindow = () => {
   protocol.interceptFileProtocol('file', function(req, callback) {
@@ -19,16 +20,25 @@ const createWindow = () => {
       width: 1200,
       height: 700,
       icon: path.join(__dirname, 'favicon.ico'),
+      show: false,
       "web-preferences": {
         "web-security": false
       }
     });
+
+    splash = new BrowserWindow({width: 484, height: 272, transparent: true, frame: false, alwaysOnTop: true});
+    splash.loadURL(`https://www.letsbackflip.com/wp-content/uploads/2012/11/tennant-buffer.gif`);
 
     win.loadURL(url.format({
       pathname: 'index.html',
       protocol: 'file:',
       slashes: true
     }));
+
+    win.once('ready-to-show', () => {
+      splash.destroy();
+      win.show();
+    });
 
     win.on('closed', () => {
       win = null;

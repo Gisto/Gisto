@@ -6,6 +6,9 @@ import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
+}
+
+if (!environment.production) {
   // import 'mimic';
 }
 

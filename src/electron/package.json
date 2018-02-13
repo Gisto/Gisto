@@ -1,8 +1,9 @@
 {
   "name": "gisto",
-  "productName": "Gisto",
   "version": "2.0.0-wip",
-  "description": "Snippets made awesome",
+  "license": "MIT",
   "main": "electron.js",
-  "license": "MIT"
+  "scripts": {
+    "start": "electron ."
+  }
 }
