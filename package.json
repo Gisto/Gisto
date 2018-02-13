@@ -86,7 +86,7 @@
       "icon": "build/icon.ico"
     },
     "linux": {
-      "category": "Graphics"
+      "category": "Devel"
     }
   }
 }
