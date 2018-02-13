@@ -13,6 +13,7 @@
     "app:dev": "NODE_ENV=development concurrently \"ng serve --dev --base-href='/'\" \"./node_modules/.bin/electron ./src/electron/\"",
     "pack:mac": "NODE_ENV=production ng build --prod --base-href='.' && npx electron-builder build --mac --x64",
     "pack:win": "NODE_ENV=production ng build --prod --base-href='.' && npx electron-builder build --win --x64",
+    "pack:linux": "NODE_ENV=production ng build --prod --base-href='.' && npx electron-builder build --linux --x64",
     "pack:all": "NODE_ENV=production ng build --prod --base-href='.' && npx electron-builder build -mwl --x64"
   },
   "dependencies": {
