@@ -5,7 +5,7 @@ import { GistsStore } from '../../../store/gists';
 @Component({
   selector: 'app-settings',
   template: `
-    <gist-utils icon="dashboard" routerLink="/" (click)="gistsStore.clearCurrentGist()" color="#fff"></gist-utils>
+    <gist-utils icon="dashboard" routerLink="/main" (click)="gistsStore.clearCurrentGist()" color="#fff"></gist-utils>
     <gist-utils icon="info" color="#fff"></gist-utils>
     <gist-utils icon="notification" color="#fff" (click)="showNotifications = !showNotifications">
       <ul *ngIf="showNotifications">

@@ -1,6 +1,6 @@
 {
   "name": "gisto",
-  "version": "2.0.0-wip",
+  "version": "1.9.9-wip",
   "description": "Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may think of Gisto as Evernote for code.",
   "scripts": {
     "ng": "ng",
@@ -9,12 +9,13 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "ng serve --aot",
-    "app": "NODE_ENV=production ng build --prod --base-href='.' && ./node_modules/.bin/electron ./dist/",
-    "app:dev": "NODE_ENV=development concurrently \"ng serve --dev --base-href='/'\" \"./node_modules/.bin/electron ./src/electron/\"",
-    "pack:mac": "NODE_ENV=production ng build --prod --base-href='.' && npx electron-builder build --mac --x64",
-    "pack:win": "NODE_ENV=production ng build --prod --base-href='.' && npx electron-builder build --win --x64",
-    "pack:linux": "NODE_ENV=production ng build --prod --base-href='.' && npx electron-builder build --linux --x64",
-    "pack:all": "NODE_ENV=production ng build --prod --base-href='.' && npx electron-builder build -mwl --x64"
+    "clean": "rimraf dist release",
+    "app": "NODE_ENV=production npm run clean && ng build --prod --base-href='.' && ./node_modules/.bin/electron ./dist/",
+    "app:dev": "NODE_ENV=development concurrently \"npm run clean\" \"ng serve --dev --base-href='/'\" \"./node_modules/.bin/electron ./src/electron/\"",
+    "pack:mac": "NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --mac --x64",
+    "pack:win": "NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --win --x64",
+    "pack:linux": "NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --linux --x64",
+    "pack:all": "NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build -mwl --x64"
   },
   "repository": {
     "type": "git",
@@ -94,6 +95,7 @@
     "mimic": "^2.0.2",
     "normalize.css": "^7.0.0",
     "protractor": "~5.1.2",
+    "rimraf": "^2.6.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
     "typescript": "~2.6.2"
@@ -101,6 +103,7 @@
   "build": {
     "directories": {
       "app": "dist",
+      "buildResources": "build",
       "output": "release"
     },
     "appId": "com.gistoapp.gisto2",
@@ -114,7 +117,7 @@
       "icon": "build/icon.ico"
     },
     "linux": {
-      "category": "Devel"
+      "category": "Development"
     }
   }
 }

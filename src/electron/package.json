@@ -1,9 +1,11 @@
 {
   "name": "gisto",
-  "version": "2.0.0-wip",
+  "version": "1.9.9-wip",
   "license": "MIT",
   "main": "electron.js",
-  "scripts": {
-    "start": "electron ."
+  "dependencies": {
+    "superagent": "^3.8.1",
+    "superagent-no-cache": "^0.1.1",
+    "dotenv": "^5.0.0"
   }
 }

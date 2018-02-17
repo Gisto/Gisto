@@ -8,43 +8,41 @@ let splash;
 
 const createWindow = () => {
   protocol.interceptFileProtocol('file', function(req, callback) {
-    var url = req.url.substr(7);
-    callback({path: path.normalize(__dirname + url)});
+    var newUrl = req.url.substr(7);
+    callback({path: path.normalize(__dirname + newUrl)});
   },function (error) {
     if (error) {
       console.error('Failed to register protocol');
     }
   });
 
-  setTimeout(() => {
-    win = new BrowserWindow({
-      width: 1200,
-      height: 700,
-      icon: path.join(__dirname, 'favicon.ico'),
-      show: false,
-      "web-preferences": {
-        "web-security": false
-      }
-    });
+  win = new BrowserWindow({
+    width: 1200,
+    height: 700,
+    icon: path.join(__dirname, 'favicon.ico'),
+    show: false,
+    "web-preferences": {
+      "web-security": false
+    }
+  });
 
-    splash = new BrowserWindow({width: 484, height: 272, transparent: true, frame: false, alwaysOnTop: true});
-    splash.loadURL(`https://www.letsbackflip.com/wp-content/uploads/2012/11/tennant-buffer.gif`);
+  splash = new BrowserWindow({width: 484, height: 272, transparent: true, frame: false, alwaysOnTop: true});
+  splash.loadURL(`https://www.letsbackflip.com/wp-content/uploads/2012/11/tennant-buffer.gif`);
 
-    win.loadURL(url.format({
-      pathname: 'index.html',
-      protocol: 'file:',
-      slashes: true
-    }));
+  win.loadURL(url.format({
+    pathname: 'index.html',
+    protocol: 'file:',
+    slashes: true
+  }));
 
-    win.once('ready-to-show', () => {
-      splash.destroy();
-      win.show();
-    });
+  win.once('ready-to-show', () => {
+    splash.destroy();
+    win.show();
+  });
 
-    win.on('closed', () => {
-      win = null;
-    });
-  }, 0);
+  win.on('closed', () => {
+    win = null;
+  });
 };
 
 app.on('ready', createWindow);
