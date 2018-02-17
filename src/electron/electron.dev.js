@@ -1,6 +1,7 @@
-const { app, BrowserWindow, protocol, electron } = require('electron');
+const { app, BrowserWindow, protocol, electron, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
+require('./oauth2');
 
 require('electron-reload')(__dirname);
 
@@ -16,6 +17,7 @@ const createWindow = () => {
       height: 700,
       title: 'dev ' + app.getVersion(),
       icon: 'http://localhost:4200/favicon.ico',
+      'node-integration': true,
       show: false,
       "web-preferences": {
         "web-security": false

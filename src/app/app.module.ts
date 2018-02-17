@@ -40,6 +40,7 @@ import { NotificationsComponent } from './gisto/main/notifications/notifications
 import { DashboardComponent } from './gisto/main/dashboard/dashboard.component';
 import { NewComponent } from './gisto/main/new/new.component';
 import { SuperSearchComponent } from './super-search/super-search.component';
+import { NgxElectronModule } from 'ngx-electron';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -113,7 +114,8 @@ const appRoutes: Routes = [
     MobxAngularModule,
     CovalentCodeEditorModule,
     MarkdownModule.forRoot(),
-    HotkeyModule.forRoot()
+    HotkeyModule.forRoot(),
+    NgxElectronModule
   ],
   providers: [
     SettingsStore,

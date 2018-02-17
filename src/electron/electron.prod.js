@@ -1,6 +1,7 @@
 const { app, BrowserWindow, protocol } = require('electron');
 const path = require('path');
 const url = require('url');
+require('./oauth2');
 
 let win;
 let splash;

@@ -4,6 +4,7 @@ import { SettingsStore } from '../store/settings';
 import { GithubAuthorizationService } from '../github-authorization.service';
 import { GithubApiService } from '../github-api.service';
 import { version } from '../helpers/version';
+import {ElectronService} from 'ngx-electron';
 
 @Component({
   selector: 'login',
@@ -25,23 +26,30 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute,
               private authorization: GithubAuthorizationService,
               private githubApiService: GithubApiService,
-              private settingsStore: SettingsStore) {
-  }
+              private settingsStore: SettingsStore,
+              private electronService: ElectronService) {}
 
   ngOnInit() {
-    this.route
-      .queryParams
-      .subscribe((params: Params) => {
-        const code = params['code'];
-
-        if (code) {
-          this.authorization.fetchAuthToken(code)
-            .then(() => this.navigateToMainScreen());
-        }
-      });
-
     if (this.settingsStore.isLoggedIn) {
       this.navigateToMainScreen();
+    }
+
+    if (this.electronService.isElectronApp) {
+      this.electronService.ipcRenderer.on('token', (event, token) => {
+        localStorage.setItem('api-token', token);
+        this.navigateToMainScreen();
+      });
+    } else {
+      this.route
+        .queryParams
+        .subscribe((params: Params) => {
+          const code = params['code'];
+
+          if (code) {
+            this.authorization.fetchAuthToken(code)
+              .then(() => this.navigateToMainScreen());
+          }
+        });
     }
   }
 
@@ -49,10 +57,14 @@ export class LoginComponent implements OnInit {
     this.githubApiService.getUser();
     this.githubApiService.getGists();
     this.githubApiService.getStaredGists();
-    this.router.navigate(['/main']);
+    setTimeout(() => this.router.navigate(['/main']), 5000);
   }
 
   login() {
-    this.authorization.login();
+    if (this.electronService.isElectronApp) {
+      this.electronService.ipcRenderer.send('oauth2-login');
+    } else {
+      this.authorization.login();
+    }
   }
 }
