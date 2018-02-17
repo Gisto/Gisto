@@ -43,3 +43,6 @@ Thumbs.db
 
 # build
 release
+
+# .env (dotenv config file)
+.env
