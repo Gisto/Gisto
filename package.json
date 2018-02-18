@@ -109,8 +109,25 @@
     "appId": "com.gistoapp.gisto2",
     "mac": {
       "category": "public.app-category.productivity",
-      "target": "dmg",
       "icon": "build/icon.png"
+    },
+    "dmg": {
+      "window": {
+        "width": 540,
+        "height": 328
+      },
+      "contents": [
+        {
+          "x": 100,
+          "y": 200
+        },
+        {
+          "x": 440,
+          "y": 200,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
     },
     "win": {
       "target": "nsis",
