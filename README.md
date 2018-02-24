@@ -8,6 +8,27 @@
 |:------|:------|
 | <img src="http://gistoapp.com/images/lite_theme.png" width="400px" alt="Gisto"> | <img src="http://gistoapp.com/images/dark_theme.png" width="400px" alt="Gisto"> |
 
+# IMPORTANT
+
+Due to [Github changes in TLS policies](https://githubengineering.com/crypto-deprecation-notice/) we issued a hotfix in a shape of runnable binaries for all platforms, Installers for all platform will be released through the regular channels soon after
+
+## **NOTE! This are runnable binaries ~~installers~~. Installers for all platform will be released through the regular channels soon after **
+
+### **macOS** [Download](https://github.com/Gisto/Gisto/releases) 
+- Replace the file from `.zip` in `/Applications`
+
+### **Windows** [Download](https://github.com/Gisto/Gisto/releases)
+- Please uninstall previous Gisto version before use. 
+- Use by extracting `.zip` to directory of your choice. 
+- Run by executing `Gisto.exe` from the extracted directory.
+
+### **Linux** [Download](https://github.com/Gisto/Gisto/releases)
+- Please uninstall previous Gisto version before use. 
+- Use by extracting `.zip` to the folder of your choice. 
+- Run by executing `./gisto` from the extracted directory.
+
+---
+
 ## Table of Contents
 
 - [About](#about)
@@ -78,7 +99,9 @@ Gisto is made using various open source projects such as
 
 ## Download and install
 
-You can download Gisto at: [www.gistoapp.com](http://www.gistoapp.com)
+~~You can download Gisto at: [www.gistoapp.com](http://www.gistoapp.com)~~
+
+[Download](https://github.com/Gisto/Gisto/releases)
 
 #### Other install options
 
