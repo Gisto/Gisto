@@ -12,7 +12,8 @@ import {ElectronService} from 'ngx-electron';
     <div>
       <logo></logo>
       <small>v.{{ version }}</small>
-      <button invert (click)="login()">Log-in with Github account</button>
+      <button *ngIf="!isLoggingdIn" invert (click)="login()">Log-in with Github account</button>
+      <p *ngIf="isLoggingdIn"><icon icon="loading" color="#555"></icon> Loading...</p>
     </div>
 
   `,
@@ -21,6 +22,7 @@ import {ElectronService} from 'ngx-electron';
 export class LoginComponent implements OnInit {
 
   version: string = version;
+  isLoggingdIn = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.settingsStore.isLoggedIn) {
+      this.isLoggingdIn = true;
       this.navigateToMainScreen();
     }
 
@@ -48,19 +51,23 @@ export class LoginComponent implements OnInit {
           if (code) {
             this.authorization.fetchAuthToken(code)
               .then(() => this.navigateToMainScreen());
+          } else {
+            this.isLoggingdIn = false;
           }
         });
     }
   }
 
   navigateToMainScreen() {
+    this.isLoggingdIn = true;
     this.githubApiService.getUser();
     this.githubApiService.getGists();
     this.githubApiService.getStaredGists();
-    setTimeout(() => this.router.navigate(['/main']), 5000);
+    this.router.navigate(['/main']);
   }
 
   login() {
+    this.isLoggingdIn = true;
     if (this.electronService.isElectronApp) {
       this.electronService.ipcRenderer.send('oauth2-login');
     } else {
