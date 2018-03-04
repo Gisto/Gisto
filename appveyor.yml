@@ -1,0 +1,22 @@
+os: unstable
+cache:
+  - node_modules
+environment:
+  GH_TOKEN:
+      secure: Lb8p9aKMHYIHrgKlPtHUshCBHVbfUcduS7UmRQDyJZh3uL9lD5Y5j40M64zclMYO
+  matrix:
+    - nodejs_version: 9
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - set CI=true
+  - npm install -g npm@latest
+  - set PATH=%APPDATA%\npm;%PATH%
+  - npm install
+matrix:
+  fast_finish: true
+build: off
+version: '{build}'
+shallow_clone: true
+clone_depth: 1
+test_script:
+  - npm run pack:win
