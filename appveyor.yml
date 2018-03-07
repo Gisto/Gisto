@@ -4,7 +4,6 @@ platform:
   - x64
 
 cache:
-  - node_modules
   - '%USERPROFILE%\.electron'
 
 init:
