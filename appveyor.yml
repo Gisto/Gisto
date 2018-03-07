@@ -18,6 +18,7 @@ install:
   - set CI=true
   - set NODE_ENV=production
   - npm install -g npm@latest cross-env rimraf @angular/cli
+  - npm install
 
 build_script:
   - npm run pack:build
