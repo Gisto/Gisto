@@ -124,8 +124,8 @@
     "dmg": {
       "publish": [
         {
-          "package": "gisto",
-          "repo": "gisto",
+          "package": "Gisto",
+          "repo": "Gisto",
           "user": "gisto",
           "provider": "bintray"
         }
