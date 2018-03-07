@@ -12,7 +12,7 @@
 
 Due to [Github changes in TLS policies](https://githubengineering.com/crypto-deprecation-notice/) we issued a hotfix in a shape of runnable binaries for all platforms, Installers for all platform will be released through the regular channels soon after
 
-## **NOTE! This are runnable binaries ~~installers~~. Installers for all platform will be released through the regular channels soon after **
+## **NOTE! This are runnable binaries**
 
 ### **macOS** [Download](https://github.com/Gisto/Gisto/releases) 
 - Replace the file from `.zip` in `/Applications`
