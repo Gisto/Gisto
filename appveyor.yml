@@ -8,7 +8,7 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - set CI=true
   - set NODE_ENV=production
-  - npm install -g npm@latest cross-env rimraf
+  - npm install -g npm@latest cross-env rimraf @angular/cli
   - set PATH=%APPDATA%\npm;%PATH%
   - npm install
 matrix:
