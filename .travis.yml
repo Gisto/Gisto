@@ -20,6 +20,7 @@ cache:
 branches:
   only:
   - v2
+  
 addons:
   apt:
     sources:
@@ -35,7 +36,7 @@ addons:
 
 install:
   - nvm install 6
-  - npm install electron-builder@next
+  - npm install electron-builder@next cross-env rimraf
   - npm install
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
