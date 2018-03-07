@@ -15,7 +15,8 @@
     "pack:mac": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --mac --x64",
     "pack:win": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --win --x64",
     "pack:linux": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --linux --x64",
-    "pack:all": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build -mwl --x64"
+    "pack:all": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build -mwl --x64 --publish=always",
+    "pack:build": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --publish=always"
   },
   "repository": {
     "type": "git",
@@ -109,10 +110,12 @@
     },
     "appId": "com.gistoapp.gisto2",
     "mac": {
+      "publish": ["bintray"],
       "category": "public.app-category.productivity",
       "icon": "build/icon.png"
     },
     "dmg": {
+      "publish": ["bintray"],
       "window": {
         "width": 540,
         "height": 328
@@ -131,10 +134,12 @@
       ]
     },
     "win": {
+      "publish": ["bintray"],
       "target": "nsis",
       "icon": "build/icon.ico"
     },
     "linux": {
+      "publish": ["bintray"],
       "category": "Development"
     }
   }
