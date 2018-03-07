@@ -14,7 +14,7 @@ shallow_clone: true
 clone_depth: 1
 
 install:
-  - ps: Install-Product node 8 x64
+  - ps: Install-Product node 9 x64
   - set CI=true
   - set NODE_ENV=production
   - npm install -g npm@latest cross-env rimraf @angular/cli

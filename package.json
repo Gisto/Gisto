@@ -110,12 +110,26 @@
     },
     "appId": "com.gistoapp.gisto2",
     "mac": {
-      "publish": ["bintray"],
+      "publish": [
+        {
+          "package": "gisto",
+          "repo": "gisto",
+          "user": "gisto",
+          "provider": "bintray"
+        }
+      ],
       "category": "public.app-category.productivity",
       "icon": "build/icon.png"
     },
     "dmg": {
-      "publish": ["bintray"],
+      "publish": [
+        {
+          "package": "gisto",
+          "repo": "gisto",
+          "user": "gisto",
+          "provider": "bintray"
+        }
+      ],
       "window": {
         "width": 540,
         "height": 328
@@ -134,12 +148,26 @@
       ]
     },
     "win": {
-      "publish": ["bintray"],
+      "publish": [
+        {
+          "package": "gisto",
+          "repo": "gisto",
+          "user": "gisto",
+          "provider": "bintray"
+        }
+      ],
       "target": "nsis",
       "icon": "build/icon.ico"
     },
     "linux": {
-      "publish": ["bintray"],
+      "publish": [
+        {
+          "package": "gisto",
+          "repo": "gisto",
+          "user": "gisto",
+          "provider": "bintray"
+        }
+      ],
       "category": "Development"
     }
   }
