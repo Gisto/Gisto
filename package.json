@@ -85,6 +85,7 @@
     "devtron": "^1.4.0",
     "electron": "^1.8.2",
     "electron-builder": "^19.56.0",
+    "electron-publisher-s3": "^20.2.0",
     "electron-reload": "^1.2.2",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
@@ -110,26 +111,18 @@
     },
     "appId": "com.gistoapp.gisto2",
     "mac": {
-      "publish": [
-        {
-          "package": "gisto",
-          "repo": "gisto",
-          "user": "gisto",
-          "provider": "bintray"
-        }
-      ],
+      "publish": {
+        "provider": "s3",
+        "bucket": "gisto-releases"
+      },
       "category": "public.app-category.productivity",
       "icon": "build/icon.png"
     },
     "dmg": {
-      "publish": [
-        {
-          "package": "Gisto",
-          "repo": "Gisto",
-          "user": "gisto",
-          "provider": "bintray"
-        }
-      ],
+      "publish": {
+        "provider": "s3",
+        "bucket": "gisto-releases"
+      },
       "window": {
         "width": 540,
         "height": 328
@@ -148,26 +141,18 @@
       ]
     },
     "win": {
-      "publish": [
-        {
-          "package": "gisto",
-          "repo": "gisto",
-          "user": "gisto",
-          "provider": "bintray"
-        }
-      ],
+      "publish": {
+        "provider": "s3",
+        "bucket": "gisto-releases"
+      },
       "target": "nsis",
       "icon": "build/icon.ico"
     },
     "linux": {
-      "publish": [
-        {
-          "package": "gisto",
-          "repo": "gisto",
-          "user": "gisto",
-          "provider": "bintray"
-        }
-      ],
+      "publish": {
+        "provider": "s3",
+        "bucket": "gisto-releases"
+      },
       "category": "Development"
     }
   }
