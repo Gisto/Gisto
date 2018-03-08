@@ -99,7 +99,6 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "mimic": "^2.0.2",
-    "normalize.css": "^7.0.0",
     "protractor": "~5.1.2",
     "rimraf": "^2.6.2",
     "ts-node": "~3.2.0",

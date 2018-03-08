@@ -30,7 +30,6 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "",
       "styles": [
-        "../node_modules/normalize.css/normalize.css",
         "styles.scss"
       ],
       "scripts": [],
