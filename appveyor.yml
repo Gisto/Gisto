@@ -23,8 +23,7 @@ install:
   - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
-  - npm install -g codeclimate-test-reporter @angular/cli@1.6.6
-  - npm install -g cross-env rimraf
+  - npm install -g @angular/cli@latest cross-env rimraf
   - npm install
   - node --version && npm --version
   - npm rebuild node-sass --force
