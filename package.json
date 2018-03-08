@@ -16,7 +16,7 @@
     "pack:win": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --win --x64",
     "pack:linux": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --linux --x64",
     "pack:all": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build -mwl --x64 --publish=always",
-    "pack:build": "cross-env NODE_ENV=production ng build --prod --base-href='.' && npx electron-builder build --publish=always"
+    "pack:build": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --publish=always"
   },
   "repository": {
     "type": "git",
@@ -70,7 +70,10 @@
     "superagent": "^3.8.1",
     "superagent-no-cache": "^0.1.1",
     "uuid": "^3.2.1",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "@angular/compiler-cli": "^5.2.2",
+    "typescript": "^2.6.2",
+    "@angular/cli": "^1.7.3"
   },
   "devDependencies": {
     "@angular/cli": "^1.7.3",
