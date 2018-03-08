@@ -17,6 +17,8 @@ install:
   - set CI=true
   - set NODE_ENV=production
   - npm install -g npm@latest cross-env rimraf @angular/cli
+  - rimraf node_modules
+  - rimraf package-lock.json
   - npm install
 
 build_script:
