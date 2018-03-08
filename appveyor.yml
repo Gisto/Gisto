@@ -3,6 +3,14 @@ image: Visual Studio 2017
 platform:
   - x64
 
+environment:
+  matrix:
+    - nodejs_version: "8"
+    - nodejs_version: "9"
+  NODE_ENV: production
+  CI: yes
+  APPVEYOR: yes
+
 cache:
   - '%USERPROFILE%\.electron'
 
@@ -13,13 +21,14 @@ shallow_clone: true
 clone_depth: 1
 
 install:
-  - ps: Install-Product node 9 x64
-  - set CI=true
-  - set NODE_ENV=production
-  - npm install -g npm@latest cross-env rimraf @angular/cli
-  - rimraf node_modules
-  - rimraf package-lock.json
+  - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
+  - npm install -g npm@latest
+  - set PATH=%APPDATA%\npm;%PATH%
+  - npm install -g codeclimate-test-reporter @angular/cli@1.6.0
+  - npm install -g cross-env rimraf
   - npm install
+  - node --version && npm --version
+  - npm rebuild node-sass --force
 
 build_script:
   - npm run pack:build
