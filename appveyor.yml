@@ -11,7 +11,7 @@ environment:
   APPVEYOR: yes
 
 cache:
-  - '%USERPROFILE%\.electron' -> package.json
+  - '%USERPROFILE%\.electron'
   - node_modules -> appveyor.yml
   - '%APPDATA%\npm-cache' -> appveyor.yml
 
