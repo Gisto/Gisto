@@ -28,6 +28,6 @@ install:
   - node --version && npm --version
 
 build_script:
-  - npm run pack:build
+  - npm run pack:win
 
 test: off

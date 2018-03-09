@@ -13,7 +13,7 @@
     "app": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && ./node_modules/.bin/electron ./dist/",
     "app:dev": "cross-env NODE_ENV=development concurrently \"npm run clean\" \"ng serve --dev --base-href='/'\" \"./node_modules/.bin/electron ./src/electron/\"",
     "pack:mac": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --mac --x64",
-    "pack:win": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --win --x64",
+    "pack:win": "cross-env npm run clean && ng build --prod --base-href='.' && npx electron-builder build -w --publish=always",
     "pack:linux": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --linux --x64",
     "pack:all": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build -mwl --x64 --publish=always",
     "pack:build": "cross-env npm run clean && ng build --prod --base-href='.' && npx electron-builder build --publish=always"
