@@ -7,6 +7,7 @@ environment:
   matrix:
     - nodejs_version: "9"
   NODE_ENV: production
+  DEBUG: electron-builder
   CI: yes
   APPVEYOR: yes
 
