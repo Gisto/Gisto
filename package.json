@@ -64,6 +64,8 @@
     "angular2-markdown": "^1.6.0",
     "core-js": "^2.5.3",
     "dotenv": "^5.0.1",
+    "electron-log": "^2.2.14",
+    "electron-updater": "^2.21.0",
     "lodash": "^4.17.5",
     "mobx": "^3.5.1",
     "mobx-angular": "^1.9.0",

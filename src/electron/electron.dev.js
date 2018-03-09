@@ -1,6 +1,7 @@
 const { app, BrowserWindow, protocol, electron, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
+const { autoUpdater } = require("electron-updater");
 require('./oauth2');
 
 require('electron-reload')(__dirname);
@@ -37,6 +38,7 @@ const createWindow = () => {
     win.once('ready-to-show', () => {
       splash.destroy();
       win.show();
+      autoUpdater.checkForUpdatesAndNotify();
     });
 
     win.webContents.openDevTools();
