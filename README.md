@@ -6,6 +6,8 @@ Development started
 
 ###### Snippets made awesome
 
+## CI: [![Travis Build Status](https://travis-ci.org/Gisto/Gisto.svg?branch=v2)](https://travis-ci.org/Gisto/Gisto) [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/sanusart/gisto?branch=v2&svg=true)](https://ci.appveyor.com/project/sanusart/gisto)
+
 ## Table of Contents
 
 - [About](#about)
