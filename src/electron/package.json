@@ -1,11 +1,13 @@
 {
   "name": "gisto",
-  "version": "1.9.12",
+  "version": "1.9.13",
   "license": "MIT",
   "main": "electron.js",
   "dependencies": {
     "superagent": "^3.8.1",
     "superagent-no-cache": "^0.1.1",
-    "dotenv": "^5.0.0"
+    "dotenv": "^5.0.0",
+    "electron-log": "^2.2.14",
+    "electron-updater": "^2.21.0"
   }
 }

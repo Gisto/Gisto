@@ -4,14 +4,16 @@ import { SettingsStore } from '../store/settings';
 import { GithubAuthorizationService } from '../github-authorization.service';
 import { GithubApiService } from '../github-api.service';
 import { version } from '../helpers/version';
-import {ElectronService} from 'ngx-electron';
+import { ElectronService } from 'ngx-electron';
+
+const { ipcRenderer } = require('electron');
 
 @Component({
   selector: 'login',
   template: `
     <div>
       <logo></logo>
-      <small>v.{{ version }}</small>
+      <small>v.{{ version }} | {{ message }}</small>
       <button *ngIf="!isLoggingdIn" invert (click)="login()">Log-in with Github account</button>
       <p *ngIf="isLoggingdIn"><icon icon="loading" color="#555"></icon> Loading...</p>
     </div>
@@ -22,6 +24,7 @@ import {ElectronService} from 'ngx-electron';
 export class LoginComponent implements OnInit {
 
   version: string = version;
+  message: string;
   isLoggingdIn = false;
 
   constructor(private router: Router,
@@ -32,6 +35,11 @@ export class LoginComponent implements OnInit {
               private electronService: ElectronService) {}
 
   ngOnInit() {
+    ipcRenderer.on('message', function(event, text) {
+      console.log('%c message, event, text ', 'background: #555; color: tomato', event, text);
+      this.message = text;
+    });
+
     if (this.settingsStore.isLoggedIn) {
       this.isLoggingdIn = true;
       this.navigateToMainScreen();
