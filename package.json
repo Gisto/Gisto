@@ -50,6 +50,7 @@
     "@angular/common": "^5.2.8",
     "@angular/compiler": "^5.2.8",
     "@angular/compiler-cli": "^5.2.8",
+    "electron-publisher-s3": "^20.2.0",
     "@angular/core": "^5.2.8",
     "@angular/forms": "^5.2.8",
     "@angular/http": "^5.2.8",
