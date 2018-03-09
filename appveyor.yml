@@ -11,8 +11,9 @@ environment:
   APPVEYOR: yes
 
 cache:
-  #- '%USERPROFILE%\.electron'
-
+  - '%USERPROFILE%\.electron'  -> package.json
+  - node_modules -> appveyor.yml
+  - '%APPDATA%\npm-cache' -> appveyor.yml
 init:
   - git config --global core.autocrlf input
 
