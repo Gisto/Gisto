@@ -11,7 +11,7 @@ environment:
   APPVEYOR: yes
 
 cache:
-  - '%USERPROFILE%\.electron'
+  #- '%USERPROFILE%\.electron'
 
 init:
   - git config --global core.autocrlf input
