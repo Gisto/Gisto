@@ -49,6 +49,7 @@
     "@angular/cli": "^1.7.3",
     "@angular/common": "^5.2.8",
     "@angular/compiler": "^5.2.8",
+    "@angular/compiler-cli": "^5.2.8",
     "@angular/core": "^5.2.8",
     "@angular/forms": "^5.2.8",
     "@angular/http": "^5.2.8",
@@ -56,6 +57,7 @@
     "@angular/platform-browser-dynamic": "^5.2.8",
     "@angular/router": "^5.2.8",
     "@covalent/code-editor": "^1.0.0",
+    "@types/electron": "^1.6.10",
     "@types/lodash": "^4.14.104",
     "angular-highlight-js": "^2.0.1",
     "angular2-hotkeys": "^2.0.4",
@@ -70,10 +72,9 @@
     "rxjs": "^5.5.6",
     "superagent": "^3.8.2",
     "superagent-no-cache": "^0.1.1",
+    "typescript": "^2.7.2",
     "uuid": "^3.2.1",
-    "zone.js": "^0.8.20",
-    "@angular/compiler-cli": "^5.2.8",
-    "typescript": "^2.7.2"
+    "zone.js": "^0.8.20"
   },
   "devDependencies": {
     "@angular/cli": "^1.7.3",
