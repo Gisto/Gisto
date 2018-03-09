@@ -6,8 +6,6 @@ Development started
 
 ###### Snippets made awesome
 
-## CI: [![Travis Build Status](https://travis-ci.org/Gisto/Gisto.svg?branch=v2)](https://travis-ci.org/Gisto/Gisto) [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/sanusart/gisto?branch=v2&svg=true)](https://ci.appveyor.com/project/sanusart/gisto)
-
 ## Table of Contents
 
 - [About](#about)
@@ -17,7 +15,7 @@ Development started
 - [Made using](#made-using)
 - [Download and install](#download-and-install)
 - [Other install options](#other-install-options)
-- ["Nightly" builds](#nightly-builds)
+- ["Nightly" builds](#nightly-builds) [![Travis Build Status](https://img.shields.io/travis/Gisto/Gisto/v2.svg?logo=travis)](https://travis-ci.org/Gisto/Gisto) [![Build status](https://img.shields.io/appveyor/ci/gruntjs/grunt/master.svg?logo=appveyor)](https://ci.appveyor.com/project/sanusart/gisto)
 - [Issues, bug reporting and pull requests](#issues-bug-reporting-and-pull-requests)
 - [Documentation](#documentation)
 - [License](#license)
