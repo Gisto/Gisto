@@ -12,8 +12,5 @@
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
-  ],
-  "include": [
-    "typings/index.d.ts"
   ]
 }
