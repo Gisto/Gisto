@@ -23,7 +23,7 @@ install:
   - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
-  - npm install -g @angular/cli@latest cross-env rimraf
+  - npm install -g @angular/cli@latest cross-env rimraf electron-publisher-s3
   - npm install
   - node --version && npm --version
   - npm rebuild node-sass --force
