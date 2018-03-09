@@ -73,7 +73,6 @@
     "uuid": "^3.2.1",
     "zone.js": "^0.8.20",
     "@angular/compiler-cli": "^5.2.8",
-    "@angular/cli": "^1.7.3",
     "typescript": "^2.7.2"
   },
   "devDependencies": {
