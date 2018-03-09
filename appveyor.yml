@@ -13,7 +13,6 @@ environment:
 cache:
   - '%USERPROFILE%\.electron'
   - node_modules -> appveyor.yml
-  - '%APPDATA%\npm-cache' -> appveyor.yml
 
 init:
   - git config --global core.autocrlf input
