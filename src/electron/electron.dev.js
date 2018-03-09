@@ -30,12 +30,12 @@ if (process.platform === 'darwin') {
                 label: 'About ' + name,
                 role: 'about'
             },
-            // {
-            //     label: 'DevTools' + name,
-            //     click() {
-            //         win.webContents.openDevTools();
-            //     }
-            // },
+            {
+                label: 'DevTools' + name,
+                click() {
+                    win.webContents.openDevTools();
+                }
+            },
             {
                 label: 'Quit',
                 accelerator: 'Command+Q',
