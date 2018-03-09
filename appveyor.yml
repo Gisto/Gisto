@@ -8,6 +8,7 @@ environment:
     - nodejs_version: "9"
   NODE_ENV: production
   DEBUG: electron-builder
+  NO_PROXY: "*"
   CI: yes
   APPVEYOR: yes
 
