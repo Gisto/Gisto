@@ -74,9 +74,7 @@
     "superagent-no-cache": "^0.1.1",
     "typescript": "^2.6.2",
     "uuid": "^3.2.1",
-    "zone.js": "^0.8.20",
-    "electron-builder": "^20.4.0",
-    "electron-publisher-s3": "^20.2.0"
+    "zone.js": "^0.8.20"
   },
   "devDependencies": {
     "@angular/cli": "^1.7.3",
