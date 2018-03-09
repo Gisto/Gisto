@@ -6,8 +6,6 @@ import { GithubApiService } from '../github-api.service';
 import { version } from '../helpers/version';
 import { ElectronService } from 'ngx-electron';
 
-const { ipcRenderer } = require('electron');
-
 @Component({
   selector: 'login',
   template: `
@@ -35,10 +33,12 @@ export class LoginComponent implements OnInit {
               private electronService: ElectronService) {}
 
   ngOnInit() {
-    ipcRenderer.on('message', function(event, text) {
-      console.log('%c message, event, text ', 'background: #555; color: tomato', event, text);
-      this.message = text;
-    });
+      if (this.electronService.isElectronApp) {
+          this.electronService.ipcRenderer.on('message', function (event, text) {
+              console.log('%c message, event, text ', 'background: #555; color: tomato', event, text);
+              this.message = text;
+          });
+      }
 
     if (this.settingsStore.isLoggedIn) {
       this.isLoggingdIn = true;
