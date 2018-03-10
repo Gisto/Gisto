@@ -1,4 +1,4 @@
-const { app, BrowserWindow, protocol } = require('electron');
+const { app, BrowserWindow, protocol, Menu } = require('electron');
 const path = require('path');
 const url = require('url');
 require('./oauth2');
@@ -45,6 +45,11 @@ if (process.platform === 'darwin') {
       },
     ]
   })
+}
+
+function sendStatusToWindow(text) {
+  log.info(text);
+  win.webContents.send('message', text);
 }
 
 const createWindow = () => {

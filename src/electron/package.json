@@ -1,6 +1,6 @@
 {
   "name": "gisto",
-  "version": "1.9.16",
+  "version": "1.9.15",
   "license": "MIT",
   "main": "electron.js",
   "dependencies": {
