@@ -5,8 +5,6 @@ require('./oauth2');
 const log = require('electron-log');
 const { autoUpdater } = require("electron-updater");
 
-const { checkForUpdates } = require('./updater');
-
 require('electron-reload')(__dirname);
 
 let win;
@@ -29,20 +27,16 @@ if (process.platform === 'darwin') {
       },
       {
         label: 'Console',
-        click() {
-          win.webContents.openDevTools();
-        }
+        click: () => win.webContents.openDevTools()
       },
       {
         label: 'Check for updates',
-        click() {
-          checkForUpdates();
-        }
+        click: (menuItem, focusedWindow, event) => require('./updater').checkForUpdates(menuItem, focusedWindow, event)
       },
       {
         label: 'Quit',
         accelerator: 'Command+Q',
-        click() { app.quit(); }
+        click: () => app.quit()
       },
     ]
   })
@@ -86,6 +80,8 @@ const createWindow = () => {
 
       const menu = Menu.buildFromTemplate(template);
       Menu.setApplicationMenu(menu);
+
+      autoUpdater.checkForUpdates();
     });
 
     win.webContents.openDevTools();
@@ -93,8 +89,6 @@ const createWindow = () => {
     win.on('closed', () => {
       win = null;
     });
-
-    autoUpdater.checkForUpdatesAndNotify();
   }, 10000);
 };
 

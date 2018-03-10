@@ -1,6 +1,6 @@
 {
   "name": "gisto",
-  "version": "1.9.16",
+  "version": "1.9.15",
   "description": "Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may think of Gisto as Evernote for code.",
   "scripts": {
     "ng": "ng",
@@ -12,10 +12,10 @@
     "clean": "rimraf dist release",
     "app": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && ./node_modules/.bin/electron ./dist/",
     "app:dev": "cross-env NODE_ENV=development concurrently \"npm run clean\" \"ng serve --dev --base-href='/'\" \"./node_modules/.bin/electron ./src/electron/\"",
-    "pack:mac": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --mac --x64",
-    "pack:win": "cross-env npm run clean && ng build --prod --base-href='.' && npx electron-builder build -w --publish=always",
-    "pack:linux": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --linux --x64",
-    "pack:all": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build -mwl --x64 --publish=always",
+    "pack:mac": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --m",
+    "pack:win": "cross-env npm run clean && ng build --prod --base-href='.' && npx electron-builder build -w",
+    "pack:linux": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --l --x64",
+    "pack:all": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build -mwl --x64",
     "pack:build": "cross-env npm run clean && ng build --prod --base-href='.' && npx electron-builder build --publish=always"
   },
   "repository": {
