@@ -15,32 +15,29 @@ autoUpdater.logger.transports.file.level = 'info';
 log.info('App starting...');
 
 let template = [];
-if (process.platform === 'darwin') {
-  // OS X
-  const name = app.getName();
-  template.unshift({
-    label: name,
-    submenu: [
-      {
-        label: 'About ' + name,
-        role: 'about'
-      },
-      {
-        label: 'Console',
-        click: () => win.webContents.openDevTools()
-      },
-      {
-        label: 'Check for updates',
-        click: (menuItem, focusedWindow, event) => require('./updater').checkForUpdates(menuItem, focusedWindow, event)
-      },
-      {
-        label: 'Quit',
-        accelerator: 'Command+Q',
-        click: () => app.quit()
-      },
-    ]
-  })
-}
+const name = app.getName();
+template.unshift({
+  label: name,
+  submenu: [
+    {
+      label: 'About ' + name,
+      role: 'about'
+    },
+    {
+      label: 'Console',
+      click: () => win.webContents.openDevTools()
+    },
+    {
+      label: 'Check for updates',
+      click: (menuItem, focusedWindow, event) => require('./updater').checkForUpdates(menuItem, focusedWindow, event)
+    },
+    {
+      label: 'Quit',
+      accelerator: 'Command+Q',
+      click: () => app.quit()
+    },
+  ]
+});
 
 function sendStatusToWindow(text) {
   log.info(text);
