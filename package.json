@@ -161,6 +161,8 @@
         "provider": "s3",
         "bucket": "gisto-releases"
       },
+      "target": ["deb", "rpm", "pacman", "AppImage", "snap"],
+      "synopsis": "Gisto - snippets made awesome",
       "category": "Development"
     }
   }
