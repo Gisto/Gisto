@@ -1,7 +1,8 @@
 {
   "name": "gisto",
-  "version": "1.9.15",
+  "version": "1.9.16",
   "description": "Gisto is a Cross-platform snippets management desktop application that allows you and/or your team share code snippets fast and easily. Based on GitHub Gists Infrastructure which means you can use all your existing snippets by connecting your GitHub account! Gisto started as an attempt to fulfill the lack of a syntax highlighted and cloud synchronized code snippet solution. You may think of Gisto as Evernote for code.",
+  "productName": "Gisto",
   "scripts": {
     "ng": "ng",
     "build": "ng build --dev",
@@ -115,6 +116,7 @@
       "output": "release"
     },
     "appId": "com.gistoapp.gisto2",
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
     "mac": {
       "publish": {
         "provider": "s3",
