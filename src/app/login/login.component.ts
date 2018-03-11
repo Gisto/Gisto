@@ -11,7 +11,7 @@ import { ElectronService } from 'ngx-electron';
   template: `
     <div>
       <logo></logo>
-      <small>v.{{ version }} | {{ message }}</small>
+      <small>v.{{ version }} | {{ updateMessage }}</small>
       <button *ngIf="!isLoggingdIn" invert (click)="login()">Log-in with Github account</button>
       <p *ngIf="isLoggingdIn"><icon icon="loading" color="#555"></icon> Loading...</p>
     </div>
@@ -22,7 +22,7 @@ import { ElectronService } from 'ngx-electron';
 export class LoginComponent implements OnInit {
 
   version: string = version;
-  message: string;
+  updateMessage: string;
   isLoggingdIn = false;
 
   constructor(private router: Router,
@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
       if (this.electronService.isElectronApp) {
           this.electronService.ipcRenderer.on('message', function (event, text, info) {
-              console.log('%c message, event, text ', 'background: #555; color: tomato', event, text);
-              this.message = text;
+              console.log('%c message, event, text ', 'background: #555; color: tomato', event, text, info);
+              this.updateMessage = text;
           });
       }
 
