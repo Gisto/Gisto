@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
       if (this.electronService.isElectronApp) {
-          this.electronService.ipcRenderer.on('message', function (event, text) {
+          this.electronService.ipcRenderer.on('message', function (event, text, info) {
               console.log('%c message, event, text ', 'background: #555; color: tomato', event, text);
               this.message = text;
           });

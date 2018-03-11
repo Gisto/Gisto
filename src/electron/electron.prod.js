@@ -38,9 +38,9 @@ template.unshift({
   ]
 });
 
-function sendStatusToWindow(text) {
+function sendStatusToWindow(text, info) {
   log.info(text);
-  win.webContents.send('message', text);
+  win.webContents.send('message', text, info);
 }
 
 const createWindow = () => {
@@ -94,11 +94,11 @@ autoUpdater.on('checking-for-update', () => {
 });
 
 autoUpdater.on('update-available', (info) => {
-  sendStatusToWindow('Update available.');
+  sendStatusToWindow('Update available.', info);
 });
 
 autoUpdater.on('update-not-available', (info) => {
-  sendStatusToWindow('Update not available.');
+  sendStatusToWindow('Update not available.', info);
 });
 
 autoUpdater.on('error', (err) => {
@@ -113,7 +113,7 @@ autoUpdater.on('download-progress', (progressObj) => {
 });
 
 autoUpdater.on('update-downloaded', (info) => {
-  sendStatusToWindow('Update downloaded');
+  sendStatusToWindow('Update downloaded', info);
 });
 
 app.on('window-all-closed', () => {
