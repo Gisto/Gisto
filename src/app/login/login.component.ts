@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, NgZone } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SettingsStore } from '../store/settings';
 import { GithubAuthorizationService } from '../github-authorization.service';
 import { GithubApiService } from '../github-api.service';
 import { version } from '../helpers/version';
 import { ElectronService } from 'ngx-electron';
+import { NotificationsStore } from '../store/notifications';
 
 @Component({
   selector: 'login',
@@ -19,7 +20,7 @@ import { ElectronService } from 'ngx-electron';
   `,
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnChanges {
 
   version: string = version;
   updateMessage = 'Up to date';
@@ -30,19 +31,22 @@ export class LoginComponent implements OnInit {
               private authorization: GithubAuthorizationService,
               private githubApiService: GithubApiService,
               private settingsStore: SettingsStore,
-              private electronService: ElectronService) {}
+              private electronService: ElectronService,
+              private notification: NotificationsStore,
+              private zone: NgZone) {}
 
   ngOnInit() {
-    if (this.electronService.isElectronApp) {
-        this.electronService.ipcRenderer.on('message', (event, text, info) => {
-            console.log('%c message, event, text ', 'background: #555; color: tomato', event, text, info);
-            this.updateMessage = text;
-        });
-    }
-
     if (this.settingsStore.isLoggedIn) {
       this.isLoggingdIn = true;
       this.navigateToMainScreen();
+    }
+
+    if (this.electronService.isElectronApp) {
+      this.electronService.ipcRenderer.on('message', (event, text, info) => {
+        this.zone.run(() => {
+          this.setMessage(text);
+        });
+      });
     }
 
     if (this.electronService.isElectronApp) {
@@ -64,6 +68,16 @@ export class LoginComponent implements OnInit {
           }
         });
     }
+  }
+
+  setMessage(text) {
+    console.log('%c setMessage ', 'background: #555; color: tomato', text);
+    this.updateMessage = text;
+    this.notification.addNotification('error', 'Updater', text);
+  }
+
+  ngOnChanges() {
+    this.setMessage('lalala');
   }
 
   navigateToMainScreen() {
