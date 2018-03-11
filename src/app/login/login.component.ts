@@ -1,18 +1,18 @@
-import { Component, OnInit, OnChanges, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SettingsStore } from '../store/settings';
 import { GithubAuthorizationService } from '../github-authorization.service';
 import { GithubApiService } from '../github-api.service';
 import { version } from '../helpers/version';
 import { ElectronService } from 'ngx-electron';
-import { NotificationsStore } from '../store/notifications';
 
 @Component({
   selector: 'login',
   template: `
     <div>
+      <update-notifier></update-notifier>
       <logo></logo>
-      <small>v.{{ version }} {{ updateMessage ? ' | ' + updateMessage : '' }}</small>
+      <small>v.{{ version }}</small>
       <button *ngIf="!isLoggingdIn" invert (click)="login()">Log-in with Github account</button>
       <p *ngIf="isLoggingdIn"><icon icon="loading" color="#555"></icon> Loading...</p>
     </div>
@@ -20,10 +20,9 @@ import { NotificationsStore } from '../store/notifications';
   `,
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnChanges {
+export class LoginComponent implements OnInit {
 
   version: string = version;
-  updateMessage = 'Up to date';
   isLoggingdIn = false;
 
   constructor(private router: Router,
@@ -31,22 +30,12 @@ export class LoginComponent implements OnInit, OnChanges {
               private authorization: GithubAuthorizationService,
               private githubApiService: GithubApiService,
               private settingsStore: SettingsStore,
-              private electronService: ElectronService,
-              private notification: NotificationsStore,
-              private zone: NgZone) {}
+              private electronService: ElectronService) {}
 
   ngOnInit() {
     if (this.settingsStore.isLoggedIn) {
       this.isLoggingdIn = true;
       this.navigateToMainScreen();
-    }
-
-    if (this.electronService.isElectronApp) {
-      this.electronService.ipcRenderer.on('message', (event, text, info) => {
-        this.zone.run(() => {
-          this.setMessage(text);
-        });
-      });
     }
 
     if (this.electronService.isElectronApp) {
@@ -68,16 +57,6 @@ export class LoginComponent implements OnInit, OnChanges {
           }
         });
     }
-  }
-
-  setMessage(text) {
-    console.log('%c setMessage ', 'background: #555; color: tomato', text);
-    this.updateMessage = text;
-    this.notification.addNotification('error', 'Updater', text);
-  }
-
-  ngOnChanges() {
-    this.setMessage('lalala');
   }
 
   navigateToMainScreen() {

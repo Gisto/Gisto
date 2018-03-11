@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { GithubApiService } from '../../github-api.service';
 import { UiStore } from '../../store/ui';
 import { SettingsStore } from '../../store/settings';
@@ -7,6 +7,7 @@ import { GistsStore } from '../../store/gists';
 @Component({
   selector: 'main',
   template: `
+    <update-notifier></update-notifier>
     <sidebar *ngIf="uiStore.sideBar"></sidebar>
     <content-wrapper>
       <gist *ngIf="gistsStore.current.id"></gist>
@@ -18,7 +19,7 @@ import { GistsStore } from '../../store/gists';
 })
 
 export class MainComponent implements OnInit {
-
+x
   constructor(
     public uiStore: UiStore,
     private githubApiService: GithubApiService,
