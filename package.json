@@ -10,6 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "ng serve --aot",
+    "version:patch": "npm version patch && cd src/electron/ && npm version patch && cd -",
     "clean": "rimraf dist release",
     "app": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && ./node_modules/.bin/electron ./dist/",
     "app:dev": "cross-env NODE_ENV=development concurrently \"npm run clean\" \"ng serve --dev --base-href='/'\" \"./node_modules/.bin/electron ./src/electron/\"",
