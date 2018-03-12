@@ -32,8 +32,8 @@ clone_depth: 1
 
 install:
   - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
-  - ps: Add-Content c:\gisto\src\electron\.env GISTO_GITHUB_CLIENT_ID=%GISTO_GITHUB_CLIENT_ID%
-  - ps: Add-Content c:\gisto\src\electron\.env GISTO_GITHUB_CLIENT_SECRET=%GISTO_GITHUB_CLIENT_SECRET%
+  - ps: Add-Content c:\gisto\src\electron\.env "GISTO_GITHUB_CLIENT_ID=$env:GISTO_GITHUB_CLIENT_ID"
+  - ps: Add-Content c:\gisto\src\electron\.env "GISTO_GITHUB_CLIENT_SECRET=$env:GISTO_GITHUB_CLIENT_SECRET"
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
   - npm install -g @angular/cli@latest cross-env rimraf electron-builder electron-publisher-s3
