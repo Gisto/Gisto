@@ -4,7 +4,7 @@ import { ElectronService } from 'ngx-electron';
 @Component({
   selector: 'update-notifier',
   template: `
-    <div *ngIf="updateMessage&&updateMessage!=='Up to date'">{{ updateMessage ? updateMessage : '' }}</div>
+    <div *ngIf="showUpdateMessage(updateMessage)">{{ updateMessage ? updateMessage : '' }}</div>
   `,
   styleUrls: ['./update-notifier.component.scss']
 })
@@ -27,6 +27,10 @@ export class UpdateNotifierComponent implements OnInit {
     this.zone.run(() => {
       this.updateMessage = text;
     });
+  }
+
+  showUpdateMessage = (updateMessage) => {
+    return updateMessage && (updateMessage !== 'Up to date' || updateMessage !== 'Update not available.');
   }
 
 }

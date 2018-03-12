@@ -13,7 +13,16 @@ environment:
 
 cache:
   - '%USERPROFILE%\.electron'
-  - node_modules -> appveyor.yml
+  - node_modules
+
+branches:
+  only:
+    - v2
+
+skip_commits:
+  message: /CI-SKIP/
+
+clone_folder: c:\gisto
 
 init:
   - git config --global core.autocrlf input
@@ -23,6 +32,8 @@ clone_depth: 1
 
 install:
   - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
+  - ps: "GISTO_GITHUB_CLIENT_ID=$(GISTO_GITHUB_CLIENT_ID)" >> c:\gisto\.env
+  - ps: "GISTO_GITHUB_CLIENT_SECRET=$(GISTO_GITHUB_CLIENT_SECRET)" >> c:\gisto\.env
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
   - npm install -g @angular/cli@latest cross-env rimraf electron-builder electron-publisher-s3
