@@ -157,14 +157,7 @@
       "icon": "build/icon.ico"
     },
     "linux": {
-      "maintainer": [{
-          "name": "Maayan Glikser",
-          "email": "maayan@glikm.com"
-        },
-        {
-          "name": "Sasha Khamkov",
-          "email": "sanusart@gmail.com"
-        }],
+      "maintainer": "Sasha Khamkov <sanusart@gmail.com>",
       "publish": {
         "provider": "s3",
         "bucket": "gisto-releases"
