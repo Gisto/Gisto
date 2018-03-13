@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu } = require('electron');
+require('dotenv').config({ path: './.env' });
 const path = require('path');
 const url = require('url');
 require('./oauth2');

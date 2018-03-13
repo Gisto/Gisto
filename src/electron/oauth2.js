@@ -1,8 +1,6 @@
 const { BrowserWindow, ipcMain } = require('electron');
 const tokenRequest = require('superagent');
 
-require('dotenv').config();
-
 const options = {
   client_id: process.env.GISTO_GITHUB_CLIENT_ID,
   client_secret: process.env.GISTO_GITHUB_CLIENT_SECRET,
