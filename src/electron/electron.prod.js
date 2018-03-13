@@ -1,4 +1,4 @@
-const { app, BrowserWindow, protocol, Menu } = require('electron');
+const { app, BrowserWindow, protocol, Menu, shell } = require('electron');
 require('dotenv').config({ path: './.env' });
 const path = require('path');
 const url = require('url');
@@ -24,12 +24,41 @@ template.unshift({
       role: 'about'
     },
     {
+      label: 'Reload',
+      accelerator: 'Command+R',
+      click: () => win.webContents.reload()
+    },
+    {
       label: 'Console',
       click: () => win.webContents.openDevTools()
     },
     {
       label: 'Check for updates',
       click: (menuItem, focusedWindow, event) => require('./updater').checkForUpdates(menuItem, focusedWindow, event)
+    },
+    {
+      label: 'Help',
+      submenu: [{
+        label: 'Learn More about ' + name,
+        click() {
+          shell.openExternal('https://www.gistoapp.com');
+        }
+      }, {
+        label: 'Documentation',
+        click() {
+          shell.openExternal('https://www.gistoapp.com/documentation/');
+        }
+      },{
+        label: 'Announcements',
+        click() {
+          shell.openExternal('https://www.gistoapp.com/blog/');
+        }
+      }, {
+        label: 'Search Issues',
+        click() {
+          shell.openExternal('https://github.com/gisto/gisto/issues');
+        }
+      }]
     },
     {
       label: 'Quit',
