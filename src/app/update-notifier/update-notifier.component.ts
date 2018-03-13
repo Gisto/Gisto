@@ -16,7 +16,7 @@ export class UpdateNotifierComponent implements OnInit {
   constructor(
     public electronService: ElectronService,
     private zone: NgZone,
-    private uiStore: UiStore
+    public uiStore: UiStore
   ) { }
 
   ngOnInit() {
