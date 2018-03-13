@@ -8,6 +8,7 @@ export class UiStore {
   @observable sideBar = true;
   @observable comments = false;
   @observable superSearch = false;
+  @observable hideUpdater = false;
 
   @computed get isEdit() {
     return this.editMode;

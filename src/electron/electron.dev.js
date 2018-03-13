@@ -7,6 +7,7 @@ const log = require('electron-log');
 const {autoUpdater} = require("electron-updater");
 
 require('electron-reload')(__dirname);
+require('electron-debug')();
 
 let win;
 let splash;

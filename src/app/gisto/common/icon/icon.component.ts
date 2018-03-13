@@ -52,6 +52,7 @@ export class IconComponent {
       ellipsis: 'ios-more-outline.svg',
       edit: 'ios-create-outline.svg',
       cancel: 'ios-close.svg',
+      close: 'ios-close.svg',
       eye: 'ios-eye-outline.svg',
       'eye-slash': 'ios-eye-off-outline.svg',
       check: 'ios-checkmark-circle-outline.svg',
