@@ -111,7 +111,6 @@ export class GistComponent {
     `${defaultEndpointURL}/${this.gistStore.currentGist.login}/${this.gistStore.currentGist.id }#file-${file.filename }`;
 
   changeFile = (file, event, index) => {
-    // console.log('%c LOG ', 'background: #555; color: tomato', ...arguments);
     this.gistStore.changeLocalDataFile(file, event.target.value, index);
   };
 

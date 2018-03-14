@@ -169,7 +169,6 @@ export class NewComponent {
   }
 
   createNewGist(formData) {
-    console.log('%c LOG ', 'background: #555; color: tomato', this.newSnippetForm.status === 'INVALID', this.newSnippetForm);
     if (this.newSnippetForm.status === 'INVALID') {
       this.notificationsStore.addNotification('error', 'Form not valid', 'Please fill all the fields');
       return;
