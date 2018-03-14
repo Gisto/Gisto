@@ -4,10 +4,10 @@ const url = require('url');
 const log = require('electron-log');
 const { autoUpdater } = require("electron-updater");
 
-require('./oauth2');
 require('dotenv').config({ path: path.join(app.getAppPath(), '..', '.env') });
 require('electron-reload')(__dirname);
 require('electron-debug')();
+require('./oauth2');
 
 let win;
 let splash;

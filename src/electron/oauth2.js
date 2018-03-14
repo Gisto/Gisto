@@ -25,6 +25,9 @@ ipcMain.on('oauth2-login', (event) => {
     show: false,
     'node-integration': false
   });
+
+  authWindow.webContents.openDevTools()
+
   const githubUrl = 'https://github.com/login/oauth/authorize?';
   const authUrl = githubUrl + 'client_id=' + options.client_id + '&scope=' + options.scopes;
   authWindow.loadURL(authUrl);
