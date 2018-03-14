@@ -1,11 +1,11 @@
-const {app, BrowserWindow, Menu, shell} = require('electron');
-require('dotenv').config({path: './.env'});
+const { app, BrowserWindow, Menu, shell } = require('electron');
 const path = require('path');
 const url = require('url');
-require('./oauth2');
 const log = require('electron-log');
-const {autoUpdater} = require("electron-updater");
+const { autoUpdater } = require("electron-updater");
 
+require('./oauth2');
+require('dotenv').config({ path: path.join(app.getAppPath(), '..', '.env') });
 require('electron-reload')(__dirname);
 require('electron-debug')();
 

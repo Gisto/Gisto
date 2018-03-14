@@ -1,17 +1,18 @@
 const { app, BrowserWindow, protocol, Menu, shell } = require('electron');
-require('dotenv').config({ path: './.env' });
 const path = require('path');
 const url = require('url');
-require('./oauth2');
-
 const log = require('electron-log');
 const { autoUpdater } = require("electron-updater");
+
+require('./oauth2');
+require('dotenv').config({ path: path.join(app.getAppPath(), '.env') });
 
 let win;
 let splash;
 
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
+
 log.info('App starting...');
 
 let template = [];
