@@ -20,7 +20,7 @@ branches:
     - v2
 
 skip_commits:
-  message: /CI-SKIP/
+  message: /[ci skip]|[skip ci]/
 
 clone_folder: c:\gisto
 
