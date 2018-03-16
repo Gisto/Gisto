@@ -48,13 +48,13 @@ to be added ...
 
 ## Download and install
 
-to be added ...
+[Download](https://gisto-releases.s3.amazonaws.com/index.html) installers for various platorms
 
 ## "Nightly" builds
 
-to be added ...
+"Nightly" builds triggered by commits.
 
-to be added ...
+[Download](https://gisto-releases.s3.amazonaws.com/index.html)
 
 ## Issues, bug reporting and pull requests
 
@@ -68,33 +68,20 @@ Pull requests are welcome as well.
 
 to be added ...
 
-## License
-
-MIT https://github.com/Gisto/Gisto/blob/master/LICENSE
-
 ## Development
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-- Run `npm start` to run the app with electron
+- Run `npm run app` to run the app with electron in production mode
+- Run `npm run app:dev` to run the app with electron in development mode
 
-#### Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 #### Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `npm run pack:all` to build gisto installers. The build artifacts will be stored in the `release/` directory.
 
-#### Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-#### Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ### Scrennshots
 #### Dashboard
@@ -103,7 +90,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 #### Gist view
 ![Gist view](https://i.imgur.com/DCR1zTK.png)
 
+## License
 
+MIT https://github.com/Gisto/Gisto/blob/master/LICENSE
 
 #### Contributors and mentions
 
