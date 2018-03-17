@@ -19,9 +19,6 @@ branches:
   only:
     - v2
 
-skip_commits:
-  message: /[ci skip]|[skip ci]/
-
 clone_folder: c:\gisto
 
 init:
