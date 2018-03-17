@@ -42,6 +42,7 @@ import { NewComponent } from './gisto/main/new/new.component';
 import { SuperSearchComponent } from './super-search/super-search.component';
 import { NgxElectronModule } from 'ngx-electron';
 import { UpdateNotifierComponent } from './update-notifier/update-notifier.component';
+import { AboutComponent } from './about/about.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -66,6 +67,12 @@ const appRoutes: Routes = [
     {
       path: 'settings',
       component: SettingsComponent,
+      data: { requiresLogin: true },
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'about',
+      component: AboutComponent,
       data: { requiresLogin: true },
       canActivate: [AuthGuard]
     },
@@ -102,7 +109,8 @@ const appRoutes: Routes = [
     CommentsComponent,
     DateComponent,
     SuperSearchComponent,
-    UpdateNotifierComponent
+    UpdateNotifierComponent,
+    AboutComponent
   ],
   imports: [
     RouterModule.forRoot(
