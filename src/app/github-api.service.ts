@@ -35,7 +35,7 @@ export class GithubApiService {
     if (error) {
       this.notificationsStore.addNotification('error', `Error code: ${error.status}`, error.message);
       return this.router.navigate(['/login']);
-    } else if (result.statusCode > 201) {
+    } else if (result.statusCode > 204) {
       this.notificationsStore.addNotification('info', result.statusText, result.body.description);
       return this.router.navigate(['/login']);
     }
