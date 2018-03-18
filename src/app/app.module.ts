@@ -42,7 +42,7 @@ import { NewComponent } from './gisto/main/new/new.component';
 import { SuperSearchComponent } from './super-search/super-search.component';
 import { NgxElectronModule } from 'ngx-electron';
 import { UpdateNotifierComponent } from './update-notifier/update-notifier.component';
-import { AboutComponent } from './about/about.component';
+import { AboutComponent } from './gisto/main/about/about.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },

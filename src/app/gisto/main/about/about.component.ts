@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { version } from '../helpers/version';
-const icon = require('../../../build/icon.png');
+import { version } from '../../../helpers/version';
+const icon = require('../../../../../build/icon.png');
 
 @Component({
   selector: 'about',
