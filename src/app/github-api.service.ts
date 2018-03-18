@@ -29,15 +29,27 @@ export class GithubApiService {
     return { 'Content-Type': 'application/json', 'Authorization': `token ${this.token}` };
   }
 
+  errorHandler(error, result) {
+    this.uiStore.loading = false;
+
+    if (error) {
+      this.notificationsStore.addNotification('error', `Error code: ${error.status}`, error.message);
+      return this.router.navigate(['/login']);
+    } else if (result.statusCode > 201) {
+      this.notificationsStore.addNotification('info', result.statusText, result.body.description);
+      return this.router.navigate(['/login']);
+    }
+  }
+
   getGists(page: number = 1) {
     this.uiStore.loading = true;
     API.get(`${this.baseUrl()}?page=${page}&per_page=100`)
       .set(this._headers())
       .end((error, result) => {
+        this.errorHandler(error, result);
         if (result.headers.link.match(/next/ig)) {
           this.getGists(page + 1);
         }
-        this.uiStore.loading = false;
         this.gistsStore.setGists(result.body);
       });
   }
@@ -53,6 +65,7 @@ export class GithubApiService {
     API.get(`${this.baseUrl()}/${id}`)
       .set(this._headers())
       .end((error, result) => {
+        this.errorHandler(error, result);
         this.uiStore.loading = false;
         this.getComments(id);
         this.gistsStore.setCurrentGist(result.body, true);
@@ -65,10 +78,7 @@ export class GithubApiService {
       .set(this._headers())
       .send(JSON.stringify(data))
       .end((error, result) => {
-        this.uiStore.loading = false;
-        if (error) {
-          return this.notificationsStore.addNotification('error', `Error code: ${error.status}`, error.message);
-        }
+        this.errorHandler(error, result);
         if (result.statusCode === 201) {
           this.router.navigate([`/gist/${result.body.id}`]);
           this.gistsStore.setCurrentGist(result.body, true);
@@ -81,8 +91,8 @@ export class GithubApiService {
     this.uiStore.loading = true;
     API.put(`${this.baseUrl()}/${id}/star`)
       .set(this._headers())
-      .end((error) => {
-        this.uiStore.loading = false;
+      .end((error, result) => {
+        this.errorHandler(error, result);
         this.gistsStore.star(id);
         this.notificationsStore.addNotification('success', 'Star', this.gistsStore.current.description + ' starred');
       });
@@ -92,8 +102,8 @@ export class GithubApiService {
     this.uiStore.loading = true;
     API.del(`${this.baseUrl()}/${id}/star`)
       .set(this._headers())
-      .end((error) => {
-        this.uiStore.loading = false;
+      .end((error, result) => {
+        this.errorHandler(error, result);
         this.gistsStore.unStar(id);
         this.notificationsStore.addNotification('success', 'Star removed', 'From: ' + this.gistsStore.current.description);
       });
@@ -103,11 +113,9 @@ export class GithubApiService {
     this.uiStore.loading = true;
     API.del(`${this.baseUrl()}/${id}`)
       .set(this._headers())
-      .end((error) => {
-        if (!error) {
-          this.uiStore.loading = false;
-          this.gistsStore.deleteGist(id);
-        }
+      .end((error, result) => {
+        this.errorHandler(error, result);
+        this.gistsStore.deleteGist(id);
       });
   }
 
@@ -123,10 +131,7 @@ export class GithubApiService {
       .set(this._headers())
       .send(gistNewData)
       .end((error, result) => {
-        if (error) {
-          return this.notificationsStore.addNotification('error', `Error code: ${error.status}`, error.message);
-        }
-        this.uiStore.loading = false;
+        this.errorHandler(error, result);
         this.gistsStore.setCurrentGist(result.body, true);
       });
   }
@@ -136,7 +141,7 @@ export class GithubApiService {
     API.get(this.baseUrl('user'))
       .set(this._headers())
       .end((error, result) => {
-        this.uiStore.loading = false;
+        this.errorHandler(error, result);
         this.userStore.setUser(result.body);
       });
   }
@@ -146,7 +151,7 @@ export class GithubApiService {
     API.get(`${this.baseUrl()}/${id}/comments`)
       .set(this._headers())
       .end((error, result) => {
-        this.uiStore.loading = false;
+        this.errorHandler(error, result);
         this.gistsStore.setComments(id, result.body);
       });
   }
@@ -157,7 +162,7 @@ export class GithubApiService {
       .set(this._headers())
       .send({ body })
       .end((error, result) => {
-        this.uiStore.loading = false;
+        this.errorHandler(error, result);
         this.getComments(id);
       });
   }
