@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SettingsStore } from '../store/settings';
+import { NotificationsStore } from '../store/notifications';
 import { GithubAuthorizationService } from '../github-authorization.service';
 import { GithubApiService } from '../github-api.service';
 import { version } from '../helpers/version';
@@ -13,7 +14,22 @@ import { ElectronService } from 'ngx-electron';
       <update-notifier></update-notifier>
       <logo></logo>
       <small>v.{{ version }}</small>
-      <button *ngIf="!isLoggingdIn" invert (click)="login()">Log-in with Github account</button>
+      
+      <button *ngIf="!isLoggingdIn && !tokenFormShown" invert (click)="login()">Log-in with GitHub</button>
+      
+      <div *ngIf="!isLoggingdIn && tokenFormShown">
+        <h4>GitHub sign - in using token</h4>
+          <input type="text" #token placeholder="GitHub token"/>
+          <br/>
+          <button invert (click)="loginWithToken(token.value)">Log-in</button>
+          <br/>
+          <a (click)="resetLogin()">Back to log-in options</a>  
+      </div>
+      
+      <br/>
+      <br/>
+      <a *ngIf="!isLoggingdIn && !tokenFormShown" (click)="showTokenForm()">Log-in using token</a>
+      
       <p *ngIf="isLoggingdIn"><icon icon="loading" color="#555"></icon> Loading...</p>
     </div>
 
@@ -24,12 +40,14 @@ export class LoginComponent implements OnInit {
 
   version: string = version;
   isLoggingdIn = false;
+  tokenFormShown = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private authorization: GithubAuthorizationService,
               private githubApiService: GithubApiService,
               private settingsStore: SettingsStore,
+              private notifications: NotificationsStore,
               private electronService: ElectronService) {}
 
   ngOnInit() {
@@ -74,5 +92,23 @@ export class LoginComponent implements OnInit {
     } else {
       this.authorization.login();
     }
+  }
+
+  resetLogin() {
+    this.router.navigate(['/login']);
+    this.isLoggingdIn = false;
+    this.tokenFormShown = false;
+  }
+
+  showTokenForm() {
+    this.tokenFormShown = true;
+  }
+
+  loginWithToken(token) {
+    if (!token) {
+      return this.notifications.addNotification('error', 'Token must be set', 'Token is a required field', null);
+    }
+    this.settingsStore.setToken(token);
+    this.navigateToMainScreen();
   }
 }
