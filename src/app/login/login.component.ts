@@ -15,20 +15,45 @@ import { ElectronService } from 'ngx-electron';
       <logo></logo>
       <small>v.{{ version }}</small>
       
-      <button *ngIf="!isLoggingdIn && !tokenFormShown" invert (click)="login()">Log-in with GitHub</button>
+      <button *ngIf="!isLoggingdIn && !tokenFormShown && !basicFormShown" invert (click)="loginwithOauth2()">Log-in with GitHub</button>
       
-      <div *ngIf="!isLoggingdIn && tokenFormShown">
-        <h4>GitHub sign - in using token</h4>
+      <div *ngIf="!isLoggingdIn && !basicFormShown && tokenFormShown">
+        <h4>Sign-in using GitHub token</h4>
           <input type="text" #token placeholder="GitHub token"/>
+          <a target="_new" href="https://github.com/settings/tokens">
+            <icon icon="info" size="16" color="#3f83a8"></icon>
+          </a>
           <br/>
-          <button invert (click)="loginWithToken(token.value)">Log-in</button>
+          <button (click)="loginWithToken(token.value)">Log-in</button>
           <br/>
-          <a (click)="resetLogin()">Back to log-in options</a>  
+          <a (click)="resetLogin()">Cancel</a>  
+      </div>
+
+      <div *ngIf="!isLoggingdIn && basicFormShown && !tokenFormShown">
+        <h4>Sign-in using GitHub username and password</h4>
+        <user [user]="{avatar_url: 'https://github.com/'+ (user.value || 'gisto') + '.png', login: (user.value || 'gisto')}"></user>
+        <br />
+        <br />
+        <input type="text" #user placeholder="GitHub email or username"/>
+        <br/>
+        <br/>
+        <input type="password" #pass placeholder="GitHub password"/>
+        <br/>
+        <button (click)="loginWithBasic(user.value, pass.value)">Log-in</button>
+        <br/>
+        <a (click)="resetLogin()">Cancel</a>
       </div>
       
-      <br/>
-      <br/>
-      <a *ngIf="!isLoggingdIn && !tokenFormShown" (click)="showTokenForm()">Log-in using token</a>
+      <p *ngIf="!isLoggingdIn && !basicFormShown && !tokenFormShown" class="options">
+        or sign-in using GitHub 
+        <a (click)="showTokenForm()">
+          token
+        </a> 
+        or 
+        <a (click)="showBasicForm()">
+          username and password
+        </a>
+      </p>
       
       <p *ngIf="isLoggingdIn"><icon icon="loading" color="#555"></icon> Loading...</p>
     </div>
@@ -41,6 +66,7 @@ export class LoginComponent implements OnInit {
   version: string = version;
   isLoggingdIn = false;
   tokenFormShown = false;
+  basicFormShown = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -58,7 +84,7 @@ export class LoginComponent implements OnInit {
 
     if (this.electronService.isElectronApp) {
       this.electronService.ipcRenderer.on('token', (event, token) => {
-        localStorage.setItem('api-token', token);
+        this.settingsStore.setToken(token);
         this.navigateToMainScreen();
       });
     } else {
@@ -85,7 +111,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/main']);
   }
 
-  login() {
+  loginwithOauth2() {
     this.isLoggingdIn = true;
     if (this.electronService.isElectronApp) {
       this.electronService.ipcRenderer.send('oauth2-login');
@@ -98,17 +124,32 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/login']);
     this.isLoggingdIn = false;
     this.tokenFormShown = false;
+    this.basicFormShown = false;
   }
 
   showTokenForm() {
     this.tokenFormShown = true;
   }
 
+  showBasicForm() {
+    this.basicFormShown = true;
+  }
+
   loginWithToken(token) {
     if (!token) {
-      return this.notifications.addNotification('error', 'Token must be set', 'Token is a required field', null);
+      return this.notifications.addNotification('error', 'Token must be set', 'Token is a required field');
     }
     this.settingsStore.setToken(token);
     this.navigateToMainScreen();
+  }
+
+  loginWithBasic(user, pass) {
+    if (!user || !pass) {
+      return this.notifications.addNotification(
+        'error',
+        'Username and password must be set',
+        'Both Username and password are a required fields'
+      );
+    }
   }
 }

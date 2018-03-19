@@ -31,4 +31,15 @@
     background: #fff;
     width: 300px;
   }
+
+  p.options {
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+
+    a {
+      color: #3f83a8;
+    }
+  }
 }

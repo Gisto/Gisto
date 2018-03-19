@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
-import {GithubApiService} from "../github-api.service";
+import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import { GithubApiService } from '../github-api.service';
+import { SettingsStore } from '../store/settings';
 
 @Component({
   selector: 'gisto',
@@ -12,9 +13,18 @@ import {GithubApiService} from "../github-api.service";
   styleUrls: ['./gisto.component.scss']
 })
 export class GistoComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute, private githubApiService: GithubApiService) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private githubApiService: GithubApiService,
+    private settingsStore: SettingsStore,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    if (!this.settingsStore.isLoggedIn) {
+      this.router.navigate(['/login']);
+    }
+
     // subscribe to router event
     this.activatedRoute.params.subscribe((params: Params) => {
       const gistId = params['id'];
