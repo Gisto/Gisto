@@ -11,7 +11,11 @@
         "assets",
         "favicon.ico",
         "fonts",
-        ".env",
+        {
+          "glob": ".env",
+          "input": "../",
+          "output": "./"
+        },
         {
           "glob": "**/*",
           "input": "./electron",
