@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { observable, action, computed } from 'mobx';
+import { gitHubTokenKeyInStorage } from '../constants/config';
 
 @Injectable()
 export class SettingsStore {
-  @observable auth_token = localStorage.getItem('api-token') || '';
   @observable color = '#ff0000';
   @observable theme = 'vs';
   @observable animations = 'enabled';
@@ -21,7 +21,7 @@ export class SettingsStore {
   }
 
   @computed get isLoggedIn() {
-    return Boolean(this.auth_token);
+    return Boolean(localStorage.getItem(gitHubTokenKeyInStorage));
   }
 
   @action setAnimation(value) {
@@ -29,11 +29,10 @@ export class SettingsStore {
   }
 
   @action setToken(token) {
-    localStorage.setItem('api-token', token);
+    localStorage.setItem(gitHubTokenKeyInStorage, token);
   }
 
   @action logOut() {
-    localStorage.setItem('api-token', '');
-    this.auth_token = '';
+    localStorage.setItem(gitHubTokenKeyInStorage, '');
   }
 }

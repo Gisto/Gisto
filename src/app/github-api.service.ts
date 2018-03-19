@@ -7,6 +7,7 @@ import { NotificationsStore } from './store/notifications';
 import * as API from 'superagent';
 import { Router} from '@angular/router';
 import { normalizeFiles } from './helpers/files';
+import { gitHubTokenKeyInStorage } from './constants/config';
 
 @Injectable()
 export class GithubApiService {
@@ -24,7 +25,7 @@ export class GithubApiService {
   baseUrl = (path = 'gists') => `https://api.github.com/${path}`;
 
   _headers() {
-    this.token = localStorage.getItem('api-token');
+    this.token = localStorage.getItem(gitHubTokenKeyInStorage);
 
     return { 'Content-Type': 'application/json', 'Authorization': `token ${this.token}` };
   }
