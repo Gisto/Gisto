@@ -35,7 +35,7 @@ import { Router } from '@angular/router';
       
     </cards>
 
-    <cards>  
+    <cards class="tweens">  
       <card>
         <heading>File types of Snippets</heading>
         <pills>

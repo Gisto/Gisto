@@ -63,6 +63,7 @@
         padding: 20px 0;
         flex-direction: row;
         flex-wrap: wrap;
+        overflow: auto;
 
         pill {
           color: $color-regular;
@@ -94,7 +95,6 @@
 
       .wrap {
         overflow: auto;
-        height: -webkit-fill-available;
         margin: 10px 0 0 0;
       }
 
@@ -116,6 +116,11 @@
         tag {
           color: $header-bg-light;
         }
+      }
+    }
+    &.tweens {
+      > card {
+        height: 34vh;
       }
     }
   }
