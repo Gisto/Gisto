@@ -13,6 +13,7 @@ import { CleanTagsPipe } from './pipes/cleanTags.pipe';
 import { SortByPipe } from './pipes/sortBy.pipe';
 
 import { CopyToClipBoardDirective } from './directives/copy-to-clip-board.directive';
+import { AnchorDirective } from './directives/anchor.directive';
 
 import { AppComponent } from './app.component';
 import { GistoComponent } from './gisto/gisto.component';
@@ -102,6 +103,7 @@ const appRoutes: Routes = [
     NewComponent,
 
     CopyToClipBoardDirective,
+    AnchorDirective,
 
     CleanTagsPipe,
     SortByPipe,

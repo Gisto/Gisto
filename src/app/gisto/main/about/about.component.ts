@@ -19,10 +19,10 @@ const icon = require('../../../../../build/icon.png');
       </p>
       
       <p>
-        <a href="https://github.com/Gisto/Gisto">GitHub</a> | 
-        <a href="https://gistoapp.com">Website gistoapp.com</a> | 
-        <a href="https://github.com/Gisto/Gisto/issues">Issues</a> |
-        <a href="https://twitter.com/gistoapp">Twitter</a>
+        <a external href="https://github.com/Gisto/Gisto">GitHub</a> | 
+        <a external href="https://gistoapp.com">Website gistoapp.com</a> | 
+        <a external href="https://github.com/Gisto/Gisto/issues">Issues</a> |
+        <a external href="https://twitter.com/gistoapp">Twitter</a>
       </p>
       
     </div>
