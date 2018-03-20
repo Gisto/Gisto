@@ -10,7 +10,7 @@ import { ElectronService } from 'ngx-electron';
 @Component({
   selector: 'login',
   template: `
-    <div>
+    <div *mobxAutorun>
       <update-notifier></update-notifier>
       <logo></logo>
       <small>v.{{ version }}</small>
@@ -31,15 +31,30 @@ import { ElectronService } from 'ngx-electron';
 
       <div *ngIf="!isLoggingdIn && basicFormShown && !tokenFormShown">
         <h4>Sign-in using GitHub username and password</h4>
+        
         <user [user]="{avatar_url: 'https://github.com/'+ (user.value || 'gisto') + '.png', login: (user.value || 'gisto')}"></user>
+        
         <br />
         <br />
-        <input type="text" #user placeholder="GitHub email or username"/>
+        
+        <input type="text" 
+               #user 
+               placeholder="GitHub email or username"/>
         <br/>
         <br/>
-        <input type="password" #pass placeholder="GitHub password"/>
+        
+        <input type="password" 
+               #pass 
+               placeholder="GitHub password"/>
         <br/>
-        <button (click)="loginWithBasic(user.value, pass.value)">Log-in</button>
+        <br/>
+        
+        <input [ngStyle]="{'visibility': settingsStore.auth2faNeeded ? 'visible' : 'hidden'}" 
+               type="text" 
+               #twoFactorAuth 
+               placeholder="Two factor token (2fa)"/>
+        <br/>
+        <button (click)="loginWithBasic(user.value, pass.value, twoFactorAuth.value)">Log-in</button>
         <br/>
         <a (click)="resetLogin()">Cancel</a>
       </div>
@@ -72,7 +87,7 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute,
               private authorization: GithubAuthorizationService,
               private githubApiService: GithubApiService,
-              private settingsStore: SettingsStore,
+              public settingsStore: SettingsStore,
               private notifications: NotificationsStore,
               private electronService: ElectronService) {}
 
@@ -143,7 +158,7 @@ export class LoginComponent implements OnInit {
     this.navigateToMainScreen();
   }
 
-  loginWithBasic(user, pass) {
+  loginWithBasic(user, pass, twoFactorAuth = null) {
     if (!user || !pass) {
       return this.notifications.addNotification(
         'error',
@@ -151,5 +166,7 @@ export class LoginComponent implements OnInit {
         'Both Username and password are a required fields'
       );
     }
+
+    this.githubApiService.login(user, pass, twoFactorAuth);
   }
 }

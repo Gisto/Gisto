@@ -7,6 +7,7 @@ export class SettingsStore {
   @observable color = '#ff0000';
   @observable theme = 'vs';
   @observable animations = 'enabled';
+  @observable auth2fa = false;
 
   @action setColor(value) {
     this.color = value;
@@ -18,6 +19,10 @@ export class SettingsStore {
 
   @computed get getTheme() {
     return this.theme;
+  }
+
+  @computed get auth2faNeeded() {
+    return this.auth2fa;
   }
 
   @computed get isLoggedIn() {

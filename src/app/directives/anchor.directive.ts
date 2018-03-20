@@ -3,6 +3,7 @@ import { ElectronService } from 'ngx-electron';
 
 /**
  * @Usage: <a external href="https://www.gistoapp.com">link</a>
+ * @dependencies: ngx-electron
  */
 
 @Directive({
@@ -19,7 +20,7 @@ export class AnchorDirective {
       this.electronService.shell.openExternal(this.href);
       return false;
     } else {
-      window.location.href = this.href;
+      window.open(this.href, '_blank');
       return false;
     }
   }

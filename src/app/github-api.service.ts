@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { keyBy, map, omit } from 'lodash/fp';
+import { keyBy, map, omit, set } from 'lodash/fp';
 import { GistsStore } from './store/gists';
 import { UiStore } from './store/ui';
 import { UserStore } from './store/user';
+import { SettingsStore } from './store/settings';
 import { NotificationsStore } from './store/notifications';
 import * as API from 'superagent';
 import { Router} from '@angular/router';
@@ -18,6 +19,7 @@ export class GithubApiService {
     private gistsStore: GistsStore,
     private uiStore: UiStore,
     private userStore: UserStore,
+    private settingsStore: SettingsStore,
     private notificationsStore: NotificationsStore,
     private router: Router
     ) { }
@@ -34,12 +36,42 @@ export class GithubApiService {
     this.uiStore.loading = false;
 
     if (error) {
-      this.notificationsStore.addNotification('error', `Error code: ${error.status}`, error.message);
+      this.notificationsStore.addNotification('error', `Error code: ${error.status}`, error.response.body.message);
       return this.router.navigate(['/login']);
     } else if (result.statusCode > 204) {
       this.notificationsStore.addNotification('info', result.statusText, result.body.description);
       return this.router.navigate(['/login']);
     }
+  }
+
+  login(user, pass, twoFactorAuth = null) {
+    let basicAuthHeader = {
+      Authorization: `basic ${btoa(user + ':' + pass)}`
+    };
+
+    if (twoFactorAuth) {
+      basicAuthHeader = set('X-GitHub-OTP', twoFactorAuth, basicAuthHeader);
+    }
+
+    API.post(this.baseUrl('authorizations'))
+      .set(basicAuthHeader)
+      .send(JSON.stringify({
+        scopes: ['gist'],
+        note: 'Gisto - Snippets made simple',
+        note_url: 'http://www.gistoapp.com',
+        fingerprint: new Date().getTime()
+      }))
+      .end((error, result) => {
+        this.errorHandler(error, result);
+        if (result.header['x-github-otp']) {
+          this.settingsStore.auth2fa = true;
+        }
+        if (result.statusCode === 201) {
+          this.settingsStore.setToken(result.body.token);
+          this.settingsStore.auth2fa = false;
+          return this.router.navigate(['/main']);
+        }
+      });
   }
 
   getGists(page: number = 1) {
