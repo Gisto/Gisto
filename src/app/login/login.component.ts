@@ -154,8 +154,8 @@ export class LoginComponent implements OnInit {
     if (!token) {
       return this.notifications.addNotification('error', 'Token must be set', 'Token is a required field');
     }
-    this.settingsStore.setToken(token);
-    this.navigateToMainScreen();
+
+    this.githubApiService.validateTokenAndLogIn(token);
   }
 
   loginWithBasic(user, pass, twoFactorAuth = null) {

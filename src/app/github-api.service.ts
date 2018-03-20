@@ -10,6 +10,8 @@ import { Router} from '@angular/router';
 import { normalizeFiles } from './helpers/files';
 import { gitHubTokenKeyInStorage } from './constants/config';
 
+require('dotenv').config({ path: '../../.env'});
+
 @Injectable()
 export class GithubApiService {
 
@@ -69,6 +71,18 @@ export class GithubApiService {
         if (result.statusCode === 201) {
           this.settingsStore.setToken(result.body.token);
           this.settingsStore.auth2fa = false;
+          return this.router.navigate(['/main']);
+        }
+      });
+  }
+
+  validateTokenAndLogIn(token) {
+    API.get(this.baseUrl('user'))
+      .set({ Authorization: `token ${token}` })
+      .end((error, result) => {
+        this.errorHandler(error, result);
+        if (result.statusCode === 200) {
+          this.settingsStore.setToken(token);
           return this.router.navigate(['/main']);
         }
       });
