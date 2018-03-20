@@ -10,8 +10,6 @@ import { Router} from '@angular/router';
 import { normalizeFiles } from './helpers/files';
 import { gitHubTokenKeyInStorage } from './constants/config';
 
-require('dotenv').config({ path: '../../.env'});
-
 @Injectable()
 export class GithubApiService {
 
