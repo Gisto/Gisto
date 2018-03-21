@@ -7,6 +7,7 @@ import { GithubApiService } from '../../github-api.service';
 import { set, compact, uniq, startCase, get, flattenDeep, map, flow, filter, isNumber } from 'lodash/fp';
 import * as CONF from '../../constants/config';
 import { toJS } from 'mobx';
+import { SettingsStore } from '../../store/settings';
 
 @Component({
   selector: 'sub-header',
@@ -176,20 +177,21 @@ export class SubHeaderComponent {
     public gistStore: GistsStore,
     public uiStore: UiStore,
     private githubApiService: GithubApiService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private settingsStore: SettingsStore
   ) {}
 
   setOpenOnWebUrl() {
-    return `${CONF.defaultEndpointURL}/${this.gistStore.currentGist.username}/${this.gistStore.currentGist.id}`;
+    return `${this.settingsStore.getGistUrl}/${this.gistStore.currentGist.username}/${this.gistStore.currentGist.id}`;
   }
 
   setGithubDesktopUrl() {
-    const url = `x-github-client://openRepo/${CONF.defaultEndpointURL}/${this.gistStore.currentGist.id}`;
+    const url = `x-github-client://openRepo/${this.settingsStore.getGistUrl}/${this.gistStore.currentGist.id}`;
     return this.sanitizer.bypassSecurityTrustUrl(url);
   }
 
   setHttpsCloneUrl() {
-    return `${CONF.defaultEndpointURL}/${this.gistStore.currentGist.id}.git`;
+    return `${this.settingsStore.getGistUrl}/${this.gistStore.currentGist.id}.git`;
   }
 
   setSSHCloneUrl() {

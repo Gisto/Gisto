@@ -3,7 +3,8 @@ import { GistsStore } from '../../../store/gists';
 import { UiStore } from '../../../store/ui';
 import { values } from 'lodash/fp';
 import { syntaxMap } from '../../../constants/syntax';
-import { defaultEndpointURL, editorConfig } from '../../../constants/config';
+import { editorConfig } from '../../../constants/config';
+import { SettingsStore } from '../../../store/settings';
 
 @Component({
   selector: 'gist',
@@ -85,7 +86,8 @@ export class GistComponent {
   public showMarkDown: number = null;
 
   constructor(public gistStore: GistsStore,
-              public uiStore: UiStore) {
+              public uiStore: UiStore,
+              private settingsStore: SettingsStore) {
   }
 
   filesList = () => this.uiStore.editMode
@@ -108,7 +110,7 @@ export class GistComponent {
   }
 
   getFileUrl = (file) =>
-    `${defaultEndpointURL}/${this.gistStore.currentGist.login}/${this.gistStore.currentGist.id }#file-${file.filename }`;
+    `${this.settingsStore.getGistUrl}/${this.gistStore.currentGist.login}/${this.gistStore.currentGist.id }#file-${file.filename }`;
 
   changeFile = (file, event, index) => {
     this.gistStore.changeLocalDataFile(file, event.target.value, index);
@@ -120,6 +122,4 @@ export class GistComponent {
   deleteFile = (uuid, index) => this.gistStore.deleteLocalFile(uuid, index);
 
   getSyntax = (language) => syntaxMap[language];
-
-  getDefaultEndpointURL = () => defaultEndpointURL;
 }

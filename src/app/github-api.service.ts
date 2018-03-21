@@ -24,7 +24,7 @@ export class GithubApiService {
     private router: Router
     ) { }
 
-  baseUrl = (path = 'gists') => `https://api.github.com/${path}`;
+  baseUrl = (path = 'gists') => `${this.settingsStore.apiUrl}/${path}`;
 
   _headers() {
     this.token = localStorage.getItem(gitHubTokenKeyInStorage);
@@ -92,7 +92,7 @@ export class GithubApiService {
       .set(this._headers())
       .end((error, result) => {
         this.errorHandler(error, result);
-        if (result.headers.link.match(/next/ig)) {
+        if (result.headers.link && result.headers.link.match(/next/ig)) {
           this.getGists(page + 1);
         }
         this.gistsStore.setGists(result.body);

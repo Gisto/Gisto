@@ -30,12 +30,32 @@ import { ElectronService } from 'ngx-electron';
       </div>
 
       <div *ngIf="!isLoggingdIn && basicFormShown && !tokenFormShown">
-        <h4>Sign-in using GitHub username and password</h4>
+        <h4 *ngIf="!enterprise">Sign-in using GitHub username and password</h4>
+        <h4 *ngIf="enterprise">Setup enterprise endpoints and log-in</h4>
         
-        <user [user]="{avatar_url: 'https://github.com/'+ (user.value || 'gisto') + '.png', login: (user.value || 'gisto')}"></user>
+        <user [user]="{avatar_url: settingsStore.getDefaultUrl + '/' + (user.value || 'gisto') + '.png', login: (user.value || 'gisto')}">
+        </user>
         
         <br />
         <br />
+        
+        <a (click)="enterprise=!enterprise" *ngIf="!enterprise">
+          Use enterprise
+        </a>
+        
+        <br/>
+        
+        <div *ngIf="enterprise">
+
+          <input type="text"
+                 #EnterpriseDomain
+                 (keyup)="setEnterpriseDomain('domain', EnterpriseDomain.value)"
+                 placeholder="Enterprise domain"/>
+          <br/>
+          <br/>
+        </div>
+        
+        <br/>
         
         <input type="text" 
                #user 
@@ -53,9 +73,15 @@ import { ElectronService } from 'ngx-electron';
                type="text" 
                #twoFactorAuth 
                placeholder="Two factor token (2fa)"/>
+        
         <br/>
         <button (click)="loginWithBasic(user.value, pass.value, twoFactorAuth.value)">Log-in</button>
         <br/>
+
+
+        <a (click)="enterprise=!enterprise" *ngIf="enterprise">
+          <ng-container>Use Regular GitHub</ng-container> | 
+        </a>
         <a (click)="resetLogin()">Cancel</a>
       </div>
       
@@ -82,6 +108,7 @@ export class LoginComponent implements OnInit {
   isLoggingdIn = false;
   tokenFormShown = false;
   basicFormShown = false;
+  enterprise = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -92,6 +119,12 @@ export class LoginComponent implements OnInit {
               private electronService: ElectronService) {}
 
   ngOnInit() {
+    if (!this.settingsStore.getDefaultUrl) {
+      this.settingsStore.setDefaultUrl();
+      this.settingsStore.setApiUrl();
+      this.settingsStore.setGistUrl();
+    }
+
     if (this.settingsStore.isLoggedIn) {
       this.isLoggingdIn = true;
       this.navigateToMainScreen();
@@ -168,5 +201,14 @@ export class LoginComponent implements OnInit {
     }
 
     this.githubApiService.login(user, pass, twoFactorAuth);
+  }
+
+  setEnterpriseDomain(type, value) {
+    if (type === 'domain') {
+      this.settingsStore.setDefaultUrl(value);
+      this.settingsStore.setGistUrl(value + '/gist');
+      this.settingsStore.setApiUrl(value + '/api/v3');
+      console.log('%c LOG ', 'background: #555; color: tomato', type, value);
+    }
   }
 }
