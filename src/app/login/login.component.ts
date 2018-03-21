@@ -49,7 +49,7 @@ import { ElectronService } from 'ngx-electron';
 
           <input type="text"
                  #EnterpriseDomain
-                 (keyup)="setEnterpriseDomain('domain', EnterpriseDomain.value)"
+                 (keyup)="setEnterpriseDomain(EnterpriseDomain.value)"
                  placeholder="Enterprise domain"/>
           <br/>
           <br/>
@@ -203,12 +203,9 @@ export class LoginComponent implements OnInit {
     this.githubApiService.login(user, pass, twoFactorAuth);
   }
 
-  setEnterpriseDomain(type, value) {
-    if (type === 'domain') {
-      this.settingsStore.setDefaultUrl(value);
-      this.settingsStore.setGistUrl(value + '/gist');
-      this.settingsStore.setApiUrl(value + '/api/v3');
-      console.log('%c LOG ', 'background: #555; color: tomato', type, value);
-    }
+  setEnterpriseDomain(value) {
+    this.settingsStore.setDefaultUrl(value);
+    this.settingsStore.setGistUrl(value + '/gist');
+    this.settingsStore.setApiUrl(value + '/api/v3');
   }
 }
