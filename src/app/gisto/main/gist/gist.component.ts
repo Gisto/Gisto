@@ -62,15 +62,16 @@ import { SettingsStore } from '../../../store/settings';
         <markdown *ngIf="showMarkDownPreview(file, fileIndex)">
           {{ file.content }}
         </markdown>
-        <td-code-editor class="editor"
-                        flex
-                        theme="vs"
-                        language="{{ file.language && getSyntax(file.language) || 'text' }}"
-                        value="{{ file.content }}"
-                        automaticLayout
-                        [editorOptions]="editorConfig(uiStore.editMode)"
-                        (change)="changeFileContent(file, $event, fileIndex)">
-        </td-code-editor>
+        <div ace-editor 
+             class="editor"
+             [(text)]="file.content"
+             [durationBeforeCallback]="1000"
+             [readOnly]="!uiStore.editMode"
+             [mode]="file.language && getSyntax(file.language) || 'text'"
+             [theme]="'eclipse'"
+             [options]="options"
+             (textChanged)="changeFileContent(file, $event, fileIndex, content)">
+        </div>
       </gist-body>
     </div>
   `,
@@ -113,11 +114,16 @@ export class GistComponent {
     `${this.settingsStore.getGistUrl}/${this.gistStore.currentGist.login}/${this.gistStore.currentGist.id }#file-${file.filename }`;
 
   changeFile = (file, event, index) => {
-    this.gistStore.changeLocalDataFile(file, event.target.value, index);
+    if (event) {
+      this.gistStore.changeLocalDataFile(file, event.target.value, index);
+    }
   };
 
-  changeFileContent = (file, event, index) =>
-    this.gistStore.changeLocalDataContent(file, event.target.value, index);
+  changeFileContent = (file, event, index, content) => {
+    if (event) {
+      this.gistStore.changeLocalDataContent(file, event.target.value, index);
+    }
+  };
 
   deleteFile = (uuid, index) => this.gistStore.deleteLocalFile(uuid, index);
 

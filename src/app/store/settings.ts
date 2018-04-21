@@ -59,7 +59,7 @@ export class SettingsStore {
   }
 
   @computed get isEnterpriseMode() {
-    return this.isEnterprise = this.apiUrl !== defaultAPIEndpointURL;
+    return this.isEnterprise = Boolean(this.apiUrl !== defaultAPIEndpointURL);
   }
 
   @computed get auth2faNeeded() {

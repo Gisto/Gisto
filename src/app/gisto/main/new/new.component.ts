@@ -86,16 +86,16 @@ interface NewSnippet {
                    [attr.id]="'filename' + i"/>
             <br>
             <br>
-            <td-code-editor class="editor"
-                            flex
-                            formControlName="content"
-                            theme="vs"
-                            [attr.id]="'file' + i"
-                            language="{{ 'text' }}"
-                            automaticLayout
-                            value=""
-                            [editorOptions]="{}">
-            </td-code-editor>
+            <div ace-editor
+                 formControlName="content"
+                 class="editor"
+                 [attr.id]="'file' + i"
+                 [durationBeforeCallback]="1000"
+                 [mode]="'text'"
+                 [(text)]="new"
+                 [theme]="'eclipse'"
+                 [options]="options">
+            </div>
           </div>
         </div>
 

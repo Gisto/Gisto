@@ -23,8 +23,8 @@
         },
         {
           "glob": "**/*",
-          "input": "../node_modules/@covalent/code-editor/assets/monaco",
-          "output": "./assets/monaco/"
+          "input": "../node_modules/ace-builds/src-min-noconflict/",
+          "output": "./"
         }
       ],
       "index": "index.html",
