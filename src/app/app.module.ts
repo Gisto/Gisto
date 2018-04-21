@@ -45,6 +45,7 @@ import { SuperSearchComponent } from './super-search/super-search.component';
 import { NgxElectronModule } from 'ngx-electron';
 import { UpdateNotifierComponent } from './update-notifier/update-notifier.component';
 import { AboutComponent } from './gisto/main/about/about.component';
+import { GistoCodeEditorComponent } from './gisto/common/editor/editor.component';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -113,7 +114,8 @@ const appRoutes: Routes = [
     DateComponent,
     SuperSearchComponent,
     UpdateNotifierComponent,
-    AboutComponent
+    AboutComponent,
+    GistoCodeEditorComponent
   ],
   imports: [
     RouterModule.forRoot(

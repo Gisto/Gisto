@@ -86,16 +86,14 @@ interface NewSnippet {
                    [attr.id]="'filename' + i"/>
             <br>
             <br>
-            <div ace-editor
-                 formControlName="content"
-                 class="editor"
-                 [attr.id]="'file' + i"
-                 [durationBeforeCallback]="1000"
-                 [mode]="'text'"
-                 [(text)]="new"
-                 [theme]="'eclipse'"
-                 [options]="options">
-            </div>
+            <gisto-code-editor formControlName="content"
+                               [attr.id]="'file' + i"
+                               [durationBeforeCallback]="1000"
+                               [mode]="'text'"
+                               [(text)]="new"
+                               theme="'chrome'"
+                               [options]="options">
+            </gisto-code-editor>
           </div>
         </div>
 
