@@ -18,56 +18,67 @@ log.info('App starting...');
 let template = [];
 const name = app.getName();
 template.unshift({
-  label: name,
-  submenu: [
-    {
-      label: 'About ' + name,
-      role: 'about'
-    },
-    {
-      label: 'Reload',
-      accelerator: 'Command+R',
-      click: () => win.webContents.reload()
-    },
-    {
-      label: 'Console',
-      click: () => win.webContents.openDevTools()
-    },
-    {
-      label: 'Check for updates',
-      click: (menuItem, focusedWindow, event) => require('./updater').checkForUpdates(menuItem, focusedWindow, event)
-    },
-    {
-      label: 'Help',
-      submenu: [{
-        label: 'Learn More about ' + name,
-        click() {
-          shell.openExternal('https://www.gistoapp.com');
-        }
-      }, {
-        label: 'Documentation',
-        click() {
-          shell.openExternal('https://www.gistoapp.com/documentation/');
-        }
-      },{
-        label: 'Announcements',
-        click() {
-          shell.openExternal('https://www.gistoapp.com/blog/');
-        }
-      }, {
-        label: 'Search Issues',
-        click() {
-          shell.openExternal('https://github.com/gisto/gisto/issues');
-        }
-      }]
-    },
-    {
-      label: 'Quit',
-      accelerator: 'Command+Q',
-      click: () => app.quit()
-    },
-  ]
-});
+    label: name,
+    submenu: [
+      {
+        label: 'About ' + name,
+        role: 'about'
+      },
+      {
+        label: 'Reload',
+        accelerator: 'Command+R',
+        click: () => win.webContents.reload()
+      },
+      {
+        label: 'Console',
+        click: () => win.webContents.openDevTools()
+      },
+      {
+        label: 'Check for updates',
+        click: (menuItem, focusedWindow, event) => require('./updater').checkForUpdates(menuItem, focusedWindow, event)
+      },
+      {
+        label: 'Quit',
+        accelerator: 'Command+Q',
+        click: () => app.quit()
+      },
+    ]
+  },
+  {
+    label: "Edit",
+    submenu: [
+      {label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:"},
+      {label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:"},
+      {type: "separator"},
+      {label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:"},
+      {label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:"},
+      {label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:"},
+      {label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:"}
+    ]
+  }, {
+    label: 'Help',
+    submenu: [{
+      label: 'Learn More about ' + name,
+      click() {
+        shell.openExternal('https://www.gistoapp.com');
+      }
+    }, {
+      label: 'Documentation',
+      click() {
+        shell.openExternal('https://www.gistoapp.com/documentation/');
+      }
+    }, {
+      label: 'Announcements',
+      click() {
+        shell.openExternal('https://www.gistoapp.com/blog/');
+      }
+    }, {
+      label: 'Search Issues',
+      click() {
+        shell.openExternal('https://github.com/gisto/gisto/issues');
+      }
+    }]
+  });
 
 function sendStatusToWindow(text, info) {
   log.info(text);

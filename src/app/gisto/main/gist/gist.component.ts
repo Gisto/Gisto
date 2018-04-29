@@ -69,7 +69,7 @@ import { SettingsStore } from '../../../store/settings';
              [readOnly]="!uiStore.editMode"
              [mode]="file.language && getSyntax(file.language) || 'text'"
              [theme]="'eclipse'"
-             [options]="options"
+             [options]="getOptions(!uiStore.editMode)"
              (textChanged)="changeFileContent(file, $event, fileIndex, content)">
         </div>
       </gist-body>
@@ -81,7 +81,7 @@ import { SettingsStore } from '../../../store/settings';
 export class GistComponent {
 
   values: any = values;
-  editorConfig: any = editorConfig;
+  options: any = editorConfig;
 
   public showMenu: number = null;
   public showMarkDown: number = null;
@@ -128,4 +128,6 @@ export class GistComponent {
   deleteFile = (uuid, index) => this.gistStore.deleteLocalFile(uuid, index);
 
   getSyntax = (language) => syntaxMap[language];
+
+  getOptions = (readOnly) => this.options(readOnly);
 }

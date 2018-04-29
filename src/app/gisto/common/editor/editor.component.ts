@@ -1,19 +1,21 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { editorConfig } from '../../../constants/config';
 
 @Component({
   selector: 'gisto-code-editor',
   template: `
     <div ace-editor
-               (textChange)="onTextChange($event)"
-               (textChanged)="onTextChanged($event)"
-               [text]="value"
-               [mode]="mode"
-               [theme]="theme"
-               [readOnly]="readOnly"
-               [autoUpdateContent]="autoUpdateContent"
-               [durationBeforeCallback]="durationBeforeCallback"
-               style="min-height: 100px;width:100%;overflow: auto;border-bottom: 1px solid #3f83a8;">
+         (textChange)="onTextChange($event)"
+         (textChanged)="onTextChanged($event)"
+         [text]="value"
+         [mode]="mode"
+         [theme]="theme"
+         [readOnly]="readOnly"
+         [autoUpdateContent]="autoUpdateContent"
+         [durationBeforeCallback]="durationBeforeCallback"
+         style="min-height: 100px;width:100%;overflow: auto;border-bottom: 1px solid #3f83a8;"
+         [options]="options">
     </div>
   `,
   styleUrls: ['./editor.component.scss'],
@@ -46,12 +48,14 @@ export class GistoCodeEditorComponent implements ControlValueAccessor {
   @Output() textChanged = new EventEmitter<string>();
 
   _value: string;
+  options: any = editorConfig(this.readOnly);
 
   _changeFn: (_: any) => void;
   _touchedFn: any;
 
 
-  constructor() { }
+  constructor() {
+  }
 
 
   // ControlValueAccessor implementation

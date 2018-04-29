@@ -56,6 +56,15 @@ gisto, app-root {
   height: 100%;
 }
 
+.ace-tm .ace_gutter {
+  background: #ecf2f6;
+  color: #3f83a8;
+  width: 51px;
+}
+.ace_content {
+  margin-left: 10px;
+}
+
 .color-regular {
   color: $color-regular;
 }
