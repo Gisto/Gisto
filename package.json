@@ -14,10 +14,10 @@
     "clean": "rimraf dist release",
     "app": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && ./node_modules/.bin/electron ./dist/",
     "app:dev": "cross-env NODE_ENV=development concurrently \"npm run clean\" \"ng serve --dev --base-href='/'\" \"./node_modules/.bin/electron ./src/electron/\"",
-    "pack:mac": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --m",
-    "pack:win": "cross-env npm run clean && ng build --prod --base-href='.' && npx electron-builder build -w --x64 --ia32",
-    "pack:linux": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --l --x64",
-    "pack:all": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build -mwl --x64",
+    "pack:mac": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --m --publish=always",
+    "pack:win": "cross-env npm run clean && ng build --prod --base-href='.' && npx electron-builder build -w --x64 --ia32 --publish=always",
+    "pack:linux": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build --l --x64 --publish=always",
+    "pack:all": "cross-env NODE_ENV=production npm run clean && ng build --prod --base-href='.' && npx electron-builder build -mwl --x64 --publish=always",
     "pack:build": "cross-env npm run clean && ng build --prod --base-href='.' && npx electron-builder build --publish=always"
   },
   "repository": {
