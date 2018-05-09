@@ -19,7 +19,7 @@ import { SettingsStore } from '../../../store/settings';
         </strong>
       </span>
         </gist-file-icon>
-        
+
         <gist-file-name>
           <span class="edit" *ngIf="uiStore.editMode">Edit filename:</span>
           <input *ngIf="uiStore.editMode"
@@ -62,7 +62,7 @@ import { SettingsStore } from '../../../store/settings';
         <markdown *ngIf="showMarkDownPreview(file, fileIndex)">
           {{ file.content }}
         </markdown>
-        <div ace-editor 
+        <div ace-editor
              class="editor"
              [(text)]="file.content"
              [durationBeforeCallback]="1000"
@@ -111,7 +111,7 @@ export class GistComponent {
   }
 
   getFileUrl = (file) =>
-    `${this.settingsStore.getGistUrl}/${this.gistStore.currentGist.login}/${this.gistStore.currentGist.id }#file-${file.filename }`;
+    `${this.settingsStore.getGistUrl}/${this.gistStore.currentGist.username}/${this.gistStore.currentGist.id }#file-${file.filename }`;
 
   changeFile = (file, event, index) => {
     if (event) {
