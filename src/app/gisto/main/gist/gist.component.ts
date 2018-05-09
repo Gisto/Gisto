@@ -43,7 +43,7 @@ import { SettingsStore } from '../../../store/settings';
                     (click)="showMenuForFile(fileIndex)">
           <ul *ngIf="showMenu === fileIndex">
             <li>
-              <a target="_new" [href]="getFileUrl(file)">
+              <a external [href]="getFileUrl(file)">
                 Open on web
               </a>
             </li>

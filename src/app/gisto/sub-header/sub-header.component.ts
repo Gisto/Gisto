@@ -26,7 +26,7 @@ import { SettingsStore } from '../../store/settings';
                (keyup)="updateFilter(searchBox.value, 'freeText')"
                (blur)="newGistText=true"
                (focus)="newGistText=false;showSuggestions=true"/>
-        <div *ngIf="showSuggestions && gistStore.filterType==='freeText' && searchBox.value.length >= 2" 
+        <div *ngIf="showSuggestions && gistStore.filterType==='freeText' && searchBox.value.length >= 2"
              class="search-suggestions">
           <a class="close" (click)="showSuggestions=false">
             <icon icon="cancel" size="20" color="#3F84A8"></icon>
@@ -40,9 +40,9 @@ import { SettingsStore } from '../../store/settings';
           </ul>
         </div>
       </search>
-      <button icon="add" 
-              size="22" 
-              color="white" 
+      <button icon="add"
+              size="22"
+              color="white"
               routerLink="/new">
         <span *ngIf="newGistText">New gist</span>
       </button>
@@ -76,11 +76,11 @@ import { SettingsStore } from '../../store/settings';
         <div *ngIf="uiStore.editMode; then editDescription else showDescription"></div>
         <ng-template #editDescription>
           <strong *ngIf="uiStore.editMode">
-            Edit description: 
-          </strong> 
-          <input #description 
-                 (keyup)="changeLocalDescription(description.value)" 
-                 placeholder="untitled" 
+            Edit description:
+          </strong>
+          <input #description
+                 (keyup)="changeLocalDescription(description.value)"
+                 placeholder="untitled"
                  [value]="gistStore.current.description" />
         </ng-template>
         <ng-template #showDescription>
@@ -96,11 +96,11 @@ import { SettingsStore } from '../../store/settings';
         </ng-template>
 
       </gist-title>
-      
-      <gist-utils *ngIf="uiStore.isEdit" 
-                  icon="check" 
-                  color="#5F9EA0" 
-                  (click)="save(gistStore.current.id)" 
+
+      <gist-utils *ngIf="uiStore.isEdit"
+                  icon="check"
+                  color="#5F9EA0"
+                  (click)="save(gistStore.current.id)"
                   cssClass="color-success">
       </gist-utils>
 
@@ -123,14 +123,14 @@ import { SettingsStore } from '../../store/settings';
           <li (click)="addNewFile()">Add new file</li>
         </ul>
       </gist-utils>
-      
-      <gist-utils icon="{{ gistStore.current.public ? 'unlock' : 'lock'}}" 
+
+      <gist-utils icon="{{ gistStore.current.public ? 'unlock' : 'lock'}}"
                   color="#3F84A8">
       </gist-utils>
 
-      <gist-utils (click)="deleteGist(gistStore.current.id)" 
-                  icon="delete" 
-                  color="#FF6347" 
+      <gist-utils (click)="deleteGist(gistStore.current.id)"
+                  icon="delete"
+                  color="#FF6347"
                   cssClass="color-danger">
       </gist-utils>
 
@@ -145,7 +145,7 @@ import { SettingsStore } from '../../store/settings';
       <gist-utils (click)="toggleMenu()" icon="ellipsis" color="#3F84A8">
         <ul *ngIf="showMenu">
           <li (click)="toggleEditOrSaveMode()">{{ uiStore.isEdit ? 'Cancel Edit' : 'Edit' }}</li>
-          <li><a target="_new" [href]="setOpenOnWebUrl()">Open on web</a></li>
+          <li><a external [href]="setOpenOnWebUrl()">Open on web</a></li>
           <li>Download</li>
           <li CopyToClipBoard="{{ gistStore.currentGist.id }}">Copy Gist ID to clipboard</li>
           <li CopyToClipBoard="{{ gistStore.currentGist.html_url }}">Copy Gist URL to clipboard</li>
