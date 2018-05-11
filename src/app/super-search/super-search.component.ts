@@ -1,4 +1,4 @@
-import { Component, Renderer2, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { values, size, includes, filter, set, get, keyBy } from 'lodash/fp';
 import { minimumCharactersToTriggerSearch } from '../constants/config';
 import { GistsStore } from '../store/gists';
@@ -14,9 +14,8 @@ import {GithubApiService} from '../github-api.service';
             color="#555"></icon>
       <input #superSearchInput
              type="search"
-             id="superSearchInput"
+             autofocus
              (keyup)="searchFilters(superSearchInput.value)"
-             (focus)="superSearchInput.value=''"
              placeholder="Search"/>
 
       <div class="suggested-super-results" *ngIf="superSearchInput.value.length > 1">
@@ -64,7 +63,7 @@ import {GithubApiService} from '../github-api.service';
   styleUrls: ['./super-search.component.scss']
 })
 
-export class SuperSearchComponent implements OnInit {
+export class SuperSearchComponent {
 
   get: any = get;
   size: any = size;
@@ -104,12 +103,10 @@ export class SuperSearchComponent implements OnInit {
   constructor(
     public gistStore: GistsStore,
     public uiStore: UiStore,
-    private githubApiService: GithubApiService,
-    private renderer: Renderer2
+    private githubApiService: GithubApiService
   ) {}
 
   searchFilters = (searchTerm) => {
-
     if (searchTerm.length < minimumCharactersToTriggerSearch) {
       return false;
     }
@@ -125,16 +122,10 @@ export class SuperSearchComponent implements OnInit {
 
     this.tagType = filter((snippet) =>
       includes(`#${searchTerm}`, snippet.tags), this.gistStore.getGists);
-
   }
 
   onClick = (snippet) => {
     this.uiStore.superSearch = false;
     this.githubApiService.getGist(snippet.id);
-  }
-
-  ngOnInit () {
-    this.superSearchInputElement = this.renderer.selectRootElement('#superSearchInput');
-    this.superSearchInputElement.focus();
   }
 }
