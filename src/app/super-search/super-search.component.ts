@@ -71,17 +71,16 @@ export class SuperSearchComponent {
   fileType: object[];
   tagType: object[];
   routeType: any;
-  superSearchInputElement: any;
 
   discoverableRoutes: object[] = [
     {
-      nameMatch: ['goto', 'new gist', 'create new', 'new'],
+      nameMatch: ['goto', 'new gist', 'create new', 'new', 'add'],
       name: 'Create New Snippet',
       route: '/new',
       icon: 'add'
     },
     {
-      nameMatch: ['goto', 'settings', 'configurations'],
+      nameMatch: ['goto', 'settings', 'configurations', 'conf'],
       name: 'Settings',
       route: '/settings',
       icon: 'cog'
