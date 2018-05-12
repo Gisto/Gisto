@@ -8,24 +8,9 @@
 |:------|:------|
 | <img src="http://gistoapp.com/images/lite_theme.png" width="400px" alt="Gisto"> | <img src="http://gistoapp.com/images/dark_theme.png" width="400px" alt="Gisto"> |
 
-# IMPORTANT
+# Future of Gisto
 
-Due to [Github changes in TLS policies](https://githubengineering.com/crypto-deprecation-notice/) we issued a hotfix in a shape of runnable binaries for all platforms, Installers for all platform will be released through the regular channels soon after
-
-## **NOTE! This are runnable binaries**
-
-### **macOS** [Download](https://github.com/Gisto/Gisto/releases) 
-- Replace the file from `.zip` in `/Applications`
-
-### **Windows** [Download](https://github.com/Gisto/Gisto/releases)
-- Please uninstall previous Gisto version before use. 
-- Use by extracting `.zip` to directory of your choice. 
-- Run by executing `Gisto.exe` from the extracted directory.
-
-### **Linux** [Download](https://github.com/Gisto/Gisto/releases)
-- Please uninstall previous Gisto version before use. 
-- Use by extracting `.zip` to the folder of your choice. 
-- Run by executing `./gisto` from the extracted directory.
+Gisto next version is in the works, work can be tracked via [v2 branch](https://github.com/Gisto/Gisto/tree/v2)
 
 ---
 
@@ -83,7 +68,9 @@ You can find out more at the [F.A.Q.](http://www.gistoapp.com/faq/) section
 
 ## Status
 
-Please see the [change.log](http://www.gistoapp.com/changelog/) for more detailed info regarding new features, bug fixes and releases.
+Please see [v2 branch](https://github.com/Gisto/Gisto/tree/v2) for upcoming version currently in development.
+
+[change.log](http://www.gistoapp.com/changelog/) of current version for more detailed info regarding new features, bug fixes and releases.
 
 ## Made using
 
@@ -99,9 +86,7 @@ Gisto is made using various open source projects such as
 
 ## Download and install
 
-~~You can download Gisto at: [www.gistoapp.com](http://www.gistoapp.com)~~
-
-[Download](https://github.com/Gisto/Gisto/releases)
+You can download Gisto at: [www.gistoapp.com](http://www.gistoapp.com)
 
 #### Other install options
 
