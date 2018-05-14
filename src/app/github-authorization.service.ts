@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/toPromise';
+
 import { SettingsStore } from './store/settings';
 import * as request from 'superagent';
 
