@@ -13,7 +13,13 @@ export const getSnippet = (id) => ({
     id
   },
   type: AT.GET_SNIPPET,
-  payload: {
-    id
-  }
+  payload: { id }
+});
+
+export const filterSnippets = (value) => ({
+  meta: {
+    value
+  },
+  type: AT.FILTER_SNIPPETS,
+  payload: { value }
 });

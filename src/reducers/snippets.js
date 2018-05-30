@@ -4,7 +4,10 @@ import { snippetStructure } from 'utils/prepareSnippet';
 
 const initialState = {
   snippets: {},
-  starred: []
+  starred: [],
+  filter: {
+    text: ''
+  }
 };
 
 export const snippets = (state = initialState, action) => {
@@ -19,6 +22,10 @@ export const snippets = (state = initialState, action) => {
 
     case AT.GET_STARRED_SNIPPETS.SUCCESS: {
       return set('starred', map('id', action.payload), state);
+    }
+
+    case AT.FILTER_SNIPPETS: {
+      return set(['filter', 'text'], action.payload.value, state);
     }
 
     default: {

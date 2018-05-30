@@ -66,8 +66,6 @@ const SnippetHeader = ({ snippets, match }) => {
         <Description title={ get('description', snippet) }>{ get('description', snippet) }</Description> { join(', ', get('tags', snippet)) }
       </Title>
       <div>
-        <Util><Icon size={ 22 } color={ colorSuccess } type="check"/></Util>
-        <Util><Icon size={ 22 } color={ colorDanger } type="cancel"/></Util>
         <Util><Icon size={ 22 } color={ baseAppColor } type="edit"/></Util>
         <Util><Icon size={ 22 } color={ baseAppColor } type="file"/></Util>
         <Util><Icon size={ 22 } color={ baseAppColor } type="unlock"/></Util>
