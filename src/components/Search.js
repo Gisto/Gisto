@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { size } from 'lodash/fp';
 import styled from 'styled-components';
+import * as snippetActions from 'actions/snippets';
 import { SIDEBAR_WIDTH } from 'constants/config';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import { baseAppColor, borderColor } from 'constants/colors';
+import Input from 'components/common/Input';
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -20,18 +22,6 @@ const SearchWrapper = styled.div`
   align-items: center;
   }
 `;
-const Input = styled.input`
-  border: none;
-  border-radius: 0;
-  height: 30px;
-  margin: 10px;
-  width: 100%;
-  color: ${baseAppColor};
-  border-bottom: 1px solid ${baseAppColor};
-  &:focus {
-    outline: none;
-  }
-`;
 
 const SearchTypeLabel = styled.span`
   position: absolute;
@@ -42,28 +32,36 @@ const SearchTypeLabel = styled.span`
   line-height: 1;
 `;
 
-const Search = ({ countSnippets }) => (
-  <SearchWrapper>
-    <Icon type="search" size="46" color={ baseAppColor }/>
+const Search = ({ countSnippets, filterSnippets }) => {
+  const filterSnippetsByText = (value) => filterSnippets(value);
 
-    <SearchTypeLabel>
-      Search by <b>type</b> ({countSnippets})
-    </SearchTypeLabel>
+  return (
+    <SearchWrapper>
+      <Icon type="search" size="46" color={ baseAppColor }/>
 
-    <Input type="search"
-           placeholder={ `Search ${countSnippets} snippets` }/>
+      <SearchTypeLabel>
+        Search by <b>type</b> ({countSnippets})
+      </SearchTypeLabel>
 
-    <Button icon="add">New snippet</Button>
+      <Input type="search"
+             onChange={ (event) => filterSnippetsByText(event.target.value) }
+             placeholder={ `Search ${countSnippets} snippets` }/>
 
-  </SearchWrapper>
-);
+      <Button icon="add">New snippet</Button>
+
+    </SearchWrapper>
+  );
+};
 
 Search.propTypes = {
-  countSnippets: PropTypes.number
+  countSnippets: PropTypes.number,
+  filterSnippets: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
   countSnippets: size(state.snippets.snippets)
 });
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps, {
+  filterSnippets: snippetActions.filterSnippets
+})(Search);
