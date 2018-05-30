@@ -1,0 +1,65 @@
+{
+	"extends": ["airbnb"],
+	"parser": "babel-eslint",
+	"globals": {
+		"window": true,
+		"document": true,
+		"React": true,
+		"electron": true,
+		"localStorage": true
+	},
+	"settings": {
+		"import/resolver": "webpack"
+	},
+	"rules" : {
+		"arrow-parens": ["error", "always"],
+		"arrow-body-style": 0,
+		"comma-dangle": ["error", "never"],
+		"no-unused-expressions": ["error", { "allowTernary": true }],
+		"radix": ["error", "as-needed"],
+		"no-trailing-spaces": 0,
+		"no-multi-spaces": 0,
+		"object-curly-spacing": ["error", "always"],
+		"global-require": 0,
+		"no-confusing-arrow": 0,
+		"linebreak-style": 0,
+		"class-methods-use-this": 0,
+		"newline-after-var": ["error"],
+		"newline-before-return": ["error"],
+		"no-underscore-dangle": 0,
+		"no-plusplus": 0,
+
+		"import/no-unresolved": [2, { "caseSensitive": false }],
+		"import/prefer-default-export": 0,
+		"import/no-named-as-default": 0,
+		"import/no-extraneous-dependencies": 0,
+
+		"react/jsx-closing-bracket-location": [2, { "location": "after-props" }],
+		"react/jsx-curly-spacing": [2, "always"],
+		"react/jsx-first-prop-new-line": 0,
+		"react/jsx-indent": [2, 2],
+		"react/jsx-indent-props": 0,
+		"react/jsx-space-before-closing": [2, "never"],
+		"react/require-default-props": 0,
+		"react/no-danger": 0,
+		"react/jsx-filename-extension": 0,
+		"react/no-did-mount-set-state": 0,
+		"react/forbid-prop-types": 0,
+		"react/jsx-tag-spacing": {
+			"closingSlash": "never",
+			"beforeSelfClosing": "never",
+			"afterOpening": "never",
+			"beforeClosing": "never"
+		},
+
+		"jsx-a11y/no-static-element-interactions": 0,
+		"jsx-a11y/anchor-has-content": 2,
+		"jsx-a11y/label-has-for": 0,
+		"jsx-a11y/anchor-is-valid": 0
+	},
+	"parserOptions": {
+		"ecmaFeatures": {
+			"experimentalObjectRestSpread": true
+		}
+	}
+}
