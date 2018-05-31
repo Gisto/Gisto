@@ -1,10 +1,10 @@
 import { isEmpty, map, get, includes, uniq, compact } from 'lodash/fp';
-import * as CONF from 'constants/config';
+import { TAG_REGEX, DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 import { removeTags } from 'utils/tags';
 
 const prepareTags = (snippet) => {
   if (!isEmpty(snippet.description)) {
-    return snippet.description.match(CONF.tagRegex);
+    return snippet.description.match(TAG_REGEX);
   }
 
   return [];
@@ -15,7 +15,7 @@ const prepareDescription = (snippet) => {
     return removeTags(snippet.description);
   }
 
-  return CONF.defaultSnippetDescription;
+  return DEFAULT_SNIPPET_DESCRIPTION;
 };
 
 const getService = (snippet) => snippet.url.match(/github\.com/gi) ? 'GITHUB' : 'NOT-GITHUB-FOR-NOW';

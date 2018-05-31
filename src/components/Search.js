@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { size } from 'lodash/fp';
+import { size, isEmpty } from 'lodash/fp';
 import styled from 'styled-components';
 import * as snippetActions from 'actions/snippets';
-import { SIDEBAR_WIDTH } from 'constants/config';
+import { SIDEBAR_WIDTH, MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
 import { filterSnippetsList, isTag } from 'utils/snippets';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
@@ -36,6 +36,9 @@ const SearchTypeLabel = styled.span`
 const Search = ({ snippets, filterSnippets, filterText }) => {
   const countSnippets = size(filterSnippetsList(snippets, filterText));
   const searchType = isTag(filterText) ? 'tag' : 'free text';
+  const shouldFilter = (query) => {
+    return size(query) > MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH || isEmpty(query);
+  };
 
   return (
     <SearchWrapper>
@@ -43,13 +46,15 @@ const Search = ({ snippets, filterSnippets, filterText }) => {
 
       { filterText !== '' && (
         <SearchTypeLabel>
-          Search by <b>{ searchType }</b> ({ countSnippets })
+          Search by <strong>{ searchType }</strong> ({ countSnippets })
         </SearchTypeLabel>
       ) }
 
       <Input type="search"
-             onChange={ (event) => filterSnippets(event.target.value, filterText) }
-             placeholder={ `Search ${countSnippets} snippets` }/>
+             placeholder={ `Search ${countSnippets} snippets` }
+             onChange={
+               (event) => shouldFilter(event.target.value) && filterSnippets(event.target.value)
+             }/>
 
       <Button icon="add">New snippet</Button>
 
