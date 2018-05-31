@@ -13,7 +13,7 @@ export const isTag = (filterText) => startsWith('#', filterText);
 
 export const filterSnippetsList = (snippets, filterText) => {
   const searchString = trim(filterText);
-  
+
   if (searchString !== '') {
     if (isTag(searchString)) {
       return filterByTags(snippets, searchString);
