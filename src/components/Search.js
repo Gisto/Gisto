@@ -5,6 +5,7 @@ import { size } from 'lodash/fp';
 import styled from 'styled-components';
 import * as snippetActions from 'actions/snippets';
 import { SIDEBAR_WIDTH } from 'constants/config';
+import { filterSnippetsList, isTag } from 'utils/snippets';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import { baseAppColor, borderColor } from 'constants/colors';
@@ -32,19 +33,22 @@ const SearchTypeLabel = styled.span`
   line-height: 1;
 `;
 
-const Search = ({ countSnippets, filterSnippets }) => {
-  const filterSnippetsByText = (value) => filterSnippets(value);
+const Search = ({ snippets, filterSnippets, filterText }) => {
+  const countSnippets = size(filterSnippetsList(snippets, filterText));
+  const searchType = isTag(filterText) ? 'tag' : 'free text';
 
   return (
     <SearchWrapper>
       <Icon type="search" size="46" color={ baseAppColor }/>
 
-      <SearchTypeLabel>
-        Search by <b>type</b> ({countSnippets})
-      </SearchTypeLabel>
+      { filterText !== '' && (
+        <SearchTypeLabel>
+          Search by <b>{ searchType }</b> ({ countSnippets })
+        </SearchTypeLabel>
+      ) }
 
       <Input type="search"
-             onChange={ (event) => filterSnippetsByText(event.target.value) }
+             onChange={ (event) => filterSnippets(event.target.value, filterText) }
              placeholder={ `Search ${countSnippets} snippets` }/>
 
       <Button icon="add">New snippet</Button>
@@ -54,12 +58,14 @@ const Search = ({ countSnippets, filterSnippets }) => {
 };
 
 Search.propTypes = {
-  countSnippets: PropTypes.number,
-  filterSnippets: PropTypes.func
+  snippets: PropTypes.object,
+  filterSnippets: PropTypes.func,
+  filterText: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
-  countSnippets: size(state.snippets.snippets)
+  snippets: state.snippets.snippets,
+  filterText: state.snippets.filter.text
 });
 
 export default connect(mapStateToProps, {

@@ -7,6 +7,7 @@ import SnippetsList from 'components/layout/sidebar/SnippetsList';
 import Snippet from 'components/layout/sidebar/Snippet';
 import { SIDEBAR_WIDTH } from 'constants/config';
 import { baseAppColor } from 'constants/colors';
+import { filterSnippetsList } from 'utils/snippets';
 
 const SideBarWrapper = styled.div`
   width: ${SIDEBAR_WIDTH}px;
@@ -16,23 +17,12 @@ const SideBarWrapper = styled.div`
   overflow: auto;
 `;
 
-
-const filterSnippets = (snippets, filterText) => {
-  if (filterText !== '') {
-    const regex = new RegExp(filterText, 'gi');
-
-    return filter((snippet) => snippet.description.match(regex), snippets);
-  }
-
-  return snippets;
-};
-
 const Sidebar = ({ snippets, filterText }) => (
   <SideBarWrapper>
     <SnippetsList>
       { map((snippet) => (
         <Snippet key={ snippet.id } snippet={ snippet }/>
-      ), filterSnippets(snippets, filterText)) }
+      ), filterSnippetsList(snippets, filterText)) }
     </SnippetsList>
   </SideBarWrapper>
 );
