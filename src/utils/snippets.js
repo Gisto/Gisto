@@ -1,4 +1,4 @@
-import { filter, includes, startsWith, trim, sortBy, flow, reverse, isEmpty } from 'lodash/fp';
+import { filter, includes, startsWith, trim, sortBy, flow, reverse, isEmpty, difference, size } from 'lodash/fp';
 
 export const isTag = (filterText) => startsWith('#', filterText);
 
@@ -19,8 +19,9 @@ const filterByFreeText = (snippets, filterText) => {
   return snippets;
 };
 
-const filterByTags = (snippets, filterTags) =>
-  filter((snippet) => includes(filterTags, snippet.tags), snippets);
+const filterByTags = (snippets, filterTags) => {
+  return filter((snippet) => size(difference(filterTags, snippet.tags)) === 0, snippets);
+};
 
 const filterByLanguage = (snippets, filterLanguage) => {
   return filter((snippet) =>
@@ -37,8 +38,8 @@ export const filterSnippetsList = (snippets, filterText, filterTags, filterLangu
     return filterByFreeText(sortedSnippets, trim(filterText));
   }
 
-  if (!isEmpty(trim(filterTags))) {
-    return filterByTags(sortedSnippets, trim(filterTags));
+  if (!isEmpty(filterTags)) {
+    return filterByTags(sortedSnippets, filterTags);
   }
 
   if (!isEmpty(trim(filterLanguage))) {

@@ -55,6 +55,7 @@ const MainHeader = ({ loading }) => (
     <MiddleArea>
       <Icon color={ lightText } type="menu"/>
       { loading && <Loading><Icon type="loading"/> { 'loading...' }</Loading> }
+      <div>{ /* placeholder */ }</div>
     </MiddleArea>
     <UserArea/>
   </HeaderWrapper>

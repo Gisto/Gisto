@@ -43,3 +43,11 @@ export const filterSnippetsByLanguage = (value) => ({
 export const clearAllFilters = () => ({
   type: AT.CLEAR_FILTERS
 });
+
+export const removeTagFromFilter = (tag) => ({
+  meta: {
+    tag
+  },
+  type: AT.REMOVE_TAG_FROM_FILTER,
+  payload: { tag }
+});
