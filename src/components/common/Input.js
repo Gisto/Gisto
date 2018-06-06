@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { baseAppColor } from 'constants/colors';
+import { baseAppColor, bg } from 'constants/colors';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
@@ -11,13 +11,20 @@ const StyledInput = styled.input`
   width: 100%;
   color: ${baseAppColor};
   border-bottom: 1px solid ${baseAppColor};
+
   &:focus {
     outline: none;
   }
+  
+  ::placeholder {
+      color: ${bg};
+      opacity: 1;
+  }
 `;
 
-const Input = ({ type = 'text', placeholder, onChange }) => (
+const Input = ({ type = 'text', placeholder, onChange, className }) => (
   <StyledInput type={ type }
+               className={ className }
                onChange={ onChange }
                placeholder={ placeholder }/>
 );
@@ -25,7 +32,8 @@ const Input = ({ type = 'text', placeholder, onChange }) => (
 Input.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  className: PropTypes.string
 };
 
 export default Input;

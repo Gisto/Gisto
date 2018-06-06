@@ -41,7 +41,7 @@ const Snippet = ({ snippet }) => (
                    to={ `/snippet/${snippet.id}` }>
       <span>
         <Icon size={ 32 }
-              type={ snippet.public ? 'lock' : 'unlock' }
+              type={ snippet.public ? 'unlock' : 'lock' }
               color={ lightText }/>
       </span>
       <span>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { map, filter } from 'lodash/fp';
+import { map } from 'lodash/fp';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -17,24 +17,28 @@ const SideBarWrapper = styled.div`
   overflow: auto;
 `;
 
-const Sidebar = ({ snippets, filterText }) => (
+const Sidebar = ({ snippets, filterText, filterTags, filterLanguage }) => (
   <SideBarWrapper>
     <SnippetsList>
       { map((snippet) => (
         <Snippet key={ snippet.id } snippet={ snippet }/>
-      ), filterSnippetsList(snippets, filterText)) }
+      ), filterSnippetsList(snippets, filterText, filterTags, filterLanguage)) }
     </SnippetsList>
   </SideBarWrapper>
 );
 
 const mapStateToProps = (state) => ({
   snippets: state.snippets.snippets,
-  filterText: state.snippets.filter.text
+  filterText: state.snippets.filter.text,
+  filterTags: state.snippets.filter.tags,
+  filterLanguage: state.snippets.filter.language
 });
 
 Sidebar.propTypes = {
   snippets: PropTypes.object,
-  filterText: PropTypes.string
+  filterText: PropTypes.string,
+  filterTags: PropTypes.string,
+  filterLanguage: PropTypes.string
 };
 
 export default connect(mapStateToProps)(Sidebar);

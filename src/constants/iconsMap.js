@@ -5,6 +5,7 @@ export const iconsMap = {
   info: 'ios-information-circle-outline.svg',
   success: 'ios-checkmark-circle-outline.svg',
   error: 'ios-close-circle-outline.svg',
+  'close-circle': 'ios-close-circle-outline.svg',
   warn: 'ios-information-circle-outline.svg',
   notification: 'ios-notifications-outline.svg',
   lock: 'ios-lock-outline.svg',
