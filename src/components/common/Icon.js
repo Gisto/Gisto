@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { baseAppColor } from 'constants/colors';
+import { lightText } from 'constants/colors';
 import { iconsMap } from 'constants/iconsMap';
 
 
 const Icon = styled.span`
-  background-color: ${(props) => props.color || baseAppColor};
+  background-color: ${(props) => props.color || lightText};
   display: inline-block;
   vertical-align: middle;
   width: ${(props) => props.size || 22}px;

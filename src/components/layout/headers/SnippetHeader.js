@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { get, join, map } from 'lodash/fp';
+import { get, map } from 'lodash/fp';
 import styled from 'styled-components';
-import { baseAppColor, borderColor, colorDanger, colorSuccess, textColor } from 'constants/colors';
-import Icon from 'components/common/Icon';
+import { baseAppColor, colorDanger, textColor } from 'constants/colors';
+import * as snippetActions from 'actions/snippets';
+import UtilityIcon from 'components/common/UtilityIcon';
+import { copyToClipboard } from 'utils/snippets';
 
 const SnippetHeaderWrapper = styled.div`
   display: flex;
@@ -44,35 +46,64 @@ const Languages = styled.span`
   border-radius: 2px;
   margin: 0 5px 0 0;
   vertical-align: middle;
+  cursor: pointer;
 `;
 
-const Util = styled.span`
-  border-left: 1px solid ${borderColor};
-  height: 51px;
-  display: inline-block;
-  width: 50px;
-  text-align: center;
-  line-height: 50px;
+const Link = styled.a`
+  cursor: pointer;
+  margin: 0 5px 0 0;
 `;
 
-const SnippetHeader = ({ snippets, match }) => {
+const SnippetHeader = ({
+  snippets, match, searchByLanguages, searchByTags
+}) => {
   const snippet = get(match.params.id, snippets);
 
   return (
     <SnippetHeaderWrapper>
       <Title>
-        { map((language) => <Languages key={ `${language}${snippet.id}` }>{ language }</Languages>, get('languages', snippet)) }
+        { map((language) => (
+          <Languages key={ `${language}${snippet.id}` }
+                     onClick={ () => searchByLanguages(language) }>
+            { language }
+          </Languages>
+        ), get('languages', snippet)) }
         &nbsp;
-        <Description title={ get('description', snippet) }>{ get('description', snippet) }</Description> { join(', ', get('tags', snippet)) }
+        <Description title={ get('description', snippet) }>
+          { get('description', snippet) }
+        </Description>
+        &nbsp;
+        { map((tag) => (
+          <Link key={ tag }
+             onClick={ () => searchByTags(tag) }>
+            { tag }
+          </Link>
+      ), get('tags', snippet)) }
       </Title>
       <div>
-        <Util><Icon size={ 22 } color={ baseAppColor } type="edit"/></Util>
-        <Util><Icon size={ 22 } color={ baseAppColor } type="file"/></Util>
-        <Util><Icon size={ 22 } color={ baseAppColor } type="unlock"/></Util>
-        <Util><Icon size={ 22 } color={ colorDanger } type="delete"/></Util>
-        <Util><Icon size={ 22 } color={ baseAppColor } type="chat"/></Util>
-        <Util><Icon size={ 22 } color={ baseAppColor } type="star-full"/></Util>
-        <Util><Icon size={ 22 } color={ baseAppColor } type="ellipsis"/></Util>
+        <UtilityIcon size={ 22 } color={ baseAppColor } type="edit"/>
+        <UtilityIcon size={ 22 } color={ baseAppColor } type="file"/>
+        <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
+        <UtilityIcon size={ 22 } color={ colorDanger } type="delete"/>
+        <UtilityIcon size={ 22 } color={ baseAppColor } type="chat"/>
+        <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('star', snippet) ? 'star-full' : 'star-empty' }/>
+        <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
+          <ul>
+            <li>Edit</li>
+            <li>Open on web</li>
+            <li>Download</li>
+            <li>
+              <Link onClick={ (event) => copyToClipboard(event, snippet.id) }>
+                Copy snippet ID to clipboard
+              </Link>
+            </li>
+            <li>Copy Snippet URL to clipboard</li>
+            <li>Copy HTTPS clone URL to clipboard</li>
+            <li>Copy SSH clone URL to clipboard</li>
+            <li>Open in GitHub desktop</li>
+            <li className="color-danger">Delete</li>
+          </ul>
+        </UtilityIcon>
       </div>
     </SnippetHeaderWrapper>
   );
@@ -84,7 +115,12 @@ const mapStateToProps = (state) => ({
 
 SnippetHeader.propTypes = {
   snippets: PropTypes.object,
-  match: PropTypes.object
+  match: PropTypes.object,
+  searchByLanguages: PropTypes.func,
+  searchByTags: PropTypes.func
 };
 
-export default connect(mapStateToProps)(SnippetHeader);
+export default connect(mapStateToProps, {
+  searchByLanguages: snippetActions.filterSnippetsByLanguage,
+  searchByTags: snippetActions.filterSnippetsByTags
+})(SnippetHeader);

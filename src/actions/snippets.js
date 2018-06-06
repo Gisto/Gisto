@@ -16,10 +16,30 @@ export const getSnippet = (id) => ({
   payload: { id }
 });
 
-export const filterSnippets = (value) => ({
+export const filterSnippetsByText = (value) => ({
   meta: {
     value
   },
-  type: AT.FILTER_SNIPPETS,
+  type: AT.FILTER_SNIPPETS_BY_TEXT,
   payload: { value }
+});
+
+export const filterSnippetsByTags = (value) => ({
+  meta: {
+    value
+  },
+  type: AT.FILTER_SNIPPETS_BY_TAGS,
+  payload: { value }
+});
+
+export const filterSnippetsByLanguage = (value) => ({
+  meta: {
+    value
+  },
+  type: AT.FILTER_SNIPPETS_BY_LANGUAGE,
+  payload: { value }
+});
+
+export const clearAllFilters = () => ({
+  type: AT.CLEAR_FILTERS
 });
