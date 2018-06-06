@@ -1,4 +1,4 @@
-import { merge, keyBy, update, set, map, flow } from 'lodash/fp';
+import { merge, keyBy, update, set, map, flow, concat, includes, without } from 'lodash/fp';
 import * as AT from 'constants/actionTypes';
 import { snippetStructure } from 'utils/prepareSnippet';
 
@@ -7,7 +7,7 @@ const initialState = {
   starred: [],
   filter: {
     text: '',
-    tags: '',
+    tags: [],
     language: ''
   },
   lastOpenedId: null
@@ -33,23 +33,30 @@ export const snippets = (state = initialState, action) => {
     case AT.FILTER_SNIPPETS_BY_TEXT: {
       return flow([
         set(['filter', 'text'], action.payload.value),
-        set(['filter', 'tags'], ''),
+        set(['filter', 'tags'], []),
         set(['filter', 'language'], '')
       ])(state);
     }
 
     case AT.FILTER_SNIPPETS_BY_TAGS: {
+      const tagExists = includes(action.payload.value, state.filter.tags);
+      const tag = tagExists ? state.filter.tags : concat(state.filter.tags, action.payload.value);
+
       return flow([
         set(['filter', 'text'], ''),
-        set(['filter', 'tags'], action.payload.value),
+        set(['filter', 'tags'], tag),
         set(['filter', 'language'], '')
       ])(state);
+    }
+
+    case AT.REMOVE_TAG_FROM_FILTER: {
+      return set(['filter', 'tags'], without([action.payload.tag], state.filter.tags), state);
     }
 
     case AT.FILTER_SNIPPETS_BY_LANGUAGE: {
       return flow([
         set(['filter', 'text'], ''),
-        set(['filter', 'tags'], ''),
+        set(['filter', 'tags'], []),
         set(['filter', 'language'], action.payload.value)
       ])(state);
     }
@@ -57,7 +64,7 @@ export const snippets = (state = initialState, action) => {
     case AT.CLEAR_FILTERS: {
       return flow([
         set(['filter', 'text'], ''),
-        set(['filter', 'tags'], ''),
+        set(['filter', 'tags'], []),
         set(['filter', 'language'], '')
       ])(state);
     }
