@@ -54,60 +54,79 @@ const Link = styled.a`
   margin: 0 5px 0 0;
 `;
 
-const SnippetHeader = ({
-  snippets, match, searchByLanguages, searchByTags
-}) => {
-  const snippet = get(match.params.id, snippets);
+export class SnippetHeader extends React.Component {
+  toggleStar = (id, starred) =>
+    starred ? this.props.unsetStar(id) : this.props.setStar(id);
 
-  return (
-    <SnippetHeaderWrapper>
-      <Title>
-        { map((language) => (
-          <Languages key={ `${language}${snippet.id}` }
-                     onClick={ () => searchByLanguages(language) }>
-            { language }
-          </Languages>
-        ), get('languages', snippet)) }
-        &nbsp;
-        <Description title={ get('description', snippet) }>
-          { get('description', snippet) }
-        </Description>
-        &nbsp;
-        { map((tag) => (
-          <Link key={ tag }
-             onClick={ () => searchByTags(tag) }>
-            { tag }
-          </Link>
-      ), get('tags', snippet)) }
-      </Title>
-      <div>
-        <UtilityIcon size={ 22 } color={ baseAppColor } type="edit"/>
-        <UtilityIcon size={ 22 } color={ baseAppColor } type="file"/>
-        <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
-        <UtilityIcon size={ 22 } color={ colorDanger } type="delete"/>
-        <UtilityIcon size={ 22 } color={ baseAppColor } type="chat"/>
-        <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('star', snippet) ? 'star-full' : 'star-empty' }/>
-        <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
-          <ul>
-            <li>Edit</li>
-            <li>Open on web</li>
-            <li>Download</li>
-            <li>
-              <Link onClick={ (event) => copyToClipboard(event, snippet.id) }>
-                Copy snippet ID to clipboard
-              </Link>
-            </li>
-            <li>Copy Snippet URL to clipboard</li>
-            <li>Copy HTTPS clone URL to clipboard</li>
-            <li>Copy SSH clone URL to clipboard</li>
-            <li>Open in GitHub desktop</li>
-            <li className="color-danger">Delete</li>
-          </ul>
-        </UtilityIcon>
-      </div>
-    </SnippetHeaderWrapper>
-  );
-};
+  renderStarControl = () => {
+    const snippet = get(this.props.match.params.id, this.props.snippets);
+    const starred = get('star', snippet);
+    const iconType = starred ? 'star-full' : 'star-empty';
+
+    return (
+      <UtilityIcon size={ 22 }
+                   color={ baseAppColor }
+                   onClick={ () => this.toggleStar(snippet.id, starred) }
+                   type={ iconType }/>
+    );
+  };
+
+  render() {
+    const {
+      snippets, match, searchByLanguages, searchByTags 
+    } = this.props;
+    const snippet = get(match.params.id, snippets);
+
+    return (
+      <SnippetHeaderWrapper>
+        <Title>
+          { map((language) => (
+            <Languages key={ `${language}${snippet.id}` }
+                       onClick={ () => searchByLanguages(language) }>
+              { language }
+            </Languages>
+          ), get('languages', snippet)) }
+          &nbsp;
+          <Description title={ get('description', snippet) }>
+            { get('description', snippet) }
+          </Description>
+          &nbsp;
+          { map((tag) => (
+            <Link key={ tag }
+                  onClick={ () => searchByTags(tag) }>
+              { tag }
+            </Link>
+          ), get('tags', snippet)) }
+        </Title>
+        <div>
+          <UtilityIcon size={ 22 } color={ baseAppColor } type="edit"/>
+          <UtilityIcon size={ 22 } color={ baseAppColor } type="file"/>
+          <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
+          <UtilityIcon size={ 22 } color={ colorDanger } type="delete"/>
+          <UtilityIcon size={ 22 } color={ baseAppColor } type="chat"/>
+          { this.renderStarControl(snippet) }
+          <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
+            <ul>
+              <li>Edit</li>
+              <li>Open on web</li>
+              <li>Download</li>
+              <li>
+                <Link onClick={ (event) => copyToClipboard(event, snippet.id) }>
+                  Copy snippet ID to clipboard
+                </Link>
+              </li>
+              <li>Copy Snippet URL to clipboard</li>
+              <li>Copy HTTPS clone URL to clipboard</li>
+              <li>Copy SSH clone URL to clipboard</li>
+              <li>Open in GitHub desktop</li>
+              <li className="color-danger">Delete</li>
+            </ul>
+          </UtilityIcon>
+        </div>
+      </SnippetHeaderWrapper>
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({
   snippets: state.snippets.snippets
@@ -117,10 +136,14 @@ SnippetHeader.propTypes = {
   snippets: PropTypes.object,
   match: PropTypes.object,
   searchByLanguages: PropTypes.func,
-  searchByTags: PropTypes.func
+  searchByTags: PropTypes.func,
+  setStar: PropTypes.func,
+  unsetStar: PropTypes.func
 };
 
 export default connect(mapStateToProps, {
   searchByLanguages: snippetActions.filterSnippetsByLanguage,
-  searchByTags: snippetActions.filterSnippetsByTags
+  searchByTags: snippetActions.filterSnippetsByTags,
+  setStar: snippetActions.starSnippet,
+  unsetStar: snippetActions.unStarSnippet
 })(SnippetHeader);

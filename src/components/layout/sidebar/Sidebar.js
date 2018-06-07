@@ -46,7 +46,6 @@ const Tag = styled.span`
 const Sidebar = ({
   snippets, filterText, filterTags, filterLanguage, clearFilters, removeTag
 }) => {
-  const countSnippets = size(filterSnippetsList(snippets, filterText, filterTags, filterLanguage));
   const searchType = () => {
     if (!isEmpty(trim(filterText))) {
       return isTag(filterText) ? 'free text tag' : 'free text';
@@ -59,7 +58,11 @@ const Sidebar = ({
             <Tag>
               { tag }
               &nbsp;
-              <Icon type="close-circle" size={ 12 } onClick={ () => removeTag(tag) } color={ baseAppColor }/>
+              <Icon type="close"
+                    clickable
+                    size={ 12 }
+                    onClick={ () => removeTag(tag) }
+                    color={ baseAppColor }/>
             </Tag>
           ), filterTags) }
         </span>

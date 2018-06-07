@@ -51,3 +51,19 @@ export const removeTagFromFilter = (tag) => ({
   type: AT.REMOVE_TAG_FROM_FILTER,
   payload: { tag }
 });
+
+export const starSnippet = (id) => ({
+  meta: {
+    id
+  },
+  type: AT.SET_STAR,
+  payload: { id }
+});
+
+export const unStarSnippet = (id) => ({
+  meta: {
+    id
+  },
+  type: AT.UNSET_STAR,
+  payload: { id }
+});

@@ -14,6 +14,7 @@ const Icon = styled.span`
   -webkit-mask-size: contain;
   -webkit-mask-position: center;
   ${(props) => props.rotate ? `transform: rotate(${props.rotate});` : ''}
+  ${(props) => props.clickable ? 'cursor: pointer;' : ''}
 `;
 
 export default Icon;

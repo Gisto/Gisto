@@ -64,12 +64,12 @@ export class UtilityIcon extends React.Component {
 
   render() {
     const {
-      children, size = 22, type, color = lightText, onClick = null, dropdown
+      children, size = 22, type, color = lightText, onClick = null, dropdown = false
     } = this.props;
     const { childrenShown } = this.state;
 
     return (
-      <Util onClick={ () => dropdown ? this.handleClick() : onClick }>
+      <Util onClick={ () => dropdown ? this.handleClick() : onClick() }>
         <Icon size={ size }
               type={ childrenShown ? 'close' : type }
               color={ childrenShown ? colorDanger : color }/>
