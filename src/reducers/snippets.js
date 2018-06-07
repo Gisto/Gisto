@@ -69,6 +69,20 @@ export const snippets = (state = initialState, action) => {
       ])(state);
     }
 
+    case AT.SET_STAR.SUCCESS: {
+      return flow([
+        set(['starred'], concat([action.meta.id], state.starred)),
+        set(['snippet', action.meta.id, 'star'], true)
+      ])(state);
+    }
+
+    case AT.UNSET_STAR.SUCCESS: {
+      return flow([
+        set(['starred'], without([action.meta.id], state.starred)),
+        set(['snippet', action.meta.id, 'star'], false)
+      ])(state);
+    }
+
     default: {
       return state;
     }
