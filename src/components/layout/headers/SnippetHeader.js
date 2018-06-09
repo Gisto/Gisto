@@ -58,6 +58,8 @@ export class SnippetHeader extends React.Component {
   toggleStar = (id, starred) =>
     starred ? this.props.unsetStar(id) : this.props.setStar(id);
 
+  deleteSnippet = (id) => this.props.deleteSnippet(id);
+
   renderStarControl = () => {
     const snippet = get(this.props.match.params.id, this.props.snippets);
     const starred = get('star', snippet);
@@ -102,7 +104,7 @@ export class SnippetHeader extends React.Component {
           <UtilityIcon size={ 22 } color={ baseAppColor } type="edit"/>
           <UtilityIcon size={ 22 } color={ baseAppColor } type="file"/>
           <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
-          <UtilityIcon size={ 22 } color={ colorDanger } type="delete"/>
+          <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippet.id) } type="delete"/>
           <UtilityIcon size={ 22 } color={ baseAppColor } type="chat"/>
           { this.renderStarControl(snippet) }
           <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
@@ -119,7 +121,7 @@ export class SnippetHeader extends React.Component {
               <li>Copy HTTPS clone URL to clipboard</li>
               <li>Copy SSH clone URL to clipboard</li>
               <li>Open in GitHub desktop</li>
-              <li className="color-danger">Delete</li>
+              <li className="color-danger"><a onClick={ () => this.deleteSnippet(snippet.id) }>Delete</a></li>
             </ul>
           </UtilityIcon>
         </div>
@@ -138,12 +140,14 @@ SnippetHeader.propTypes = {
   searchByLanguages: PropTypes.func,
   searchByTags: PropTypes.func,
   setStar: PropTypes.func,
-  unsetStar: PropTypes.func
+  unsetStar: PropTypes.func,
+  deleteSnippet: PropTypes.func
 };
 
 export default connect(mapStateToProps, {
   searchByLanguages: snippetActions.filterSnippetsByLanguage,
   searchByTags: snippetActions.filterSnippetsByTags,
   setStar: snippetActions.starSnippet,
-  unsetStar: snippetActions.unStarSnippet
+  unsetStar: snippetActions.unStarSnippet,
+  deleteSnippet: snippetActions.deleteSnippet
 })(SnippetHeader);

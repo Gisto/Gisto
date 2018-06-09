@@ -142,6 +142,20 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         });
     }
 
+    if (action.type === AT.DELETE_SNIPPET) {
+      dispatch({ type: AT.DELETE_SNIPPET.PENDING, action });
+      API.delete(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}`)
+        .set(_headers())
+        .end((error, result) => {
+          if (result.statusCode === 204) {
+            dispatch({
+              type: AT.DELETE_SNIPPET.SUCCESS,
+              meta: action.meta
+            });
+          }
+        });
+    }
+
     next(action);
   };
 };
