@@ -67,3 +67,17 @@ export const unStarSnippet = (id) => ({
   type: AT.UNSET_STAR,
   payload: { id }
 });
+
+export const createSnippet = ({ description, files, isPublic = false }) => ({
+  meta: {
+    description,
+    public: isPublic,
+    files
+  },
+  type: AT.CREATE_SNIPPET,
+  payload: {
+    description,
+    public: isPublic,
+    files
+  }
+});

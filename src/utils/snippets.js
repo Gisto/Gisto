@@ -1,4 +1,17 @@
-import { filter, includes, startsWith, trim, sortBy, flow, reverse, isEmpty, difference, size } from 'lodash/fp';
+import {
+  filter,
+  includes,
+  startsWith,
+  trim,
+  sortBy,
+  flow,
+  reverse,
+  isEmpty,
+  difference,
+  size,
+  keyBy,
+  map
+} from 'lodash/fp';
 
 export const isTag = (filterText) => startsWith('#', filterText);
 
@@ -59,3 +72,11 @@ export const copyToClipboard = (event, text) => {
   document.addEventListener('copy', handleCopy.bind(this), true);
   document.execCommand('copy');
 };
+
+export const prepareFiles = (files) => flow([
+  map((file) => ({
+    name: file.name,
+    content: file.content
+  })),
+  keyBy('name')
+])(files);

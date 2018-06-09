@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { size, isEmpty } from 'lodash/fp';
 import styled from 'styled-components';
+import { HashRouter as Router, Link } from "react-router-dom";
+
 import * as snippetActions from 'actions/snippets';
 import { SIDEBAR_WIDTH, MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
 import { filterSnippetsList } from 'utils/snippets';
+
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
-import { baseAppColor, borderColor } from 'constants/colors';
+import {baseAppColor, borderColor, lightText} from 'constants/colors';
 import Input from 'components/common/Input';
 
 const SearchWrapper = styled.div`
@@ -21,7 +24,11 @@ const SearchWrapper = styled.div`
   color: #555;
   border-right: 1px solid ${borderColor};
   align-items: center;
-  }
+`;
+
+const StyledLink = styled(Link)`
+  color: ${lightText};
+  text-decoration: none;
 `;
 
 const Search = ({
@@ -42,7 +49,11 @@ const Search = ({
                (event) => shouldFilter(event.target.value) && filterSnippets(event.target.value)
              }/>
 
-      <Button icon="add">New snippet</Button>
+      <Router>
+        <Button icon="add" width="200px" height="30px">
+          <StyledLink to="/new">New snippet</StyledLink>
+        </Button>
+      </Router>
 
     </SearchWrapper>
   );

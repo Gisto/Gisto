@@ -126,6 +126,22 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         });
     }
 
+    if (action.type === AT.CREATE_SNIPPET) {
+      dispatch({ type: AT.CREATE_SNIPPET.PENDING, action });
+      API.post(`${DEFAULT_API_ENDPOINT_URL}/gists`)
+        .set(_headers())
+        .send(JSON.stringify(action.payload))
+        .end((error, result) => {
+          if (result.statusCode === 201) {
+            dispatch({
+              type: AT.CREATE_SNIPPET.SUCCESS,
+              meta: action.meta,
+              payload: result.body
+            });
+          }
+        });
+    }
+
     next(action);
   };
 };

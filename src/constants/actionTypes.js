@@ -6,6 +6,7 @@ export const GET_STARRED_SNIPPETS = createAsyncAction('GET_STARRED_SNIPPETS');
 export const GET_USER = createAsyncAction('GET_USER');
 export const SET_STAR = createAsyncAction('SET_STAR');
 export const UNSET_STAR = createAsyncAction('UNSET_STAR');
+export const CREATE_SNIPPET = createAsyncAction('CREATE_SNIPPET');
 
 export const FILTER_SNIPPETS_BY_TEXT = 'FILTER_SNIPPETS_BY_TEXT';
 export const FILTER_SNIPPETS_BY_TAGS = 'FILTER_SNIPPETS_BY_TAGS';
