@@ -40,7 +40,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({ 'global.GENTLY': false }),
+    new webpack.DefinePlugin({
+      'global.GENTLY': false
+    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'

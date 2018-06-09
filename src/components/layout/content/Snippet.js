@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { get, map } from 'lodash/fp';
-import AceEditor from 'react-ace';
+import Editor from 'components/common/Editor';
 import * as snippetActions from 'actions/snippets';
 import { borderColor } from 'constants/colors';
 import SnippetHeader from 'components/layout/content/snippet/snippetHeader';
-
-import 'brace/theme/chrome';
-import 'brace/mode/javascript';
 
 const SnippetWrapper = styled.div`
   background: #fff;
@@ -42,16 +39,7 @@ export class Snippet extends React.Component {
         { map((file) => (
           <SnippetWrapper key={ file.filename }>
             <SnippetHeader file={ file } username={ snippet.username } snippetId={ snippet.id }/>
-            <AceEditor
-                mode="javascript"
-                value={ file.content }
-                width="100%"
-                setOptions={ {
-                  showLineNumbers: true,
-                  tabSize: 2,
-                  maxLines: 15
-                } }
-                theme="github"/>
+            <Editor file={ file } onChange={ null } id={ file.name }/>
           </SnippetWrapper>
         ), get('files', snippet)) }
       </React.Fragment>

@@ -10,7 +10,14 @@ const initialState = {
     tags: [],
     language: ''
   },
-  lastOpenedId: null
+  lastOpenedId: null,
+  new: {
+    description: '',
+    public: true,
+    tags: [],
+    files: []
+  },
+  edit: {}
 };
 
 export const snippets = (state = initialState, action) => {
@@ -81,6 +88,14 @@ export const snippets = (state = initialState, action) => {
         set(['starred'], without([action.meta.id], state.starred)),
         set(['snippets', action.meta.id, 'star'], false)
       ])(state);
+    }
+
+    case AT.CREATE_SNIPPET.SUCCESS: {
+      return set(
+        ['snippets', action.payload.id],
+        snippetStructure(action.payload, state.starred),
+        state
+      );
     }
 
     default: {

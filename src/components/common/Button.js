@@ -4,35 +4,41 @@ import styled from 'styled-components';
 import { baseAppColor, lightText } from 'constants/colors';
 import Icon from 'components/common/Icon';
 
-const ButtonComponent = styled.div`
-  background: ${baseAppColor};
+const ButtonComponent = styled.button`
+  background: ${(props) => props.invert ? 'transparent' : baseAppColor};
   border: 1px solid ${baseAppColor};
-  color: ${lightText};
+  color: ${(props) => props.invert ? baseAppColor : lightText};
   border-radius: 3px;
-  height: 30px;
-  margin: 10px 0;
   font-weight: 200;
   font-size: 14px;
-  display: flex;
-  align-items: center;
-  width: 50%;
-  
-  &[invert] {
-    background: #fff;
-    border: 1px solid #fff;
-    color: ${baseAppColor};
-  }
+  text-align: center;
+  ${(props) => props.height ? `height: ${props.height};` : ''}
+  ${(props) => props.width ? `width: ${props.width};` : ''}
+  -webkit-appearance: none;
+  cursor: pointer;
 `;
 
-const Button = ({ icon, children }) => (
-  <ButtonComponent>
-    <Icon invert type={ icon }/> { children }
+const Button = ({
+  icon, children, width, height, invert, className, onClick
+}) => (
+  <ButtonComponent invert={ invert }
+                   width={ width }
+                   height={ height }
+                   className={ className }
+                   onClick={ onClick }>
+    <Icon color={ invert ? baseAppColor : lightText }
+          type={ icon }/> { children }
   </ButtonComponent>
 );
 
 Button.propTypes = {
   icon: PropTypes.string,
-  children: PropTypes.node
+  width: PropTypes.string,
+  height: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node,
+  invert: PropTypes.bool,
+  onClick: PropTypes.func
 };
 
 export default Button;
