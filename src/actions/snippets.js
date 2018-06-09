@@ -81,3 +81,11 @@ export const createSnippet = ({ description, files, isPublic = false }) => ({
     files
   }
 });
+
+export const deleteSnippet = (id) => ({
+  meta: {
+    id
+  },
+  type: AT.DELETE_SNIPPET,
+  payload: { id }
+});

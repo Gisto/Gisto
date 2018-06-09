@@ -14,7 +14,8 @@ export const ui = (state = initialState, action) => {
     case AT.GET_SNIPPET.PENDING:
     case AT.SET_STAR.PENDING:
     case AT.UNSET_STAR.PENDING:
-    case AT.CREATE_SNIPPET.PENDING: {
+    case AT.CREATE_SNIPPET.PENDING:
+    case AT.DELETE_SNIPPET.PENDING: {
       return set('snippets.loading', true, state);
     }
 
@@ -24,6 +25,8 @@ export const ui = (state = initialState, action) => {
     case AT.GET_SNIPPET.FAILURE:
     case AT.CREATE_SNIPPET.SUCCESS:
     case AT.CREATE_SNIPPET.FAILURE:
+    case AT.DELETE_SNIPPET.SUCCESS:
+    case AT.DELETE_SNIPPET.FAILURE:
     case AT.SET_STAR.SUCCESS:
     case AT.SET_STAR.FAILURE:
     case AT.UNSET_STAR.SUCCESS:

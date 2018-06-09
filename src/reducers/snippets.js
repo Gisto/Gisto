@@ -1,4 +1,4 @@
-import { merge, keyBy, update, set, map, flow, concat, includes, without } from 'lodash/fp';
+import { merge, keyBy, update, set, map, flow, concat, includes, without, omit } from 'lodash/fp';
 import * as AT from 'constants/actionTypes';
 import { snippetStructure } from 'utils/prepareSnippet';
 
@@ -96,6 +96,13 @@ export const snippets = (state = initialState, action) => {
         snippetStructure(action.payload, state.starred),
         state
       );
+    }
+
+    case AT.DELETE_SNIPPET.SUCCESS: {
+      return flow([
+        set(['starred'], without([action.meta.id], state.starred)),
+        omit([['snippets', action.meta.id]])
+      ])(state);
     }
 
     default: {
