@@ -121,7 +121,11 @@ export class SnippetHeader extends React.Component {
               <li>Copy HTTPS clone URL to clipboard</li>
               <li>Copy SSH clone URL to clipboard</li>
               <li>Open in GitHub desktop</li>
-              <li className="color-danger"><a onClick={ () => this.deleteSnippet(snippet.id) }>Delete</a></li>
+              <li className="color-danger">
+                <Link onClick={ () => this.deleteSnippet(snippet.id) }>
+                  Delete
+                </Link>
+              </li>
             </ul>
           </UtilityIcon>
         </div>
