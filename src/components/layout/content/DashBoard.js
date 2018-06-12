@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import {
-  get, size, filter, map, flow, groupBy, flattenDeep,
-  head, uniq, compact, sortBy, reverse, isEmpty
-} from 'lodash/fp';
+import { get, size, filter, map, flow, flattenDeep, uniq, compact, isEmpty } from 'lodash/fp';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
+
+import { getSnippets, getStarredCount, getLanguages, getPrivate } from 'selectors/snippets';
 
 import { baseAppColor, borderColor, headerBgLightest, lightText } from 'constants/colors';
 import { DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
@@ -231,10 +230,10 @@ export class DashBoard  extends React.Component {
     searchStarred: ''
   };
 
-  getPrivate = () => flow([
-    filter({ public: false }),
-    size
-  ])(this.props.snippets);
+  componentDidMount() {
+    this.props.getRateLimit();
+  }
+
 
   getStarred = () => {
     const starred = filter({ star: true }, this.props.snippets);
@@ -254,18 +253,6 @@ export class DashBoard  extends React.Component {
     filter({ description: DEFAULT_SNIPPET_DESCRIPTION }),
     size
   ])(this.props.snippets);
-
-  getLanguages = () => {
-    const files = map('files', this.props.snippets);
-    const grouped = groupBy('language', flattenDeep(files));
-
-    const languages = map((language) => ({
-      language: get('language', head(language)),
-      size: size(language)
-    }), grouped);
-
-    return reverse(sortBy('size', languages));
-  };
 
   getTags = () => {
     const tags = map('tags', this.props.snippets);
@@ -303,29 +290,69 @@ export class DashBoard  extends React.Component {
     searchStarred: value
   });
 
+  renderLanguages = () => map((languageItem) => {
+    const language = get('language', languageItem);
+    const filesCount = get('size', languageItem);
+
+    return (
+      <Pill style={ this.linearGradient(filesCount) }
+              key={ language }
+              onClick={ () => this.props.searchByLanguages(language) }>
+        {language || 'Other'}
+        <br/>
+        <strong>{filesCount}</strong> <small>files</small>
+      </Pill>
+    );
+  }, this.props.snippetsLanguages);
+
+  renderTags = () => map((tag) => (
+    <Pill key={ tag } onClick={ () => this.props.searchByTags(tag) }>
+      { tag }
+    </Pill>
+  ), this.getTags());
+
+  renderStarred = () => map((snippet) => (
+    <li key={ snippet.id }>
+      <Icon type={ snippet.public ? 'unlock' : 'lock' } color={ baseAppColor }/>
+      &nbsp;
+      <Router>
+        <StyledNavLink exact
+                       className="link"
+                       activeClassName="selected"
+                       title={ snippet.description }
+                       to={ `/snippet/${snippet.id}` }>
+          { snippet.description }
+        </StyledNavLink>
+      </Router>
+    </li>
+  ), this.getStarred());
+
   render() {
+    const { snippets, privateSnippets, starred } = this.props;
+    const publicSnippetsCount = size(snippets) - privateSnippets;
+
     return (
       <DashbordWrapper>
         { isEmpty(this.state.searchTags) && (
           <React.Fragment>
-            <Private style={ this.linearGradient(size(this.props.snippets) - this.getPrivate()) }>
+            <Private style={ this.linearGradient(publicSnippetsCount) }>
               <h3>Public</h3>
               <span>
-                { size(this.props.snippets) - this.getPrivate() }
+                { publicSnippetsCount }
               </span>
             </Private>
 
-            <Public style={ this.linearGradient(this.getPrivate()) }>
+            <Public style={ this.linearGradient(privateSnippets) }>
               <h3>Private</h3>
               <span>
-                { this.getPrivate() }
+                { privateSnippets }
               </span>
             </Public>
 
-            <Starred style={ this.linearGradient(size(this.props.starred)) }>
+            <Starred style={ this.linearGradient(starred) }>
               <h3>Starred</h3>
               <span>
-                { size(this.props.starred) }
+                { starred }
               </span>
             </Starred>
 
@@ -342,15 +369,7 @@ export class DashBoard  extends React.Component {
           <Language>
             <h3>Languages:</h3>
             <div>
-              { map((language) => (
-                <Pill style={ this.linearGradient(language.size) }
-                      key={ language.language }
-                      onClick={ () => this.props.searchByLanguages(language.language) }>
-                  { language.language || 'Other' }
-                  <br/>
-                  <strong>{ language.size }</strong>
-                </Pill>
-              ), this.getLanguages()) }
+              { this.renderLanguages() }
             </div>
           </Language>
         ) }
@@ -367,21 +386,7 @@ export class DashBoard  extends React.Component {
               </div>
             </HeadingWithSearch>
             <ul>
-              { map((snippet) => (
-                <li key={ snippet.id }>
-                  <Icon type={ snippet.public ? 'unlock' : 'lock' } color={ baseAppColor }/>
-                  &nbsp;
-                  <Router>
-                    <StyledNavLink exact
-                                   className="link"
-                                   activeClassName="selected"
-                                   title={ snippet.description }
-                                   to={ `/snippet/${snippet.id}` }>
-                      { snippet.description }
-                    </StyledNavLink>
-                  </Router>
-                </li>
-              ), this.getStarred()) }
+              { this.renderStarred() }
             </ul>
           </Stars>
         ) }
@@ -397,12 +402,7 @@ export class DashBoard  extends React.Component {
             </div>
           </HeadingWithSearch>
           <div>
-            { map((tag) => (
-              <Pill key={ tag }
-                    onClick={ () => this.props.searchByTags(tag) }>
-                { tag }
-              </Pill>
-            ), this.getTags()) }
+            { this.renderTags() }
           </div>
         </Tags>
       </DashbordWrapper>
@@ -411,18 +411,24 @@ export class DashBoard  extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  snippets: get('snippets', state.snippets),
-  starred: get('starred', state.snippets)
+  snippets: getSnippets(state),
+  starred: getStarredCount(state),
+  snippetsLanguages: getLanguages(state),
+  privateSnippets: getPrivate(state)
 });
 
 DashBoard.propTypes = {
   snippets: PropTypes.object,
-  starred: PropTypes.array,
+  starred: PropTypes.number,
   searchByTags: PropTypes.func,
-  searchByLanguages: PropTypes.func
+  searchByLanguages: PropTypes.func,
+  getRateLimit: PropTypes.func,
+  snippetsLanguages: PropTypes.array,
+  privateSnippets: PropTypes.number
 };
 
 export default connect(mapStateToProps, {
   searchByTags: snippetActions.filterSnippetsByTags,
-  searchByLanguages: snippetActions.filterSnippetsByLanguage
+  searchByLanguages: snippetActions.filterSnippetsByLanguage,
+  getRateLimit: snippetActions.getRateLimit
 })(DashBoard);

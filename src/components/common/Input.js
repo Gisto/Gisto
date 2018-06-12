@@ -22,10 +22,13 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = ({ type = 'text', placeholder, onChange, className }) => (
+const Input = ({
+  type = 'text', placeholder, onChange, className, value
+}) => (
   <StyledInput type={ type }
                className={ className }
                onChange={ onChange }
+               value={ value }
                placeholder={ placeholder }/>
 );
 
@@ -33,7 +36,8 @@ Input.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
+  value: PropTypes.string
 };
 
 export default Input;

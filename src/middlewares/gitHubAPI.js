@@ -11,11 +11,37 @@ const _headers = (additional) => ({
 const gitHubAPIMiddleware = ({ dispatch }) => {
   return (next) => (action) => {
 
+    const errorHandler = (error, result) => {
+      if (error) {
+        throw new Error(`ERROR: ${result.statusText} - ${result.body.description}`);
+      } else if (result.statusCode > 204) {
+        throw new Error(`INFO: ${result.statusText} - ${result.body.description}`);
+      }
+    }
+
+    if (action.type === AT.GET_RATE_LIMIT) {
+      API.get(`${DEFAULT_API_ENDPOINT_URL}/rate_limit`)
+        .set(_headers())
+        .end((error, result) => {
+          errorHandler(error, result);
+          if (error) {
+            dispatch({
+              type: AT.GET_RATE_LIMIT.FAILURE,
+              payload: error
+            });
+          }
+          if (!error && result) {
+            dispatch({ type: AT.GET_RATE_LIMIT.SUCCESS, payload: result.body });
+          }
+        });
+    }
+
     if (action.type === AT.GET_USER) {
       dispatch({ type: AT.GET_USER.PENDING, action });
       API.get(`${DEFAULT_API_ENDPOINT_URL}/user`)
         .set(_headers())
         .end((error, result) => {
+          errorHandler(error, result);
           if (error) {
             dispatch({
               type: AT.GET_USER.FAILURE,
@@ -33,8 +59,10 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
       return API.get(`${DEFAULT_API_ENDPOINT_URL}/gists/starred`)
         .set(_headers())
-        .end((error, result) =>
-          dispatch({ type: AT.GET_STARRED_SNIPPETS.SUCCESS, payload: result.body }));
+        .end((error, result) => {
+          errorHandler(error, result);
+          dispatch({ type: AT.GET_STARRED_SNIPPETS.SUCCESS, payload: result.body })
+        });
     }
 
     if (action.type === AT.GET_SNIPPETS) {
@@ -43,6 +71,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
       const getGists = (page) => API.get(`${DEFAULT_API_ENDPOINT_URL}/gists?page=${page}&per_page=100`)
         .set(_headers())
         .end((error, result) => {
+          errorHandler(error, result);
           if (error) {
             dispatch({
               type: AT.GET_SNIPPETS.FAILURE,
@@ -69,6 +98,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
       return API.get(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}`)
         .set(_headers())
         .end((error, result) => {
+          errorHandler(error, result);
           if (error) {
             dispatch({
               type: AT.GET_SNIPPET.FAILURE,
@@ -90,6 +120,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
       return API.put(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/star`)
         .set(_headers({ 'Content-Length': 0 }))
         .end((error, result) => {
+          errorHandler(error, result);
           if (error || result.status !== 204) {
             dispatch({
               type: AT.SET_STAR.FAILURE,
@@ -111,6 +142,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
       return API.delete(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/star`)
         .set(_headers())
         .end((error, result) => {
+          errorHandler(error, result);
           if (error || result.status !== 204) {
             dispatch({
               type: AT.UNSET_STAR.FAILURE,
@@ -132,6 +164,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .set(_headers())
         .send(JSON.stringify(action.payload))
         .end((error, result) => {
+          errorHandler(error, result);
           if (result.statusCode === 201) {
             dispatch({
               type: AT.CREATE_SNIPPET.SUCCESS,
@@ -147,12 +180,29 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
       API.delete(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}`)
         .set(_headers())
         .end((error, result) => {
+          errorHandler(error, result);
           if (result.statusCode === 204) {
             dispatch({
               type: AT.DELETE_SNIPPET.SUCCESS,
               meta: action.meta
             });
           }
+        });
+    }
+
+    if (action.type === AT.UPDATE_SNIPPET) {
+      dispatch({ type: AT.UPDATE_SNIPPET.PENDING, action });
+
+      API.patch(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}`)
+        .set(_headers())
+        .send(action.payload.snippet)
+        .end((error, result) => {
+          errorHandler(error, result);
+          dispatch({
+            type: AT.UPDATE_SNIPPET.SUCCESS,
+            meta: action.meta,
+            payload: result.body
+          });
         });
     }
 

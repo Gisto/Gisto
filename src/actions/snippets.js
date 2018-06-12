@@ -1,5 +1,9 @@
 import * as AT from 'constants/actionTypes';
 
+export const getRateLimit = () => ({
+  type: AT.GET_RATE_LIMIT
+});
+
 export const getSnippets = () => ({
   type: AT.GET_SNIPPETS
 });
@@ -88,4 +92,37 @@ export const deleteSnippet = (id) => ({
   },
   type: AT.DELETE_SNIPPET,
   payload: { id }
+});
+
+export const editSnippet = (id) => ({
+  meta: {
+    id
+  },
+  type: AT.START_EDIT_SNIPPET,
+  payload: { id }
+});
+
+export const cancelEditSnippet = () => ({
+  type: AT.STOP_EDIT_SNIPPET
+});
+
+export const updateTempSnippet = (path, value) => ({
+  meta: {
+    path,
+    value
+  },
+  type: AT.UPDATE_TEMP_SNIPPET,
+  payload: {
+    path,
+    value
+  }
+});
+
+export const updateSnippet = (snippet, id) => ({
+  meta: {
+    snippet,
+    id
+  },
+  type: AT.UPDATE_SNIPPET,
+  payload: { snippet, id }
 });

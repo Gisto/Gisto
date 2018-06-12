@@ -7,6 +7,7 @@ import { baseAppColor, headerColor, lightText } from 'constants/colors';
 import { SIDEBAR_WIDTH, logoText } from 'constants/config';
 import Icon from 'components/common/Icon';
 import UserArea from 'components/UserArea';
+import {get} from "lodash/fp";
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -47,10 +48,10 @@ const Loading = styled.span`
   align-self: center;
 `;
 
-const MainHeader = ({ loading }) => (
+const MainHeader = ({ loading, rateLimit }) => (
   <HeaderWrapper>
     <Logo>
-      <Link to="/">{ logoText }</Link>
+      <Link to="/" title={ `API Rate limit: ${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}` }>{ logoText }</Link>
     </Logo>
     <MiddleArea>
       <Icon color={ lightText } type="menu"/>
@@ -62,11 +63,13 @@ const MainHeader = ({ loading }) => (
 );
 
 const mapStateToProps = (state) => ({
-  loading: state.ui.snippets.loading
+  loading: state.ui.snippets.loading,
+  rateLimit: get(['ui', 'rateLimit'], state)
 });
 
 MainHeader.propTypes = {
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  rateLimit: PropTypes.object
 };
 
 export default connect(mapStateToProps)(MainHeader);
