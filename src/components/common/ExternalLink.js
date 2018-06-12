@@ -2,23 +2,26 @@ import React from 'react';
 import PropType from 'prop-types';
 import { shell } from 'electron';
 import { isElectron } from 'utils/electron';
+import Anchor from 'components/common/Anchor';
 
 const ExternalLink = ({
-  href, className, download, children 
+  href, className, children
 }) => (
-  <a className={ className }
-     download={ download }
-     href={ download ? href : '#' }
-     onClick={ () => isElectron ? shell.openExternal(href) : window.open(href, '_blank') }>
+  <Anchor className={ className }
+     href="#"
+     onClick={ (event) => {
+       event.preventDefault();
+
+       return isElectron ? shell.openExternal(href) : window.open(href, '_blank');
+     } }>
     { children }
-  </a>
+  </Anchor>
 );
 
 ExternalLink.propTypes = {
   href: PropType.string,
   className: PropType.string,
-  children: PropType.node,
-  download: PropType.string
+  children: PropType.node
 };
 
 export default ExternalLink;

@@ -7,7 +7,7 @@ import SnippetsList from 'components/layout/sidebar/SnippetsList';
 import Snippet from 'components/layout/sidebar/Snippet';
 import Icon from 'components/common/Icon';
 import { SIDEBAR_WIDTH } from 'constants/config';
-import { baseAppColor, borderColor, colorDanger, lightText } from 'constants/colors';
+import { baseAppColor, borderColor, colorDanger, lightText, boxShadow } from 'constants/colors';
 import { filterSnippetsList, isTag } from 'utils/snippets';
 import * as snippetActions from 'actions/snippets';
 
@@ -25,7 +25,7 @@ const SearchFilters = styled.div`
     background: ${lightText};
     z-index: 2;
     border-top: 1px solid ${borderColor};
-    box-shadow: 0 1px 2px #555;
+    box-shadow: 0 1px 2px ${boxShadow};
     font-size: 12px;
 `;
 

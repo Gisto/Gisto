@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { get, map } from 'lodash/fp';
+import { get, map, size } from 'lodash/fp';
 import styled from 'styled-components';
-import { baseAppColor, colorDanger, textColor } from 'constants/colors';
+
+import { baseAppColor, colorDanger, colorSuccess, textColor } from 'constants/colors';
 import * as snippetActions from 'actions/snippets';
+import { copyToClipboard, prepareFilesForUpdate } from 'utils/snippets';
+
 import UtilityIcon from 'components/common/UtilityIcon';
-import { copyToClipboard } from 'utils/snippets';
+import Input from 'components/common/Input';
+import Anchor from 'components/common/Anchor';
+import { defaultGistURL } from 'constants/config';
+import ExternalLink from 'components/common/ExternalLink';
 
 const SnippetHeaderWrapper = styled.div`
   display: flex;
@@ -49,16 +55,27 @@ const Languages = styled.span`
   cursor: pointer;
 `;
 
-const Link = styled.a`
-  cursor: pointer;
-  margin: 0 5px 0 0;
-`;
-
 export class SnippetHeader extends React.Component {
+  state = {
+    showToolbox: true
+  };
+
+  toggleToolbox = () => {
+    this.setState({
+      showToolbox: this.state.showToolbox = !this.state.showToolbox
+    });
+  };
+
   toggleStar = (id, starred) =>
     starred ? this.props.unsetStar(id) : this.props.setStar(id);
 
   deleteSnippet = (id) => this.props.deleteSnippet(id);
+
+  prepareAndUpdateSnippet = () => {
+    const snippet = get(this.props.match.params.id, this.props.snippets);
+
+    this.props.updateSnippet(prepareFilesForUpdate(this.props.tempSnippet), snippet.id);
+  };
 
   renderStarControl = () => {
     const snippet = get(this.props.match.params.id, this.props.snippets);
@@ -73,69 +90,129 @@ export class SnippetHeader extends React.Component {
     );
   };
 
-  render() {
+  renderEditControls = () => {
     const {
-      snippets, match, searchByLanguages, searchByTags 
+      editSnippet, cancelEditSnippet, edit, match, snippets
+    } = this.props;
+    const snippet = get(match.params.id, snippets);
+
+    if (edit) {
+      return (
+        <React.Fragment>
+          <UtilityIcon size={ 22 } color={ colorSuccess } onClick={ () => this.prepareAndUpdateSnippet() } type="check"/>
+          <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => cancelEditSnippet() } type="close"/>
+        </React.Fragment>
+      );
+    }
+
+    return (
+      <UtilityIcon size={ 22 } color={ baseAppColor } onClick={ () => editSnippet(snippet.id) } type="edit"/>
+    );
+  };
+
+  renderSnippetDescription = () => {
+    const {
+      edit, tempSnippet, snippets, match, updateTempSnippet
+    } = this.props;
+    const snippet = get(match.params.id, snippets);
+
+    if (!edit) {
+      return (
+        <Description onMouseOver={ () => this.toggleToolbox() }
+                     onMouseOut={ () => this.toggleToolbox() }
+                     onBlur={ () => this.toggleToolbox() }
+                     onFocus={ () => this.toggleToolbox() }
+                     title={ get('description', snippet) }>
+          {get('description', snippet)}
+        </Description>
+      );
+    }
+
+    return (
+      <Input value={ get('description', tempSnippet) }
+             onChange={ (event) => updateTempSnippet('description', event.target.value) }/>
+    );
+  };
+
+  renderTitle = () => {
+    const {
+      snippets, match, searchByLanguages, searchByTags, edit
     } = this.props;
     const snippet = get(match.params.id, snippets);
 
     return (
-      <SnippetHeaderWrapper>
-        <Title>
-          { map((language) => (
-            <Languages key={ `${language}${snippet.id}` }
-                       onClick={ () => searchByLanguages(language) }>
-              { language }
-            </Languages>
-          ), get('languages', snippet)) }
-          &nbsp;
-          <Description title={ get('description', snippet) }>
-            { get('description', snippet) }
-          </Description>
-          &nbsp;
-          { map((tag) => (
-            <Link key={ tag }
+      <Title>
+        { !edit && map((language) => (
+          <Languages key={ `${language}${snippet.id}` }
+                     onClick={ () => searchByLanguages(language) }>
+            { language }
+          </Languages>
+        ), get('languages', snippet)) }
+        &nbsp;
+        { this.renderSnippetDescription() }
+        &nbsp;
+        { !edit && map((tag) => (
+          <Anchor key={ tag }
                   onClick={ () => searchByTags(tag) }>
-              { tag }
-            </Link>
-          ), get('tags', snippet)) }
-        </Title>
-        <div>
-          <UtilityIcon size={ 22 } color={ baseAppColor } type="edit"/>
-          <UtilityIcon size={ 22 } color={ baseAppColor } type="file"/>
-          <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
-          <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippet.id) } type="delete"/>
-          <UtilityIcon size={ 22 } color={ baseAppColor } type="chat"/>
-          { this.renderStarControl(snippet) }
-          <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
-            <ul>
-              <li>Edit</li>
-              <li>Open on web</li>
-              <li>Download</li>
-              <li>
-                <Link onClick={ (event) => copyToClipboard(event, snippet.id) }>
+            { tag }
+          </Anchor>
+        ), get('tags', snippet)) }
+      </Title>
+    );
+  };
+
+  render() {
+    const {
+      snippets, match
+    } = this.props;
+    const snippet = get(match.params.id, snippets);
+    const openOnWebUrl = `${defaultGistURL}/${get('username', snippet)}/${get('id', snippet)}`;
+
+    return (
+      <SnippetHeaderWrapper>
+
+        { this.renderTitle() }
+
+        { this.state.showToolbox && (
+          <div>
+            { this.renderEditControls() }
+            <UtilityIcon title={ `${size(get('files', snippet))} File(s)` } size={ 22 } color={ baseAppColor } type="file"/>
+            <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
+            <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippet.id) } type="delete"/>
+            <UtilityIcon size={ 22 } color={ baseAppColor } type="chat"/>
+            { this.renderStarControl(snippet) }
+            <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
+              <ul>
+                <li>Edit</li>
+                <li><ExternalLink href={ openOnWebUrl }>Open on web</ExternalLink></li>
+                <li>Download</li>
+                <li>
+                  <Anchor onClick={ (event) => copyToClipboard(event, snippet.id) }>
                   Copy snippet ID to clipboard
-                </Link>
-              </li>
-              <li>Copy Snippet URL to clipboard</li>
-              <li>Copy HTTPS clone URL to clipboard</li>
-              <li>Copy SSH clone URL to clipboard</li>
-              <li>Open in GitHub desktop</li>
-              <li className="color-danger">
-                <Link onClick={ () => this.deleteSnippet(snippet.id) }>
+                  </Anchor>
+                </li>
+                <li>Copy Snippet URL to clipboard</li>
+                <li>Copy HTTPS clone URL to clipboard</li>
+                <li>Copy SSH clone URL to clipboard</li>
+                <li>Open in GitHub desktop</li>
+                <li className="color-danger">
+                  <Anchor onClick={ () => this.deleteSnippet(snippet.id) }>
                   Delete
-                </Link>
-              </li>
-            </ul>
-          </UtilityIcon>
-        </div>
+                  </Anchor>
+                </li>
+              </ul>
+            </UtilityIcon>
+          </div>
+        ) }
       </SnippetHeaderWrapper>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  snippets: state.snippets.snippets
+  snippets: get(['snippets', 'snippets'], state),
+  edit: get(['ui', 'snippets', 'edit'], state),
+  tempSnippet: get(['snippets', 'edit'], state)
 });
 
 SnippetHeader.propTypes = {
@@ -145,7 +222,13 @@ SnippetHeader.propTypes = {
   searchByTags: PropTypes.func,
   setStar: PropTypes.func,
   unsetStar: PropTypes.func,
-  deleteSnippet: PropTypes.func
+  deleteSnippet: PropTypes.func,
+  editSnippet: PropTypes.func,
+  cancelEditSnippet: PropTypes.func,
+  updateTempSnippet: PropTypes.func,
+  updateSnippet: PropTypes.func,
+  edit: PropTypes.bool,
+  tempSnippet: PropTypes.object
 };
 
 export default connect(mapStateToProps, {
@@ -153,5 +236,9 @@ export default connect(mapStateToProps, {
   searchByTags: snippetActions.filterSnippetsByTags,
   setStar: snippetActions.starSnippet,
   unsetStar: snippetActions.unStarSnippet,
-  deleteSnippet: snippetActions.deleteSnippet
+  deleteSnippet: snippetActions.deleteSnippet,
+  editSnippet: snippetActions.editSnippet,
+  cancelEditSnippet: snippetActions.cancelEditSnippet,
+  updateTempSnippet: snippetActions.updateTempSnippet,
+  updateSnippet: snippetActions.updateSnippet
 })(SnippetHeader);

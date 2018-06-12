@@ -32,16 +32,28 @@ export class Snippet extends React.Component {
   }
 
   render() {
-    const { snippet } = this.props;
+    const {
+      snippet, edit, tempSnippet, updateTempSnippet
+    } = this.props;
+    const currentSnippet = edit ? tempSnippet : snippet;
+
+    if (!this.props.snippet) {
+      return null;
+    }
 
     return (
       <React.Fragment>
-        { map((file) => (
-          <SnippetWrapper key={ file.filename }>
-            <SnippetHeader file={ file } username={ snippet.username } snippetId={ snippet.id }/>
-            <Editor file={ file } onChange={ null } id={ file.name }/>
+        {  map((file) => (
+          <SnippetWrapper key={ file.uuid || `${file.size}-${file.viewed}-${file.filename}` }>
+            <SnippetHeader file={ file }
+                           username={ snippet.username }
+                           snippetId={ snippet.id }/>
+            <Editor file={ file }
+                    value={ file.content }
+                    onChange={ (value) => updateTempSnippet(['files', file.uuid, 'content'], value) }
+                    id={ file.uuid || file.filename }/>
           </SnippetWrapper>
-        ), get('files', snippet)) }
+        ), currentSnippet.files) }
       </React.Fragment>
     );
   }
@@ -51,16 +63,22 @@ const mapStateToProps = (state, ownProps) => {
   const snippetId = ownProps.match.params.id;
 
   return {
-    snippet: get(['snippets', 'snippets', snippetId], state)
+    snippet: get(['snippets', 'snippets', snippetId], state),
+    tempSnippet: get(['snippets', 'edit'], state),
+    edit: get(['ui', 'snippets', 'edit'], state)
   };
 };
 
 Snippet.propTypes = {
   match: PropTypes.object,
   snippet: PropTypes.object,
-  getSnippet: PropTypes.func.isRequired
+  getSnippet: PropTypes.func.isRequired,
+  edit: PropTypes.bool,
+  tempSnippet: PropTypes.object,
+  updateTempSnippet: PropTypes.func
 };
 
 export default connect(mapStateToProps, {
-  getSnippet: snippetActions.getSnippet
+  getSnippet: snippetActions.getSnippet,
+  updateTempSnippet: snippetActions.updateTempSnippet
 })(Snippet);

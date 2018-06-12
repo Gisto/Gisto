@@ -4,6 +4,7 @@ export const borderColor = '#ccc';
 export const lightBorderColor = '#f2f2f2';
 export const lightText = '#fff';
 export const textColor = '#555';
+export const boxShadow = textColor;
 export const baseAppColor = '#3F84A8';
 export const colorRegular = baseAppColor;
 export const colorDanger = 'tomato';

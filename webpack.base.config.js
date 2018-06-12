@@ -8,6 +8,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
       store: path.resolve(__dirname, './src/store'),
+      selectors: path.resolve(__dirname, './src/selectors'),
       components: path.resolve(__dirname, './src/components'),
       assets: path.resolve(__dirname, './src/assets'),
       reducers: path.resolve(__dirname, './src/reducers'),

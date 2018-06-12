@@ -2,9 +2,10 @@ import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { boxShadow } from 'constants/colors';
+
 import Search from 'components/Search';
 import SnippetHeader from 'components/layout/headers/SnippetHeader';
-
 
 const SubHeaderWrapper = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const SubHeaderWrapper = styled.div`
   justify-content: space-between;
   vertical-align: middle;
   height: 60px;
-  box-shadow: 0 1px 2px #555;
+  box-shadow: 0 1px 2px ${boxShadow};
   z-index: 1;
 `;
 
