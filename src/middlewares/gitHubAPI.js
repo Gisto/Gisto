@@ -1,10 +1,12 @@
 import * as API from 'superagent';
 import * as AT from 'constants/actionTypes';
-import { DEFAULT_API_ENDPOINT_URL } from 'constants/config';
+import { DEFAULT_API_ENDPOINT_URL, gitHubTokenKeyInStorage } from 'constants/config';
+
+const getToken = localStorage.getItem(gitHubTokenKeyInStorage);
 
 const _headers = (additional) => ({
   'Content-Type': 'application/json',
-  Authorization: 'token 269c6ce4acff14c5e8e9dc787d35e35daed1fa5f',
+  Authorization: `token ${getToken}`,
   ...additional
 });
 
