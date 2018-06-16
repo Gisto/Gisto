@@ -1,0 +1,63 @@
+{
+  "directories": {
+    "app": "dist",
+    "buildResources": "build",
+    "output": "release"
+  },
+  "appId": "com.gistoapp.gisto2",
+  "artifactName": "${productName}-${version}-${arch}.${ext}",
+  "mac": {
+    "publish": {
+      "provider": "s3",
+      "bucket": "gisto-releases"
+    },
+    "category": "public.app-category.productivity",
+    "icon": "build/icon.png"
+  },
+  "dmg": {
+    "publish": {
+      "provider": "s3",
+      "bucket": "gisto-releases"
+    },
+    "window": {
+      "width": 540,
+      "height": 328
+    },
+    "contents": [
+      {
+        "x": 100,
+        "y": 200
+      },
+      {
+        "x": 440,
+        "y": 200,
+        "type": "link",
+        "path": "/Applications"
+      }
+    ]
+  },
+  "win": {
+    "publish": {
+      "provider": "s3",
+      "bucket": "gisto-releases"
+    },
+    "target": "nsis",
+    "icon": "build/icon.ico"
+  },
+  "linux": {
+    "maintainer": "Sasha Khamkov <sanusart@gmail.com>",
+    "publish": {
+      "provider": "s3",
+      "bucket": "gisto-releases"
+    },
+    "target": [
+      "deb",
+      "rpm",
+      "pacman",
+      "AppImage",
+      "snap"
+    ],
+    "synopsis": "Gisto - snippets made awesome",
+    "category": "Development"
+  }
+}

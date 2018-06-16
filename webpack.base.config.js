@@ -56,7 +56,8 @@ module.exports = {
     new CopyWebpackPlugin([
       'build/icon.ico',
       'build/icon.png',
-      'package.json'
+      'package.json',
+      { from: 'src/icons', to: 'src/icons' }
     ])
   ]
 };
