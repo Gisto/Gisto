@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -51,6 +52,11 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
       DEBUG: true
-    })
+    }),
+    new CopyWebpackPlugin([
+      'build/icon.ico',
+      'build/icon.png',
+      'package.json'
+    ])
   ]
 };

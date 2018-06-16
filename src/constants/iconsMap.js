@@ -37,5 +37,8 @@ export const iconsMap = {
   file: 'ios-document-outline.svg',
   book: 'ios-book-outline.svg',
   code: 'ios-code-working.svg',
-  'code-empty': 'ios-code.svg'
+  'code-empty': 'ios-code.svg',
+  'logo-github': 'logo-github.svg',
+  logout: 'log-out.svg',
+  flash: 'flash.svg'
 };

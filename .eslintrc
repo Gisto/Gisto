@@ -6,7 +6,9 @@
 		"document": true,
 		"React": true,
 		"electron": true,
-		"localStorage": true
+		"localStorage": true,
+		"Notification": true,
+		"btoa": true
 	},
 	"settings": {
 		"import/resolver": "webpack"

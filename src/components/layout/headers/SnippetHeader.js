@@ -154,7 +154,7 @@ export class SnippetHeader extends React.Component {
         { !edit && map((tag) => (
           <Anchor key={ tag }
                   onClick={ () => searchByTags(tag) }>
-            { tag }
+            { tag }&nbsp;
           </Anchor>
         ), get('tags', snippet)) }
       </Title>
