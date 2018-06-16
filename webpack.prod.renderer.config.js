@@ -1,6 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.config');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const buildPath = path.resolve(__dirname, './dist');
 
@@ -42,6 +44,15 @@ const config = merge.smart(baseConfig, {
       }
     ]
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'production',
+      DEBUG: false
+    }),
+    new UglifyJsPlugin({
+      sourceMap: true
+    })
+  ],
   target: 'electron-renderer'
 });
 

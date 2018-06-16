@@ -1,5 +1,6 @@
-const webpack = require('webpack');
 const path = require('path');
+const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const buildPath = path.resolve(__dirname, './dist');
 
@@ -27,6 +28,9 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
       DEBUG: false
+    }),
+    new UglifyJsPlugin({
+      sourceMap: true
     })
   ],
   target: 'electron-main',

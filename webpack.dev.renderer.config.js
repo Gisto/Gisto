@@ -1,6 +1,8 @@
-const baseConfig = require('./webpack.base.config');
+const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
+
+const baseConfig = require('./webpack.base.config');
 
 const buildPath = path.resolve(__dirname, './dist');
 
@@ -43,6 +45,12 @@ const config = merge.smart(baseConfig, {
       }
     ]
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+      DEBUG: true
+    })
+  ],
   target: 'electron-renderer'
 });
 
