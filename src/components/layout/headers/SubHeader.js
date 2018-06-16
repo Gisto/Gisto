@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -6,6 +7,8 @@ import { boxShadow } from 'constants/colors';
 
 import Search from 'components/Search';
 import SnippetHeader from 'components/layout/headers/SnippetHeader';
+import {get} from "lodash/fp";
+import PropTypes from "prop-types";
 
 const SubHeaderWrapper = styled.div`
   display: flex;
@@ -26,9 +29,11 @@ const SnippetHeaderBlock = styled.div`
   margin: 0 0 0 10px;
 `;
 
-const SubHeader = () => (
+const SubHeader = ({ edit }) => (
   <SubHeaderWrapper>
-    <Search/>
+    { !edit && (
+      <Search/>
+    ) }
     <SnippetHeaderBlock>
       <Router>
         <Switch>
@@ -42,4 +47,12 @@ const SubHeader = () => (
   </SubHeaderWrapper>
 );
 
-export default SubHeader;
+const mapStateToProps = (state) => ({
+  edit: get(['ui', 'snippets', 'edit'], state)
+});
+
+SubHeader.propTypes = {
+  edit: PropTypes.bool
+};
+
+export default connect(mapStateToProps)(SubHeader);

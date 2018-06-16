@@ -41,7 +41,8 @@ const config = merge.smart(baseConfig, {
         ]
       }
     ]
-  }
+  },
+  target: 'electron-renderer'
 });
 
 module.exports = config;

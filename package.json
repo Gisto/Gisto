@@ -1,13 +1,13 @@
 {
   "name": "gisto-react",
-  "version": "1.0.0",
+  "version": "1.9.30",
   "description": "",
-  "main": "dist/main.js",
+  "main": "main.js",
   "scripts": {
     "clean": "rimraf ./dist",
     "start:dev": "NODE_ENV='development' webpack --mode development --watch",
     "start:prod": "NODE_ENV='production' webpack --mode production",
-    "electron": "electron .",
+    "electron": "electron ./dist",
     "dev": "concurrently \"npm run start:dev\" \"npm run electron\"",
     "prod": "concurrently \"npm run start:prod\" \"npm run electron\""
   },

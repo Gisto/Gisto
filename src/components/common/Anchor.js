@@ -5,17 +5,16 @@ import { baseAppColor } from 'constants/colors';
 
 const Link = styled.a`
   cursor: pointer;
-  margin: 0 5px 0 0;
   color: ${baseAppColor};
   text-decoration: none;
 `;
 
 const Anchor = ({
-  key, href, onClick, children 
+  key, href, onClick, children, download
 }) => (
   <Link href={ href }
         key={ key }
-
+        download={ download }
         onClick={ onClick }>
     { children }
   </Link>
@@ -25,7 +24,8 @@ Anchor.propTypes = {
   href: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node,
-  key: PropTypes.any
+  key: PropTypes.any,
+  download: PropTypes.string
 };
 
 export default Anchor;

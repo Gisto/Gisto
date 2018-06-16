@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { baseAppColor, bg } from 'constants/colors';
+import { baseAppColor, bg, lightText } from 'constants/colors';
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
@@ -11,6 +11,7 @@ const StyledInput = styled.input`
   width: 100%;
   color: ${baseAppColor};
   border-bottom: 1px solid ${baseAppColor};
+  background: ${lightText};
 
   &:focus {
     outline: none;

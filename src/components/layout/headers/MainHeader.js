@@ -36,6 +36,7 @@ const Logo = styled(HeaderSection)`
   width: ${SIDEBAR_WIDTH - 40}px;
   max-width: ${SIDEBAR_WIDTH - 40}px;
   padding: 20px;
+  font-size: 20px;
   a {
     color: ${headerColor};
     text-decoration: none;
@@ -48,11 +49,13 @@ const Loading = styled.span`
   align-self: center;
 `;
 
-const MainHeader = ({ loading, rateLimit }) => (
+const MainHeader = ({ loading, rateLimit, edit }) => (
   <HeaderWrapper>
-    <Logo>
-      <Link to="/" title={ `API Rate limit: ${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}` }>{ logoText }</Link>
-    </Logo>
+    { !edit && (
+      <Logo>
+        <Link to="/" title={ `API Rate limit: ${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}` }>{ logoText }</Link>
+      </Logo>
+    ) }
     <MiddleArea>
       <Icon color={ lightText } type="menu"/>
       { loading && <Loading><Icon type="loading"/> { 'loading...' }</Loading> }
@@ -64,11 +67,13 @@ const MainHeader = ({ loading, rateLimit }) => (
 
 const mapStateToProps = (state) => ({
   loading: state.ui.snippets.loading,
-  rateLimit: get(['ui', 'rateLimit'], state)
+  rateLimit: get(['ui', 'rateLimit'], state),
+  edit: get(['ui', 'snippets', 'edit'], state)
 });
 
 MainHeader.propTypes = {
   loading: PropTypes.bool,
+  edit: PropTypes.bool,
   rateLimit: PropTypes.object
 };
 

@@ -1,5 +1,10 @@
 import { createAsyncAction } from 'utils/actions';
+
 export const GET_RATE_LIMIT = createAsyncAction('GET_RATE_LIMIT');
+
+export const LOGOUT = 'LOGOUT';
+export const LOGIN_BASIC = createAsyncAction('LOGIN_BASIC');
+export const LOGIN_BASIC_REQUEST_2FA = 'LOGIN_BASIC_REQUEST_2FA';
 
 export const GET_SNIPPETS = createAsyncAction('GET_SNIPPETS');
 export const GET_SNIPPET = createAsyncAction('GET_SNIPPET');

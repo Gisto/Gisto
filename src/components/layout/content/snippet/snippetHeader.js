@@ -5,7 +5,7 @@ import { get } from 'lodash/fp';
 import styled from 'styled-components';
 
 import { defaultGistURL } from 'constants/config';
-import { baseAppColor, borderColor, headerBgLightest } from 'constants/colors';
+import {baseAppColor, borderColor, colorDanger, headerBgLightest} from 'constants/colors';
 
 import { copyToClipboard } from 'utils/snippets';
 import * as snippetActions from 'actions/snippets';
@@ -55,38 +55,43 @@ export class SnippetHeader extends React.Component {
   };
 
   render() {
-    const { file, username, snippetId } = this.props;
+    const {
+      file, username, snippetId, edit 
+    } = this.props;
     const openOnWebUrl = `${defaultGistURL}/${username}/${snippetId}#file-${file.filename}`;
 
     return (
       <SnippetHeaderWrapper>
         <FileName><Icon size={ 22 } color={ baseAppColor } type="file"/> { this.renderFileName() }</FileName>
-        <div>
-          <Language>{get('plain', 'language', file) || 'Plain text'}</Language>
-          <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
-            <ul>
-              <li>
-                <ExternalLink href={ openOnWebUrl }>
+
+        { !edit ? (
+          <div>
+            <Language>{get('plain', 'language', file) || 'Plain text'}</Language>
+            <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
+              <ul>
+                <li>
+                  <ExternalLink href={ openOnWebUrl }>
                   Open on web
-                </ExternalLink>
-              </li>
-              <li>
-                <Anchor onClick={ (event) => copyToClipboard(event, file.content) }>
+                  </ExternalLink>
+                </li>
+                <li>
+                  <Anchor onClick={ (event) => copyToClipboard(event, file.content) }>
                   Copy file content to clipboard
-                </Anchor>
-              </li>
-              <li>
-                <a download={ file.filename } href={ file.raw_url }>
+                  </Anchor>
+                </li>
+                <li>
+                  <Anchor download={ file.filename } href={ file.raw_url }>
                   Download
-                </a>
-              </li>
-              <li>
-                Delete
-              </li>
-            </ul>
-          </UtilityIcon>
-          <UtilityIcon size={ 22 } color={ baseAppColor } type="arrow-up" onClick={ null }/>
-        </div>
+                  </Anchor>
+                </li>
+              </ul>
+            </UtilityIcon>
+            <UtilityIcon size={ 22 } color={ baseAppColor } type="arrow-up" onClick={ null }/>
+          </div>
+          ) : (
+            <UtilityIcon size={ 22 } color={ colorDanger } type="delete" onClick={ null }/>
+        ) }
+
       </SnippetHeaderWrapper>
     );
   }

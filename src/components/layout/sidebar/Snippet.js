@@ -62,8 +62,8 @@ const Snippet = ({ snippet, setStar, unsetStar }) => {
                      activeClassName="selected"
                      to={ `/snippet/${snippet.id}` }>
         <span>
-          <Icon size={ 32 }
-              type={ snippet.public ? 'unlock' : 'lock' }
+          <Icon size={ 24 }
+              type={ snippet.public ? 'logo-github' : 'lock' }
               color={ lightText }/>
         </span>
         <span>

@@ -29,5 +29,8 @@ module.exports = {
       DEBUG: false
     })
   ],
-  target: 'electron-main'
+  target: 'electron-main',
+  node: {
+    __dirname: false
+  }
 };

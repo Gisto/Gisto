@@ -1,6 +1,9 @@
 import * as API from 'superagent';
 import * as AT from 'constants/actionTypes';
 import { DEFAULT_API_ENDPOINT_URL, gitHubTokenKeyInStorage } from 'constants/config';
+import { setNotification } from 'utils/notifications';
+import { setToken, removeToken } from 'utils/login';
+import { get, set } from 'lodash/fp';
 
 const getToken = localStorage.getItem(gitHubTokenKeyInStorage);
 
@@ -12,28 +15,70 @@ const _headers = (additional) => ({
 
 const gitHubAPIMiddleware = ({ dispatch }) => {
   return (next) => (action) => {
-
     const errorHandler = (error, result) => {
       if (error) {
-        throw new Error(`ERROR: ${result.statusText} - ${result.body.description}`);
+        setNotification(`ERROR: ${error.status}: ${error.response.message} ${error.response.body.message}`);
       } else if (result.statusCode > 204) {
-        throw new Error(`INFO: ${result.statusText} - ${result.body.description}`);
+        setNotification(`INFO: ${result.statusText} - ${result.body.description}`);
       }
-    }
+
+      dispatch({
+        type: `${action.type}_FAILURE`,
+        payload: error
+      });
+    };
 
     if (action.type === AT.GET_RATE_LIMIT) {
       API.get(`${DEFAULT_API_ENDPOINT_URL}/rate_limit`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
-          if (error) {
-            dispatch({
-              type: AT.GET_RATE_LIMIT.FAILURE,
-              payload: error
-            });
-          }
+
           if (!error && result) {
             dispatch({ type: AT.GET_RATE_LIMIT.SUCCESS, payload: result.body });
+          }
+        });
+    }
+
+    if (action.type === AT.LOGOUT) {
+      removeToken();
+      window.location.reload(true);
+    }
+
+    if (action.type === AT.LOGIN_BASIC) {
+      const tokenString = btoa(`${action.payload.user}:${action.payload.pass}`);
+      let basicAuthHeader = {
+        Authorization: `basic ${tokenString}`
+      };
+
+      if (action.payload.twoFactorAuth) {
+        basicAuthHeader = set('X-GitHub-OTP', action.payload.twoFactorAuth, basicAuthHeader);
+      }
+
+      API.post(`${DEFAULT_API_ENDPOINT_URL}/authorizations`)
+        .set(basicAuthHeader)
+        .send(JSON.stringify({
+          scopes: ['gist'],
+          note: 'Gisto - Snippets made simple',
+          note_url: 'http://www.gistoapp.com',
+          fingerprint: new Date().getTime()
+        }))
+        .end((error, result) => {
+          errorHandler(error, result);
+
+          // check if 2fa needed and notify the ui to show the field
+          if (result.statusCode === 401 && result.header['x-github-otp']) {
+            dispatch({ type: AT.LOGIN_BASIC_REQUEST_2FA });
+          }
+
+          if (!error && result) {
+            const token = get('token', result.body);
+
+            if (token) {
+              setToken(token);
+              dispatch({ type: AT.LOGIN_BASIC.SUCCESS, payload: result.body });
+              window.location.reload(true);
+            }
           }
         });
     }
@@ -44,12 +89,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
-          if (error) {
-            dispatch({
-              type: AT.GET_USER.FAILURE,
-              payload: error
-            });
-          }
+
           if (!error && result) {
             dispatch({ type: AT.GET_USER.SUCCESS, payload: result.body });
           }
@@ -63,7 +103,8 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
-          dispatch({ type: AT.GET_STARRED_SNIPPETS.SUCCESS, payload: result.body })
+
+          dispatch({ type: AT.GET_STARRED_SNIPPETS.SUCCESS, payload: result.body });
         });
     }
 
@@ -74,12 +115,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
-          if (error) {
-            dispatch({
-              type: AT.GET_SNIPPETS.FAILURE,
-              payload: error
-            });
-          }
+
           if (!error && result) {
             dispatch({
               type: AT.GET_SNIPPETS.SUCCESS,
@@ -101,12 +137,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
-          if (error) {
-            dispatch({
-              type: AT.GET_SNIPPET.FAILURE,
-              payload: error
-            });
-          }
+
           if (!error && result) {
             dispatch({
               type: AT.GET_SNIPPET.SUCCESS,
@@ -123,12 +154,14 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .set(_headers({ 'Content-Length': 0 }))
         .end((error, result) => {
           errorHandler(error, result);
+
           if (error || result.status !== 204) {
             dispatch({
               type: AT.SET_STAR.FAILURE,
               payload: error
             });
           }
+
           if (!error && result.status === 204) {
             dispatch({
               type: AT.SET_STAR.SUCCESS,
@@ -145,12 +178,14 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
+
           if (error || result.status !== 204) {
             dispatch({
               type: AT.UNSET_STAR.FAILURE,
               payload: error
             });
           }
+
           if (!error && result.status === 204) {
             dispatch({
               type: AT.UNSET_STAR.SUCCESS,
@@ -167,6 +202,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .send(JSON.stringify(action.payload))
         .end((error, result) => {
           errorHandler(error, result);
+
           if (result.statusCode === 201) {
             dispatch({
               type: AT.CREATE_SNIPPET.SUCCESS,
@@ -183,6 +219,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
+
           if (result.statusCode === 204) {
             dispatch({
               type: AT.DELETE_SNIPPET.SUCCESS,
@@ -200,6 +237,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .send(action.payload.snippet)
         .end((error, result) => {
           errorHandler(error, result);
+
           dispatch({
             type: AT.UPDATE_SNIPPET.SUCCESS,
             meta: action.meta,
