@@ -138,6 +138,10 @@ export const snippets = (state = initialState, action) => {
       return set(updatePath, value, state);
     }
 
+    case AT.DELETE_TEMP_FILE: {
+      return set(['edit', 'files', action.payload.uuid, 'delete'], true, state);
+    }
+
     case AT.UPDATE_SNIPPET.SUCCESS: {
       return set(
         ['snippets', action.payload.id],

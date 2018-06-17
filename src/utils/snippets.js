@@ -12,7 +12,8 @@ import {
   keyBy,
   map,
   pick,
-  omit
+  reduce,
+  set
 } from 'lodash/fp';
 
 export const isTag = (filterText) => startsWith('#', filterText);
@@ -85,13 +86,26 @@ export const prepareFiles = (files) => flow([
 
 export const prepareFilesForUpdate = (snippet) => {
   const cleanFiles = map((file) => {
-    return pick(['filename', 'content', 'originalFileName'], file);
+    return pick(['filename', 'content', 'originalFileName', 'delete'], file);
   }, snippet.files);
 
-  const files = keyBy('originalFileName', cleanFiles);
+  const filesClean = keyBy('originalFileName', cleanFiles);
 
-  return {
+  const files = reduce((acc, file) => {
+    if (file.delete) {
+      acc[file.originalFileName] = null;
+    } else {
+      acc[file.originalFileName] = {
+        filename: file.filename,
+        content: file.content
+      };
+    }
+
+    return acc;
+  }, {}, filesClean);
+
+  return ({
     description: snippet.description,
     files
-  };
+  });
 };
