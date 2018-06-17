@@ -11,7 +11,8 @@
 		"btoa": true,
 		"describe": true,
 		"test": true,
-		"expect": true
+		"expect": true,
+		"shallow": true
 	},
 	"settings": {
 		"import/resolver": "webpack"
