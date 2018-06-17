@@ -8,7 +8,10 @@
 		"electron": true,
 		"localStorage": true,
 		"Notification": true,
-		"btoa": true
+		"btoa": true,
+		"describe": true,
+		"test": true,
+		"expect": true
 	},
 	"settings": {
 		"import/resolver": "webpack"
