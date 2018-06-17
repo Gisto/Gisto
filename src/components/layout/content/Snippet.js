@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { get, map } from 'lodash/fp';
+import { get, map, filter } from 'lodash/fp';
 import Editor from 'components/common/Editor';
 import * as snippetActions from 'actions/snippets';
 import { borderColor } from 'constants/colors';
@@ -36,7 +36,8 @@ export class Snippet extends React.Component {
       snippet, edit, tempSnippet, updateTempSnippet
     } = this.props;
     const currentSnippet = edit ? tempSnippet : snippet;
-
+    const files = filter((file) => !file.delete, currentSnippet.files);
+    
     if (!this.props.snippet) {
       return null;
     }
@@ -53,7 +54,7 @@ export class Snippet extends React.Component {
                     onChange={ (value) => updateTempSnippet(['files', file.uuid, 'content'], value) }
                     id={ file.uuid || file.filename }/>
           </SnippetWrapper>
-        ), currentSnippet.files) }
+        ), files) }
       </React.Fragment>
     );
   }

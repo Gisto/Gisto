@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "clean": "rimraf dist release",
-    "start:dev": "NODE_ENV='development' webpack --mode development",
+    "start:dev": "NODE_ENV='development' webpack --mode development -w",
     "start:prod": "NODE_ENV='production' webpack --mode production",
     "electron": "electron ./dist",
     "dev": "cross-env npm run clean && npm run start:dev && npm run electron",

@@ -118,6 +118,16 @@ export const updateTempSnippet = (path, value) => ({
   }
 });
 
+export const deleteTempFile = (uuid) => ({
+  meta: {
+    uuid
+  },
+  type: AT.DELETE_TEMP_FILE,
+  payload: {
+    uuid
+  }
+});
+
 export const updateSnippet = (snippet, id) => ({
   meta: {
     snippet,

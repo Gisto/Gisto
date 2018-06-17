@@ -5,7 +5,7 @@ import { get } from 'lodash/fp';
 import styled from 'styled-components';
 
 import { defaultGistURL } from 'constants/config';
-import {baseAppColor, borderColor, colorDanger, headerBgLightest} from 'constants/colors';
+import { baseAppColor, borderColor, colorDanger, headerBgLightest } from 'constants/colors';
 
 import { copyToClipboard } from 'utils/snippets';
 import * as snippetActions from 'actions/snippets';
@@ -89,7 +89,7 @@ export class SnippetHeader extends React.Component {
             <UtilityIcon size={ 22 } color={ baseAppColor } type="arrow-up" onClick={ null }/>
           </div>
           ) : (
-            <UtilityIcon size={ 22 } color={ colorDanger } type="delete" onClick={ null }/>
+            <UtilityIcon size={ 22 } color={ colorDanger } type="delete" onClick={ () => this.props.deleteFile(file.uuid) }/>
         ) }
 
       </SnippetHeaderWrapper>
@@ -108,9 +108,11 @@ SnippetHeader.propTypes = {
   snippetId: PropTypes.string,
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object,
-  updateTempSnippet: PropTypes.func
+  updateTempSnippet: PropTypes.func,
+  deleteFile: PropTypes.func
 };
 
 export default connect(mapStateToProps, {
-  updateTempSnippet: snippetActions.updateTempSnippet
+  updateTempSnippet: snippetActions.updateTempSnippet,
+  deleteFile: snippetActions.deleteTempFile
 })(SnippetHeader);
