@@ -11,8 +11,10 @@
 		"btoa": true,
 		"describe": true,
 		"test": true,
+		"jest": true,
 		"expect": true,
-		"shallow": true
+		"shallow": true,
+		"sinon": true
 	},
 	"settings": {
 		"import/resolver": "webpack"

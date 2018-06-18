@@ -130,6 +130,17 @@
     ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
-    }
+    },
+    "verbose": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js}",
+      "!**/node_modules/**",
+      "!**/build/**",
+      "!**/dist/**"
+    ],
+    "coverageReporters": [
+      "lcov"
+    ]
   }
 }
