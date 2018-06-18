@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { baseAppColor, lightText } from 'constants/colors';
+import { baseAppColor, borderColor, lightText, textColor } from 'constants/colors';
 import Icon from 'components/common/Icon';
 
 const ButtonComponent = styled.button`
@@ -16,20 +16,41 @@ const ButtonComponent = styled.button`
   ${(props) => props.width ? `width: ${props.width};` : ''}
   -webkit-appearance: none;
   cursor: pointer;
+  
+  &[disabled] {
+    background: ${borderColor};
+    border: 1px solid ${borderColor};
+    color: ${textColor};
+    cursor: not-allowed;
+  }
 `;
 
 const Button = ({
-  icon, children, width, height, invert, className, onClick
-}) => (
-  <ButtonComponent invert={ invert }
-                   width={ width }
-                   height={ height }
-                   className={ className }
-                   onClick={ onClick }>
-    <Icon color={ invert ? baseAppColor : lightText }
-          type={ icon }/> { children }
-  </ButtonComponent>
-);
+  icon, children, width, height, invert, className, onClick, disabled
+}) => {
+  const iconColor = () => {
+    if (invert) {
+      return baseAppColor;
+    } else if (disabled) {
+      return  textColor;
+    } 
+    
+    return lightText;
+  };
+
+  return (
+    <ButtonComponent invert={ invert }
+                     width={ width }
+                     disabled={ disabled }
+                     title={ disabled ? 'Currently not available' : children }
+                     height={ height }
+                     className={ className }
+                     onClick={ onClick }>
+      <Icon color={ iconColor() }
+            type={ icon }/> {children}
+    </ButtonComponent>
+  );
+};
 
 Button.propTypes = {
   icon: PropTypes.string,
@@ -38,7 +59,8 @@ Button.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   invert: PropTypes.bool,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool
 };
 
 export default Button;

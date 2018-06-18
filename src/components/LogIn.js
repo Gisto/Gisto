@@ -126,7 +126,10 @@ export class LogIn extends React.Component {
         <small>v{packageJson.version}</small>
 
         { this.state.loginType.github && (
-          <StyledGithubLoginButton icon="logo-github" onClick={ null }>Log-in with GitHub</StyledGithubLoginButton>
+          <StyledGithubLoginButton disabled icon="logo-github"
+                                   onClick={ null }>
+            Log-in with GitHub
+          </StyledGithubLoginButton>
         ) }
 
         { this.state.loginType.token && (
