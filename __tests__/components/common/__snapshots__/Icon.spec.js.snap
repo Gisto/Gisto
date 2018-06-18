@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Icon> render Icon 1`] = `
+<span
+  className="sc-bdVaJa iCVotU"
+  color="#ff0000"
+  type="menu"
+>
+  link
+</span>
+`;
