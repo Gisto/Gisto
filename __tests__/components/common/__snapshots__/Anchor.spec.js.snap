@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render Anchor 1`] = `
+exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
 <styled.a
   download="file.zip"
   href="https://github.com"
-/>
+>
+  link
+</styled.a>
 `;
