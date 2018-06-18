@@ -29,6 +29,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     };
 
     if (action.type === AT.GET_RATE_LIMIT) {
+      dispatch({ type: AT.GET_RATE_LIMIT.PENDING, action });
       API.get(`${DEFAULT_API_ENDPOINT_URL}/rate_limit`)
         .set(_headers())
         .end((error, result) => {
@@ -46,6 +47,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     }
 
     if (action.type === AT.LOGIN_BASIC) {
+      dispatch({ type: AT.LOGIN_BASIC.PENDING, action });
       const tokenString = btoa(`${action.payload.user}:${action.payload.pass}`);
       let basicAuthHeader = {
         Authorization: `basic ${tokenString}`
@@ -79,6 +81,20 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
               dispatch({ type: AT.LOGIN_BASIC.SUCCESS, payload: result.body });
               window.location.reload(true);
             }
+          }
+        });
+    }
+
+    if (action.type === AT.LOGIN_WITH_TOKEN) {
+      dispatch({ type: AT.LOGIN_WITH_TOKEN.PENDING, action });
+      API.get(`${DEFAULT_API_ENDPOINT_URL}/user`)
+        .set({ Authorization: `token ${action.payload.token}` })
+        .end((error, result) => {
+          errorHandler(error, result);
+          if (result.statusCode === 200) {
+            setToken(action.payload.token);
+
+            window.location.reload(true);
           }
         });
     }

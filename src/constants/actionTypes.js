@@ -4,6 +4,7 @@ export const GET_RATE_LIMIT = createAsyncAction('GET_RATE_LIMIT');
 
 export const LOGOUT = 'LOGOUT';
 export const LOGIN_BASIC = createAsyncAction('LOGIN_BASIC');
+export const LOGIN_WITH_TOKEN = createAsyncAction('LOGIN_WITH_TOKEN');
 export const LOGIN_BASIC_REQUEST_2FA = 'LOGIN_BASIC_REQUEST_2FA';
 
 export const GET_SNIPPETS = createAsyncAction('GET_SNIPPETS');

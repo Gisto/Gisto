@@ -34,7 +34,11 @@ export const ui = (state = initialState, action) => {
     case AT.SET_STAR.SUCCESS:
     case AT.SET_STAR.FAILURE:
     case AT.UNSET_STAR.SUCCESS:
-    case AT.UNSET_STAR.FAILURE: {
+    case AT.UNSET_STAR.FAILURE:
+    case AT.LOGIN_WITH_TOKEN.SUCCESS:
+    case AT.LOGIN_WITH_TOKEN.FAILURE:
+    case AT.LOGIN_BASIC.SUCCESS:
+    case AT.LOGIN_BASIC.FAILURE: {
       return set('snippets.loading', false, state);
     }
 
