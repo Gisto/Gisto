@@ -80,7 +80,6 @@ const ResetLoginType = styled.div`
 
 export class LogIn extends React.Component {
   state = {
-    loading: false,
     fieldsData: {},
     loginType: {
       enterprise: false,
@@ -140,7 +139,7 @@ export class LogIn extends React.Component {
               <Icon type="info" size="16" color={ baseAppColor }/>
             </ExternalLink>
             <br/>
-            <Button icon="success" onClick={ () => this.loginWithToken(this.state.fieldsData.token) }>Log-in</Button>
+            <Button icon="success" onClick={ () => this.props.loginWithToken(this.state.fieldsData.token) }>Log-in</Button>
             <br/>
             <br/>
             <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
@@ -208,8 +207,8 @@ export class LogIn extends React.Component {
           <Anchor onClick={ () => this.setLoginType('enterprise') }>Use enterprise</Anchor>
         </p>
 
-        { this.state.loading && (
-          <p><Icon type="loading" color="#555"/> Loading...</p>
+        { this.props.loading && (
+          <p><Icon type="loading" color={ baseAppColor }/> Loading...</p>
         ) }
       </LoginWrapper>
     );
@@ -217,14 +216,18 @@ export class LogIn extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  twoFactorAuth: get(['login', 'twoFactorAuth'], state)
+  twoFactorAuth: get(['login', 'twoFactorAuth'], state),
+  loading: get(['login', 'loading'], state)
 });
 
 LogIn.propTypes = {
   loginBasic: PropTypes.func,
-  twoFactorAuth: PropTypes.string
+  loginWithToken: PropTypes.func,
+  twoFactorAuth: PropTypes.string,
+  loading: PropTypes.bool
 };
 
 export default connect(mapStateToProps, {
-  loginBasic: loginActions.loginWithBasicAuth
+  loginBasic: loginActions.loginWithBasicAuth,
+  loginWithToken: loginActions.loginWithToken
 })(withRouter(LogIn));

@@ -14,6 +14,16 @@ export const loginWithBasicAuth = (user, pass, twoFactorAuth = null) => ({
   }
 });
 
+export const loginWithToken = (token) => ({
+  meta: {
+    token
+  },
+  type: AT.LOGIN_WITH_TOKEN,
+  payload: {
+    token
+  }
+});
+
 export const logout = () => ({
   type: AT.LOGOUT
 });
