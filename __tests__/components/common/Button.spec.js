@@ -10,13 +10,13 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => (shallow(<Button { ...props }>link</Button>));
+const setup = (props) => shallow(<Button { ...props }>link</Button>);
 
 describe('COMPONENTS - <Button>', () => {
   test('render Button', () => {
-    const wrapper = setup(propSetup());
+    const component = setup(propSetup());
 
-    expect(wrapper).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   test('handle click', () => {
@@ -24,9 +24,9 @@ describe('COMPONENTS - <Button>', () => {
       onClick: jest.fn(),
       invert: false
     };
-    const wrapper = setup(propSetup(props));
+    const component = setup(propSetup(props));
 
-    wrapper.simulate('click');
+    component.simulate('click');
 
     expect(props.onClick).toHaveBeenCalled();
   });

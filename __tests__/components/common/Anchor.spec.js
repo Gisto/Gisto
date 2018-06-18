@@ -1,6 +1,6 @@
 import Anchor from 'components/common/Anchor';
 
-const setup = (props) => (shallow(<Anchor { ...props }>link</Anchor>));
+const setup = (props) => shallow(<Anchor { ...props }>link</Anchor>);
 
 describe('COMPONENTS - <Anchor>', () => {
   test('render Anchor', () => {
@@ -8,9 +8,9 @@ describe('COMPONENTS - <Anchor>', () => {
       download: 'file.zip',
       href: 'https://github.com'
     };
-    const wrapper = setup(props);
+    const component = setup(props);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(component).toMatchSnapshot();
   });
 
   test('handle click', () => {
@@ -19,9 +19,9 @@ describe('COMPONENTS - <Anchor>', () => {
       href: 'https://github.com',
       onClick: jest.fn()
     };
-    const wrapper = setup(props);
+    const component = setup(props);
 
-    wrapper.simulate('click');
+    component.simulate('click');
 
     expect(props.onClick).toHaveBeenCalled();
   });

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Input> render Input 1`] = `
+<styled.input
+  className="classified"
+  placeholder="I am temporary"
+  type="search"
+  value="typetypetype"
+/>
+`;
