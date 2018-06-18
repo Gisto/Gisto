@@ -5,6 +5,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
   className="btn"
   height="30px"
   invert={true}
+  title="link"
   width="200px"
 >
   <styled.span
