@@ -9,7 +9,7 @@ import SubHeader from 'components/layout/headers/SubHeader';
 import Main from 'components/layout/Main';
 import LogIn from 'components/LogIn';
 
-const Layout = () => (
+export const Layout = () => (
   <App>
     { isLoggedIn ? (
       <React.Fragment>
