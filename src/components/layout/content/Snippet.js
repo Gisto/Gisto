@@ -36,7 +36,7 @@ export class Snippet extends React.Component {
       snippet, edit, tempSnippet, updateTempSnippet
     } = this.props;
     const currentSnippet = edit ? tempSnippet : snippet;
-    const files = filter((file) => !file.delete, currentSnippet.files);
+    const files = filter((file) => !file.delete, get('files', currentSnippet));
     
     if (!this.props.snippet) {
       return null;

@@ -9,11 +9,11 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "clean": "rimraf dist release",
-    "start:dev": "NODE_ENV='development' webpack --mode development -w",
-    "start:prod": "NODE_ENV='production' webpack --mode production",
+    "start:dev": "cross-env npm run clean && NODE_ENV='development' webpack --mode development -w",
+    "start:prod": "cross-env npm run clean && NODE_ENV='production' webpack --mode production",
     "electron": "electron ./dist",
-    "dev": "cross-env npm run clean && npm run start:dev && npm run electron",
-    "prod": "cross-env npm run clean && npm run start:prod && npm run electron",
+    "dev": "concurrently \"npm run start:dev\" \"wait-on dist && npm run electron\"",
+    "prod": "concurrently \"npm run start:prod\" \"wait-on dist && npm run electron\"",
     "version:patch": "npm version patch",
     "version:minor": "npm version minor",
     "pack:mac": "cross-env NODE_ENV=production npm run clean && npm run start:prod && npx electron-builder build --m --publish=never",
@@ -108,7 +108,8 @@
     "redux": "^4.0.0",
     "reselect": "^3.0.1",
     "styled-components": "^3.2.6",
-    "superagent": "^3.8.3"
+    "superagent": "^3.8.3",
+    "wait-on": "^2.1.0"
   },
   "jest": {
     "modulePaths": [
@@ -123,7 +124,8 @@
       "src"
     ],
     "setupFiles": [
-      "./jest-setup.js"
+      "./jest-setup.js",
+      "./__mocks__/localStorage.js"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
@@ -131,7 +133,6 @@
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     },
-    "verbose": true,
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js}",
