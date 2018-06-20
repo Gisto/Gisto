@@ -1,0 +1,40 @@
+image: Visual Studio 2017
+
+platform:
+  - x64
+
+environment:
+  matrix:
+    - nodejs_version: "10"
+  NODE_ENV: production
+  DEBUG: electron-builder
+  CI: yes
+  APPVEYOR: yes
+
+cache:
+  - '%USERPROFILE%\.electron'
+  - node_modules -> package.json
+
+branches:
+  only:
+    - next
+
+clone_folder: c:\gisto
+
+init:
+  - git config --global core.autocrlf input
+
+shallow_clone: true
+clone_depth: 1
+
+install:
+  - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
+  - npm install -g npm@latest
+  - set PATH=%APPDATA%\npm;%PATH%
+  - npm install
+  - node --version && npm --version
+
+build_script:
+  - npm run pack:win
+
+test: off
