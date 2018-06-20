@@ -24,10 +24,11 @@ const StyledInput = styled.input`
 `;
 
 const Input = ({
-  type = 'text', placeholder, onChange, className, value
+  type = 'text', placeholder, onChange, className, value, autoFocus
 }) => (
   <StyledInput type={ type }
                className={ className }
+               autoFocus={ autoFocus }
                onChange={ onChange }
                value={ value }
                placeholder={ placeholder }/>
@@ -38,7 +39,8 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   className: PropTypes.string,
-  value: PropTypes.string
+  value: PropTypes.string,
+  autoFocus: PropTypes.bool
 };
 
 export default Input;

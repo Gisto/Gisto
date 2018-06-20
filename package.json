@@ -97,6 +97,7 @@
   "dependencies": {
     "color": "^3.0.0",
     "lodash": "^4.17.10",
+    "mousetrap": "^1.6.2",
     "normalize.css": "^8.0.0",
     "react": "^16.3.2",
     "react-ace": "^6.1.1",
