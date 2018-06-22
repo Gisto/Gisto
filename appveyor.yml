@@ -31,8 +31,9 @@ install:
   - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
-  - npm install
   - node --version && npm --version
+  - npm install -g webpack-cli cross-env rimraf electron-builder electron-publisher-s3
+  - npm ci
 
 build_script:
   - npm run pack:win
