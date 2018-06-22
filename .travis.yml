@@ -36,9 +36,9 @@ script:
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder:wine \
-        /bin/bash -c "npm ci && npm run pack"
+        /bin/bash -c "npm install && npm run pack"
     else
-      npm ci && npm run pack
+      npm install && npm run pack
     fi
 before_cache:
   - rm -rf $HOME/.cache/electron-builder/wine
