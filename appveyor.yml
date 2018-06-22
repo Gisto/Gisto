@@ -32,8 +32,8 @@ install:
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
   - node --version && npm --version
-  - npm install -g webpack webpack-cli cross-env rimraf electron-builder electron-publisher-s3
-  - npm ci
+  - npm install -g webpack-cli cross-env rimraf electron-builder electron-publisher-s3
+  - npm install
 
 build_script:
   - npm run pack:win
