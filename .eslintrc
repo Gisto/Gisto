@@ -14,7 +14,8 @@
 		"jest": true,
 		"expect": true,
 		"shallow": true,
-		"sinon": true
+		"sinon": true,
+		"alert": true
 	},
 	"settings": {
 		"import/resolver": "webpack"
