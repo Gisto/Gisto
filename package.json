@@ -10,7 +10,7 @@
     "test:coverage": "jest --coverage",
     "clean": "rimraf dist release",
     "start:dev": "cross-env NODE_ENV='development' npm run clean && webpack --mode development -w",
-    "start:prod": "cross-env NODE_ENV=production node --trace-warnings ./node_modules/webpack/bin/webpack --mode production --config webpack.config.js",
+    "start:prod": "cross-env NODE_ENV='production' npm run clean && webpack --mode production",
     "electron": "electron ./dist",
     "dev": "concurrently \"npm run start:dev\" \"wait-on dist && npm run electron\"",
     "prod": "concurrently \"npm run start:prod\" \"wait-on dist && npm run electron\"",
