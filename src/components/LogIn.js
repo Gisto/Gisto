@@ -1,4 +1,5 @@
 import React from 'react';
+import { ipcRenderer } from 'electron';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get } from 'lodash/fp';
@@ -7,6 +8,7 @@ import styled from 'styled-components';
 
 import { baseAppColor, bg } from 'constants/colors';
 import * as loginActions from 'actions/login';
+import { setToken } from 'utils/login';
 
 import Button from 'components/common/Button';
 import Input from 'components/common/Input';
@@ -118,7 +120,16 @@ export class LogIn extends React.Component {
     this.props.loginBasic(user, pass, twoFactorAuth);
   };
 
+  loginWithOauth2 = () => {
+    ipcRenderer.send('oauth2-login');
+  };
+
   render() {
+    ipcRenderer.on('token', (event, token) => {
+      setToken(token);
+      document.location.reload();
+    });
+
     return (
       <LoginWrapper>
 
@@ -126,8 +137,8 @@ export class LogIn extends React.Component {
         <small>v{packageJson.version}</small>
 
         { this.state.loginType.github && (
-          <StyledGithubLoginButton disabled icon="logo-github"
-                                   onClick={ null }>
+          <StyledGithubLoginButton icon="logo-github"
+                                   onClick={ () => this.loginWithOauth2() }>
             Log-in with GitHub
           </StyledGithubLoginButton>
         ) }
