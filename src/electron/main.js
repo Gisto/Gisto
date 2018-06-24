@@ -99,6 +99,11 @@ const createWindow = () => {
     app.dock.setBadge('DEV');
   }
 
+  splash = new BrowserWindow({
+    width: 484, height: 272, transparent: true, frame: false, alwaysOnTop: true
+  });
+  splash.loadURL('https://www.letsbackflip.com/wp-content/uploads/2012/11/tennant-buffer.gif');
+  
   setTimeout(() => {
     win = new BrowserWindow({
       width: 1200,
@@ -110,11 +115,6 @@ const createWindow = () => {
         'web-security': false
       }
     });
-
-    splash = new BrowserWindow({
-      width: 484, height: 272, transparent: true, frame: false, alwaysOnTop: true
-    });
-    splash.loadURL('https://www.letsbackflip.com/wp-content/uploads/2012/11/tennant-buffer.gif');
 
     // and load the app.
     win.loadURL(`file://${__dirname}/index.html`);
@@ -137,7 +137,7 @@ const createWindow = () => {
     win.on('closed', () => {
       win = null;
     });
-  }, 10000);
+  }, 300);
 };
 
 app.on('ready', createWindow);
