@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { baseAppColor, headerColor, lightText } from 'constants/colors';
 import { SIDEBAR_WIDTH, logoText } from 'constants/config';
 import Icon from 'components/common/Icon';
-import UserArea from 'components/UserArea';
+import UserArea from 'components/AppArea';
 import { get } from 'lodash/fp';
 
 const HeaderWrapper = styled.div`
