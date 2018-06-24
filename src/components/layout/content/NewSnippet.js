@@ -2,7 +2,7 @@ import React from 'react';
 import PropType from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { set, findIndex, map, filter, flow, keyBy } from 'lodash/fp';
+import { set, findIndex, map, filter } from 'lodash/fp';
 import uuid from 'uuid';
 
 import * as snippetActions from 'actions/snippets';

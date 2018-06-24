@@ -1,5 +1,5 @@
 import React from 'react';
-import { isEmpty, join, map, size, trim } from 'lodash/fp';
+import { isEmpty, map, trim } from 'lodash/fp';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';

@@ -12,7 +12,6 @@ import Input from 'components/common/Input';
 import Icon from 'components/common/Icon';
 import { MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
 import { filterSnippetsList } from 'utils/snippets';
-import ReactDOM from 'react-dom';
 
 const SuperSearchWrapper = styled.div`
   position: absolute;

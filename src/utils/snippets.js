@@ -12,8 +12,7 @@ import {
   keyBy,
   map,
   pick,
-  reduce,
-  set
+  reduce
 } from 'lodash/fp';
 
 export const isTag = (filterText) => startsWith('#', filterText);

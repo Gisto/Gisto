@@ -1,6 +1,7 @@
-const { app, BrowserWindow, Menu, shell } = require('electron');
+const {
+  app, BrowserWindow, Menu, shell
+} = require('electron');
 const path = require('path');
-const url = require('url');
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
 
@@ -16,13 +17,15 @@ autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 log.info('App starting...');
 
-let template = [];
+const template = [];
 const name = app.getName();
-template.unshift({
+
+template.unshift(
+  {
     label: name,
     submenu: [
       {
-        label: 'About ' + name,
+        label: `About ${name}`,
         role: 'about'
       },
       {
@@ -42,24 +45,24 @@ template.unshift({
         label: 'Quit',
         accelerator: 'Command+Q',
         click: () => app.quit()
-      },
+      }
     ]
   },
   {
-    label: "Edit",
+    label: 'Edit',
     submenu: [
-      {label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:"},
-      {label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:"},
-      {type: "separator"},
-      {label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:"},
-      {label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:"},
-      {label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:"},
-      {label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:"}
+      { label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },
+      { label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', selector: 'redo:' },
+      { type: 'separator' },
+      { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
+      { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
+      { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
+      { label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' }
     ]
   }, {
     label: 'Help',
     submenu: [{
-      label: 'Learn More about ' + name,
+      label: `Learn More about ${name}`,
       click() {
         shell.openExternal('https://www.gistoapp.com');
       }
@@ -79,7 +82,8 @@ template.unshift({
         shell.openExternal('https://github.com/gisto/gisto/issues');
       }
     }]
-  });
+  }
+);
 
 function sendStatusToWindow(text, info) {
   log.info(text);
@@ -87,18 +91,17 @@ function sendStatusToWindow(text, info) {
 }
 
 const createWindow = () => {
-
   app.dock.setBadge('DEV');
 
   setTimeout(() => {
     win = new BrowserWindow({
       width: 1200,
       height: 700,
-      title: 'dev ' + app.getVersion(),
+      title: `dev ${app.getVersion()}`,
       'node-integration': true,
       show: false,
-      "web-preferences": {
-        "web-security": false
+      'web-preferences': {
+        'web-security': false
       }
     });
 
@@ -115,6 +118,7 @@ const createWindow = () => {
       win.show();
 
       const menu = Menu.buildFromTemplate(template);
+
       Menu.setApplicationMenu(menu);
 
       autoUpdater.checkForUpdates();
@@ -143,14 +147,15 @@ autoUpdater.on('update-not-available', (info) => {
 });
 
 autoUpdater.on('error', (err) => {
-  sendStatusToWindow('Error in auto-updater. ' + err);
+  sendStatusToWindow(`Error in auto-updater. ${err}`);
 });
 
 autoUpdater.on('download-progress', (progressObj) => {
-  let log_message = "Download speed: " + progressObj.bytesPerSecond;
-  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
-  log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
-  sendStatusToWindow(log_message);
+  let logMessage = `Download speed: ${progressObj.bytesPerSecond}`;
+
+  logMessage = `${logMessage} - Downloaded ${progressObj.percent}%`;
+  logMessage = `${logMessage} (${progressObj.transferred}/${progressObj.total})`;
+  sendStatusToWindow(logMessage);
 });
 
 autoUpdater.on('update-downloaded', (info) => {
