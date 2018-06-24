@@ -103,7 +103,7 @@ const createWindow = () => {
     width: 484, height: 272, transparent: true, frame: false, alwaysOnTop: true
   });
   splash.loadURL('https://www.letsbackflip.com/wp-content/uploads/2012/11/tennant-buffer.gif');
-  
+
   setTimeout(() => {
     win = new BrowserWindow({
       width: 1200,
