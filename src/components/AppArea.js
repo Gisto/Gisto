@@ -72,7 +72,7 @@ export class AppArea extends React.Component {
 
   componentDidMount() {
     this.props.getUser();
-    ipcRenderer.on('message', (event, text, info) => this.setState({ message: text }));
+    ipcRenderer.on('message', (event, text) => this.setState({ message: text }));
   }
 
   render() {

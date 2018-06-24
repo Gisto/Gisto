@@ -4,11 +4,15 @@ const {
 const path = require('path');
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
+const isDev = process.env.NODE_ENV === 'development';
 
 require('dotenv').config({ path: path.join(app.getAppPath(), '..', '.env') });
-require('electron-reload')(__dirname);
-require('electron-debug')();
 require('./oauth2');
+
+if (isDev) {
+  require('electron-reload')(__dirname);
+  require('electron-debug')();
+}
 
 let win;
 let splash;
@@ -91,13 +95,15 @@ function sendStatusToWindow(text, info) {
 }
 
 const createWindow = () => {
-  app.dock.setBadge('DEV');
+  if (isDev) {
+    app.dock.setBadge('DEV');
+  }
 
   setTimeout(() => {
     win = new BrowserWindow({
       width: 1200,
       height: 700,
-      title: `dev ${app.getVersion()}`,
+      title: isDev ? `dev ${app.getVersion()}` : `Gisto v${app.getVersion()}`,
       'node-integration': true,
       show: false,
       'web-preferences': {
@@ -124,7 +130,9 @@ const createWindow = () => {
       autoUpdater.checkForUpdates();
     });
 
-    win.webContents.openDevTools();
+    if (isDev) {
+      win.webContents.openDevTools();
+    }
 
     win.on('closed', () => {
       win = null;
