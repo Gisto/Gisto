@@ -68,7 +68,6 @@
     "electron-builder": "^20.15.1",
     "electron-debug": "^2.0.0",
     "electron-devtools-installer": "^2.2.4",
-    "electron-log": "^2.2.15",
     "electron-publisher-s3": "^20.15.0",
     "electron-reload": "^1.2.3",
     "enzyme": "^3.3.0",
@@ -99,6 +98,8 @@
   },
   "dependencies": {
     "color": "^3.0.0",
+    "dotenv": "^6.0.0",
+    "electron-log": "^2.2.15",
     "electron-updater": "^2.21.10",
     "lodash": "^4.17.10",
     "mousetrap": "^1.6.2",
