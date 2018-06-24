@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Settings = (props) => (
+const Settings = () => (
   <div>Settings</div>
 );
 

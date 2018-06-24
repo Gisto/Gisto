@@ -7,8 +7,8 @@ import { boxShadow } from 'constants/colors';
 
 import Search from 'components/Search';
 import SnippetHeader from 'components/layout/headers/SnippetHeader';
-import {get} from "lodash/fp";
-import PropTypes from "prop-types";
+import { get } from 'lodash/fp';
+import PropTypes from 'prop-types';
 
 const SubHeaderWrapper = styled.div`
   display: flex;

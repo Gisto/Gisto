@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { size, isEmpty } from 'lodash/fp';
 import styled from 'styled-components';
-import { HashRouter as Router, Link } from "react-router-dom";
+import { HashRouter as Router, Link } from 'react-router-dom';
 
 import * as snippetActions from 'actions/snippets';
 import { SIDEBAR_WIDTH, MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
@@ -11,7 +11,7 @@ import { filterSnippetsList } from 'utils/snippets';
 
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
-import {baseAppColor, borderColor, lightText} from 'constants/colors';
+import { baseAppColor, borderColor, lightText } from 'constants/colors';
 import Input from 'components/common/Input';
 
 const SearchWrapper = styled.div`
