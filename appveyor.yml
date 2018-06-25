@@ -24,8 +24,13 @@ clone_folder: c:\gisto
 init:
   - git config --global core.autocrlf input
 
-shallow_clone: true
+shallow_clone: false
 clone_depth: 1
+
+matrix:
+  fast_finish: true
+
+build: off
 
 install:
   - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
