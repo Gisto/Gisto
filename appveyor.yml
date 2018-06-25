@@ -23,7 +23,7 @@ clone_folder: c:\gisto
 init:
   - git config --global core.autocrlf input
 
-shallow_clone: false
+shallow_clone: true
 clone_depth: 1
 
 matrix:
@@ -40,8 +40,9 @@ install:
   - node --version && npm --version
   - npm install -g cross-env rimraf electron-builder electron-publisher-s3
   - npm install
+  - npm run test
 
 build_script:
   - npm run pack:win
 
-test: off
+test: on
