@@ -37,7 +37,7 @@ install:
   - ps: Add-Content c:\gisto\src\electron\.env "GISTO_GITHUB_CLIENT_ID=$env:GISTO_GITHUB_CLIENT_ID"
   - ps: Add-Content c:\gisto\src\electron\.env "GISTO_GITHUB_CLIENT_SECRET=$env:GISTO_GITHUB_CLIENT_SECRET"
   - npm install -g npm@latest
-  - cmd: set PATH=%APPDATA%\npm;%PATH%
+  - set PATH=%APPDATA%\npm;%PATH%
   - node --version && npm --version
   - npm install -g cross-env rimraf electron-builder electron-publisher-s3
   - npm install
