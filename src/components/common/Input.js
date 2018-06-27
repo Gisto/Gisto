@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { baseAppColor, bg, lightText } from 'constants/colors';
+import { baseAppColor, bg, disabledColor, lightText } from 'constants/colors';
 import styled from 'styled-components';
+import { getDefaultDomain } from 'utils/login';
 
 const StyledInput = styled.input`
   border: none;
@@ -9,28 +10,30 @@ const StyledInput = styled.input`
   height: 30px;
   margin: 10px;
   width: 100%;
-  color: ${baseAppColor};
-  border-bottom: 1px solid ${baseAppColor};
-  background: ${lightText};
+  color: ${(props) => props.disabled ? disabledColor : baseAppColor};
+  border-bottom: 1px solid ${(props) => props.disabled ? disabledColor : baseAppColor};
+  background: ${(props) => props.disabled ? disabledColor : lightText};
 
   &:focus {
     outline: none;
   }
   
   ::placeholder {
-      color: ${bg};
+      color: ${(props) => props.disabled ? disabledColor : bg};
       opacity: 1;
   }
 `;
 
 const Input = ({
-  type = 'text', placeholder, onChange, className, value, autoFocus
+  type = 'text', placeholder, onChange, className, value, autoFocus, disabled = false, title = ''
 }) => (
   <StyledInput type={ type }
                className={ className }
                autoFocus={ autoFocus }
+               title={ title }
+               disabled={ disabled }
                onChange={ onChange }
-               value={ value }
+               defaultValue={ value }
                placeholder={ placeholder }/>
 );
 
@@ -40,7 +43,9 @@ Input.propTypes = {
   onChange: PropTypes.func,
   className: PropTypes.string,
   value: PropTypes.string,
-  autoFocus: PropTypes.bool
+  autoFocus: PropTypes.bool,
+  disabled: PropTypes.bool,
+  title: PropTypes.string
 };
 
 export default Input;

@@ -5,6 +5,9 @@ const path = require('path');
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
 const isDev = process.env.NODE_ENV === 'development';
+const {
+  default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF
+} = require('electron-devtools-installer');
 
 require('dotenv').config({ path: path.join(app.getAppPath(), '..', '.env') });
 require('./oauth2');
@@ -97,6 +100,9 @@ function sendStatusToWindow(text, info) {
 const createWindow = () => {
   if (isDev) {
     app.dock.setBadge('DEV');
+    installExtension([REACT_DEVELOPER_TOOLS.id, REDUX_DEVTOOLS.id, REACT_PERF.id])
+      .then((name) => console.log(`Added Extension:  ${name}`))
+      .catch((err) => console.log('An error occurred: ', err));
   }
 
   splash = new BrowserWindow({
