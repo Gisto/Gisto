@@ -3,8 +3,10 @@
 exports[`COMPONENTS - <Input> render Input 1`] = `
 <styled.input
   className="classified"
+  defaultValue="typetypetype"
+  disabled={false}
   placeholder="I am temporary"
+  title=""
   type="search"
-  value="typetypetype"
 />
 `;
