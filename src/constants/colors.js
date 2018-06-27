@@ -1,6 +1,7 @@
 import Color from 'color';
 
 export const borderColor = '#ccc';
+export const disabledColor = borderColor;
 export const lightBorderColor = '#f2f2f2';
 export const lightText = '#fff';
 export const textColor = '#555';
