@@ -1,16 +1,9 @@
 import * as AT from 'constants/actionTypes';
-import * as userActions from 'actions/user';
 import * as loginActions from 'actions/login';
-
-describe('ACTIONS - user', () => {
-  test('getUser action should be created', () => {
-    expect(userActions.getUser()).toEqual({ type: AT.GET_USER });
-  });
-});
 
 describe('ACTIONS - login', () => {
   test('loginWithBasicAuth action should be created', () => {
-    expect(loginActions.loginWithBasicAuth('user', 'pass', null)).toEqual({
+    expect(loginActions.loginWithBasicAuth('user', 'pass')).toEqual({
       type: AT.LOGIN_BASIC,
       meta: {
         user: 'user',
@@ -27,5 +20,17 @@ describe('ACTIONS - login', () => {
 
   test('logout action should be created', () => {
     expect(loginActions.logout()).toEqual({ type: AT.LOGOUT });
+  });
+
+  test('loginWithToken action should be created', () => {
+    expect(loginActions.loginWithToken('213-dsf-234-sdf')).toEqual({
+      meta: {
+        token: '213-dsf-234-sdf'
+      },
+      type: AT.LOGIN_WITH_TOKEN,
+      payload: {
+        token: '213-dsf-234-sdf'
+      }
+    });
   });
 });
