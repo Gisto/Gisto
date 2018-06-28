@@ -12,8 +12,6 @@ const {
 require('dotenv').config({ path: path.join(app.getAppPath(), '..', '.env') });
 require('./oauth2');
 
-console.log('\x1b[37m\x1b[41m', 'LOG ', '\x1b[0m', process.env.NODE_ENV);
-
 if (isDev) {
   require('electron-reload')(__dirname);
   require('electron-debug')();
@@ -102,9 +100,12 @@ function sendStatusToWindow(text, info) {
 const createWindow = () => {
   if (isDev) {
     app.dock.setBadge('DEV');
+
     installExtension([REACT_DEVELOPER_TOOLS.id, REDUX_DEVTOOLS.id, REACT_PERF.id])
       .then((name) => console.log(`Added Extension:  ${name}`))
       .catch((err) => console.log('An error occurred: ', err));
+
+    console.log('\x1b[37m\x1b[41m', 'LOG ', '\x1b[0m', process.env.NODE_ENV);
   }
 
   splash = new BrowserWindow({
@@ -124,7 +125,6 @@ const createWindow = () => {
       }
     });
 
-    // and load the app.
     win.loadURL(`file://${__dirname}/index.html`);
 
     win.once('ready-to-show', () => {
