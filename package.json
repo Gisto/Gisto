@@ -6,6 +6,7 @@
   "main": "main.js",
   "scripts": {
     "test": "jest",
+    "test:ci": "jest && codecov",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "clean": "rimraf dist release",
@@ -60,6 +61,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "codecov": "^3.0.2",
     "concurrently": "^3.5.1",
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.2.0",
@@ -141,6 +143,7 @@
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     },
+    "coverageDirectory": "./coverage/",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js}",
