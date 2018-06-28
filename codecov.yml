@@ -1,0 +1,9 @@
+coverage:
+  range: 70..100
+  round: down
+  precision: 2
+  status:
+    project:
+      default: off
+      frontend:
+        flags: frontend
