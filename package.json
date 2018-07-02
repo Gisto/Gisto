@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "test": "jest",
-    "test:ci": "jest && codecov && coveralls",
+    "test:ci": "jest && codecov | coveralls",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "clean": "rimraf dist release",
