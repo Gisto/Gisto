@@ -167,6 +167,9 @@ export class SnippetHeader extends React.Component {
     } = this.props;
     const snippet = get(match.params.id, snippets);
     const openOnWebUrl = `${defaultGistURL}/${get('username', snippet)}/${get('id', snippet)}`;
+    const httpCloneUrl = `git clone ${defaultGistURL}/${get('id', snippet)}.git`;
+    const sshCloneUrl = `git clone git@gist.github.com:${get('id', snippet)}.git`;
+    const openInGHDesktop = `x-github-client://openRepo/${defaultGistURL}/${get('id', snippet)}`;
 
     return (
       <SnippetHeaderWrapper>
@@ -191,10 +194,26 @@ export class SnippetHeader extends React.Component {
                   Copy snippet ID to clipboard
                   </Anchor>
                 </li>
-                <li>Copy Snippet URL to clipboard</li>
-                <li>Copy HTTPS clone URL to clipboard</li>
-                <li>Copy SSH clone URL to clipboard</li>
-                <li>Open in GitHub desktop</li>
+                <li>
+                  <Anchor onClick={ (event) => copyToClipboard(event, openOnWebUrl) }>
+                    Copy Snippet URL to clipboard
+                  </Anchor>
+                </li>
+                <li>
+                  <Anchor onClick={ (event) => copyToClipboard(event, httpCloneUrl) }>
+                    Copy HTTPS clone command to clipboard
+                  </Anchor>
+                </li>
+                <li>
+                  <Anchor onClick={ (event) => copyToClipboard(event, sshCloneUrl) }>
+                    Copy SSH clone command to clipboard
+                  </Anchor>
+                </li>
+                <li>
+                  <ExternalLink href={ openInGHDesktop }>
+                    Open in GitHub desktop
+                  </ExternalLink>
+                </li>
                 <li className="color-danger">
                   <Anchor onClick={ () => this.deleteSnippet(snippet.id) }>
                   Delete
