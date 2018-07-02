@@ -145,7 +145,9 @@ export class LogIn extends React.Component {
 
         { this.state.loginType.token && (
           <div>
-            <h4>Sign-in using GitHub token</h4>
+            <h4>
+              Sign-in using GitHub token
+            </h4>
             <Input type="text"
                    placeholder="GitHub token"
                    onChange={ (event) => this.setField('token', event.target.value) }/>
@@ -156,13 +158,17 @@ export class LogIn extends React.Component {
             <Button icon="success" onClick={ () => this.props.loginWithToken(this.state.fieldsData.token) }>Log-in</Button>
             <br/>
             <br/>
-            <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
+            <Anchor onClick={ () => this.setLoginType('basic') }>
+              Cancel
+            </Anchor>
           </div>
-          ) }
+        ) }
 
         { this.state.loginType.enterprise && (
           <div>
-            <h4>Setup enterprise endpoints and log-in</h4>
+            <h4>
+              Setup enterprise endpoints and log-in
+            </h4>
             <Input type="text"
                    onChange={ (event) => this.setField('enterpriseDomain', event.target.value) }
                    placeholder="Enterprise domain"/>
@@ -171,7 +177,9 @@ export class LogIn extends React.Component {
 
         { (this.state.loginType.basic || this.state.loginType.enterprise) && (
           <div>
-            <h4>Sign-in using { this.state.loginType.enterprise ? 'your organization' : 'Github' } username and password</h4>
+            <h4>
+              Sign-in using { this.state.loginType.enterprise ? 'your organization' : 'Github' } username and password
+            </h4>
 
             <Input type="text"
                    onChange={ (event) => this.setField('username', event.target.value) }
@@ -190,8 +198,12 @@ export class LogIn extends React.Component {
             ) }
 
             <ResetLoginType>
-              <Anchor onClick={ () => this.setLoginType('github') }>Log-in with GitHub</Anchor>
-              <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
+              <Anchor onClick={ () => this.setLoginType('github') }>
+                Log-in with GitHub
+              </Anchor>
+              <Anchor onClick={ () => this.setLoginType('basic') }>
+                Cancel
+              </Anchor>
             </ResetLoginType>
 
             <br/>
@@ -210,7 +222,9 @@ export class LogIn extends React.Component {
         ) }
 
         <p className="options">
-          <strong>Other options:</strong>
+          <strong>
+            Other options:
+          </strong>
           &nbsp;
           sign-in using GitHub
           &nbsp;
