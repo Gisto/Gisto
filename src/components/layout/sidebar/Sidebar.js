@@ -2,7 +2,7 @@ import React from 'react';
 import { isEmpty, map, trim } from 'lodash/fp';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import SnippetsList from 'components/layout/sidebar/SnippetsList';
 import Snippet from 'components/layout/sidebar/Snippet';
 import Icon from 'components/common/Icon';

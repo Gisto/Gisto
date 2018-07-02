@@ -1,6 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import { bg } from 'constants/colors';
 
 import DashBoard from 'components/layout/content/DashBoard';

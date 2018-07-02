@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { baseAppColor, bg, disabledColor, lightText } from 'constants/colors';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import { getDefaultDomain } from 'utils/login';
 
 const StyledInput = styled.input`
