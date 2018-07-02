@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
+<UserAreaWrapper>
+  <Link
+    replace={false}
+    to="/"
+  >
+    <Icon
+      color="#fff"
+      type="dashboard"
+    />
+  </Link>
+  <Link
+    replace={false}
+    to="/about"
+  >
+    <Icon
+      color="#fff"
+      type="info"
+    />
+  </Link>
+  <Icon
+    color="#fff"
+    type="globe"
+  />
+  <Link
+    replace={false}
+    to="/settings"
+  >
+    <Icon
+      color="#fff"
+      type="cog"
+    />
+  </Link>
+  <Avatar
+    height="32"
+    title="user"
+    width="32"
+  />
+  <Link
+    replace={false}
+    to="/"
+  >
+    <Icon
+      color="#fff"
+      onClick={[Function]}
+      type="logout"
+    />
+  </Link>
+</UserAreaWrapper>
+`;
