@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Button> render Button 1`] = `
-<styled.button
+<ButtonComponent
   className="btn"
   height="30px"
   invert={true}
   title="link"
   width="200px"
 >
-  <styled.span
+  <Icon
     color="#3F84A8"
     type="menu"
   />
    
   link
-</styled.button>
+</ButtonComponent>
 `;
