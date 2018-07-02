@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import { get, map, filter } from 'lodash/fp';
 import Editor from 'components/common/Editor';
 import * as snippetActions from 'actions/snippets';

@@ -1,11 +1,4 @@
 {
-  "presets": [
-		"env",
-		"react",
-		"stage-0"
-	],
-	"plugins": [
-		"transform-object-rest-spread",
-		["emotion", { "hoist": true, "autoLabel": true }]
-	]
+  "presets": ["env", "react", "stage-0"],
+	"plugins": ["transform-object-rest-spread"]
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get, isEmpty, join, map, size } from 'lodash/fp';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
 import { baseAppColor, bg } from 'constants/colors';
