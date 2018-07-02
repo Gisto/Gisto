@@ -84,13 +84,21 @@ export class AppArea extends React.Component {
           <StyledUtilityIcon color={ colorWarning }
                      type="flash"
                      dropdown>
-            <UpdaterMenu>{ this.state.message }</UpdaterMenu>
+            <UpdaterMenu>
+              { this.state.message }
+            </UpdaterMenu>
           </StyledUtilityIcon>
         ) }
-        <Link to="/"><Icon color={ lightText } type="dashboard"/></Link>
-        <Link to="/about"><Icon color={ lightText } type="info"/></Link>
+        <Link to="/">
+          <Icon color={ lightText } type="dashboard"/>
+        </Link>
+        <Link to="/about">
+          <Icon color={ lightText } type="info"/>
+        </Link>
         <Icon type="globe" color={ window.navigator.onLine ? lightText : colorDanger }/>
-        <Link to="/settings"><Icon color={ lightText } type="cog"/></Link>
+        <Link to="/settings">
+          <Icon color={ lightText } type="cog"/>
+        </Link>
         <Avatar
           title={ name || login }
           src={ avatar }
