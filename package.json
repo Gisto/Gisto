@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "test": "jest",
-    "test:ci": "jest && codecov",
+    "test:ci": "jest && codecov && coveralls",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "clean": "rimraf dist release",
@@ -65,6 +65,7 @@
     "codecov": "^3.0.2",
     "concurrently": "^3.5.1",
     "copy-webpack-plugin": "^4.5.1",
+    "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "devtron": "^1.4.0",
