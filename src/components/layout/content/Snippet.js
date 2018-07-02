@@ -20,6 +20,10 @@ const SnippetWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
+const StyledEditor = styled(Editor)`
+  z-index: 0;
+`;
+
 export class Snippet extends React.Component {
   componentDidMount() {
     this.props.getSnippet(this.props.match.params.id || this.props.snippet.id);
@@ -49,7 +53,7 @@ export class Snippet extends React.Component {
             <SnippetHeader file={ file }
                            username={ snippet.username }
                            snippetId={ snippet.id }/>
-            <Editor file={ file }
+            <StyledEditor file={ file }
                     value={ file.content }
                     onChange={ (value) => updateTempSnippet(['files', file.uuid, 'content'], value) }
                     id={ file.uuid || file.filename }/>
