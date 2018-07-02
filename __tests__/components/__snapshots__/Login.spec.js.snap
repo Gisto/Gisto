@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <LogIn> render LogIn 1`] = `
+<LoginWrapper>
+  <Logo>
+    { Gisto }
+  </Logo>
+  <small>
+    v
+    1.9.32
+  </small>
+  <div>
+    <h4>
+      Sign-in using 
+      Github
+       username and password
+    </h4>
+    <Input
+      onChange={[Function]}
+      placeholder="Email or username"
+      type="text"
+    />
+    <br />
+    <Input
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+    />
+    <br />
+    <ResetLoginType>
+      <Anchor
+        onClick={[Function]}
+      >
+        Log-in with GitHub
+      </Anchor>
+      <Anchor
+        onClick={[Function]}
+      >
+        Cancel
+      </Anchor>
+    </ResetLoginType>
+    <br />
+    <br />
+    <Button
+      icon="success"
+      onClick={[Function]}
+    >
+      Log-in
+    </Button>
+    <br />
+  </div>
+  <p
+    className="options"
+  >
+    <strong>
+      Other options:
+    </strong>
+      sign-in using GitHub  
+    <Anchor
+      onClick={[Function]}
+    >
+      token
+    </Anchor>
+     | 
+    <Anchor
+      onClick={[Function]}
+    >
+      username and password
+    </Anchor>
+     | 
+    <Anchor
+      onClick={[Function]}
+    >
+      Use enterprise
+    </Anchor>
+  </p>
+</LoginWrapper>
+`;

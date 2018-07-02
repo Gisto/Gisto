@@ -4,7 +4,7 @@
 
 [![Travis Build Status](https://img.shields.io/travis/Gisto/Gisto/next.svg?logo=travis&style=flat-square)](https://travis-ci.org/Gisto/Gisto) 
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/tdogyqe0sa10iopb?svg=true&style=flat-square)](https://ci.appveyor.com/project/sanusart/gisto)
-[![codecov](https://codecov.io/gh/gisto/gisto/branch/next/graph/badge.svg)](https://codecov.io/gh/gisto/gisto)
+[![Coverage Status](https://coveralls.io/repos/github/Gisto/Gisto/badge.svg?branch=next)](https://coveralls.io/github/Gisto/Gisto?branch=next)
 
 ## About
 
