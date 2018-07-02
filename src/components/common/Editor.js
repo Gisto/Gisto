@@ -12,13 +12,14 @@ export class Editor extends React.Component {
 
   render() {
     const {
-      file, language, onChange, id
+      file, language, onChange, id, className
     } = this.props;
 
     return (
       <AceEditor
         mode={ language || syntaxMap[file.language] || 'text' }
         value={ file.content }
+        className={ className }
         width="100%"
         onChange={ onChange }
         name={ id }
@@ -37,7 +38,8 @@ Editor.propTypes = {
   file: PropTypes.object,
   onChange: PropTypes.func,
   language: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default Editor;
