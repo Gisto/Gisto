@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { borderColor, lightText, colorDanger, lightBorderColor } from 'constants/colors';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 import Icon from 'components/common/Icon';
 

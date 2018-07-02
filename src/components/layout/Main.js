@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { get } from 'lodash/fp';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import Sidebar from 'components/layout/sidebar/Sidebar';
 import Content from 'components/layout/Content';
 
