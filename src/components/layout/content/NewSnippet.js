@@ -1,7 +1,7 @@
 import React from 'react';
 import PropType from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { set, findIndex, map, filter } from 'lodash/fp';
 import uuid from 'uuid';
 

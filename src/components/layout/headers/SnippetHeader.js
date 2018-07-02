@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get, map, size } from 'lodash/fp';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 import { baseAppColor, colorDanger, colorSuccess, textColor } from 'constants/colors';
 import * as snippetActions from 'actions/snippets';

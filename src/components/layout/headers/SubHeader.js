@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 import { boxShadow } from 'constants/colors';
 

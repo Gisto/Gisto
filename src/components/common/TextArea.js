@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { baseAppColor, bg } from 'constants/colors';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 const StyledTextArea = styled.textarea`
   border: none;

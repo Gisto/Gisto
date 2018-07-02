@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ipcRenderer } from 'electron';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { connect } from 'react-redux';
 import { SIDEBAR_WIDTH } from 'constants/config';
 import { Link } from 'react-router-dom';

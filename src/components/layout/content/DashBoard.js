@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { get, size, filter, map, flow, flattenDeep, uniq, compact, isEmpty } from 'lodash/fp';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ const Box = styled.div`
   box-shadow: 0 0 10px ${borderColor};
 `;
 
-const Private = Box.extend`
+const Private = styled(Box)`
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
@@ -70,7 +70,7 @@ const Private = Box.extend`
   }
 `;
 
-const Public = Box.extend`
+const Public = styled(Box)`
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
@@ -93,7 +93,7 @@ const Public = Box.extend`
   }
 `;
 
-const Starred = Box.extend`
+const Starred = styled(Box)`
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 1;
@@ -116,7 +116,7 @@ const Starred = Box.extend`
   }
 `;
 
-const Untitled = Box.extend`
+const Untitled = styled(Box)`
   grid-column-start: 4;
   grid-column-end: 5;
   grid-row-start: 1;
@@ -139,7 +139,7 @@ const Untitled = Box.extend`
   }
 `;
 
-const Language = Box.extend`
+const Language = styled(Box)`
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 2;
@@ -156,7 +156,7 @@ const Language = Box.extend`
   }
 `;
 
-const Stars = Box.extend`
+const Stars = styled(Box)`
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row-start: 2;
@@ -188,7 +188,7 @@ const Stars = Box.extend`
   }
 `;
 
-const Tags = Box.extend`
+const Tags = styled(Box)`
   grid-column-start: 1;
   grid-column-end: 5;
   grid-row-start: 3;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get } from 'lodash/fp';
 import { withRouter } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 
 import { baseAppColor, bg } from 'constants/colors';
 import * as loginActions from 'actions/login';

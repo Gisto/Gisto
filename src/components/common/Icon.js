@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { lightText } from 'constants/colors';
 import { iconsMap } from 'constants/iconsMap';
 

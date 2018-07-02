@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { size, isEmpty } from 'lodash/fp';
-import styled from 'styled-components';
+import styled from 'react-emotion';
 import { HashRouter as Router, Link } from 'react-router-dom';
 
 import * as snippetActions from 'actions/snippets';
