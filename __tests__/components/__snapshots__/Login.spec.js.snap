@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`COMPONENTS - <LogIn> render LogIn 1`] = `
+exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
 <LoginWrapper>
   <Logo>
     { Gisto }
@@ -48,6 +48,207 @@ exports[`COMPONENTS - <LogIn> render LogIn 1`] = `
       Log-in
     </Button>
     <br />
+  </div>
+  <p
+    className="options"
+  >
+    <strong>
+      Other options:
+    </strong>
+      sign-in using GitHub  
+    <Anchor
+      onClick={[Function]}
+    >
+      token
+    </Anchor>
+     | 
+    <Anchor
+      onClick={[Function]}
+    >
+      username and password
+    </Anchor>
+     | 
+    <Anchor
+      onClick={[Function]}
+    >
+      Use enterprise
+    </Anchor>
+  </p>
+</LoginWrapper>
+`;
+
+exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
+<LoginWrapper>
+  <Logo>
+    { Gisto }
+  </Logo>
+  <small>
+    v
+    1.9.32
+  </small>
+  <div>
+    <h4>
+      Setup enterprise endpoints and log-in
+    </h4>
+    <Input
+      onChange={[Function]}
+      placeholder="Enterprise domain"
+      type="text"
+    />
+  </div>
+  <div>
+    <h4>
+      Sign-in using 
+      your organization
+       username and password
+    </h4>
+    <Input
+      onChange={[Function]}
+      placeholder="Email or username"
+      type="text"
+    />
+    <br />
+    <Input
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+    />
+    <br />
+    <ResetLoginType>
+      <Anchor
+        onClick={[Function]}
+      >
+        Log-in with GitHub
+      </Anchor>
+      <Anchor
+        onClick={[Function]}
+      >
+        Cancel
+      </Anchor>
+    </ResetLoginType>
+    <br />
+    <br />
+    <Button
+      icon="success"
+      onClick={[Function]}
+    >
+      Log-in
+    </Button>
+    <br />
+  </div>
+  <p
+    className="options"
+  >
+    <strong>
+      Other options:
+    </strong>
+      sign-in using GitHub  
+    <Anchor
+      onClick={[Function]}
+    >
+      token
+    </Anchor>
+     | 
+    <Anchor
+      onClick={[Function]}
+    >
+      username and password
+    </Anchor>
+     | 
+    <Anchor
+      onClick={[Function]}
+    >
+      Use enterprise
+    </Anchor>
+  </p>
+</LoginWrapper>
+`;
+
+exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
+<LoginWrapper>
+  <Logo>
+    { Gisto }
+  </Logo>
+  <small>
+    v
+    1.9.32
+  </small>
+  <StyledGithubLoginButton
+    icon="logo-github"
+    onClick={[Function]}
+  >
+    Log-in with GitHub
+  </StyledGithubLoginButton>
+  <p
+    className="options"
+  >
+    <strong>
+      Other options:
+    </strong>
+      sign-in using GitHub  
+    <Anchor
+      onClick={[Function]}
+    >
+      token
+    </Anchor>
+     | 
+    <Anchor
+      onClick={[Function]}
+    >
+      username and password
+    </Anchor>
+     | 
+    <Anchor
+      onClick={[Function]}
+    >
+      Use enterprise
+    </Anchor>
+  </p>
+</LoginWrapper>
+`;
+
+exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
+<LoginWrapper>
+  <Logo>
+    { Gisto }
+  </Logo>
+  <small>
+    v
+    1.9.32
+  </small>
+  <div>
+    <h4>
+      Sign-in using GitHub token
+    </h4>
+    <Input
+      onChange={[Function]}
+      placeholder="GitHub token"
+      type="text"
+    />
+    <ExternalLink
+      href="https://github.com/settings/tokens"
+      target="_new"
+    >
+      <Icon
+        color="#3F84A8"
+        size="16"
+        type="info"
+      />
+    </ExternalLink>
+    <br />
+    <Button
+      icon="success"
+      onClick={[Function]}
+    >
+      Log-in
+    </Button>
+    <br />
+    <br />
+    <Anchor
+      onClick={[Function]}
+    >
+      Cancel
+    </Anchor>
   </div>
   <p
     className="options"
