@@ -1,5 +1,7 @@
 import { LogIn } from 'components/LogIn';
 
+const spy = sinon.spy();
+
 const propSetup = (props) => ({
   loginBasic: jest.fn(),
   loginWithToken: jest.fn(),
@@ -8,24 +10,33 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => shallow(<LogIn { ...propSetup(props) }/>);
+const setup = (props) => mount(<LogIn { ...propSetup(props) }/>);
 
 describe('COMPONENTS - <LogIn>', () => {
   test('render LogIn basic', () => {
-    const component = setup();
+    const component = setup({
+      loginBasic: spy
+    });
 
+    component.find('Button').simulate('click');
+    expect(component.instance().loginBasic).toBeCalled;
     expect(component).toMatchSnapshot();
   });
 
   test('render LogIn token', () => {
-    const component = setup();
+    const component = setup({
+      loginWithToken: spy
+    });
 
     component.setState({
       loginType: {
         token: true
-      } 
+      }
     });
+
     expect(component).toMatchSnapshot();
+    component.find('Button').simulate('click');
+    expect(component.instance().loginWithToken).toBeCalled;
   });
 
   test('render LogIn enterprise', () => {
