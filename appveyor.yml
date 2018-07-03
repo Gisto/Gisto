@@ -40,7 +40,7 @@ install:
   - node --version && npm --version
   - npm install -g cross-env rimraf electron-builder electron-publisher-s3
   - npm install
-  - npm run test
+  - npm run test:ci
 
 build_script:
   - npm run pack:win

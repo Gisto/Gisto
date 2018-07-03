@@ -15,7 +15,7 @@ describe(' component', () => {
   });
 
   test('should just return null if string not supplied', () => {
-    expect(removeTags(undefined)).toBe(null);
+    expect(removeTags(undefined)).toBeNull();
   });
 
 });
