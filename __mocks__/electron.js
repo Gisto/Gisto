@@ -1,3 +1,4 @@
 export const ipcRenderer = {
-  on: jest.fn()
+  on: jest.fn(),
+  send: jest.fn()
 };
