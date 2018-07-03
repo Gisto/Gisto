@@ -18,8 +18,12 @@ describe('COMPONENTS - <LogIn>', () => {
       loginBasic: spy
     });
 
+    component.find('Input[type="text"]').simulate('change');
+    expect(component.instance().setField).toBeCalled;
+
     component.find('Button').simulate('click');
     expect(component.instance().loginBasic).toBeCalled;
+
     expect(component).toMatchSnapshot();
   });
 
@@ -34,6 +38,9 @@ describe('COMPONENTS - <LogIn>', () => {
       }
     });
 
+    component.find('Input[type="text"]').at(0).simulate('change', { target: { value: '123-123-123-123' } })
+    expect(component.instance().setField).toBeCalled;
+
     expect(component).toMatchSnapshot();
     component.find('Button').simulate('click');
     expect(component.instance().loginWithToken).toBeCalled;
@@ -47,6 +54,10 @@ describe('COMPONENTS - <LogIn>', () => {
         enterprise: true
       }
     });
+
+    component.find('Input[type="text"]').at(0).simulate('change', { target: { value: 'abc' } })
+    expect(component.instance().setField).toBeCalled;
+
     expect(component).toMatchSnapshot();
   });
 
@@ -58,6 +69,10 @@ describe('COMPONENTS - <LogIn>', () => {
         github: true
       }
     });
+
+    component.find('Button').simulate('click');
+    expect(component.instance().loginWithOauth2).toBeCalled;
+
     expect(component).toMatchSnapshot();
   });
 });
