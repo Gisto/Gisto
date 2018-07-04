@@ -18,15 +18,22 @@ const prepareDescription = (snippet) => {
   return DEFAULT_SNIPPET_DESCRIPTION;
 };
 
-const getService = (snippet) => snippet.url.match(/github\.com/gi) ? 'GITHUB' : 'NOT-GITHUB-FOR-NOW';
+const getService = (snippet) => {
+  return snippet.url.match(/github\.com/gi) ? 'GITHUB' : 'NOT-GITHUB-FOR-NOW';
+};
 
 const toUnixTimeStamp = (date) => Math.floor(new Date(date).getTime() / 1000);
 
-const prepareFiles = (snippet) => map((file) => ({
-  collapsed: false,
-  viewed: toUnixTimeStamp(new Date().getTime()),
-  ...file
-}), snippet.files);
+const prepareFiles = (snippet) => {
+  return map(
+    (file) => ({
+      collapsed: false,
+      viewed: toUnixTimeStamp(new Date().getTime()),
+      ...file
+    }),
+    snippet.files
+  );
+};
 
 const prepareLanguages = (snippet) => compact(uniq(map('language', snippet.files)));
 

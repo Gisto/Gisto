@@ -17,8 +17,9 @@ import {
 
 export const isTag = (filterText) => startsWith('#', filterText);
 
-const filterByTagsText = (snippets, filterText) =>
-  filter((snippet) => includes(filterText, snippet.tags), snippets);
+const filterByTagsText = (snippets, filterText) => {
+  return filter((snippet) => includes(filterText, snippet.tags), snippets);
+};
 
 const filterByFreeText = (snippets, filterText) => {
   const regex = new RegExp(filterText, 'gi');
@@ -39,15 +40,11 @@ const filterByTags = (snippets, filterTags) => {
 };
 
 const filterByLanguage = (snippets, filterLanguage) => {
-  return filter((snippet) =>
-    includes(filterLanguage, snippet.languages), snippets);
+  return filter((snippet) => includes(filterLanguage, snippet.languages), snippets);
 };
 
 export const filterSnippetsList = (snippets, filterText, filterTags, filterLanguage) => {
-  const sortedSnippets = flow([
-    sortBy(['created']),
-    reverse
-  ])(snippets);
+  const sortedSnippets = flow([sortBy(['created']), reverse])(snippets);
 
   if (!isEmpty(trim(filterText))) {
     return filterByFreeText(sortedSnippets, trim(filterText));
@@ -75,13 +72,15 @@ export const copyToClipboard = (event, text) => {
   document.execCommand('copy');
 };
 
-export const prepareFiles = (files) => flow([
-  map((file) => ({
-    name: file.name,
-    content: file.content
-  })),
-  keyBy('name')
-])(files);
+export const prepareFiles = (files) => {
+  return flow([
+    map((file) => ({
+      name: file.name,
+      content: file.content
+    })),
+    keyBy('name')
+  ])(files);
+};
 
 export const prepareFilesForUpdate = (snippet) => {
   const cleanFiles = map((file) => {
@@ -90,21 +89,25 @@ export const prepareFilesForUpdate = (snippet) => {
 
   const filesClean = keyBy('originalFileName', cleanFiles);
 
-  const files = reduce((acc, file) => {
-    if (file.delete) {
-      acc[file.originalFileName] = null;
-    } else {
-      acc[file.originalFileName] = {
-        filename: file.filename,
-        content: file.content
-      };
-    }
+  const files = reduce(
+    (acc, file) => {
+      if (file.delete) {
+        acc[file.originalFileName] = null;
+      } else {
+        acc[file.originalFileName] = {
+          filename: file.filename,
+          content: file.content
+        };
+      }
 
-    return acc;
-  }, {}, filesClean);
+      return acc;
+    },
+    {},
+    filesClean
+  );
 
-  return ({
+  return {
     description: snippet.description,
     files
-  });
+  };
 };
