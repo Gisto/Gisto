@@ -1,7 +1,6 @@
 import { removeTags } from 'utils/tags';
 
-describe(' component', () => {
-
+describe('UTILS - tags', () => {
   test('should remove tags from string', () => {
     const description = 'This is my description #tag1 #tag2 #tag3';
 
@@ -17,5 +16,4 @@ describe(' component', () => {
   test('should just return null if string not supplied', () => {
     expect(removeTags(undefined)).toBeNull();
   });
-
 });
