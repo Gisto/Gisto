@@ -26,7 +26,8 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
         <h4>
           Sign-in using 
           Github
-           username and password
+           
+          username and password
         </h4>
         <Input
           onChange={[Function]}
@@ -250,7 +251,8 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
         <h4>
           Sign-in using 
           your organization
-           username and password
+           
+          username and password
         </h4>
         <Input
           onChange={[Function]}
