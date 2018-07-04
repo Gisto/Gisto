@@ -132,102 +132,97 @@ export class LogIn extends React.Component {
 
     return (
       <LoginWrapper>
-
-        <Logo>{ '{ Gisto }' }</Logo>
+        <Logo>{'{ Gisto }'}</Logo>
         <small>v{packageJson.version}</small>
 
-        { this.state.loginType.github && (
-          <StyledGithubLoginButton icon="logo-github"
-                                   onClick={ () => this.loginWithOauth2() }>
+        {this.state.loginType.github && (
+          <StyledGithubLoginButton icon="logo-github" onClick={ () => this.loginWithOauth2() }>
             Log-in with GitHub
           </StyledGithubLoginButton>
-        ) }
+        )}
 
-        { this.state.loginType.token && (
+        {this.state.loginType.token && (
           <div>
-            <h4>
-              Sign-in using GitHub token
-            </h4>
-            <Input type="text"
-                   placeholder="GitHub token"
-                   onChange={ (event) => this.setField('token', event.target.value) }/>
+            <h4>Sign-in using GitHub token</h4>
+            <Input
+              type="text"
+              placeholder="GitHub token"
+              onChange={ (event) => this.setField('token', event.target.value) }/>
             <ExternalLink target="_new" href="https://github.com/settings/tokens">
               <Icon type="info" size="16" color={ baseAppColor }/>
             </ExternalLink>
             <br/>
-            <Button icon="success" onClick={ () => this.props.loginWithToken(this.state.fieldsData.token) }>Log-in</Button>
+            <Button
+              icon="success"
+              onClick={ () => this.props.loginWithToken(this.state.fieldsData.token) }>
+              Log-in
+            </Button>
             <br/>
             <br/>
-            <Anchor onClick={ () => this.setLoginType('basic') }>
-              Cancel
-            </Anchor>
+            <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
           </div>
-        ) }
+        )}
 
-        { this.state.loginType.enterprise && (
+        {this.state.loginType.enterprise && (
+          <div>
+            <h4>Setup enterprise endpoints and log-in</h4>
+            <Input
+              type="text"
+              onChange={ (event) => this.setField('enterpriseDomain', event.target.value) }
+              placeholder="Enterprise domain"/>
+          </div>
+        )}
+
+        {(this.state.loginType.basic || this.state.loginType.enterprise) && (
           <div>
             <h4>
-              Setup enterprise endpoints and log-in
-            </h4>
-            <Input type="text"
-                   onChange={ (event) => this.setField('enterpriseDomain', event.target.value) }
-                   placeholder="Enterprise domain"/>
-          </div>
-        ) }
-
-        { (this.state.loginType.basic || this.state.loginType.enterprise) && (
-          <div>
-            <h4>
-              Sign-in using { this.state.loginType.enterprise ? 'your organization' : 'Github' } username and password
+              Sign-in using {this.state.loginType.enterprise ? 'your organization' : 'Github'}{' '}
+              username and password
             </h4>
 
-            <Input type="text"
-                   onChange={ (event) => this.setField('username', event.target.value) }
-                   placeholder="Email or username"/>
+            <Input
+              type="text"
+              onChange={ (event) => this.setField('username', event.target.value) }
+              placeholder="Email or username"/>
             <br/>
 
-            <Input type="password"
-                   onChange={ (event) => this.setField('password', event.target.value) }
-                   placeholder="Password"/>
+            <Input
+              type="password"
+              onChange={ (event) => this.setField('password', event.target.value) }
+              placeholder="Password"/>
             <br/>
 
-            { this.props.twoFactorAuth && (
-              <Input type="text"
-                     onChange={ (event) => this.setField('twoFactorAuth', event.target.value) }
-                     placeholder="Two factor token (2fa)"/>
-            ) }
+            {this.props.twoFactorAuth && (
+              <Input
+                type="text"
+                onChange={ (event) => this.setField('twoFactorAuth', event.target.value) }
+                placeholder="Two factor token (2fa)"/>
+            )}
 
             <ResetLoginType>
-              <Anchor onClick={ () => this.setLoginType('github') }>
-                Log-in with GitHub
-              </Anchor>
-              <Anchor onClick={ () => this.setLoginType('basic') }>
-                Cancel
-              </Anchor>
+              <Anchor onClick={ () => this.setLoginType('github') }>Log-in with GitHub</Anchor>
+              <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
             </ResetLoginType>
 
             <br/>
             <br/>
-            <Button onClick={
-              () => this.loginWithBasic(
+            <Button
+              onClick={ () => this.loginWithBasic(
                 this.state.fieldsData.username,
                 this.state.fieldsData.password,
                 this.state.fieldsData.twoFactorAuth
-              ) }
-                    icon="success">
+              )
+              }
+              icon="success">
               Log-in
             </Button>
             <br/>
           </div>
-        ) }
+        )}
 
         <p className="options">
-          <strong>
-            Other options:
-          </strong>
-          &nbsp;
-          sign-in using GitHub
-          &nbsp;
+          <strong>Other options:</strong>
+          &nbsp; sign-in using GitHub &nbsp;
           <Anchor onClick={ () => this.setLoginType('token') }>token</Anchor>
           &nbsp;|&nbsp;
           <Anchor onClick={ () => this.setLoginType('basic') }>username and password</Anchor>
@@ -235,9 +230,11 @@ export class LogIn extends React.Component {
           <Anchor onClick={ () => this.setLoginType('enterprise') }>Use enterprise</Anchor>
         </p>
 
-        { this.props.loading && (
-          <p><Icon type="loading" color={ baseAppColor }/> Loading...</p>
-        ) }
+        {this.props.loading && (
+          <p>
+            <Icon type="loading" color={ baseAppColor }/> Loading...
+          </p>
+        )}
       </LoginWrapper>
     );
   }
@@ -255,7 +252,10 @@ LogIn.propTypes = {
   loading: PropTypes.bool
 };
 
-export default connect(mapStateToProps, {
-  loginBasic: loginActions.loginWithBasicAuth,
-  loginWithToken: loginActions.loginWithToken
-})(withRouter(LogIn));
+export default connect(
+  mapStateToProps,
+  {
+    loginBasic: loginActions.loginWithBasicAuth,
+    loginWithToken: loginActions.loginWithToken
+  }
+)(withRouter(LogIn));
