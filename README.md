@@ -1,10 +1,13 @@
 # { Gisto } 
 
+[![GitHub package version](https://v.egoist.moe/gh/gisto/gisto.svg?branch=next)](https://github.com/Gisto/Gisto)
+
 > Snippets made awesome
 
 [![Travis Build Status](https://img.shields.io/travis/Gisto/Gisto/next.svg?logo=travis&style=flat-square)](https://travis-ci.org/Gisto/Gisto) 
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/tdogyqe0sa10iopb?svg=true&style=flat-square)](https://ci.appveyor.com/project/sanusart/gisto)
 [![Coverage Status](https://coveralls.io/repos/github/Gisto/Gisto/badge.svg?branch=next)](https://coveralls.io/github/Gisto/Gisto?branch=next)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cec8aeea35cc30193cb6/maintainability)](https://codeclimate.com/github/Gisto/Gisto/maintainability)
 
 ## About
 
