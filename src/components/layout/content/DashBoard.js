@@ -2,12 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { get, size, filter, map, flow, flattenDeep, uniq, compact, isEmpty } from 'lodash/fp';
+import {
+  get, size, filter, map, flow, flattenDeep, uniq, compact, isEmpty 
+} from 'lodash/fp';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
-import { getSnippets, getStarredCount, getLanguages, getPrivate } from 'selectors/snippets';
+import {
+  getSnippets, getStarredCount, getLanguages, getPrivate 
+} from 'selectors/snippets';
 
-import { baseAppColor, borderColor, headerBgLightest, lightText } from 'constants/colors';
+import {
+  baseAppColor, borderColor, headerBgLightest, lightText 
+} from 'constants/colors';
 import { DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 
 import * as snippetActions from 'actions/snippets';

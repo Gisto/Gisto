@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { baseAppColor, borderColor, lightText, textColor } from 'constants/colors';
+import {
+  baseAppColor, borderColor, lightText, textColor 
+} from 'constants/colors';
 import Icon from 'components/common/Icon';
 
 const ButtonComponent = styled.button`
@@ -31,7 +33,7 @@ const Button = ({
   const iconColor = () => {
     if (invert) {
       return baseAppColor;
-    } else if (disabled) {
+    } if (disabled) {
       return  textColor;
     } 
     

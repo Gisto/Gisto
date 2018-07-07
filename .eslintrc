@@ -54,7 +54,6 @@
 		"react/jsx-first-prop-new-line": 0,
 		"react/jsx-indent": [2, 2],
 		"react/jsx-indent-props": 0,
-		"react/jsx-space-before-closing": [2, "never"],
 		"react/require-default-props": 0,
 		"react/no-danger": 0,
 		"react/jsx-filename-extension": 0,

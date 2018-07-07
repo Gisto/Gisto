@@ -108,12 +108,12 @@ export class LogIn extends React.Component {
   };
 
   setField = (field, value) => {
-    this.setState({
+    this.setState((prevState) => ({
       fieldsData: {
-        ...this.state.fieldsData,
+        ...prevState.fieldsData,
         [field]: value
       }
-    });
+    }));
   };
 
   loginWithBasic = (user, pass, twoFactorAuth) => {

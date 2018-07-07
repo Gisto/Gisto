@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { get, isEmpty, join, map, size } from 'lodash/fp';
+import {
+  get, isEmpty, join, map, size 
+} from 'lodash/fp';
 import styled from 'styled-components';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
@@ -99,9 +101,9 @@ export class SuperSearch extends Component {
     return size(query) > MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH || isEmpty(query);
   };
 
-  handleSearchTerm = (event) =>
-    this.shouldFilter(event.target.value) && this.props.filterSnippets(event.target.value);
-
+  handleSearchTerm = (event) => {
+    return this.shouldFilter(event.target.value) && this.props.filterSnippets(event.target.value);
+  };
 
   render() {
     const {

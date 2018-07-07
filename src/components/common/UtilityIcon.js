@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { borderColor, lightText, colorDanger, lightBorderColor } from 'constants/colors';
+import {
+  borderColor, lightText, colorDanger, lightBorderColor 
+} from 'constants/colors';
 import styled from 'styled-components';
 
 import Icon from 'components/common/Icon';
@@ -57,9 +59,9 @@ export class UtilityIcon extends React.Component {
   };
 
   handleClick = () => {
-    this.setState({
-      childrenShown: this.state.childrenShown = !this.state.childrenShown
-    });
+    this.setState((prevState) => ({
+      childrenShown: !prevState.childrenShown
+    }));
   };
 
   render() {

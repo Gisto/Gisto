@@ -21,14 +21,15 @@ export class App  extends React.Component {
   componentDidMount() {
     Mousetrap.bind(['shift shift', 'ctrl+f'], this.toggleSuperSesrch);
   }
+
   componentWillUnmount() {
     Mousetrap.unbind(['shift shift', 'ctrl+f'], this.toggleSuperSesrch);
   }
 
   toggleSuperSesrch = () => {
-    this.setState({
-      showSuperSearch: this.state.showSuperSearch = !this.state.showSuperSearch
-    });
+    this.setState((prevState) => ({
+      showSuperSearch: !prevState.showSuperSearch
+    }));
   };
 
   render() {

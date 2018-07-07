@@ -17,7 +17,7 @@ export const Layout = () => (
         <SubHeader/>
         <Main/>
       </React.Fragment>
-      ) : <LogIn/> }
+    ) : <LogIn/> }
   </App>
 );
 

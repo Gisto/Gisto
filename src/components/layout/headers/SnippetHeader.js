@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { get, map, size } from 'lodash/fp';
 import styled from 'styled-components';
 
-import { baseAppColor, colorDanger, colorSuccess, textColor } from 'constants/colors';
+import {
+  baseAppColor, colorDanger, colorSuccess, textColor 
+} from 'constants/colors';
 import * as snippetActions from 'actions/snippets';
 import { copyToClipboard, prepareFilesForUpdate } from 'utils/snippets';
 
@@ -61,13 +63,12 @@ export class SnippetHeader extends React.Component {
   };
 
   toggleToolbox = () => {
-    this.setState({
-      showToolbox: this.state.showToolbox = !this.state.showToolbox
-    });
+    this.setState((prevState) => ({
+      showToolbox: !prevState.showToolbox
+    }));
   };
 
-  toggleStar = (id, starred) =>
-    starred ? this.props.unsetStar(id) : this.props.setStar(id);
+  toggleStar = (id, starred) => starred ? this.props.unsetStar(id) : this.props.setStar(id);
 
   deleteSnippet = (id) => this.props.deleteSnippet(id);
 

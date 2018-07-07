@@ -1,38 +1,3 @@
-const THEMES = [
-  'chrome',
-  'clouds',
-  'crimson_editor',
-  'dawn',
-  'dreamweaver',
-  'eclipse',
-  'github',
-  'solarized_light',
-  'textmate',
-  'tomorrow',
-  'xcode',
-  'kuroir',
-  'katzenmilch',
-  'ambiance',
-  'chaos',
-  'clouds_midnight',
-  'cobalt',
-  'idle_fingers',
-  'kr_theme',
-  'merbivore',
-  'merbivore_soft',
-  'mono_industrial',
-  'monokai',
-  'pastel_on_dark',
-  'solarized_dark',
-  'terminal',
-  'tomorrow_night',
-  'tomorrow_night_blue',
-  'tomorrow_night_bright',
-  'tomorrow_night_eighties',
-  'twilight',
-  'vibrant_ink'
-];
-
 export const syntaxMap = {
   ABAP: 'abap',
   ActionScript: 'actionscript',
@@ -364,4 +329,3 @@ export const syntaxMap = {
   Zephir: 'php',
   Zimpl: 'text'
 };
-

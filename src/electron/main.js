@@ -1,9 +1,12 @@
+/* eslint no-console: 0 */
+
 const {
   app, BrowserWindow, Menu, shell
 } = require('electron');
 const path = require('path');
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
+
 const isDev = process.env.NODE_ENV === 'development';
 const {
   default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF
@@ -102,7 +105,7 @@ const createWindow = () => {
     app.dock.setBadge('DEV');
 
     installExtension([REACT_DEVELOPER_TOOLS.id, REDUX_DEVTOOLS.id, REACT_PERF.id])
-      .then((name) => console.log(`Added Extension:  ${name}`))
+      .then((extensionName) => console.log(`Added Extension:  ${extensionName}`))
       .catch((err) => console.log('An error occurred: ', err));
 
     console.log('\x1b[37m\x1b[41m', 'LOG ', '\x1b[0m', process.env.NODE_ENV);
