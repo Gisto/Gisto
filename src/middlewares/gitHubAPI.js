@@ -1,3 +1,5 @@
+/* eslint consistent-return: 0 */
+
 import * as API from 'superagent';
 import * as AT from 'constants/actionTypes';
 import { DEFAULT_API_ENDPOINT_URL, gitHubTokenKeyInStorage } from 'constants/config';

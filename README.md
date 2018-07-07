@@ -8,8 +8,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/Gisto/Gisto/badge.svg?branch=next)](https://coveralls.io/github/Gisto/Gisto?branch=next)
 [![Maintainability](https://api.codeclimate.com/v1/badges/cec8aeea35cc30193cb6/maintainability)](https://codeclimate.com/github/Gisto/Gisto/maintainability)
 
-![OSX build](https://travis-badge-per-job.herokuapp.com/?repo=Gisto/Gisto&job=1&style=flat-square&label=OSX%20build)
-![Linux build](https://travis-badge-per-job.herokuapp.com/?repo=Gisto/Gisto&job=2&style=flat-square&label=Linux%20build)
+[![OSX build](https://travis-badge-per-job.herokuapp.com/?repo=Gisto/Gisto&job=1&style=flat-square&label=OSX%20build)](https://travis-ci.org/Gisto/Gisto)
+[![Linux build](https://travis-badge-per-job.herokuapp.com/?repo=Gisto/Gisto&job=2&style=flat-square&label=Linux%20build)](https://travis-ci.org/Gisto/Gisto)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/tdogyqe0sa10iopb?svg=true&style=flat-square)](https://ci.appveyor.com/project/sanusart/gisto)
 
 ## About

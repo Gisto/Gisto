@@ -7,7 +7,9 @@ import SnippetsList from 'components/layout/sidebar/SnippetsList';
 import Snippet from 'components/layout/sidebar/Snippet';
 import Icon from 'components/common/Icon';
 import { SIDEBAR_WIDTH } from 'constants/config';
-import { baseAppColor, borderColor, colorDanger, lightText, boxShadow } from 'constants/colors';
+import {
+  baseAppColor, borderColor, colorDanger, lightText, boxShadow 
+} from 'constants/colors';
 import { filterSnippetsList, isTag } from 'utils/snippets';
 import * as snippetActions from 'actions/snippets';
 
@@ -94,7 +96,7 @@ const Sidebar = ({
           <strong>clear all</strong>
         </ClearAll>
       </SearchFilters>
-        ) }
+      ) }
       <SnippetsList>
         {map((snippet) => (
           <Snippet key={ snippet.id } snippet={ snippet }/>

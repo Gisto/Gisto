@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { baseAppColor, bg, disabledColor, lightText } from 'constants/colors';
+import {
+  baseAppColor, bg, disabledColor, lightText 
+} from 'constants/colors';
 import styled from 'styled-components';
-import { getDefaultDomain } from 'utils/login';
 
 const StyledInput = styled.input`
   border: none;

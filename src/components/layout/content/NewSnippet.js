@@ -2,7 +2,9 @@ import React from 'react';
 import PropType from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { set, findIndex, map, filter } from 'lodash/fp';
+import {
+  set, findIndex, map, filter 
+} from 'lodash/fp';
 import uuid from 'uuid';
 
 import * as snippetActions from 'actions/snippets';
@@ -66,9 +68,9 @@ export class NewSnippet extends React.Component {
   };
 
   togglePublic = () => {
-    this.setState({
-      public: this.state.public = !this.state.public
-    });
+    this.setState((prevState) => ({
+      public: !prevState.public
+    }));
   };
 
   addFile = () => {
@@ -78,9 +80,9 @@ export class NewSnippet extends React.Component {
       content: ''
     };
 
-    this.setState({
-      files: [...this.state.files, fileStructure]
-    });
+    this.setState((prevState) => ({
+      files: [...prevState.files, fileStructure]
+    }));
   };
 
   deleteFile = (id) => {
@@ -143,7 +145,7 @@ export class NewSnippet extends React.Component {
               <strong>Remove</strong> { file.name }
             </StyledButton>
           </FileSection>
-          ), this.state.files) }
+        ), this.state.files) }
 
         <Section>
           <StyledButton icon="success"

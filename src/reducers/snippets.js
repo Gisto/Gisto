@@ -1,4 +1,6 @@
-import { merge, keyBy, update, set, map, flow, concat, includes, without, omit, pick } from 'lodash/fp';
+import {
+  merge, keyBy, update, set, map, flow, concat, includes, without, omit, pick 
+} from 'lodash/fp';
 import uuid from 'uuid';
 import * as AT from 'constants/actionTypes';
 import { snippetStructure } from 'utils/prepareSnippet';

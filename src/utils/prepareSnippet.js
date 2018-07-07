@@ -1,4 +1,6 @@
-import { isEmpty, map, get, includes, uniq, compact } from 'lodash/fp';
+import {
+  isEmpty, map, get, includes, uniq, compact 
+} from 'lodash/fp';
 import { TAG_REGEX, DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 import { removeTags } from 'utils/tags';
 

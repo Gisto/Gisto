@@ -45,13 +45,12 @@ ipcMain.on('oauth2-login', (event) => {
       const token = await requestGithubToken(options, code);
 
       if (token) {
-        console.log('\x1b[37m\x1b[41m', 'token ', '\x1b[0m', token);
         event.sender.send('token', token);
       }
     } else if (error) {
       // eslint-disable-next-line no-alert
-      alert('Oops! Something went wrong and we couldn\'t' +
-        'log you in using Github. Please try again.');
+      alert('Oops! Something went wrong and we couldn\'t'
+        + 'log you in using Github. Please try again.');
     }
   }
 
