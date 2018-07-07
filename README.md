@@ -27,7 +27,8 @@ Please see [next](https://github.com/Gisto/Gisto/tree/next) branch for upcoming 
 
 change.log of current version for more detailed info regarding new features, bug fixes and releases.
 
-## Scrennshots
+## Screenshots
+
 #### Dashboard
 ![Dashboard](https://i.imgur.com/s4d0uHL.png)
 
