@@ -1,4 +1,5 @@
 import { LogIn } from 'components/LogIn';
+jest.mock('../../package.json', () => ({ version: 'X.X.X' }));
 
 const spy = sinon.spy();
 

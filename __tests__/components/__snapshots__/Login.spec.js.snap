@@ -20,7 +20,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
       </Logo>
       <small>
         v
-        1.9.33
+        X.X.X
       </small>
       <div>
         <h4>
@@ -218,7 +218,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
       </Logo>
       <small>
         v
-        1.9.33
+        X.X.X
       </small>
       <div>
         <h4>
@@ -443,7 +443,7 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
       </Logo>
       <small>
         v
-        1.9.33
+        X.X.X
       </small>
       <StyledGithubLoginButton
         icon="logo-github"
@@ -557,7 +557,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
       </Logo>
       <small>
         v
-        1.9.33
+        X.X.X
       </small>
       <div>
         <h4>
