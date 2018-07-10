@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -53,6 +54,7 @@ module.exports = {
       NODE_ENV: 'development',
       DEBUG: true
     }),
+    new MonacoWebpackPlugin(),
     new CopyWebpackPlugin([
       'build/icon.ico',
       'build/icon.png',
@@ -62,5 +64,6 @@ module.exports = {
       { from: 'src/electron/updater.js', to: 'updater.js' },
       { from: 'src/icons', to: 'src/icons' }
     ])
-  ]
+  ],
+  target: 'electron-renderer'
 };

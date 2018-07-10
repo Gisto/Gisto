@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AceEditor from 'react-ace';
+import MonacoEditor from 'react-monaco-editor';
 import { syntaxMap } from 'constants/editor';
-
-import 'brace/theme/chrome';
-import 'brace/mode/javascript';
-import 'brace/mode/markdown';
 
 export class Editor extends React.Component {
   state = {};
@@ -14,22 +10,27 @@ export class Editor extends React.Component {
     const {
       file, language, onChange, id, className
     } = this.props;
+    const options = {
+      selectOnLineNumbers: true,
+      roundedSelection: false,
+      scrollBeyondLastLine: false,
+      minimap: {
+        enabled: false
+      },
+      automaticLayout: true
+    };
 
     return (
-      <AceEditor
-        mode={ language || syntaxMap[file.language] || 'text' }
-        value={ file.content }
-        className={ className }
+      <MonacoEditor
         width="100%"
-        onChange={ onChange }
+        height="400"
+        className={ className }
+        language={ language || syntaxMap[file.language] || 'text' }
+        theme="vs"
         name={ id }
-        setOptions={ {
-          showLineNumbers: true,
-          tabSize: 2,
-          maxLines: 15,
-          minLines: 10
-        } }
-        theme="github"/>
+        value={ file.content }
+        options={ options }
+        onChange={ onChange }/>
     );
   }
 }

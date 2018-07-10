@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const baseConfig = require('./webpack.base.config');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const baseConfig = require('./webpack.base.config');
 
 const buildPath = path.resolve(__dirname, './dist');
 
@@ -33,7 +33,6 @@ const config = merge.smart(baseConfig, {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
               importLoaders: 1,
               localIdentName: '[name]_[local]_[hash:base64]',
               sourceMap: true,
@@ -52,8 +51,7 @@ const config = merge.smart(baseConfig, {
     new UglifyJsPlugin({
       sourceMap: true
     })
-  ],
-  target: 'electron-renderer'
+  ]
 });
 
 module.exports = config;
