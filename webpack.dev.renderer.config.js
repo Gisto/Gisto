@@ -34,7 +34,6 @@ const config = merge.smart(baseConfig, {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
               importLoaders: 1,
               localIdentName: '[name]_[local]_[hash:base64]',
               sourceMap: true,
@@ -50,8 +49,7 @@ const config = merge.smart(baseConfig, {
       NODE_ENV: 'development',
       DEBUG: true
     })
-  ],
-  target: 'electron-renderer'
+  ]
 });
 
 module.exports = config;
