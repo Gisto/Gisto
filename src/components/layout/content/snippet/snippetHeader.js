@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { get } from 'lodash/fp';
+import { get, getOr } from 'lodash/fp';
 import styled from 'styled-components';
 
 import { defaultGistURL } from 'constants/config';
@@ -68,7 +68,7 @@ export class SnippetHeader extends React.Component {
 
         { !edit ? (
           <div>
-            <Language>{get('plain', 'language', file) || 'Plain text'}</Language>
+            <Language>{getOr('Plain text', 'language', file)}</Language>
             <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
               <ul>
                 <li>
