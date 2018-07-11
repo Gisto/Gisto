@@ -48,7 +48,7 @@ const Description = styled.span`
 
 const Languages = styled.span`
   color: ${baseAppColor};
-  border: 1px solid ${baseAppColor}
+  border: 1px solid ${baseAppColor};
   font-size: 11px;
   padding: 1px 3px;
   border-radius: 2px;
