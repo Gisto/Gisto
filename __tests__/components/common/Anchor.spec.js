@@ -1,6 +1,6 @@
 import Anchor from 'components/common/Anchor';
 
-const setup = (props) => shallow(<Anchor { ...props }>link</Anchor>);
+const setup = (props) => mount(<Anchor { ...props }>link</Anchor>);
 
 describe('COMPONENTS - <Anchor>', () => {
   test('render Anchor', () => {

@@ -4,7 +4,7 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => shallow(<App { ...propSetup(props) }/>);
+const setup = (props) => mount(<App { ...propSetup(props) }/>);
 
 describe('COMPONENTS - <App>', () => {
   test('render App', () => {

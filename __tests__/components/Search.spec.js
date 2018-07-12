@@ -4,7 +4,7 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => shallow(<Search { ...propSetup(props) }/>);
+const setup = (props) => mount(<Search { ...propSetup(props) }/>);
 
 describe('COMPONENTS - <Search>', () => {
   test('render Search', () => {

@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
+<SnippetHeader
+  deleteFile={[MockFunction]}
+  edit={true}
+  file={
+    Object {
+      "filename": "somefile.js",
+    }
+  }
+  snippetId="123123123123"
+  tempSnippet={Object {}}
+  updateTempSnippet={[MockFunction]}
+  username="user"
+>
+  <SnippetHeaderWrapper>
+    <div
+      className="SnippetHeaderWrapper-cazcnY cgFUmw"
+    >
+      <FileName>
+        <div
+          className="FileName-gYMyOg dBkvLs"
+        >
+          <Icon
+            color="#3F84A8"
+            size={22}
+            type="file"
+          >
+            <span
+              className="Icon-cFRQJw fERgeY"
+              color="#3F84A8"
+              size={22}
+              type="file"
+            />
+          </Icon>
+           
+          <Input
+            onChange={[Function]}
+          >
+            <StyledInput
+              disabled={false}
+              onChange={[Function]}
+              title=""
+              type="text"
+            >
+              <input
+                className="StyledInput-kKifnt fvzwxc"
+                disabled={false}
+                onChange={[Function]}
+                title=""
+                type="text"
+              />
+            </StyledInput>
+          </Input>
+        </div>
+      </FileName>
+      <UtilityIcon
+        color="tomato"
+        onClick={[Function]}
+        size={22}
+        type="delete"
+      >
+        <Util
+          onClick={[Function]}
+        >
+          <span
+            className="Util-iuPPCj hnxVHZ"
+            onClick={[Function]}
+          >
+            <Icon
+              color="tomato"
+              size={22}
+              type="delete"
+            >
+              <span
+                className="Icon-cFRQJw dAYQoc"
+                color="tomato"
+                size={22}
+                type="delete"
+              />
+            </Icon>
+          </span>
+        </Util>
+      </UtilityIcon>
+    </div>
+  </SnippetHeaderWrapper>
+</SnippetHeader>
+`;
+
+exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
+<SnippetHeader
+  deleteFile={[MockFunction]}
+  edit={false}
+  file={
+    Object {
+      "filename": "somefile.js",
+    }
+  }
+  snippetId="123123123123"
+  tempSnippet={Object {}}
+  updateTempSnippet={[MockFunction]}
+  username="user"
+>
+  <SnippetHeaderWrapper>
+    <div
+      className="SnippetHeaderWrapper-cazcnY cgFUmw"
+    >
+      <FileName>
+        <div
+          className="FileName-gYMyOg dBkvLs"
+        >
+          <Icon
+            color="#3F84A8"
+            size={22}
+            type="file"
+          >
+            <span
+              className="Icon-cFRQJw fERgeY"
+              color="#3F84A8"
+              size={22}
+              type="file"
+            />
+          </Icon>
+           
+          somefile.js
+        </div>
+      </FileName>
+      <div>
+        <Language>
+          <span
+            className="Language-kSngDe hZuUtn"
+          >
+            Plain text
+          </span>
+        </Language>
+        <UtilityIcon
+          color="#3F84A8"
+          dropdown={true}
+          size={22}
+          type="ellipsis"
+        >
+          <Util
+            onClick={[Function]}
+          >
+            <span
+              className="Util-iuPPCj hnxVHZ"
+              onClick={[Function]}
+            >
+              <Icon
+                color="#3F84A8"
+                size={22}
+                type="ellipsis"
+              >
+                <span
+                  className="Icon-cFRQJw dFLpED"
+                  color="#3F84A8"
+                  size={22}
+                  type="ellipsis"
+                />
+              </Icon>
+            </span>
+          </Util>
+        </UtilityIcon>
+        <UtilityIcon
+          color="#3F84A8"
+          onClick={null}
+          size={22}
+          type="arrow-up"
+        >
+          <Util
+            onClick={[Function]}
+          >
+            <span
+              className="Util-iuPPCj hnxVHZ"
+              onClick={[Function]}
+            >
+              <Icon
+                color="#3F84A8"
+                size={22}
+                type="arrow-up"
+              >
+                <span
+                  className="Icon-cFRQJw fxxoHj"
+                  color="#3F84A8"
+                  size={22}
+                  type="arrow-up"
+                />
+              </Icon>
+            </span>
+          </Util>
+        </UtilityIcon>
+      </div>
+    </div>
+  </SnippetHeaderWrapper>
+</SnippetHeader>
+`;
