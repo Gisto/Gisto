@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
+<div>
+  <H1>
+    <strong>
+      New 
+      private
+       snippet:
+    </strong>
+     
+  </H1>
+  <Section>
+    <StyledInput
+      onChange={[Function]}
+      placeholder="Description (default untitled)"
+      type="text"
+    />
+  </Section>
+  <Section>
+    <input
+      checked={false}
+      onChange={[Function]}
+      type="checkbox"
+    />
+     
+    <span>
+      Public snippet  
+      <ExternalLink
+        href="https://help.github.com/articles/about-gists/#types-of-gists"
+      >
+        <Icon
+          color="#3F84A8"
+          size="16"
+          type="info"
+        />
+      </ExternalLink>
+    </span>
+  </Section>
+  <FileSection
+    key="123123123123"
+  >
+    <StyledInput
+      onChange={[Function]}
+      placeholder="file.ext"
+      type="text"
+    />
+    <br />
+    <br />
+    <Editor
+      file={
+        Object {
+          "content": "",
+          "name": "",
+          "uuid": "123123123123",
+        }
+      }
+      id="123123123123"
+      onChange={[Function]}
+    />
+    <br />
+    <StyledButton
+      icon="delete"
+      invert={true}
+      onClick={[Function]}
+    >
+      <strong>
+        Remove
+      </strong>
+       
+    </StyledButton>
+  </FileSection>
+  <Section>
+    <StyledButton
+      icon="success"
+      onClick={[Function]}
+    >
+      Save
+    </StyledButton>
+    <StyledButton
+      icon="add"
+      invert={true}
+      onClick={[Function]}
+    >
+      Add file
+    </StyledButton>
+  </Section>
+</div>
+`;
