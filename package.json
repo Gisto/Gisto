@@ -114,6 +114,7 @@
     "dotenv": "^6.0.0",
     "electron-log": "^2.2.15",
     "electron-updater": "^2.21.10",
+    "github-markdown-css": "^2.10.0",
     "highlight.js": "^9.12.0",
     "lodash": "^4.17.10",
     "marked": "^0.4.0",

@@ -44,7 +44,8 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'global.GENTLY': false
+      'global.GENTLY': false,
+      'process.browser': true
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
