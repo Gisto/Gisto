@@ -29,7 +29,7 @@ const SnippetHeaderBlock = styled.div`
   margin: 0 0 0 10px;
 `;
 
-const SubHeader = ({ edit }) => (
+export const SubHeader = ({ edit }) => (
   <SubHeaderWrapper>
     { !edit && (
       <Search/>

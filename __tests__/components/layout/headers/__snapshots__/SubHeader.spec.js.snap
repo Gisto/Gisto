@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <SubHeader> render SubHeader 1`] = `
+<SubHeaderWrapper>
+  <Connect(Search) />
+  <SnippetHeaderBlock>
+    <HashRouter>
+      <Switch>
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/about"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/settings"
+        />
+        <Route
+          component={[Function]}
+          path="/snippet/:id"
+        />
+      </Switch>
+    </HashRouter>
+  </SnippetHeaderBlock>
+</SubHeaderWrapper>
+`;

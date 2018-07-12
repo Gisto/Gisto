@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
+<HeaderWrapper>
+  <Logo>
+    <Link
+      replace={false}
+      title="API Rate limit: undefined/undefined"
+      to="/"
+    >
+      { Gisto }
+    </Link>
+  </Logo>
+  <MiddleArea>
+    <Icon
+      color="#fff"
+      type="menu"
+    />
+    <div />
+  </MiddleArea>
+  <Connect(AppArea) />
+</HeaderWrapper>
+`;
