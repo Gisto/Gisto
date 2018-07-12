@@ -13,6 +13,8 @@ import { borderColor } from 'constants/colors';
 import Editor from 'components/common/Editor';
 import SnippetHeader from 'components/layout/content/snippet/snippetHeader';
 
+import 'github-markdown-css/github-markdown.css';
+
 const SnippetWrapper = styled.div`
   background: #fff;
   font-weight: 200;
@@ -30,7 +32,7 @@ const StyledEditor = styled(Editor)`
 `;
 
 const Markdown = styled.div`
-  padding: 0 30px;
+  padding: 20px 30px;
 `;
 
 export class Snippet extends React.Component {
@@ -64,7 +66,7 @@ export class Snippet extends React.Component {
       const html = marked(file.content) || '';
 
       return (
-        <Markdown dangerouslySetInnerHTML={ { __html: html } }/>
+        <Markdown className="markdown-body" dangerouslySetInnerHTML={ { __html: html } }/>
       );
     }
 
