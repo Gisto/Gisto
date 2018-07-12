@@ -31,7 +31,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const Search = ({
+export const Search = ({
   snippets, filterSnippets, filterText, filterTags, filterLanguage
 }) => {
   const countSnippets = size(filterSnippetsList(snippets, filterText, filterTags, filterLanguage));
