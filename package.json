@@ -166,6 +166,8 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{js}",
+      "!src/electron/**",
+      "!src/store/**",
       "!**/node_modules/**",
       "!**/build/**",
       "!**/dist/**"

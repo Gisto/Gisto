@@ -4,7 +4,7 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => shallow(<SuperSearch { ...propSetup(props) }/>);
+const setup = (props) => mount(<SuperSearch { ...propSetup(props) }/>);
 
 describe('COMPONENTS - <SuperSearch>', () => {
   test('render SuperSearch', () => {

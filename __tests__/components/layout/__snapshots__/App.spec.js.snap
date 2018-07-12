@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`COMPONENTS - <App> render App 1`] = `<AppWrapper />`;
+exports[`COMPONENTS - <App> render App 1`] = `
+<App>
+  <AppWrapper>
+    <div
+      className="AppWrapper-boBYhB kMXYE"
+    />
+  </AppWrapper>
+</App>
+`;

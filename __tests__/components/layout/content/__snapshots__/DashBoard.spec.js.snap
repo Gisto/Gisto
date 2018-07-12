@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
+<DashBoard
+  getRateLimit={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  privateSnippets={45}
+  searchByLanguages={[MockFunction]}
+  searchByTags={[MockFunction]}
+  snippets={Object {}}
+  snippetsLanguages={Array []}
+  starred={6}
+>
+  <DashbordWrapper>
+    <div
+      className="DashbordWrapper-dBZhoA bfmgRl"
+    >
+      <Box
+        style={
+          Object {
+            "background": "linear-gradient(to right, #e5f6ff -Infinity%, #fff -Infinity%)",
+          }
+        }
+      >
+        <div
+          className="Box-iUbLMm crUOSM"
+          style={
+            Object {
+              "background": "linear-gradient(to right, #e5f6ff -Infinity%, #fff -Infinity%)",
+            }
+          }
+        >
+          <h3>
+            Public
+          </h3>
+          <span>
+            -45
+          </span>
+        </div>
+      </Box>
+      <Box
+        style={
+          Object {
+            "background": "linear-gradient(to right, #e5f6ff Infinity%, #fff Infinity%)",
+          }
+        }
+      >
+        <div
+          className="Box-geHOaa bHspcL"
+          style={
+            Object {
+              "background": "linear-gradient(to right, #e5f6ff Infinity%, #fff Infinity%)",
+            }
+          }
+        >
+          <h3>
+            Private
+          </h3>
+          <span>
+            45
+          </span>
+        </div>
+      </Box>
+      <Box
+        style={
+          Object {
+            "background": "linear-gradient(to right, #e5f6ff Infinity%, #fff Infinity%)",
+          }
+        }
+      >
+        <div
+          className="Box-kpCRUe bGypTY"
+          style={
+            Object {
+              "background": "linear-gradient(to right, #e5f6ff Infinity%, #fff Infinity%)",
+            }
+          }
+        >
+          <h3>
+            Starred
+          </h3>
+          <span>
+            6
+          </span>
+        </div>
+      </Box>
+      <Box
+        style={
+          Object {
+            "background": "linear-gradient(to right, #e5f6ff NaN%, #fff NaN%)",
+          }
+        }
+      >
+        <div
+          className="Box-gvqUvR hfGnRY"
+          style={
+            Object {
+              "background": "linear-gradient(to right, #e5f6ff NaN%, #fff NaN%)",
+            }
+          }
+        >
+          <h3>
+            Untitled:
+          </h3>
+          <span>
+            0
+          </span>
+        </div>
+      </Box>
+      <Box>
+        <div
+          className="Box-bxWaVq eRVSbT"
+        >
+          <h3>
+            Languages:
+          </h3>
+          <div />
+        </div>
+      </Box>
+      <Box>
+        <div
+          className="Box-chfgEv foeJzC"
+        >
+          <HeadingWithSearch>
+            <span
+              className="HeadingWithSearch-fayYV nRlre"
+            >
+              <h3>
+                Starred:
+              </h3>
+              <div>
+                <Icon
+                  color="#3F84A8"
+                  size="22"
+                  type="search"
+                >
+                  <span
+                    className="Icon-cFRQJw hYjrAj"
+                    color="#3F84A8"
+                    size="22"
+                    type="search"
+                  />
+                </Icon>
+                <StyledInput
+                  onChange={[Function]}
+                  placeholder="Search starred"
+                  type="search"
+                >
+                  <Input
+                    className="StyledInput-hbWqm hSgCMg"
+                    onChange={[Function]}
+                    placeholder="Search starred"
+                    type="search"
+                  >
+                    <StyledInput
+                      className="StyledInput-hbWqm hSgCMg"
+                      disabled={false}
+                      onChange={[Function]}
+                      placeholder="Search starred"
+                      title=""
+                      type="search"
+                    >
+                      <input
+                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt fvzwxc"
+                        disabled={false}
+                        onChange={[Function]}
+                        placeholder="Search starred"
+                        title=""
+                        type="search"
+                      />
+                    </StyledInput>
+                  </Input>
+                </StyledInput>
+              </div>
+            </span>
+          </HeadingWithSearch>
+          <ul />
+        </div>
+      </Box>
+      <Box>
+        <div
+          className="Box-dvdzfO dyywXp"
+        >
+          <HeadingWithSearch>
+            <span
+              className="HeadingWithSearch-fayYV nRlre"
+            >
+              <h3>
+                Tags:
+              </h3>
+              <div>
+                <Icon
+                  color="#3F84A8"
+                  size="22"
+                  type="search"
+                >
+                  <span
+                    className="Icon-cFRQJw hYjrAj"
+                    color="#3F84A8"
+                    size="22"
+                    type="search"
+                  />
+                </Icon>
+                <StyledInput
+                  onChange={[Function]}
+                  placeholder="Search tags"
+                  type="search"
+                >
+                  <Input
+                    className="StyledInput-hbWqm hSgCMg"
+                    onChange={[Function]}
+                    placeholder="Search tags"
+                    type="search"
+                  >
+                    <StyledInput
+                      className="StyledInput-hbWqm hSgCMg"
+                      disabled={false}
+                      onChange={[Function]}
+                      placeholder="Search tags"
+                      title=""
+                      type="search"
+                    >
+                      <input
+                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt fvzwxc"
+                        disabled={false}
+                        onChange={[Function]}
+                        placeholder="Search tags"
+                        title=""
+                        type="search"
+                      />
+                    </StyledInput>
+                  </Input>
+                </StyledInput>
+              </div>
+            </span>
+          </HeadingWithSearch>
+          <div />
+        </div>
+      </Box>
+    </div>
+  </DashbordWrapper>
+</DashBoard>
+`;

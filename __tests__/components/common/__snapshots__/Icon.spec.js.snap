@@ -1,11 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Icon> render Icon 1`] = `
-<span
-  className="Icon-cFRQJw brEhmC"
+<Icon
   color="#ff0000"
   type="menu"
 >
-  link
-</span>
+  <span
+    className="Icon-cFRQJw brEhmC"
+    color="#ff0000"
+    type="menu"
+  >
+    link
+  </span>
+</Icon>
 `;

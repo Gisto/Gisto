@@ -1,12 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Input> render Input 1`] = `
-<StyledInput
+<Input
   className="classified"
-  defaultValue="typetypetype"
-  disabled={false}
   placeholder="I am temporary"
-  title=""
   type="search"
-/>
+  value="typetypetype"
+>
+  <StyledInput
+    className="classified"
+    defaultValue="typetypetype"
+    disabled={false}
+    placeholder="I am temporary"
+    title=""
+    type="search"
+  >
+    <input
+      className="classified StyledInput-kKifnt fvzwxc"
+      defaultValue="typetypetype"
+      disabled={false}
+      placeholder="I am temporary"
+      title=""
+      type="search"
+    />
+  </StyledInput>
+</Input>
 `;

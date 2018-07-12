@@ -10,7 +10,7 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => shallow(<Button { ...props }>link</Button>);
+const setup = (props) => mount(<Button { ...props }>link</Button>);
 
 describe('COMPONENTS - <Button>', () => {
   test('render Button', () => {

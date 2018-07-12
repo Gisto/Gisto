@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Settings> render Settings 1`] = `
-<div>
-  Settings
-</div>
+<Settings>
+  <div>
+    Settings
+  </div>
+</Settings>
 `;

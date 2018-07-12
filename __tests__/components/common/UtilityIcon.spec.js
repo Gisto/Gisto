@@ -4,7 +4,7 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => shallow(<UtilityIcon { ...propSetup(props) }/>);
+const setup = (props) => mount(<UtilityIcon { ...propSetup(props) }/>);
 
 describe('COMPONENTS - <UtilityIcon>', () => {
   test('render UtilityIcon', () => {

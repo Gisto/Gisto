@@ -1,6 +1,6 @@
 import Icon from 'components/common/Icon';
 
-const setup = (props) => shallow(<Icon { ...props }>link</Icon>);
+const setup = (props) => mount(<Icon { ...props }>link</Icon>);
 
 describe('COMPONENTS - <Icon>', () => {
   test('render Icon', () => {

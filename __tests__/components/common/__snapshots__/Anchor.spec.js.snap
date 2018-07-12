@@ -1,10 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
-<Link
+<Anchor
   download="file.zip"
   href="https://github.com"
 >
-  link
-</Link>
+  <Link
+    download="file.zip"
+    href="https://github.com"
+  >
+    <a
+      className="Link-hdnizH bVHTue"
+      download="file.zip"
+      href="https://github.com"
+    >
+      link
+    </a>
+  </Link>
+</Anchor>
 `;

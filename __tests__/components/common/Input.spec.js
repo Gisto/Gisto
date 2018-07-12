@@ -8,7 +8,7 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => shallow(<Input { ...propSetup(props) }>link</Input>);
+const setup = (props) => mount(<Input { ...propSetup(props) }>link</Input>);
 
 describe('COMPONENTS - <Input>', () => {
   test('render Input', () => {
