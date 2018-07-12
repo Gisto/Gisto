@@ -16,7 +16,7 @@ const ContentWrapper = styled.div`
   overflow: auto;
 `;
 
-const Content = () => (
+export const Content = () => (
   <ContentWrapper>
     <Router>
       <Switch>

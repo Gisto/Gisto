@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Search> render Search 1`] = `
+<SearchWrapper>
+  <Icon
+    color="#3F84A8"
+    size="46"
+    type="search"
+  />
+  <Input
+    onChange={[Function]}
+    placeholder="Search 0 snippets"
+    type="search"
+  />
+  <HashRouter>
+    <Button
+      height="30px"
+      icon="add"
+      width="200px"
+    >
+      <StyledLink
+        to="/new"
+      >
+        New snippet
+      </StyledLink>
+    </Button>
+  </HashRouter>
+</SearchWrapper>
+`;

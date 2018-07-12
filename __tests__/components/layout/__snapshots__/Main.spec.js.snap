@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Main> render Main 1`] = `
+<MainWrapper>
+  <Content />
+</MainWrapper>
+`;

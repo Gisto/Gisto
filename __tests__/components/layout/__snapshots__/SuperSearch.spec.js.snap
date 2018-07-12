@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
+<SuperSearchWrapper>
+  <SearchWrapper>
+    <SearchBar>
+      <StyledLookingGlass
+        color="#3F84A8"
+        size={32}
+        type="search"
+      />
+      <StyledInput
+        autoFocus={true}
+        onChange={[Function]}
+        placeholder="Search"
+        type="search"
+      />
+    </SearchBar>
+    <SnippetResults />
+  </SearchWrapper>
+</SuperSearchWrapper>
+`;
