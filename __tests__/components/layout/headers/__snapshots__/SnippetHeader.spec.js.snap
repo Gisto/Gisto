@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
+<SnippetHeader
+  match={
+    Object {
+      "params": Object {
+        "id": "123123123123",
+      },
+    }
+  }
+>
+  <SnippetHeaderWrapper>
+    <div
+      className="SnippetHeaderWrapper-cazcnY bKVYHt"
+    >
+      <Title>
+        <div
+          className="Title-kAzUgf gEKaOL"
+        >
+           
+          <Description
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+          >
+            <span
+              className="Description-hWhuvR cWjGvZ"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+            />
+          </Description>
+           
+        </div>
+      </Title>
+      <div>
+        <UtilityIcon
+          color="#3F84A8"
+          onClick={[Function]}
+          size={22}
+          type="edit"
+        >
+          <Util
+            onClick={[Function]}
+          >
+            <span
+              className="Util-iuPPCj hnxVHZ"
+              onClick={[Function]}
+            >
+              <Icon
+                color="#3F84A8"
+                size={22}
+                type="edit"
+              >
+                <span
+                  className="Icon-cFRQJw jjWufO"
+                  color="#3F84A8"
+                  size={22}
+                  type="edit"
+                />
+              </Icon>
+            </span>
+          </Util>
+        </UtilityIcon>
+        <UtilityIcon
+          color="#3F84A8"
+          size={22}
+          title="0 File(s)"
+          type="file"
+        >
+          <Util
+            onClick={[Function]}
+            title="0 File(s)"
+          >
+            <span
+              className="Util-iuPPCj hnxVHZ"
+              onClick={[Function]}
+              title="0 File(s)"
+            >
+              <Icon
+                color="#3F84A8"
+                size={22}
+                type="file"
+              >
+                <span
+                  className="Icon-cFRQJw fERgeY"
+                  color="#3F84A8"
+                  size={22}
+                  type="file"
+                />
+              </Icon>
+            </span>
+          </Util>
+        </UtilityIcon>
+        <UtilityIcon
+          color="#3F84A8"
+          size={22}
+          type="lock"
+        >
+          <Util
+            onClick={[Function]}
+          >
+            <span
+              className="Util-iuPPCj hnxVHZ"
+              onClick={[Function]}
+            >
+              <Icon
+                color="#3F84A8"
+                size={22}
+                type="lock"
+              >
+                <span
+                  className="Icon-cFRQJw dqAXpC"
+                  color="#3F84A8"
+                  size={22}
+                  type="lock"
+                />
+              </Icon>
+            </span>
+          </Util>
+        </UtilityIcon>
+        <UtilityIcon
+          color="tomato"
+          onClick={[Function]}
+          size={22}
+          type="delete"
+        >
+          <Util
+            onClick={[Function]}
+          >
+            <span
+              className="Util-iuPPCj hnxVHZ"
+              onClick={[Function]}
+            >
+              <Icon
+                color="tomato"
+                size={22}
+                type="delete"
+              >
+                <span
+                  className="Icon-cFRQJw dAYQoc"
+                  color="tomato"
+                  size={22}
+                  type="delete"
+                />
+              </Icon>
+            </span>
+          </Util>
+        </UtilityIcon>
+        <UtilityIcon
+          color="#3F84A8"
+          size={22}
+          type="chat"
+        >
+          <Util
+            onClick={[Function]}
+          >
+            <span
+              className="Util-iuPPCj hnxVHZ"
+              onClick={[Function]}
+            >
+              <Icon
+                color="#3F84A8"
+                size={22}
+                type="chat"
+              >
+                <span
+                  className="Icon-cFRQJw fZweFl"
+                  color="#3F84A8"
+                  size={22}
+                  type="chat"
+                />
+              </Icon>
+            </span>
+          </Util>
+        </UtilityIcon>
+        <UtilityIcon
+          color="#3F84A8"
+          onClick={[Function]}
+          size={22}
+          type="star-empty"
+        >
+          <Util
+            onClick={[Function]}
+          >
+            <span
+              className="Util-iuPPCj hnxVHZ"
+              onClick={[Function]}
+            >
+              <Icon
+                color="#3F84A8"
+                size={22}
+                type="star-empty"
+              >
+                <span
+                  className="Icon-cFRQJw eAVcPR"
+                  color="#3F84A8"
+                  size={22}
+                  type="star-empty"
+                />
+              </Icon>
+            </span>
+          </Util>
+        </UtilityIcon>
+        <UtilityIcon
+          color="#3F84A8"
+          dropdown={true}
+          size={22}
+          type="ellipsis"
+        >
+          <Util
+            onClick={[Function]}
+          >
+            <span
+              className="Util-iuPPCj hnxVHZ"
+              onClick={[Function]}
+            >
+              <Icon
+                color="#3F84A8"
+                size={22}
+                type="ellipsis"
+              >
+                <span
+                  className="Icon-cFRQJw dFLpED"
+                  color="#3F84A8"
+                  size={22}
+                  type="ellipsis"
+                />
+              </Icon>
+            </span>
+          </Util>
+        </UtilityIcon>
+      </div>
+    </div>
+  </SnippetHeaderWrapper>
+</SnippetHeader>
+`;

@@ -49,7 +49,7 @@ const Loading = styled.span`
   align-self: center;
 `;
 
-const MainHeader = ({ loading, rateLimit, edit }) => (
+export const MainHeader = ({ loading, rateLimit, edit }) => (
   <HeaderWrapper>
     { !edit && (
       <Logo>
