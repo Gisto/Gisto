@@ -46,7 +46,7 @@ const StyledIcon = styled(Icon)`
   }
 `;
 
-const Snippet = ({ snippet, setStar, unsetStar }) => {
+export const Snippet = ({ snippet, setStar, unsetStar }) => {
   const starred = get('star', snippet);
   const toggleStar = (event, id, isStarred) => {
     event.preventDefault();

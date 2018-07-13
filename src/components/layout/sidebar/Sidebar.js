@@ -45,7 +45,7 @@ const Tag = styled.span`
   margin-right: 3px;
 `;
 
-const Sidebar = ({
+export const Sidebar = ({
   snippets, filterText, filterTags, filterLanguage, clearFilters, removeTag
 }) => {
   const searchType = () => {

@@ -9,7 +9,7 @@ const SnippetsListWrapper = styled.div`
   height: 100%;
 `;
 
-const SnippetsList = ({ children }) => (
+export const SnippetsList = ({ children }) => (
   <SnippetsListWrapper>
     { children }
   </SnippetsListWrapper>
