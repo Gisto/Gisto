@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Snippet> render Snippet 1`] = `
+<HashRouter>
+  <StyledNavLink
+    activeClassName="selected"
+    className="link"
+    exact={true}
+    to="/snippet/123123123123"
+  >
+    <span>
+      <Icon
+        color="#fff"
+        size={24}
+        type="lock"
+      />
+    </span>
+    <span>
+      <StyledIcon
+        color="#fff"
+        onClick={[Function]}
+        size={16}
+        type="star-full"
+      />
+    </span>
+    <Title>
+      unnamed
+    </Title>
+  </StyledNavLink>
+</HashRouter>
+`;
