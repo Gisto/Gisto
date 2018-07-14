@@ -32,12 +32,12 @@ change.log of current version for more detailed info regarding new features, bug
 
 <details>
   <summary>Dashboard</summary>
-	![Dashboard](https://i.imgur.com/s4d0uHL.png)
+	<img src="https://i.imgur.com/s4d0uHL.png" alt="Dashboard"/>
 </details>
 
 <details>
   <summary>Gist view</summary>
-	![Gist view](https://i.imgur.com/DCR1zTK.png)
+	<img src="https://i.imgur.com/DCR1zTK.png" alt="Gist view"/>
 </details>
 
 ## "Nightly" builds
