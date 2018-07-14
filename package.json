@@ -169,6 +169,7 @@
       "!src/electron/**",
       "!src/store/**",
       "!src/selectors/**",
+      "!src/reducers/root.js",
       "!src/index.js",
       "!**/node_modules/**",
       "!**/build/**",
