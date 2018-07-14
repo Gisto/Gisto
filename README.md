@@ -30,12 +30,15 @@ change.log of current version for more detailed info regarding new features, bug
 
 ## Screenshots
 
-#### Dashboard
-![Dashboard](https://i.imgur.com/s4d0uHL.png)
+<details>
+  <summary>Dashboard</summary>
+	![Dashboard](https://i.imgur.com/s4d0uHL.png)
+</details>
 
-#### Gist view
-![Gist view](https://i.imgur.com/DCR1zTK.png)
-
+<details>
+  <summary>Gist view</summary>
+	![Gist view](https://i.imgur.com/DCR1zTK.png)
+</details>
 
 ## "Nightly" builds
 
