@@ -25,7 +25,7 @@ describe('reducer - ui', () => {
       user: {
         login: 'username'
       }
-    }
+    };
 
     expect(reducer(initialState, action)).toEqual(resultState);
   });
