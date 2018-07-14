@@ -5,7 +5,7 @@ const initialState = {
   user: {}
 };
 
-describe('reducer - ui', () => {
+describe('reducer - users', () => {
   test('should return initial state', () => {
     const action = {
       type: ''
