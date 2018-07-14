@@ -6,11 +6,11 @@
 
 [![Current Gisto version](https://img.shields.io/badge/dynamic/json.svg?query=$.version&uri=https://cdn.rawgit.com/Gisto/Gisto/next/package.json&label=version&colorB=3F84A8&style=flat-square)](https://github.com/Gisto/Gisto)
 [![GitHub license](https://img.shields.io/github/license/Gisto/Gisto.svg?style=flat-square)](https://github.com/Gisto/Gisto/blob/master/LICENSE)
-[![Coveralls github branch](https://img.shields.io/coveralls/github/Gisto/Gisto/next.svg?style=flat-square)](https://github.com/Gisto/Gisto/)
+[![Coveralls github branch](https://img.shields.io/coveralls/github/Gisto/Gisto/next.svg?style=flat-square)](https://coveralls.io/github/Gisto/Gisto)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability-percentage/Gisto/Gisto.svg?style=flat-square)](https://codeclimate.com/github/Gisto/Gisto)
 [![OSX build](https://travis-badge-per-job.herokuapp.com/?repo=Gisto/Gisto&job=1&style=flat-square&label=OSX%20build)](https://travis-ci.org/Gisto/Gisto)
 [![Linux build](https://travis-badge-per-job.herokuapp.com/?repo=Gisto/Gisto&job=2&style=flat-square&label=Linux%20build)](https://travis-ci.org/Gisto/Gisto)
-[![AppVeyor branch](https://img.shields.io/appveyor/ci/sanusart/Gisto/next.svg?style=flat-square&label=Windows%20build)](https://ci.appveyor.com/project/sanusart/gisto)
+[![AppVeyor branch](https://img.shields.io/appveyor/ci/sanusart/Gisto/next.svg?style=flat-square&label=Windows%20build&colorB=green)](https://ci.appveyor.com/project/sanusart/gisto)
 
 
 ## About
