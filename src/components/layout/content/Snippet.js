@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { get, map, filter } from 'lodash/fp';
-import marked from 'marked';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/default.css';
 
 import * as snippetActions from 'actions/snippets';
 import { borderColor } from 'constants/colors';
@@ -27,14 +24,6 @@ const SnippetWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-const StyledEditor = styled(Editor)`
-  z-index: 0;
-`;
-
-const Markdown = styled.div`
-  padding: 20px 30px;
-`;
-
 export class Snippet extends React.Component {
   componentDidMount() {
     this.props.getSnippet(this.props.match.params.id || this.props.snippet.id);
@@ -46,40 +35,10 @@ export class Snippet extends React.Component {
     }
   }
 
-  renderEditor = (file) => {
-    // TODO: move this fn()  to components/common/Editor.js maybe
-    const { edit, updateTempSnippet } = this.props;
-
-    marked.setOptions({
-      renderer: new marked.Renderer(),
-      highlight: (code) => hljs.highlightAuto(code).value,
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: true,
-      smartLists: true,
-      smartypants: false
-    });
-
-    if (!edit && file.content && file.language === 'Markdown') {
-      const html = marked(file.content) || '';
-
-      return (
-        <Markdown className="markdown-body" dangerouslySetInnerHTML={ { __html: html } }/>
-      );
-    }
-
-    return (
-      <StyledEditor file={ file }
-                    value={ file.content }
-                    onChange={ (value) => updateTempSnippet(['files', file.uuid, 'content'], value) }
-                    id={ file.uuid || file.filename }/>
-    );
-  };
-
   render() {
-    const { snippet, edit, tempSnippet } = this.props;
+    const {
+      snippet, edit, tempSnippet, updateTempSnippet
+    } = this.props;
     const currentSnippet = edit ? tempSnippet : snippet;
     const files = filter((file) => !file.delete, get('files', currentSnippet));
 
@@ -94,7 +53,9 @@ export class Snippet extends React.Component {
             <SnippetHeader file={ file }
                            username={ snippet.username }
                            snippetId={ snippet.id }/>
-            { this.renderEditor(file) }
+            <Editor file={ file }
+                    edit={ edit }
+                    onChange={ (value) => updateTempSnippet(['files', file.uuid, 'content'], value) }/>
           </SnippetWrapper>
         ), files) }
       </React.Fragment>
