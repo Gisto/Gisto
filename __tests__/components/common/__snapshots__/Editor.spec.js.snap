@@ -6,7 +6,7 @@ exports[`COMPONENTS - <Editor> render Editor 1`] = `
   defaultValue=""
   editorDidMount={[Function]}
   editorWillMount={[Function]}
-  height="400px"
+  height="400"
   language="text"
   name="123123123123"
   onChange={[MockFunction]}
@@ -25,4 +25,43 @@ exports[`COMPONENTS - <Editor> render Editor 1`] = `
   value="hi"
   width="100%"
 />
+`;
+
+exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
+<EditorWrapper>
+  <MonacoEditor
+    className=""
+    defaultValue=""
+    editorDidMount={[Function]}
+    editorWillMount={[Function]}
+    height="auto"
+    language="text"
+    name="123123123123"
+    onChange={[MockFunction]}
+    options={
+      Object {
+        "automaticLayout": true,
+        "minimap": Object {
+          "enabled": false,
+        },
+        "roundedSelection": false,
+        "scrollBeyondLastLine": false,
+        "selectOnLineNumbers": true,
+      }
+    }
+    theme="vs"
+    value="# hi"
+    width="50%"
+  />
+  <Markdown
+    className="markdown-body"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<h1 id=\\"hi\\">hi</h1>
+",
+      }
+    }
+    width="50%"
+  />
+</EditorWrapper>
 `;

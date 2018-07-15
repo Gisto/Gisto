@@ -18,8 +18,18 @@ const EditorWrapper = styled.span`
   justify-content: space-evenly;
 `;
 
+const editorOptions = {
+  selectOnLineNumbers: true,
+  roundedSelection: false,
+  scrollBeyondLastLine: false,
+  minimap: {
+    enabled: false
+  },
+  automaticLayout: true
+};
+
 export class Editor extends React.Component {
-  renderEditor = (options) => {
+  renderEditor = () => {
     const {
       edit, onChange, file, className, id, language
     } = this.props;
@@ -49,13 +59,13 @@ export class Editor extends React.Component {
         <EditorWrapper>
           <MonacoEditor
             width="50%"
-            height="400px"
+            height="auto"
             className={ className }
             language={ language || syntaxMap[file.language] || 'text' }
             theme="vs"
             name={ id }
             value={ file.content }
-            options={ options }
+            options={ editorOptions }
             onChange={ onChange }/>
           <Markdown width="50%" className="markdown-body" dangerouslySetInnerHTML={ { __html: html } }/>
         </EditorWrapper>
@@ -65,29 +75,19 @@ export class Editor extends React.Component {
     return (
       <MonacoEditor
         width="100%"
-        height="400px"
+        height="400"
         className={ className }
         language={ language || syntaxMap[file.language] || 'text' }
         theme="vs"
         name={ id }
         value={ file.content }
-        options={ options }
+        options={ editorOptions }
         onChange={ onChange }/>
     );
   };
 
   render() {
-    const options = {
-      selectOnLineNumbers: true,
-      roundedSelection: false,
-      scrollBeyondLastLine: false,
-      minimap: {
-        enabled: false
-      },
-      automaticLayout: true
-    };
-
-    return this.renderEditor(options);
+    return this.renderEditor();
   }
 }
 

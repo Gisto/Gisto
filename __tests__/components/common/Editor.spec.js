@@ -21,4 +21,16 @@ describe('COMPONENTS - <Editor>', () => {
 
     expect(component).toMatchSnapshot();
   });
+
+  test('render markdown Editor', () => {
+    const component = setup(propSetup({
+      file: {
+        content: '# hi',
+        language: 'Markdown'
+      },
+      edit: true
+    }));
+
+    expect(component).toMatchSnapshot();
+  });
 });
