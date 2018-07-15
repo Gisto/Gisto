@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Editor> render Editor 1`] = `
+<MonacoEditor
+  className=""
+  defaultValue=""
+  editorDidMount={[Function]}
+  editorWillMount={[Function]}
+  height="400"
+  language="text"
+  name="123123123123"
+  onChange={[MockFunction]}
+  options={
+    Object {
+      "automaticLayout": true,
+      "minimap": Object {
+        "enabled": false,
+      },
+      "roundedSelection": false,
+      "scrollBeyondLastLine": false,
+      "selectOnLineNumbers": true,
+    }
+  }
+  theme="vs"
+  value="hi"
+  width="100%"
+/>
+`;
