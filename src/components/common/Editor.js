@@ -9,6 +9,13 @@ import styled from 'styled-components';
 
 const Markdown = styled.div`
   padding: 20px 30px;
+  ${(props) => props.width && `width: calc(${props.width} - 60px);`}
+`;
+
+const EditorWrapper = styled.span`
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 `;
 
 export class Editor extends React.Component {
@@ -29,18 +36,36 @@ export class Editor extends React.Component {
       smartypants: false
     });
 
-    if (!edit && file.content && file.language === 'Markdown') {
+    if (file.content && file.language === 'Markdown') {
       const html = marked(file.content) || '';
 
+      if (!edit) {
+        return (
+          <Markdown className="markdown-body" dangerouslySetInnerHTML={ { __html: html } }/>
+        );
+      }
+
       return (
-        <Markdown className="markdown-body" dangerouslySetInnerHTML={ { __html: html } }/>
+        <EditorWrapper>
+          <MonacoEditor
+            width="50%"
+            height="400px"
+            className={ className }
+            language={ language || syntaxMap[file.language] || 'text' }
+            theme="vs"
+            name={ id }
+            value={ file.content }
+            options={ options }
+            onChange={ onChange }/>
+          <Markdown width="50%" className="markdown-body" dangerouslySetInnerHTML={ { __html: html } }/>
+        </EditorWrapper>
       );
     }
 
     return (
       <MonacoEditor
         width="100%"
-        height="400"
+        height="400px"
         className={ className }
         language={ language || syntaxMap[file.language] || 'text' }
         theme="vs"
