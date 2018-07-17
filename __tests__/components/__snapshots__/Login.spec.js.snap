@@ -3,7 +3,23 @@
 exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
 <LogIn
   loading={false}
-  loginBasic={[Function]}
+  loginBasic={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+          undefined,
+          undefined,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   loginWithToken={[MockFunction]}
   twoFactorAuth=""
 >
@@ -541,7 +557,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
 <LogIn
   loading={false}
   loginBasic={[MockFunction]}
-  loginWithToken={[Function]}
+  loginWithToken={[MockFunction]}
   twoFactorAuth=""
 >
   <LoginWrapper>
