@@ -1,8 +1,6 @@
 import { LogIn } from 'components/LogIn';
 jest.mock('../../package.json', () => ({ version: 'X.X.X' }));
 
-const spy = sinon.spy();
-
 const propSetup = (props) => ({
   loginBasic: jest.fn(),
   loginWithToken: jest.fn(),
@@ -14,6 +12,12 @@ const propSetup = (props) => ({
 const setup = (props) => mount(<LogIn { ...propSetup(props) }/>);
 
 describe('COMPONENTS - <LogIn>', () => {
+  let spy;
+  
+  beforeEach(() => {
+    spy = jest.fn();
+  });
+
   test('render LogIn basic', () => {
     const component = setup({
       loginBasic: spy

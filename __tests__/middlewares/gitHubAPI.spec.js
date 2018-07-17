@@ -88,4 +88,25 @@ describe('middleware - gitHubApi', () => {
       });
   });
 
+  test('dispatch LOGOUT', () => {
+    const action = {
+      type: AT.LOGIN_BASIC
+    };
+
+    middlewareDispatcher(initState, action, dispatchSpy);
+
+    expect(dispatchSpy)
+      .toHaveBeenCalledWith({
+        action: {
+          type: {
+            FAILURE: 'LOGIN_BASIC_FAILURE',
+            PENDING: 'LOGIN_BASIC_PENDING',
+            SUCCESS: 'LOGIN_BASIC_SUCCESS',
+            type: 'LOGIN_BASIC'
+          }
+        },
+        type: 'LOGIN_BASIC_PENDING'
+      });
+  });
+
 });
