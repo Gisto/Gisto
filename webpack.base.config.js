@@ -32,11 +32,20 @@ module.exports = {
         }
       },
       {
+        test: /\.(png|jpg|gif)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'src/img/[name].[ext]'
+          }
+        }
+      },
+      {
         test: /\.(svg)(\?.*)?$/i,
         use: {
           loader: 'url-loader',
           options: {
-            name: 'src/iconst/[name].[ext]'
+            name: 'src/icons/[name].[ext]'
           }
         }
       }

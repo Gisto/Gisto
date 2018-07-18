@@ -13,7 +13,7 @@ const setup = (props) => mount(<LogIn { ...propSetup(props) }/>);
 
 describe('COMPONENTS - <LogIn>', () => {
   let spy;
-  
+
   beforeEach(() => {
     spy = jest.fn();
   });
