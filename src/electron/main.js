@@ -1,5 +1,5 @@
 /* eslint no-console: 0 */
-
+const { init } = require('@sentry/electron');
 const {
   app, BrowserWindow, Menu, shell
 } = require('electron');
@@ -8,6 +8,12 @@ const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
 
 const isDev = process.env.NODE_ENV === 'development';
+
+init({
+  dsn: 'https://9b448264479b47418f9e248c208632ae@sentry.io/1245680',
+  release: app.getVersion(),
+  environment: process.env.NODE_ENV
+});
 
 require('dotenv').config({ path: path.join(app.getAppPath(), '..', '.env') });
 require('./oauth2');

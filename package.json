@@ -111,6 +111,7 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "@sentry/electron": "^0.7.0",
     "color": "^3.0.0",
     "dotenv": "^6.0.0",
     "electron-log": "^2.2.15",
