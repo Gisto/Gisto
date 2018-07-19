@@ -130,7 +130,7 @@ export class SnippetHeader extends React.Component {
     }
 
     return (
-      <Input value={ get('description', tempSnippet) }
+      <Input value={ `${get('description', tempSnippet)} ${get('tags', snippet)}` }
              onChange={ (event) => updateTempSnippet('description', event.target.value) }/>
     );
   };
