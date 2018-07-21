@@ -17,7 +17,7 @@ export const snippet = (props) => ({
       filename: 'ehlo.txt',
       type: 'text/plain',
       language: 'Text',
-      raw_url: `https://gist.githubusercontent.com/sanusart/${testId}/raw/${testId}/ehlo.txt`,
+      raw_url: `https://gist.githubusercontent.com/${testUser}/${testId}/raw/${testId}/ehlo.txt`,
       size: 6
     }
   },
@@ -52,10 +52,8 @@ export const snippet = (props) => ({
   ...props
 });
 
-export const snippets = () => {
-  return [
-    snippetStructure(snippet({ description: 'test #tag1 #tag2' })),
-    snippetStructure(snippet({ description: 'test1 #tag1 #tag2' })),
-    snippetStructure(snippet({ description: 'test3 #tag3 #tag4 #tag5' }))
-  ];
-};
+export const snippets = () => [
+  snippetStructure(snippet({ description: 'test #tag1 #tag2' })),
+  snippetStructure(snippet({ description: 'test1 #tag1 #tag2' })),
+  snippetStructure(snippet({ description: 'test3 #tag3 #tag4 #tag5' }))
+];

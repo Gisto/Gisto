@@ -42,8 +42,13 @@ describe('UTILS - snippets', () => {
       snippetStructure(snippet({ description: 'word to find #tag3 #tag4 #tag5' }))
     ];
 
+    // filter by 1 tag
     expect(filterSnippetsList(snippets, '', ['#tag3'], '').length).toEqual(1);
+    // Filter by free text which is tag matching 2 snippets
+    expect(filterSnippetsList(snippets, '#tag2', '', '').length).toEqual(2);
+    // filter by 1 tag matching 2 snippets
     expect(filterSnippetsList(snippets, '', ['#tag2'], '').length).toEqual(2);
+    // filter by 2 tags
     expect(filterSnippetsList(snippets, '', ['#tag3', '#tag4'], '').length).toEqual(1);
   });
 
