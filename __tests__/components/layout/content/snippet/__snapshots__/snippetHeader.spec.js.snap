@@ -62,10 +62,12 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
         type="delete"
       >
         <Util
+          color="tomato"
           onClick={[Function]}
         >
           <span
-            className="Util-iuPPCj hnxVHZ"
+            className="Util-iuPPCj jboJJK"
+            color="tomato"
             onClick={[Function]}
           >
             <Icon
@@ -80,6 +82,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
                 type="delete"
               />
             </Icon>
+             
           </span>
         </Util>
       </UtilityIcon>
@@ -141,10 +144,12 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
           type="ellipsis"
         >
           <Util
+            color="#3F84A8"
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj hnxVHZ"
+              className="Util-iuPPCj btiIqg"
+              color="#3F84A8"
               onClick={[Function]}
             >
               <Icon
@@ -159,6 +164,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
                   type="ellipsis"
                 />
               </Icon>
+               
             </span>
           </Util>
         </UtilityIcon>
@@ -169,10 +175,12 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
           type="arrow-up"
         >
           <Util
+            color="#3F84A8"
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj hnxVHZ"
+              className="Util-iuPPCj btiIqg"
+              color="#3F84A8"
               onClick={[Function]}
             >
               <Icon
@@ -187,6 +195,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
                   type="arrow-up"
                 />
               </Icon>
+               
             </span>
           </Util>
         </UtilityIcon>

@@ -1,5 +1,5 @@
 import {
-  merge, keyBy, update, set, map, flow, concat, includes, without, omit, pick 
+  merge, keyBy, update, set, map, flow, concat, includes, without, omit, pick, get
 } from 'lodash/fp';
 import uuid from 'uuid';
 import * as AT from 'constants/actionTypes';
@@ -121,6 +121,22 @@ export const snippets = (state = initialState, action) => {
         set(['edit'], description),
         set(['edit', 'files'], keyBy('uuid', preparedFiles))
       ])(state);
+    }
+
+    case AT.ADD_TEMP_FILE: {
+      const existingFiles = get(['edit', 'files'], state);
+      const newUuid = uuid.v4();
+      const newFile = {
+        [newUuid]: {
+          uuid: newUuid,
+          isNew: true,
+          originalFileName: newUuid,
+          filename: 'file',
+          content: ''
+        }
+      };
+
+      return set(['edit', 'files'], merge(newFile, existingFiles), state);
     }
 
     case AT.STOP_EDIT_SNIPPET: {

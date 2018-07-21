@@ -9,16 +9,19 @@ import Icon from 'components/common/Icon';
 
 const Util = styled.span`
   border-left: 1px solid ${borderColor};
-  height: 51px;
+  height: 50px;
   display: inline-block;
-  width: 50px;
+  ${(props) => props.text ? '' : 'width: 50px;'}
   text-align: center;
   line-height: 50px;
+  color: ${(props) => props.color ? props.color : 'inherit'};
   cursor: pointer;
   position: relative;
+  background: ${(props) => props.background ? props.background : 'inherit'};
+  ${(props) => props.text ? 'padding: 0 15px;' : ''}
   
   &:hover {
-    background: ${lightBorderColor};
+    background: ${(props) => props.background ? props.background : lightBorderColor};
   }
   
   ul {
@@ -73,17 +76,22 @@ export class UtilityIcon extends React.Component {
       onClick = null,
       dropdown = false,
       title,
-      className
+      className,
+      background,
+      text
     } = this.props;
     const { childrenShown } = this.state;
 
     return (
       <Util className={ className }
+            background={ background }
             onClick={ () => dropdown ? this.handleClick() : onClick() }
-            title={ title }>
+            title={ title }
+            text={ text }
+            color={ childrenShown ? colorDanger : color }>
         <Icon size={ size }
               type={ childrenShown ? 'close' : type }
-              color={ childrenShown ? colorDanger : color }/>
+              color={ childrenShown ? colorDanger : color }/> { text && text }
         { dropdown && childrenShown && children }
       </Util>
     );
@@ -98,7 +106,9 @@ UtilityIcon.propTypes = {
   onClick: PropTypes.func,
   dropdown: PropTypes.bool,
   title: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  background: PropTypes.string,
+  text: PropTypes.string
 };
 
 export default UtilityIcon;

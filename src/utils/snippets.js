@@ -84,7 +84,7 @@ export const prepareFiles = (files) => {
 
 export const prepareFilesForUpdate = (snippet) => {
   const cleanFiles = map((file) => {
-    return pick(['filename', 'content', 'originalFileName', 'delete'], file);
+    return pick(['filename', 'content', 'originalFileName', 'delete', 'isNew'], file);
   }, snippet.files);
 
   const filesClean = keyBy('originalFileName', cleanFiles);
@@ -93,6 +93,11 @@ export const prepareFilesForUpdate = (snippet) => {
     (acc, file) => {
       if (file.delete) {
         acc[file.originalFileName] = null;
+      } else if (file.isNew) {
+        acc[file.filename] = {
+          filename: file.filename,
+          content: file.content
+        };
       } else {
         acc[file.originalFileName] = {
           filename: file.filename,
