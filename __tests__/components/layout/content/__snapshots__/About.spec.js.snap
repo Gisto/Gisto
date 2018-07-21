@@ -18,7 +18,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
         Current version 
         <strong>
           v
-          1.9.36
+          X.X.X
         </strong>
       </p>
       <p>
