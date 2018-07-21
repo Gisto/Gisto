@@ -128,6 +128,10 @@ export const deleteTempFile = (uuid) => ({
   }
 });
 
+export const addTempFile = () => ({
+  type: AT.ADD_TEMP_FILE
+});
+
 export const updateSnippet = (snippet, id) => ({
   meta: {
     snippet,

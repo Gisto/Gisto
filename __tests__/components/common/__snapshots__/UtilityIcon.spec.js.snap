@@ -12,11 +12,13 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
 >
   <Util
     className="UtilityIcon"
+    color="red"
     onClick={[Function]}
     title="UtilityIcon"
   >
     <span
-      className="UtilityIcon Util-iuPPCj hnxVHZ"
+      className="UtilityIcon Util-iuPPCj eFpnZN"
+      color="red"
       onClick={[Function]}
       title="UtilityIcon"
     >
@@ -32,6 +34,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
           type="menu"
         />
       </Icon>
+       
     </span>
   </Util>
 </UtilityIcon>

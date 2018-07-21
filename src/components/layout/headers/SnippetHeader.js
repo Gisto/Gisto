@@ -5,7 +5,7 @@ import { get, map, size } from 'lodash/fp';
 import styled from 'styled-components';
 
 import {
-  baseAppColor, colorDanger, colorSuccess, textColor 
+  baseAppColor, colorDanger, colorSuccess, textColor
 } from 'constants/colors';
 import * as snippetActions from 'actions/snippets';
 import { copyToClipboard, prepareFilesForUpdate } from 'utils/snippets';
@@ -35,7 +35,7 @@ const Title = styled.div`
       width: 100px;
       height: 50px;
       position: absolute;
-      top: 0;
+      top: 3px;
       right: 0;
       background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(56%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 1)));
       background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 56%, rgba(255, 255, 255, 1) 100%);
@@ -93,15 +93,36 @@ export class SnippetHeader extends React.Component {
 
   renderEditControls = () => {
     const {
-      editSnippet, cancelEditSnippet, edit, match, snippets
+      editSnippet, cancelEditSnippet, edit, match, snippets, addTempFile
     } = this.props;
     const snippet = get(match.params.id, snippets);
 
     if (edit) {
       return (
         <React.Fragment>
-          <UtilityIcon size={ 22 } color={ colorSuccess } onClick={ () => this.prepareAndUpdateSnippet() } type="check"/>
-          <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => cancelEditSnippet() } type="close"/>
+          <UtilityIcon size={ 22 }
+                       color={ colorSuccess }
+                       onClick={ () => this.prepareAndUpdateSnippet() }
+                       type="check"
+                       text="Save"/>
+          <UtilityIcon size={ 22 }
+                       color={ colorDanger }
+                       onClick={ () => cancelEditSnippet() }
+                       type="close"
+                       text="Cancel"/>
+          <UtilityIcon size={ 22 }
+                       color={ baseAppColor }
+                       type="file"
+                       dropdown
+                       text={ `${size(get('files', snippet))} File(s)` }>
+            <ul>
+              <li>
+                <Anchor onClick={ () => addTempFile() }>
+                  Add new file
+                </Anchor>
+              </li>
+            </ul>
+          </UtilityIcon>
         </React.Fragment>
       );
     }
@@ -180,7 +201,6 @@ export class SnippetHeader extends React.Component {
         { this.state.showToolbox && (
           <div>
             { this.renderEditControls() }
-            <UtilityIcon title={ `${size(get('files', snippet))} File(s)` } size={ 22 } color={ baseAppColor } type="file"/>
             <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
             <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippet.id) } type="delete"/>
             <UtilityIcon size={ 22 } color={ baseAppColor } type="chat"/>
@@ -247,6 +267,7 @@ SnippetHeader.propTypes = {
   cancelEditSnippet: PropTypes.func,
   updateTempSnippet: PropTypes.func,
   updateSnippet: PropTypes.func,
+  addTempFile: PropTypes.func,
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object
 };
@@ -260,5 +281,6 @@ export default connect(mapStateToProps, {
   editSnippet: snippetActions.editSnippet,
   cancelEditSnippet: snippetActions.cancelEditSnippet,
   updateTempSnippet: snippetActions.updateTempSnippet,
+  addTempFile: snippetActions.addTempFile,
   updateSnippet: snippetActions.updateSnippet
 })(SnippetHeader);
