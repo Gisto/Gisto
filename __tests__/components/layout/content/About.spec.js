@@ -1,6 +1,9 @@
 import { About } from 'components/layout/content/About';
 
 jest.mock('../../../../build/icon.png', () => 'icon.png');
+jest.mock('../../../../package.json', () => ({
+  version: 'X.X.X'
+}));
 
 const propSetup = (props) => ({
   ...props

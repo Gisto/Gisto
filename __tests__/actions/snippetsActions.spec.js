@@ -222,4 +222,8 @@ describe('ACTIONS - snippets', () => {
       }
     });
   });
+
+  test('addTempFile action should be created', () => {
+    expect(snippetsActions.addTempFile()).toEqual({ type: AT.ADD_TEMP_FILE });
+  });
 });
