@@ -1,5 +1,4 @@
 import Layout from 'components/Layout';
-import '__mocks__/localStorage';
 
 const propSetup = (props) => ({
   ...props
