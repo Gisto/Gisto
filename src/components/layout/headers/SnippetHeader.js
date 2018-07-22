@@ -185,13 +185,14 @@ export class SnippetHeader extends React.Component {
 
   render() {
     const {
-      snippets, match
+      snippets, match, editSnippet
     } = this.props;
     const snippet = get(match.params.id, snippets);
-    const openOnWebUrl = `${defaultGistURL}/${get('username', snippet)}/${get('id', snippet)}`;
-    const httpCloneUrl = `git clone ${defaultGistURL}/${get('id', snippet)}.git`;
-    const sshCloneUrl = `git clone git@gist.github.com:${get('id', snippet)}.git`;
-    const openInGHDesktop = `x-github-client://openRepo/${defaultGistURL}/${get('id', snippet)}`;
+    const snippetId = get('id', snippet);
+    const openOnWebUrl = `${defaultGistURL}/${get('username', snippet)}/${snippetId}`;
+    const httpCloneUrl = `git clone ${defaultGistURL}/${snippetId}.git`;
+    const sshCloneUrl = `git clone git@gist.github.com:${snippetId}.git`;
+    const openInGHDesktop = `x-github-client://openRepo/${defaultGistURL}/${snippetId}`;
 
     return (
       <SnippetHeaderWrapper>
@@ -202,16 +203,21 @@ export class SnippetHeader extends React.Component {
           <div>
             { this.renderEditControls() }
             <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
-            <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippet.id) } type="delete"/>
+            <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippetId) } type="delete"/>
             <UtilityIcon size={ 22 } color={ baseAppColor } type="chat"/>
             { this.renderStarControl(snippet) }
             <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
               <ul>
-                <li>Edit</li>
+                <li><Anchor onClick={ () => editSnippet(snippetId) }>Edit</Anchor></li>
                 <li><ExternalLink href={ openOnWebUrl }>Open on web</ExternalLink></li>
-                <li>Download</li>
+                <li><Anchor href={ `${openOnWebUrl}/download` }>Download</Anchor></li>
+                <li className="color-danger">
+                  <Anchor onClick={ () => this.deleteSnippet(snippetId) }>
+                    Delete
+                  </Anchor>
+                </li>
                 <li>
-                  <Anchor onClick={ (event) => copyToClipboard(event, snippet.id) }>
+                  <Anchor onClick={ (event) => copyToClipboard(event, snippetId) }>
                   Copy snippet ID to clipboard
                   </Anchor>
                 </li>
@@ -235,10 +241,20 @@ export class SnippetHeader extends React.Component {
                     Open in GitHub desktop
                   </ExternalLink>
                 </li>
-                <li className="color-danger">
-                  <Anchor onClick={ () => this.deleteSnippet(snippet.id) }>
-                  Delete
-                  </Anchor>
+                <li>
+                  <ExternalLink href={ `http://plnkr.co/edit/gist:${snippetId}?p=preview` }>
+                    Open in Plnkr
+                  </ExternalLink>
+                </li>
+                <li>
+                  <ExternalLink href={ `http://jsbin.com/gist/${snippetId}` }>
+                    Open in JSBin
+                  </ExternalLink>
+                </li>
+                <li>
+                  <ExternalLink href={ `http://jsfiddle.net/gh/gist/library/pure/${snippetId}/` }>
+                    Open in jsfiddle
+                  </ExternalLink>
                 </li>
               </ul>
             </UtilityIcon>
