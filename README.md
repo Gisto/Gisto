@@ -4,13 +4,13 @@
 
 ###### Snippets made awesome
 
+# Future of Gisto
+
+Gisto next version is in the works, work can be tracked via ["next" branch](https://github.com/Gisto/Gisto/tree/next)
+
 | Light theme | Dark theme |
 |:------|:------|
 | <img src="http://gistoapp.com/images/lite_theme.png" width="400px" alt="Gisto"> | <img src="http://gistoapp.com/images/dark_theme.png" width="400px" alt="Gisto"> |
-
-# Future of Gisto
-
-Gisto next version is in the works, work can be tracked via [v2 branch](https://github.com/Gisto/Gisto/tree/v2)
 
 ---
 
@@ -68,7 +68,7 @@ You can find out more at the [F.A.Q.](http://www.gistoapp.com/faq/) section
 
 ## Status
 
-Please see [v2 branch](https://github.com/Gisto/Gisto/tree/v2) for upcoming version currently in development.
+Please see ["next" branch](https://github.com/Gisto/Gisto/tree/next) for upcoming version currently in development.
 
 [change.log](http://www.gistoapp.com/changelog/) of current version for more detailed info regarding new features, bug fixes and releases.
 
