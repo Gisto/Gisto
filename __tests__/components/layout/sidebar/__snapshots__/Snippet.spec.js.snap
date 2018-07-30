@@ -9,7 +9,7 @@ exports[`COMPONENTS - <Snippet> render Snippet 1`] = `
     to="/snippet/123123123123"
   >
     <span>
-      <Icon
+      <StyledIcon
         color="#fff"
         size={24}
         type="lock"

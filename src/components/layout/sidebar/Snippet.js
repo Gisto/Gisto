@@ -41,8 +41,14 @@ const Title = styled.span`
 const StyledIcon = styled(Icon)`
   transition: all 0.2s ease-in-out;
 
+  ${(props) => props.onClick && `
   &:hover {
-    transform: scale(1.5);
+    transform: scale(1.5); 
+  }
+  `}
+  
+  .selected & {
+    background-color: ${baseAppColor};
   }
 `;
 
@@ -62,9 +68,9 @@ export const Snippet = ({ snippet, setStar, unsetStar }) => {
                      activeClassName="selected"
                      to={ `/snippet/${snippet.id}` }>
         <span>
-          <Icon size={ 24 }
-              type={ snippet.public ? 'logo-github' : 'lock' }
-              color={ lightText }/>
+          <StyledIcon size={ 24 }
+                      type={ snippet.public ? 'logo-github' : 'lock' }
+                      color={ lightText }/>
         </span>
         <span>
           <StyledIcon size={ 16 }
