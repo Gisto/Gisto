@@ -2,8 +2,141 @@
 
 exports[`COMPONENTS - <Settings> render Settings 1`] = `
 <Settings>
-  <div>
-    Settings
-  </div>
+  <Wrapper>
+    <div
+      className="Wrapper-dyuznp latQIe"
+    >
+      <h2>
+        Settings
+      </h2>
+      <details>
+        <summary>
+          Base settings
+        </summary>
+        <BaseSettings>
+          <div>
+            <h4>
+              color settings:
+            </h4>
+            <p>
+              <label>
+                Base color:
+                <input
+                  onChange={[Function]}
+                  type="color"
+                />
+              </label>
+            </p>
+          </div>
+        </BaseSettings>
+      </details>
+      <details>
+        <summary>
+          Editor
+        </summary>
+        <EditorSettings>
+          <div>
+            <h4>
+              editor settings:
+            </h4>
+            <p>
+              <label>
+                Theme:
+                <select
+                  onChange={[Function]}
+                >
+                  <option
+                    value="vs"
+                  >
+                    vs light
+                  </option>
+                  <option
+                    value="vs-dark"
+                  >
+                    vs dark
+                  </option>
+                  <option
+                    value="hc-black"
+                  >
+                    hc dark
+                  </option>
+                </select>
+              </label>
+            </p>
+            <p>
+              <label>
+                Minimap:
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </label>
+            </p>
+            <p>
+              <label>
+                Line Numbers:
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </label>
+            </p>
+            <p>
+              <label>
+                Code lens:
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </label>
+            </p>
+            <p>
+              <label>
+                Cursor Blinking:
+                <select
+                  onChange={[Function]}
+                >
+                  <option
+                    value="blink"
+                  >
+                    blink
+                  </option>
+                  <option
+                    value="smooth"
+                  >
+                    smooth
+                  </option>
+                  <option
+                    value="phase"
+                  >
+                    phase
+                  </option>
+                  <option
+                    value="expand"
+                  >
+                    expand
+                  </option>
+                  <option
+                    value="solid"
+                  >
+                    solid
+                  </option>
+                </select>
+              </label>
+            </p>
+            <p>
+              <label>
+                Select On Line Numbers:
+                <input
+                  onChange={[Function]}
+                  type="checkbox"
+                />
+              </label>
+            </p>
+          </div>
+        </EditorSettings>
+      </details>
+    </div>
+  </Wrapper>
 </Settings>
 `;

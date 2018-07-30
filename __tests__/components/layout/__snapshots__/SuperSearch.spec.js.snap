@@ -64,7 +64,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   >
                     <input
                       autoFocus={true}
-                      className="StyledInput-hbWqm ijhsCg StyledInput-kKifnt fvzwxc"
+                      className="StyledInput-hbWqm ijhsCg StyledInput-kKifnt jaVkjP"
                       disabled={false}
                       onChange={[Function]}
                       placeholder="Search"

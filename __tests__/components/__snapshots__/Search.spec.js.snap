@@ -37,7 +37,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
           type="search"
         >
           <input
-            className="StyledInput-kKifnt fvzwxc"
+            className="StyledInput-kKifnt jaVkjP"
             disabled={false}
             onChange={[Function]}
             placeholder="Search 0 snippets"

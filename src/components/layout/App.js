@@ -7,6 +7,7 @@ import SuperSearch from 'components/layout/SuperSearch';
 
 const AppWrapper = styled.div`
   display: flex;
+  background: #fff;
   flex-direction: column;
   justify-content: flex-start;
   height: 100vh;

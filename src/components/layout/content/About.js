@@ -10,8 +10,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #555;
+  height: 100%;
   width: 50%;
-  margin: 0 auto;
+  transform: translate(50%);
+  justify-content: center;
+  text-align: left;
 `;
 
 export const About = () => (
