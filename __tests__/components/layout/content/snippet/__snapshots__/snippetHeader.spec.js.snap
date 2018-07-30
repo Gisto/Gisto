@@ -16,7 +16,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
 >
   <SnippetHeaderWrapper>
     <div
-      className="SnippetHeaderWrapper-cazcnY dfVwhu"
+      className="SnippetHeaderWrapper-cazcnY hiEhNI"
     >
       <FileName>
         <div
@@ -107,7 +107,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
 >
   <SnippetHeaderWrapper>
     <div
-      className="SnippetHeaderWrapper-cazcnY dfVwhu"
+      className="SnippetHeaderWrapper-cazcnY hiEhNI"
     >
       <FileName>
         <div

@@ -24,20 +24,20 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
 >
   <DashbordWrapper>
     <div
-      className="DashbordWrapper-dBZhoA bfmgRl"
+      className="DashbordWrapper-dBZhoA kPMXLH"
     >
       <Box
         style={
           Object {
-            "background": "linear-gradient(to right, #d8e6ed -Infinity%, #fff -Infinity%)",
+            "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
           }
         }
       >
         <div
-          className="Box-iUbLMm crUOSM"
+          className="Box-iUbLMm idviUR"
           style={
             Object {
-              "background": "linear-gradient(to right, #d8e6ed -Infinity%, #fff -Infinity%)",
+              "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
             }
           }
         >
@@ -52,15 +52,15 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       <Box
         style={
           Object {
-            "background": "linear-gradient(to right, #d8e6ed Infinity%, #fff Infinity%)",
+            "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
           }
         }
       >
         <div
-          className="Box-geHOaa bHspcL"
+          className="Box-geHOaa jvspQO"
           style={
             Object {
-              "background": "linear-gradient(to right, #d8e6ed Infinity%, #fff Infinity%)",
+              "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
             }
           }
         >
@@ -75,15 +75,15 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       <Box
         style={
           Object {
-            "background": "linear-gradient(to right, #d8e6ed Infinity%, #fff Infinity%)",
+            "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
           }
         }
       >
         <div
-          className="Box-kpCRUe bGypTY"
+          className="Box-kpCRUe cdrcWs"
           style={
             Object {
-              "background": "linear-gradient(to right, #d8e6ed Infinity%, #fff Infinity%)",
+              "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
             }
           }
         >
@@ -98,15 +98,15 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       <Box
         style={
           Object {
-            "background": "linear-gradient(to right, #d8e6ed NaN%, #fff NaN%)",
+            "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
           }
         }
       >
         <div
-          className="Box-gvqUvR hfGnRY"
+          className="Box-gvqUvR fYuBke"
           style={
             Object {
-              "background": "linear-gradient(to right, #d8e6ed NaN%, #fff NaN%)",
+              "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
             }
           }
         >
@@ -120,7 +120,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       </Box>
       <Box>
         <div
-          className="Box-bxWaVq eRVSbT"
+          className="Box-bxWaVq jWLBMU"
         >
           <h3>
             Languages:
@@ -130,7 +130,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       </Box>
       <Box>
         <div
-          className="Box-chfgEv foeJzC"
+          className="Box-chfgEv jbQUId"
         >
           <HeadingWithSearch>
             <span
@@ -141,13 +141,13 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
               </h3>
               <div>
                 <Icon
-                  color="#3F84A8"
+                  color="red"
                   size="22"
                   type="search"
                 >
                   <span
-                    className="Icon-cFRQJw hYjrAj"
-                    color="#3F84A8"
+                    className="Icon-cFRQJw cTUULm"
+                    color="red"
                     size="22"
                     type="search"
                   />
@@ -172,7 +172,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                       type="search"
                     >
                       <input
-                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt jaVkjP"
+                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt jEfCAf"
                         disabled={false}
                         onChange={[Function]}
                         placeholder="Search starred"
@@ -190,7 +190,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       </Box>
       <Box>
         <div
-          className="Box-dvdzfO dyywXp"
+          className="Box-dvdzfO hIyVNh"
         >
           <HeadingWithSearch>
             <span
@@ -201,13 +201,13 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
               </h3>
               <div>
                 <Icon
-                  color="#3F84A8"
+                  color="red"
                   size="22"
                   type="search"
                 >
                   <span
-                    className="Icon-cFRQJw hYjrAj"
-                    color="#3F84A8"
+                    className="Icon-cFRQJw cTUULm"
+                    color="red"
                     size="22"
                     type="search"
                   />
@@ -232,7 +232,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                       type="search"
                     >
                       <input
-                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt jaVkjP"
+                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt jEfCAf"
                         disabled={false}
                         onChange={[Function]}
                         placeholder="Search tags"
