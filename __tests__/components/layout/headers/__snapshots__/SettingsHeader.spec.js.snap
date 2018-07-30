@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <SettingsHeader> render SettingsHeader 1`] = `
+<SettingsHeader>
+  <div>
+    Settings
+  </div>
+  <StyledButton
+    icon="check"
+    onClick={[Function]}
+  >
+    <Button
+      className="StyledButton-dSfbpv jMnntm"
+      icon="check"
+      onClick={[Function]}
+    >
+      <ButtonComponent
+        className="StyledButton-dSfbpv jMnntm"
+        onClick={[Function]}
+        title="Save"
+      >
+        <button
+          className="StyledButton-dSfbpv jMnntm ButtonComponent-fVGrXr coZNuD"
+          onClick={[Function]}
+          title="Save"
+        >
+          <Icon
+            color="#fff"
+            type="check"
+          >
+            <span
+              className="Icon-cFRQJw dhJqOv"
+              color="#fff"
+              type="check"
+            />
+          </Icon>
+           
+          Save
+        </button>
+      </ButtonComponent>
+    </Button>
+  </StyledButton>
+</SettingsHeader>
+`;

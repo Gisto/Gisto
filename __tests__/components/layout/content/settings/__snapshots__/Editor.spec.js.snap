@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
+<EditorSettings>
+  <div>
+    <h4>
+      editor settings:
+    </h4>
+    <p>
+      <label>
+        Theme:
+        <select
+          onChange={[Function]}
+        >
+          <option
+            value="vs"
+          >
+            vs light
+          </option>
+          <option
+            value="vs-dark"
+          >
+            vs dark
+          </option>
+          <option
+            value="hc-black"
+          >
+            hc dark
+          </option>
+        </select>
+      </label>
+    </p>
+    <p>
+      <label>
+        Minimap:
+        <input
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </label>
+    </p>
+    <p>
+      <label>
+        Line Numbers:
+        <input
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </label>
+    </p>
+    <p>
+      <label>
+        Code lens:
+        <input
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </label>
+    </p>
+    <p>
+      <label>
+        Cursor Blinking:
+        <select
+          onChange={[Function]}
+        >
+          <option
+            value="blink"
+          >
+            blink
+          </option>
+          <option
+            value="smooth"
+          >
+            smooth
+          </option>
+          <option
+            value="phase"
+          >
+            phase
+          </option>
+          <option
+            value="expand"
+          >
+            expand
+          </option>
+          <option
+            value="solid"
+          >
+            solid
+          </option>
+        </select>
+      </label>
+    </p>
+    <p>
+      <label>
+        Select On Line Numbers:
+        <input
+          onChange={[Function]}
+          type="checkbox"
+        />
+      </label>
+    </p>
+  </div>
+</EditorSettings>
+`;
