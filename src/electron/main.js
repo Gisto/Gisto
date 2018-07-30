@@ -4,6 +4,7 @@ const {
   app, BrowserWindow, Menu, shell
 } = require('electron');
 const path = require('path');
+const settings = require('electron-settings');
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
 
@@ -128,6 +129,7 @@ const createWindow = () => {
     win = new BrowserWindow({
       width: 1200,
       height: 700,
+      backgroundColor: settings.get('color', '#3F84A8'),
       title: isDev ? `dev ${app.getVersion()}` : `Gisto v${app.getVersion()}`,
       'node-integration': true,
       show: false,

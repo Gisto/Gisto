@@ -16,7 +16,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
 >
   <SnippetHeaderWrapper>
     <div
-      className="SnippetHeaderWrapper-cazcnY cgFUmw"
+      className="SnippetHeaderWrapper-cazcnY dfVwhu"
     >
       <FileName>
         <div
@@ -45,7 +45,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
               type="text"
             >
               <input
-                className="StyledInput-kKifnt fvzwxc"
+                className="StyledInput-kKifnt jaVkjP"
                 disabled={false}
                 onChange={[Function]}
                 title=""
@@ -107,7 +107,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
 >
   <SnippetHeaderWrapper>
     <div
-      className="SnippetHeaderWrapper-cazcnY cgFUmw"
+      className="SnippetHeaderWrapper-cazcnY dfVwhu"
     >
       <FileName>
         <div

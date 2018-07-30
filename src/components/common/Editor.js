@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MonacoEditor from 'react-monaco-editor';
-import { syntaxMap } from 'constants/editor';
 import marked from 'marked';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/default.css';
 import styled from 'styled-components';
+import hljs from 'highlight.js';
+import { getSetting } from 'utils/settings';
+import { syntaxMap } from 'constants/editor';
+
+import 'highlight.js/styles/default.css';
 
 const Markdown = styled.div`
   padding: 20px 30px;
@@ -19,11 +21,19 @@ const EditorWrapper = styled.span`
 `;
 
 const editorOptions = {
-  selectOnLineNumbers: true,
+  selectOnLineNumbers: Boolean(getSetting('selectOnLineNumbers')),
+  lineNumbers: getSetting('lineNumbers', true),
+  codeLens: getSetting('codeLens', false),
+  cursorBlinking: getSetting('cursorBlinking', 'blink'),
+  formatOnPaste: true,
+  fontFamily: 'fira code',
+  lineHeight: 21,
+  fontLigatures: true,
+  fontSize: 12,
   roundedSelection: false,
   scrollBeyondLastLine: false,
   minimap: {
-    enabled: false
+    enabled: Boolean(getSetting('minimap'))
   },
   automaticLayout: true
 };
@@ -62,7 +72,7 @@ export class Editor extends React.Component {
             height="auto"
             className={ className }
             language={ language || syntaxMap[file.language] || 'text' }
-            theme="vs"
+            theme={ getSetting('editorTheme', 'vs') }
             name={ id }
             value={ file.content }
             options={ editorOptions }
@@ -75,10 +85,10 @@ export class Editor extends React.Component {
     return (
       <MonacoEditor
         width="100%"
-        height="400"
+        height={ 400 }
         className={ className }
         language={ language || syntaxMap[file.language] || 'text' }
-        theme="vs"
+        theme={ getSetting('editorTheme', '') }
         name={ id }
         value={ file.content }
         options={ editorOptions }

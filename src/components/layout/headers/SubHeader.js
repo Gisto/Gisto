@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { get } from 'lodash/fp';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
@@ -7,8 +9,7 @@ import { boxShadow } from 'constants/colors';
 
 import Search from 'components/Search';
 import SnippetHeader from 'components/layout/headers/SnippetHeader';
-import { get } from 'lodash/fp';
-import PropTypes from 'prop-types';
+import SettingsHeader from 'components/layout/headers/SettingsHeader';
 
 const SubHeaderWrapper = styled.div`
   display: flex;
@@ -39,7 +40,7 @@ export const SubHeader = ({ edit }) => (
         <Switch>
           <Route exact path="/" component={ () => <div>Dashboard</div> }/>
           <Route exact path="/about" component={ () => <div>About</div> }/>
-          <Route exact path="/settings" component={ () => <div>Settings</div> }/>
+          <Route exact path="/settings" component={ SettingsHeader }/>
           <Route path="/snippet/:id" component={ SnippetHeader }/>
         </Switch>
       </Router>

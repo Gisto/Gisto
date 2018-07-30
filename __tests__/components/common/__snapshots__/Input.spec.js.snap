@@ -16,7 +16,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
     type="search"
   >
     <input
-      className="classified StyledInput-kKifnt fvzwxc"
+      className="classified StyledInput-kKifnt jaVkjP"
       defaultValue="typetypetype"
       disabled={false}
       placeholder="I am temporary"

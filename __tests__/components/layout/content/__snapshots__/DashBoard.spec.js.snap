@@ -29,7 +29,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       <Box
         style={
           Object {
-            "background": "linear-gradient(to right, #e5f6ff -Infinity%, #fff -Infinity%)",
+            "background": "linear-gradient(to right, #d8e6ed -Infinity%, #fff -Infinity%)",
           }
         }
       >
@@ -37,7 +37,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
           className="Box-iUbLMm crUOSM"
           style={
             Object {
-              "background": "linear-gradient(to right, #e5f6ff -Infinity%, #fff -Infinity%)",
+              "background": "linear-gradient(to right, #d8e6ed -Infinity%, #fff -Infinity%)",
             }
           }
         >
@@ -52,7 +52,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       <Box
         style={
           Object {
-            "background": "linear-gradient(to right, #e5f6ff Infinity%, #fff Infinity%)",
+            "background": "linear-gradient(to right, #d8e6ed Infinity%, #fff Infinity%)",
           }
         }
       >
@@ -60,7 +60,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
           className="Box-geHOaa bHspcL"
           style={
             Object {
-              "background": "linear-gradient(to right, #e5f6ff Infinity%, #fff Infinity%)",
+              "background": "linear-gradient(to right, #d8e6ed Infinity%, #fff Infinity%)",
             }
           }
         >
@@ -75,7 +75,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       <Box
         style={
           Object {
-            "background": "linear-gradient(to right, #e5f6ff Infinity%, #fff Infinity%)",
+            "background": "linear-gradient(to right, #d8e6ed Infinity%, #fff Infinity%)",
           }
         }
       >
@@ -83,7 +83,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
           className="Box-kpCRUe bGypTY"
           style={
             Object {
-              "background": "linear-gradient(to right, #e5f6ff Infinity%, #fff Infinity%)",
+              "background": "linear-gradient(to right, #d8e6ed Infinity%, #fff Infinity%)",
             }
           }
         >
@@ -98,7 +98,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       <Box
         style={
           Object {
-            "background": "linear-gradient(to right, #e5f6ff NaN%, #fff NaN%)",
+            "background": "linear-gradient(to right, #d8e6ed NaN%, #fff NaN%)",
           }
         }
       >
@@ -106,7 +106,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
           className="Box-gvqUvR hfGnRY"
           style={
             Object {
-              "background": "linear-gradient(to right, #e5f6ff NaN%, #fff NaN%)",
+              "background": "linear-gradient(to right, #d8e6ed NaN%, #fff NaN%)",
             }
           }
         >
@@ -172,7 +172,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                       type="search"
                     >
                       <input
-                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt fvzwxc"
+                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt jaVkjP"
                         disabled={false}
                         onChange={[Function]}
                         placeholder="Search starred"
@@ -232,7 +232,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                       type="search"
                     >
                       <input
-                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt fvzwxc"
+                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt jaVkjP"
                         disabled={false}
                         onChange={[Function]}
                         placeholder="Search tags"

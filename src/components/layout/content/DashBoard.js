@@ -284,7 +284,7 @@ export class DashBoard  extends React.Component {
     const percents = (percentOf / size(this.props.snippets)) * 100;
 
     return {
-      background: `linear-gradient(to right, #e5f6ff ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
+      background: `linear-gradient(to right, ${headerBgLightest} ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
     };
   };
 

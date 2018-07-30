@@ -25,7 +25,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ hgviUi"
+      className="LoginWrapper-kmdtRZ ljBQIR"
     >
       <Logo>
         <div
@@ -58,7 +58,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
             type="text"
           >
             <input
-              className="StyledInput-kKifnt fvzwxc"
+              className="StyledInput-kKifnt jaVkjP"
               disabled={false}
               onChange={[Function]}
               placeholder="Email or username"
@@ -81,7 +81,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
             type="password"
           >
             <input
-              className="StyledInput-kKifnt fvzwxc"
+              className="StyledInput-kKifnt jaVkjP"
               disabled={false}
               onChange={[Function]}
               placeholder="Password"
@@ -223,7 +223,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ hgviUi"
+      className="LoginWrapper-kmdtRZ ljBQIR"
     >
       <Logo>
         <div
@@ -253,7 +253,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             type="text"
           >
             <input
-              className="StyledInput-kKifnt fvzwxc"
+              className="StyledInput-kKifnt jaVkjP"
               disabled={false}
               onChange={[Function]}
               placeholder="Enterprise domain"
@@ -283,7 +283,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             type="text"
           >
             <input
-              className="StyledInput-kKifnt fvzwxc"
+              className="StyledInput-kKifnt jaVkjP"
               disabled={false}
               onChange={[Function]}
               placeholder="Email or username"
@@ -306,7 +306,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             type="password"
           >
             <input
-              className="StyledInput-kKifnt fvzwxc"
+              className="StyledInput-kKifnt jaVkjP"
               disabled={false}
               onChange={[Function]}
               placeholder="Password"
@@ -448,7 +448,7 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ hgviUi"
+      className="LoginWrapper-kmdtRZ ljBQIR"
     >
       <Logo>
         <div
@@ -562,7 +562,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ hgviUi"
+      className="LoginWrapper-kmdtRZ ljBQIR"
     >
       <Logo>
         <div
@@ -592,7 +592,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
             type="text"
           >
             <input
-              className="StyledInput-kKifnt fvzwxc"
+              className="StyledInput-kKifnt jaVkjP"
               disabled={false}
               onChange={[Function]}
               placeholder="GitHub token"
