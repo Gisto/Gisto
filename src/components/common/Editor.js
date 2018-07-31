@@ -25,11 +25,11 @@ const editorOptions = {
   lineNumbers: getSetting('lineNumbers', true),
   codeLens: getSetting('codeLens', false),
   cursorBlinking: getSetting('cursorBlinking', 'blink'),
-  formatOnPaste: true,
-  fontFamily: 'fira code',
-  lineHeight: 21,
-  fontLigatures: true,
-  fontSize: 12,
+  formatOnPaste: Boolean(getSetting('formatOnPaste', false)),
+  fontFamily: getSetting('fontFamily', 'monospace'),
+  lineHeight: getSetting('lineHeight', 21),
+  fontLigatures: getSetting('fontLigatures', false),
+  fontSize: getSetting('fontSize', 12),
   roundedSelection: false,
   scrollBeyondLastLine: false,
   minimap: {
@@ -51,7 +51,7 @@ export class Editor extends React.Component {
       tables: true,
       breaks: false,
       pedantic: false,
-      sanitize: true,
+      sanitize: false,
       smartLists: true,
       smartypants: false
     });
