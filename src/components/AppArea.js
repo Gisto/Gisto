@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { ipcRenderer } from 'electron';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { SIDEBAR_WIDTH } from 'constants/config';
 import { Link } from 'react-router-dom';
+import { get, replace } from 'lodash/fp';
+
+import { SIDEBAR_WIDTH } from 'constants/config';
 
 import * as userActions from 'actions/user';
 import * as loginActions from 'actions/login';
@@ -19,6 +21,7 @@ import {
 } from 'constants/colors';
 import Icon from 'components/common/Icon';
 import UtilityIcon from 'components/common/UtilityIcon';
+import Anchor from 'components/common/Anchor';
 
 const UserAreaWrapper = styled.div`
   background: ${baseAppColor};
@@ -54,7 +57,7 @@ const StyledUtilityIcon = styled(UtilityIcon)`
 
 const UpdaterMenu = styled.div`
   background: ${lightText};
-  width: min-content;
+  width: max-content;
   line-height: 21px;
   padding: 20px;
   z-index: 3;
@@ -72,7 +75,20 @@ export class AppArea extends React.Component {
 
   componentDidMount() {
     this.props.getUser();
-    ipcRenderer.on('message', (event, text) => this.setState({ message: text }));
+    ipcRenderer.on('message', (event, text, info) => {
+      if (get('url', info)) {
+        const message = (
+          <React.Fragment>
+            <strong>{ text }</strong><br/>
+            <Anchor href={ replace('-mac.zip', '.dmg', info.url) }>Download</Anchor>
+          </React.Fragment>
+        );
+
+        this.setState({ message });
+      } else {
+        this.setState({ message: text });
+      }
+    });
   }
 
   render() {

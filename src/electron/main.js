@@ -1,4 +1,6 @@
 /* eslint no-console: 0 */
+const isDev = process.env.NODE_ENV === 'development';
+const isMacOS = process.platform === 'darwin';
 const { init } = require('@sentry/electron');
 const {
   app, BrowserWindow, Menu, shell
@@ -7,8 +9,9 @@ const path = require('path');
 const settings = require('electron-settings');
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
-
-const isDev = process.env.NODE_ENV === 'development';
+const request = require('superagent');
+const semver = require('semver');
+const packageJson = require('./package.json');
 
 init({
   dsn: 'https://9b448264479b47418f9e248c208632ae@sentry.io/1245680',
@@ -163,20 +166,45 @@ const createWindow = () => {
 
 app.on('ready', createWindow);
 
+const handleMacOSUpdates = () => {
+  sendStatusToWindow('Gisto checking for new version...');
+
+  request
+    .get('https://gisto-releases.s3.amazonaws.com/latest-mac.json')
+    .end((error, result) => {
+      if (result) {
+        const shouldUpdate = semver.lt(packageJson.version, result.body.version);
+
+        if (shouldUpdate) {
+          sendStatusToWindow(`Update from ${packageJson.version} to ${result.body.version} available`, result.body);
+        } else {
+          sendStatusToWindow('No updates available at the moment');
+        }
+      }
+      if (error) {
+        sendStatusToWindow('No new version information at the moment');
+      }
+    });
+};
+
 autoUpdater.on('checking-for-update', () => {
   sendStatusToWindow('Checking for update...');
 });
 
 autoUpdater.on('update-available', (info) => {
-  sendStatusToWindow('Update available.', info);
+  sendStatusToWindow('Update available', info);
 });
 
 autoUpdater.on('update-not-available', (info) => {
-  sendStatusToWindow('Update not available.', info);
+  sendStatusToWindow('No updates available at the moment', info);
 });
 
 autoUpdater.on('error', (err) => {
-  sendStatusToWindow(`Error in auto-updater. ${err}`);
+  if (!isMacOS) {
+    sendStatusToWindow(`Error in auto-updater ${err}`);
+  } else {
+    handleMacOSUpdates();
+  }
 });
 
 autoUpdater.on('download-progress', (progressObj) => {
