@@ -3,8 +3,12 @@ import styled from 'styled-components';
 
 import ExternalLink from 'components/common/ExternalLink';
 
+import { ipcRenderer } from 'electron';
+import { get, replace } from 'lodash/fp';
 import * as packageJson from '../../../../package.json';
 import logoImg from '../../../../build/icon.png';
+import Anchor from '../../common/Anchor';
+import { baseAppColor, bg } from '../../../constants/colors';
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,32 +22,73 @@ const Wrapper = styled.div`
   text-align: left;
 `;
 
-export const About = () => (
-  <Wrapper>
-    <img src={ logoImg } width="80" alt=""/>
-    <h2>About Gisto</h2>
-    <p>Current version <strong>v{packageJson.version}</strong></p>
+const UpdateInfo = styled.div`
+    border: 1px solid ${baseAppColor};
+    padding: 10px;
+    background: ${bg};
+    border-radius: 3px;
+`;
 
-    <p>
-      Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as
-      searching,
-      tagging and sharing gists while including a rich code editor.
-    </p>
+export class About extends React.Component {
+  state = {
+    message: ''
+  };
 
-    <p>
-      All your data is stored on GitHub and you can access it from GitHub Gists at any time with
-      changes carrying over to Gisto.
-    </p>
+  componentDidMount() {
+    ipcRenderer.send('checkForUpdate');
+    ipcRenderer.on('updateInfo', (event, text, info) => {
+      if (get('url', info)) {
+        const message = (
+          <React.Fragment>
+            <strong>{ text }</strong>
+            &nbsp;
+            <Anchor href={ replace('-mac.zip', '.dmg', info.url) }>
+              Download
+            </Anchor>
+          </React.Fragment>
+        );
 
-    <p>
-      <ExternalLink href="https://github.com/Gisto/Gisto">GitHub</ExternalLink>&nbsp;|&nbsp;
-      <ExternalLink href="https://gistoapp.com">Website gistoapp.com</ExternalLink>&nbsp;|&nbsp;
-      <ExternalLink href="https://github.com/Gisto/Gisto/issues">Issues</ExternalLink>&nbsp;|&nbsp;
-      <ExternalLink href="https://twitter.com/gistoapp">Twitter</ExternalLink>
-    </p>
+        this.setState({ message });
+      } else {
+        this.setState({ message: text });
+      }
+    });
+  }
 
-  </Wrapper>
-);
+  render() {
+    return (
+      <Wrapper>
+        <img src={ logoImg } width="80" alt=""/>
+        <h2>About Gisto</h2>
+        <p>Current version <strong>v{packageJson.version}</strong></p>
+
+        { this.state.message && (
+          <UpdateInfo>{ this.state.message }</UpdateInfo>
+        ) }
+
+        <p>
+          Gisto is a code snippet manager that runs on GitHub Gists and adds additional features
+          such as searching, tagging and sharing gists while including a rich code editor.
+        </p>
+
+        <p>
+          All your data is stored on GitHub and you can access it from GitHub Gists at any time with
+          changes carrying over to Gisto.
+        </p>
+
+        <p>
+          <ExternalLink href="https://github.com/Gisto/Gisto">GitHub</ExternalLink>&nbsp;|&nbsp;
+          <ExternalLink href="https://gistoapp.com">Website gistoapp.com</ExternalLink>&nbsp;|&nbsp;
+          <ExternalLink
+            href="https://github.com/Gisto/Gisto/issues">Issues
+          </ExternalLink>&nbsp;|&nbsp;
+          <ExternalLink href="https://twitter.com/gistoapp">Twitter</ExternalLink>
+        </p>
+
+      </Wrapper>
+    );
+  }
+}
 
 About.propTypes = {};
 

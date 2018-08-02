@@ -6,12 +6,13 @@ const {
   app, BrowserWindow, Menu, shell
 } = require('electron');
 const path = require('path');
+const { ipcMain } = require('electron');
 const settings = require('electron-settings');
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
-const request = require('superagent');
-const semver = require('semver');
 const packageJson = require('./package.json');
+
+const LATEST_RELEASED_VERSION_URL = 'https://gisto-releases.s3.amazonaws.com/latest-mac.json';
 
 init({
   dsn: 'https://9b448264479b47418f9e248c208632ae@sentry.io/1245680',
@@ -46,6 +47,11 @@ template.unshift(
         role: 'about'
       },
       {
+        label: 'Services',
+        role: 'services',
+        submenu: []
+      },
+      {
         label: 'Reload',
         accelerator: 'Command+R',
         click: () => win.webContents.reload()
@@ -56,7 +62,8 @@ template.unshift(
       },
       {
         label: 'Check for updates',
-        click: (menuItem, focusedWindow, event) => require('./updater').checkForUpdates(menuItem, focusedWindow, event)
+        click: (menuItem, focusedWindow, event) => require('./updater').checkForUpdates(menuItem, focusedWindow, event),
+        visible: !isMacOS
       },
       {
         label: 'Quit',
@@ -76,6 +83,17 @@ template.unshift(
       { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
       { label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' }
     ]
+  }, {
+    label: 'View',
+    submenu: [{
+      label: 'Toggle Full Screen',
+      accelerator: 'Ctrl+Command+F',
+      click: (item, focusedWindow) => {
+        if (focusedWindow) {
+          focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+        }
+      }
+    }]
   }, {
     label: 'Help',
     submenu: [{
@@ -104,7 +122,7 @@ template.unshift(
 
 function sendStatusToWindow(text, info) {
   log.info(text);
-  win.webContents.send('message', text, info);
+  win.webContents.send('updateInfo', text, info);
 }
 
 const createWindow = () => {
@@ -167,25 +185,32 @@ const createWindow = () => {
 app.on('ready', createWindow);
 
 const handleMacOSUpdates = () => {
-  sendStatusToWindow('Gisto checking for new version...');
+  if (isMacOS) {
+    const request = require('superagent');
+    const semver = require('semver');
 
-  request
-    .get('https://gisto-releases.s3.amazonaws.com/latest-mac.json')
-    .end((error, result) => {
-      if (result) {
-        const shouldUpdate = semver.lt(packageJson.version, result.body.version);
+    sendStatusToWindow('Gisto checking for new version...');
 
-        if (shouldUpdate) {
-          sendStatusToWindow(`Update from ${packageJson.version} to ${result.body.version} available`, result.body);
-        } else {
-          sendStatusToWindow('No updates available at the moment');
+    request
+      .get(LATEST_RELEASED_VERSION_URL)
+      .end((error, result) => {
+        if (result) {
+          const shouldUpdate = semver.lt(packageJson.version, result.body.version);
+
+          if (shouldUpdate) {
+            sendStatusToWindow(`Update from ${packageJson.version} to ${result.body.version} available`, result.body);
+          } else {
+            sendStatusToWindow('No updates available at the moment');
+          }
         }
-      }
-      if (error) {
-        sendStatusToWindow('No new version information at the moment');
-      }
-    });
+        if (error) {
+          sendStatusToWindow('No new version information at the moment');
+        }
+      });
+  }
 };
+
+ipcMain.on('checkForUpdate', () => handleMacOSUpdates());
 
 autoUpdater.on('checking-for-update', () => {
   sendStatusToWindow('Checking for update...');
