@@ -66,6 +66,7 @@ const UpdaterMenu = styled.div`
   position: relative;
   top: 17px;
   box-shadow: 0 5px 30px ${textColor};
+  cursor: default;
 `;
 
 export class AppArea extends React.Component {
@@ -75,7 +76,7 @@ export class AppArea extends React.Component {
 
   componentDidMount() {
     this.props.getUser();
-    ipcRenderer.on('message', (event, text, info) => {
+    ipcRenderer.on('updateInfo', (event, text, info) => {
       if (get('url', info)) {
         const message = (
           <React.Fragment>
