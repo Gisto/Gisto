@@ -26,7 +26,8 @@ describe('reducer - ui', () => {
     const expectedResult = {
       snippets: {
         edit: false,
-        loading: true
+        loading: true,
+        comments: false
       },
       rateLimit: {}
     };
@@ -41,7 +42,8 @@ describe('reducer - ui', () => {
     const expectedResult = {
       snippets: {
         edit: false,
-        loading: false
+        loading: false,
+        comments: false
       },
       rateLimit: {}
     };
@@ -56,7 +58,8 @@ describe('reducer - ui', () => {
     const expectedResult = {
       snippets: {
         edit: true,
-        loading: false
+        loading: false,
+        comments: false
       },
       rateLimit: {}
     };
@@ -71,14 +74,16 @@ describe('reducer - ui', () => {
     const initial = {
       snippets: {
         edit: true,
-        loading: false
+        loading: false,
+        comments: false
       },
       rateLimit: {}
     };
     const expectedResult = {
       snippets: {
         edit: false,
-        loading: false
+        loading: false,
+        comments: false
       },
       rateLimit: {}
     };
@@ -93,14 +98,16 @@ describe('reducer - ui', () => {
     const initial = {
       snippets: {
         edit: true,
-        loading: false
+        loading: false,
+        comments: false
       },
       rateLimit: {}
     };
     const expectedResult = {
       snippets: {
         edit: false,
-        loading: false
+        loading: false,
+        comments: false
       },
       rateLimit: {}
     };

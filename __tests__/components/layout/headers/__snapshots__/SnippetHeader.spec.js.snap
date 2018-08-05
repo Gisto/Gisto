@@ -131,12 +131,15 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
         </UtilityIcon>
         <UtilityIcon
           color="#3F84A8"
+          onClick={[Function]}
           size={22}
+          text=""
           type="chat"
         >
           <Util
             color="#3F84A8"
             onClick={[Function]}
+            text=""
           >
             <span
               className="Util-iuPPCj btiIqg"

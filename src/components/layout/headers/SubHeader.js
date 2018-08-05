@@ -18,7 +18,7 @@ const SubHeaderWrapper = styled.div`
   vertical-align: middle;
   height: 60px;
   box-shadow: 0 1px 2px ${boxShadow};
-  z-index: 1;
+  z-index: 2;
 `;
 
 const SnippetHeaderBlock = styled.div`

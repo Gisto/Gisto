@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
+<TextArea
+  className="classified"
+  placeholder="I am temporary"
+  type="search"
+  value="typetypetype"
+>
+  <StyledInput
+    className="classified"
+    defaultValue="typetypetype"
+    disabled={false}
+    placeholder="I am temporary"
+    title=""
+  >
+    <textarea
+      className="classified StyledInput-kKifnt hyrAle"
+      defaultValue="typetypetype"
+      disabled={false}
+      placeholder="I am temporary"
+      title=""
+    />
+  </StyledInput>
+</TextArea>
+`;

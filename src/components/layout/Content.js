@@ -14,6 +14,7 @@ const ContentWrapper = styled.div`
   padding: 20px;
   background: ${bg};
   overflow: auto;
+  position: relative;
 `;
 
 export const Content = () => (

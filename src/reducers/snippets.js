@@ -1,5 +1,5 @@
 import {
-  merge, keyBy, update, set, map, flow, concat, includes, without, omit, pick, get
+  merge, keyBy, update, set, map, flow, concat, includes, without, omit, pick, get, filter
 } from 'lodash/fp';
 import uuid from 'uuid';
 import * as AT from 'constants/actionTypes';
@@ -13,6 +13,7 @@ const initialState = {
     tags: [],
     language: ''
   },
+  comments: {},
   lastOpenedId: null,
   new: {
     description: '',
@@ -166,6 +167,26 @@ export const snippets = (state = initialState, action) => {
         snippetStructure(action.payload, state.starred),
         state
       );
+    }
+
+    case AT.GET_SNIPPET_COMMENTS.SUCCESS: {
+      return set(['comments', action.meta.id], action.payload, state);
+    }
+
+    case AT.GET_SNIPPET_COMMENTS.PENDING: {
+      return set(['comments', action.meta.id], [], state);
+    }
+
+    case AT.CREATE_SNIPPET_COMMENT.SUCCESS: {
+      return set(['comments', action.meta.id], concat(get(['comments', action.meta.id], state), action.payload), state);
+    }
+
+    case AT.DELETE_COMMENT.SUCCESS: {
+      const comments = filter((comment) => {
+        return comment.id !== action.meta.commentId;
+      }, get(['comments', action.meta.id], state));
+
+      return set(['comments', action.meta.id], comments, state);
     }
 
     default: {

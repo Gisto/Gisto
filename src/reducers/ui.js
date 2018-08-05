@@ -5,7 +5,8 @@ import * as AT from 'constants/actionTypes';
 const initialState = {
   snippets: {
     loading: false,
-    edit: false
+    edit: false,
+    comments: false
   },
   rateLimit: {}
 };
@@ -19,7 +20,10 @@ export const ui = (state = initialState, action) => {
     case AT.CREATE_SNIPPET.PENDING:
     case AT.DELETE_SNIPPET.PENDING:
     case AT.UPDATE_SNIPPET.PENDING: {
-      return set('snippets.loading', true, state);
+      return flow([
+        set('snippets.comments', false),
+        set('snippets.loading', true)
+      ])(state);
     }
 
     case AT.GET_SNIPPETS.SUCCESS:
@@ -39,11 +43,17 @@ export const ui = (state = initialState, action) => {
     case AT.LOGIN_WITH_TOKEN.FAILURE:
     case AT.LOGIN_BASIC.SUCCESS:
     case AT.LOGIN_BASIC.FAILURE: {
-      return set('snippets.loading', false, state);
+      return flow([
+        set('snippets.comments', false),
+        set('snippets.loading', false)
+      ])(state);
     }
 
     case AT.START_EDIT_SNIPPET: {
-      return set('snippets.edit', true, state);
+      return flow([
+        set('snippets.comments', false),
+        set('snippets.edit', true)
+      ])(state);
     }
 
     case AT.UPDATE_SNIPPET.SUCCESS: {
@@ -59,6 +69,10 @@ export const ui = (state = initialState, action) => {
 
     case AT.GET_RATE_LIMIT.SUCCESS: {
       return set('rateLimit', action.payload, state);
+    }
+
+    case AT.TOGGLE_SNIPPET_COMMENTS: {
+      return set('snippets.comments', !state.snippets.comments, state);
     }
 
     default: {
