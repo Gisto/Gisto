@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { get, map, size } from 'lodash/fp';
+import {
+  get, map, size, toString, isEmpty
+} from 'lodash/fp';
 import styled from 'styled-components';
 
 import {
@@ -185,7 +187,7 @@ export class SnippetHeader extends React.Component {
 
   render() {
     const {
-      snippets, match, editSnippet
+      snippets, match, editSnippet, comments
     } = this.props;
     const snippet = get(match.params.id, snippets);
     const snippetId = get('id', snippet);
@@ -204,7 +206,11 @@ export class SnippetHeader extends React.Component {
             { this.renderEditControls() }
             <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
             <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippetId) } type="delete"/>
-            <UtilityIcon size={ 22 } color={ baseAppColor } type="chat"/>
+            <UtilityIcon size={ 22 }
+                         color={ baseAppColor }
+                         type="chat"
+                         onClick={ () => this.props.toggleSnippetComments() }
+                         text={ !isEmpty(comments) ? toString(size(comments)) : toString(get('comments', snippet)) }/>
             { this.renderStarControl(snippet) }
             <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
               <ul>
@@ -265,8 +271,9 @@ export class SnippetHeader extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, { match }) => ({
   snippets: get(['snippets', 'snippets'], state),
+  comments: get(['snippets', 'comments', match.params.id], state),
   edit: get(['ui', 'snippets', 'edit'], state),
   tempSnippet: get(['snippets', 'edit'], state)
 });
@@ -284,8 +291,10 @@ SnippetHeader.propTypes = {
   updateTempSnippet: PropTypes.func,
   updateSnippet: PropTypes.func,
   addTempFile: PropTypes.func,
+  toggleSnippetComments: PropTypes.func,
   edit: PropTypes.bool,
-  tempSnippet: PropTypes.object
+  tempSnippet: PropTypes.object,
+  comments: PropTypes.object
 };
 
 export default connect(mapStateToProps, {
@@ -298,5 +307,6 @@ export default connect(mapStateToProps, {
   cancelEditSnippet: snippetActions.cancelEditSnippet,
   updateTempSnippet: snippetActions.updateTempSnippet,
   addTempFile: snippetActions.addTempFile,
-  updateSnippet: snippetActions.updateSnippet
+  updateSnippet: snippetActions.updateSnippet,
+  toggleSnippetComments: snippetActions.toggleSnippetComments
 })(SnippetHeader);

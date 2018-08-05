@@ -8,7 +8,7 @@ import Icon from 'components/common/Icon';
 
 const ButtonComponent = styled.button`
   background: ${(props) => props.invert ? 'transparent' : baseAppColor};
-  border: 1px solid ${baseAppColor};
+  border: 1px solid ${(props) => props.outline ? lightText : baseAppColor};
   color: ${(props) => props.invert ? baseAppColor : lightText};
   border-radius: 3px;
   font-weight: 200;
@@ -28,7 +28,7 @@ const ButtonComponent = styled.button`
 `;
 
 const Button = ({
-  icon, children, width, height, invert, className, onClick, disabled
+  icon, children, width, height, invert, outline, className, onClick, disabled
 }) => {
   const iconColor = () => {
     if (invert) {
@@ -42,6 +42,7 @@ const Button = ({
 
   return (
     <ButtonComponent invert={ invert }
+                     outline={ outline }
                      width={ width }
                      disabled={ disabled }
                      title={ disabled ? 'Currently not available' : children }
@@ -61,6 +62,7 @@ Button.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   invert: PropTypes.bool,
+  outline: PropTypes.bool,
   onClick: PropTypes.func,
   disabled: PropTypes.bool
 };

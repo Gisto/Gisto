@@ -264,6 +264,57 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         });
     }
 
+    if (action.type === AT.GET_SNIPPET_COMMENTS) {
+      dispatch({ type: AT.GET_SNIPPET_COMMENTS.PENDING, meta: action.meta });
+      API.get(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/comments`)
+        .set(_headers())
+        .end((error, result) => {
+          errorHandler(error, result);
+
+          if (!error && result) {
+            dispatch({
+              type: AT.GET_SNIPPET_COMMENTS.SUCCESS,
+              payload: result.body,
+              meta: action.meta
+            });
+          }
+        });
+    }
+
+    if (action.type === AT.CREATE_SNIPPET_COMMENT) {
+      dispatch({ type: AT.CREATE_SNIPPET_COMMENT.PENDING, action });
+      API.post(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/comments`)
+        .set(_headers())
+        .send({ body: action.payload.body })
+        .end((error, result) => {
+          errorHandler(error, result);
+
+          if (!error && result) {
+            dispatch({
+              type: AT.CREATE_SNIPPET_COMMENT.SUCCESS,
+              payload: result.body,
+              meta: action.meta
+            });
+          }
+        });
+    }
+
+    if (action.type === AT.DELETE_COMMENT) {
+      dispatch({ type: AT.DELETE_COMMENT.PENDING, action });
+      API.delete(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/comments/${action.payload.commentId}`)
+        .set(_headers())
+        .end((error, result) => {
+          errorHandler(error, result);
+
+          if (result.statusCode === 204) {
+            dispatch({
+              type: AT.DELETE_COMMENT.SUCCESS,
+              meta: action.meta
+            });
+          }
+        });
+    }
+
     next(action);
   };
 };

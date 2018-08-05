@@ -140,3 +140,39 @@ export const updateSnippet = (snippet, id) => ({
   type: AT.UPDATE_SNIPPET,
   payload: { snippet, id }
 });
+
+export const getSnippetComments = (id) => ({
+  meta: {
+    id
+  },
+  type: AT.GET_SNIPPET_COMMENTS,
+  payload: { id }
+});
+
+export const createSnippetComment = (id, body) => ({
+  meta: {
+    id,
+    body
+  },
+  type: AT.CREATE_SNIPPET_COMMENT,
+  payload: {
+    id,
+    body
+  }
+});
+
+export const deleteComment = (id, commentId) => ({
+  meta: {
+    id,
+    commentId
+  },
+  type: AT.DELETE_COMMENT,
+  payload: {
+    id,
+    commentId
+  }
+});
+
+export const toggleSnippetComments = () => ({
+  type: AT.TOGGLE_SNIPPET_COMMENTS
+});

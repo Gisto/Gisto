@@ -11,6 +11,8 @@ import Editor from 'components/common/Editor';
 import SnippetHeader from 'components/layout/content/snippet/snippetHeader';
 
 import 'github-markdown-css/github-markdown.css';
+import Comments from 'components/layout/content/snippet/Comments';
+
 
 const SnippetWrapper = styled.div`
   background: #fff;
@@ -26,7 +28,9 @@ const SnippetWrapper = styled.div`
 
 export class Snippet extends React.Component {
   componentDidMount() {
-    this.props.getSnippet(this.props.match.params.id || this.props.snippet.id);
+    const id = this.props.match.params.id || this.props.snippet.id;
+
+    this.props.getSnippet(id);
   }
 
   componentDidUpdate(prevProps) {
@@ -37,7 +41,7 @@ export class Snippet extends React.Component {
 
   render() {
     const {
-      snippet, edit, tempSnippet, updateTempSnippet
+      snippet, edit, tempSnippet, updateTempSnippet, showComments
     } = this.props;
     const currentSnippet = edit ? tempSnippet : snippet;
     const files = filter((file) => !file.delete, get('files', currentSnippet));
@@ -48,7 +52,9 @@ export class Snippet extends React.Component {
 
     return (
       <React.Fragment>
-        {  map((file) => (
+        { showComments && <Comments snippetId={ this.props.match.params.id }/> }
+
+        { map((file) => (
           <SnippetWrapper key={ file.uuid || `${file.size}-${file.viewed}-${file.filename}` }>
             <SnippetHeader file={ file }
                            username={ snippet.username }
@@ -68,8 +74,10 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     snippet: get(['snippets', 'snippets', snippetId], state),
+    comments: get(['snippets', 'comments'], state),
     tempSnippet: get(['snippets', 'edit'], state),
-    edit: get(['ui', 'snippets', 'edit'], state)
+    edit: get(['ui', 'snippets', 'edit'], state),
+    showComments: get(['ui', 'snippets', 'comments'], state)
   };
 };
 
@@ -79,7 +87,8 @@ Snippet.propTypes = {
   getSnippet: PropTypes.func.isRequired,
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object,
-  updateTempSnippet: PropTypes.func
+  updateTempSnippet: PropTypes.func,
+  showComments: PropTypes.func
 };
 
 export default connect(mapStateToProps, {
