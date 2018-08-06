@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { get, map, filter } from 'lodash/fp';
+import {
+  get, map, filter, size
+} from 'lodash/fp';
 
 import * as snippetActions from 'actions/snippets';
 import { borderColor } from 'constants/colors';
@@ -61,6 +63,8 @@ export class Snippet extends React.Component {
                            snippetId={ snippet.id }/>
             <Editor file={ file }
                     edit={ edit }
+                    filesCount={ size(files) }
+                    height={ file.collapsed ? 0 : 400 }
                     onChange={ (value) => updateTempSnippet(['files', file.uuid, 'content'], value) }/>
           </SnippetWrapper>
         ), files) }

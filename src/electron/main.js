@@ -3,10 +3,9 @@ const isDev = process.env.NODE_ENV === 'development';
 const isMacOS = process.platform === 'darwin';
 const { init } = require('@sentry/electron');
 const {
-  app, BrowserWindow, Menu, shell
+  app, BrowserWindow, Menu, shell, ipcMain
 } = require('electron');
 const path = require('path');
-const { ipcMain } = require('electron');
 const settings = require('electron-settings');
 const log = require('electron-log');
 const { autoUpdater } = require('electron-updater');
@@ -142,9 +141,16 @@ const createWindow = () => {
   app.dock.setBadge('BETA');
 
   splash = new BrowserWindow({
-    width: 484, height: 272, transparent: true, frame: false, alwaysOnTop: true
+    width: 484,
+    height: 272,
+    backgroundColor: settings.get('color', '#3F84A8'),
+    frame: false,
+    alwaysOnTop: true,
+    'web-preferences': {
+      'web-security': false
+    }
   });
-  splash.loadURL('https://www.letsbackflip.com/wp-content/uploads/2012/11/tennant-buffer.gif');
+  splash.loadURL(`file://${__dirname}/loading.html`);
 
   setTimeout(() => {
     win = new BrowserWindow({
@@ -162,8 +168,8 @@ const createWindow = () => {
     win.loadURL(`file://${__dirname}/index.html`);
 
     win.once('ready-to-show', () => {
-      splash.destroy();
-      win.show();
+      // splash.destroy();
+      // win.show();
 
       const menu = Menu.buildFromTemplate(template);
 
@@ -172,8 +178,14 @@ const createWindow = () => {
       autoUpdater.checkForUpdates();
     });
 
+    // Handled URL opening in default browser
+    win.webContents.on('will-navigate', (event, url) => {
+      event.preventDefault();
+      shell.openExternal(url);
+    });
+
     if (isDev) {
-      win.webContents.openDevTools();
+      splash.webContents.openDevTools();
     }
 
     win.on('closed', () => {

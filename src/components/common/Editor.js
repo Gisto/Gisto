@@ -10,7 +10,7 @@ import { syntaxMap } from 'constants/editor';
 import 'highlight.js/styles/default.css';
 
 const Markdown = styled.div`
-  padding: 20px 30px;
+  padding: 20px 30px 0;
   ${(props) => props.width && `width: calc(${props.width} - 60px);`}
 `;
 
@@ -41,7 +41,7 @@ const editorOptions = {
 export class Editor extends React.Component {
   renderEditor = () => {
     const {
-      edit, onChange, file, className, id, language
+      edit, onChange, file, className, id, language, filesCount
     } = this.props;
 
     marked.setOptions({
@@ -69,7 +69,7 @@ export class Editor extends React.Component {
         <EditorWrapper>
           <MonacoEditor
             width="50%"
-            height="auto"
+            height={ file.collapsed ? 0 : 'auto' }
             className={ className }
             language={ language || syntaxMap[file.language] || 'text' }
             theme={ getSetting('editorTheme', 'vs') }
@@ -82,10 +82,12 @@ export class Editor extends React.Component {
       );
     }
 
+    const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 400;
+
     return (
       <MonacoEditor
         width="100%"
-        height={ 400 }
+        height={ file.collapsed ? 0 : calculatedHeight }
         className={ className }
         language={ language || syntaxMap[file.language] || 'text' }
         theme={ getSetting('editorTheme', '') }
@@ -107,7 +109,8 @@ Editor.propTypes = {
   language: PropTypes.string,
   id: PropTypes.string,
   className: PropTypes.string,
-  edit: PropTypes.bool
+  edit: PropTypes.bool,
+  filesCount: PropTypes.number
 };
 
 export default Editor;
