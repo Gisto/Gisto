@@ -7,11 +7,11 @@ import {
 import marked from 'marked';
 import 'highlight.js/styles/default.css';
 import hljs from 'highlight.js';
+import styled from 'styled-components';
 
 import Icon from 'components/common/Icon';
 import TextArea from 'components/common/TextArea';
 import Button from 'components/common/Button';
-import styled from 'styled-components';
 
 import {
   baseAppColor, colorDanger, headerBgLightest, headerColor, textColor

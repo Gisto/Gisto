@@ -22,13 +22,13 @@ const SideBarWrapper = styled.div`
 `;
 
 const SearchFilters = styled.div`
-  color: #3f84a8;
-    padding: 10px 20px;
-    background: ${lightText};
-    z-index: 2;
-    border-top: 1px solid ${borderColor};
-    box-shadow: 0 1px 2px ${boxShadow};
-    font-size: 12px;
+  color: ${baseAppColor};
+  padding: 10px 20px;
+  background: ${lightText};
+  z-index: 2;
+  border-top: 1px solid ${borderColor};
+  box-shadow: 0 1px 2px ${boxShadow};
+  font-size: 12px;
 `;
 
 const ClearAll = styled.a`

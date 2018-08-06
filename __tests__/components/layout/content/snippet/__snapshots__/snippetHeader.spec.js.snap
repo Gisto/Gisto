@@ -170,9 +170,9 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
         </UtilityIcon>
         <UtilityIcon
           color="#3F84A8"
-          onClick={null}
+          onClick={[Function]}
           size={22}
-          type="arrow-up"
+          type="arrow-down"
         >
           <Util
             color="#3F84A8"
@@ -186,13 +186,13 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
               <Icon
                 color="#3F84A8"
                 size={22}
-                type="arrow-up"
+                type="arrow-down"
               >
                 <span
-                  className="Icon-cFRQJw fxxoHj"
+                  className="Icon-cFRQJw kVFEWe"
                   color="#3F84A8"
                   size={22}
-                  type="arrow-up"
+                  type="arrow-down"
                 />
               </Icon>
                

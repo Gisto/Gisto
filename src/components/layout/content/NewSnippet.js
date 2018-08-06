@@ -28,7 +28,7 @@ const Section = styled.div`
 `;
 
 const FileSection = styled(Section)`
-  border: 1px solid #3f84a8;
+  border: 1px solid ${baseAppColor};
   padding: 20px;
   border-radius: 3px;
 `;

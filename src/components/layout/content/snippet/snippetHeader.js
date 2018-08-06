@@ -88,7 +88,10 @@ export class SnippetHeader extends React.Component {
                 </li>
               </ul>
             </UtilityIcon>
-            <UtilityIcon size={ 22 } color={ baseAppColor } type="arrow-up" onClick={ null }/>
+            <UtilityIcon size={ 22 }
+                         color={ baseAppColor }
+                         type={ file.collapsed ? 'arrow-up' :  'arrow-down' }
+                         onClick={ () => null }/>
           </div>
         ) : (
           <UtilityIcon size={ 22 } color={ colorDanger } type="delete" onClick={ () => this.props.deleteFile(file.uuid) }/>

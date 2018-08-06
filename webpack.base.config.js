@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const packageJson = require('./package.json');
 
 module.exports = {
   resolve: {
@@ -48,6 +49,11 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
+    }),
+    new HtmlWebPackPlugin({
+      title: packageJson.version,
+      template: './src/loading.html',
+      filename: './loading.html'
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
