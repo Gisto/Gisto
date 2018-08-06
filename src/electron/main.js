@@ -168,8 +168,8 @@ const createWindow = () => {
     win.loadURL(`file://${__dirname}/index.html`);
 
     win.once('ready-to-show', () => {
-      // splash.destroy();
-      // win.show();
+      splash.destroy();
+      win.show();
 
       const menu = Menu.buildFromTemplate(template);
 
