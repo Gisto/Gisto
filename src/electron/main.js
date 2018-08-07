@@ -180,8 +180,37 @@ const createWindow = () => {
 
     // Handled URL opening in default browser
     win.webContents.on('will-navigate', (event, url) => {
+      if (url.match(/https:\/\/gisto-releases\.s3\.amazonaws\.com/i).length > 0) {
+        return false;
+      }
+
       event.preventDefault();
       shell.openExternal(url);
+
+      return true;
+    });
+
+    win.webContents.session.on('will-download', (event, item) => {
+      item.on('updated', (updateEvent, state) => {
+        if (state === 'interrupted') {
+          console.log('Download is interrupted but can be resumed');
+        } else if (state === 'progressing') {
+          if (item.isPaused()) {
+            win.webContents.send('updateInfo', 'Download paused');
+          } else {
+            const downloaded = (item.getReceivedBytes() / 1048576).toFixed(2);
+
+            win.webContents.send('updateInfo', `Downloaded: ${downloaded}MB`);
+          }
+        }
+      });
+      item.once('done', (doneEvent, state) => {
+        if (state === 'completed') {
+          win.webContents.send('updateInfo', 'Download finished, please close Gisto and install');
+        } else {
+          win.webContents.send('updateInfo', `Download failed: ${state}`);
+        }
+      });
     });
 
     if (isDev) {
