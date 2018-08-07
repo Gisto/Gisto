@@ -28,54 +28,8 @@
 	url('../fonts/roboto-condensed-v16-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* titillium-web-200 - latin */
-@font-face {
-	font-family: 'Titillium Web';
-	font-style: normal;
-	font-weight: 200;
-	src: local('Titillium Web ExtraLight'), local('TitilliumWeb-ExtraLight'),
-	url('../fonts/titillium-web-v6-latin-200.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-	url('../fonts/titillium-web-v6-latin-200.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* titillium-web-300 - latin */
-@font-face {
-	font-family: 'Titillium Web';
-	font-style: normal;
-	font-weight: 300;
-	src: local('Titillium Web Light'), local('TitilliumWeb-Light'),
-	url('../fonts/titillium-web-v6-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-	url('../fonts/titillium-web-v6-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* titillium-web-regular - latin */
-@font-face {
-	font-family: 'Titillium Web';
-	font-style: normal;
-	font-weight: 400;
-	src: local('Titillium Web Regular'), local('TitilliumWeb-Regular'),
-	url('../fonts/titillium-web-v6-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-	url('../fonts/titillium-web-v6-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* titillium-web-600 - latin */
-@font-face {
-	font-family: 'Titillium Web';
-	font-style: normal;
-	font-weight: 600;
-	src: local('Titillium Web SemiBold'), local('TitilliumWeb-SemiBold'),
-	url('../fonts/titillium-web-v6-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-	url('../fonts/titillium-web-v6-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* titillium-web-700 - latin */
-@font-face {
-	font-family: 'Titillium Web';
-	font-style: normal;
-	font-weight: 700;
-	src: local('Titillium Web Bold'), local('TitilliumWeb-Bold'),
-	url('../fonts/titillium-web-v6-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-	url('../fonts/titillium-web-v6-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-
 body, html {
-	font-family: 'Roboto Condensed', 'Titillium Web';
+	font-family: 'Roboto Condensed';
 	font-weight: 300;
 }
 
