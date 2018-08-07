@@ -78,3 +78,23 @@ body, html {
 	font-family: 'Roboto Condensed', 'Titillium Web';
 	font-weight: 300;
 }
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+#gisto {
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+	/* Smoother startup */
+	animation: fadein 1s;
+}
+
+#gisto .markdown-body {
+	-webkit-user-select: text;
+}
