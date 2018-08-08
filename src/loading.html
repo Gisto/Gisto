@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
 	<style>
-		html {
+		html,
+		body {
 			font-family: 'Helvetica Neue', 'Trebuchet MS', sans-serif;
 			color: #fff;
 			font-weight: 100;
+			padding: 0;
+			margin: 0;
 		}
 
 		.wrapper {
@@ -65,7 +68,7 @@
 
 	<div>
 		<h1>{ Gisto }</h1>
-		<p>v<%= htmlWebpackPlugin.options.title %></p>
+		<p>v<%= htmlWebpackPlugin.options.version %></p>
 	</div>
 
 	<div class="loader"></div>
