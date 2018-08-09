@@ -7,7 +7,7 @@ const baseConfig = require('./webpack.base.config');
 const buildPath = path.resolve(__dirname, './dist');
 
 const config = merge.smart(baseConfig, {
-  entry: './src/index.js',
+  entry: './src/main.js',
   output: {
     filename: 'renderer.js',
     path: buildPath

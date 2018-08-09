@@ -68,6 +68,7 @@ module.exports = {
       'build/icon.png',
       'package.json',
       { from: 'src/electron/main.js', to: 'main.js' },
+      { from: 'src/electron/main', to: 'main' },
       { from: 'src/electron/oauth2.js', to: 'oauth2.js' },
       { from: 'src/electron/updater.js', to: 'updater.js' },
       { from: 'src/icons', to: 'src/icons' }
