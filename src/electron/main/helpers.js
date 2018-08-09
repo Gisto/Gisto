@@ -1,9 +1,6 @@
 const {
   shell, app, Menu
 } = require('electron');
-const {
-  default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF
-} = require('electron-devtools-installer');
 const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
 const { init } = require('@sentry/electron');
@@ -20,6 +17,10 @@ function initSentry() {
 }
 
 function installDevToolsExtentions() {
+  const {
+    default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF
+  } = require('electron-devtools-installer');
+  
   installExtension([REACT_DEVELOPER_TOOLS.id, REDUX_DEVTOOLS.id, REACT_PERF.id])
     .then((extensionName) => console.log(`Added Extension:  ${extensionName}`))
     .catch((err) => console.log('An error occurred: ', err));
