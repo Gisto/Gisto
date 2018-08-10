@@ -20,7 +20,7 @@ function installDevToolsExtentions() {
   const {
     default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF
   } = require('electron-devtools-installer');
-  
+
   installExtension([REACT_DEVELOPER_TOOLS.id, REDUX_DEVTOOLS.id, REACT_PERF.id])
     .then((extensionName) => console.log(`Added Extension:  ${extensionName}`))
     .catch((err) => console.log('An error occurred: ', err));
