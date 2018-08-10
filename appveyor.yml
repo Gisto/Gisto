@@ -39,7 +39,7 @@ install:
   - set PATH=%APPDATA%\npm;%PATH%
   - node --version && npm --version
   - npm install -g cross-env rimraf electron-builder electron-publisher-s3
-  - npm install
+  - npm ci
   - npm run test
 
 build_script:
