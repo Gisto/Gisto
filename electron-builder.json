@@ -8,16 +8,14 @@
   "artifactName": "${productName}-${version}-${arch}.${ext}",
   "mac": {
     "publish": {
-      "provider": "s3",
-      "bucket": "gisto-releases"
+      "provider": "github"
     },
     "category": "public.app-category.productivity",
     "icon": "build/icon.png"
   },
   "dmg": {
     "publish": {
-      "provider": "s3",
-      "bucket": "gisto-releases"
+      "provider": "github"
     },
     "window": {
       "width": 540,
@@ -38,8 +36,7 @@
   },
   "win": {
     "publish": {
-      "provider": "s3",
-      "bucket": "gisto-releases"
+      "provider": "github"
     },
     "target": "nsis",
     "icon": "build/icon.ico"
@@ -47,8 +44,7 @@
   "linux": {
     "maintainer": "Sasha Khamkov <sanusart@gmail.com>",
     "publish": {
-      "provider": "s3",
-      "bucket": "gisto-releases"
+      "provider": "github"
     },
     "target": [
       "deb",
