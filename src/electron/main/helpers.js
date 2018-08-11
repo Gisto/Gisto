@@ -1,6 +1,5 @@
-const {
-  shell, app, Menu
-} = require('electron');
+/* eslint no-console: 0 */
+const { shell, app, Menu } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
 const { init } = require('@sentry/electron');
@@ -18,7 +17,10 @@ function initSentry() {
 
 function installDevToolsExtentions() {
   const {
-    default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, REACT_PERF
+    default: installExtension,
+    REACT_DEVELOPER_TOOLS,
+    REDUX_DEVTOOLS,
+    REACT_PERF
   } = require('electron-devtools-installer');
 
   installExtension([REACT_DEVELOPER_TOOLS.id, REDUX_DEVTOOLS.id, REACT_PERF.id])
@@ -61,7 +63,7 @@ function handleDownload(win) {
 function handleNavigate(win) {
   // Handled URL opening in default browser
   win.webContents.on('will-navigate', (event, url) => {
-    if (url.match(/https:\/\/gisto-releases\.s3\.amazonaws\.com/i).length > 0) {
+    if (url.match(/https:\/\/github\.com\/Gisto\/Gisto\/releases\/download/i).length > 0) {
       return false;
     }
 
@@ -125,40 +127,49 @@ function buildMenu(mainWindow) {
         { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
         { label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' }
       ]
-    }, {
+    },
+    {
       label: 'View',
-      submenu: [{
-        label: 'Toggle Full Screen',
-        accelerator: 'Ctrl+Command+F',
-        click: (item, focusedWindow) => {
-          if (focusedWindow) {
-            focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+      submenu: [
+        {
+          label: 'Toggle Full Screen',
+          accelerator: 'Ctrl+Command+F',
+          click: (item, focusedWindow) => {
+            if (focusedWindow) {
+              focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
+            }
           }
         }
-      }]
-    }, {
+      ]
+    },
+    {
       label: 'Help',
-      submenu: [{
-        label: `Learn More about ${name}`,
-        click() {
-          shell.openExternal('https://www.gistoapp.com');
+      submenu: [
+        {
+          label: `Learn More about ${name}`,
+          click() {
+            shell.openExternal('https://www.gistoapp.com');
+          }
+        },
+        {
+          label: 'Documentation',
+          click() {
+            shell.openExternal('https://www.gistoapp.com/documentation/');
+          }
+        },
+        {
+          label: 'Announcements',
+          click() {
+            shell.openExternal('https://www.gistoapp.com/blog/');
+          }
+        },
+        {
+          label: 'Search Issues',
+          click() {
+            shell.openExternal('https://github.com/gisto/gisto/issues');
+          }
         }
-      }, {
-        label: 'Documentation',
-        click() {
-          shell.openExternal('https://www.gistoapp.com/documentation/');
-        }
-      }, {
-        label: 'Announcements',
-        click() {
-          shell.openExternal('https://www.gistoapp.com/blog/');
-        }
-      }, {
-        label: 'Search Issues',
-        click() {
-          shell.openExternal('https://github.com/gisto/gisto/issues');
-        }
-      }]
+      ]
     }
   );
 
@@ -166,7 +177,7 @@ function buildMenu(mainWindow) {
 }
 
 function handleMacOSUpdates(mainWindow) {
-  const LATEST_RELEASED_VERSION_URL = 'https://gisto-releases.s3.amazonaws.com/latest-mac.json';
+  const LATEST_RELEASED_VERSION_URL = 'https://api.github.com/repos/Gisto/Gisto/releases';
 
   if (isMacOS) {
     const request = require('superagent');
@@ -174,22 +185,36 @@ function handleMacOSUpdates(mainWindow) {
 
     sendStatusToWindow('Gisto checking for new version...', {}, mainWindow, 'updateInfo');
 
-    request
-      .get(LATEST_RELEASED_VERSION_URL)
-      .end((error, result) => {
-        if (result) {
-          const shouldUpdate = semver.lt(packageJson.version, result.body.version);
+    request.get(LATEST_RELEASED_VERSION_URL).end((error, result) => {
+      if (result) {
+        const serverVersion = result.body[0].name;
+        const serverAssets = result.body[0].assets;
+        const shouldUpdate = semver.lt(packageJson.version, serverVersion);
 
-          if (shouldUpdate) {
-            sendStatusToWindow(`Update from ${packageJson.version} to ${result.body.version} available`, result.body, mainWindow, 'updateInfo');
-          } else {
-            sendStatusToWindow('No updates available at the moment', {}, mainWindow, 'updateInfo');
-          }
+        if (shouldUpdate) {
+          const dmgUrl = serverAssets.filter(
+            (asset) => asset.name === `Gisto-${serverVersion}.dmg`
+          );
+
+          sendStatusToWindow(
+            `Update from ${packageJson.version} to ${serverVersion} available`,
+            { url: dmgUrl },
+            mainWindow,
+            'updateInfo'
+          );
+        } else {
+          sendStatusToWindow('No updates available at the moment', {}, mainWindow, 'updateInfo');
         }
-        if (error) {
-          sendStatusToWindow('No new version information at the moment', {}, mainWindow, 'updateInfo');
-        }
-      });
+      }
+      if (error) {
+        sendStatusToWindow(
+          'No new version information at the moment',
+          {},
+          mainWindow,
+          'updateInfo'
+        );
+      }
+    });
   }
 }
 
