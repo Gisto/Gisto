@@ -8,14 +8,16 @@
   "artifactName": "${productName}-${version}-${arch}.${ext}",
   "mac": {
     "publish": {
-      "provider": "github"
+      "provider": "github",
+      "releaseType": "prerelease"
     },
     "category": "public.app-category.productivity",
     "icon": "build/icon.png"
   },
   "dmg": {
     "publish": {
-      "provider": "github"
+      "provider": "github",
+      "releaseType": "prerelease"
     },
     "window": {
       "width": 540,
@@ -36,7 +38,8 @@
   },
   "win": {
     "publish": {
-      "provider": "github"
+      "provider": "github",
+      "releaseType": "prerelease"
     },
     "target": "nsis",
     "icon": "build/icon.ico"
@@ -44,7 +47,8 @@
   "linux": {
     "maintainer": "Sasha Khamkov <sanusart@gmail.com>",
     "publish": {
-      "provider": "github"
+      "provider": "github",
+      "releaseType": "prerelease"
     },
     "target": [
       "deb",
