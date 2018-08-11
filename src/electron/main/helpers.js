@@ -16,18 +16,20 @@ function initSentry() {
 }
 
 function installDevToolsExtentions() {
-  const {
-    default: installExtension,
-    REACT_DEVELOPER_TOOLS,
-    REDUX_DEVTOOLS,
-    REACT_PERF
-  } = require('electron-devtools-installer');
+  if (isMacOS) {
+    const {
+      default: installExtension,
+      REACT_DEVELOPER_TOOLS,
+      REDUX_DEVTOOLS,
+      REACT_PERF
+    } = require('electron-devtools-installer');
 
-  installExtension([REACT_DEVELOPER_TOOLS.id, REDUX_DEVTOOLS.id, REACT_PERF.id])
-    .then((extensionName) => console.log(`Added Extension:  ${extensionName}`))
-    .catch((err) => console.log('An error occurred: ', err));
+    installExtension([REACT_DEVELOPER_TOOLS.id, REDUX_DEVTOOLS.id, REACT_PERF.id])
+      .then((extensionName) => console.log(`Added Extension:  ${extensionName}`))
+      .catch((err) => console.log('An error occurred: ', err));
 
-  console.log('\x1b[37m\x1b[41m', 'LOG ', '\x1b[0m', process.env.NODE_ENV);
+    console.log('\x1b[37m\x1b[41m', 'LOG ', '\x1b[0m', process.env.NODE_ENV);
+  }
 }
 
 function sendStatusToWindow(text, info, targetWindow, channel = 'updateInfo') {
@@ -75,7 +77,9 @@ function handleNavigate(win) {
 }
 
 function setBadge(badge) {
-  app.dock.setBadge(badge);
+  if (isMacOS) {
+    app.dock.setBadge(badge);
+  }
 }
 
 function buildMenu(mainWindow) {
