@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const baseConfig = require('./webpack.base.config');
 
@@ -45,6 +46,7 @@ const config = merge.smart(baseConfig, {
     ]
   },
   plugins: [
+    new HardSourceWebpackPlugin(),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
       DEBUG: true
