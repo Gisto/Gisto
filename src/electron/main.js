@@ -29,15 +29,15 @@ const createWindow = () => {
     helpers.setBadge('BETA');
   }
 
+  const backgroundColor = settings.get('color', '#3F84A8');
+
   splashWindow = new BrowserWindow({
     width: 484,
     height: 272,
-    backgroundColor: settings.get('color', '#3F84A8'),
+    backgroundColor,
     frame: false,
     alwaysOnTop: true,
-    'web-preferences': {
-      'web-security': false
-    }
+    'node-integration': false
   });
   splashWindow.loadURL(`file://${__dirname}/loading.html`);
 
@@ -45,13 +45,10 @@ const createWindow = () => {
     mainWindow = new BrowserWindow({
       width: 1200,
       height: 700,
-      backgroundColor: settings.get('color', '#3F84A8'),
+      backgroundColor,
       title: isDev ? `dev ${app.getVersion()}` : `Gisto v${app.getVersion()}`,
-      'node-integration': true,
-      show: false,
-      'web-preferences': {
-        'web-security': false
-      }
+      'node-integration': false,
+      show: false
     });
 
     mainWindow.loadURL(`file://${__dirname}/index.html`);
