@@ -64,6 +64,31 @@ This token will be saved permanently until you log out.
 
 You can find out more at the [F.A.Q.](http://www.gistoapp.com/faq/) section
 
+## How to contribute
+
+- fix issues, pull request are very welcome
+- write docs
+- fix/contribute to Gisto's website (https://gistoapp.com)
+- suggest features and improvements
+- spread the word
+
+## Development setup 
+
+> Make sure you  have **nodejs** and **npm** installed in the development machine
+
+Clone the latest "next" branch:
+
+`git clone -b next --single-branch https://github.com/Gisto/Gisto.git`
+
+Install dependencies in the directory created by cloning:
+
+`npm install`
+
+Run the local application:
+
+`npm run dev`
+
+_(for more commands, see `package.json` script section)_
 
 ## License
 
