@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
+<EditorSettings>
+  <div>
+    <h4>
+      editor settings:
+    </h4>
+    <Wrapper>
+      <div
+        className="Wrapper-dyuznp ciFETj"
+      >
+        <Section>
+          <div
+            className="Section-hLnjej lzCPI"
+          >
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Theme:
+                    </span>
+                    <select
+                      onChange={[Function]}
+                    >
+                      <option
+                        value="vs"
+                      >
+                        vs light
+                      </option>
+                      <option
+                        value="vs-dark"
+                      >
+                        vs dark
+                      </option>
+                      <option
+                        value="hc-black"
+                      >
+                        hc dark
+                      </option>
+                    </select>
+                  </div>
+                </Label>
+              </div>
+            </Field>
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Minimap:
+                    </span>
+                    <input
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </div>
+                </Label>
+              </div>
+            </Field>
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Line Numbers:
+                    </span>
+                    <input
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </div>
+                </Label>
+              </div>
+            </Field>
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Format On Paste:
+                    </span>
+                    <input
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </div>
+                </Label>
+              </div>
+            </Field>
+          </div>
+        </Section>
+        <Section>
+          <div
+            className="Section-hLnjej lzCPI"
+          >
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Font Family:
+                    </span>
+                    <input
+                      onChange={[Function]}
+                      type="text"
+                    />
+                  </div>
+                </Label>
+              </div>
+            </Field>
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Font Size:
+                    </span>
+                    <input
+                      onChange={[Function]}
+                      type="number"
+                    />
+                  </div>
+                </Label>
+              </div>
+            </Field>
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Line height:
+                    </span>
+                    <input
+                      onChange={[Function]}
+                      type="number"
+                    />
+                  </div>
+                </Label>
+              </div>
+            </Field>
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Font Ligatures:
+                    </span>
+                    <input
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </div>
+                </Label>
+              </div>
+            </Field>
+          </div>
+        </Section>
+        <Section>
+          <div
+            className="Section-hLnjej lzCPI"
+          >
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Code lens:
+                    </span>
+                    <input
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </div>
+                </Label>
+              </div>
+            </Field>
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Cursor Blinking:
+                    </span>
+                    <select
+                      onChange={[Function]}
+                    >
+                      <option
+                        value="blink"
+                      >
+                        blink
+                      </option>
+                      <option
+                        value="smooth"
+                      >
+                        smooth
+                      </option>
+                      <option
+                        value="phase"
+                      >
+                        phase
+                      </option>
+                      <option
+                        value="expand"
+                      >
+                        expand
+                      </option>
+                      <option
+                        value="solid"
+                      >
+                        solid
+                      </option>
+                    </select>
+                  </div>
+                </Label>
+              </div>
+            </Field>
+            <Field>
+              <div
+                className="Field-eieelf fXkcEo"
+              >
+                <Label>
+                  <div
+                    className="Label-ghyrbC eGcVDQ"
+                  >
+                    <span>
+                      Select On Line Numbers:
+                    </span>
+                    <input
+                      onChange={[Function]}
+                      type="checkbox"
+                    />
+                  </div>
+                </Label>
+              </div>
+            </Field>
+          </div>
+        </Section>
+      </div>
+    </Wrapper>
+  </div>
+</EditorSettings>
+`;

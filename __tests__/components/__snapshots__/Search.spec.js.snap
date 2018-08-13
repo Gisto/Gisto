@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Search> render Search 1`] = `
+<Search
+  filterLanguage=""
+  filterSnippets={[MockFunction]}
+  filterTags={Array []}
+  filterText="test"
+  snippets={Object {}}
+>
+  <SearchWrapper>
+    <div
+      className="SearchWrapper-ihPHph laZCxd"
+    >
+      <Icon
+        color="#3F84A8"
+        size="46"
+        type="search"
+      >
+        <span
+          className="Icon-cFRQJw kTzQOB"
+          color="#3F84A8"
+          size="46"
+          type="search"
+        />
+      </Icon>
+      <Input
+        onChange={[Function]}
+        placeholder="Search 0 snippets"
+        type="search"
+      >
+        <StyledInput
+          disabled={false}
+          onChange={[Function]}
+          placeholder="Search 0 snippets"
+          title=""
+          type="search"
+        >
+          <input
+            className="StyledInput-kKifnt jaVkjP"
+            disabled={false}
+            onChange={[Function]}
+            placeholder="Search 0 snippets"
+            title=""
+            type="search"
+          />
+        </StyledInput>
+      </Input>
+      <HashRouter>
+        <Router
+          history={
+            Object {
+              "action": "POP",
+              "block": [Function],
+              "createHref": [Function],
+              "go": [Function],
+              "goBack": [Function],
+              "goForward": [Function],
+              "length": 1,
+              "listen": [Function],
+              "location": Object {
+                "hash": "",
+                "pathname": "/",
+                "search": "",
+                "state": undefined,
+              },
+              "push": [Function],
+              "replace": [Function],
+            }
+          }
+        >
+          <Button
+            height="30px"
+            icon="add"
+            width="200px"
+          >
+            <ButtonComponent
+              height="30px"
+              title={
+                <StyledLink
+                  to="/new"
+                >
+                  New snippet
+                </StyledLink>
+              }
+              width="200px"
+            >
+              <button
+                className="ButtonComponent-fVGrXr TRIQs"
+                height="30px"
+                title={
+                  <StyledLink
+                    to="/new"
+                  >
+                    New snippet
+                  </StyledLink>
+                }
+                width="200px"
+              >
+                <Icon
+                  color="#fff"
+                  type="add"
+                >
+                  <span
+                    className="Icon-cFRQJw buRDBX"
+                    color="#fff"
+                    type="add"
+                  />
+                </Icon>
+                 
+                <StyledLink
+                  to="/new"
+                >
+                  <Link
+                    className="StyledLink-eJtUmc lddSoY"
+                    replace={false}
+                    to="/new"
+                  >
+                    <a
+                      className="StyledLink-eJtUmc lddSoY"
+                      href="#/new"
+                      onClick={[Function]}
+                    >
+                      New snippet
+                    </a>
+                  </Link>
+                </StyledLink>
+              </button>
+            </ButtonComponent>
+          </Button>
+        </Router>
+      </HashRouter>
+    </div>
+  </SearchWrapper>
+</Search>
+`;

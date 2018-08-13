@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Editor> render Editor 1`] = `
+<MonacoEditor
+  className=""
+  defaultValue=""
+  editorDidMount={[Function]}
+  editorWillMount={[Function]}
+  height={400}
+  language="text"
+  name="123123123123"
+  onChange={[MockFunction]}
+  options={
+    Object {
+      "automaticLayout": true,
+      "codeLens": undefined,
+      "cursorBlinking": undefined,
+      "fontFamily": undefined,
+      "fontLigatures": undefined,
+      "fontSize": undefined,
+      "formatOnPaste": false,
+      "lineHeight": undefined,
+      "lineNumbers": undefined,
+      "minimap": Object {
+        "enabled": false,
+      },
+      "roundedSelection": false,
+      "scrollBeyondLastLine": false,
+      "selectOnLineNumbers": false,
+    }
+  }
+  theme={null}
+  value="hi"
+  width="100%"
+/>
+`;
+
+exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
+<EditorWrapper>
+  <MonacoEditor
+    className=""
+    defaultValue=""
+    editorDidMount={[Function]}
+    editorWillMount={[Function]}
+    height="auto"
+    language="text"
+    name="123123123123"
+    onChange={[MockFunction]}
+    options={
+      Object {
+        "automaticLayout": true,
+        "codeLens": undefined,
+        "cursorBlinking": undefined,
+        "fontFamily": undefined,
+        "fontLigatures": undefined,
+        "fontSize": undefined,
+        "formatOnPaste": false,
+        "lineHeight": undefined,
+        "lineNumbers": undefined,
+        "minimap": Object {
+          "enabled": false,
+        },
+        "roundedSelection": false,
+        "scrollBeyondLastLine": false,
+        "selectOnLineNumbers": false,
+      }
+    }
+    theme={null}
+    value="# hi"
+    width="50%"
+  />
+  <Markdown
+    className="markdown-body"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<h1 id=\\"hi\\">hi</h1>
+",
+      }
+    }
+    width="50%"
+  />
+</EditorWrapper>
+`;

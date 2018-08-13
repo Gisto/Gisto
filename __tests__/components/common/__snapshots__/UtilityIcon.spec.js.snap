@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
+<UtilityIcon
+  className="UtilityIcon"
+  color="red"
+  dropdown={true}
+  onClick={[MockFunction]}
+  size={20}
+  title="UtilityIcon"
+  type="menu"
+>
+  <Util
+    className="UtilityIcon"
+    color="red"
+    onClick={[Function]}
+    title="UtilityIcon"
+  >
+    <span
+      className="UtilityIcon Util-iuPPCj eFpnZN"
+      color="red"
+      onClick={[Function]}
+      title="UtilityIcon"
+    >
+      <Icon
+        color="red"
+        size={20}
+        type="menu"
+      >
+        <span
+          className="Icon-cFRQJw cyuiLv"
+          color="red"
+          size={20}
+          type="menu"
+        />
+      </Icon>
+       
+    </span>
+  </Util>
+</UtilityIcon>
+`;

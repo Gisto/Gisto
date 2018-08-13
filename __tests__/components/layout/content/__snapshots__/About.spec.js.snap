@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <About> render About 1`] = `
+<About>
+  <Wrapper>
+    <div
+      className="Wrapper-dyuznp izLMrr"
+    >
+      <img
+        alt=""
+        src="icon.png"
+        width="80"
+      />
+      <h2>
+        About Gisto
+      </h2>
+      <p>
+        Current version 
+        <strong>
+          v
+          X.X.X
+        </strong>
+      </p>
+      <p>
+        Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor.
+      </p>
+      <p>
+        All your data is stored on GitHub and you can access it from GitHub Gists at any time with changes carrying over to Gisto.
+      </p>
+      <p>
+        <ExternalLink
+          href="https://github.com/Gisto/Gisto"
+        >
+          <Anchor
+            href="#"
+            onClick={[Function]}
+          >
+            <Link
+              href="#"
+              onClick={[Function]}
+            >
+              <a
+                className="Link-hdnizH bVHTue"
+                href="#"
+                onClick={[Function]}
+              >
+                GitHub
+              </a>
+            </Link>
+          </Anchor>
+        </ExternalLink>
+         | 
+        <ExternalLink
+          href="https://gistoapp.com"
+        >
+          <Anchor
+            href="#"
+            onClick={[Function]}
+          >
+            <Link
+              href="#"
+              onClick={[Function]}
+            >
+              <a
+                className="Link-hdnizH bVHTue"
+                href="#"
+                onClick={[Function]}
+              >
+                Website gistoapp.com
+              </a>
+            </Link>
+          </Anchor>
+        </ExternalLink>
+         | 
+        <ExternalLink
+          href="https://github.com/Gisto/Gisto/issues"
+        >
+          <Anchor
+            href="#"
+            onClick={[Function]}
+          >
+            <Link
+              href="#"
+              onClick={[Function]}
+            >
+              <a
+                className="Link-hdnizH bVHTue"
+                href="#"
+                onClick={[Function]}
+              >
+                Issues
+              </a>
+            </Link>
+          </Anchor>
+        </ExternalLink>
+         | 
+        <ExternalLink
+          href="https://twitter.com/gistoapp"
+        >
+          <Anchor
+            href="#"
+            onClick={[Function]}
+          >
+            <Link
+              href="#"
+              onClick={[Function]}
+            >
+              <a
+                className="Link-hdnizH bVHTue"
+                href="#"
+                onClick={[Function]}
+              >
+                Twitter
+              </a>
+            </Link>
+          </Anchor>
+        </ExternalLink>
+      </p>
+    </div>
+  </Wrapper>
+</About>
+`;

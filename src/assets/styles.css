@@ -1,0 +1,54 @@
+@import "~normalize.css";
+
+/* roboto-condensed-300 - latin */
+@font-face {
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Roboto Condensed Light'), local('RobotoCondensed-Light'),
+	url('../fonts/roboto-condensed-v16-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+	url('../fonts/roboto-condensed-v16-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-condensed-regular - latin */
+@font-face {
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Roboto Condensed'), local('RobotoCondensed-Regular'),
+	url('../fonts/roboto-condensed-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+	url('../fonts/roboto-condensed-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* roboto-condensed-700 - latin */
+@font-face {
+	font-family: 'Roboto Condensed';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'),
+	url('../fonts/roboto-condensed-v16-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+	url('../fonts/roboto-condensed-v16-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+body, html {
+	font-family: 'Roboto Condensed';
+	font-weight: 300;
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+#gisto {
+	-webkit-user-select: none;
+	-webkit-app-region: drag;
+	/* Smoother startup */
+	animation: fadein 1s;
+}
+
+#gisto .markdown-body {
+	-webkit-user-select: text;
+}

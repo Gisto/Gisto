@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
+<div>
+  <h4>
+    color settings:
+  </h4>
+  <p>
+    <label>
+      Base color:
+      <input
+        onChange={[Function]}
+        type="color"
+      />
+    </label>
+  </p>
+</div>
+`;
