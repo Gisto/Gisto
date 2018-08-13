@@ -30,21 +30,13 @@ change.log of current version for more detailed info regarding new features, bug
 
 ## Screenshots
 
-<details>
-  <summary>Dashboard</summary>
-	<img src="https://i.imgur.com/s4d0uHL.png" alt="Dashboard"/>
-</details>
+| Dashboard | Gist view |
+|:------|:------|
+| <img src="https://i.imgur.com/s4d0uHL.png" alt="Dashboard"/> | <img src="https://i.imgur.com/DCR1zTK.png" alt="Gist view"/> |
 
-<details>
-  <summary>Gist view</summary>
-	<img src="https://i.imgur.com/DCR1zTK.png" alt="Gist view"/>
-</details>
+## latest builds
 
-## "Nightly" builds
-
-"Nightly" builds triggered by commits.
-
-[Downloads](https://gisto-releases.s3.amazonaws.com/index.html)
+Latest builds in the [releases](https://github.com/Gisto/Gisto/releases) tab
 
 ## Issues, bug reporting and pull requests
 
