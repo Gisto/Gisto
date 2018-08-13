@@ -1,8 +1,0 @@
-[submodule "build/script"]
-	path = build/script
-	url = https://github.com/Gisto/nwjs-shell-builder.git
-	ignore = dirty
-[submodule "server"]
-	path = server
-	url = https://github.com/Gisto/notification-server.git
-	ignore = dirty

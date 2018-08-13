@@ -1,5 +1,0 @@
-?package(gisto): needs="X11" \
-  section="Applications/Network" \
-  title="Gisto" \
-  command="/opt/gisto/bin/gisto" \
-  icon="/opt/gisto/pixmaps/gisto.xpm"

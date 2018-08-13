@@ -1,8 +1,0 @@
-machine:
-  node:
-    version: 6.10.0
-deployment:
-  all:
-    branch: master
-    commands:
-      - ./CI.sh
