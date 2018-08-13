@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Button> render Button 1`] = `
+<Button
+  className="btn"
+  height="30px"
+  icon="menu"
+  invert={true}
+  width="200px"
+>
+  <ButtonComponent
+    className="btn"
+    height="30px"
+    invert={true}
+    title="link"
+    width="200px"
+  >
+    <button
+      className="btn ButtonComponent-fVGrXr lnZbfl"
+      height="30px"
+      title="link"
+      width="200px"
+    >
+      <Icon
+        color="#3F84A8"
+        type="menu"
+      >
+        <span
+          className="Icon-cFRQJw cMQwVl"
+          color="#3F84A8"
+          type="menu"
+        />
+      </Icon>
+       
+      link
+    </button>
+  </ButtonComponent>
+</Button>
+`;

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Snippet> render Snippet 1`] = `
+<Snippet
+  getSnippet={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "123123",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  match={
+    Object {
+      "params": Object {
+        "id": "123123",
+      },
+    }
+  }
+/>
+`;

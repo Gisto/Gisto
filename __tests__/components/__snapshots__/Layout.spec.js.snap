@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Layout> render Layout when logged in 1`] = `
+<App>
+  <Connect(withRouter(LogIn)) />
+</App>
+`;
+
+exports[`COMPONENTS - <Layout> render Layout when not logged in 1`] = `
+<App>
+  <Connect(withRouter(LogIn)) />
+</App>
+`;

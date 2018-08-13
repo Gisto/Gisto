@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Content> render Content 1`] = `
+<ContentWrapper>
+  <HashRouter>
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="/about"
+      />
+      <Route
+        component={[Function]}
+        path="/settings"
+      />
+      <Route
+        component={[Function]}
+        path="/snippet/:id"
+      />
+      <Route
+        component={[Function]}
+        path="/new"
+      />
+    </Switch>
+  </HashRouter>
+</ContentWrapper>
+`;

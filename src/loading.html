@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		html,
+		body {
+			font-family: 'Helvetica Neue', 'Trebuchet MS', sans-serif;
+			color: #fff;
+			font-weight: 100;
+			padding: 0;
+			margin: 0;
+		}
+
+		.wrapper {
+			font-family: 'Helvetica Neue', 'Trebuchet MS', sans-serif;
+			text-align: center;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			font-weight: 100;
+		}
+
+		.wrapper div p {
+			font-size: 12px;
+			margin: 0;
+		}
+
+		.wrapper .loader .spin {
+			animation: spin .5s infinite linear;
+			display: inline-block;
+		}
+
+		.wrapper div h1 {
+			font-size: 3em;
+			font-weight: 100;
+			margin-bottom: 0;
+		}
+
+		.wrapper .text {
+			justify-content: center;
+		}
+
+		.loader {
+			border: 1px solid #fff;
+			border-top: 1px solid rgba(255,255,255,.3);
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			animation: spin 2s linear infinite;
+			align-self: center;
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+
+	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gisto</title>
+</head>
+<body>
+
+<div class="wrapper">
+
+	<div>
+		<h1>{ Gisto }</h1>
+		<p>v<%= htmlWebpackPlugin.options.version %></p>
+	</div>
+
+	<div class="loader"></div>
+
+	<div class="text">Snippets made awesome</div>
+
+</div>
+
+</body>
+</html>

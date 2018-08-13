@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
+<SuperSearch
+  filterLanguage=""
+  filterSnippets={[MockFunction]}
+  filterTags={Array []}
+  filterText="test"
+  snippets={Object {}}
+  toggleSuperSesrch={[MockFunction]}
+>
+  <SuperSearchWrapper>
+    <div
+      className="SuperSearchWrapper-gsIfNo gKiIto"
+    >
+      <SearchWrapper>
+        <div
+          className="SearchWrapper-ihPHph fdLWUt"
+        >
+          <SearchBar>
+            <div
+              className="SearchBar-iyoeeB fphlzg"
+            >
+              <StyledLookingGlass
+                color="#3F84A8"
+                size={32}
+                type="search"
+              >
+                <Icon
+                  className="StyledLookingGlass-bFmLLL gwHSPH"
+                  color="#3F84A8"
+                  size={32}
+                  type="search"
+                >
+                  <span
+                    className="StyledLookingGlass-bFmLLL gwHSPH Icon-cFRQJw kUJmRH"
+                    color="#3F84A8"
+                    size={32}
+                    type="search"
+                  />
+                </Icon>
+              </StyledLookingGlass>
+              <StyledInput
+                autoFocus={true}
+                onChange={[Function]}
+                placeholder="Search"
+                type="search"
+              >
+                <Input
+                  autoFocus={true}
+                  className="StyledInput-hbWqm ijhsCg"
+                  onChange={[Function]}
+                  placeholder="Search"
+                  type="search"
+                >
+                  <StyledInput
+                    autoFocus={true}
+                    className="StyledInput-hbWqm ijhsCg"
+                    disabled={false}
+                    onChange={[Function]}
+                    placeholder="Search"
+                    title=""
+                    type="search"
+                  >
+                    <input
+                      autoFocus={true}
+                      className="StyledInput-hbWqm ijhsCg StyledInput-kKifnt jaVkjP"
+                      disabled={false}
+                      onChange={[Function]}
+                      placeholder="Search"
+                      title=""
+                      type="search"
+                    />
+                  </StyledInput>
+                </Input>
+              </StyledInput>
+            </div>
+          </SearchBar>
+          <SnippetResults>
+            <div
+              className="SnippetResults-hgDhSA cfesNO"
+            />
+          </SnippetResults>
+        </div>
+      </SearchWrapper>
+    </div>
+  </SuperSearchWrapper>
+</SuperSearch>
+`;
