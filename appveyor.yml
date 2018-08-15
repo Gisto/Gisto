@@ -16,6 +16,7 @@ cache:
 
 branches:
   only:
+    - master
     - next
 
 clone_folder: c:\gisto
