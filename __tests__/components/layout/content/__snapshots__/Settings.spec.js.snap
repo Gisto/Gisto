@@ -21,10 +21,20 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
             <p>
               <label>
                 Base color:
-                <input
+                <InputColor
                   onChange={[Function]}
-                  type="color"
-                />
+                >
+                  <Color
+                    onChange={[Function]}
+                    type="color"
+                  >
+                    <input
+                      className="Color-ktETcj ctcntg"
+                      onChange={[Function]}
+                      type="color"
+                    />
+                  </Color>
+                </InputColor>
               </label>
             </p>
           </div>

@@ -16,7 +16,7 @@ describe('COMPONENTS - <BaseSettings>', () => {
   test('change color', () => {
     const component = setup();
 
-    expect(component.find('input')).toHaveLength(1);
-    component.find('input').simulate('change', { target: { value: '#ff0000' } });
+    expect(component.find('InputColor')).toHaveLength(1);
+    component.find('InputColor').simulate('change', { target: { value: '#ff0000' } });
   });
 });

@@ -1,6 +1,8 @@
 import React from 'react';
 import { getSetting, setSetting } from 'utils/settings';
 
+import InputColor from 'components/common/form/InputColor';
+
 const BaseSettings = () => (
   <div>
     <h4>color settings:</h4>
@@ -8,9 +10,8 @@ const BaseSettings = () => (
     <p>
       <label>
         Base color:
-        <input type="color"
-               defaultValue={ getSetting('color') }
-               onChange={ (event) => setSetting('color', event.target.value) }/>
+        <InputColor color={ getSetting('color') }
+                    onChange={ (event) => setSetting('color', event.target.value) }/>
       </label>
     </p>
   </div>
