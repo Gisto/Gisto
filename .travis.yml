@@ -37,9 +37,9 @@ script:
       -v ~/.cache/electron:/root/.cache/electron \
       -v ~/.cache/electron-builder:/root/.cache/electron-builder \
       electronuserland/builder:wine \
-      /bin/bash -c "npm install npm@latest -g && npm ci && echo \"GISTO_GITHUB_CLIENT_ID=$GISTO_GITHUB_CLIENT_ID\" >> ./.env && echo \"GISTO_GITHUB_CLIENT_SECRET=$GISTO_GITHUB_CLIENT_SECRET\" >> ./src/electron/.env && npm run test:ci && npm run pack"
+      /bin/bash -c "npm install npm@latest -g && npm ci && echo \"GISTO_GITHUB_CLIENT_ID=$GISTO_GITHUB_CLIENT_ID\" >> ./.env && echo \"GISTO_GITHUB_CLIENT_SECRET=$GISTO_GITHUB_CLIENT_SECRET\" >> ./.env && npm run test:ci && npm run pack"
   else
-    echo "GISTO_GITHUB_CLIENT_ID=$GISTO_GITHUB_CLIENT_ID" >> ./src/electron/.env && echo "GISTO_GITHUB_CLIENT_SECRET=$GISTO_GITHUB_CLIENT_SECRET" >> ./.env && npm ci && npm run test:ci && npm run pack
+    echo "GISTO_GITHUB_CLIENT_ID=$GISTO_GITHUB_CLIENT_ID" >> ./.env && echo "GISTO_GITHUB_CLIENT_SECRET=$GISTO_GITHUB_CLIENT_SECRET" >> ./.env && npm ci && npm run test:ci && npm run pack
   fi
 
 before_cache:
