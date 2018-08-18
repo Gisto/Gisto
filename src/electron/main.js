@@ -10,7 +10,13 @@ const helpers = require('./main/helpers');
 
 helpers.initSentry();
 
-require('dotenv').config({ path: path.join(app.getAppPath(), '..', '.env') });
+
+if (isDev) {
+  require('dotenv').config({ path: path.join(app.getAppPath(), '..', '.env') });
+} else {
+  require('dotenv').config({ path: path.join(app.getAppPath(), '.env') });
+}
+
 require('./oauth2');
 
 if (isDev) {
