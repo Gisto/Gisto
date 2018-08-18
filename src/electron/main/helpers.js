@@ -3,7 +3,7 @@ const { shell, app, Menu } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
 const { init } = require('@sentry/electron');
-const { includes } = require('lodash/fp');
+const { includes, startsWith } = require('lodash/fp');
 
 const isMacOS = process.platform === 'darwin';
 const packageJson = require('../package');
@@ -66,7 +66,10 @@ function handleDownload(win) {
 function handleNavigate(win) {
   // Handled URL opening in default browser
   win.webContents.on('will-navigate', (event, url) => {
-    if (includes(['https://github.com/Gisto/Gisto/releases/download/'], url)) {
+    const isUpddateUrl = includes(['https://github.com/Gisto/Gisto/releases/download/'], url);
+    const isFileProtocol = startsWith('file:', url);
+
+    if (isUpddateUrl || isFileProtocol) {
       return false;
     }
 
