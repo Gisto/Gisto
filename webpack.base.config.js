@@ -63,6 +63,7 @@ module.exports = {
     new MonacoWebpackPlugin(),
     new CopyWebpackPlugin([
       'build/icon.ico',
+      '.env',
       'build/icon.png',
       'package.json',
       { from: 'src/electron/main.js', to: 'main.js' },
