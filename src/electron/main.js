@@ -10,22 +10,21 @@ const helpers = require('./main/helpers');
 
 helpers.initSentry();
 
+let mainWindow;
+let splashWindow;
+let envPath = path.join(app.getAppPath(), '.env');
 
 if (isDev) {
-  require('dotenv').config({ path: path.join(app.getAppPath(), '..', '.env') });
-} else {
-  require('dotenv').config({ path: path.join(app.getAppPath(), '.env') });
+  envPath = path.join(app.getAppPath(), '..', '.env');
 }
 
+require('dotenv').config({ path: envPath });
 require('./oauth2');
 
 if (isDev) {
   require('electron-reload')(__dirname);
   require('electron-debug')();
 }
-
-let mainWindow;
-let splashWindow;
 
 const createWindow = () => {
   if (isDev) {
