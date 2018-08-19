@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { get } from 'lodash/fp';
+
 import { baseAppColor, headerColor, lightText } from 'constants/colors';
 import { SIDEBAR_WIDTH, logoText } from 'constants/config';
+
 import Icon from 'components/common/Icon';
 import UserArea from 'components/AppArea';
-import { get } from 'lodash/fp';
+import Loading from 'components/common/Loading';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -45,7 +48,7 @@ const Logo = styled(HeaderSection)`
 
 const MiddleArea = styled(HeaderSection)``;
 
-const Loading = styled.span`
+const LoadingIndicator = styled.span`
   align-self: center;
 `;
 
@@ -58,7 +61,11 @@ export const MainHeader = ({ loading, rateLimit, edit }) => (
     ) }
     <MiddleArea>
       <Icon color={ lightText } type="menu"/>
-      { loading && <Loading><Icon type="loading"/> { 'loading...' }</Loading> }
+      { loading && (
+        <LoadingIndicator>
+          <Loading/>
+        </LoadingIndicator>
+      ) }
       <div>{ /* placeholder */ }</div>
     </MiddleArea>
     <UserArea/>

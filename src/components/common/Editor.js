@@ -6,8 +6,11 @@ import styled from 'styled-components';
 import hljs from 'highlight.js';
 import { getSetting } from 'utils/settings';
 import { syntaxMap } from 'constants/editor';
+import { baseAppColor } from 'constants/colors';
 
 import 'highlight.js/styles/default.css';
+
+import Loading from 'components/common/Loading';
 
 const Markdown = styled.div`
   padding: 20px 30px 0;
@@ -18,6 +21,11 @@ const EditorWrapper = styled.span`
   display: inline-flex;
   flex-direction: row;
   justify-content: space-evenly;
+`;
+
+const LoadingIndicator = styled.div`
+  padding: 20px;
+  color: ${baseAppColor};
 `;
 
 const editorOptions = {
@@ -55,6 +63,14 @@ export class Editor extends React.Component {
       smartLists: true,
       smartypants: false
     });
+
+    if (!file.content) {
+      return (
+        <LoadingIndicator>
+          <Loading color={ baseAppColor }/>
+        </LoadingIndicator>
+      );
+    }
 
     if (file.content && file.language === 'Markdown') {
       const html = marked(file.content) || '';

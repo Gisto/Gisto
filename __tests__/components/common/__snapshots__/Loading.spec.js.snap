@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Loading> render Loading 1`] = `
+<Fragment>
+  <Icon
+    color="#3F84A8"
+    type="loading"
+  />
+   
+  loading...
+</Fragment>
+`;
