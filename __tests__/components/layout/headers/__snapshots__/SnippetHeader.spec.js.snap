@@ -14,23 +14,23 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
     <div
       className="SnippetHeaderWrapper-cazcnY bKVYHt"
     >
-      <Title>
+      <Title
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+      >
         <div
           className="Title-kAzUgf eEsrOG"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
            
-          <Description
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-          >
+          <Description>
             <span
               className="Description-hWhuvR cWjGvZ"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             />
           </Description>
            
