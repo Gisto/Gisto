@@ -120,7 +120,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       </Box>
       <Box>
         <div
-          className="Box-bxWaVq jWLBMU"
+          className="Box-bxWaVq bAaBYZ"
         >
           <h3>
             Languages:
@@ -158,13 +158,13 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                   type="search"
                 >
                   <Input
-                    className="StyledInput-hbWqm hSgCMg"
+                    className="StyledInput-hbWqm kcTKDM"
                     onChange={[Function]}
                     placeholder="Search starred"
                     type="search"
                   >
                     <StyledInput
-                      className="StyledInput-hbWqm hSgCMg"
+                      className="StyledInput-hbWqm kcTKDM"
                       disabled={false}
                       onChange={[Function]}
                       placeholder="Search starred"
@@ -172,7 +172,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                       type="search"
                     >
                       <input
-                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt jEfCAf"
+                        className="StyledInput-hbWqm kcTKDM StyledInput-kKifnt jenPja"
                         disabled={false}
                         onChange={[Function]}
                         placeholder="Search starred"
@@ -218,13 +218,13 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                   type="search"
                 >
                   <Input
-                    className="StyledInput-hbWqm hSgCMg"
+                    className="StyledInput-hbWqm kcTKDM"
                     onChange={[Function]}
                     placeholder="Search tags"
                     type="search"
                   >
                     <StyledInput
-                      className="StyledInput-hbWqm hSgCMg"
+                      className="StyledInput-hbWqm kcTKDM"
                       disabled={false}
                       onChange={[Function]}
                       placeholder="Search tags"
@@ -232,7 +232,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                       type="search"
                     >
                       <input
-                        className="StyledInput-hbWqm hSgCMg StyledInput-kKifnt jEfCAf"
+                        className="StyledInput-hbWqm kcTKDM StyledInput-kKifnt jenPja"
                         disabled={false}
                         onChange={[Function]}
                         placeholder="Search tags"

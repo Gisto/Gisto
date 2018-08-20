@@ -2,7 +2,7 @@ import React from 'react';
 import { remote } from 'electron';
 import styled from 'styled-components';
 
-import Button from 'components/common/Button';
+import Button from 'components/common/controls/Button';
 
 const StyledButton = styled(Button)`
   margin-right: 10px;

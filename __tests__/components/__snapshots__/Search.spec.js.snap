@@ -24,28 +24,36 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
           type="search"
         />
       </Icon>
-      <Input
+      <StyledInput
         onChange={[Function]}
         placeholder="Search 0 snippets"
         type="search"
       >
-        <StyledInput
-          disabled={false}
+        <Input
+          className="StyledInput-hbWqm cSTElE"
           onChange={[Function]}
           placeholder="Search 0 snippets"
-          title=""
           type="search"
         >
-          <input
-            className="StyledInput-kKifnt jaVkjP"
+          <StyledInput
+            className="StyledInput-hbWqm cSTElE"
             disabled={false}
             onChange={[Function]}
             placeholder="Search 0 snippets"
             title=""
             type="search"
-          />
-        </StyledInput>
-      </Input>
+          >
+            <input
+              className="StyledInput-hbWqm cSTElE StyledInput-kKifnt NdlXS"
+              disabled={false}
+              onChange={[Function]}
+              placeholder="Search 0 snippets"
+              title=""
+              type="search"
+            />
+          </StyledInput>
+        </Input>
+      </StyledInput>
       <HashRouter>
         <Router
           history={
@@ -72,7 +80,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
           <Button
             height="30px"
             icon="add"
-            width="200px"
+            width="150px"
           >
             <ButtonComponent
               height="30px"
@@ -80,22 +88,22 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
                 <StyledLink
                   to="/new"
                 >
-                  New snippet
+                  Add new
                 </StyledLink>
               }
-              width="200px"
+              width="150px"
             >
               <button
-                className="ButtonComponent-fVGrXr TRIQs"
+                className="ButtonComponent-fVGrXr eQWFjN"
                 height="30px"
                 title={
                   <StyledLink
                     to="/new"
                   >
-                    New snippet
+                    Add new
                   </StyledLink>
                 }
-                width="200px"
+                width="150px"
               >
                 <Icon
                   color="#fff"
@@ -112,16 +120,16 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
                   to="/new"
                 >
                   <Link
-                    className="StyledLink-eJtUmc lddSoY"
+                    className="StyledLink-eJtUmc gFCPlw"
                     replace={false}
                     to="/new"
                   >
                     <a
-                      className="StyledLink-eJtUmc lddSoY"
+                      className="StyledLink-eJtUmc gFCPlw"
                       href="#/new"
                       onClick={[Function]}
                     >
-                      New snippet
+                      Add new
                     </a>
                   </Link>
                 </StyledLink>

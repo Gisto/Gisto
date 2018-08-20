@@ -10,8 +10,8 @@ import { baseAppColor, bg } from 'constants/colors';
 import * as loginActions from 'actions/login';
 import { setToken } from 'utils/login';
 
-import Button from 'components/common/Button';
-import Input from 'components/common/Input';
+import Button from 'components/common/controls/Button';
+import Input from 'components/common/controls/Input';
 import Icon from 'components/common/Icon';
 import Anchor from 'components/common/Anchor';
 import ExternalLink from 'components/common/ExternalLink';

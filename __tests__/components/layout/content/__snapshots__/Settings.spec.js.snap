@@ -55,7 +55,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
               >
                 <Section>
                   <div
-                    className="Section-hLnjej lzCPI"
+                    className="Section-hLnjej bYTpNg"
                   >
                     <Field>
                       <div
@@ -63,30 +63,45 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC eGcVDQ"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Theme:
                             </span>
-                            <select
+                            <StyledISelect
                               onChange={[Function]}
                             >
-                              <option
-                                value="vs"
+                              <Select
+                                className="StyledISelect-ilVKaP jUNncK"
+                                onChange={[Function]}
                               >
-                                vs light
-                              </option>
-                              <option
-                                value="vs-dark"
-                              >
-                                vs dark
-                              </option>
-                              <option
-                                value="hc-black"
-                              >
-                                hc dark
-                              </option>
-                            </select>
+                                <SelectInput
+                                  className="StyledISelect-ilVKaP jUNncK"
+                                  onChange={[Function]}
+                                >
+                                  <select
+                                    className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ QqSuI"
+                                    onChange={[Function]}
+                                  >
+                                    <option
+                                      value="vs"
+                                    >
+                                      vs light
+                                    </option>
+                                    <option
+                                      value="vs-dark"
+                                    >
+                                      vs dark
+                                    </option>
+                                    <option
+                                      value="hc-black"
+                                    >
+                                      hc dark
+                                    </option>
+                                  </select>
+                                </SelectInput>
+                              </Select>
+                            </StyledISelect>
                           </div>
                         </Label>
                       </div>
@@ -97,15 +112,25 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC eGcVDQ"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Minimap:
                             </span>
-                            <input
+                            <Checkbox
                               onChange={[Function]}
-                              type="checkbox"
-                            />
+                            >
+                              <Box
+                                onChange={[Function]}
+                                type="checkbox"
+                              >
+                                <input
+                                  className="Box-jLJQJw bLlIOV"
+                                  onChange={[Function]}
+                                  type="checkbox"
+                                />
+                              </Box>
+                            </Checkbox>
                           </div>
                         </Label>
                       </div>
@@ -116,15 +141,25 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC eGcVDQ"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Line Numbers:
                             </span>
-                            <input
+                            <Checkbox
                               onChange={[Function]}
-                              type="checkbox"
-                            />
+                            >
+                              <Box
+                                onChange={[Function]}
+                                type="checkbox"
+                              >
+                                <input
+                                  className="Box-jLJQJw bLlIOV"
+                                  onChange={[Function]}
+                                  type="checkbox"
+                                />
+                              </Box>
+                            </Checkbox>
                           </div>
                         </Label>
                       </div>
@@ -135,97 +170,66 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC eGcVDQ"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Format On Paste:
                             </span>
-                            <input
+                            <Checkbox
                               onChange={[Function]}
-                              type="checkbox"
-                            />
+                            >
+                              <Box
+                                onChange={[Function]}
+                                type="checkbox"
+                              >
+                                <input
+                                  className="Box-jLJQJw bLlIOV"
+                                  onChange={[Function]}
+                                  type="checkbox"
+                                />
+                              </Box>
+                            </Checkbox>
                           </div>
                         </Label>
                       </div>
                     </Field>
-                  </div>
-                </Section>
-                <Section>
-                  <div
-                    className="Section-hLnjej lzCPI"
-                  >
                     <Field>
                       <div
                         className="Field-eieelf fXkcEo"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC eGcVDQ"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Font Family:
                             </span>
-                            <input
+                            <StyledInput
                               onChange={[Function]}
                               type="text"
-                            />
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-eieelf fXkcEo"
-                      >
-                        <Label>
-                          <div
-                            className="Label-ghyrbC eGcVDQ"
-                          >
-                            <span>
-                              Font Size:
-                            </span>
-                            <input
-                              onChange={[Function]}
-                              type="number"
-                            />
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-eieelf fXkcEo"
-                      >
-                        <Label>
-                          <div
-                            className="Label-ghyrbC eGcVDQ"
-                          >
-                            <span>
-                              Line height:
-                            </span>
-                            <input
-                              onChange={[Function]}
-                              type="number"
-                            />
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-eieelf fXkcEo"
-                      >
-                        <Label>
-                          <div
-                            className="Label-ghyrbC eGcVDQ"
-                          >
-                            <span>
-                              Font Ligatures:
-                            </span>
-                            <input
-                              onChange={[Function]}
-                              type="checkbox"
-                            />
+                            >
+                              <Input
+                                className="StyledInput-hbWqm ciXLeq"
+                                onChange={[Function]}
+                                type="text"
+                              >
+                                <StyledInput
+                                  className="StyledInput-hbWqm ciXLeq"
+                                  disabled={false}
+                                  onChange={[Function]}
+                                  title=""
+                                  type="text"
+                                >
+                                  <input
+                                    className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt NdlXS"
+                                    disabled={false}
+                                    onChange={[Function]}
+                                    title=""
+                                    type="text"
+                                  />
+                                </StyledInput>
+                              </Input>
+                            </StyledInput>
                           </div>
                         </Label>
                       </div>
@@ -234,7 +238,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                 </Section>
                 <Section>
                   <div
-                    className="Section-hLnjej lzCPI"
+                    className="Section-hLnjej bYTpNg"
                   >
                     <Field>
                       <div
@@ -242,15 +246,136 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC eGcVDQ"
+                            className="Label-ghyrbC kZMEPD"
+                          >
+                            <span>
+                              Font Size:
+                            </span>
+                            <StyledInput
+                              onChange={[Function]}
+                              type="number"
+                            >
+                              <Input
+                                className="StyledInput-hbWqm ciXLeq"
+                                onChange={[Function]}
+                                type="number"
+                              >
+                                <StyledInput
+                                  className="StyledInput-hbWqm ciXLeq"
+                                  disabled={false}
+                                  onChange={[Function]}
+                                  title=""
+                                  type="number"
+                                >
+                                  <input
+                                    className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt NdlXS"
+                                    disabled={false}
+                                    onChange={[Function]}
+                                    title=""
+                                    type="number"
+                                  />
+                                </StyledInput>
+                              </Input>
+                            </StyledInput>
+                          </div>
+                        </Label>
+                      </div>
+                    </Field>
+                    <Field>
+                      <div
+                        className="Field-eieelf fXkcEo"
+                      >
+                        <Label>
+                          <div
+                            className="Label-ghyrbC kZMEPD"
+                          >
+                            <span>
+                              Line height:
+                            </span>
+                            <StyledInput
+                              onChange={[Function]}
+                              type="number"
+                            >
+                              <Input
+                                className="StyledInput-hbWqm ciXLeq"
+                                onChange={[Function]}
+                                type="number"
+                              >
+                                <StyledInput
+                                  className="StyledInput-hbWqm ciXLeq"
+                                  disabled={false}
+                                  onChange={[Function]}
+                                  title=""
+                                  type="number"
+                                >
+                                  <input
+                                    className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt NdlXS"
+                                    disabled={false}
+                                    onChange={[Function]}
+                                    title=""
+                                    type="number"
+                                  />
+                                </StyledInput>
+                              </Input>
+                            </StyledInput>
+                          </div>
+                        </Label>
+                      </div>
+                    </Field>
+                    <Field>
+                      <div
+                        className="Field-eieelf fXkcEo"
+                      >
+                        <Label>
+                          <div
+                            className="Label-ghyrbC kZMEPD"
+                          >
+                            <span>
+                              Font Ligatures:
+                            </span>
+                            <Checkbox
+                              onChange={[Function]}
+                            >
+                              <Box
+                                onChange={[Function]}
+                                type="checkbox"
+                              >
+                                <input
+                                  className="Box-jLJQJw bLlIOV"
+                                  onChange={[Function]}
+                                  type="checkbox"
+                                />
+                              </Box>
+                            </Checkbox>
+                          </div>
+                        </Label>
+                      </div>
+                    </Field>
+                    <Field>
+                      <div
+                        className="Field-eieelf fXkcEo"
+                      >
+                        <Label>
+                          <div
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Code lens:
                             </span>
-                            <input
+                            <Checkbox
                               onChange={[Function]}
-                              type="checkbox"
-                            />
+                            >
+                              <Box
+                                onChange={[Function]}
+                                type="checkbox"
+                              >
+                                <input
+                                  className="Box-jLJQJw bLlIOV"
+                                  onChange={[Function]}
+                                  type="checkbox"
+                                />
+                              </Box>
+                            </Checkbox>
                           </div>
                         </Label>
                       </div>
@@ -261,40 +386,55 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC eGcVDQ"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Cursor Blinking:
                             </span>
-                            <select
+                            <StyledISelect
                               onChange={[Function]}
                             >
-                              <option
-                                value="blink"
+                              <Select
+                                className="StyledISelect-ilVKaP jUNncK"
+                                onChange={[Function]}
                               >
-                                blink
-                              </option>
-                              <option
-                                value="smooth"
-                              >
-                                smooth
-                              </option>
-                              <option
-                                value="phase"
-                              >
-                                phase
-                              </option>
-                              <option
-                                value="expand"
-                              >
-                                expand
-                              </option>
-                              <option
-                                value="solid"
-                              >
-                                solid
-                              </option>
-                            </select>
+                                <SelectInput
+                                  className="StyledISelect-ilVKaP jUNncK"
+                                  onChange={[Function]}
+                                >
+                                  <select
+                                    className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ QqSuI"
+                                    onChange={[Function]}
+                                  >
+                                    <option
+                                      value="blink"
+                                    >
+                                      blink
+                                    </option>
+                                    <option
+                                      value="smooth"
+                                    >
+                                      smooth
+                                    </option>
+                                    <option
+                                      value="phase"
+                                    >
+                                      phase
+                                    </option>
+                                    <option
+                                      value="expand"
+                                    >
+                                      expand
+                                    </option>
+                                    <option
+                                      value="solid"
+                                    >
+                                      solid
+                                    </option>
+                                  </select>
+                                </SelectInput>
+                              </Select>
+                            </StyledISelect>
                           </div>
                         </Label>
                       </div>
@@ -305,15 +445,25 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC eGcVDQ"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Select On Line Numbers:
                             </span>
-                            <input
+                            <Checkbox
                               onChange={[Function]}
-                              type="checkbox"
-                            />
+                            >
+                              <Box
+                                onChange={[Function]}
+                                type="checkbox"
+                              >
+                                <input
+                                  className="Box-jLJQJw bLlIOV"
+                                  onChange={[Function]}
+                                  type="checkbox"
+                                />
+                              </Box>
+                            </Checkbox>
                           </div>
                         </Label>
                       </div>

@@ -3,6 +3,10 @@ import { getSetting, setBooleanSetting, setSetting } from 'utils/settings';
 
 import styled from 'styled-components';
 
+import Input from 'components/common/controls/Input';
+import Checkbox from 'components/common/controls/Checkbox';
+import Select from 'components/common/controls/Select';
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -11,14 +15,25 @@ const Wrapper = styled.div`
 const Label = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  margin-top: 10px;
 `;
 
 const Section = styled.div`
-  width: 33%;
+  width: 45%;
 `;
 
 const Field = styled.div`
   height: 35px;
+`;
+
+const StyledInput = styled(Input)`
+  padding: 0 5px;
+  width: 148px;
+`;
+
+const StyledISelect = styled(Select)`
+  width: 158px;
 `;
 
 const EditorSettings = () => (
@@ -29,101 +44,93 @@ const EditorSettings = () => (
         <Field>
           <Label>
             <span>Theme:</span>
-            <select value={ getSetting('editorTheme') }
-                    onChange={ (event) => setSetting('editorTheme', event.target.value) }>
+            <StyledISelect value={ getSetting('editorTheme') }
+                           onChange={ (event) => setSetting('editorTheme', event.target.value) }>
               <option value="vs">vs light</option>
               <option value="vs-dark">vs dark</option>
               <option value="hc-black">hc dark</option>
-            </select>
+            </StyledISelect>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Minimap:</span>
-            <input type="checkbox"
-                   defaultChecked={ getSetting('minimap') }
-                   onChange={ () => setBooleanSetting('minimap') }/>
+            <Checkbox checked={ getSetting('minimap') }
+                      onChange={ () => setBooleanSetting('minimap') }/>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Line Numbers:</span>
-            <input type="checkbox"
-                   defaultChecked={ getSetting('lineNumbers') }
-                   onChange={ () => setBooleanSetting('lineNumbers') }/>
+            <Checkbox checked={ getSetting('lineNumbers') }
+                      onChange={ () => setBooleanSetting('lineNumbers') }/>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Format On Paste:</span>
-            <input type="checkbox"
-                   defaultChecked={ getSetting('formatOnPaste') }
-                   onChange={ () => setBooleanSetting('formatOnPaste') }/>
+            <Checkbox checked={ getSetting('formatOnPaste') }
+                      onChange={ () => setBooleanSetting('formatOnPaste') }/>
+          </Label>
+        </Field>
+        <Field>
+          <Label>
+            <span>Font Family:</span>
+            <StyledInput type="text"
+                   value={ getSetting('fontFamily', 'fira code') }
+                   onChange={ (event) => setSetting('fontFamily', event.target.value) }/>
           </Label>
         </Field>
       </Section>
       <Section>
         <Field>
           <Label>
-            <span>Font Family:</span>
-            <input type="text"
-                   defaultValue={ getSetting('fontFamily', 'fira code') }
-                   onChange={ (event) => setSetting('fontFamily', event.target.value) }/>
-          </Label>
-        </Field>
-        <Field>
-          <Label>
             <span>Font Size:</span>
-            <input type="number"
-                   defaultValue={ getSetting('fontSize', 12) }
+            <StyledInput type="number"
+                   value={ getSetting('fontSize', 12) }
                    onChange={ (event) => setSetting('fontSize', event.target.value) }/>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Line height:</span>
-            <input type="number"
-                   defaultValue={ getSetting('lineHeight', 21) }
+            <StyledInput type="number"
+                   value={ getSetting('lineHeight', 21) }
                    onChange={ (event) => setSetting('lineHeight', event.target.value) }/>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Font Ligatures:</span>
-            <input type="checkbox"
-                   defaultChecked={ getSetting('fontLigatures', false) }
-                   onChange={ () => setBooleanSetting('fontLigatures') }/>
+            <Checkbox checked={ getSetting('fontLigatures', false) }
+                      onChange={ () => setBooleanSetting('fontLigatures') }/>
           </Label>
         </Field>
-      </Section>
-      <Section>
         <Field>
           <Label>
             <span>Code lens:</span>
-            <input type="checkbox"
-                   defaultChecked={ getSetting('codeLens') }
-                   onChange={ () => setBooleanSetting('codeLens') }/>
+            <Checkbox checked={ getSetting('codeLens') }
+                      onChange={ () => setBooleanSetting('codeLens') }/>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Cursor Blinking:</span>
-            <select value={ getSetting('cursorBlinking') }
-                    onChange={ (event) => setSetting('cursorBlinking', event.target.value) }>
+            <StyledISelect value={ getSetting('cursorBlinking') }
+                           onChange={ (event) => setSetting('cursorBlinking', event.target.value) }>
               <option value="blink">blink</option>
               <option value="smooth">smooth</option>
               <option value="phase">phase</option>
               <option value="expand">expand</option>
               <option value="solid">solid</option>
-            </select>
+            </StyledISelect>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Select On Line Numbers:</span>
-            <input type="checkbox"
-                   defaultChecked={ getSetting('selectOnLineNumbers') }
-                   onChange={ () => setBooleanSetting('selectOnLineNumbers') }/>
+            <Checkbox checked={ getSetting('SelectOnLineNumbers') }
+                      onChange={ () => setBooleanSetting('SelectOnLineNumbers') }/>
           </Label>
         </Field>
       </Section>

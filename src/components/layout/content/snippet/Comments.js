@@ -10,8 +10,8 @@ import hljs from 'highlight.js';
 import styled from 'styled-components';
 
 import Icon from 'components/common/Icon';
-import TextArea from 'components/common/TextArea';
-import Button from 'components/common/Button';
+import TextArea from 'components/common/controls/TextArea';
+import Button from 'components/common/controls/Button';
 
 import {
   baseAppColor, colorDanger, headerBgLightest, headerColor, textColor

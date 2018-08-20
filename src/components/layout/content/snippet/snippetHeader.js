@@ -15,7 +15,7 @@ import * as snippetActions from 'actions/snippets';
 import Icon from 'components/common/Icon';
 import UtilityIcon from 'components/common/UtilityIcon';
 import ExternalLink from 'components/common/ExternalLink';
-import Input from 'components/common/Input';
+import Input from 'components/common/controls/Input';
 import Anchor from 'components/common/Anchor';
 
 const SnippetHeaderWrapper = styled.div`

@@ -48,14 +48,14 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
               >
                 <Input
                   autoFocus={true}
-                  className="StyledInput-hbWqm ijhsCg"
+                  className="StyledInput-hbWqm gMnXlE"
                   onChange={[Function]}
                   placeholder="Search"
                   type="search"
                 >
                   <StyledInput
                     autoFocus={true}
-                    className="StyledInput-hbWqm ijhsCg"
+                    className="StyledInput-hbWqm gMnXlE"
                     disabled={false}
                     onChange={[Function]}
                     placeholder="Search"
@@ -64,7 +64,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   >
                     <input
                       autoFocus={true}
-                      className="StyledInput-hbWqm ijhsCg StyledInput-kKifnt jaVkjP"
+                      className="StyledInput-hbWqm gMnXlE StyledInput-kKifnt NdlXS"
                       disabled={false}
                       onChange={[Function]}
                       placeholder="Search"

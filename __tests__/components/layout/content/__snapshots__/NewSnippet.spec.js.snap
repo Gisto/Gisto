@@ -18,10 +18,9 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
     />
   </Section>
   <Section>
-    <input
+    <StyledCheckbox
       checked={false}
       onChange={[Function]}
-      type="checkbox"
     />
      
     <span>
@@ -56,6 +55,7 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
         }
       }
       id="123123123123"
+      isNew={true}
       onChange={[Function]}
     />
     <br />

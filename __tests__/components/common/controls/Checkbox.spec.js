@@ -1,17 +1,16 @@
-import Input from 'components/common/Input';
+import Checkbox from 'components/common/controls/Checkbox';
 
 const propSetup = (props) => ({
-  type: 'search',
-  placeholder: 'I am temporary',
   className: 'classified',
-  value: 'typetypetype',
+  checked: true,
+  onChange: jest.fn(),
   ...props
 });
 
-const setup = (props) => mount(<Input { ...propSetup(props) }>link</Input>);
+const setup = (props) => shallow(<Checkbox { ...propSetup(props) }>link</Checkbox>);
 
-describe('COMPONENTS - <Input>', () => {
-  test('render Input', () => {
+describe('COMPONENTS - <Checkbox>', () => {
+  test('render Checkbox', () => {
     const component = setup();
 
     expect(component).toMatchSnapshot();

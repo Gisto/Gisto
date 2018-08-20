@@ -133,7 +133,7 @@ export const snippets = (state = initialState, action) => {
           isNew: true,
           originalFileName: newUuid,
           filename: 'file',
-          content: ''
+          content: ' '
         }
       };
 
