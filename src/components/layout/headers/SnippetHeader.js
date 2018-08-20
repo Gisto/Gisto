@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  get, map, size, toString, isEmpty
+  get, map, size, toString, isEmpty, join
 } from 'lodash/fp';
 import styled from 'styled-components';
 
@@ -142,18 +142,14 @@ export class SnippetHeader extends React.Component {
 
     if (!edit) {
       return (
-        <Description onMouseOver={ () => this.toggleToolbox() }
-                     onMouseOut={ () => this.toggleToolbox() }
-                     onBlur={ () => this.toggleToolbox() }
-                     onFocus={ () => this.toggleToolbox() }
-                     title={ get('description', snippet) }>
+        <Description title={ get('description', snippet) }>
           {get('description', snippet)}
         </Description>
       );
     }
 
     return (
-      <Input value={ `${get('description', tempSnippet)} ${get('tags', snippet)}` }
+      <Input value={ `${get('description', tempSnippet)} ${join(' ', get('tags', snippet))}` }
              onChange={ (event) => updateTempSnippet('description', event.target.value) }/>
     );
   };
@@ -165,7 +161,10 @@ export class SnippetHeader extends React.Component {
     const snippet = get(match.params.id, snippets);
 
     return (
-      <Title>
+      <Title onMouseOver={ () => this.toggleToolbox() }
+             onMouseOut={ () => this.toggleToolbox() }
+             onBlur={ () => this.toggleToolbox() }
+             onFocus={ () => this.toggleToolbox() }>
         { !edit && map((language) => (
           <Languages key={ `${language}${snippet.id}` }
                      onClick={ () => searchByLanguages(language) }>
