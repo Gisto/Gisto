@@ -63,7 +63,7 @@ export const MainHeader = ({ loading, rateLimit, edit }) => (
       <Icon color={ lightText } type="menu"/>
       { loading && (
         <LoadingIndicator>
-          <Loading/>
+          <Loading text="Loading..."/>
         </LoadingIndicator>
       ) }
       <div>{ /* placeholder */ }</div>

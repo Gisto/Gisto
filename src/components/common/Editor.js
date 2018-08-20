@@ -67,7 +67,7 @@ export class Editor extends React.Component {
     if (!file.content) {
       return (
         <LoadingIndicator>
-          <Loading color={ baseAppColor }/>
+          <Loading color={ baseAppColor } text=""/>
         </LoadingIndicator>
       );
     }

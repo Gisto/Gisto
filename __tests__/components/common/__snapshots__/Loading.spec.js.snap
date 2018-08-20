@@ -2,11 +2,9 @@
 
 exports[`COMPONENTS - <Loading> render Loading 1`] = `
 <Fragment>
-  <Icon
+  <Spinner
     color="#3F84A8"
-    type="loading"
   />
    
-  loading...
 </Fragment>
 `;
