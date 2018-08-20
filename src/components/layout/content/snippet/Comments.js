@@ -22,9 +22,9 @@ import * as snippetActions from 'actions/snippets';
 const CommentsWrapper = styled.div`
   margin: 0;
   background: ${headerBgLightest};
-  top: 0;
-  position: absolute;
-  height: 100%;
+  top: 110px;
+  position: fixed;
+  height: calc(100% - 110px);
   z-index: 1;
   width: 460px;
   box-shadow: 0 1px 2px #555;
