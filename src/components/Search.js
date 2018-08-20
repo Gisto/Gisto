@@ -9,10 +9,10 @@ import * as snippetActions from 'actions/snippets';
 import { SIDEBAR_WIDTH, MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
 import { filterSnippetsList } from 'utils/snippets';
 
-import Button from 'components/common/Button';
+import Button from 'components/common/controls/Button';
 import Icon from 'components/common/Icon';
 import { baseAppColor, borderColor, lightText } from 'constants/colors';
-import Input from 'components/common/Input';
+import Input from 'components/common/controls/Input';
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -29,6 +29,11 @@ const SearchWrapper = styled.div`
 const StyledLink = styled(Link)`
   color: ${lightText};
   text-decoration: none;
+  line-height: 25px;
+`;
+
+const StyledInput = styled(Input)`
+  margin: 0 10px 0 10px;
 `;
 
 export const Search = ({
@@ -43,15 +48,16 @@ export const Search = ({
   return (
     <SearchWrapper>
       <Icon type="search" size="46" color={ baseAppColor }/>
-      <Input type="search"
-             placeholder={ `Search ${countSnippets} snippets` }
-             onChange={
-               (event) => shouldFilter(event.target.value) && filterSnippets(event.target.value)
-             }/>
+      <StyledInput type="search"
+                   placeholder={ `Search ${countSnippets} snippets` }
+                   onChange={
+                     (event) => shouldFilter(event.target.value)
+                       && filterSnippets(event.target.value)
+                   }/>
 
       <Router>
-        <Button icon="add" width="200px" height="30px">
-          <StyledLink to="/new">New snippet</StyledLink>
+        <Button icon="add" width="150px" height="30px">
+          <StyledLink to="/new">Add new</StyledLink>
         </Button>
       </Router>
 

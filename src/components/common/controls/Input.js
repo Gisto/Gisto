@@ -9,8 +9,9 @@ const StyledInput = styled.input`
   border: none;
   border-radius: 0;
   height: 30px;
-  margin: 10px;
-  width: 100%;
+  //margin: 10px;
+  //padding: 0 5px 0 5px;
+  //width: 100%;
   color: ${(props) => props.disabled ? disabledColor : baseAppColor};
   border-bottom: 1px solid ${(props) => props.disabled ? disabledColor : baseAppColor};
   background: ${(props) => props.disabled ? disabledColor : lightText};

@@ -19,7 +19,7 @@ import { DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 import * as snippetActions from 'actions/snippets';
 
 import Icon from 'components/common/Icon';
-import Input from 'components/common/Input';
+import Input from 'components/common/controls/Input';
 
 const DashbordWrapper = styled.div`
   display: grid;
@@ -152,7 +152,7 @@ const Language = Box.extend`
   grid-row-end: 2;
   max-height: 40vh;
   > div {
-    ${ContainerWithPills}
+    ${ContainerWithPills};
     max-height: 35vh;
     overflow: auto;
   }
@@ -222,7 +222,7 @@ const HeadingWithSearch = styled.span`
 
 const StyledInput = styled(Input)`
     width: 15vw;
-    margin-top: 0;
+    margin: 0 10px;
 `;
 
 const StyledNavLink = styled(NavLink)`

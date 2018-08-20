@@ -1,4 +1,4 @@
-import TextArea from 'components/common/TextArea';
+import Input from 'components/common/controls/Input';
 
 const propSetup = (props) => ({
   type: 'search',
@@ -8,10 +8,10 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => mount(<TextArea { ...propSetup(props) }>link</TextArea>);
+const setup = (props) => mount(<Input { ...propSetup(props) }>link</Input>);
 
-describe('COMPONENTS - <TextArea>', () => {
-  test('render TextArea', () => {
+describe('COMPONENTS - <Input>', () => {
+  test('render Input', () => {
     const component = setup();
 
     expect(component).toMatchSnapshot();
@@ -20,7 +20,7 @@ describe('COMPONENTS - <TextArea>', () => {
   test('handle click', () => {
     const props = {
       onChange: jest.fn(),
-      type: 'textarea'
+      type: 'text'
     };
     const component = setup(propSetup(props));
 

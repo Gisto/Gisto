@@ -13,7 +13,7 @@ import * as snippetActions from 'actions/snippets';
 import { copyToClipboard, prepareFilesForUpdate } from 'utils/snippets';
 
 import UtilityIcon from 'components/common/UtilityIcon';
-import Input from 'components/common/Input';
+import Input from 'components/common/controls/Input';
 import Anchor from 'components/common/Anchor';
 import { defaultGistURL } from 'constants/config';
 import ExternalLink from 'components/common/ExternalLink';
@@ -59,15 +59,21 @@ const Languages = styled.span`
   cursor: pointer;
 `;
 
+const StyledInput = styled(Input)`
+  width: 100%;
+`;
+
 export class SnippetHeader extends React.Component {
   state = {
     showToolbox: true
   };
 
   toggleToolbox = () => {
-    this.setState((prevState) => ({
-      showToolbox: !prevState.showToolbox
-    }));
+    if (!this.props.edit) {
+      this.setState((prevState) => ({
+        showToolbox: !prevState.showToolbox
+      }));
+    }
   };
 
   toggleStar = (id, starred) => starred ? this.props.unsetStar(id) : this.props.setStar(id);
@@ -149,8 +155,8 @@ export class SnippetHeader extends React.Component {
     }
 
     return (
-      <Input value={ `${get('description', tempSnippet)} ${join(' ', get('tags', snippet))}` }
-             onChange={ (event) => updateTempSnippet('description', event.target.value) }/>
+      <StyledInput value={ `${get('description', tempSnippet)} ${join(' ', get('tags', snippet))}` }
+                   onChange={ (event) => updateTempSnippet('description', event.target.value) }/>
     );
   };
 

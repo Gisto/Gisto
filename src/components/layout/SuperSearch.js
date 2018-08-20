@@ -10,7 +10,7 @@ import { HashRouter as Router, NavLink } from 'react-router-dom';
 import { baseAppColor, bg } from 'constants/colors';
 import * as snippetActions from 'actions/snippets';
 
-import Input from 'components/common/Input';
+import Input from 'components/common/controls/Input';
 import Icon from 'components/common/Icon';
 import { MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
 import { filterSnippetsList } from 'utils/snippets';
@@ -90,6 +90,7 @@ const StyledInput = styled(Input)`
   box-shadow: 0 0 150px #fff;
   border-radius: 3px;
   text-indent: 32px;
+  width: 100%;
 `;
 
 const StyledIcon = styled(Icon)`

@@ -49,7 +49,7 @@ const editorOptions = {
 export class Editor extends React.Component {
   renderEditor = () => {
     const {
-      edit, onChange, file, className, id, language, filesCount
+      edit, onChange, file, className, id, language, filesCount, isNew
     } = this.props;
 
     marked.setOptions({
@@ -64,7 +64,7 @@ export class Editor extends React.Component {
       smartypants: false
     });
 
-    if (!file.content) {
+    if (!isNew && !file.content && !edit) {
       return (
         <LoadingIndicator>
           <Loading color={ baseAppColor } text=""/>
@@ -126,7 +126,8 @@ Editor.propTypes = {
   id: PropTypes.string,
   className: PropTypes.string,
   edit: PropTypes.bool,
-  filesCount: PropTypes.number
+  filesCount: PropTypes.number,
+  isNew: PropTypes.bool
 };
 
 export default Editor;

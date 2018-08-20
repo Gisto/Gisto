@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Select> render Select 1`] = `
+<SelectInput
+  className="classified"
+  defaultValue="bla-bla"
+  onChange={[MockFunction]}
+>
+  <option
+    key="1"
+  >
+    1
+  </option>
+  <option
+    key="2"
+  >
+    2
+  </option>
+  <option
+    key="bla-bla"
+  >
+    bla-bla
+  </option>
+</SelectInput>
+`;

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Checkbox> render Checkbox 1`] = `
+<Box
+  className="classified"
+  defaultChecked={true}
+  onChange={[MockFunction]}
+  type="checkbox"
+/>
+`;

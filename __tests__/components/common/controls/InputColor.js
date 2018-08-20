@@ -1,4 +1,4 @@
-import InputColor from 'components/common/form/InputColor';
+import InputColor from 'components/common/controls/InputColor';
 
 const propSetup = (props) => ({
   color: 'red',

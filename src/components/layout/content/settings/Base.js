@@ -1,7 +1,7 @@
 import React from 'react';
 import { getSetting, setSetting } from 'utils/settings';
 
-import InputColor from 'components/common/form/InputColor';
+import InputColor from 'components/common/controls/InputColor';
 
 const BaseSettings = () => (
   <div>

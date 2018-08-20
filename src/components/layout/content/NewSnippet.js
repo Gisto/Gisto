@@ -11,16 +11,22 @@ import * as snippetActions from 'actions/snippets';
 import { DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 import { prepareFiles } from 'utils/snippets';
 
-import Input from 'components/common/Input';
-import Editor from 'components/common/Editor';
+import Input from 'components/common/controls/Input';
+import Editor from 'components/common/controls/Editor';
 import Icon from 'components/common/Icon';
 import { baseAppColor } from 'constants/colors';
 import ExternalLink from 'components/common/ExternalLink';
-import Button from 'components/common/Button';
+import Button from 'components/common/controls/Button';
+import Checkbox from 'components/common/controls/Checkbox';
 
 const StyledInput = styled(Input)`
   margin: 0;
   text-indent: 10px;
+  width: 100%;
+`;
+
+const StyledCheckbox = styled(Checkbox)`
+  margin: 0 10px 0 0;
 `;
 
 const Section = styled.div`
@@ -112,9 +118,8 @@ export class NewSnippet extends React.Component {
         </Section>
 
         <Section>
-          <input type="checkbox"
-                 checked={ this.state.public }
-                 onChange={ () => this.togglePublic() }/>
+          <StyledCheckbox checked={ this.state.public }
+                          onChange={ () => this.togglePublic() }/>
           &nbsp;
           <span>
           Public snippet
@@ -134,6 +139,7 @@ export class NewSnippet extends React.Component {
             <br/>
 
             <Editor file={ file }
+                    isNew
                     id={ file.uuid }
                     onChange={ (value) => this.setFileData(value, file.uuid, 'content') }/>
 

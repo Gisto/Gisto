@@ -45,7 +45,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
               type="text"
             >
               <input
-                className="StyledInput-kKifnt jaVkjP"
+                className="StyledInput-kKifnt NdlXS"
                 disabled={false}
                 onChange={[Function]}
                 title=""
