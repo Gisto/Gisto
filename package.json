@@ -21,6 +21,8 @@
     "preversion:readme": "replace \"v\\d+\\.\\d+\\.\\d+\" \"v$npm_package_version\" ./README.md",
     "preversion:changelog": "replace \"vPLACEHOLDER\" \"v$npm_package_version\" ./CHANGELOG.md",
     "version": "npm run preversion:readme && npm run preversion:changelog && git add .",
+    "release": "npm version patch",
+    "release:minor": "npm version minor",
     "postversion": "echo 'hello'",
     "precommit": "precise-commits",
     "pack:mac": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build --m --publish=always",
