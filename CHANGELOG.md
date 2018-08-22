@@ -1,3 +1,6 @@
+###v1.9.78
+*  TOOLS (release): fix release cycle, add push [View](https://github.com/Gisto/Gisto/commit/b5ac44dfac3dfe7c7607b284dfa02da9b08c35ea)
+
 ###v1.9.77
 *  FIX (tools): changelog [View](https://github.com/Gisto/Gisto/commit/4515be8f0c26bb5aac7e4c964ccb4d3856cec316)
 *  TOOLS (release): fix release cycle [View](https://github.com/Gisto/Gisto/commit/54ae195145d4c17adbd5a469a3a6bbeebb60ab53)
