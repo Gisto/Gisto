@@ -1,18 +1,18 @@
-###v1.9.78
+### v1.9.78
 *  TOOLS (release): fix release cycle, add push [View](https://github.com/Gisto/Gisto/commit/b5ac44dfac3dfe7c7607b284dfa02da9b08c35ea)
 
-###v1.9.77
+### v1.9.77
 *  FIX (tools): changelog [View](https://github.com/Gisto/Gisto/commit/4515be8f0c26bb5aac7e4c964ccb4d3856cec316)
 *  TOOLS (release): fix release cycle [View](https://github.com/Gisto/Gisto/commit/54ae195145d4c17adbd5a469a3a6bbeebb60ab53)
 
-###v1.9.76
+### v1.9.76
 *  FIX (tools): changelog [View](https://github.com/Gisto/Gisto/commit/14a676de4a975e1c6960cc895c9f415d2722b331)
 
-###v1.9.75
+### v1.9.75
 *  fix changelog generation [View](https://github.com/Gisto/Gisto/commit/87b2caf9887bae3452e8dbbeb3906514c864210d) 
 
-###/v1.9.74
+### v1.9.74
 *  Release next [View](https://github.com/Gisto/Gisto/commit/ef60c54cad9f1f713153acef24ea31666e868384)
 
-###v1.9.73
+### v1.9.73
 *  fix [View](https://github.com/Gisto/Gisto/commit/371aad7c36f6ee77e8d12fd3b840334969030e9f)
