@@ -1,3 +1,7 @@
+###v1.9.77
+*  FIX (tools): changelog [View](https://github.com/Gisto/Gisto/commit/4515be8f0c26bb5aac7e4c964ccb4d3856cec316)
+*  TOOLS (release): fix release cycle [View](https://github.com/Gisto/Gisto/commit/54ae195145d4c17adbd5a469a3a6bbeebb60ab53)
+
 ###v1.9.76
 *  FIX (tools): changelog [View](https://github.com/Gisto/Gisto/commit/14a676de4a975e1c6960cc895c9f415d2722b331)
 
