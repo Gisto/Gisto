@@ -17,7 +17,7 @@
     "electron:prod": "cross-env NODE_ENV=production electron ./dist",
     "dev": "concurrently \"npm run start:dev\" \"wait-on dist && npm run electron:dev\"",
     "prod": "concurrently \"npm run start:prod\" \"wait-on dist && npm run electron:prod\"",
-    "preversion": "npm run lint && npm test",
+    "preversion": "npm run lint && npm test && sh change-log-builder.sh",
     "preversion:readme": "replace '/v\\d+\\.\\d+\\.\\d+' \"/v$npm_package_version\" ./README.md",
     "preversion:changelog": "replace \"v[PLACEHOLDER]\" \"/v$npm_package_version\" ./CHANGELOG.md",
     "version": "npm run preversion:readme && npm run preversion:changelog && git add .",
