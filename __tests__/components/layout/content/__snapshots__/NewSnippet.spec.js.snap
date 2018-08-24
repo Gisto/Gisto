@@ -2,6 +2,14 @@
 
 exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
 <div>
+  <Dropzone
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}
+  >
+    Drag file(s) over here to add
+  </Dropzone>
   <H1>
     <strong>
       New 
@@ -36,42 +44,9 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
       </ExternalLink>
     </span>
   </Section>
-  <FileSection
-    key="123123123123"
-  >
-    <StyledInput
-      onChange={[Function]}
-      placeholder="file.ext"
-      type="text"
-    />
-    <br />
-    <br />
-    <Editor
-      file={
-        Object {
-          "content": "",
-          "name": "",
-          "uuid": "123123123123",
-        }
-      }
-      id="123123123123"
-      isNew={true}
-      onChange={[Function]}
-    />
-    <br />
-    <StyledButton
-      icon="delete"
-      invert={true}
-      onClick={[Function]}
-    >
-      <strong>
-        Remove
-      </strong>
-       
-    </StyledButton>
-  </FileSection>
   <Section>
     <StyledButton
+      disabled={true}
       icon="success"
       onClick={[Function]}
     >

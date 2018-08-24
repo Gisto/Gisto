@@ -3,7 +3,7 @@ import PropType from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
-  set, findIndex, map, filter 
+  set, findIndex, map, filter, isEmpty
 } from 'lodash/fp';
 import uuid from 'uuid';
 
@@ -48,17 +48,21 @@ const H1 = styled.h1`
   font-size: 22px;
 `;
 
+const Dropzone = styled.div`
+  border: 1px dashed ${baseAppColor};
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+`;
+
 export class NewSnippet extends React.Component {
   state = {
     public: false,
     description: '',
-    files: []
+    files: [],
+    dragOver: false,
+    progress: {}
   };
-
-  componentDidMount() {
-    this.addFile();
-  }
-
 
   setDescription = (description) => {
     this.setState({ description });
@@ -79,11 +83,11 @@ export class NewSnippet extends React.Component {
     }));
   };
 
-  addFile = () => {
+  addFile = (name = '', content = '') => {
     const fileStructure = {
       uuid: uuid.v4(),
-      name: '',
-      content: ''
+      name,
+      content
     };
 
     this.setState((prevState) => ({
@@ -106,9 +110,71 @@ export class NewSnippet extends React.Component {
     });
   };
 
+  handleOnDrop = (event) => {
+    event.preventDefault();
+
+    this.setState({ dragOver: false });
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const index in event.dataTransfer.items) {
+      if (event.dataTransfer.items[index].kind === 'file') {
+        const file = event.dataTransfer.items[index].getAsFile();
+        const reader = new FileReader();
+
+        reader.readAsText(file);
+        // eslint-disable-next-line no-shadow
+        reader.onprogress = (event) => {
+          if (event.lengthComputable) {
+            this.setState({
+              progress: {
+                max: event.total,
+                value: event.loaded
+              }
+            });
+          }
+        };
+
+        reader.onload = () => {
+          this.addFile(file.name, reader.result);
+          this.setState({
+            progress: {}
+          });
+        };
+      }
+    }
+  };
+
+  handleDragOver = (event) => {
+    event.preventDefault();
+    this.setState({ dragOver: true });
+
+    return false;
+  };
+
+  handleDragLeave = (event) => {
+    event.preventDefault();
+    this.setState({ dragOver: false });
+
+    return false;
+  };
+
   render() {
     return (
       <div>
+
+        <Dropzone onDrop={ this.handleOnDrop }
+                  onDragOver={ this.handleDragOver }
+                  onDragEnter={ this.handleDragOver }
+                  onDragLeave={ this.handleDragLeave }>
+          { this.state.dragOver ? 'Drop now' : 'Drag file(s) over here to add' }
+
+          { this.state.progress.max && (
+            <p>
+              <progress max={ this.state.progress.max } value={ this.state.progress.value }/>
+            </p>
+          ) }
+        </Dropzone>
+
         <H1><strong>New { this.state.public ? 'public' : 'private' } snippet:</strong> { this.state.description }</H1>
 
         <Section>
@@ -133,6 +199,7 @@ export class NewSnippet extends React.Component {
         { map((file) => (
           <FileSection key={ file.uuid }>
             <StyledInput type="text"
+                         value={ file.name }
                          onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
                          placeholder="file.ext"/>
             <br/>
@@ -155,7 +222,8 @@ export class NewSnippet extends React.Component {
 
         <Section>
           <StyledButton icon="success"
-                        onClick={ () => this.save() }>
+                        onClick={ () => this.save() }
+          disabled={ isEmpty(this.state.files) }>
             Save
           </StyledButton>
 
