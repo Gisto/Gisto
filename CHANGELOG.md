@@ -1,3 +1,8 @@
+### v1.9.79
+*  TOOLS (changlog): fix formating [View](https://github.com/Gisto/Gisto/commit/d86fcafb0292a8eeeed03b5135ebbcb2a48cc8fe)
+*  CHORE (readme): update readme with release info [View](https://github.com/Gisto/Gisto/commit/82b65f9396db6b7405f7e9737da82be80a2e6ef8)
+*  FEATURE (new snippet): allow to drag and drop files into dropzone [View](https://github.com/Gisto/Gisto/commit/f6803e4bfb135220015814e8b34695a1e4f8d099)
+
 ### v1.9.78
 *  TOOLS (release): fix release cycle, add push [View](https://github.com/Gisto/Gisto/commit/b5ac44dfac3dfe7c7607b284dfa02da9b08c35ea)
 
