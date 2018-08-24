@@ -21,6 +21,12 @@ export class App  extends React.Component {
 
   componentDidMount() {
     Mousetrap.bind(['shift shift', 'ctrl+f'], this.toggleSuperSesrch);
+
+    // Disallow to drop files
+    document.addEventListener('dragover', (event) => event.preventDefault());
+    document.addEventListener('dragenter', (event) => event.preventDefault());
+    document.addEventListener('dragleave', (event) => event.preventDefault());
+    document.addEventListener('drop', (event) => event.preventDefault());
   }
 
   componentWillUnmount() {
