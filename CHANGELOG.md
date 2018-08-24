@@ -1,3 +1,6 @@
+### v1.9.80
+
+
 ### v1.9.79
 *  TOOLS (changlog): fix formating [View](https://github.com/Gisto/Gisto/commit/d86fcafb0292a8eeeed03b5135ebbcb2a48cc8fe)
 *  CHORE (readme): update readme with release info [View](https://github.com/Gisto/Gisto/commit/82b65f9396db6b7405f7e9737da82be80a2e6ef8)
