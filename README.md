@@ -2,7 +2,7 @@
 
 > Snippets made awesome
 
-[![Current Gisto version](https://img.shields.io/badge/version-v1.9.78-blue.svg?colorB=3F84A8&style=flat-square)](https://github.com/Gisto/Gisto)
+[![Current Gisto version](https://img.shields.io/badge/version-v1.9.80-blue.svg?colorB=3F84A8&style=flat-square)](https://github.com/Gisto/Gisto)
 [![GitHub license](https://img.shields.io/github/license/Gisto/Gisto.svg?style=flat-square)](https://github.com/Gisto/Gisto/blob/master/LICENSE)
 [![Coveralls github branch](https://img.shields.io/coveralls/github/Gisto/Gisto/next.svg?style=flat-square)](https://coveralls.io/github/Gisto/Gisto)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability-percentage/Gisto/Gisto.svg?style=flat-square)](https://codeclimate.com/github/Gisto/Gisto)
@@ -26,17 +26,19 @@ Please see [next](https://github.com/Gisto/Gisto/tree/next) branch for upcoming 
 
 change.log of current version for more detailed info regarding new features, bug fixes and releases.
 
-## Gisto old version
-
-Gisto v1 can be tracked via branch [v1](https://github.com/Gisto/Gisto/tree/v1)
-
-This version concidered obsolete and will not be updated
+[Changelog](https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md)
 
 ## Screenshots
 
 | Dashboard | Gist view |
 |:------|:------|
 | <img src="https://i.imgur.com/s4d0uHL.png" alt="Dashboard"/> | <img src="https://i.imgur.com/DCR1zTK.png" alt="Gist view"/> |
+
+## Gisto previous version
+
+Gisto v1 can be tracked via branch [v1](https://github.com/Gisto/Gisto/tree/v1)
+
+This version concidered obsolete and will not be updated
 
 ## Latest builds
 
@@ -89,6 +91,12 @@ Run the local application:
 `npm run dev`
 
 _(for more commands, see `package.json` script section)_
+
+## Release cycle
+
+- make changes
+- commit (this will run lint and tests)
+- run `npm run release` (for patch version) or `npm run release:minor` (for minor version), will update readme and changelog, add and commit new tag and will also push
 
 ## License
 
