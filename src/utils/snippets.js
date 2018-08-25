@@ -12,10 +12,14 @@ import {
   keyBy,
   map,
   pick,
-  reduce
+  reduce,
+  head
 } from 'lodash/fp';
+import { removeTags } from 'utils/tags';
 
 export const isTag = (filterText) => startsWith('#', filterText);
+
+export const hasTag = (filterText) => filterText.match(/#.+/ig);
 
 const filterByTagsText = (snippets, filterText) => {
   return filter((snippet) => includes(filterText, snippet.tags), snippets);
@@ -34,6 +38,18 @@ const filterByFreeText = (snippets, filterText) => {
   if (filterText !== '') {
     if (isTag(filterText)) {
       return filterByTagsText(snippets, filterText);
+    }
+
+    if (hasTag(filterText)) {
+      const textMatches = filter((snippet) => {
+        return !!snippet.description.includes(removeTags(filterText));
+      }, snippets);
+
+      const matchedTag = head(filterText.match(/#.+/ig));
+
+      return filter((snippet) => {
+        return !!includes(matchedTag, snippet.tags);
+      }, textMatches);
     }
 
     return filter((snippet) => snippet.description.match(regex), snippets);
