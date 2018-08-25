@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ipcRenderer } from 'electron';
 import styled from 'styled-components';
-import { baseAppColor } from 'constants/colors';
 import * as Mousetrap from 'mousetrap';
+import { withRouter } from 'react-router-dom';
+
+import { baseAppColor } from 'constants/colors';
+
 import SuperSearch from 'components/layout/SuperSearch';
 
 const AppWrapper = styled.div`
@@ -27,6 +31,11 @@ export class App  extends React.Component {
     document.addEventListener('dragenter', (event) => event.preventDefault());
     document.addEventListener('dragleave', (event) => event.preventDefault());
     document.addEventListener('drop', (event) => event.preventDefault());
+
+    // Route if 'routeTo' event sent from main
+    ipcRenderer.on('routeTo', (event, routeTo) => {
+      this.props.history.push(routeTo);
+    });
   }
 
   componentWillUnmount() {
@@ -52,7 +61,8 @@ export class App  extends React.Component {
 }
 
 App.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  history: PropTypes.object
 };
 
-export default App;
+export default withRouter(App);
