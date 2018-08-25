@@ -22,6 +22,13 @@ const filterByTagsText = (snippets, filterText) => {
 };
 
 const filterByFreeText = (snippets, filterText) => {
+  try {
+    // eslint-disable-next-line no-new
+    new RegExp(filterText, 'gi');
+  } catch (e) {
+    return false;
+  }
+
   const regex = new RegExp(filterText, 'gi');
 
   if (filterText !== '') {
