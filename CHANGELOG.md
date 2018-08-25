@@ -1,3 +1,7 @@
+### v1.9.81
+*  FIX (search): bad regex crushes the app closes #217 [View](https://github.com/Gisto/Gisto/commit/607fc5bf20f6614eb5448d776aae0fa3aabb216d)
+*  FIX (route): add routeTo litsener for events from main [View](https://github.com/Gisto/Gisto/commit/dfef88923d3f26daf9db1363f0cd5d31722622f0)
+
 ### v1.9.80
 
 
