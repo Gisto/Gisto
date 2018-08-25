@@ -101,7 +101,13 @@ function buildMenu(mainWindow) {
         {
           label: 'Services',
           role: 'services',
-          submenu: []
+          submenu: [],
+          visible: !isMacOS
+        },
+        {
+          label: 'Preferences',
+          accelerator: 'Command+,',
+          click: () => mainWindow.webContents.send('routeTo', '/settings')
         },
         {
           label: 'Reload',
