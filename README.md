@@ -30,9 +30,11 @@ change.log of current version for more detailed info regarding new features, bug
 
 ## Screenshots
 
-| Dashboard | Gist view |
-|:------|:------|
-| <img src="https://i.imgur.com/s4d0uHL.png" alt="Dashboard"/> | <img src="https://i.imgur.com/DCR1zTK.png" alt="Gist view"/> |
+| Dashboard                                  | Snippet view                                  | Snippet options                                  |
+|--------------------------------------------|-----------------------------------------------|--------------------------------------------------|
+| ![Dashboard](https://imgur.com/Jx8Tc9s.png) | ![Snippet view](https://imgur.com/OwseykV.png) | ![Snippet options](https://imgur.com/yiEJRNt.png) |
+| Edit mode                                  | Settings                                      | Create new                                       |
+| ![Edit mode](https://imgur.com/JtUCsfI.png) | ![Settings](https://imgur.com/1yliYhR.png)     | ![Create new](https://imgur.com/aoW5V8E.png)      |
 
 ## Gisto previous version
 
