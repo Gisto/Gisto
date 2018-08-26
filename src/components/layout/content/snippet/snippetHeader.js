@@ -35,6 +35,10 @@ const Language = styled.span`
   font-size: 14px;
 `;
 
+const FilenameIcon = styled(Icon)`
+  margin: 0 20px 0 0;
+`;
+
 const FileName = styled.div`
   display: flex;
   align-items: center;
@@ -64,7 +68,11 @@ export class SnippetHeader extends React.Component {
 
     return (
       <SnippetHeaderWrapper>
-        <FileName><Icon size={ 22 } color={ baseAppColor } type="file"/> { this.renderFileName() }</FileName>
+        <FileName>
+          <FilenameIcon size={ 22 }
+                        color={ baseAppColor }
+                        type="file"/> { this.renderFileName() }
+        </FileName>
 
         { !edit ? (
           <div>

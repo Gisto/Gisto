@@ -231,10 +231,18 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 export class DashBoard  extends React.Component {
-  state = {
-    searchTags: '',
-    searchStarred: ''
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchTags: '',
+      searchStarred: ''
+    };
+
+    this.languagesRef = React.createRef();
+    this.starredRef = React.createRef();
+    this.tagsRef = React.createRef();
+  }
 
   componentDidMount() {
     this.props.getRateLimit();
@@ -295,6 +303,10 @@ export class DashBoard  extends React.Component {
   searchStarred = (value) => this.setState({
     searchStarred: value
   });
+
+  calculateMargin = (ref) => {
+    return ref.current && ref.current.scrollHeight > ref.current.clientHeight ? '20px' : '0';
+  };
 
   renderLanguages = () => map((languageItem) => {
     const language = get('language', languageItem);
@@ -374,7 +386,8 @@ export class DashBoard  extends React.Component {
         { isEmpty(this.state.searchTags) && (
           <Language>
             <h3>Languages:</h3>
-            <div>
+            <div ref={ this.languagesRef }
+                 style={ { paddingRight: this.calculateMargin(this.languagesRef) } }>
               { this.renderLanguages() }
             </div>
           </Language>
@@ -391,7 +404,8 @@ export class DashBoard  extends React.Component {
                              onChange={ (event) => this.searchStarred(event.target.value) }/>
               </div>
             </HeadingWithSearch>
-            <ul>
+            <ul ref={ this.starredRef }
+                style={ { paddingRight: this.calculateMargin(this.starredRef) } }>
               { this.renderStarred() }
             </ul>
           </Stars>
@@ -407,7 +421,8 @@ export class DashBoard  extends React.Component {
                            onChange={ (event) => this.searchTags(event.target.value) }/>
             </div>
           </HeadingWithSearch>
-          <div>
+          <div ref={ this.tagsRef }
+               style={ { paddingRight: this.calculateMargin(this.tagsRef) } }>
             { this.renderTags() }
           </div>
         </Tags>

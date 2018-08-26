@@ -125,7 +125,13 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
           <h3>
             Languages:
           </h3>
-          <div />
+          <div
+            style={
+              Object {
+                "paddingRight": "0",
+              }
+            }
+          />
         </div>
       </Box>
       <Box>
@@ -185,7 +191,13 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
               </div>
             </span>
           </HeadingWithSearch>
-          <ul />
+          <ul
+            style={
+              Object {
+                "paddingRight": "0",
+              }
+            }
+          />
         </div>
       </Box>
       <Box>
@@ -245,7 +257,13 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
               </div>
             </span>
           </HeadingWithSearch>
-          <div />
+          <div
+            style={
+              Object {
+                "paddingRight": "0",
+              }
+            }
+          />
         </div>
       </Box>
     </div>
