@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  get, map, size, toString, isEmpty, join
+  get, map, size, toString, isEmpty, join, drop
 } from 'lodash/fp';
 import styled from 'styled-components';
 
@@ -11,6 +11,7 @@ import {
 } from 'constants/colors';
 import * as snippetActions from 'actions/snippets';
 import { copyToClipboard, prepareFilesForUpdate } from 'utils/snippets';
+import { dateFormateToString } from 'utils/date';
 
 import UtilityIcon from 'components/common/UtilityIcon';
 import Input from 'components/common/controls/Input';
@@ -22,6 +23,39 @@ const SnippetHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+`;
+
+const History = styled.span`
+  div {
+    color: ${baseAppColor};
+    display: flex;
+    margin: 10px 0;
+    justify-content: space-between;
+    
+    &.changed {
+      width: 230px;    
+    }
+  }
+`;
+
+const Additions = styled.span`
+  background: ${colorSuccess};
+  color: #fff;
+  padding: 0 5px;
+  
+  + span {
+    margin: 0 0 0 10px;
+  }
+`;
+
+const Deletions = styled.span`
+  background: ${colorDanger};
+  color: #fff;
+  padding: 0 7px;
+  
+  + span {
+    margin: 0 0 0 10px;
+  }
 `;
 
 const Title = styled.div`
@@ -208,8 +242,46 @@ export class SnippetHeader extends React.Component {
 
         { this.state.showToolbox && (
           <div>
+
             { this.renderEditControls() }
+
             <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
+            { size(get('history', snippet)) > 1 && (
+              <UtilityIcon size={ 22 } color={ baseAppColor } type="time" dropdown>
+                <ul>
+                  { map((change) => (
+                    <li>
+                      <ExternalLink href={
+                        `${defaultGistURL}/${change.user.login}/${snippetId}/revisions#diff-${change.version}`
+                      }>
+                        <History>
+                          <div className="changed">
+                            <strong>Changed:</strong>
+                            <span>{ dateFormateToString(change.committed_at) }</span>
+                          </div>
+                          { !isEmpty(change.change_status) && (
+                            <div>
+                              <span>
+                                <Additions>+</Additions>
+                                <span>
+                                  { change.change_status.additions }
+                                </span>
+                              </span>
+                              <span>
+                                <Deletions>-</Deletions>
+                                <span>
+                                  { change.change_status.deletions }
+                                </span>
+                              </span>
+                            </div>
+                          ) }
+                        </History>
+                      </ExternalLink>
+                    </li>
+                  ), drop(1, snippet.history)) }
+                </ul>
+              </UtilityIcon>
+            ) }
             <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippetId) } type="delete"/>
             <UtilityIcon size={ 22 }
                          color={ baseAppColor }

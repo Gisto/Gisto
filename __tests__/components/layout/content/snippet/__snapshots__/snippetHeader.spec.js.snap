@@ -22,18 +22,25 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
         <div
           className="FileName-gYMyOg dBkvLs"
         >
-          <Icon
+          <FilenameIcon
             color="#3F84A8"
             size={22}
             type="file"
           >
-            <span
-              className="Icon-cFRQJw fERgeY"
+            <Icon
+              className="FilenameIcon-glEJQV gnWsMJ"
               color="#3F84A8"
               size={22}
               type="file"
-            />
-          </Icon>
+            >
+              <span
+                className="FilenameIcon-glEJQV gnWsMJ Icon-cFRQJw fERgeY"
+                color="#3F84A8"
+                size={22}
+                type="file"
+              />
+            </Icon>
+          </FilenameIcon>
            
           <Input
             onChange={[Function]}
@@ -66,7 +73,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
           onClick={[Function]}
         >
           <span
-            className="Util-iuPPCj jboJJK"
+            className="Util-iuPPCj fDFZmY"
             color="tomato"
             onClick={[Function]}
           >
@@ -113,18 +120,25 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
         <div
           className="FileName-gYMyOg dBkvLs"
         >
-          <Icon
+          <FilenameIcon
             color="#3F84A8"
             size={22}
             type="file"
           >
-            <span
-              className="Icon-cFRQJw fERgeY"
+            <Icon
+              className="FilenameIcon-glEJQV gnWsMJ"
               color="#3F84A8"
               size={22}
               type="file"
-            />
-          </Icon>
+            >
+              <span
+                className="FilenameIcon-glEJQV gnWsMJ Icon-cFRQJw fERgeY"
+                color="#3F84A8"
+                size={22}
+                type="file"
+              />
+            </Icon>
+          </FilenameIcon>
            
           somefile.js
         </div>
@@ -148,7 +162,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj btiIqg"
+              className="Util-iuPPCj eVdnsu"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -179,7 +193,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj btiIqg"
+              className="Util-iuPPCj eVdnsu"
               color="#3F84A8"
               onClick={[Function]}
             >
