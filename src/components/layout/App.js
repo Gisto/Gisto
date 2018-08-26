@@ -1,13 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ipcRenderer } from 'electron';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 import * as Mousetrap from 'mousetrap';
 import { withRouter } from 'react-router-dom';
 
 import { baseAppColor } from 'constants/colors';
 
 import SuperSearch from 'components/layout/SuperSearch';
+
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  ::-webkit-scrollbar {
+    width: 5px;
+    margin: 0 20px 0 0;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #fff;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: ${baseAppColor};
+  }
+`;
 
 const AppWrapper = styled.div`
   display: flex;
