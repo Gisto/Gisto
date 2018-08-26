@@ -48,7 +48,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj btiIqg"
+              className="Util-iuPPCj eVdnsu"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -78,7 +78,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj btiIqg"
+              className="Util-iuPPCj eVdnsu"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -109,7 +109,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj jboJJK"
+              className="Util-iuPPCj fDFZmY"
               color="tomato"
               onClick={[Function]}
             >
@@ -142,7 +142,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             text=""
           >
             <span
-              className="Util-iuPPCj btiIqg"
+              className="Util-iuPPCj eVdnsu"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -173,7 +173,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj btiIqg"
+              className="Util-iuPPCj eVdnsu"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -204,7 +204,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj btiIqg"
+              className="Util-iuPPCj eVdnsu"
               color="#3F84A8"
               onClick={[Function]}
             >

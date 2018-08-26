@@ -40,5 +40,6 @@ export const iconsMap = {
   'code-empty': 'ios-code.svg',
   'logo-github': 'logo-github.svg',
   logout: 'log-out.svg',
-  flash: 'flash.svg'
+  flash: 'flash.svg',
+  time: 'history.svg'
 };
