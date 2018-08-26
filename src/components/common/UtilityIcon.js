@@ -1,59 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  borderColor, lightText, colorDanger, lightBorderColor 
+  borderColor, lightText, colorDanger, lightBorderColor, baseAppColor
 } from 'constants/colors';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Icon from 'components/common/Icon';
 
-const Util = styled.span`
-  border-left: 1px solid ${borderColor};
-  height: 50px;
-  display: inline-block;
-  ${(props) => props.text ? '' : 'width: 50px;'}
-  text-align: center;
-  line-height: 50px;
-  color: ${(props) => props.color ? props.color : 'inherit'};
-  cursor: pointer;
-  position: relative;
-  background: ${(props) => props.background ? props.background : 'inherit'};
-  ${(props) => props.text ? 'padding: 0 15px;' : ''}
-  
-  &:hover {
-    background: ${(props) => props.background ? props.background : lightBorderColor};
-  }
-  
-  ul {
-    position: absolute;
-    background: ${lightText};
-    right: -1px;
-    top: 51px;
-    border: 1px solid ${borderColor};
-    line-height: 21px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    box-shadow: 0 5px 10px ${borderColor};
-    z-index: 4;
-    
-    li {
-      border-bottom: 1px dotted ${borderColor};
-      margin: 0;
-      padding: 5px 20px;
-      white-space: nowrap;
-      text-align: left;
-      
-      &:hover {
-        background: ${lightBorderColor};
-        cursor: pointer;
-      }
-      
-      &:last-child {
-        border: none;
-      }  
-    }
-  }
+const DropdownMixin = css`
+  position: absolute;
+  background: ${lightText};
+  right: -1px;
+  top: 51px;
+  border: 1px solid ${borderColor};
+  line-height: 21px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 5px 10px ${borderColor};
+  z-index: 4;
+  overflow: auto;
+  max-height: 60vh;
+  color: ${baseAppColor};
+  cursor: default;
 `;
 
 export class UtilityIcon extends React.Component {
@@ -97,6 +66,50 @@ export class UtilityIcon extends React.Component {
     );
   }
 }
+
+const Util = styled.span`
+  border-left: 1px solid ${borderColor};
+  height: 50px;
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
+  color: ${(props) => props.color ? props.color : 'inherit'};
+  cursor: pointer;
+  position: relative;
+  background: ${(props) => props.background ? props.background : 'inherit'};
+  ${(props) => props.text ? 'padding: 0 15px;' : ''}
+  ${(props) => props.text ? '' : 'width: 50px;'}
+  
+  &:hover {
+    background: ${(props) => props.background ? props.background : lightBorderColor};
+  }
+  
+  div.list {
+    ${DropdownMixin};
+    padding: 10px 20px;
+  }
+  
+  ul {
+    ${DropdownMixin}
+    
+    li {
+      border-bottom: 1px dotted ${borderColor};
+      margin: 0;
+      padding: 5px 20px;
+      white-space: nowrap;
+      text-align: left;
+      
+      &:hover {
+        background: ${lightBorderColor};
+        cursor: pointer;
+      }
+      
+      &:last-child {
+        border: none;
+      }  
+    }
+  }
+`;
 
 UtilityIcon.propTypes = {
   children: PropTypes.node,
