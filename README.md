@@ -94,9 +94,10 @@ _(for more commands, see `package.json` script section)_
 
 ## Release cycle
 
-- make changes
-- commit (this will run lint and tests)
-- run `npm run release` (for patch version) or `npm run release:minor` (for minor version), will update readme and changelog, add and commit new tag and will also push
+- make changes on `next` brnch **ONLY**
+- commit (this will run lint and tests) and push
+- merge `next` -> `master` with `git checkout master && git merge next --no-edit`
+- do not push, run `npm run release` (for patch version) or `npm run release:minor` (for minor version), will update readme and changelog, add and commit new tag and will also push
 
 ## License
 
