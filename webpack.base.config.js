@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const SizePlugin = require('size-plugin');
 
 const packageJson = require('./package.json');
 
@@ -43,6 +44,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new SizePlugin(),
     new webpack.DefinePlugin({
       'global.GENTLY': false,
       'process.browser': true
