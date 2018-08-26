@@ -1,3 +1,7 @@
+### v1.9.83
+*  FEATURE (revisions): list revisions + update some icons [View](https://github.com/Gisto/Gisto/commit/4d989cb0562cb2c1ad45d706f8ce596c4f7b8796)
+*  FIX (scrollbars): style scrollbars + make them pad on dashboard if needed [View](https://github.com/Gisto/Gisto/commit/357c91faf1998a7398684d04ab49b168de9819e4)
+
 ### v1.9.82
 *  FEATURE (search): refine free text search with tag e.g. 'term #tag' closes #201 [View](https://github.com/Gisto/Gisto/commit/54563908925a8e5523e9f4a4644ab880b0ac29e4)
 
