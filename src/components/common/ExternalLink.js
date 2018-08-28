@@ -1,8 +1,7 @@
 import React from 'react';
 import PropType from 'prop-types';
-import { shell } from 'electron';
-import { isElectron } from 'utils/electron';
 import Anchor from 'components/common/Anchor';
+import { isomorphicHrefRedirect } from 'utils/isomorphic';
 
 const ExternalLink = ({
   href, className, children
@@ -11,8 +10,7 @@ const ExternalLink = ({
      href="#"
      onClick={ (event) => {
        event.preventDefault();
-
-       return isElectron ? shell.openExternal(href) : window.open(href, '_blank');
+       isomorphicHrefRedirect(href);
      } }>
     { children }
   </Anchor>

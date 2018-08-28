@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ipcRenderer } from 'electron';
 import styled, { injectGlobal } from 'styled-components';
 import * as Mousetrap from 'mousetrap';
 import { withRouter } from 'react-router-dom';
 
 import { baseAppColor } from 'constants/colors';
+import { isElectron } from 'utils/electron';
 
 import SuperSearch from 'components/layout/SuperSearch';
 
@@ -48,10 +48,14 @@ export class App  extends React.Component {
     document.addEventListener('dragleave', (event) => event.preventDefault());
     document.addEventListener('drop', (event) => event.preventDefault());
 
-    // Route if 'routeTo' event sent from main
-    ipcRenderer.on('routeTo', (event, routeTo) => {
-      this.props.history.push(routeTo);
-    });
+    if (isElectron) {
+      const { ipcRenderer } = require('electron');
+
+      // Route if 'routeTo' event sent from main
+      ipcRenderer.on('routeTo', (event, routeTo) => {
+        this.props.history.push(routeTo);
+      });
+    }
   }
 
   componentWillUnmount() {

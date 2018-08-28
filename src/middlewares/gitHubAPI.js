@@ -1,12 +1,19 @@
 /* eslint consistent-return: 0 */
 
-import * as API from 'superagent';
+import * as superagent from 'superagent';
 import * as AT from 'constants/actionTypes';
 import { DEFAULT_API_ENDPOINT_URL, gitHubTokenKeyInStorage } from 'constants/config';
 import { setNotification } from 'utils/notifications';
 import { setToken, removeToken } from 'utils/login';
 import { get, set } from 'lodash/fp';
 
+let API = superagent;
+
+if (process.env.NODE_ENV === 'development') {
+  // We use browser based superagent in dev in order to log to network tab instead of node streams
+  // eslint-disable-next-line no-shadow, no-unused-vars
+  API = require('superagent/superagent');
+}
 const getToken = localStorage.getItem(gitHubTokenKeyInStorage);
 
 const _headers = (additional) => ({

@@ -13,14 +13,14 @@ exports[`COMPONENTS - <Editor> render Editor 1`] = `
   options={
     Object {
       "automaticLayout": true,
-      "codeLens": undefined,
-      "cursorBlinking": undefined,
-      "fontFamily": undefined,
-      "fontLigatures": undefined,
-      "fontSize": undefined,
+      "codeLens": null,
+      "cursorBlinking": null,
+      "fontFamily": null,
+      "fontLigatures": null,
+      "fontSize": null,
       "formatOnPaste": false,
-      "lineHeight": undefined,
-      "lineNumbers": undefined,
+      "lineHeight": null,
+      "lineNumbers": null,
       "minimap": Object {
         "enabled": false,
       },
@@ -49,14 +49,14 @@ exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
     options={
       Object {
         "automaticLayout": true,
-        "codeLens": undefined,
-        "cursorBlinking": undefined,
-        "fontFamily": undefined,
-        "fontLigatures": undefined,
-        "fontSize": undefined,
+        "codeLens": null,
+        "cursorBlinking": null,
+        "fontFamily": null,
+        "fontLigatures": null,
+        "fontSize": null,
         "formatOnPaste": false,
-        "lineHeight": undefined,
-        "lineNumbers": undefined,
+        "lineHeight": null,
+        "lineNumbers": null,
         "minimap": Object {
           "enabled": false,
         },

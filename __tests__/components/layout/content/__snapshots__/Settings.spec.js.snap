@@ -22,14 +22,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
               <label>
                 Base color:
                 <InputColor
+                  color={null}
                   onChange={[Function]}
                 >
                   <Color
+                    defaultValue={null}
                     onChange={[Function]}
                     type="color"
                   >
                     <input
                       className="Color-ktETcj ctcntg"
+                      defaultValue={null}
                       onChange={[Function]}
                       type="color"
                     />
@@ -70,17 +73,21 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                             </span>
                             <StyledISelect
                               onChange={[Function]}
+                              value={null}
                             >
                               <Select
                                 className="StyledISelect-ilVKaP jUNncK"
                                 onChange={[Function]}
+                                value={null}
                               >
                                 <SelectInput
                                   className="StyledISelect-ilVKaP jUNncK"
+                                  defaultValue={null}
                                   onChange={[Function]}
                                 >
                                   <select
                                     className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ QqSuI"
+                                    defaultValue={null}
                                     onChange={[Function]}
                                   >
                                     <option
@@ -118,14 +125,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               Minimap:
                             </span>
                             <Checkbox
+                              checked={null}
                               onChange={[Function]}
                             >
                               <Box
+                                defaultChecked={null}
                                 onChange={[Function]}
                                 type="checkbox"
                               >
                                 <input
                                   className="Box-jLJQJw bLlIOV"
+                                  defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
@@ -147,14 +157,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               Line Numbers:
                             </span>
                             <Checkbox
+                              checked={null}
                               onChange={[Function]}
                             >
                               <Box
+                                defaultChecked={null}
                                 onChange={[Function]}
                                 type="checkbox"
                               >
                                 <input
                                   className="Box-jLJQJw bLlIOV"
+                                  defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
@@ -176,14 +189,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               Format On Paste:
                             </span>
                             <Checkbox
+                              checked={null}
                               onChange={[Function]}
                             >
                               <Box
+                                defaultChecked={null}
                                 onChange={[Function]}
                                 type="checkbox"
                               >
                                 <input
                                   className="Box-jLJQJw bLlIOV"
+                                  defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
@@ -207,14 +223,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                             <StyledInput
                               onChange={[Function]}
                               type="text"
+                              value={null}
                             >
                               <Input
                                 className="StyledInput-hbWqm ciXLeq"
                                 onChange={[Function]}
                                 type="text"
+                                value={null}
                               >
                                 <StyledInput
                                   className="StyledInput-hbWqm ciXLeq"
+                                  defaultValue={null}
                                   disabled={false}
                                   onChange={[Function]}
                                   title=""
@@ -222,6 +241,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                 >
                                   <input
                                     className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt NdlXS"
+                                    defaultValue={null}
                                     disabled={false}
                                     onChange={[Function]}
                                     title=""
@@ -254,14 +274,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                             <StyledInput
                               onChange={[Function]}
                               type="number"
+                              value={null}
                             >
                               <Input
                                 className="StyledInput-hbWqm ciXLeq"
                                 onChange={[Function]}
                                 type="number"
+                                value={null}
                               >
                                 <StyledInput
                                   className="StyledInput-hbWqm ciXLeq"
+                                  defaultValue={null}
                                   disabled={false}
                                   onChange={[Function]}
                                   title=""
@@ -269,6 +292,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                 >
                                   <input
                                     className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt NdlXS"
+                                    defaultValue={null}
                                     disabled={false}
                                     onChange={[Function]}
                                     title=""
@@ -295,14 +319,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                             <StyledInput
                               onChange={[Function]}
                               type="number"
+                              value={null}
                             >
                               <Input
                                 className="StyledInput-hbWqm ciXLeq"
                                 onChange={[Function]}
                                 type="number"
+                                value={null}
                               >
                                 <StyledInput
                                   className="StyledInput-hbWqm ciXLeq"
+                                  defaultValue={null}
                                   disabled={false}
                                   onChange={[Function]}
                                   title=""
@@ -310,6 +337,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                 >
                                   <input
                                     className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt NdlXS"
+                                    defaultValue={null}
                                     disabled={false}
                                     onChange={[Function]}
                                     title=""
@@ -334,14 +362,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               Font Ligatures:
                             </span>
                             <Checkbox
+                              checked={null}
                               onChange={[Function]}
                             >
                               <Box
+                                defaultChecked={null}
                                 onChange={[Function]}
                                 type="checkbox"
                               >
                                 <input
                                   className="Box-jLJQJw bLlIOV"
+                                  defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
@@ -363,14 +394,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               Code lens:
                             </span>
                             <Checkbox
+                              checked={null}
                               onChange={[Function]}
                             >
                               <Box
+                                defaultChecked={null}
                                 onChange={[Function]}
                                 type="checkbox"
                               >
                                 <input
                                   className="Box-jLJQJw bLlIOV"
+                                  defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
@@ -393,17 +427,21 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                             </span>
                             <StyledISelect
                               onChange={[Function]}
+                              value={null}
                             >
                               <Select
                                 className="StyledISelect-ilVKaP jUNncK"
                                 onChange={[Function]}
+                                value={null}
                               >
                                 <SelectInput
                                   className="StyledISelect-ilVKaP jUNncK"
+                                  defaultValue={null}
                                   onChange={[Function]}
                                 >
                                   <select
                                     className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ QqSuI"
+                                    defaultValue={null}
                                     onChange={[Function]}
                                   >
                                     <option
@@ -451,14 +489,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               Select On Line Numbers:
                             </span>
                             <Checkbox
+                              checked={null}
                               onChange={[Function]}
                             >
                               <Box
+                                defaultChecked={null}
                                 onChange={[Function]}
                                 type="checkbox"
                               >
                                 <input
                                   className="Box-jLJQJw bLlIOV"
+                                  defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
                                 />
