@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ipcRenderer } from 'electron';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { get, replace } from 'lodash/fp';
 
 import { SIDEBAR_WIDTH } from 'constants/config';
+
+import { isElectron } from 'utils/electron';
 
 import * as userActions from 'actions/user';
 import * as loginActions from 'actions/login';
@@ -76,20 +77,24 @@ export class AppArea extends React.Component {
 
   componentDidMount() {
     this.props.getUser();
-    ipcRenderer.on('updateInfo', (event, text, info) => {
-      if (get('url', info)) {
-        const message = (
-          <React.Fragment>
-            <strong>{ text }</strong><br/>
-            <Anchor href={ replace('-mac.zip', '.dmg', info.url) }>Download</Anchor>
-          </React.Fragment>
-        );
+    if (isElectron) {
+      const { ipcRenderer } = require('electron');
 
-        this.setState({ message });
-      } else {
-        this.setState({ message: text });
-      }
-    });
+      ipcRenderer.on('updateInfo', (event, text, info) => {
+        if (get('url', info)) {
+          const message = (
+            <React.Fragment>
+              <strong>{ text }</strong><br/>
+              <Anchor href={ replace('-mac.zip', '.dmg', info.url) }>Download</Anchor>
+            </React.Fragment>
+          );
+
+          this.setState({ message });
+        } else {
+          this.setState({ message: text });
+        }
+      });
+    }
   }
 
   render() {

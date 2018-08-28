@@ -9,6 +9,7 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
     <label>
       Base color:
       <InputColor
+        color={null}
         onChange={[Function]}
       />
     </label>

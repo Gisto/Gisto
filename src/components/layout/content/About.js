@@ -1,14 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ExternalLink from 'components/common/ExternalLink';
-
-import { ipcRenderer } from 'electron';
 import { get } from 'lodash/fp';
+
+import { baseAppColor, bg } from 'constants/colors';
+
+import { isElectron } from 'utils/electron';
+
+import ExternalLink from 'components/common/ExternalLink';
+import Anchor from 'components/common/Anchor';
+
 import * as packageJson from '../../../../package.json';
 import logoImg from '../../../../build/icon.png';
-import Anchor from '../../common/Anchor';
-import { baseAppColor, bg } from '../../../constants/colors';
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,24 +38,28 @@ export class About extends React.Component {
   };
 
   componentDidMount() {
-    ipcRenderer.send('checkForUpdate');
-    ipcRenderer.on('updateInfo', (event, text, info) => {
-      const url = get('url[0].browser_download_url', info);
+    if (isElectron) {
+      const { ipcRenderer } = require('electron');
 
-      if (url) {
-        const message = (
-          <React.Fragment>
-            <strong>{text}</strong>
-            &nbsp;
-            <Anchor href={ url }>Download</Anchor>
-          </React.Fragment>
-        );
+      ipcRenderer.send('checkForUpdate');
+      ipcRenderer.on('updateInfo', (event, text, info) => {
+        const url = get('url[0].browser_download_url', info);
 
-        this.setState({ message });
-      } else {
-        this.setState({ message: text });
-      }
-    });
+        if (url) {
+          const message = (
+            <React.Fragment>
+              <strong>{text}</strong>
+              &nbsp;
+              <Anchor href={ url }>Download</Anchor>
+            </React.Fragment>
+          );
+
+          this.setState({ message });
+        } else {
+          this.setState({ message: text });
+        }
+      });
+    }
   }
 
   render() {

@@ -7,17 +7,21 @@ import store from 'store/store';
 import _ from 'lodash';
 import * as fp from 'lodash/fp';
 
+import { isElectron } from 'utils/electron';
+
 import Layout from 'components/Layout';
 
 import { version } from '../package';
 
-const { init } = require('@sentry/electron');
+if (isElectron) {
+  const { init } = require('@sentry/electron');
 
-init({
-  dsn: 'https://9b448264479b47418f9e248c208632ae@sentry.io/1245680',
-  release: version,
-  environment: process.env.NODE_ENV
-});
+  init({
+    dsn: 'https://9b448264479b47418f9e248c208632ae@sentry.io/1245680',
+    release: version,
+    environment: process.env.NODE_ENV
+  });
+}
 
 const Gisto = () => (
   <Layout

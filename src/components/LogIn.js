@@ -1,5 +1,5 @@
 import React from 'react';
-import { ipcRenderer } from 'electron';
+// import { ipcRenderer } from 'electron';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get } from 'lodash/fp';
@@ -7,8 +7,12 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { baseAppColor, bg } from 'constants/colors';
+
 import * as loginActions from 'actions/login';
+
 import { setToken } from 'utils/login';
+import { isElectron } from 'utils/electron';
+import { isomorphicReload } from 'utils/isomorphic';
 
 import Button from 'components/common/controls/Button';
 import Input from 'components/common/controls/Input';
@@ -121,14 +125,23 @@ export class LogIn extends React.Component {
   };
 
   loginWithOauth2 = () => {
-    ipcRenderer.send('oauth2-login');
+    if (isElectron) {
+      const { ipcRenderer } = require('electron');
+
+      ipcRenderer.send('oauth2-login');
+    }
   };
 
   render() {
-    ipcRenderer.on('token', (event, token) => {
-      setToken(token);
-      document.location.reload();
-    });
+    if (isElectron) {
+      const { ipcRenderer } = require('electron');
+
+      ipcRenderer.on('token', (event, token) => {
+        setToken(token);
+
+        isomorphicReload();
+      });
+    }
 
     return (
       <LoginWrapper>
@@ -211,8 +224,7 @@ export class LogIn extends React.Component {
                 this.state.fieldsData.username,
                 this.state.fieldsData.password,
                 this.state.fieldsData.twoFactorAuth
-              )
-              }
+              ) }
               icon="success">
               Log-in
             </Button>
