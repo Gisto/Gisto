@@ -1,3 +1,11 @@
+### v1.9.84
+*  CHORE (readme): update release cycle [View](https://github.com/Gisto/Gisto/commit/6f2cd836ec4eacb1ca5b10b12715c7c80ca92367)
+*  TOOLS (webpack): add size plugin [View](https://github.com/Gisto/Gisto/commit/95b12f9a40b7de29d8bf8b4b8a22bab3c720ba15)
+*  CHORE (readme): update screenshots [View](https://github.com/Gisto/Gisto/commit/a5a56f2b11b58851e917c75667c541bf9f673f7b)
+*  FEATURE (webclient): add webclient issue #203 [View](https://github.com/Gisto/Gisto/commit/70d8c456319c5109703a3d2c3a69cea780e27116)
+*  FIX (enterprise): fix login with GitHub enterprise [View](https://github.com/Gisto/Gisto/commit/0bf82763b7d424e0505c5aabcc11414176e36a35)
+*  FIX (enterprise): add enterprise login indication [View](https://github.com/Gisto/Gisto/commit/ed6ae1085b6045d65f1b3e5b6fcddbde74771562)
+
 ### v1.9.83
 *  FEATURE (revisions): list revisions + update some icons [View](https://github.com/Gisto/Gisto/commit/4d989cb0562cb2c1ad45d706f8ce596c4f7b8796)
 *  FIX (scrollbars): style scrollbars + make them pad on dashboard if needed [View](https://github.com/Gisto/Gisto/commit/357c91faf1998a7398684d04ab49b168de9819e4)
