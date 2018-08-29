@@ -7,6 +7,7 @@ import { get } from 'lodash/fp';
 
 import { baseAppColor, headerColor, lightText } from 'constants/colors';
 import { SIDEBAR_WIDTH, logoText } from 'constants/config';
+import { isEnterpriseLogin } from 'utils/login';
 
 import Icon from 'components/common/Icon';
 import UserArea from 'components/AppArea';
@@ -56,7 +57,9 @@ export const MainHeader = ({ loading, rateLimit, edit }) => (
   <HeaderWrapper>
     { !edit && (
       <Logo>
-        <Link to="/" title={ `API Rate limit: ${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}` }>{ logoText }</Link>
+        <Link to="/" title={ `API Rate limit: ${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}` }>
+          { logoText } { isEnterpriseLogin() && <small>enterprise</small> }
+        </Link>
       </Logo>
     ) }
     <MiddleArea>
