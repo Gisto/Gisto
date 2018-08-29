@@ -9,7 +9,7 @@
   "mac": {
     "publish": {
       "provider": "github",
-      "releaseType": "prerelease"
+      "releaseType": "release"
     },
     "category": "public.app-category.productivity",
     "icon": "build/icon.png"
@@ -17,7 +17,7 @@
   "dmg": {
     "publish": {
       "provider": "github",
-      "releaseType": "prerelease"
+      "releaseType": "release"
     },
     "window": {
       "width": 540,
@@ -39,7 +39,7 @@
   "win": {
     "publish": {
       "provider": "github",
-      "releaseType": "prerelease"
+      "releaseType": "release"
     },
     "target": "nsis",
     "icon": "build/icon.ico"
@@ -52,7 +52,7 @@
     "maintainer": "Sasha Khamkov <sanusart@gmail.com>",
     "publish": {
       "provider": "github",
-      "releaseType": "prerelease"
+      "releaseType": "release"
     },
     "target": [
       "deb",
