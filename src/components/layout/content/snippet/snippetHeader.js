@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { get, getOr } from 'lodash/fp';
 import styled from 'styled-components';
 
-import { defaultGistURL } from 'constants/config';
 import {
   baseAppColor, borderColor, colorDanger, headerBgLightest 
 } from 'constants/colors';
@@ -17,6 +16,7 @@ import UtilityIcon from 'components/common/UtilityIcon';
 import ExternalLink from 'components/common/ExternalLink';
 import Input from 'components/common/controls/Input';
 import Anchor from 'components/common/Anchor';
+import { getSnippetUrl } from 'utils/url';
 
 const SnippetHeaderWrapper = styled.div`
   display: flex;
@@ -64,7 +64,7 @@ export class SnippetHeader extends React.Component {
     const {
       file, username, snippetId, edit 
     } = this.props;
-    const openOnWebUrl = `${defaultGistURL}/${username}/${snippetId}#file-${file.filename}`;
+    const openOnWebUrl = `${getSnippetUrl('/gist')}/${username}/${snippetId}#file-${file.filename}`;
 
     return (
       <SnippetHeaderWrapper>

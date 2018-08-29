@@ -25,7 +25,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ ljBQIR"
+      className="LoginWrapper-kmdtRZ bfWxRb"
     >
       <Logo>
         <div
@@ -223,7 +223,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ ljBQIR"
+      className="LoginWrapper-kmdtRZ bfWxRb"
     >
       <Logo>
         <div
@@ -242,13 +242,13 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
         </h4>
         <Input
           onChange={[Function]}
-          placeholder="Enterprise domain"
+          placeholder="http://my.enterprise.domain.com"
           type="text"
         >
           <StyledInput
             disabled={false}
             onChange={[Function]}
-            placeholder="Enterprise domain"
+            placeholder="http://my.enterprise.domain.com"
             title=""
             type="text"
           >
@@ -256,7 +256,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
               className="StyledInput-kKifnt NdlXS"
               disabled={false}
               onChange={[Function]}
-              placeholder="Enterprise domain"
+              placeholder="http://my.enterprise.domain.com"
               title=""
               type="text"
             />
@@ -448,7 +448,7 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ ljBQIR"
+      className="LoginWrapper-kmdtRZ bfWxRb"
     >
       <Logo>
         <div
@@ -562,7 +562,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ ljBQIR"
+      className="LoginWrapper-kmdtRZ bfWxRb"
     >
       <Logo>
         <div

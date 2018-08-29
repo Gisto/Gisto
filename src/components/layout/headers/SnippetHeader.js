@@ -16,8 +16,8 @@ import { dateFormateToString } from 'utils/date';
 import UtilityIcon from 'components/common/UtilityIcon';
 import Input from 'components/common/controls/Input';
 import Anchor from 'components/common/Anchor';
-import { defaultGistURL } from 'constants/config';
 import ExternalLink from 'components/common/ExternalLink';
+import { getSnippetUrl } from 'utils/url';
 
 const SnippetHeaderWrapper = styled.div`
   display: flex;
@@ -225,15 +225,16 @@ export class SnippetHeader extends React.Component {
   };
 
   render() {
+    const snippetUrl = getSnippetUrl('/gist');
     const {
       snippets, match, editSnippet, comments
     } = this.props;
     const snippet = get(match.params.id, snippets);
     const snippetId = get('id', snippet);
-    const openOnWebUrl = `${defaultGistURL}/${get('username', snippet)}/${snippetId}`;
-    const httpCloneUrl = `git clone ${defaultGistURL}/${snippetId}.git`;
-    const sshCloneUrl = `git clone git@gist.github.com:${snippetId}.git`;
-    const openInGHDesktop = `x-github-client://openRepo/${defaultGistURL}/${snippetId}`;
+    const openOnWebUrl = `${snippetUrl}/${get('username', snippet)}/${snippetId}`;
+    const httpCloneUrl = `git clone ${snippetUrl}/${snippetId}.git`;
+    const sshCloneUrl = `git clone git@${snippetUrl}:${snippetId}.git`;
+    const openInGHDesktop = `x-github-client://openRepo/${snippetUrl}/${snippetId}`;
 
     return (
       <SnippetHeaderWrapper>
@@ -252,7 +253,7 @@ export class SnippetHeader extends React.Component {
                   { map((change) => (
                     <li>
                       <ExternalLink href={
-                        `${defaultGistURL}/${change.user.login}/${snippetId}/revisions#diff-${change.version}`
+                        `${snippetUrl}/${change.user.login}/${snippetId}/revisions#diff-${change.version}`
                       }>
                         <History>
                           <div className="changed">
