@@ -1,5 +1,4 @@
 import React from 'react';
-// import { ipcRenderer } from 'electron';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get } from 'lodash/fp';
@@ -10,7 +9,9 @@ import { baseAppColor, bg } from 'constants/colors';
 
 import * as loginActions from 'actions/login';
 
-import { setToken } from 'utils/login';
+import {
+  setToken, setEnterpriseDomain
+} from 'utils/login';
 import { isElectron } from 'utils/electron';
 import { isomorphicReload } from 'utils/isomorphic';
 
@@ -19,6 +20,7 @@ import Input from 'components/common/controls/Input';
 import Icon from 'components/common/Icon';
 import Anchor from 'components/common/Anchor';
 import ExternalLink from 'components/common/ExternalLink';
+import Loading from 'components/common/Loading';
 
 import * as packageJson from '../../package.json';
 
@@ -45,7 +47,8 @@ const LoginWrapper = styled.div`
   }
 
   input {
-    padding: 10px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
     border: none;
     border-bottom: 1px solid ${baseAppColor};
     background: #fff;
@@ -121,6 +124,10 @@ export class LogIn extends React.Component {
   };
 
   loginWithBasic = (user, pass, twoFactorAuth) => {
+    if (this.state.fieldsData.enterpriseDomain) {
+      setEnterpriseDomain(this.state.fieldsData.enterpriseDomain);
+    }
+
     this.props.loginBasic(user, pass, twoFactorAuth);
   };
 
@@ -182,7 +189,7 @@ export class LogIn extends React.Component {
             <Input
               type="text"
               onChange={ (event) => this.setField('enterpriseDomain', event.target.value) }
-              placeholder="Enterprise domain"/>
+              placeholder="http://my.enterprise.domain.com"/>
           </div>
         )}
 
@@ -244,7 +251,7 @@ export class LogIn extends React.Component {
 
         {this.props.loading && (
           <p>
-            <Icon type="loading" color={ baseAppColor }/> Loading...
+            <Loading color={ baseAppColor } text="Loading..." />
           </p>
         )}
       </LoginWrapper>
@@ -260,7 +267,7 @@ const mapStateToProps = (state) => ({
 LogIn.propTypes = {
   loginBasic: PropTypes.func,
   loginWithToken: PropTypes.func,
-  twoFactorAuth: PropTypes.string,
+  twoFactorAuth: PropTypes.bool,
   loading: PropTypes.bool
 };
 

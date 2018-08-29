@@ -17,7 +17,7 @@ module.exports = {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
     extensions: ['.js', '.jsx', '.json']
   },
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {

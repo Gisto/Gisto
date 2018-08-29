@@ -2,9 +2,10 @@
 
 import * as superagent from 'superagent';
 import * as AT from 'constants/actionTypes';
-import { DEFAULT_API_ENDPOINT_URL, gitHubTokenKeyInStorage } from 'constants/config';
+import { gitHubTokenKeyInStorage } from 'constants/config';
 import { setNotification } from 'utils/notifications';
-import { setToken, removeToken } from 'utils/login';
+import { getApiUrl } from 'utils/url';
+import { setToken, removeToken, removeEnterpriseDomain } from 'utils/login';
 import { get, set } from 'lodash/fp';
 
 let API = superagent;
@@ -39,7 +40,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.GET_RATE_LIMIT) {
       dispatch({ type: AT.GET_RATE_LIMIT.PENDING, action });
-      API.get(`${DEFAULT_API_ENDPOINT_URL}/rate_limit`)
+      API.get(`${getApiUrl('/api/v3')}/rate_limit`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -52,6 +53,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.LOGOUT) {
       removeToken();
+      removeEnterpriseDomain();
       window.location.reload(true);
     }
 
@@ -59,14 +61,16 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
       dispatch({ type: AT.LOGIN_BASIC.PENDING, action });
       const tokenString = btoa(`${action.payload.user}:${action.payload.pass}`);
       let basicAuthHeader = {
-        Authorization: `basic ${tokenString}`
+        Authorization: `basic ${tokenString}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
       };
 
       if (action.payload.twoFactorAuth) {
         basicAuthHeader = set('X-GitHub-OTP', action.payload.twoFactorAuth, basicAuthHeader);
       }
 
-      API.post(`${DEFAULT_API_ENDPOINT_URL}/authorizations`)
+      API.post(`${getApiUrl('/api/v3')}/authorizations`)
         .set(basicAuthHeader)
         .send(JSON.stringify({
           scopes: ['gist'],
@@ -96,7 +100,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.LOGIN_WITH_TOKEN) {
       dispatch({ type: AT.LOGIN_WITH_TOKEN.PENDING, action });
-      API.get(`${DEFAULT_API_ENDPOINT_URL}/user`)
+      API.get(`${getApiUrl('/api/v3')}/user`)
         .set({ Authorization: `token ${action.payload.token}` })
         .end((error, result) => {
           errorHandler(error, result);
@@ -110,7 +114,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.GET_USER) {
       dispatch({ type: AT.GET_USER.PENDING, action });
-      API.get(`${DEFAULT_API_ENDPOINT_URL}/user`)
+      API.get(`${getApiUrl('/api/v3')}/user`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -124,7 +128,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     if (action.type === AT.GET_STARRED_SNIPPETS) {
       dispatch({ type: AT.GET_STARRED_SNIPPETS.PENDING, action });
 
-      return API.get(`${DEFAULT_API_ENDPOINT_URL}/gists/starred`)
+      return API.get(`${getApiUrl('/api/v3')}/gists/starred`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -136,7 +140,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     if (action.type === AT.GET_SNIPPETS) {
       dispatch({ type: AT.GET_SNIPPETS.PENDING, action });
 
-      const getGists = (page) => API.get(`${DEFAULT_API_ENDPOINT_URL}/gists?page=${page}&per_page=100`)
+      const getGists = (page) => API.get(`${getApiUrl('/api/v3')}/gists?page=${page}&per_page=100`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -158,7 +162,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     if (action.type === AT.GET_SNIPPET) {
       dispatch({ type: AT.GET_SNIPPET.PENDING, action });
 
-      return API.get(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}`)
+      return API.get(`${getApiUrl('/api/v3')}/gists/${action.payload.id}`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -175,7 +179,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     if (action.type === AT.SET_STAR) {
       dispatch({ type: AT.SET_STAR.PENDING, action });
 
-      return API.put(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/star`)
+      return API.put(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/star`)
         .set(_headers({ 'Content-Length': 0 }))
         .end((error, result) => {
           errorHandler(error, result);
@@ -199,7 +203,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     if (action.type === AT.UNSET_STAR) {
       dispatch({ type: AT.UNSET_STAR.PENDING, action });
 
-      return API.delete(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/star`)
+      return API.delete(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/star`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -222,7 +226,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.CREATE_SNIPPET) {
       dispatch({ type: AT.CREATE_SNIPPET.PENDING, action });
-      API.post(`${DEFAULT_API_ENDPOINT_URL}/gists`)
+      API.post(`${getApiUrl('/api/v3')}/gists`)
         .set(_headers())
         .send(JSON.stringify(action.payload))
         .end((error, result) => {
@@ -240,7 +244,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.DELETE_SNIPPET) {
       dispatch({ type: AT.DELETE_SNIPPET.PENDING, action });
-      API.delete(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}`)
+      API.delete(`${getApiUrl('/api/v3')}/gists/${action.payload.id}`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -257,7 +261,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     if (action.type === AT.UPDATE_SNIPPET) {
       dispatch({ type: AT.UPDATE_SNIPPET.PENDING, action });
 
-      API.patch(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}`)
+      API.patch(`${getApiUrl('/api/v3')}/gists/${action.payload.id}`)
         .set(_headers())
         .send(action.payload.snippet)
         .end((error, result) => {
@@ -273,7 +277,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.GET_SNIPPET_COMMENTS) {
       dispatch({ type: AT.GET_SNIPPET_COMMENTS.PENDING, meta: action.meta });
-      API.get(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/comments`)
+      API.get(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/comments`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -290,7 +294,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.CREATE_SNIPPET_COMMENT) {
       dispatch({ type: AT.CREATE_SNIPPET_COMMENT.PENDING, action });
-      API.post(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/comments`)
+      API.post(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/comments`)
         .set(_headers())
         .send({ body: action.payload.body })
         .end((error, result) => {
@@ -308,7 +312,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.DELETE_COMMENT) {
       dispatch({ type: AT.DELETE_COMMENT.PENDING, action });
-      API.delete(`${DEFAULT_API_ENDPOINT_URL}/gists/${action.payload.id}/comments/${action.payload.commentId}`)
+      API.delete(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/comments/${action.payload.commentId}`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
