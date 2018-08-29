@@ -18,7 +18,7 @@ All your data is stored on GitHub and you can access it from GitHub Gists at any
 
 ## Getting gisto
 
-You can download gisto desctop from [our website](https://www.gistoapp.com/) or from [releases](https://github.com/Gisto/Gisto/releases) tab
+You can download gisto for (macOS, Windows, Linux) desktop from [our website](https://www.gistoapp.com/) or from [releases](https://github.com/Gisto/Gisto/releases) tab
 
 Full featured Web based client available at: [https://web.gistoapp.com](https://web.gistoapp.com) 
 
