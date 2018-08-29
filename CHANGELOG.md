@@ -1,3 +1,6 @@
+### v1.9.85
+*  CHORE (release): change from pre-release to release [View](https://github.com/Gisto/Gisto/commit/ba66c50ac145f7c0b88b14c0579275d6316e5f7a)
+
 ### v1.9.84
 *  CHORE (readme): update release cycle [View](https://github.com/Gisto/Gisto/commit/6f2cd836ec4eacb1ca5b10b12715c7c80ca92367)
 *  TOOLS (webpack): add size plugin [View](https://github.com/Gisto/Gisto/commit/95b12f9a40b7de29d8bf8b4b8a22bab3c720ba15)
