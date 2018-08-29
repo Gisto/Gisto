@@ -9,6 +9,7 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
       to="/"
     >
       { Gisto }
+       
     </Link>
   </Logo>
   <MiddleArea>

@@ -18,6 +18,7 @@ import Input from 'components/common/controls/Input';
 import Anchor from 'components/common/Anchor';
 import ExternalLink from 'components/common/ExternalLink';
 import { getSnippetUrl } from 'utils/url';
+import { isEnterpriseLogin } from 'utils/login';
 
 const SnippetHeaderWrapper = styled.div`
   display: flex;
@@ -325,21 +326,25 @@ export class SnippetHeader extends React.Component {
                     Open in GitHub desktop
                   </ExternalLink>
                 </li>
-                <li>
-                  <ExternalLink href={ `http://plnkr.co/edit/gist:${snippetId}?p=preview` }>
-                    Open in Plnkr
-                  </ExternalLink>
-                </li>
-                <li>
-                  <ExternalLink href={ `http://jsbin.com/gist/${snippetId}` }>
-                    Open in JSBin
-                  </ExternalLink>
-                </li>
-                <li>
-                  <ExternalLink href={ `http://jsfiddle.net/gh/gist/library/pure/${snippetId}/` }>
-                    Open in jsfiddle
-                  </ExternalLink>
-                </li>
+                { !isEnterpriseLogin() && (
+                  <React.Fragment>
+                    <li>
+                      <ExternalLink href={ `http://plnkr.co/edit/gist:${snippetId}?p=preview` }>
+                        Open in Plnkr
+                      </ExternalLink>
+                    </li>
+                    <li>
+                      <ExternalLink href={ `http://jsbin.com/gist/${snippetId}` }>
+                        Open in JSBin
+                      </ExternalLink>
+                    </li>
+                    <li>
+                      <ExternalLink href={ `http://jsfiddle.net/gh/gist/library/pure/${snippetId}/` }>
+                        Open in jsfiddle
+                      </ExternalLink>
+                    </li>
+                  </React.Fragment>
+                ) }
               </ul>
             </UtilityIcon>
           </div>

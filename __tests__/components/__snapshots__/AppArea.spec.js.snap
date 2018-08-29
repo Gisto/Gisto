@@ -34,8 +34,9 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     />
   </Link>
   <Avatar
+    alt="user"
     height="32"
-    title="user"
+    title="us"
     width="32"
   />
   <Link

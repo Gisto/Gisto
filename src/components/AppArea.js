@@ -37,6 +37,8 @@ const UserAreaWrapper = styled.div`
 const Avatar = styled.img`
   border-radius: 4px;
   border: 1px solid ${headerColor};
+  line-height: 31px;
+  text-align: center;
 `;
 
 const StyledUtilityIcon = styled(UtilityIcon)`
@@ -122,7 +124,8 @@ export class AppArea extends React.Component {
           <Icon color={ lightText } type="cog"/>
         </Link>
         <Avatar
-          title={ name || login }
+          title={ login && login.charAt(0) + login.charAt(1) }
+          alt={ name || login }
           src={ avatar }
           width="32"
           height="32"/>
