@@ -264,6 +264,8 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
               type: AT.DELETE_SNIPPET.SUCCESS,
               meta: action.meta
             });
+
+            action.payload.history.push('/');
           }
         });
     }
