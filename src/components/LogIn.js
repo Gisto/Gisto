@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { get } from 'lodash/fp';
+import { get, isEmpty } from 'lodash/fp';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import { setNotification } from 'utils/notifications';
 
 import { baseAppColor, bg } from 'constants/colors';
 
 import * as loginActions from 'actions/login';
 
-import {
-  setToken, setEnterpriseDomain
-} from 'utils/login';
+import { setEnterpriseDomain, setToken } from 'utils/login';
 import { isElectron } from 'utils/electron';
 import { isomorphicReload } from 'utils/isomorphic';
 
@@ -87,6 +86,11 @@ const ResetLoginType = styled.div`
   margin: 10px auto 0;
 `;
 
+const TokenInput = styled(Input)`
+  margin-right: 10px;
+  margin-left: 10px;
+`;
+
 export class LogIn extends React.Component {
   state = {
     fieldsData: {},
@@ -123,12 +127,36 @@ export class LogIn extends React.Component {
     }));
   };
 
+  loginWithToken = () => {
+    if (isEmpty(this.state.fieldsData.token)) {
+      setNotification({
+        title: 'Validation',
+        body: 'Looks like <b>Token</b> field left empty',
+        type: 'error'
+      });
+
+      return null;
+    }
+
+    return this.props.loginWithToken(this.state.fieldsData.token);
+  };
+
   loginWithBasic = (user, pass, twoFactorAuth) => {
+    if (isEmpty(user) || isEmpty(pass)) {
+      setNotification({
+        title: 'Validation',
+        body: 'Looks like <b>Username</b> or <b>Password</b> left empty',
+        type: 'error'
+      });
+
+      return null;
+    }
+
     if (this.state.fieldsData.enterpriseDomain) {
       setEnterpriseDomain(this.state.fieldsData.enterpriseDomain);
     }
 
-    this.props.loginBasic(user, pass, twoFactorAuth);
+    return this.props.loginBasic(user, pass, twoFactorAuth);
   };
 
   loginWithOauth2 = () => {
@@ -164,17 +192,16 @@ export class LogIn extends React.Component {
         {this.state.loginType.token && (
           <div>
             <h4>Sign-in using GitHub token</h4>
-            <Input
-              type="text"
-              placeholder="GitHub token"
-              onChange={ (event) => this.setField('token', event.target.value) }/>
+            <TokenInput type="text"
+                        placeholder="GitHub token"
+                        onChange={ (event) => this.setField('token', event.target.value) }/>
             <ExternalLink target="_new" href="https://github.com/settings/tokens">
               <Icon type="info" size="16" color={ baseAppColor }/>
             </ExternalLink>
             <br/>
             <Button
               icon="success"
-              onClick={ () => this.props.loginWithToken(this.state.fieldsData.token) }>
+              onClick={ () => this.loginWithToken(this.state.fieldsData.token) }>
               Log-in
             </Button>
             <br/>
