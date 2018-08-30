@@ -27,13 +27,21 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
   return (next) => (action) => {
     const errorHandler = (error, result) => {
       if (error) {
-        setNotification(`ERROR: ${error.status}: ${error.response.message} ${error.response.body.message}`);
+        setNotification({
+          title: 'Error',
+          body: `${error.status}: ${error.response.message} ${error.response.body.message}`,
+          type: 'error'
+        });
       } else if (result.statusCode > 204) {
-        setNotification(`INFO: ${result.statusText} - ${result.body.description}`);
+        setNotification({
+          title: 'Warning',
+          body: `${result.statusText} - ${result.body.description}`,
+          type: 'warn'
+        });
       }
 
       dispatch({
-        type: `${action.type}_FAILURE`,
+        type: action.type.FAILURE,
         payload: error
       });
     };
