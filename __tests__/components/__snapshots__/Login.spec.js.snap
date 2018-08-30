@@ -3,23 +3,7 @@
 exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
 <LogIn
   loading={false}
-  loginBasic={
-    [MockFunction] {
-      "calls": Array [
-        Array [
-          "",
-          undefined,
-          undefined,
-        ],
-      ],
-      "results": Array [
-        Object {
-          "isThrow": false,
-          "value": undefined,
-        },
-      ],
-    }
-  }
+  loginBasic={[MockFunction]}
   loginWithToken={[MockFunction]}
   twoFactorAuth=""
 >
@@ -579,28 +563,36 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
         <h4>
           Sign-in using GitHub token
         </h4>
-        <Input
+        <TokenInput
           onChange={[Function]}
           placeholder="GitHub token"
           type="text"
         >
-          <StyledInput
-            disabled={false}
+          <Input
+            className="TokenInput-bIdMSs hlXMqT"
             onChange={[Function]}
             placeholder="GitHub token"
-            title=""
             type="text"
           >
-            <input
-              className="StyledInput-kKifnt NdlXS"
+            <StyledInput
+              className="TokenInput-bIdMSs hlXMqT"
               disabled={false}
               onChange={[Function]}
               placeholder="GitHub token"
               title=""
               type="text"
-            />
-          </StyledInput>
-        </Input>
+            >
+              <input
+                className="TokenInput-bIdMSs hlXMqT StyledInput-kKifnt NdlXS"
+                disabled={false}
+                onChange={[Function]}
+                placeholder="GitHub token"
+                title=""
+                type="text"
+              />
+            </StyledInput>
+          </Input>
+        </TokenInput>
         <ExternalLink
           href="https://github.com/settings/tokens"
           target="_new"

@@ -1,5 +1,7 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import 'assets/styles.css';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import { isLoggedIn } from 'utils/login';
 
@@ -18,6 +20,7 @@ export const Layout = () => (
         <Main/>
       </React.Fragment>
     ) : <LogIn/> }
+    <ToastContainer autoClose={ 8000 } />
   </App>
 );
 
