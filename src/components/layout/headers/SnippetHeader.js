@@ -5,6 +5,7 @@ import {
   get, map, size, toString, isEmpty, join, drop
 } from 'lodash/fp';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 
 import {
   baseAppColor, colorDanger, colorSuccess, textColor
@@ -113,7 +114,7 @@ export class SnippetHeader extends React.Component {
 
   toggleStar = (id, starred) => starred ? this.props.unsetStar(id) : this.props.setStar(id);
 
-  deleteSnippet = (id) => this.props.deleteSnippet(id);
+  deleteSnippet = (id) => this.props.deleteSnippet(id, this.props.history);
 
   prepareAndUpdateSnippet = () => {
     const snippet = get(this.props.match.params.id, this.props.snippets);
@@ -377,7 +378,8 @@ SnippetHeader.propTypes = {
   toggleSnippetComments: PropTypes.func,
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object,
-  comments: PropTypes.object
+  comments: PropTypes.object,
+  history: PropTypes.object
 };
 
 export default connect(mapStateToProps, {
@@ -392,4 +394,4 @@ export default connect(mapStateToProps, {
   addTempFile: snippetActions.addTempFile,
   updateSnippet: snippetActions.updateSnippet,
   toggleSnippetComments: snippetActions.toggleSnippetComments
-})(SnippetHeader);
+})(withRouter(SnippetHeader));

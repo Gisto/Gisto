@@ -89,12 +89,12 @@ export const createSnippet = ({
   }
 });
 
-export const deleteSnippet = (id) => ({
+export const deleteSnippet = (id, history) => ({
   meta: {
     id
   },
   type: AT.DELETE_SNIPPET,
-  payload: { id }
+  payload: { id, history }
 });
 
 export const editSnippet = (id) => ({
