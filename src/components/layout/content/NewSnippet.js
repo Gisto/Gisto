@@ -6,6 +6,7 @@ import {
   set, findIndex, map, filter, isEmpty
 } from 'lodash/fp';
 import uuid from 'uuid';
+import { withRouter } from 'react-router-dom';
 
 import * as snippetActions from 'actions/snippets';
 import { DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
@@ -106,7 +107,8 @@ export class NewSnippet extends React.Component {
     this.props.createSnippet({
       description: this.state.description,
       isPublic: this.state.public,
-      files: prepareFiles(this.state.files)
+      files: prepareFiles(this.state.files),
+      history: this.props.history
     });
   };
 
@@ -239,9 +241,10 @@ export class NewSnippet extends React.Component {
 }
 
 NewSnippet.propTypes = {
-  createSnippet: PropType.func
+  createSnippet: PropType.func,
+  history: PropType.object
 };
 
 export default connect(null, {
   createSnippet: snippetActions.createSnippet
-})(NewSnippet);
+})(withRouter(NewSnippet));
