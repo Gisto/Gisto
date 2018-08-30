@@ -3,11 +3,57 @@
 exports[`COMPONENTS - <Layout> render Layout when logged in 1`] = `
 <withRouter(App)>
   <Connect(withRouter(LogIn)) />
+  <ToastContainer
+    autoClose={8000}
+    bodyClassName={null}
+    className={null}
+    closeButton={
+      <CloseButton
+        ariaLabel="close"
+      />
+    }
+    closeOnClick={true}
+    draggable={true}
+    draggablePercent={80}
+    hideProgressBar={false}
+    newestOnTop={false}
+    pauseOnFocusLoss={true}
+    pauseOnHover={true}
+    position="top-right"
+    progressClassName={null}
+    rtl={false}
+    style={null}
+    toastClassName={null}
+    transition={[Function]}
+  />
 </withRouter(App)>
 `;
 
 exports[`COMPONENTS - <Layout> render Layout when not logged in 1`] = `
 <withRouter(App)>
   <Connect(withRouter(LogIn)) />
+  <ToastContainer
+    autoClose={8000}
+    bodyClassName={null}
+    className={null}
+    closeButton={
+      <CloseButton
+        ariaLabel="close"
+      />
+    }
+    closeOnClick={true}
+    draggable={true}
+    draggablePercent={80}
+    hideProgressBar={false}
+    newestOnTop={false}
+    pauseOnFocusLoss={true}
+    pauseOnHover={true}
+    position="top-right"
+    progressClassName={null}
+    rtl={false}
+    style={null}
+    toastClassName={null}
+    transition={[Function]}
+  />
 </withRouter(App)>
 `;
