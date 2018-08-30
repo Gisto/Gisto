@@ -1,3 +1,7 @@
+### v1.9.86
+*  Update README.md [View](https://github.com/Gisto/Gisto/commit/f8e69863d3796db925e7cb70076a0fcf13919a13)
+*  FEATURE (notifications): add toast notifications [View](https://github.com/Gisto/Gisto/commit/3d1e6109f4c9244e833b226419ca9eb1fb49e27d)
+
 ### v1.9.85
 *  CHORE (release): change from pre-release to release [View](https://github.com/Gisto/Gisto/commit/ba66c50ac145f7c0b88b14c0579275d6316e5f7a)
 
