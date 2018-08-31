@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { HashRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 
-import store from 'store/store';
+import store, { history } from 'store/store';
 import _ from 'lodash';
 import * as fp from 'lodash/fp';
 
@@ -38,9 +38,9 @@ if (process.env.NODE_ENV === 'development') {
 
 ReactDOM.render(
   <Provider store={ store }>
-    <HashRouter>
+    <ConnectedRouter history={ history }>
       <Gisto/>
-    </HashRouter>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('gisto')
 );
