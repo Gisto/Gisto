@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { get, isEmpty } from 'lodash/fp';
-import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import { setNotification } from 'utils/notifications';
 
@@ -304,4 +303,4 @@ export default connect(
     loginBasic: loginActions.loginWithBasicAuth,
     loginWithToken: loginActions.loginWithToken
   }
-)(withRouter(LogIn));
+)(LogIn);
