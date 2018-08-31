@@ -5,7 +5,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
   loading={false}
   loginBasic={[MockFunction]}
   loginWithToken={[MockFunction]}
-  twoFactorAuth=""
+  twoFactorAuth={false}
 >
   <LoginWrapper>
     <div
@@ -203,7 +203,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
   loading={false}
   loginBasic={[MockFunction]}
   loginWithToken={[MockFunction]}
-  twoFactorAuth=""
+  twoFactorAuth={false}
 >
   <LoginWrapper>
     <div
@@ -428,7 +428,7 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
   loading={false}
   loginBasic={[MockFunction]}
   loginWithToken={[MockFunction]}
-  twoFactorAuth=""
+  twoFactorAuth={false}
 >
   <LoginWrapper>
     <div
@@ -542,7 +542,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
   loading={false}
   loginBasic={[MockFunction]}
   loginWithToken={[MockFunction]}
-  twoFactorAuth=""
+  twoFactorAuth={false}
 >
   <LoginWrapper>
     <div

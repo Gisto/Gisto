@@ -2,7 +2,7 @@
 
 exports[`COMPONENTS - <Layout> render Layout when logged in 1`] = `
 <withRouter(App)>
-  <Connect(withRouter(LogIn)) />
+  <Connect(LogIn) />
   <ToastContainer
     autoClose={8000}
     bodyClassName={null}
@@ -31,7 +31,7 @@ exports[`COMPONENTS - <Layout> render Layout when logged in 1`] = `
 
 exports[`COMPONENTS - <Layout> render Layout when not logged in 1`] = `
 <withRouter(App)>
-  <Connect(withRouter(LogIn)) />
+  <Connect(LogIn) />
   <ToastContainer
     autoClose={8000}
     bodyClassName={null}

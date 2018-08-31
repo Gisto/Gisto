@@ -4,7 +4,7 @@ jest.mock('../../package.json', () => ({ version: 'X.X.X' }));
 const propSetup = (props) => ({
   loginBasic: jest.fn(),
   loginWithToken: jest.fn(),
-  twoFactorAuth: '',
+  twoFactorAuth: false,
   loading: false,
   ...props
 });
