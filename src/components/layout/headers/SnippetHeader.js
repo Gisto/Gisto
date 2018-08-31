@@ -114,7 +114,18 @@ export class SnippetHeader extends React.Component {
 
   toggleStar = (id, starred) => starred ? this.props.unsetStar(id) : this.props.setStar(id);
 
-  deleteSnippet = (id) => this.props.deleteSnippet(id, this.props.history);
+  deleteSnippet = (id) => {
+    // eslint-disable-next-line no-restricted-globals, no-alert
+    const sure = confirm('Are you sure you want to delete this snippet?');
+
+    if (sure === true) {
+      this.props.deleteSnippet(id, this.props.history);
+
+      return true;
+    }
+
+    return false;
+  };
 
   prepareAndUpdateSnippet = () => {
     const snippet = get(this.props.match.params.id, this.props.snippets);
