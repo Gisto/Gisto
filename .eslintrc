@@ -21,7 +21,8 @@
 		"expect": true,
 		"shallow": true,
 		"sinon": true,
-		"alert": true
+		"alert": true,
+		"confirm": true
 	},
 	"settings": {
 		"import/resolver": "webpack"
