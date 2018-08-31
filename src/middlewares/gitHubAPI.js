@@ -28,11 +28,19 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
   return (next) => (action) => {
     const errorHandler = (error, result) => {
       if (error) {
-        setNotification({
-          title: 'Error',
-          body: `${error.status}: ${error.response.message} ${error.response.body.message}`,
-          type: 'error'
-        });
+        if (error.response.headers['x-github-otp']) {
+          setNotification({
+            title: 'Two factor authentication',
+            body: `${error.response.body.message} (${error.status})`,
+            type: 'info'
+          });
+        } else {
+          setNotification({
+            title: 'Error',
+            body: `${error.response.body.message} (${error.status})`,
+            type: 'error'
+          });
+        }
       } else if (result.statusCode > 204) {
         setNotification({
           title: 'Warning',
