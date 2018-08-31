@@ -248,7 +248,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
               payload: result.body
             });
 
-            action.payload.history.push(`/snippet/${result.body.id}`);
+            dispatch(push(`/snippet/${result.body.id}`));
           }
         });
     }
