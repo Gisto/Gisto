@@ -7,6 +7,7 @@ import { setNotification } from 'utils/notifications';
 import { getApiUrl } from 'utils/url';
 import { setToken, removeToken, removeEnterpriseDomain } from 'utils/login';
 import { get, set } from 'lodash/fp';
+import { push } from 'connected-react-router';
 
 let API = superagent;
 
@@ -265,7 +266,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
               meta: action.meta
             });
 
-            action.payload.history.push('/');
+            dispatch(push('/'));
           }
         });
     }

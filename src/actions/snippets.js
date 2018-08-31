@@ -73,7 +73,7 @@ export const unStarSnippet = (id) => ({
 });
 
 export const createSnippet = ({
-  description, files, isPublic, history
+  description, files, isPublic
 }) => ({
   meta: {
     description,
@@ -84,8 +84,7 @@ export const createSnippet = ({
   payload: {
     description,
     public: isPublic,
-    files,
-    history
+    files
   }
 });
 

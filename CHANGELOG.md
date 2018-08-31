@@ -1,3 +1,8 @@
+### v1.9.87
+*  FIX (new snippet): navigate to snippet after creation [View](https://github.com/Gisto/Gisto/commit/7dd29dab32f292513fa74c6f4ab4206527e38861)
+*  FIX (delete snippet): navigate to dashboard after deletion [View](https://github.com/Gisto/Gisto/commit/fcd47e0b85db9e1e3886584128f028a6f56ecac7)
+*  FIX (delete snippet): confirm dialog [View](https://github.com/Gisto/Gisto/commit/c45af9d30fa22cb61b645af5d613bbe5f7c1bfc9)
+
 ### v1.9.86
 *  Update README.md [View](https://github.com/Gisto/Gisto/commit/f8e69863d3796db925e7cb70076a0fcf13919a13)
 *  FEATURE (notifications): add toast notifications [View](https://github.com/Gisto/Gisto/commit/3d1e6109f4c9244e833b226419ca9eb1fb49e27d)
