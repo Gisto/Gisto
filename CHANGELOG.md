@@ -1,3 +1,10 @@
+### v1.9.88
+*  Intergate react router with redux [View](https://github.com/Gisto/Gisto/commit/66325e55ced0b9823bc07f8c2822ec83b0575a4a)
+*  FIX (new snippet): redirect with new action upon creating new snipper [View](https://github.com/Gisto/Gisto/commit/4d603176f31f5c678ce3cf4d1f99d76c9861804d)
+*  CLEANUP (routing): remove unused routing dependant code [View](https://github.com/Gisto/Gisto/commit/cb21aaf316f028d55c20fe507e7ac551cd45013a)
+*  FIX (2fa): do not tread 2fa notification at login as error [View](https://github.com/Gisto/Gisto/commit/9ad521b83de3ed8cf608ebb4d00fe01ba0a5df7c)
+*  FEATURE (emoji): render emoji in markdown (with custom renderer.text) closes #199 [View](https://github.com/Gisto/Gisto/commit/4d62ead16093f126291513d560807686bf110ea5)
+
 ### v1.9.87
 *  FIX (new snippet): navigate to snippet after creation [View](https://github.com/Gisto/Gisto/commit/7dd29dab32f292513fa74c6f4ab4206527e38861)
 *  FIX (delete snippet): navigate to dashboard after deletion [View](https://github.com/Gisto/Gisto/commit/fcd47e0b85db9e1e3886584128f028a6f56ecac7)
