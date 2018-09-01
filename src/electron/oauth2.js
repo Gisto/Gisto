@@ -1,21 +1,16 @@
 const { BrowserWindow, ipcMain } = require('electron');
 const tokenRequest = require('superagent');
+const { gateKeeperURL } = require('constants/config');
 
 const options = {
   client_id: process.env.GISTO_GITHUB_CLIENT_ID,
-  client_secret: process.env.GISTO_GITHUB_CLIENT_SECRET,
   scopes: ['user', 'gist']
 };
 
 async function requestGithubToken(ops, code) {
-  const res = await tokenRequest
-    .post('https://github.com/login/oauth/access_token', {
-      client_id: ops.client_id,
-      client_secret: ops.client_secret,
-      code
-    });
+  const res = await tokenRequest.get(`${gateKeeperURL}/${code}`);
 
-  return res.body.access_token;
+  return res.body.token;
 }
 
 ipcMain.on('oauth2-login', (event) => {

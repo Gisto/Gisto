@@ -9,4 +9,6 @@ export const defaultURL = 'https://github.com';
 export const DEFAULT_API_ENDPOINT_URL = 'https://api.github.com';
 export const defaultGistURL = 'https://gist.github.com';
 
+export const gateKeeperURL = 'https://gisto-gatekeeper.azurewebsites.net/authenticate';
+
 export const SIDEBAR_WIDTH = 350;
