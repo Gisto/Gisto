@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MonacoEditor from 'react-monaco-editor';
-import marked from 'marked';
 import styled from 'styled-components';
-import hljs from 'highlight.js';
 import { getSetting } from 'utils/settings';
 import { syntaxMap } from 'constants/editor';
 import { baseAppColor } from 'constants/colors';
@@ -11,9 +9,10 @@ import { baseAppColor } from 'constants/colors';
 import 'highlight.js/styles/default.css';
 
 import Loading from 'components/common/Loading';
+import Markdown from 'components/common/Markdown';
 
-const Markdown = styled.div`
-  padding: 20px 30px 0;
+const MarkdownComponent = styled(Markdown)`
+  padding: 20px 30px;
   ${(props) => props.width && `width: calc(${props.width} - 60px);`}
 `;
 
@@ -52,18 +51,6 @@ export class Editor extends React.Component {
       edit, onChange, file, className, id, language, filesCount, isNew
     } = this.props;
 
-    marked.setOptions({
-      renderer: new marked.Renderer(),
-      highlight: (code) => hljs.highlightAuto(code).value,
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: false
-    });
-
     if (!isNew && !file.content && !edit) {
       return (
         <LoadingIndicator>
@@ -73,11 +60,9 @@ export class Editor extends React.Component {
     }
 
     if (file.content && file.language === 'Markdown') {
-      const html = marked(file.content) || '';
-
       if (!edit) {
         return (
-          <Markdown className="markdown-body" dangerouslySetInnerHTML={ { __html: html } }/>
+          <MarkdownComponent text={ file.content }/>
         );
       }
 
@@ -93,7 +78,7 @@ export class Editor extends React.Component {
             value={ file.content }
             options={ editorOptions }
             onChange={ onChange }/>
-          <Markdown width="50%" className="markdown-body" dangerouslySetInnerHTML={ { __html: html } }/>
+          <MarkdownComponent width="50%" text={ file.content }/>
         </EditorWrapper>
       );
     }

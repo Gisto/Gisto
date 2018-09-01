@@ -7,6 +7,7 @@ import Sidebar from 'components/layout/sidebar/Sidebar';
 import Content from 'components/layout/Content';
 
 import * as snippetActions from 'actions/snippets';
+import * as emojiActions from 'actions/emoji';
 
 const MainWrapper = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ export class Main extends React.Component {
   componentDidMount() {
     this.props.getStarredSnippets();
     this.props.getSnippets();
+    this.props.getEmoji();
   }
 
   render() {
@@ -40,10 +42,12 @@ const mapStateToProps = (state) => ({
 Main.propTypes = {
   edit: PropTypes.bool,
   getSnippets: PropTypes.func,
-  getStarredSnippets: PropTypes.func
+  getStarredSnippets: PropTypes.func,
+  getEmoji: PropTypes.func
 };
 
 export default connect(mapStateToProps, {
   getSnippets: snippetActions.getSnippets,
+  getEmoji: emojiActions.getEmoji,
   getStarredSnippets: snippetActions.getStarredSnippets
 })(Main);

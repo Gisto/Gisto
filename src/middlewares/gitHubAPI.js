@@ -41,6 +41,12 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
             type: 'error'
           });
         }
+
+        dispatch({
+          type: action.type.FAILURE,
+          payload: error,
+          meta: action.meta
+        });
       } else if (result.statusCode > 204) {
         setNotification({
           title: 'Warning',
@@ -48,11 +54,6 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
           type: 'warn'
         });
       }
-
-      dispatch({
-        type: action.type.FAILURE,
-        payload: error
-      });
     };
 
     if (action.type === AT.GET_RATE_LIMIT) {
@@ -138,6 +139,19 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
           if (!error && result) {
             dispatch({ type: AT.GET_USER.SUCCESS, payload: result.body });
+          }
+        });
+    }
+
+    if (action.type === AT.GET_EMOJI) {
+      dispatch({ type: AT.GET_EMOJI.PENDING, action });
+      API.get(`${getApiUrl('/api/v3')}/emojis`)
+        .set(_headers())
+        .end((error, result) => {
+          errorHandler(error, result);
+
+          if (!error && result) {
+            dispatch({ type: AT.GET_EMOJI.SUCCESS, payload: result.body });
           }
         });
     }

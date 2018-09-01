@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import {
   get, isEmpty, map, size, orderBy
 } from 'lodash/fp';
-import marked from 'marked';
-import 'highlight.js/styles/default.css';
-import hljs from 'highlight.js';
 import styled from 'styled-components';
 
 import Icon from 'components/common/Icon';
@@ -18,6 +15,7 @@ import {
 } from 'constants/colors';
 
 import * as snippetActions from 'actions/snippets';
+import Markdown from 'components/common/Markdown';
 
 const CommentsWrapper = styled.div`
   margin: 0;
@@ -84,7 +82,6 @@ const NewComment = styled.div`
   margin-bottom: 20px;
 `;
 
-
 export class Comments extends React.Component {
   state = {
     newCommentBody: ''
@@ -106,18 +103,6 @@ export class Comments extends React.Component {
       comments, showComments, snippetId, deleteComment
     } = this.props;
 
-    marked.setOptions({
-      renderer: new marked.Renderer(),
-      highlight: (code) => hljs.highlightAuto(code).value,
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: false
-    });
-
     return (
       <CommentsWrapper show={ showComments }>
         <h3><Icon type="chat" color={ textColor }/> { size(comments) } Comment(s)</h3>
@@ -126,8 +111,6 @@ export class Comments extends React.Component {
           { isEmpty(comments)
             ? <NoComments>No comments to display</NoComments>
             : map((comment) => {
-              const html = marked(comment.body) || '';
-
               return (
                 <Comment key={ comment.id }>
                   <StyledDeleteIcon type="delete"
@@ -141,7 +124,7 @@ export class Comments extends React.Component {
                       height="32"/>
                     <span>by: { comment.user.login }<br/>{ comment.updated_at }</span>
                   </CommentHeader>
-                  <div className="markdown-body" dangerouslySetInnerHTML={ { __html: html } }/>
+                  <Markdown text={ comment.body }/>
                 </Comment>
               );
             }, orderBy((comment) => new Date(comment.updated_at), 'desc', comments))

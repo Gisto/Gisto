@@ -69,14 +69,8 @@ exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
     value="# hi"
     width="50%"
   />
-  <Markdown
-    className="markdown-body"
-    dangerouslySetInnerHTML={
-      Object {
-        "__html": "<h1 id=\\"hi\\">hi</h1>
-",
-      }
-    }
+  <MarkdownComponent
+    text="# hi"
     width="50%"
   />
 </EditorWrapper>
