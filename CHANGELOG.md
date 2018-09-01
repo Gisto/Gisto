@@ -1,3 +1,6 @@
+### v1.9.89
+*  FIX (oauth): oauth on electron [View](https://github.com/Gisto/Gisto/commit/3fd891ae7c104ec08259a6b7295636f9f319cd63)
+
 ### v1.9.88
 *  Intergate react router with redux [View](https://github.com/Gisto/Gisto/commit/66325e55ced0b9823bc07f8c2822ec83b0575a4a)
 *  FIX (new snippet): redirect with new action upon creating new snipper [View](https://github.com/Gisto/Gisto/commit/4d603176f31f5c678ce3cf4d1f99d76c9861804d)
