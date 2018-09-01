@@ -11,7 +11,8 @@ describe('COMPONENTS - <Main>', () => {
     const component = setup({
       edit: true,
       getSnippets: jest.fn(),
-      getStarredSnippets: jest.fn()
+      getStarredSnippets: jest.fn(),
+      getEmoji: jest.fn(),
     });
 
     expect(component).toMatchSnapshot();

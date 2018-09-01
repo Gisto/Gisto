@@ -4,12 +4,14 @@ import { snippets } from 'reducers/snippets';
 import { ui } from 'reducers/ui';
 import { users } from 'reducers/users';
 import { login } from 'reducers/login';
+import { emoji } from 'reducers/emoji';
 
 const reducers = {
   snippets,
   ui,
   users,
-  login
+  login,
+  emoji
 };
 
 const rootReducer = combineReducers(reducers);
