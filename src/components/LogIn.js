@@ -102,7 +102,11 @@ export class LogIn extends React.Component {
   };
 
   componentDidMount() {
-    this.setLoginType('basic');
+    if (isElectron) {
+      this.setLoginType('github');
+    } else {
+      this.setLoginType('basic');
+    }
   }
 
   setLoginType = (type) => {
