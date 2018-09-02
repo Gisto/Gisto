@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <KeyBindings> render KeyBindings 1`] = `
+<Keys>
+  <div>
+    <h3>
+      Available keys
+    </h3>
+    <p>
+      <kbd>
+        Shift
+      </kbd>
+      +
+      <kbd>
+        Shift
+      </kbd>
+       - Super search
+    </p>
+    <p>
+      <kbd>
+        ?
+      </kbd>
+       - This key binding doc
+    </p>
+  </div>
+</Keys>
+`;

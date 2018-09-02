@@ -123,6 +123,7 @@ export class SuperSearch extends Component {
                                 color={ baseAppColor }/>
             <StyledInput autoFocus
                          type="search"
+                         className="mousetrap"
                          onChange={ (event) => this.handleSearchTerm(event) }
                          placeholder="Search"/>
           </SearchBar>
