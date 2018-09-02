@@ -8,6 +8,7 @@ import { baseAppColor } from 'constants/colors';
 import { isElectron } from 'utils/electron';
 
 import SuperSearch from 'components/layout/SuperSearch';
+import KeyBindings from 'components/layout/KeyBindings';
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -36,11 +37,14 @@ const AppWrapper = styled.div`
 
 export class App  extends React.Component {
   state = {
-    showSuperSearch: false
+    showSuperSearch: false,
+    showKeyBindings: false
   };
 
   componentDidMount() {
     Mousetrap.bind(['shift shift', 'ctrl+f'], this.toggleSuperSesrch);
+    Mousetrap.bind(['?'], this.toggleKeyBindings);
+    Mousetrap.bind(['esc'], this.toggleAllOff);
 
     // Disallow to drop files
     document.addEventListener('dragover', (event) => event.preventDefault());
@@ -60,12 +64,27 @@ export class App  extends React.Component {
 
   componentWillUnmount() {
     Mousetrap.unbind(['shift shift', 'ctrl+f'], this.toggleSuperSesrch);
+    Mousetrap.unbind(['?'], this.toggleKeyBindings);
+    Mousetrap.unbind(['esc'], this.toggleAllOff);
   }
 
   toggleSuperSesrch = () => {
     this.setState((prevState) => ({
       showSuperSearch: !prevState.showSuperSearch
     }));
+  };
+
+  toggleKeyBindings = () => {
+    this.setState((prevState) => ({
+      showKeyBindings: !prevState.showKeyBindings
+    }));
+  };
+
+  toggleAllOff = () => {
+    this.setState({
+      showKeyBindings: false,
+      showSuperSearch: false
+    });
   };
 
   render() {
@@ -75,6 +94,7 @@ export class App  extends React.Component {
         { this.state.showSuperSearch && (
           <SuperSearch toggleSuperSesrch={ () => this.toggleSuperSesrch() }/>
         ) }
+        { this.state.showKeyBindings && (<KeyBindings/>) }
       </AppWrapper>
     );
   }
