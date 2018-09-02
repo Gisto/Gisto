@@ -2,7 +2,7 @@
 
 > Snippets made awesome
 
-[![Current Gisto version](https://img.shields.io/badge/version-v1.9.89-blue.svg?colorB=3F84A8&style=flat-square)](https://github.com/Gisto/Gisto)
+[![Current Gisto version](https://img.shields.io/badge/version-v1.9.90-blue.svg?colorB=3F84A8&style=flat-square)](https://github.com/Gisto/Gisto)
 [![GitHub license](https://img.shields.io/github/license/Gisto/Gisto.svg?style=flat-square)](https://github.com/Gisto/Gisto/blob/master/LICENSE)
 [![Coveralls github branch](https://img.shields.io/coveralls/github/Gisto/Gisto/next.svg?style=flat-square)](https://coveralls.io/github/Gisto/Gisto)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability-percentage/Gisto/Gisto.svg?style=flat-square)](https://codeclimate.com/github/Gisto/Gisto)
