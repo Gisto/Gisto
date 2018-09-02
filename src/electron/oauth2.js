@@ -1,6 +1,5 @@
 const { BrowserWindow, ipcMain } = require('electron');
 const tokenRequest = require('superagent');
-const { gateKeeperURL } = require('constants/config');
 
 const options = {
   client_id: process.env.GISTO_GITHUB_CLIENT_ID,
@@ -8,7 +7,7 @@ const options = {
 };
 
 async function requestGithubToken(ops, code) {
-  const res = await tokenRequest.get(`${gateKeeperURL}/${code}`);
+  const res = await tokenRequest.get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code}`);
 
   return res.body.token;
 }
