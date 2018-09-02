@@ -14,6 +14,7 @@
     "start:dev": "cross-env NODE_ENV=development npm run clean && webpack --mode development -w",
     "start:prod": "cross-env NODE_ENV=production npm run clean && webpack --mode production",
     "start:web": "cross-env NODE_ENV=development && webpack --config webpack.web.config.js --mode development -w",
+    "build:web": "cross-env NODE_ENV=production && webpack --config webpack.web.config.js --mode production",
     "electron:dev": "cross-env NODE_ENV=development electron ./dist",
     "electron:prod": "cross-env NODE_ENV=production electron ./dist",
     "prod": "concurrently \"npm run start:prod\" \"wait-on dist && npm run electron:prod\"",
