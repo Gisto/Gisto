@@ -1,3 +1,7 @@
+### v1.9.91
+*  FIX (webpack): web app build [View](https://github.com/Gisto/Gisto/commit/c07ce8380061911aed771de005aea5760611858f)
+*  TOOLD (web): add we deploy to travis-ci [View](https://github.com/Gisto/Gisto/commit/9a5b80a3eaa1135a7400aeb394a57c7d481ba0bc)
+
 ### v1.9.90
 *  FIX (oauth): bad import breaking the app [View](https://github.com/Gisto/Gisto/commit/692c06557c1f2bf10552bcbd9a191779a59e7b41)
 
