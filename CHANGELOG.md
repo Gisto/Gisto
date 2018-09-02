@@ -1,3 +1,6 @@
+### v1.9.90
+*  FIX (oauth): bad import breaking the app [View](https://github.com/Gisto/Gisto/commit/692c06557c1f2bf10552bcbd9a191779a59e7b41)
+
 ### v1.9.89
 *  FIX (oauth): oauth on electron [View](https://github.com/Gisto/Gisto/commit/3fd891ae7c104ec08259a6b7295636f9f319cd63)
 
