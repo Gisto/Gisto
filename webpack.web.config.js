@@ -5,7 +5,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const SizePlugin = require('size-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -80,7 +79,7 @@ module.exports = {
     new SizePlugin(),
     new HardSourceWebpackPlugin(),
     new MonacoWebpackPlugin(),
-    new webpack.IgnorePlugin(new RegExp(/^(fs|ipc|shell)$/)),
+    new webpack.IgnorePlugin(new RegExp(/^(fs|ipc|shell|@sentry\/electron)$/)),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
@@ -94,10 +93,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: 'src/icons', to: 'src/icons' }
-    ]),
-    new UglifyJsPlugin({
-      sourceMap: true
-    })
+    ])
   ],
   node: {
     __dirname: false,
