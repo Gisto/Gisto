@@ -18,9 +18,9 @@ All your data is stored on GitHub and you can access it from GitHub Gists at any
 
 ## Getting gisto
 
-You can download gisto for (macOS, Windows, Linux) desktop from [our website](https://www.gistoapp.com/) or from [releases](https://github.com/Gisto/Gisto/releases) tab
+- You can download Gisto for (macOS, Windows, Linux) desktop from [our website](https://www.gistoapp.com/) or from [releases](https://github.com/Gisto/Gisto/releases) tab
 
-Full featured Web based client available at: [https://web.gistoapp.com](https://web.gistoapp.com) 
+- Use featured Web based client available at: [https://web.gistoapp.com](https://web.gistoapp.com) 
 
 ## Future and Status
 
@@ -42,11 +42,31 @@ change.log of current version for more detailed info regarding new features, bug
 | Edit mode                                  | Settings                                      | Create new                                       |
 | ![Edit mode](https://imgur.com/JtUCsfI.png) | ![Settings](https://imgur.com/1yliYhR.png)     | ![Create new](https://imgur.com/aoW5V8E.png)      |
 
+# FEATURES
+
+* Advanced search
+* Enterprise log-in
+* Tags
+* Syntax highlight
+* Grouping by language
+* Quick snippet actions
+* Copy to clipboard
+* Copy file contents to clipboard
+* Editor settings
+* Theme color changer
+* Drag and drop to create files
+* Markdown preview (with emoji)
+* Comments
+* [Web app](https://web.gistoapp.com)
+* Open source
+
+And more...
+
 ## Gisto previous version
 
 Gisto v1 can be tracked via branch [v1](https://github.com/Gisto/Gisto/tree/v1)
 
-This version concidered obsolete and will not be updated
+This version considered obsolete and will not be updated
 
 ## Latest builds
 
@@ -74,10 +94,11 @@ This token will be saved permanently until you log out.
 
 You can find out more at the [F.A.Q.](http://www.gistoapp.com/faq/) section
 
-## How to contribute
+## How to help/contribute
 
 - fix issues, pull request are very welcome
-- write docs
+- write, improve docs
+- write tests (we use jest)
 - fix/contribute to Gisto's website (https://gistoapp.com)
 - suggest features and improvements
 - spread the word
@@ -94,18 +115,26 @@ Install dependencies in the directory created by cloning:
 
 `npm install`
 
-Run the local application:
+Run the local application (electron mode):
 
 `npm run dev`
 
+Run the local application (webapp):
+
+`npm run start:web` (you will also have to run webserver from `/web/` directory)
+
 _(for more commands, see `package.json` script section)_
+
+## Run tests
+
+`npm run test` or `npm t`
 
 ## Release cycle
 
 - make changes on `next` brnch **ONLY**
 - commit (this will run lint and tests) and push
 - merge `next` -> `master` with `git checkout master && git merge next --no-edit`
-- do not push, run `npm run release` (for patch version) or `npm run release:minor` (for minor version), will update readme and changelog, add and commit new tag and will also push
+- **do not push**, run `npm run release` (for patch version) or `npm run release:minor` (for minor version), will update readme and changelog, add and commit new tag and will also push
 
 ## License
 
