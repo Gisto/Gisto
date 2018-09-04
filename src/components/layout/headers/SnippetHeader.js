@@ -19,6 +19,7 @@ import Anchor from 'components/common/Anchor';
 import ExternalLink from 'components/common/ExternalLink';
 import { getSnippetUrl } from 'utils/url';
 import { isEnterpriseLogin } from 'utils/login';
+import Icon from 'components/common/Icon';
 
 const SnippetHeaderWrapper = styled.div`
   display: flex;
@@ -96,6 +97,10 @@ const Languages = styled.span`
 
 const StyledInput = styled(Input)`
   width: 100%;
+`;
+
+const LockIcon = styled(Icon)`
+  margin: 0 10px 0 0;
 `;
 
 export class SnippetHeader extends React.Component {
@@ -253,12 +258,15 @@ export class SnippetHeader extends React.Component {
 
         { this.renderTitle() }
 
+        <LockIcon type={ get('public', snippet) ? 'unlock' : 'lock' }
+                  size={ 22 }
+                  color={ baseAppColor }/>
+
         { this.state.showToolbox && (
           <div>
 
             { this.renderEditControls() }
 
-            <UtilityIcon size={ 22 } color={ baseAppColor } type={ get('public', snippet) ? 'unlock' : 'lock' }/>
             { size(get('history', snippet)) > 1 && (
               <UtilityIcon size={ 22 } color={ baseAppColor } type="time" dropdown>
                 <ul>
