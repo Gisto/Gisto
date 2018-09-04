@@ -92,7 +92,7 @@ Snippet.propTypes = {
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object,
   updateTempSnippet: PropTypes.func,
-  showComments: PropTypes.func
+  showComments: PropTypes.any
 };
 
 export default connect(mapStateToProps, {
