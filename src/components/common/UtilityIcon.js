@@ -10,7 +10,7 @@ import Icon from 'components/common/Icon';
 const DropdownMixin = css`
   position: absolute;
   background: ${lightText};
-  right: -1px;
+  right: 0;
   top: 51px;
   border: 1px solid ${borderColor};
   line-height: 21px;
@@ -30,7 +30,7 @@ export class UtilityIcon extends React.Component {
     childrenShown: false
   };
 
-  handleClick = () => {
+  toggleChildren = () => {
     this.setState((prevState) => ({
       childrenShown: !prevState.childrenShown
     }));
@@ -54,7 +54,7 @@ export class UtilityIcon extends React.Component {
     return (
       <Util className={ className }
             background={ background }
-            onClick={ () => dropdown ? this.handleClick() : onClick() }
+            onClick={ () => dropdown ? this.toggleChildren() : onClick() }
             title={ title }
             text={ text }
             color={ childrenShown ? colorDanger : color }>

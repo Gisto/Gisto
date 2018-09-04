@@ -17,7 +17,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
     title="UtilityIcon"
   >
     <span
-      className="UtilityIcon Util-iuPPCj dIdbil"
+      className="UtilityIcon Util-iuPPCj iKguzX"
       color="red"
       onClick={[Function]}
       title="UtilityIcon"
