@@ -36,6 +36,25 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
            
         </div>
       </Title>
+      <LockIcon
+        color="#3F84A8"
+        size={22}
+        type="lock"
+      >
+        <Icon
+          className="LockIcon-jAeBCq jaYIzt"
+          color="#3F84A8"
+          size={22}
+          type="lock"
+        >
+          <span
+            className="LockIcon-jAeBCq jaYIzt Icon-cFRQJw dqAXpC"
+            color="#3F84A8"
+            size={22}
+            type="lock"
+          />
+        </Icon>
+      </LockIcon>
       <div>
         <UtilityIcon
           color="#3F84A8"
@@ -48,7 +67,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj eVdnsu"
+              className="Util-iuPPCj fxQJsL"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -69,36 +88,6 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
           </Util>
         </UtilityIcon>
         <UtilityIcon
-          color="#3F84A8"
-          size={22}
-          type="lock"
-        >
-          <Util
-            color="#3F84A8"
-            onClick={[Function]}
-          >
-            <span
-              className="Util-iuPPCj eVdnsu"
-              color="#3F84A8"
-              onClick={[Function]}
-            >
-              <Icon
-                color="#3F84A8"
-                size={22}
-                type="lock"
-              >
-                <span
-                  className="Icon-cFRQJw dqAXpC"
-                  color="#3F84A8"
-                  size={22}
-                  type="lock"
-                />
-              </Icon>
-               
-            </span>
-          </Util>
-        </UtilityIcon>
-        <UtilityIcon
           color="tomato"
           onClick={[Function]}
           size={22}
@@ -109,7 +98,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj fDFZmY"
+              className="Util-iuPPCj uhTl"
               color="tomato"
               onClick={[Function]}
             >
@@ -142,7 +131,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             text=""
           >
             <span
-              className="Util-iuPPCj eVdnsu"
+              className="Util-iuPPCj fxQJsL"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -173,7 +162,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj eVdnsu"
+              className="Util-iuPPCj fxQJsL"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -204,7 +193,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj eVdnsu"
+              className="Util-iuPPCj fxQJsL"
               color="#3F84A8"
               onClick={[Function]}
             >

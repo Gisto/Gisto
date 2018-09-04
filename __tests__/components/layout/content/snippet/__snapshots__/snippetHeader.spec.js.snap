@@ -73,7 +73,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
           onClick={[Function]}
         >
           <span
-            className="Util-iuPPCj fDFZmY"
+            className="Util-iuPPCj uhTl"
             color="tomato"
             onClick={[Function]}
           >
@@ -162,7 +162,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj eVdnsu"
+              className="Util-iuPPCj fxQJsL"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -193,7 +193,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj eVdnsu"
+              className="Util-iuPPCj fxQJsL"
               color="#3F84A8"
               onClick={[Function]}
             >
