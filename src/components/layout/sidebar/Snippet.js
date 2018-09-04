@@ -69,7 +69,7 @@ export const Snippet = ({ snippet, setStar, unsetStar }) => {
                      to={ `/snippet/${snippet.id}` }>
         <span>
           <StyledIcon size={ 24 }
-                      type={ snippet.public ? 'logo-github' : 'lock' }
+                      type={ snippet.public ? 'unlock' : 'lock' }
                       color={ lightText }/>
         </span>
         <span>
