@@ -388,7 +388,7 @@ SnippetHeader.propTypes = {
   toggleSnippetComments: PropTypes.func,
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object,
-  comments: PropTypes.object
+  comments: PropTypes.array
 };
 
 export default connect(mapStateToProps, {
