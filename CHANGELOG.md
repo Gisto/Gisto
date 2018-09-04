@@ -1,3 +1,15 @@
+### v1.9.92
+*  TOOLS (travice): fix CNAME on travis-ci web app deploy [View](https://github.com/Gisto/Gisto/commit/b704d96459e253f814dab85e946371b587a983ce)
+*  CHORE (readme): update readme [View](https://github.com/Gisto/Gisto/commit/a1ed64aed5d2952faf28ecc77292e79d95a0369d)
+*  FIX (keybinding): show keybindings on ? [View](https://github.com/Gisto/Gisto/commit/d505d2a2d0c2817c1c91331dc12a27e28b079881)
+*  FIX (update packages): update packages and fix proptypes [View](https://github.com/Gisto/Gisto/commit/9313cf3dd5ced3ea4737f59a1957e0da7f40f1ff)
+*  FIX (props): fix proptypes [View](https://github.com/Gisto/Gisto/commit/5e46e44e1cbf0a917c39b9d6926fb59ab797bbf8)
+*  FIX (dropdowns): fix dropdownds alignment [View](https://github.com/Gisto/Gisto/commit/6d28100fa2227745ac66620c27491b3efd7cdf06)
+*  FIX (API): header null checking [View](https://github.com/Gisto/Gisto/commit/488c6873d052179ac72e03ba7d968fabd6df316a)
+*  FIX (snippet): privet/public icon on snippets side bar list [View](https://github.com/Gisto/Gisto/commit/698c1f06c3554de472e35252ef4fcd3b011bbe0a)
+*  FIX (snippet): snippet header layout [View](https://github.com/Gisto/Gisto/commit/b546717012d9f2665b2b69fae5a3c0d721170278)
+*  TOOLS (sentry): add for webapp [View](https://github.com/Gisto/Gisto/commit/21193339a4c7e99d72d4d541d111a8ab89c346c9)
+
 ### v1.9.91
 *  FIX (webpack): web app build [View](https://github.com/Gisto/Gisto/commit/c07ce8380061911aed771de005aea5760611858f)
 *  TOOLD (web): add we deploy to travis-ci [View](https://github.com/Gisto/Gisto/commit/9a5b80a3eaa1135a7400aeb394a57c7d481ba0bc)
