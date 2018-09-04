@@ -45,6 +45,19 @@ const FileName = styled.div`
 `;
 
 export class SnippetHeader extends React.Component {
+  deleteFile = (id) => {
+    // eslint-disable-next-line no-restricted-globals, no-alert
+    const sure = confirm('Are you sure you want to delete this file?');
+
+    if (sure === true) {
+      this.props.deleteFile(id);
+
+      return true;
+    }
+
+    return false;
+  };
+
   renderFileName = () => {
     const {
       file, edit, tempSnippet, updateTempSnippet
@@ -59,7 +72,7 @@ export class SnippetHeader extends React.Component {
              onChange={ (event) => updateTempSnippet(['files', file.uuid, 'filename'], event.target.value) }/>
     );
   };
-
+  
   render() {
     const {
       file, username, snippetId, edit 
@@ -102,7 +115,7 @@ export class SnippetHeader extends React.Component {
                          onClick={ () => null }/>
           </div>
         ) : (
-          <UtilityIcon size={ 22 } color={ colorDanger } type="delete" onClick={ () => this.props.deleteFile(file.uuid) }/>
+          <UtilityIcon size={ 22 } color={ colorDanger } type="delete" onClick={ () => this.deleteFile(file.uuid) }/>
         ) }
 
       </SnippetHeaderWrapper>
