@@ -263,7 +263,7 @@ export class SnippetHeader extends React.Component {
               <UtilityIcon size={ 22 } color={ baseAppColor } type="time" dropdown>
                 <ul>
                   { map((change) => (
-                    <li>
+                    <li key={ change.version }>
                       <ExternalLink href={
                         `${snippetUrl}/${change.user.login}/${snippetId}/revisions#diff-${change.version}`
                       }>

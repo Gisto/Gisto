@@ -10,10 +10,9 @@ const Link = styled.a`
 `;
 
 const Anchor = ({
-  key, href, onClick, children, download
+  href, onClick, children, download
 }) => (
   <Link href={ href }
-        key={ key }
         download={ download }
         onClick={ onClick }>
     { children }
@@ -24,7 +23,6 @@ Anchor.propTypes = {
   href: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node,
-  key: PropTypes.any,
   download: PropTypes.string
 };
 
