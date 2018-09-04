@@ -21,6 +21,13 @@ if (isElectron) {
     release: version,
     environment: process.env.NODE_ENV
   });
+} else {
+  const Raven = require('raven-js');
+
+  Raven.config('https://9b448264479b47418f9e248c208632ae@sentry.io/1245680', {
+    release: version,
+    environment: process.env.NODE_ENV
+  }).install();
 }
 
 const Gisto = () => (
