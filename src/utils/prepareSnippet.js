@@ -21,7 +21,7 @@ const prepareDescription = (snippet) => {
 };
 
 const getService = (snippet) => {
-  return snippet.url.match(/github\.com/gi) ? 'GITHUB' : 'NOT-GITHUB-FOR-NOW';
+  return snippet.url && snippet.url.match(/github\.com/gi) ? 'GITHUB' : 'NOT-GITHUB-FOR-NOW';
 };
 
 const toUnixTimeStamp = (date) => Math.floor(new Date(date).getTime() / 1000);
