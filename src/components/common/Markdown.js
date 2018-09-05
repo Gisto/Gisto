@@ -11,7 +11,7 @@ const Markdown = ({ text, className, emoji }) => {
     const renderer = new marked.Renderer();
 
     renderer.text = (input) => {
-      return input.replace(/:(.*?):/g, (matcher, capture) => `<img src="${get([capture], emoji)}" style="width: 18px;vertical-align: middle;background: transparent;"/>`);
+      return input.replace(/:(.\w+?):/g, (matcher, capture) => `<img src="${get([capture], emoji)}" style="width: 18px;vertical-align: middle;background: transparent;"/>`);
     };
 
     marked.setOptions({
