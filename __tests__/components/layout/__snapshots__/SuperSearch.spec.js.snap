@@ -33,7 +33,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   type="search"
                 >
                   <span
-                    className="StyledLookingGlass-bFmLLL gwHSPH Icon-cFRQJw kUJmRH"
+                    className="StyledLookingGlass-bFmLLL gwHSPH Icon-cFRQJw jmgzIa"
                     color="#3F84A8"
                     size={32}
                     type="search"

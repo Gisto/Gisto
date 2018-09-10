@@ -29,6 +29,28 @@ exports[`COMPONENTS - <About> render About 1`] = `
       </p>
       <p>
         <ExternalLink
+          href="https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md"
+        >
+          <Anchor
+            href="#"
+            onClick={[Function]}
+          >
+            <Link
+              href="#"
+              onClick={[Function]}
+            >
+              <a
+                className="Link-hdnizH bVHTue"
+                href="#"
+                onClick={[Function]}
+              >
+                Change log
+              </a>
+            </Link>
+          </Anchor>
+        </ExternalLink>
+         | 
+        <ExternalLink
           href="https://github.com/Gisto/Gisto"
         >
           <Anchor

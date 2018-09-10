@@ -47,7 +47,8 @@ export class UtilityIcon extends React.Component {
       title,
       className,
       background,
-      text
+      text,
+      spin
     } = this.props;
     const { childrenShown } = this.state;
 
@@ -59,6 +60,7 @@ export class UtilityIcon extends React.Component {
             text={ text }
             color={ childrenShown ? colorDanger : color }>
         <Icon size={ size }
+              spin={ spin }
               type={ childrenShown ? 'close' : type }
               color={ childrenShown ? colorDanger : color }/> { text && text }
         { dropdown && childrenShown && children }
@@ -118,6 +120,7 @@ UtilityIcon.propTypes = {
   color: PropTypes.string,
   onClick: PropTypes.func,
   dropdown: PropTypes.bool,
+  spin: PropTypes.bool,
   title: PropTypes.string,
   className: PropTypes.string,
   background: PropTypes.string,

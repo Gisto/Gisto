@@ -34,7 +34,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
               type="file"
             >
               <span
-                className="FilenameIcon-glEJQV gnWsMJ Icon-cFRQJw fERgeY"
+                className="FilenameIcon-glEJQV gnWsMJ Icon-cFRQJw fOdidJ"
                 color="#3F84A8"
                 size={22}
                 type="file"
@@ -83,7 +83,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
               type="delete"
             >
               <span
-                className="Icon-cFRQJw dAYQoc"
+                className="Icon-cFRQJw eYYTI"
                 color="tomato"
                 size={22}
                 type="delete"
@@ -132,7 +132,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
               type="file"
             >
               <span
-                className="FilenameIcon-glEJQV gnWsMJ Icon-cFRQJw fERgeY"
+                className="FilenameIcon-glEJQV gnWsMJ Icon-cFRQJw fOdidJ"
                 color="#3F84A8"
                 size={22}
                 type="file"
@@ -172,7 +172,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
                 type="ellipsis"
               >
                 <span
-                  className="Icon-cFRQJw dFLpED"
+                  className="Icon-cFRQJw jkIQNC"
                   color="#3F84A8"
                   size={22}
                   type="ellipsis"
@@ -203,7 +203,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
                 type="arrow-down"
               >
                 <span
-                  className="Icon-cFRQJw kVFEWe"
+                  className="Icon-cFRQJw eOsEMW"
                   color="#3F84A8"
                   size={22}
                   type="arrow-down"

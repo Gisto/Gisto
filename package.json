@@ -5,7 +5,7 @@
   "productName": "Gisto",
   "main": "main.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --bail",
     "test:ci": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

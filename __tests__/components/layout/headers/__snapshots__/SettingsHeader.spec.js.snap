@@ -29,7 +29,7 @@ exports[`COMPONENTS - <SettingsHeader> render SettingsHeader 1`] = `
             type="check"
           >
             <span
-              className="Icon-cFRQJw dhJqOv"
+              className="Icon-cFRQJw ixqfGJ"
               color="#fff"
               type="check"
             />
