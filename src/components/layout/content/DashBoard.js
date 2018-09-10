@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   get, size, filter, map, flow, flattenDeep, uniq, compact, isEmpty 
 } from 'lodash/fp';
@@ -54,12 +54,7 @@ const Box = styled.div`
   box-shadow: 0 0 10px ${borderColor};
 `;
 
-const Private = Box.extend`
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 1;
-  
+const gridBoxInnerCss = css`
   h3 {
     font-size: 22px;
     margin: 0 0 10px 0;
@@ -75,6 +70,15 @@ const Private = Box.extend`
       float: right;
     }
   }
+`;
+
+const Private = Box.extend`
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  
+  ${gridBoxInnerCss};
 `;
 
 const Public = Box.extend`
@@ -83,21 +87,7 @@ const Public = Box.extend`
   grid-row-start: 1;
   grid-row-end: 1;
   
-  h3 {
-    font-size: 22px;
-    margin: 0 0 10px 0;
-  }
-  
-  span {
-    font-size: 42px;
-    float: right;
-    color: ${baseAppColor};
-    
-    small {
-      font-size: 10px;
-      float: right;
-    }
-  }
+  ${gridBoxInnerCss};
 `;
 
 const Starred = Box.extend`
@@ -106,21 +96,7 @@ const Starred = Box.extend`
   grid-row-start: 1;
   grid-row-end: 1;
   
-  h3 {
-    font-size: 22px;
-    margin: 0 0 10px 0;
-  }
-  
-  span {
-    font-size: 42px;
-    float: right;
-    color: ${baseAppColor};
-    
-    small {
-      font-size: 10px;
-      float: right;
-    }
-  }
+  ${gridBoxInnerCss};
 `;
 
 const Untitled = Box.extend`
@@ -129,21 +105,7 @@ const Untitled = Box.extend`
   grid-row-start: 1;
   grid-row-end: 1;
   
-  h3 {
-    font-size: 22px;
-    margin: 0 0 10px 0;
-  }
-  
-  span {
-    font-size: 42px;
-    float: right;
-    color: ${baseAppColor};
-    
-    small {
-      font-size: 10px;
-      float: right;
-    }
-  }
+  ${gridBoxInnerCss};
 `;
 
 const Language = Box.extend`
@@ -232,12 +194,6 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 export class DashBoard  extends React.Component {
-  languagesRef = React.createRef();
-
-  starredRef = React.createRef();
-
-  tagsRef = React.createRef();
-
   state = {
     searchTags: '',
     searchStarred: ''
@@ -302,10 +258,6 @@ export class DashBoard  extends React.Component {
   searchStarred = (value) => this.setState({
     searchStarred: value
   });
-
-  calculateMargin = (ref) => {
-    return ref.current && ref.current.scrollHeight > ref.current.clientHeight ? '20px' : '0';
-  };
 
   renderLanguages = () => map((languageItem) => {
     const language = get('language', languageItem);

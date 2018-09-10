@@ -34,7 +34,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         }
       >
         <div
-          className="Box-iUbLMm idviUR"
+          className="Box-iUbLMm jKDYNS"
           style={
             Object {
               "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
@@ -57,7 +57,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         }
       >
         <div
-          className="Box-geHOaa jvspQO"
+          className="Box-geHOaa iZXUOi"
           style={
             Object {
               "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
@@ -80,7 +80,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         }
       >
         <div
-          className="Box-kpCRUe cdrcWs"
+          className="Box-kpCRUe fVeVwf"
           style={
             Object {
               "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
@@ -103,7 +103,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         }
       >
         <div
-          className="Box-gvqUvR fYuBke"
+          className="Box-gvqUvR hObtxA"
           style={
             Object {
               "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
