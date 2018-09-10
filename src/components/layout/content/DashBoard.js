@@ -20,6 +20,7 @@ import * as snippetActions from 'actions/snippets';
 
 import Icon from 'components/common/Icon';
 import Input from 'components/common/controls/Input';
+import ScrollPad from 'react-scrollpad';
 
 const DashbordWrapper = styled.div`
   display: grid;
@@ -231,18 +232,16 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 export class DashBoard  extends React.Component {
-  constructor(props) {
-    super(props);
+  languagesRef = React.createRef();
 
-    this.state = {
-      searchTags: '',
-      searchStarred: ''
-    };
+  starredRef = React.createRef();
 
-    this.languagesRef = React.createRef();
-    this.starredRef = React.createRef();
-    this.tagsRef = React.createRef();
-  }
+  tagsRef = React.createRef();
+
+  state = {
+    searchTags: '',
+    searchStarred: ''
+  };
 
   componentDidMount() {
     this.props.getRateLimit();
@@ -386,10 +385,11 @@ export class DashBoard  extends React.Component {
         { isEmpty(this.state.searchTags) && (
           <Language>
             <h3>Languages:</h3>
-            <div ref={ this.languagesRef }
-                 style={ { paddingRight: this.calculateMargin(this.languagesRef) } }>
-              { this.renderLanguages() }
-            </div>
+            <ScrollPad>
+              <div>
+                { this.renderLanguages() }
+              </div>
+            </ScrollPad>
           </Language>
         ) }
 
@@ -404,10 +404,11 @@ export class DashBoard  extends React.Component {
                              onChange={ (event) => this.searchStarred(event.target.value) }/>
               </div>
             </HeadingWithSearch>
-            <ul ref={ this.starredRef }
-                style={ { paddingRight: this.calculateMargin(this.starredRef) } }>
-              { this.renderStarred() }
-            </ul>
+            <ScrollPad>
+              <ul>
+                { this.renderStarred() }
+              </ul>
+            </ScrollPad>
           </Stars>
         ) }
 
@@ -421,10 +422,11 @@ export class DashBoard  extends React.Component {
                            onChange={ (event) => this.searchTags(event.target.value) }/>
             </div>
           </HeadingWithSearch>
-          <div ref={ this.tagsRef }
-               style={ { paddingRight: this.calculateMargin(this.tagsRef) } }>
-            { this.renderTags() }
-          </div>
+          <ScrollPad>
+            <div>
+              { this.renderTags() }
+            </div>
+          </ScrollPad>
         </Tags>
       </DashbordWrapper>
     );

@@ -142,6 +142,7 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
+    "react-scrollpad": "^1.0.0",
     "react-toastify": "^4.2.3",
     "redux": "^4.0.0",
     "reselect": "^3.0.1",
