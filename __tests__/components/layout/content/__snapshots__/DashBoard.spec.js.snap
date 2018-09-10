@@ -125,13 +125,19 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
           <h3>
             Languages:
           </h3>
-          <div
-            style={
-              Object {
-                "paddingRight": "0",
+          <ScrollPad
+            pad="20px"
+            rtl={false}
+          >
+            <div
+              style={
+                Object {
+                  "paddingRight": undefined,
+                  "width": undefined,
+                }
               }
-            }
-          />
+            />
+          </ScrollPad>
         </div>
       </Box>
       <Box>
@@ -191,13 +197,19 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
               </div>
             </span>
           </HeadingWithSearch>
-          <ul
-            style={
-              Object {
-                "paddingRight": "0",
+          <ScrollPad
+            pad="20px"
+            rtl={false}
+          >
+            <ul
+              style={
+                Object {
+                  "paddingRight": undefined,
+                  "width": undefined,
+                }
               }
-            }
-          />
+            />
+          </ScrollPad>
         </div>
       </Box>
       <Box>
@@ -257,13 +269,19 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
               </div>
             </span>
           </HeadingWithSearch>
-          <div
-            style={
-              Object {
-                "paddingRight": "0",
+          <ScrollPad
+            pad="20px"
+            rtl={false}
+          >
+            <div
+              style={
+                Object {
+                  "paddingRight": undefined,
+                  "width": undefined,
+                }
               }
-            }
-          />
+            />
+          </ScrollPad>
         </div>
       </Box>
     </div>
