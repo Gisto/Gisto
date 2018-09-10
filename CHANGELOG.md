@@ -1,3 +1,6 @@
+### v1.9.94
+*  TOOLS (travice): fix tagged deployments [View](https://github.com/Gisto/Gisto/commit/0fa766923b1b79b311010fd06b33790a64519861)
+
 ### v1.9.93
 *  FIX (snippet): add delete file confimation [View](https://github.com/Gisto/Gisto/commit/5de81a2abf0170ae70b722e421421663deab612d)
 *  FIX (snippet): add file name to delete file confimation [View](https://github.com/Gisto/Gisto/commit/d8c29fb9d9082d19128128e451b6f0762d306e8c)
