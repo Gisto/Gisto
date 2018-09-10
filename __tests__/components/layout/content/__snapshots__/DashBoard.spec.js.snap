@@ -166,7 +166,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                   type="search"
                 >
                   <span
-                    className="Icon-cFRQJw cTUULm"
+                    className="Icon-cFRQJw erWTSe"
                     color="red"
                     size="22"
                     type="search"
@@ -238,7 +238,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
                   type="search"
                 >
                   <span
-                    className="Icon-cFRQJw cTUULm"
+                    className="Icon-cFRQJw erWTSe"
                     color="red"
                     size="22"
                     type="search"

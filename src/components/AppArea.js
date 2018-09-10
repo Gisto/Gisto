@@ -114,14 +114,14 @@ export class AppArea extends React.Component {
           </StyledUtilityIcon>
         ) }
         <Link to="/">
-          <Icon color={ lightText } type="dashboard"/>
+          <Icon color={ lightText } type="dashboard" spin/>
         </Link>
         <Link to="/about">
-          <Icon color={ lightText } type="info"/>
+          <Icon color={ lightText } type="info" spin/>
         </Link>
         <Icon type="globe" color={ window.navigator.onLine ? lightText : colorDanger }/>
         <Link to="/settings">
-          <Icon color={ lightText } type="cog"/>
+          <Icon color={ lightText } type="cog" spin/>
         </Link>
         <Avatar
           title={ login && login.charAt(0) + login.charAt(1) }

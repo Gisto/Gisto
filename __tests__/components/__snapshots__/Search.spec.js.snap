@@ -18,7 +18,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
         type="search"
       >
         <span
-          className="Icon-cFRQJw kTzQOB"
+          className="Icon-cFRQJw dhdcg"
           color="#3F84A8"
           size="46"
           type="search"
@@ -110,7 +110,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
                   type="add"
                 >
                   <span
-                    className="Icon-cFRQJw buRDBX"
+                    className="Icon-cFRQJw imwxZY"
                     color="#fff"
                     type="add"
                   />

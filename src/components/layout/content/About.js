@@ -84,6 +84,8 @@ export class About extends React.Component {
         </p>
 
         <p>
+          <ExternalLink href="https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md">Change log</ExternalLink>
+          &nbsp;|&nbsp;
           <ExternalLink href="https://github.com/Gisto/Gisto">GitHub</ExternalLink>
           &nbsp;|&nbsp;
           <ExternalLink href="https://gistoapp.com">Website gistoapp.com</ExternalLink>

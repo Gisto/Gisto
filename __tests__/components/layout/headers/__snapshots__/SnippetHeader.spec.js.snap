@@ -48,7 +48,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
           type="lock"
         >
           <span
-            className="LockIcon-jAeBCq jaYIzt Icon-cFRQJw dqAXpC"
+            className="LockIcon-jAeBCq jaYIzt Icon-cFRQJw jJVsKq"
             color="#3F84A8"
             size={22}
             type="lock"
@@ -77,7 +77,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="edit"
               >
                 <span
-                  className="Icon-cFRQJw jjWufO"
+                  className="Icon-cFRQJw hkalTd"
                   color="#3F84A8"
                   size={22}
                   type="edit"
@@ -108,7 +108,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="delete"
               >
                 <span
-                  className="Icon-cFRQJw dAYQoc"
+                  className="Icon-cFRQJw eYYTI"
                   color="tomato"
                   size={22}
                   type="delete"
@@ -141,7 +141,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="chat"
               >
                 <span
-                  className="Icon-cFRQJw fZweFl"
+                  className="Icon-cFRQJw beXoxP"
                   color="#3F84A8"
                   size={22}
                   type="chat"
@@ -172,7 +172,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="star-empty"
               >
                 <span
-                  className="Icon-cFRQJw eAVcPR"
+                  className="Icon-cFRQJw dlyUfr"
                   color="#3F84A8"
                   size={22}
                   type="star-empty"
@@ -203,7 +203,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="ellipsis"
               >
                 <span
-                  className="Icon-cFRQJw dFLpED"
+                  className="Icon-cFRQJw jkIQNC"
                   color="#3F84A8"
                   size={22}
                   type="ellipsis"

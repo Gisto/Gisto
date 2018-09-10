@@ -28,7 +28,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
         type="menu"
       >
         <span
-          className="Icon-cFRQJw cyuiLv"
+          className="Icon-cFRQJw efUAMq"
           color="red"
           size={20}
           type="menu"
