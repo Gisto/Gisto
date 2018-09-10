@@ -1,3 +1,14 @@
+### v1.9.93
+*  FIX (snippet): add delete file confimation [View](https://github.com/Gisto/Gisto/commit/5de81a2abf0170ae70b722e421421663deab612d)
+*  FIX (snippet): add file name to delete file confimation [View](https://github.com/Gisto/Gisto/commit/d8c29fb9d9082d19128128e451b6f0762d306e8c)
+*  TOOLS (travice): deploy conditions [View](https://github.com/Gisto/Gisto/commit/c8b00cb82c58cb54b7b926ff722578b5e8967f51)
+*  TOOLS (release): fix changelog URL [View](https://github.com/Gisto/Gisto/commit/bde2b881ec73b08c868bd23ee33546c664b48e32)
+*  FIX (mrkdown): emoji regex [View](https://github.com/Gisto/Gisto/commit/c0ca7b76965a5869c37f35be2912d9aa6a66b682)
+*  FIX (snippets): prepare snippet safe access [View](https://github.com/Gisto/Gisto/commit/28292e09116af3c3a1eb11ab1e4d0ced9fdd7a60)
+*  FIX (dashboard): use react-scrollpad on dashboad scrollables [View](https://github.com/Gisto/Gisto/commit/6bb78e48485eee30d07879bfa5d7d7374db8cac6)
+*  CLEANUP (dashboard): clean-up unused code [View](https://github.com/Gisto/Gisto/commit/9b44eff56cd85539ce9b6f72e2fea2ccc5791e59)
+*  FEATURE (search): filter snippets by public, private, starred and untitled from dashboard [View](https://github.com/Gisto/Gisto/commit/a243000915275fd0fefb893e6c27d8874df6049e)
+
 ### v1.9.92
 *  TOOLS (travice): fix CNAME on travis-ci web app deploy [View](https://github.com/Gisto/Gisto/commit/b704d96459e253f814dab85e946371b587a983ce)
 *  CHORE (readme): update readme [View](https://github.com/Gisto/Gisto/commit/a1ed64aed5d2952faf28ecc77292e79d95a0369d)
