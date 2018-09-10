@@ -27,29 +27,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       className="DashbordWrapper-dBZhoA kPMXLH"
     >
       <Box
-        style={
-          Object {
-            "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
-          }
-        }
-      >
-        <div
-          className="Box-iUbLMm jKDYNS"
-          style={
-            Object {
-              "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
-            }
-          }
-        >
-          <h3>
-            Public
-          </h3>
-          <span>
-            -45
-          </span>
-        </div>
-      </Box>
-      <Box
+        onClick={[Function]}
         style={
           Object {
             "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
@@ -57,7 +35,8 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         }
       >
         <div
-          className="Box-geHOaa iZXUOi"
+          className="Box-iUbLMm fURbbC"
+          onClick={[Function]}
           style={
             Object {
               "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
@@ -73,6 +52,32 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         </div>
       </Box>
       <Box
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
+          }
+        }
+      >
+        <div
+          className="Box-geHOaa bexgQZ"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
+            }
+          }
+        >
+          <h3>
+            Public
+          </h3>
+          <span>
+            -45
+          </span>
+        </div>
+      </Box>
+      <Box
+        onClick={[Function]}
         style={
           Object {
             "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
@@ -80,7 +85,8 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         }
       >
         <div
-          className="Box-kpCRUe fVeVwf"
+          className="Box-kpCRUe hpQyOZ"
+          onClick={[Function]}
           style={
             Object {
               "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
@@ -96,6 +102,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         </div>
       </Box>
       <Box
+        onClick={[Function]}
         style={
           Object {
             "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
@@ -103,7 +110,8 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         }
       >
         <div
-          className="Box-gvqUvR hObtxA"
+          className="Box-gvqUvR gzfuNj"
+          onClick={[Function]}
           style={
             Object {
               "background": "linear-gradient(to right, red NaN%, #fff NaN%)",

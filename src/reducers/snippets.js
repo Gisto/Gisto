@@ -11,7 +11,8 @@ const initialState = {
   filter: {
     text: '',
     tags: [],
-    language: ''
+    language: '',
+    status: ''
   },
   comments: {},
   lastOpenedId: null,
@@ -45,7 +46,8 @@ export const snippets = (state = initialState, action) => {
       return flow([
         set(['filter', 'text'], action.payload.value),
         set(['filter', 'tags'], []),
-        set(['filter', 'language'], '')
+        set(['filter', 'language'], ''),
+        set(['filter', 'status'], '')
       ])(state);
     }
 
@@ -56,7 +58,8 @@ export const snippets = (state = initialState, action) => {
       return flow([
         set(['filter', 'text'], ''),
         set(['filter', 'tags'], tag),
-        set(['filter', 'language'], '')
+        set(['filter', 'language'], ''),
+        set(['filter', 'status'], '')
       ])(state);
     }
 
@@ -68,7 +71,17 @@ export const snippets = (state = initialState, action) => {
       return flow([
         set(['filter', 'text'], ''),
         set(['filter', 'tags'], []),
-        set(['filter', 'language'], action.payload.value)
+        set(['filter', 'language'], action.payload.value),
+        set(['filter', 'status'], '')
+      ])(state);
+    }
+
+    case AT.FILTER_SNIPPETS_BY_STATUS: {
+      return flow([
+        set(['filter', 'text'], ''),
+        set(['filter', 'tags'], []),
+        set(['filter', 'language'], ''),
+        set(['filter', 'status'], action.payload.status)
       ])(state);
     }
 
@@ -76,7 +89,8 @@ export const snippets = (state = initialState, action) => {
       return flow([
         set(['filter', 'text'], ''),
         set(['filter', 'tags'], []),
-        set(['filter', 'language'], '')
+        set(['filter', 'language'], ''),
+        set(['filter', 'status'], '')
       ])(state);
     }
 

@@ -66,7 +66,29 @@ const filterByLanguage = (snippets, filterLanguage) => {
   return filter((snippet) => includes(filterLanguage, snippet.languages), snippets);
 };
 
-export const filterSnippetsList = (snippets, filterText, filterTags, filterLanguage) => {
+const filterByStatus = (snippets, filterStatus) => {
+  switch (filterStatus) {
+    case 'private': {
+      return filter({ public: false }, snippets);
+    }
+    case 'public': {
+      return filter({ public: true }, snippets);
+    }
+    case 'starred': {
+      return filter({ star: true }, snippets);
+    }
+    case 'untitled': {
+      return filter({ description: 'untitled' }, snippets);
+    }
+    default: {
+      return snippets;
+    }
+  }
+};
+
+export const filterSnippetsList = (
+  snippets, filterText, filterTags, filterLanguage, filterStatus
+) => {
   const sortedSnippets = flow([sortBy(['created']), reverse])(snippets);
 
   if (!isEmpty(trim(filterText))) {
@@ -79,6 +101,10 @@ export const filterSnippetsList = (snippets, filterText, filterTags, filterLangu
 
   if (!isEmpty(trim(filterLanguage))) {
     return filterByLanguage(sortedSnippets, trim(filterLanguage));
+  }
+
+  if (!isEmpty(trim(filterStatus))) {
+    return filterByStatus(sortedSnippets, trim(filterStatus));
   }
 
   return sortedSnippets;

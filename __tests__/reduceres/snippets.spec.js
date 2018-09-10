@@ -7,7 +7,8 @@ const initialState = (props) => ({
   filter: {
     text: '',
     tags: [],
-    language: ''
+    language: '',
+    status: ''
   },
   lastOpenedId: null,
   new: {
@@ -42,7 +43,8 @@ describe('reducer - snippets', () => {
       filter: {
         text: 'text',
         tags: [],
-        language: ''
+        language: '',
+        status: ''
       }
     });
 
@@ -62,7 +64,8 @@ describe('reducer - snippets', () => {
       filter: {
         text: '',
         tags: [],
-        language: 'HTML'
+        language: 'HTML',
+        status: ''
       }
     });
 
@@ -82,7 +85,8 @@ describe('reducer - snippets', () => {
       filter: {
         text: '',
         tags: ['HTML', 'CSS', 'JS'],
-        language: ''
+        language: '',
+        status: ''
       }
     });
 
@@ -90,7 +94,8 @@ describe('reducer - snippets', () => {
       filter: {
         text: '',
         tags: ['HTML', 'JS'],
-        language: ''
+        language: '',
+        status: ''
       }
     });
 
@@ -106,7 +111,8 @@ describe('reducer - snippets', () => {
       filter: {
         text: 'html',
         tags: ['HTML', 'CSS', 'JS'],
-        language: ''
+        language: '',
+        status: ''
       }
     });
 
@@ -114,7 +120,8 @@ describe('reducer - snippets', () => {
       filter: {
         text: '',
         tags: [],
-        language: ''
+        language: '',
+        status: ''
       }
     });
 
@@ -133,7 +140,8 @@ describe('reducer - snippets', () => {
       filter: {
         text: '',
         tags: ['HTML'],
-        language: ''
+        language: '',
+        status: ''
       }
     });
 
@@ -153,7 +161,8 @@ describe('reducer - snippets', () => {
       filter: {
         text: '',
         tags: ['HTML'],
-        language: ''
+        language: '',
+        status: ''
       }
     });
 
@@ -161,7 +170,38 @@ describe('reducer - snippets', () => {
       filter: {
         text: '',
         tags: ['HTML', 'CSS'],
-        language: ''
+        language: '',
+        status: ''
+      }
+    });
+
+    expect(reducer(initial, action))
+      .toEqual(expected);
+  });
+
+  test('should filter snippets by status', () => {
+    const action = {
+      type: AT.FILTER_SNIPPETS_BY_STATUS,
+      payload: {
+        status: 'private'
+      }
+    };
+
+    const initial = initialState({
+      filter: {
+        text: '',
+        tags: [],
+        language: '',
+        status: ''
+      }
+    });
+
+    const expected = initialState({
+      filter: {
+        text: '',
+        tags: [],
+        language: '',
+        status: 'private'
       }
     });
 
