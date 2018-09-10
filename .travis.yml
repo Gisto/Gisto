@@ -53,8 +53,12 @@ deploy:
   repo: Gisto/web.gistoapp.com
   on:
     branch: master
-    tags: true
     condition: $TRAVIS_OS_NAME == "osx"
 
 before_cache:
 - rm -rf $HOME/.cache/electron-builder/wine
+
+branches:
+  only:
+  - master
+  - next
