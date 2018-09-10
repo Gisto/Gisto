@@ -1,3 +1,6 @@
+### v1.9.95
+*  TOOLS (ci): fix deploy [View](https://github.com/Gisto/Gisto/commit/6642717482d6ebf7b3102bf36879464e9b71eca0)
+
 ### v1.9.94
 *  TOOLS (travice): fix tagged deployments [View](https://github.com/Gisto/Gisto/commit/0fa766923b1b79b311010fd06b33790a64519861)
 
