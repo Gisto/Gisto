@@ -24,6 +24,10 @@ injectGlobal`
   ::-webkit-scrollbar-thumb {
     background: ${baseAppColor};
   }
+  
+  *:hover {
+    transition: all .3s ease-in-out;
+  } 
 `;
 
 const AppWrapper = styled.div`

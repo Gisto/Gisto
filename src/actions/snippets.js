@@ -44,6 +44,14 @@ export const filterSnippetsByLanguage = (value) => ({
   payload: { value }
 });
 
+export const filterSnippetsByStatus = (status) => ({
+  meta: {
+    status
+  },
+  type: AT.FILTER_SNIPPETS_BY_STATUS,
+  payload: { status }
+});
+
 export const clearAllFilters = () => ({
   type: AT.CLEAR_FILTERS
 });

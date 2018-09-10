@@ -1,5 +1,7 @@
 import React from 'react';
-import { isEmpty, map, trim } from 'lodash/fp';
+import {
+  isEmpty, map, trim, startCase
+} from 'lodash/fp';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -46,7 +48,7 @@ const Tag = styled.span`
 `;
 
 export const Sidebar = ({
-  snippets, filterText, filterTags, filterLanguage, clearFilters, removeTag
+  snippets, filterText, filterTags, filterLanguage, clearFilters, removeTag, filterStatus
 }) => {
   const searchType = () => {
     if (!isEmpty(trim(filterText))) {
@@ -75,11 +77,16 @@ export const Sidebar = ({
       return `language: ${filterLanguage}`;
     }
 
+    if (!isEmpty(filterStatus)) {
+      return startCase(filterStatus);
+    }
+
     return '';
   };
 
   const shouldShowFilteredBy = !isEmpty(trim(filterText))
     || !isEmpty(trim(filterTags))
+    || !isEmpty(trim(filterStatus))
     || !isEmpty(trim(filterLanguage));
 
   return (
@@ -93,14 +100,14 @@ export const Sidebar = ({
                     size={ 12 }
                     color={ colorDanger }/>
               &nbsp;
-          <strong>clear all</strong>
+          <strong>clear</strong>
         </ClearAll>
       </SearchFilters>
       ) }
       <SnippetsList>
         {map((snippet) => (
           <Snippet key={ snippet.id } snippet={ snippet }/>
-        ), filterSnippetsList(snippets, filterText, filterTags, filterLanguage))}
+        ), filterSnippetsList(snippets, filterText, filterTags, filterLanguage, filterStatus))}
       </SnippetsList>
     </SideBarWrapper>
   );
@@ -110,7 +117,8 @@ const mapStateToProps = (state) => ({
   snippets: state.snippets.snippets,
   filterText: state.snippets.filter.text,
   filterTags: state.snippets.filter.tags,
-  filterLanguage: state.snippets.filter.language
+  filterLanguage: state.snippets.filter.language,
+  filterStatus: state.snippets.filter.status
 });
 
 Sidebar.propTypes = {
@@ -118,6 +126,7 @@ Sidebar.propTypes = {
   filterText: PropTypes.string,
   filterTags: PropTypes.array,
   filterLanguage: PropTypes.string,
+  filterStatus: PropTypes.string,
   clearFilters: PropTypes.func,
   removeTag: PropTypes.func
 };

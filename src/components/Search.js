@@ -37,9 +37,11 @@ const StyledInput = styled(Input)`
 `;
 
 export const Search = ({
-  snippets, filterSnippets, filterText, filterTags, filterLanguage
+  snippets, filterSnippets, filterText, filterTags, filterLanguage, filterStatus
 }) => {
-  const countSnippets = size(filterSnippetsList(snippets, filterText, filterTags, filterLanguage));
+  const countSnippets = size(
+    filterSnippetsList(snippets, filterText, filterTags, filterLanguage, filterStatus)
+  );
 
   const shouldFilter = (query) => {
     return size(query) > MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH || isEmpty(query);
@@ -70,14 +72,16 @@ Search.propTypes = {
   filterSnippets: PropTypes.func,
   filterText: PropTypes.string,
   filterTags: PropTypes.array,
-  filterLanguage: PropTypes.string
+  filterLanguage: PropTypes.string,
+  filterStatus: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
   snippets: state.snippets.snippets,
   filterText: state.snippets.filter.text,
   filterTags: state.snippets.filter.tags,
-  filterLanguage: state.snippets.filter.language
+  filterLanguage: state.snippets.filter.language,
+  filterStatus: state.snippets.filter.status
 });
 
 export default connect(mapStateToProps, {

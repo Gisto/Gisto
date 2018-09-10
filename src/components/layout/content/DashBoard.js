@@ -70,6 +70,11 @@ const gridBoxInnerCss = css`
       float: right;
     }
   }
+  
+  :hover {
+    box-shadow: 0 0 50px ${borderColor};
+    cursor: pointer;
+  }
 `;
 
 const Private = Box.extend`
@@ -78,7 +83,7 @@ const Private = Box.extend`
   grid-row-start: 1;
   grid-row-end: 1;
   
-  ${gridBoxInnerCss};
+${gridBoxInnerCss};
 `;
 
 const Public = Box.extend`
@@ -297,35 +302,41 @@ export class DashBoard  extends React.Component {
   ), this.getStarred());
 
   render() {
-    const { snippets, privateSnippets, starred } = this.props;
+    const {
+      snippets, privateSnippets, starred, searchByStatus
+    } = this.props;
     const publicSnippetsCount = size(snippets) - privateSnippets;
 
     return (
       <DashbordWrapper>
         { isEmpty(this.state.searchTags) && (
           <React.Fragment>
-            <Private style={ this.linearGradient(publicSnippetsCount) }>
-              <h3>Public</h3>
-              <span>
-                { publicSnippetsCount }
-              </span>
-            </Private>
-
-            <Public style={ this.linearGradient(privateSnippets) }>
+            <Private style={ this.linearGradient(privateSnippets) }
+                     onClick={ () => searchByStatus('private') }>
               <h3>Private</h3>
               <span>
                 { privateSnippets }
               </span>
+            </Private>
+
+            <Public style={ this.linearGradient(publicSnippetsCount) }
+                     onClick={ () => searchByStatus('public') }>
+              <h3>Public</h3>
+              <span>
+                { publicSnippetsCount }
+              </span>
             </Public>
 
-            <Starred style={ this.linearGradient(starred) }>
+            <Starred style={ this.linearGradient(starred) }
+                     onClick={ () => searchByStatus('starred') }>
               <h3>Starred</h3>
               <span>
                 { starred }
               </span>
             </Starred>
 
-            <Untitled style={ this.linearGradient(this.getUntitled()) }>
+            <Untitled style={ this.linearGradient(this.getUntitled()) }
+                      onClick={ () => searchByStatus('untitled') }>
               <h3>Untitled:</h3>
               <span>
                 { this.getUntitled() }
@@ -397,6 +408,7 @@ DashBoard.propTypes = {
   starred: PropTypes.number,
   searchByTags: PropTypes.func,
   searchByLanguages: PropTypes.func,
+  searchByStatus: PropTypes.func,
   getRateLimit: PropTypes.func,
   snippetsLanguages: PropTypes.array,
   privateSnippets: PropTypes.number
@@ -405,5 +417,6 @@ DashBoard.propTypes = {
 export default connect(mapStateToProps, {
   searchByTags: snippetActions.filterSnippetsByTags,
   searchByLanguages: snippetActions.filterSnippetsByLanguage,
+  searchByStatus: snippetActions.filterSnippetsByStatus,
   getRateLimit: snippetActions.getRateLimit
 })(DashBoard);
