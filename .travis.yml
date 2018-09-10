@@ -28,7 +28,6 @@ before_install:
 before_script:
 - git lfs pull
 - echo "GISTO_GITHUB_CLIENT_ID=$GISTO_GITHUB_CLIENT_ID" >> $TRAVIS_BUILD_DIR/.env
-- echo "GISTO_GITHUB_CLIENT_SECRET=$GISTO_GITHUB_CLIENT_SECRET" >> $TRAVIS_BUILD_DIR/.env
 
 script:
 - |
@@ -59,9 +58,3 @@ deploy:
 
 before_cache:
 - rm -rf $HOME/.cache/electron-builder/wine
-
-branches:
-  only:
-  - master
-  - next
-  - v\d+\.\d+\.\d+
