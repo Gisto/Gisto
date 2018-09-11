@@ -1,6 +1,10 @@
 import * as AT from 'constants/actionTypes';
 import { snippets as reducer } from 'reducers/snippets';
 
+import { rawSnippets, snippet, snippets } from '../../__mocks__/snippets';
+import { filter, head, keyBy, map, merge } from 'lodash/fp';
+import { snippetStructure } from 'utils/prepareSnippet';
+
 const initialState = (props) => ({
   snippets: {},
   starred: [],
@@ -208,4 +212,127 @@ describe('reducer - snippets', () => {
     expect(reducer(initial, action))
       .toEqual(expected);
   });
+
+  test('should get snippets', () => {
+    const action = {
+      type: AT.GET_SNIPPETS.SUCCESS,
+      payload: rawSnippets()
+    };
+
+    const initial = initialState({ starred: ['bbb123'] });
+
+    const expected = initialState({
+      starred: ['bbb123'],
+      snippets: merge(keyBy('id', map((snippet) => snippetStructure(snippet, initial.starred), action.payload)), initial.snippets)
+    });
+
+    expect(reducer(initial, action))
+      .toEqual(expected);
+  });
+
+  test('should get starred snippets', () => {
+    const action = {
+      type: AT.GET_STARRED_SNIPPETS.SUCCESS,
+      payload: filter({ id: 'bbb123' }, rawSnippets())
+    };
+
+    const initial = initialState();
+
+    const expected = initialState({
+      starred: ['bbb123']
+    });
+
+    expect(reducer(initial, action))
+      .toEqual(expected);
+  });
+
+  test('should get snippet', () => {
+    const aaa123 = head(JSON.stringify(rawSnippets()));
+    const action = {
+      type: AT.GET_SNIPPET.SUCCESS,
+      payload: aaa123
+    };
+
+    const initial = initialState();
+
+    const expected = initialState({
+      lastOpenedId: aaa123.id,
+      snippets: merge(keyBy('id', map((snippet) => snippetStructure(snippet, initial.starred), action.payload)), initial.snippets)
+    });
+
+    expect(reducer(initial, action))
+      .toEqual(expected);
+  });
+
+  test('should set star', () => {
+    const action = {
+      type: AT.SET_STAR.SUCCESS,
+      meta: {
+        id: 'aaa123'
+      }
+    };
+
+    const initial = initialState({
+      starred: ['bbb123']
+    });
+
+    const expected = initialState({
+      starred: ['aaa123', 'bbb123'],
+      snippets: {
+        aaa123: {
+          star: true
+        }
+      }
+    });
+
+    expect(reducer(initial, action))
+      .toEqual(expected);
+  });
+
+  test('should unset star', () => {
+    const action = {
+      type: AT.UNSET_STAR.SUCCESS,
+      meta: {
+        id: 'aaa123'
+      }
+    };
+
+    const initial = initialState({
+      starred: ['aaa123', 'bbb123']
+    });
+
+    const expected = initialState({
+      starred: ['bbb123'],
+      snippets: {
+        aaa123: {
+          star: false
+        }
+      }
+    });
+
+    expect(reducer(initial, action))
+      .toEqual(expected);
+  });
+
+  test('should create snippet', () => {
+    const newSnippet = snippet({ id: 'ddd123', description: 'ddd123 #ddd' });
+    const action = {
+      type: AT.CREATE_SNIPPET.SUCCESS,
+      payload: newSnippet
+    };
+
+    const initial = initialState({
+      snippets: snippets(),
+      starred: ['bbb123']
+    });
+
+    const expected = initialState({
+      snippets: [ ...snippets(), ...snippetStructure(action.payload, initial.starred) ],
+      starred: ['bbb123']
+    });
+
+    expect(reducer(JSON.stringify(initial), action))
+      .toEqual(JSON.stringify(expected));
+  });
+
 });
