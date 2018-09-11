@@ -10,7 +10,7 @@ import * as snippetActions from 'actions/snippets';
 import { borderColor } from 'constants/colors';
 
 import Editor from 'components/common/controls/Editor';
-import SnippetHeader from 'components/layout/content/snippet/snippetHeader';
+import SnippetHeader from 'components/layout/content/snippet/SnippetHeader';
 
 import 'github-markdown-css/github-markdown.css';
 import Comments from 'components/layout/content/snippet/Comments';
