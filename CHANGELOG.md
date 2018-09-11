@@ -1,3 +1,14 @@
+### v1.9.96
+*  TOOLS (ci): fix deploy [View](https://github.com/Gisto/Gisto/commit/46133384d4fc77bdc84470b2044dd258d4e84a7d)
+*  FIX (icon): add option to be spin-able [View](https://github.com/Gisto/Gisto/commit/4825c3c97d6e2afa964d05705eb51dc48c915f3d)
+*  CHORE (packages): update packages and test snapshots [View](https://github.com/Gisto/Gisto/commit/2cfc26c360766f65ed68e200ca32cec63969d73d)
+*  TOOLS (webpack): optimize [View](https://github.com/Gisto/Gisto/commit/7da84a7484d814fd0640d39af4acfb677df3c336)
+*  TEST (fix): fix failing test on linux because caseSentivity [View](https://github.com/Gisto/Gisto/commit/68cfadffdf3eb68af00525b426144aef04d7a0e7)
+*  TEST (fix): fix failing test on linux because caseSentivity [View](https://github.com/Gisto/Gisto/commit/2a77a9f033c29b70f08c1c659935cdb29634d4ff)
+*  TEST (reducers): add more tests to snippets reduccer [View](https://github.com/Gisto/Gisto/commit/892d0d3cfed2288e0fad959cef25b27a217d8d7f)
+*  Set up CI with Azure Pipelines [View](https://github.com/Gisto/Gisto/commit/a6a7f1d6d8378693affda7677dfd65f7c8db85d9)
+*  FEATURE (login): log-in by passing token to cli closes #183 [View](https://github.com/Gisto/Gisto/commit/9783a726bca7a23d264db3a68b30f4df4dfa0ec4)
+
 ### v1.9.95
 *  TOOLS (ci): fix deploy [View](https://github.com/Gisto/Gisto/commit/6642717482d6ebf7b3102bf36879464e9b71eca0)
 
