@@ -130,7 +130,7 @@ export class LogIn extends React.Component {
     }));
   };
 
-  loginWithToken = () => {
+  loginWithToken = (token) => {
     if (isEmpty(this.state.fieldsData.token)) {
       setNotification({
         title: 'Validation',
@@ -141,7 +141,7 @@ export class LogIn extends React.Component {
       return null;
     }
 
-    return this.props.loginWithToken(this.state.fieldsData.token);
+    return this.props.loginWithToken(token || this.state.fieldsData.token);
   };
 
   loginWithBasic = (user, pass, twoFactorAuth) => {

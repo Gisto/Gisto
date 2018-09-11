@@ -88,6 +88,8 @@ Please feel free to add a bug / feature request / suggestions to the issue track
 
 - **Access token** - If you would rather to supply your own access token without providing Gisto your login details you may manually create an access token from the account settings at GitHub and login using the generated token 
 
+- **Token via CLI** - You can log-in with token by passing it to the executable as CLI argument (macOs example): `open /Applications/Gisto.app/ --args --token 123123` ([#183](https://github.com/Gisto/Gisto/issues/183))
+
 Gisto only saves the oAuth2 token received after authenticating and nothing else.
 
 This token will be saved permanently until you log out.

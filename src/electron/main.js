@@ -4,6 +4,7 @@ const isMacOS = process.platform === 'darwin';
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const settings = require('electron-settings');
+const { argv } = require('yargs');
 
 // main helpers
 const helpers = require('./main/helpers');
@@ -64,6 +65,7 @@ const createWindow = () => {
 
       helpers.buildMenu(mainWindow);
       helpers.updateChecker(mainWindow);
+      helpers.handleCmdFlags(mainWindow, argv);
     });
 
     ipcMain.on('checkForUpdate', () => helpers.handleMacOSUpdates(mainWindow));

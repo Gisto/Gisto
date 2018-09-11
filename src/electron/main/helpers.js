@@ -271,6 +271,12 @@ function updateChecker(mainWindow) {
   });
 }
 
+function handleCmdFlags(win, flags) {
+  if (flags.token) {
+    win.webContents.send('token', flags.token);
+  }
+}
+
 module.exports = {
   initSentry,
   installDevToolsExtentions,
@@ -279,5 +285,6 @@ module.exports = {
   setBadge,
   buildMenu,
   updateChecker,
-  handleMacOSUpdates
+  handleMacOSUpdates,
+  handleCmdFlags
 };
