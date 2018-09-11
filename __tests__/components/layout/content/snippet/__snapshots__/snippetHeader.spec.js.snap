@@ -16,11 +16,11 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
 >
   <SnippetHeaderWrapper>
     <div
-      className="SnippetHeaderWrapper-sc-1s8csr9-0 kiWSKE"
+      className="SnippetHeaderWrapper-sc-1ejil1h-0 hmftoh"
     >
       <FileName>
         <div
-          className="FileName-sc-1s8csr9-3 keHQOQ"
+          className="FileName-sc-1ejil1h-3 fBRmgg"
         >
           <FilenameIcon
             color="#3F84A8"
@@ -28,13 +28,13 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
             type="file"
           >
             <Icon
-              className="FilenameIcon-sc-1s8csr9-2 iKzloF"
+              className="FilenameIcon-sc-1ejil1h-2 bLnpTL"
               color="#3F84A8"
               size={22}
               type="file"
             >
               <span
-                className="FilenameIcon-sc-1s8csr9-2 iKzloF Icon-vk4qna-0 gKzxIz"
+                className="FilenameIcon-sc-1ejil1h-2 bLnpTL Icon-vk4qna-0 gKzxIz"
                 color="#3F84A8"
                 size={22}
                 type="file"
@@ -114,11 +114,11 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
 >
   <SnippetHeaderWrapper>
     <div
-      className="SnippetHeaderWrapper-sc-1s8csr9-0 kiWSKE"
+      className="SnippetHeaderWrapper-sc-1ejil1h-0 hmftoh"
     >
       <FileName>
         <div
-          className="FileName-sc-1s8csr9-3 keHQOQ"
+          className="FileName-sc-1ejil1h-3 fBRmgg"
         >
           <FilenameIcon
             color="#3F84A8"
@@ -126,13 +126,13 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
             type="file"
           >
             <Icon
-              className="FilenameIcon-sc-1s8csr9-2 iKzloF"
+              className="FilenameIcon-sc-1ejil1h-2 bLnpTL"
               color="#3F84A8"
               size={22}
               type="file"
             >
               <span
-                className="FilenameIcon-sc-1s8csr9-2 iKzloF Icon-vk4qna-0 gKzxIz"
+                className="FilenameIcon-sc-1ejil1h-2 bLnpTL Icon-vk4qna-0 gKzxIz"
                 color="#3F84A8"
                 size={22}
                 type="file"
@@ -146,7 +146,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
       <div>
         <Language>
           <span
-            className="Language-sc-1s8csr9-1 fTycGO"
+            className="Language-sc-1ejil1h-1 jYzGHT"
           >
             Plain text
           </span>
