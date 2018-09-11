@@ -10,17 +10,17 @@ exports[`COMPONENTS - <SettingsHeader> render SettingsHeader 1`] = `
     onClick={[Function]}
   >
     <Button
-      className="StyledButton-dSfbpv jMnntm"
+      className="StyledButton-sc-3wrytp-0 cyeYqP"
       icon="check"
       onClick={[Function]}
     >
       <ButtonComponent
-        className="StyledButton-dSfbpv jMnntm"
+        className="StyledButton-sc-3wrytp-0 cyeYqP"
         onClick={[Function]}
         title="Save"
       >
         <button
-          className="StyledButton-dSfbpv jMnntm ButtonComponent-fVGrXr coZNuD"
+          className="StyledButton-sc-3wrytp-0 cyeYqP ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
           onClick={[Function]}
           title="Save"
         >
@@ -29,7 +29,7 @@ exports[`COMPONENTS - <SettingsHeader> render SettingsHeader 1`] = `
             type="check"
           >
             <span
-              className="Icon-cFRQJw ixqfGJ"
+              className="Icon-vk4qna-0 PqRDb"
               color="#fff"
               type="check"
             />

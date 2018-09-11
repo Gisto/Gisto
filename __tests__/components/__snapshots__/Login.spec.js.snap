@@ -9,11 +9,11 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ bfWxRb"
+      className="LoginWrapper-sc-1s1b8ij-0 NjdAk"
     >
       <Logo>
         <div
-          className="Logo-kCrwua jpCQDc"
+          className="Logo-sc-1s1b8ij-2 bBbBMF"
         >
           { Gisto }
         </div>
@@ -42,7 +42,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
             type="text"
           >
             <input
-              className="StyledInput-kKifnt NdlXS"
+              className="StyledInput-sc-86zjwb-0 djdkls"
               disabled={false}
               onChange={[Function]}
               placeholder="Email or username"
@@ -65,7 +65,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
             type="password"
           >
             <input
-              className="StyledInput-kKifnt NdlXS"
+              className="StyledInput-sc-86zjwb-0 djdkls"
               disabled={false}
               onChange={[Function]}
               placeholder="Password"
@@ -77,7 +77,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
         <br />
         <ResetLoginType>
           <div
-            className="ResetLoginType-gjfMMZ gKdeZe"
+            className="ResetLoginType-sc-1s1b8ij-3 fljXQK"
           >
             <Anchor
               onClick={[Function]}
@@ -86,7 +86,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-hdnizH bVHTue"
+                  className="Link-sc-17j1f2u-0 ljvDuf"
                   onClick={[Function]}
                 >
                   Log-in with GitHub
@@ -100,7 +100,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-hdnizH bVHTue"
+                  className="Link-sc-17j1f2u-0 ljvDuf"
                   onClick={[Function]}
                 >
                   Cancel
@@ -120,7 +120,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
             title="Log-in"
           >
             <button
-              className="ButtonComponent-fVGrXr coZNuD"
+              className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
               onClick={[Function]}
               title="Log-in"
             >
@@ -129,7 +129,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
                 type="success"
               >
                 <span
-                  className="Icon-cFRQJw ixqfGJ"
+                  className="Icon-vk4qna-0 PqRDb"
                   color="#fff"
                   type="success"
                 />
@@ -155,7 +155,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               token
@@ -170,7 +170,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               username and password
@@ -185,7 +185,7 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               Use enterprise
@@ -207,11 +207,11 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ bfWxRb"
+      className="LoginWrapper-sc-1s1b8ij-0 NjdAk"
     >
       <Logo>
         <div
-          className="Logo-kCrwua jpCQDc"
+          className="Logo-sc-1s1b8ij-2 bBbBMF"
         >
           { Gisto }
         </div>
@@ -237,7 +237,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             type="text"
           >
             <input
-              className="StyledInput-kKifnt NdlXS"
+              className="StyledInput-sc-86zjwb-0 djdkls"
               disabled={false}
               onChange={[Function]}
               placeholder="http://my.enterprise.domain.com"
@@ -267,7 +267,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             type="text"
           >
             <input
-              className="StyledInput-kKifnt NdlXS"
+              className="StyledInput-sc-86zjwb-0 djdkls"
               disabled={false}
               onChange={[Function]}
               placeholder="Email or username"
@@ -290,7 +290,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             type="password"
           >
             <input
-              className="StyledInput-kKifnt NdlXS"
+              className="StyledInput-sc-86zjwb-0 djdkls"
               disabled={false}
               onChange={[Function]}
               placeholder="Password"
@@ -302,7 +302,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
         <br />
         <ResetLoginType>
           <div
-            className="ResetLoginType-gjfMMZ gKdeZe"
+            className="ResetLoginType-sc-1s1b8ij-3 fljXQK"
           >
             <Anchor
               onClick={[Function]}
@@ -311,7 +311,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-hdnizH bVHTue"
+                  className="Link-sc-17j1f2u-0 ljvDuf"
                   onClick={[Function]}
                 >
                   Log-in with GitHub
@@ -325,7 +325,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-hdnizH bVHTue"
+                  className="Link-sc-17j1f2u-0 ljvDuf"
                   onClick={[Function]}
                 >
                   Cancel
@@ -345,7 +345,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             title="Log-in"
           >
             <button
-              className="ButtonComponent-fVGrXr coZNuD"
+              className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
               onClick={[Function]}
               title="Log-in"
             >
@@ -354,7 +354,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                 type="success"
               >
                 <span
-                  className="Icon-cFRQJw ixqfGJ"
+                  className="Icon-vk4qna-0 PqRDb"
                   color="#fff"
                   type="success"
                 />
@@ -380,7 +380,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               token
@@ -395,7 +395,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               username and password
@@ -410,7 +410,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               Use enterprise
@@ -432,11 +432,11 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ bfWxRb"
+      className="LoginWrapper-sc-1s1b8ij-0 NjdAk"
     >
       <Logo>
         <div
-          className="Logo-kCrwua jpCQDc"
+          className="Logo-sc-1s1b8ij-2 bBbBMF"
         >
           { Gisto }
         </div>
@@ -450,17 +450,17 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
         onClick={[Function]}
       >
         <Button
-          className="StyledGithubLoginButton-eoZphL eKsqJO"
+          className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew"
           icon="logo-github"
           onClick={[Function]}
         >
           <ButtonComponent
-            className="StyledGithubLoginButton-eoZphL eKsqJO"
+            className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew"
             onClick={[Function]}
             title="Log-in with GitHub"
           >
             <button
-              className="StyledGithubLoginButton-eoZphL eKsqJO ButtonComponent-fVGrXr coZNuD"
+              className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
               onClick={[Function]}
               title="Log-in with GitHub"
             >
@@ -469,7 +469,7 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
                 type="logo-github"
               >
                 <span
-                  className="Icon-cFRQJw hvsNYG"
+                  className="Icon-vk4qna-0 dhVbzf"
                   color="#fff"
                   type="logo-github"
                 />
@@ -494,7 +494,7 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               token
@@ -509,7 +509,7 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               username and password
@@ -524,7 +524,7 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               Use enterprise
@@ -546,11 +546,11 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
 >
   <LoginWrapper>
     <div
-      className="LoginWrapper-kmdtRZ bfWxRb"
+      className="LoginWrapper-sc-1s1b8ij-0 NjdAk"
     >
       <Logo>
         <div
-          className="Logo-kCrwua jpCQDc"
+          className="Logo-sc-1s1b8ij-2 bBbBMF"
         >
           { Gisto }
         </div>
@@ -569,13 +569,13 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
           type="text"
         >
           <Input
-            className="TokenInput-bIdMSs hlXMqT"
+            className="TokenInput-sc-1s1b8ij-4 jryAbL"
             onChange={[Function]}
             placeholder="GitHub token"
             type="text"
           >
             <StyledInput
-              className="TokenInput-bIdMSs hlXMqT"
+              className="TokenInput-sc-1s1b8ij-4 jryAbL"
               disabled={false}
               onChange={[Function]}
               placeholder="GitHub token"
@@ -583,7 +583,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
               type="text"
             >
               <input
-                className="TokenInput-bIdMSs hlXMqT StyledInput-kKifnt NdlXS"
+                className="TokenInput-sc-1s1b8ij-4 jryAbL StyledInput-sc-86zjwb-0 djdkls"
                 disabled={false}
                 onChange={[Function]}
                 placeholder="GitHub token"
@@ -606,7 +606,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
               onClick={[Function]}
             >
               <a
-                className="Link-hdnizH bVHTue"
+                className="Link-sc-17j1f2u-0 ljvDuf"
                 href="#"
                 onClick={[Function]}
               >
@@ -616,7 +616,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                   type="info"
                 >
                   <span
-                    className="Icon-cFRQJw gxgQBZ"
+                    className="Icon-vk4qna-0 bZuFFG"
                     color="#3F84A8"
                     size="16"
                     type="info"
@@ -636,7 +636,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
             title="Log-in"
           >
             <button
-              className="ButtonComponent-fVGrXr coZNuD"
+              className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
               onClick={[Function]}
               title="Log-in"
             >
@@ -645,7 +645,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                 type="success"
               >
                 <span
-                  className="Icon-cFRQJw ixqfGJ"
+                  className="Icon-vk4qna-0 PqRDb"
                   color="#fff"
                   type="success"
                 />
@@ -664,7 +664,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               Cancel
@@ -686,7 +686,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               token
@@ -701,7 +701,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               username and password
@@ -716,7 +716,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
             onClick={[Function]}
           >
             <a
-              className="Link-hdnizH bVHTue"
+              className="Link-sc-17j1f2u-0 ljvDuf"
               onClick={[Function]}
             >
               Use enterprise

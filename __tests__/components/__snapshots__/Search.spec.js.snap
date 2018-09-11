@@ -10,7 +10,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
 >
   <SearchWrapper>
     <div
-      className="SearchWrapper-ihPHph laZCxd"
+      className="SearchWrapper-sc-1ikp2pb-0 jZnjvN"
     >
       <Icon
         color="#3F84A8"
@@ -18,7 +18,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
         type="search"
       >
         <span
-          className="Icon-cFRQJw dhdcg"
+          className="Icon-vk4qna-0 kBbUWi"
           color="#3F84A8"
           size="46"
           type="search"
@@ -30,13 +30,13 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
         type="search"
       >
         <Input
-          className="StyledInput-hbWqm cSTElE"
+          className="StyledInput-sc-1ikp2pb-2 jorvjZ"
           onChange={[Function]}
           placeholder="Search 0 snippets"
           type="search"
         >
           <StyledInput
-            className="StyledInput-hbWqm cSTElE"
+            className="StyledInput-sc-1ikp2pb-2 jorvjZ"
             disabled={false}
             onChange={[Function]}
             placeholder="Search 0 snippets"
@@ -44,7 +44,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
             type="search"
           >
             <input
-              className="StyledInput-hbWqm cSTElE StyledInput-kKifnt NdlXS"
+              className="StyledInput-sc-1ikp2pb-2 jorvjZ StyledInput-sc-86zjwb-0 djdkls"
               disabled={false}
               onChange={[Function]}
               placeholder="Search 0 snippets"
@@ -94,7 +94,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
               width="150px"
             >
               <button
-                className="ButtonComponent-fVGrXr eQWFjN"
+                className="ButtonComponent-sc-1hy9a8c-0 kpHweH"
                 height="30px"
                 title={
                   <StyledLink
@@ -110,7 +110,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
                   type="add"
                 >
                   <span
-                    className="Icon-cFRQJw imwxZY"
+                    className="Icon-vk4qna-0 kEhjeN"
                     color="#fff"
                     type="add"
                   />
@@ -120,12 +120,12 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
                   to="/new"
                 >
                   <Link
-                    className="StyledLink-eJtUmc gFCPlw"
+                    className="StyledLink-sc-1ikp2pb-1 idzCQH"
                     replace={false}
                     to="/new"
                   >
                     <a
-                      className="StyledLink-eJtUmc gFCPlw"
+                      className="StyledLink-sc-1ikp2pb-1 idzCQH"
                       href="#/new"
                       onClick={[Function]}
                     >

@@ -11,15 +11,15 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
 >
   <SuperSearchWrapper>
     <div
-      className="SuperSearchWrapper-gsIfNo gKiIto"
+      className="SuperSearchWrapper-sc-1mnove5-0 bAwZkz"
     >
       <SearchWrapper>
         <div
-          className="SearchWrapper-ihPHph fdLWUt"
+          className="SearchWrapper-sc-1mnove5-1 ijKtSQ"
         >
           <SearchBar>
             <div
-              className="SearchBar-iyoeeB fphlzg"
+              className="SearchBar-sc-1mnove5-2 dllRVk"
             >
               <StyledLookingGlass
                 color="#3F84A8"
@@ -27,13 +27,13 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                 type="search"
               >
                 <Icon
-                  className="StyledLookingGlass-bFmLLL gwHSPH"
+                  className="StyledLookingGlass-sc-1mnove5-3 kqOEtv"
                   color="#3F84A8"
                   size={32}
                   type="search"
                 >
                   <span
-                    className="StyledLookingGlass-bFmLLL gwHSPH Icon-cFRQJw jmgzIa"
+                    className="StyledLookingGlass-sc-1mnove5-3 kqOEtv Icon-vk4qna-0 jNFXhg"
                     color="#3F84A8"
                     size={32}
                     type="search"
@@ -49,14 +49,14 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
               >
                 <Input
                   autoFocus={true}
-                  className="mousetrap StyledInput-hbWqm gMnXlE"
+                  className="mousetrap StyledInput-sc-1mnove5-8 deaUOv"
                   onChange={[Function]}
                   placeholder="Search"
                   type="search"
                 >
                   <StyledInput
                     autoFocus={true}
-                    className="mousetrap StyledInput-hbWqm gMnXlE"
+                    className="mousetrap StyledInput-sc-1mnove5-8 deaUOv"
                     disabled={false}
                     onChange={[Function]}
                     placeholder="Search"
@@ -65,7 +65,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   >
                     <input
                       autoFocus={true}
-                      className="mousetrap StyledInput-hbWqm gMnXlE StyledInput-kKifnt NdlXS"
+                      className="mousetrap StyledInput-sc-1mnove5-8 deaUOv StyledInput-sc-86zjwb-0 djdkls"
                       disabled={false}
                       onChange={[Function]}
                       placeholder="Search"
@@ -79,7 +79,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
           </SearchBar>
           <SnippetResults>
             <div
-              className="SnippetResults-hgDhSA cfesNO"
+              className="SnippetResults-sc-1mnove5-4 eUdsVx"
             />
           </SnippetResults>
         </div>

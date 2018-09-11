@@ -4,7 +4,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
 <About>
   <Wrapper>
     <div
-      className="Wrapper-dyuznp izLMrr"
+      className="Wrapper-l90ydr-0 hPMCSw"
     >
       <img
         alt=""
@@ -40,7 +40,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               onClick={[Function]}
             >
               <a
-                className="Link-hdnizH bVHTue"
+                className="Link-sc-17j1f2u-0 ljvDuf"
                 href="#"
                 onClick={[Function]}
               >
@@ -62,7 +62,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               onClick={[Function]}
             >
               <a
-                className="Link-hdnizH bVHTue"
+                className="Link-sc-17j1f2u-0 ljvDuf"
                 href="#"
                 onClick={[Function]}
               >
@@ -84,7 +84,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               onClick={[Function]}
             >
               <a
-                className="Link-hdnizH bVHTue"
+                className="Link-sc-17j1f2u-0 ljvDuf"
                 href="#"
                 onClick={[Function]}
               >
@@ -106,7 +106,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               onClick={[Function]}
             >
               <a
-                className="Link-hdnizH bVHTue"
+                className="Link-sc-17j1f2u-0 ljvDuf"
                 href="#"
                 onClick={[Function]}
               >
@@ -128,7 +128,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               onClick={[Function]}
             >
               <a
-                className="Link-hdnizH bVHTue"
+                className="Link-sc-17j1f2u-0 ljvDuf"
                 href="#"
                 onClick={[Function]}
               >
