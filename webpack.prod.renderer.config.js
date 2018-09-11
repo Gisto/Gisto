@@ -10,7 +10,43 @@ const config = merge.smart(baseConfig, {
   entry: './src/index.js',
   output: {
     filename: 'renderer.js',
-    path: buildPath
+    path: buildPath,
+    pathinfo: true,
+    chunkFilename: 'static/js/[name].chunk.js'
+  },
+  bail: true,
+  devtool: 'source-map',
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          parse: {
+            ecma: 8
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            comparisons: false
+          },
+          mangle: {
+            safari10: true
+          },
+          output: {
+            ecma: 5,
+            comments: false,
+            ascii_only: true
+          }
+        },
+        parallel: true,
+        cache: true,
+        sourceMap: true
+      })
+    ],
+    splitChunks: {
+      chunks: 'all',
+      name: 'vendors'
+    },
+    runtimeChunk: true
   },
   module: {
     rules: [

@@ -11,9 +11,19 @@ const config = merge.smart(baseConfig, {
   entry: './src/index.js',
   output: {
     filename: 'renderer.js',
-    path: buildPath
+    path: buildPath,
+    pathinfo: true,
+    chunkFilename: 'static/js/[name].chunk.js'
   },
-  devtool: 'inline-source-map',
+  bail: true,
+  devtool: 'cheap-module-source-map',
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: 'vendors'
+    },
+    runtimeChunk: true
+  },
   module: {
     rules: [
       {
