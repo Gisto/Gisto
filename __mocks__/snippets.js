@@ -53,7 +53,13 @@ export const snippet = (props) => ({
 });
 
 export const snippets = () => [
-  snippetStructure(snippet({ description: 'test #tag1 #tag2' })),
-  snippetStructure(snippet({ description: 'test1 #tag1 #tag2' })),
-  snippetStructure(snippet({ description: 'test3 #tag3 #tag4 #tag5' }))
+  snippetStructure(snippet({ description: 'aaa123 #tag1 #tag2', id: 'aaa123' })),
+  snippetStructure(snippet({ description: 'bbb123 #tag1 #tag2', id: 'bbb123' })),
+  snippetStructure(snippet({ description: 'ccc123 #tag3 #tag4 #tag5', id: 'ccc123' }))
+];
+
+export const rawSnippets = () => [
+  snippet({ description: 'aaa123 #tag1 #tag2', id: 'aaa123' }),
+  snippet({ description: 'bbb123 #tag1 #tag2', id: 'bbb123' }),
+  snippet({ description: 'ccc123 #tag3 #tag4 #tag5', id: 'ccc123' })
 ];
