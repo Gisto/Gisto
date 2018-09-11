@@ -17,7 +17,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
     title="UtilityIcon"
   >
     <span
-      className="UtilityIcon Util-iuPPCj iKguzX"
+      className="UtilityIcon Util-d02m7m-0 gizDct"
       color="red"
       onClick={[Function]}
       title="UtilityIcon"
@@ -28,7 +28,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
         type="menu"
       >
         <span
-          className="Icon-cFRQJw efUAMq"
+          className="Icon-vk4qna-0 fxQfWz"
           color="red"
           size={20}
           type="menu"

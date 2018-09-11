@@ -15,7 +15,7 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
     title=""
   >
     <textarea
-      className="classified StyledInput-kKifnt hyrAle"
+      className="classified StyledInput-sc-1zkbel-0 cjjZfw"
       defaultValue="typetypetype"
       disabled={false}
       placeholder="I am temporary"

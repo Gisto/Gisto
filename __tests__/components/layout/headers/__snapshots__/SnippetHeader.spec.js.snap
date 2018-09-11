@@ -12,7 +12,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
 >
   <SnippetHeaderWrapper>
     <div
-      className="SnippetHeaderWrapper-cazcnY bKVYHt"
+      className="SnippetHeaderWrapper-sc-1f7cxje-0 bQqraw"
     >
       <Title
         onBlur={[Function]}
@@ -21,7 +21,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
         onMouseOver={[Function]}
       >
         <div
-          className="Title-kAzUgf eEsrOG"
+          className="Title-sc-1f7cxje-4 htbhqq"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseOut={[Function]}
@@ -30,7 +30,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
            
           <Description>
             <span
-              className="Description-hWhuvR cWjGvZ"
+              className="Description-sc-1f7cxje-5 lgxzSb"
             />
           </Description>
            
@@ -42,13 +42,13 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
         type="lock"
       >
         <Icon
-          className="LockIcon-jAeBCq jaYIzt"
+          className="LockIcon-sc-1f7cxje-8 jKEmBh"
           color="#3F84A8"
           size={22}
           type="lock"
         >
           <span
-            className="LockIcon-jAeBCq jaYIzt Icon-cFRQJw jJVsKq"
+            className="LockIcon-sc-1f7cxje-8 jKEmBh Icon-vk4qna-0 eKEHtt"
             color="#3F84A8"
             size={22}
             type="lock"
@@ -67,7 +67,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj fxQJsL"
+              className="Util-d02m7m-0 kdZBvR"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -77,7 +77,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="edit"
               >
                 <span
-                  className="Icon-cFRQJw hkalTd"
+                  className="Icon-vk4qna-0 hOwBJj"
                   color="#3F84A8"
                   size={22}
                   type="edit"
@@ -98,7 +98,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj uhTl"
+              className="Util-d02m7m-0 jYVrYd"
               color="tomato"
               onClick={[Function]}
             >
@@ -108,7 +108,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="delete"
               >
                 <span
-                  className="Icon-cFRQJw eYYTI"
+                  className="Icon-vk4qna-0 fGamGl"
                   color="tomato"
                   size={22}
                   type="delete"
@@ -131,7 +131,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             text=""
           >
             <span
-              className="Util-iuPPCj fxQJsL"
+              className="Util-d02m7m-0 kdZBvR"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -141,7 +141,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="chat"
               >
                 <span
-                  className="Icon-cFRQJw beXoxP"
+                  className="Icon-vk4qna-0 gdKEvu"
                   color="#3F84A8"
                   size={22}
                   type="chat"
@@ -162,7 +162,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj fxQJsL"
+              className="Util-d02m7m-0 kdZBvR"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -172,7 +172,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="star-empty"
               >
                 <span
-                  className="Icon-cFRQJw dlyUfr"
+                  className="Icon-vk4qna-0 hqBocj"
                   color="#3F84A8"
                   size={22}
                   type="star-empty"
@@ -193,7 +193,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-iuPPCj fxQJsL"
+              className="Util-d02m7m-0 kdZBvR"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -203,7 +203,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                 type="ellipsis"
               >
                 <span
-                  className="Icon-cFRQJw jkIQNC"
+                  className="Icon-vk4qna-0 dQcNAQ"
                   color="#3F84A8"
                   size={22}
                   type="ellipsis"

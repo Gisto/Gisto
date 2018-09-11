@@ -16,7 +16,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
     width="200px"
   >
     <button
-      className="btn ButtonComponent-fVGrXr lnZbfl"
+      className="btn ButtonComponent-sc-1hy9a8c-0 hCytra"
       height="30px"
       title="link"
       width="200px"
@@ -26,7 +26,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
         type="menu"
       >
         <span
-          className="Icon-cFRQJw eLFJQW"
+          className="Icon-vk4qna-0 fvDzQl"
           color="#3F84A8"
           type="menu"
         />

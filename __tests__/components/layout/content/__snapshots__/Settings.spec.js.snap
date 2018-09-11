@@ -4,7 +4,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
 <Settings>
   <Wrapper>
     <div
-      className="Wrapper-ddcghJ hvetDW"
+      className="Wrapper-sc-5rerlh-0 dwXciV"
     >
       <h2>
         Settings
@@ -18,28 +18,32 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
             <h4>
               color settings:
             </h4>
-            <p>
-              <label>
-                Base color:
-                <InputColor
-                  color={null}
-                  onChange={[Function]}
+            <div>
+              <Label>
+                <div
+                  className="Label-sc-1aqavpp-0 ksaHSg"
                 >
-                  <Color
-                    defaultValue={null}
+                  Base color:
+                  <InputColor
+                    color={null}
                     onChange={[Function]}
-                    type="color"
                   >
-                    <input
-                      className="Color-ktETcj ctcntg"
+                    <Color
                       defaultValue={null}
                       onChange={[Function]}
                       type="color"
-                    />
-                  </Color>
-                </InputColor>
-              </label>
-            </p>
+                    >
+                      <input
+                        className="Color-xc03ef-0 cXwfLZ"
+                        defaultValue={null}
+                        onChange={[Function]}
+                        type="color"
+                      />
+                    </Color>
+                  </InputColor>
+                </div>
+              </Label>
+            </div>
           </div>
         </BaseSettings>
       </details>
@@ -54,19 +58,19 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
             </h4>
             <Wrapper>
               <div
-                className="Wrapper-dyuznp ciFETj"
+                className="Wrapper-sc-3i0r91-0 jjrWCY"
               >
                 <Section>
                   <div
-                    className="Section-hLnjej bYTpNg"
+                    className="Section-sc-3i0r91-2 gqkeLg"
                   >
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Theme:
@@ -76,17 +80,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               value={null}
                             >
                               <Select
-                                className="StyledISelect-ilVKaP jUNncK"
+                                className="StyledISelect-sc-3i0r91-5 bnSweD"
                                 onChange={[Function]}
                                 value={null}
                               >
                                 <SelectInput
-                                  className="StyledISelect-ilVKaP jUNncK"
+                                  className="StyledISelect-sc-3i0r91-5 bnSweD"
                                   defaultValue={null}
                                   onChange={[Function]}
                                 >
                                   <select
-                                    className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ QqSuI"
+                                    className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gHNoVj"
                                     defaultValue={null}
                                     onChange={[Function]}
                                   >
@@ -115,11 +119,11 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                     </Field>
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Minimap:
@@ -134,7 +138,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                 type="checkbox"
                               >
                                 <input
-                                  className="Box-jLJQJw bLlIOV"
+                                  className="Box-sc-1bw5uxh-0 kcvKxi"
                                   defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
@@ -147,11 +151,11 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                     </Field>
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Line Numbers:
@@ -166,7 +170,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                 type="checkbox"
                               >
                                 <input
-                                  className="Box-jLJQJw bLlIOV"
+                                  className="Box-sc-1bw5uxh-0 kcvKxi"
                                   defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
@@ -179,11 +183,11 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                     </Field>
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Format On Paste:
@@ -198,7 +202,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                 type="checkbox"
                               >
                                 <input
-                                  className="Box-jLJQJw bLlIOV"
+                                  className="Box-sc-1bw5uxh-0 kcvKxi"
                                   defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
@@ -211,11 +215,11 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                     </Field>
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Font Family:
@@ -226,13 +230,13 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               value={null}
                             >
                               <Input
-                                className="StyledInput-hbWqm ciXLeq"
+                                className="StyledInput-sc-3i0r91-4 lIHVh"
                                 onChange={[Function]}
                                 type="text"
                                 value={null}
                               >
                                 <StyledInput
-                                  className="StyledInput-hbWqm ciXLeq"
+                                  className="StyledInput-sc-3i0r91-4 lIHVh"
                                   defaultValue={null}
                                   disabled={false}
                                   onChange={[Function]}
@@ -240,7 +244,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                   type="text"
                                 >
                                   <input
-                                    className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt NdlXS"
+                                    className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
                                     defaultValue={null}
                                     disabled={false}
                                     onChange={[Function]}
@@ -258,15 +262,15 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                 </Section>
                 <Section>
                   <div
-                    className="Section-hLnjej bYTpNg"
+                    className="Section-sc-3i0r91-2 gqkeLg"
                   >
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Font Size:
@@ -277,13 +281,13 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               value={null}
                             >
                               <Input
-                                className="StyledInput-hbWqm ciXLeq"
+                                className="StyledInput-sc-3i0r91-4 lIHVh"
                                 onChange={[Function]}
                                 type="number"
                                 value={null}
                               >
                                 <StyledInput
-                                  className="StyledInput-hbWqm ciXLeq"
+                                  className="StyledInput-sc-3i0r91-4 lIHVh"
                                   defaultValue={null}
                                   disabled={false}
                                   onChange={[Function]}
@@ -291,7 +295,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                   type="number"
                                 >
                                   <input
-                                    className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt NdlXS"
+                                    className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
                                     defaultValue={null}
                                     disabled={false}
                                     onChange={[Function]}
@@ -307,11 +311,11 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                     </Field>
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Line height:
@@ -322,13 +326,13 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               value={null}
                             >
                               <Input
-                                className="StyledInput-hbWqm ciXLeq"
+                                className="StyledInput-sc-3i0r91-4 lIHVh"
                                 onChange={[Function]}
                                 type="number"
                                 value={null}
                               >
                                 <StyledInput
-                                  className="StyledInput-hbWqm ciXLeq"
+                                  className="StyledInput-sc-3i0r91-4 lIHVh"
                                   defaultValue={null}
                                   disabled={false}
                                   onChange={[Function]}
@@ -336,7 +340,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                   type="number"
                                 >
                                   <input
-                                    className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt NdlXS"
+                                    className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
                                     defaultValue={null}
                                     disabled={false}
                                     onChange={[Function]}
@@ -352,11 +356,11 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                     </Field>
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Font Ligatures:
@@ -371,7 +375,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                 type="checkbox"
                               >
                                 <input
-                                  className="Box-jLJQJw bLlIOV"
+                                  className="Box-sc-1bw5uxh-0 kcvKxi"
                                   defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
@@ -384,11 +388,11 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                     </Field>
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Code lens:
@@ -403,7 +407,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                 type="checkbox"
                               >
                                 <input
-                                  className="Box-jLJQJw bLlIOV"
+                                  className="Box-sc-1bw5uxh-0 kcvKxi"
                                   defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
@@ -416,11 +420,11 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                     </Field>
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Cursor Blinking:
@@ -430,17 +434,17 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                               value={null}
                             >
                               <Select
-                                className="StyledISelect-ilVKaP jUNncK"
+                                className="StyledISelect-sc-3i0r91-5 bnSweD"
                                 onChange={[Function]}
                                 value={null}
                               >
                                 <SelectInput
-                                  className="StyledISelect-ilVKaP jUNncK"
+                                  className="StyledISelect-sc-3i0r91-5 bnSweD"
                                   defaultValue={null}
                                   onChange={[Function]}
                                 >
                                   <select
-                                    className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ QqSuI"
+                                    className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gHNoVj"
                                     defaultValue={null}
                                     onChange={[Function]}
                                   >
@@ -479,11 +483,11 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                     </Field>
                     <Field>
                       <div
-                        className="Field-eieelf fXkcEo"
+                        className="Field-sc-3i0r91-3 fjKIlx"
                       >
                         <Label>
                           <div
-                            className="Label-ghyrbC kZMEPD"
+                            className="Label-sc-3i0r91-1 hpqRMW"
                           >
                             <span>
                               Select On Line Numbers:
@@ -498,7 +502,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                                 type="checkbox"
                               >
                                 <input
-                                  className="Box-jLJQJw bLlIOV"
+                                  className="Box-sc-1bw5uxh-0 kcvKxi"
                                   defaultChecked={null}
                                   onChange={[Function]}
                                   type="checkbox"
