@@ -3,20 +3,53 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
-const SizePlugin = require('size-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: `${__dirname}/web`,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    pathinfo: true,
+    chunkFilename: 'static/js/[name].chunk.js'
+  },
+  devtool: 'source-map',
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          parse: {
+            ecma: 8
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            comparisons: false
+          },
+          mangle: {
+            safari10: true
+          },
+          output: {
+            ecma: 5,
+            comments: false,
+            ascii_only: true
+          }
+        },
+        parallel: true,
+        cache: true,
+        sourceMap: true
+      })
+    ],
+    splitChunks: {
+      chunks: 'all',
+      name: 'vendors'
+    },
+    runtimeChunk: true
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
     extensions: ['.js', '.jsx', '.json']
   },
-  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {
@@ -76,8 +109,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new SizePlugin(),
-    new HardSourceWebpackPlugin(),
     new MonacoWebpackPlugin(),
     new webpack.IgnorePlugin(new RegExp(/^(fs|ipc|shell|@sentry\/electron)$/)),
     new HtmlWebPackPlugin({
