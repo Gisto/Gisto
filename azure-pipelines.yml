@@ -13,5 +13,8 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install npm@latest -g && npm ci && npm run test:ci && npm run pack
+    npm install npm@latest -g
+    npm ci
+    npm run test:ci
+    npm run pack
   displayName: 'npm install and build'
