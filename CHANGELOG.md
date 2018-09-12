@@ -1,3 +1,6 @@
+### v1.9.99
+*  TOOLS (azure test): test azure pipeline [View](https://github.com/Gisto/Gisto/commit/2d27b104290637b42c0c3e310926fec9ebf4a184)
+
 ### v1.9.98
 *  TOOLS (azure test): test azure pipeline [View](https://github.com/Gisto/Gisto/commit/7ab8eca350e1a045b9577857de250d5f9060fc5e)
 
