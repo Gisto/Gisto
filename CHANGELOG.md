@@ -1,3 +1,6 @@
+### v1.9.98
+*  TOOLS (azure test): test azure pipeline [View](https://github.com/Gisto/Gisto/commit/7ab8eca350e1a045b9577857de250d5f9060fc5e)
+
 ### v1.9.97
 *  TEST (snapshots): re-generate snapshots [View](https://github.com/Gisto/Gisto/commit/c757ac3f8532bcb33e40cf432e7a33969833d749)
 *  FIX (editor): editor syntax highlight not webpacket correctly, closes #221 [View](https://github.com/Gisto/Gisto/commit/a6980263110e57b4011bafdb0293b234b6505547)
