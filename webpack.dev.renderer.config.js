@@ -19,7 +19,7 @@ const config = merge.smart(baseConfig, {
   devtool: 'cheap-module-source-map',
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: 'async',
       name: 'vendors'
     },
     runtimeChunk: true

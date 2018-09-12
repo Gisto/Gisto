@@ -43,7 +43,7 @@ const config = merge.smart(baseConfig, {
       })
     ],
     splitChunks: {
-      chunks: 'all',
+      chunks: 'async',
       name: 'vendors'
     },
     runtimeChunk: true
