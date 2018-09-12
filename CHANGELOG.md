@@ -1,3 +1,7 @@
+### v1.9.97
+*  TEST (snapshots): re-generate snapshots [View](https://github.com/Gisto/Gisto/commit/c757ac3f8532bcb33e40cf432e7a33969833d749)
+*  FIX (editor): editor syntax highlight not webpacket correctly, closes #221 [View](https://github.com/Gisto/Gisto/commit/a6980263110e57b4011bafdb0293b234b6505547)
+
 ### v1.9.96
 *  TOOLS (ci): fix deploy [View](https://github.com/Gisto/Gisto/commit/46133384d4fc77bdc84470b2044dd258d4e84a7d)
 *  FIX (icon): add option to be spin-able [View](https://github.com/Gisto/Gisto/commit/4825c3c97d6e2afa964d05705eb51dc48c915f3d)
