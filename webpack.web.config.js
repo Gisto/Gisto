@@ -41,7 +41,7 @@ module.exports = {
       })
     ],
     splitChunks: {
-      chunks: 'all',
+      chunks: 'async',
       name: 'vendors'
     },
     runtimeChunk: true
