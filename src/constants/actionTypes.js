@@ -25,6 +25,7 @@ export const GET_SNIPPET_COMMENTS = createAsyncAction('GET_SNIPPET_COMMENTS');
 export const CREATE_SNIPPET_COMMENT = createAsyncAction('CREATE_SNIPPET_COMMENT');
 export const DELETE_COMMENT = createAsyncAction('DELETE_COMMENT');
 export const TOGGLE_SNIPPET_COMMENTS = 'TOGGLE_SNIPPET_COMMENTS';
+export const TOGGLE_FILE_COLLAPSE = 'TOGGLE_FILE_COLLAPSE';
 
 export const GET_EMOJI = createAsyncAction('GET_EMOJI');
 

@@ -186,3 +186,11 @@ export const deleteComment = (id, commentId) => ({
 export const toggleSnippetComments = () => ({
   type: AT.TOGGLE_SNIPPET_COMMENTS
 });
+
+export const toggleCollapse = (snippetId, fileName) => ({
+  type: AT.TOGGLE_FILE_COLLAPSE,
+  payload: {
+    snippetId,
+    fileName
+  }
+});
