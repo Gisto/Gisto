@@ -60,17 +60,17 @@ export class Editor extends React.Component {
     }
 
     if (file.content && file.language === 'Markdown') {
-      if (!edit) {
+      if (!edit && !file.collapsed) {
         return (
           <MarkdownComponent text={ file.content }/>
         );
       }
 
       return (
-        <EditorWrapper>
+        <EditorWrapper style={ { display: file.collapsed ? 'none' : 'inherit' } }>
           <MonacoEditor
             width="50%"
-            height={ file.collapsed ? 0 : 'auto' }
+            height="auto"
             className={ className }
             language={ language || syntaxMap[file.language] || 'text' }
             theme={ getSetting('editorTheme', 'vs') }
@@ -86,9 +86,10 @@ export class Editor extends React.Component {
     const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 400;
 
     return (
-      <MonacoEditor
+      <span style={ { display: file.collapsed ? 'none' : 'inherit' } }>
+        <MonacoEditor
         width="100%"
-        height={ file.collapsed ? 0 : calculatedHeight }
+        height={ calculatedHeight }
         className={ className }
         language={ language || syntaxMap[file.language] || 'text' }
         theme={ getSetting('editorTheme', '') }
@@ -96,6 +97,7 @@ export class Editor extends React.Component {
         value={ file.content }
         options={ editorOptions }
         onChange={ onChange }/>
+      </span>
     );
   };
 
