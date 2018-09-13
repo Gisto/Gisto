@@ -49,14 +49,14 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
               >
                 <Input
                   autoFocus={true}
-                  className="mousetrap StyledInput-sc-1mnove5-8 deaUOv"
+                  className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
                   onChange={[Function]}
                   placeholder="Search"
                   type="search"
                 >
                   <StyledInput
                     autoFocus={true}
-                    className="mousetrap StyledInput-sc-1mnove5-8 deaUOv"
+                    className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
                     disabled={false}
                     onChange={[Function]}
                     placeholder="Search"
@@ -65,7 +65,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   >
                     <input
                       autoFocus={true}
-                      className="mousetrap StyledInput-sc-1mnove5-8 deaUOv StyledInput-sc-86zjwb-0 djdkls"
+                      className="mousetrap StyledInput-sc-1mnove5-8 bxYJks StyledInput-sc-86zjwb-0 djdkls"
                       disabled={false}
                       onChange={[Function]}
                       placeholder="Search"

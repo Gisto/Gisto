@@ -5,7 +5,7 @@ import { get, isEmpty } from 'lodash/fp';
 import styled from 'styled-components';
 import { setNotification } from 'utils/notifications';
 
-import { baseAppColor, bg } from 'constants/colors';
+import { baseAppColor, bg, headerBgLightest } from 'constants/colors';
 
 import * as loginActions from 'actions/login';
 
@@ -63,6 +63,10 @@ const LoginWrapper = styled.div`
       color: ${baseAppColor};
       text-decoration: underline;
       cursor: pointer;
+      
+      :hover {
+        color: ${headerBgLightest};
+      }
     }
   }
 `;
