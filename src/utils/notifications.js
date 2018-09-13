@@ -8,7 +8,7 @@ export const setNotification = ({
   body,
   type,
   position,
-  options
+  options = { autoClose: 5000 }
 }) => {
   toast[type || 'info'](<Notification title={ title } body={ body }/>, {
     position: position || toast.POSITION.TOP_CENTER,

@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  get, map, size, toString, isEmpty, join, drop
+  drop, get, isEmpty, join, map, size, toString 
 } from 'lodash/fp';
 import styled from 'styled-components';
 
 import {
-  baseAppColor, colorDanger, colorSuccess, textColor
+  baseAppColor, borderColor, colorDanger, colorSuccess, textColor 
 } from 'constants/colors';
 import * as snippetActions from 'actions/snippets';
 import { copyToClipboard, prepareFilesForUpdate } from 'utils/snippets';
@@ -241,6 +241,50 @@ export class SnippetHeader extends React.Component {
     );
   };
 
+  renderHistoryControls = () => {
+    const { snippets, match } = this.props;
+    const snippet = get(match.params.id, snippets);
+    const snippetId = get('id', snippet);
+    const snippetUrl = getSnippetUrl('/gist');
+
+    return size(get('history', snippet)) > 1 && (
+      <UtilityIcon size={ 22 } color={ baseAppColor } type="time" dropdown>
+        <ul>
+          { map((change) => (
+            <li key={ change.version }>
+              <ExternalLink href={
+                `${snippetUrl}/${change.user.login}/${snippetId}/revisions#diff-${change.version}`
+              }>
+                <History>
+                  <div className="changed">
+                    <strong>Changed:</strong>
+                    <span>{ dateFormateToString(change.committed_at) }</span>
+                  </div>
+                  { !isEmpty(change.change_status) && (
+                    <div>
+                      <span>
+                        <Additions>+</Additions>
+                        <span>
+                          { change.change_status.additions }
+                        </span>
+                      </span>
+                      <span>
+                        <Deletions>-</Deletions>
+                        <span>
+                          { change.change_status.deletions }
+                        </span>
+                      </span>
+                    </div>
+                  ) }
+                </History>
+              </ExternalLink>
+            </li>
+          ), drop(1, snippet.history)) }
+        </ul>
+      </UtilityIcon>
+    );
+  };
+
   render() {
     const snippetUrl = getSnippetUrl('/gist');
     const {
@@ -252,64 +296,38 @@ export class SnippetHeader extends React.Component {
     const httpCloneUrl = `git clone ${snippetUrl}/${snippetId}.git`;
     const sshCloneUrl = `git clone git@${snippetUrl}:${snippetId}.git`;
     const openInGHDesktop = `x-github-client://openRepo/${snippetUrl}/${snippetId}`;
+    const isPublic = get('public', snippet);
 
     return (
       <SnippetHeaderWrapper>
 
         { this.renderTitle() }
 
-        <LockIcon type={ get('public', snippet) ? 'unlock' : 'lock' }
+        <LockIcon type={ isPublic ? 'unlock' : 'lock' }
                   size={ 22 }
-                  color={ baseAppColor }/>
+                  title={ `Snippet is ${isPublic ? 'public' : 'private'}` }
+                  color={ borderColor }/>
 
         { this.state.showToolbox && (
           <div>
 
             { this.renderEditControls() }
 
-            { size(get('history', snippet)) > 1 && (
-              <UtilityIcon size={ 22 } color={ baseAppColor } type="time" dropdown>
-                <ul>
-                  { map((change) => (
-                    <li key={ change.version }>
-                      <ExternalLink href={
-                        `${snippetUrl}/${change.user.login}/${snippetId}/revisions#diff-${change.version}`
-                      }>
-                        <History>
-                          <div className="changed">
-                            <strong>Changed:</strong>
-                            <span>{ dateFormateToString(change.committed_at) }</span>
-                          </div>
-                          { !isEmpty(change.change_status) && (
-                            <div>
-                              <span>
-                                <Additions>+</Additions>
-                                <span>
-                                  { change.change_status.additions }
-                                </span>
-                              </span>
-                              <span>
-                                <Deletions>-</Deletions>
-                                <span>
-                                  { change.change_status.deletions }
-                                </span>
-                              </span>
-                            </div>
-                          ) }
-                        </History>
-                      </ExternalLink>
-                    </li>
-                  ), drop(1, snippet.history)) }
-                </ul>
-              </UtilityIcon>
-            ) }
+            {this.renderHistoryControls()}
+
             <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippetId) } type="delete"/>
             <UtilityIcon size={ 22 }
                          color={ baseAppColor }
                          type="chat"
                          onClick={ () => this.props.toggleSnippetComments() }
                          text={ !isEmpty(comments) ? toString(size(comments)) : toString(get('comments', snippet)) }/>
+            <UtilityIcon size={ 22 }
+                         color={ baseAppColor }
+                         type="copy"
+                         title="Copy Snippet URL to clipboard"
+                         onClick={ (event) => copyToClipboard(event, openOnWebUrl, { title: 'Snippet URL copied to clipboard' }) }/>
             { this.renderStarControl(snippet) }
+
             <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
               <ul>
                 <li><Anchor onClick={ () => editSnippet(snippetId) }>Edit</Anchor></li>
@@ -321,22 +339,22 @@ export class SnippetHeader extends React.Component {
                   </Anchor>
                 </li>
                 <li>
-                  <Anchor onClick={ (event) => copyToClipboard(event, snippetId) }>
+                  <Anchor onClick={ (event) => copyToClipboard(event, snippetId, { title: 'Snippet ID copied to clipboard' }) }>
                   Copy snippet ID to clipboard
                   </Anchor>
                 </li>
                 <li>
-                  <Anchor onClick={ (event) => copyToClipboard(event, openOnWebUrl) }>
+                  <Anchor onClick={ (event) => copyToClipboard(event, openOnWebUrl, { title: 'Snippet URL copied to clipboard' }) }>
                     Copy Snippet URL to clipboard
                   </Anchor>
                 </li>
                 <li>
-                  <Anchor onClick={ (event) => copyToClipboard(event, httpCloneUrl) }>
+                  <Anchor onClick={ (event) => copyToClipboard(event, httpCloneUrl, { title: 'HTTPS clone command copied to clipboard' }) }>
                     Copy HTTPS clone command to clipboard
                   </Anchor>
                 </li>
                 <li>
-                  <Anchor onClick={ (event) => copyToClipboard(event, sshCloneUrl) }>
+                  <Anchor onClick={ (event) => copyToClipboard(event, sshCloneUrl, { title: 'SSH clone command copied to clipboard' }) }>
                     Copy SSH clone command to clipboard
                   </Anchor>
                 </li>
