@@ -6,7 +6,7 @@ import { gitHubTokenKeyInStorage } from 'constants/config';
 import { setNotification } from 'utils/notifications';
 import { getApiUrl } from 'utils/url';
 import { setToken, removeToken, removeEnterpriseDomain } from 'utils/login';
-import { get, set } from 'lodash/fp';
+import { get, getOr, set } from 'lodash/fp';
 import { push } from 'connected-react-router';
 
 let API = superagent;
@@ -31,13 +31,17 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         if (error.response && error.response.headers['x-github-otp']) {
           setNotification({
             title: 'Two factor authentication',
-            body: `${error.response.body.message} (${error.status})`,
+            body: `${error.response.body.message}`,
             type: 'info'
           });
         } else {
           setNotification({
             title: 'Error',
-            body: `${error.response.body.message} (${error.status})`,
+            body: `
+              ${error.response.body.message} ${getOr('', 'response.body.errors[0].message', error)}
+              <br/>
+              <small>Error code: ${error.status}</small>
+            `,
             type: 'error'
           });
         }
