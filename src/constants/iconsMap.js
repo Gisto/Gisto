@@ -2,6 +2,7 @@ export const iconsMap = {
   add: 'ios-add.svg',
   globe: 'ios-globe-outline.svg',
   cog: 'ios-settings-outline.svg',
+  copy: 'ios-copy-outline.svg',
   info: 'ios-information-circle-outline.svg',
   success: 'ios-checkmark-circle-outline.svg',
   error: 'ios-close-circle-outline.svg',

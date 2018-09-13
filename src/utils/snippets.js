@@ -16,6 +16,7 @@ import {
   head
 } from 'lodash/fp';
 import { removeTags } from 'utils/tags';
+import { setNotification } from 'utils/notifications';
 
 export const isTag = (filterText) => startsWith('#', filterText);
 
@@ -110,7 +111,8 @@ export const filterSnippetsList = (
   return sortedSnippets;
 };
 
-export const copyToClipboard = (event, text) => {
+export const copyToClipboard = (event, text, message) => {
+  const notification = message || { title: 'Copied to clipboard' };
   const handleCopy = (copyEvent) => {
     copyEvent.clipboardData.setData('text/plain', text);
     copyEvent.preventDefault();
@@ -119,6 +121,7 @@ export const copyToClipboard = (event, text) => {
 
   document.addEventListener('copy', handleCopy.bind(this), true);
   document.execCommand('copy');
+  setNotification({ ...notification, type: 'success' });
 };
 
 export const prepareFiles = (files) => {

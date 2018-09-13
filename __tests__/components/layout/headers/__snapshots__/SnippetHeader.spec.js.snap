@@ -37,20 +37,23 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
         </div>
       </Title>
       <LockIcon
-        color="#3F84A8"
+        color="#ccc"
         size={22}
+        title="Snippet is private"
         type="lock"
       >
         <Icon
           className="LockIcon-sc-1f7cxje-8 jKEmBh"
-          color="#3F84A8"
+          color="#ccc"
           size={22}
+          title="Snippet is private"
           type="lock"
         >
           <span
-            className="LockIcon-sc-1f7cxje-8 jKEmBh Icon-vk4qna-0 eKEHtt"
-            color="#3F84A8"
+            className="LockIcon-sc-1f7cxje-8 jKEmBh Icon-vk4qna-0 lbtcVi"
+            color="#ccc"
             size={22}
+            title="Snippet is private"
             type="lock"
           />
         </Icon>
@@ -145,6 +148,40 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
                   color="#3F84A8"
                   size={22}
                   type="chat"
+                />
+              </Icon>
+               
+            </span>
+          </Util>
+        </UtilityIcon>
+        <UtilityIcon
+          color="#3F84A8"
+          onClick={[Function]}
+          size={22}
+          title="Copy Snippet URL to clipboard"
+          type="copy"
+        >
+          <Util
+            color="#3F84A8"
+            onClick={[Function]}
+            title="Copy Snippet URL to clipboard"
+          >
+            <span
+              className="Util-d02m7m-0 kdZBvR"
+              color="#3F84A8"
+              onClick={[Function]}
+              title="Copy Snippet URL to clipboard"
+            >
+              <Icon
+                color="#3F84A8"
+                size={22}
+                type="copy"
+              >
+                <span
+                  className="Icon-vk4qna-0 leBnxV"
+                  color="#3F84A8"
+                  size={22}
+                  type="copy"
                 />
               </Icon>
                
