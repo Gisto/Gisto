@@ -89,7 +89,7 @@ const StyledInput = styled(Input)`
   padding: 30px 20px;
   box-shadow: 0 0 150px #fff;
   border-radius: 3px;
-  text-indent: 32px;
+  text-indent: 50px;
   width: 100%;
 `;
 

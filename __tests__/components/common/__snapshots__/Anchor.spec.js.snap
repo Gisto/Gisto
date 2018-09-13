@@ -10,7 +10,7 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
     href="https://github.com"
   >
     <a
-      className="Link-sc-17j1f2u-0 ljvDuf"
+      className="Link-sc-17j1f2u-0 eiOsHn"
       download="file.zip"
       href="https://github.com"
     >

@@ -196,6 +196,10 @@ const StyledInput = styled(Input)`
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: ${baseAppColor};
+  
+  :hover {
+    color: ${headerBgLightest};
+  }
 `;
 
 export class DashBoard  extends React.Component {
