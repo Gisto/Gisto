@@ -1,5 +1,6 @@
 import {
-  merge, keyBy, update, set, map, flow, concat, includes, without, omit, pick, get, filter
+  merge, keyBy, update, set, map, flow, concat, includes,
+  without, omit, pick, get, filter, findIndex
 } from 'lodash/fp';
 import uuid from 'uuid';
 import * as AT from 'constants/actionTypes';
@@ -129,7 +130,8 @@ export const snippets = (state = initialState, action) => {
       const preparedFiles = map((file) => ({
         uuid: uuid.v4(),
         originalFileName: file.filename,
-        ...file
+        ...file,
+        collapsed: false
       }), files.files);
 
       return flow([
@@ -147,7 +149,8 @@ export const snippets = (state = initialState, action) => {
           isNew: true,
           originalFileName: newUuid,
           filename: 'file',
-          content: ' '
+          content: ' ',
+          collapsed: false
         }
       };
 
@@ -201,6 +204,14 @@ export const snippets = (state = initialState, action) => {
       }, get(['comments', action.meta.id], state));
 
       return set(['comments', action.meta.id], comments, state);
+    }
+
+    case AT.TOGGLE_FILE_COLLAPSE: {
+      const snippet = get(['snippets', action.payload.snippetId, 'files'], state);
+      const fileIndex = findIndex({ filename: action.payload.fileName }, snippet);
+      const isCollapsed = get(['snippets', action.payload.snippetId, 'files', [fileIndex], 'collapsed'], state);
+
+      return set(['snippets', action.payload.snippetId, 'files', [fileIndex], 'collapsed'], !isCollapsed, state);
     }
 
     default: {

@@ -75,7 +75,7 @@ export class SnippetHeader extends React.Component {
 
   render() {
     const {
-      file, username, snippetId, edit 
+      file, username, snippetId, edit, toggleCollapse
     } = this.props;
     const openOnWebUrl = `${getSnippetUrl('/gist')}/${username}/${snippetId}#file-${file.filename}`;
 
@@ -112,7 +112,7 @@ export class SnippetHeader extends React.Component {
             <UtilityIcon size={ 22 }
                          color={ baseAppColor }
                          type={ file.collapsed ? 'arrow-up' :  'arrow-down' }
-                         onClick={ () => null }/>
+                         onClick={ () => toggleCollapse(snippetId, file.filename) }/>
           </div>
         ) : (
           <UtilityIcon size={ 22 } color={ colorDanger } type="delete" onClick={ () => this.deleteFile(file.uuid, file.filename) }/>
@@ -135,10 +135,12 @@ SnippetHeader.propTypes = {
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object,
   updateTempSnippet: PropTypes.func,
-  deleteFile: PropTypes.func
+  deleteFile: PropTypes.func,
+  toggleCollapse: PropTypes.func
 };
 
 export default connect(mapStateToProps, {
   updateTempSnippet: snippetActions.updateTempSnippet,
-  deleteFile: snippetActions.deleteTempFile
+  deleteFile: snippetActions.deleteTempFile,
+  toggleCollapse: snippetActions.toggleCollapse
 })(SnippetHeader);
