@@ -6,6 +6,7 @@ const { init } = require('@sentry/electron');
 const { includes, startsWith } = require('lodash/fp');
 
 const isMacOS = process.platform === 'darwin';
+const isDev = process.env.NODE_ENV === 'development';
 const packageJson = require('../package');
 
 function initSentry() {
@@ -29,7 +30,7 @@ function installDevToolsExtentions() {
       .then((extensionName) => console.log(`Added Extension:  ${extensionName}`))
       .catch((err) => console.log('An error occurred: ', err));
 
-    console.log('\x1b[37m\x1b[41m', 'LOG ', '\x1b[0m', process.env.NODE_ENV);
+    console.log('\x1b[37m\x1b[41m', 'current NODE_ENV ', '\x1b[0m', process.env.NODE_ENV);
   }
 }
 
@@ -116,7 +117,8 @@ function buildMenu(mainWindow) {
         },
         {
           label: 'Console',
-          click: () => mainWindow.webContents.openDevTools()
+          click: () => mainWindow.webContents.openDevTools(),
+          visible: isDev
         },
         {
           label: 'Check for updates',

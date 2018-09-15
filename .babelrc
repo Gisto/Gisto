@@ -1,11 +1,11 @@
 {
   "presets": [
-		"env",
-		"react",
-		"stage-0"
+		"@babel/preset-env",
+		"@babel/preset-react"
 	],
 	"plugins": [
-		"transform-object-rest-spread",
+		"@babel/plugin-proposal-object-rest-spread",
+		"@babel/plugin-proposal-class-properties",
 		["babel-plugin-styled-components", { "fileName": false }]
 	]
 }
