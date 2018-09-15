@@ -103,6 +103,23 @@ const LockIcon = styled(Icon)`
   margin: 0 10px 0 0;
 `;
 
+const Fork = styled.div`
+  width: 200px;
+  text-align: left;
+  
+  h3 {
+    white-space: nowrap;
+    font-weight: 100;
+  }
+  
+  img {
+    width: 22px;
+    vertical-align: middle;
+    margin-right: 5px;
+    border-radius: 3px;
+  }
+`;
+
 export class SnippetHeader extends React.Component {
   state = {
     showToolbox: true
@@ -248,7 +265,11 @@ export class SnippetHeader extends React.Component {
     const snippetUrl = getSnippetUrl('/gist');
 
     return size(get('history', snippet)) > 1 && (
-      <UtilityIcon size={ 22 } color={ baseAppColor } type="time" dropdown>
+      <UtilityIcon size={ 22 }
+                   color={ baseAppColor }
+                   type="time"
+                   title="View change history"
+                   dropdown>
         <ul>
           { map((change) => (
             <li key={ change.version }>
@@ -285,6 +306,33 @@ export class SnippetHeader extends React.Component {
     );
   };
 
+  renderFork = () => {
+    const { snippets, match } = this.props;
+    const snippet = get(match.params.id, snippets);
+
+    return !isEmpty(get('fork', snippet)) && (
+      <UtilityIcon size={ 22 }
+                   color={ baseAppColor }
+                   type="fork"
+                   title={ `This snippet is forked from ${get('fork.owner.login', snippet)}` }
+                   dropdown>
+        <Fork className="list">
+          <div>
+            <h3>
+            Forked from <img src={ get('fork.owner.avatar_url', snippet) }
+                              size={ 22 }
+                              alt={ get('fork.owner.login', snippet) }/>
+              <strong>{ get('fork.owner.login', snippet) }</strong>
+            </h3>
+            <div>
+              <Anchor href={ get('fork.html_url', snippet) }>view original snippet</Anchor>
+            </div>
+          </div>
+        </Fork>
+      </UtilityIcon>
+    );
+  };
+
   render() {
     const snippetUrl = getSnippetUrl('/gist');
     const {
@@ -313,7 +361,9 @@ export class SnippetHeader extends React.Component {
 
             { this.renderEditControls() }
 
-            {this.renderHistoryControls()}
+            { this.renderHistoryControls() }
+
+            { this.renderFork() }
 
             <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippetId) } type="delete"/>
             <UtilityIcon size={ 22 }
