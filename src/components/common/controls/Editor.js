@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MonacoEditor from 'react-monaco-editor';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { getSetting } from 'utils/settings';
 import { syntaxMap } from 'constants/editor';
 import { baseAppColor } from 'constants/colors';
@@ -10,10 +10,19 @@ import 'highlight.js/styles/default.css';
 
 import Loading from 'components/common/Loading';
 import Markdown from 'components/common/Markdown';
+import Asciidoc from 'components/common/Asciidoc';
 
-const MarkdownComponent = styled(Markdown)`
+const RenderedComponent = css`
   padding: 20px 30px;
   ${(props) => props.width && `width: calc(${props.width} - 60px);`}
+`;
+
+const MarkdownComponent = styled(Markdown)`
+  ${RenderedComponent}
+`;
+
+const AsciidocComponent = styled(Asciidoc)`
+  ${RenderedComponent}
 `;
 
 const EditorWrapper = styled.span`
@@ -56,6 +65,30 @@ export class Editor extends React.Component {
         <LoadingIndicator>
           <Loading color={ baseAppColor } text=""/>
         </LoadingIndicator>
+      );
+    }
+
+    if (file.content && file.language === 'AsciiDoc') {
+      if (!edit && !file.collapsed) {
+        return (
+          <AsciidocComponent text={ file.content }/>
+        );
+      }
+
+      return (
+        <EditorWrapper style={ { display: file.collapsed ? 'none' : 'inherit' } }>
+          <MonacoEditor
+            width="50%"
+            height="auto"
+            className={ className }
+            language={ language || syntaxMap[file.language] || 'text' }
+            theme={ getSetting('editorTheme', 'vs') }
+            name={ id }
+            value={ file.content }
+            options={ editorOptions }
+            onChange={ onChange }/>
+          <AsciidocComponent width="50%" text={ file.content }/>
+        </EditorWrapper>
       );
     }
 

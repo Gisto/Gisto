@@ -120,6 +120,7 @@
   },
   "dependencies": {
     "@sentry/electron": "^0.7.0",
+    "asciidoctor.js": "^1.5.7-rc.1",
     "connected-react-router": "^4.4.1",
     "dotenv": "^6.0.0",
     "electron-config": "^1.0.0",
