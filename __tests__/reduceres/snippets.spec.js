@@ -314,7 +314,7 @@ describe('reducer - snippets', () => {
       .toEqual(expected);
   });
 
-  test.skip('should create snippet', () => {
+  test('should create snippet', () => {
     const newSnippet = snippet({ id: 'ddd123', description: 'ddd123 #ddd' });
     const action = {
       type: AT.CREATE_SNIPPET.SUCCESS,
@@ -323,14 +323,12 @@ describe('reducer - snippets', () => {
 
     const initial = initialState({
       snippets: snippets(),
-      starred: ['bbb123'],
-      lastOpenedId: ''
+      starred: ['bbb123']
     });
 
     const expected = initialState({
       snippets: [ ...snippets(), ...snippetStructure(action.payload, initial.starred) ],
-      starred: ['bbb123'],
-      lastOpenedId: ''
+      starred: ['bbb123']
     });
 
     expect(reducer(JSON.stringify(initial), action))
