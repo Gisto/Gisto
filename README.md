@@ -56,6 +56,7 @@ change.log of current version for more detailed info regarding new features, bug
 * Theme color changer
 * Drag and drop to create files
 * Markdown preview (with emoji)
+* AsciiDoc preview
 * Comments
 * [Web app](https://web.gistoapp.com)
 * Open source
