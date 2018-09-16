@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Markdown> render Markdown 1`] = `
+<div
+  className="markdown-body undefined"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<p>#hello
+Paragraph <strong>with</strong> <em>stuff</em></p>
+<pre><code><span class=\\"hljs-keyword\\">code</span></code></pre><blockquote>
+<p>quote
+<a href=\\"https://wwww.gistoapp.com\\">link</a></p>
+</blockquote>
+",
+    }
+  }
+/>
+`;
+
+exports[`COMPONENTS - <Markdown> render Markdown with emoji 1`] = `
+<div
+  className="markdown-body undefined"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<p>#hello
+Paragraph <strong>with</strong> <em>stuff</em></p>
+<pre><code><span class=\\"hljs-keyword\\">code</span></code></pre><blockquote>
+<p>quote
+<a href=\\"https://wwww.gistoapp.com\\">link</a> <img src=\\"https://dummy-emoji.url\\" style=\\"width: 18px;vertical-align: middle;background: transparent;\\"/></p>
+</blockquote>
+",
+    }
+  }
+/>
+`;

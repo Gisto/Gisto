@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <Asciidoc> render Asciidoc 1`] = `
+<div
+  className="markdown-body undefined"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<div class=\\"paragraph\\">
+<p>bold <strong>constrained</strong> &amp; <strong>un</strong>constrained</p>
+</div>
+<div class=\\"paragraph\\">
+<p>italic <em>constrained</em> &amp; <em>un</em>constrained</p>
+</div>
+<div class=\\"paragraph\\">
+<p>bold italic <strong><em>constrained</em></strong> &amp; <strong><em>un</em></strong>constrained</p>
+</div>",
+    }
+  }
+/>
+`;

@@ -6,7 +6,7 @@ import 'highlight.js/styles/default.css';
 import hljs from 'highlight.js';
 import { get } from 'lodash/fp';
 
-const Markdown = ({ text, className, emoji }) => {
+export const Markdown = ({ text, className, emoji }) => {
   const md = (textInput)  => {
     const renderer = new marked.Renderer();
 
