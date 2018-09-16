@@ -113,7 +113,8 @@ module.exports = {
     new webpack.IgnorePlugin(new RegExp(/^(fs|ipc|shell|@sentry\/electron)$/)),
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: './index.html'
+      filename: './index.html',
+      favicon: './build/icon.png'
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
