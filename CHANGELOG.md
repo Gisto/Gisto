@@ -1,3 +1,28 @@
+### v1.9.100
+*  TOOLS (travis): fix linux docker bad variable [View](https://github.com/Gisto/Gisto/commit/395c1575193a829573984564518ab6ff70a0de3b)
+*  FIX (changelog): remove bad release and azure pipeline [View](https://github.com/Gisto/Gisto/commit/f2999bbc6bff5d8e016000b8023d4ceff94a7ded)
+*  FIX (API): make errors more informative [View](https://github.com/Gisto/Gisto/commit/cf8781cd9da25fe58dadf43478b1b96161e6d26e)
+*  FEATURE (snippet): add file collapse toggle [View](https://github.com/Gisto/Gisto/commit/2e71b18bc19bebc00fcd88bc154fb09de2347ffa)
+*  FIX (snippet header): refactor and add "copy url to clibboard" [View](https://github.com/Gisto/Gisto/commit/1c7e5951a7cdadd4bbcd7ceb8909f289866deb6d)
+*  FIX (Anchor): add hove states for better indication [View](https://github.com/Gisto/Gisto/commit/9867f10c468068524d3492ff97c0d54ed05b09b2)
+*  Update README.md [View](https://github.com/Gisto/Gisto/commit/4edd56bccb76e8b1c918c0c93cf972ba40ca19ff)
+*  FIX (snippet): files collapse toggle for editor/markdown [View](https://github.com/Gisto/Gisto/commit/07cbaaea66ba5092bca4b809bf19d11e39440ca5)
+*  CHORE (update packages): update packages [View](https://github.com/Gisto/Gisto/commit/98f20ffb3de3729790461ad825efcb6e467aa88b)
+*  Revert "CHORE (update packages): update packages" [View](https://github.com/Gisto/Gisto/commit/55bed651d293935a4425e33e16b617c3f9618a4e)
+*  v1.9.99 See changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/37664ef70a40baa24901bc2b34ee58960574cfd1)
+
+### v1.9.99
+*  TOOLS (travis): fix linux docker bad variable [View](https://github.com/Gisto/Gisto/commit/395c1575193a829573984564518ab6ff70a0de3b)
+*  FIX (changelog): remove bad release and azure pipeline [View](https://github.com/Gisto/Gisto/commit/f2999bbc6bff5d8e016000b8023d4ceff94a7ded)
+*  FIX (API): make errors more informative [View](https://github.com/Gisto/Gisto/commit/cf8781cd9da25fe58dadf43478b1b96161e6d26e)
+*  FEATURE (snippet): add file collapse toggle [View](https://github.com/Gisto/Gisto/commit/2e71b18bc19bebc00fcd88bc154fb09de2347ffa)
+*  FIX (snippet header): refactor and add "copy url to clibboard" [View](https://github.com/Gisto/Gisto/commit/1c7e5951a7cdadd4bbcd7ceb8909f289866deb6d)
+*  FIX (Anchor): add hove states for better indication [View](https://github.com/Gisto/Gisto/commit/9867f10c468068524d3492ff97c0d54ed05b09b2)
+*  Update README.md [View](https://github.com/Gisto/Gisto/commit/4edd56bccb76e8b1c918c0c93cf972ba40ca19ff)
+*  FIX (snippet): files collapse toggle for editor/markdown [View](https://github.com/Gisto/Gisto/commit/07cbaaea66ba5092bca4b809bf19d11e39440ca5)
+*  CHORE (update packages): update packages [View](https://github.com/Gisto/Gisto/commit/98f20ffb3de3729790461ad825efcb6e467aa88b)
+*  Revert "CHORE (update packages): update packages" [View](https://github.com/Gisto/Gisto/commit/55bed651d293935a4425e33e16b617c3f9618a4e)
+
 ### v1.9.98
 *  TOOLS (azure test): test azure pipeline [View](https://github.com/Gisto/Gisto/commit/7ab8eca350e1a045b9577857de250d5f9060fc5e)
 
