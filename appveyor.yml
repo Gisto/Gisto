@@ -5,7 +5,7 @@ platform:
 
 environment:
   matrix:
-    - nodejs_version: "10"
+    - nodejs_version: "9"
   DEBUG: electron-builder
   CI: yes
   APPVEYOR: yes
@@ -35,7 +35,7 @@ build: off
 install:
   - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
   - ps: Add-Content c:\gisto\.env "GISTO_GITHUB_CLIENT_ID=$env:GISTO_GITHUB_CLIENT_ID"
-  - npm install -g npm@latest
+  - npm install -g npm@6
   - set PATH=%APPDATA%\npm;%PATH%
   - node --version && npm --version
   - npm install -g cross-env rimraf electron-builder
@@ -44,5 +44,3 @@ install:
 
 build_script:
   - npm run pack:win
-
-test: on
