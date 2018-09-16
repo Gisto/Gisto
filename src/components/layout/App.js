@@ -14,7 +14,7 @@ import KeyBindings from 'components/layout/KeyBindings';
 injectGlobal`
   ::-webkit-scrollbar {
     width: 5px;
-    margin: 0 20px 0 0;
+    height: 5px;
   }
   
   ::-webkit-scrollbar-track {
