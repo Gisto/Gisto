@@ -265,7 +265,7 @@ export class SnippetHeader extends React.Component {
     const snippetUrl = getSnippetUrl('/gist');
 
     return size(get('history', snippet)) > 1 && (
-      <UtilityIcon size={ 22 }
+      <UtilityIcon size={ 19 }
                    color={ baseAppColor }
                    type="time"
                    title="View change history"
