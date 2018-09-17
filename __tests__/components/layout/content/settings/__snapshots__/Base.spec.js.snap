@@ -3,7 +3,7 @@
 exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
 <div>
   <h4>
-    color settings:
+    Color settings:
   </h4>
   <div>
     <Label>
@@ -11,6 +11,21 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
       <InputColor
         color={null}
         onChange={[Function]}
+      />
+    </Label>
+  </div>
+  <h4>
+    General settings:
+  </h4>
+  <div>
+    <Label>
+      <span>
+        Snippet cache (seconds):
+      </span>
+      <StyledInput
+        onChange={[Function]}
+        type="number"
+        value={null}
       />
     </Label>
   </div>

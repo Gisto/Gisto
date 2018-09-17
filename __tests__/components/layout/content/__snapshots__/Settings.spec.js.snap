@@ -16,7 +16,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
         <BaseSettings>
           <div>
             <h4>
-              color settings:
+              Color settings:
             </h4>
             <div>
               <Label>
@@ -44,6 +44,50 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                 </div>
               </Label>
             </div>
+            <h4>
+              General settings:
+            </h4>
+            <div>
+              <Label>
+                <div
+                  className="Label-sc-1aqavpp-0 ksaHSg"
+                >
+                  <span>
+                    Snippet cache (seconds):
+                  </span>
+                  <StyledInput
+                    onChange={[Function]}
+                    type="number"
+                    value={null}
+                  >
+                    <Input
+                      className="StyledInput-sc-1aqavpp-1 bIFcle"
+                      onChange={[Function]}
+                      type="number"
+                      value={null}
+                    >
+                      <StyledInput
+                        className="StyledInput-sc-1aqavpp-1 bIFcle"
+                        defaultValue={null}
+                        disabled={false}
+                        onChange={[Function]}
+                        title=""
+                        type="number"
+                      >
+                        <input
+                          className="StyledInput-sc-1aqavpp-1 bIFcle StyledInput-sc-86zjwb-0 djdkls"
+                          defaultValue={null}
+                          disabled={false}
+                          onChange={[Function]}
+                          title=""
+                          type="number"
+                        />
+                      </StyledInput>
+                    </Input>
+                  </StyledInput>
+                </div>
+              </Label>
+            </div>
           </div>
         </BaseSettings>
       </details>
@@ -54,7 +98,7 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
         <EditorSettings>
           <div>
             <h4>
-              editor settings:
+              Editor settings:
             </h4>
             <Wrapper>
               <div

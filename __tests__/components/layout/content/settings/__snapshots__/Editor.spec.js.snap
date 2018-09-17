@@ -4,7 +4,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
 <EditorSettings>
   <div>
     <h4>
-      editor settings:
+      Editor settings:
     </h4>
     <Wrapper>
       <div
