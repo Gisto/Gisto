@@ -10,6 +10,24 @@
 [![Linux build](https://travis-badge-per-job.herokuapp.com/?repo=Gisto/Gisto&job=2&style=flat-square&label=Linux%20build)](https://travis-ci.org/Gisto/Gisto)
 [![AppVeyor branch](https://img.shields.io/appveyor/ci/sanusart/Gisto/next.svg?style=flat-square&label=Windows%20build&colorB=green)](https://ci.appveyor.com/project/sanusart/gisto)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+- [About](#about)
+- [Getting gisto](#getting-gisto)
+- [Future and Status](#future-and-status)
+- [Screenshots](#screenshots)
+- [Features](#features)
+- [Gisto previous version](#gisto-previous-version)
+- [Latest builds](#latest-builds)
+- [Issues, bug reporting and pull requests](#issues-bug-reporting-and-pull-requests)
+- [Privacy/authentication](#privacyauthentication)
+- [How to help/contribute](#how-to-helpcontribute)
+- [Development setup](#development-setup)
+- [Run tests](#run-tests)
+- [Release cycle](#release-cycle)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## About
 
