@@ -201,11 +201,12 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
+          const lastModified = result.headers['last-modified'] || '';
 
           if (!error && result) {
             dispatch({
               type: AT.GET_SNIPPET.SUCCESS,
-              payload: result.body
+              payload: { ...result.body, lastModified }
             });
           }
         });

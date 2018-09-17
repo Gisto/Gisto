@@ -12,3 +12,5 @@ export const defaultGistURL = 'https://gist.github.com';
 export const gateKeeperURL = 'https://gisto-gatekeeper.azurewebsites.net/authenticate';
 
 export const SIDEBAR_WIDTH = 350;
+
+export const SNIPPET_CACHE_SECONDS_DELAY = 100;

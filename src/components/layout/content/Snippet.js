@@ -3,17 +3,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
-  get, map, filter, size
+  get, map, filter, size, isNaN
 } from 'lodash/fp';
 
 import * as snippetActions from 'actions/snippets';
 import { borderColor } from 'constants/colors';
+import { SNIPPET_CACHE_SECONDS_DELAY } from 'constants/config';
 
 import Editor from 'components/common/controls/Editor';
 import SnippetHeader from 'components/layout/content/snippet/SnippetHeader';
 
 import 'github-markdown-css/github-markdown.css';
 import Comments from 'components/layout/content/snippet/Comments';
+import { toUnixTimeStamp } from 'utils/date';
 
 
 const SnippetWrapper = styled.div`
@@ -37,7 +39,14 @@ export class Snippet extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.props.getSnippet(this.props.match.params.id || this.props.snippet.id);
+      const now = toUnixTimeStamp(new Date());
+      const viewed = get('viewed', this.props.snippet);
+
+      const shouldGetSnippet = isNaN(get('lastModified', this.props.snippet)) || (now - viewed) > SNIPPET_CACHE_SECONDS_DELAY;
+
+      if (get('files', this.props.snippet) && shouldGetSnippet) {
+        this.props.getSnippet(this.props.match.params.id || this.props.snippet.id);
+      }
     }
   }
 
