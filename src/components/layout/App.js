@@ -10,6 +10,10 @@ import { isElectron } from 'utils/electron';
 import SuperSearch from 'components/layout/SuperSearch';
 import KeyBindings from 'components/layout/KeyBindings';
 
+if (process.env.NODE_ENV === 'development') {
+  require('mimic');
+}
+
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
   ::-webkit-scrollbar {
