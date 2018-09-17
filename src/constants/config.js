@@ -1,3 +1,5 @@
+import { getSetting } from 'utils/settings';
+
 export const logoText = '{ Gisto }';
 export const TAG_REGEX = /#(\d*[A-Za-z_0-9]+\d*)/g;
 export const DEFAULT_SNIPPET_DESCRIPTION = 'untitled';
@@ -13,4 +15,4 @@ export const gateKeeperURL = 'https://gisto-gatekeeper.azurewebsites.net/authent
 
 export const SIDEBAR_WIDTH = 350;
 
-export const SNIPPET_CACHE_SECONDS_DELAY = 100;
+export const SNIPPET_CACHE_SECONDS_DELAY = getSetting('snippet-fetch-cache-in-seconds') || 100;

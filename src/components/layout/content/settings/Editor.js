@@ -38,7 +38,7 @@ const StyledISelect = styled(Select)`
 
 const EditorSettings = () => (
   <div>
-    <h4>editor settings:</h4>
+    <h4>Editor settings:</h4>
     <Wrapper>
       <Section>
         <Field>
