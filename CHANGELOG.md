@@ -1,3 +1,18 @@
+### v1.10.0
+*  FEATURE (snippet): add indication that snippet is a fork [View](https://github.com/Gisto/Gisto/commit/d4a189390a0c4971f1431eec2067a4b7e29f9615)
+*  FEATURE (AsciiDoc): support for AsciiDoc files preview [View](https://github.com/Gisto/Gisto/commit/b099e0ca7b11e09aac91285ee0f227c9d407e28f)
+*  TEST (common): add more tests to common components [View](https://github.com/Gisto/Gisto/commit/96310f1b3674fee23c3e24b7397390d9e59137c8)
+*  CHORE (CI): appveyor [View](https://github.com/Gisto/Gisto/commit/3cee03048fd52809f63c3cbd4e222f6a18dbb85a)
+*  CHORE (CI): appveyor [View](https://github.com/Gisto/Gisto/commit/87cb2ff4560de56df1927342985cd189acd5eeed)
+*  FIX (snippet header): history icon size [View](https://github.com/Gisto/Gisto/commit/4fb7b32b340cf9f734ab1882328a90f4bac44be3)
+*  FIX (scrollbars): horizontal scrollbar size [View](https://github.com/Gisto/Gisto/commit/d0c6712eb4cff2f22d6c5f9f76f14adf9be1fbea)
+*  FIX (webapp): add favicon [View](https://github.com/Gisto/Gisto/commit/2e31a4e026dc0b9a8b6be239f8c2218a808432bc)
+*  TOOLS (mimic): add mimic in development mode [View](https://github.com/Gisto/Gisto/commit/ea3c1a2bd3fe0d39b26bac9c8ae0257c202cd6b5)
+*  FEATURE (snippet): do not fetch if in cache and cache limit intact (100 sec by default) [View](https://github.com/Gisto/Gisto/commit/3a77d9cdf03fa7f8a4b3785647384c38c8e3c02f)
+*  FIX (settings): add configuration for snippet cache before next fetch [View](https://github.com/Gisto/Gisto/commit/c2a92b7b67c76a3842f8ef30f204326af2990e15)
+*  TEST (asciidoc): fix bad import [View](https://github.com/Gisto/Gisto/commit/21b4b6423fde6a9093d9010c84b951b985304590)
+*  DOCS (readme): update readme [View](https://github.com/Gisto/Gisto/commit/ff07eb4781b23db773c89ffbdb2447410e2442fb)
+
 ### v1.9.100
 *  TOOLS (travis): fix linux docker bad variable [View](https://github.com/Gisto/Gisto/commit/395c1575193a829573984564518ab6ff70a0de3b)
 *  FIX (changelog): remove bad release and azure pipeline [View](https://github.com/Gisto/Gisto/commit/f2999bbc6bff5d8e016000b8023d4ceff94a7ded)
