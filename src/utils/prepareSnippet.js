@@ -3,6 +3,7 @@ import {
 } from 'lodash/fp';
 import { TAG_REGEX, DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 import { removeTags } from 'utils/tags';
+import { toUnixTimeStamp } from 'utils/date';
 
 const prepareTags = (snippet) => {
   if (!isEmpty(snippet.description)) {
@@ -23,8 +24,6 @@ const prepareDescription = (snippet) => {
 const getService = (snippet) => {
   return snippet.url && snippet.url.match(/github\.com/gi) ? 'GITHUB' : 'NOT-GITHUB-FOR-NOW';
 };
-
-const toUnixTimeStamp = (date) => Math.floor(new Date(date).getTime() / 1000);
 
 const prepareFiles = (snippet) => {
   return map(
@@ -66,5 +65,6 @@ export const snippetStructure = (snippet, starred) => ({
   history: prepareHistory(snippet),
   created: toUnixTimeStamp(snippet.created_at),
   updated: toUnixTimeStamp(snippet.updated_at),
-  viewed: toUnixTimeStamp(new Date().getTime())
+  viewed: toUnixTimeStamp(new Date().getTime()),
+  lastModified: toUnixTimeStamp(snippet.lastModified)
 });
