@@ -4,6 +4,7 @@ import { SIDEBAR_WIDTH } from 'constants/config';
 import { baseAppColor } from 'constants/colors';
 import BaseSettings from 'components/layout/content/settings/Base';
 import EditorSettings from 'components/layout/content/settings/Editor';
+import { gaPage } from 'utils/ga';
 
 const Wrapper = styled.div`
   display: flex;
@@ -40,22 +41,30 @@ const Wrapper = styled.div`
 }
 `;
 
-export const Settings = () => (
-  <Wrapper>
-    <h2>Settings</h2>
+export class Settings extends React.Component {
+  componentDidMount() {
+    gaPage('Settings');
+  }
 
-    <details>
-      <summary>Base settings</summary>
-      <BaseSettings/>
-    </details>
+  render() {
+    return (
+      <Wrapper>
+        <h2>Settings</h2>
 
-    <details>
-      <summary>Editor</summary>
-      <EditorSettings/>
-    </details>
+        <details>
+          <summary>Base settings</summary>
+          <BaseSettings/>
+        </details>
 
-  </Wrapper>
-);
+        <details>
+          <summary>Editor</summary>
+          <EditorSettings/>
+        </details>
+
+      </Wrapper>
+    );
+  }
+}
 
 Settings.propTypes = {};
 

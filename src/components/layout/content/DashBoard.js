@@ -21,6 +21,7 @@ import * as snippetActions from 'actions/snippets';
 import Icon from 'components/common/Icon';
 import Input from 'components/common/controls/Input';
 import ScrollPad from 'react-scrollpad';
+import { gaPage } from 'utils/ga';
 
 const DashbordWrapper = styled.div`
   display: grid;
@@ -210,6 +211,7 @@ export class DashBoard  extends React.Component {
 
   componentDidMount() {
     this.props.getRateLimit();
+    gaPage('Dashboard');
   }
 
 

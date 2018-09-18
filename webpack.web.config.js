@@ -110,7 +110,7 @@ module.exports = {
   },
   plugins: [
     new MonacoWebpackPlugin(),
-    new webpack.IgnorePlugin(new RegExp(/^(fs|ipc|shell|@sentry\/electron)$/)),
+    new webpack.IgnorePlugin(new RegExp(/^(fs|ipc|shell|@sentry\/electron|electron-google-analytics)$/)),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',

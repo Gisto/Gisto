@@ -18,6 +18,7 @@ import { baseAppColor } from 'constants/colors';
 import ExternalLink from 'components/common/ExternalLink';
 import Button from 'components/common/controls/Button';
 import Checkbox from 'components/common/controls/Checkbox';
+import { gaPage } from 'utils/ga';
 
 const StyledInput = styled(Input)`
   margin: 0;
@@ -63,6 +64,10 @@ export class NewSnippet extends React.Component {
     dragOver: false,
     progress: {}
   };
+
+  componentDidMount() {
+    gaPage('Add new');
+  }
 
   setDescription = (description) => {
     this.setState({ description });
