@@ -14,6 +14,7 @@ import Input from 'components/common/controls/Input';
 import Icon from 'components/common/Icon';
 import { MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
 import { filterSnippetsList } from 'utils/snippets';
+import { gaPage } from 'utils/ga';
 
 const SuperSearchWrapper = styled.div`
   position: absolute;
@@ -98,6 +99,10 @@ const StyledIcon = styled(Icon)`
 `;
 
 export class SuperSearch extends Component {
+  componentDidMount() {
+    gaPage('supersearch');
+  }
+
   shouldFilter = (query) => {
     return size(query) > MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH || isEmpty(query);
   };

@@ -6,6 +6,7 @@ import { get } from 'lodash/fp';
 import { baseAppColor, bg } from 'constants/colors';
 
 import { isElectron } from 'utils/electron';
+import { gaPage } from 'utils/ga';
 
 import ExternalLink from 'components/common/ExternalLink';
 import Anchor from 'components/common/Anchor';
@@ -38,6 +39,7 @@ export class About extends React.Component {
   };
 
   componentDidMount() {
+    gaPage('About');
     if (isElectron) {
       const { ipcRenderer } = require('electron');
 
