@@ -27,8 +27,9 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
   </Section>
   <Section>
     <StyledCheckbox
-      checked={false}
+      checked={null}
       onChange={[Function]}
+      value={null}
     />
      
     <span>

@@ -13,21 +13,12 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
         onChange={[Function]}
       />
     </Label>
-  </div>
-  <h4>
-    General settings:
-  </h4>
-  <div>
-    <Label>
-      <span>
-        Snippet cache (seconds):
-      </span>
-      <StyledInput
-        onChange={[Function]}
-        type="number"
-        value={null}
-      />
-    </Label>
+    <Small>
+      <strong>
+        NOTE!
+      </strong>
+       colour change need app reload
+    </Small>
   </div>
 </div>
 `;

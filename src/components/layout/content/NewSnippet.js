@@ -19,6 +19,7 @@ import ExternalLink from 'components/common/ExternalLink';
 import Button from 'components/common/controls/Button';
 import Checkbox from 'components/common/controls/Checkbox';
 import { gaPage } from 'utils/ga';
+import { getSetting } from 'utils/settings';
 
 const StyledInput = styled(Input)`
   margin: 0;
@@ -58,7 +59,7 @@ const Dropzone = styled.div`
 
 export class NewSnippet extends React.Component {
   state = {
-    public: false,
+    public: getSetting('defaultNewIsPublic', false),
     description: '',
     files: [],
     dragOver: false,
@@ -190,6 +191,7 @@ export class NewSnippet extends React.Component {
 
         <Section>
           <StyledCheckbox checked={ this.state.public }
+                          value={ getSetting('defaultNewIsPublic', false) }
                           onChange={ () => this.togglePublic() }/>
           &nbsp;
           <span>

@@ -4,14 +4,16 @@ import { SIDEBAR_WIDTH } from 'constants/config';
 import { baseAppColor } from 'constants/colors';
 import BaseSettings from 'components/layout/content/settings/Base';
 import EditorSettings from 'components/layout/content/settings/Editor';
+import SnippetsSettings from 'components/layout/content/settings/Snippets';
 import { gaPage } from 'utils/ga';
+import { getAllSettings } from 'utils/settings';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   color: #555;
   height: 100%;
-  justify-content: baseline;
+  justify-content: flex-start;
   align-items: baseline;
   text-align: left;
   
@@ -44,6 +46,9 @@ const Wrapper = styled.div`
 export class Settings extends React.Component {
   componentDidMount() {
     gaPage('Settings');
+    if (process.env.NODE_ENV === 'development') {
+      console.table(getAllSettings());
+    }
   }
 
   render() {
@@ -52,8 +57,13 @@ export class Settings extends React.Component {
         <h2>Settings</h2>
 
         <details>
-          <summary>Base settings</summary>
+          <summary>General</summary>
           <BaseSettings/>
+        </details>
+
+        <details>
+          <summary>Snippets</summary>
+          <SnippetsSettings/>
         </details>
 
         <details>

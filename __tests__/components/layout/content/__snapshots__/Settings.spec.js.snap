@@ -4,14 +4,14 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
 <Settings>
   <Wrapper>
     <div
-      className="Wrapper-sc-5rerlh-0 dwXciV"
+      className="Wrapper-sc-5rerlh-0 eldpJs"
     >
       <h2>
         Settings
       </h2>
       <details>
         <summary>
-          Base settings
+          General
         </summary>
         <BaseSettings>
           <div>
@@ -43,53 +43,114 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
                   </InputColor>
                 </div>
               </Label>
-            </div>
-            <h4>
-              General settings:
-            </h4>
-            <div>
-              <Label>
-                <div
-                  className="Label-sc-1aqavpp-0 ksaHSg"
+              <Small>
+                <small
+                  className="Small-sc-1aqavpp-1 dCPDyL"
                 >
-                  <span>
-                    Snippet cache (seconds):
-                  </span>
-                  <StyledInput
-                    onChange={[Function]}
-                    type="number"
-                    value={null}
-                  >
-                    <Input
-                      className="StyledInput-sc-1aqavpp-1 bIFcle"
-                      onChange={[Function]}
-                      type="number"
-                      value={null}
-                    >
-                      <StyledInput
-                        className="StyledInput-sc-1aqavpp-1 bIFcle"
-                        defaultValue={null}
-                        disabled={false}
-                        onChange={[Function]}
-                        title=""
-                        type="number"
-                      >
-                        <input
-                          className="StyledInput-sc-1aqavpp-1 bIFcle StyledInput-sc-86zjwb-0 djdkls"
-                          defaultValue={null}
-                          disabled={false}
-                          onChange={[Function]}
-                          title=""
-                          type="number"
-                        />
-                      </StyledInput>
-                    </Input>
-                  </StyledInput>
-                </div>
-              </Label>
+                  <strong>
+                    NOTE!
+                  </strong>
+                   colour change need app reload
+                </small>
+              </Small>
             </div>
           </div>
         </BaseSettings>
+      </details>
+      <details>
+        <summary>
+          Snippets
+        </summary>
+        <SnippetsSettings>
+          <div>
+            <h4>
+              Snippets settings:
+            </h4>
+            <Section>
+              <div
+                className="Section-sc-1u2hxrp-3 ghjoVY"
+              >
+                <Field>
+                  <div
+                    className="Field-sc-1u2hxrp-1 dEDvyZ"
+                  >
+                    <Label>
+                      <div
+                        className="Label-sc-1u2hxrp-2 kyxctf"
+                      >
+                        <span>
+                          Snippet cache (seconds):
+                        </span>
+                        <StyledInput
+                          onChange={[Function]}
+                          type="number"
+                          value={null}
+                        >
+                          <Input
+                            className="StyledInput-sc-1u2hxrp-0 jhtgJ"
+                            onChange={[Function]}
+                            type="number"
+                            value={null}
+                          >
+                            <StyledInput
+                              className="StyledInput-sc-1u2hxrp-0 jhtgJ"
+                              defaultValue={null}
+                              disabled={false}
+                              onChange={[Function]}
+                              title=""
+                              type="number"
+                            >
+                              <input
+                                className="StyledInput-sc-1u2hxrp-0 jhtgJ StyledInput-sc-86zjwb-0 djdkls"
+                                defaultValue={null}
+                                disabled={false}
+                                onChange={[Function]}
+                                title=""
+                                type="number"
+                              />
+                            </StyledInput>
+                          </Input>
+                        </StyledInput>
+                      </div>
+                    </Label>
+                  </div>
+                </Field>
+                <Field>
+                  <div
+                    className="Field-sc-1u2hxrp-1 dEDvyZ"
+                  >
+                    <Label>
+                      <div
+                        className="Label-sc-1u2hxrp-2 kyxctf"
+                      >
+                        <span>
+                          Default new snippet is public:
+                        </span>
+                        <Checkbox
+                          checked={null}
+                          onChange={[Function]}
+                        >
+                          <Box
+                            defaultChecked={null}
+                            onChange={[Function]}
+                            type="checkbox"
+                          >
+                            <input
+                              className="Box-sc-1bw5uxh-0 kcvKxi"
+                              defaultChecked={null}
+                              onChange={[Function]}
+                              type="checkbox"
+                            />
+                          </Box>
+                        </Checkbox>
+                      </div>
+                    </Label>
+                  </div>
+                </Field>
+              </div>
+            </Section>
+          </div>
+        </SnippetsSettings>
       </details>
       <details>
         <summary>
