@@ -8,7 +8,6 @@ import {
 
 import * as snippetActions from 'actions/snippets';
 import { borderColor } from 'constants/colors';
-import { SNIPPET_CACHE_SECONDS_DELAY } from 'constants/config';
 
 import Editor from 'components/common/controls/Editor';
 import SnippetHeader from 'components/layout/content/snippet/SnippetHeader';
@@ -16,6 +15,7 @@ import SnippetHeader from 'components/layout/content/snippet/SnippetHeader';
 import 'github-markdown-css/github-markdown.css';
 import Comments from 'components/layout/content/snippet/Comments';
 import { toUnixTimeStamp } from 'utils/date';
+import { getSetting } from 'utils/settings';
 
 
 const SnippetWrapper = styled.div`
@@ -42,7 +42,7 @@ export class Snippet extends React.Component {
       const now = toUnixTimeStamp(new Date());
       const viewed = get('viewed', this.props.snippet);
 
-      const shouldGetSnippet = isNaN(get('lastModified', this.props.snippet)) || (now - viewed) > SNIPPET_CACHE_SECONDS_DELAY;
+      const shouldGetSnippet = isNaN(get('lastModified', this.props.snippet)) || (now - viewed) > getSetting('snippet-fetch-cache-in-seconds') || 100;
 
       if (get('files', this.props.snippet) && shouldGetSnippet) {
         this.props.getSnippet(this.props.match.params.id || this.props.snippet.id);

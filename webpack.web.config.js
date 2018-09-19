@@ -116,7 +116,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(pathsToClean),
     new MonacoWebpackPlugin(),
-    new webpack.IgnorePlugin(new RegExp(/^(fs|ipc|shell|@sentry\/electron|electron-google-analytics)$/)),
+    new webpack.IgnorePlugin(
+      new RegExp(/^(fs|ipc|shell|electron-google-analytics|@sentry\/electron)$/)
+    ),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',

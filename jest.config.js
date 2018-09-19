@@ -13,6 +13,7 @@ module.exports = {
   ],
   setupFiles: [
     '<rootDir>/test/jest-setup.js',
+    '<rootDir>/__mocks__/settings.js',
     '<rootDir>/__mocks__/electron.js',
     '<rootDir>/__mocks__/localStorage.js'
   ],
