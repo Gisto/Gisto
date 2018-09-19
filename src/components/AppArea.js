@@ -82,12 +82,15 @@ export class AppArea extends React.Component {
     if (isElectron) {
       const { ipcRenderer } = require('electron');
 
+      ipcRenderer.send('checkForUpdate');
       ipcRenderer.on('updateInfo', (event, text, info) => {
-        if (get('url', info)) {
+        const url = get('url[0].browser_download_url', info);
+
+        if (url) {
           const message = (
             <React.Fragment>
               <strong>{ text }</strong><br/>
-              <Anchor href={ replace('-mac.zip', '.dmg', info.url) }>Download</Anchor>
+              <Anchor href={ replace('-mac.zip', '.dmg', url) }>Download</Anchor>
             </React.Fragment>
           );
 
