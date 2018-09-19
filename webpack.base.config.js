@@ -4,8 +4,14 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const SizePlugin = require('size-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const packageJson = require('./package.json');
+
+const pathsToClean = [
+  'dist',
+  'release'
+];
 
 module.exports = {
   resolve: {
@@ -44,6 +50,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(pathsToClean),
     new SizePlugin(),
     new webpack.DefinePlugin({
       'global.GENTLY': false,
