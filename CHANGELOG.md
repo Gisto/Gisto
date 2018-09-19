@@ -1,3 +1,10 @@
+### v1.10.1
+*  CHORE (analytics): add basic analytics [View](https://github.com/Gisto/Gisto/commit/a077ae2ca9bedd6685ee83f65c956ab8209d79e3)
+*  TOOLS (ci): add node memory allocation [View](https://github.com/Gisto/Gisto/commit/4f1255de7a6d1e3fe83924583c15c7b82464c9cb)
+*  TOOLS (ci): add node memory allocation and webpack clean [View](https://github.com/Gisto/Gisto/commit/6cd228d4146ed8652f99c3bb78b07773d2f16e74)
+*  FEATURE (seattings): defaults for new snippet, public or private [View](https://github.com/Gisto/Gisto/commit/5a87676dc27b97cd10dcf152265ba0c3b7315e24)
+*  FIX (ga): fix ga loading for web and electron [View](https://github.com/Gisto/Gisto/commit/5ee2be9ef63c55339a2bfe73ac9a02f2459b5381)
+
 ### v1.10.0
 *  FEATURE (snippet): add indication that snippet is a fork [View](https://github.com/Gisto/Gisto/commit/d4a189390a0c4971f1431eec2067a4b7e29f9615)
 *  FEATURE (AsciiDoc): support for AsciiDoc files preview [View](https://github.com/Gisto/Gisto/commit/b099e0ca7b11e09aac91285ee0f227c9d407e28f)
