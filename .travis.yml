@@ -27,6 +27,8 @@ before_install:
 
 before_script:
 - git lfs pull
+- export NODE_OPTIONS="–max_old_space_size=4096"
+- export TOOL_NODE_FLAGS="–max-old-space-size=4096"
 - echo "GISTO_GITHUB_CLIENT_ID=$GISTO_GITHUB_CLIENT_ID" >> $TRAVIS_BUILD_DIR/.env
 
 script:
