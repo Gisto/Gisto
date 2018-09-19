@@ -119,11 +119,6 @@ function buildMenu(mainWindow) {
           click: () => mainWindow.webContents.openDevTools()
         },
         {
-          label: 'Check for updates',
-          click: (menuItem, focusedWindow, event) => require('../updater').checkForUpdates(menuItem, focusedWindow, event),
-          visible: !isMacOS
-        },
-        {
           label: 'Quit',
           accelerator: 'Command+Q',
           click: () => app.quit()
@@ -232,43 +227,11 @@ function handleMacOSUpdates(mainWindow) {
   }
 }
 
-function updateChecker(mainWindow) {
+function updateChecker() {
   autoUpdater.logger = log;
   autoUpdater.logger.transports.file.level = 'info';
 
-  autoUpdater.checkForUpdates();
-
-  autoUpdater.on('checking-for-update', () => {
-    sendStatusToWindow('Checking for update...', {}, mainWindow, 'updateInfo');
-  });
-
-  autoUpdater.on('update-available', (info) => {
-    sendStatusToWindow('Update available', info, mainWindow, 'updateInfo');
-  });
-
-  autoUpdater.on('update-not-available', (info) => {
-    sendStatusToWindow('No updates available at the moment', info, mainWindow, 'updateInfo');
-  });
-
-  autoUpdater.on('error', (err) => {
-    if (!isMacOS) {
-      sendStatusToWindow(`Error in auto-updater ${err}`, {}, mainWindow, 'updateInfo');
-    } else {
-      handleMacOSUpdates(mainWindow);
-    }
-  });
-
-  autoUpdater.on('download-progress', (progressObj) => {
-    let logMessage = `Download speed: ${progressObj.bytesPerSecond}`;
-
-    logMessage = `${logMessage} - Downloaded ${progressObj.percent}%`;
-    logMessage = `${logMessage} (${progressObj.transferred}/${progressObj.total})`;
-    sendStatusToWindow(logMessage, {}, mainWindow, 'updateInfo');
-  });
-
-  autoUpdater.on('update-downloaded', (info) => {
-    sendStatusToWindow('Update downloaded', info, mainWindow, 'updateInfo');
-  });
+  autoUpdater.checkForUpdatesAndNotify();
 }
 
 function handleCmdFlags(win, flags) {

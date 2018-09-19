@@ -68,7 +68,9 @@ const createWindow = () => {
       helpers.handleCmdFlags(mainWindow, argv);
     });
 
-    ipcMain.on('checkForUpdate', () => helpers.handleMacOSUpdates(mainWindow));
+    if (isMacOS) {
+      ipcMain.on('checkForUpdate', () => helpers.handleMacOSUpdates(mainWindow));
+    }
 
     helpers.handleNavigate(mainWindow);
     helpers.handleDownload(mainWindow);
