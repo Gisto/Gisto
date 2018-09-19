@@ -47,6 +47,7 @@ export class Settings extends React.Component {
   componentDidMount() {
     gaPage('Settings');
     if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
       console.table(getAllSettings());
     }
   }
