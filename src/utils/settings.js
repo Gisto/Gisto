@@ -23,3 +23,5 @@ export const getSetting = (key,  fallback = undefined) => settings.get(key, fall
 export const setSetting = (key, value) => settings.set(key, value);
 
 export const setBooleanSetting = (key) => setSetting(key, !getSetting(key));
+
+export const getAllSettings = () => settings.getAll();

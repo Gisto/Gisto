@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
+<div>
+  <h4>
+    Snippets settings:
+  </h4>
+  <Section>
+    <Field>
+      <Label>
+        <span>
+          Snippet cache (seconds):
+        </span>
+        <StyledInput
+          onChange={[Function]}
+          type="number"
+          value={null}
+        />
+      </Label>
+    </Field>
+    <Field>
+      <Label>
+        <span>
+          Default new snippet is public:
+        </span>
+        <Checkbox
+          checked={null}
+          onChange={[Function]}
+        />
+      </Label>
+    </Field>
+  </Section>
+</div>
+`;
