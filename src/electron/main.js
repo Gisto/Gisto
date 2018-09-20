@@ -6,6 +6,9 @@ const path = require('path');
 const settings = require('electron-settings');
 const { argv } = require('yargs');
 
+app.setAppUserModelId('com.gistoapp.gisto2');
+app.setAsDefaultProtocolClient('gisto');
+
 // main helpers
 const helpers = require('./main/helpers');
 
