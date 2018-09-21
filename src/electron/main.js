@@ -5,6 +5,11 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const settings = require('electron-settings');
 const { argv } = require('yargs');
+const { autoUpdater } = require('electron-updater');
+const log = require('electron-log');
+
+app.setAppUserModelId('com.gistoapp.gisto2');
+app.setAsDefaultProtocolClient('gisto');
 
 // main helpers
 const helpers = require('./main/helpers');
@@ -28,6 +33,10 @@ if (isDev) {
 }
 
 const createWindow = () => {
+  log.transports.file.level = 'debug';
+  autoUpdater.logger = log;
+  autoUpdater.checkForUpdatesAndNotify();
+
   if (isDev) {
     helpers.setBadge('DEV');
     helpers.installDevToolsExtentions();
@@ -64,12 +73,13 @@ const createWindow = () => {
       mainWindow.show();
 
       helpers.buildMenu(mainWindow);
-      helpers.updateChecker(mainWindow);
       helpers.handleCmdFlags(mainWindow, argv);
     });
 
     if (isMacOS) {
       ipcMain.on('checkForUpdate', () => helpers.handleMacOSUpdates(mainWindow));
+    } else {
+      helpers.updateChecker(mainWindow, ipcMain);
     }
 
     helpers.handleNavigate(mainWindow);
@@ -84,8 +94,6 @@ const createWindow = () => {
     });
   }, 300);
 };
-
-ipcMain.on('checkForUpdate', () => helpers.handleMacOSUpdates(mainWindow));
 
 app.on('ready', createWindow);
 

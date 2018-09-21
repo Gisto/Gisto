@@ -8,9 +8,10 @@ export const setNotification = ({
   body,
   type,
   position,
-  options = { autoClose: 5000 }
+  options = { autoClose: 5000 },
+  actions = []
 }) => {
-  toast[type || 'info'](<Notification title={ title } body={ body }/>, {
+  toast[type || 'info'](<Notification title={ title } body={ body } actions={ actions }/>, {
     position: position || toast.POSITION.TOP_CENTER,
     ...options
   });

@@ -5,18 +5,20 @@ import { baseAppColor, headerBgLightest } from 'constants/colors';
 
 const Link = styled.a`
   cursor: pointer;
-  color: ${baseAppColor};
+  color: ${(props) => props.color ? props.color : baseAppColor};
   text-decoration: none;
-  
+
   :hover {
     color: ${headerBgLightest};
   }
 `;
 
 const Anchor = ({
-  href, onClick, children, download
+  href, onClick, children, download, color, className
 }) => (
   <Link href={ href }
+        className={ className }
+        color={ color }
         download={ download }
         onClick={ onClick }>
     { children }
@@ -27,7 +29,9 @@ Anchor.propTypes = {
   href: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node,
-  download: PropTypes.string
+  download: PropTypes.string,
+  color: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default Anchor;

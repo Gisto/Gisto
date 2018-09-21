@@ -2,6 +2,7 @@
 
 exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
 <UserAreaWrapper>
+  <Updater />
   <Link
     replace={false}
     to="/"
@@ -37,7 +38,7 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     />
   </Link>
   <Avatar
-    alt="user"
+    alt="us"
     height="32"
     title="us"
     width="32"
