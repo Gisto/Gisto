@@ -5,8 +5,24 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const SizePlugin = require('size-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
 const packageJson = require('./package.json');
+
+const isDev = process.env.NODE_ENV === 'development';
+const copyPaths = [
+  { from: 'build/icon.ico', to: 'process.platform' },
+  { from: '.env', to: 'env' },
+  { from: 'build/icon.png', to: 'build/icon.png' },
+  { from: 'package.json', to: 'package.json' },
+  { from: 'src/electron/main.js', to: 'main.js' },
+  { from: 'src/electron/main', to: 'main' },
+  { from: 'src/electron/oauth2.js', to: 'oauth2.js' },
+  { from: 'src/electron/updater.js', to: 'updater.js' },
+  { from: 'src/icons', to: 'src/icons' }
+];
+
+if (isDev) {
+  copyPaths.push({ from: 'test/dev-app-update.yml', to: 'dev-app-update.yml' });
+}
 
 const pathsToClean = [
   'dist',
@@ -70,17 +86,7 @@ module.exports = {
       DEBUG: true
     }),
     new MonacoWebpackPlugin(),
-    new CopyWebpackPlugin([
-      'build/icon.ico',
-      '.env',
-      'build/icon.png',
-      'package.json',
-      { from: 'src/electron/main.js', to: 'main.js' },
-      { from: 'src/electron/main', to: 'main' },
-      { from: 'src/electron/oauth2.js', to: 'oauth2.js' },
-      { from: 'src/electron/updater.js', to: 'updater.js' },
-      { from: 'src/icons', to: 'src/icons' }
-    ])
+    new CopyWebpackPlugin(copyPaths)
   ],
   target: 'electron-renderer'
 };

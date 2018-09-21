@@ -42,5 +42,6 @@ export const iconsMap = {
   'logo-github': 'logo-github.svg',
   logout: 'log-out.svg',
   flash: 'flash.svg',
-  time: 'history.svg'
+  time: 'history.svg',
+  download: 'ios-cloud-download-outline.svg'
 };

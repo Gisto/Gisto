@@ -1,5 +1,7 @@
 /* eslint no-console: 0 */
-const { shell, app, Menu } = require('electron');
+const {
+  shell, app, Menu, ipcMain 
+} = require('electron');
 const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
 const { init } = require('@sentry/electron');
@@ -33,7 +35,7 @@ function installDevToolsExtentions() {
   }
 }
 
-function sendStatusToWindow(text, info, targetWindow, channel = 'updateInfo') {
+function sendStatusToWindow(text, info, targetWindow, channel = 'update-info') {
   targetWindow.webContents.send(channel, text, info);
 }
 
@@ -44,20 +46,20 @@ function handleDownload(win) {
         console.log('Download is interrupted but can be resumed');
       } else if (state === 'progressing') {
         if (item.isPaused()) {
-          sender.send('updateInfo', 'Download paused');
+          sender.send('update-info', 'Download paused');
         } else {
           const downloaded = item.getReceivedBytes() / 1048576;
           const total = item.getTotalBytes() / 1048576;
 
-          sender.send('updateInfo', `Downloaded: ${Math.ceil((downloaded / total) * 100)}%`);
+          sender.send('update-info', `Downloaded: ${Math.ceil((downloaded / total) * 100)}%`);
         }
       }
     });
     item.once('done', (doneEvent, state) => {
       if (state === 'completed') {
-        sender.send('updateInfo', 'Download finished, please close Gisto and install');
+        sender.send('update-info', 'Download finished, please close Gisto and install');
       } else {
-        sender.send('updateInfo', `Download failed: ${state}`);
+        sender.send('update-info', `Download failed: ${state}`);
       }
     });
   });
@@ -117,6 +119,11 @@ function buildMenu(mainWindow) {
         {
           label: 'Console',
           click: () => mainWindow.webContents.openDevTools()
+        },
+        {
+          label: 'Check for updates',
+          click: (menuItem, focusedWindow, event) => require('../updater').checkForUpdates(menuItem, focusedWindow, event),
+          visible: !isMacOS
         },
         {
           label: 'Quit',
@@ -186,13 +193,12 @@ function buildMenu(mainWindow) {
 }
 
 function handleMacOSUpdates(mainWindow) {
-  const LATEST_RELEASED_VERSION_URL = 'https://api.github.com/repos/Gisto/Gisto/releases';
-
   if (isMacOS) {
+    const LATEST_RELEASED_VERSION_URL = 'https://api.github.com/repos/Gisto/Gisto/releases';
     const request = require('superagent');
     const semver = require('semver');
 
-    sendStatusToWindow('Gisto checking for new version...', {}, mainWindow, 'updateInfo');
+    sendStatusToWindow('Gisto checking for new version...', {}, mainWindow, 'update-info');
 
     request.get(LATEST_RELEASED_VERSION_URL).end((error, result) => {
       if (result) {
@@ -209,10 +215,10 @@ function handleMacOSUpdates(mainWindow) {
             `Update from ${packageJson.version} to ${serverVersion} available`,
             { url: dmgUrl },
             mainWindow,
-            'updateInfo'
+            'update-info'
           );
         } else {
-          sendStatusToWindow('No updates available at the moment', {}, mainWindow, 'updateInfo');
+          sendStatusToWindow('No updates available at the moment', {}, mainWindow, 'no-updates');
         }
       }
       if (error) {
@@ -220,18 +226,44 @@ function handleMacOSUpdates(mainWindow) {
           'No new version information at the moment',
           {},
           mainWindow,
-          'updateInfo'
+          'update-info'
         );
       }
     });
   }
 }
 
-function updateChecker() {
-  autoUpdater.logger = log;
-  autoUpdater.logger.transports.file.level = 'info';
+function updateChecker(mainWindow) {
+  if (!isMacOS) {
+    ipcMain.on('downloadUpdate', () => autoUpdater.downloadUpdate());
+    ipcMain.on('quitAndInstall', () => autoUpdater.quitAndInstall(true, true));
+    
+    autoUpdater.logger = log;
+    autoUpdater.logger.transports.file.level = 'info';
 
-  autoUpdater.checkForUpdatesAndNotify();
+    autoUpdater.autoDownload = false;
+    autoUpdater.checkForUpdates();
+
+    autoUpdater.on('update-available', (info) => {
+      sendStatusToWindow(
+        `Update from ${packageJson.version} to ${info.version} available`, info, mainWindow, 'update-available'
+      );
+    });
+
+    autoUpdater.on('update-downloaded', (info) => {
+      sendStatusToWindow(
+        'New version downloaded, quit and Install?', info, mainWindow, 'update-downloaded'
+      );
+    });
+
+    autoUpdater.on('download-progress', (progress, bytesPerSecond, percent, total, transferred) => {
+      sendStatusToWindow(
+        'Downloaded: ', {
+          progress, bytesPerSecond, percent, total, transferred 
+        }, mainWindow, 'download-progress'
+      );
+    });
+  }
 }
 
 function handleCmdFlags(win, flags) {
