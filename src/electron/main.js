@@ -11,6 +11,9 @@ const log = require('electron-log');
 app.setAppUserModelId('com.gistoapp.gisto2');
 app.setAsDefaultProtocolClient('gisto');
 
+app.setAppUserModelId('com.gistoapp.gisto2');
+app.setAsDefaultProtocolClient('gisto');
+
 // main helpers
 const helpers = require('./main/helpers');
 
