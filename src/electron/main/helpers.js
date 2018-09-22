@@ -119,12 +119,11 @@ function buildMenu(mainWindow) {
           click: () => mainWindow.webContents.reload()
         },
         {
-          label: 'Console',
-          click: () => mainWindow.webContents.openDevTools()
-        },
-        {
           label: 'Check for updates',
-          click: (menuItem, focusedWindow, event) => require('../updater').checkForUpdates(menuItem, focusedWindow, event),
+          click: () => {
+            autoUpdater.autoDownload = false;
+            autoUpdater.checkForUpdates();
+          },
           visible: !isMacOS
         },
         {

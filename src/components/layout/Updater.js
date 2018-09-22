@@ -102,7 +102,8 @@ export class Updater extends React.Component {
 
       ipcRenderer.on('update-downloaded', (event, text, info) => {
         if (isMacOS && info.success && info.path) {
-          const { exec } = require('child_process');
+          const { exec } = require('electron').remote.require('child_process');
+
 
           gaEvent({
             category: 'update',
