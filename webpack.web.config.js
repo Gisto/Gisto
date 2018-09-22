@@ -4,11 +4,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-
-const pathsToClean = [
-  'web'
-];
 
 module.exports = {
   entry: './src/index.js',
@@ -114,7 +109,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(pathsToClean),
     new MonacoWebpackPlugin(),
     new webpack.IgnorePlugin(
       new RegExp(/^(fs|ipc|shell|electron-google-analytics|@sentry\/electron)$/)

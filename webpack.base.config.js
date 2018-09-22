@@ -4,7 +4,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const SizePlugin = require('size-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const packageJson = require('./package.json');
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -23,11 +22,6 @@ const copyPaths = [
 if (isDev) {
   copyPaths.push({ from: 'test/dev-app-update.yml', to: 'dev-app-update.yml' });
 }
-
-const pathsToClean = [
-  'dist',
-  'release'
-];
 
 module.exports = {
   resolve: {
@@ -66,7 +60,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(pathsToClean),
     new SizePlugin(),
     new webpack.DefinePlugin({
       'global.GENTLY': false,
