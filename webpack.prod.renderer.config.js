@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const baseConfig = require('./webpack.base.config');
 
 const buildPath = path.resolve(__dirname, './dist');
@@ -9,44 +8,13 @@ const buildPath = path.resolve(__dirname, './dist');
 const config = merge.smart(baseConfig, {
   entry: './src/index.js',
   output: {
-    filename: 'renderer.js',
     path: buildPath,
-    pathinfo: false,
-    chunkFilename: 'static/js/[name].chunk.js'
+    filename: 'renderer.js'
   },
   bail: true,
   mode: 'production',
   optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          parse: {
-            ecma: 8
-          },
-          compress: {
-            ecma: 5,
-            warnings: false,
-            comparisons: false
-          },
-          mangle: {
-            safari10: true
-          },
-          output: {
-            ecma: 5,
-            comments: false,
-            ascii_only: true
-          }
-        },
-        parallel: true,
-        cache: true,
-        sourceMap: false
-      })
-    ],
-    splitChunks: {
-      chunks: 'async',
-      name: 'vendors'
-    },
-    runtimeChunk: true
+    runtimeChunk: false
   },
   module: {
     rules: [
