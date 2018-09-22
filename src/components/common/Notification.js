@@ -30,7 +30,9 @@ const Notification = ({ title, body, actions }) => (
     { title && <Title dangerouslySetInnerHTML={ { __html: title } } /> }
     <Body dangerouslySetInnerHTML={ { __html: body } }/>
     { !isEmpty(actions) && actions.map((action) => (
-      <Anchor onClick={ action.action } color={ lightText }>{ action.title }</Anchor>
+      <Anchor key={ action.title } onClick={ action.action } color={ lightText }>
+        { action.title }
+      </Anchor>
     )) }
   </Wrapper>
 );
