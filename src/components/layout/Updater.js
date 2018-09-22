@@ -9,6 +9,7 @@ import { setNotification } from 'utils/notifications';
 
 import UtilityIcon from 'components/common/UtilityIcon';
 import Anchor from 'components/common/Anchor';
+import { gaEvent } from 'utils/ga';
 
 const StyledUtilityIcon = styled(UtilityIcon)`
   height: 21px;
@@ -102,6 +103,12 @@ export class Updater extends React.Component {
       ipcRenderer.on('update-downloaded', (event, text, info) => {
         if (isMacOS && info.success && info.path) {
           const { exec } = require('child_process');
+
+          gaEvent({
+            category: 'update',
+            action: 'downloaded',
+            label: process.platform
+          });
 
           setNotification({
             title: text,
