@@ -16,7 +16,8 @@ const config = merge.smart(baseConfig, {
     chunkFilename: 'static/js/[name].chunk.js'
   },
   bail: true,
-  devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-eval-source-map',
+  mode: 'development',
   optimization: {
     splitChunks: {
       chunks: 'async',
