@@ -3,48 +3,16 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: `${__dirname}/web`,
     filename: 'bundle.js',
-    pathinfo: true,
-    chunkFilename: 'static/js/[name].chunk.js'
+    path: `${__dirname}/web`
   },
   devtool: 'source-map',
   optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          parse: {
-            ecma: 8
-          },
-          compress: {
-            ecma: 5,
-            warnings: false,
-            comparisons: false
-          },
-          mangle: {
-            safari10: true
-          },
-          output: {
-            ecma: 5,
-            comments: false,
-            ascii_only: true
-          }
-        },
-        parallel: true,
-        cache: true,
-        sourceMap: true
-      })
-    ],
-    splitChunks: {
-      chunks: 'async',
-      name: 'vendors'
-    },
-    runtimeChunk: true
+    runtimeChunk: false
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
