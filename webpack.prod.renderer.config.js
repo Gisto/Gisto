@@ -11,11 +11,11 @@ const config = merge.smart(baseConfig, {
   output: {
     filename: 'renderer.js',
     path: buildPath,
-    pathinfo: true,
+    pathinfo: false,
     chunkFilename: 'static/js/[name].chunk.js'
   },
   bail: true,
-  devtool: 'source-map',
+  mode: 'production',
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
@@ -39,7 +39,7 @@ const config = merge.smart(baseConfig, {
         },
         parallel: true,
         cache: true,
-        sourceMap: true
+        sourceMap: false
       })
     ],
     splitChunks: {
@@ -83,9 +83,6 @@ const config = merge.smart(baseConfig, {
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
       DEBUG: false
-    }),
-    new UglifyJsPlugin({
-      sourceMap: true
     })
   ]
 });
