@@ -1,3 +1,14 @@
+### v1.10.2
+*  FIX (updater): updater [View](https://github.com/Gisto/Gisto/commit/126e72b3361087b4edc0cba5ae14ee73fcc4ec79)
+*  FIX (updater): prompt for install (experimental) [View](https://github.com/Gisto/Gisto/commit/ce7b2f106db2f7be0a683a257e6dba8a183d3225)
+*  FIX (main): add appId (for windows notifications) and protocol [View](https://github.com/Gisto/Gisto/commit/0bb63b83925e2145a39f7428945774eda01ac235)
+*  FIX (updater): windows [View](https://github.com/Gisto/Gisto/commit/3259610936d3adb2bbe75d65a89e0fc2d51dbfcf)
+*  FIX (updater): windows, macOs, linux [View](https://github.com/Gisto/Gisto/commit/e9161bb5ee0f83c55422ebb3a30d53b0ab741f25)
+*  FIX (updater): windows, macOs, linux [View](https://github.com/Gisto/Gisto/commit/33c2ffc12d5ba7d663b2ed54a20b5907e11cccdc)
+*  FIX (ga): events [View](https://github.com/Gisto/Gisto/commit/c986da3238ce39211fceacfd7fdfbe5673f6d98f)
+*  TOOLS (build): optimize production build [View](https://github.com/Gisto/Gisto/commit/3a812a3e1e0a9261a8b7462b2983502e6521b67f)
+*  FIX (updater): wrong import type [View](https://github.com/Gisto/Gisto/commit/458b8de10ff56ad1222f47e33dfa281e9b83ed49)
+
 ### v1.10.1
 *  CHORE (analytics): add basic analytics [View](https://github.com/Gisto/Gisto/commit/a077ae2ca9bedd6685ee83f65c956ab8209d79e3)
 *  TOOLS (ci): add node memory allocation [View](https://github.com/Gisto/Gisto/commit/4f1255de7a6d1e3fe83924583c15c7b82464c9cb)
