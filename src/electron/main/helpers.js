@@ -51,15 +51,17 @@ function handleDownload(win) {
           const downloaded = item.getReceivedBytes() / 1048576;
           const total = item.getTotalBytes() / 1048576;
 
-          sender.send('update-info', `Downloaded: ${Math.ceil((downloaded / total) * 100)}%`);
+          sender.send('download-progress', null, { progress: { percent: (downloaded / total) * 100 } });
         }
       }
     });
     item.once('done', (doneEvent, state) => {
       if (state === 'completed') {
-        sender.send('update-info', 'Download finished, please close Gisto and install');
+        sender.send('update-downloaded', 'New version downloaded, quit and run installer?', {
+          success: true, path: item.getSavePath()
+        });
       } else {
-        sender.send('update-info', `Download failed: ${state}`);
+        sender.send('update-downloaded', null, { success: false });
       }
     });
   });
@@ -234,36 +236,34 @@ function handleMacOSUpdates(mainWindow) {
 }
 
 function updateChecker(mainWindow) {
-  if (!isMacOS) {
-    ipcMain.on('downloadUpdate', () => autoUpdater.downloadUpdate());
-    ipcMain.on('quitAndInstall', () => autoUpdater.quitAndInstall(true, true));
+  ipcMain.on('downloadUpdate', () => autoUpdater.downloadUpdate());
+  ipcMain.on('quitAndInstall', () => autoUpdater.quitAndInstall(true, true));
     
-    autoUpdater.logger = log;
-    autoUpdater.logger.transports.file.level = 'info';
+  autoUpdater.logger = log;
+  autoUpdater.logger.transports.file.level = 'debug';
 
-    autoUpdater.autoDownload = false;
-    autoUpdater.checkForUpdates();
+  autoUpdater.autoDownload = false;
+  autoUpdater.checkForUpdates();
 
-    autoUpdater.on('update-available', (info) => {
-      sendStatusToWindow(
-        `Update from ${packageJson.version} to ${info.version} available`, info, mainWindow, 'update-available'
-      );
-    });
+  autoUpdater.on('update-available', (info) => {
+    sendStatusToWindow(
+      `Update from ${packageJson.version} to ${info.version} available`, info, mainWindow, 'update-available'
+    );
+  });
 
-    autoUpdater.on('update-downloaded', (info) => {
-      sendStatusToWindow(
-        'New version downloaded, quit and Install?', info, mainWindow, 'update-downloaded'
-      );
-    });
+  autoUpdater.on('update-downloaded', (info) => {
+    sendStatusToWindow(
+      'New version downloaded, quit and Install?', info, mainWindow, 'update-downloaded'
+    );
+  });
 
-    autoUpdater.on('download-progress', (progress, bytesPerSecond, percent, total, transferred) => {
-      sendStatusToWindow(
-        'Downloaded: ', {
-          progress, bytesPerSecond, percent, total, transferred 
-        }, mainWindow, 'download-progress'
-      );
-    });
-  }
+  autoUpdater.on('download-progress', (progress, bytesPerSecond, percent, total, transferred) => {
+    sendStatusToWindow(
+      'Downloaded: ', {
+        progress, bytesPerSecond, percent, total, transferred 
+      }, mainWindow, 'download-progress'
+    );
+  });
 }
 
 function handleCmdFlags(win, flags) {

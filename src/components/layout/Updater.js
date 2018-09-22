@@ -62,6 +62,7 @@ export class Updater extends React.Component {
   componentDidMount() {
     if (isElectron) {
       const { ipcRenderer } = require('electron');
+      const { app } = require('electron').remote;
       const isMacOS = process.platform === 'darwin';
 
       if (isMacOS) {
@@ -78,7 +79,7 @@ export class Updater extends React.Component {
               </React.Fragment>
             );
 
-            this.setState({ message });
+            this.setState({ message, update: true });
           }
         });
       }
@@ -98,12 +99,30 @@ export class Updater extends React.Component {
         });
       });
 
-      ipcRenderer.on('update-downloaded', (event, text) => {
-        setNotification({
-          title: text,
-          actions: [{ action: () => ipcRenderer.send('quitAndInstall'), title: 'Yes' }],
-          options: { autoClose: false }
-        });
+      ipcRenderer.on('update-downloaded', (event, text, info) => {
+        if (isMacOS && info.success && info.path) {
+          const { exec } = require('child_process');
+
+          setNotification({
+            title: text,
+            actions: [{
+              action: () => {
+                exec(`open ${info.path}`);
+                app.quit();
+              },
+              title: 'Yes' 
+            }],
+            options: { autoClose: false }
+          });
+        }
+
+        if (!isMacOS) {
+          setNotification({
+            title: text,
+            actions: [{ action: () => ipcRenderer.send('quitAndInstall'), title: 'Yes' }],
+            options: { autoClose: false }
+          });
+        }
       });
 
       ipcRenderer.on('no-updates', () => this.setState({
@@ -113,7 +132,8 @@ export class Updater extends React.Component {
       }));
 
       ipcRenderer.on('download-progress', (event, text, info) => {
-        const message = `${info.progress.percent.toFixed()}/100%`;
+        const progress = get(['progress', 'percent'], info);
+        const message = `${progress.toFixed()}/100%`;
 
         this.setState({
           message,
@@ -134,15 +154,15 @@ export class Updater extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.update
-          && !isEmpty(this.state.message) && (
-            <StyledUtilityIcon color={ colorWarning } type="flash" dropdown>
-              <UpdaterMenu>{this.state.message}</UpdaterMenu>
-            </StyledUtilityIcon>
-        )}
+        { this.state.update && !isEmpty(this.state.message) && (
+        <StyledUtilityIcon color={ colorWarning } type="flash" dropdown>
+          <UpdaterMenu>{this.state.message}</UpdaterMenu>
+        </StyledUtilityIcon>
+        ) }
 
-        {this.state.download
-          && this.state.message && <Downloading type="download" text={ this.state.message } />}
+        { this.state.download && this.state.message && (
+          <Downloading type="download" text={ this.state.message }/>
+        ) }
       </React.Fragment>
     );
   }
