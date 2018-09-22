@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 
 import { baseAppColor } from 'constants/colors';
 import { isElectron } from 'utils/electron';
-import { gaEvent } from 'utils/ga';
 
 import SuperSearch from 'components/layout/SuperSearch';
 import KeyBindings from 'components/layout/KeyBindings';
@@ -60,8 +59,6 @@ export class App  extends React.Component {
     document.addEventListener('dragenter', (event) => event.preventDefault());
     document.addEventListener('dragleave', (event) => event.preventDefault());
     document.addEventListener('drop', (event) => event.preventDefault());
-
-    gaEvent({ category: 'general', action: 'App loaded' });
 
     if (isElectron) {
       const { ipcRenderer } = require('electron');

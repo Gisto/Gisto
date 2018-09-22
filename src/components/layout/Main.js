@@ -8,6 +8,7 @@ import Content from 'components/layout/Content';
 
 import * as snippetActions from 'actions/snippets';
 import * as emojiActions from 'actions/emoji';
+import { gaEvent } from 'utils/ga';
 
 const MainWrapper = styled.div`
   display: flex;
@@ -21,6 +22,7 @@ export class Main extends React.Component {
     this.props.getStarredSnippets();
     this.props.getSnippets();
     this.props.getEmoji();
+    gaEvent({ category: 'general', action: 'App loaded' });
   }
 
   render() {
