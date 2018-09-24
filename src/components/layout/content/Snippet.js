@@ -38,11 +38,12 @@ export class Snippet extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    /* istanbul ignore if */
     if (prevProps.match.params.id !== this.props.match.params.id) {
       const now = toUnixTimeStamp(new Date());
       const viewed = get('viewed', this.props.snippet);
 
-      const shouldGetSnippet = isNaN(get('lastModified', this.props.snippet)) || (now - viewed) > getSetting('snippet-fetch-cache-in-seconds') || 100;
+      const shouldGetSnippet = isNaN(get('lastModified', this.props.snippet)) || (now - viewed) > (getSetting('snippet-fetch-cache-in-seconds') || 100);
 
       if (get('files', this.props.snippet) && shouldGetSnippet) {
         this.props.getSnippet(this.props.match.params.id || this.props.snippet.id);

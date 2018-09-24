@@ -59,7 +59,7 @@ export const Sidebar = ({
       return (
         <span>
           { 'tags ' } { map((tag) => (
-            <Tag>
+            <Tag key={ tag }>
               { tag }
               &nbsp;
               <Icon type="close"

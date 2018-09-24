@@ -40,6 +40,7 @@ export class About extends React.Component {
 
   componentDidMount() {
     gaPage('About');
+    /* istanbul ignore if */
     if (isElectron) {
       const { ipcRenderer } = require('electron');
 

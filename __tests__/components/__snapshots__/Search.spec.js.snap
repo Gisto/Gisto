@@ -10,17 +10,17 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
 >
   <SearchWrapper>
     <div
-      className="SearchWrapper-sc-1ikp2pb-0 jZnjvN"
+      className="SearchWrapper-sc-1ikp2pb-0 EEgGg"
     >
       <Icon
         color="#3F84A8"
-        size="46"
+        size="22"
         type="search"
       >
         <span
-          className="Icon-vk4qna-0 kBbUWi"
+          className="Icon-vk4qna-0 gupLvY"
           color="#3F84A8"
-          size="46"
+          size="22"
           type="search"
         />
       </Icon>
@@ -30,13 +30,13 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
         type="search"
       >
         <Input
-          className="StyledInput-sc-1ikp2pb-2 jorvjZ"
+          className="StyledInput-sc-1ikp2pb-1 elzYLA"
           onChange={[Function]}
           placeholder="Search 0 snippets"
           type="search"
         >
           <StyledInput
-            className="StyledInput-sc-1ikp2pb-2 jorvjZ"
+            className="StyledInput-sc-1ikp2pb-1 elzYLA"
             disabled={false}
             onChange={[Function]}
             placeholder="Search 0 snippets"
@@ -44,7 +44,7 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
             type="search"
           >
             <input
-              className="StyledInput-sc-1ikp2pb-2 jorvjZ StyledInput-sc-86zjwb-0 djdkls"
+              className="StyledInput-sc-1ikp2pb-1 elzYLA StyledInput-sc-86zjwb-0 djdkls"
               disabled={false}
               onChange={[Function]}
               placeholder="Search 0 snippets"
@@ -54,90 +54,36 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
           </StyledInput>
         </Input>
       </StyledInput>
-      <HashRouter>
-        <Router
-          history={
-            Object {
-              "action": "POP",
-              "block": [Function],
-              "createHref": [Function],
-              "go": [Function],
-              "goBack": [Function],
-              "goForward": [Function],
-              "length": 1,
-              "listen": [Function],
-              "location": Object {
-                "hash": "",
-                "pathname": "/",
-                "search": "",
-                "state": undefined,
-              },
-              "push": [Function],
-              "replace": [Function],
-            }
-          }
+      <UtilityIcon
+        color="#3F84A8"
+        dropdown={true}
+        type="tag"
+      >
+        <Util
+          color="#3F84A8"
+          onClick={[Function]}
         >
-          <Button
-            height="30px"
-            icon="add"
-            width="150px"
+          <span
+            className="Util-d02m7m-0 kdZBvR"
+            color="#3F84A8"
+            onClick={[Function]}
           >
-            <ButtonComponent
-              height="30px"
-              title={
-                <StyledLink
-                  to="/new"
-                >
-                  Add new
-                </StyledLink>
-              }
-              width="150px"
+            <Icon
+              color="#3F84A8"
+              size={22}
+              type="tag"
             >
-              <button
-                className="ButtonComponent-sc-1hy9a8c-0 kpHweH"
-                height="30px"
-                title={
-                  <StyledLink
-                    to="/new"
-                  >
-                    Add new
-                  </StyledLink>
-                }
-                width="150px"
-              >
-                <Icon
-                  color="#fff"
-                  type="add"
-                >
-                  <span
-                    className="Icon-vk4qna-0 kEhjeN"
-                    color="#fff"
-                    type="add"
-                  />
-                </Icon>
-                 
-                <StyledLink
-                  to="/new"
-                >
-                  <Link
-                    className="StyledLink-sc-1ikp2pb-1 idzCQH"
-                    replace={false}
-                    to="/new"
-                  >
-                    <a
-                      className="StyledLink-sc-1ikp2pb-1 idzCQH"
-                      href="#/new"
-                      onClick={[Function]}
-                    >
-                      Add new
-                    </a>
-                  </Link>
-                </StyledLink>
-              </button>
-            </ButtonComponent>
-          </Button>
-        </Router>
-      </HashRouter>
+              <span
+                className="Icon-vk4qna-0 hhjJsb"
+                color="#3F84A8"
+                size={22}
+                type="tag"
+              />
+            </Icon>
+             
+          </span>
+        </Util>
+      </UtilityIcon>
     </div>
   </SearchWrapper>
 </Search>
