@@ -50,7 +50,7 @@ export class App  extends React.Component {
   };
 
   componentDidMount() {
-    Mousetrap.bind(['shift shift', 'ctrl+f'], this.toggleSuperSesrch);
+    Mousetrap.bind(['command+f', 'ctrl+f'], this.toggleSuperSesrch);
     Mousetrap.bind(['?'], this.toggleKeyBindings);
     Mousetrap.bind(['esc'], this.toggleAllOff);
 
@@ -71,7 +71,7 @@ export class App  extends React.Component {
   }
 
   componentWillUnmount() {
-    Mousetrap.unbind(['shift shift', 'ctrl+f'], this.toggleSuperSesrch);
+    Mousetrap.unbind(['command+f', 'ctrl+f'], this.toggleSuperSesrch);
     Mousetrap.unbind(['?'], this.toggleKeyBindings);
     Mousetrap.unbind(['esc'], this.toggleAllOff);
   }
