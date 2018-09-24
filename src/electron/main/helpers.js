@@ -114,6 +114,11 @@ function buildMenu(mainWindow) {
           click: () => mainWindow.webContents.send('routeTo', '/settings')
         },
         {
+          label: 'Console',
+          click: () => mainWindow.webContents.openDevTools(),
+          visible: false
+        },
+        {
           label: 'Reload',
           accelerator: 'Command+R',
           click: () => mainWindow.webContents.reload()
