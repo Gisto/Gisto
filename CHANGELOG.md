@@ -1,3 +1,6 @@
+### v1.10.4
+*  FIX (build): wrong resources loading during build [View](https://github.com/Gisto/Gisto/commit/bfba3a1e7da053d86182e78d6a8902351a933d9d)
+
 ### v1.10.3
 *  TOOLS (webpack): reduce bundle size [View](https://github.com/Gisto/Gisto/commit/a8ee579a4d4b588befc338289f45754e859f569b)
 *  FIX (oauth2): log-in with oauth2 redirect 404 bacause wrong conf path [View](https://github.com/Gisto/Gisto/commit/8d5472674f77aad48f028305a1f603352c35ab4b)
