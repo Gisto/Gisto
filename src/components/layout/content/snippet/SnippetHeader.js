@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { get, getOr } from 'lodash/fp';
+import { get, getOr, startsWith } from 'lodash/fp';
 import styled from 'styled-components';
 
 import {
-  baseAppColor, borderColor, colorDanger, headerBgLightest 
+  baseAppColor, borderColor, colorDanger, headerBgLightest
 } from 'constants/colors';
 
 import { copyToClipboard } from 'utils/snippets';
@@ -63,7 +63,7 @@ export class SnippetHeader extends React.Component {
       file, edit, tempSnippet, updateTempSnippet
     } = this.props;
 
-    if (!edit) {
+    if (!edit || (edit && startsWith('image/', file.type))) {
       return get('filename', file);
     }
 
@@ -84,7 +84,14 @@ export class SnippetHeader extends React.Component {
         <FileName>
           <FilenameIcon size={ 22 }
                         color={ baseAppColor }
-                        type="file"/> { this.renderFileName() }
+                        type="file"/> { this.renderFileName() } { edit && startsWith('image/', file.type) && (
+                        <em>
+                          <small style={ { color: colorDanger } }>
+                            &nbsp;&nbsp;&nbsp;
+                            (Image files are read only)
+                          </small>
+                        </em>
+                        ) }
         </FileName>
 
         { !edit ? (

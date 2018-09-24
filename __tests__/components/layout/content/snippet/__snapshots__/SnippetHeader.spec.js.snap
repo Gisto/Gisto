@@ -60,6 +60,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
               />
             </StyledInput>
           </Input>
+           
         </div>
       </FileName>
       <UtilityIcon
@@ -141,6 +142,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
           </FilenameIcon>
            
           somefile.js
+           
         </div>
       </FileName>
       <div>

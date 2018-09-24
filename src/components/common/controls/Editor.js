@@ -11,6 +11,7 @@ import 'highlight.js/styles/default.css';
 import Loading from 'components/common/Loading';
 import Markdown from 'components/common/Markdown';
 import Asciidoc from 'components/common/Asciidoc';
+import { startsWith } from 'lodash/fp';
 
 const RenderedComponent = css`
   padding: 20px 30px;
@@ -34,6 +35,15 @@ const EditorWrapper = styled.span`
 const LoadingIndicator = styled.div`
   padding: 20px;
   color: ${baseAppColor};
+`;
+
+const Image = styled.div`
+  text-align: center;
+  padding: 20px;
+  
+  img {
+    max-width: 100%;
+  }
 `;
 
 const editorOptions = {
@@ -65,6 +75,14 @@ export class Editor extends React.Component {
         <LoadingIndicator>
           <Loading color={ baseAppColor } text=""/>
         </LoadingIndicator>
+      );
+    }
+
+    if (startsWith('image/', file.type) && !file.collapsed) {
+      return (
+        <Image>
+          <img id="img" src={ file.raw_url } title={ `File type: ${file.type}` } alt={ `File type: ${file.type}` }/>
+        </Image>
       );
     }
 
