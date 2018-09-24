@@ -25,50 +25,6 @@ const DropdownMixin = css`
   cursor: default;
 `;
 
-export class UtilityIcon extends React.Component {
-  state = {
-    childrenShown: false
-  };
-
-  toggleChildren = () => {
-    this.setState((prevState) => ({
-      childrenShown: !prevState.childrenShown
-    }));
-  };
-
-  render() {
-    const {
-      children,
-      size = 22,
-      type,
-      color = lightText,
-      onClick = null,
-      dropdown = false,
-      title,
-      className,
-      background,
-      text,
-      spin
-    } = this.props;
-    const { childrenShown } = this.state;
-
-    return (
-      <Util className={ className }
-            background={ background }
-            onClick={ () => dropdown ? this.toggleChildren() : onClick() }
-            title={ title }
-            text={ text }
-            color={ childrenShown ? colorDanger : color }>
-        <Icon size={ size }
-              spin={ spin }
-              type={ childrenShown ? 'close' : type }
-              color={ childrenShown ? colorDanger : color }/> { text && text }
-        { dropdown && childrenShown && children }
-      </Util>
-    );
-  }
-}
-
 const Util = styled.span`
   border-left: 1px solid ${borderColor};
   height: 50px;
@@ -112,6 +68,50 @@ const Util = styled.span`
     }
   }
 `;
+
+export class UtilityIcon extends React.Component {
+  state = {
+    childrenShown: false
+  };
+
+  toggleChildren = () => {
+    this.setState((prevState) => ({
+      childrenShown: !prevState.childrenShown
+    }));
+  };
+
+  render() {
+    const {
+      children,
+      size = 22,
+      type,
+      color = lightText,
+      onClick = null,
+      dropdown = false,
+      title,
+      className,
+      background,
+      text,
+      spin
+    } = this.props;
+    const { childrenShown } = this.state;
+
+    return (
+      <Util className={ className }
+            background={ background }
+            onClick={ () => dropdown ? this.toggleChildren() : onClick() }
+            title={ title }
+            text={ text }
+            color={ childrenShown ? colorDanger : color }>
+        <Icon size={ size }
+              spin={ spin }
+              type={ childrenShown ? 'close' : type }
+              color={ childrenShown ? colorDanger : color }/> { text && text }
+        { dropdown && childrenShown && children }
+      </Util>
+    );
+  }
+}
 
 UtilityIcon.propTypes = {
   children: PropTypes.node,
