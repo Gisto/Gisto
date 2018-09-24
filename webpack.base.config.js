@@ -8,10 +8,10 @@ const packageJson = require('./package.json');
 
 const isDev = process.env.NODE_ENV === 'development';
 const copyPaths = [
-  { from: 'build/icon.ico', to: 'process.platform' },
-  { from: '.env', to: '.env' },
-  { from: 'build/icon.png', to: 'build/icon.png' },
-  { from: 'package.json', to: 'package.json' },
+  'build/icon.ico',
+  '.env',
+  'build/icon.png',
+  'package.json',
   { from: 'src/electron/main.js', to: 'main.js' },
   { from: 'src/electron/main', to: 'main' },
   { from: 'src/electron/oauth2.js', to: 'oauth2.js' },
