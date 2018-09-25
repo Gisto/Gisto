@@ -14,7 +14,7 @@ import { prepareFiles } from 'utils/snippets';
 import Input from 'components/common/controls/Input';
 import Editor from 'components/common/controls/Editor';
 import Icon from 'components/common/Icon';
-import { baseAppColor } from 'constants/colors';
+import { baseAppColor, bg, boxShadow } from 'constants/colors';
 import ExternalLink from 'components/common/ExternalLink';
 import Button from 'components/common/controls/Button';
 import Checkbox from 'components/common/controls/Checkbox';
@@ -25,6 +25,7 @@ const StyledInput = styled(Input)`
   margin: 0;
   text-indent: 10px;
   width: 100%;
+  z-index: 1;
 `;
 
 const StyledCheckbox = styled(Checkbox)`
@@ -39,10 +40,28 @@ const FileSection = styled(Section)`
   border: 1px solid ${baseAppColor};
   padding: 20px;
   border-radius: 3px;
+  
+  > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px 0px -20px 0px;
+  }
+  
+  &:last-of-type {
+    margin-bottom: 70px;
+  }
 `;
 
 const StyledButton = styled(Button)`
   margin: 0 10px 0 0;
+`;
+
+const StyledDeleteButton = styled(StyledButton)`
+  line-height: 21px;
+  margin: 0 0 0 20px;
+  width: auto;
+  white-space: nowrap;
 `;
 
 const H1 = styled.h1`
@@ -55,6 +74,16 @@ const Dropzone = styled.div`
   border-radius: 10px;
   padding: 20px;
   text-align: center;
+`;
+
+const ButtonsSection = styled.section`
+  position: fixed;
+  bottom: 0;
+  padding: 20px;
+  margin: 0 0 0 -25px;
+  width: 100%;
+  background: ${bg};
+  box-shadow: 0 -1px 2px ${boxShadow};
 `;
 
 export class NewSnippet extends React.Component {
@@ -205,10 +234,17 @@ export class NewSnippet extends React.Component {
 
         { map((file) => (
           <FileSection key={ file.uuid }>
-            <StyledInput type="text"
-                         value={ file.name }
-                         onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
-                         placeholder="file.ext"/>
+            <div>
+              <StyledInput type="text"
+                           value={ file.name }
+                           onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
+                           placeholder="file.ext"/>
+              <StyledDeleteButton icon="delete"
+                                  invert
+                                  onClick={ () => this.deleteFile(file.uuid) }>
+                <strong>Remove</strong> { file.name }
+              </StyledDeleteButton>
+            </div>
             <br/>
             <br/>
 
@@ -217,17 +253,10 @@ export class NewSnippet extends React.Component {
                     id={ file.uuid }
                     onChange={ (value) => this.setFileData(value, file.uuid, 'content') }/>
 
-            <br/>
-
-            <StyledButton icon="delete"
-                          invert
-                          onClick={ () => this.deleteFile(file.uuid) }>
-              <strong>Remove</strong> { file.name }
-            </StyledButton>
           </FileSection>
         ), this.state.files) }
 
-        <Section>
+        <ButtonsSection>
           <StyledButton icon="success"
                         onClick={ () => this.save() }
           disabled={ isEmpty(this.state.files) }>
@@ -239,7 +268,7 @@ export class NewSnippet extends React.Component {
                         onClick={ () => this.addFile() }>
             Add file
           </StyledButton>
-        </Section>
+        </ButtonsSection>
       </div>
     );
   }
