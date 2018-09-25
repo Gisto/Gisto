@@ -1,5 +1,5 @@
 import {
-  isEmpty, map, get, includes, uniq, compact 
+  isEmpty, map, get, includes, uniq, compact, startsWith
 } from 'lodash/fp';
 import { TAG_REGEX, DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 import { removeTags } from 'utils/tags';
@@ -28,9 +28,10 @@ const getService = (snippet) => {
 const prepareFiles = (snippet) => {
   return map(
     (file) => ({
+      ...file,
       collapsed: false,
       viewed: toUnixTimeStamp(new Date().getTime()),
-      ...file
+      language: startsWith('image/', file.type) ? 'Image' : file.language
     }),
     snippet.files
   );
