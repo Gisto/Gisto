@@ -70,7 +70,9 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       pad="20px"
       rtl={false}
     >
-      <div />
+      <div>
+        <Connect(Languagelist) />
+      </div>
     </ScrollPad>
   </Language>
   <Stars>
