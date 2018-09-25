@@ -13,6 +13,7 @@ import { baseAppColor, borderColor } from 'constants/colors';
 import Input from 'components/common/controls/Input';
 import UtilityIcon from 'components/common/UtilityIcon';
 import Taglist from 'components/common/Taglist';
+import Languagelist from 'components/common/Languagelist';
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -43,9 +44,19 @@ const StyledTaglistWrapper = styled.div`
   box-shadow: 0 1px 2px #555;
   width: 300px;
   background: #fff;
+  z-index: 3;
   
   > span {
     cursor: pointer;
+  }
+`;
+
+const StyledLanguagesWrapper = styled(StyledTaglistWrapper)`
+  margin: 0 -50px 0 0 !important;
+  
+  > span {
+    cursor: pointer;
+    text-align: left;
   }
 `;
 
@@ -70,6 +81,15 @@ export const Search = ({
                        && filterSnippets(event.target.value)
                    }/>
 
+      <UtilityIcon dropdown type="code" color={ baseAppColor }>
+        <ScrollPad>
+          <div>
+            <StyledLanguagesWrapper className="list">
+              <Languagelist/>
+            </StyledLanguagesWrapper>
+          </div>
+        </ScrollPad>
+      </UtilityIcon>
       <UtilityIcon dropdown type="tag" color={ baseAppColor }>
         <ScrollPad>
           <div>

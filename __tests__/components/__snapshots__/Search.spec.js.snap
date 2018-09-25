@@ -57,6 +57,36 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
       <UtilityIcon
         color="#3F84A8"
         dropdown={true}
+        type="code"
+      >
+        <Util
+          color="#3F84A8"
+          onClick={[Function]}
+        >
+          <span
+            className="Util-d02m7m-0 kdZBvR"
+            color="#3F84A8"
+            onClick={[Function]}
+          >
+            <Icon
+              color="#3F84A8"
+              size={22}
+              type="code"
+            >
+              <span
+                className="Icon-vk4qna-0 hNGXRb"
+                color="#3F84A8"
+                size={22}
+                type="code"
+              />
+            </Icon>
+             
+          </span>
+        </Util>
+      </UtilityIcon>
+      <UtilityIcon
+        color="#3F84A8"
+        dropdown={true}
         type="tag"
       >
         <Util
