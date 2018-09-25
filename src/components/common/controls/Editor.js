@@ -11,7 +11,6 @@ import 'highlight.js/styles/default.css';
 import Loading from 'components/common/Loading';
 import Markdown from 'components/common/Markdown';
 import Asciidoc from 'components/common/Asciidoc';
-import { startsWith } from 'lodash/fp';
 
 const RenderedComponent = css`
   padding: 20px 30px;
@@ -78,7 +77,7 @@ export class Editor extends React.Component {
       );
     }
 
-    if (startsWith('image/', file.type) && !file.collapsed) {
+    if (file.content && file.language === 'Image' && !file.collapsed) {
       return (
         <Image>
           <img id="img" src={ file.raw_url } title={ `File type: ${file.type}` } alt={ `File type: ${file.type}` }/>
