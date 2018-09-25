@@ -11,8 +11,6 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
       { Gisto }
        
     </Link>
-  </Logo>
-  <MiddleArea>
     <HashRouter>
       <Button
         height="30px"
@@ -26,6 +24,8 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
         </StyledLink>
       </Button>
     </HashRouter>
+  </Logo>
+  <MiddleArea>
     <div />
   </MiddleArea>
   <Connect(AppArea) />
