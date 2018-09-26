@@ -27,7 +27,7 @@ const SearchFilters = styled.div`
   color: ${baseAppColor};
   padding: 10px 20px;
   background: ${lightText};
-  z-index: 2;
+  z-index: 1;
   border-top: 1px solid ${borderColor};
   box-shadow: 0 1px 2px ${boxShadow};
   font-size: 12px;
@@ -59,7 +59,7 @@ export const Sidebar = ({
       return (
         <span>
           { 'tags ' } { map((tag) => (
-            <Tag>
+            <Tag key={ tag }>
               { tag }
               &nbsp;
               <Icon type="close"

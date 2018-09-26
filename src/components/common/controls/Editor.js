@@ -36,6 +36,15 @@ const LoadingIndicator = styled.div`
   color: ${baseAppColor};
 `;
 
+const Image = styled.div`
+  text-align: center;
+  padding: 20px;
+  
+  img {
+    max-width: 100%;
+  }
+`;
+
 const editorOptions = {
   selectOnLineNumbers: Boolean(getSetting('selectOnLineNumbers')),
   lineNumbers: getSetting('lineNumbers', true),
@@ -65,6 +74,14 @@ export class Editor extends React.Component {
         <LoadingIndicator>
           <Loading color={ baseAppColor } text=""/>
         </LoadingIndicator>
+      );
+    }
+
+    if (file.content && file.language === 'Image' && !file.collapsed) {
+      return (
+        <Image>
+          <img id="img" src={ file.raw_url } title={ `File type: ${file.type}` } alt={ `File type: ${file.type}` }/>
+        </Image>
       );
     }
 

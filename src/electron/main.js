@@ -42,9 +42,11 @@ const createWindow = () => {
 
   if (isDev) {
     helpers.setBadge('DEV');
+    setTimeout(() => helpers.setBadge(app.getVersion()), 8000);
     helpers.installDevToolsExtentions();
   } else {
-    helpers.setBadge('BETA');
+    helpers.setBadge(app.getVersion());
+    setTimeout(() => helpers.setBadge(''), 8000);
   }
 
   const backgroundColor = settings.get('color', '#3F84A8');

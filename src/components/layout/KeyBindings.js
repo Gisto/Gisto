@@ -38,7 +38,7 @@ const KeyBindings = () => (
     <div>
       <h3>Available keys</h3>
       <p>
-        <kbd>Shift</kbd>+<kbd>Shift</kbd> - Super search
+        <kbd>Comand/Ctrl</kbd>+<kbd>f</kbd> - Super search
       </p>
       <p>
         <kbd>?</kbd> - This key binding doc

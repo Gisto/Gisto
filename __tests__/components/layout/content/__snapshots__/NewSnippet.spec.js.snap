@@ -45,7 +45,7 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
       </ExternalLink>
     </span>
   </Section>
-  <Section>
+  <ButtonsSection>
     <StyledButton
       disabled={true}
       icon="success"
@@ -60,6 +60,6 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
     >
       Add file
     </StyledButton>
-  </Section>
+  </ButtonsSection>
 </div>
 `;

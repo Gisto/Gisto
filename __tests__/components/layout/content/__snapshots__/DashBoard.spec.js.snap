@@ -1,350 +1,133 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
-<DashBoard
-  getRateLimit={
-    [MockFunction] {
-      "calls": Array [
-        Array [],
-      ],
-      "results": Array [
-        Object {
-          "isThrow": false,
-          "value": undefined,
-        },
-      ],
+<DashbordWrapper>
+  <Private
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
+      }
     }
-  }
-  privateSnippets={45}
-  searchByLanguages={[MockFunction]}
-  searchByTags={[MockFunction]}
-  snippets={Object {}}
-  snippetsLanguages={Array []}
-  starred={6}
->
-  <DashbordWrapper>
-    <div
-      className="DashbordWrapper-sc-1rmcrko-0 iODGzP"
+  >
+    <h3>
+      Private
+    </h3>
+    <span>
+      45
+    </span>
+  </Private>
+  <Public
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
+      }
+    }
+  >
+    <h3>
+      Public
+    </h3>
+    <span>
+      -45
+    </span>
+  </Public>
+  <Starred
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
+      }
+    }
+  >
+    <h3>
+      Starred
+    </h3>
+    <span>
+      6
+    </span>
+  </Starred>
+  <Untitled
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
+      }
+    }
+  >
+    <h3>
+      Untitled:
+    </h3>
+    <span>
+      0
+    </span>
+  </Untitled>
+  <Language>
+    <h3>
+      Languages:
+    </h3>
+    <ScrollPad
+      pad="20px"
+      rtl={false}
     >
-      <Private
-        onClick={[Function]}
-        style={
-          Object {
-            "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
-          }
-        }
-      >
-        <Box
-          className="Private-sc-1rmcrko-2 chsZLR"
-          onClick={[Function]}
-          style={
-            Object {
-              "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
-            }
-          }
-        >
-          <div
-            className="Private-sc-1rmcrko-2 chsZLR Box-sc-1rmcrko-1 gazZgM"
-            onClick={[Function]}
-            style={
-              Object {
-                "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
-              }
-            }
-          >
-            <h3>
-              Private
-            </h3>
-            <span>
-              45
-            </span>
-          </div>
-        </Box>
-      </Private>
-      <Public
-        onClick={[Function]}
-        style={
-          Object {
-            "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
-          }
-        }
-      >
-        <Box
-          className="Public-sc-1rmcrko-3 bOOItn"
-          onClick={[Function]}
-          style={
-            Object {
-              "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
-            }
-          }
-        >
-          <div
-            className="Public-sc-1rmcrko-3 bOOItn Box-sc-1rmcrko-1 gazZgM"
-            onClick={[Function]}
-            style={
-              Object {
-                "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
-              }
-            }
-          >
-            <h3>
-              Public
-            </h3>
-            <span>
-              -45
-            </span>
-          </div>
-        </Box>
-      </Public>
-      <Starred
-        onClick={[Function]}
-        style={
-          Object {
-            "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
-          }
-        }
-      >
-        <Box
-          className="Starred-sc-1rmcrko-4 frGnFG"
-          onClick={[Function]}
-          style={
-            Object {
-              "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
-            }
-          }
-        >
-          <div
-            className="Starred-sc-1rmcrko-4 frGnFG Box-sc-1rmcrko-1 gazZgM"
-            onClick={[Function]}
-            style={
-              Object {
-                "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
-              }
-            }
-          >
-            <h3>
-              Starred
-            </h3>
-            <span>
-              6
-            </span>
-          </div>
-        </Box>
-      </Starred>
-      <Untitled
-        onClick={[Function]}
-        style={
-          Object {
-            "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
-          }
-        }
-      >
-        <Box
-          className="Untitled-sc-1rmcrko-5 kyJBmm"
-          onClick={[Function]}
-          style={
-            Object {
-              "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
-            }
-          }
-        >
-          <div
-            className="Untitled-sc-1rmcrko-5 kyJBmm Box-sc-1rmcrko-1 gazZgM"
-            onClick={[Function]}
-            style={
-              Object {
-                "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
-              }
-            }
-          >
-            <h3>
-              Untitled:
-            </h3>
-            <span>
-              0
-            </span>
-          </div>
-        </Box>
-      </Untitled>
-      <Language>
-        <Box
-          className="Language-sc-1rmcrko-6 eaRIPE"
-        >
-          <div
-            className="Language-sc-1rmcrko-6 eaRIPE Box-sc-1rmcrko-1 gazZgM"
-          >
-            <h3>
-              Languages:
-            </h3>
-            <ScrollPad
-              pad="20px"
-              rtl={false}
-            >
-              <div
-                style={
-                  Object {
-                    "paddingRight": undefined,
-                    "width": undefined,
-                  }
-                }
-              />
-            </ScrollPad>
-          </div>
-        </Box>
-      </Language>
-      <Stars>
-        <Box
-          className="Stars-sc-1rmcrko-7 bkCqjl"
-        >
-          <div
-            className="Stars-sc-1rmcrko-7 bkCqjl Box-sc-1rmcrko-1 gazZgM"
-          >
-            <HeadingWithSearch>
-              <span
-                className="HeadingWithSearch-sc-1rmcrko-10 emXJBC"
-              >
-                <h3>
-                  Starred:
-                </h3>
-                <div>
-                  <Icon
-                    color="red"
-                    size="22"
-                    type="search"
-                  >
-                    <span
-                      className="Icon-vk4qna-0 dVHQVv"
-                      color="red"
-                      size="22"
-                      type="search"
-                    />
-                  </Icon>
-                  <StyledInput
-                    onChange={[Function]}
-                    placeholder="Search starred"
-                    type="search"
-                  >
-                    <Input
-                      className="StyledInput-sc-1rmcrko-11 koeJya"
-                      onChange={[Function]}
-                      placeholder="Search starred"
-                      type="search"
-                    >
-                      <StyledInput
-                        className="StyledInput-sc-1rmcrko-11 koeJya"
-                        disabled={false}
-                        onChange={[Function]}
-                        placeholder="Search starred"
-                        title=""
-                        type="search"
-                      >
-                        <input
-                          className="StyledInput-sc-1rmcrko-11 koeJya StyledInput-sc-86zjwb-0 dokCWP"
-                          disabled={false}
-                          onChange={[Function]}
-                          placeholder="Search starred"
-                          title=""
-                          type="search"
-                        />
-                      </StyledInput>
-                    </Input>
-                  </StyledInput>
-                </div>
-              </span>
-            </HeadingWithSearch>
-            <ScrollPad
-              pad="20px"
-              rtl={false}
-            >
-              <ul
-                style={
-                  Object {
-                    "paddingRight": undefined,
-                    "width": undefined,
-                  }
-                }
-              />
-            </ScrollPad>
-          </div>
-        </Box>
-      </Stars>
-      <Tags>
-        <Box
-          className="Tags-sc-1rmcrko-8 UEBuQ"
-        >
-          <div
-            className="Tags-sc-1rmcrko-8 UEBuQ Box-sc-1rmcrko-1 gazZgM"
-          >
-            <HeadingWithSearch>
-              <span
-                className="HeadingWithSearch-sc-1rmcrko-10 emXJBC"
-              >
-                <h3>
-                  Tags:
-                </h3>
-                <div>
-                  <Icon
-                    color="red"
-                    size="22"
-                    type="search"
-                  >
-                    <span
-                      className="Icon-vk4qna-0 dVHQVv"
-                      color="red"
-                      size="22"
-                      type="search"
-                    />
-                  </Icon>
-                  <StyledInput
-                    onChange={[Function]}
-                    placeholder="Search tags"
-                    type="search"
-                  >
-                    <Input
-                      className="StyledInput-sc-1rmcrko-11 koeJya"
-                      onChange={[Function]}
-                      placeholder="Search tags"
-                      type="search"
-                    >
-                      <StyledInput
-                        className="StyledInput-sc-1rmcrko-11 koeJya"
-                        disabled={false}
-                        onChange={[Function]}
-                        placeholder="Search tags"
-                        title=""
-                        type="search"
-                      >
-                        <input
-                          className="StyledInput-sc-1rmcrko-11 koeJya StyledInput-sc-86zjwb-0 dokCWP"
-                          disabled={false}
-                          onChange={[Function]}
-                          placeholder="Search tags"
-                          title=""
-                          type="search"
-                        />
-                      </StyledInput>
-                    </Input>
-                  </StyledInput>
-                </div>
-              </span>
-            </HeadingWithSearch>
-            <ScrollPad
-              pad="20px"
-              rtl={false}
-            >
-              <div
-                style={
-                  Object {
-                    "paddingRight": undefined,
-                    "width": undefined,
-                  }
-                }
-              />
-            </ScrollPad>
-          </div>
-        </Box>
-      </Tags>
-    </div>
-  </DashbordWrapper>
-</DashBoard>
+      <div>
+        <Connect(Languagelist) />
+      </div>
+    </ScrollPad>
+  </Language>
+  <Stars>
+    <HeadingWithSearch>
+      <h3>
+        Starred:
+      </h3>
+      <div>
+        <Icon
+          color="red"
+          size="22"
+          type="search"
+        />
+        <StyledInput
+          onChange={[Function]}
+          placeholder="Search starred"
+          type="search"
+        />
+      </div>
+    </HeadingWithSearch>
+    <ScrollPad
+      pad="20px"
+      rtl={false}
+    >
+      <ul />
+    </ScrollPad>
+  </Stars>
+  <Tags>
+    <HeadingWithSearch>
+      <h3>
+        Tags:
+      </h3>
+      <div>
+        <Icon
+          color="red"
+          size="22"
+          type="search"
+        />
+        <StyledInput
+          onChange={[Function]}
+          placeholder="Search tags"
+          type="search"
+        />
+      </div>
+    </HeadingWithSearch>
+    <ScrollPad
+      pad="20px"
+      rtl={false}
+    >
+      <div>
+        <Connect(Taglist)
+          searchTags=""
+        />
+      </div>
+    </ScrollPad>
+  </Tags>
+</DashbordWrapper>
 `;

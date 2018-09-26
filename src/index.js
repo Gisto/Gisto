@@ -38,7 +38,7 @@ const Gisto = () => (
 );
 
 if (process.env.NODE_ENV === 'development') {
-  window.store = store;
+  window.gistostore = store;
   window._ = _;
   window.fp = fp;
 }
