@@ -135,9 +135,13 @@ export const prepareFiles = (files) => {
 };
 
 export const prepareFilesForUpdate = (snippet) => {
-  const cleanFiles = map((file) => {
-    return pick(['filename', 'content', 'originalFileName', 'delete', 'isNew'], file);
-  }, snippet.files);
+  const cleanFiles = flow([
+    map((file) => {
+      return pick(['filename', 'content', 'originalFileName', 'delete', 'isNew'], file);
+    }),
+    // we do not support saving/editing image file
+    filter((file) => !file.filename.match(/png|jpg|jpeg|gif|bmp|tiff|tif|webp|xpm|exif|icns|ico|jp2|ai|psd/ig))
+  ])(snippet.files);
 
   const filesClean = keyBy('originalFileName', cleanFiles);
 

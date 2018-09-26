@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { HashRouter as Router, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { get } from 'lodash/fp';
 
@@ -9,9 +9,9 @@ import { baseAppColor, headerColor, lightText } from 'constants/colors';
 import { SIDEBAR_WIDTH, logoText } from 'constants/config';
 import { isEnterpriseLogin } from 'utils/login';
 
-import Icon from 'components/common/Icon';
 import UserArea from 'components/AppArea';
 import Loading from 'components/common/Loading';
+import Button from 'components/common/controls/Button';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -37,9 +37,9 @@ export const HeaderSection = styled.div`
 `;
 
 const Logo = styled(HeaderSection)`
-  width: ${SIDEBAR_WIDTH - 40}px;
-  max-width: ${SIDEBAR_WIDTH - 40}px;
-  padding: 20px;
+  width: ${SIDEBAR_WIDTH - 20}px;
+  max-width: ${SIDEBAR_WIDTH - 20}px;
+  padding: 20px 0 20px 20px;
   font-size: 20px;
   a {
     color: ${headerColor};
@@ -49,8 +49,18 @@ const Logo = styled(HeaderSection)`
 
 const MiddleArea = styled(HeaderSection)``;
 
+const StyledLink = styled(Link)`
+  color: ${lightText};
+  text-decoration: none;
+  line-height: 25px;
+`;
+
 const LoadingIndicator = styled.span`
   align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
 `;
 
 export const MainHeader = ({ loading, rateLimit, edit }) => (
@@ -60,10 +70,14 @@ export const MainHeader = ({ loading, rateLimit, edit }) => (
         <Link to="/" title={ `API Rate limit: ${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}` }>
           { logoText } { isEnterpriseLogin() && <small>enterprise</small> }
         </Link>
+        <Router>
+          <Button icon="add" height="30px" outline>
+            <StyledLink to="/new">New snippet</StyledLink>
+          </Button>
+        </Router>
       </Logo>
     ) }
     <MiddleArea>
-      <Icon color={ lightText } type="menu"/>
       { loading && (
         <LoadingIndicator>
           <Loading text="Loading..."/>

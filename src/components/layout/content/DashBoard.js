@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components';
 import {
-  get, size, filter, map, flow, flattenDeep, uniq, compact, isEmpty 
+  size, filter, map, flow, isEmpty
 } from 'lodash/fp';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
-import {
-  getSnippets, getStarredCount, getLanguages, getPrivate 
-} from 'selectors/snippets';
+import { getSnippets, getStarredCount, getPrivate } from 'selectors/snippets';
 
 import {
   baseAppColor, borderColor, headerBgLightest, lightText 
@@ -22,6 +20,8 @@ import Icon from 'components/common/Icon';
 import Input from 'components/common/controls/Input';
 import ScrollPad from 'react-scrollpad';
 import { gaPage } from 'utils/ga';
+import Taglist from 'components/common/Taglist';
+import Languagelist from 'components/common/Languagelist';
 
 const DashbordWrapper = styled.div`
   display: grid;
@@ -125,10 +125,6 @@ const Language = styled(Box)`
     max-height: 35vh;
     overflow: auto;
   }
-  
-  strong {
-    //float: right;
-  }
 `;
 
 const Stars = styled(Box)`
@@ -173,16 +169,6 @@ const Tags = styled(Box)`
   }
 `;
 
-const Pill = styled.span`
-  border: 1px solid ${headerBgLightest};
-  color: ${baseAppColor};
-  padding: 5px;
-  border-radius: 3px;
-  &:hover {
-    border: 1px solid ${baseAppColor};
-  }
-`;
-
 const HeadingWithSearch = styled.span`
     display: flex;
     justify-content: space-between;
@@ -203,7 +189,7 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export class DashBoard  extends React.Component {
+export class DashBoard extends React.Component {
   state = {
     searchTags: '',
     searchStarred: ''
@@ -234,26 +220,6 @@ export class DashBoard  extends React.Component {
     size
   ])(this.props.snippets);
 
-  getTags = () => {
-    const tags = map('tags', this.props.snippets);
-
-    const tagList = flow([
-      flattenDeep,
-      uniq,
-      compact
-    ])(tags);
-
-    if (!isEmpty(this.state.searchTags)) {
-      return filter((tag) => {
-        const regex = new RegExp(this.state.searchTags, 'gi');
-
-        return tag.match(regex);
-      }, tagList.sort());
-    }
-
-    return tagList.sort();
-  };
-
   linearGradient = (percentOf) => {
     const percents = (percentOf / size(this.props.snippets)) * 100;
 
@@ -269,27 +235,6 @@ export class DashBoard  extends React.Component {
   searchStarred = (value) => this.setState({
     searchStarred: value
   });
-
-  renderLanguages = () => map((languageItem) => {
-    const language = get('language', languageItem);
-    const filesCount = get('size', languageItem);
-
-    return (
-      <Pill style={ this.linearGradient(filesCount) }
-              key={ language }
-              onClick={ () => this.props.searchByLanguages(language) }>
-        {language || 'Other'}
-        <br/>
-        <strong>{filesCount}</strong> <small>files</small>
-      </Pill>
-    );
-  }, this.props.snippetsLanguages);
-
-  renderTags = () => map((tag) => (
-    <Pill key={ tag } onClick={ () => this.props.searchByTags(tag) }>
-      { tag }
-    </Pill>
-  ), this.getTags());
 
   renderStarred = () => map((snippet) => (
     <li key={ snippet.id }>
@@ -356,7 +301,7 @@ export class DashBoard  extends React.Component {
             <h3>Languages:</h3>
             <ScrollPad>
               <div>
-                { this.renderLanguages() }
+                <Languagelist/>
               </div>
             </ScrollPad>
           </Language>
@@ -393,7 +338,7 @@ export class DashBoard  extends React.Component {
           </HeadingWithSearch>
           <ScrollPad>
             <div>
-              { this.renderTags() }
+              <Taglist searchTags={ this.state.searchTags } />
             </div>
           </ScrollPad>
         </Tags>
@@ -405,24 +350,18 @@ export class DashBoard  extends React.Component {
 const mapStateToProps = (state) => ({
   snippets: getSnippets(state),
   starred: getStarredCount(state),
-  snippetsLanguages: getLanguages(state),
   privateSnippets: getPrivate(state)
 });
 
 DashBoard.propTypes = {
   snippets: PropTypes.object,
   starred: PropTypes.number,
-  searchByTags: PropTypes.func,
-  searchByLanguages: PropTypes.func,
   searchByStatus: PropTypes.func,
   getRateLimit: PropTypes.func,
-  snippetsLanguages: PropTypes.array,
   privateSnippets: PropTypes.number
 };
 
 export default connect(mapStateToProps, {
-  searchByTags: snippetActions.filterSnippetsByTags,
-  searchByLanguages: snippetActions.filterSnippetsByLanguage,
   searchByStatus: snippetActions.filterSnippetsByStatus,
   getRateLimit: snippetActions.getRateLimit
 })(DashBoard);

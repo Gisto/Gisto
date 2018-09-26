@@ -11,12 +11,21 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
       { Gisto }
        
     </Link>
+    <HashRouter>
+      <Button
+        height="30px"
+        icon="add"
+        outline={true}
+      >
+        <StyledLink
+          to="/new"
+        >
+          New snippet
+        </StyledLink>
+      </Button>
+    </HashRouter>
   </Logo>
   <MiddleArea>
-    <Icon
-      color="#fff"
-      type="menu"
-    />
     <div />
   </MiddleArea>
   <Connect(AppArea) />

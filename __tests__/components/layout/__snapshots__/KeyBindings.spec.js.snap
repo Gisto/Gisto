@@ -8,11 +8,11 @@ exports[`COMPONENTS - <KeyBindings> render KeyBindings 1`] = `
     </h3>
     <p>
       <kbd>
-        Shift
+        Comand/Ctrl
       </kbd>
       +
       <kbd>
-        Shift
+        f
       </kbd>
        - Super search
     </p>

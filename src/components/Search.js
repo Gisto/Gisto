@@ -3,37 +3,61 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { size, isEmpty } from 'lodash/fp';
 import styled from 'styled-components';
-import { HashRouter as Router, Link } from 'react-router-dom';
-
+import ScrollPad from 'react-scrollpad';
 import * as snippetActions from 'actions/snippets';
 import { SIDEBAR_WIDTH, MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
 import { filterSnippetsList } from 'utils/snippets';
 
-import Button from 'components/common/controls/Button';
 import Icon from 'components/common/Icon';
-import { baseAppColor, borderColor, lightText } from 'constants/colors';
+import { baseAppColor, borderColor } from 'constants/colors';
 import Input from 'components/common/controls/Input';
+import UtilityIcon from 'components/common/UtilityIcon';
+import Taglist from 'components/common/Taglist';
+import Languagelist from 'components/common/Languagelist';
 
 const SearchWrapper = styled.div`
   position: relative;
-  padding: 0 10px;
+  padding: 0 0 0 10px;
   flex-direction: row;
   display: flex;
-  width: ${SIDEBAR_WIDTH - 20}px;
-  min-width: ${SIDEBAR_WIDTH - 20}px;
+  width: ${SIDEBAR_WIDTH - 10}px;
+  min-width: ${SIDEBAR_WIDTH - 10}px;
   color: #555;
   border-right: 1px solid ${borderColor};
   align-items: center;
 `;
 
-const StyledLink = styled(Link)`
-  color: ${lightText};
-  text-decoration: none;
-  line-height: 25px;
-`;
-
 const StyledInput = styled(Input)`
   margin: 0 10px 0 10px;
+  flex: 1;
+`;
+
+const StyledTaglistWrapper = styled.div`
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr) ) ;
+  color: ${baseAppColor};
+  max-height: 50vh;
+  overflow: auto;
+  font-size: smaller;
+  cursor: default;
+  box-shadow: 0 1px 2px #555;
+  width: 300px;
+  background: #fff;
+  z-index: 3;
+  
+  > span {
+    cursor: pointer;
+  }
+`;
+
+const StyledLanguagesWrapper = styled(StyledTaglistWrapper)`
+  margin: 0 -50px 0 0 !important;
+  
+  > span {
+    cursor: pointer;
+    text-align: left;
+  }
 `;
 
 export const Search = ({
@@ -49,7 +73,7 @@ export const Search = ({
 
   return (
     <SearchWrapper>
-      <Icon type="search" size="46" color={ baseAppColor }/>
+      <Icon type="search" size="22" color={ baseAppColor }/>
       <StyledInput type="search"
                    placeholder={ `Search ${countSnippets} snippets` }
                    onChange={
@@ -57,11 +81,24 @@ export const Search = ({
                        && filterSnippets(event.target.value)
                    }/>
 
-      <Router>
-        <Button icon="add" width="150px" height="30px">
-          <StyledLink to="/new">Add new</StyledLink>
-        </Button>
-      </Router>
+      <UtilityIcon dropdown type="code" color={ baseAppColor }>
+        <ScrollPad>
+          <div>
+            <StyledLanguagesWrapper className="list">
+              <Languagelist/>
+            </StyledLanguagesWrapper>
+          </div>
+        </ScrollPad>
+      </UtilityIcon>
+      <UtilityIcon dropdown type="tag" color={ baseAppColor }>
+        <ScrollPad>
+          <div>
+            <StyledTaglistWrapper className="list">
+              <Taglist/>
+            </StyledTaglistWrapper>
+          </div>
+        </ScrollPad>
+      </UtilityIcon>
 
     </SearchWrapper>
   );

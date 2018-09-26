@@ -1,4 +1,4 @@
-const { BrowserWindow, ipcMain } = require('electron');
+const { BrowserWindow, ipcMain, session } = require('electron');
 const tokenRequest = require('superagent');
 
 const options = {
@@ -52,8 +52,8 @@ ipcMain.on('oauth2-login', (event) => {
     handleCallback(url);
   });
 
-  authWindow.webContents.on('did-get-redirect-request', (ev, oldUrl, newUrl) => {
-    handleCallback(newUrl);
+  session.defaultSession.webRequest.onBeforeRedirect({ urls: ['*//web.gistoapp.com/?code=*'] }, (details) => {
+    handleCallback(details.redirectURL);
   });
 
   authWindow.on('close', () => {
