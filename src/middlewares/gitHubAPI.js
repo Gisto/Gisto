@@ -34,6 +34,16 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
             body: `${error.response.body.message}`,
             type: 'info'
           });
+        } else if (error.status === 401) {
+          setNotification({
+            title: 'Log-in required',
+            body: `${error.response.body.message}`,
+            type: 'error'
+          });
+
+          removeToken();
+          removeEnterpriseDomain();
+          window.location.reload(true);
         } else {
           setNotification({
             title: 'Error',
