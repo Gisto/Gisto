@@ -70,14 +70,28 @@ const Util = styled.span`
 `;
 
 export class UtilityIcon extends React.Component {
+  childrenDropdown = React.createRef();
+
   state = {
     childrenShown: false
   };
 
   toggleChildren = () => {
+    if (!this.state.childrenShown) {
+      document.addEventListener('click', this.handleOutsideClick, false);
+    } else {
+      document.removeEventListener('click', this.handleOutsideClick, false);
+    }
+
     this.setState((prevState) => ({
       childrenShown: !prevState.childrenShown
     }));
+  };
+
+  handleOutsideClick = (e) => {
+    if (this.childrenDropdown && this.childrenDropdown.current.contains(e.target) === false) {
+      this.toggleChildren();
+    }
   };
 
   render() {
@@ -107,7 +121,9 @@ export class UtilityIcon extends React.Component {
               spin={ spin }
               type={ childrenShown ? 'close' : type }
               color={ childrenShown ? colorDanger : color }/> { text && text }
-        { dropdown && childrenShown && children }
+        { dropdown && childrenShown && (
+          <span ref={ this.childrenDropdown }>{ children }</span>
+        ) }
       </Util>
     );
   }
