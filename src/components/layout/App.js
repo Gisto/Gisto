@@ -29,9 +29,10 @@ injectGlobal`
     background: ${baseAppColor};
   }
   
-  *:hover {
+  a:hover,
+  span:hover {
     transition: all .3s ease-in-out;
-  } 
+  }
 `;
 
 const AppWrapper = styled.div`
