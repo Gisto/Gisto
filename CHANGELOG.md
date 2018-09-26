@@ -1,3 +1,18 @@
+### v1.10.5
+*  FIX (title): app title on desktop and web [View](https://github.com/Gisto/Gisto/commit/ceb6adff99ebc4bbdb056a78827c57988f362701)
+*  FIX (desktop app): handle depricated event in future electron v3 [View](https://github.com/Gisto/Gisto/commit/f21c3c73c7290016dcba3eb19d9f8896afca00a7)
+*  Update issue templates [View](https://github.com/Gisto/Gisto/commit/7987abe13dfbdb9ae0827f2ae8eb040ce13f3c3f)
+*  Update issue templates [View](https://github.com/Gisto/Gisto/commit/270d3cf0259e946bbab6db3e2f07527e59ffa6aa)
+*  FIX (search): add taglist to search for quicker navigation [View](https://github.com/Gisto/Gisto/commit/2c942e127736c83bd789621214f68db8531eb076)
+*  FIX (keybinding): change supeserch to cmd/ctl+f [View](https://github.com/Gisto/Gisto/commit/1f2a21efb5dd8c3401fb0b43bc7e44ceefa098de)
+*  FEATURE (snippets): display image files uploaded via git (read only) [View](https://github.com/Gisto/Gisto/commit/445e500765bcd6aa153a56275f4dfefdea3e33a4)
+*  FIX (tags): wrap long tags [View](https://github.com/Gisto/Gisto/commit/54ace608da6729fa3f91829fcdda27cbf31108d4)
+*  FIX (snippet): display file uploaded via git [View](https://github.com/Gisto/Gisto/commit/fff04347d75ebdc478e64336fd1b4255e5d81b11)
+*  FIX (new snippet): better screen layout [View](https://github.com/Gisto/Gisto/commit/670e801577842aea130e7769b2d5782795d78ab8)
+*  FIX (new snippet): move create new button [View](https://github.com/Gisto/Gisto/commit/5a1edeb75b6567df9c6e8d107043448ab07ffe0d)
+*  FEATURE (search): display languages list near search [View](https://github.com/Gisto/Gisto/commit/6d2656511c98543be376f78d0488dac2606c2c4e)
+*  FIX (IconUtil): fix clicking outside [View](https://github.com/Gisto/Gisto/commit/1f679ef27b08a0d3c0e36e2b227e024e29ce5f1e)
+
 ### v1.10.4
 *  FIX (build): wrong resources loading during build [View](https://github.com/Gisto/Gisto/commit/bfba3a1e7da053d86182e78d6a8902351a933d9d)
 
