@@ -66,13 +66,16 @@ module.exports = {
       'process.browser': true
     }),
     new HtmlWebPackPlugin({
+      title: `Gisto v${packageJson.version} ${isDev && ' { development }'}`,
+      favicon: './build/icon.png',
       template: './src/index.html',
       filename: './index.html'
     }),
     new HtmlWebPackPlugin({
       version: packageJson.version,
       template: './src/loading.html',
-      filename: './loading.html'
+      filename: './loading.html',
+      inject: false
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',

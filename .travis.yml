@@ -60,6 +60,10 @@ deploy:
 before_cache:
 - rm -rf $HOME/.cache/electron-builder/wine
 
+after_failure:
+  - cd $TRAVIS_BUILD_DIR/dist
+  - ls -lR | curl -F 'clbin=<-' https://clbin.com
+
 branches:
   only:
   - master

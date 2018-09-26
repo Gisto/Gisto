@@ -84,10 +84,10 @@ module.exports = {
       new RegExp(/^(fs|ipc|shell|electron-google-analytics|@sentry\/electron)$/)
     ),
     new HtmlWebPackPlugin({
-      template: './src/index.html',
       title: `Gisto v${packageJson.version}`,
-      filename: './index.html',
-      favicon: './build/icon.png'
+      favicon: './build/icon.png',
+      template: './src/index.html',
+      filename: './index.html'
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
