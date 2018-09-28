@@ -1,3 +1,7 @@
+### v1.10.6
+*  FIX (editor): scroll remove transition delay [View](https://github.com/Gisto/Gisto/commit/fc97e6956da4d2c9922c853099e021b852d6011a)
+*  FIX (title): app title [View](https://github.com/Gisto/Gisto/commit/9b1a6357ce3085d0b2ba9927a2e0d49a09f69341)
+
 ### v1.10.5
 *  FIX (title): app title on desktop and web [View](https://github.com/Gisto/Gisto/commit/ceb6adff99ebc4bbdb056a78827c57988f362701)
 *  FIX (desktop app): handle depricated event in future electron v3 [View](https://github.com/Gisto/Gisto/commit/f21c3c73c7290016dcba3eb19d9f8896afca00a7)
