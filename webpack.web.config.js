@@ -86,7 +86,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       title: `Gisto v${packageJson.version}`,
       favicon: './build/icon.png',
-      template: './src/index.html',
+      template: './src/index-web.html',
       filename: './index.html'
     }),
     new webpack.EnvironmentPlugin({
@@ -97,6 +97,7 @@ module.exports = {
       'process.browser': true
     }),
     new CopyWebpackPlugin([
+      'sw.js',
       { from: 'src/icons', to: 'src/icons' }
     ])
   ],

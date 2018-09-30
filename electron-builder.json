@@ -4,6 +4,11 @@
     "buildResources": "build",
     "output": "release"
   },
+  "protocols": [{
+    "name": "gisto",
+    "role": "Viewer",
+    "schemes": ["gisto", "gisto2"]
+  }],
   "appId": "com.gistoapp.gisto2",
   "artifactName": "${productName}-${version}-${arch}.${ext}",
   "mac": {
