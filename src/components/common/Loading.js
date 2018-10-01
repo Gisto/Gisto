@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -24,28 +24,46 @@ const Spinner = styled.div`
 }
 `;
 
-const loader = (color, text) => {
-  if (window.navigator.onLine) {
+class Loading extends Component {
+  state = {
+    online: navigator.onLine
+  };
+
+  componentDidMount() {
+    window.addEventListener('online', this.setOnlineState, false);
+    window.addEventListener('offline', this.setOnlineState, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('online', this.setOnlineState, false);
+    window.removeEventListener('offline', this.setOnlineState, false);
+  }
+
+  setOnlineState = (event) => this.setState({ online: event.type === 'online' });
+
+  render() {
+    const { color, text, spinner = true } = this.props;
+
+    if (this.state.online) {
+      return  spinner && (
+        <React.Fragment>
+          <Spinner color={ color }/> { text }
+        </React.Fragment>
+      );
+    }
+
     return (
       <React.Fragment>
-        <Spinner color={ color }/> { text }
+        <Icon type="globe" color={ colorDanger }/> { 'Looks like you\'r off-line' }
       </React.Fragment>
     );
   }
-
-  return (
-    <React.Fragment>
-      <Icon type="globe" color={ colorDanger }/> { 'Looks like you\'r off-line' }
-    </React.Fragment>
-  );
-};
-
-const Loading = ({ color, text }) => loader(color, text);
+}
 
 Loading.propTypes = {
   color: PropTypes.string,
   text: PropTypes.string,
-  children: PropTypes.any
+  spinner: PropTypes.bool
 };
 
 export default Loading;

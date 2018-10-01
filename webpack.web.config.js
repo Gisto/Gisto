@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const WorkboxPlugin  = require('workbox-webpack-plugin');
 
 const packageJson = require('./package.json');
 
@@ -87,7 +88,8 @@ module.exports = {
       title: `Gisto v${packageJson.version}`,
       favicon: './build/icon.png',
       template: './src/index-web.html',
-      filename: './index.html'
+      filename: './index.html',
+      hash: true
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
@@ -97,9 +99,28 @@ module.exports = {
       'process.browser': true
     }),
     new CopyWebpackPlugin([
-      'sw.js',
       { from: 'src/icons', to: 'src/icons' }
-    ])
+    ]),
+    new WorkboxPlugin.GenerateSW({
+      swDest: 'service-worker.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      globIgnores: [
+        '**/node_modules/**/*'
+      ],
+      globPatterns: ['dist/*.{svg,js,png,jpg,gif,html,css}'],
+      include: [/\.html$/, /\.js$/, /\.svg$/, /\.jpg$/, /\.gif$/, /\.png$/, /\.css$/],
+      offlineGoogleAnalytics: true,
+      runtimeCaching: [{
+        urlPattern: new RegExp('^https://api.github.com/'),
+        handler: 'staleWhileRevalidate',
+        options: {
+          cacheableResponse: {
+            statuses: [0, 200]
+          }
+        }
+      }]
+    })
   ],
   node: {
     __dirname: false,

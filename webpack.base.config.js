@@ -12,7 +12,6 @@ const copyPaths = [
   '.env',
   'build/icon.png',
   'package.json',
-  'sw.js',
   { from: 'src/electron/main.js', to: 'main.js' },
   { from: 'src/electron/main', to: 'main' },
   { from: 'src/electron/oauth2.js', to: 'oauth2.js' },

@@ -23,9 +23,8 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
       type="info"
     />
   </Link>
-  <Icon
-    color="#fff"
-    type="globe"
+  <Loading
+    spinner={false}
   />
   <Link
     replace={false}

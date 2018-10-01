@@ -9,7 +9,7 @@ import { baseAppColor, headerColor, lightText } from 'constants/colors';
 import { SIDEBAR_WIDTH, logoText } from 'constants/config';
 import { isEnterpriseLogin } from 'utils/login';
 
-import UserArea from 'components/AppArea';
+import AppArea from 'components/AppArea';
 import Loading from 'components/common/Loading';
 import Button from 'components/common/controls/Button';
 
@@ -85,7 +85,7 @@ export const MainHeader = ({ loading, rateLimit, edit }) => (
       ) }
       <div>{ /* placeholder */ }</div>
     </MiddleArea>
-    <UserArea/>
+    <AppArea/>
   </HeaderWrapper>
 );
 
