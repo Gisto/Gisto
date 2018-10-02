@@ -226,7 +226,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
       dispatch({ type: AT.SET_STAR.PENDING, action });
 
       return API.put(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/star`)
-        .set(_headers({ 'Content-Length': 0 }))
+        .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
 

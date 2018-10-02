@@ -13,3 +13,9 @@ global.render = render;
 global.mount = mount;
 global.React = React;
 global.gtag = noop;
+const serviceWorker = {
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn()
+};
+
+global.navigator.serviceWorker = serviceWorker;

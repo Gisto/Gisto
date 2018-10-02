@@ -23,7 +23,10 @@
 		"sinon": true,
 		"alert": true,
 		"confirm": true,
-		"gtag": true
+		"gtag": true,
+		"workbox": true,
+		"self": true,
+		"importScripts": true
 	},
 	"settings": {
 		"import/resolver": "webpack"

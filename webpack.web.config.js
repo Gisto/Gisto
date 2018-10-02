@@ -99,6 +99,7 @@ module.exports = {
       'process.browser': true
     }),
     new CopyWebpackPlugin([
+      'sw-sync.js',
       { from: 'src/icons', to: 'src/icons' }
     ]),
     new WorkboxPlugin.GenerateSW({
@@ -108,7 +109,6 @@ module.exports = {
       globIgnores: [
         '**/node_modules/**/*'
       ],
-      globPatterns: ['dist/*.{svg,js,png,jpg,gif,html,css}'],
       include: [/\.html$/, /\.js$/, /\.svg$/, /\.jpg$/, /\.gif$/, /\.png$/, /\.css$/],
       offlineGoogleAnalytics: true,
       runtimeCaching: [{

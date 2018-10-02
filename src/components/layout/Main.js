@@ -23,6 +23,18 @@ export class Main extends React.Component {
     this.props.getSnippets();
     this.props.getEmoji();
     gaEvent({ category: 'general', action: 'App loaded' });
+    navigator.serviceWorker.addEventListener('message', this.reFetch);
+  }
+
+  componentWillUnmount() {
+    navigator.serviceWorker.removeEventListener('message', this.reFetch);
+  }
+
+  reFetch = (event) => {
+    if (event.data.status === 'queueDidReplay') {
+      this.props.getStarredSnippets();
+      this.props.getSnippets();
+    }
   }
 
   render() {
