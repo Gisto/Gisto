@@ -16,7 +16,7 @@ import 'github-markdown-css/github-markdown.css';
 import Comments from 'components/layout/content/snippet/Comments';
 import { toUnixTimeStamp } from 'utils/date';
 import { getSetting } from 'utils/settings';
-
+import DropZone from 'components/common/DropZone';
 
 const SnippetWrapper = styled.div`
   background: #fff;
@@ -27,6 +27,10 @@ const SnippetWrapper = styled.div`
   border-radius: 3px;
   box-shadow: 0 0 10px ${borderColor};
   flex: 1;
+  margin-bottom: 20px;
+`;
+
+const StyledDropZone = styled(DropZone)`
   margin-bottom: 20px;
 `;
 
@@ -53,7 +57,7 @@ export class Snippet extends React.Component {
 
   render() {
     const {
-      snippet, edit, tempSnippet, updateTempSnippet, showComments
+      snippet, edit, tempSnippet, updateTempSnippet, showComments, addTempFile
     } = this.props;
     const currentSnippet = edit ? tempSnippet : snippet;
     const files = filter((file) => !file.delete, get('files', currentSnippet));
@@ -65,6 +69,10 @@ export class Snippet extends React.Component {
     return (
       <React.Fragment>
         { showComments && <Comments snippetId={ this.props.match.params.id }/> }
+
+        { edit && (
+          <StyledDropZone onAddFile={ addTempFile }/>
+        ) }
 
         { map((file) => (
           <SnippetWrapper key={ file.uuid || `${file.size}-${file.viewed}-${file.filename}` }>
@@ -102,10 +110,12 @@ Snippet.propTypes = {
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object,
   updateTempSnippet: PropTypes.func,
+  addTempFile: PropTypes.func,
   showComments: PropTypes.any
 };
 
 export default connect(mapStateToProps, {
   getSnippet: snippetActions.getSnippet,
-  updateTempSnippet: snippetActions.updateTempSnippet
+  updateTempSnippet: snippetActions.updateTempSnippet,
+  addTempFile: snippetActions.addTempFile
 })(Snippet);

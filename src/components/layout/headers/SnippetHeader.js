@@ -167,9 +167,24 @@ export class SnippetHeader extends React.Component {
     );
   };
 
+  countFiles = () => {
+    const {
+      edit, match, snippets, tempSnippet
+    } = this.props;
+
+    const snippet = get(match.params.id, snippets);
+    let count = size(get('files', snippet));
+
+    if (edit) {
+      count = size(get('files', tempSnippet));
+    }
+
+    return `${count} File(s)`;
+  };
+
   renderEditControls = () => {
     const {
-      editSnippet, cancelEditSnippet, edit, match, snippets, addTempFile
+      editSnippet, cancelEditSnippet, edit, addTempFile, match, snippets
     } = this.props;
     const snippet = get(match.params.id, snippets);
 
@@ -190,7 +205,7 @@ export class SnippetHeader extends React.Component {
                        color={ baseAppColor }
                        type="file"
                        dropdown
-                       text={ `${size(get('files', snippet))} File(s)` }>
+                       text={ this.countFiles() }>
             <ul>
               <li>
                 <Anchor onClick={ () => addTempFile() }>

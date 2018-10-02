@@ -147,14 +147,14 @@ export const snippets = (state = initialState, action) => {
         [newUuid]: {
           uuid: newUuid,
           isNew: true,
-          originalFileName: newUuid,
-          filename: 'file',
-          content: ' ',
+          originalFileName: action.payload.fileName ? action.payload.fileName : newUuid,
+          filename: action.payload.fileName ? action.payload.fileName : 'file',
+          content: action.payload.fileContent ? action.payload.fileContent : ' ',
           collapsed: false
         }
       };
 
-      return set(['edit', 'files'], merge(newFile, existingFiles), state);
+      return set(['edit', 'files'], merge(newFile, existingFiles || {}), state);
     }
 
     case AT.STOP_EDIT_SNIPPET: {
