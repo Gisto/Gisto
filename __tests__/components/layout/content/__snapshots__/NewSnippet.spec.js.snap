@@ -2,14 +2,9 @@
 
 exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
 <div>
-  <Dropzone
-    onDragEnter={[Function]}
-    onDragLeave={[Function]}
-    onDragOver={[Function]}
-    onDrop={[Function]}
-  >
-    Drag file(s) over here to add
-  </Dropzone>
+  <DropZone
+    onAddFile={[Function]}
+  />
   <H1>
     <strong>
       New 
