@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  drop, get, isEmpty, join, map, size, toString 
+  drop, get, isEmpty, map, size, toString
 } from 'lodash/fp';
 import styled from 'styled-components';
 
@@ -238,7 +238,7 @@ export class SnippetHeader extends React.Component {
     }
 
     return (
-      <StyledInput value={ `${get('description', tempSnippet)} ${join(' ', get('tags', snippet))}` }
+      <StyledInput value={ get('description', tempSnippet) }
                    onChange={ (event) => updateTempSnippet('description', event.target.value) }/>
     );
   };
