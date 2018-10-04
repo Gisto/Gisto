@@ -36,7 +36,7 @@
 	if ('serviceWorker' in navigator) {
 		window.addEventListener('load', () => {
 			navigator.serviceWorker.register('/service-worker.js');
-			navigator.serviceWorker.register('/sw-sync.js').then((registration) => {
+			navigator.serviceWorker.register('/service-worker-sync.js').then((registration) => {
 				registration.sync.register('workbox-background-sync:gisto-background-sync-queue');
 			});
 		});

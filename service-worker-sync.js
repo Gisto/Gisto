@@ -1,9 +1,7 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js');
 
-const callback = async (status) => {
-  const message = {
-    status
-  };
+const inform = async () => {
+  const message = { status: 'queueDidReplay' };
   const clients = await self.clients.matchAll();
 
   for (const client of clients) {
@@ -13,7 +11,7 @@ const callback = async (status) => {
 
 const queue = new workbox.backgroundSync.Queue('gisto-background-sync-queue', {
   callbacks: {
-    queueDidReplay: callback('queueDidReplay')
+    queueDidReplay: inform
   }
 });
 

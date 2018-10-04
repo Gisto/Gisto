@@ -79,6 +79,10 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'web'),
+    port: 8080
+  },
   plugins: [
     new MonacoWebpackPlugin(),
     new webpack.IgnorePlugin(
@@ -99,7 +103,7 @@ module.exports = {
       'process.browser': true
     }),
     new CopyWebpackPlugin([
-      'sw-sync.js',
+      'service-worker-sync.js',
       { from: 'src/icons', to: 'src/icons' }
     ]),
     new WorkboxPlugin.GenerateSW({
@@ -107,9 +111,12 @@ module.exports = {
       clientsClaim: true,
       skipWaiting: true,
       globIgnores: [
-        '**/node_modules/**/*'
+        '**/node_modules/**/*',
+        'service-worker.js',
+        'service-worker-sync.js'
       ],
       include: [/\.html$/, /\.js$/, /\.svg$/, /\.jpg$/, /\.gif$/, /\.png$/, /\.css$/],
+      exclude: [/\.service-worker-sync\.js$/],
       offlineGoogleAnalytics: true,
       runtimeCaching: [{
         urlPattern: new RegExp('^https://api.github.com/'),

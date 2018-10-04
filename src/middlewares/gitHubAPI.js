@@ -228,9 +228,16 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
       return API.put(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/star`)
         .set(_headers())
         .end((error, result) => {
-          errorHandler(error, result);
+          if (!navigator.onLine) {
+            dispatch({
+              type: AT.SET_STAR.SUCCESS,
+              meta: action.meta
+            });
+          } else {
+            errorHandler(error, result);
+          }
 
-          if (error || result.status !== 204) {
+          if (result.status !== 204) {
             dispatch({
               type: AT.SET_STAR.FAILURE,
               payload: error
