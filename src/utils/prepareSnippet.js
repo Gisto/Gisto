@@ -13,9 +13,9 @@ const prepareTags = (snippet) => {
   return [];
 };
 
-const prepareDescription = (snippet) => {
+const prepareDescription = (snippet, raw = false) => {
   if (!isEmpty(snippet.description)) {
-    return removeTags(snippet.description);
+    return raw ? snippet.description : removeTags(snippet.description);
   }
 
   return DEFAULT_SNIPPET_DESCRIPTION;
@@ -50,6 +50,7 @@ const prepareHistory = (snippet) => snippet.history || [];
 export const snippetStructure = (snippet, starred) => ({
   service: getService(snippet),
   description: prepareDescription(snippet),
+  rawDescription: prepareDescription(snippet, true),
   id: snippet.id,
   star: includes(snippet.id, starred),
   tags: prepareTags(snippet),

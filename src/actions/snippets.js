@@ -138,8 +138,12 @@ export const deleteTempFile = (uuid) => ({
   }
 });
 
-export const addTempFile = () => ({
-  type: AT.ADD_TEMP_FILE
+export const addTempFile = (fileName, fileContent) => ({
+  type: AT.ADD_TEMP_FILE,
+  payload: {
+    fileName,
+    fileContent
+  }
 });
 
 export const updateSnippet = (snippet, id) => ({

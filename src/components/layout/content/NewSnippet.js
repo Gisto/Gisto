@@ -18,6 +18,7 @@ import { baseAppColor, bg, boxShadow } from 'constants/colors';
 import ExternalLink from 'components/common/ExternalLink';
 import Button from 'components/common/controls/Button';
 import Checkbox from 'components/common/controls/Checkbox';
+import DropZone from 'components/common/DropZone';
 import { gaPage } from 'utils/ga';
 import { getSetting } from 'utils/settings';
 
@@ -69,13 +70,6 @@ const H1 = styled.h1`
   font-size: 22px;
 `;
 
-const Dropzone = styled.div`
-  border: 1px dashed ${baseAppColor};
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-`;
-
 const ButtonsSection = styled.section`
   position: fixed;
   bottom: 0;
@@ -90,9 +84,7 @@ export class NewSnippet extends React.Component {
   state = {
     public: getSetting('defaultNewIsPublic', false),
     description: '',
-    files: [],
-    dragOver: false,
-    progress: {}
+    files: []
   };
 
   componentDidMount() {
@@ -145,70 +137,11 @@ export class NewSnippet extends React.Component {
     });
   };
 
-  handleOnDrop = (event) => {
-    event.preventDefault();
-
-    this.setState({ dragOver: false });
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const index in event.dataTransfer.items) {
-      if (event.dataTransfer.items[index].kind === 'file') {
-        const file = event.dataTransfer.items[index].getAsFile();
-        const reader = new FileReader();
-
-        reader.readAsText(file);
-        // eslint-disable-next-line no-shadow
-        reader.onprogress = (event) => {
-          if (event.lengthComputable) {
-            this.setState({
-              progress: {
-                max: event.total,
-                value: event.loaded
-              }
-            });
-          }
-        };
-
-        reader.onload = () => {
-          this.addFile(file.name, reader.result);
-          this.setState({
-            progress: {}
-          });
-        };
-      }
-    }
-  };
-
-  handleDragOver = (event) => {
-    event.preventDefault();
-    this.setState({ dragOver: true });
-
-    return false;
-  };
-
-  handleDragLeave = (event) => {
-    event.preventDefault();
-    this.setState({ dragOver: false });
-
-    return false;
-  };
-
   render() {
     return (
       <div>
 
-        <Dropzone onDrop={ this.handleOnDrop }
-                  onDragOver={ this.handleDragOver }
-                  onDragEnter={ this.handleDragOver }
-                  onDragLeave={ this.handleDragLeave }>
-          { this.state.dragOver ? 'Drop now' : 'Drag file(s) over here to add' }
-
-          { this.state.progress.max && (
-            <p>
-              <progress max={ this.state.progress.max } value={ this.state.progress.value }/>
-            </p>
-          ) }
-        </Dropzone>
+        <DropZone onAddFile={ this.addFile }/>
 
         <H1><strong>New { this.state.public ? 'public' : 'private' } snippet:</strong> { this.state.description }</H1>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  drop, get, isEmpty, join, map, size, toString 
+  drop, get, isEmpty, map, size, toString
 } from 'lodash/fp';
 import styled from 'styled-components';
 
@@ -167,9 +167,24 @@ export class SnippetHeader extends React.Component {
     );
   };
 
+  countFiles = () => {
+    const {
+      edit, match, snippets, tempSnippet
+    } = this.props;
+
+    const snippet = get(match.params.id, snippets);
+    let count = size(get('files', snippet));
+
+    if (edit) {
+      count = size(get('files', tempSnippet));
+    }
+
+    return `${count} File(s)`;
+  };
+
   renderEditControls = () => {
     const {
-      editSnippet, cancelEditSnippet, edit, match, snippets, addTempFile
+      editSnippet, cancelEditSnippet, edit, addTempFile, match, snippets
     } = this.props;
     const snippet = get(match.params.id, snippets);
 
@@ -190,7 +205,7 @@ export class SnippetHeader extends React.Component {
                        color={ baseAppColor }
                        type="file"
                        dropdown
-                       text={ `${size(get('files', snippet))} File(s)` }>
+                       text={ this.countFiles() }>
             <ul>
               <li>
                 <Anchor onClick={ () => addTempFile() }>
@@ -223,7 +238,7 @@ export class SnippetHeader extends React.Component {
     }
 
     return (
-      <StyledInput value={ `${get('description', tempSnippet)} ${join(' ', get('tags', snippet))}` }
+      <StyledInput value={ get('description', tempSnippet) }
                    onChange={ (event) => updateTempSnippet('description', event.target.value) }/>
     );
   };

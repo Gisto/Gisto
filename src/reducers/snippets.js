@@ -125,7 +125,7 @@ export const snippets = (state = initialState, action) => {
     }
 
     case AT.START_EDIT_SNIPPET: {
-      const description =  pick(['description'], state.snippets[action.payload.id]);
+      const description =  get(['rawDescription'], state.snippets[action.payload.id]);
       const files =  pick(['files'], state.snippets[action.payload.id]);
       const preparedFiles = map((file) => ({
         uuid: uuid.v4(),
@@ -135,7 +135,7 @@ export const snippets = (state = initialState, action) => {
       }), files.files);
 
       return flow([
-        set(['edit'], description),
+        set(['edit', 'description'], description),
         set(['edit', 'files'], keyBy('uuid', preparedFiles))
       ])(state);
     }
@@ -147,14 +147,14 @@ export const snippets = (state = initialState, action) => {
         [newUuid]: {
           uuid: newUuid,
           isNew: true,
-          originalFileName: newUuid,
-          filename: 'file',
-          content: ' ',
+          originalFileName: action.payload.fileName ? action.payload.fileName : newUuid,
+          filename: action.payload.fileName ? action.payload.fileName : 'file',
+          content: action.payload.fileContent ? action.payload.fileContent : ' ',
           collapsed: false
         }
       };
 
-      return set(['edit', 'files'], merge(newFile, existingFiles), state);
+      return set(['edit', 'files'], merge(newFile, existingFiles || {}), state);
     }
 
     case AT.STOP_EDIT_SNIPPET: {

@@ -1,3 +1,7 @@
+### v1.10.7
+*  FEATURE (edit): add drag and drop files to edit snippets [View](https://github.com/Gisto/Gisto/commit/e8c75fa5d19b6c52dede2aac725d86b1429cecbf)
+*  FIX (snippet): fix edit description tags gone if not editing and just saving [View](https://github.com/Gisto/Gisto/commit/b55f1bbda70f79a1df329b5aebbc0ebb546a35b3)
+
 ### v1.10.6
 *  FIX (editor): scroll remove transition delay [View](https://github.com/Gisto/Gisto/commit/fc97e6956da4d2c9922c853099e021b852d6011a)
 *  FIX (title): app title [View](https://github.com/Gisto/Gisto/commit/9b1a6357ce3085d0b2ba9927a2e0d49a09f69341)
