@@ -52,6 +52,14 @@ export const filterSnippetsByStatus = (status) => ({
   payload: { status }
 });
 
+export const filterSnippetsByTruncated = () => ({
+  type: AT.FILTER_SNIPPETS_BY_TRUNCATED
+});
+
+export const filterSnippetsByUntagged = () => ({
+  type: AT.FILTER_SNIPPETS_BY_UNTAGGED
+});
+
 export const clearAllFilters = () => ({
   type: AT.CLEAR_FILTERS
 });

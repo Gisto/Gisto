@@ -61,10 +61,19 @@ const StyledLanguagesWrapper = styled(StyledTaglistWrapper)`
 `;
 
 export const Search = ({
-  snippets, filterSnippets, filterText, filterTags, filterLanguage, filterStatus
+  snippets, filterSnippets, filterText, filterTags, filterLanguage,
+  filterStatus, filterTruncated, filterUntagged
 }) => {
   const countSnippets = size(
-    filterSnippetsList(snippets, filterText, filterTags, filterLanguage, filterStatus)
+    filterSnippetsList(
+      snippets,
+      filterText,
+      filterTags,
+      filterLanguage,
+      filterStatus,
+      filterTruncated,
+      filterUntagged
+    )
   );
 
   const shouldFilter = (query) => {
@@ -110,7 +119,9 @@ Search.propTypes = {
   filterText: PropTypes.string,
   filterTags: PropTypes.array,
   filterLanguage: PropTypes.string,
-  filterStatus: PropTypes.string
+  filterStatus: PropTypes.string,
+  filterTruncated: PropTypes.bool,
+  filterUntagged: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({
@@ -118,7 +129,9 @@ const mapStateToProps = (state) => ({
   filterText: state.snippets.filter.text,
   filterTags: state.snippets.filter.tags,
   filterLanguage: state.snippets.filter.language,
-  filterStatus: state.snippets.filter.status
+  filterStatus: state.snippets.filter.status,
+  filterTruncated: state.snippets.filter.truncated,
+  filterUntagged: state.snippets.filter.untagged
 });
 
 export default connect(mapStateToProps, {

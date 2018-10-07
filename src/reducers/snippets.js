@@ -13,7 +13,9 @@ const initialState = {
     text: '',
     tags: [],
     language: '',
-    status: ''
+    status: '',
+    truncated: false,
+    untagged: false
   },
   comments: {},
   lastOpenedId: null,
@@ -48,7 +50,9 @@ export const snippets = (state = initialState, action) => {
         set(['filter', 'text'], action.payload.value),
         set(['filter', 'tags'], []),
         set(['filter', 'language'], ''),
-        set(['filter', 'status'], '')
+        set(['filter', 'status'], ''),
+        set(['filter', 'untagged'], false),
+        set(['filter', 'truncated'], false)
       ])(state);
     }
 
@@ -60,7 +64,9 @@ export const snippets = (state = initialState, action) => {
         set(['filter', 'text'], ''),
         set(['filter', 'tags'], tag),
         set(['filter', 'language'], ''),
-        set(['filter', 'status'], '')
+        set(['filter', 'status'], ''),
+        set(['filter', 'untagged'], false),
+        set(['filter', 'truncated'], false)
       ])(state);
     }
 
@@ -73,7 +79,9 @@ export const snippets = (state = initialState, action) => {
         set(['filter', 'text'], ''),
         set(['filter', 'tags'], []),
         set(['filter', 'language'], action.payload.value),
-        set(['filter', 'status'], '')
+        set(['filter', 'status'], ''),
+        set(['filter', 'untagged'], false),
+        set(['filter', 'truncated'], false)
       ])(state);
     }
 
@@ -82,7 +90,31 @@ export const snippets = (state = initialState, action) => {
         set(['filter', 'text'], ''),
         set(['filter', 'tags'], []),
         set(['filter', 'language'], ''),
-        set(['filter', 'status'], action.payload.status)
+        set(['filter', 'status'], action.payload.status),
+        set(['filter', 'untagged'], false),
+        set(['filter', 'truncated'], false)
+      ])(state);
+    }
+
+    case AT.FILTER_SNIPPETS_BY_TRUNCATED: {
+      return flow([
+        set(['filter', 'text'], ''),
+        set(['filter', 'tags'], []),
+        set(['filter', 'language'], ''),
+        set(['filter', 'status'], ''),
+        set(['filter', 'untagged'], false),
+        set(['filter', 'truncated'], true)
+      ])(state);
+    }
+
+    case AT.FILTER_SNIPPETS_BY_UNTAGGED: {
+      return flow([
+        set(['filter', 'text'], ''),
+        set(['filter', 'tags'], []),
+        set(['filter', 'language'], ''),
+        set(['filter', 'status'], ''),
+        set(['filter', 'untagged'], true),
+        set(['filter', 'truncated'], false)
       ])(state);
     }
 
@@ -91,7 +123,9 @@ export const snippets = (state = initialState, action) => {
         set(['filter', 'text'], ''),
         set(['filter', 'tags'], []),
         set(['filter', 'language'], ''),
-        set(['filter', 'status'], '')
+        set(['filter', 'status'], ''),
+        set(['filter', 'untagged'], false),
+        set(['filter', 'truncated'], false)
       ])(state);
     }
 
