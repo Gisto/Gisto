@@ -5,7 +5,7 @@ const {
 const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
 const { init } = require('@sentry/electron');
-const { includes, startsWith } = require('lodash/fp');
+const { includes, startsWith, head } = require('lodash/fp');
 
 const isMacOS = process.platform === 'darwin';
 const packageJson = require('../package');
@@ -41,39 +41,43 @@ function sendStatusToWindow(text, info, targetWindow, channel = 'update-info') {
 
 function handleDownload(win) {
   win.webContents.session.on('will-download', (event, item, sender) => {
-    item.on('updated', (updateEvent, state) => {
-      if (state === 'interrupted') {
-        console.log('Download is interrupted but can be resumed');
-      } else if (state === 'progressing') {
-        if (item.isPaused()) {
-          sender.send('update-info', 'Download paused');
-        } else {
-          const downloaded = item.getReceivedBytes() / 1048576;
-          const total = item.getTotalBytes() / 1048576;
+    const isUpdateUrl = includes(['https://github.com/Gisto/Gisto/releases/download/'], head(item.getURLChain()));
 
-          sender.send('download-progress', null, { progress: { percent: (downloaded / total) * 100 } });
+    if (isUpdateUrl) {
+      item.on('updated', (updateEvent, state) => {
+        if (state === 'interrupted') {
+          console.log('Download is interrupted but can be resumed');
+        } else if (state === 'progressing') {
+          if (item.isPaused()) {
+            sender.send('update-info', 'Download paused');
+          } else {
+            const downloaded = item.getReceivedBytes() / 1048576;
+            const total = item.getTotalBytes() / 1048576;
+
+            sender.send('download-progress', null, { progress: { percent: (downloaded / total) * 100 } });
+          }
         }
-      }
-    });
-    item.once('done', (doneEvent, state) => {
-      if (state === 'completed') {
-        sender.send('update-downloaded', 'New version downloaded, quit and run installer?', {
-          success: true, path: item.getSavePath()
-        });
-      } else {
-        sender.send('update-downloaded', null, { success: false });
-      }
-    });
+      });
+      item.once('done', (doneEvent, state) => {
+        if (state === 'completed') {
+          sender.send('update-downloaded', 'New version downloaded, quit and run installer?', {
+            success: true, path: item.getSavePath()
+          });
+        } else {
+          sender.send('update-downloaded', null, { success: false });
+        }
+      });
+    }
   });
 }
 
 function handleNavigate(win) {
   // Handled URL opening in default browser
   win.webContents.on('will-navigate', (event, url) => {
-    const isUpddateUrl = includes(['https://github.com/Gisto/Gisto/releases/download/'], url);
+    const isUpdateUrl = includes(['https://github.com/Gisto/Gisto/releases/download/'], url);
     const isFileProtocol = startsWith('file:', url);
 
-    if (isUpddateUrl || isFileProtocol) {
+    if (isUpdateUrl || isFileProtocol) {
       return false;
     }
 
