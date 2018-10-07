@@ -182,11 +182,17 @@ export class SnippetHeader extends React.Component {
     return `${count} File(s)`;
   };
 
+  isEditDisabled = (snippet) => get('truncated', snippet);
+
   renderEditControls = () => {
     const {
       editSnippet, cancelEditSnippet, edit, addTempFile, match, snippets
     } = this.props;
     const snippet = get(match.params.id, snippets);
+
+    if (this.isEditDisabled(snippet)) {
+      return null;
+    }
 
     if (edit) {
       return (
@@ -395,7 +401,9 @@ export class SnippetHeader extends React.Component {
 
             <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
               <ul>
-                <li><Anchor onClick={ () => editSnippet(snippetId) }>Edit</Anchor></li>
+                { !this.isEditDisabled(snippet) && (
+                  <li><Anchor onClick={ () => editSnippet(snippetId) }>Edit</Anchor></li>
+                ) }
                 <li><ExternalLink href={ openOnWebUrl }>Open on web</ExternalLink></li>
                 <li><Anchor href={ `${openOnWebUrl}/download` }>Download</Anchor></li>
                 <li className="color-danger">

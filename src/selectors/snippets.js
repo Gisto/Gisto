@@ -47,3 +47,19 @@ export const getPrivate = createSelector(
     size
   ])(snippets)
 );
+
+export const getTruncated = createSelector(
+  [getSnippetsFromState],
+  (snippets) => flow([
+    filter({ truncated: true }),
+    size
+  ])(snippets)
+);
+
+export const getUntagged = createSelector(
+  [getSnippetsFromState],
+  (snippets) => flow([
+    filter((snippet) => size(snippet.tags) === 0),
+    size
+  ])(snippets)
+);

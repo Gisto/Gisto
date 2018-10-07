@@ -88,7 +88,7 @@ const filterByStatus = (snippets, filterStatus) => {
 };
 
 export const filterSnippetsList = (
-  snippets, filterText, filterTags, filterLanguage, filterStatus
+  snippets, filterText, filterTags, filterLanguage, filterStatus, filterTruncated, filterUntagged
 ) => {
   const sortedSnippets = flow([sortBy(['created']), reverse])(snippets);
 
@@ -106,6 +106,14 @@ export const filterSnippetsList = (
 
   if (!isEmpty(trim(filterStatus))) {
     return filterByStatus(sortedSnippets, trim(filterStatus));
+  }
+
+  if (filterTruncated) {
+    return filter({ truncated: true }, sortedSnippets);
+  }
+
+  if (filterUntagged) {
+    return filter((snippet) => (snippet.tags === null || size(snippet.tags) === 0), sortedSnippets);
   }
 
   return sortedSnippets;

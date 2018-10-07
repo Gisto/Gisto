@@ -9,6 +9,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
       }
     }
+    title="Click to filter private snippets"
   >
     <h3>
       Private
@@ -24,6 +25,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
       }
     }
+    title="Click to filter public snippets"
   >
     <h3>
       Public
@@ -39,6 +41,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
       }
     }
+    title="Click to filter starred snippets"
   >
     <h3>
       Starred
@@ -47,6 +50,34 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       6
     </span>
   </Starred>
+  <Truncated
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
+      }
+    }
+    title="Click to filter snippets with large files"
+  >
+    <h3>
+      Large
+    </h3>
+    <span />
+  </Truncated>
+  <Untagged
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
+      }
+    }
+    title="Click to filter snippets with no tags"
+  >
+    <h3>
+      Untagged
+    </h3>
+    <span />
+  </Untagged>
   <Untitled
     onClick={[Function]}
     style={
@@ -54,9 +85,10 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
         "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
       }
     }
+    title="Click to filter snippets with no description"
   >
     <h3>
-      Untitled:
+      Untitled
     </h3>
     <span>
       0

@@ -1,5 +1,5 @@
 import {
-  isEmpty, map, get, includes, uniq, compact, startsWith
+  isEmpty, map, get, includes, uniq, compact, startsWith, some
 } from 'lodash/fp';
 import { TAG_REGEX, DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 import { removeTags } from 'utils/tags';
@@ -37,6 +37,10 @@ const prepareFiles = (snippet) => {
   );
 };
 
+const prepareTruncated = (snippet) => {
+  return some((file) => file.size > 1000000, snippet.files);
+};
+
 const prepareLanguages = (snippet) => compact(uniq(map('language', snippet.files)));
 
 const prepareFork = (snippet) => snippet.fork_of || {};
@@ -62,7 +66,7 @@ export const snippetStructure = (snippet, starred) => ({
   comments: snippet.comments,
   avatarUrl: prepareAvatar(snippet),
   username: prepareUserName(snippet),
-  truncated: snippet.truncated,
+  truncated: prepareTruncated(snippet),
   fork: prepareFork(snippet),
   history: prepareHistory(snippet),
   created: toUnixTimeStamp(snippet.created_at),

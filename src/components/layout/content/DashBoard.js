@@ -7,7 +7,9 @@ import {
 } from 'lodash/fp';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
-import { getSnippets, getStarredCount, getPrivate } from 'selectors/snippets';
+import {
+  getSnippets, getStarredCount, getPrivate, getTruncated, getUntagged
+} from 'selectors/snippets';
 
 import {
   baseAppColor, borderColor, headerBgLightest, lightText 
@@ -25,7 +27,7 @@ import Languagelist from 'components/common/Languagelist';
 
 const DashbordWrapper = styled.div`
   display: grid;
-  grid-template-columns: 3fr 3fr 3fr 3fr;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
   grid-gap: 30px;
   color: #444;
   height: 100%;
@@ -78,15 +80,6 @@ const gridBoxInnerCss = css`
   }
 `;
 
-const Private = styled(Box)`
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 1;
-  
-${gridBoxInnerCss};
-`;
-
 const Public = styled(Box)`
   grid-column-start: 1;
   grid-column-end: 2;
@@ -94,6 +87,15 @@ const Public = styled(Box)`
   grid-row-end: 1;
   
   ${gridBoxInnerCss};
+`;
+
+const Private = styled(Box)`
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  
+${gridBoxInnerCss};
 `;
 
 const Starred = styled(Box)`
@@ -105,7 +107,7 @@ const Starred = styled(Box)`
   ${gridBoxInnerCss};
 `;
 
-const Untitled = styled(Box)`
+const Truncated = styled(Box)`
   grid-column-start: 4;
   grid-column-end: 5;
   grid-row-start: 1;
@@ -114,9 +116,27 @@ const Untitled = styled(Box)`
   ${gridBoxInnerCss};
 `;
 
+const Untagged = styled(Box)`
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  
+  ${gridBoxInnerCss};
+`;
+
+const Untitled = styled(Box)`
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  
+  ${gridBoxInnerCss};
+`;
+
 const Language = styled(Box)`
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 4;
   grid-row-start: 2;
   grid-row-end: 2;
   max-height: 40vh;
@@ -128,8 +148,8 @@ const Language = styled(Box)`
 `;
 
 const Stars = styled(Box)`
-  grid-column-start: 3;
-  grid-column-end: 5;
+  grid-column-start: 4;
+  grid-column-end: 7;
   grid-row-start: 2;
   grid-row-end: 2;
   max-height: 40vh;
@@ -161,7 +181,7 @@ const Stars = styled(Box)`
 
 const Tags = styled(Box)`
   grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column-end: 7;
   grid-row-start: 3;
   grid-row-end: 3;
   > div {
@@ -254,7 +274,8 @@ export class DashBoard extends React.Component {
 
   render() {
     const {
-      snippets, privateSnippets, starred, searchByStatus
+      snippets, privateSnippets, starred, searchByStatus,
+      truncatedSnippets, untaggedSnippets, searchByUntagged, searchByTruncated
     } = this.props;
     const publicSnippetsCount = size(snippets) - privateSnippets;
 
@@ -263,7 +284,8 @@ export class DashBoard extends React.Component {
         { isEmpty(this.state.searchTags) && (
           <React.Fragment>
             <Private style={ this.linearGradient(privateSnippets) }
-                     onClick={ () => searchByStatus('private') }>
+                     onClick={ () => searchByStatus('private') }
+                     title="Click to filter private snippets">
               <h3>Private</h3>
               <span>
                 { privateSnippets }
@@ -271,7 +293,8 @@ export class DashBoard extends React.Component {
             </Private>
 
             <Public style={ this.linearGradient(publicSnippetsCount) }
-                     onClick={ () => searchByStatus('public') }>
+                    onClick={ () => searchByStatus('public') }
+                    title="Click to filter public snippets">
               <h3>Public</h3>
               <span>
                 { publicSnippetsCount }
@@ -279,16 +302,36 @@ export class DashBoard extends React.Component {
             </Public>
 
             <Starred style={ this.linearGradient(starred) }
-                     onClick={ () => searchByStatus('starred') }>
+                     onClick={ () => searchByStatus('starred') }
+                     title="Click to filter starred snippets">
               <h3>Starred</h3>
               <span>
                 { starred }
               </span>
             </Starred>
 
+            <Truncated style={ this.linearGradient(truncatedSnippets) }
+                       onClick={ () => searchByTruncated() }
+                       title="Click to filter snippets with large files">
+              <h3>Large</h3>
+              <span>
+                { truncatedSnippets }
+              </span>
+            </Truncated>
+
+            <Untagged style={ this.linearGradient(untaggedSnippets) }
+                      onClick={ () => searchByUntagged() }
+                      title="Click to filter snippets with no tags">
+              <h3>Untagged</h3>
+              <span>
+                { untaggedSnippets }
+              </span>
+            </Untagged>
+
             <Untitled style={ this.linearGradient(this.getUntitled()) }
-                      onClick={ () => searchByStatus('untitled') }>
-              <h3>Untitled:</h3>
+                      onClick={ () => searchByStatus('untitled') }
+                      title="Click to filter snippets with no description">
+              <h3>Untitled</h3>
               <span>
                 { this.getUntitled() }
               </span>
@@ -350,7 +393,9 @@ export class DashBoard extends React.Component {
 const mapStateToProps = (state) => ({
   snippets: getSnippets(state),
   starred: getStarredCount(state),
-  privateSnippets: getPrivate(state)
+  privateSnippets: getPrivate(state),
+  truncatedSnippets: getTruncated(state),
+  untaggedSnippets: getUntagged(state)
 });
 
 DashBoard.propTypes = {
@@ -358,10 +403,16 @@ DashBoard.propTypes = {
   starred: PropTypes.number,
   searchByStatus: PropTypes.func,
   getRateLimit: PropTypes.func,
-  privateSnippets: PropTypes.number
+  searchByTruncated: PropTypes.func,
+  searchByUntagged: PropTypes.func,
+  privateSnippets: PropTypes.number,
+  untaggedSnippets: PropTypes.number,
+  truncatedSnippets: PropTypes.number
 };
 
 export default connect(mapStateToProps, {
   searchByStatus: snippetActions.filterSnippetsByStatus,
+  searchByTruncated: snippetActions.filterSnippetsByTruncated,
+  searchByUntagged: snippetActions.filterSnippetsByUntagged,
   getRateLimit: snippetActions.getRateLimit
 })(DashBoard);

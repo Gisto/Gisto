@@ -11,6 +11,7 @@ import 'highlight.js/styles/default.css';
 import Loading from 'components/common/Loading';
 import Markdown from 'components/common/Markdown';
 import Asciidoc from 'components/common/Asciidoc';
+import Anchor from 'components/common/Anchor';
 
 const RenderedComponent = css`
   padding: 20px 30px;
@@ -43,6 +44,14 @@ const Image = styled.div`
   img {
     max-width: 100%;
   }
+`;
+
+const BigFile = styled.div`
+  margin: 20px;
+`;
+
+const StyledAnchor = styled(Anchor)`
+  text-decoration: underline;
 `;
 
 const editorOptions = {
@@ -82,6 +91,16 @@ export class Editor extends React.Component {
         <Image>
           <img id="img" src={ file.raw_url } title={ `File type: ${file.type}` } alt={ `File type: ${file.type}` }/>
         </Image>
+      );
+    }
+
+    if (!file.collapsed && file.truncated) {
+      return (
+        <BigFile>
+          This file has been truncated, it contains { file.size } characters.
+          <br/>
+          You can view the <StyledAnchor href={ file.raw_url }>full file</StyledAnchor> on web.
+        </BigFile>
       );
     }
 

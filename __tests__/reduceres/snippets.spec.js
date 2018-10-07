@@ -12,7 +12,9 @@ const initialState = (props) => ({
     text: '',
     tags: [],
     language: '',
-    status: ''
+    status: '',
+    truncated: false,
+    untagged: false
   },
   lastOpenedId: null,
   new: {
@@ -48,7 +50,9 @@ describe('reducer - snippets', () => {
         text: 'text',
         tags: [],
         language: '',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -69,7 +73,9 @@ describe('reducer - snippets', () => {
         text: '',
         tags: [],
         language: 'HTML',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -90,7 +96,9 @@ describe('reducer - snippets', () => {
         text: '',
         tags: ['HTML', 'CSS', 'JS'],
         language: '',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -99,7 +107,9 @@ describe('reducer - snippets', () => {
         text: '',
         tags: ['HTML', 'JS'],
         language: '',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -116,7 +126,9 @@ describe('reducer - snippets', () => {
         text: 'html',
         tags: ['HTML', 'CSS', 'JS'],
         language: '',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -125,7 +137,9 @@ describe('reducer - snippets', () => {
         text: '',
         tags: [],
         language: '',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -145,7 +159,9 @@ describe('reducer - snippets', () => {
         text: '',
         tags: ['HTML'],
         language: '',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -166,7 +182,9 @@ describe('reducer - snippets', () => {
         text: '',
         tags: ['HTML'],
         language: '',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -175,7 +193,9 @@ describe('reducer - snippets', () => {
         text: '',
         tags: ['HTML', 'CSS'],
         language: '',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -196,7 +216,9 @@ describe('reducer - snippets', () => {
         text: '',
         tags: [],
         language: '',
-        status: ''
+        status: '',
+        truncated: false,
+        untagged: false
       }
     });
 
@@ -205,7 +227,9 @@ describe('reducer - snippets', () => {
         text: '',
         tags: [],
         language: '',
-        status: 'private'
+        status: 'private',
+        truncated: false,
+        untagged: false
       }
     });
 
