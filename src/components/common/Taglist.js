@@ -1,69 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getSnippets } from 'selectors/snippets';
+import { getTagsWithCounts, getSnippets } from 'selectors/snippets';
 import { connect } from 'react-redux';
 import * as snippetActions from 'actions/snippets';
 import {
-  compact, filter, flattenDeep, flow, isEmpty, map, uniq
+  filter, get, isEmpty, map, size
 } from 'lodash/fp';
-import styled from 'styled-components';
 
-import { baseAppColor, headerBgLightest } from 'constants/colors';
+import { headerBgLightest } from 'constants/colors';
 
-const Pill = styled.span`
-  border: 1px solid ${headerBgLightest};
-  color: ${baseAppColor};
-  padding: 5px;
-  border-radius: 3px;
-  position: relative;
-  text-overflow: clip;
-  overflow: hidden;
-  &:hover {
-    border: 1px solid ${baseAppColor};
-  }
-  
-  &:after {
-    content: "";
-    width: 30px;
-    height: 20px;
-    position: absolute;
-    top: 3px;
-    right: 0;
-    background: -webkit-gradient(linear,left top,right top,color-stop(0%,rgba(255,255,255,0)),color-stop(56%,rgba(255,255,255,1)),color-stop(100%,rgba(255,255,255,1)));
-    background: -webkit-linear-gradient(left,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
-  }
-`;
+import { Pill } from 'components/common/Pill';
 
 export const Taglist = ({
-  snippets, searchTags, searchByTags
+  snippets, searchTags, searchByTags, snippetsTags
 }) => {
-  const getTags = () => {
-    const tags = map('tags', snippets);
+  const taggedSnippets = filter((snippet) => !isEmpty(snippet.tags), snippets);
+  const linearGradient = (percentOf) => {
+    const percents = (percentOf / size(taggedSnippets)) * 100;
 
-    const tagList = flow([
-      flattenDeep,
-      uniq,
-      compact
-    ])(tags);
+    return {
+      background: `linear-gradient(to right, ${headerBgLightest} ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
+    };
+  };
+
+  const renderTags = () => {
+    let list = snippetsTags;
 
     if (!isEmpty(searchTags)) {
-      return filter((tag) => {
+      list = filter((tag) => {
         const regex = new RegExp(searchTags, 'gi');
 
-        return tag.match(regex);
-      }, tagList.sort());
+        return tag.tag.match(regex);
+      }, snippetsTags);
     }
 
-    return tagList.sort();
+    return map((tagItem) => {
+      const tag = get('tag', tagItem);
+      const filesCount = get('size', tagItem);
+
+      return (
+        <Pill style={ linearGradient(filesCount) }
+              key={ tag }
+              onClick={ () => searchByTags(tag) }>
+          { tag }
+          <br/>
+          <strong>{ filesCount }</strong> <small>snippets</small>
+        </Pill>
+      );
+    }, list);
   };
 
   return (
     <React.Fragment>
-      { map((tag) => (
-        <Pill key={ tag } onClick={ () => searchByTags(tag) } title={ tag }>
-          { tag }
-        </Pill>
-      ), getTags()) }
+      { renderTags() }
     </React.Fragment>
   );
 };
@@ -71,11 +60,13 @@ export const Taglist = ({
 Taglist.propTypes = {
   snippets: PropTypes.object,
   searchTags: PropTypes.string,
-  searchByTags: PropTypes.func
+  searchByTags: PropTypes.func,
+  snippetsTags: PropTypes.array
 };
 
 const mapStateToProps = (state) => ({
-  snippets: getSnippets(state)
+  snippets: getSnippets(state),
+  snippetsTags: getTagsWithCounts(state)
 });
 
 export default connect(mapStateToProps, {

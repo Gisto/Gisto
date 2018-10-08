@@ -9,8 +9,12 @@ import {
   map,
   reverse,
   size,
-  sortBy
+  sortBy,
+  compact,
+  countBy,
+  identity
 } from 'lodash/fp';
+import { mapValuesWithKey } from 'utils/lodash';
 
 const getSnippetsFromState = (state) => state.snippets.snippets;
 const getStarredSnippetsFromState = (state) => state.snippets.starred;
@@ -25,18 +29,42 @@ export const getStarredCount = createSelector(
   (snippets) => size(snippets)
 );
 
-export const getLanguages = createSelector(
+export const getLanguagesWithCounts = createSelector(
   [getSnippetsFromState],
-  (snippets) => {
-    const files = map('files', snippets);
-    const grouped = groupBy('language', flattenDeep(files));
-
-    const languages = map((language) => ({
+  (snippets) => flow([
+    map('files'),
+    flattenDeep,
+    groupBy('language'),
+    map((language) => ({
       language: get('language', head(language)),
       size: size(language)
-    }), grouped);
+    })),
+    sortBy('size'),
+    reverse
+  ])(snippets)
+);
 
-    return reverse(sortBy('size', languages));
+const getFlattenedTags = (snippets) => flow([
+  map('tags'),
+  flattenDeep,
+  compact
+])(snippets);
+
+const countUniqueItems = (keyName) => (items) => flow([
+  countBy(identity),
+  // eslint-disable-next-line no-shadow
+  mapValuesWithKey((size, item) => ({ [keyName]: item, size }))
+])(items);
+
+export const getTagsWithCounts = createSelector(
+  [getSnippetsFromState],
+  (snippets) => {
+    return flow([
+      getFlattenedTags,
+      countUniqueItems('tag'),
+      sortBy('size'),
+      reverse
+    ])(snippets);
   }
 );
 
