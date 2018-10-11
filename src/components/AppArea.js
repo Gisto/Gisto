@@ -11,13 +11,13 @@ import * as loginActions from 'actions/login';
 
 import {
   baseAppColor,
-  colorDanger,
   headerColor,
   lightText
 } from 'constants/colors';
 
 import Icon from 'components/common/Icon';
 import Updater from 'components/layout/Updater';
+import Loading from 'components/common/Loading';
 
 const UserAreaWrapper = styled.div`
   background: ${baseAppColor};
@@ -53,7 +53,11 @@ export class AppArea extends React.Component {
         <Link to="/about">
           <Icon color={ lightText } type="info" spin />
         </Link>
-        <Icon type="globe" color={ window.navigator.onLine ? lightText : colorDanger } />
+
+        { !this.props.online && (
+          <Loading spinner={ false }/>
+        ) }
+
         <Link to="/settings">
           <Icon color={ lightText } type="cog" spin />
         </Link>
@@ -78,7 +82,8 @@ const mapStateToProps = (state) => ({
 AppArea.propTypes = {
   user: PropTypes.object,
   getUser: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  online: PropTypes.bool
 };
 
 export default connect(mapStateToProps, {
