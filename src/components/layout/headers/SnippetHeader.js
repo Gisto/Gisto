@@ -11,7 +11,7 @@ import {
 } from 'constants/colors';
 import * as snippetActions from 'actions/snippets';
 import { copyToClipboard, prepareFilesForUpdate } from 'utils/snippets';
-import { dateFormateToString } from 'utils/date';
+import { dateFormatToString } from 'utils/date';
 
 import UtilityIcon from 'components/common/UtilityIcon';
 import Input from 'components/common/controls/Input';
@@ -300,7 +300,7 @@ export class SnippetHeader extends React.Component {
                 <History>
                   <div className="changed">
                     <strong>Changed:</strong>
-                    <span>{ dateFormateToString(change.committed_at) }</span>
+                    <span>{ dateFormatToString(change.committed_at) }</span>
                   </div>
                   { !isEmpty(change.change_status) && (
                     <div>

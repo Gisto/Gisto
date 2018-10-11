@@ -144,6 +144,12 @@ describe('reducer - ui', () => {
         loading: false
       },
       rateLimit: {
+        "loading": false,
+        "rate": {
+          "limit": 5000,
+          "remaining": 4999,
+          "reset": 1372700873
+        },
         "resources": {
           "core": {
             "limit": 5000,
@@ -155,11 +161,6 @@ describe('reducer - ui', () => {
             "remaining": 18,
             "reset": 1372697452
           }
-        },
-        "rate": {
-          "limit": 5000,
-          "remaining": 4999,
-          "reset": 1372700873
         }
       }
     };

@@ -68,7 +68,14 @@ export const ui = (state = initialState, action) => {
     }
 
     case AT.GET_RATE_LIMIT.SUCCESS: {
-      return set('rateLimit', action.payload, state);
+      return flow([
+        set('rateLimit', action.payload),
+        set(['rateLimit', 'loading'], false)
+      ])(state);
+    }
+
+    case AT.GET_RATE_LIMIT.PENDING: {
+      return set(['rateLimit', 'loading'], true, state);
     }
 
     case AT.TOGGLE_SNIPPET_COMMENTS: {

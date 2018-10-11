@@ -5,9 +5,14 @@ import { HashRouter as Router, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { get } from 'lodash/fp';
 
-import { baseAppColor, headerColor, lightText } from 'constants/colors';
+import * as snippetsActions from 'actions/snippets';
+
+import {
+  baseAppColor, headerBgLightest, headerColor, lightText
+} from 'constants/colors';
 import { SIDEBAR_WIDTH, logoText } from 'constants/config';
 import { isEnterpriseLogin } from 'utils/login';
+import { toUnixTimeStamp } from 'utils/date';
 
 import UserArea from 'components/AppArea';
 import Loading from 'components/common/Loading';
@@ -63,35 +68,68 @@ const LoadingIndicator = styled.span`
   flex: 1;
 `;
 
+const RateLimit = styled.span`
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  color: ${headerBgLightest};
+  cursor: pointer;
+  
+  &:hover {
+    color: ${lightText};
+  }
+  
+  > small {
+    font-size: 8px;
+  } 
+`;
+
 export const MainHeader = ({
-  loading, rateLimit, edit, isCreateNew
-}) => (
-  <HeaderWrapper>
-    { !edit && (
-      <Logo>
-        <Link to="/" title={ `API Rate limit: ${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}` }>
-          { logoText } { isEnterpriseLogin() && <small>enterprise</small> }
-        </Link>
-        { !isCreateNew && (
-          <Router>
-            <Button icon="add" height="30px" outline>
-              <StyledLink to="/new">New snippet</StyledLink>
-            </Button>
-          </Router>
+  loading, rateLimit, edit, isCreateNew, getRateLimit
+}) => {
+  const apiLimitResetTime = Math.floor((get(['rate', 'reset'], rateLimit) - toUnixTimeStamp(new Date().getTime())) / 60);
+
+  return (
+    <HeaderWrapper>
+      {!edit && (
+        <Logo>
+          <Link to="/">
+            {logoText} {isEnterpriseLogin() && <small>enterprise</small>}
+          </Link>
+          {!isCreateNew && (
+            <Router>
+              <Button icon="add" height="30px" outline>
+                <StyledLink to="/new">New snippet</StyledLink>
+              </Button>
+            </Router>
+          )}
+        </Logo>
+      )}
+      <MiddleArea>
+        {loading ? (
+          <LoadingIndicator>
+            <Loading text="Loading..."/>
+          </LoadingIndicator>
+        ) : <div/>}
+
+        { get(['loading'], rateLimit) ? (
+          <Loading text=""/>
+        ) : (
+          <RateLimit onClick={ () => getRateLimit() }
+                     title="Click to reload">
+            <small>API rate limit:</small>
+            <br/>
+            {`${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}`}
+            <br/>
+            <small>Reset in { apiLimitResetTime } min.</small>
+          </RateLimit>
         ) }
-      </Logo>
-    ) }
-    <MiddleArea>
-      { loading && (
-        <LoadingIndicator>
-          <Loading text="Loading..."/>
-        </LoadingIndicator>
-      ) }
-      <div>{ /* placeholder */ }</div>
-    </MiddleArea>
-    <UserArea/>
-  </HeaderWrapper>
-);
+
+      </MiddleArea>
+      <UserArea/>
+    </HeaderWrapper>
+  );
+};
 
 const mapStateToProps = (state) => ({
   loading: state.ui.snippets.loading,
@@ -104,7 +142,10 @@ MainHeader.propTypes = {
   loading: PropTypes.bool,
   edit: PropTypes.bool,
   rateLimit: PropTypes.object,
-  isCreateNew: PropTypes.bool
+  isCreateNew: PropTypes.bool,
+  getRateLimit: PropTypes.func
 };
 
-export default connect(mapStateToProps)(MainHeader);
+export default connect(mapStateToProps, {
+  getRateLimit: snippetsActions.getRateLimit
+})(MainHeader);
