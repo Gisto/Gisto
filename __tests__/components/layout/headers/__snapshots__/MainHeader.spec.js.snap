@@ -5,7 +5,6 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
   <Logo>
     <Link
       replace={false}
-      title="API Rate limit: undefined/undefined"
       to="/"
     >
       { Gisto }
@@ -27,6 +26,22 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
   </Logo>
   <MiddleArea>
     <div />
+    <RateLimit
+      onClick={[Function]}
+      title="Click to reload"
+    >
+      <small>
+        API rate limit:
+      </small>
+      <br />
+      undefined/undefined
+      <br />
+      <small>
+        Reset in 
+        NaN
+         min.
+      </small>
+    </RateLimit>
   </MiddleArea>
   <Connect(AppArea) />
 </HeaderWrapper>

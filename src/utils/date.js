@@ -1,4 +1,4 @@
-export const dateFormateToString = (string) => {
+export const dateFormatToString = (string) => {
   const date = new Date(string);
 
   return date.toLocaleString();
