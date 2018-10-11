@@ -184,8 +184,8 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.GET_SNIPPETS) {
       dispatch({ type: AT.GET_SNIPPETS.PENDING, action });
-
-      const getGists = (page) => API.get(`${getApiUrl('/api/v3')}/gists?page=${page}&per_page=100`)
+      const sinceLastUpdate = action.payload.since ? `&since=${action.payload.since}` : '';
+      const getGists = (page) => API.get(`${getApiUrl('/api/v3')}/gists?page=${page}&per_page=100${sinceLastUpdate}`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);

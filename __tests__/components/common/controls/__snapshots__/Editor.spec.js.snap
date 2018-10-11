@@ -44,20 +44,14 @@ exports[`COMPONENTS - <Editor> render Editor 1`] = `
 `;
 
 exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
-<EditorWrapper
-  style={
-    Object {
-      "display": "inherit",
-    }
-  }
->
+<EditorWrapper>
   <MonacoEditor
     className=""
     defaultValue=""
     editorDidMount={[Function]}
     editorWillMount={[Function]}
-    height="auto"
-    language="text"
+    height={300}
+    language="Markdown"
     name="123123123123"
     onChange={[MockFunction]}
     options={

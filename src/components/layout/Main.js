@@ -19,18 +19,22 @@ const MainWrapper = styled.div`
 
 export class Main extends React.Component {
   componentDidMount() {
-    this.props.getStarredSnippets();
-    this.props.getSnippets();
-    this.props.getEmoji();
+    const {
+      getStarredSnippets, getSnippets, getEmoji
+    } = this.props;
+
+    getStarredSnippets();
+    getSnippets();
+    getEmoji();
     gaEvent({ category: 'general', action: 'App loaded' });
   }
 
   render() {
-    const { edit } = this.props;
+    const { edit, isCreateNew } = this.props;
 
     return (
       <MainWrapper>
-        { !edit && <Sidebar/> }
+        { !edit && !isCreateNew && <Sidebar/> }
         <Content/>
       </MainWrapper>
     );
@@ -38,11 +42,14 @@ export class Main extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  edit: get(['ui', 'snippets', 'edit'], state)
+  edit: get(['ui', 'snippets', 'edit'], state),
+  sinceLastUpdated: get(['snippets', 'snippets', 'lastUpdated'], state),
+  isCreateNew: get(['router', 'location', 'pathname'], state) === '/new'
 });
 
 Main.propTypes = {
   edit: PropTypes.bool,
+  isCreateNew: PropTypes.bool,
   getSnippets: PropTypes.func,
   getStarredSnippets: PropTypes.func,
   getEmoji: PropTypes.func

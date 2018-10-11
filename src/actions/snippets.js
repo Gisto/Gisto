@@ -4,8 +4,9 @@ export const getRateLimit = () => ({
   type: AT.GET_RATE_LIMIT
 });
 
-export const getSnippets = () => ({
-  type: AT.GET_SNIPPETS
+export const getSnippets = (since) => ({
+  type: AT.GET_SNIPPETS,
+  payload: { since }
 });
 
 export const getStarredSnippets = () => ({
