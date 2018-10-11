@@ -41,19 +41,31 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
     </span>
   </Section>
   <ButtonsSection>
-    <StyledButton
-      disabled={true}
-      icon="success"
-      onClick={[Function]}
-    >
-      Save
-    </StyledButton>
+    <HashRouter>
+      <StyledButton
+        icon="arrow-left"
+        invert={true}
+      >
+        <StyledLink
+          to="/"
+        >
+          Back to list
+        </StyledLink>
+      </StyledButton>
+    </HashRouter>
     <StyledButton
       icon="add"
       invert={true}
       onClick={[Function]}
     >
       Add file
+    </StyledButton>
+    <StyledButton
+      disabled={true}
+      icon="success"
+      onClick={[Function]}
+    >
+      Save
     </StyledButton>
   </ButtonsSection>
 </div>

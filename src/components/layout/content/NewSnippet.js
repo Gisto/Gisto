@@ -21,6 +21,7 @@ import Checkbox from 'components/common/controls/Checkbox';
 import DropZone from 'components/common/DropZone';
 import { gaPage } from 'utils/ga';
 import { getSetting } from 'utils/settings';
+import { HashRouter as Router, Link } from 'react-router-dom';
 
 const StyledInput = styled(Input)`
   margin: 0;
@@ -75,9 +76,17 @@ const ButtonsSection = styled.section`
   bottom: 0;
   padding: 20px;
   margin: 0 0 0 -25px;
-  width: 100%;
   background: ${bg};
   box-shadow: 0 -1px 2px ${boxShadow};
+  display: flex;
+  justify-content: space-between;
+  width: calc(100vw - 25px);
+`;
+
+const StyledLink = styled(Link)`
+  color: ${baseAppColor};
+  text-decoration: none;
+  line-height: 25px;
 `;
 
 export class NewSnippet extends React.Component {
@@ -190,17 +199,25 @@ export class NewSnippet extends React.Component {
         ), this.state.files) }
 
         <ButtonsSection>
-          <StyledButton icon="success"
-                        onClick={ () => this.save() }
-          disabled={ isEmpty(this.state.files) }>
-            Save
-          </StyledButton>
+
+          <Router>
+            <StyledButton icon="arrow-left" invert>
+              <StyledLink to="/">Back to list</StyledLink>
+            </StyledButton>
+          </Router>
 
           <StyledButton invert
                         icon="add"
                         onClick={ () => this.addFile() }>
             Add file
           </StyledButton>
+
+          <StyledButton icon="success"
+                        onClick={ () => this.save() }
+                        disabled={ isEmpty(this.state.files) }>
+            Save
+          </StyledButton>
+
         </ButtonsSection>
       </div>
     );

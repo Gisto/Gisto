@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MonacoEditor from 'react-monaco-editor';
 import styled, { css } from 'styled-components';
 import { getSetting } from 'utils/settings';
+import { getFileExtension } from 'utils/string';
 import { syntaxMap } from 'constants/editor';
 import { baseAppColor } from 'constants/colors';
 
@@ -30,6 +31,7 @@ const EditorWrapper = styled.span`
   display: inline-flex;
   flex-direction: row;
   justify-content: space-evenly;
+  width: 100%;
 `;
 
 const LoadingIndicator = styled.div`
@@ -54,7 +56,7 @@ const StyledAnchor = styled(Anchor)`
   text-decoration: underline;
 `;
 
-const editorOptions = {
+const editorOptions = (options) => ({
   selectOnLineNumbers: Boolean(getSetting('selectOnLineNumbers')),
   lineNumbers: getSetting('lineNumbers', true),
   codeLens: getSetting('codeLens', false),
@@ -69,10 +71,27 @@ const editorOptions = {
   minimap: {
     enabled: Boolean(getSetting('minimap'))
   },
-  automaticLayout: true
-};
+  automaticLayout: true,
+  ...options
+});
 
 export class Editor extends React.Component {
+  isMarkDown = (file) => {
+    return file.language === 'Markdown'
+      || getFileExtension(file.filename) === 'md'
+      || getFileExtension(file.filename) === 'markdown'
+      || getFileExtension(file.name) === 'md'
+      || getFileExtension(file.name) === 'markdown';
+  };
+
+  isAsciiDoc = (file) => {
+    return file.language === 'AsciiDoc'
+      || getFileExtension(file.filename) === 'adoc'
+      || getFileExtension(file.filename) === 'asciidoc'
+      || getFileExtension(file.name) === 'adoc'
+      || getFileExtension(file.name) === 'asciidoc';
+  };
+
   renderEditor = () => {
     const {
       edit, onChange, file, className, id, language, filesCount, isNew
@@ -104,48 +123,52 @@ export class Editor extends React.Component {
       );
     }
 
-    if (file.content && file.language === 'AsciiDoc') {
-      if (!edit && !file.collapsed) {
+    if (this.isAsciiDoc(file)) {
+      if (!edit && !isNew  && !file.collapsed) {
         return (
           <AsciidocComponent text={ file.content }/>
         );
       }
 
+      const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 300;
+
       return (
-        <EditorWrapper style={ { display: file.collapsed ? 'none' : 'inherit' } }>
+        <EditorWrapper>
           <MonacoEditor
             width="50%"
-            height="auto"
+            height={ calculatedHeight }
             className={ className }
-            language={ language || syntaxMap[file.language] || 'text' }
+            language="AsciiDoc"
             theme={ getSetting('editorTheme', 'vs') }
             name={ id }
             value={ file.content }
-            options={ editorOptions }
+            options={ editorOptions() }
             onChange={ onChange }/>
           <AsciidocComponent width="50%" text={ file.content }/>
         </EditorWrapper>
       );
     }
 
-    if (file.content && file.language === 'Markdown') {
-      if (!edit && !file.collapsed) {
+    if (this.isMarkDown(file)) {
+      if (!edit && !isNew  && !file.collapsed) {
         return (
           <MarkdownComponent text={ file.content }/>
         );
       }
 
+      const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 300;
+
       return (
-        <EditorWrapper style={ { display: file.collapsed ? 'none' : 'inherit' } }>
+        <EditorWrapper>
           <MonacoEditor
             width="50%"
-            height="auto"
+            height={ calculatedHeight }
             className={ className }
-            language={ language || syntaxMap[file.language] || 'text' }
+            language="Markdown"
             theme={ getSetting('editorTheme', 'vs') }
             name={ id }
             value={ file.content }
-            options={ editorOptions }
+            options={ editorOptions() }
             onChange={ onChange }/>
           <MarkdownComponent width="50%" text={ file.content }/>
         </EditorWrapper>
@@ -164,7 +187,7 @@ export class Editor extends React.Component {
         theme={ getSetting('editorTheme', '') }
         name={ id }
         value={ file.content }
-        options={ editorOptions }
+        options={ editorOptions() }
         onChange={ onChange }/>
       </span>
     );

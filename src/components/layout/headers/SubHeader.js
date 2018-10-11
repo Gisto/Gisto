@@ -30,9 +30,9 @@ const SnippetHeaderBlock = styled.div`
   margin: 0 0 0 10px;
 `;
 
-export const SubHeader = ({ edit }) => (
+export const SubHeader = ({ edit, isCreateNew }) => (
   <SubHeaderWrapper>
-    { !edit && (
+    { !edit && !isCreateNew && (
       <Search/>
     ) }
     <SnippetHeaderBlock>
@@ -49,11 +49,13 @@ export const SubHeader = ({ edit }) => (
 );
 
 const mapStateToProps = (state) => ({
-  edit: get(['ui', 'snippets', 'edit'], state)
+  edit: get(['ui', 'snippets', 'edit'], state),
+  isCreateNew: get(['router', 'location', 'pathname'], state) === '/new'
 });
 
 SubHeader.propTypes = {
-  edit: PropTypes.bool
+  edit: PropTypes.bool,
+  isCreateNew: PropTypes.bool
 };
 
 export default connect(mapStateToProps)(SubHeader);

@@ -5,6 +5,7 @@ import {
 import uuid from 'uuid';
 import * as AT from 'constants/actionTypes';
 import { snippetStructure } from 'utils/prepareSnippet';
+import { toISOString } from 'utils/date';
 
 const initialState = {
   snippets: {},
@@ -19,6 +20,7 @@ const initialState = {
   },
   comments: {},
   lastOpenedId: null,
+  lastUpdated: null,
   new: {
     description: '',
     public: true,
@@ -31,7 +33,12 @@ const initialState = {
 export const snippets = (state = initialState, action) => {
   switch (action.type) {
     case AT.GET_SNIPPETS.SUCCESS: {
-      return update('snippets', () => merge(keyBy('id', map((snippet) => snippetStructure(snippet, state.starred), action.payload)), state.snippets), state);
+      const lastUpdated = state.lastUpdated === null ? toISOString() : state.lastUpdated;
+
+      return flow([
+        update('snippets', () => merge(keyBy('id', map((snippet) => snippetStructure(snippet, state.starred), action.payload)), state.snippets)),
+        set('lastUpdated', lastUpdated)
+      ])(state);
     }
 
     case AT.GET_SNIPPET.SUCCESS: {

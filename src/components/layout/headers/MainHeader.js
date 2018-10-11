@@ -63,18 +63,22 @@ const LoadingIndicator = styled.span`
   flex: 1;
 `;
 
-export const MainHeader = ({ loading, rateLimit, edit }) => (
+export const MainHeader = ({
+  loading, rateLimit, edit, isCreateNew
+}) => (
   <HeaderWrapper>
     { !edit && (
       <Logo>
         <Link to="/" title={ `API Rate limit: ${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}` }>
           { logoText } { isEnterpriseLogin() && <small>enterprise</small> }
         </Link>
-        <Router>
-          <Button icon="add" height="30px" outline>
-            <StyledLink to="/new">New snippet</StyledLink>
-          </Button>
-        </Router>
+        { !isCreateNew && (
+          <Router>
+            <Button icon="add" height="30px" outline>
+              <StyledLink to="/new">New snippet</StyledLink>
+            </Button>
+          </Router>
+        ) }
       </Logo>
     ) }
     <MiddleArea>
@@ -92,13 +96,15 @@ export const MainHeader = ({ loading, rateLimit, edit }) => (
 const mapStateToProps = (state) => ({
   loading: state.ui.snippets.loading,
   rateLimit: get(['ui', 'rateLimit'], state),
-  edit: get(['ui', 'snippets', 'edit'], state)
+  edit: get(['ui', 'snippets', 'edit'], state),
+  isCreateNew: get(['router', 'location', 'pathname'], state) === '/new'
 });
 
 MainHeader.propTypes = {
   loading: PropTypes.bool,
   edit: PropTypes.bool,
-  rateLimit: PropTypes.object
+  rateLimit: PropTypes.object,
+  isCreateNew: PropTypes.bool
 };
 
 export default connect(mapStateToProps)(MainHeader);
