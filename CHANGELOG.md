@@ -1,3 +1,11 @@
+### v1.10.8
+*  FEATURE (dashboard): add Large files and untagged tile for filter [View](https://github.com/Gisto/Gisto/commit/22d333f9010e092d2911d2d434dd52b5b9dec66c)
+*  FIX (updater): handle update and ignore file/zip downloads progress [View](https://github.com/Gisto/Gisto/commit/453953c241655529d51b959c9f2aa81c9889f081)
+*  FIX (tags): show file count on tags [View](https://github.com/Gisto/Gisto/commit/28e1a69d7cc66616fc40c40c23e195501f1baedb)
+*  FEATURE (editor): new snippet side by side edit of .md and .adoc files [View](https://github.com/Gisto/Gisto/commit/77720d6dc35213f1b93c663f35828ca6572116b4)
+*  FEATURE (rate limit): show github API rate limit indicator with reset time [View](https://github.com/Gisto/Gisto/commit/765e47b80ae62e99065b425281a161504b5cfd47)
+*  FIX (loading): loading indicator indicating if connection lost [View](https://github.com/Gisto/Gisto/commit/32b305eade395462eaa8212373bd8605c443ab4b)
+
 ### v1.10.7
 *  FEATURE (edit): add drag and drop files to edit snippets [View](https://github.com/Gisto/Gisto/commit/e8c75fa5d19b6c52dede2aac725d86b1429cecbf)
 *  FIX (snippet): fix edit description tags gone if not editing and just saving [View](https://github.com/Gisto/Gisto/commit/b55f1bbda70f79a1df329b5aebbc0ebb546a35b3)
