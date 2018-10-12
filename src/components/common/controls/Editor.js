@@ -124,6 +124,10 @@ export class Editor extends React.Component {
     }
 
     if (this.isAsciiDoc(file)) {
+      if (file.collapsed) {
+        return null;
+      }
+      
       if (!edit && !isNew  && !file.collapsed) {
         return (
           <AsciidocComponent text={ file.content }/>
@@ -150,6 +154,10 @@ export class Editor extends React.Component {
     }
 
     if (this.isMarkDown(file)) {
+      if (file.collapsed) {
+        return null;
+      }
+
       if (!edit && !isNew  && !file.collapsed) {
         return (
           <MarkdownComponent text={ file.content }/>
