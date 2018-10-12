@@ -66,7 +66,7 @@ module.exports = {
       'process.browser': true
     }),
     new HtmlWebPackPlugin({
-      title: `Gisto v${packageJson.version} ${isDev && ' { development }'}`,
+      title: `Gisto v${packageJson.version} ${isDev ? ' { development }' : ''}`,
       favicon: './build/icon.png',
       template: './src/index.html',
       filename: './index.html'
