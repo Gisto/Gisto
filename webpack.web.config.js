@@ -87,7 +87,8 @@ module.exports = {
       title: `Gisto v${packageJson.version}`,
       favicon: './build/icon.png',
       template: './src/index.html',
-      filename: './index.html'
+      filename: './index.html',
+      hash: true
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
