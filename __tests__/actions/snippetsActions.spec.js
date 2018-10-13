@@ -61,6 +61,24 @@ describe('ACTIONS - snippets', () => {
     });
   });
 
+  test('filterSnippetsByStatus action should be created', () => {
+    expect(snippetsActions.filterSnippetsByStatus('private')).toEqual({
+      meta: {
+        status: 'private'
+      },
+      type: AT.FILTER_SNIPPETS_BY_STATUS,
+      payload: { status: 'private' }
+    });
+  });
+
+  test('filterSnippetsByTruncated action should be created', () => {
+    expect(snippetsActions.filterSnippetsByTruncated()).toEqual({ type: AT.FILTER_SNIPPETS_BY_TRUNCATED });
+  });
+
+  test('filterSnippetsByUntagged action should be created', () => {
+    expect(snippetsActions.filterSnippetsByUntagged()).toEqual({ type: AT.FILTER_SNIPPETS_BY_UNTAGGED });
+  });
+
   test('clearAllFilters action should be created', () => {
     expect(snippetsActions.clearAllFilters()).toEqual({ type: AT.CLEAR_FILTERS });
   });
@@ -231,4 +249,58 @@ describe('ACTIONS - snippets', () => {
         fileName: "a",
       }});
   });
+});
+
+test('filterSnippetsByStatus action should be created', () => {
+  expect(snippetsActions.toggleCollapse('123123', 'file.txt')).toEqual({
+    type: AT.TOGGLE_FILE_COLLAPSE,
+    payload: {
+      snippetId: '123123',
+      fileName: 'file.txt'
+    }
+  });
+});
+
+test('getSnippetComments action should be created', () => {
+  expect(snippetsActions.getSnippetComments('123123')).toEqual({
+    meta: {
+      id: '123123'
+    },
+    type: AT.GET_SNIPPET_COMMENTS,
+    payload: {
+      id: '123123'
+    }
+  });
+});
+
+test('createSnippetComment action should be created', () => {
+  expect(snippetsActions.createSnippetComment('123123', 'hi')).toEqual({
+    meta: {
+      id: '123123',
+      body: 'hi'
+    },
+    type: AT.CREATE_SNIPPET_COMMENT,
+    payload: {
+      id: '123123',
+      body: 'hi'
+    }
+  });
+});
+
+test('deleteComment action should be created', () => {
+  expect(snippetsActions.deleteComment('123123', '234234')).toEqual({
+    meta: {
+      id: '123123',
+      commentId: '234234'
+    },
+    type: AT.DELETE_COMMENT,
+    payload: {
+      id: '123123',
+      commentId: '234234'
+    }
+  });
+});
+
+test('toggleSnippetComments action should be created', () => {
+  expect(snippetsActions.toggleSnippetComments()).toEqual({ type: AT.TOGGLE_SNIPPET_COMMENTS });
 });
