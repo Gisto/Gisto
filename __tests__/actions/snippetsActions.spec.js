@@ -18,7 +18,7 @@ describe('ACTIONS - snippets', () => {
   });
 
   test('getStarredSnippets action should be created', () => {
-    expect(snippetsActions.getStarredSnippets()).toEqual({ type: AT.GET_STARRED_SNIPPETS });
+    expect(snippetsActions.getStarredSnippets()).toEqual({ type: AT.GET_STARRED_SNIPPETS, payload: { since: undefined  } });
   });
 
   test('getSnippet action should be created', () => {

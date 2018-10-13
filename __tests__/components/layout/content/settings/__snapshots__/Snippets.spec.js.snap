@@ -13,8 +13,24 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
         </span>
         <StyledInput
           onChange={[Function]}
+          title="Keep snippet in cache for N seconds and do not call the server"
           type="number"
-          value={null}
+          value={100}
+        />
+      </Label>
+    </Field>
+    <Field>
+      <Label>
+        <span>
+          Snippets polling (seconds):
+        </span>
+        <StyledInput
+          max={10000}
+          min={1}
+          onChange={[Function]}
+          title="Polling the server for new snippets every N seconds"
+          type="number"
+          value={300}
         />
       </Label>
     </Field>
@@ -24,7 +40,7 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
           Default new snippet is public:
         </span>
         <Checkbox
-          checked={null}
+          checked={false}
           onChange={[Function]}
         />
       </Label>

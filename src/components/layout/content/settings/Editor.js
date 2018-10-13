@@ -44,7 +44,7 @@ const EditorSettings = () => (
         <Field>
           <Label>
             <span>Theme:</span>
-            <StyledISelect value={ getSetting('editorTheme') }
+            <StyledISelect value={ getSetting('editorTheme', 'vs') }
                            onChange={ (event) => setSetting('editorTheme', event.target.value) }>
               <option value="vs">vs light</option>
               <option value="vs-dark">vs dark</option>
@@ -55,21 +55,21 @@ const EditorSettings = () => (
         <Field>
           <Label>
             <span>Minimap:</span>
-            <Checkbox checked={ getSetting('minimap') }
+            <Checkbox checked={ getSetting('minimap', false) }
                       onChange={ () => setBooleanSetting('minimap') }/>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Line Numbers:</span>
-            <Checkbox checked={ getSetting('lineNumbers') }
+            <Checkbox checked={ getSetting('lineNumbers', true) }
                       onChange={ () => setBooleanSetting('lineNumbers') }/>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Format On Paste:</span>
-            <Checkbox checked={ getSetting('formatOnPaste') }
+            <Checkbox checked={ getSetting('formatOnPaste', true) }
                       onChange={ () => setBooleanSetting('formatOnPaste') }/>
           </Label>
         </Field>
@@ -77,7 +77,7 @@ const EditorSettings = () => (
           <Label>
             <span>Font Family:</span>
             <StyledInput type="text"
-                   value={ getSetting('fontFamily', 'fira code') }
+                   value={ getSetting('fontFamily', 'monospace') }
                    onChange={ (event) => setSetting('fontFamily', event.target.value) }/>
           </Label>
         </Field>
@@ -109,14 +109,14 @@ const EditorSettings = () => (
         <Field>
           <Label>
             <span>Code lens:</span>
-            <Checkbox checked={ getSetting('codeLens') }
+            <Checkbox checked={ getSetting('codeLens', false) }
                       onChange={ () => setBooleanSetting('codeLens') }/>
           </Label>
         </Field>
         <Field>
           <Label>
             <span>Cursor Blinking:</span>
-            <StyledISelect value={ getSetting('cursorBlinking') }
+            <StyledISelect value={ getSetting('cursorBlinking', 'blink') }
                            onChange={ (event) => setSetting('cursorBlinking', event.target.value) }>
               <option value="blink">blink</option>
               <option value="smooth">smooth</option>
@@ -129,7 +129,7 @@ const EditorSettings = () => (
         <Field>
           <Label>
             <span>Select On Line Numbers:</span>
-            <Checkbox checked={ getSetting('SelectOnLineNumbers') }
+            <Checkbox checked={ getSetting('SelectOnLineNumbers', false) }
                       onChange={ () => setBooleanSetting('SelectOnLineNumbers') }/>
           </Label>
         </Field>

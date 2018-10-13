@@ -9,6 +9,7 @@ import Content from 'components/layout/Content';
 import * as snippetActions from 'actions/snippets';
 import * as emojiActions from 'actions/emoji';
 import { gaEvent } from 'utils/ga';
+import { getSetting } from 'utils/settings';
 
 const MainWrapper = styled.div`
   display: flex;
@@ -29,6 +30,23 @@ export class Main extends React.Component {
     gaEvent({ category: 'general', action: 'App loaded' });
   }
 
+  componentDidUpdate(prevProps) {
+    const { getSnippets } = this.props;
+
+    if (prevProps.sinceLastUpdated === null || this.props.sinceLastUpdated !== null) {
+      const interval = getSetting('snippets-server-polling-in-seconds', 300);
+
+      this.poll(() => new Promise(() => {
+        getSnippets(this.props.sinceLastUpdated);
+      }), parseInt(interval) * 1000);
+    }
+  }
+
+  poll = (promiseFn, time) => promiseFn()
+    .then(this.sleep(time).then(() => this.poll(promiseFn, time)));
+
+  sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
+
   render() {
     const { edit, isCreateNew } = this.props;
 
@@ -43,7 +61,7 @@ export class Main extends React.Component {
 
 const mapStateToProps = (state) => ({
   edit: get(['ui', 'snippets', 'edit'], state),
-  sinceLastUpdated: get(['snippets', 'snippets', 'lastUpdated'], state),
+  sinceLastUpdated: get(['snippets', 'lastUpdated'], state),
   isCreateNew: get(['router', 'location', 'pathname'], state) === '/new'
 });
 
@@ -52,7 +70,8 @@ Main.propTypes = {
   isCreateNew: PropTypes.bool,
   getSnippets: PropTypes.func,
   getStarredSnippets: PropTypes.func,
-  getEmoji: PropTypes.func
+  getEmoji: PropTypes.func,
+  sinceLastUpdated: PropTypes.string
 };
 
 export default connect(mapStateToProps, {

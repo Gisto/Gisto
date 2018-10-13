@@ -35,8 +35,21 @@ const SnippetsSettings = () => (
         <Label>
           <span>Snippet cache (seconds):</span>
           <StyledInput type="number"
+                       title="Keep snippet in cache for N seconds and do not call the server"
                        value={ getSetting('snippet-fetch-cache-in-seconds', 100) }
                        onChange={ (event) => setSetting('snippet-fetch-cache-in-seconds', event.target.value) }/>
+        </Label>
+      </Field>
+
+      <Field>
+        <Label>
+          <span>Snippets polling (seconds):</span>
+          <StyledInput type="number"
+                       title="Polling the server for new snippets every N seconds"
+                       min={ 1 }
+                       max={ 10000 }
+                       value={ getSetting('snippets-server-polling-in-seconds', 300) }
+                       onChange={ (event) => setSetting('snippets-server-polling-in-seconds', event.target.value) }/>
         </Label>
       </Field>
 

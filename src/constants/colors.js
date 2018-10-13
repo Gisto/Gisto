@@ -1,7 +1,7 @@
 import { getSetting } from 'utils/settings';
 import { tint } from 'polished';
 
-export const baseAppColor = getSetting('color') || '#3F84A8';
+export const baseAppColor = getSetting('color', '#3F84A8');
 export const borderColor = '#ccc';
 export const disabledColor = borderColor;
 export const lightBorderColor = '#f2f2f2';

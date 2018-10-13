@@ -20,7 +20,7 @@ const BaseSettings = () => (
     <div>
       <Label>
         Base color:
-        <InputColor color={ getSetting('color') }
+        <InputColor color={ getSetting('color', '#3F84A8') }
                     onChange={ (event) => setSetting('color', event.target.value) }/>
       </Label>
       <Small><strong>NOTE!</strong> colour change need app reload</Small>

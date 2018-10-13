@@ -9,8 +9,9 @@ export const getSnippets = (since) => ({
   payload: { since }
 });
 
-export const getStarredSnippets = () => ({
-  type: AT.GET_STARRED_SNIPPETS
+export const getStarredSnippets = (since) => ({
+  type: AT.GET_STARRED_SNIPPETS,
+  payload: { since }
 });
 
 export const getSnippet = (id) => ({
