@@ -20,14 +20,14 @@ exports[`COMPONENTS - <Editor> render Editor 1`] = `
     options={
       Object {
         "automaticLayout": true,
-        "codeLens": null,
-        "cursorBlinking": null,
-        "fontFamily": null,
-        "fontLigatures": null,
-        "fontSize": null,
+        "codeLens": false,
+        "cursorBlinking": "blink",
+        "fontFamily": "monospace",
+        "fontLigatures": false,
+        "fontSize": 12,
         "formatOnPaste": false,
-        "lineHeight": null,
-        "lineNumbers": null,
+        "lineHeight": 21,
+        "lineNumbers": true,
         "minimap": Object {
           "enabled": false,
         },
@@ -36,7 +36,7 @@ exports[`COMPONENTS - <Editor> render Editor 1`] = `
         "selectOnLineNumbers": false,
       }
     }
-    theme={null}
+    theme="vs"
     value="hi"
     width="100%"
   />
@@ -57,14 +57,14 @@ exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
     options={
       Object {
         "automaticLayout": true,
-        "codeLens": null,
-        "cursorBlinking": null,
-        "fontFamily": null,
-        "fontLigatures": null,
-        "fontSize": null,
+        "codeLens": false,
+        "cursorBlinking": "blink",
+        "fontFamily": "monospace",
+        "fontLigatures": false,
+        "fontSize": "12",
         "formatOnPaste": false,
-        "lineHeight": null,
-        "lineNumbers": null,
+        "lineHeight": "21",
+        "lineNumbers": true,
         "minimap": Object {
           "enabled": false,
         },
@@ -73,7 +73,7 @@ exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
         "selectOnLineNumbers": false,
       }
     }
-    theme={null}
+    theme="vs"
     value="# hi"
     width="50%"
   />

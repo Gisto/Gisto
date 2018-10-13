@@ -131,17 +131,24 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     if (action.type === AT.GET_STARRED_SNIPPETS) {
       dispatch({ type: AT.GET_STARRED_SNIPPETS.PENDING, action });
 
-      return API.get(`${getApiUrl('/api/v3')}/gists/starred`)
+      const sinceLastUpdate = action.payload.since ? `?since=${action.payload.since}` : '';
+
+      return API.get(`${getApiUrl('/api/v3')}/gists/starred${sinceLastUpdate}`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
 
-          dispatch({ type: AT.GET_STARRED_SNIPPETS.SUCCESS, payload: result.body });
+          dispatch({
+            type: AT.GET_STARRED_SNIPPETS.SUCCESS,
+            payload: result.body,
+            meta: { since: action.payload.since }
+          });
         });
     }
 
     if (action.type === AT.GET_SNIPPETS) {
       dispatch({ type: AT.GET_SNIPPETS.PENDING, action });
+
       const sinceLastUpdate = action.payload.since ? `&since=${action.payload.since}` : '';
       const getGists = (page) => API.get(`${getApiUrl('/api/v3')}/gists?page=${page}&per_page=100${sinceLastUpdate}`)
         .set(_headers())
@@ -151,7 +158,8 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
           if (!error && result) {
             dispatch({
               type: AT.GET_SNIPPETS.SUCCESS,
-              payload: result.body
+              payload: result.body,
+              meta: { since: action.payload.since }
             });
           }
           if (result.headers.link && result.headers.link.match(/next/ig)) {

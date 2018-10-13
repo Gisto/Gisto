@@ -27,7 +27,8 @@ const StyledInput = styled.input`
 `;
 
 const Input = ({
-  type = 'text', placeholder, onChange, className, value, autoFocus, disabled = false, title = ''
+  type = 'text', placeholder, onChange, className, value,
+  autoFocus, disabled = false, title = '', min, max
 }) => (
   <StyledInput type={ type }
                className={ className }
@@ -36,7 +37,9 @@ const Input = ({
                disabled={ disabled }
                onChange={ onChange }
                defaultValue={ value }
-               placeholder={ placeholder }/>
+               placeholder={ placeholder }
+               min={ min }
+               max={ max }/>
 );
 
 Input.propTypes = {
@@ -44,10 +47,15 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   className: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   autoFocus: PropTypes.bool,
   disabled: PropTypes.bool,
-  title: PropTypes.string
+  title: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number
 };
 
 export default Input;

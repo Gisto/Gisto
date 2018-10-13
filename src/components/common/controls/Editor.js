@@ -57,7 +57,7 @@ const StyledAnchor = styled(Anchor)`
 `;
 
 const editorOptions = (options) => ({
-  selectOnLineNumbers: Boolean(getSetting('selectOnLineNumbers')),
+  selectOnLineNumbers: Boolean(getSetting('selectOnLineNumbers', false)),
   lineNumbers: getSetting('lineNumbers', true),
   codeLens: getSetting('codeLens', false),
   cursorBlinking: getSetting('cursorBlinking', 'blink'),
@@ -69,7 +69,7 @@ const editorOptions = (options) => ({
   roundedSelection: false,
   scrollBeyondLastLine: false,
   minimap: {
-    enabled: Boolean(getSetting('minimap'))
+    enabled: Boolean(getSetting('minimap', false))
   },
   automaticLayout: true,
   ...options
@@ -127,7 +127,7 @@ export class Editor extends React.Component {
       if (file.collapsed) {
         return null;
       }
-      
+
       if (!edit && !isNew  && !file.collapsed) {
         return (
           <AsciidocComponent text={ file.content }/>
@@ -192,7 +192,7 @@ export class Editor extends React.Component {
         height={ calculatedHeight }
         className={ className }
         language={ language || syntaxMap[file.language] || 'text' }
-        theme={ getSetting('editorTheme', '') }
+        theme={ getSetting('editorTheme', 'vs') }
         name={ id }
         value={ file.content }
         options={ editorOptions() }

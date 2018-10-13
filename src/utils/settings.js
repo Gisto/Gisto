@@ -11,6 +11,12 @@ if (isElectron) {
     get: (...args) => {
       const item = localStorage.getItem(args[0]);
 
+      if (!item) {
+        localStorage.setItem(args[0], args[1]);
+
+        return args[1];
+      }
+
       return handleTypes(item);
     },
     set: (...args) => {

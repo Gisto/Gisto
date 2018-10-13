@@ -9,7 +9,7 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
     <Label>
       Base color:
       <InputColor
-        color={null}
+        color="#3F84A8"
         onChange={[Function]}
       />
     </Label>
