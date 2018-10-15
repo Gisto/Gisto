@@ -6,6 +6,7 @@ exports[`COMPONENTS - <Snippet> render Snippet 1`] = `
     activeClassName="selected"
     className="link"
     exact={true}
+    onContextMenu={null}
     to="/snippet/123123123123"
   >
     <span>
