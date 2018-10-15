@@ -1,3 +1,11 @@
+### v1.10.9
+*  FIX (webapp): cache busting on new resource version [View](https://github.com/Gisto/Gisto/commit/0c7f84330b6bee00d2190da3c8e4ac2ac135545e)
+*  FIX (title): app title [View](https://github.com/Gisto/Gisto/commit/801dc2afb53a744bee88007d52b513bb91599297)
+*  FIX (editor): files with dual edit not collapsing [View](https://github.com/Gisto/Gisto/commit/fc1e9cb081d6fbb4a421e398867b6c0c4cebb700)
+*  FEATURE (snippets): polling for snippets created via GitHub inteface [View](https://github.com/Gisto/Gisto/commit/09e02c7a6774134e7773d66167d1f806f67630ab)
+*  TESTS (actions+layput): add more tests [View](https://github.com/Gisto/Gisto/commit/056df3bd97e861efaf1e15747bf169fa7d73e479)
+*  FIX (title): remove version from title [View](https://github.com/Gisto/Gisto/commit/8aba62cfe0238cc9ab329ea494276045a1c406db)
+
 ### v1.10.8
 *  FEATURE (dashboard): add Large files and untagged tile for filter [View](https://github.com/Gisto/Gisto/commit/22d333f9010e092d2911d2d434dd52b5b9dec66c)
 *  FIX (updater): handle update and ignore file/zip downloads progress [View](https://github.com/Gisto/Gisto/commit/453953c241655529d51b959c9f2aa81c9889f081)
