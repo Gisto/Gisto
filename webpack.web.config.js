@@ -84,7 +84,7 @@ module.exports = {
       new RegExp(/^(fs|ipc|shell|electron-google-analytics|@sentry\/electron)$/)
     ),
     new HtmlWebPackPlugin({
-      title: `Gisto v${packageJson.version}`,
+      title: 'Gisto',
       favicon: './build/icon.png',
       template: './src/index.html',
       filename: './index.html',
