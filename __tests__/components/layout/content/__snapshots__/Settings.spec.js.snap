@@ -18,42 +18,89 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
             <h4>
               Color settings:
             </h4>
-            <div>
-              <Label>
-                <div
-                  className="Label-sc-1aqavpp-0 ksaHSg"
+            <Section>
+              <div
+                className="Section-sc-1aqavpp-1 iSqPSG"
+              >
+                <Field
+                  height={55}
                 >
-                  Base color:
-                  <InputColor
-                    color="#3F84A8"
-                    onChange={[Function]}
+                  <div
+                    className="Field-sc-1aqavpp-3 fpxkLm"
+                    height={55}
                   >
-                    <Color
-                      defaultValue="#3F84A8"
-                      onChange={[Function]}
-                      type="color"
-                    >
-                      <input
-                        className="Color-xc03ef-0 cXwfLZ"
-                        defaultValue="#3F84A8"
-                        onChange={[Function]}
-                        type="color"
-                      />
-                    </Color>
-                  </InputColor>
-                </div>
-              </Label>
-              <Small>
-                <small
-                  className="Small-sc-1aqavpp-1 dCPDyL"
-                >
-                  <strong>
-                    NOTE!
-                  </strong>
-                   colour change need app reload
-                </small>
-              </Small>
-            </div>
+                    <Label>
+                      <div
+                        className="Label-sc-1aqavpp-0 bucgZR"
+                      >
+                        <span>
+                          Base color:
+                        </span>
+                        <InputColor
+                          color="#3F84A8"
+                          onChange={[Function]}
+                        >
+                          <Color
+                            defaultValue="#3F84A8"
+                            onChange={[Function]}
+                            type="color"
+                          >
+                            <input
+                              className="Color-xc03ef-0 ejAxyB"
+                              defaultValue="#3F84A8"
+                              onChange={[Function]}
+                              type="color"
+                            />
+                          </Color>
+                        </InputColor>
+                      </div>
+                    </Label>
+                    <Small>
+                      <small
+                        className="Small-sc-1aqavpp-2 kXtBqt"
+                      >
+                        <strong>
+                          NOTE!
+                        </strong>
+                         color change need app reload
+                      </small>
+                    </Small>
+                  </div>
+                </Field>
+                <Field>
+                  <div
+                    className="Field-sc-1aqavpp-3 dujXRU"
+                  >
+                    <Label>
+                      <div
+                        className="Label-sc-1aqavpp-0 bucgZR"
+                      >
+                        <span>
+                          Show API rate limit on header:
+                        </span>
+                        <Checkbox
+                          checked={true}
+                          onChange={[Function]}
+                        >
+                          <Box
+                            defaultChecked={true}
+                            onChange={[Function]}
+                            type="checkbox"
+                          >
+                            <input
+                              className="Box-sc-1bw5uxh-0 kcvKxi"
+                              defaultChecked={true}
+                              onChange={[Function]}
+                              type="checkbox"
+                            />
+                          </Box>
+                        </Checkbox>
+                      </div>
+                    </Label>
+                  </div>
+                </Field>
+              </div>
+            </Section>
           </div>
         </BaseSettings>
       </details>
