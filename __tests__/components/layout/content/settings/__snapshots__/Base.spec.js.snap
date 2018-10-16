@@ -5,20 +5,37 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
   <h4>
     Color settings:
   </h4>
-  <div>
-    <Label>
-      Base color:
-      <InputColor
-        color="#3F84A8"
-        onChange={[Function]}
-      />
-    </Label>
-    <Small>
-      <strong>
-        NOTE!
-      </strong>
-       colour change need app reload
-    </Small>
-  </div>
+  <Section>
+    <Field
+      height={55}
+    >
+      <Label>
+        <span>
+          Base color:
+        </span>
+        <InputColor
+          color="#3F84A8"
+          onChange={[Function]}
+        />
+      </Label>
+      <Small>
+        <strong>
+          NOTE!
+        </strong>
+         color change need app reload
+      </Small>
+    </Field>
+    <Field>
+      <Label>
+        <span>
+          Show API rate limit on header:
+        </span>
+        <Checkbox
+          checked={true}
+          onChange={[Function]}
+        />
+      </Label>
+    </Field>
+  </Section>
 </div>
 `;

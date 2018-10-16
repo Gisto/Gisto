@@ -9,7 +9,7 @@ const Color = styled.input`
   border-radius: 40px;
   background: none;
   vertical-align: middle;
-  margin: 0 0 2px 5px;
+  margin: 0 -3px 2px 5px;
   
   ::-webkit-color-swatch-wrapper {
     padding: 0;
