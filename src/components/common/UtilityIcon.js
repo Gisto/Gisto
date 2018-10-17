@@ -53,9 +53,13 @@ const Util = styled.span`
     li {
       border-bottom: 1px dotted ${borderColor};
       margin: 0;
-      padding: 5px 20px;
       white-space: nowrap;
       text-align: left;
+      
+      > * {
+        padding: 5px 20px;
+        display: block;
+      }
       
       &:hover {
         background: ${lightBorderColor};

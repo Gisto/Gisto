@@ -70,7 +70,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-d02m7m-0 kdZBvR"
+              className="Util-d02m7m-0 bNkMyq"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -101,7 +101,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-d02m7m-0 jYVrYd"
+              className="Util-d02m7m-0 cxIEpU"
               color="tomato"
               onClick={[Function]}
             >
@@ -134,7 +134,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             text=""
           >
             <span
-              className="Util-d02m7m-0 kdZBvR"
+              className="Util-d02m7m-0 bNkMyq"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -167,7 +167,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             title="Copy Snippet URL to clipboard"
           >
             <span
-              className="Util-d02m7m-0 kdZBvR"
+              className="Util-d02m7m-0 bNkMyq"
               color="#3F84A8"
               onClick={[Function]}
               title="Copy Snippet URL to clipboard"
@@ -199,7 +199,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-d02m7m-0 kdZBvR"
+              className="Util-d02m7m-0 bNkMyq"
               color="#3F84A8"
               onClick={[Function]}
             >
@@ -230,7 +230,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             onClick={[Function]}
           >
             <span
-              className="Util-d02m7m-0 kdZBvR"
+              className="Util-d02m7m-0 bNkMyq"
               color="#3F84A8"
               onClick={[Function]}
             >
