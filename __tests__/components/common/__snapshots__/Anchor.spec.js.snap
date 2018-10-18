@@ -5,17 +5,47 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
   download="file.zip"
   href="https://github.com"
 >
-  <Link
+  <ForwardRef
     download="file.zip"
     href="https://github.com"
   >
-    <a
-      className="Link-sc-17j1f2u-0 eiOsHn"
+    <StyledComponent
       download="file.zip"
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "Link-sc-17j1f2u-0",
+            "isStatic": false,
+            "lastClassName": "eiOsHn",
+            "rules": Array [
+              "cursor:pointer;color:",
+              [Function],
+              ";text-decoration:none;:hover{color:",
+              "#cfe0e9",
+              ";}",
+            ],
+          },
+          "displayName": "Link",
+          "render": [Function],
+          "styledComponentId": "Link-sc-17j1f2u-0",
+          "target": "a",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
       href="https://github.com"
     >
-      link
-    </a>
-  </Link>
+      <a
+        className="Link-sc-17j1f2u-0 eiOsHn"
+        download="file.zip"
+        href="https://github.com"
+      >
+        link
+      </a>
+    </StyledComponent>
+  </ForwardRef>
 </Anchor>
 `;

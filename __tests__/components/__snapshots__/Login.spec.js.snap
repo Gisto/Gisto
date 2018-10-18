@@ -7,194 +7,574 @@ exports[`COMPONENTS - <LogIn> render LogIn basic 1`] = `
   loginWithToken={[MockFunction]}
   twoFactorAuth={false}
 >
-  <LoginWrapper>
-    <div
-      className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
+  <ForwardRef>
+    <StyledComponent
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "LoginWrapper-sc-1s1b8ij-0",
+            "isStatic": true,
+            "lastClassName": "bGzlvm",
+            "rules": Array [
+              "display:flex;flex-direction:column;justify-content:center;height:100vh;width:100vw;text-align:center;background:",
+              "#ebf2f6",
+              ";small{display:block;font-size:12px;margin-bottom:20px;}button{font-size:16px;line-height:11px;height:40px;padding:0 20px;}input{padding:5px 10px;margin-bottom:20px;border:none;border-bottom:1px solid ",
+              "#3F84A8",
+              ";background:#fff;width:300px;}p.options{bottom:0;position:absolute;text-align:center;width:100%;a{color:",
+              "#3F84A8",
+              ";text-decoration:underline;cursor:pointer;:hover{color:",
+              "#cfe0e9",
+              ";}}}",
+            ],
+          },
+          "displayName": "LoginWrapper",
+          "render": [Function],
+          "styledComponentId": "LoginWrapper-sc-1s1b8ij-0",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
     >
-      <Logo>
-        <div
-          className="Logo-sc-1s1b8ij-2 bBbBMF"
-        >
-          { Gisto }
-        </div>
-      </Logo>
-      <small>
-        v
-        X.X.X
-      </small>
-      <div>
-        <h4>
-          Sign-in using 
-          Github
-           
-          username and password
-        </h4>
-        <Input
-          onChange={[Function]}
-          placeholder="Email or username"
-          type="text"
-        >
-          <StyledInput
-            disabled={false}
+      <div
+        className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
+      >
+        <ForwardRef>
+          <StyledComponent
+            forwardedClass={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "Logo-sc-1s1b8ij-2",
+                  "isStatic": true,
+                  "lastClassName": "bBbBMF",
+                  "rules": Array [
+                    "font-size:42px;font-weight:200;",
+                  ],
+                },
+                "displayName": "Logo",
+                "render": [Function],
+                "styledComponentId": "Logo-sc-1s1b8ij-2",
+                "target": "div",
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="Logo-sc-1s1b8ij-2 bBbBMF"
+            >
+              { Gisto }
+            </div>
+          </StyledComponent>
+        </ForwardRef>
+        <small>
+          v
+          X.X.X
+        </small>
+        <div>
+          <h4>
+            Sign-in using 
+            Github
+             
+            username and password
+          </h4>
+          <Input
             onChange={[Function]}
             placeholder="Email or username"
-            title=""
             type="text"
           >
-            <input
-              className="StyledInput-sc-86zjwb-0 djdkls"
+            <ForwardRef
               disabled={false}
               onChange={[Function]}
               placeholder="Email or username"
               title=""
               type="text"
-            />
-          </StyledInput>
-        </Input>
-        <br />
-        <Input
-          onChange={[Function]}
-          placeholder="Password"
-          type="password"
-        >
-          <StyledInput
-            disabled={false}
+            >
+              <StyledComponent
+                disabled={false}
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "StyledInput-sc-86zjwb-0",
+                      "isStatic": false,
+                      "lastClassName": "djdkls",
+                      "rules": Array [
+                        "border:none;border-radius:0;height:30px;color:",
+                        [Function],
+                        ";border-bottom:1px solid ",
+                        [Function],
+                        ";background:",
+                        [Function],
+                        ";&:focus{outline:none;}::placeholder{color:",
+                        [Function],
+                        ";opacity:1;}",
+                      ],
+                    },
+                    "displayName": "StyledInput",
+                    "render": [Function],
+                    "styledComponentId": "StyledInput-sc-86zjwb-0",
+                    "target": "input",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onChange={[Function]}
+                placeholder="Email or username"
+                title=""
+                type="text"
+              >
+                <input
+                  className="StyledInput-sc-86zjwb-0 djdkls"
+                  disabled={false}
+                  onChange={[Function]}
+                  placeholder="Email or username"
+                  title=""
+                  type="text"
+                />
+              </StyledComponent>
+            </ForwardRef>
+          </Input>
+          <br />
+          <Input
             onChange={[Function]}
             placeholder="Password"
-            title=""
             type="password"
           >
-            <input
-              className="StyledInput-sc-86zjwb-0 djdkls"
+            <ForwardRef
               disabled={false}
               onChange={[Function]}
               placeholder="Password"
               title=""
               type="password"
-            />
-          </StyledInput>
-        </Input>
-        <br />
-        <ResetLoginType>
-          <div
-            className="ResetLoginType-sc-1s1b8ij-3 fljXQK"
-          >
-            <Anchor
-              onClick={[Function]}
             >
-              <Link
-                onClick={[Function]}
+              <StyledComponent
+                disabled={false}
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "StyledInput-sc-86zjwb-0",
+                      "isStatic": false,
+                      "lastClassName": "djdkls",
+                      "rules": Array [
+                        "border:none;border-radius:0;height:30px;color:",
+                        [Function],
+                        ";border-bottom:1px solid ",
+                        [Function],
+                        ";background:",
+                        [Function],
+                        ";&:focus{outline:none;}::placeholder{color:",
+                        [Function],
+                        ";opacity:1;}",
+                      ],
+                    },
+                    "displayName": "StyledInput",
+                    "render": [Function],
+                    "styledComponentId": "StyledInput-sc-86zjwb-0",
+                    "target": "input",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onChange={[Function]}
+                placeholder="Password"
+                title=""
+                type="password"
               >
-                <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                <input
+                  className="StyledInput-sc-86zjwb-0 djdkls"
+                  disabled={false}
+                  onChange={[Function]}
+                  placeholder="Password"
+                  title=""
+                  type="password"
+                />
+              </StyledComponent>
+            </ForwardRef>
+          </Input>
+          <br />
+          <ForwardRef>
+            <StyledComponent
+              forwardedClass={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": undefined,
+                  "componentStyle": ComponentStyle {
+                    "componentId": "ResetLoginType-sc-1s1b8ij-3",
+                    "isStatic": true,
+                    "lastClassName": "fljXQK",
+                    "rules": Array [
+                      "display:flex;flex-direction:row;justify-content:space-between;width:320px;margin:10px auto 0;",
+                    ],
+                  },
+                  "displayName": "ResetLoginType",
+                  "render": [Function],
+                  "styledComponentId": "ResetLoginType-sc-1s1b8ij-3",
+                  "target": "div",
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+            >
+              <div
+                className="ResetLoginType-sc-1s1b8ij-3 fljXQK"
+              >
+                <Anchor
                   onClick={[Function]}
                 >
-                  Log-in with GitHub
-                </a>
-              </Link>
-            </Anchor>
-            <Anchor
-              onClick={[Function]}
-            >
-              <Link
-                onClick={[Function]}
-              >
-                <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  <ForwardRef
+                    onClick={[Function]}
+                  >
+                    <StyledComponent
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Link-sc-17j1f2u-0",
+                            "isStatic": false,
+                            "lastClassName": "eiOsHn",
+                            "rules": Array [
+                              "cursor:pointer;color:",
+                              [Function],
+                              ";text-decoration:none;:hover{color:",
+                              "#cfe0e9",
+                              ";}",
+                            ],
+                          },
+                          "displayName": "Link",
+                          "render": [Function],
+                          "styledComponentId": "Link-sc-17j1f2u-0",
+                          "target": "a",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      onClick={[Function]}
+                    >
+                      <a
+                        className="Link-sc-17j1f2u-0 eiOsHn"
+                        onClick={[Function]}
+                      >
+                        Log-in with GitHub
+                      </a>
+                    </StyledComponent>
+                  </ForwardRef>
+                </Anchor>
+                <Anchor
                   onClick={[Function]}
                 >
-                  Cancel
-                </a>
-              </Link>
-            </Anchor>
-          </div>
-        </ResetLoginType>
-        <br />
-        <br />
-        <Button
-          icon="success"
-          onClick={[Function]}
-        >
-          <ButtonComponent
+                  <ForwardRef
+                    onClick={[Function]}
+                  >
+                    <StyledComponent
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Link-sc-17j1f2u-0",
+                            "isStatic": false,
+                            "lastClassName": "eiOsHn",
+                            "rules": Array [
+                              "cursor:pointer;color:",
+                              [Function],
+                              ";text-decoration:none;:hover{color:",
+                              "#cfe0e9",
+                              ";}",
+                            ],
+                          },
+                          "displayName": "Link",
+                          "render": [Function],
+                          "styledComponentId": "Link-sc-17j1f2u-0",
+                          "target": "a",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      onClick={[Function]}
+                    >
+                      <a
+                        className="Link-sc-17j1f2u-0 eiOsHn"
+                        onClick={[Function]}
+                      >
+                        Cancel
+                      </a>
+                    </StyledComponent>
+                  </ForwardRef>
+                </Anchor>
+              </div>
+            </StyledComponent>
+          </ForwardRef>
+          <br />
+          <br />
+          <Button
+            icon="success"
             onClick={[Function]}
-            title="Log-in"
           >
-            <button
-              className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
+            <ForwardRef
               onClick={[Function]}
               title="Log-in"
             >
-              <Icon
-                color="#fff"
-                type="success"
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "ButtonComponent-sc-1hy9a8c-0",
+                      "isStatic": false,
+                      "lastClassName": "fVBHOJ",
+                      "rules": Array [
+                        "background:",
+                        [Function],
+                        ";border:1px solid ",
+                        [Function],
+                        ";color:",
+                        [Function],
+                        ";border-radius:3px;font-weight:200;font-size:14px;text-align:center;",
+                        [Function],
+                        " ",
+                        [Function],
+                        " -webkit-appearance:none;cursor:pointer;&[disabled]{background:",
+                        "#ccc",
+                        ";border:1px solid ",
+                        "#ccc",
+                        ";color:",
+                        "#555",
+                        ";cursor:not-allowed;}",
+                      ],
+                    },
+                    "displayName": "ButtonComponent",
+                    "render": [Function],
+                    "styledComponentId": "ButtonComponent-sc-1hy9a8c-0",
+                    "target": "button",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+                title="Log-in"
               >
-                <span
-                  className="Icon-vk4qna-0 PqRDb"
-                  color="#fff"
-                  type="success"
-                />
-              </Icon>
-               
-              Log-in
-            </button>
-          </ButtonComponent>
-        </Button>
-        <br />
+                <button
+                  className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
+                  onClick={[Function]}
+                  title="Log-in"
+                >
+                  <ForwardRef
+                    color="#fff"
+                    type="success"
+                  >
+                    <StyledComponent
+                      color="#fff"
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Icon-vk4qna-0",
+                            "isStatic": false,
+                            "lastClassName": "PqRDb",
+                            "rules": Array [
+                              "background-color:",
+                              [Function],
+                              ";display:inline-block;vertical-align:middle;width:",
+                              [Function],
+                              "px;height:",
+                              [Function],
+                              "px;-webkit-mask-image:url('src/icons/",
+                              [Function],
+                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                              [Function],
+                              " ",
+                              [Function],
+                              " ",
+                              [Function],
+                            ],
+                          },
+                          "displayName": "Icon",
+                          "render": [Function],
+                          "styledComponentId": "Icon-vk4qna-0",
+                          "target": "span",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      type="success"
+                    >
+                      <span
+                        className="Icon-vk4qna-0 PqRDb"
+                        color="#fff"
+                        type="success"
+                      />
+                    </StyledComponent>
+                  </ForwardRef>
+                   
+                  Log-in
+                </button>
+              </StyledComponent>
+            </ForwardRef>
+          </Button>
+          <br />
+        </div>
+        <p
+          className="options"
+        >
+          <strong>
+            Other options:
+          </strong>
+            sign-in using GitHub  
+          <Anchor
+            onClick={[Function]}
+          >
+            <ForwardRef
+              onClick={[Function]}
+            >
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  token
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+           | 
+          <Anchor
+            onClick={[Function]}
+          >
+            <ForwardRef
+              onClick={[Function]}
+            >
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  username and password
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+           | 
+          <Anchor
+            onClick={[Function]}
+          >
+            <ForwardRef
+              onClick={[Function]}
+            >
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  Use enterprise
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+        </p>
       </div>
-      <p
-        className="options"
-      >
-        <strong>
-          Other options:
-        </strong>
-          sign-in using GitHub  
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
-            onClick={[Function]}
-          >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
-              onClick={[Function]}
-            >
-              token
-            </a>
-          </Link>
-        </Anchor>
-         | 
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
-            onClick={[Function]}
-          >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
-              onClick={[Function]}
-            >
-              username and password
-            </a>
-          </Link>
-        </Anchor>
-         | 
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
-            onClick={[Function]}
-          >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
-              onClick={[Function]}
-            >
-              Use enterprise
-            </a>
-          </Link>
-        </Anchor>
-      </p>
-    </div>
-  </LoginWrapper>
+    </StyledComponent>
+  </ForwardRef>
 </LogIn>
 `;
 
@@ -205,221 +585,638 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
   loginWithToken={[MockFunction]}
   twoFactorAuth={false}
 >
-  <LoginWrapper>
-    <div
-      className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
+  <ForwardRef>
+    <StyledComponent
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "LoginWrapper-sc-1s1b8ij-0",
+            "isStatic": true,
+            "lastClassName": "bGzlvm",
+            "rules": Array [
+              "display:flex;flex-direction:column;justify-content:center;height:100vh;width:100vw;text-align:center;background:",
+              "#ebf2f6",
+              ";small{display:block;font-size:12px;margin-bottom:20px;}button{font-size:16px;line-height:11px;height:40px;padding:0 20px;}input{padding:5px 10px;margin-bottom:20px;border:none;border-bottom:1px solid ",
+              "#3F84A8",
+              ";background:#fff;width:300px;}p.options{bottom:0;position:absolute;text-align:center;width:100%;a{color:",
+              "#3F84A8",
+              ";text-decoration:underline;cursor:pointer;:hover{color:",
+              "#cfe0e9",
+              ";}}}",
+            ],
+          },
+          "displayName": "LoginWrapper",
+          "render": [Function],
+          "styledComponentId": "LoginWrapper-sc-1s1b8ij-0",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
     >
-      <Logo>
-        <div
-          className="Logo-sc-1s1b8ij-2 bBbBMF"
-        >
-          { Gisto }
-        </div>
-      </Logo>
-      <small>
-        v
-        X.X.X
-      </small>
-      <div>
-        <h4>
-          Setup enterprise endpoints and log-in
-        </h4>
-        <Input
-          onChange={[Function]}
-          placeholder="http://my.enterprise.domain.com"
-          type="text"
-        >
-          <StyledInput
-            disabled={false}
+      <div
+        className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
+      >
+        <ForwardRef>
+          <StyledComponent
+            forwardedClass={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "Logo-sc-1s1b8ij-2",
+                  "isStatic": true,
+                  "lastClassName": "bBbBMF",
+                  "rules": Array [
+                    "font-size:42px;font-weight:200;",
+                  ],
+                },
+                "displayName": "Logo",
+                "render": [Function],
+                "styledComponentId": "Logo-sc-1s1b8ij-2",
+                "target": "div",
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="Logo-sc-1s1b8ij-2 bBbBMF"
+            >
+              { Gisto }
+            </div>
+          </StyledComponent>
+        </ForwardRef>
+        <small>
+          v
+          X.X.X
+        </small>
+        <div>
+          <h4>
+            Setup enterprise endpoints and log-in
+          </h4>
+          <Input
             onChange={[Function]}
             placeholder="http://my.enterprise.domain.com"
-            title=""
             type="text"
           >
-            <input
-              className="StyledInput-sc-86zjwb-0 djdkls"
+            <ForwardRef
               disabled={false}
               onChange={[Function]}
               placeholder="http://my.enterprise.domain.com"
               title=""
               type="text"
-            />
-          </StyledInput>
-        </Input>
-      </div>
-      <div>
-        <h4>
-          Sign-in using 
-          your organization
-           
-          username and password
-        </h4>
-        <Input
-          onChange={[Function]}
-          placeholder="Email or username"
-          type="text"
-        >
-          <StyledInput
-            disabled={false}
+            >
+              <StyledComponent
+                disabled={false}
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "StyledInput-sc-86zjwb-0",
+                      "isStatic": false,
+                      "lastClassName": "djdkls",
+                      "rules": Array [
+                        "border:none;border-radius:0;height:30px;color:",
+                        [Function],
+                        ";border-bottom:1px solid ",
+                        [Function],
+                        ";background:",
+                        [Function],
+                        ";&:focus{outline:none;}::placeholder{color:",
+                        [Function],
+                        ";opacity:1;}",
+                      ],
+                    },
+                    "displayName": "StyledInput",
+                    "render": [Function],
+                    "styledComponentId": "StyledInput-sc-86zjwb-0",
+                    "target": "input",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onChange={[Function]}
+                placeholder="http://my.enterprise.domain.com"
+                title=""
+                type="text"
+              >
+                <input
+                  className="StyledInput-sc-86zjwb-0 djdkls"
+                  disabled={false}
+                  onChange={[Function]}
+                  placeholder="http://my.enterprise.domain.com"
+                  title=""
+                  type="text"
+                />
+              </StyledComponent>
+            </ForwardRef>
+          </Input>
+        </div>
+        <div>
+          <h4>
+            Sign-in using 
+            your organization
+             
+            username and password
+          </h4>
+          <Input
             onChange={[Function]}
             placeholder="Email or username"
-            title=""
             type="text"
           >
-            <input
-              className="StyledInput-sc-86zjwb-0 djdkls"
+            <ForwardRef
               disabled={false}
               onChange={[Function]}
               placeholder="Email or username"
               title=""
               type="text"
-            />
-          </StyledInput>
-        </Input>
-        <br />
-        <Input
-          onChange={[Function]}
-          placeholder="Password"
-          type="password"
-        >
-          <StyledInput
-            disabled={false}
+            >
+              <StyledComponent
+                disabled={false}
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "StyledInput-sc-86zjwb-0",
+                      "isStatic": false,
+                      "lastClassName": "djdkls",
+                      "rules": Array [
+                        "border:none;border-radius:0;height:30px;color:",
+                        [Function],
+                        ";border-bottom:1px solid ",
+                        [Function],
+                        ";background:",
+                        [Function],
+                        ";&:focus{outline:none;}::placeholder{color:",
+                        [Function],
+                        ";opacity:1;}",
+                      ],
+                    },
+                    "displayName": "StyledInput",
+                    "render": [Function],
+                    "styledComponentId": "StyledInput-sc-86zjwb-0",
+                    "target": "input",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onChange={[Function]}
+                placeholder="Email or username"
+                title=""
+                type="text"
+              >
+                <input
+                  className="StyledInput-sc-86zjwb-0 djdkls"
+                  disabled={false}
+                  onChange={[Function]}
+                  placeholder="Email or username"
+                  title=""
+                  type="text"
+                />
+              </StyledComponent>
+            </ForwardRef>
+          </Input>
+          <br />
+          <Input
             onChange={[Function]}
             placeholder="Password"
-            title=""
             type="password"
           >
-            <input
-              className="StyledInput-sc-86zjwb-0 djdkls"
+            <ForwardRef
               disabled={false}
               onChange={[Function]}
               placeholder="Password"
               title=""
               type="password"
-            />
-          </StyledInput>
-        </Input>
-        <br />
-        <ResetLoginType>
-          <div
-            className="ResetLoginType-sc-1s1b8ij-3 fljXQK"
-          >
-            <Anchor
-              onClick={[Function]}
             >
-              <Link
-                onClick={[Function]}
+              <StyledComponent
+                disabled={false}
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "StyledInput-sc-86zjwb-0",
+                      "isStatic": false,
+                      "lastClassName": "djdkls",
+                      "rules": Array [
+                        "border:none;border-radius:0;height:30px;color:",
+                        [Function],
+                        ";border-bottom:1px solid ",
+                        [Function],
+                        ";background:",
+                        [Function],
+                        ";&:focus{outline:none;}::placeholder{color:",
+                        [Function],
+                        ";opacity:1;}",
+                      ],
+                    },
+                    "displayName": "StyledInput",
+                    "render": [Function],
+                    "styledComponentId": "StyledInput-sc-86zjwb-0",
+                    "target": "input",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onChange={[Function]}
+                placeholder="Password"
+                title=""
+                type="password"
               >
-                <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                <input
+                  className="StyledInput-sc-86zjwb-0 djdkls"
+                  disabled={false}
+                  onChange={[Function]}
+                  placeholder="Password"
+                  title=""
+                  type="password"
+                />
+              </StyledComponent>
+            </ForwardRef>
+          </Input>
+          <br />
+          <ForwardRef>
+            <StyledComponent
+              forwardedClass={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": undefined,
+                  "componentStyle": ComponentStyle {
+                    "componentId": "ResetLoginType-sc-1s1b8ij-3",
+                    "isStatic": true,
+                    "lastClassName": "fljXQK",
+                    "rules": Array [
+                      "display:flex;flex-direction:row;justify-content:space-between;width:320px;margin:10px auto 0;",
+                    ],
+                  },
+                  "displayName": "ResetLoginType",
+                  "render": [Function],
+                  "styledComponentId": "ResetLoginType-sc-1s1b8ij-3",
+                  "target": "div",
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                }
+              }
+              forwardedRef={null}
+            >
+              <div
+                className="ResetLoginType-sc-1s1b8ij-3 fljXQK"
+              >
+                <Anchor
                   onClick={[Function]}
                 >
-                  Log-in with GitHub
-                </a>
-              </Link>
-            </Anchor>
-            <Anchor
-              onClick={[Function]}
-            >
-              <Link
-                onClick={[Function]}
-              >
-                <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  <ForwardRef
+                    onClick={[Function]}
+                  >
+                    <StyledComponent
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Link-sc-17j1f2u-0",
+                            "isStatic": false,
+                            "lastClassName": "eiOsHn",
+                            "rules": Array [
+                              "cursor:pointer;color:",
+                              [Function],
+                              ";text-decoration:none;:hover{color:",
+                              "#cfe0e9",
+                              ";}",
+                            ],
+                          },
+                          "displayName": "Link",
+                          "render": [Function],
+                          "styledComponentId": "Link-sc-17j1f2u-0",
+                          "target": "a",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      onClick={[Function]}
+                    >
+                      <a
+                        className="Link-sc-17j1f2u-0 eiOsHn"
+                        onClick={[Function]}
+                      >
+                        Log-in with GitHub
+                      </a>
+                    </StyledComponent>
+                  </ForwardRef>
+                </Anchor>
+                <Anchor
                   onClick={[Function]}
                 >
-                  Cancel
-                </a>
-              </Link>
-            </Anchor>
-          </div>
-        </ResetLoginType>
-        <br />
-        <br />
-        <Button
-          icon="success"
-          onClick={[Function]}
-        >
-          <ButtonComponent
+                  <ForwardRef
+                    onClick={[Function]}
+                  >
+                    <StyledComponent
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Link-sc-17j1f2u-0",
+                            "isStatic": false,
+                            "lastClassName": "eiOsHn",
+                            "rules": Array [
+                              "cursor:pointer;color:",
+                              [Function],
+                              ";text-decoration:none;:hover{color:",
+                              "#cfe0e9",
+                              ";}",
+                            ],
+                          },
+                          "displayName": "Link",
+                          "render": [Function],
+                          "styledComponentId": "Link-sc-17j1f2u-0",
+                          "target": "a",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      onClick={[Function]}
+                    >
+                      <a
+                        className="Link-sc-17j1f2u-0 eiOsHn"
+                        onClick={[Function]}
+                      >
+                        Cancel
+                      </a>
+                    </StyledComponent>
+                  </ForwardRef>
+                </Anchor>
+              </div>
+            </StyledComponent>
+          </ForwardRef>
+          <br />
+          <br />
+          <Button
+            icon="success"
             onClick={[Function]}
-            title="Log-in"
           >
-            <button
-              className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
+            <ForwardRef
               onClick={[Function]}
               title="Log-in"
             >
-              <Icon
-                color="#fff"
-                type="success"
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "ButtonComponent-sc-1hy9a8c-0",
+                      "isStatic": false,
+                      "lastClassName": "fVBHOJ",
+                      "rules": Array [
+                        "background:",
+                        [Function],
+                        ";border:1px solid ",
+                        [Function],
+                        ";color:",
+                        [Function],
+                        ";border-radius:3px;font-weight:200;font-size:14px;text-align:center;",
+                        [Function],
+                        " ",
+                        [Function],
+                        " -webkit-appearance:none;cursor:pointer;&[disabled]{background:",
+                        "#ccc",
+                        ";border:1px solid ",
+                        "#ccc",
+                        ";color:",
+                        "#555",
+                        ";cursor:not-allowed;}",
+                      ],
+                    },
+                    "displayName": "ButtonComponent",
+                    "render": [Function],
+                    "styledComponentId": "ButtonComponent-sc-1hy9a8c-0",
+                    "target": "button",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+                title="Log-in"
               >
-                <span
-                  className="Icon-vk4qna-0 PqRDb"
-                  color="#fff"
-                  type="success"
-                />
-              </Icon>
-               
-              Log-in
-            </button>
-          </ButtonComponent>
-        </Button>
-        <br />
+                <button
+                  className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
+                  onClick={[Function]}
+                  title="Log-in"
+                >
+                  <ForwardRef
+                    color="#fff"
+                    type="success"
+                  >
+                    <StyledComponent
+                      color="#fff"
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Icon-vk4qna-0",
+                            "isStatic": false,
+                            "lastClassName": "PqRDb",
+                            "rules": Array [
+                              "background-color:",
+                              [Function],
+                              ";display:inline-block;vertical-align:middle;width:",
+                              [Function],
+                              "px;height:",
+                              [Function],
+                              "px;-webkit-mask-image:url('src/icons/",
+                              [Function],
+                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                              [Function],
+                              " ",
+                              [Function],
+                              " ",
+                              [Function],
+                            ],
+                          },
+                          "displayName": "Icon",
+                          "render": [Function],
+                          "styledComponentId": "Icon-vk4qna-0",
+                          "target": "span",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      type="success"
+                    >
+                      <span
+                        className="Icon-vk4qna-0 PqRDb"
+                        color="#fff"
+                        type="success"
+                      />
+                    </StyledComponent>
+                  </ForwardRef>
+                   
+                  Log-in
+                </button>
+              </StyledComponent>
+            </ForwardRef>
+          </Button>
+          <br />
+        </div>
+        <p
+          className="options"
+        >
+          <strong>
+            Other options:
+          </strong>
+            sign-in using GitHub  
+          <Anchor
+            onClick={[Function]}
+          >
+            <ForwardRef
+              onClick={[Function]}
+            >
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  token
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+           | 
+          <Anchor
+            onClick={[Function]}
+          >
+            <ForwardRef
+              onClick={[Function]}
+            >
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  username and password
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+           | 
+          <Anchor
+            onClick={[Function]}
+          >
+            <ForwardRef
+              onClick={[Function]}
+            >
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  Use enterprise
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+        </p>
       </div>
-      <p
-        className="options"
-      >
-        <strong>
-          Other options:
-        </strong>
-          sign-in using GitHub  
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
-            onClick={[Function]}
-          >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
-              onClick={[Function]}
-            >
-              token
-            </a>
-          </Link>
-        </Anchor>
-         | 
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
-            onClick={[Function]}
-          >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
-              onClick={[Function]}
-            >
-              username and password
-            </a>
-          </Link>
-        </Anchor>
-         | 
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
-            onClick={[Function]}
-          >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
-              onClick={[Function]}
-            >
-              Use enterprise
-            </a>
-          </Link>
-        </Anchor>
-      </p>
-    </div>
-  </LoginWrapper>
+    </StyledComponent>
+  </ForwardRef>
 </LogIn>
 `;
 
@@ -430,110 +1227,362 @@ exports[`COMPONENTS - <LogIn> render LogIn github oauth2 1`] = `
   loginWithToken={[MockFunction]}
   twoFactorAuth={false}
 >
-  <LoginWrapper>
-    <div
-      className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
+  <ForwardRef>
+    <StyledComponent
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "LoginWrapper-sc-1s1b8ij-0",
+            "isStatic": true,
+            "lastClassName": "bGzlvm",
+            "rules": Array [
+              "display:flex;flex-direction:column;justify-content:center;height:100vh;width:100vw;text-align:center;background:",
+              "#ebf2f6",
+              ";small{display:block;font-size:12px;margin-bottom:20px;}button{font-size:16px;line-height:11px;height:40px;padding:0 20px;}input{padding:5px 10px;margin-bottom:20px;border:none;border-bottom:1px solid ",
+              "#3F84A8",
+              ";background:#fff;width:300px;}p.options{bottom:0;position:absolute;text-align:center;width:100%;a{color:",
+              "#3F84A8",
+              ";text-decoration:underline;cursor:pointer;:hover{color:",
+              "#cfe0e9",
+              ";}}}",
+            ],
+          },
+          "displayName": "LoginWrapper",
+          "render": [Function],
+          "styledComponentId": "LoginWrapper-sc-1s1b8ij-0",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
     >
-      <Logo>
-        <div
-          className="Logo-sc-1s1b8ij-2 bBbBMF"
-        >
-          { Gisto }
-        </div>
-      </Logo>
-      <small>
-        v
-        X.X.X
-      </small>
-      <StyledGithubLoginButton
-        icon="logo-github"
-        onClick={[Function]}
+      <div
+        className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
       >
-        <Button
-          className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew"
+        <ForwardRef>
+          <StyledComponent
+            forwardedClass={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "Logo-sc-1s1b8ij-2",
+                  "isStatic": true,
+                  "lastClassName": "bBbBMF",
+                  "rules": Array [
+                    "font-size:42px;font-weight:200;",
+                  ],
+                },
+                "displayName": "Logo",
+                "render": [Function],
+                "styledComponentId": "Logo-sc-1s1b8ij-2",
+                "target": "div",
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="Logo-sc-1s1b8ij-2 bBbBMF"
+            >
+              { Gisto }
+            </div>
+          </StyledComponent>
+        </ForwardRef>
+        <small>
+          v
+          X.X.X
+        </small>
+        <ForwardRef
           icon="logo-github"
           onClick={[Function]}
         >
-          <ButtonComponent
-            className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew"
+          <StyledComponent
+            forwardedClass={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "StyledGithubLoginButton-sc-1s1b8ij-1",
+                  "isStatic": true,
+                  "lastClassName": "bnAWew",
+                  "rules": Array [
+                    "width:200px;align-self:center;",
+                  ],
+                },
+                "displayName": "StyledGithubLoginButton",
+                "render": [Function],
+                "styledComponentId": "StyledGithubLoginButton-sc-1s1b8ij-1",
+                "target": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+                Symbol(Symbol.hasInstance): [Function],
+              }
+            }
+            forwardedRef={null}
+            icon="logo-github"
             onClick={[Function]}
-            title="Log-in with GitHub"
           >
-            <button
-              className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
+            <Button
+              className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew"
+              icon="logo-github"
               onClick={[Function]}
-              title="Log-in with GitHub"
             >
-              <Icon
-                color="#fff"
-                type="logo-github"
+              <ForwardRef
+                className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew"
+                onClick={[Function]}
+                title="Log-in with GitHub"
               >
-                <span
-                  className="Icon-vk4qna-0 dhVbzf"
-                  color="#fff"
-                  type="logo-github"
-                />
-              </Icon>
-               
-              Log-in with GitHub
-            </button>
-          </ButtonComponent>
-        </Button>
-      </StyledGithubLoginButton>
-      <p
-        className="options"
-      >
-        <strong>
-          Other options:
-        </strong>
-          sign-in using GitHub  
-        <Anchor
-          onClick={[Function]}
+                <StyledComponent
+                  className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew"
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "ButtonComponent-sc-1hy9a8c-0",
+                        "isStatic": false,
+                        "lastClassName": "fVBHOJ",
+                        "rules": Array [
+                          "background:",
+                          [Function],
+                          ";border:1px solid ",
+                          [Function],
+                          ";color:",
+                          [Function],
+                          ";border-radius:3px;font-weight:200;font-size:14px;text-align:center;",
+                          [Function],
+                          " ",
+                          [Function],
+                          " -webkit-appearance:none;cursor:pointer;&[disabled]{background:",
+                          "#ccc",
+                          ";border:1px solid ",
+                          "#ccc",
+                          ";color:",
+                          "#555",
+                          ";cursor:not-allowed;}",
+                        ],
+                      },
+                      "displayName": "ButtonComponent",
+                      "render": [Function],
+                      "styledComponentId": "ButtonComponent-sc-1hy9a8c-0",
+                      "target": "button",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                  onClick={[Function]}
+                  title="Log-in with GitHub"
+                >
+                  <button
+                    className="StyledGithubLoginButton-sc-1s1b8ij-1 bnAWew ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
+                    onClick={[Function]}
+                    title="Log-in with GitHub"
+                  >
+                    <ForwardRef
+                      color="#fff"
+                      type="logo-github"
+                    >
+                      <StyledComponent
+                        color="#fff"
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "Icon-vk4qna-0",
+                              "isStatic": false,
+                              "lastClassName": "dhVbzf",
+                              "rules": Array [
+                                "background-color:",
+                                [Function],
+                                ";display:inline-block;vertical-align:middle;width:",
+                                [Function],
+                                "px;height:",
+                                [Function],
+                                "px;-webkit-mask-image:url('src/icons/",
+                                [Function],
+                                "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                                [Function],
+                                " ",
+                                [Function],
+                                " ",
+                                [Function],
+                              ],
+                            },
+                            "displayName": "Icon",
+                            "render": [Function],
+                            "styledComponentId": "Icon-vk4qna-0",
+                            "target": "span",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                        type="logo-github"
+                      >
+                        <span
+                          className="Icon-vk4qna-0 dhVbzf"
+                          color="#fff"
+                          type="logo-github"
+                        />
+                      </StyledComponent>
+                    </ForwardRef>
+                     
+                    Log-in with GitHub
+                  </button>
+                </StyledComponent>
+              </ForwardRef>
+            </Button>
+          </StyledComponent>
+        </ForwardRef>
+        <p
+          className="options"
         >
-          <Link
+          <strong>
+            Other options:
+          </strong>
+            sign-in using GitHub  
+          <Anchor
             onClick={[Function]}
           >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
+            <ForwardRef
               onClick={[Function]}
             >
-              token
-            </a>
-          </Link>
-        </Anchor>
-         | 
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  token
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+           | 
+          <Anchor
             onClick={[Function]}
           >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
+            <ForwardRef
               onClick={[Function]}
             >
-              username and password
-            </a>
-          </Link>
-        </Anchor>
-         | 
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  username and password
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+           | 
+          <Anchor
             onClick={[Function]}
           >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
+            <ForwardRef
               onClick={[Function]}
             >
-              Use enterprise
-            </a>
-          </Link>
-        </Anchor>
-      </p>
-    </div>
-  </LoginWrapper>
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  Use enterprise
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+        </p>
+      </div>
+    </StyledComponent>
+  </ForwardRef>
 </LogIn>
 `;
 
@@ -544,187 +1593,576 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
   loginWithToken={[MockFunction]}
   twoFactorAuth={false}
 >
-  <LoginWrapper>
-    <div
-      className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
+  <ForwardRef>
+    <StyledComponent
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "LoginWrapper-sc-1s1b8ij-0",
+            "isStatic": true,
+            "lastClassName": "bGzlvm",
+            "rules": Array [
+              "display:flex;flex-direction:column;justify-content:center;height:100vh;width:100vw;text-align:center;background:",
+              "#ebf2f6",
+              ";small{display:block;font-size:12px;margin-bottom:20px;}button{font-size:16px;line-height:11px;height:40px;padding:0 20px;}input{padding:5px 10px;margin-bottom:20px;border:none;border-bottom:1px solid ",
+              "#3F84A8",
+              ";background:#fff;width:300px;}p.options{bottom:0;position:absolute;text-align:center;width:100%;a{color:",
+              "#3F84A8",
+              ";text-decoration:underline;cursor:pointer;:hover{color:",
+              "#cfe0e9",
+              ";}}}",
+            ],
+          },
+          "displayName": "LoginWrapper",
+          "render": [Function],
+          "styledComponentId": "LoginWrapper-sc-1s1b8ij-0",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
     >
-      <Logo>
-        <div
-          className="Logo-sc-1s1b8ij-2 bBbBMF"
-        >
-          { Gisto }
-        </div>
-      </Logo>
-      <small>
-        v
-        X.X.X
-      </small>
-      <div>
-        <h4>
-          Sign-in using GitHub token
-        </h4>
-        <TokenInput
-          onChange={[Function]}
-          placeholder="GitHub token"
-          type="text"
-        >
-          <Input
-            className="TokenInput-sc-1s1b8ij-4 jryAbL"
+      <div
+        className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
+      >
+        <ForwardRef>
+          <StyledComponent
+            forwardedClass={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "Logo-sc-1s1b8ij-2",
+                  "isStatic": true,
+                  "lastClassName": "bBbBMF",
+                  "rules": Array [
+                    "font-size:42px;font-weight:200;",
+                  ],
+                },
+                "displayName": "Logo",
+                "render": [Function],
+                "styledComponentId": "Logo-sc-1s1b8ij-2",
+                "target": "div",
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <div
+              className="Logo-sc-1s1b8ij-2 bBbBMF"
+            >
+              { Gisto }
+            </div>
+          </StyledComponent>
+        </ForwardRef>
+        <small>
+          v
+          X.X.X
+        </small>
+        <div>
+          <h4>
+            Sign-in using GitHub token
+          </h4>
+          <ForwardRef
             onChange={[Function]}
             placeholder="GitHub token"
             type="text"
           >
-            <StyledInput
-              className="TokenInput-sc-1s1b8ij-4 jryAbL"
-              disabled={false}
+            <StyledComponent
+              forwardedClass={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": undefined,
+                  "componentStyle": ComponentStyle {
+                    "componentId": "TokenInput-sc-1s1b8ij-4",
+                    "isStatic": true,
+                    "lastClassName": "jryAbL",
+                    "rules": Array [
+                      "margin-right:10px;margin-left:10px;",
+                    ],
+                  },
+                  "displayName": "TokenInput",
+                  "render": [Function],
+                  "styledComponentId": "TokenInput-sc-1s1b8ij-4",
+                  "target": [Function],
+                  "warnTooManyClasses": [Function],
+                  "withComponent": [Function],
+                  Symbol(Symbol.hasInstance): [Function],
+                }
+              }
+              forwardedRef={null}
               onChange={[Function]}
               placeholder="GitHub token"
-              title=""
               type="text"
             >
-              <input
-                className="TokenInput-sc-1s1b8ij-4 jryAbL StyledInput-sc-86zjwb-0 djdkls"
-                disabled={false}
+              <Input
+                className="TokenInput-sc-1s1b8ij-4 jryAbL"
                 onChange={[Function]}
                 placeholder="GitHub token"
-                title=""
                 type="text"
-              />
-            </StyledInput>
-          </Input>
-        </TokenInput>
-        <ExternalLink
-          href="https://github.com/settings/tokens"
-          target="_new"
-        >
-          <Anchor
-            href="#"
-            onClick={[Function]}
+              >
+                <ForwardRef
+                  className="TokenInput-sc-1s1b8ij-4 jryAbL"
+                  disabled={false}
+                  onChange={[Function]}
+                  placeholder="GitHub token"
+                  title=""
+                  type="text"
+                >
+                  <StyledComponent
+                    className="TokenInput-sc-1s1b8ij-4 jryAbL"
+                    disabled={false}
+                    forwardedClass={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": undefined,
+                        "componentStyle": ComponentStyle {
+                          "componentId": "StyledInput-sc-86zjwb-0",
+                          "isStatic": false,
+                          "lastClassName": "djdkls",
+                          "rules": Array [
+                            "border:none;border-radius:0;height:30px;color:",
+                            [Function],
+                            ";border-bottom:1px solid ",
+                            [Function],
+                            ";background:",
+                            [Function],
+                            ";&:focus{outline:none;}::placeholder{color:",
+                            [Function],
+                            ";opacity:1;}",
+                          ],
+                        },
+                        "displayName": "StyledInput",
+                        "render": [Function],
+                        "styledComponentId": "StyledInput-sc-86zjwb-0",
+                        "target": "input",
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                    onChange={[Function]}
+                    placeholder="GitHub token"
+                    title=""
+                    type="text"
+                  >
+                    <input
+                      className="TokenInput-sc-1s1b8ij-4 jryAbL StyledInput-sc-86zjwb-0 djdkls"
+                      disabled={false}
+                      onChange={[Function]}
+                      placeholder="GitHub token"
+                      title=""
+                      type="text"
+                    />
+                  </StyledComponent>
+                </ForwardRef>
+              </Input>
+            </StyledComponent>
+          </ForwardRef>
+          <ExternalLink
+            href="https://github.com/settings/tokens"
+            target="_new"
           >
-            <Link
+            <Anchor
               href="#"
               onClick={[Function]}
             >
-              <a
-                className="Link-sc-17j1f2u-0 eiOsHn"
+              <ForwardRef
                 href="#"
                 onClick={[Function]}
               >
-                <Icon
-                  color="#3F84A8"
-                  size="16"
-                  type="info"
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Link-sc-17j1f2u-0",
+                        "isStatic": false,
+                        "lastClassName": "eiOsHn",
+                        "rules": Array [
+                          "cursor:pointer;color:",
+                          [Function],
+                          ";text-decoration:none;:hover{color:",
+                          "#cfe0e9",
+                          ";}",
+                        ],
+                      },
+                      "displayName": "Link",
+                      "render": [Function],
+                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "target": "a",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                  href="#"
+                  onClick={[Function]}
                 >
-                  <span
-                    className="Icon-vk4qna-0 bZuFFG"
-                    color="#3F84A8"
-                    size="16"
-                    type="info"
-                  />
-                </Icon>
-              </a>
-            </Link>
-          </Anchor>
-        </ExternalLink>
-        <br />
-        <Button
-          icon="success"
-          onClick={[Function]}
-        >
-          <ButtonComponent
+                  <a
+                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    href="#"
+                    onClick={[Function]}
+                  >
+                    <ForwardRef
+                      color="#3F84A8"
+                      size="16"
+                      type="info"
+                    >
+                      <StyledComponent
+                        color="#3F84A8"
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "Icon-vk4qna-0",
+                              "isStatic": false,
+                              "lastClassName": "PqRDb",
+                              "rules": Array [
+                                "background-color:",
+                                [Function],
+                                ";display:inline-block;vertical-align:middle;width:",
+                                [Function],
+                                "px;height:",
+                                [Function],
+                                "px;-webkit-mask-image:url('src/icons/",
+                                [Function],
+                                "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                                [Function],
+                                " ",
+                                [Function],
+                                " ",
+                                [Function],
+                              ],
+                            },
+                            "displayName": "Icon",
+                            "render": [Function],
+                            "styledComponentId": "Icon-vk4qna-0",
+                            "target": "span",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                        size="16"
+                        type="info"
+                      >
+                        <span
+                          className="Icon-vk4qna-0 bZuFFG"
+                          color="#3F84A8"
+                          size="16"
+                          type="info"
+                        />
+                      </StyledComponent>
+                    </ForwardRef>
+                  </a>
+                </StyledComponent>
+              </ForwardRef>
+            </Anchor>
+          </ExternalLink>
+          <br />
+          <Button
+            icon="success"
             onClick={[Function]}
-            title="Log-in"
           >
-            <button
-              className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
+            <ForwardRef
               onClick={[Function]}
               title="Log-in"
             >
-              <Icon
-                color="#fff"
-                type="success"
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "ButtonComponent-sc-1hy9a8c-0",
+                      "isStatic": false,
+                      "lastClassName": "fVBHOJ",
+                      "rules": Array [
+                        "background:",
+                        [Function],
+                        ";border:1px solid ",
+                        [Function],
+                        ";color:",
+                        [Function],
+                        ";border-radius:3px;font-weight:200;font-size:14px;text-align:center;",
+                        [Function],
+                        " ",
+                        [Function],
+                        " -webkit-appearance:none;cursor:pointer;&[disabled]{background:",
+                        "#ccc",
+                        ";border:1px solid ",
+                        "#ccc",
+                        ";color:",
+                        "#555",
+                        ";cursor:not-allowed;}",
+                      ],
+                    },
+                    "displayName": "ButtonComponent",
+                    "render": [Function],
+                    "styledComponentId": "ButtonComponent-sc-1hy9a8c-0",
+                    "target": "button",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+                title="Log-in"
               >
-                <span
-                  className="Icon-vk4qna-0 PqRDb"
-                  color="#fff"
-                  type="success"
-                />
-              </Icon>
-               
-              Log-in
-            </button>
-          </ButtonComponent>
-        </Button>
-        <br />
-        <br />
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
+                <button
+                  className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
+                  onClick={[Function]}
+                  title="Log-in"
+                >
+                  <ForwardRef
+                    color="#fff"
+                    type="success"
+                  >
+                    <StyledComponent
+                      color="#fff"
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Icon-vk4qna-0",
+                            "isStatic": false,
+                            "lastClassName": "PqRDb",
+                            "rules": Array [
+                              "background-color:",
+                              [Function],
+                              ";display:inline-block;vertical-align:middle;width:",
+                              [Function],
+                              "px;height:",
+                              [Function],
+                              "px;-webkit-mask-image:url('src/icons/",
+                              [Function],
+                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                              [Function],
+                              " ",
+                              [Function],
+                              " ",
+                              [Function],
+                            ],
+                          },
+                          "displayName": "Icon",
+                          "render": [Function],
+                          "styledComponentId": "Icon-vk4qna-0",
+                          "target": "span",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      type="success"
+                    >
+                      <span
+                        className="Icon-vk4qna-0 PqRDb"
+                        color="#fff"
+                        type="success"
+                      />
+                    </StyledComponent>
+                  </ForwardRef>
+                   
+                  Log-in
+                </button>
+              </StyledComponent>
+            </ForwardRef>
+          </Button>
+          <br />
+          <br />
+          <Anchor
             onClick={[Function]}
           >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
+            <ForwardRef
               onClick={[Function]}
             >
-              Cancel
-            </a>
-          </Link>
-        </Anchor>
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  Cancel
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+        </div>
+        <p
+          className="options"
+        >
+          <strong>
+            Other options:
+          </strong>
+            sign-in using GitHub  
+          <Anchor
+            onClick={[Function]}
+          >
+            <ForwardRef
+              onClick={[Function]}
+            >
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  token
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+           | 
+          <Anchor
+            onClick={[Function]}
+          >
+            <ForwardRef
+              onClick={[Function]}
+            >
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  username and password
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+           | 
+          <Anchor
+            onClick={[Function]}
+          >
+            <ForwardRef
+              onClick={[Function]}
+            >
+              <StyledComponent
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Link-sc-17j1f2u-0",
+                      "isStatic": false,
+                      "lastClassName": "eiOsHn",
+                      "rules": Array [
+                        "cursor:pointer;color:",
+                        [Function],
+                        ";text-decoration:none;:hover{color:",
+                        "#cfe0e9",
+                        ";}",
+                      ],
+                    },
+                    "displayName": "Link",
+                    "render": [Function],
+                    "styledComponentId": "Link-sc-17j1f2u-0",
+                    "target": "a",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+              >
+                <a
+                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  onClick={[Function]}
+                >
+                  Use enterprise
+                </a>
+              </StyledComponent>
+            </ForwardRef>
+          </Anchor>
+        </p>
       </div>
-      <p
-        className="options"
-      >
-        <strong>
-          Other options:
-        </strong>
-          sign-in using GitHub  
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
-            onClick={[Function]}
-          >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
-              onClick={[Function]}
-            >
-              token
-            </a>
-          </Link>
-        </Anchor>
-         | 
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
-            onClick={[Function]}
-          >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
-              onClick={[Function]}
-            >
-              username and password
-            </a>
-          </Link>
-        </Anchor>
-         | 
-        <Anchor
-          onClick={[Function]}
-        >
-          <Link
-            onClick={[Function]}
-          >
-            <a
-              className="Link-sc-17j1f2u-0 eiOsHn"
-              onClick={[Function]}
-            >
-              Use enterprise
-            </a>
-          </Link>
-        </Anchor>
-      </p>
-    </div>
-  </LoginWrapper>
+    </StyledComponent>
+  </ForwardRef>
 </LogIn>
 `;

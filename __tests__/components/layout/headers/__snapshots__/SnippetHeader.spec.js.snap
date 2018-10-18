@@ -10,248 +10,974 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
     }
   }
 >
-  <SnippetHeaderWrapper>
-    <div
-      className="SnippetHeaderWrapper-sc-1f7cxje-0 bQqraw"
+  <ForwardRef>
+    <StyledComponent
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "SnippetHeaderWrapper-sc-1f7cxje-0",
+            "isStatic": true,
+            "lastClassName": "bQqraw",
+            "rules": Array [
+              "display:flex;align-items:center;width:100%;",
+            ],
+          },
+          "displayName": "SnippetHeaderWrapper",
+          "render": [Function],
+          "styledComponentId": "SnippetHeaderWrapper-sc-1f7cxje-0",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
     >
-      <Title
-        onBlur={[Function]}
-        onFocus={[Function]}
-        onMouseOut={[Function]}
-        onMouseOver={[Function]}
+      <div
+        className="SnippetHeaderWrapper-sc-1f7cxje-0 bQqraw"
       >
-        <div
-          className="Title-sc-1f7cxje-4 htbhqq"
+        <ForwardRef
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
         >
-           
-          <Description>
-            <span
-              className="Description-sc-1f7cxje-5 lgxzSb"
-            />
-          </Description>
-           
-        </div>
-      </Title>
-      <LockIcon
-        color="#ccc"
-        size={22}
-        title="Snippet is private"
-        type="lock"
-      >
-        <Icon
-          className="LockIcon-sc-1f7cxje-8 jKEmBh"
+          <StyledComponent
+            forwardedClass={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "Title-sc-1f7cxje-4",
+                  "isStatic": true,
+                  "lastClassName": "htbhqq",
+                  "rules": Array [
+                    "flex:1;text-align:left;padding:1px 20px 1px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative;&:after{content:\\"\\";width:100px;height:50px;position:absolute;top:3px;right:0;background:-webkit-gradient(linear,left top,right top,color-stop(0%,rgba(255,255,255,0)),color-stop(56%,rgba(255,255,255,1)),color-stop(100%,rgba(255,255,255,1)));background:-webkit-linear-gradient(left,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);}",
+                  ],
+                },
+                "displayName": "Title",
+                "render": [Function],
+                "styledComponentId": "Title-sc-1f7cxje-4",
+                "target": "div",
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+          >
+            <div
+              className="Title-sc-1f7cxje-4 htbhqq"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+            >
+               
+              <ForwardRef>
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Description-sc-1f7cxje-5",
+                        "isStatic": true,
+                        "lastClassName": "lgxzSb",
+                        "rules": Array [
+                          "color:",
+                          "#555",
+                          ";",
+                        ],
+                      },
+                      "displayName": "Description",
+                      "render": [Function],
+                      "styledComponentId": "Description-sc-1f7cxje-5",
+                      "target": "span",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <span
+                    className="Description-sc-1f7cxje-5 lgxzSb"
+                  />
+                </StyledComponent>
+              </ForwardRef>
+               
+            </div>
+          </StyledComponent>
+        </ForwardRef>
+        <ForwardRef
           color="#ccc"
           size={22}
           title="Snippet is private"
           type="lock"
         >
-          <span
-            className="LockIcon-sc-1f7cxje-8 jKEmBh Icon-vk4qna-0 lbtcVi"
+          <StyledComponent
             color="#ccc"
+            forwardedClass={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "LockIcon-sc-1f7cxje-8",
+                  "isStatic": false,
+                  "lastClassName": "dnjmqn",
+                  "rules": Array [
+                    "background-color:",
+                    [Function],
+                    ";display:inline-block;vertical-align:middle;width:",
+                    [Function],
+                    "px;height:",
+                    [Function],
+                    "px;-webkit-mask-image:url('src/icons/",
+                    [Function],
+                    "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                    [Function],
+                    " ",
+                    [Function],
+                    " ",
+                    [Function],
+                    "margin:0 10px 0 0;",
+                  ],
+                },
+                "displayName": "LockIcon",
+                "render": [Function],
+                "styledComponentId": "LockIcon-sc-1f7cxje-8",
+                "target": "span",
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
             size={22}
             title="Snippet is private"
             type="lock"
-          />
-        </Icon>
-      </LockIcon>
-      <div>
-        <UtilityIcon
-          color="#3F84A8"
-          onClick={[Function]}
-          size={22}
-          type="edit"
-        >
-          <Util
-            color="#3F84A8"
-            onClick={[Function]}
           >
             <span
-              className="Util-d02m7m-0 bNkMyq"
+              className="LockIcon-sc-1f7cxje-8 dnjmqn"
+              color="#ccc"
+              size={22}
+              title="Snippet is private"
+              type="lock"
+            />
+          </StyledComponent>
+        </ForwardRef>
+        <div>
+          <UtilityIcon
+            color="#3F84A8"
+            onClick={[Function]}
+            size={22}
+            type="edit"
+          >
+            <ForwardRef
               color="#3F84A8"
               onClick={[Function]}
             >
-              <Icon
+              <StyledComponent
                 color="#3F84A8"
-                size={22}
-                type="edit"
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Util-d02m7m-0",
+                      "isStatic": false,
+                      "lastClassName": "bNkMyq",
+                      "rules": Array [
+                        "border-left:1px solid ",
+                        "#ccc",
+                        ";height:50px;display:inline-block;text-align:center;line-height:50px;color:",
+                        [Function],
+                        ";cursor:pointer;position:relative;background:",
+                        [Function],
+                        ";",
+                        [Function],
+                        " ",
+                        [Function],
+                        " &:hover{background:",
+                        [Function],
+                        ";}div.list{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        ";padding:10px 20px;}ul{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        " li{border-bottom:1px dotted ",
+                        "#ccc",
+                        ";margin:0;white-space:nowrap;text-align:left;> *{padding:5px 20px;display:block;}&:hover{background:",
+                        "#f2f2f2",
+                        ";cursor:pointer;}&:last-child{border:none;}}}",
+                      ],
+                    },
+                    "displayName": "Util",
+                    "render": [Function],
+                    "styledComponentId": "Util-d02m7m-0",
+                    "target": "span",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
               >
                 <span
-                  className="Icon-vk4qna-0 hOwBJj"
+                  className="Util-d02m7m-0 bNkMyq"
                   color="#3F84A8"
-                  size={22}
-                  type="edit"
-                />
-              </Icon>
-               
-            </span>
-          </Util>
-        </UtilityIcon>
-        <UtilityIcon
-          color="tomato"
-          onClick={[Function]}
-          size={22}
-          type="delete"
-        >
-          <Util
+                  onClick={[Function]}
+                >
+                  <ForwardRef
+                    color="#3F84A8"
+                    size={22}
+                    type="edit"
+                  >
+                    <StyledComponent
+                      color="#3F84A8"
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Icon-vk4qna-0",
+                            "isStatic": false,
+                            "lastClassName": "dQcNAQ",
+                            "rules": Array [
+                              "background-color:",
+                              [Function],
+                              ";display:inline-block;vertical-align:middle;width:",
+                              [Function],
+                              "px;height:",
+                              [Function],
+                              "px;-webkit-mask-image:url('src/icons/",
+                              [Function],
+                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                              [Function],
+                              " ",
+                              [Function],
+                              " ",
+                              [Function],
+                            ],
+                          },
+                          "displayName": "Icon",
+                          "render": [Function],
+                          "styledComponentId": "Icon-vk4qna-0",
+                          "target": "span",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      size={22}
+                      type="edit"
+                    >
+                      <span
+                        className="Icon-vk4qna-0 hOwBJj"
+                        color="#3F84A8"
+                        size={22}
+                        type="edit"
+                      />
+                    </StyledComponent>
+                  </ForwardRef>
+                   
+                </span>
+              </StyledComponent>
+            </ForwardRef>
+          </UtilityIcon>
+          <UtilityIcon
             color="tomato"
             onClick={[Function]}
+            size={22}
+            type="delete"
           >
-            <span
-              className="Util-d02m7m-0 cxIEpU"
+            <ForwardRef
               color="tomato"
               onClick={[Function]}
             >
-              <Icon
+              <StyledComponent
                 color="tomato"
-                size={22}
-                type="delete"
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Util-d02m7m-0",
+                      "isStatic": false,
+                      "lastClassName": "bNkMyq",
+                      "rules": Array [
+                        "border-left:1px solid ",
+                        "#ccc",
+                        ";height:50px;display:inline-block;text-align:center;line-height:50px;color:",
+                        [Function],
+                        ";cursor:pointer;position:relative;background:",
+                        [Function],
+                        ";",
+                        [Function],
+                        " ",
+                        [Function],
+                        " &:hover{background:",
+                        [Function],
+                        ";}div.list{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        ";padding:10px 20px;}ul{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        " li{border-bottom:1px dotted ",
+                        "#ccc",
+                        ";margin:0;white-space:nowrap;text-align:left;> *{padding:5px 20px;display:block;}&:hover{background:",
+                        "#f2f2f2",
+                        ";cursor:pointer;}&:last-child{border:none;}}}",
+                      ],
+                    },
+                    "displayName": "Util",
+                    "render": [Function],
+                    "styledComponentId": "Util-d02m7m-0",
+                    "target": "span",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
               >
                 <span
-                  className="Icon-vk4qna-0 fGamGl"
+                  className="Util-d02m7m-0 cxIEpU"
                   color="tomato"
-                  size={22}
-                  type="delete"
-                />
-              </Icon>
-               
-            </span>
-          </Util>
-        </UtilityIcon>
-        <UtilityIcon
-          color="#3F84A8"
-          onClick={[Function]}
-          size={22}
-          text=""
-          type="chat"
-        >
-          <Util
+                  onClick={[Function]}
+                >
+                  <ForwardRef
+                    color="tomato"
+                    size={22}
+                    type="delete"
+                  >
+                    <StyledComponent
+                      color="tomato"
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Icon-vk4qna-0",
+                            "isStatic": false,
+                            "lastClassName": "dQcNAQ",
+                            "rules": Array [
+                              "background-color:",
+                              [Function],
+                              ";display:inline-block;vertical-align:middle;width:",
+                              [Function],
+                              "px;height:",
+                              [Function],
+                              "px;-webkit-mask-image:url('src/icons/",
+                              [Function],
+                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                              [Function],
+                              " ",
+                              [Function],
+                              " ",
+                              [Function],
+                            ],
+                          },
+                          "displayName": "Icon",
+                          "render": [Function],
+                          "styledComponentId": "Icon-vk4qna-0",
+                          "target": "span",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      size={22}
+                      type="delete"
+                    >
+                      <span
+                        className="Icon-vk4qna-0 fGamGl"
+                        color="tomato"
+                        size={22}
+                        type="delete"
+                      />
+                    </StyledComponent>
+                  </ForwardRef>
+                   
+                </span>
+              </StyledComponent>
+            </ForwardRef>
+          </UtilityIcon>
+          <UtilityIcon
             color="#3F84A8"
             onClick={[Function]}
+            size={22}
             text=""
+            type="chat"
           >
-            <span
-              className="Util-d02m7m-0 bNkMyq"
+            <ForwardRef
               color="#3F84A8"
               onClick={[Function]}
+              text=""
             >
-              <Icon
+              <StyledComponent
                 color="#3F84A8"
-                size={22}
-                type="chat"
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Util-d02m7m-0",
+                      "isStatic": false,
+                      "lastClassName": "bNkMyq",
+                      "rules": Array [
+                        "border-left:1px solid ",
+                        "#ccc",
+                        ";height:50px;display:inline-block;text-align:center;line-height:50px;color:",
+                        [Function],
+                        ";cursor:pointer;position:relative;background:",
+                        [Function],
+                        ";",
+                        [Function],
+                        " ",
+                        [Function],
+                        " &:hover{background:",
+                        [Function],
+                        ";}div.list{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        ";padding:10px 20px;}ul{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        " li{border-bottom:1px dotted ",
+                        "#ccc",
+                        ";margin:0;white-space:nowrap;text-align:left;> *{padding:5px 20px;display:block;}&:hover{background:",
+                        "#f2f2f2",
+                        ";cursor:pointer;}&:last-child{border:none;}}}",
+                      ],
+                    },
+                    "displayName": "Util",
+                    "render": [Function],
+                    "styledComponentId": "Util-d02m7m-0",
+                    "target": "span",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+                text=""
               >
                 <span
-                  className="Icon-vk4qna-0 gdKEvu"
+                  className="Util-d02m7m-0 bNkMyq"
                   color="#3F84A8"
-                  size={22}
-                  type="chat"
-                />
-              </Icon>
-               
-            </span>
-          </Util>
-        </UtilityIcon>
-        <UtilityIcon
-          color="#3F84A8"
-          onClick={[Function]}
-          size={22}
-          title="Copy Snippet URL to clipboard"
-          type="copy"
-        >
-          <Util
+                  onClick={[Function]}
+                >
+                  <ForwardRef
+                    color="#3F84A8"
+                    size={22}
+                    type="chat"
+                  >
+                    <StyledComponent
+                      color="#3F84A8"
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Icon-vk4qna-0",
+                            "isStatic": false,
+                            "lastClassName": "dQcNAQ",
+                            "rules": Array [
+                              "background-color:",
+                              [Function],
+                              ";display:inline-block;vertical-align:middle;width:",
+                              [Function],
+                              "px;height:",
+                              [Function],
+                              "px;-webkit-mask-image:url('src/icons/",
+                              [Function],
+                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                              [Function],
+                              " ",
+                              [Function],
+                              " ",
+                              [Function],
+                            ],
+                          },
+                          "displayName": "Icon",
+                          "render": [Function],
+                          "styledComponentId": "Icon-vk4qna-0",
+                          "target": "span",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      size={22}
+                      type="chat"
+                    >
+                      <span
+                        className="Icon-vk4qna-0 gdKEvu"
+                        color="#3F84A8"
+                        size={22}
+                        type="chat"
+                      />
+                    </StyledComponent>
+                  </ForwardRef>
+                   
+                </span>
+              </StyledComponent>
+            </ForwardRef>
+          </UtilityIcon>
+          <UtilityIcon
             color="#3F84A8"
             onClick={[Function]}
+            size={22}
             title="Copy Snippet URL to clipboard"
+            type="copy"
           >
-            <span
-              className="Util-d02m7m-0 bNkMyq"
+            <ForwardRef
               color="#3F84A8"
               onClick={[Function]}
               title="Copy Snippet URL to clipboard"
             >
-              <Icon
+              <StyledComponent
                 color="#3F84A8"
-                size={22}
-                type="copy"
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Util-d02m7m-0",
+                      "isStatic": false,
+                      "lastClassName": "bNkMyq",
+                      "rules": Array [
+                        "border-left:1px solid ",
+                        "#ccc",
+                        ";height:50px;display:inline-block;text-align:center;line-height:50px;color:",
+                        [Function],
+                        ";cursor:pointer;position:relative;background:",
+                        [Function],
+                        ";",
+                        [Function],
+                        " ",
+                        [Function],
+                        " &:hover{background:",
+                        [Function],
+                        ";}div.list{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        ";padding:10px 20px;}ul{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        " li{border-bottom:1px dotted ",
+                        "#ccc",
+                        ";margin:0;white-space:nowrap;text-align:left;> *{padding:5px 20px;display:block;}&:hover{background:",
+                        "#f2f2f2",
+                        ";cursor:pointer;}&:last-child{border:none;}}}",
+                      ],
+                    },
+                    "displayName": "Util",
+                    "render": [Function],
+                    "styledComponentId": "Util-d02m7m-0",
+                    "target": "span",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
+                title="Copy Snippet URL to clipboard"
               >
                 <span
-                  className="Icon-vk4qna-0 leBnxV"
+                  className="Util-d02m7m-0 bNkMyq"
                   color="#3F84A8"
-                  size={22}
-                  type="copy"
-                />
-              </Icon>
-               
-            </span>
-          </Util>
-        </UtilityIcon>
-        <UtilityIcon
-          color="#3F84A8"
-          onClick={[Function]}
-          size={22}
-          type="star-empty"
-        >
-          <Util
+                  onClick={[Function]}
+                  title="Copy Snippet URL to clipboard"
+                >
+                  <ForwardRef
+                    color="#3F84A8"
+                    size={22}
+                    type="copy"
+                  >
+                    <StyledComponent
+                      color="#3F84A8"
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Icon-vk4qna-0",
+                            "isStatic": false,
+                            "lastClassName": "dQcNAQ",
+                            "rules": Array [
+                              "background-color:",
+                              [Function],
+                              ";display:inline-block;vertical-align:middle;width:",
+                              [Function],
+                              "px;height:",
+                              [Function],
+                              "px;-webkit-mask-image:url('src/icons/",
+                              [Function],
+                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                              [Function],
+                              " ",
+                              [Function],
+                              " ",
+                              [Function],
+                            ],
+                          },
+                          "displayName": "Icon",
+                          "render": [Function],
+                          "styledComponentId": "Icon-vk4qna-0",
+                          "target": "span",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      size={22}
+                      type="copy"
+                    >
+                      <span
+                        className="Icon-vk4qna-0 leBnxV"
+                        color="#3F84A8"
+                        size={22}
+                        type="copy"
+                      />
+                    </StyledComponent>
+                  </ForwardRef>
+                   
+                </span>
+              </StyledComponent>
+            </ForwardRef>
+          </UtilityIcon>
+          <UtilityIcon
             color="#3F84A8"
             onClick={[Function]}
+            size={22}
+            type="star-empty"
           >
-            <span
-              className="Util-d02m7m-0 bNkMyq"
+            <ForwardRef
               color="#3F84A8"
               onClick={[Function]}
             >
-              <Icon
+              <StyledComponent
                 color="#3F84A8"
-                size={22}
-                type="star-empty"
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Util-d02m7m-0",
+                      "isStatic": false,
+                      "lastClassName": "bNkMyq",
+                      "rules": Array [
+                        "border-left:1px solid ",
+                        "#ccc",
+                        ";height:50px;display:inline-block;text-align:center;line-height:50px;color:",
+                        [Function],
+                        ";cursor:pointer;position:relative;background:",
+                        [Function],
+                        ";",
+                        [Function],
+                        " ",
+                        [Function],
+                        " &:hover{background:",
+                        [Function],
+                        ";}div.list{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        ";padding:10px 20px;}ul{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        " li{border-bottom:1px dotted ",
+                        "#ccc",
+                        ";margin:0;white-space:nowrap;text-align:left;> *{padding:5px 20px;display:block;}&:hover{background:",
+                        "#f2f2f2",
+                        ";cursor:pointer;}&:last-child{border:none;}}}",
+                      ],
+                    },
+                    "displayName": "Util",
+                    "render": [Function],
+                    "styledComponentId": "Util-d02m7m-0",
+                    "target": "span",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
               >
                 <span
-                  className="Icon-vk4qna-0 hqBocj"
+                  className="Util-d02m7m-0 bNkMyq"
                   color="#3F84A8"
-                  size={22}
-                  type="star-empty"
-                />
-              </Icon>
-               
-            </span>
-          </Util>
-        </UtilityIcon>
-        <UtilityIcon
-          color="#3F84A8"
-          dropdown={true}
-          size={22}
-          type="ellipsis"
-        >
-          <Util
+                  onClick={[Function]}
+                >
+                  <ForwardRef
+                    color="#3F84A8"
+                    size={22}
+                    type="star-empty"
+                  >
+                    <StyledComponent
+                      color="#3F84A8"
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Icon-vk4qna-0",
+                            "isStatic": false,
+                            "lastClassName": "dQcNAQ",
+                            "rules": Array [
+                              "background-color:",
+                              [Function],
+                              ";display:inline-block;vertical-align:middle;width:",
+                              [Function],
+                              "px;height:",
+                              [Function],
+                              "px;-webkit-mask-image:url('src/icons/",
+                              [Function],
+                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                              [Function],
+                              " ",
+                              [Function],
+                              " ",
+                              [Function],
+                            ],
+                          },
+                          "displayName": "Icon",
+                          "render": [Function],
+                          "styledComponentId": "Icon-vk4qna-0",
+                          "target": "span",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      size={22}
+                      type="star-empty"
+                    >
+                      <span
+                        className="Icon-vk4qna-0 hqBocj"
+                        color="#3F84A8"
+                        size={22}
+                        type="star-empty"
+                      />
+                    </StyledComponent>
+                  </ForwardRef>
+                   
+                </span>
+              </StyledComponent>
+            </ForwardRef>
+          </UtilityIcon>
+          <UtilityIcon
             color="#3F84A8"
-            onClick={[Function]}
+            dropdown={true}
+            size={22}
+            type="ellipsis"
           >
-            <span
-              className="Util-d02m7m-0 bNkMyq"
+            <ForwardRef
               color="#3F84A8"
               onClick={[Function]}
             >
-              <Icon
+              <StyledComponent
                 color="#3F84A8"
-                size={22}
-                type="ellipsis"
+                forwardedClass={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": undefined,
+                    "componentStyle": ComponentStyle {
+                      "componentId": "Util-d02m7m-0",
+                      "isStatic": false,
+                      "lastClassName": "bNkMyq",
+                      "rules": Array [
+                        "border-left:1px solid ",
+                        "#ccc",
+                        ";height:50px;display:inline-block;text-align:center;line-height:50px;color:",
+                        [Function],
+                        ";cursor:pointer;position:relative;background:",
+                        [Function],
+                        ";",
+                        [Function],
+                        " ",
+                        [Function],
+                        " &:hover{background:",
+                        [Function],
+                        ";}div.list{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        ";padding:10px 20px;}ul{",
+                        "position:absolute;background:",
+                        "#fff",
+                        ";right:0;top:51px;border:1px solid ",
+                        "#ccc",
+                        ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
+                        "#ccc",
+                        ";z-index:4;overflow:auto;max-height:60vh;color:",
+                        "#3F84A8",
+                        ";cursor:default;",
+                        " li{border-bottom:1px dotted ",
+                        "#ccc",
+                        ";margin:0;white-space:nowrap;text-align:left;> *{padding:5px 20px;display:block;}&:hover{background:",
+                        "#f2f2f2",
+                        ";cursor:pointer;}&:last-child{border:none;}}}",
+                      ],
+                    },
+                    "displayName": "Util",
+                    "render": [Function],
+                    "styledComponentId": "Util-d02m7m-0",
+                    "target": "span",
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                forwardedRef={null}
+                onClick={[Function]}
               >
                 <span
-                  className="Icon-vk4qna-0 dQcNAQ"
+                  className="Util-d02m7m-0 bNkMyq"
                   color="#3F84A8"
-                  size={22}
-                  type="ellipsis"
-                />
-              </Icon>
-               
-            </span>
-          </Util>
-        </UtilityIcon>
+                  onClick={[Function]}
+                >
+                  <ForwardRef
+                    color="#3F84A8"
+                    size={22}
+                    type="ellipsis"
+                  >
+                    <StyledComponent
+                      color="#3F84A8"
+                      forwardedClass={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": undefined,
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Icon-vk4qna-0",
+                            "isStatic": false,
+                            "lastClassName": "dQcNAQ",
+                            "rules": Array [
+                              "background-color:",
+                              [Function],
+                              ";display:inline-block;vertical-align:middle;width:",
+                              [Function],
+                              "px;height:",
+                              [Function],
+                              "px;-webkit-mask-image:url('src/icons/",
+                              [Function],
+                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                              [Function],
+                              " ",
+                              [Function],
+                              " ",
+                              [Function],
+                            ],
+                          },
+                          "displayName": "Icon",
+                          "render": [Function],
+                          "styledComponentId": "Icon-vk4qna-0",
+                          "target": "span",
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      size={22}
+                      type="ellipsis"
+                    >
+                      <span
+                        className="Icon-vk4qna-0 dQcNAQ"
+                        color="#3F84A8"
+                        size={22}
+                        type="ellipsis"
+                      />
+                    </StyledComponent>
+                  </ForwardRef>
+                   
+                </span>
+              </StyledComponent>
+            </ForwardRef>
+          </UtilityIcon>
+        </div>
       </div>
-    </div>
-  </SnippetHeaderWrapper>
+    </StyledComponent>
+  </ForwardRef>
 </SnippetHeader>
 `;

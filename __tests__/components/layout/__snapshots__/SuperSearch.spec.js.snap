@@ -9,82 +9,281 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
   snippets={Object {}}
   toggleSuperSesrch={[MockFunction]}
 >
-  <SuperSearchWrapper>
-    <div
-      className="SuperSearchWrapper-sc-1mnove5-0 bAwZkz"
+  <ForwardRef>
+    <StyledComponent
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "SuperSearchWrapper-sc-1mnove5-0",
+            "isStatic": true,
+            "lastClassName": "bAwZkz",
+            "rules": Array [
+              "position:absolute;display:flex;top:0;left:0;height:100vh;width:100vw;flex-direction:column;z-index:99;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;",
+            ],
+          },
+          "displayName": "SuperSearchWrapper",
+          "render": [Function],
+          "styledComponentId": "SuperSearchWrapper-sc-1mnove5-0",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
     >
-      <SearchWrapper>
-        <div
-          className="SearchWrapper-sc-1mnove5-1 ijKtSQ"
-        >
-          <SearchBar>
+      <div
+        className="SuperSearchWrapper-sc-1mnove5-0 bAwZkz"
+      >
+        <ForwardRef>
+          <StyledComponent
+            forwardedClass={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "SearchWrapper-sc-1mnove5-1",
+                  "isStatic": true,
+                  "lastClassName": "ijKtSQ",
+                  "rules": Array [
+                    "width:700px;position:absolute;top:120px;",
+                  ],
+                },
+                "displayName": "SearchWrapper",
+                "render": [Function],
+                "styledComponentId": "SearchWrapper-sc-1mnove5-1",
+                "target": "div",
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
             <div
-              className="SearchBar-sc-1mnove5-2 dllRVk"
+              className="SearchWrapper-sc-1mnove5-1 ijKtSQ"
             >
-              <StyledLookingGlass
-                color="#3F84A8"
-                size={32}
-                type="search"
-              >
-                <Icon
-                  className="StyledLookingGlass-sc-1mnove5-3 kqOEtv"
-                  color="#3F84A8"
-                  size={32}
-                  type="search"
+              <ForwardRef>
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "SearchBar-sc-1mnove5-2",
+                        "isStatic": true,
+                        "lastClassName": "dllRVk",
+                        "rules": Array [
+                          "display:flex;align-items:center;margin:0 -18px 0 -30px;",
+                        ],
+                      },
+                      "displayName": "SearchBar",
+                      "render": [Function],
+                      "styledComponentId": "SearchBar-sc-1mnove5-2",
+                      "target": "div",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
                 >
-                  <span
-                    className="StyledLookingGlass-sc-1mnove5-3 kqOEtv Icon-vk4qna-0 jNFXhg"
-                    color="#3F84A8"
-                    size={32}
-                    type="search"
-                  />
-                </Icon>
-              </StyledLookingGlass>
-              <StyledInput
-                autoFocus={true}
-                className="mousetrap"
-                onChange={[Function]}
-                placeholder="Search"
-                type="search"
-              >
-                <Input
-                  autoFocus={true}
-                  className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
-                  onChange={[Function]}
-                  placeholder="Search"
-                  type="search"
-                >
-                  <StyledInput
-                    autoFocus={true}
-                    className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
-                    disabled={false}
-                    onChange={[Function]}
-                    placeholder="Search"
-                    title=""
-                    type="search"
+                  <div
+                    className="SearchBar-sc-1mnove5-2 dllRVk"
                   >
-                    <input
+                    <ForwardRef
+                      color="#3F84A8"
+                      size={32}
+                      type="search"
+                    >
+                      <StyledComponent
+                        color="#3F84A8"
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "StyledLookingGlass-sc-1mnove5-3",
+                              "isStatic": false,
+                              "lastClassName": "fInTZx",
+                              "rules": Array [
+                                "background-color:",
+                                [Function],
+                                ";display:inline-block;vertical-align:middle;width:",
+                                [Function],
+                                "px;height:",
+                                [Function],
+                                "px;-webkit-mask-image:url('src/icons/",
+                                [Function],
+                                "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                                [Function],
+                                " ",
+                                [Function],
+                                " ",
+                                [Function],
+                                "left:55px;position:relative;",
+                              ],
+                            },
+                            "displayName": "StyledLookingGlass",
+                            "render": [Function],
+                            "styledComponentId": "StyledLookingGlass-sc-1mnove5-3",
+                            "target": "span",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                        size={32}
+                        type="search"
+                      >
+                        <span
+                          className="StyledLookingGlass-sc-1mnove5-3 fInTZx"
+                          color="#3F84A8"
+                          size={32}
+                          type="search"
+                        />
+                      </StyledComponent>
+                    </ForwardRef>
+                    <ForwardRef
                       autoFocus={true}
-                      className="mousetrap StyledInput-sc-1mnove5-8 bxYJks StyledInput-sc-86zjwb-0 djdkls"
-                      disabled={false}
+                      className="mousetrap"
                       onChange={[Function]}
                       placeholder="Search"
-                      title=""
                       type="search"
-                    />
-                  </StyledInput>
-                </Input>
-              </StyledInput>
+                    >
+                      <StyledComponent
+                        autoFocus={true}
+                        className="mousetrap"
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "StyledInput-sc-1mnove5-8",
+                              "isStatic": true,
+                              "lastClassName": "bxYJks",
+                              "rules": Array [
+                                "padding:30px 20px;box-shadow:0 0 150px #fff;border-radius:3px;text-indent:50px;width:100%;",
+                              ],
+                            },
+                            "displayName": "StyledInput",
+                            "render": [Function],
+                            "styledComponentId": "StyledInput-sc-1mnove5-8",
+                            "target": [Function],
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                            Symbol(Symbol.hasInstance): [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                        onChange={[Function]}
+                        placeholder="Search"
+                        type="search"
+                      >
+                        <Input
+                          autoFocus={true}
+                          className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
+                          onChange={[Function]}
+                          placeholder="Search"
+                          type="search"
+                        >
+                          <ForwardRef
+                            autoFocus={true}
+                            className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
+                            disabled={false}
+                            onChange={[Function]}
+                            placeholder="Search"
+                            title=""
+                            type="search"
+                          >
+                            <StyledComponent
+                              autoFocus={true}
+                              className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
+                              disabled={false}
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "StyledInput-sc-86zjwb-0",
+                                    "isStatic": false,
+                                    "lastClassName": "djdkls",
+                                    "rules": Array [
+                                      "border:none;border-radius:0;height:30px;color:",
+                                      [Function],
+                                      ";border-bottom:1px solid ",
+                                      [Function],
+                                      ";background:",
+                                      [Function],
+                                      ";&:focus{outline:none;}::placeholder{color:",
+                                      [Function],
+                                      ";opacity:1;}",
+                                    ],
+                                  },
+                                  "displayName": "StyledInput",
+                                  "render": [Function],
+                                  "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                  "target": "input",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                              onChange={[Function]}
+                              placeholder="Search"
+                              title=""
+                              type="search"
+                            >
+                              <input
+                                autoFocus={true}
+                                className="mousetrap StyledInput-sc-1mnove5-8 bxYJks StyledInput-sc-86zjwb-0 djdkls"
+                                disabled={false}
+                                onChange={[Function]}
+                                placeholder="Search"
+                                title=""
+                                type="search"
+                              />
+                            </StyledComponent>
+                          </ForwardRef>
+                        </Input>
+                      </StyledComponent>
+                    </ForwardRef>
+                  </div>
+                </StyledComponent>
+              </ForwardRef>
+              <ForwardRef>
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "SnippetResults-sc-1mnove5-4",
+                        "isStatic": true,
+                        "lastClassName": "eUdsVx",
+                        "rules": Array [
+                          "background:transparent;align-items:center;flex-direction:column;width:638px;padding:0 30px;margin:0 0 0 10px;height:60vh;overflow:auto;display:block;",
+                        ],
+                      },
+                      "displayName": "SnippetResults",
+                      "render": [Function],
+                      "styledComponentId": "SnippetResults-sc-1mnove5-4",
+                      "target": "div",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <div
+                    className="SnippetResults-sc-1mnove5-4 eUdsVx"
+                  />
+                </StyledComponent>
+              </ForwardRef>
             </div>
-          </SearchBar>
-          <SnippetResults>
-            <div
-              className="SnippetResults-sc-1mnove5-4 eUdsVx"
-            />
-          </SnippetResults>
-        </div>
-      </SearchWrapper>
-    </div>
-  </SuperSearchWrapper>
+          </StyledComponent>
+        </ForwardRef>
+      </div>
+    </StyledComponent>
+  </ForwardRef>
 </SuperSearch>
 `;

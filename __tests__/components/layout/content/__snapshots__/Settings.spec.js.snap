@@ -2,734 +2,2432 @@
 
 exports[`COMPONENTS - <Settings> render Settings 1`] = `
 <Settings>
-  <Wrapper>
-    <div
-      className="Wrapper-sc-5rerlh-0 eldpJs"
+  <ForwardRef>
+    <StyledComponent
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "Wrapper-sc-5rerlh-0",
+            "isStatic": true,
+            "lastClassName": "eldpJs",
+            "rules": Array [
+              "display:flex;flex-direction:column;color:#555;height:100%;justify-content:flex-start;align-items:baseline;text-align:left;h2:first-of-type{margin-top:0;}details{border:1px solid ",
+              "#3F84A8",
+              ";padding:20px;margin:0 0 20px;border-radius:3px;display:block;width:calc(100vw - ",
+              "430",
+              "px);> div{margin:20px;}summary{color:",
+              "#3F84A8",
+              ";outline:none;cursor:pointer;&::-webkit-details-marker{color:",
+              "#3F84A8",
+              ";}}}}",
+            ],
+          },
+          "displayName": "Wrapper",
+          "render": [Function],
+          "styledComponentId": "Wrapper-sc-5rerlh-0",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
     >
-      <h2>
-        Settings
-      </h2>
-      <details>
-        <summary>
-          General
-        </summary>
-        <BaseSettings>
-          <div>
-            <h4>
-              Color settings:
-            </h4>
-            <Section>
-              <div
-                className="Section-sc-1aqavpp-1 iSqPSG"
-              >
-                <Field
-                  height={55}
+      <div
+        className="Wrapper-sc-5rerlh-0 eldpJs"
+      >
+        <h2>
+          Settings
+        </h2>
+        <details>
+          <summary>
+            General
+          </summary>
+          <BaseSettings>
+            <div>
+              <h4>
+                Color settings:
+              </h4>
+              <ForwardRef>
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Section-sc-1aqavpp-1",
+                        "isStatic": true,
+                        "lastClassName": "iSqPSG",
+                        "rules": Array [
+                          "width:45%;",
+                        ],
+                      },
+                      "displayName": "Section",
+                      "render": [Function],
+                      "styledComponentId": "Section-sc-1aqavpp-1",
+                      "target": "div",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
                 >
                   <div
-                    className="Field-sc-1aqavpp-3 fpxkLm"
-                    height={55}
+                    className="Section-sc-1aqavpp-1 iSqPSG"
                   >
-                    <Label>
-                      <div
-                        className="Label-sc-1aqavpp-0 bucgZR"
+                    <ForwardRef
+                      height={55}
+                    >
+                      <StyledComponent
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "Field-sc-1aqavpp-3",
+                              "isStatic": false,
+                              "lastClassName": "dujXRU",
+                              "rules": Array [
+                                "height:",
+                                [Function],
+                                "px;",
+                              ],
+                            },
+                            "displayName": "Field",
+                            "render": [Function],
+                            "styledComponentId": "Field-sc-1aqavpp-3",
+                            "target": "div",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                        height={55}
                       >
-                        <span>
-                          Base color:
-                        </span>
-                        <InputColor
-                          color="#3F84A8"
-                          onChange={[Function]}
+                        <div
+                          className="Field-sc-1aqavpp-3 fpxkLm"
+                          height={55}
                         >
-                          <Color
-                            defaultValue="#3F84A8"
-                            onChange={[Function]}
-                            type="color"
-                          >
-                            <input
-                              className="Color-xc03ef-0 ejAxyB"
-                              defaultValue="#3F84A8"
-                              onChange={[Function]}
-                              type="color"
-                            />
-                          </Color>
-                        </InputColor>
-                      </div>
-                    </Label>
-                    <Small>
-                      <small
-                        className="Small-sc-1aqavpp-2 kXtBqt"
-                      >
-                        <strong>
-                          NOTE!
-                        </strong>
-                         color change need app reload
-                      </small>
-                    </Small>
-                  </div>
-                </Field>
-                <Field>
-                  <div
-                    className="Field-sc-1aqavpp-3 dujXRU"
-                  >
-                    <Label>
-                      <div
-                        className="Label-sc-1aqavpp-0 bucgZR"
-                      >
-                        <span>
-                          Show API rate limit on header:
-                        </span>
-                        <Checkbox
-                          checked={true}
-                          onChange={[Function]}
-                        >
-                          <Box
-                            defaultChecked={true}
-                            onChange={[Function]}
-                            type="checkbox"
-                          >
-                            <input
-                              className="Box-sc-1bw5uxh-0 kcvKxi"
-                              defaultChecked={true}
-                              onChange={[Function]}
-                              type="checkbox"
-                            />
-                          </Box>
-                        </Checkbox>
-                      </div>
-                    </Label>
-                  </div>
-                </Field>
-              </div>
-            </Section>
-          </div>
-        </BaseSettings>
-      </details>
-      <details>
-        <summary>
-          Snippets
-        </summary>
-        <SnippetsSettings>
-          <div>
-            <h4>
-              Snippets settings:
-            </h4>
-            <Section>
-              <div
-                className="Section-sc-1u2hxrp-3 ghjoVY"
-              >
-                <Field>
-                  <div
-                    className="Field-sc-1u2hxrp-1 dEDvyZ"
-                  >
-                    <Label>
-                      <div
-                        className="Label-sc-1u2hxrp-2 kyxctf"
-                      >
-                        <span>
-                          Snippet cache (seconds):
-                        </span>
-                        <StyledInput
-                          onChange={[Function]}
-                          title="Keep snippet in cache for N seconds and do not call the server"
-                          type="number"
-                          value={100}
-                        >
-                          <Input
-                            className="StyledInput-sc-1u2hxrp-0 jhtgJ"
-                            onChange={[Function]}
-                            title="Keep snippet in cache for N seconds and do not call the server"
-                            type="number"
-                            value={100}
-                          >
-                            <StyledInput
-                              className="StyledInput-sc-1u2hxrp-0 jhtgJ"
-                              defaultValue={100}
-                              disabled={false}
-                              onChange={[Function]}
-                              title="Keep snippet in cache for N seconds and do not call the server"
-                              type="number"
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Label-sc-1aqavpp-0",
+                                    "isStatic": true,
+                                    "lastClassName": "bucgZR",
+                                    "rules": Array [
+                                      "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                    ],
+                                  },
+                                  "displayName": "Label",
+                                  "render": [Function],
+                                  "styledComponentId": "Label-sc-1aqavpp-0",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
                             >
-                              <input
-                                className="StyledInput-sc-1u2hxrp-0 jhtgJ StyledInput-sc-86zjwb-0 djdkls"
-                                defaultValue={100}
-                                disabled={false}
-                                onChange={[Function]}
-                                title="Keep snippet in cache for N seconds and do not call the server"
-                                type="number"
-                              />
-                            </StyledInput>
-                          </Input>
-                        </StyledInput>
-                      </div>
-                    </Label>
-                  </div>
-                </Field>
-                <Field>
-                  <div
-                    className="Field-sc-1u2hxrp-1 dEDvyZ"
-                  >
-                    <Label>
-                      <div
-                        className="Label-sc-1u2hxrp-2 kyxctf"
-                      >
-                        <span>
-                          Snippets polling (seconds):
-                        </span>
-                        <StyledInput
-                          max={10000}
-                          min={1}
-                          onChange={[Function]}
-                          title="Polling the server for new snippets every N seconds"
-                          type="number"
-                          value={300}
-                        >
-                          <Input
-                            className="StyledInput-sc-1u2hxrp-0 jhtgJ"
-                            max={10000}
-                            min={1}
-                            onChange={[Function]}
-                            title="Polling the server for new snippets every N seconds"
-                            type="number"
-                            value={300}
-                          >
-                            <StyledInput
-                              className="StyledInput-sc-1u2hxrp-0 jhtgJ"
-                              defaultValue={300}
-                              disabled={false}
-                              max={10000}
-                              min={1}
-                              onChange={[Function]}
-                              title="Polling the server for new snippets every N seconds"
-                              type="number"
-                            >
-                              <input
-                                className="StyledInput-sc-1u2hxrp-0 jhtgJ StyledInput-sc-86zjwb-0 djdkls"
-                                defaultValue={300}
-                                disabled={false}
-                                max={10000}
-                                min={1}
-                                onChange={[Function]}
-                                title="Polling the server for new snippets every N seconds"
-                                type="number"
-                              />
-                            </StyledInput>
-                          </Input>
-                        </StyledInput>
-                      </div>
-                    </Label>
-                  </div>
-                </Field>
-                <Field>
-                  <div
-                    className="Field-sc-1u2hxrp-1 dEDvyZ"
-                  >
-                    <Label>
-                      <div
-                        className="Label-sc-1u2hxrp-2 kyxctf"
-                      >
-                        <span>
-                          Default new snippet is public:
-                        </span>
-                        <Checkbox
-                          checked={false}
-                          onChange={[Function]}
-                        >
-                          <Box
-                            defaultChecked={false}
-                            onChange={[Function]}
-                            type="checkbox"
-                          >
-                            <input
-                              className="Box-sc-1bw5uxh-0 kcvKxi"
-                              defaultChecked={false}
-                              onChange={[Function]}
-                              type="checkbox"
-                            />
-                          </Box>
-                        </Checkbox>
-                      </div>
-                    </Label>
-                  </div>
-                </Field>
-              </div>
-            </Section>
-          </div>
-        </SnippetsSettings>
-      </details>
-      <details>
-        <summary>
-          Editor
-        </summary>
-        <EditorSettings>
-          <div>
-            <h4>
-              Editor settings:
-            </h4>
-            <Wrapper>
-              <div
-                className="Wrapper-sc-3i0r91-0 jjrWCY"
-              >
-                <Section>
-                  <div
-                    className="Section-sc-3i0r91-2 gqkeLg"
-                  >
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Theme:
-                            </span>
-                            <StyledISelect
-                              onChange={[Function]}
-                              value="vs"
-                            >
-                              <Select
-                                className="StyledISelect-sc-3i0r91-5 bnSweD"
-                                onChange={[Function]}
-                                value="vs"
+                              <div
+                                className="Label-sc-1aqavpp-0 bucgZR"
                               >
-                                <SelectInput
-                                  className="StyledISelect-sc-3i0r91-5 bnSweD"
-                                  defaultValue="vs"
+                                <span>
+                                  Base color:
+                                </span>
+                                <InputColor
+                                  color="#3F84A8"
                                   onChange={[Function]}
                                 >
-                                  <select
-                                    className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gHNoVj"
-                                    defaultValue="vs"
+                                  <ForwardRef
+                                    defaultValue="#3F84A8"
                                     onChange={[Function]}
+                                    type="color"
                                   >
-                                    <option
-                                      value="vs"
+                                    <StyledComponent
+                                      defaultValue="#3F84A8"
+                                      forwardedClass={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": undefined,
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "Color-xc03ef-0",
+                                            "isStatic": true,
+                                            "lastClassName": "ejAxyB",
+                                            "rules": Array [
+                                              "width:20px;height:20px;border:none;border-radius:40px;background:none;vertical-align:middle;margin:0 -3px 2px 5px;::-webkit-color-swatch-wrapper{padding:0;}::-webkit-color-swatch{border:none;border-radius:40px;}",
+                                            ],
+                                          },
+                                          "displayName": "Color",
+                                          "render": [Function],
+                                          "styledComponentId": "Color-xc03ef-0",
+                                          "target": "input",
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                      onChange={[Function]}
+                                      type="color"
                                     >
-                                      vs light
-                                    </option>
-                                    <option
-                                      value="vs-dark"
-                                    >
-                                      vs dark
-                                    </option>
-                                    <option
-                                      value="hc-black"
-                                    >
-                                      hc dark
-                                    </option>
-                                  </select>
-                                </SelectInput>
-                              </Select>
-                            </StyledISelect>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Minimap:
-                            </span>
-                            <Checkbox
-                              checked={false}
-                              onChange={[Function]}
+                                      <input
+                                        className="Color-xc03ef-0 ejAxyB"
+                                        defaultValue="#3F84A8"
+                                        onChange={[Function]}
+                                        type="color"
+                                      />
+                                    </StyledComponent>
+                                  </ForwardRef>
+                                </InputColor>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Small-sc-1aqavpp-2",
+                                    "isStatic": true,
+                                    "lastClassName": "kXtBqt",
+                                    "rules": Array [
+                                      "font-size:70%;color:",
+                                      "#3F84A8",
+                                      ";",
+                                    ],
+                                  },
+                                  "displayName": "Small",
+                                  "render": [Function],
+                                  "styledComponentId": "Small-sc-1aqavpp-2",
+                                  "target": "small",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
                             >
-                              <Box
-                                defaultChecked={false}
-                                onChange={[Function]}
-                                type="checkbox"
+                              <small
+                                className="Small-sc-1aqavpp-2 kXtBqt"
                               >
-                                <input
-                                  className="Box-sc-1bw5uxh-0 kcvKxi"
-                                  defaultChecked={false}
-                                  onChange={[Function]}
-                                  type="checkbox"
-                                />
-                              </Box>
-                            </Checkbox>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
+                                <strong>
+                                  NOTE!
+                                </strong>
+                                 color change need app reload
+                              </small>
+                            </StyledComponent>
+                          </ForwardRef>
+                        </div>
+                      </StyledComponent>
+                    </ForwardRef>
+                    <ForwardRef>
+                      <StyledComponent
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "Field-sc-1aqavpp-3",
+                              "isStatic": false,
+                              "lastClassName": "dujXRU",
+                              "rules": Array [
+                                "height:",
+                                [Function],
+                                "px;",
+                              ],
+                            },
+                            "displayName": "Field",
+                            "render": [Function],
+                            "styledComponentId": "Field-sc-1aqavpp-3",
+                            "target": "div",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
                       >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Line Numbers:
-                            </span>
-                            <Checkbox
-                              checked={true}
-                              onChange={[Function]}
+                        <div
+                          className="Field-sc-1aqavpp-3 dujXRU"
+                        >
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Label-sc-1aqavpp-0",
+                                    "isStatic": true,
+                                    "lastClassName": "bucgZR",
+                                    "rules": Array [
+                                      "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                    ],
+                                  },
+                                  "displayName": "Label",
+                                  "render": [Function],
+                                  "styledComponentId": "Label-sc-1aqavpp-0",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
                             >
-                              <Box
-                                defaultChecked={true}
-                                onChange={[Function]}
-                                type="checkbox"
+                              <div
+                                className="Label-sc-1aqavpp-0 bucgZR"
                               >
-                                <input
-                                  className="Box-sc-1bw5uxh-0 kcvKxi"
-                                  defaultChecked={true}
-                                  onChange={[Function]}
-                                  type="checkbox"
-                                />
-                              </Box>
-                            </Checkbox>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Format On Paste:
-                            </span>
-                            <Checkbox
-                              checked={true}
-                              onChange={[Function]}
-                            >
-                              <Box
-                                defaultChecked={true}
-                                onChange={[Function]}
-                                type="checkbox"
-                              >
-                                <input
-                                  className="Box-sc-1bw5uxh-0 kcvKxi"
-                                  defaultChecked={true}
-                                  onChange={[Function]}
-                                  type="checkbox"
-                                />
-                              </Box>
-                            </Checkbox>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Font Family:
-                            </span>
-                            <StyledInput
-                              onChange={[Function]}
-                              type="text"
-                              value="monospace"
-                            >
-                              <Input
-                                className="StyledInput-sc-3i0r91-4 lIHVh"
-                                onChange={[Function]}
-                                type="text"
-                                value="monospace"
-                              >
-                                <StyledInput
-                                  className="StyledInput-sc-3i0r91-4 lIHVh"
-                                  defaultValue="monospace"
-                                  disabled={false}
-                                  onChange={[Function]}
-                                  title=""
-                                  type="text"
-                                >
-                                  <input
-                                    className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
-                                    defaultValue="monospace"
-                                    disabled={false}
-                                    onChange={[Function]}
-                                    title=""
-                                    type="text"
-                                  />
-                                </StyledInput>
-                              </Input>
-                            </StyledInput>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                  </div>
-                </Section>
-                <Section>
-                  <div
-                    className="Section-sc-3i0r91-2 gqkeLg"
-                  >
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Font Size:
-                            </span>
-                            <StyledInput
-                              onChange={[Function]}
-                              type="number"
-                              value={12}
-                            >
-                              <Input
-                                className="StyledInput-sc-3i0r91-4 lIHVh"
-                                onChange={[Function]}
-                                type="number"
-                                value={12}
-                              >
-                                <StyledInput
-                                  className="StyledInput-sc-3i0r91-4 lIHVh"
-                                  defaultValue={12}
-                                  disabled={false}
-                                  onChange={[Function]}
-                                  title=""
-                                  type="number"
-                                >
-                                  <input
-                                    className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
-                                    defaultValue={12}
-                                    disabled={false}
-                                    onChange={[Function]}
-                                    title=""
-                                    type="number"
-                                  />
-                                </StyledInput>
-                              </Input>
-                            </StyledInput>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Line height:
-                            </span>
-                            <StyledInput
-                              onChange={[Function]}
-                              type="number"
-                              value={21}
-                            >
-                              <Input
-                                className="StyledInput-sc-3i0r91-4 lIHVh"
-                                onChange={[Function]}
-                                type="number"
-                                value={21}
-                              >
-                                <StyledInput
-                                  className="StyledInput-sc-3i0r91-4 lIHVh"
-                                  defaultValue={21}
-                                  disabled={false}
-                                  onChange={[Function]}
-                                  title=""
-                                  type="number"
-                                >
-                                  <input
-                                    className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
-                                    defaultValue={21}
-                                    disabled={false}
-                                    onChange={[Function]}
-                                    title=""
-                                    type="number"
-                                  />
-                                </StyledInput>
-                              </Input>
-                            </StyledInput>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Font Ligatures:
-                            </span>
-                            <Checkbox
-                              checked={false}
-                              onChange={[Function]}
-                            >
-                              <Box
-                                defaultChecked={false}
-                                onChange={[Function]}
-                                type="checkbox"
-                              >
-                                <input
-                                  className="Box-sc-1bw5uxh-0 kcvKxi"
-                                  defaultChecked={false}
-                                  onChange={[Function]}
-                                  type="checkbox"
-                                />
-                              </Box>
-                            </Checkbox>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Code lens:
-                            </span>
-                            <Checkbox
-                              checked={false}
-                              onChange={[Function]}
-                            >
-                              <Box
-                                defaultChecked={false}
-                                onChange={[Function]}
-                                type="checkbox"
-                              >
-                                <input
-                                  className="Box-sc-1bw5uxh-0 kcvKxi"
-                                  defaultChecked={false}
-                                  onChange={[Function]}
-                                  type="checkbox"
-                                />
-                              </Box>
-                            </Checkbox>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Cursor Blinking:
-                            </span>
-                            <StyledISelect
-                              onChange={[Function]}
-                              value="blink"
-                            >
-                              <Select
-                                className="StyledISelect-sc-3i0r91-5 bnSweD"
-                                onChange={[Function]}
-                                value="blink"
-                              >
-                                <SelectInput
-                                  className="StyledISelect-sc-3i0r91-5 bnSweD"
-                                  defaultValue="blink"
+                                <span>
+                                  Show API rate limit on header:
+                                </span>
+                                <Checkbox
+                                  checked={true}
                                   onChange={[Function]}
                                 >
-                                  <select
-                                    className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gHNoVj"
-                                    defaultValue="blink"
+                                  <ForwardRef
+                                    defaultChecked={true}
                                     onChange={[Function]}
+                                    type="checkbox"
                                   >
-                                    <option
-                                      value="blink"
+                                    <StyledComponent
+                                      defaultChecked={true}
+                                      forwardedClass={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": undefined,
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "Box-sc-1bw5uxh-0",
+                                            "isStatic": true,
+                                            "lastClassName": "kcvKxi",
+                                            "rules": Array [
+                                              "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                              "#3F84A8",
+                                              ";background:#fff;}:checked:after{content:'\\\\2714';color:",
+                                              "#3F84A8",
+                                              ";}",
+                                            ],
+                                          },
+                                          "displayName": "Box",
+                                          "render": [Function],
+                                          "styledComponentId": "Box-sc-1bw5uxh-0",
+                                          "target": "input",
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                      onChange={[Function]}
+                                      type="checkbox"
                                     >
-                                      blink
-                                    </option>
-                                    <option
-                                      value="smooth"
-                                    >
-                                      smooth
-                                    </option>
-                                    <option
-                                      value="phase"
-                                    >
-                                      phase
-                                    </option>
-                                    <option
-                                      value="expand"
-                                    >
-                                      expand
-                                    </option>
-                                    <option
-                                      value="solid"
-                                    >
-                                      solid
-                                    </option>
-                                  </select>
-                                </SelectInput>
-                              </Select>
-                            </StyledISelect>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
-                    <Field>
-                      <div
-                        className="Field-sc-3i0r91-3 fjKIlx"
-                      >
-                        <Label>
-                          <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
-                          >
-                            <span>
-                              Select On Line Numbers:
-                            </span>
-                            <Checkbox
-                              checked={false}
-                              onChange={[Function]}
-                            >
-                              <Box
-                                defaultChecked={false}
-                                onChange={[Function]}
-                                type="checkbox"
-                              >
-                                <input
-                                  className="Box-sc-1bw5uxh-0 kcvKxi"
-                                  defaultChecked={false}
-                                  onChange={[Function]}
-                                  type="checkbox"
-                                />
-                              </Box>
-                            </Checkbox>
-                          </div>
-                        </Label>
-                      </div>
-                    </Field>
+                                      <input
+                                        className="Box-sc-1bw5uxh-0 kcvKxi"
+                                        defaultChecked={true}
+                                        onChange={[Function]}
+                                        type="checkbox"
+                                      />
+                                    </StyledComponent>
+                                  </ForwardRef>
+                                </Checkbox>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                        </div>
+                      </StyledComponent>
+                    </ForwardRef>
                   </div>
-                </Section>
-              </div>
-            </Wrapper>
-          </div>
-        </EditorSettings>
-      </details>
-    </div>
-  </Wrapper>
+                </StyledComponent>
+              </ForwardRef>
+            </div>
+          </BaseSettings>
+        </details>
+        <details>
+          <summary>
+            Snippets
+          </summary>
+          <SnippetsSettings>
+            <div>
+              <h4>
+                Snippets settings:
+              </h4>
+              <ForwardRef>
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Section-sc-1u2hxrp-3",
+                        "isStatic": true,
+                        "lastClassName": "ghjoVY",
+                        "rules": Array [
+                          "width:45%;",
+                        ],
+                      },
+                      "displayName": "Section",
+                      "render": [Function],
+                      "styledComponentId": "Section-sc-1u2hxrp-3",
+                      "target": "div",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <div
+                    className="Section-sc-1u2hxrp-3 ghjoVY"
+                  >
+                    <ForwardRef>
+                      <StyledComponent
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "Field-sc-1u2hxrp-1",
+                              "isStatic": true,
+                              "lastClassName": "dEDvyZ",
+                              "rules": Array [
+                                "height:35px;",
+                              ],
+                            },
+                            "displayName": "Field",
+                            "render": [Function],
+                            "styledComponentId": "Field-sc-1u2hxrp-1",
+                            "target": "div",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                      >
+                        <div
+                          className="Field-sc-1u2hxrp-1 dEDvyZ"
+                        >
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Label-sc-1u2hxrp-2",
+                                    "isStatic": true,
+                                    "lastClassName": "kyxctf",
+                                    "rules": Array [
+                                      "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                    ],
+                                  },
+                                  "displayName": "Label",
+                                  "render": [Function],
+                                  "styledComponentId": "Label-sc-1u2hxrp-2",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Label-sc-1u2hxrp-2 kyxctf"
+                              >
+                                <span>
+                                  Snippet cache (seconds):
+                                </span>
+                                <ForwardRef
+                                  onChange={[Function]}
+                                  title="Keep snippet in cache for N seconds and do not call the server"
+                                  type="number"
+                                  value={100}
+                                >
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "StyledInput-sc-1u2hxrp-0",
+                                          "isStatic": true,
+                                          "lastClassName": "jhtgJ",
+                                          "rules": Array [
+                                            "padding:0 5px;width:148px;",
+                                          ],
+                                        },
+                                        "displayName": "StyledInput",
+                                        "render": [Function],
+                                        "styledComponentId": "StyledInput-sc-1u2hxrp-0",
+                                        "target": [Function],
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                        Symbol(Symbol.hasInstance): [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                    onChange={[Function]}
+                                    title="Keep snippet in cache for N seconds and do not call the server"
+                                    type="number"
+                                    value={100}
+                                  >
+                                    <Input
+                                      className="StyledInput-sc-1u2hxrp-0 jhtgJ"
+                                      onChange={[Function]}
+                                      title="Keep snippet in cache for N seconds and do not call the server"
+                                      type="number"
+                                      value={100}
+                                    >
+                                      <ForwardRef
+                                        className="StyledInput-sc-1u2hxrp-0 jhtgJ"
+                                        defaultValue={100}
+                                        disabled={false}
+                                        onChange={[Function]}
+                                        title="Keep snippet in cache for N seconds and do not call the server"
+                                        type="number"
+                                      >
+                                        <StyledComponent
+                                          className="StyledInput-sc-1u2hxrp-0 jhtgJ"
+                                          defaultValue={100}
+                                          disabled={false}
+                                          forwardedClass={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": undefined,
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "StyledInput-sc-86zjwb-0",
+                                                "isStatic": false,
+                                                "lastClassName": "djdkls",
+                                                "rules": Array [
+                                                  "border:none;border-radius:0;height:30px;color:",
+                                                  [Function],
+                                                  ";border-bottom:1px solid ",
+                                                  [Function],
+                                                  ";background:",
+                                                  [Function],
+                                                  ";&:focus{outline:none;}::placeholder{color:",
+                                                  [Function],
+                                                  ";opacity:1;}",
+                                                ],
+                                              },
+                                              "displayName": "StyledInput",
+                                              "render": [Function],
+                                              "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                              "target": "input",
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                            }
+                                          }
+                                          forwardedRef={null}
+                                          onChange={[Function]}
+                                          title="Keep snippet in cache for N seconds and do not call the server"
+                                          type="number"
+                                        >
+                                          <input
+                                            className="StyledInput-sc-1u2hxrp-0 jhtgJ StyledInput-sc-86zjwb-0 djdkls"
+                                            defaultValue={100}
+                                            disabled={false}
+                                            onChange={[Function]}
+                                            title="Keep snippet in cache for N seconds and do not call the server"
+                                            type="number"
+                                          />
+                                        </StyledComponent>
+                                      </ForwardRef>
+                                    </Input>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                        </div>
+                      </StyledComponent>
+                    </ForwardRef>
+                    <ForwardRef>
+                      <StyledComponent
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "Field-sc-1u2hxrp-1",
+                              "isStatic": true,
+                              "lastClassName": "dEDvyZ",
+                              "rules": Array [
+                                "height:35px;",
+                              ],
+                            },
+                            "displayName": "Field",
+                            "render": [Function],
+                            "styledComponentId": "Field-sc-1u2hxrp-1",
+                            "target": "div",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                      >
+                        <div
+                          className="Field-sc-1u2hxrp-1 dEDvyZ"
+                        >
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Label-sc-1u2hxrp-2",
+                                    "isStatic": true,
+                                    "lastClassName": "kyxctf",
+                                    "rules": Array [
+                                      "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                    ],
+                                  },
+                                  "displayName": "Label",
+                                  "render": [Function],
+                                  "styledComponentId": "Label-sc-1u2hxrp-2",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Label-sc-1u2hxrp-2 kyxctf"
+                              >
+                                <span>
+                                  Snippets polling (seconds):
+                                </span>
+                                <ForwardRef
+                                  max={10000}
+                                  min={1}
+                                  onChange={[Function]}
+                                  title="Polling the server for new snippets every N seconds"
+                                  type="number"
+                                  value={300}
+                                >
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "StyledInput-sc-1u2hxrp-0",
+                                          "isStatic": true,
+                                          "lastClassName": "jhtgJ",
+                                          "rules": Array [
+                                            "padding:0 5px;width:148px;",
+                                          ],
+                                        },
+                                        "displayName": "StyledInput",
+                                        "render": [Function],
+                                        "styledComponentId": "StyledInput-sc-1u2hxrp-0",
+                                        "target": [Function],
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                        Symbol(Symbol.hasInstance): [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                    max={10000}
+                                    min={1}
+                                    onChange={[Function]}
+                                    title="Polling the server for new snippets every N seconds"
+                                    type="number"
+                                    value={300}
+                                  >
+                                    <Input
+                                      className="StyledInput-sc-1u2hxrp-0 jhtgJ"
+                                      max={10000}
+                                      min={1}
+                                      onChange={[Function]}
+                                      title="Polling the server for new snippets every N seconds"
+                                      type="number"
+                                      value={300}
+                                    >
+                                      <ForwardRef
+                                        className="StyledInput-sc-1u2hxrp-0 jhtgJ"
+                                        defaultValue={300}
+                                        disabled={false}
+                                        max={10000}
+                                        min={1}
+                                        onChange={[Function]}
+                                        title="Polling the server for new snippets every N seconds"
+                                        type="number"
+                                      >
+                                        <StyledComponent
+                                          className="StyledInput-sc-1u2hxrp-0 jhtgJ"
+                                          defaultValue={300}
+                                          disabled={false}
+                                          forwardedClass={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": undefined,
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "StyledInput-sc-86zjwb-0",
+                                                "isStatic": false,
+                                                "lastClassName": "djdkls",
+                                                "rules": Array [
+                                                  "border:none;border-radius:0;height:30px;color:",
+                                                  [Function],
+                                                  ";border-bottom:1px solid ",
+                                                  [Function],
+                                                  ";background:",
+                                                  [Function],
+                                                  ";&:focus{outline:none;}::placeholder{color:",
+                                                  [Function],
+                                                  ";opacity:1;}",
+                                                ],
+                                              },
+                                              "displayName": "StyledInput",
+                                              "render": [Function],
+                                              "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                              "target": "input",
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                            }
+                                          }
+                                          forwardedRef={null}
+                                          max={10000}
+                                          min={1}
+                                          onChange={[Function]}
+                                          title="Polling the server for new snippets every N seconds"
+                                          type="number"
+                                        >
+                                          <input
+                                            className="StyledInput-sc-1u2hxrp-0 jhtgJ StyledInput-sc-86zjwb-0 djdkls"
+                                            defaultValue={300}
+                                            disabled={false}
+                                            max={10000}
+                                            min={1}
+                                            onChange={[Function]}
+                                            title="Polling the server for new snippets every N seconds"
+                                            type="number"
+                                          />
+                                        </StyledComponent>
+                                      </ForwardRef>
+                                    </Input>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                        </div>
+                      </StyledComponent>
+                    </ForwardRef>
+                    <ForwardRef>
+                      <StyledComponent
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "Field-sc-1u2hxrp-1",
+                              "isStatic": true,
+                              "lastClassName": "dEDvyZ",
+                              "rules": Array [
+                                "height:35px;",
+                              ],
+                            },
+                            "displayName": "Field",
+                            "render": [Function],
+                            "styledComponentId": "Field-sc-1u2hxrp-1",
+                            "target": "div",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                      >
+                        <div
+                          className="Field-sc-1u2hxrp-1 dEDvyZ"
+                        >
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Label-sc-1u2hxrp-2",
+                                    "isStatic": true,
+                                    "lastClassName": "kyxctf",
+                                    "rules": Array [
+                                      "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                    ],
+                                  },
+                                  "displayName": "Label",
+                                  "render": [Function],
+                                  "styledComponentId": "Label-sc-1u2hxrp-2",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Label-sc-1u2hxrp-2 kyxctf"
+                              >
+                                <span>
+                                  Default new snippet is public:
+                                </span>
+                                <Checkbox
+                                  checked={false}
+                                  onChange={[Function]}
+                                >
+                                  <ForwardRef
+                                    defaultChecked={false}
+                                    onChange={[Function]}
+                                    type="checkbox"
+                                  >
+                                    <StyledComponent
+                                      defaultChecked={false}
+                                      forwardedClass={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": undefined,
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "Box-sc-1bw5uxh-0",
+                                            "isStatic": true,
+                                            "lastClassName": "kcvKxi",
+                                            "rules": Array [
+                                              "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                              "#3F84A8",
+                                              ";background:#fff;}:checked:after{content:'\\\\2714';color:",
+                                              "#3F84A8",
+                                              ";}",
+                                            ],
+                                          },
+                                          "displayName": "Box",
+                                          "render": [Function],
+                                          "styledComponentId": "Box-sc-1bw5uxh-0",
+                                          "target": "input",
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                      onChange={[Function]}
+                                      type="checkbox"
+                                    >
+                                      <input
+                                        className="Box-sc-1bw5uxh-0 kcvKxi"
+                                        defaultChecked={false}
+                                        onChange={[Function]}
+                                        type="checkbox"
+                                      />
+                                    </StyledComponent>
+                                  </ForwardRef>
+                                </Checkbox>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                        </div>
+                      </StyledComponent>
+                    </ForwardRef>
+                  </div>
+                </StyledComponent>
+              </ForwardRef>
+            </div>
+          </SnippetsSettings>
+        </details>
+        <details>
+          <summary>
+            Editor
+          </summary>
+          <EditorSettings>
+            <div>
+              <h4>
+                Editor settings:
+              </h4>
+              <ForwardRef>
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Wrapper-sc-3i0r91-0",
+                        "isStatic": true,
+                        "lastClassName": "jjrWCY",
+                        "rules": Array [
+                          "display:flex;justify-content:space-between;",
+                        ],
+                      },
+                      "displayName": "Wrapper",
+                      "render": [Function],
+                      "styledComponentId": "Wrapper-sc-3i0r91-0",
+                      "target": "div",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                >
+                  <div
+                    className="Wrapper-sc-3i0r91-0 jjrWCY"
+                  >
+                    <ForwardRef>
+                      <StyledComponent
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "Section-sc-3i0r91-2",
+                              "isStatic": true,
+                              "lastClassName": "gqkeLg",
+                              "rules": Array [
+                                "width:45%;",
+                              ],
+                            },
+                            "displayName": "Section",
+                            "render": [Function],
+                            "styledComponentId": "Section-sc-3i0r91-2",
+                            "target": "div",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                      >
+                        <div
+                          className="Section-sc-3i0r91-2 gqkeLg"
+                        >
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Theme:
+                                      </span>
+                                      <ForwardRef
+                                        onChange={[Function]}
+                                        value="vs"
+                                      >
+                                        <StyledComponent
+                                          forwardedClass={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": undefined,
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "StyledISelect-sc-3i0r91-5",
+                                                "isStatic": true,
+                                                "lastClassName": "bnSweD",
+                                                "rules": Array [
+                                                  "width:158px;",
+                                                ],
+                                              },
+                                              "displayName": "StyledISelect",
+                                              "render": [Function],
+                                              "styledComponentId": "StyledISelect-sc-3i0r91-5",
+                                              "target": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                              Symbol(Symbol.hasInstance): [Function],
+                                            }
+                                          }
+                                          forwardedRef={null}
+                                          onChange={[Function]}
+                                          value="vs"
+                                        >
+                                          <Select
+                                            className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                            onChange={[Function]}
+                                            value="vs"
+                                          >
+                                            <ForwardRef
+                                              className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                              defaultValue="vs"
+                                              onChange={[Function]}
+                                            >
+                                              <StyledComponent
+                                                className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                                defaultValue="vs"
+                                                forwardedClass={
+                                                  Object {
+                                                    "$$typeof": Symbol(react.forward_ref),
+                                                    "attrs": undefined,
+                                                    "componentStyle": ComponentStyle {
+                                                      "componentId": "SelectInput-sc-13maoso-0",
+                                                      "isStatic": true,
+                                                      "lastClassName": "gHNoVj",
+                                                      "rules": Array [
+                                                        "-webkit-appearance:none;border:1px solid ",
+                                                        "#3F84A8",
+                                                        ";line-height:1;outline:0;color:",
+                                                        "#3F84A8",
+                                                        ";padding:5px;border-radius:0;background:linear-gradient(",
+                                                        "#3F84A8",
+                                                        ",",
+                                                        "#3F84A8",
+                                                        ") no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
+                                                        "#3F84A8",
+                                                        ",",
+                                                        "#3F84A8",
+                                                        ") no-repeat;background-color:#fff;background-size:1px 100%,20px 20px,20px 20px,20px 60%;background-position:right 20px center,right bottom,right bottom,right bottom;border:none;border-bottom:1px solid ",
+                                                        "#3F84A8",
+                                                        ";option{background-color:white;}",
+                                                      ],
+                                                    },
+                                                    "displayName": "SelectInput",
+                                                    "render": [Function],
+                                                    "styledComponentId": "SelectInput-sc-13maoso-0",
+                                                    "target": "select",
+                                                    "warnTooManyClasses": [Function],
+                                                    "withComponent": [Function],
+                                                  }
+                                                }
+                                                forwardedRef={null}
+                                                onChange={[Function]}
+                                              >
+                                                <select
+                                                  className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gHNoVj"
+                                                  defaultValue="vs"
+                                                  onChange={[Function]}
+                                                >
+                                                  <option
+                                                    value="vs"
+                                                  >
+                                                    vs light
+                                                  </option>
+                                                  <option
+                                                    value="vs-dark"
+                                                  >
+                                                    vs dark
+                                                  </option>
+                                                  <option
+                                                    value="hc-black"
+                                                  >
+                                                    hc dark
+                                                  </option>
+                                                </select>
+                                              </StyledComponent>
+                                            </ForwardRef>
+                                          </Select>
+                                        </StyledComponent>
+                                      </ForwardRef>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Minimap:
+                                      </span>
+                                      <Checkbox
+                                        checked={false}
+                                        onChange={[Function]}
+                                      >
+                                        <ForwardRef
+                                          defaultChecked={false}
+                                          onChange={[Function]}
+                                          type="checkbox"
+                                        >
+                                          <StyledComponent
+                                            defaultChecked={false}
+                                            forwardedClass={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": undefined,
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Box-sc-1bw5uxh-0",
+                                                  "isStatic": true,
+                                                  "lastClassName": "kcvKxi",
+                                                  "rules": Array [
+                                                    "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                                    "#3F84A8",
+                                                    ";background:#fff;}:checked:after{content:'\\\\2714';color:",
+                                                    "#3F84A8",
+                                                    ";}",
+                                                  ],
+                                                },
+                                                "displayName": "Box",
+                                                "render": [Function],
+                                                "styledComponentId": "Box-sc-1bw5uxh-0",
+                                                "target": "input",
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                            onChange={[Function]}
+                                            type="checkbox"
+                                          >
+                                            <input
+                                              className="Box-sc-1bw5uxh-0 kcvKxi"
+                                              defaultChecked={false}
+                                              onChange={[Function]}
+                                              type="checkbox"
+                                            />
+                                          </StyledComponent>
+                                        </ForwardRef>
+                                      </Checkbox>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Line Numbers:
+                                      </span>
+                                      <Checkbox
+                                        checked={true}
+                                        onChange={[Function]}
+                                      >
+                                        <ForwardRef
+                                          defaultChecked={true}
+                                          onChange={[Function]}
+                                          type="checkbox"
+                                        >
+                                          <StyledComponent
+                                            defaultChecked={true}
+                                            forwardedClass={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": undefined,
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Box-sc-1bw5uxh-0",
+                                                  "isStatic": true,
+                                                  "lastClassName": "kcvKxi",
+                                                  "rules": Array [
+                                                    "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                                    "#3F84A8",
+                                                    ";background:#fff;}:checked:after{content:'\\\\2714';color:",
+                                                    "#3F84A8",
+                                                    ";}",
+                                                  ],
+                                                },
+                                                "displayName": "Box",
+                                                "render": [Function],
+                                                "styledComponentId": "Box-sc-1bw5uxh-0",
+                                                "target": "input",
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                            onChange={[Function]}
+                                            type="checkbox"
+                                          >
+                                            <input
+                                              className="Box-sc-1bw5uxh-0 kcvKxi"
+                                              defaultChecked={true}
+                                              onChange={[Function]}
+                                              type="checkbox"
+                                            />
+                                          </StyledComponent>
+                                        </ForwardRef>
+                                      </Checkbox>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Format On Paste:
+                                      </span>
+                                      <Checkbox
+                                        checked={true}
+                                        onChange={[Function]}
+                                      >
+                                        <ForwardRef
+                                          defaultChecked={true}
+                                          onChange={[Function]}
+                                          type="checkbox"
+                                        >
+                                          <StyledComponent
+                                            defaultChecked={true}
+                                            forwardedClass={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": undefined,
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Box-sc-1bw5uxh-0",
+                                                  "isStatic": true,
+                                                  "lastClassName": "kcvKxi",
+                                                  "rules": Array [
+                                                    "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                                    "#3F84A8",
+                                                    ";background:#fff;}:checked:after{content:'\\\\2714';color:",
+                                                    "#3F84A8",
+                                                    ";}",
+                                                  ],
+                                                },
+                                                "displayName": "Box",
+                                                "render": [Function],
+                                                "styledComponentId": "Box-sc-1bw5uxh-0",
+                                                "target": "input",
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                            onChange={[Function]}
+                                            type="checkbox"
+                                          >
+                                            <input
+                                              className="Box-sc-1bw5uxh-0 kcvKxi"
+                                              defaultChecked={true}
+                                              onChange={[Function]}
+                                              type="checkbox"
+                                            />
+                                          </StyledComponent>
+                                        </ForwardRef>
+                                      </Checkbox>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Font Family:
+                                      </span>
+                                      <ForwardRef
+                                        onChange={[Function]}
+                                        type="text"
+                                        value="monospace"
+                                      >
+                                        <StyledComponent
+                                          forwardedClass={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": undefined,
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "StyledInput-sc-3i0r91-4",
+                                                "isStatic": true,
+                                                "lastClassName": "lIHVh",
+                                                "rules": Array [
+                                                  "padding:0 5px;width:148px;",
+                                                ],
+                                              },
+                                              "displayName": "StyledInput",
+                                              "render": [Function],
+                                              "styledComponentId": "StyledInput-sc-3i0r91-4",
+                                              "target": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                              Symbol(Symbol.hasInstance): [Function],
+                                            }
+                                          }
+                                          forwardedRef={null}
+                                          onChange={[Function]}
+                                          type="text"
+                                          value="monospace"
+                                        >
+                                          <Input
+                                            className="StyledInput-sc-3i0r91-4 lIHVh"
+                                            onChange={[Function]}
+                                            type="text"
+                                            value="monospace"
+                                          >
+                                            <ForwardRef
+                                              className="StyledInput-sc-3i0r91-4 lIHVh"
+                                              defaultValue="monospace"
+                                              disabled={false}
+                                              onChange={[Function]}
+                                              title=""
+                                              type="text"
+                                            >
+                                              <StyledComponent
+                                                className="StyledInput-sc-3i0r91-4 lIHVh"
+                                                defaultValue="monospace"
+                                                disabled={false}
+                                                forwardedClass={
+                                                  Object {
+                                                    "$$typeof": Symbol(react.forward_ref),
+                                                    "attrs": undefined,
+                                                    "componentStyle": ComponentStyle {
+                                                      "componentId": "StyledInput-sc-86zjwb-0",
+                                                      "isStatic": false,
+                                                      "lastClassName": "djdkls",
+                                                      "rules": Array [
+                                                        "border:none;border-radius:0;height:30px;color:",
+                                                        [Function],
+                                                        ";border-bottom:1px solid ",
+                                                        [Function],
+                                                        ";background:",
+                                                        [Function],
+                                                        ";&:focus{outline:none;}::placeholder{color:",
+                                                        [Function],
+                                                        ";opacity:1;}",
+                                                      ],
+                                                    },
+                                                    "displayName": "StyledInput",
+                                                    "render": [Function],
+                                                    "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                                    "target": "input",
+                                                    "warnTooManyClasses": [Function],
+                                                    "withComponent": [Function],
+                                                  }
+                                                }
+                                                forwardedRef={null}
+                                                onChange={[Function]}
+                                                title=""
+                                                type="text"
+                                              >
+                                                <input
+                                                  className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
+                                                  defaultValue="monospace"
+                                                  disabled={false}
+                                                  onChange={[Function]}
+                                                  title=""
+                                                  type="text"
+                                                />
+                                              </StyledComponent>
+                                            </ForwardRef>
+                                          </Input>
+                                        </StyledComponent>
+                                      </ForwardRef>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                        </div>
+                      </StyledComponent>
+                    </ForwardRef>
+                    <ForwardRef>
+                      <StyledComponent
+                        forwardedClass={
+                          Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": undefined,
+                            "componentStyle": ComponentStyle {
+                              "componentId": "Section-sc-3i0r91-2",
+                              "isStatic": true,
+                              "lastClassName": "gqkeLg",
+                              "rules": Array [
+                                "width:45%;",
+                              ],
+                            },
+                            "displayName": "Section",
+                            "render": [Function],
+                            "styledComponentId": "Section-sc-3i0r91-2",
+                            "target": "div",
+                            "warnTooManyClasses": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        forwardedRef={null}
+                      >
+                        <div
+                          className="Section-sc-3i0r91-2 gqkeLg"
+                        >
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Font Size:
+                                      </span>
+                                      <ForwardRef
+                                        onChange={[Function]}
+                                        type="number"
+                                        value={12}
+                                      >
+                                        <StyledComponent
+                                          forwardedClass={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": undefined,
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "StyledInput-sc-3i0r91-4",
+                                                "isStatic": true,
+                                                "lastClassName": "lIHVh",
+                                                "rules": Array [
+                                                  "padding:0 5px;width:148px;",
+                                                ],
+                                              },
+                                              "displayName": "StyledInput",
+                                              "render": [Function],
+                                              "styledComponentId": "StyledInput-sc-3i0r91-4",
+                                              "target": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                              Symbol(Symbol.hasInstance): [Function],
+                                            }
+                                          }
+                                          forwardedRef={null}
+                                          onChange={[Function]}
+                                          type="number"
+                                          value={12}
+                                        >
+                                          <Input
+                                            className="StyledInput-sc-3i0r91-4 lIHVh"
+                                            onChange={[Function]}
+                                            type="number"
+                                            value={12}
+                                          >
+                                            <ForwardRef
+                                              className="StyledInput-sc-3i0r91-4 lIHVh"
+                                              defaultValue={12}
+                                              disabled={false}
+                                              onChange={[Function]}
+                                              title=""
+                                              type="number"
+                                            >
+                                              <StyledComponent
+                                                className="StyledInput-sc-3i0r91-4 lIHVh"
+                                                defaultValue={12}
+                                                disabled={false}
+                                                forwardedClass={
+                                                  Object {
+                                                    "$$typeof": Symbol(react.forward_ref),
+                                                    "attrs": undefined,
+                                                    "componentStyle": ComponentStyle {
+                                                      "componentId": "StyledInput-sc-86zjwb-0",
+                                                      "isStatic": false,
+                                                      "lastClassName": "djdkls",
+                                                      "rules": Array [
+                                                        "border:none;border-radius:0;height:30px;color:",
+                                                        [Function],
+                                                        ";border-bottom:1px solid ",
+                                                        [Function],
+                                                        ";background:",
+                                                        [Function],
+                                                        ";&:focus{outline:none;}::placeholder{color:",
+                                                        [Function],
+                                                        ";opacity:1;}",
+                                                      ],
+                                                    },
+                                                    "displayName": "StyledInput",
+                                                    "render": [Function],
+                                                    "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                                    "target": "input",
+                                                    "warnTooManyClasses": [Function],
+                                                    "withComponent": [Function],
+                                                  }
+                                                }
+                                                forwardedRef={null}
+                                                onChange={[Function]}
+                                                title=""
+                                                type="number"
+                                              >
+                                                <input
+                                                  className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
+                                                  defaultValue={12}
+                                                  disabled={false}
+                                                  onChange={[Function]}
+                                                  title=""
+                                                  type="number"
+                                                />
+                                              </StyledComponent>
+                                            </ForwardRef>
+                                          </Input>
+                                        </StyledComponent>
+                                      </ForwardRef>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Line height:
+                                      </span>
+                                      <ForwardRef
+                                        onChange={[Function]}
+                                        type="number"
+                                        value={21}
+                                      >
+                                        <StyledComponent
+                                          forwardedClass={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": undefined,
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "StyledInput-sc-3i0r91-4",
+                                                "isStatic": true,
+                                                "lastClassName": "lIHVh",
+                                                "rules": Array [
+                                                  "padding:0 5px;width:148px;",
+                                                ],
+                                              },
+                                              "displayName": "StyledInput",
+                                              "render": [Function],
+                                              "styledComponentId": "StyledInput-sc-3i0r91-4",
+                                              "target": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                              Symbol(Symbol.hasInstance): [Function],
+                                            }
+                                          }
+                                          forwardedRef={null}
+                                          onChange={[Function]}
+                                          type="number"
+                                          value={21}
+                                        >
+                                          <Input
+                                            className="StyledInput-sc-3i0r91-4 lIHVh"
+                                            onChange={[Function]}
+                                            type="number"
+                                            value={21}
+                                          >
+                                            <ForwardRef
+                                              className="StyledInput-sc-3i0r91-4 lIHVh"
+                                              defaultValue={21}
+                                              disabled={false}
+                                              onChange={[Function]}
+                                              title=""
+                                              type="number"
+                                            >
+                                              <StyledComponent
+                                                className="StyledInput-sc-3i0r91-4 lIHVh"
+                                                defaultValue={21}
+                                                disabled={false}
+                                                forwardedClass={
+                                                  Object {
+                                                    "$$typeof": Symbol(react.forward_ref),
+                                                    "attrs": undefined,
+                                                    "componentStyle": ComponentStyle {
+                                                      "componentId": "StyledInput-sc-86zjwb-0",
+                                                      "isStatic": false,
+                                                      "lastClassName": "djdkls",
+                                                      "rules": Array [
+                                                        "border:none;border-radius:0;height:30px;color:",
+                                                        [Function],
+                                                        ";border-bottom:1px solid ",
+                                                        [Function],
+                                                        ";background:",
+                                                        [Function],
+                                                        ";&:focus{outline:none;}::placeholder{color:",
+                                                        [Function],
+                                                        ";opacity:1;}",
+                                                      ],
+                                                    },
+                                                    "displayName": "StyledInput",
+                                                    "render": [Function],
+                                                    "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                                    "target": "input",
+                                                    "warnTooManyClasses": [Function],
+                                                    "withComponent": [Function],
+                                                  }
+                                                }
+                                                forwardedRef={null}
+                                                onChange={[Function]}
+                                                title=""
+                                                type="number"
+                                              >
+                                                <input
+                                                  className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
+                                                  defaultValue={21}
+                                                  disabled={false}
+                                                  onChange={[Function]}
+                                                  title=""
+                                                  type="number"
+                                                />
+                                              </StyledComponent>
+                                            </ForwardRef>
+                                          </Input>
+                                        </StyledComponent>
+                                      </ForwardRef>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Font Ligatures:
+                                      </span>
+                                      <Checkbox
+                                        checked={false}
+                                        onChange={[Function]}
+                                      >
+                                        <ForwardRef
+                                          defaultChecked={false}
+                                          onChange={[Function]}
+                                          type="checkbox"
+                                        >
+                                          <StyledComponent
+                                            defaultChecked={false}
+                                            forwardedClass={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": undefined,
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Box-sc-1bw5uxh-0",
+                                                  "isStatic": true,
+                                                  "lastClassName": "kcvKxi",
+                                                  "rules": Array [
+                                                    "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                                    "#3F84A8",
+                                                    ";background:#fff;}:checked:after{content:'\\\\2714';color:",
+                                                    "#3F84A8",
+                                                    ";}",
+                                                  ],
+                                                },
+                                                "displayName": "Box",
+                                                "render": [Function],
+                                                "styledComponentId": "Box-sc-1bw5uxh-0",
+                                                "target": "input",
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                            onChange={[Function]}
+                                            type="checkbox"
+                                          >
+                                            <input
+                                              className="Box-sc-1bw5uxh-0 kcvKxi"
+                                              defaultChecked={false}
+                                              onChange={[Function]}
+                                              type="checkbox"
+                                            />
+                                          </StyledComponent>
+                                        </ForwardRef>
+                                      </Checkbox>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Code lens:
+                                      </span>
+                                      <Checkbox
+                                        checked={false}
+                                        onChange={[Function]}
+                                      >
+                                        <ForwardRef
+                                          defaultChecked={false}
+                                          onChange={[Function]}
+                                          type="checkbox"
+                                        >
+                                          <StyledComponent
+                                            defaultChecked={false}
+                                            forwardedClass={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": undefined,
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Box-sc-1bw5uxh-0",
+                                                  "isStatic": true,
+                                                  "lastClassName": "kcvKxi",
+                                                  "rules": Array [
+                                                    "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                                    "#3F84A8",
+                                                    ";background:#fff;}:checked:after{content:'\\\\2714';color:",
+                                                    "#3F84A8",
+                                                    ";}",
+                                                  ],
+                                                },
+                                                "displayName": "Box",
+                                                "render": [Function],
+                                                "styledComponentId": "Box-sc-1bw5uxh-0",
+                                                "target": "input",
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                            onChange={[Function]}
+                                            type="checkbox"
+                                          >
+                                            <input
+                                              className="Box-sc-1bw5uxh-0 kcvKxi"
+                                              defaultChecked={false}
+                                              onChange={[Function]}
+                                              type="checkbox"
+                                            />
+                                          </StyledComponent>
+                                        </ForwardRef>
+                                      </Checkbox>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Cursor Blinking:
+                                      </span>
+                                      <ForwardRef
+                                        onChange={[Function]}
+                                        value="blink"
+                                      >
+                                        <StyledComponent
+                                          forwardedClass={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": undefined,
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "StyledISelect-sc-3i0r91-5",
+                                                "isStatic": true,
+                                                "lastClassName": "bnSweD",
+                                                "rules": Array [
+                                                  "width:158px;",
+                                                ],
+                                              },
+                                              "displayName": "StyledISelect",
+                                              "render": [Function],
+                                              "styledComponentId": "StyledISelect-sc-3i0r91-5",
+                                              "target": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                              Symbol(Symbol.hasInstance): [Function],
+                                            }
+                                          }
+                                          forwardedRef={null}
+                                          onChange={[Function]}
+                                          value="blink"
+                                        >
+                                          <Select
+                                            className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                            onChange={[Function]}
+                                            value="blink"
+                                          >
+                                            <ForwardRef
+                                              className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                              defaultValue="blink"
+                                              onChange={[Function]}
+                                            >
+                                              <StyledComponent
+                                                className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                                defaultValue="blink"
+                                                forwardedClass={
+                                                  Object {
+                                                    "$$typeof": Symbol(react.forward_ref),
+                                                    "attrs": undefined,
+                                                    "componentStyle": ComponentStyle {
+                                                      "componentId": "SelectInput-sc-13maoso-0",
+                                                      "isStatic": true,
+                                                      "lastClassName": "gHNoVj",
+                                                      "rules": Array [
+                                                        "-webkit-appearance:none;border:1px solid ",
+                                                        "#3F84A8",
+                                                        ";line-height:1;outline:0;color:",
+                                                        "#3F84A8",
+                                                        ";padding:5px;border-radius:0;background:linear-gradient(",
+                                                        "#3F84A8",
+                                                        ",",
+                                                        "#3F84A8",
+                                                        ") no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
+                                                        "#3F84A8",
+                                                        ",",
+                                                        "#3F84A8",
+                                                        ") no-repeat;background-color:#fff;background-size:1px 100%,20px 20px,20px 20px,20px 60%;background-position:right 20px center,right bottom,right bottom,right bottom;border:none;border-bottom:1px solid ",
+                                                        "#3F84A8",
+                                                        ";option{background-color:white;}",
+                                                      ],
+                                                    },
+                                                    "displayName": "SelectInput",
+                                                    "render": [Function],
+                                                    "styledComponentId": "SelectInput-sc-13maoso-0",
+                                                    "target": "select",
+                                                    "warnTooManyClasses": [Function],
+                                                    "withComponent": [Function],
+                                                  }
+                                                }
+                                                forwardedRef={null}
+                                                onChange={[Function]}
+                                              >
+                                                <select
+                                                  className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gHNoVj"
+                                                  defaultValue="blink"
+                                                  onChange={[Function]}
+                                                >
+                                                  <option
+                                                    value="blink"
+                                                  >
+                                                    blink
+                                                  </option>
+                                                  <option
+                                                    value="smooth"
+                                                  >
+                                                    smooth
+                                                  </option>
+                                                  <option
+                                                    value="phase"
+                                                  >
+                                                    phase
+                                                  </option>
+                                                  <option
+                                                    value="expand"
+                                                  >
+                                                    expand
+                                                  </option>
+                                                  <option
+                                                    value="solid"
+                                                  >
+                                                    solid
+                                                  </option>
+                                                </select>
+                                              </StyledComponent>
+                                            </ForwardRef>
+                                          </Select>
+                                        </StyledComponent>
+                                      </ForwardRef>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                          <ForwardRef>
+                            <StyledComponent
+                              forwardedClass={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": undefined,
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Field-sc-3i0r91-3",
+                                    "isStatic": true,
+                                    "lastClassName": "fjKIlx",
+                                    "rules": Array [
+                                      "height:35px;",
+                                    ],
+                                  },
+                                  "displayName": "Field",
+                                  "render": [Function],
+                                  "styledComponentId": "Field-sc-3i0r91-3",
+                                  "target": "div",
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Field-sc-3i0r91-3 fjKIlx"
+                              >
+                                <ForwardRef>
+                                  <StyledComponent
+                                    forwardedClass={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": undefined,
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Label-sc-3i0r91-1",
+                                          "isStatic": true,
+                                          "lastClassName": "hpqRMW",
+                                          "rules": Array [
+                                            "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                          ],
+                                        },
+                                        "displayName": "Label",
+                                        "render": [Function],
+                                        "styledComponentId": "Label-sc-3i0r91-1",
+                                        "target": "div",
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={null}
+                                  >
+                                    <div
+                                      className="Label-sc-3i0r91-1 hpqRMW"
+                                    >
+                                      <span>
+                                        Select On Line Numbers:
+                                      </span>
+                                      <Checkbox
+                                        checked={false}
+                                        onChange={[Function]}
+                                      >
+                                        <ForwardRef
+                                          defaultChecked={false}
+                                          onChange={[Function]}
+                                          type="checkbox"
+                                        >
+                                          <StyledComponent
+                                            defaultChecked={false}
+                                            forwardedClass={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": undefined,
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Box-sc-1bw5uxh-0",
+                                                  "isStatic": true,
+                                                  "lastClassName": "kcvKxi",
+                                                  "rules": Array [
+                                                    "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                                    "#3F84A8",
+                                                    ";background:#fff;}:checked:after{content:'\\\\2714';color:",
+                                                    "#3F84A8",
+                                                    ";}",
+                                                  ],
+                                                },
+                                                "displayName": "Box",
+                                                "render": [Function],
+                                                "styledComponentId": "Box-sc-1bw5uxh-0",
+                                                "target": "input",
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                            onChange={[Function]}
+                                            type="checkbox"
+                                          >
+                                            <input
+                                              className="Box-sc-1bw5uxh-0 kcvKxi"
+                                              defaultChecked={false}
+                                              onChange={[Function]}
+                                              type="checkbox"
+                                            />
+                                          </StyledComponent>
+                                        </ForwardRef>
+                                      </Checkbox>
+                                    </div>
+                                  </StyledComponent>
+                                </ForwardRef>
+                              </div>
+                            </StyledComponent>
+                          </ForwardRef>
+                        </div>
+                      </StyledComponent>
+                    </ForwardRef>
+                  </div>
+                </StyledComponent>
+              </ForwardRef>
+            </div>
+          </EditorSettings>
+        </details>
+      </div>
+    </StyledComponent>
+  </ForwardRef>
 </Settings>
 `;

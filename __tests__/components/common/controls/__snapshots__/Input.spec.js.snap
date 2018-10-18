@@ -7,7 +7,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
   type="search"
   value="typetypetype"
 >
-  <StyledInput
+  <ForwardRef
     className="classified"
     defaultValue="typetypetype"
     disabled={false}
@@ -15,14 +15,52 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
     title=""
     type="search"
   >
-    <input
-      className="classified StyledInput-sc-86zjwb-0 djdkls"
+    <StyledComponent
+      className="classified"
       defaultValue="typetypetype"
       disabled={false}
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "StyledInput-sc-86zjwb-0",
+            "isStatic": false,
+            "lastClassName": "djdkls",
+            "rules": Array [
+              "border:none;border-radius:0;height:30px;color:",
+              [Function],
+              ";border-bottom:1px solid ",
+              [Function],
+              ";background:",
+              [Function],
+              ";&:focus{outline:none;}::placeholder{color:",
+              [Function],
+              ";opacity:1;}",
+            ],
+          },
+          "displayName": "StyledInput",
+          "render": [Function],
+          "styledComponentId": "StyledInput-sc-86zjwb-0",
+          "target": "input",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
       placeholder="I am temporary"
       title=""
       type="search"
-    />
-  </StyledInput>
+    >
+      <input
+        className="classified StyledInput-sc-86zjwb-0 djdkls"
+        defaultValue="typetypetype"
+        disabled={false}
+        placeholder="I am temporary"
+        title=""
+        type="search"
+      />
+    </StyledComponent>
+  </ForwardRef>
 </Input>
 `;

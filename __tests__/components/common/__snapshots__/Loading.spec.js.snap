@@ -2,7 +2,7 @@
 
 exports[`COMPONENTS - <Loading> render Loading 1`] = `
 <Fragment>
-  <Spinner
+  <ForwardRef
     color="#3F84A8"
   />
    
