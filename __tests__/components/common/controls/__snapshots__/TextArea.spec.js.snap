@@ -7,20 +7,59 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
   type="search"
   value="typetypetype"
 >
-  <StyledInput
+  <ForwardRef
     className="classified"
     defaultValue="typetypetype"
     disabled={false}
     placeholder="I am temporary"
     title=""
   >
-    <textarea
-      className="classified StyledInput-sc-1zkbel-0 cjjZfw"
+    <StyledComponent
+      className="classified"
       defaultValue="typetypetype"
       disabled={false}
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "StyledInput-sc-1zkbel-0",
+            "isStatic": false,
+            "lastClassName": "cjjZfw",
+            "rules": Array [
+              "border:none;border-radius:0;margin-bottom:10px;width:calc(100% - 20px);height:",
+              [Function],
+              ";color:",
+              [Function],
+              ";border-bottom:1px solid ",
+              [Function],
+              ";background:",
+              [Function],
+              ";line-height:21px;padding:10px;&:focus{outline:none;}::placeholder{color:",
+              [Function],
+              ";opacity:1;}",
+            ],
+          },
+          "displayName": "StyledInput",
+          "render": [Function],
+          "styledComponentId": "StyledInput-sc-1zkbel-0",
+          "target": "textarea",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
       placeholder="I am temporary"
       title=""
-    />
-  </StyledInput>
+    >
+      <textarea
+        className="classified StyledInput-sc-1zkbel-0 cjjZfw"
+        defaultValue="typetypetype"
+        disabled={false}
+        placeholder="I am temporary"
+        title=""
+      />
+    </StyledComponent>
+  </ForwardRef>
 </TextArea>
 `;

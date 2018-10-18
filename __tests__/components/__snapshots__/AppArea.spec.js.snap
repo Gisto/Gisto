@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
-<UserAreaWrapper>
+<ForwardRef>
   <Updater />
   <Link
     replace={false}
     to="/"
   >
-    <Icon
+    <ForwardRef
       color="#fff"
       spin={true}
       type="dashboard"
@@ -17,7 +17,7 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     replace={false}
     to="/about"
   >
-    <Icon
+    <ForwardRef
       color="#fff"
       spin={true}
       type="info"
@@ -30,13 +30,13 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     replace={false}
     to="/settings"
   >
-    <Icon
+    <ForwardRef
       color="#fff"
       spin={true}
       type="cog"
     />
   </Link>
-  <Avatar
+  <ForwardRef
     alt="us"
     height="32"
     title="us"
@@ -46,11 +46,11 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     replace={false}
     to="/"
   >
-    <Icon
+    <ForwardRef
       color="#fff"
       onClick={[Function]}
       type="logout"
     />
   </Link>
-</UserAreaWrapper>
+</ForwardRef>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <InputColor> render InputColor 1`] = `
-<Color
+<ForwardRef
   defaultValue="red"
   onChange={[MockFunction]}
   type="color"

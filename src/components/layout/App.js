@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { injectGlobal } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import * as Mousetrap from 'mousetrap';
 import { withRouter } from 'react-router-dom';
 
@@ -14,8 +14,7 @@ import KeyBindings from 'components/layout/KeyBindings';
 //   require('mimic');
 // }
 
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
@@ -99,6 +98,7 @@ export class App  extends React.Component {
   render() {
     return (
       <AppWrapper>
+        <GlobalStyle/>
         { this.props.children }
         { this.state.showSuperSearch && (
           <SuperSearch toggleSuperSesrch={ () => this.toggleSuperSesrch() }/>

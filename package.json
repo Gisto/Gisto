@@ -150,7 +150,7 @@
     "redux": "^4.0.0",
     "reselect": "^3.0.1",
     "semver": "^5.5.1",
-    "styled-components": "^3.4.9",
+    "styled-components": "^4.0.0",
     "superagent": "^3.8.3",
     "wait-on": "^2.1.2",
     "yargs": "^12.0.2"

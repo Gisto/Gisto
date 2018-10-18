@@ -2,143 +2,317 @@
 
 exports[`COMPONENTS - <About> render About 1`] = `
 <About>
-  <Wrapper>
-    <div
-      className="Wrapper-l90ydr-0 hPMCSw"
+  <ForwardRef>
+    <StyledComponent
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "Wrapper-l90ydr-0",
+            "isStatic": true,
+            "lastClassName": "hPMCSw",
+            "rules": Array [
+              "display:flex;flex-direction:column;align-items:center;color:#555;height:100%;width:50%;transform:translate(50%);justify-content:center;text-align:left;",
+            ],
+          },
+          "displayName": "Wrapper",
+          "render": [Function],
+          "styledComponentId": "Wrapper-l90ydr-0",
+          "target": "div",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
     >
-      <img
-        alt=""
-        src="icon.png"
-        width="80"
-      />
-      <h2>
-        About Gisto
-      </h2>
-      <p>
-        Current version 
-        <strong>
-          v
-          X.X.X
-        </strong>
-      </p>
-      <p>
-        Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor.
-      </p>
-      <p>
-        All your data is stored on GitHub and you can access it from GitHub Gists at any time with changes carrying over to Gisto.
-      </p>
-      <p>
-        <ExternalLink
-          href="https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md"
-        >
-          <Anchor
-            href="#"
-            onClick={[Function]}
+      <div
+        className="Wrapper-l90ydr-0 hPMCSw"
+      >
+        <img
+          alt=""
+          src="icon.png"
+          width="80"
+        />
+        <h2>
+          About Gisto
+        </h2>
+        <p>
+          Current version 
+          <strong>
+            v
+            X.X.X
+          </strong>
+        </p>
+        <p>
+          Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor.
+        </p>
+        <p>
+          All your data is stored on GitHub and you can access it from GitHub Gists at any time with changes carrying over to Gisto.
+        </p>
+        <p>
+          <ExternalLink
+            href="https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md"
           >
-            <Link
+            <Anchor
               href="#"
               onClick={[Function]}
             >
-              <a
-                className="Link-sc-17j1f2u-0 eiOsHn"
+              <ForwardRef
                 href="#"
                 onClick={[Function]}
               >
-                Change log
-              </a>
-            </Link>
-          </Anchor>
-        </ExternalLink>
-         | 
-        <ExternalLink
-          href="https://github.com/Gisto/Gisto"
-        >
-          <Anchor
-            href="#"
-            onClick={[Function]}
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Link-sc-17j1f2u-0",
+                        "isStatic": false,
+                        "lastClassName": "eiOsHn",
+                        "rules": Array [
+                          "cursor:pointer;color:",
+                          [Function],
+                          ";text-decoration:none;:hover{color:",
+                          "#cfe0e9",
+                          ";}",
+                        ],
+                      },
+                      "displayName": "Link",
+                      "render": [Function],
+                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "target": "a",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                  href="#"
+                  onClick={[Function]}
+                >
+                  <a
+                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    href="#"
+                    onClick={[Function]}
+                  >
+                    Change log
+                  </a>
+                </StyledComponent>
+              </ForwardRef>
+            </Anchor>
+          </ExternalLink>
+           | 
+          <ExternalLink
+            href="https://github.com/Gisto/Gisto"
           >
-            <Link
+            <Anchor
               href="#"
               onClick={[Function]}
             >
-              <a
-                className="Link-sc-17j1f2u-0 eiOsHn"
+              <ForwardRef
                 href="#"
                 onClick={[Function]}
               >
-                GitHub
-              </a>
-            </Link>
-          </Anchor>
-        </ExternalLink>
-         | 
-        <ExternalLink
-          href="https://gistoapp.com"
-        >
-          <Anchor
-            href="#"
-            onClick={[Function]}
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Link-sc-17j1f2u-0",
+                        "isStatic": false,
+                        "lastClassName": "eiOsHn",
+                        "rules": Array [
+                          "cursor:pointer;color:",
+                          [Function],
+                          ";text-decoration:none;:hover{color:",
+                          "#cfe0e9",
+                          ";}",
+                        ],
+                      },
+                      "displayName": "Link",
+                      "render": [Function],
+                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "target": "a",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                  href="#"
+                  onClick={[Function]}
+                >
+                  <a
+                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    href="#"
+                    onClick={[Function]}
+                  >
+                    GitHub
+                  </a>
+                </StyledComponent>
+              </ForwardRef>
+            </Anchor>
+          </ExternalLink>
+           | 
+          <ExternalLink
+            href="https://gistoapp.com"
           >
-            <Link
+            <Anchor
               href="#"
               onClick={[Function]}
             >
-              <a
-                className="Link-sc-17j1f2u-0 eiOsHn"
+              <ForwardRef
                 href="#"
                 onClick={[Function]}
               >
-                Website gistoapp.com
-              </a>
-            </Link>
-          </Anchor>
-        </ExternalLink>
-         | 
-        <ExternalLink
-          href="https://github.com/Gisto/Gisto/issues"
-        >
-          <Anchor
-            href="#"
-            onClick={[Function]}
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Link-sc-17j1f2u-0",
+                        "isStatic": false,
+                        "lastClassName": "eiOsHn",
+                        "rules": Array [
+                          "cursor:pointer;color:",
+                          [Function],
+                          ";text-decoration:none;:hover{color:",
+                          "#cfe0e9",
+                          ";}",
+                        ],
+                      },
+                      "displayName": "Link",
+                      "render": [Function],
+                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "target": "a",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                  href="#"
+                  onClick={[Function]}
+                >
+                  <a
+                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    href="#"
+                    onClick={[Function]}
+                  >
+                    Website gistoapp.com
+                  </a>
+                </StyledComponent>
+              </ForwardRef>
+            </Anchor>
+          </ExternalLink>
+           | 
+          <ExternalLink
+            href="https://github.com/Gisto/Gisto/issues"
           >
-            <Link
+            <Anchor
               href="#"
               onClick={[Function]}
             >
-              <a
-                className="Link-sc-17j1f2u-0 eiOsHn"
+              <ForwardRef
                 href="#"
                 onClick={[Function]}
               >
-                Issues
-              </a>
-            </Link>
-          </Anchor>
-        </ExternalLink>
-         | 
-        <ExternalLink
-          href="https://twitter.com/gistoapp"
-        >
-          <Anchor
-            href="#"
-            onClick={[Function]}
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Link-sc-17j1f2u-0",
+                        "isStatic": false,
+                        "lastClassName": "eiOsHn",
+                        "rules": Array [
+                          "cursor:pointer;color:",
+                          [Function],
+                          ";text-decoration:none;:hover{color:",
+                          "#cfe0e9",
+                          ";}",
+                        ],
+                      },
+                      "displayName": "Link",
+                      "render": [Function],
+                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "target": "a",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                  href="#"
+                  onClick={[Function]}
+                >
+                  <a
+                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    href="#"
+                    onClick={[Function]}
+                  >
+                    Issues
+                  </a>
+                </StyledComponent>
+              </ForwardRef>
+            </Anchor>
+          </ExternalLink>
+           | 
+          <ExternalLink
+            href="https://twitter.com/gistoapp"
           >
-            <Link
+            <Anchor
               href="#"
               onClick={[Function]}
             >
-              <a
-                className="Link-sc-17j1f2u-0 eiOsHn"
+              <ForwardRef
                 href="#"
                 onClick={[Function]}
               >
-                Twitter
-              </a>
-            </Link>
-          </Anchor>
-        </ExternalLink>
-      </p>
-    </div>
-  </Wrapper>
+                <StyledComponent
+                  forwardedClass={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": undefined,
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Link-sc-17j1f2u-0",
+                        "isStatic": false,
+                        "lastClassName": "eiOsHn",
+                        "rules": Array [
+                          "cursor:pointer;color:",
+                          [Function],
+                          ";text-decoration:none;:hover{color:",
+                          "#cfe0e9",
+                          ";}",
+                        ],
+                      },
+                      "displayName": "Link",
+                      "render": [Function],
+                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "target": "a",
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                  href="#"
+                  onClick={[Function]}
+                >
+                  <a
+                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    href="#"
+                    onClick={[Function]}
+                  >
+                    Twitter
+                  </a>
+                </StyledComponent>
+              </ForwardRef>
+            </Anchor>
+          </ExternalLink>
+        </p>
+      </div>
+    </StyledComponent>
+  </ForwardRef>
 </About>
 `;

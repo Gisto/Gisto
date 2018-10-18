@@ -1,16 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Icon> render Icon 1`] = `
-<Icon
+<ForwardRef
   color="#ff0000"
   type="menu"
 >
-  <span
-    className="Icon-vk4qna-0 iydNRt"
+  <StyledComponent
     color="#ff0000"
+    forwardedClass={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "attrs": undefined,
+        "componentStyle": ComponentStyle {
+          "componentId": "Icon-vk4qna-0",
+          "isStatic": false,
+          "lastClassName": "iydNRt",
+          "rules": Array [
+            "background-color:",
+            [Function],
+            ";display:inline-block;vertical-align:middle;width:",
+            [Function],
+            "px;height:",
+            [Function],
+            "px;-webkit-mask-image:url('src/icons/",
+            [Function],
+            "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+            [Function],
+            " ",
+            [Function],
+            " ",
+            [Function],
+          ],
+        },
+        "displayName": "Icon",
+        "render": [Function],
+        "styledComponentId": "Icon-vk4qna-0",
+        "target": "span",
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+      }
+    }
+    forwardedRef={null}
     type="menu"
   >
-    link
-  </span>
-</Icon>
+    <span
+      className="Icon-vk4qna-0 iydNRt"
+      color="#ff0000"
+      type="menu"
+    >
+      link
+    </span>
+  </StyledComponent>
+</ForwardRef>
 `;

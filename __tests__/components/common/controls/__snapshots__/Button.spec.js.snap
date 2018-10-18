@@ -8,32 +8,116 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
   invert={true}
   width="200px"
 >
-  <ButtonComponent
+  <ForwardRef
     className="btn"
     height="30px"
     invert={true}
     title="link"
     width="200px"
   >
-    <button
-      className="btn ButtonComponent-sc-1hy9a8c-0 hCytra"
+    <StyledComponent
+      className="btn"
+      forwardedClass={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": undefined,
+          "componentStyle": ComponentStyle {
+            "componentId": "ButtonComponent-sc-1hy9a8c-0",
+            "isStatic": false,
+            "lastClassName": "hCytra",
+            "rules": Array [
+              "background:",
+              [Function],
+              ";border:1px solid ",
+              [Function],
+              ";color:",
+              [Function],
+              ";border-radius:3px;font-weight:200;font-size:14px;text-align:center;",
+              [Function],
+              " ",
+              [Function],
+              " -webkit-appearance:none;cursor:pointer;&[disabled]{background:",
+              "#ccc",
+              ";border:1px solid ",
+              "#ccc",
+              ";color:",
+              "#555",
+              ";cursor:not-allowed;}",
+            ],
+          },
+          "displayName": "ButtonComponent",
+          "render": [Function],
+          "styledComponentId": "ButtonComponent-sc-1hy9a8c-0",
+          "target": "button",
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      forwardedRef={null}
       height="30px"
+      invert={true}
       title="link"
       width="200px"
     >
-      <Icon
-        color="#3F84A8"
-        type="menu"
+      <button
+        className="btn ButtonComponent-sc-1hy9a8c-0 hCytra"
+        height="30px"
+        title="link"
+        width="200px"
       >
-        <span
-          className="Icon-vk4qna-0 fvDzQl"
+        <ForwardRef
           color="#3F84A8"
           type="menu"
-        />
-      </Icon>
-       
-      link
-    </button>
-  </ButtonComponent>
+        >
+          <StyledComponent
+            color="#3F84A8"
+            forwardedClass={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": undefined,
+                "componentStyle": ComponentStyle {
+                  "componentId": "Icon-vk4qna-0",
+                  "isStatic": false,
+                  "lastClassName": "fvDzQl",
+                  "rules": Array [
+                    "background-color:",
+                    [Function],
+                    ";display:inline-block;vertical-align:middle;width:",
+                    [Function],
+                    "px;height:",
+                    [Function],
+                    "px;-webkit-mask-image:url('src/icons/",
+                    [Function],
+                    "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                    [Function],
+                    " ",
+                    [Function],
+                    " ",
+                    [Function],
+                  ],
+                },
+                "displayName": "Icon",
+                "render": [Function],
+                "styledComponentId": "Icon-vk4qna-0",
+                "target": "span",
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+            type="menu"
+          >
+            <span
+              className="Icon-vk4qna-0 fvDzQl"
+              color="#3F84A8"
+              type="menu"
+            />
+          </StyledComponent>
+        </ForwardRef>
+         
+        link
+      </button>
+    </StyledComponent>
+  </ForwardRef>
 </Button>
 `;
