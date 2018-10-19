@@ -50,6 +50,10 @@
   },
   "linux": {
     "maintainer": "Sasha Khamkov <sanusart@gmail.com>",
+    "icon": "build/icon/",
+    "desktop": {
+      "StartupWMClass": "gisto"
+    },
     "publish": {
       "provider": "github",
       "releaseType": "release"
