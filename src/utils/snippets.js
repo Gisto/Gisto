@@ -180,3 +180,13 @@ export const prepareFilesForUpdate = (snippet) => {
     files
   };
 };
+
+export const fileTypesList = (files) => {
+  return map((file) => {
+    if (file.language === null && startsWith('image/', file.type)) {
+      return 'Image';
+    }
+
+    return file.language;
+  }, files);
+};
