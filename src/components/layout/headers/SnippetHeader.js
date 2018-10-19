@@ -68,6 +68,8 @@ const Title = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
+    width: 50vw;
+    
     &:after {
       content: "";
       width: 100px;
