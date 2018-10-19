@@ -41,7 +41,6 @@ const LoadingIndicator = styled.div`
 
 const Image = styled.div`
   text-align: center;
-  padding: 20px;
   
   img {
     max-width: 100%;

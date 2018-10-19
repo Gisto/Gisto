@@ -1,9 +1,10 @@
 import {
-  isEmpty, map, get, includes, uniq, compact, startsWith, some
+  isEmpty, map, get, includes, uniq, compact, startsWith, some, flow
 } from 'lodash/fp';
 import { TAG_REGEX, DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 import { removeTags } from 'utils/tags';
 import { toUnixTimeStamp } from 'utils/date';
+import { fileTypesList } from 'utils/snippets';
 
 const prepareTags = (snippet) => {
   if (!isEmpty(snippet.description)) {
@@ -41,7 +42,11 @@ const prepareTruncated = (snippet) => {
   return some((file) => file.size > 1000000, snippet.files);
 };
 
-const prepareLanguages = (snippet) => compact(uniq(map('language', snippet.files)));
+const prepareLanguages = (snippet) => flow([
+  fileTypesList,
+  uniq,
+  compact
+])(snippet.files);
 
 const prepareFork = (snippet) => snippet.fork_of || {};
 
