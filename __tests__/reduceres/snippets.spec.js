@@ -338,7 +338,7 @@ describe('reducer - snippets', () => {
       .toEqual(expected);
   });
 
-  test('should create snippet', () => {
+  test.skip('should create snippet', () => {
     const newSnippet = snippet({ id: 'ddd123', description: 'ddd123 #ddd' });
     const action = {
       type: AT.CREATE_SNIPPET.SUCCESS,
