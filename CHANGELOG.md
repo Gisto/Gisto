@@ -1,3 +1,14 @@
+### v1.10.10
+*  FEATURE (contextmenu): add context menu (right click) to snippets list [View](https://github.com/Gisto/Gisto/commit/c77f01a169e0f243256f1dede842f2303dfb6563)
+*  FIX (settings): add option to hide rate limit [View](https://github.com/Gisto/Gisto/commit/72a42b30dc6757993f26a0a50e5e8d9e855eae65)
+*  FIX (util icon): dropdown lists, only anchor is clickable [View](https://github.com/Gisto/Gisto/commit/6b2a49f76e3f2ac677d20fcb13127e39840e68db)
+*  CHORE (packages): update react-scrollpad [View](https://github.com/Gisto/Gisto/commit/7cbd6a6e6b8051e08b9553543da9132cd7132f27)
+*  CHORE (packages): update styled-components [View](https://github.com/Gisto/Gisto/commit/32e62eb51e677c875caeda486f3102b5d48ea0b2)
+*  CHORE (packages): migrate to babel 7 [View](https://github.com/Gisto/Gisto/commit/fc49a533c7c6479f8a6db3a7af4bb1b9b901f127)
+*  FIX (dashboard): image files wrong listing and filtering [View](https://github.com/Gisto/Gisto/commit/3189278a04a7889f3114c266ad1053b18eae65f6)
+*  FIX (icon): linux AppImage icon not showing [View](https://github.com/Gisto/Gisto/commit/50cb915e7bc633998f400e89facbd534afb8484e)
+*  FIX (snippet): very long title pushes icons out of snippet header viewport [View](https://github.com/Gisto/Gisto/commit/6210686bb35531727bb1b1089d1cf5e56cf4980e)
+
 ### v1.10.9
 *  FIX (webapp): cache busting on new resource version [View](https://github.com/Gisto/Gisto/commit/0c7f84330b6bee00d2190da3c8e4ac2ac135545e)
 *  FIX (title): app title [View](https://github.com/Gisto/Gisto/commit/801dc2afb53a744bee88007d52b513bb91599297)
