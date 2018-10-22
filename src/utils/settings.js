@@ -1,3 +1,4 @@
+import { keys } from 'lodash/fp';
 import { isElectron } from 'utils/electron';
 import { handleTypes } from 'utils/types';
 import { gaEvent } from 'utils/ga';
@@ -21,7 +22,12 @@ if (isElectron) {
     },
     set: (...args) => {
       return localStorage.setItem(args[0], args[1]);
-    }
+    },
+    getAll: () => keys(localStorage).reduce((acc, str)  => {
+      acc[str] = localStorage.getItem(str);
+
+      return acc;
+    }, {})
   };
 }
 
@@ -40,12 +46,6 @@ export const setSetting = (key, value) => {
 export const setBooleanSetting = (key) => {
   const newValue = !getSetting(key);
 
-  gaEvent({
-    category: 'settings',
-    action: 'set bool',
-    label: key,
-    value: newValue
-  });
   setSetting(key, newValue);
 };
 

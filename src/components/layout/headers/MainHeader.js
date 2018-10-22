@@ -7,9 +7,6 @@ import { get } from 'lodash/fp';
 
 import * as snippetsActions from 'actions/snippets';
 
-import {
-  baseAppColor, headerBgLightest, headerColor, lightText
-} from 'constants/colors';
 import { SIDEBAR_WIDTH, logoText } from 'constants/config';
 import { isEnterpriseLogin } from 'utils/login';
 import { toUnixTimeStamp } from 'utils/date';
@@ -30,9 +27,9 @@ const HeaderWrapper = styled.div`
 `;
 
 export const HeaderSection = styled.div`
-  background: ${baseAppColor};
+  background: ${(props) => props.theme.baseAppColor};
   flex: 1;
-  border-right: 1px solid ${baseAppColor};
+  border-right: 1px solid ${(props) => props.theme.baseAppColor};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -48,7 +45,7 @@ const Logo = styled(HeaderSection)`
   padding: 20px 0 20px 20px;
   font-size: 20px;
   a {
-    color: ${headerColor};
+    color: ${(props) => props.theme.headerColor};
     text-decoration: none;
   }
 `;
@@ -56,7 +53,7 @@ const Logo = styled(HeaderSection)`
 const MiddleArea = styled(HeaderSection)``;
 
 const StyledLink = styled(Link)`
-  color: ${lightText};
+  color: ${(props) => props.theme.lightText};
   text-decoration: none;
   line-height: 25px;
 `;
@@ -73,11 +70,11 @@ const RateLimit = styled.span`
   font-size: 12px;
   font-weight: 500;
   text-align: center;
-  color: ${headerBgLightest};
+  color: ${(props) => props.theme.headerBgLightest};
   cursor: pointer;
   
   &:hover {
-    color: ${lightText};
+    color: ${(props) => props.theme.lightText};
   }
   
   > small {
@@ -99,10 +96,10 @@ export class MainHeader extends Component {
   };
 
   renderRateLimit = () => {
-    const { rateLimit, getRateLimit } = this.props;
+    const { rateLimit, getRateLimit, settings } = this.props;
     const apiLimitResetTime = Math.floor((get(['rate', 'reset'], rateLimit) - toUnixTimeStamp(new Date().getTime())) / 60);
 
-    if (!getSetting('settings-show-api-rate-limit', true)) {
+    if (!settings['settings-show-api-rate-limit'] || !getSetting('settings-show-api-rate-limit', true)) {
       return null;
     }
 
@@ -159,6 +156,7 @@ const mapStateToProps = (state) => ({
   loading: state.ui.snippets.loading,
   rateLimit: get(['ui', 'rateLimit'], state),
   edit: get(['ui', 'snippets', 'edit'], state),
+  settings: get(['ui', 'settings'], state),
   isCreateNew: get(['router', 'location', 'pathname'], state) === '/new'
 });
 
@@ -166,6 +164,7 @@ MainHeader.propTypes = {
   loading: PropTypes.bool,
   edit: PropTypes.bool,
   rateLimit: PropTypes.object,
+  settings: PropTypes.object,
   isCreateNew: PropTypes.bool,
   getRateLimit: PropTypes.func
 };

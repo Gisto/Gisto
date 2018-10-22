@@ -18,12 +18,12 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
           "componentStyle": ComponentStyle {
             "componentId": "Link-sc-17j1f2u-0",
             "isStatic": false,
-            "lastClassName": "eiOsHn",
+            "lastClassName": "dtxsCT",
             "rules": Array [
               "cursor:pointer;color:",
               [Function],
               ";text-decoration:none;:hover{color:",
-              "#cfe0e9",
+              [Function],
               ";}",
             ],
           },
@@ -39,7 +39,7 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
       href="https://github.com"
     >
       <a
-        className="Link-sc-17j1f2u-0 eiOsHn"
+        className="Link-sc-17j1f2u-0 dtxsCT"
         download="file.zip"
         href="https://github.com"
       >

@@ -11,7 +11,7 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
        
     </Link>
     <HashRouter>
-      <Button
+      <Connect(Button)
         height="30px"
         icon="add"
         outline={true}
@@ -21,7 +21,7 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
         >
           New snippet
         </ForwardRef>
-      </Button>
+      </Connect(Button)>
     </HashRouter>
   </ForwardRef>
   <ForwardRef>
@@ -43,6 +43,6 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
       </small>
     </ForwardRef>
   </ForwardRef>
-  <Connect(AppArea) />
+  <ForwardRef />
 </ForwardRef>
 `;

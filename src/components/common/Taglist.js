@@ -2,24 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getTagsWithCounts, getSnippets } from 'selectors/snippets';
 import { connect } from 'react-redux';
+import { withTheme } from 'styled-components';
+
 import * as snippetActions from 'actions/snippets';
 import {
   filter, get, isEmpty, map, size
 } from 'lodash/fp';
 
-import { headerBgLightest } from 'constants/colors';
-
 import { Pill } from 'components/common/Pill';
 
 export const Taglist = ({
-  snippets, searchTags, searchByTags, snippetsTags
+  snippets, searchTags, searchByTags, snippetsTags, theme
 }) => {
   const taggedSnippets = filter((snippet) => !isEmpty(snippet.tags), snippets);
   const linearGradient = (percentOf) => {
     const percents = (percentOf / size(taggedSnippets)) * 100;
 
     return {
-      background: `linear-gradient(to right, ${headerBgLightest} ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
+      background: `linear-gradient(to right, ${theme.headerBgLightest} ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
     };
   };
 
@@ -59,6 +59,7 @@ export const Taglist = ({
 
 Taglist.propTypes = {
   snippets: PropTypes.object,
+  theme: PropTypes.object,
   searchTags: PropTypes.string,
   searchByTags: PropTypes.func,
   snippetsTags: PropTypes.array
@@ -69,6 +70,8 @@ const mapStateToProps = (state) => ({
   snippetsTags: getTagsWithCounts(state)
 });
 
-export default connect(mapStateToProps, {
-  searchByTags: snippetActions.filterSnippetsByTags
-})(Taglist);
+export default withTheme(
+  connect(mapStateToProps, {
+    searchByTags: snippetActions.filterSnippetsByTags
+  })(Taglist)
+);

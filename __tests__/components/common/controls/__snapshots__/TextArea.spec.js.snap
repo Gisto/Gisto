@@ -25,7 +25,7 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
           "componentStyle": ComponentStyle {
             "componentId": "StyledInput-sc-1zkbel-0",
             "isStatic": false,
-            "lastClassName": "cjjZfw",
+            "lastClassName": "itETYq",
             "rules": Array [
               "border:none;border-radius:0;margin-bottom:10px;width:calc(100% - 20px);height:",
               [Function],
@@ -53,7 +53,7 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
       title=""
     >
       <textarea
-        className="classified StyledInput-sc-1zkbel-0 cjjZfw"
+        className="classified StyledInput-sc-1zkbel-0 itETYq"
         defaultValue="typetypetype"
         disabled={false}
         placeholder="I am temporary"

@@ -2,7 +2,7 @@
 
 exports[`COMPONENTS - <SubHeader> render SubHeader 1`] = `
 <ForwardRef>
-  <Connect(Search) />
+  <ForwardRef />
   <ForwardRef>
     <HashRouter>
       <Switch>

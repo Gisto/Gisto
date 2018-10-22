@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { baseAppColor } from 'constants/colors';
 import PropTypes from 'prop-types';
 
 const Box = styled.input`
@@ -28,13 +27,13 @@ const Box = styled.input`
     left: 0;
     top: 0;
     font-size: 10px;
-    border: 1px solid ${baseAppColor};
+    border: 1px solid ${(props) => props.theme.baseAppColor};
     background: #fff;
   }
   
   :checked:after {
     content: '\\2714';
-    color: ${baseAppColor};
+    color: ${(props) => props.theme.baseAppColor};
   }
 `;
 

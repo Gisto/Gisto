@@ -4,17 +4,18 @@ import { connect } from 'react-redux';
 import {
   get, isEmpty, join, map, size 
 } from 'lodash/fp';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
-import { baseAppColor, bg } from 'constants/colors';
+import { MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
+
 import * as snippetActions from 'actions/snippets';
+
+import { filterSnippetsList } from 'utils/snippets';
+import { gaPage } from 'utils/ga';
 
 import Input from 'components/common/controls/Input';
 import Icon from 'components/common/Icon';
-import { MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
-import { filterSnippetsList } from 'utils/snippets';
-import { gaPage } from 'utils/ga';
 
 const SuperSearchWrapper = styled.div`
   position: absolute;
@@ -68,7 +69,7 @@ const Result = styled.div`
   cursor: pointer;
   
   &:hover {
-    background: ${bg};
+    background: ${(props) => props.theme.bg};
   }
 `;
 
@@ -78,7 +79,7 @@ const  StyledNavLink = styled(NavLink)`
   align-items: center;
   line-height: 21px;
   text-decoration: none;
-  color: ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
   cursor: pointer;
 `;
 
@@ -113,7 +114,7 @@ export class SuperSearch extends Component {
 
   render() {
     const {
-      snippets, filterText, filterTags, filterLanguage, toggleSuperSesrch
+      snippets, filterText, filterTags, filterLanguage, toggleSuperSesrch, theme
     } = this.props;
     const filteredSnippets = size(filterText) <= MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH
       ? []
@@ -125,7 +126,7 @@ export class SuperSearch extends Component {
           <SearchBar>
             <StyledLookingGlass type="search"
                                 size={ 32 }
-                                color={ baseAppColor }/>
+                                color={ theme.baseAppColor }/>
             <StyledInput autoFocus
                          type="search"
                          className="mousetrap"
@@ -141,7 +142,7 @@ export class SuperSearch extends Component {
                            to={ `/snippet/${snippet.id}` }>
                     <StyledIcon type="book"
                               size={ 32 }
-                              color={ baseAppColor }/>
+                              color={ theme.baseAppColor }/>
                     <Description>{ snippet.description } { join(', ', snippet.tags) }</Description>
                   </StyledNavLink>
                 </Router>
@@ -163,6 +164,7 @@ const mapStateToProps = (state) => ({
 
 SuperSearch.propTypes = {
   snippets: PropTypes.object,
+  theme: PropTypes.object,
   filterSnippets: PropTypes.func,
   filterText: PropTypes.string,
   filterTags: PropTypes.array,
@@ -170,6 +172,8 @@ SuperSearch.propTypes = {
   toggleSuperSesrch: PropTypes.func
 };
 
-export default connect(mapStateToProps, {
-  filterSnippets: snippetActions.filterSnippetsByText
-})(SuperSearch);
+export default withTheme(
+  connect(mapStateToProps, {
+    filterSnippets: snippetActions.filterSnippetsByText
+  })(SuperSearch)
+);

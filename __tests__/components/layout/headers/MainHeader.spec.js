@@ -1,6 +1,9 @@
 import { MainHeader } from 'components/layout/headers/MainHeader';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  settings: {
+    'settings-show-api-rate-limit': true
+  },
   ...props
 });
 

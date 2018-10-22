@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import { isEmpty } from 'lodash/fp';
-
-import { lightText } from 'constants/colors';
 
 import Anchor from 'components/common/Anchor';
 
@@ -25,12 +23,14 @@ const Body = styled.div`
   }
 `;
 
-const Notification = ({ title, body, actions }) => (
+const Notification = ({
+  title, body, actions, theme
+}) => (
   <Wrapper>
     { title && <Title dangerouslySetInnerHTML={ { __html: title } } /> }
     <Body dangerouslySetInnerHTML={ { __html: body } }/>
     { !isEmpty(actions) && actions.map((action) => (
-      <Anchor key={ action.title } onClick={ action.action } color={ lightText }>
+      <Anchor key={ action.title } onClick={ action.action } color={ theme.lightText }>
         { action.title }
       </Anchor>
     )) }
@@ -40,7 +40,8 @@ const Notification = ({ title, body, actions }) => (
 Notification.propTypes = {
   title: PropTypes.string,
   body: PropTypes.string,
-  actions: PropTypes.array
+  actions: PropTypes.array,
+  theme: PropTypes.object
 };
 
-export default Notification;
+export default withTheme(Notification);

@@ -1,6 +1,6 @@
 import { Content } from 'components/layout/Content';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   ...props
 });
 

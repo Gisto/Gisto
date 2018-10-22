@@ -1,10 +1,12 @@
 import { NewSnippet } from 'components/layout/content/NewSnippet';
+import * as theme from 'constants/colors';
 
 jest.mock('uuid', () => ({
   v4: () => '123123123123'
 }));
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  theme,
   ...props
 });
 

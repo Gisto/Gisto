@@ -4,22 +4,18 @@ import { connect } from 'react-redux';
 import {
   get, isEmpty, map, size, orderBy
 } from 'lodash/fp';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
 import Icon from 'components/common/Icon';
 import TextArea from 'components/common/controls/TextArea';
 import Button from 'components/common/controls/Button';
-
-import {
-  baseAppColor, colorDanger, headerBgLightest, headerColor, textColor
-} from 'constants/colors';
 
 import * as snippetActions from 'actions/snippets';
 import Markdown from 'components/common/Markdown';
 
 const CommentsWrapper = styled.div`
   margin: 0;
-  background: ${headerBgLightest};
+  background: ${(props) => props.theme.headerBgLightest};
   top: 110px;
   position: fixed;
   height: calc(100% - 110px);
@@ -29,7 +25,7 @@ const CommentsWrapper = styled.div`
   padding: 0 20px;
   transition: all 0.5s ease;
   right: ${(props) => props.show ? '0px' : '-500px'};
-  color: ${textColor};
+  color: ${(props) => props.theme.textColor};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -56,7 +52,7 @@ const CommentsList = styled.div`
 
 const Comment = styled.div`
   padding: 0 0 0 30px;
-  border-left: 2px solid ${baseAppColor};
+  border-left: 2px solid ${(props) => props.theme.baseAppColor};
   position: relative;
 `;
 
@@ -68,7 +64,7 @@ const CommentHeader = styled.div`
 
 const Avatar = styled.img`
   border-radius: 4px;
-  border: 1px solid ${headerColor};
+  border: 1px solid ${(props) => props.theme.headerColor};
   margin: 0 20px 0 0;
 `;
 
@@ -100,12 +96,12 @@ export class Comments extends React.Component {
 
   render() {
     const {
-      comments, showComments, snippetId, deleteComment
+      comments, showComments, snippetId, deleteComment, theme
     } = this.props;
 
     return (
       <CommentsWrapper show={ showComments }>
-        <h3><Icon type="chat" color={ textColor }/> { size(comments) } Comment(s)</h3>
+        <h3><Icon type="chat" color={ theme.textColor }/> { size(comments) } Comment(s)</h3>
 
         <CommentsList>
           { isEmpty(comments)
@@ -114,7 +110,7 @@ export class Comments extends React.Component {
               return (
                 <Comment key={ comment.id }>
                   <StyledDeleteIcon type="delete"
-                                    color={ colorDanger  }
+                                    color={ theme.colorDanger  }
                                     onClick={ () => deleteComment(snippetId, comment.id) }/>
                   <CommentHeader>
                     <Avatar
@@ -158,11 +154,14 @@ Comments.propTypes = {
   snippetId: PropTypes.string,
   getSnippetComments: PropTypes.func,
   createSnippetComment: PropTypes.func,
-  deleteComment: PropTypes.func
+  deleteComment: PropTypes.func,
+  theme: PropTypes.object
 };
 
-export default connect(mapStateToProps, {
-  getSnippetComments: snippetActions.getSnippetComments,
-  createSnippetComment: snippetActions.createSnippetComment,
-  deleteComment: snippetActions.deleteComment
-})(Comments);
+export default withTheme(
+  connect(mapStateToProps, {
+    getSnippetComments: snippetActions.getSnippetComments,
+    createSnippetComment: snippetActions.createSnippetComment,
+    deleteComment: snippetActions.deleteComment
+  })(Comments)
+);

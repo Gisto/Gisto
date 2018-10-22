@@ -7,6 +7,38 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
   dropdown={true}
   onClick={[MockFunction]}
   size={20}
+  theme={
+    Object {
+      "baseAppColor": "#3F84A8",
+      "bg": "#ebf2f6",
+      "borderColor": "#ccc",
+      "boxShadow": "#555",
+      "colorDanger": "tomato",
+      "colorSuccess": "cadetblue",
+      "colorWarning": "#e0b01e",
+      "disabledColor": "#ccc",
+      "headerBgLightest": "#cfe0e9",
+      "headerColor": "#fff",
+      "lightBorderColor": "#f2f2f2",
+      "lightText": "#fff",
+      "textColor": "#555",
+      "theme": Object {
+        "baseAppColor": "#3F84A8",
+        "bg": "#ebf2f6",
+        "borderColor": "#ccc",
+        "boxShadow": "#555",
+        "colorDanger": "tomato",
+        "colorSuccess": "cadetblue",
+        "colorWarning": "#e0b01e",
+        "disabledColor": "#ccc",
+        "headerBgLightest": "#cfe0e9",
+        "headerColor": "#fff",
+        "lightBorderColor": "#f2f2f2",
+        "lightText": "#fff",
+        "textColor": "#555",
+      },
+    }
+  }
   title="UtilityIcon"
   type="menu"
 >
@@ -26,10 +58,10 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
           "componentStyle": ComponentStyle {
             "componentId": "Util-d02m7m-0",
             "isStatic": false,
-            "lastClassName": "jrmocx",
+            "lastClassName": "hCtDAJ",
             "rules": Array [
               "border-left:1px solid ",
-              "#ccc",
+              [Function],
               ";height:50px;display:inline-block;text-align:center;line-height:50px;color:",
               [Function],
               ";cursor:pointer;position:relative;background:",
@@ -42,28 +74,28 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
               [Function],
               ";}div.list{",
               "position:absolute;background:",
-              "#fff",
+              [Function],
               ";right:0;top:51px;border:1px solid ",
-              "#ccc",
+              [Function],
               ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
-              "#ccc",
+              [Function],
               ";z-index:4;overflow:auto;max-height:60vh;color:",
-              "#3F84A8",
+              [Function],
               ";cursor:default;",
               ";padding:10px 20px;}ul{",
               "position:absolute;background:",
-              "#fff",
+              [Function],
               ";right:0;top:51px;border:1px solid ",
-              "#ccc",
+              [Function],
               ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
-              "#ccc",
+              [Function],
               ";z-index:4;overflow:auto;max-height:60vh;color:",
-              "#3F84A8",
+              [Function],
               ";cursor:default;",
               " li{border-bottom:1px dotted ",
-              "#ccc",
+              [Function],
               ";margin:0;white-space:nowrap;text-align:left;> *{padding:5px 20px;display:block;}&:hover{background:",
-              "#f2f2f2",
+              [Function],
               ";cursor:pointer;}&:last-child{border:none;}}}",
             ],
           },
@@ -80,7 +112,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
       title="UtilityIcon"
     >
       <span
-        className="UtilityIcon Util-d02m7m-0 jrmocx"
+        className="UtilityIcon Util-d02m7m-0 hCtDAJ"
         color="red"
         onClick={[Function]}
         title="UtilityIcon"

@@ -4,44 +4,43 @@ import {
 } from 'lodash/fp';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import SnippetsList from 'components/layout/sidebar/SnippetsList';
-import Snippet from 'components/layout/sidebar/Snippet';
-import Icon from 'components/common/Icon';
+import styled, { withTheme } from 'styled-components';
+
 import { SIDEBAR_WIDTH } from 'constants/config';
-import {
-  baseAppColor, borderColor, colorDanger, lightText, boxShadow 
-} from 'constants/colors';
 import { filterSnippetsList, isTag } from 'utils/snippets';
 import * as snippetActions from 'actions/snippets';
 
+import SnippetsList from 'components/layout/sidebar/SnippetsList';
+import Snippet from 'components/layout/sidebar/Snippet';
+import Icon from 'components/common/Icon';
+
 const SideBarWrapper = styled.div`
   width: ${SIDEBAR_WIDTH}px;
-  background: ${baseAppColor};
+  background: ${(props) => props.theme.baseAppColor};
   display: flex;
   flex-direction: column;
   overflow: auto;
 `;
 
 const SearchFilters = styled.div`
-  color: ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
   padding: 10px 20px;
-  background: ${lightText};
+  background: ${(props) => props.theme.lightText};
   z-index: 1;
-  border-top: 1px solid ${borderColor};
-  box-shadow: 0 1px 2px ${boxShadow};
+  border-top: 1px solid ${(props) => props.theme.borderColor};
+  box-shadow: 0 1px 2px ${(props) => props.theme.boxShadow};
   font-size: 12px;
 `;
 
 const ClearAll = styled.a`
   cursor: pointer;
-  color: ${colorDanger};
+  color: ${(props) => props.theme.colorDanger};
   white-space: nowrap;
 `;
 
 const Tag = styled.span`
-  border: 1px solid ${baseAppColor};
-  color: ${baseAppColor};
+  border: 1px solid ${(props) => props.theme.baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
   padding: 1px 3px;
   border-radius: 3px;
   margin-right: 3px;
@@ -49,7 +48,7 @@ const Tag = styled.span`
 
 export const Sidebar = ({
   snippets, filterText, filterTags, filterLanguage, clearFilters, removeTag,
-  filterStatus, filterTruncated, filterUntagged
+  filterStatus, filterTruncated, filterUntagged, theme
 }) => {
   const searchType = () => {
     if (!isEmpty(trim(filterText))) {
@@ -67,7 +66,7 @@ export const Sidebar = ({
                     clickable
                     size={ 12 }
                     onClick={ () => removeTag(tag) }
-                    color={ baseAppColor }/>
+                    color={ theme.baseAppColor }/>
             </Tag>
           ), filterTags) }
         </span>
@@ -107,7 +106,7 @@ export const Sidebar = ({
         <ClearAll onClick={ () => clearFilters() }>
           <Icon type="close-circle"
                     size={ 12 }
-                    color={ colorDanger }/>
+                    color={ theme.colorDanger }/>
               &nbsp;
           <strong>clear</strong>
         </ClearAll>
@@ -142,6 +141,7 @@ const mapStateToProps = (state) => ({
 
 Sidebar.propTypes = {
   snippets: PropTypes.object,
+  theme: PropTypes.object,
   filterText: PropTypes.string,
   filterTags: PropTypes.array,
   filterLanguage: PropTypes.string,
@@ -152,7 +152,9 @@ Sidebar.propTypes = {
   filterUntagged: PropTypes.bool
 };
 
-export default connect(mapStateToProps, {
-  clearFilters: snippetActions.clearAllFilters,
-  removeTag: snippetActions.removeTagFromFilter
-})(Sidebar);
+export default withTheme(
+  connect(mapStateToProps, {
+    clearFilters: snippetActions.clearAllFilters,
+    removeTag: snippetActions.removeTagFromFilter
+  })(Sidebar)
+);

@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { size, isEmpty } from 'lodash/fp';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import ScrollPad from 'react-scrollpad';
-import * as snippetActions from 'actions/snippets';
+
 import { SIDEBAR_WIDTH, MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH } from 'constants/config';
+
+import * as snippetActions from 'actions/snippets';
+
 import { filterSnippetsList } from 'utils/snippets';
 
 import Icon from 'components/common/Icon';
-import { baseAppColor, borderColor } from 'constants/colors';
 import Input from 'components/common/controls/Input';
 import UtilityIcon from 'components/common/UtilityIcon';
 import Taglist from 'components/common/Taglist';
@@ -23,7 +25,7 @@ const SearchWrapper = styled.div`
   width: ${SIDEBAR_WIDTH - 10}px;
   min-width: ${SIDEBAR_WIDTH - 10}px;
   color: #555;
-  border-right: 1px solid ${borderColor};
+  border-right: 1px solid ${(props) => props.theme.borderColor};
   align-items: center;
 `;
 
@@ -36,7 +38,7 @@ const StyledTaglistWrapper = styled.div`
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr) ) ;
-  color: ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
   max-height: 50vh;
   overflow: auto;
   font-size: smaller;
@@ -62,7 +64,7 @@ const StyledLanguagesWrapper = styled(StyledTaglistWrapper)`
 
 export const Search = ({
   snippets, filterSnippets, filterText, filterTags, filterLanguage,
-  filterStatus, filterTruncated, filterUntagged
+  filterStatus, filterTruncated, filterUntagged, theme
 }) => {
   const countSnippets = size(
     filterSnippetsList(
@@ -82,7 +84,7 @@ export const Search = ({
 
   return (
     <SearchWrapper>
-      <Icon type="search" size="22" color={ baseAppColor }/>
+      <Icon type="search" size="22" color={ theme.baseAppColor }/>
       <StyledInput type="search"
                    placeholder={ `Search ${countSnippets} snippets` }
                    onChange={
@@ -90,7 +92,7 @@ export const Search = ({
                        && filterSnippets(event.target.value)
                    }/>
 
-      <UtilityIcon dropdown type="code" color={ baseAppColor }>
+      <UtilityIcon dropdown type="code" color={ theme.baseAppColor }>
         <ScrollPad>
           <div>
             <StyledLanguagesWrapper className="list">
@@ -99,7 +101,7 @@ export const Search = ({
           </div>
         </ScrollPad>
       </UtilityIcon>
-      <UtilityIcon dropdown type="tag" color={ baseAppColor }>
+      <UtilityIcon dropdown type="tag" color={ theme.baseAppColor }>
         <ScrollPad>
           <div>
             <StyledTaglistWrapper className="list">
@@ -115,6 +117,7 @@ export const Search = ({
 
 Search.propTypes = {
   snippets: PropTypes.object,
+  theme: PropTypes.object,
   filterSnippets: PropTypes.func,
   filterText: PropTypes.string,
   filterTags: PropTypes.array,
@@ -134,6 +137,8 @@ const mapStateToProps = (state) => ({
   filterUntagged: state.snippets.filter.untagged
 });
 
-export default connect(mapStateToProps, {
-  filterSnippets: snippetActions.filterSnippetsByText
-})(Search);
+export default withTheme(
+  connect(mapStateToProps, {
+    filterSnippets: snippetActions.filterSnippetsByText
+  })(Search)
+);

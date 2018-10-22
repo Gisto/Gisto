@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import { get } from 'lodash/fp';
 
-import { baseAppColor, bg } from 'constants/colors';
-
 import { isElectron } from 'utils/electron';
 import { gaPage } from 'utils/ga';
 
@@ -27,9 +25,9 @@ const Wrapper = styled.div`
 `;
 
 const UpdateInfo = styled.div`
-  border: 1px solid ${baseAppColor};
+  border: 1px solid ${(props) => props.theme.baseAppColor};
   padding: 10px;
-  background: ${bg};
+  background: ${(props) => props.theme.bg};
   border-radius: 3px;
 `;
 

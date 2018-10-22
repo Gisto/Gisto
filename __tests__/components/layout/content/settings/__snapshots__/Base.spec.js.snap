@@ -18,12 +18,6 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
           onChange={[Function]}
         />
       </ForwardRef>
-      <ForwardRef>
-        <strong>
-          NOTE!
-        </strong>
-         color change need app reload
-      </ForwardRef>
     </ForwardRef>
     <ForwardRef>
       <ForwardRef>

@@ -3,7 +3,7 @@ import PropType from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
-  set, findIndex, map, filter, isEmpty
+  set, findIndex, map, filter, isEmpty, get
 } from 'lodash/fp';
 import uuid from 'uuid';
 
@@ -14,7 +14,6 @@ import { prepareFiles } from 'utils/snippets';
 import Input from 'components/common/controls/Input';
 import Editor from 'components/common/controls/Editor';
 import Icon from 'components/common/Icon';
-import { baseAppColor, bg, boxShadow } from 'constants/colors';
 import ExternalLink from 'components/common/ExternalLink';
 import Button from 'components/common/controls/Button';
 import Checkbox from 'components/common/controls/Checkbox';
@@ -39,7 +38,7 @@ const Section = styled.div`
 `;
 
 const FileSection = styled(Section)`
-  border: 1px solid ${baseAppColor};
+  border: 1px solid ${(props) => props.theme.baseAppColor};
   padding: 20px;
   border-radius: 3px;
   
@@ -47,7 +46,7 @@ const FileSection = styled(Section)`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 0px 0px -20px 0px;
+    margin: 0 0 -20px 0;
   }
   
   &:last-of-type {
@@ -76,15 +75,15 @@ const ButtonsSection = styled.section`
   bottom: 0;
   padding: 20px;
   margin: 0 0 0 -25px;
-  background: ${bg};
-  box-shadow: 0 -1px 2px ${boxShadow};
+  background: ${(props) => props.theme.bg};
+  box-shadow: 0 -1px 2px ${(props) => props.theme.boxShadow};
   display: flex;
   justify-content: space-between;
   width: calc(100vw - 25px);
 `;
 
 const StyledLink = styled(Link)`
-  color: ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
   text-decoration: none;
   line-height: 25px;
 `;
@@ -133,9 +132,9 @@ export class NewSnippet extends React.Component {
 
   deleteFile = (id) => {
     const { files } = this.state;
-    const updatedfiles = filter((file) => file.uuid !== id, files);
+    const updatedFiles = filter((file) => file.uuid !== id, files);
 
-    this.setState({ files: updatedfiles });
+    this.setState({ files: updatedFiles });
   };
 
   save = () => {
@@ -147,6 +146,8 @@ export class NewSnippet extends React.Component {
   };
 
   render() {
+    const { theme } = this.props;
+
     return (
       <div>
 
@@ -169,7 +170,7 @@ export class NewSnippet extends React.Component {
           Public snippet
             &nbsp;
             <ExternalLink href="https://help.github.com/articles/about-gists/#types-of-gists">
-              <Icon type="info" size="16" color={ baseAppColor }/>
+              <Icon type="info" size="16" color={ theme.baseAppColor }/>
             </ExternalLink>
           </span>
         </Section>
@@ -224,10 +225,15 @@ export class NewSnippet extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  theme: get(['ui', 'settings', 'theme'], state)
+});
+
 NewSnippet.propTypes = {
-  createSnippet: PropType.func
+  createSnippet: PropType.func,
+  theme: PropType.object
 };
 
-export default connect(null, {
+export default connect(mapStateToProps, {
   createSnippet: snippetActions.createSnippet
 })(NewSnippet);

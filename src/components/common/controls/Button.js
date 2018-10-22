@@ -1,15 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  baseAppColor, borderColor, lightText, textColor 
-} from 'constants/colors';
+import { get } from 'lodash/fp';
+
 import Icon from 'components/common/Icon';
 
 const ButtonComponent = styled.button`
-  background: ${(props) => props.invert ? 'transparent' : baseAppColor};
-  border: 1px solid ${(props) => props.outline ? lightText : baseAppColor};
-  color: ${(props) => props.invert ? baseAppColor : lightText};
+  background: ${(props) => props.invert ? 'transparent' : props.theme.baseAppColor};
+  border: 1px solid ${(props) => props.outline ? props.theme.lightText : props.theme.baseAppColor};
+  color: ${(props) => props.invert ? props.theme.baseAppColor : props.theme.lightText};
   border-radius: 3px;
   font-weight: 200;
   font-size: 14px;
@@ -20,24 +20,24 @@ const ButtonComponent = styled.button`
   cursor: pointer;
   
   &[disabled] {
-    background: ${borderColor};
-    border: 1px solid ${borderColor};
-    color: ${textColor};
+    background: ${(props) => props.theme.borderColor};
+    border: 1px solid ${(props) => props.theme.borderColor};
+    color: ${(props) => props.theme.textColor};
     cursor: not-allowed;
   }
 `;
 
-const Button = ({
-  icon, children, width, height, invert, outline, className, onClick, disabled
+export const Button = ({
+  icon, children, width, height, invert, outline, className, onClick, disabled, theme
 }) => {
   const iconColor = () => {
     if (invert) {
-      return baseAppColor;
+      return theme.baseAppColor;
     } if (disabled) {
-      return  textColor;
+      return  theme.textColor;
     } 
     
-    return lightText;
+    return theme.lightText;
   };
 
   return (
@@ -64,7 +64,12 @@ Button.propTypes = {
   invert: PropTypes.bool,
   outline: PropTypes.bool,
   onClick: PropTypes.func,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  theme: PropTypes.object
 };
 
-export default Button;
+const mapStateToProps = (state) => ({
+  theme: get(['ui', 'settings', 'theme'], state)
+});
+
+export default connect(mapStateToProps)(Button);

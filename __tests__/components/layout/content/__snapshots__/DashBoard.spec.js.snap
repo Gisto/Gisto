@@ -6,7 +6,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
+        "background": "linear-gradient(to right, #cfe0e9 Infinity%, #fff Infinity%)",
       }
     }
     title="Click to filter private snippets"
@@ -22,7 +22,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "background": "linear-gradient(to right, red -Infinity%, #fff -Infinity%)",
+        "background": "linear-gradient(to right, #cfe0e9 -Infinity%, #fff -Infinity%)",
       }
     }
     title="Click to filter public snippets"
@@ -38,7 +38,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "background": "linear-gradient(to right, red Infinity%, #fff Infinity%)",
+        "background": "linear-gradient(to right, #cfe0e9 Infinity%, #fff Infinity%)",
       }
     }
     title="Click to filter starred snippets"
@@ -54,7 +54,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
+        "background": "linear-gradient(to right, #cfe0e9 NaN%, #fff NaN%)",
       }
     }
     title="Click to filter snippets with large files"
@@ -68,7 +68,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
+        "background": "linear-gradient(to right, #cfe0e9 NaN%, #fff NaN%)",
       }
     }
     title="Click to filter snippets with no tags"
@@ -82,7 +82,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     onClick={[Function]}
     style={
       Object {
-        "background": "linear-gradient(to right, red NaN%, #fff NaN%)",
+        "background": "linear-gradient(to right, #cfe0e9 NaN%, #fff NaN%)",
       }
     }
     title="Click to filter snippets with no description"
@@ -103,7 +103,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       rtl={false}
     >
       <div>
-        <Connect(Languagelist) />
+        <ForwardRef />
       </div>
     </ScrollPad>
   </ForwardRef>
@@ -114,7 +114,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       </h3>
       <div>
         <ForwardRef
-          color="red"
+          color="#3F84A8"
           size="22"
           type="search"
         />
@@ -139,7 +139,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       </h3>
       <div>
         <ForwardRef
-          color="red"
+          color="#3F84A8"
           size="22"
           type="search"
         />
@@ -155,7 +155,7 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       rtl={false}
     >
       <div>
-        <Connect(Taglist)
+        <ForwardRef
           searchTags=""
         />
       </div>

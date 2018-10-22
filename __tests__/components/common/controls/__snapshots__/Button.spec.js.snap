@@ -3,20 +3,57 @@
 exports[`COMPONENTS - <Button> render Button 1`] = `
 <Button
   className="btn"
+  disabled={false}
   height="30px"
   icon="menu"
   invert={true}
+  onClick={[MockFunction]}
+  theme={
+    Object {
+      "baseAppColor": "#3F84A8",
+      "bg": "#ebf2f6",
+      "borderColor": "#ccc",
+      "boxShadow": "#555",
+      "colorDanger": "tomato",
+      "colorSuccess": "cadetblue",
+      "colorWarning": "#e0b01e",
+      "disabledColor": "#ccc",
+      "headerBgLightest": "#cfe0e9",
+      "headerColor": "#fff",
+      "lightBorderColor": "#f2f2f2",
+      "lightText": "#fff",
+      "textColor": "#555",
+      "theme": Object {
+        "baseAppColor": "#3F84A8",
+        "bg": "#ebf2f6",
+        "borderColor": "#ccc",
+        "boxShadow": "#555",
+        "colorDanger": "tomato",
+        "colorSuccess": "cadetblue",
+        "colorWarning": "#e0b01e",
+        "disabledColor": "#ccc",
+        "headerBgLightest": "#cfe0e9",
+        "headerColor": "#fff",
+        "lightBorderColor": "#f2f2f2",
+        "lightText": "#fff",
+        "textColor": "#555",
+      },
+    }
+  }
   width="200px"
 >
   <ForwardRef
     className="btn"
+    disabled={false}
     height="30px"
     invert={true}
+    onClick={[MockFunction]}
     title="link"
     width="200px"
   >
     <StyledComponent
       className="btn"
+      disabled={false}
       forwardedClass={
         Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -24,7 +61,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
           "componentStyle": ComponentStyle {
             "componentId": "ButtonComponent-sc-1hy9a8c-0",
             "isStatic": false,
-            "lastClassName": "hCytra",
+            "lastClassName": "htLuZh",
             "rules": Array [
               "background:",
               [Function],
@@ -37,11 +74,11 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
               " ",
               [Function],
               " -webkit-appearance:none;cursor:pointer;&[disabled]{background:",
-              "#ccc",
+              [Function],
               ";border:1px solid ",
-              "#ccc",
+              [Function],
               ";color:",
-              "#555",
+              [Function],
               ";cursor:not-allowed;}",
             ],
           },
@@ -56,12 +93,15 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
       forwardedRef={null}
       height="30px"
       invert={true}
+      onClick={[MockFunction]}
       title="link"
       width="200px"
     >
       <button
-        className="btn ButtonComponent-sc-1hy9a8c-0 hCytra"
+        className="btn ButtonComponent-sc-1hy9a8c-0 htLuZh"
+        disabled={false}
         height="30px"
+        onClick={[MockFunction]}
         title="link"
         width="200px"
       >

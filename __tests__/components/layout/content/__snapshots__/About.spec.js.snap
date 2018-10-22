@@ -70,12 +70,12 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
-                        "lastClassName": "eiOsHn",
+                        "lastClassName": "dtxsCT",
                         "rules": Array [
                           "cursor:pointer;color:",
                           [Function],
                           ";text-decoration:none;:hover{color:",
-                          "#cfe0e9",
+                          [Function],
                           ";}",
                         ],
                       },
@@ -92,7 +92,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    className="Link-sc-17j1f2u-0 dtxsCT"
                     href="#"
                     onClick={[Function]}
                   >
@@ -122,12 +122,12 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
-                        "lastClassName": "eiOsHn",
+                        "lastClassName": "dtxsCT",
                         "rules": Array [
                           "cursor:pointer;color:",
                           [Function],
                           ";text-decoration:none;:hover{color:",
-                          "#cfe0e9",
+                          [Function],
                           ";}",
                         ],
                       },
@@ -144,7 +144,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    className="Link-sc-17j1f2u-0 dtxsCT"
                     href="#"
                     onClick={[Function]}
                   >
@@ -174,12 +174,12 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
-                        "lastClassName": "eiOsHn",
+                        "lastClassName": "dtxsCT",
                         "rules": Array [
                           "cursor:pointer;color:",
                           [Function],
                           ";text-decoration:none;:hover{color:",
-                          "#cfe0e9",
+                          [Function],
                           ";}",
                         ],
                       },
@@ -196,7 +196,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    className="Link-sc-17j1f2u-0 dtxsCT"
                     href="#"
                     onClick={[Function]}
                   >
@@ -226,12 +226,12 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
-                        "lastClassName": "eiOsHn",
+                        "lastClassName": "dtxsCT",
                         "rules": Array [
                           "cursor:pointer;color:",
                           [Function],
                           ";text-decoration:none;:hover{color:",
-                          "#cfe0e9",
+                          [Function],
                           ";}",
                         ],
                       },
@@ -248,7 +248,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    className="Link-sc-17j1f2u-0 dtxsCT"
                     href="#"
                     onClick={[Function]}
                   >
@@ -278,12 +278,12 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
-                        "lastClassName": "eiOsHn",
+                        "lastClassName": "dtxsCT",
                         "rules": Array [
                           "cursor:pointer;color:",
                           [Function],
                           ";text-decoration:none;:hover{color:",
-                          "#cfe0e9",
+                          [Function],
                           ";}",
                         ],
                       },
@@ -300,7 +300,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    className="Link-sc-17j1f2u-0 dtxsCT"
                     href="#"
                     onClick={[Function]}
                   >

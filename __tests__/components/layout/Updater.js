@@ -1,6 +1,6 @@
 import Updater from 'components/layout/Updater';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   ...props
 });
 

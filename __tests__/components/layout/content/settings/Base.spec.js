@@ -1,6 +1,7 @@
-import BaseSettings from 'components/layout/content/settings/Base';
+import { BaseSettings } from 'components/layout/content/settings/Base';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  changeSettings: jest.fn(),
   ...props
 });
 

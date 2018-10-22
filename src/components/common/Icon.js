@@ -1,18 +1,20 @@
-import styled, { keyframes } from 'styled-components';
-import { lightText } from 'constants/colors';
+import styled, { keyframes, css } from 'styled-components';
 import { iconsMap } from 'constants/iconsMap';
 
 export const spin = keyframes`
   from {
-    transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform:rotate(360deg);
+    transform: rotate(360deg);
   }
+`;
+const spinAnimationProps = css`
+  ${spin} 2s linear 0s infinite;
 `;
 
 const Icon = styled.span`
-  background-color: ${(props) => props.color || lightText};
+  background-color: ${(props) => props.color || props.theme.lightText};
   display: inline-block;
   vertical-align: middle;
   width: ${(props) => props.size || 22}px;
@@ -24,7 +26,7 @@ const Icon = styled.span`
   ${(props) => props.rotate ? `transform: rotate(${props.rotate});` : ''}
   ${(props) => props.clickable ? 'cursor: pointer;' : ''}
   
-  ${(props) => props.spin ? `:hover { animation: ${spin} 2s linear 0s infinite; }` : ''}
+  ${(props) => props.spin ? css`:hover { animation: ${spinAnimationProps} }` : ''}
 `;
 
 export default Icon;

@@ -1,6 +1,6 @@
 import { Sidebar } from 'components/layout/sidebar/Sidebar';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   ...props
 });
 

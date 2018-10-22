@@ -1,6 +1,6 @@
 import { Main } from 'components/layout/Main';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   ...props
 });
 

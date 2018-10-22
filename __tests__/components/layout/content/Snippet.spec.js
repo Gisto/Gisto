@@ -1,6 +1,6 @@
 import { Snippet } from 'components/layout/content/Snippet';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   ...props
 });
 

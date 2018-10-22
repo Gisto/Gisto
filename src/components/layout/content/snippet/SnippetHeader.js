@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 import { get, getOr } from 'lodash/fp';
 import styled from 'styled-components';
 
-import {
-  baseAppColor, borderColor, colorDanger, headerBgLightest
-} from 'constants/colors';
-
 import { copyToClipboard } from 'utils/snippets';
 import * as snippetActions from 'actions/snippets';
 
@@ -22,12 +18,12 @@ const SnippetHeaderWrapper = styled.div`
   display: flex;
   flex: 1;
   padding: 0 0 0 20px;
-  border-bottom: 1px solid ${borderColor};
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
   border-radius: 3px 3px 0 0;
   line-height: 50px;
   justify-content: space-between;
-  background: ${headerBgLightest};
-  color: ${baseAppColor};
+  background: ${(props) => props.theme.headerBgLightest};
+  color: ${(props) => props.theme.baseAppColor};
 `;
 
 const Language = styled.span`
@@ -75,7 +71,7 @@ export class SnippetHeader extends React.Component {
 
   render() {
     const {
-      file, username, snippetId, edit, toggleCollapse
+      file, username, snippetId, edit, toggleCollapse, theme
     } = this.props;
     const openOnWebUrl = `${getSnippetUrl('/gist')}/${username}/${snippetId}#file-${file.filename}`;
 
@@ -83,10 +79,10 @@ export class SnippetHeader extends React.Component {
       <SnippetHeaderWrapper>
         <FileName>
           <FilenameIcon size={ 22 }
-                        color={ baseAppColor }
+                        color={ theme.baseAppColor }
                         type="file"/> { this.renderFileName() } { edit && file.language === 'Image' && (
                         <em>
-                          <small style={ { color: colorDanger } }>
+                          <small style={ { color: theme.colorDanger } }>
                             &nbsp;&nbsp;&nbsp;
                             (Image files are read only)
                           </small>
@@ -97,7 +93,7 @@ export class SnippetHeader extends React.Component {
         { !edit ? (
           <div>
             <Language>{getOr('Plain text', 'language', file)}</Language>
-            <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
+            <UtilityIcon size={ 22 } color={ theme.baseAppColor } type="ellipsis" dropdown>
               <ul>
                 <li>
                   <ExternalLink href={ openOnWebUrl }>
@@ -117,12 +113,12 @@ export class SnippetHeader extends React.Component {
               </ul>
             </UtilityIcon>
             <UtilityIcon size={ 22 }
-                         color={ baseAppColor }
+                         color={ theme.baseAppColor }
                          type={ file.collapsed ? 'arrow-up' :  'arrow-down' }
                          onClick={ () => toggleCollapse(snippetId, file.filename) }/>
           </div>
         ) : (
-          <UtilityIcon size={ 22 } color={ colorDanger } type="delete" onClick={ () => this.deleteFile(file.uuid, file.filename) }/>
+          <UtilityIcon size={ 22 } color={ theme.colorDanger } type="delete" onClick={ () => this.deleteFile(file.uuid, file.filename) }/>
         ) }
 
       </SnippetHeaderWrapper>
@@ -132,11 +128,13 @@ export class SnippetHeader extends React.Component {
 
 const mapStateToProps = (state) => ({
   edit: get(['ui', 'snippets', 'edit'], state),
-  tempSnippet: get(['snippets', 'edit'], state)
+  tempSnippet: get(['snippets', 'edit'], state),
+  theme: get(['ui', 'settings', 'theme'], state)
 });
 
 SnippetHeader.propTypes = {
   file: PropTypes.object,
+  theme: PropTypes.object,
   username: PropTypes.string,
   snippetId: PropTypes.string,
   edit: PropTypes.bool,

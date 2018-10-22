@@ -1,39 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <App> render App 1`] = `
-<App>
-  <ForwardRef>
-    <StyledComponent
-      forwardedClass={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "AppWrapper-sc-8qqffy-0",
-            "isStatic": true,
-            "lastClassName": "fJOKJi",
-            "rules": Array [
-              "display:flex;background:#fff;flex-direction:column;justify-content:flex-start;height:100vh;color:",
-              "#3F84A8",
-              ";",
-            ],
-          },
-          "displayName": "AppWrapper",
-          "render": [Function],
-          "styledComponentId": "AppWrapper-sc-8qqffy-0",
-          "target": "div",
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        }
-      }
-      forwardedRef={null}
-    >
-      <div
-        className="AppWrapper-sc-8qqffy-0 fJOKJi"
-      >
-        <GlobalStyleComponent />
-      </div>
-    </StyledComponent>
-  </ForwardRef>
-</App>
+<ForwardRef>
+  <GlobalStyleComponent
+    suppressMultiMountWarning={false}
+  />
+</ForwardRef>
 `;

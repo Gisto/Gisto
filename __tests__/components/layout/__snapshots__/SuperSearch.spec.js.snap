@@ -7,6 +7,38 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
   filterTags={Array []}
   filterText="test"
   snippets={Object {}}
+  theme={
+    Object {
+      "baseAppColor": "#3F84A8",
+      "bg": "#ebf2f6",
+      "borderColor": "#ccc",
+      "boxShadow": "#555",
+      "colorDanger": "tomato",
+      "colorSuccess": "cadetblue",
+      "colorWarning": "#e0b01e",
+      "disabledColor": "#ccc",
+      "headerBgLightest": "#cfe0e9",
+      "headerColor": "#fff",
+      "lightBorderColor": "#f2f2f2",
+      "lightText": "#fff",
+      "textColor": "#555",
+      "theme": Object {
+        "baseAppColor": "#3F84A8",
+        "bg": "#ebf2f6",
+        "borderColor": "#ccc",
+        "boxShadow": "#555",
+        "colorDanger": "tomato",
+        "colorSuccess": "cadetblue",
+        "colorWarning": "#e0b01e",
+        "disabledColor": "#ccc",
+        "headerBgLightest": "#cfe0e9",
+        "headerColor": "#fff",
+        "lightBorderColor": "#f2f2f2",
+        "lightText": "#fff",
+        "textColor": "#555",
+      },
+    }
+  }
   toggleSuperSesrch={[MockFunction]}
 >
   <ForwardRef>
@@ -206,7 +238,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                                   "componentStyle": ComponentStyle {
                                     "componentId": "StyledInput-sc-86zjwb-0",
                                     "isStatic": false,
-                                    "lastClassName": "djdkls",
+                                    "lastClassName": "bQeLId",
                                     "rules": Array [
                                       "border:none;border-radius:0;height:30px;color:",
                                       [Function],
@@ -235,7 +267,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             >
                               <input
                                 autoFocus={true}
-                                className="mousetrap StyledInput-sc-1mnove5-8 bxYJks StyledInput-sc-86zjwb-0 djdkls"
+                                className="mousetrap StyledInput-sc-1mnove5-8 bxYJks StyledInput-sc-86zjwb-0 bQeLId"
                                 disabled={false}
                                 onChange={[Function]}
                                 placeholder="Search"

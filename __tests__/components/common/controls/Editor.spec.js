@@ -1,6 +1,8 @@
-import Editor from 'components/common/controls/Editor';
+import { Editor } from 'components/common/controls/Editor';
+import * as theme from 'constants/colors';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  theme,
   file: {
     content: 'hi',
     language: 'text'

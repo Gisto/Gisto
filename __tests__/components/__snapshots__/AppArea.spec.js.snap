@@ -2,7 +2,7 @@
 
 exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
 <ForwardRef>
-  <Updater />
+  <ForwardRef />
   <Link
     replace={false}
     to="/"
@@ -23,7 +23,7 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
       type="info"
     />
   </Link>
-  <Loading
+  <ForwardRef
     spinner={false}
   />
   <Link

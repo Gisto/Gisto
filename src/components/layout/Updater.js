@@ -1,15 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import styled, { withTheme } from 'styled-components';
 import { get, isEmpty, replace } from 'lodash/fp';
-
-import { colorWarning, lightText, textColor } from 'constants/colors';
 
 import { isElectron } from 'utils/electron';
 import { setNotification } from 'utils/notifications';
+import { gaEvent } from 'utils/ga';
 
 import UtilityIcon from 'components/common/UtilityIcon';
 import Anchor from 'components/common/Anchor';
-import { gaEvent } from 'utils/ga';
 
 const StyledUtilityIcon = styled(UtilityIcon)`
   height: 21px;
@@ -29,16 +28,16 @@ const StyledUtilityIcon = styled(UtilityIcon)`
 `;
 
 const UpdaterMenu = styled.div`
-  background: ${lightText};
+  background: ${(props) => props.theme.lightText};
   width: max-content;
   line-height: 21px;
   padding: 20px;
   z-index: 3;
   text-align: left;
-  color: ${textColor};
+  color: ${(props) => props.theme.textColor};
   position: relative;
   top: 17px;
-  box-shadow: 0 5px 30px ${textColor};
+  box-shadow: 0 5px 30px ${(props) => props.theme.textColor};
   cursor: default;
 `;
 
@@ -163,7 +162,7 @@ export class Updater extends React.Component {
     return (
       <React.Fragment>
         { this.state.update && !isEmpty(this.state.message) && (
-        <StyledUtilityIcon color={ colorWarning } type="flash" dropdown>
+        <StyledUtilityIcon color={ this.props.theme.colorWarning } type="flash" dropdown>
           <UpdaterMenu>{this.state.message}</UpdaterMenu>
         </StyledUtilityIcon>
         ) }
@@ -176,4 +175,8 @@ export class Updater extends React.Component {
   }
 }
 
-export default Updater;
+Updater.propTypes = {
+  theme: PropTypes.object
+};
+
+export default withTheme(Updater);

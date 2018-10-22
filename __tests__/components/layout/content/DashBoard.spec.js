@@ -1,11 +1,8 @@
 import { DashBoard } from 'components/layout/content/DashBoard';
+import * as theme from 'constants/colors';
 
-jest.mock('constants/colors', () => ({
-  headerBgLightest: 'red',
-  baseAppColor: 'red'
-}));
-
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  theme,
   ...props
 });
 
