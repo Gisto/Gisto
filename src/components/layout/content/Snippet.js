@@ -7,7 +7,6 @@ import {
 } from 'lodash/fp';
 
 import * as snippetActions from 'actions/snippets';
-import { borderColor } from 'constants/colors';
 
 import Editor from 'components/common/controls/Editor';
 import SnippetHeader from 'components/layout/content/snippet/SnippetHeader';
@@ -25,7 +24,7 @@ const SnippetWrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 3px;
-  box-shadow: 0 0 10px ${borderColor};
+  box-shadow: 0 0 10px ${(props) => props.theme.borderColor};
   flex: 1;
   margin-bottom: 20px;
 `;

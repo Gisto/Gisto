@@ -1,10 +1,9 @@
 import React from 'react';
 import PropType from 'prop-types';
 import styled from 'styled-components';
-import { baseAppColor } from 'constants/colors';
 
 const Zone = styled.div`
-  border: 1px dashed ${baseAppColor};
+  border: 1px dashed ${(props) => props.theme.baseAppColor};
   border-radius: 10px;
   padding: 20px;
   text-align: center;

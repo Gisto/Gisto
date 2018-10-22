@@ -1,32 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  borderColor, lightText, colorDanger, lightBorderColor, baseAppColor
-} from 'constants/colors';
-import styled, { css } from 'styled-components';
+import styled, { css, withTheme } from 'styled-components';
 
 import Icon from 'components/common/Icon';
 
 const DropdownMixin = css`
   position: absolute;
-  background: ${lightText};
+  background: ${(props) => props.theme.lightText};
   right: 0;
   top: 51px;
-  border: 1px solid ${borderColor};
+  border: 1px solid ${(props) => props.theme.borderColor};
   line-height: 21px;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  box-shadow: 0 5px 10px ${borderColor};
+  box-shadow: 0 5px 10px ${(props) => props.theme.borderColor};
   z-index: 4;
   overflow: auto;
   max-height: 60vh;
-  color: ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
   cursor: default;
 `;
 
 const Util = styled.span`
-  border-left: 1px solid ${borderColor};
+  border-left: 1px solid ${(props) => props.theme.borderColor};
   height: 50px;
   display: inline-block;
   text-align: center;
@@ -39,7 +36,7 @@ const Util = styled.span`
   ${(props) => props.text ? '' : 'width: 50px;'}
   
   &:hover {
-    background: ${(props) => props.background ? props.background : lightBorderColor};
+    background: ${(props) => props.background ? props.background : props.theme.lightBorderColor};
   }
   
   div.list {
@@ -51,7 +48,7 @@ const Util = styled.span`
     ${DropdownMixin}
     
     li {
-      border-bottom: 1px dotted ${borderColor};
+      border-bottom: 1px dotted ${(props) => props.theme.orderColor};
       margin: 0;
       white-space: nowrap;
       text-align: left;
@@ -62,7 +59,7 @@ const Util = styled.span`
       }
       
       &:hover {
-        background: ${lightBorderColor};
+        background: ${(props) => props.theme.lightBorderColor};
         cursor: pointer;
       }
       
@@ -99,6 +96,7 @@ export class UtilityIcon extends React.Component {
   };
 
   render() {
+    const { lightText, colorDanger } = this.props.theme;
     const {
       children,
       size = 22,
@@ -144,7 +142,8 @@ UtilityIcon.propTypes = {
   title: PropTypes.string,
   className: PropTypes.string,
   background: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
+  theme: PropTypes.object
 };
 
-export default UtilityIcon;
+export default withTheme(UtilityIcon);

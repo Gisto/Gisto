@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MonacoEditor from 'react-monaco-editor';
-import styled, { css } from 'styled-components';
+import styled, { css, withTheme } from 'styled-components';
 import { getSetting } from 'utils/settings';
 import { getFileExtension } from 'utils/string';
 import { syntaxMap } from 'constants/editor';
-import { baseAppColor } from 'constants/colors';
 
 import 'highlight.js/styles/default.css';
 
@@ -36,7 +35,7 @@ const EditorWrapper = styled.span`
 
 const LoadingIndicator = styled.div`
   padding: 20px;
-  color: ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
 `;
 
 const Image = styled.div`
@@ -93,13 +92,13 @@ export class Editor extends React.Component {
 
   renderEditor = () => {
     const {
-      edit, onChange, file, className, id, language, filesCount, isNew
+      edit, onChange, file, className, id, language, filesCount, isNew, theme
     } = this.props;
 
     if (!isNew && !file.content && !edit) {
       return (
         <LoadingIndicator>
-          <Loading color={ baseAppColor } text=""/>
+          <Loading color={ theme.baseAppColor } text=""/>
         </LoadingIndicator>
       );
     }
@@ -207,6 +206,7 @@ export class Editor extends React.Component {
 
 Editor.propTypes = {
   file: PropTypes.object,
+  theme: PropTypes.object,
   onChange: PropTypes.func,
   language: PropTypes.string,
   id: PropTypes.string,
@@ -216,4 +216,4 @@ Editor.propTypes = {
   isNew: PropTypes.bool
 };
 
-export default Editor;
+export default withTheme(Editor);

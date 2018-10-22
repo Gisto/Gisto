@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-import { colorDanger } from 'constants/colors';
+import styled, { withTheme } from 'styled-components';
 
 import Icon from 'components/common/Icon';
 
@@ -41,7 +39,9 @@ class Loading extends Component {
   setOnlineState = (event) => this.setState({ online: event.type === 'online' });
 
   render() {
-    const { color, text, spinner = true } = this.props;
+    const {
+      color, text, spinner = true, theme
+    } = this.props;
 
     if (this.state.online) {
       return  spinner && (
@@ -53,7 +53,7 @@ class Loading extends Component {
 
     return (
       <React.Fragment>
-        <Icon type="globe" color={ colorDanger }/> { 'Looks like you\'r off-line' }
+        <Icon type="globe" color={ theme.colorDanger }/> { 'Looks like you\'r off-line' }
       </React.Fragment>
     );
   }
@@ -62,7 +62,8 @@ class Loading extends Component {
 Loading.propTypes = {
   color: PropTypes.string,
   text: PropTypes.string,
-  spinner: PropTypes.bool
+  spinner: PropTypes.bool,
+  theme: PropTypes.object
 };
 
-export default Loading;
+export default withTheme(Loading);

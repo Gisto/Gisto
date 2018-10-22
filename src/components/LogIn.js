@@ -5,8 +5,6 @@ import { get, isEmpty } from 'lodash/fp';
 import styled from 'styled-components';
 import { setNotification } from 'utils/notifications';
 
-import { baseAppColor, bg, headerBgLightest } from 'constants/colors';
-
 import * as loginActions from 'actions/login';
 
 import { setEnterpriseDomain, setToken } from 'utils/login';
@@ -29,7 +27,7 @@ const LoginWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   text-align: center;
-  background: ${bg};
+  background: ${(props) => props.theme.bg};
 
   small {
     display: block;
@@ -48,7 +46,7 @@ const LoginWrapper = styled.div`
     padding: 5px 10px;
     margin-bottom: 20px;
     border: none;
-    border-bottom: 1px solid ${baseAppColor};
+    border-bottom: 1px solid ${(props) => props.theme.baseAppColor};
     background: #fff;
     width: 300px;
   }
@@ -60,12 +58,12 @@ const LoginWrapper = styled.div`
     width: 100%;
 
     a {
-      color: ${baseAppColor};
+      color: ${(props) => props.theme.baseAppColor};
       text-decoration: underline;
       cursor: pointer;
       
       :hover {
-        color: ${headerBgLightest};
+        color: ${(props) => props.theme.headerBgLightest};
       }
     }
   }
@@ -203,7 +201,7 @@ export class LogIn extends React.Component {
                         placeholder="GitHub token"
                         onChange={ (event) => this.setField('token', event.target.value) }/>
             <ExternalLink target="_new" href="https://github.com/settings/tokens">
-              <Icon type="info" size="16" color={ baseAppColor }/>
+              <Icon type="info" size="16" color={ this.props.theme.baseAppColor }/>
             </ExternalLink>
             <br/>
             <Button
@@ -285,7 +283,7 @@ export class LogIn extends React.Component {
 
         {this.props.loading && (
           <p>
-            <Loading color={ baseAppColor } text="Loading..." />
+            <Loading color={ this.props.theme.baseAppColor } text="Loading..." />
           </p>
         )}
       </LoginWrapper>
@@ -295,20 +293,19 @@ export class LogIn extends React.Component {
 
 const mapStateToProps = (state) => ({
   twoFactorAuth: get(['login', 'twoFactorAuth'], state),
-  loading: get(['login', 'loading'], state)
+  loading: get(['login', 'loading'], state),
+  theme: get(['ui', 'settings', 'theme'], state)
 });
 
 LogIn.propTypes = {
   loginBasic: PropTypes.func,
   loginWithToken: PropTypes.func,
   twoFactorAuth: PropTypes.bool,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  theme: PropTypes.object
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    loginBasic: loginActions.loginWithBasicAuth,
-    loginWithToken: loginActions.loginWithToken
-  }
-)(LogIn);
+export default connect(mapStateToProps, {
+  loginBasic: loginActions.loginWithBasicAuth,
+  loginWithToken: loginActions.loginWithToken
+})(LogIn);

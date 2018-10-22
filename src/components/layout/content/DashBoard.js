@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components';
 import {
-  size, filter, map, flow, isEmpty
+  size, filter, map, flow, isEmpty, get
 } from 'lodash/fp';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
@@ -11,9 +11,6 @@ import {
   getSnippets, getStarredCount, getPrivate, getTruncated, getUntagged
 } from 'selectors/snippets';
 
-import {
-  baseAppColor, borderColor, headerBgLightest, lightText 
-} from 'constants/colors';
 import { DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
 
 import * as snippetActions from 'actions/snippets';
@@ -33,7 +30,7 @@ const DashbordWrapper = styled.div`
   height: 100%;
   h3 {
     margin: 9px 0 20px;
-    color: ${baseAppColor};
+    color: ${(props) => props.theme.baseAppColor};
     font-weight: 300;
     font-size: 16px;
   }
@@ -43,7 +40,7 @@ const ContainerWithPills = `
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr) ) ;
-  color: ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
   max-height: 50vh;
   overflow: auto;
   font-size: smaller;
@@ -51,10 +48,10 @@ const ContainerWithPills = `
 `;
 
 const Box = styled.div`
-  background: ${lightText};
+  background: ${(props) => props.theme.lightText};
   padding: 20px;
   border-radius: 3px;
-  box-shadow: 0 0 10px ${borderColor};
+  box-shadow: 0 0 10px ${(props) => props.theme.borderColor};
 `;
 
 const gridBoxInnerCss = css`
@@ -66,7 +63,7 @@ const gridBoxInnerCss = css`
   span {
     font-size: 42px;
     float: right;
-    color: ${baseAppColor};
+    color: ${(props) => props.theme.baseAppColor};
     
     small {
       font-size: 10px;
@@ -75,7 +72,7 @@ const gridBoxInnerCss = css`
   }
   
   :hover {
-    box-shadow: 0 0 50px ${borderColor};
+    box-shadow: 0 0 50px ${(props) => props.theme.borderColor};
     cursor: pointer;
   }
 `;
@@ -202,10 +199,10 @@ const StyledInput = styled(Input)`
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
   
   :hover {
-    color: ${headerBgLightest};
+    color: ${(props) => props.theme.headerBgLightest};
   }
 `;
 
@@ -244,7 +241,7 @@ export class DashBoard extends React.Component {
     const percents = (percentOf / size(this.props.snippets)) * 100;
 
     return {
-      background: `linear-gradient(to right, ${headerBgLightest} ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
+      background: `linear-gradient(to right, ${this.props.theme.headerBgLightest} ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
     };
   };
 
@@ -258,7 +255,7 @@ export class DashBoard extends React.Component {
 
   renderStarred = () => map((snippet) => (
     <li key={ snippet.id }>
-      <Icon type={ snippet.public ? 'unlock' : 'lock' } color={ baseAppColor }/>
+      <Icon type={ snippet.public ? 'unlock' : 'lock' } color={ this.props.theme.baseAppColor }/>
       &nbsp;
       <Router>
         <StyledNavLink exact
@@ -274,7 +271,7 @@ export class DashBoard extends React.Component {
 
   render() {
     const {
-      snippets, privateSnippets, starred, searchByStatus,
+      snippets, privateSnippets, starred, searchByStatus, theme,
       truncatedSnippets, untaggedSnippets, searchByUntagged, searchByTruncated
     } = this.props;
     const publicSnippetsCount = size(snippets) - privateSnippets;
@@ -355,7 +352,7 @@ export class DashBoard extends React.Component {
             <HeadingWithSearch>
               <h3>Starred:</h3>
               <div>
-                <Icon type="search" size="22" color={ baseAppColor }/>
+                <Icon type="search" size="22" color={ theme.baseAppColor }/>
                 <StyledInput type="search"
                              placeholder="Search starred"
                              onChange={ (event) => this.searchStarred(event.target.value) }/>
@@ -373,7 +370,7 @@ export class DashBoard extends React.Component {
           <HeadingWithSearch>
             <h3>Tags:</h3>
             <div>
-              <Icon type="search" size="22" color={ baseAppColor }/>
+              <Icon type="search" size="22" color={ theme.baseAppColor }/>
               <StyledInput type="search"
                            placeholder="Search tags"
                            onChange={ (event) => this.searchTags(event.target.value) }/>
@@ -395,11 +392,13 @@ const mapStateToProps = (state) => ({
   starred: getStarredCount(state),
   privateSnippets: getPrivate(state),
   truncatedSnippets: getTruncated(state),
-  untaggedSnippets: getUntagged(state)
+  untaggedSnippets: getUntagged(state),
+  theme: get(['ui', 'settings', 'theme'], state)
 });
 
 DashBoard.propTypes = {
   snippets: PropTypes.object,
+  theme: PropTypes.object,
   starred: PropTypes.number,
   searchByStatus: PropTypes.func,
   getRateLimit: PropTypes.func,

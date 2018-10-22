@@ -1,6 +1,9 @@
 import { set, flow } from 'lodash/fp';
 
 import * as AT from 'constants/actionTypes';
+import { theme } from 'constants/colors';
+import { tint } from 'polished';
+import { getAllSettings } from 'utils/settings';
 
 const initialState = {
   snippets: {
@@ -8,7 +11,8 @@ const initialState = {
     edit: false,
     comments: false
   },
-  rateLimit: {}
+  rateLimit: {},
+  settings: { ...getAllSettings(), theme }
 };
 
 export const ui = (state = initialState, action) => {
@@ -80,6 +84,25 @@ export const ui = (state = initialState, action) => {
 
     case AT.TOGGLE_SNIPPET_COMMENTS: {
       return set('snippets.comments', !state.snippets.comments, state);
+    }
+
+    case AT.CHANGE_SETTINGS: {
+      if (action.meta.isTheme) {
+        return flow([
+          set(['settings', action.payload.key], action.payload.value),
+          set(['settings', 'theme', 'baseAppColor'], action.payload.value),
+          set(['settings', 'theme', 'headerBgLightest'], tint(0.25, action.payload.value)),
+          set(['settings', 'theme', 'bg'], tint(0.10, action.payload.value))
+        ])(state);
+      }
+
+      if (action.meta.isBoolean) {
+        const result = state.settings[action.payload.key] !== true;
+
+        return set(['settings', action.payload.key], result, state);
+      }
+
+      return set(['settings', action.payload.key], action.payload.value, state);
     }
 
     default: {

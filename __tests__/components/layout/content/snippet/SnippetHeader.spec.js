@@ -1,6 +1,8 @@
 import { SnippetHeader } from 'components/layout/content/snippet/SnippetHeader';
+import * as theme from 'constants/colors';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  theme,
   file: {
     filename: 'somefile.js'
   },
@@ -13,7 +15,7 @@ const propSetup = (props) => ({
   ...props
 });
 
-const setup = (props) => mount(<SnippetHeader { ...propSetup(props) }/>);
+const setup = (props) => shallow(<SnippetHeader { ...propSetup(props) }/>);
 
 describe('COMPONENTS - <SnippetHeader>', () => {
   test('render SnippetHeader in view mode', () => {

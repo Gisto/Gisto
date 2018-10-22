@@ -1,6 +1,7 @@
-import EditorSettings from 'components/layout/content/settings/Editor';
+import { EditorSettings } from 'components/layout/content/settings/Editor';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  changeSettings: jest.fn(),
   ...props
 });
 

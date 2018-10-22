@@ -1,6 +1,6 @@
 import Checkbox from 'components/common/controls/Checkbox';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   className: 'classified',
   checked: true,
   onChange: jest.fn(),

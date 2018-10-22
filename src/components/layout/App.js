@@ -4,7 +4,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import * as Mousetrap from 'mousetrap';
 import { withRouter } from 'react-router-dom';
 
-import { baseAppColor } from 'constants/colors';
 import { isElectron } from 'utils/electron';
 
 import SuperSearch from 'components/layout/SuperSearch';
@@ -25,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   ::-webkit-scrollbar-thumb {
-    background: ${baseAppColor};
+    background: ${(props) => props.theme.baseAppColor};
   }
   
   a:hover,
@@ -40,7 +39,7 @@ const AppWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   height: 100vh;
-  color: ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
 `;
 
 export class App  extends React.Component {

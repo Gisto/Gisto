@@ -1,6 +1,7 @@
-import SnippetsSettings from 'components/layout/content/settings/Snippets';
+import { SnippetsSettings } from 'components/layout/content/settings/Snippets';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  changeSettings: jest.fn(),
   ...props
 });
 

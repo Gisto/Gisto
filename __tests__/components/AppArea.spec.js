@@ -1,6 +1,8 @@
 import { AppArea } from 'components/AppArea';
+import * as theme from 'constants/colors';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  theme,
   ...props
 });
 

@@ -583,6 +583,38 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
   loading={false}
   loginBasic={[MockFunction]}
   loginWithToken={[MockFunction]}
+  theme={
+    Object {
+      "baseAppColor": "#3F84A8",
+      "bg": "#ebf2f6",
+      "borderColor": "#ccc",
+      "boxShadow": "#555",
+      "colorDanger": "tomato",
+      "colorSuccess": "cadetblue",
+      "colorWarning": "#e0b01e",
+      "disabledColor": "#ccc",
+      "headerBgLightest": "#cfe0e9",
+      "headerColor": "#fff",
+      "lightBorderColor": "#f2f2f2",
+      "lightText": "#fff",
+      "textColor": "#555",
+      "theme": Object {
+        "baseAppColor": "#3F84A8",
+        "bg": "#ebf2f6",
+        "borderColor": "#ccc",
+        "boxShadow": "#555",
+        "colorDanger": "tomato",
+        "colorSuccess": "cadetblue",
+        "colorWarning": "#e0b01e",
+        "disabledColor": "#ccc",
+        "headerBgLightest": "#cfe0e9",
+        "headerColor": "#fff",
+        "lightBorderColor": "#f2f2f2",
+        "lightText": "#fff",
+        "textColor": "#555",
+      },
+    }
+  }
   twoFactorAuth={false}
 >
   <ForwardRef>
@@ -593,17 +625,17 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
           "attrs": undefined,
           "componentStyle": ComponentStyle {
             "componentId": "LoginWrapper-sc-1s1b8ij-0",
-            "isStatic": true,
-            "lastClassName": "bGzlvm",
+            "isStatic": false,
+            "lastClassName": "geCfzU",
             "rules": Array [
               "display:flex;flex-direction:column;justify-content:center;height:100vh;width:100vw;text-align:center;background:",
-              "#ebf2f6",
+              [Function],
               ";small{display:block;font-size:12px;margin-bottom:20px;}button{font-size:16px;line-height:11px;height:40px;padding:0 20px;}input{padding:5px 10px;margin-bottom:20px;border:none;border-bottom:1px solid ",
-              "#3F84A8",
+              [Function],
               ";background:#fff;width:300px;}p.options{bottom:0;position:absolute;text-align:center;width:100%;a{color:",
-              "#3F84A8",
+              [Function],
               ";text-decoration:underline;cursor:pointer;:hover{color:",
-              "#cfe0e9",
+              [Function],
               ";}}}",
             ],
           },
@@ -618,7 +650,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
       forwardedRef={null}
     >
       <div
-        className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
+        className="LoginWrapper-sc-1s1b8ij-0 geCfzU"
       >
         <ForwardRef>
           <StyledComponent
@@ -680,7 +712,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "StyledInput-sc-86zjwb-0",
                       "isStatic": false,
-                      "lastClassName": "djdkls",
+                      "lastClassName": "bQeLId",
                       "rules": Array [
                         "border:none;border-radius:0;height:30px;color:",
                         [Function],
@@ -708,7 +740,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                 type="text"
               >
                 <input
-                  className="StyledInput-sc-86zjwb-0 djdkls"
+                  className="StyledInput-sc-86zjwb-0 bQeLId"
                   disabled={false}
                   onChange={[Function]}
                   placeholder="http://my.enterprise.domain.com"
@@ -747,7 +779,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "StyledInput-sc-86zjwb-0",
                       "isStatic": false,
-                      "lastClassName": "djdkls",
+                      "lastClassName": "bQeLId",
                       "rules": Array [
                         "border:none;border-radius:0;height:30px;color:",
                         [Function],
@@ -775,7 +807,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                 type="text"
               >
                 <input
-                  className="StyledInput-sc-86zjwb-0 djdkls"
+                  className="StyledInput-sc-86zjwb-0 bQeLId"
                   disabled={false}
                   onChange={[Function]}
                   placeholder="Email or username"
@@ -807,7 +839,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "StyledInput-sc-86zjwb-0",
                       "isStatic": false,
-                      "lastClassName": "djdkls",
+                      "lastClassName": "bQeLId",
                       "rules": Array [
                         "border:none;border-radius:0;height:30px;color:",
                         [Function],
@@ -835,7 +867,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                 type="password"
               >
                 <input
-                  className="StyledInput-sc-86zjwb-0 djdkls"
+                  className="StyledInput-sc-86zjwb-0 bQeLId"
                   disabled={false}
                   onChange={[Function]}
                   placeholder="Password"
@@ -887,12 +919,12 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                           "componentStyle": ComponentStyle {
                             "componentId": "Link-sc-17j1f2u-0",
                             "isStatic": false,
-                            "lastClassName": "eiOsHn",
+                            "lastClassName": "dtxsCT",
                             "rules": Array [
                               "cursor:pointer;color:",
                               [Function],
                               ";text-decoration:none;:hover{color:",
-                              "#cfe0e9",
+                              [Function],
                               ";}",
                             ],
                           },
@@ -908,7 +940,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                       onClick={[Function]}
                     >
                       <a
-                        className="Link-sc-17j1f2u-0 eiOsHn"
+                        className="Link-sc-17j1f2u-0 dtxsCT"
                         onClick={[Function]}
                       >
                         Log-in with GitHub
@@ -930,12 +962,12 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                           "componentStyle": ComponentStyle {
                             "componentId": "Link-sc-17j1f2u-0",
                             "isStatic": false,
-                            "lastClassName": "eiOsHn",
+                            "lastClassName": "dtxsCT",
                             "rules": Array [
                               "cursor:pointer;color:",
                               [Function],
                               ";text-decoration:none;:hover{color:",
-                              "#cfe0e9",
+                              [Function],
                               ";}",
                             ],
                           },
@@ -951,7 +983,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                       onClick={[Function]}
                     >
                       <a
-                        className="Link-sc-17j1f2u-0 eiOsHn"
+                        className="Link-sc-17j1f2u-0 dtxsCT"
                         onClick={[Function]}
                       >
                         Cancel
@@ -964,115 +996,12 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
           </ForwardRef>
           <br />
           <br />
-          <Button
+          <Component
             icon="success"
             onClick={[Function]}
           >
-            <ForwardRef
-              onClick={[Function]}
-              title="Log-in"
-            >
-              <StyledComponent
-                forwardedClass={
-                  Object {
-                    "$$typeof": Symbol(react.forward_ref),
-                    "attrs": undefined,
-                    "componentStyle": ComponentStyle {
-                      "componentId": "ButtonComponent-sc-1hy9a8c-0",
-                      "isStatic": false,
-                      "lastClassName": "fVBHOJ",
-                      "rules": Array [
-                        "background:",
-                        [Function],
-                        ";border:1px solid ",
-                        [Function],
-                        ";color:",
-                        [Function],
-                        ";border-radius:3px;font-weight:200;font-size:14px;text-align:center;",
-                        [Function],
-                        " ",
-                        [Function],
-                        " -webkit-appearance:none;cursor:pointer;&[disabled]{background:",
-                        "#ccc",
-                        ";border:1px solid ",
-                        "#ccc",
-                        ";color:",
-                        "#555",
-                        ";cursor:not-allowed;}",
-                      ],
-                    },
-                    "displayName": "ButtonComponent",
-                    "render": [Function],
-                    "styledComponentId": "ButtonComponent-sc-1hy9a8c-0",
-                    "target": "button",
-                    "warnTooManyClasses": [Function],
-                    "withComponent": [Function],
-                  }
-                }
-                forwardedRef={null}
-                onClick={[Function]}
-                title="Log-in"
-              >
-                <button
-                  className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
-                  onClick={[Function]}
-                  title="Log-in"
-                >
-                  <ForwardRef
-                    color="#fff"
-                    type="success"
-                  >
-                    <StyledComponent
-                      color="#fff"
-                      forwardedClass={
-                        Object {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "attrs": undefined,
-                          "componentStyle": ComponentStyle {
-                            "componentId": "Icon-vk4qna-0",
-                            "isStatic": false,
-                            "lastClassName": "PqRDb",
-                            "rules": Array [
-                              "background-color:",
-                              [Function],
-                              ";display:inline-block;vertical-align:middle;width:",
-                              [Function],
-                              "px;height:",
-                              [Function],
-                              "px;-webkit-mask-image:url('src/icons/",
-                              [Function],
-                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
-                              [Function],
-                              " ",
-                              [Function],
-                              " ",
-                              [Function],
-                            ],
-                          },
-                          "displayName": "Icon",
-                          "render": [Function],
-                          "styledComponentId": "Icon-vk4qna-0",
-                          "target": "span",
-                          "warnTooManyClasses": [Function],
-                          "withComponent": [Function],
-                        }
-                      }
-                      forwardedRef={null}
-                      type="success"
-                    >
-                      <span
-                        className="Icon-vk4qna-0 PqRDb"
-                        color="#fff"
-                        type="success"
-                      />
-                    </StyledComponent>
-                  </ForwardRef>
-                   
-                  Log-in
-                </button>
-              </StyledComponent>
-            </ForwardRef>
-          </Button>
+            <div />
+          </Component>
           <br />
         </div>
         <p
@@ -1096,12 +1025,12 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "Link-sc-17j1f2u-0",
                       "isStatic": false,
-                      "lastClassName": "eiOsHn",
+                      "lastClassName": "dtxsCT",
                       "rules": Array [
                         "cursor:pointer;color:",
                         [Function],
                         ";text-decoration:none;:hover{color:",
-                        "#cfe0e9",
+                        [Function],
                         ";}",
                       ],
                     },
@@ -1117,7 +1046,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  className="Link-sc-17j1f2u-0 dtxsCT"
                   onClick={[Function]}
                 >
                   token
@@ -1140,12 +1069,12 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "Link-sc-17j1f2u-0",
                       "isStatic": false,
-                      "lastClassName": "eiOsHn",
+                      "lastClassName": "dtxsCT",
                       "rules": Array [
                         "cursor:pointer;color:",
                         [Function],
                         ";text-decoration:none;:hover{color:",
-                        "#cfe0e9",
+                        [Function],
                         ";}",
                       ],
                     },
@@ -1161,7 +1090,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  className="Link-sc-17j1f2u-0 dtxsCT"
                   onClick={[Function]}
                 >
                   username and password
@@ -1184,12 +1113,12 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "Link-sc-17j1f2u-0",
                       "isStatic": false,
-                      "lastClassName": "eiOsHn",
+                      "lastClassName": "dtxsCT",
                       "rules": Array [
                         "cursor:pointer;color:",
                         [Function],
                         ";text-decoration:none;:hover{color:",
-                        "#cfe0e9",
+                        [Function],
                         ";}",
                       ],
                     },
@@ -1205,7 +1134,7 @@ exports[`COMPONENTS - <LogIn> render LogIn enterprise 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  className="Link-sc-17j1f2u-0 dtxsCT"
                   onClick={[Function]}
                 >
                   Use enterprise
@@ -1591,6 +1520,38 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
   loading={false}
   loginBasic={[MockFunction]}
   loginWithToken={[MockFunction]}
+  theme={
+    Object {
+      "baseAppColor": "#3F84A8",
+      "bg": "#ebf2f6",
+      "borderColor": "#ccc",
+      "boxShadow": "#555",
+      "colorDanger": "tomato",
+      "colorSuccess": "cadetblue",
+      "colorWarning": "#e0b01e",
+      "disabledColor": "#ccc",
+      "headerBgLightest": "#cfe0e9",
+      "headerColor": "#fff",
+      "lightBorderColor": "#f2f2f2",
+      "lightText": "#fff",
+      "textColor": "#555",
+      "theme": Object {
+        "baseAppColor": "#3F84A8",
+        "bg": "#ebf2f6",
+        "borderColor": "#ccc",
+        "boxShadow": "#555",
+        "colorDanger": "tomato",
+        "colorSuccess": "cadetblue",
+        "colorWarning": "#e0b01e",
+        "disabledColor": "#ccc",
+        "headerBgLightest": "#cfe0e9",
+        "headerColor": "#fff",
+        "lightBorderColor": "#f2f2f2",
+        "lightText": "#fff",
+        "textColor": "#555",
+      },
+    }
+  }
   twoFactorAuth={false}
 >
   <ForwardRef>
@@ -1601,17 +1562,17 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
           "attrs": undefined,
           "componentStyle": ComponentStyle {
             "componentId": "LoginWrapper-sc-1s1b8ij-0",
-            "isStatic": true,
-            "lastClassName": "bGzlvm",
+            "isStatic": false,
+            "lastClassName": "geCfzU",
             "rules": Array [
               "display:flex;flex-direction:column;justify-content:center;height:100vh;width:100vw;text-align:center;background:",
-              "#ebf2f6",
+              [Function],
               ";small{display:block;font-size:12px;margin-bottom:20px;}button{font-size:16px;line-height:11px;height:40px;padding:0 20px;}input{padding:5px 10px;margin-bottom:20px;border:none;border-bottom:1px solid ",
-              "#3F84A8",
+              [Function],
               ";background:#fff;width:300px;}p.options{bottom:0;position:absolute;text-align:center;width:100%;a{color:",
-              "#3F84A8",
+              [Function],
               ";text-decoration:underline;cursor:pointer;:hover{color:",
-              "#cfe0e9",
+              [Function],
               ";}}}",
             ],
           },
@@ -1626,7 +1587,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
       forwardedRef={null}
     >
       <div
-        className="LoginWrapper-sc-1s1b8ij-0 bGzlvm"
+        className="LoginWrapper-sc-1s1b8ij-0 geCfzU"
       >
         <ForwardRef>
           <StyledComponent
@@ -1723,7 +1684,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                         "componentStyle": ComponentStyle {
                           "componentId": "StyledInput-sc-86zjwb-0",
                           "isStatic": false,
-                          "lastClassName": "djdkls",
+                          "lastClassName": "bQeLId",
                           "rules": Array [
                             "border:none;border-radius:0;height:30px;color:",
                             [Function],
@@ -1751,7 +1712,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                     type="text"
                   >
                     <input
-                      className="TokenInput-sc-1s1b8ij-4 jryAbL StyledInput-sc-86zjwb-0 djdkls"
+                      className="TokenInput-sc-1s1b8ij-4 jryAbL StyledInput-sc-86zjwb-0 bQeLId"
                       disabled={false}
                       onChange={[Function]}
                       placeholder="GitHub token"
@@ -1783,12 +1744,12 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
-                        "lastClassName": "eiOsHn",
+                        "lastClassName": "dtxsCT",
                         "rules": Array [
                           "cursor:pointer;color:",
                           [Function],
                           ";text-decoration:none;:hover{color:",
-                          "#cfe0e9",
+                          [Function],
                           ";}",
                         ],
                       },
@@ -1805,7 +1766,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 eiOsHn"
+                    className="Link-sc-17j1f2u-0 dtxsCT"
                     href="#"
                     onClick={[Function]}
                   >
@@ -1823,7 +1784,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "Icon-vk4qna-0",
                               "isStatic": false,
-                              "lastClassName": "PqRDb",
+                              "lastClassName": "bZuFFG",
                               "rules": Array [
                                 "background-color:",
                                 [Function],
@@ -1867,115 +1828,12 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
             </Anchor>
           </ExternalLink>
           <br />
-          <Button
+          <Component
             icon="success"
             onClick={[Function]}
           >
-            <ForwardRef
-              onClick={[Function]}
-              title="Log-in"
-            >
-              <StyledComponent
-                forwardedClass={
-                  Object {
-                    "$$typeof": Symbol(react.forward_ref),
-                    "attrs": undefined,
-                    "componentStyle": ComponentStyle {
-                      "componentId": "ButtonComponent-sc-1hy9a8c-0",
-                      "isStatic": false,
-                      "lastClassName": "fVBHOJ",
-                      "rules": Array [
-                        "background:",
-                        [Function],
-                        ";border:1px solid ",
-                        [Function],
-                        ";color:",
-                        [Function],
-                        ";border-radius:3px;font-weight:200;font-size:14px;text-align:center;",
-                        [Function],
-                        " ",
-                        [Function],
-                        " -webkit-appearance:none;cursor:pointer;&[disabled]{background:",
-                        "#ccc",
-                        ";border:1px solid ",
-                        "#ccc",
-                        ";color:",
-                        "#555",
-                        ";cursor:not-allowed;}",
-                      ],
-                    },
-                    "displayName": "ButtonComponent",
-                    "render": [Function],
-                    "styledComponentId": "ButtonComponent-sc-1hy9a8c-0",
-                    "target": "button",
-                    "warnTooManyClasses": [Function],
-                    "withComponent": [Function],
-                  }
-                }
-                forwardedRef={null}
-                onClick={[Function]}
-                title="Log-in"
-              >
-                <button
-                  className="ButtonComponent-sc-1hy9a8c-0 fVBHOJ"
-                  onClick={[Function]}
-                  title="Log-in"
-                >
-                  <ForwardRef
-                    color="#fff"
-                    type="success"
-                  >
-                    <StyledComponent
-                      color="#fff"
-                      forwardedClass={
-                        Object {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "attrs": undefined,
-                          "componentStyle": ComponentStyle {
-                            "componentId": "Icon-vk4qna-0",
-                            "isStatic": false,
-                            "lastClassName": "PqRDb",
-                            "rules": Array [
-                              "background-color:",
-                              [Function],
-                              ";display:inline-block;vertical-align:middle;width:",
-                              [Function],
-                              "px;height:",
-                              [Function],
-                              "px;-webkit-mask-image:url('src/icons/",
-                              [Function],
-                              "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
-                              [Function],
-                              " ",
-                              [Function],
-                              " ",
-                              [Function],
-                            ],
-                          },
-                          "displayName": "Icon",
-                          "render": [Function],
-                          "styledComponentId": "Icon-vk4qna-0",
-                          "target": "span",
-                          "warnTooManyClasses": [Function],
-                          "withComponent": [Function],
-                        }
-                      }
-                      forwardedRef={null}
-                      type="success"
-                    >
-                      <span
-                        className="Icon-vk4qna-0 PqRDb"
-                        color="#fff"
-                        type="success"
-                      />
-                    </StyledComponent>
-                  </ForwardRef>
-                   
-                  Log-in
-                </button>
-              </StyledComponent>
-            </ForwardRef>
-          </Button>
+            <div />
+          </Component>
           <br />
           <br />
           <Anchor
@@ -1992,12 +1850,12 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "Link-sc-17j1f2u-0",
                       "isStatic": false,
-                      "lastClassName": "eiOsHn",
+                      "lastClassName": "dtxsCT",
                       "rules": Array [
                         "cursor:pointer;color:",
                         [Function],
                         ";text-decoration:none;:hover{color:",
-                        "#cfe0e9",
+                        [Function],
                         ";}",
                       ],
                     },
@@ -2013,7 +1871,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  className="Link-sc-17j1f2u-0 dtxsCT"
                   onClick={[Function]}
                 >
                   Cancel
@@ -2043,12 +1901,12 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "Link-sc-17j1f2u-0",
                       "isStatic": false,
-                      "lastClassName": "eiOsHn",
+                      "lastClassName": "dtxsCT",
                       "rules": Array [
                         "cursor:pointer;color:",
                         [Function],
                         ";text-decoration:none;:hover{color:",
-                        "#cfe0e9",
+                        [Function],
                         ";}",
                       ],
                     },
@@ -2064,7 +1922,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  className="Link-sc-17j1f2u-0 dtxsCT"
                   onClick={[Function]}
                 >
                   token
@@ -2087,12 +1945,12 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "Link-sc-17j1f2u-0",
                       "isStatic": false,
-                      "lastClassName": "eiOsHn",
+                      "lastClassName": "dtxsCT",
                       "rules": Array [
                         "cursor:pointer;color:",
                         [Function],
                         ";text-decoration:none;:hover{color:",
-                        "#cfe0e9",
+                        [Function],
                         ";}",
                       ],
                     },
@@ -2108,7 +1966,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  className="Link-sc-17j1f2u-0 dtxsCT"
                   onClick={[Function]}
                 >
                   username and password
@@ -2131,12 +1989,12 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "Link-sc-17j1f2u-0",
                       "isStatic": false,
-                      "lastClassName": "eiOsHn",
+                      "lastClassName": "dtxsCT",
                       "rules": Array [
                         "cursor:pointer;color:",
                         [Function],
                         ";text-decoration:none;:hover{color:",
-                        "#cfe0e9",
+                        [Function],
                         ";}",
                       ],
                     },
@@ -2152,7 +2010,7 @@ exports[`COMPONENTS - <LogIn> render LogIn token 1`] = `
                 onClick={[Function]}
               >
                 <a
-                  className="Link-sc-17j1f2u-0 eiOsHn"
+                  className="Link-sc-17j1f2u-0 dtxsCT"
                   onClick={[Function]}
                 >
                   Use enterprise

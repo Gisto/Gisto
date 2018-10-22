@@ -4,8 +4,6 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
 import store, { history } from 'store/store';
-import _ from 'lodash';
-import * as fp from 'lodash/fp';
 
 import { isElectron } from 'utils/electron';
 
@@ -38,6 +36,9 @@ const Gisto = () => (
 );
 
 if (process.env.NODE_ENV === 'development') {
+  const _ = require('lodash');
+  const fp = require('lodash/fp');
+
   window.gistostore = store;
   window._ = _;
   window.fp = fp;

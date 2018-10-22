@@ -1,6 +1,6 @@
 import Select from 'components/common/controls/Select';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   className: 'classified',
   value: 'bla-bla',
   onChange: jest.fn(),

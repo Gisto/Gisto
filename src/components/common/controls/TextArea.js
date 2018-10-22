@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  baseAppColor, bg, disabledColor, lightText 
-} from 'constants/colors';
 import styled from 'styled-components';
 
 const StyledInput = styled.textarea`
@@ -11,9 +8,9 @@ const StyledInput = styled.textarea`
   margin-bottom: 10px;
   width: calc(100% - 20px);
   height: ${(props) => props.height ? props.height : '60px'};
-  color: ${(props) => props.disabled ? disabledColor : baseAppColor};
-  border-bottom: 1px solid ${(props) => props.disabled ? disabledColor : baseAppColor};
-  background: ${(props) => props.disabled ? disabledColor : lightText};
+  color: ${(props) => props.disabled ? props.theme.disabledColor : props.theme.baseAppColor};
+  border-bottom: 1px solid ${(props) => props.disabled ? props.theme.disabledColor : props.theme.baseAppColor};
+  background: ${(props) => props.disabled ? props.theme.disabledColor : props.theme.lightText};
   line-height: 21px;
   padding: 10px;
 
@@ -22,7 +19,7 @@ const StyledInput = styled.textarea`
   }
   
   ::placeholder {
-      color: ${(props) => props.disabled ? disabledColor : bg};
+      color: ${(props) => props.disabled ? props.theme.disabledColor : props.theme.bg};
       opacity: 1;
   }
 `;

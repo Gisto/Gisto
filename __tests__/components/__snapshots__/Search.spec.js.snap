@@ -1,460 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Search> render Search 1`] = `
-<Search
-  filterLanguage=""
-  filterSnippets={[MockFunction]}
-  filterTags={Array []}
-  filterText="test"
-  snippets={Object {}}
->
-  <ForwardRef>
-    <StyledComponent
-      forwardedClass={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
-          "componentStyle": ComponentStyle {
-            "componentId": "SearchWrapper-sc-1ikp2pb-0",
-            "isStatic": true,
-            "lastClassName": "EEgGg",
-            "rules": Array [
-              "position:relative;padding:0 0 0 10px;flex-direction:row;display:flex;width:",
-              "340",
-              "px;min-width:",
-              "340",
-              "px;color:#555;border-right:1px solid ",
-              "#ccc",
-              ";align-items:center;",
-            ],
-          },
-          "displayName": "SearchWrapper",
-          "render": [Function],
-          "styledComponentId": "SearchWrapper-sc-1ikp2pb-0",
-          "target": "div",
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        }
-      }
-      forwardedRef={null}
+<ForwardRef>
+  <ForwardRef
+    color="#3F84A8"
+    size="22"
+    type="search"
+  />
+  <ForwardRef
+    onChange={[Function]}
+    placeholder="Search 0 snippets"
+    type="search"
+  />
+  <ForwardRef
+    color="#3F84A8"
+    dropdown={true}
+    type="code"
+  >
+    <ScrollPad
+      pad="20px"
+      rtl={false}
     >
-      <div
-        className="SearchWrapper-sc-1ikp2pb-0 EEgGg"
-      >
+      <div>
         <ForwardRef
-          color="#3F84A8"
-          size="22"
-          type="search"
+          className="list"
         >
-          <StyledComponent
-            color="#3F84A8"
-            forwardedClass={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": undefined,
-                "componentStyle": ComponentStyle {
-                  "componentId": "Icon-vk4qna-0",
-                  "isStatic": false,
-                  "lastClassName": "hhjJsb",
-                  "rules": Array [
-                    "background-color:",
-                    [Function],
-                    ";display:inline-block;vertical-align:middle;width:",
-                    [Function],
-                    "px;height:",
-                    [Function],
-                    "px;-webkit-mask-image:url('src/icons/",
-                    [Function],
-                    "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
-                    [Function],
-                    " ",
-                    [Function],
-                    " ",
-                    [Function],
-                  ],
-                },
-                "displayName": "Icon",
-                "render": [Function],
-                "styledComponentId": "Icon-vk4qna-0",
-                "target": "span",
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
-              }
-            }
-            forwardedRef={null}
-            size="22"
-            type="search"
-          >
-            <span
-              className="Icon-vk4qna-0 gupLvY"
-              color="#3F84A8"
-              size="22"
-              type="search"
-            />
-          </StyledComponent>
+          <ForwardRef />
         </ForwardRef>
-        <ForwardRef
-          onChange={[Function]}
-          placeholder="Search 0 snippets"
-          type="search"
-        >
-          <StyledComponent
-            forwardedClass={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": undefined,
-                "componentStyle": ComponentStyle {
-                  "componentId": "StyledInput-sc-1ikp2pb-1",
-                  "isStatic": true,
-                  "lastClassName": "elzYLA",
-                  "rules": Array [
-                    "margin:0 10px 0 10px;flex:1;",
-                  ],
-                },
-                "displayName": "StyledInput",
-                "render": [Function],
-                "styledComponentId": "StyledInput-sc-1ikp2pb-1",
-                "target": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
-                Symbol(Symbol.hasInstance): [Function],
-              }
-            }
-            forwardedRef={null}
-            onChange={[Function]}
-            placeholder="Search 0 snippets"
-            type="search"
-          >
-            <Input
-              className="StyledInput-sc-1ikp2pb-1 elzYLA"
-              onChange={[Function]}
-              placeholder="Search 0 snippets"
-              type="search"
-            >
-              <ForwardRef
-                className="StyledInput-sc-1ikp2pb-1 elzYLA"
-                disabled={false}
-                onChange={[Function]}
-                placeholder="Search 0 snippets"
-                title=""
-                type="search"
-              >
-                <StyledComponent
-                  className="StyledInput-sc-1ikp2pb-1 elzYLA"
-                  disabled={false}
-                  forwardedClass={
-                    Object {
-                      "$$typeof": Symbol(react.forward_ref),
-                      "attrs": undefined,
-                      "componentStyle": ComponentStyle {
-                        "componentId": "StyledInput-sc-86zjwb-0",
-                        "isStatic": false,
-                        "lastClassName": "djdkls",
-                        "rules": Array [
-                          "border:none;border-radius:0;height:30px;color:",
-                          [Function],
-                          ";border-bottom:1px solid ",
-                          [Function],
-                          ";background:",
-                          [Function],
-                          ";&:focus{outline:none;}::placeholder{color:",
-                          [Function],
-                          ";opacity:1;}",
-                        ],
-                      },
-                      "displayName": "StyledInput",
-                      "render": [Function],
-                      "styledComponentId": "StyledInput-sc-86zjwb-0",
-                      "target": "input",
-                      "warnTooManyClasses": [Function],
-                      "withComponent": [Function],
-                    }
-                  }
-                  forwardedRef={null}
-                  onChange={[Function]}
-                  placeholder="Search 0 snippets"
-                  title=""
-                  type="search"
-                >
-                  <input
-                    className="StyledInput-sc-1ikp2pb-1 elzYLA StyledInput-sc-86zjwb-0 djdkls"
-                    disabled={false}
-                    onChange={[Function]}
-                    placeholder="Search 0 snippets"
-                    title=""
-                    type="search"
-                  />
-                </StyledComponent>
-              </ForwardRef>
-            </Input>
-          </StyledComponent>
-        </ForwardRef>
-        <UtilityIcon
-          color="#3F84A8"
-          dropdown={true}
-          type="code"
-        >
-          <ForwardRef
-            color="#3F84A8"
-            onClick={[Function]}
-          >
-            <StyledComponent
-              color="#3F84A8"
-              forwardedClass={
-                Object {
-                  "$$typeof": Symbol(react.forward_ref),
-                  "attrs": undefined,
-                  "componentStyle": ComponentStyle {
-                    "componentId": "Util-d02m7m-0",
-                    "isStatic": false,
-                    "lastClassName": "bNkMyq",
-                    "rules": Array [
-                      "border-left:1px solid ",
-                      "#ccc",
-                      ";height:50px;display:inline-block;text-align:center;line-height:50px;color:",
-                      [Function],
-                      ";cursor:pointer;position:relative;background:",
-                      [Function],
-                      ";",
-                      [Function],
-                      " ",
-                      [Function],
-                      " &:hover{background:",
-                      [Function],
-                      ";}div.list{",
-                      "position:absolute;background:",
-                      "#fff",
-                      ";right:0;top:51px;border:1px solid ",
-                      "#ccc",
-                      ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
-                      "#ccc",
-                      ";z-index:4;overflow:auto;max-height:60vh;color:",
-                      "#3F84A8",
-                      ";cursor:default;",
-                      ";padding:10px 20px;}ul{",
-                      "position:absolute;background:",
-                      "#fff",
-                      ";right:0;top:51px;border:1px solid ",
-                      "#ccc",
-                      ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
-                      "#ccc",
-                      ";z-index:4;overflow:auto;max-height:60vh;color:",
-                      "#3F84A8",
-                      ";cursor:default;",
-                      " li{border-bottom:1px dotted ",
-                      "#ccc",
-                      ";margin:0;white-space:nowrap;text-align:left;> *{padding:5px 20px;display:block;}&:hover{background:",
-                      "#f2f2f2",
-                      ";cursor:pointer;}&:last-child{border:none;}}}",
-                    ],
-                  },
-                  "displayName": "Util",
-                  "render": [Function],
-                  "styledComponentId": "Util-d02m7m-0",
-                  "target": "span",
-                  "warnTooManyClasses": [Function],
-                  "withComponent": [Function],
-                }
-              }
-              forwardedRef={null}
-              onClick={[Function]}
-            >
-              <span
-                className="Util-d02m7m-0 bNkMyq"
-                color="#3F84A8"
-                onClick={[Function]}
-              >
-                <ForwardRef
-                  color="#3F84A8"
-                  size={22}
-                  type="code"
-                >
-                  <StyledComponent
-                    color="#3F84A8"
-                    forwardedClass={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": undefined,
-                        "componentStyle": ComponentStyle {
-                          "componentId": "Icon-vk4qna-0",
-                          "isStatic": false,
-                          "lastClassName": "hhjJsb",
-                          "rules": Array [
-                            "background-color:",
-                            [Function],
-                            ";display:inline-block;vertical-align:middle;width:",
-                            [Function],
-                            "px;height:",
-                            [Function],
-                            "px;-webkit-mask-image:url('src/icons/",
-                            [Function],
-                            "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
-                            [Function],
-                            " ",
-                            [Function],
-                            " ",
-                            [Function],
-                          ],
-                        },
-                        "displayName": "Icon",
-                        "render": [Function],
-                        "styledComponentId": "Icon-vk4qna-0",
-                        "target": "span",
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    forwardedRef={null}
-                    size={22}
-                    type="code"
-                  >
-                    <span
-                      className="Icon-vk4qna-0 hNGXRb"
-                      color="#3F84A8"
-                      size={22}
-                      type="code"
-                    />
-                  </StyledComponent>
-                </ForwardRef>
-                 
-              </span>
-            </StyledComponent>
-          </ForwardRef>
-        </UtilityIcon>
-        <UtilityIcon
-          color="#3F84A8"
-          dropdown={true}
-          type="tag"
-        >
-          <ForwardRef
-            color="#3F84A8"
-            onClick={[Function]}
-          >
-            <StyledComponent
-              color="#3F84A8"
-              forwardedClass={
-                Object {
-                  "$$typeof": Symbol(react.forward_ref),
-                  "attrs": undefined,
-                  "componentStyle": ComponentStyle {
-                    "componentId": "Util-d02m7m-0",
-                    "isStatic": false,
-                    "lastClassName": "bNkMyq",
-                    "rules": Array [
-                      "border-left:1px solid ",
-                      "#ccc",
-                      ";height:50px;display:inline-block;text-align:center;line-height:50px;color:",
-                      [Function],
-                      ";cursor:pointer;position:relative;background:",
-                      [Function],
-                      ";",
-                      [Function],
-                      " ",
-                      [Function],
-                      " &:hover{background:",
-                      [Function],
-                      ";}div.list{",
-                      "position:absolute;background:",
-                      "#fff",
-                      ";right:0;top:51px;border:1px solid ",
-                      "#ccc",
-                      ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
-                      "#ccc",
-                      ";z-index:4;overflow:auto;max-height:60vh;color:",
-                      "#3F84A8",
-                      ";cursor:default;",
-                      ";padding:10px 20px;}ul{",
-                      "position:absolute;background:",
-                      "#fff",
-                      ";right:0;top:51px;border:1px solid ",
-                      "#ccc",
-                      ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
-                      "#ccc",
-                      ";z-index:4;overflow:auto;max-height:60vh;color:",
-                      "#3F84A8",
-                      ";cursor:default;",
-                      " li{border-bottom:1px dotted ",
-                      "#ccc",
-                      ";margin:0;white-space:nowrap;text-align:left;> *{padding:5px 20px;display:block;}&:hover{background:",
-                      "#f2f2f2",
-                      ";cursor:pointer;}&:last-child{border:none;}}}",
-                    ],
-                  },
-                  "displayName": "Util",
-                  "render": [Function],
-                  "styledComponentId": "Util-d02m7m-0",
-                  "target": "span",
-                  "warnTooManyClasses": [Function],
-                  "withComponent": [Function],
-                }
-              }
-              forwardedRef={null}
-              onClick={[Function]}
-            >
-              <span
-                className="Util-d02m7m-0 bNkMyq"
-                color="#3F84A8"
-                onClick={[Function]}
-              >
-                <ForwardRef
-                  color="#3F84A8"
-                  size={22}
-                  type="tag"
-                >
-                  <StyledComponent
-                    color="#3F84A8"
-                    forwardedClass={
-                      Object {
-                        "$$typeof": Symbol(react.forward_ref),
-                        "attrs": undefined,
-                        "componentStyle": ComponentStyle {
-                          "componentId": "Icon-vk4qna-0",
-                          "isStatic": false,
-                          "lastClassName": "hhjJsb",
-                          "rules": Array [
-                            "background-color:",
-                            [Function],
-                            ";display:inline-block;vertical-align:middle;width:",
-                            [Function],
-                            "px;height:",
-                            [Function],
-                            "px;-webkit-mask-image:url('src/icons/",
-                            [Function],
-                            "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
-                            [Function],
-                            " ",
-                            [Function],
-                            " ",
-                            [Function],
-                          ],
-                        },
-                        "displayName": "Icon",
-                        "render": [Function],
-                        "styledComponentId": "Icon-vk4qna-0",
-                        "target": "span",
-                        "warnTooManyClasses": [Function],
-                        "withComponent": [Function],
-                      }
-                    }
-                    forwardedRef={null}
-                    size={22}
-                    type="tag"
-                  >
-                    <span
-                      className="Icon-vk4qna-0 hhjJsb"
-                      color="#3F84A8"
-                      size={22}
-                      type="tag"
-                    />
-                  </StyledComponent>
-                </ForwardRef>
-                 
-              </span>
-            </StyledComponent>
-          </ForwardRef>
-        </UtilityIcon>
       </div>
-    </StyledComponent>
+    </ScrollPad>
   </ForwardRef>
-</Search>
+  <ForwardRef
+    color="#3F84A8"
+    dropdown={true}
+    type="tag"
+  >
+    <ScrollPad
+      pad="20px"
+      rtl={false}
+    >
+      <div>
+        <ForwardRef
+          className="list"
+        >
+          <ForwardRef />
+        </ForwardRef>
+      </div>
+    </ScrollPad>
+  </ForwardRef>
+</ForwardRef>
 `;

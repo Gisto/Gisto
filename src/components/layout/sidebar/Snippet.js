@@ -1,35 +1,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import { get } from 'lodash/fp';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
-import { removeTags } from 'utils/tags';
-import * as snippetActions from 'actions/snippets';
-import { baseAppColor, bg, lightText } from 'constants/colors';
 import { SIDEBAR_WIDTH } from 'constants/config';
 
-import Icon from 'components/common/Icon';
+import * as snippetActions from 'actions/snippets';
+
+import { removeTags } from 'utils/tags';
 import { isElectron } from 'utils/electron';
 
+import Icon from 'components/common/Icon';
+
 const StyledNavLink = styled(NavLink)`
-  background: ${baseAppColor};
+  background: ${(props) => props.theme.baseAppColor};
   line-height: 30px;
   padding: 10px;
   text-decoration: none;
-  color: ${bg};
+  color: ${(props) => props.theme.bg};
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   &:hover {
     background: rgba(255,255,255,.2);
-    color: ${bg};
+    color: ${(props) => props.theme.bg};
   }
   &.selected {
-    background: ${bg};
-    color: ${baseAppColor};
+    background: ${(props) => props.theme.bg};
+    color: ${(props) => props.theme.baseAppColor};
   }
 `;
 
@@ -49,7 +50,7 @@ const StyledIcon = styled(Icon)`
   `}
   
   .selected & {
-    background-color: ${baseAppColor};
+    background-color: ${(props) => props.theme.baseAppColor};
   }
 `;
 
@@ -108,7 +109,7 @@ export class Snippet extends Component {
   };
 
   render() {
-    const { snippet } = this.props;
+    const { snippet, theme } = this.props;
 
     return (
       <Router>
@@ -122,13 +123,13 @@ export class Snippet extends Component {
           <span>
             <StyledIcon size={ 24 }
                       type={ snippet.public ? 'unlock' : 'lock' }
-                      color={ lightText }/>
+                      color={ theme.lightText }/>
           </span>
           <span>
             <StyledIcon size={ 16 }
                       onClick={ this.toggleStar }
                       type={ snippet.star ? 'star-full' : 'star-empty' }
-                      color={ lightText }/>
+                      color={ theme.lightText }/>
           </span>
           <Title>
             { removeTags(snippet.description) || 'unnamed' }
@@ -141,13 +142,16 @@ export class Snippet extends Component {
 
 Snippet.propTypes = {
   snippet: PropTypes.object,
+  theme: PropTypes.object,
   setStar: PropTypes.func,
   unsetStar: PropTypes.func,
   deleteSnippet: PropTypes.func
 };
 
-export default connect(null, {
-  setStar: snippetActions.starSnippet,
-  unsetStar: snippetActions.unStarSnippet,
-  deleteSnippet: snippetActions.deleteSnippet
-})(Snippet);
+export default withTheme(
+  connect(null, {
+    setStar: snippetActions.starSnippet,
+    unsetStar: snippetActions.unStarSnippet,
+    deleteSnippet: snippetActions.deleteSnippet
+  })(Snippet)
+);

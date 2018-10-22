@@ -1,6 +1,6 @@
 import { SubHeader } from 'components/layout/headers/SubHeader';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   ...props
 });
 

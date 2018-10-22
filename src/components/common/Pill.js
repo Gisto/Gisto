@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { baseAppColor, headerBgLightest } from 'constants/colors';
 
 export const Pill = styled.span`
-  border: 1px solid ${headerBgLightest};
-  color: ${baseAppColor};
+  border: 1px solid ${(props) => props.theme.headerBgLightest};
+  color: ${(props) => props.theme.baseAppColor};
   padding: 5px;
   border-radius: 3px;
   position: relative;
@@ -14,7 +13,7 @@ export const Pill = styled.span`
   line-height: 15px;
   
   &:hover {
-    border: 1px solid ${baseAppColor};
+    border: 1px solid ${(props) => props.theme.baseAppColor};
   }
   
   &:after {

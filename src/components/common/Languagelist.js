@@ -2,19 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getLanguagesWithCounts, getSnippets } from 'selectors/snippets';
 import { connect } from 'react-redux';
+import { withTheme } from 'styled-components';
 import * as snippetActions from 'actions/snippets';
 import { get, map, size } from 'lodash/fp';
 
-import { headerBgLightest } from 'constants/colors';
 
 import { Pill } from 'components/common/Pill';
 
-export const Languagelist = ({ snippetsLanguages, searchByLanguages, snippets }) => {
+export const Languagelist = ({
+  snippetsLanguages, searchByLanguages, snippets, theme
+}) => {
   const linearGradient = (percentOf) => {
     const percents = (percentOf / size(snippets)) * 100;
 
     return {
-      background: `linear-gradient(to right, ${headerBgLightest} ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
+      background: `linear-gradient(to right, ${theme.headerBgLightest} ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
     };
   };
 
@@ -43,6 +45,7 @@ export const Languagelist = ({ snippetsLanguages, searchByLanguages, snippets })
 Languagelist.propTypes = {
   snippetsLanguages: PropTypes.array,
   snippets: PropTypes.object,
+  theme: PropTypes.object,
   searchByLanguages: PropTypes.func
 };
 
@@ -51,6 +54,8 @@ const mapStateToProps = (state) => ({
   snippets: getSnippets(state)
 });
 
-export default connect(mapStateToProps, {
-  searchByLanguages: snippetActions.filterSnippetsByLanguage
-})(Languagelist);
+export default withTheme(
+  connect(mapStateToProps, {
+    searchByLanguages: snippetActions.filterSnippetsByLanguage
+  })(Languagelist)
+);

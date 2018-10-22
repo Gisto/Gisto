@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SIDEBAR_WIDTH } from 'constants/config';
-import { baseAppColor } from 'constants/colors';
 import BaseSettings from 'components/layout/content/settings/Base';
 import EditorSettings from 'components/layout/content/settings/Editor';
 import SnippetsSettings from 'components/layout/content/settings/Snippets';
@@ -21,7 +20,7 @@ const Wrapper = styled.div`
     margin-top: 0;
   }
   details {
-    border: 1px solid ${baseAppColor};
+    border: 1px solid ${(props) => props.theme.baseAppColor};
     padding: 20px;
     margin: 0 0 20px;
     border-radius: 3px;
@@ -32,11 +31,11 @@ const Wrapper = styled.div`
       margin: 20px;
     }
     summary {
-      color: ${baseAppColor};
+      color: ${(props) => props.theme.baseAppColor};
       outline: none;
       cursor: pointer;
       &::-webkit-details-marker {
-        color: ${baseAppColor};
+        color: ${(props) => props.theme.baseAppColor};
       }
     }
   }

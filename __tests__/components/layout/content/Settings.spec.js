@@ -1,10 +1,10 @@
-import { Settings } from 'components/layout/content/Settings';
+import Settings from 'components/layout/content/Settings';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   ...props
 });
 
-const setup = (props) => mount(<Settings { ...propSetup(props) }/>);
+const setup = (props) => shallow(<Settings { ...propSetup(props) }/>);
 
 describe('COMPONENTS - <Settings>', () => {
   test('render Settings', () => {

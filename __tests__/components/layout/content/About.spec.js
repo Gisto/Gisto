@@ -5,7 +5,7 @@ jest.mock('../../../../package.json', () => ({
   version: 'X.X.X'
 }));
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   ...props
 });
 

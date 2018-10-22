@@ -1,6 +1,8 @@
-import Layout from 'components/Layout';
+import { Layout } from 'components/Layout';
+import * as theme from 'constants/colors';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  theme,
   ...props
 });
 

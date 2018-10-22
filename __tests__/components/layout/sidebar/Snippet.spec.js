@@ -1,7 +1,8 @@
 import { Snippet } from 'components/layout/sidebar/Snippet';
-import PropTypes from 'prop-types';
+import * as theme from 'constants/colors';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
+  theme,
   ...props
 });
 

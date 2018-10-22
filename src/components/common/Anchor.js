@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { baseAppColor, headerBgLightest } from 'constants/colors';
 
 const Link = styled.a`
   cursor: pointer;
-  color: ${(props) => props.color ? props.color : baseAppColor};
+  color: ${(props) => props.color ? props.color : props.theme.baseAppColor};
   text-decoration: none;
 
   :hover {
-    color: ${headerBgLightest};
+    color: ${(props) => props.theme.headerBgLightest};
   }
 `;
 

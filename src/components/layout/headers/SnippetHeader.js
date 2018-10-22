@@ -6,9 +6,6 @@ import {
 } from 'lodash/fp';
 import styled from 'styled-components';
 
-import {
-  baseAppColor, borderColor, colorDanger, colorSuccess, textColor 
-} from 'constants/colors';
 import * as snippetActions from 'actions/snippets';
 import { copyToClipboard, prepareFilesForUpdate } from 'utils/snippets';
 import { dateFormatToString } from 'utils/date';
@@ -29,7 +26,7 @@ const SnippetHeaderWrapper = styled.div`
 
 const History = styled.span`
   div {
-    color: ${baseAppColor};
+    color: ${(props) => props.theme.baseAppColor};
     display: flex;
     margin: 10px 0;
     justify-content: space-between;
@@ -41,7 +38,7 @@ const History = styled.span`
 `;
 
 const Additions = styled.span`
-  background: ${colorSuccess};
+  background: ${(props) => props.theme.colorSuccess};
   color: #fff;
   padding: 0 5px;
   
@@ -51,7 +48,7 @@ const Additions = styled.span`
 `;
 
 const Deletions = styled.span`
-  background: ${colorDanger};
+  background: ${(props) => props.theme.colorDanger};
   color: #fff;
   padding: 0 7px;
   
@@ -83,12 +80,12 @@ const Title = styled.div`
 `;
 
 const Description = styled.span`
-  color: ${textColor};
+  color: ${(props) => props.theme.textColor};
 `;
 
 const Languages = styled.span`
-  color: ${baseAppColor};
-  border: 1px solid ${baseAppColor};
+  color: ${(props) => props.theme.baseAppColor};
+  border: 1px solid ${(props) => props.theme.baseAppColor};
   font-size: 11px;
   padding: 1px 3px;
   border-radius: 2px;
@@ -163,7 +160,7 @@ export class SnippetHeader extends React.Component {
 
     return (
       <UtilityIcon size={ 22 }
-                   color={ baseAppColor }
+                   color={ this.props.theme.baseAppColor }
                    onClick={ () => this.toggleStar(snippet.id, starred) }
                    type={ iconType }/>
     );
@@ -188,7 +185,7 @@ export class SnippetHeader extends React.Component {
 
   renderEditControls = () => {
     const {
-      editSnippet, cancelEditSnippet, edit, addTempFile, match, snippets
+      editSnippet, cancelEditSnippet, edit, addTempFile, match, snippets, theme
     } = this.props;
     const snippet = get(match.params.id, snippets);
 
@@ -200,17 +197,17 @@ export class SnippetHeader extends React.Component {
       return (
         <React.Fragment>
           <UtilityIcon size={ 22 }
-                       color={ colorSuccess }
+                       color={ theme.colorSuccess }
                        onClick={ () => this.prepareAndUpdateSnippet() }
                        type="check"
                        text="Save"/>
           <UtilityIcon size={ 22 }
-                       color={ colorDanger }
+                       color={ theme.colorDanger }
                        onClick={ () => cancelEditSnippet() }
                        type="close"
                        text="Cancel"/>
           <UtilityIcon size={ 22 }
-                       color={ baseAppColor }
+                       color={ theme.baseAppColor }
                        type="file"
                        dropdown
                        text={ this.countFiles() }>
@@ -227,7 +224,7 @@ export class SnippetHeader extends React.Component {
     }
 
     return (
-      <UtilityIcon size={ 22 } color={ baseAppColor } onClick={ () => editSnippet(snippet.id) } type="edit"/>
+      <UtilityIcon size={ 22 } color={ theme.baseAppColor } onClick={ () => editSnippet(snippet.id) } type="edit"/>
     );
   };
 
@@ -282,14 +279,14 @@ export class SnippetHeader extends React.Component {
   };
 
   renderHistoryControls = () => {
-    const { snippets, match } = this.props;
+    const { snippets, match, theme } = this.props;
     const snippet = get(match.params.id, snippets);
     const snippetId = get('id', snippet);
     const snippetUrl = getSnippetUrl('/gist');
 
     return size(get('history', snippet)) > 1 && (
       <UtilityIcon size={ 19 }
-                   color={ baseAppColor }
+                   color={ theme.baseAppColor }
                    type="time"
                    title="View change history"
                    dropdown>
@@ -330,12 +327,12 @@ export class SnippetHeader extends React.Component {
   };
 
   renderFork = () => {
-    const { snippets, match } = this.props;
+    const { snippets, match, theme } = this.props;
     const snippet = get(match.params.id, snippets);
 
     return !isEmpty(get('fork', snippet)) && (
       <UtilityIcon size={ 22 }
-                   color={ baseAppColor }
+                   color={ theme.baseAppColor }
                    type="fork"
                    title={ `This snippet is forked from ${get('fork.owner.login', snippet)}` }
                    dropdown>
@@ -377,7 +374,7 @@ export class SnippetHeader extends React.Component {
         <LockIcon type={ isPublic ? 'unlock' : 'lock' }
                   size={ 22 }
                   title={ `Snippet is ${isPublic ? 'public' : 'private'}` }
-                  color={ borderColor }/>
+                  color={ this.props.theme.borderColor }/>
 
         { this.state.showToolbox && (
           <div>
@@ -388,20 +385,20 @@ export class SnippetHeader extends React.Component {
 
             { this.renderFork() }
 
-            <UtilityIcon size={ 22 } color={ colorDanger } onClick={ () => this.deleteSnippet(snippetId) } type="delete"/>
+            <UtilityIcon size={ 22 } color={ this.props.theme.colorDanger } onClick={ () => this.deleteSnippet(snippetId) } type="delete"/>
             <UtilityIcon size={ 22 }
-                         color={ baseAppColor }
+                         color={ this.props.theme.baseAppColor }
                          type="chat"
                          onClick={ () => this.props.toggleSnippetComments() }
                          text={ !isEmpty(comments) ? toString(size(comments)) : toString(get('comments', snippet)) }/>
             <UtilityIcon size={ 22 }
-                         color={ baseAppColor }
+                         color={ this.props.theme.baseAppColor }
                          type="copy"
                          title="Copy Snippet URL to clipboard"
                          onClick={ (event) => copyToClipboard(event, openOnWebUrl, { title: 'Snippet URL copied to clipboard' }) }/>
             { this.renderStarControl(snippet) }
 
-            <UtilityIcon size={ 22 } color={ baseAppColor } type="ellipsis" dropdown>
+            <UtilityIcon size={ 22 } color={ this.props.theme.baseAppColor } type="ellipsis" dropdown>
               <ul>
                 { !this.isEditDisabled(snippet) && (
                   <li><Anchor onClick={ () => editSnippet(snippetId) }>Edit</Anchor></li>
@@ -470,6 +467,7 @@ const mapStateToProps = (state, { match }) => ({
   snippets: get(['snippets', 'snippets'], state),
   comments: get(['snippets', 'comments', match.params.id], state),
   edit: get(['ui', 'snippets', 'edit'], state),
+  theme: get(['ui', 'settings', 'theme'], state),
   tempSnippet: get(['snippets', 'edit'], state)
 });
 
@@ -489,6 +487,7 @@ SnippetHeader.propTypes = {
   toggleSnippetComments: PropTypes.func,
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object,
+  theme: PropTypes.object,
   comments: PropTypes.array
 };
 

@@ -1,12 +1,16 @@
-import Button from 'components/common/controls/Button';
+import { Button } from 'components/common/controls/Button';
+import * as theme from 'constants/colors';
 
-const propSetup = (props) => ({
+const propSetup = (props = {}) => ({
   icon: 'menu',
   children: <div/>,
   width: '200px',
   height: '30px',
   invert: true,
   className: 'btn',
+  onClick: jest.fn(),
+  theme,
+  disabled: false,
   ...props
 });
 

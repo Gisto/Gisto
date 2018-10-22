@@ -1,59 +1,129 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Layout> render Layout when logged in 1`] = `
-<withRouter(App)>
-  <Connect(LogIn) />
-  <ToastContainer
-    autoClose={8000}
-    bodyClassName={null}
-    className={null}
-    closeButton={
-      <CloseButton
-        ariaLabel="close"
-      />
+<ThemeProvider
+  theme={
+    Object {
+      "baseAppColor": "#3F84A8",
+      "bg": "#ebf2f6",
+      "borderColor": "#ccc",
+      "boxShadow": "#555",
+      "colorDanger": "tomato",
+      "colorSuccess": "cadetblue",
+      "colorWarning": "#e0b01e",
+      "disabledColor": "#ccc",
+      "headerBgLightest": "#cfe0e9",
+      "headerColor": "#fff",
+      "lightBorderColor": "#f2f2f2",
+      "lightText": "#fff",
+      "textColor": "#555",
+      "theme": Object {
+        "baseAppColor": "#3F84A8",
+        "bg": "#ebf2f6",
+        "borderColor": "#ccc",
+        "boxShadow": "#555",
+        "colorDanger": "tomato",
+        "colorSuccess": "cadetblue",
+        "colorWarning": "#e0b01e",
+        "disabledColor": "#ccc",
+        "headerBgLightest": "#cfe0e9",
+        "headerColor": "#fff",
+        "lightBorderColor": "#f2f2f2",
+        "lightText": "#fff",
+        "textColor": "#555",
+      },
     }
-    closeOnClick={true}
-    draggable={true}
-    draggablePercent={80}
-    hideProgressBar={false}
-    newestOnTop={false}
-    pauseOnFocusLoss={true}
-    pauseOnHover={true}
-    position="top-right"
-    progressClassName={null}
-    rtl={false}
-    style={null}
-    toastClassName={null}
-    transition={[Function]}
-  />
-</withRouter(App)>
+  }
+>
+  <withRouter(App)>
+    <Connect(LogIn) />
+    <ToastContainer
+      autoClose={8000}
+      bodyClassName={null}
+      className={null}
+      closeButton={
+        <CloseButton
+          ariaLabel="close"
+        />
+      }
+      closeOnClick={true}
+      draggable={true}
+      draggablePercent={80}
+      hideProgressBar={false}
+      newestOnTop={false}
+      pauseOnFocusLoss={true}
+      pauseOnHover={true}
+      position="top-right"
+      progressClassName={null}
+      rtl={false}
+      style={null}
+      toastClassName={null}
+      transition={[Function]}
+    />
+  </withRouter(App)>
+</ThemeProvider>
 `;
 
 exports[`COMPONENTS - <Layout> render Layout when not logged in 1`] = `
-<withRouter(App)>
-  <Connect(LogIn) />
-  <ToastContainer
-    autoClose={8000}
-    bodyClassName={null}
-    className={null}
-    closeButton={
-      <CloseButton
-        ariaLabel="close"
-      />
+<ThemeProvider
+  theme={
+    Object {
+      "baseAppColor": "#3F84A8",
+      "bg": "#ebf2f6",
+      "borderColor": "#ccc",
+      "boxShadow": "#555",
+      "colorDanger": "tomato",
+      "colorSuccess": "cadetblue",
+      "colorWarning": "#e0b01e",
+      "disabledColor": "#ccc",
+      "headerBgLightest": "#cfe0e9",
+      "headerColor": "#fff",
+      "lightBorderColor": "#f2f2f2",
+      "lightText": "#fff",
+      "textColor": "#555",
+      "theme": Object {
+        "baseAppColor": "#3F84A8",
+        "bg": "#ebf2f6",
+        "borderColor": "#ccc",
+        "boxShadow": "#555",
+        "colorDanger": "tomato",
+        "colorSuccess": "cadetblue",
+        "colorWarning": "#e0b01e",
+        "disabledColor": "#ccc",
+        "headerBgLightest": "#cfe0e9",
+        "headerColor": "#fff",
+        "lightBorderColor": "#f2f2f2",
+        "lightText": "#fff",
+        "textColor": "#555",
+      },
     }
-    closeOnClick={true}
-    draggable={true}
-    draggablePercent={80}
-    hideProgressBar={false}
-    newestOnTop={false}
-    pauseOnFocusLoss={true}
-    pauseOnHover={true}
-    position="top-right"
-    progressClassName={null}
-    rtl={false}
-    style={null}
-    toastClassName={null}
-    transition={[Function]}
-  />
-</withRouter(App)>
+  }
+>
+  <withRouter(App)>
+    <Connect(LogIn) />
+    <ToastContainer
+      autoClose={8000}
+      bodyClassName={null}
+      className={null}
+      closeButton={
+        <CloseButton
+          ariaLabel="close"
+        />
+      }
+      closeOnClick={true}
+      draggable={true}
+      draggablePercent={80}
+      hideProgressBar={false}
+      newestOnTop={false}
+      pauseOnFocusLoss={true}
+      pauseOnHover={true}
+      position="top-right"
+      progressClassName={null}
+      rtl={false}
+      style={null}
+      toastClassName={null}
+      transition={[Function]}
+    />
+  </withRouter(App)>
+</ThemeProvider>
 `;

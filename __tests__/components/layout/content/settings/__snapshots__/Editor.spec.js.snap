@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
-<EditorSettings>
+<EditorSettings
+  changeSettings={[MockFunction]}
+>
   <div>
     <h4>
       Editor settings:
@@ -166,23 +168,23 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "attrs": undefined,
                                           "componentStyle": ComponentStyle {
                                             "componentId": "SelectInput-sc-13maoso-0",
-                                            "isStatic": true,
-                                            "lastClassName": "gHNoVj",
+                                            "isStatic": false,
+                                            "lastClassName": "iASYFp",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
-                                              "#3F84A8",
+                                              [Function],
                                               ";line-height:1;outline:0;color:",
-                                              "#3F84A8",
+                                              [Function],
                                               ";padding:5px;border-radius:0;background:linear-gradient(",
-                                              "#3F84A8",
+                                              [Function],
                                               ",",
-                                              "#3F84A8",
+                                              [Function],
                                               ") no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
-                                              "#3F84A8",
+                                              [Function],
                                               ",",
-                                              "#3F84A8",
+                                              [Function],
                                               ") no-repeat;background-color:#fff;background-size:1px 100%,20px 20px,20px 20px,20px 60%;background-position:right 20px center,right bottom,right bottom,right bottom;border:none;border-bottom:1px solid ",
-                                              "#3F84A8",
+                                              [Function],
                                               ";option{background-color:white;}",
                                             ],
                                           },
@@ -198,7 +200,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gHNoVj"
+                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 iASYFp"
                                         defaultValue="vs"
                                         onChange={[Function]}
                                       >
@@ -303,13 +305,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "attrs": undefined,
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-sc-1bw5uxh-0",
-                                        "isStatic": true,
-                                        "lastClassName": "kcvKxi",
+                                        "isStatic": false,
+                                        "lastClassName": "bEJBJa",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
-                                          "#3F84A8",
+                                          [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
-                                          "#3F84A8",
+                                          [Function],
                                           ";}",
                                         ],
                                       },
@@ -326,7 +328,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 kcvKxi"
+                                    className="Box-sc-1bw5uxh-0 bEJBJa"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -414,13 +416,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "attrs": undefined,
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-sc-1bw5uxh-0",
-                                        "isStatic": true,
-                                        "lastClassName": "kcvKxi",
+                                        "isStatic": false,
+                                        "lastClassName": "bEJBJa",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
-                                          "#3F84A8",
+                                          [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
-                                          "#3F84A8",
+                                          [Function],
                                           ";}",
                                         ],
                                       },
@@ -437,7 +439,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 kcvKxi"
+                                    className="Box-sc-1bw5uxh-0 bEJBJa"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -525,13 +527,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "attrs": undefined,
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-sc-1bw5uxh-0",
-                                        "isStatic": true,
-                                        "lastClassName": "kcvKxi",
+                                        "isStatic": false,
+                                        "lastClassName": "bEJBJa",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
-                                          "#3F84A8",
+                                          [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
-                                          "#3F84A8",
+                                          [Function],
                                           ";}",
                                         ],
                                       },
@@ -548,7 +550,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 kcvKxi"
+                                    className="Box-sc-1bw5uxh-0 bEJBJa"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -676,7 +678,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "StyledInput-sc-86zjwb-0",
                                             "isStatic": false,
-                                            "lastClassName": "djdkls",
+                                            "lastClassName": "bQeLId",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -703,7 +705,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="text"
                                     >
                                       <input
-                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
+                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 bQeLId"
                                         defaultValue="monospace"
                                         disabled={false}
                                         onChange={[Function]}
@@ -865,7 +867,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "StyledInput-sc-86zjwb-0",
                                             "isStatic": false,
-                                            "lastClassName": "djdkls",
+                                            "lastClassName": "bQeLId",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -892,7 +894,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="number"
                                     >
                                       <input
-                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
+                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 bQeLId"
                                         defaultValue={12}
                                         disabled={false}
                                         onChange={[Function]}
@@ -1024,7 +1026,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "StyledInput-sc-86zjwb-0",
                                             "isStatic": false,
-                                            "lastClassName": "djdkls",
+                                            "lastClassName": "bQeLId",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -1051,7 +1053,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="number"
                                     >
                                       <input
-                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 djdkls"
+                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 bQeLId"
                                         defaultValue={21}
                                         disabled={false}
                                         onChange={[Function]}
@@ -1143,13 +1145,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "attrs": undefined,
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-sc-1bw5uxh-0",
-                                        "isStatic": true,
-                                        "lastClassName": "kcvKxi",
+                                        "isStatic": false,
+                                        "lastClassName": "bEJBJa",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
-                                          "#3F84A8",
+                                          [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
-                                          "#3F84A8",
+                                          [Function],
                                           ";}",
                                         ],
                                       },
@@ -1166,7 +1168,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 kcvKxi"
+                                    className="Box-sc-1bw5uxh-0 bEJBJa"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -1254,13 +1256,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "attrs": undefined,
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-sc-1bw5uxh-0",
-                                        "isStatic": true,
-                                        "lastClassName": "kcvKxi",
+                                        "isStatic": false,
+                                        "lastClassName": "bEJBJa",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
-                                          "#3F84A8",
+                                          [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
-                                          "#3F84A8",
+                                          [Function],
                                           ";}",
                                         ],
                                       },
@@ -1277,7 +1279,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 kcvKxi"
+                                    className="Box-sc-1bw5uxh-0 bEJBJa"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -1397,23 +1399,23 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "attrs": undefined,
                                           "componentStyle": ComponentStyle {
                                             "componentId": "SelectInput-sc-13maoso-0",
-                                            "isStatic": true,
-                                            "lastClassName": "gHNoVj",
+                                            "isStatic": false,
+                                            "lastClassName": "iASYFp",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
-                                              "#3F84A8",
+                                              [Function],
                                               ";line-height:1;outline:0;color:",
-                                              "#3F84A8",
+                                              [Function],
                                               ";padding:5px;border-radius:0;background:linear-gradient(",
-                                              "#3F84A8",
+                                              [Function],
                                               ",",
-                                              "#3F84A8",
+                                              [Function],
                                               ") no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
-                                              "#3F84A8",
+                                              [Function],
                                               ",",
-                                              "#3F84A8",
+                                              [Function],
                                               ") no-repeat;background-color:#fff;background-size:1px 100%,20px 20px,20px 20px,20px 60%;background-position:right 20px center,right bottom,right bottom,right bottom;border:none;border-bottom:1px solid ",
-                                              "#3F84A8",
+                                              [Function],
                                               ";option{background-color:white;}",
                                             ],
                                           },
@@ -1429,7 +1431,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gHNoVj"
+                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 iASYFp"
                                         defaultValue="blink"
                                         onChange={[Function]}
                                       >
@@ -1544,13 +1546,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "attrs": undefined,
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-sc-1bw5uxh-0",
-                                        "isStatic": true,
-                                        "lastClassName": "kcvKxi",
+                                        "isStatic": false,
+                                        "lastClassName": "bEJBJa",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
-                                          "#3F84A8",
+                                          [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
-                                          "#3F84A8",
+                                          [Function],
                                           ";}",
                                         ],
                                       },
@@ -1567,7 +1569,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 kcvKxi"
+                                    className="Box-sc-1bw5uxh-0 bEJBJa"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
