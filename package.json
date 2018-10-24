@@ -121,6 +121,7 @@
     "mimic": "^2.0.8",
     "monaco-editor-webpack-plugin": "^1.5.4",
     "nock": "^9.6.1",
+    "papaparse": "^4.6.1",
     "precise-commits": "^1.0.2",
     "prettier": "1.13.7",
     "prop-types": "^15.6.1",

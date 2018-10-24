@@ -11,6 +11,7 @@ import 'highlight.js/styles/default.css';
 import Loading from 'components/common/Loading';
 import Markdown from 'components/common/Markdown';
 import Asciidoc from 'components/common/Asciidoc';
+import Csv from 'components/common/Csv';
 import Anchor from 'components/common/Anchor';
 
 const RenderedComponent = css`
@@ -90,6 +91,8 @@ export class Editor extends React.Component {
       || getFileExtension(file.name) === 'asciidoc';
   };
 
+  isCSV = (file) => file.language === 'CSV';
+
   renderEditor = () => {
     const {
       edit, onChange, file, className, id, language, filesCount, isNew, theme
@@ -119,6 +122,18 @@ export class Editor extends React.Component {
           You can view the <StyledAnchor href={ file.raw_url }>full file</StyledAnchor> on web.
         </BigFile>
       );
+    }
+
+    if (this.isCSV(file)) {
+      if (file.collapsed) {
+        return null;
+      }
+
+      if (!edit && !isNew  && !file.collapsed) {
+        return (
+          <Csv text={ file.content }/>
+        );
+      }
     }
 
     if (this.isAsciiDoc(file)) {
