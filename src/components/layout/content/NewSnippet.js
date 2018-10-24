@@ -3,13 +3,19 @@ import PropType from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
-  set, findIndex, map, filter, isEmpty, get
+  set, findIndex, map, filter, isEmpty, get, keys
 } from 'lodash/fp';
 import uuid from 'uuid';
+import { HashRouter as Router, Link } from 'react-router-dom';
 
 import * as snippetActions from 'actions/snippets';
+
 import { DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
+import { syntaxMap } from 'constants/editor';
+
 import { prepareFiles } from 'utils/snippets';
+import { gaPage } from 'utils/ga';
+import { getSetting } from 'utils/settings';
 
 import Input from 'components/common/controls/Input';
 import Editor from 'components/common/controls/Editor';
@@ -18,9 +24,7 @@ import ExternalLink from 'components/common/ExternalLink';
 import Button from 'components/common/controls/Button';
 import Checkbox from 'components/common/controls/Checkbox';
 import DropZone from 'components/common/DropZone';
-import { gaPage } from 'utils/ga';
-import { getSetting } from 'utils/settings';
-import { HashRouter as Router, Link } from 'react-router-dom';
+import Select from 'components/common/controls/Select';
 
 const StyledInput = styled(Input)`
   margin: 0;
@@ -63,6 +67,12 @@ const StyledDeleteButton = styled(StyledButton)`
   margin: 0 0 0 20px;
   width: auto;
   white-space: nowrap;
+  color: ${(props) => props.theme.colorDanger};
+  border-color: ${(props) => props.theme.colorDanger};
+  
+  span {
+    background-color: ${(props) => props.theme.colorDanger};
+  }
 `;
 
 const H1 = styled.h1`
@@ -80,12 +90,18 @@ const ButtonsSection = styled.section`
   display: flex;
   justify-content: space-between;
   width: calc(100vw - 25px);
+  z-index: 1;
 `;
 
 const StyledLink = styled(Link)`
   color: ${(props) => props.theme.baseAppColor};
   text-decoration: none;
   line-height: 25px;
+`;
+
+const StyledSelect = styled(Select)`
+  margin-left: 20px;
+  height: 33px;
 `;
 
 export class NewSnippet extends React.Component {
@@ -122,6 +138,7 @@ export class NewSnippet extends React.Component {
     const fileStructure = {
       uuid: uuid.v4(),
       name,
+      language: 'Text',
       content
     };
 
@@ -144,6 +161,10 @@ export class NewSnippet extends React.Component {
       files: prepareFiles(this.state.files)
     });
   };
+
+  // changeFileLanguage = (uuid, language) => {
+  //   this.setState((state) => )
+  // };
 
   render() {
     const { theme } = this.props;
@@ -182,10 +203,16 @@ export class NewSnippet extends React.Component {
                            value={ file.name }
                            onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
                            placeholder="file.ext"/>
+              <StyledSelect value="Text"
+                            onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'language') }>
+                { map((language) => (
+                  <option value={ language } key={ language }>{ language }</option>
+                ), keys(syntaxMap)) }
+              </StyledSelect>
               <StyledDeleteButton icon="delete"
                                   invert
                                   onClick={ () => this.deleteFile(file.uuid) }>
-                <strong>Remove</strong> { file.name }
+                <strong>Remove</strong> { file.name || 'this file' }
               </StyledDeleteButton>
             </div>
             <br/>

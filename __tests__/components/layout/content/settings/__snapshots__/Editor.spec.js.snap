@@ -169,7 +169,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "SelectInput-sc-13maoso-0",
                                             "isStatic": false,
-                                            "lastClassName": "iASYFp",
+                                            "lastClassName": "gcStUK",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
                                               [Function],
@@ -183,7 +183,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                               [Function],
                                               ",",
                                               [Function],
-                                              ") no-repeat;background-color:#fff;background-size:1px 100%,20px 20px,20px 20px,20px 60%;background-position:right 20px center,right bottom,right bottom,right bottom;border:none;border-bottom:1px solid ",
+                                              ") no-repeat;background-color:#fff;background-size:1px 100%,20px 20px,20px 20px,20px 15px;background-position:right 20px center,right bottom,right bottom,right bottom;border:none;border-bottom:1px solid ",
                                               [Function],
                                               ";option{background-color:white;}",
                                             ],
@@ -200,7 +200,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 iASYFp"
+                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gcStUK"
                                         defaultValue="vs"
                                         onChange={[Function]}
                                       >
@@ -1400,7 +1400,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "SelectInput-sc-13maoso-0",
                                             "isStatic": false,
-                                            "lastClassName": "iASYFp",
+                                            "lastClassName": "gcStUK",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
                                               [Function],
@@ -1414,7 +1414,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                               [Function],
                                               ",",
                                               [Function],
-                                              ") no-repeat;background-color:#fff;background-size:1px 100%,20px 20px,20px 20px,20px 60%;background-position:right 20px center,right bottom,right bottom,right bottom;border:none;border-bottom:1px solid ",
+                                              ") no-repeat;background-color:#fff;background-size:1px 100%,20px 20px,20px 20px,20px 15px;background-position:right 20px center,right bottom,right bottom,right bottom;border:none;border-bottom:1px solid ",
                                               [Function],
                                               ";option{background-color:white;}",
                                             ],
@@ -1431,7 +1431,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 iASYFp"
+                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gcStUK"
                                         defaultValue="blink"
                                         onChange={[Function]}
                                       >

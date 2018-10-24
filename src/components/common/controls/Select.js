@@ -15,7 +15,7 @@ const SelectInput = styled.select`
               linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,
               linear-gradient(${(props) => props.theme.baseAppColor}, ${(props) => props.theme.baseAppColor}) no-repeat;
   background-color: #fff;
-  background-size: 1px 100%,20px 20px,20px 20px,20px 60%;
+  background-size: 1px 100%,20px 20px,20px 20px,20px 15px;
   background-position: right 20px center,
                        right bottom,
                        right bottom,
@@ -29,11 +29,12 @@ const SelectInput = styled.select`
 `;
 
 const Select = ({
-  value, onChange, className, children
+  value, onChange, className, children, ...rest
 }) => (
   <SelectInput className={ className }
                defaultValue={ value }
-               onChange={ onChange }>
+               onChange={ onChange }
+               { ...rest }>
     { children }
   </SelectInput>
 );
