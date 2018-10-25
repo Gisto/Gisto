@@ -1,3 +1,12 @@
+### v1.10.11
+*  FIX (refactor): settings and theme [View](https://github.com/Gisto/Gisto/commit/c1bdb4e9bb97f990132a6a8a82db8bc1b743a8ac)
+*  FEATURE (new snippet): allow to select language per file from a list [View](https://github.com/Gisto/Gisto/commit/69a9287cc99ffd12b86ef4bd2cdb0e8fe0b716bd)
+*  FEATURE (editor): preview for csv files [View](https://github.com/Gisto/Gisto/commit/ef72cf549dbbcc5be7757116c459718eb942c193)
+*  FIX (editor): fix highlight [View](https://github.com/Gisto/Gisto/commit/bbf436a7b24fec68b7f6578b0aeefe1c18e7beff)
+*  FEATURE (snippets): copy description to clipboard [View](https://github.com/Gisto/Gisto/commit/8a1e69dd41c8ecdaaed054bcae7bb8b8b8594d15)
+*  FEATURE (new snippet): allow to set default language for new snippets [View](https://github.com/Gisto/Gisto/commit/7eda8c4e2d23f16ebbf12a1afaa2d6e977298b80)
+*  FIX (buttons): wrong title [View](https://github.com/Gisto/Gisto/commit/026752cc7b8928692d67cd853b38671839ba326b)
+
 ### v1.10.10
 *  FEATURE (contextmenu): add context menu (right click) to snippets list [View](https://github.com/Gisto/Gisto/commit/c77f01a169e0f243256f1dede842f2303dfb6563)
 *  FIX (settings): add option to hide rate limit [View](https://github.com/Gisto/Gisto/commit/72a42b30dc6757993f26a0a50e5e8d9e855eae65)
