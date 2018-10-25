@@ -155,6 +155,7 @@
     "history": "^4.7.2",
     "lodash": "^4.17.11",
     "marked": "^0.4.0",
+    "monaco-ace-tokenizer": "^0.1.0",
     "mousetrap": "^1.6.2",
     "normalize.css": "^8.0.0",
     "polished": "^1.9.3",
