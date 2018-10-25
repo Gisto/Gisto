@@ -11,6 +11,7 @@ import * as snippetActions from 'actions/snippets';
 
 import { removeTags } from 'utils/tags';
 import { isElectron } from 'utils/electron';
+import { copyToClipboard } from 'utils/snippets';
 
 import Icon from 'components/common/Icon';
 
@@ -94,6 +95,11 @@ export class Snippet extends Component {
     menu.append(new MenuItem({
       label: snippet.star ? 'Un-star' : 'Star',
       click: () => this.toggleStar(event)
+    }));
+
+    menu.append(new MenuItem({
+      label: 'Copy description to clipboard',
+      click: () => copyToClipboard(event, get('description', snippet), { title: 'Snippet description copied to clipboard' })
     }));
 
     menu.append(new MenuItem({
