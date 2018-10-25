@@ -138,7 +138,7 @@ export class NewSnippet extends React.Component {
     const fileStructure = {
       uuid: uuid.v4(),
       name,
-      language: 'Text',
+      language: getSetting('setings-default-new-snippet-language', 'Text'),
       content
     };
 
@@ -161,10 +161,6 @@ export class NewSnippet extends React.Component {
       files: prepareFiles(this.state.files)
     });
   };
-
-  // changeFileLanguage = (uuid, language) => {
-  //   this.setState((state) => )
-  // };
 
   render() {
     const { theme } = this.props;
@@ -203,7 +199,7 @@ export class NewSnippet extends React.Component {
                            value={ file.name }
                            onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
                            placeholder="file.ext"/>
-              <StyledSelect value="Text"
+              <StyledSelect value={ getSetting('setings-default-new-snippet-language', 'Text') }
                             onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'language') }>
                 { map((language) => (
                   <option value={ language } key={ language }>{ language }</option>

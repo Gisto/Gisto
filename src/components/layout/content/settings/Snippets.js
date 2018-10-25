@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { keys, map } from 'lodash/fp';
+
+import { syntaxMap } from 'constants/editor';
 
 import * as uiActions from 'actions/ui';
 
@@ -9,10 +12,15 @@ import { getSetting, setBooleanSetting, setSetting } from 'utils/settings';
 
 import Input from 'components/common/controls/Input';
 import Checkbox from 'components/common/controls/Checkbox';
+import Select from 'components/common/controls/Select';
 
 const StyledInput = styled(Input)`
   padding: 0 5px;
   width: 148px;
+`;
+
+const StyledISelect = styled(Select)`
+  width: 158px;
 `;
 
 const Field = styled.div`
@@ -74,6 +82,19 @@ export const SnippetsSettings = ({ changeSettings }) => {
                       onChange={ () => updateSettings('defaultNewIsPublic', null, true) }/>
           </Label>
         </Field>
+
+        <Field>
+          <Label>
+            <span>Default new snippet language:</span>
+            <StyledISelect value={ getSetting('setings-default-new-snippet-language', 'Text') }
+                           onChange={ (event) => updateSettings('setings-default-new-snippet-language', event.target.value) }>
+              { map((language) => (
+                <option value={ language } key={ language }>{ language }</option>
+              ), keys(syntaxMap)) }
+            </StyledISelect>
+          </Label>
+        </Field>
+
       </Section>
     </div>
   );
