@@ -133,7 +133,10 @@ export class MainHeader extends Component {
             </Link>
             { !isCreateNew && (
               <Router>
-                <Button icon="add" height="30px" outline>
+                <Button title="Create new snippet"
+                        icon="add"
+                        height="30px"
+                        outline>
                   <StyledLink to="/new">New snippet</StyledLink>
                 </Button>
               </Router>

@@ -15,6 +15,7 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
         height="30px"
         icon="add"
         outline={true}
+        title="Create new snippet"
       >
         <ForwardRef
           to="/new"
