@@ -28,7 +28,7 @@ const ButtonComponent = styled.button`
 `;
 
 export const Button = ({
-  icon, children, width, height, invert, outline, className, onClick, disabled, theme
+  icon, children, width, height, invert, outline, className, onClick, disabled, theme, ...rest
 }) => {
   const iconColor = () => {
     if (invert) {
@@ -45,7 +45,7 @@ export const Button = ({
                      outline={ outline }
                      width={ width }
                      disabled={ disabled }
-                     title={ disabled ? 'Currently not available' : children }
+                     title={ disabled ? 'Currently not available' : rest.title }
                      height={ height }
                      className={ className }
                      onClick={ onClick }>

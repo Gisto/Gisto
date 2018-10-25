@@ -48,7 +48,6 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
     height="30px"
     invert={true}
     onClick={[MockFunction]}
-    title="link"
     width="200px"
   >
     <StyledComponent
@@ -94,7 +93,6 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
       height="30px"
       invert={true}
       onClick={[MockFunction]}
-      title="link"
       width="200px"
     >
       <button
@@ -102,7 +100,6 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
         disabled={false}
         height="30px"
         onClick={[MockFunction]}
-        title="link"
         width="200px"
       >
         <ForwardRef
