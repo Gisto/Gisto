@@ -1,9 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MonacoEditor from 'react-monaco-editor';
 import styled, { css, withTheme } from 'styled-components';
+
+import MonacoEditor from 'react-monaco-editor';
+import { registerRulesForLanguage } from 'monaco-ace-tokenizer';
+
+import AdaHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/ada';
+import ClojureHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/clojure';
+import CobolHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/cobol';
+import DHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/d';
+import ElixirHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/elixir';
+import ErlangHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/erlang';
+import FortranHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/fortran';
+import GroovyHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/groovy';
+import HaskellHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/haskell';
+import JuliaHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/julia';
+import KotlinHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/kotlin';
+import OcamlHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/ocaml';
+import PascalHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/pascal';
+import PerlHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/perl';
+import RacketHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/racket';
+import SbclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/sbcl';
+import ScalaHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/scala';
+import TclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/tcl';
+
 import { getSetting } from 'utils/settings';
 import { getFileExtension } from 'utils/string';
+
 import { syntaxMap } from 'constants/editor';
 
 import 'highlight.js/styles/default.css';
@@ -92,6 +115,46 @@ export class Editor extends React.Component {
   };
 
   isCSV = (file) => file.language === 'CSV';
+
+  editorWillMount = (monaco) => {
+    monaco.languages.register({ id: 'ada' });
+    monaco.languages.register({ id: 'clojure' });
+    monaco.languages.register({ id: 'cobol' });
+    monaco.languages.register({ id: 'd' });
+    monaco.languages.register({ id: 'elixir' });
+    monaco.languages.register({ id: 'erlang' });
+    monaco.languages.register({ id: 'fortran' });
+    monaco.languages.register({ id: 'groovy' });
+    monaco.languages.register({ id: 'haskell' });
+    monaco.languages.register({ id: 'julia' });
+    monaco.languages.register({ id: 'kotlin' });
+    monaco.languages.register({ id: 'ocaml' });
+    monaco.languages.register({ id: 'pascal' });
+    monaco.languages.register({ id: 'perl' });
+    monaco.languages.register({ id: 'racket' });
+    monaco.languages.register({ id: 'sbcl' });
+    monaco.languages.register({ id: 'scala' });
+    monaco.languages.register({ id: 'tcl' });
+
+    registerRulesForLanguage('ada', new AdaHighlightRules());
+    registerRulesForLanguage('clojure', new ClojureHighlightRules());
+    registerRulesForLanguage('cobol', new CobolHighlightRules());
+    registerRulesForLanguage('d', new DHighlightRules());
+    registerRulesForLanguage('elixir', new ElixirHighlightRules());
+    registerRulesForLanguage('erlang', new ErlangHighlightRules());
+    registerRulesForLanguage('fortran', new FortranHighlightRules());
+    registerRulesForLanguage('groovy', new GroovyHighlightRules());
+    registerRulesForLanguage('haskell', new HaskellHighlightRules());
+    registerRulesForLanguage('julia', new JuliaHighlightRules());
+    registerRulesForLanguage('kotlin', new KotlinHighlightRules());
+    registerRulesForLanguage('ocaml', new OcamlHighlightRules());
+    registerRulesForLanguage('pascal', new PascalHighlightRules());
+    registerRulesForLanguage('perl', new PerlHighlightRules());
+    registerRulesForLanguage('racket', new RacketHighlightRules());
+    registerRulesForLanguage('sbcl', new SbclHighlightRules());
+    registerRulesForLanguage('scala', new ScalaHighlightRules());
+    registerRulesForLanguage('tcl', new TclHighlightRules());
+  };
 
   renderEditor = () => {
     const {
@@ -209,6 +272,7 @@ export class Editor extends React.Component {
         name={ id }
         value={ file.content }
         options={ editorOptions() }
+        editorWillMount={ this.editorWillMount }
         onChange={ onChange }/>
       </span>
     );
