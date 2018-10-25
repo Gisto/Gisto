@@ -258,6 +258,9 @@ export class SnippetHeader extends React.Component {
       <Title onMouseOver={ () => this.toggleToolbox() }
              onMouseOut={ () => this.toggleToolbox() }
              onBlur={ () => this.toggleToolbox() }
+             onDoubleClick={
+                 (event) => copyToClipboard(event, get('description', snippet), { title: 'Snippet description copied to clipboard' })
+             }
              onFocus={ () => this.toggleToolbox() }>
         { !edit && map((language) => (
           <Languages key={ `${language}${snippet.id}` }
