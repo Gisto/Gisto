@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Checkbox> render Checkbox 1`] = `
-<ForwardRef
+<Box
   className="classified"
   defaultChecked={true}
   onChange={[MockFunction]}

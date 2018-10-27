@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <App> render App 1`] = `
-<ForwardRef>
+<AppWrapper>
   <GlobalStyleComponent
     suppressMultiMountWarning={false}
   />
-</ForwardRef>
+</AppWrapper>
 `;

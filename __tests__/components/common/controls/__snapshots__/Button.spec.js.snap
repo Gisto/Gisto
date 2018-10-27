@@ -42,7 +42,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
   }
   width="200px"
 >
-  <ForwardRef
+  <ButtonComponent
     className="btn"
     disabled={false}
     height="30px"
@@ -102,7 +102,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
         onClick={[MockFunction]}
         width="200px"
       >
-        <ForwardRef
+        <Icon
           color="#3F84A8"
           type="menu"
         >
@@ -150,11 +150,11 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
               type="menu"
             />
           </StyledComponent>
-        </ForwardRef>
+        </Icon>
          
         link
       </button>
     </StyledComponent>
-  </ForwardRef>
+  </ButtonComponent>
 </Button>
 `;
