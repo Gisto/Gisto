@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Settings> render Settings 1`] = `
-<ForwardRef>
+<Wrapper>
   <h2>
     Settings
   </h2>
@@ -23,5 +23,5 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
     </summary>
     <Connect(EditorSettings) />
   </details>
-</ForwardRef>
+</Wrapper>
 `;

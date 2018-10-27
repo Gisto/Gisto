@@ -5,7 +5,7 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
   download="file.zip"
   href="https://github.com"
 >
-  <ForwardRef
+  <Link
     download="file.zip"
     href="https://github.com"
   >
@@ -46,6 +46,6 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
         link
       </a>
     </StyledComponent>
-  </ForwardRef>
+  </Link>
 </Anchor>
 `;

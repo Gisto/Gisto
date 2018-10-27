@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { map } from 'lodash/fp';
 import styled, { css } from 'styled-components';
 import Papa from 'papaparse';
 
@@ -61,15 +60,18 @@ const Csv = ({ text, className, height }) => {
     <TableWrapper className={ `csv-body ${className}` } height={ height }>
       <Table>
         <tbody>
-          { csvData.data && csvData.data.map((row, index) => (
+          { csvData.data && csvData.data.map((row, rowIndex) => (
             <Row>
               <Cell isIndex 
-                  key={ `row-${index + 1}` }>
-                { index + 1 }
+                    key={ `row-${rowIndex + 1}` }>
+                { rowIndex + 1 }
               </Cell>
-              { map((cell) => (
-                <Cell title={ cell }>{ cell }</Cell>
-              ), row) }
+              { row && row.map((cell, cellIndex) => (
+                <Cell title={ cell }
+                      key={ `cell-${cellIndex + 1}-${cell}` }>
+                  { cell }
+                </Cell>
+              )) }
             </Row>
           )) }
         </tbody>

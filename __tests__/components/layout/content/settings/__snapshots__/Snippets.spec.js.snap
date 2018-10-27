@@ -5,26 +5,26 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
   <h4>
     Snippets settings:
   </h4>
-  <ForwardRef>
-    <ForwardRef>
-      <ForwardRef>
+  <Section>
+    <Field>
+      <Label>
         <span>
           Snippet cache (seconds):
         </span>
-        <ForwardRef
+        <StyledInput
           onChange={[Function]}
           title="Keep snippet in cache for N seconds and do not call the server"
           type="number"
           value={100}
         />
-      </ForwardRef>
-    </ForwardRef>
-    <ForwardRef>
-      <ForwardRef>
+      </Label>
+    </Field>
+    <Field>
+      <Label>
         <span>
           Snippets polling (seconds):
         </span>
-        <ForwardRef
+        <StyledInput
           max={10000}
           min={1}
           onChange={[Function]}
@@ -32,10 +32,10 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
           type="number"
           value={300}
         />
-      </ForwardRef>
-    </ForwardRef>
-    <ForwardRef>
-      <ForwardRef>
+      </Label>
+    </Field>
+    <Field>
+      <Label>
         <span>
           Default new snippet is public:
         </span>
@@ -43,14 +43,14 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
           checked={false}
           onChange={[Function]}
         />
-      </ForwardRef>
-    </ForwardRef>
-    <ForwardRef>
-      <ForwardRef>
+      </Label>
+    </Field>
+    <Field>
+      <Label>
         <span>
           Default new snippet language:
         </span>
-        <ForwardRef
+        <StyledISelect
           onChange={[Function]}
           value="Text"
         >
@@ -2028,9 +2028,9 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
           >
             Zimpl
           </option>
-        </ForwardRef>
-      </ForwardRef>
-    </ForwardRef>
-  </ForwardRef>
+        </StyledISelect>
+      </Label>
+    </Field>
+  </Section>
 </div>
 `;
