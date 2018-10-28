@@ -5,11 +5,11 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
   <h4>
     Color settings:
   </h4>
-  <Section>
-    <Field
+  <ForwardRef>
+    <ForwardRef
       height={55}
     >
-      <Label>
+      <ForwardRef>
         <span>
           Base color:
         </span>
@@ -17,10 +17,10 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
           color="#3F84A8"
           onChange={[Function]}
         />
-      </Label>
-    </Field>
-    <Field>
-      <Label>
+      </ForwardRef>
+    </ForwardRef>
+    <ForwardRef>
+      <ForwardRef>
         <span>
           Show API rate limit on header:
         </span>
@@ -28,8 +28,8 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
           checked={true}
           onChange={[Function]}
         />
-      </Label>
-    </Field>
-  </Section>
+      </ForwardRef>
+    </ForwardRef>
+  </ForwardRef>
 </div>
 `;

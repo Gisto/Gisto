@@ -41,7 +41,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
   }
   toggleSuperSesrch={[MockFunction]}
 >
-  <SuperSearchWrapper>
+  <ForwardRef>
     <StyledComponent
       forwardedClass={
         Object {
@@ -68,7 +68,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
       <div
         className="SuperSearchWrapper-sc-1mnove5-0 bAwZkz"
       >
-        <SearchWrapper>
+        <ForwardRef>
           <StyledComponent
             forwardedClass={
               Object {
@@ -95,7 +95,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
             <div
               className="SearchWrapper-sc-1mnove5-1 ijKtSQ"
             >
-              <SearchBar>
+              <ForwardRef>
                 <StyledComponent
                   forwardedClass={
                     Object {
@@ -122,7 +122,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   <div
                     className="SearchBar-sc-1mnove5-2 dllRVk"
                   >
-                    <StyledLookingGlass
+                    <ForwardRef
                       color="#3F84A8"
                       size={32}
                       type="search"
@@ -174,8 +174,8 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                           type="search"
                         />
                       </StyledComponent>
-                    </StyledLookingGlass>
-                    <StyledInput
+                    </ForwardRef>
+                    <ForwardRef
                       autoFocus={true}
                       className="mousetrap"
                       onChange={[Function]}
@@ -218,7 +218,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                           placeholder="Search"
                           type="search"
                         >
-                          <StyledInput
+                          <ForwardRef
                             autoFocus={true}
                             className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
                             disabled={false}
@@ -275,14 +275,14 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                                 type="search"
                               />
                             </StyledComponent>
-                          </StyledInput>
+                          </ForwardRef>
                         </Input>
                       </StyledComponent>
-                    </StyledInput>
+                    </ForwardRef>
                   </div>
                 </StyledComponent>
-              </SearchBar>
-              <SnippetResults>
+              </ForwardRef>
+              <ForwardRef>
                 <StyledComponent
                   forwardedClass={
                     Object {
@@ -310,12 +310,12 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                     className="SnippetResults-sc-1mnove5-4 eUdsVx"
                   />
                 </StyledComponent>
-              </SnippetResults>
+              </ForwardRef>
             </div>
           </StyledComponent>
-        </SearchWrapper>
+        </ForwardRef>
       </div>
     </StyledComponent>
-  </SuperSearchWrapper>
+  </ForwardRef>
 </SuperSearch>
 `;

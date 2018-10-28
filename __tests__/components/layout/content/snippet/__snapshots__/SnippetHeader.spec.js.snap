@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
-<SnippetHeaderWrapper>
-  <FileName>
-    <FilenameIcon
+<ForwardRef>
+  <ForwardRef>
+    <ForwardRef
       color="#3F84A8"
       size={22}
       type="file"
@@ -13,20 +13,20 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in edit mode 1`] = `
       onChange={[Function]}
     />
      
-  </FileName>
-  <WithTheme(UtilityIcon)
+  </ForwardRef>
+  <ForwardRef
     color="tomato"
     onClick={[Function]}
     size={22}
     type="delete"
   />
-</SnippetHeaderWrapper>
+</ForwardRef>
 `;
 
 exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
-<SnippetHeaderWrapper>
-  <FileName>
-    <FilenameIcon
+<ForwardRef>
+  <ForwardRef>
+    <ForwardRef
       color="#3F84A8"
       size={22}
       type="file"
@@ -34,12 +34,12 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
      
     somefile.js
      
-  </FileName>
+  </ForwardRef>
   <div>
-    <Language>
+    <ForwardRef>
       Plain text
-    </Language>
-    <WithTheme(UtilityIcon)
+    </ForwardRef>
+    <ForwardRef
       color="#3F84A8"
       dropdown={true}
       size={22}
@@ -68,13 +68,13 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader in view mode 1`] = `
           </Anchor>
         </li>
       </ul>
-    </WithTheme(UtilityIcon)>
-    <WithTheme(UtilityIcon)
+    </ForwardRef>
+    <ForwardRef
       color="#3F84A8"
       onClick={[Function]}
       size={22}
       type="arrow-down"
     />
   </div>
-</SnippetHeaderWrapper>
+</ForwardRef>
 `;

@@ -7,7 +7,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
   type="search"
   value="typetypetype"
 >
-  <StyledInput
+  <ForwardRef
     className="classified"
     defaultValue="typetypetype"
     disabled={false}
@@ -61,6 +61,6 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
         type="search"
       />
     </StyledComponent>
-  </StyledInput>
+  </ForwardRef>
 </Input>
 `;

@@ -25,17 +25,21 @@ import ScalaHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/scala'
 import TclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/tcl';
 
 import { getSetting } from 'utils/settings';
-import { getFileExtension } from 'utils/string';
+import {
+  isAsciiDoc, isCSV, isGeoJson, isMarkDown
+} from 'utils/files';
 
 import { syntaxMap } from 'constants/editor';
 
 import 'highlight.js/styles/default.css';
 
 import Loading from 'components/common/Loading';
+import Anchor from 'components/common/Anchor';
+
 import Markdown from 'components/common/Markdown';
 import Asciidoc from 'components/common/Asciidoc';
 import Csv from 'components/common/Csv';
-import Anchor from 'components/common/Anchor';
+import GeoJson from 'components/common/GeoJson';
 
 const RenderedComponent = css`
   padding: 20px 30px;
@@ -98,24 +102,6 @@ const editorOptions = (options) => ({
 });
 
 export class Editor extends React.Component {
-  isMarkDown = (file) => {
-    return file.language === 'Markdown'
-      || getFileExtension(file.filename) === 'md'
-      || getFileExtension(file.filename) === 'markdown'
-      || getFileExtension(file.name) === 'md'
-      || getFileExtension(file.name) === 'markdown';
-  };
-
-  isAsciiDoc = (file) => {
-    return file.language === 'AsciiDoc'
-      || getFileExtension(file.filename) === 'adoc'
-      || getFileExtension(file.filename) === 'asciidoc'
-      || getFileExtension(file.name) === 'adoc'
-      || getFileExtension(file.name) === 'asciidoc';
-  };
-
-  isCSV = (file) => file.language === 'CSV';
-
   editorWillMount = (monaco) => {
     monaco.languages.register({ id: 'ada' });
     monaco.languages.register({ id: 'clojure' });
@@ -187,7 +173,7 @@ export class Editor extends React.Component {
       );
     }
 
-    if (this.isCSV(file)) {
+    if (isCSV(file)) {
       if (file.collapsed) {
         return null;
       }
@@ -199,7 +185,19 @@ export class Editor extends React.Component {
       }
     }
 
-    if (this.isAsciiDoc(file)) {
+    if (isGeoJson(file) && navigator.onLine) {
+      if (file.collapsed) {
+        return null;
+      }
+
+      if (!edit && !isNew  && !file.collapsed) {
+        return (
+          <GeoJson file={ file }/>
+        );
+      }
+    }
+
+    if (isAsciiDoc(file)) {
       if (file.collapsed) {
         return null;
       }
@@ -229,7 +227,7 @@ export class Editor extends React.Component {
       );
     }
 
-    if (this.isMarkDown(file)) {
+    if (isMarkDown(file)) {
       if (file.collapsed) {
         return null;
       }

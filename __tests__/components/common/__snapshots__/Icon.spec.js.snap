@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Icon> render Icon 1`] = `
-<Icon
+<ForwardRef
   color="#ff0000"
   type="menu"
 >
@@ -51,5 +51,5 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
       link
     </span>
   </StyledComponent>
-</Icon>
+</ForwardRef>
 `;
