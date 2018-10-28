@@ -2,7 +2,7 @@
 
 exports[`COMPONENTS - <Snippet> render Snippet 1`] = `
 <HashRouter>
-  <StyledNavLink
+  <ForwardRef
     activeClassName="selected"
     className="link"
     exact={true}
@@ -10,23 +10,23 @@ exports[`COMPONENTS - <Snippet> render Snippet 1`] = `
     to="/snippet/123123123123"
   >
     <span>
-      <StyledIcon
+      <ForwardRef
         color="#fff"
         size={24}
         type="lock"
       />
     </span>
     <span>
-      <StyledIcon
+      <ForwardRef
         color="#fff"
         onClick={[Function]}
         size={16}
         type="star-full"
       />
     </span>
-    <Title>
+    <ForwardRef>
       unnamed
-    </Title>
-  </StyledNavLink>
+    </ForwardRef>
+  </ForwardRef>
 </HashRouter>
 `;

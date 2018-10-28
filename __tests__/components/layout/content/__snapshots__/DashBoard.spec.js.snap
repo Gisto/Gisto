@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
-<DashbordWrapper>
-  <Private
+<ForwardRef>
+  <ForwardRef
     onClick={[Function]}
     style={
       Object {
@@ -17,8 +17,8 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     <span>
       45
     </span>
-  </Private>
-  <Public
+  </ForwardRef>
+  <ForwardRef
     onClick={[Function]}
     style={
       Object {
@@ -33,8 +33,8 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     <span>
       -45
     </span>
-  </Public>
-  <Starred
+  </ForwardRef>
+  <ForwardRef
     onClick={[Function]}
     style={
       Object {
@@ -49,8 +49,8 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     <span>
       6
     </span>
-  </Starred>
-  <Truncated
+  </ForwardRef>
+  <ForwardRef
     onClick={[Function]}
     style={
       Object {
@@ -63,8 +63,8 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       Large
     </h3>
     <span />
-  </Truncated>
-  <Untagged
+  </ForwardRef>
+  <ForwardRef
     onClick={[Function]}
     style={
       Object {
@@ -77,8 +77,8 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       Untagged
     </h3>
     <span />
-  </Untagged>
-  <Untitled
+  </ForwardRef>
+  <ForwardRef
     onClick={[Function]}
     style={
       Object {
@@ -93,8 +93,8 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
     <span>
       0
     </span>
-  </Untitled>
-  <Language>
+  </ForwardRef>
+  <ForwardRef>
     <h3>
       Languages:
     </h3>
@@ -103,63 +103,63 @@ exports[`COMPONENTS - <DashBoard> render DashBoard 1`] = `
       rtl={false}
     >
       <div>
-        <WithTheme(Connect(Languagelist)) />
+        <ForwardRef />
       </div>
     </ScrollPad>
-  </Language>
-  <Stars>
-    <HeadingWithSearch>
+  </ForwardRef>
+  <ForwardRef>
+    <ForwardRef>
       <h3>
         Starred:
       </h3>
       <div>
-        <Icon
+        <ForwardRef
           color="#3F84A8"
           size="22"
           type="search"
         />
-        <StyledInput
+        <ForwardRef
           onChange={[Function]}
           placeholder="Search starred"
           type="search"
         />
       </div>
-    </HeadingWithSearch>
+    </ForwardRef>
     <ScrollPad
       pad="20px"
       rtl={false}
     >
       <ul />
     </ScrollPad>
-  </Stars>
-  <Tags>
-    <HeadingWithSearch>
+  </ForwardRef>
+  <ForwardRef>
+    <ForwardRef>
       <h3>
         Tags:
       </h3>
       <div>
-        <Icon
+        <ForwardRef
           color="#3F84A8"
           size="22"
           type="search"
         />
-        <StyledInput
+        <ForwardRef
           onChange={[Function]}
           placeholder="Search tags"
           type="search"
         />
       </div>
-    </HeadingWithSearch>
+    </ForwardRef>
     <ScrollPad
       pad="20px"
       rtl={false}
     >
       <div>
-        <WithTheme(Connect(Taglist))
+        <ForwardRef
           searchTags=""
         />
       </div>
     </ScrollPad>
-  </Tags>
-</DashbordWrapper>
+  </ForwardRef>
+</ForwardRef>
 `;

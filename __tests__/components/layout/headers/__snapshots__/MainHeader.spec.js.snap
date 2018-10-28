@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
-<HeaderWrapper>
-  <Logo>
+<ForwardRef>
+  <ForwardRef>
     <Link
       replace={false}
       to="/"
@@ -17,17 +17,17 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
         outline={true}
         title="Create new snippet"
       >
-        <StyledLink
+        <ForwardRef
           to="/new"
         >
           New snippet
-        </StyledLink>
+        </ForwardRef>
       </Connect(Button)>
     </HashRouter>
-  </Logo>
-  <MiddleArea>
+  </ForwardRef>
+  <ForwardRef>
     <div />
-    <RateLimit
+    <ForwardRef
       onClick={[Function]}
       title="Click to reload"
     >
@@ -42,8 +42,8 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
         NaN
          min.
       </small>
-    </RateLimit>
-  </MiddleArea>
-  <WithTheme(Connect(AppArea)) />
-</HeaderWrapper>
+    </ForwardRef>
+  </ForwardRef>
+  <ForwardRef />
+</ForwardRef>
 `;

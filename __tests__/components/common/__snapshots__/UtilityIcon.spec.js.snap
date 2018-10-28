@@ -42,7 +42,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
   title="UtilityIcon"
   type="menu"
 >
-  <Util
+  <ForwardRef
     className="UtilityIcon"
     color="red"
     onClick={[Function]}
@@ -117,7 +117,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
         onClick={[Function]}
         title="UtilityIcon"
       >
-        <Icon
+        <ForwardRef
           color="red"
           size={20}
           type="menu"
@@ -168,10 +168,10 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
               type="menu"
             />
           </StyledComponent>
-        </Icon>
+        </ForwardRef>
          
       </span>
     </StyledComponent>
-  </Util>
+  </ForwardRef>
 </UtilityIcon>
 `;

@@ -5,23 +5,23 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
   <DropZone
     onAddFile={[Function]}
   />
-  <H1>
+  <ForwardRef>
     <strong>
       New 
       private
        snippet:
     </strong>
      
-  </H1>
-  <Section>
-    <StyledInput
+  </ForwardRef>
+  <ForwardRef>
+    <ForwardRef
       onChange={[Function]}
       placeholder="Description (default untitled)"
       type="text"
     />
-  </Section>
-  <Section>
-    <StyledCheckbox
+  </ForwardRef>
+  <ForwardRef>
+    <ForwardRef
       checked={false}
       onChange={[Function]}
       value={false}
@@ -32,41 +32,41 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
       <ExternalLink
         href="https://help.github.com/articles/about-gists/#types-of-gists"
       >
-        <Icon
+        <ForwardRef
           color="#3F84A8"
           size="16"
           type="info"
         />
       </ExternalLink>
     </span>
-  </Section>
-  <ButtonsSection>
+  </ForwardRef>
+  <ForwardRef>
     <HashRouter>
-      <StyledButton
+      <ForwardRef
         icon="arrow-left"
         invert={true}
       >
-        <StyledLink
+        <ForwardRef
           to="/"
         >
           Back to list
-        </StyledLink>
-      </StyledButton>
+        </ForwardRef>
+      </ForwardRef>
     </HashRouter>
-    <StyledButton
+    <ForwardRef
       icon="add"
       invert={true}
       onClick={[Function]}
     >
       Add file
-    </StyledButton>
-    <StyledButton
+    </ForwardRef>
+    <ForwardRef
       disabled={true}
       icon="success"
       onClick={[Function]}
     >
       Save
-    </StyledButton>
-  </ButtonsSection>
+    </ForwardRef>
+  </ForwardRef>
 </div>
 `;

@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <Search> render Search 1`] = `
-<SearchWrapper>
-  <Icon
+<ForwardRef>
+  <ForwardRef
     color="#3F84A8"
     size="22"
     type="search"
   />
-  <StyledInput
+  <ForwardRef
     onChange={[Function]}
     placeholder="Search 0 snippets"
     type="search"
   />
-  <WithTheme(UtilityIcon)
+  <ForwardRef
     color="#3F84A8"
     dropdown={true}
     type="code"
@@ -22,15 +22,15 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
       rtl={false}
     >
       <div>
-        <StyledLanguagesWrapper
+        <ForwardRef
           className="list"
         >
-          <WithTheme(Connect(Languagelist)) />
-        </StyledLanguagesWrapper>
+          <ForwardRef />
+        </ForwardRef>
       </div>
     </ScrollPad>
-  </WithTheme(UtilityIcon)>
-  <WithTheme(UtilityIcon)
+  </ForwardRef>
+  <ForwardRef
     color="#3F84A8"
     dropdown={true}
     type="tag"
@@ -40,13 +40,13 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
       rtl={false}
     >
       <div>
-        <StyledTaglistWrapper
+        <ForwardRef
           className="list"
         >
-          <WithTheme(Connect(Taglist)) />
-        </StyledTaglistWrapper>
+          <ForwardRef />
+        </ForwardRef>
       </div>
     </ScrollPad>
-  </WithTheme(UtilityIcon)>
-</SearchWrapper>
+  </ForwardRef>
+</ForwardRef>
 `;
