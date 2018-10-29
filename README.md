@@ -54,11 +54,14 @@ change.log of current version for more detailed info regarding new features, bug
 
 ## Screenshots
 
-| Dashboard                                  | Snippet view                                  | Snippet options                                  |
+|                                   |                                   |                                   |
 |--------------------------------------------|-----------------------------------------------|--------------------------------------------------|
+| Dashboard                                  | Snippet view                                  | Snippet options                                  |
 | ![Dashboard](https://imgur.com/Jx8Tc9s.png) | ![Snippet view](https://imgur.com/OwseykV.png) | ![Snippet options](https://imgur.com/yiEJRNt.png) |
 | Edit mode                                  | Settings                                      | Create new                                       |
 | ![Edit mode](https://imgur.com/JtUCsfI.png) | ![Settings](https://imgur.com/1yliYhR.png)     | ![Create new](https://imgur.com/aoW5V8E.png)      |
+| CSV preview                                  | GeoJSON preview                                      | Images preview                                       |
+| ![Edit mode](https://imgur.com/Aac48m9.png) | ![Settings](https://imgur.com/LW6SFg2.png)     | ![Create new](https://imgur.com/bXySAUt.png)      |
 
 # FEATURES
 
@@ -73,11 +76,17 @@ change.log of current version for more detailed info regarding new features, bug
 * Editor settings
 * Theme color changer
 * Drag and drop to create files
-* Markdown preview (with emoji)
-* AsciiDoc preview
 * Comments
 * [Web app](https://web.gistoapp.com)
 * Open source
+
+### Preview of:
+
+* Markdown preview (with emoji)
+* AsciiDoc preview
+* CSV preview
+* GeoJSON preview
+* Images preview (only pushed to gist by git)
 
 And more...
 
