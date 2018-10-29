@@ -142,10 +142,28 @@ export class Editor extends React.Component {
     registerRulesForLanguage('tcl', new TclHighlightRules());
   };
 
+  renderMonacoEdito = (width, height, language = this.props.language) => (
+    <MonacoEditor
+      width={ width }
+      height={ height }
+      className={ this.props.className }
+      language={ language || syntaxMap[this.props.file.language] || 'text' }
+      theme={ getSetting('editorTheme', 'vs') }
+      name={ this.props.id }
+      value={ this.props.file.content }
+      options={ editorOptions() }
+      editorWillMount={ this.editorWillMount }
+      onChange={ this.props.onChange }/>
+  );
+
   renderEditor = () => {
     const {
-      edit, onChange, file, className, id, language, filesCount, isNew, theme
+      edit, file, filesCount, isNew, theme
     } = this.props;
+
+    if (file.collapsed) {
+      return null;
+    }
 
     if (!isNew && !file.content && !edit) {
       return (
@@ -174,11 +192,7 @@ export class Editor extends React.Component {
     }
 
     if (isCSV(file)) {
-      if (file.collapsed) {
-        return null;
-      }
-
-      if (!edit && !isNew  && !file.collapsed) {
+      if (!edit && !isNew) {
         return (
           <Csv text={ file.content }/>
         );
@@ -186,10 +200,6 @@ export class Editor extends React.Component {
     }
 
     if (isGeoJson(file) && navigator.onLine) {
-      if (file.collapsed) {
-        return null;
-      }
-
       if (!edit && !isNew  && !file.collapsed) {
         return (
           <GeoJson file={ file }/>
@@ -198,10 +208,6 @@ export class Editor extends React.Component {
     }
 
     if (isAsciiDoc(file)) {
-      if (file.collapsed) {
-        return null;
-      }
-
       if (!edit && !isNew  && !file.collapsed) {
         return (
           <AsciidocComponent text={ file.content }/>
@@ -212,26 +218,13 @@ export class Editor extends React.Component {
 
       return (
         <EditorWrapper>
-          <MonacoEditor
-            width="50%"
-            height={ calculatedHeight }
-            className={ className }
-            language="AsciiDoc"
-            theme={ getSetting('editorTheme', 'vs') }
-            name={ id }
-            value={ file.content }
-            options={ editorOptions() }
-            onChange={ onChange }/>
+          { this.renderMonacoEdito('50%', calculatedHeight, 'AsciiDoc') }
           <AsciidocComponent width="50%" text={ file.content }/>
         </EditorWrapper>
       );
     }
 
     if (isMarkDown(file)) {
-      if (file.collapsed) {
-        return null;
-      }
-
       if (!edit && !isNew  && !file.collapsed) {
         return (
           <MarkdownComponent text={ file.content }/>
@@ -242,16 +235,7 @@ export class Editor extends React.Component {
 
       return (
         <EditorWrapper>
-          <MonacoEditor
-            width="50%"
-            height={ calculatedHeight }
-            className={ className }
-            language="Markdown"
-            theme={ getSetting('editorTheme', 'vs') }
-            name={ id }
-            value={ file.content }
-            options={ editorOptions() }
-            onChange={ onChange }/>
+          { this.renderMonacoEdito('50%', calculatedHeight, 'Markdown') }
           <MarkdownComponent width="50%" text={ file.content }/>
         </EditorWrapper>
       );
@@ -261,17 +245,7 @@ export class Editor extends React.Component {
 
     return (
       <span style={ { display: file.collapsed ? 'none' : 'inherit' } }>
-        <MonacoEditor
-        width="100%"
-        height={ calculatedHeight }
-        className={ className }
-        language={ language || syntaxMap[file.language] || 'text' }
-        theme={ getSetting('editorTheme', 'vs') }
-        name={ id }
-        value={ file.content }
-        options={ editorOptions() }
-        editorWillMount={ this.editorWillMount }
-        onChange={ onChange }/>
+        { this.renderMonacoEdito('100%', calculatedHeight) }
       </span>
     );
   };
