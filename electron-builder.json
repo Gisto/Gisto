@@ -46,7 +46,8 @@
   },
   "nsis": {
     "oneClick": false,
-    "allowToChangeInstallationDirectory": false
+    "allowToChangeInstallationDirectory": false,
+    "createDesktopShortcut": "always"
   },
   "linux": {
     "maintainer": "Sasha Khamkov <sanusart@gmail.com>",
