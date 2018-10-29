@@ -1,3 +1,10 @@
+### v1.10.12
+*  FIX (csv): missing key for iterated cell [View](https://github.com/Gisto/Gisto/commit/bfb2a13d83e9cf7d8618588df035ed097d2715ee)
+*  FEATURE (editor): geojson preview [View](https://github.com/Gisto/Gisto/commit/ad73ee6c07dbd970f8b8a3338e1c66dd466479d9)
+*  FIX (icon): windows icon not showing because of long app description [View](https://github.com/Gisto/Gisto/commit/a21b9336ada7800024e515fb1d1d59e7071fad8f)
+*  FIX (editor): refactor for different file types with preview [View](https://github.com/Gisto/Gisto/commit/702862ca8258ec7e6b7077147f76b5c52b792510)
+*  DOCS (readme): update readme with new features [View](https://github.com/Gisto/Gisto/commit/6779839d32fbc87677a8dad96dd84e1dc612e327)
+
 ### v1.10.11
 *  FIX (refactor): settings and theme [View](https://github.com/Gisto/Gisto/commit/c1bdb4e9bb97f990132a6a8a82db8bc1b743a8ac)
 *  FEATURE (new snippet): allow to select language per file from a list [View](https://github.com/Gisto/Gisto/commit/69a9287cc99ffd12b86ef4bd2cdb0e8fe0b716bd)
