@@ -1,3 +1,11 @@
+### v1.10.13
+*  FEATURE (editor): preview PDF + refactor file utils [View](https://github.com/Gisto/Gisto/commit/963d35bfbe3199209426efba76163f706fc9fad8)
+*  CHORE (constants): refactor names [View](https://github.com/Gisto/Gisto/commit/317dab4e8757368c8bd074f7a3ef7bf785402676)
+*  FEATURE (editor): support tsv files preview [View](https://github.com/Gisto/Gisto/commit/67ede2dd8242ba7ddf8f9dd470756543aeb7c978)
+*  FIX (editor): react key in CSV renderer [View](https://github.com/Gisto/Gisto/commit/664a954261a3265301d90247772ad5ae3b03da0b)
+*  FEATURE (search): search by file names and content of accessed snippets [View](https://github.com/Gisto/Gisto/commit/ea9935ba691a20129869a3a71e2f81098b7f239f)
+*  DOCS (readme): update readme [View](https://github.com/Gisto/Gisto/commit/50ab6fec299e72c28ef520ee176caa272bcc4430)
+
 ### v1.10.12
 *  FIX (csv): missing key for iterated cell [View](https://github.com/Gisto/Gisto/commit/bfb2a13d83e9cf7d8618588df035ed097d2715ee)
 *  FEATURE (editor): geojson preview [View](https://github.com/Gisto/Gisto/commit/ad73ee6c07dbd970f8b8a3338e1c66dd466479d9)
