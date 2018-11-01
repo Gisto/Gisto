@@ -54,7 +54,17 @@ const filterByFreeText = (snippets, filterText) => {
       }, textMatches);
     }
 
-    return filter((snippet) => snippet.description.match(regex), snippets);
+    return filter((snippet) => {
+      const descriptionMatch = snippet.description.match(regex);
+      const fileNameMatch = size(
+        filter((file) => file.filename.match(regex), snippet.files)
+      ) > 0;
+      const contentMatch = size(
+        filter((file) => file.content && file.content.match(regex), snippet.files)
+      ) > 0;
+
+      return descriptionMatch || fileNameMatch || contentMatch;
+    }, snippets);
   }
 
   return snippets;
