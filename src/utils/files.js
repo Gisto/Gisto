@@ -19,6 +19,8 @@ export const isAsciiDoc = (file) => {
 
 export const isCSV = (file) => file.language === 'CSV';
 
+export const isTSV = (file) => file.type === 'text/tab-separated-values';
+
 export const isImage = (file) => startsWith('image/', file.type);
 
 export const isGeoJson = (file) => {
@@ -36,6 +38,10 @@ export const getFileLanguage = (file) => {
 
   if (isPDF(file)) {
     return 'PDF';
+  }
+
+  if (isTSV(file)) {
+    return 'TSV';
   }
 
   return file.language;

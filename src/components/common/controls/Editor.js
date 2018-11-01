@@ -25,7 +25,7 @@ import TclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/tcl';
 
 import { getSetting } from 'utils/settings';
 import {
-  isAsciiDoc, isCSV, isGeoJson, isMarkDown, isPDF, isImage
+  isAsciiDoc, isCSV, isGeoJson, isMarkDown, isPDF, isImage, isTSV
 } from 'utils/files';
 
 import { syntaxMap } from 'constants/editor';
@@ -191,7 +191,7 @@ export class Editor extends React.Component {
       );
     }
 
-    if (isCSV(file)) {
+    if (isCSV(file) || isTSV(file)) {
       if (!edit && !isNew) {
         return (
           <Csv text={ file.content }/>
