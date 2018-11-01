@@ -3,7 +3,7 @@
 import * as superagent from 'superagent';
 import * as AT from 'constants/actionTypes';
 import { responseHandler } from 'middlewares/responseHandler';
-import { gitHubTokenKeyInStorage } from 'constants/config';
+import { GITHUB_TOKEN_KEY_IN_STORAGE } from 'constants/config';
 import { getApiUrl } from 'utils/url';
 import { setToken, removeToken, removeEnterpriseDomain } from 'utils/login';
 import { get, set } from 'lodash/fp';
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line no-shadow, no-unused-vars
   API = require('superagent/superagent');
 }
-const getToken = localStorage.getItem(gitHubTokenKeyInStorage);
+const getToken = localStorage.getItem(GITHUB_TOKEN_KEY_IN_STORAGE);
 
 const _headers = (additional) => ({
   'Content-Type': 'application/json',

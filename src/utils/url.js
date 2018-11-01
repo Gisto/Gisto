@@ -1,4 +1,4 @@
-import { DEFAULT_API_ENDPOINT_URL, defaultGistURL } from 'constants/config';
+import { DEFAULT_API_ENDPOINT_URL, DEFAULT_GIST_URL } from 'constants/config';
 import { isEnterpriseLogin, getEnterpriseDomain } from 'utils/login';
 
 export const getApiUrl = (sufix) => {
@@ -6,5 +6,5 @@ export const getApiUrl = (sufix) => {
 };
 
 export const getSnippetUrl = (sufix) => {
-  return isEnterpriseLogin() ? `${getEnterpriseDomain()}${sufix}` : defaultGistURL;
+  return isEnterpriseLogin() ? `${getEnterpriseDomain()}${sufix}` : DEFAULT_GIST_URL;
 };
