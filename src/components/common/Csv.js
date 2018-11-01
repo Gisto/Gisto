@@ -61,9 +61,9 @@ const Csv = ({ text, className, height }) => {
       <Table>
         <tbody>
           { csvData.data && csvData.data.map((row, rowIndex) => (
-            <Row>
+            <Row key={ `row-${rowIndex + 1}` }>
               <Cell isIndex 
-                    key={ `row-${rowIndex + 1}` }>
+                    key={ `row-cell-${rowIndex + 1}` }>
                 { rowIndex + 1 }
               </Cell>
               { row && row.map((cell, cellIndex) => (
