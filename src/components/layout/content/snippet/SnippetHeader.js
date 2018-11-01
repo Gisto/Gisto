@@ -5,6 +5,7 @@ import { get, getOr } from 'lodash/fp';
 import styled from 'styled-components';
 
 import { copyToClipboard } from 'utils/snippets';
+import { isPDF, isImage } from 'utils/files';
 import * as snippetActions from 'actions/snippets';
 
 import Icon from 'components/common/Icon';
@@ -59,7 +60,7 @@ export class SnippetHeader extends React.Component {
       file, edit, tempSnippet, updateTempSnippet
     } = this.props;
 
-    if (!edit || (edit && file.language === 'Image')) {
+    if (!edit || (edit && (isImage(file) || isPDF(file)))) {
       return get('filename', file);
     }
 
@@ -80,11 +81,11 @@ export class SnippetHeader extends React.Component {
         <FileName>
           <FilenameIcon size={ 22 }
                         color={ theme.baseAppColor }
-                        type="file"/> { this.renderFileName() } { edit && file.language === 'Image' && (
+                        type="file"/> { this.renderFileName() } { edit && (isPDF(file) || isImage(file)) && (
                         <em>
                           <small style={ { color: theme.colorDanger } }>
                             &nbsp;&nbsp;&nbsp;
-                            (Image files are read only)
+                            { `(${file.language || 'this kind of '} files are read only)` }
                           </small>
                         </em>
                         ) }

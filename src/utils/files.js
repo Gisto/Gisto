@@ -1,4 +1,5 @@
 import { getFileExtension } from 'utils/string';
+import { startsWith } from 'lodash/fp';
 
 export const isMarkDown = (file) => {
   return file.language === 'Markdown'
@@ -18,7 +19,24 @@ export const isAsciiDoc = (file) => {
 
 export const isCSV = (file) => file.language === 'CSV';
 
+export const isImage = (file) => startsWith('image/', file.type);
+
 export const isGeoJson = (file) => {
   return file.language === 'JSON'
     && (getFileExtension(file.filename) === 'geojson' || getFileExtension(file.name) === 'geojson');
+};
+
+export const isPDF = (file) => file.type === 'application/pdf'
+  && (getFileExtension(file.filename) === 'pdf' || getFileExtension(file.name) === 'pdf');
+
+export const getFileLanguage = (file) => {
+  if (isImage(file)) {
+    return 'Image';
+  }
+
+  if (isPDF(file)) {
+    return 'PDF';
+  }
+
+  return file.language;
 };

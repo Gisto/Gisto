@@ -1,10 +1,13 @@
 import {
-  isEmpty, map, get, includes, uniq, compact, startsWith, some, flow
+  isEmpty, map, get, includes, uniq, compact, some, flow
 } from 'lodash/fp';
+
 import { TAG_REGEX, DEFAULT_SNIPPET_DESCRIPTION } from 'constants/config';
+
 import { removeTags } from 'utils/tags';
 import { toUnixTimeStamp } from 'utils/date';
 import { fileTypesList } from 'utils/snippets';
+import { getFileLanguage } from 'utils/files';
 
 const prepareTags = (snippet) => {
   if (!isEmpty(snippet.description)) {
@@ -32,7 +35,7 @@ const prepareFiles = (snippet) => {
       ...file,
       collapsed: false,
       viewed: toUnixTimeStamp(new Date().getTime()),
-      language: startsWith('image/', file.type) ? 'Image' : file.language
+      language: getFileLanguage(file)
     }),
     snippet.files
   );
