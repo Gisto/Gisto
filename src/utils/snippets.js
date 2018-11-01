@@ -16,6 +16,7 @@ import {
   head
 } from 'lodash/fp';
 import { removeTags } from 'utils/tags';
+import { getFileLanguage } from 'utils/files';
 import { setNotification } from 'utils/notifications';
 
 export const isTag = (filterText) => startsWith('#', filterText);
@@ -147,8 +148,8 @@ export const prepareFilesForUpdate = (snippet) => {
     map((file) => {
       return pick(['filename', 'content', 'originalFileName', 'delete', 'isNew'], file);
     }),
-    // we do not support saving/editing image file
-    filter((file) => !file.filename.match(/png|jpg|jpeg|gif|bmp|tiff|tif|webp|xpm|exif|icns|ico|jp2|ai|psd/ig))
+    // we do not support saving/editing specific files
+    filter((file) => !file.filename.match(/png|jpg|jpeg|gif|bmp|tiff|tif|webp|xpm|exif|icns|ico|jp2|ai|psd|pdf/ig))
   ])(snippet.files);
 
   const filesClean = keyBy('originalFileName', cleanFiles);
@@ -181,12 +182,4 @@ export const prepareFilesForUpdate = (snippet) => {
   };
 };
 
-export const fileTypesList = (files) => {
-  return map((file) => {
-    if (file.language === null && startsWith('image/', file.type)) {
-      return 'Image';
-    }
-
-    return file.language;
-  }, files);
-};
+export const fileTypesList = (files) => map((file) => getFileLanguage(file), files);

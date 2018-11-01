@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css, withTheme } from 'styled-components';
-
 import MonacoEditor from 'react-monaco-editor';
 import { registerRulesForLanguage } from 'monaco-ace-tokenizer';
 
@@ -26,7 +25,7 @@ import TclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/tcl';
 
 import { getSetting } from 'utils/settings';
 import {
-  isAsciiDoc, isCSV, isGeoJson, isMarkDown
+  isAsciiDoc, isCSV, isGeoJson, isMarkDown, isPDF, isImage
 } from 'utils/files';
 
 import { syntaxMap } from 'constants/editor';
@@ -40,6 +39,7 @@ import Markdown from 'components/common/Markdown';
 import Asciidoc from 'components/common/Asciidoc';
 import Csv from 'components/common/Csv';
 import GeoJson from 'components/common/GeoJson';
+import Pdf from 'components/common/Pdf';
 
 const RenderedComponent = css`
   padding: 20px 30px;
@@ -173,7 +173,7 @@ export class Editor extends React.Component {
       );
     }
 
-    if (file.content && file.language === 'Image' && !file.collapsed) {
+    if (file.content && isImage(file) && !file.collapsed) {
       return (
         <Image>
           <img id="img" src={ file.raw_url } title={ `File type: ${file.type}` } alt={ `File type: ${file.type}` }/>
@@ -195,6 +195,14 @@ export class Editor extends React.Component {
       if (!edit && !isNew) {
         return (
           <Csv text={ file.content }/>
+        );
+      }
+    }
+
+    if (isPDF(file) && navigator.onLine) {
+      if (!isNew) {
+        return (
+          <Pdf file={ file }/>
         );
       }
     }
