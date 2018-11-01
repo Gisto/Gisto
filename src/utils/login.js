@@ -1,30 +1,30 @@
-import { gitHubTokenKeyInStorage, gitHubEnterpriseDomainInStorage } from 'constants/config';
+import { GITHUB_TOKEN_KEY_IN_STORAGE, GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE } from 'constants/config';
 import { stripTrailingSlash } from 'utils/string';
 import uuid from 'uuid';
 
-export const isLoggedIn = !!localStorage.getItem(gitHubTokenKeyInStorage);
+export const isLoggedIn = !!localStorage.getItem(GITHUB_TOKEN_KEY_IN_STORAGE);
 
 export const setToken = (token) => {
   if (localStorage.getItem('unique-app-id') === null) {
     localStorage.setItem('unique-app-id', uuid.v4());
   }
 
-  localStorage.setItem(gitHubTokenKeyInStorage, token);
+  localStorage.setItem(GITHUB_TOKEN_KEY_IN_STORAGE, token);
 };
 
-export const removeToken = () => localStorage.setItem(gitHubTokenKeyInStorage, '');
+export const removeToken = () => localStorage.setItem(GITHUB_TOKEN_KEY_IN_STORAGE, '');
 
 export const setEnterpriseDomain = (domain) => {
   return localStorage.setItem(
-    gitHubEnterpriseDomainInStorage,
+    GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE,
     stripTrailingSlash(domain)
   );
 };
 
-export const getEnterpriseDomain = () => localStorage.getItem(gitHubEnterpriseDomainInStorage);
+export const getEnterpriseDomain = () => localStorage.getItem(GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE);
 
-export const isEnterpriseLogin = () => !!localStorage.getItem(gitHubEnterpriseDomainInStorage);
+export const isEnterpriseLogin = () => !!localStorage.getItem(GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE);
 
 export const removeEnterpriseDomain = () => localStorage.removeItem(
-  gitHubEnterpriseDomainInStorage
+  GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE
 );
