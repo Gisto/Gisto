@@ -82,11 +82,12 @@ change.log of current version for more detailed info regarding new features, bug
 
 ### Preview of:
 
-* Markdown preview (with emoji)
+* Markdown preview _(with emoji)_
 * AsciiDoc preview
-* CSV preview
+* CSV and TSV preview
 * GeoJSON preview
-* Images preview (only pushed to gist by git)
+* Images preview _(read only, pushed to gist by git)_
+* PDF preview _(read only, pushed to gist by git)_
 
 And more...
 
