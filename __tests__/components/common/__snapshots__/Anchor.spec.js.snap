@@ -5,7 +5,7 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
   download="file.zip"
   href="https://github.com"
 >
-  <ForwardRef
+  <Link
     download="file.zip"
     href="https://github.com"
   >
@@ -31,6 +31,7 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
           "render": [Function],
           "styledComponentId": "Link-sc-17j1f2u-0",
           "target": "a",
+          "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -46,6 +47,6 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
         link
       </a>
     </StyledComponent>
-  </ForwardRef>
+  </Link>
 </Anchor>
 `;

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <SubHeader> render SubHeader 1`] = `
-<ForwardRef>
-  <ForwardRef />
-  <ForwardRef>
+<SubHeaderWrapper>
+  <WithTheme(Connect(Search)) />
+  <SnippetHeaderBlock>
     <HashRouter>
       <Switch>
         <Route
@@ -27,6 +27,6 @@ exports[`COMPONENTS - <SubHeader> render SubHeader 1`] = `
         />
       </Switch>
     </HashRouter>
-  </ForwardRef>
-</ForwardRef>
+  </SnippetHeaderBlock>
+</SubHeaderWrapper>
 `;

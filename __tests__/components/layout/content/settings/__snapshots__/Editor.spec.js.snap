@@ -5,7 +5,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
   changeSettings={[MockFunction]}
 >
   <div>
-    <ForwardRef>
+    <H4>
       <StyledComponent
         forwardedClass={
           Object {
@@ -27,6 +27,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "render": [Function],
             "styledComponentId": "H4-sc-3i0r91-6",
             "target": "h4",
+            "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -39,8 +40,8 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
           Editor settings:
         </h4>
       </StyledComponent>
-    </ForwardRef>
-    <ForwardRef>
+    </H4>
+    <Wrapper>
       <StyledComponent
         forwardedClass={
           Object {
@@ -58,6 +59,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "render": [Function],
             "styledComponentId": "Wrapper-sc-3i0r91-0",
             "target": "div",
+            "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -67,7 +69,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
         <div
           className="Wrapper-sc-3i0r91-0 jjrWCY"
         >
-          <ForwardRef>
+          <Section>
             <StyledComponent
               forwardedClass={
                 Object {
@@ -85,6 +87,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "render": [Function],
                   "styledComponentId": "Section-sc-3i0r91-2",
                   "target": "div",
+                  "toString": [Function],
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -94,7 +97,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               <div
                 className="Section-sc-3i0r91-2 gqkeLg"
               >
-                <ForwardRef>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -112,6 +115,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -121,7 +125,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -139,6 +143,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -151,7 +156,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                             <span>
                               Theme:
                             </span>
-                            <ForwardRef
+                            <StyledISelect
                               onChange={[Function]}
                               value="vs"
                             >
@@ -172,6 +177,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "render": [Function],
                                     "styledComponentId": "StyledISelect-sc-3i0r91-5",
                                     "target": [Function],
+                                    "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                     Symbol(Symbol.hasInstance): [Function],
@@ -186,7 +192,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   onChange={[Function]}
                                   value="vs"
                                 >
-                                  <ForwardRef
+                                  <SelectInput
                                     className="StyledISelect-sc-3i0r91-5 bnSweD"
                                     defaultValue="vs"
                                     onChange={[Function]}
@@ -224,6 +230,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "render": [Function],
                                           "styledComponentId": "SelectInput-sc-13maoso-0",
                                           "target": "select",
+                                          "toString": [Function],
                                           "warnTooManyClasses": [Function],
                                           "withComponent": [Function],
                                         }
@@ -253,17 +260,17 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         </option>
                                       </select>
                                     </StyledComponent>
-                                  </ForwardRef>
+                                  </SelectInput>
                                 </Select>
                               </StyledComponent>
-                            </ForwardRef>
+                            </StyledISelect>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -281,6 +288,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -290,7 +298,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -308,6 +316,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -324,7 +333,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={false}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={false}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -351,6 +360,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -366,15 +376,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -392,6 +402,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -401,7 +412,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -419,6 +430,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -435,7 +447,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={true}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={true}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -462,6 +474,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -477,15 +490,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -503,6 +516,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -512,7 +526,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -530,6 +544,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -546,7 +561,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={true}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={true}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -573,6 +588,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -588,15 +604,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -614,6 +630,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -623,7 +640,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -641,6 +658,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -653,7 +671,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                             <span>
                               Font Family:
                             </span>
-                            <ForwardRef
+                            <StyledInput
                               onChange={[Function]}
                               type="text"
                               value="monospace"
@@ -675,6 +693,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "render": [Function],
                                     "styledComponentId": "StyledInput-sc-3i0r91-4",
                                     "target": [Function],
+                                    "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                     Symbol(Symbol.hasInstance): [Function],
@@ -691,7 +710,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="text"
                                   value="monospace"
                                 >
-                                  <ForwardRef
+                                  <StyledInput
                                     className="StyledInput-sc-3i0r91-4 lIHVh"
                                     defaultValue="monospace"
                                     disabled={false}
@@ -727,6 +746,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "render": [Function],
                                           "styledComponentId": "StyledInput-sc-86zjwb-0",
                                           "target": "input",
+                                          "toString": [Function],
                                           "warnTooManyClasses": [Function],
                                           "withComponent": [Function],
                                         }
@@ -745,17 +765,17 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         type="text"
                                       />
                                     </StyledComponent>
-                                  </ForwardRef>
+                                  </StyledInput>
                                 </Input>
                               </StyledComponent>
-                            </ForwardRef>
+                            </StyledInput>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -773,6 +793,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -782,7 +803,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -800,6 +821,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -816,7 +838,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={false}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={false}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -843,6 +865,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -858,18 +881,18 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
+                </Field>
               </div>
             </StyledComponent>
-          </ForwardRef>
-          <ForwardRef>
+          </Section>
+          <Section>
             <StyledComponent
               forwardedClass={
                 Object {
@@ -887,6 +910,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "render": [Function],
                   "styledComponentId": "Section-sc-3i0r91-2",
                   "target": "div",
+                  "toString": [Function],
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -896,7 +920,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               <div
                 className="Section-sc-3i0r91-2 gqkeLg"
               >
-                <ForwardRef>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -914,6 +938,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -923,7 +948,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -941,6 +966,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -953,7 +979,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                             <span>
                               Font Size:
                             </span>
-                            <ForwardRef
+                            <StyledInput
                               onChange={[Function]}
                               type="number"
                               value={12}
@@ -975,6 +1001,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "render": [Function],
                                     "styledComponentId": "StyledInput-sc-3i0r91-4",
                                     "target": [Function],
+                                    "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                     Symbol(Symbol.hasInstance): [Function],
@@ -991,7 +1018,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="number"
                                   value={12}
                                 >
-                                  <ForwardRef
+                                  <StyledInput
                                     className="StyledInput-sc-3i0r91-4 lIHVh"
                                     defaultValue={12}
                                     disabled={false}
@@ -1027,6 +1054,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "render": [Function],
                                           "styledComponentId": "StyledInput-sc-86zjwb-0",
                                           "target": "input",
+                                          "toString": [Function],
                                           "warnTooManyClasses": [Function],
                                           "withComponent": [Function],
                                         }
@@ -1045,17 +1073,17 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         type="number"
                                       />
                                     </StyledComponent>
-                                  </ForwardRef>
+                                  </StyledInput>
                                 </Input>
                               </StyledComponent>
-                            </ForwardRef>
+                            </StyledInput>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -1073,6 +1101,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1082,7 +1111,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -1100,6 +1129,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -1112,7 +1142,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                             <span>
                               Line height:
                             </span>
-                            <ForwardRef
+                            <StyledInput
                               onChange={[Function]}
                               type="number"
                               value={21}
@@ -1134,6 +1164,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "render": [Function],
                                     "styledComponentId": "StyledInput-sc-3i0r91-4",
                                     "target": [Function],
+                                    "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                     Symbol(Symbol.hasInstance): [Function],
@@ -1150,7 +1181,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="number"
                                   value={21}
                                 >
-                                  <ForwardRef
+                                  <StyledInput
                                     className="StyledInput-sc-3i0r91-4 lIHVh"
                                     defaultValue={21}
                                     disabled={false}
@@ -1186,6 +1217,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "render": [Function],
                                           "styledComponentId": "StyledInput-sc-86zjwb-0",
                                           "target": "input",
+                                          "toString": [Function],
                                           "warnTooManyClasses": [Function],
                                           "withComponent": [Function],
                                         }
@@ -1204,17 +1236,17 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         type="number"
                                       />
                                     </StyledComponent>
-                                  </ForwardRef>
+                                  </StyledInput>
                                 </Input>
                               </StyledComponent>
-                            </ForwardRef>
+                            </StyledInput>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -1232,6 +1264,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1241,7 +1274,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -1259,6 +1292,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -1275,7 +1309,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={false}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={false}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -1302,6 +1336,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -1317,15 +1352,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -1343,6 +1378,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1352,7 +1388,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -1370,6 +1406,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -1386,7 +1423,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={false}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={false}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -1413,6 +1450,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -1428,15 +1466,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -1454,6 +1492,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1463,7 +1502,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -1481,6 +1520,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -1493,7 +1533,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                             <span>
                               Cursor Blinking:
                             </span>
-                            <ForwardRef
+                            <StyledISelect
                               onChange={[Function]}
                               value="blink"
                             >
@@ -1514,6 +1554,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "render": [Function],
                                     "styledComponentId": "StyledISelect-sc-3i0r91-5",
                                     "target": [Function],
+                                    "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                     Symbol(Symbol.hasInstance): [Function],
@@ -1528,7 +1569,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   onChange={[Function]}
                                   value="blink"
                                 >
-                                  <ForwardRef
+                                  <SelectInput
                                     className="StyledISelect-sc-3i0r91-5 bnSweD"
                                     defaultValue="blink"
                                     onChange={[Function]}
@@ -1566,6 +1607,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "render": [Function],
                                           "styledComponentId": "SelectInput-sc-13maoso-0",
                                           "target": "select",
+                                          "toString": [Function],
                                           "warnTooManyClasses": [Function],
                                           "withComponent": [Function],
                                         }
@@ -1605,23 +1647,23 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         </option>
                                       </select>
                                     </StyledComponent>
-                                  </ForwardRef>
+                                  </SelectInput>
                                 </Select>
                               </StyledComponent>
-                            </ForwardRef>
+                            </StyledISelect>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
+                </Field>
               </div>
             </StyledComponent>
-          </ForwardRef>
+          </Section>
         </div>
       </StyledComponent>
-    </ForwardRef>
-    <ForwardRef>
+    </Wrapper>
+    <H4>
       <StyledComponent
         forwardedClass={
           Object {
@@ -1643,6 +1685,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "render": [Function],
             "styledComponentId": "H4-sc-3i0r91-6",
             "target": "h4",
+            "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1655,8 +1698,8 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
           Preview settings:
         </h4>
       </StyledComponent>
-    </ForwardRef>
-    <ForwardRef>
+    </H4>
+    <Wrapper>
       <StyledComponent
         forwardedClass={
           Object {
@@ -1674,6 +1717,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "render": [Function],
             "styledComponentId": "Wrapper-sc-3i0r91-0",
             "target": "div",
+            "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
@@ -1683,7 +1727,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
         <div
           className="Wrapper-sc-3i0r91-0 jjrWCY"
         >
-          <ForwardRef>
+          <Section>
             <StyledComponent
               forwardedClass={
                 Object {
@@ -1701,6 +1745,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "render": [Function],
                   "styledComponentId": "Section-sc-3i0r91-2",
                   "target": "div",
+                  "toString": [Function],
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -1710,7 +1755,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               <div
                 className="Section-sc-3i0r91-2 gqkeLg"
               >
-                <ForwardRef>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -1728,6 +1773,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1737,7 +1783,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -1755,6 +1801,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -1771,7 +1818,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={false}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={false}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -1798,6 +1845,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -1813,15 +1861,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -1839,6 +1887,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1848,7 +1897,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -1866,6 +1915,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -1882,7 +1932,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={true}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={true}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -1909,6 +1959,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -1924,15 +1975,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -1950,6 +2001,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -1959,7 +2011,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -1977,6 +2029,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -1993,7 +2046,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={true}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={true}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -2020,6 +2073,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -2035,15 +2089,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -2061,6 +2115,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -2070,7 +2125,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -2088,6 +2143,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -2104,7 +2160,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={true}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={true}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -2131,6 +2187,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -2146,18 +2203,18 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
+                </Field>
               </div>
             </StyledComponent>
-          </ForwardRef>
-          <ForwardRef>
+          </Section>
+          <Section>
             <StyledComponent
               forwardedClass={
                 Object {
@@ -2175,6 +2232,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "render": [Function],
                   "styledComponentId": "Section-sc-3i0r91-2",
                   "target": "div",
+                  "toString": [Function],
                   "warnTooManyClasses": [Function],
                   "withComponent": [Function],
                 }
@@ -2184,7 +2242,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               <div
                 className="Section-sc-3i0r91-2 gqkeLg"
               >
-                <ForwardRef>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -2202,6 +2260,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -2211,7 +2270,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -2229,6 +2288,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -2245,7 +2305,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={true}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={true}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -2272,6 +2332,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -2287,15 +2348,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -2313,6 +2374,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -2322,7 +2384,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -2340,6 +2402,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -2356,7 +2419,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={true}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={true}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -2383,6 +2446,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -2398,15 +2462,15 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
-                <ForwardRef>
+                </Field>
+                <Field>
                   <StyledComponent
                     forwardedClass={
                       Object {
@@ -2424,6 +2488,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
+                        "toString": [Function],
                         "warnTooManyClasses": [Function],
                         "withComponent": [Function],
                       }
@@ -2433,7 +2498,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     <div
                       className="Field-sc-3i0r91-3 fjKIlx"
                     >
-                      <ForwardRef>
+                      <Label>
                         <StyledComponent
                           forwardedClass={
                             Object {
@@ -2451,6 +2516,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
+                              "toString": [Function],
                               "warnTooManyClasses": [Function],
                               "withComponent": [Function],
                             }
@@ -2467,7 +2533,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               checked={true}
                               onChange={[Function]}
                             >
-                              <ForwardRef
+                              <Box
                                 defaultChecked={true}
                                 onChange={[Function]}
                                 type="checkbox"
@@ -2494,6 +2560,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
+                                      "toString": [Function],
                                       "warnTooManyClasses": [Function],
                                       "withComponent": [Function],
                                     }
@@ -2509,20 +2576,20 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="checkbox"
                                   />
                                 </StyledComponent>
-                              </ForwardRef>
+                              </Box>
                             </Checkbox>
                           </div>
                         </StyledComponent>
-                      </ForwardRef>
+                      </Label>
                     </div>
                   </StyledComponent>
-                </ForwardRef>
+                </Field>
               </div>
             </StyledComponent>
-          </ForwardRef>
+          </Section>
         </div>
       </StyledComponent>
-    </ForwardRef>
+    </Wrapper>
   </div>
 </EditorSettings>
 `;

@@ -103,7 +103,9 @@ module.exports = {
   ],
   node: {
     __dirname: false,
-    __filename: false
+    __filename: false,
+    fs: 'empty',
+    child_process: 'empty'
   },
   target: 'web'
 };

@@ -7,7 +7,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
   type="search"
   value="typetypetype"
 >
-  <ForwardRef
+  <StyledInput
     className="classified"
     defaultValue="typetypetype"
     disabled={false}
@@ -43,6 +43,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
           "render": [Function],
           "styledComponentId": "StyledInput-sc-86zjwb-0",
           "target": "input",
+          "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -61,6 +62,6 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
         type="search"
       />
     </StyledComponent>
-  </ForwardRef>
+  </StyledInput>
 </Input>
 `;

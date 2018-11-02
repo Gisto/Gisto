@@ -2,30 +2,30 @@
 
 exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
 <div>
-  <ForwardRef>
+  <H4>
     Snippets settings:
-  </ForwardRef>
-  <ForwardRef>
-    <ForwardRef>
-      <ForwardRef>
-        <ForwardRef>
+  </H4>
+  <Wrapper>
+    <Section>
+      <Field>
+        <Label>
           <span>
             Snippet cache (seconds):
           </span>
-          <ForwardRef
+          <StyledInput
             onChange={[Function]}
             title="Keep snippet in cache for 100 seconds and do not call the server"
             type="number"
             value="100"
           />
-        </ForwardRef>
-      </ForwardRef>
-      <ForwardRef>
-        <ForwardRef>
+        </Label>
+      </Field>
+      <Field>
+        <Label>
           <span>
             Snippets polling (seconds):
           </span>
-          <ForwardRef
+          <StyledInput
             max={10000}
             min={1}
             onChange={[Function]}
@@ -33,12 +33,12 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
             type="number"
             value="300"
           />
-        </ForwardRef>
-      </ForwardRef>
-    </ForwardRef>
-    <ForwardRef>
-      <ForwardRef>
-        <ForwardRef>
+        </Label>
+      </Field>
+    </Section>
+    <Section>
+      <Field>
+        <Label>
           <span>
             Default new snippet is public:
           </span>
@@ -46,14 +46,14 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
             checked={false}
             onChange={[Function]}
           />
-        </ForwardRef>
-      </ForwardRef>
-      <ForwardRef>
-        <ForwardRef>
+        </Label>
+      </Field>
+      <Field>
+        <Label>
           <span>
             Default new snippet language:
           </span>
-          <ForwardRef
+          <StyledSelect
             onChange={[Function]}
             value="Text"
           >
@@ -2031,10 +2031,10 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
             >
               Zimpl
             </option>
-          </ForwardRef>
-        </ForwardRef>
-      </ForwardRef>
-    </ForwardRef>
-  </ForwardRef>
+          </StyledSelect>
+        </Label>
+      </Field>
+    </Section>
+  </Wrapper>
 </div>
 `;
