@@ -31,6 +31,8 @@ export const isGeoJson = (file) => {
 export const isPDF = (file) => file.type === 'application/pdf'
   && (getFileExtension(file.filename) === 'pdf' || getFileExtension(file.name) === 'pdf');
 
+export const isHTML = (file) => file.language === 'HTML';
+
 export const getFileLanguage = (file) => {
   if (isImage(file)) {
     return 'Image';

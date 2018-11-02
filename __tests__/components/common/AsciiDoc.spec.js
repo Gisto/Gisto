@@ -1,4 +1,4 @@
-import Asciidoc from 'components/common/Asciidoc';
+import Asciidoc from 'components/common/editor/Asciidoc';
 
 const setup = (props) => shallow(<Asciidoc { ...props }/>);
 const text = `bold *constrained* & **un**constrained
