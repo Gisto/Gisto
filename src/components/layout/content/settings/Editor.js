@@ -40,6 +40,12 @@ const StyledISelect = styled(Select)`
   width: 158px;
 `;
 
+const H4 = styled.h4`
+  color: ${(props) => props.theme.baseAppColor};
+  border-bottom: 1px dashed ${(props) => props.theme.baseAppColor};
+  padding-bottom: 20px; 
+`;
+
 export const EditorSettings = ({ changeSettings }) => {
   const updateSettings = (key, value, isBoolean = false) => {
     changeSettings(key, value, false, isBoolean);
@@ -52,7 +58,7 @@ export const EditorSettings = ({ changeSettings }) => {
 
   return (
     <div>
-      <h4>Editor settings:</h4>
+      <H4>Editor settings:</H4>
       <Wrapper>
         <Section>
           <Field>
@@ -95,6 +101,15 @@ export const EditorSettings = ({ changeSettings }) => {
                            onChange={ (event) => updateSettings('fontFamily', event.target.value) }/>
             </Label>
           </Field>
+
+          <Field>
+            <Label>
+              <span>Select On Line Numbers:</span>
+              <Checkbox checked={ getSetting('SelectOnLineNumbers', false) }
+                        onChange={ () => updateSettings('SelectOnLineNumbers', null, true) }/>
+            </Label>
+          </Field>
+
         </Section>
         <Section>
           <Field>
@@ -140,13 +155,73 @@ export const EditorSettings = ({ changeSettings }) => {
               </StyledISelect>
             </Label>
           </Field>
+        </Section>
+      </Wrapper>
+
+      <H4>Preview settings:</H4>
+      <Wrapper>
+        <Section>
+
           <Field>
             <Label>
-              <span>Select On Line Numbers:</span>
-              <Checkbox checked={ getSetting('SelectOnLineNumbers', false) }
-                        onChange={ () => updateSettings('SelectOnLineNumbers', null, true) }/>
+              <span>Preview HTML files:</span>
+              <Checkbox checked={ getSetting('settings-editor-preview-html', false) }
+                      onChange={ () => updateSettings('settings-editor-preview-html', null, true) }/>
             </Label>
           </Field>
+
+          <Field>
+            <Label>
+              <span>Preview Image files:</span>
+              <Checkbox checked={ getSetting('settings-editor-preview-image', true) }
+                        onChange={ () => updateSettings('settings-editor-preview-image', null, true) }/>
+            </Label>
+          </Field>
+
+          <Field>
+            <Label>
+              <span>Preview PDF files:</span>
+              <Checkbox checked={ getSetting('settings-editor-preview-pdf', true) }
+                        onChange={ () => updateSettings('settings-editor-preview-pdf', null, true) }/>
+            </Label>
+          </Field>
+
+          <Field>
+            <Label>
+              <span>Preview CSV/TSV files:</span>
+              <Checkbox checked={ getSetting('settings-editor-preview-csv', true) }
+                        onChange={ () => updateSettings('settings-editor-preview-csv', null, true) }/>
+            </Label>
+          </Field>
+
+        </Section>
+
+        <Section>
+
+          <Field>
+            <Label>
+              <span>Preview GeoJSON:</span>
+              <Checkbox checked={ getSetting('settings-editor-preview-geojson', true) }
+                        onChange={ () => updateSettings('settings-editor-preview-geojson', null, true) }/>
+            </Label>
+          </Field>
+
+          <Field>
+            <Label>
+              <span>Preview Markdown files:</span>
+              <Checkbox checked={ getSetting('settings-editor-preview-markdown', true) }
+                        onChange={ () => updateSettings('settings-editor-preview-markdown', null, true) }/>
+            </Label>
+          </Field>
+
+          <Field>
+            <Label>
+              <span>Preview AsciiDoc files:</span>
+              <Checkbox checked={ getSetting('settings-editor-preview-asciidoc', true) }
+                        onChange={ () => updateSettings('settings-editor-preview-asciidoc', null, true) }/>
+            </Label>
+          </Field>
+
         </Section>
       </Wrapper>
     </div>

@@ -2,9 +2,9 @@
 
 exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
 <div>
-  <h4>
+  <ForwardRef>
     Color settings:
-  </h4>
+  </ForwardRef>
   <ForwardRef>
     <ForwardRef
       height={55}
@@ -19,6 +19,11 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
         />
       </ForwardRef>
     </ForwardRef>
+  </ForwardRef>
+  <ForwardRef>
+    Misc. settings:
+  </ForwardRef>
+  <ForwardRef>
     <ForwardRef>
       <ForwardRef>
         <span>
