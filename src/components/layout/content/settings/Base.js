@@ -25,6 +25,12 @@ const Field = styled.div`
   height: ${(props) => props.height ? props.height : 35}px;
 `;
 
+const H4 = styled.h4`
+  color: ${(props) => props.theme.baseAppColor};
+  border-bottom: 1px dashed ${(props) => props.theme.baseAppColor};
+  padding-bottom: 20px; 
+`;
+
 export const BaseSettings = ({ changeSettings }) => {
   const updateSettings = (key, value, isTheme, isBoolean = false) => {
     changeSettings(key, value, isTheme, isBoolean);
@@ -39,7 +45,7 @@ export const BaseSettings = ({ changeSettings }) => {
 
   return (
     <div>
-      <h4>Color settings:</h4>
+      <H4>Color settings:</H4>
 
       <Section>
         <Field height={ 55 }>
@@ -50,6 +56,11 @@ export const BaseSettings = ({ changeSettings }) => {
           </Label>
         </Field>
 
+      </Section>
+
+      <H4>Misc. settings:</H4>
+
+      <Section>
         <Field>
           <Label>
             <span>Show API rate limit on header:</span>
@@ -57,7 +68,6 @@ export const BaseSettings = ({ changeSettings }) => {
                       onChange={ () => updateSettings('settings-show-api-rate-limit', null, null, true) }/>
           </Label>
         </Field>
-
       </Section>
     </div>
   );

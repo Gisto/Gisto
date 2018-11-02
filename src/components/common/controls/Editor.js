@@ -174,7 +174,7 @@ export class Editor extends React.Component {
       );
     }
 
-    if (file.content && isImage(file) && !file.collapsed) {
+    if (file.content && Boolean(getSetting('settings-editor-preview-image', false)) && isImage(file) && !file.collapsed) {
       return (
         <Image>
           <img id="img" src={ file.raw_url } title={ `File type: ${file.type}` } alt={ `File type: ${file.type}` }/>
@@ -192,7 +192,7 @@ export class Editor extends React.Component {
       );
     }
 
-    if (isCSV(file) || isTSV(file)) {
+    if (Boolean(getSetting('settings-editor-preview-csv', false)) && (isCSV(file) || isTSV(file))) {
       if (!edit && !isNew) {
         return (
           <Csv text={ file.content }/>
@@ -200,7 +200,7 @@ export class Editor extends React.Component {
       }
     }
 
-    if (isHTML(file)) {
+    if (Boolean(getSetting('settings-editor-preview-html', false)) && isHTML(file)) {
       if (!edit && !isNew) {
         return (
           <Html file={ file }/>
@@ -208,7 +208,7 @@ export class Editor extends React.Component {
       }
     }
 
-    if (isPDF(file) && navigator.onLine) {
+    if (Boolean(getSetting('settings-editor-preview-pdf', false)) && isPDF(file) && navigator.onLine) {
       if (!isNew) {
         return (
           <Pdf file={ file }/>
@@ -216,7 +216,7 @@ export class Editor extends React.Component {
       }
     }
 
-    if (isGeoJson(file) && navigator.onLine) {
+    if (Boolean(getSetting('settings-editor-preview-geojson', false)) && isGeoJson(file) && navigator.onLine) {
       if (!edit && !isNew  && !file.collapsed) {
         return (
           <GeoJson file={ file }/>
@@ -224,7 +224,7 @@ export class Editor extends React.Component {
       }
     }
 
-    if (isAsciiDoc(file)) {
+    if (Boolean(getSetting('settings-editor-preview-asciidoc', false)) && isAsciiDoc(file)) {
       if (!edit && !isNew  && !file.collapsed) {
         return (
           <AsciidocComponent text={ file.content }/>
@@ -241,7 +241,7 @@ export class Editor extends React.Component {
       );
     }
 
-    if (isMarkDown(file)) {
+    if (Boolean(getSetting('settings-editor-preview-markdown', false)) && isMarkDown(file)) {
       if (!edit && !isNew  && !file.collapsed) {
         return (
           <MarkdownComponent text={ file.content }/>
