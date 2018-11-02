@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
-<ForwardRef>
-  <ForwardRef
+<SnippetHeaderWrapper>
+  <Title
     onBlur={[Function]}
     onDoubleClick={[Function]}
     onFocus={[Function]}
@@ -10,49 +10,49 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
     onMouseOver={[Function]}
   >
      
-    <ForwardRef />
+    <Description />
      
-  </ForwardRef>
-  <ForwardRef
+  </Title>
+  <LockIcon
     color="#ccc"
     size={22}
     title="Snippet is private"
     type="lock"
   />
   <div>
-    <ForwardRef
+    <WithTheme(UtilityIcon)
       color="#3F84A8"
       onClick={[Function]}
       size={22}
       type="edit"
     />
-    <ForwardRef
+    <WithTheme(UtilityIcon)
       color="tomato"
       onClick={[Function]}
       size={22}
       type="delete"
     />
-    <ForwardRef
+    <WithTheme(UtilityIcon)
       color="#3F84A8"
       onClick={[Function]}
       size={22}
       text=""
       type="chat"
     />
-    <ForwardRef
+    <WithTheme(UtilityIcon)
       color="#3F84A8"
       onClick={[Function]}
       size={22}
       title="Copy Snippet URL to clipboard"
       type="copy"
     />
-    <ForwardRef
+    <WithTheme(UtilityIcon)
       color="#3F84A8"
       onClick={[Function]}
       size={22}
       type="star-empty"
     />
-    <ForwardRef
+    <WithTheme(UtilityIcon)
       color="#3F84A8"
       dropdown={true}
       size={22}
@@ -146,7 +146,7 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
           </ExternalLink>
         </li>
       </ul>
-    </ForwardRef>
+    </WithTheme(UtilityIcon)>
   </div>
-</ForwardRef>
+</SnippetHeaderWrapper>
 `;

@@ -41,7 +41,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
   }
   toggleSuperSesrch={[MockFunction]}
 >
-  <ForwardRef>
+  <SuperSearchWrapper>
     <StyledComponent
       forwardedClass={
         Object {
@@ -59,6 +59,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
           "render": [Function],
           "styledComponentId": "SuperSearchWrapper-sc-1mnove5-0",
           "target": "div",
+          "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -68,7 +69,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
       <div
         className="SuperSearchWrapper-sc-1mnove5-0 bAwZkz"
       >
-        <ForwardRef>
+        <SearchWrapper>
           <StyledComponent
             forwardedClass={
               Object {
@@ -86,6 +87,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                 "render": [Function],
                 "styledComponentId": "SearchWrapper-sc-1mnove5-1",
                 "target": "div",
+                "toString": [Function],
                 "warnTooManyClasses": [Function],
                 "withComponent": [Function],
               }
@@ -95,7 +97,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
             <div
               className="SearchWrapper-sc-1mnove5-1 ijKtSQ"
             >
-              <ForwardRef>
+              <SearchBar>
                 <StyledComponent
                   forwardedClass={
                     Object {
@@ -113,6 +115,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                       "render": [Function],
                       "styledComponentId": "SearchBar-sc-1mnove5-2",
                       "target": "div",
+                      "toString": [Function],
                       "warnTooManyClasses": [Function],
                       "withComponent": [Function],
                     }
@@ -122,7 +125,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   <div
                     className="SearchBar-sc-1mnove5-2 dllRVk"
                   >
-                    <ForwardRef
+                    <StyledLookingGlass
                       color="#3F84A8"
                       size={32}
                       type="search"
@@ -159,6 +162,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             "render": [Function],
                             "styledComponentId": "StyledLookingGlass-sc-1mnove5-3",
                             "target": "span",
+                            "toString": [Function],
                             "warnTooManyClasses": [Function],
                             "withComponent": [Function],
                           }
@@ -174,8 +178,8 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                           type="search"
                         />
                       </StyledComponent>
-                    </ForwardRef>
-                    <ForwardRef
+                    </StyledLookingGlass>
+                    <StyledInput
                       autoFocus={true}
                       className="mousetrap"
                       onChange={[Function]}
@@ -201,6 +205,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             "render": [Function],
                             "styledComponentId": "StyledInput-sc-1mnove5-8",
                             "target": [Function],
+                            "toString": [Function],
                             "warnTooManyClasses": [Function],
                             "withComponent": [Function],
                             Symbol(Symbol.hasInstance): [Function],
@@ -218,7 +223,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                           placeholder="Search"
                           type="search"
                         >
-                          <ForwardRef
+                          <StyledInput
                             autoFocus={true}
                             className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
                             disabled={false}
@@ -255,6 +260,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                                   "render": [Function],
                                   "styledComponentId": "StyledInput-sc-86zjwb-0",
                                   "target": "input",
+                                  "toString": [Function],
                                   "warnTooManyClasses": [Function],
                                   "withComponent": [Function],
                                 }
@@ -275,14 +281,14 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                                 type="search"
                               />
                             </StyledComponent>
-                          </ForwardRef>
+                          </StyledInput>
                         </Input>
                       </StyledComponent>
-                    </ForwardRef>
+                    </StyledInput>
                   </div>
                 </StyledComponent>
-              </ForwardRef>
-              <ForwardRef>
+              </SearchBar>
+              <SnippetResults>
                 <StyledComponent
                   forwardedClass={
                     Object {
@@ -300,6 +306,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                       "render": [Function],
                       "styledComponentId": "SnippetResults-sc-1mnove5-4",
                       "target": "div",
+                      "toString": [Function],
                       "warnTooManyClasses": [Function],
                       "withComponent": [Function],
                     }
@@ -310,12 +317,12 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                     className="SnippetResults-sc-1mnove5-4 eUdsVx"
                   />
                 </StyledComponent>
-              </ForwardRef>
+              </SnippetResults>
             </div>
           </StyledComponent>
-        </ForwardRef>
+        </SearchWrapper>
       </div>
     </StyledComponent>
-  </ForwardRef>
+  </SuperSearchWrapper>
 </SuperSearch>
 `;

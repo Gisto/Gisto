@@ -7,7 +7,7 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
   type="search"
   value="typetypetype"
 >
-  <ForwardRef
+  <StyledInput
     className="classified"
     defaultValue="typetypetype"
     disabled={false}
@@ -44,6 +44,7 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
           "render": [Function],
           "styledComponentId": "StyledInput-sc-1zkbel-0",
           "target": "textarea",
+          "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -60,6 +61,6 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
         title=""
       />
     </StyledComponent>
-  </ForwardRef>
+  </StyledInput>
 </TextArea>
 `;

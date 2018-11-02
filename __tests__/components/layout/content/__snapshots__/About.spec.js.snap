@@ -2,7 +2,7 @@
 
 exports[`COMPONENTS - <About> render About 1`] = `
 <About>
-  <ForwardRef>
+  <Wrapper>
     <StyledComponent
       forwardedClass={
         Object {
@@ -20,6 +20,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
           "render": [Function],
           "styledComponentId": "Wrapper-l90ydr-0",
           "target": "div",
+          "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         }
@@ -58,7 +59,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <ForwardRef
+              <Link
                 href="#"
                 onClick={[Function]}
               >
@@ -83,6 +84,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",
+                      "toString": [Function],
                       "warnTooManyClasses": [Function],
                       "withComponent": [Function],
                     }
@@ -99,7 +101,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                     Change log
                   </a>
                 </StyledComponent>
-              </ForwardRef>
+              </Link>
             </Anchor>
           </ExternalLink>
            | 
@@ -110,7 +112,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <ForwardRef
+              <Link
                 href="#"
                 onClick={[Function]}
               >
@@ -135,6 +137,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",
+                      "toString": [Function],
                       "warnTooManyClasses": [Function],
                       "withComponent": [Function],
                     }
@@ -151,7 +154,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                     GitHub
                   </a>
                 </StyledComponent>
-              </ForwardRef>
+              </Link>
             </Anchor>
           </ExternalLink>
            | 
@@ -162,7 +165,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <ForwardRef
+              <Link
                 href="#"
                 onClick={[Function]}
               >
@@ -187,6 +190,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",
+                      "toString": [Function],
                       "warnTooManyClasses": [Function],
                       "withComponent": [Function],
                     }
@@ -203,7 +207,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                     Website gistoapp.com
                   </a>
                 </StyledComponent>
-              </ForwardRef>
+              </Link>
             </Anchor>
           </ExternalLink>
            | 
@@ -214,7 +218,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <ForwardRef
+              <Link
                 href="#"
                 onClick={[Function]}
               >
@@ -239,6 +243,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",
+                      "toString": [Function],
                       "warnTooManyClasses": [Function],
                       "withComponent": [Function],
                     }
@@ -255,7 +260,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                     Issues
                   </a>
                 </StyledComponent>
-              </ForwardRef>
+              </Link>
             </Anchor>
           </ExternalLink>
            | 
@@ -266,7 +271,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <ForwardRef
+              <Link
                 href="#"
                 onClick={[Function]}
               >
@@ -291,6 +296,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",
+                      "toString": [Function],
                       "warnTooManyClasses": [Function],
                       "withComponent": [Function],
                     }
@@ -307,12 +313,12 @@ exports[`COMPONENTS - <About> render About 1`] = `
                     Twitter
                   </a>
                 </StyledComponent>
-              </ForwardRef>
+              </Link>
             </Anchor>
           </ExternalLink>
         </p>
       </div>
     </StyledComponent>
-  </ForwardRef>
+  </Wrapper>
 </About>
 `;
