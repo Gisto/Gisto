@@ -25,7 +25,7 @@ import TclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/tcl';
 
 import { getSetting } from 'utils/settings';
 import {
-  isAsciiDoc, isCSV, isGeoJson, isMarkDown, isPDF, isImage, isTSV
+  isAsciiDoc, isCSV, isGeoJson, isMarkDown, isPDF, isImage, isTSV, isHTML
 } from 'utils/files';
 
 import { syntaxMap } from 'constants/editor';
@@ -35,11 +35,12 @@ import 'highlight.js/styles/default.css';
 import Loading from 'components/common/Loading';
 import Anchor from 'components/common/Anchor';
 
-import Markdown from 'components/common/Markdown';
-import Asciidoc from 'components/common/Asciidoc';
-import Csv from 'components/common/Csv';
-import GeoJson from 'components/common/GeoJson';
-import Pdf from 'components/common/Pdf';
+import Markdown from 'components/common/editor/Markdown';
+import Asciidoc from 'components/common/editor/Asciidoc';
+import Csv from 'components/common/editor/Csv';
+import GeoJson from 'components/common/editor/GeoJson';
+import Pdf from 'components/common/editor/Pdf';
+import Html from 'components/common/editor/Html';
 
 const RenderedComponent = css`
   padding: 20px 30px;
@@ -195,6 +196,14 @@ export class Editor extends React.Component {
       if (!edit && !isNew) {
         return (
           <Csv text={ file.content }/>
+        );
+      }
+    }
+
+    if (isHTML(file)) {
+      if (!edit && !isNew) {
+        return (
+          <Html file={ file }/>
         );
       }
     }

@@ -11,7 +11,7 @@ import TextArea from 'components/common/controls/TextArea';
 import Button from 'components/common/controls/Button';
 
 import * as snippetActions from 'actions/snippets';
-import Markdown from 'components/common/Markdown';
+import Markdown from 'components/common/editor/Markdown';
 
 const CommentsWrapper = styled.div`
   margin: 0;

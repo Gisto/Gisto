@@ -1,4 +1,4 @@
-import { Markdown } from 'components/common/Markdown';
+import { Markdown } from 'components/common/editor/Markdown';
 
 const setup = (props) => shallow(<Markdown { ...props }/>);
 const text = '#hello' +
