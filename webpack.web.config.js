@@ -98,7 +98,8 @@ module.exports = {
       'process.browser': true
     }),
     new CopyWebpackPlugin([
-      { from: 'src/icons', to: 'src/icons' }
+      { from: 'src/icons', to: 'src/icons' },
+      { from: 'node_modules/leaflet/dist/images', to: 'src/img' }
     ])
   ],
   node: {

@@ -132,7 +132,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
                 "componentStyle": ComponentStyle {
                   "componentId": "Icon-vk4qna-0",
                   "isStatic": false,
-                  "lastClassName": "fxQfWz",
+                  "lastClassName": "fJxXiQ",
                   "rules": Array [
                     "background-color:",
                     [Function],
@@ -141,6 +141,8 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
                     "px;height:",
                     [Function],
                     "px;-webkit-mask-image:url('src/icons/",
+                    "ionic",
+                    "/",
                     [Function],
                     "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
                     [Function],
@@ -164,7 +166,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
             type="menu"
           >
             <span
-              className="Icon-vk4qna-0 fxQfWz"
+              className="Icon-vk4qna-0 fJxXiQ"
               color="red"
               size={20}
               type="menu"

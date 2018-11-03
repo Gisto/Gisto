@@ -1,5 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 import { iconsMap } from 'constants/iconsMap';
+import { getSetting } from 'utils/settings';
 
 export const spin = keyframes`
   from {
@@ -19,7 +20,7 @@ const Icon = styled.span`
   vertical-align: middle;
   width: ${(props) => props.size || 22}px;
   height: ${(props) => props.size || 22}px;
-  -webkit-mask-image: url('src/icons/${(props) => iconsMap[props.type || 'warning']}');
+  -webkit-mask-image: url('src/icons/${getSetting('settings-icons', 'ionic')}/${(props) => iconsMap[props.type || 'warning']}');
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: contain;
   -webkit-mask-position: center;

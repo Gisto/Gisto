@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { debounce } from 'lodash/fp';
 import styled from 'styled-components';
-
+import { isomorphicReload } from 'utils/isomorphic';
 import * as uiActions from 'actions/ui';
 import { getSetting, setBooleanSetting, setSetting } from 'utils/settings';
 
 import InputColor from 'components/common/controls/InputColor';
 import Checkbox from 'components/common/controls/Checkbox';
+import Select from 'components/common/controls/Select';
 
 const Label = styled.div`
   display: flex;
@@ -19,6 +20,10 @@ const Label = styled.div`
 
 const Section = styled.div`
   width: 45%;
+`;
+
+const StyledSelect = styled(Select)`
+  width: 158px;
 `;
 
 const Field = styled.div`
@@ -38,6 +43,9 @@ export const BaseSettings = ({ changeSettings }) => {
       setBooleanSetting(key);
     } else {
       setSetting(key, value);
+      if (key === 'settings-icons') {
+        isomorphicReload();
+      }
     }
   };
 
@@ -61,6 +69,18 @@ export const BaseSettings = ({ changeSettings }) => {
       <H4>Misc. settings:</H4>
 
       <Section>
+
+        <Field>
+          <Label>
+            <span>Icon set:</span>
+            <StyledSelect value={ getSetting('settings-icons', 'ionic') }
+                           onChange={ (event) => updateSettings('settings-icons', event.target.value) }>
+              <option value="ionic">Ionicons (default)</option>
+              <option value="eva">Eva</option>
+            </StyledSelect>
+          </Label>
+        </Field>
+
         <Field>
           <Label>
             <span>Show API rate limit on header:</span>
@@ -68,6 +88,7 @@ export const BaseSettings = ({ changeSettings }) => {
                       onChange={ () => updateSettings('settings-show-api-rate-limit', null, null, true) }/>
           </Label>
         </Field>
+
       </Section>
     </div>
   );
