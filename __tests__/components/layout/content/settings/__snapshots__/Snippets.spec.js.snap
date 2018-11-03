@@ -40,17 +40,6 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
       <Field>
         <Label>
           <span>
-            Default new snippet is public:
-          </span>
-          <Checkbox
-            checked={false}
-            onChange={[Function]}
-          />
-        </Label>
-      </Field>
-      <Field>
-        <Label>
-          <span>
             Default new snippet language:
           </span>
           <StyledSelect
@@ -2032,6 +2021,17 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
               Zimpl
             </option>
           </StyledSelect>
+        </Label>
+      </Field>
+      <Field>
+        <Label>
+          <span>
+            Default new snippet is public:
+          </span>
+          <Checkbox
+            checked={false}
+            onChange={[Function]}
+          />
         </Label>
       </Field>
     </Section>

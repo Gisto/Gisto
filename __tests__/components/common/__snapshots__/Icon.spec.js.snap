@@ -14,7 +14,7 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
         "componentStyle": ComponentStyle {
           "componentId": "Icon-vk4qna-0",
           "isStatic": false,
-          "lastClassName": "iydNRt",
+          "lastClassName": "gjZUMo",
           "rules": Array [
             "background-color:",
             [Function],
@@ -23,6 +23,8 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
             "px;height:",
             [Function],
             "px;-webkit-mask-image:url('src/icons/",
+            "ionic",
+            "/",
             [Function],
             "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
             [Function],
@@ -45,7 +47,7 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
     type="menu"
   >
     <span
-      className="Icon-vk4qna-0 iydNRt"
+      className="Icon-vk4qna-0 gjZUMo"
       color="#ff0000"
       type="menu"
     >

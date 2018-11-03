@@ -27,6 +27,28 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
     <Field>
       <Label>
         <span>
+          Icon set:
+        </span>
+        <StyledSelect
+          onChange={[Function]}
+          value="ionic"
+        >
+          <option
+            value="ionic"
+          >
+            Ionicons (default)
+          </option>
+          <option
+            value="eva"
+          >
+            Eva
+          </option>
+        </StyledSelect>
+      </Label>
+    </Field>
+    <Field>
+      <Label>
+        <span>
           Show API rate limit on header:
         </span>
         <Checkbox

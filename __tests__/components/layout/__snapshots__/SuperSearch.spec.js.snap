@@ -139,7 +139,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "StyledLookingGlass-sc-1mnove5-3",
                               "isStatic": false,
-                              "lastClassName": "fInTZx",
+                              "lastClassName": "cRgoRx",
                               "rules": Array [
                                 "background-color:",
                                 [Function],
@@ -148,6 +148,8 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                                 "px;height:",
                                 [Function],
                                 "px;-webkit-mask-image:url('src/icons/",
+                                "ionic",
+                                "/",
                                 [Function],
                                 "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
                                 [Function],
@@ -172,7 +174,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                         type="search"
                       >
                         <span
-                          className="StyledLookingGlass-sc-1mnove5-3 fInTZx"
+                          className="StyledLookingGlass-sc-1mnove5-3 cRgoRx"
                           color="#3F84A8"
                           size={32}
                           type="search"

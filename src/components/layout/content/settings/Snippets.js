@@ -92,21 +92,21 @@ export const SnippetsSettings = ({ changeSettings }) => {
 
           <Field>
             <Label>
-              <span>Default new snippet is public:</span>
-              <Checkbox checked={ getSetting('defaultNewIsPublic', false) }
-                      onChange={ () => updateSettings('defaultNewIsPublic', null, true) }/>
+              <span>Default new snippet language:</span>
+              <StyledSelect value={ getSetting('setings-default-new-snippet-language', 'Text') }
+                            onChange={ (event) => updateSettings('setings-default-new-snippet-language', event.target.value) }>
+                { map((language) => (
+                  <option value={ language } key={ language }>{ language }</option>
+                ), keys(syntaxMap)) }
+              </StyledSelect>
             </Label>
           </Field>
 
           <Field>
             <Label>
-              <span>Default new snippet language:</span>
-              <StyledSelect value={ getSetting('setings-default-new-snippet-language', 'Text') }
-                           onChange={ (event) => updateSettings('setings-default-new-snippet-language', event.target.value) }>
-                { map((language) => (
-                  <option value={ language } key={ language }>{ language }</option>
-                ), keys(syntaxMap)) }
-              </StyledSelect>
+              <span>Default new snippet is public:</span>
+              <Checkbox checked={ getSetting('defaultNewIsPublic', false) }
+                      onChange={ () => updateSettings('defaultNewIsPublic', null, true) }/>
             </Label>
           </Field>
 
