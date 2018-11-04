@@ -7,7 +7,7 @@ import { setNotification } from 'utils/notifications';
 
 import * as loginActions from 'actions/login';
 
-import { setEnterpriseDomain, setToken } from 'utils/login';
+import { setEnterpriseDomain, setToken, removeEnterpriseDomain } from 'utils/login';
 import { isElectron } from 'utils/electron';
 import { isomorphicReload } from 'utils/isomorphic';
 
@@ -112,6 +112,7 @@ export class LogIn extends React.Component {
   }
 
   setLoginType = (type) => {
+    removeEnterpriseDomain();
     this.setState({
       fieldsData: {},
       loginType: {
