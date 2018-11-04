@@ -4,8 +4,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
-const packageJson = require('./package.json');
-
 module.exports = {
   entry: './src/index.js',
   output: {
