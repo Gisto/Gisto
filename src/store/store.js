@@ -13,6 +13,20 @@ const middlewares = [
   gitHubAPIMiddleware
 ];
 
+if (process.env.NODE_ENV === 'development') {
+  const freeze = require('redux-freeze');
+
+  // const { createLogger } = require('redux-logger');
+  // const logger = createLogger({ collapsed: true });
+
+  const middlewaresToAdd = [
+    freeze
+    // logger
+  ];
+
+  middlewares.push(...middlewaresToAdd);
+}
+
 const store = createStore(
   connectRouter(history)(rootReducer),
   composeEnhancers(applyMiddleware(...middlewares))
