@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { setNotification } from 'utils/notifications';
+
+const Map = styled.div`
+  width: 100%; 
+  height: 70vh; 
+  z-index: 1;
+`;
 
 class GeoJson extends Component {
   componentDidMount() {
@@ -32,7 +39,7 @@ class GeoJson extends Component {
 
   render() {
     return (
-      <div style={ { width: '100%', height: '70vh' } } id="map"/>
+      <Map id="map"/>
     );
   }
 }
