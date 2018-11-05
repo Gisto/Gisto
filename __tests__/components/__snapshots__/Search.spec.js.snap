@@ -3,7 +3,6 @@
 exports[`COMPONENTS - <Search> render Search 1`] = `
 <SearchWrapper>
   <Icon
-    color="#3F84A8"
     size="22"
     type="search"
   />
@@ -13,7 +12,6 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
     type="search"
   />
   <WithTheme(UtilityIcon)
-    color="#3F84A8"
     dropdown={true}
     type="code"
   >
@@ -31,7 +29,6 @@ exports[`COMPONENTS - <Search> render Search 1`] = `
     </ScrollPad>
   </WithTheme(UtilityIcon)>
   <WithTheme(UtilityIcon)
-    color="#3F84A8"
     dropdown={true}
     type="tag"
   >

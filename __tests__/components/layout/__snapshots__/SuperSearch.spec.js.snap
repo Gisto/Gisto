@@ -9,19 +9,6 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
   snippets={Object {}}
   theme={
     Object {
-      "baseAppColor": "#3F84A8",
-      "bg": "#ebf2f6",
-      "borderColor": "#ccc",
-      "boxShadow": "#555",
-      "colorDanger": "tomato",
-      "colorSuccess": "cadetblue",
-      "colorWarning": "#e0b01e",
-      "disabledColor": "#ccc",
-      "headerBgLightest": "#cfe0e9",
-      "headerColor": "#fff",
-      "lightBorderColor": "#f2f2f2",
-      "lightText": "#fff",
-      "textColor": "#555",
       "theme": Object {
         "baseAppColor": "#3F84A8",
         "bg": "#ebf2f6",
@@ -37,6 +24,8 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
         "lightText": "#fff",
         "textColor": "#555",
       },
+      "tintBackground": [Function],
+      "tintHeaderBgLightest": [Function],
     }
   }
   toggleSuperSesrch={[MockFunction]}
@@ -126,12 +115,10 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                     className="SearchBar-sc-1mnove5-2 dllRVk"
                   >
                     <StyledLookingGlass
-                      color="#3F84A8"
                       size={32}
                       type="search"
                     >
                       <StyledComponent
-                        color="#3F84A8"
                         forwardedClass={
                           Object {
                             "$$typeof": Symbol(react.forward_ref),
@@ -139,7 +126,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "StyledLookingGlass-sc-1mnove5-3",
                               "isStatic": false,
-                              "lastClassName": "cRgoRx",
+                              "lastClassName": "bWmVrt",
                               "rules": Array [
                                 "background-color:",
                                 [Function],
@@ -174,8 +161,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                         type="search"
                       >
                         <span
-                          className="StyledLookingGlass-sc-1mnove5-3 cRgoRx"
-                          color="#3F84A8"
+                          className="StyledLookingGlass-sc-1mnove5-3 bWmVrt"
                           size={32}
                           type="search"
                         />

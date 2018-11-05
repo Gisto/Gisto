@@ -10,19 +10,6 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
   onClick={[MockFunction]}
   theme={
     Object {
-      "baseAppColor": "#3F84A8",
-      "bg": "#ebf2f6",
-      "borderColor": "#ccc",
-      "boxShadow": "#555",
-      "colorDanger": "tomato",
-      "colorSuccess": "cadetblue",
-      "colorWarning": "#e0b01e",
-      "disabledColor": "#ccc",
-      "headerBgLightest": "#cfe0e9",
-      "headerColor": "#fff",
-      "lightBorderColor": "#f2f2f2",
-      "lightText": "#fff",
-      "textColor": "#555",
       "theme": Object {
         "baseAppColor": "#3F84A8",
         "bg": "#ebf2f6",
@@ -38,6 +25,8 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
         "lightText": "#fff",
         "textColor": "#555",
       },
+      "tintBackground": [Function],
+      "tintHeaderBgLightest": [Function],
     }
   }
   width="200px"
@@ -104,11 +93,9 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
         width="200px"
       >
         <Icon
-          color="#3F84A8"
           type="menu"
         >
           <StyledComponent
-            color="#3F84A8"
             forwardedClass={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
@@ -116,7 +103,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
                 "componentStyle": ComponentStyle {
                   "componentId": "Icon-vk4qna-0",
                   "isStatic": false,
-                  "lastClassName": "bkoAAh",
+                  "lastClassName": "dJnqmR",
                   "rules": Array [
                     "background-color:",
                     [Function],
@@ -149,8 +136,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
             type="menu"
           >
             <span
-              className="Icon-vk4qna-0 bkoAAh"
-              color="#3F84A8"
+              className="Icon-vk4qna-0 dJnqmR"
               type="menu"
             />
           </StyledComponent>

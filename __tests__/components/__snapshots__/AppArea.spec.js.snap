@@ -8,7 +8,6 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     to="/"
   >
     <Icon
-      color="#fff"
       spin={true}
       type="dashboard"
     />
@@ -18,7 +17,6 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     to="/about"
   >
     <Icon
-      color="#fff"
       spin={true}
       type="info"
     />
@@ -31,7 +29,6 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     to="/settings"
   >
     <Icon
-      color="#fff"
       spin={true}
       type="cog"
     />
@@ -47,7 +44,6 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     to="/"
   >
     <Icon
-      color="#fff"
       onClick={[Function]}
       type="logout"
     />

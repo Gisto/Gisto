@@ -5,7 +5,8 @@ module.exports = {
     '<rootDir>'
   ],
   moduleFileExtensions: [
-    'js'
+    'js',
+    'json'
   ],
   moduleDirectories: [
     'node_modules',

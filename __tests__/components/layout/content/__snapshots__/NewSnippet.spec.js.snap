@@ -33,7 +33,6 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
         href="https://help.github.com/articles/about-gists/#types-of-gists"
       >
         <Icon
-          color="#3F84A8"
           size="16"
           type="info"
         />
