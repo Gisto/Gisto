@@ -11,14 +11,12 @@ exports[`COMPONENTS - <Snippet> render Snippet 1`] = `
   >
     <span>
       <StyledIcon
-        color="#fff"
         size={24}
         type="lock"
       />
     </span>
     <span>
       <StyledIcon
-        color="#fff"
         onClick={[Function]}
         size={16}
         type="star-full"

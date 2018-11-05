@@ -9,19 +9,6 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
   size={20}
   theme={
     Object {
-      "baseAppColor": "#3F84A8",
-      "bg": "#ebf2f6",
-      "borderColor": "#ccc",
-      "boxShadow": "#555",
-      "colorDanger": "tomato",
-      "colorSuccess": "cadetblue",
-      "colorWarning": "#e0b01e",
-      "disabledColor": "#ccc",
-      "headerBgLightest": "#cfe0e9",
-      "headerColor": "#fff",
-      "lightBorderColor": "#f2f2f2",
-      "lightText": "#fff",
-      "textColor": "#555",
       "theme": Object {
         "baseAppColor": "#3F84A8",
         "bg": "#ebf2f6",
@@ -37,6 +24,8 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
         "lightText": "#fff",
         "textColor": "#555",
       },
+      "tintBackground": [Function],
+      "tintHeaderBgLightest": [Function],
     }
   }
   title="UtilityIcon"

@@ -74,7 +74,11 @@
 		"jsx-a11y/anchor-has-content": 2,
 		"jsx-a11y/label-has-for": 0,
 		"jsx-a11y/anchor-is-valid": 0,
-		"jsx-a11y/heading-has-content": 0
+		"jsx-a11y/heading-has-content": 0,
+
+		"_comment": "remove after https://github.com/babel/babel-eslint/issues/530 fix",
+		"template-curly-spacing": "off",
+		"indent": "off"
 	},
 	"parserOptions": {
 		"ecmaFeatures": {
