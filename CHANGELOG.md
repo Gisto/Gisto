@@ -1,3 +1,15 @@
+### v1.10.14
+*  FEATURE (editor): allow sandboxed HTML preview [View](https://github.com/Gisto/Gisto/commit/f519cea9528fb9c08b1c69955d0fde3301faa4b4)
+*  FEAURE (settings): add control over files preview [View](https://github.com/Gisto/Gisto/commit/d4fdcaca4043d3556e9091c7ab35f9122c0c0072)
+*  CHORE (packages): update packages to latest versions [View](https://github.com/Gisto/Gisto/commit/ee790d2db2b8a4f6f4f625442140614cb179440c)
+*  FEATURE (settings): add icon theme [View](https://github.com/Gisto/Gisto/commit/a2f5bf1373c6a878c84c07d518698a31ea4bf804)
+*  FIX (login): properly clear enterprize domain [View](https://github.com/Gisto/Gisto/commit/57ae35b4d2d7eca82efad789c33e3ac0eae2bd85)
+*  FIX (html): index html add meta [View](https://github.com/Gisto/Gisto/commit/0ccce01a71e16deb8f30d9cb42600a01c0349a9a)
+*  FIX (middlewares): add moddlewares to aid development [View](https://github.com/Gisto/Gisto/commit/39fcc86abdfd082b639abaaa173340eb3d59e4f5)
+*  CHORE (packages): upgrade npm packages [View](https://github.com/Gisto/Gisto/commit/7da85310bdb8993111de2a86d18cf0feb2004562)
+*  FIX (geojson): preview z-index [View](https://github.com/Gisto/Gisto/commit/399abd35629a67fad5986fc2670c689e49c7f5f7)
+*  FIX (editor): add word wrap settings [View](https://github.com/Gisto/Gisto/commit/59e49a441b7f759fb441051b5d74b6c2ecb32605)
+
 ### v1.10.13
 *  FEATURE (editor): preview PDF + refactor file utils [View](https://github.com/Gisto/Gisto/commit/963d35bfbe3199209426efba76163f706fc9fad8)
 *  CHORE (constants): refactor names [View](https://github.com/Gisto/Gisto/commit/317dab4e8757368c8bd074f7a3ef7bf785402676)
