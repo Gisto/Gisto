@@ -89,12 +89,15 @@ const editorOptions = (options) => ({
   codeLens: getSetting('codeLens', false),
   cursorBlinking: getSetting('cursorBlinking', 'blink'),
   formatOnPaste: Boolean(getSetting('formatOnPaste', false)),
+  formatOnType: Boolean(getSetting('settings-editor-formatOnType', false)),
   fontFamily: getSetting('fontFamily', 'monospace'),
   lineHeight: getSetting('lineHeight', 21),
   fontLigatures: getSetting('fontLigatures', false),
   fontSize: getSetting('fontSize', 12),
   roundedSelection: false,
   scrollBeyondLastLine: false,
+  wordWrap: getSetting('settings-editor-wordWrap', 'bounded'),
+  wordWrapColumn: getSetting('settings-editor-wordWrapColumn', 80),
   minimap: {
     enabled: Boolean(getSetting('minimap', false))
   },
