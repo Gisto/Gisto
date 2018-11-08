@@ -26,6 +26,7 @@ exports[`COMPONENTS - <Editor> render Editor 1`] = `
         "fontLigatures": false,
         "fontSize": 12,
         "formatOnPaste": false,
+        "formatOnType": false,
         "lineHeight": 21,
         "lineNumbers": true,
         "minimap": Object {
@@ -34,6 +35,8 @@ exports[`COMPONENTS - <Editor> render Editor 1`] = `
         "roundedSelection": false,
         "scrollBeyondLastLine": false,
         "selectOnLineNumbers": false,
+        "wordWrap": "bounded",
+        "wordWrapColumn": 80,
       }
     }
     theme="vs"
@@ -69,6 +72,7 @@ exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
         "fontLigatures": false,
         "fontSize": "12",
         "formatOnPaste": false,
+        "formatOnType": false,
         "lineHeight": "21",
         "lineNumbers": true,
         "minimap": Object {
@@ -77,6 +81,8 @@ exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
         "roundedSelection": false,
         "scrollBeyondLastLine": false,
         "selectOnLineNumbers": false,
+        "wordWrap": "bounded",
+        "wordWrapColumn": "80",
       }
     }
     theme="vs"

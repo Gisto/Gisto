@@ -81,6 +81,13 @@ export const EditorSettings = ({ changeSettings }) => {
           </Field>
           <Field>
             <Label>
+              <span>Code lens:</span>
+              <Checkbox checked={ getSetting('codeLens', false) }
+                        onChange={ () => updateSettings('codeLens', null, true) }/>
+            </Label>
+          </Field>
+          <Field>
+            <Label>
               <span>Line Numbers:</span>
               <Checkbox checked={ getSetting('lineNumbers', true) }
                         onChange={ () => updateSettings('lineNumbers', null, true) }/>
@@ -95,10 +102,9 @@ export const EditorSettings = ({ changeSettings }) => {
           </Field>
           <Field>
             <Label>
-              <span>Font Family:</span>
-              <StyledInput type="text"
-                           value={ getSetting('fontFamily', 'monospace') }
-                           onChange={ (event) => updateSettings('fontFamily', event.target.value) }/>
+              <span>Format On Type:</span>
+              <Checkbox checked={ getSetting('settings-editor-formatOnType', true) }
+                        onChange={ () => updateSettings('v', null, true) }/>
             </Label>
           </Field>
 
@@ -112,6 +118,14 @@ export const EditorSettings = ({ changeSettings }) => {
 
         </Section>
         <Section>
+          <Field>
+            <Label>
+              <span>Font Family:</span>
+              <StyledInput type="text"
+                           value={ getSetting('fontFamily', 'monospace') }
+                           onChange={ (event) => updateSettings('fontFamily', event.target.value) }/>
+            </Label>
+          </Field>
           <Field>
             <Label>
               <span>Font Size:</span>
@@ -135,13 +149,7 @@ export const EditorSettings = ({ changeSettings }) => {
                         onChange={ () => updateSettings('fontLigatures', null, true) }/>
             </Label>
           </Field>
-          <Field>
-            <Label>
-              <span>Code lens:</span>
-              <Checkbox checked={ getSetting('codeLens', false) }
-                        onChange={ () => updateSettings('codeLens', null, true) }/>
-            </Label>
-          </Field>
+
           <Field>
             <Label>
               <span>Cursor Blinking:</span>
@@ -155,6 +163,28 @@ export const EditorSettings = ({ changeSettings }) => {
               </StyledISelect>
             </Label>
           </Field>
+
+          <Field>
+            <Label>
+              <span>World wrap:</span>
+              <StyledISelect value={ getSetting('settings-editor-wordWrap', 'bounded') }
+                             onChange={ (event) => updateSettings('settings-editor-wordWrap', event.target.value) }>
+                <option value="off">off</option>
+                <option value="on">on</option>
+                <option value="bounded">bounded</option>
+                <option value="wordWrapColumn">wordWrapColumn</option>
+              </StyledISelect>
+            </Label>
+          </Field>
+          <Field>
+            <Label>
+              <span>World wrap column size:</span>
+              <StyledInput type="number"
+                           value={ getSetting('settings-editor-wordWrapColumn', 80) }
+                           onChange={ (event) => updateSettings('settings-editor-wordWrapColumn', event.target.value) }/>
+            </Label>
+          </Field>
+
         </Section>
       </Wrapper>
 
