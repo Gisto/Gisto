@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Maayan Glikser  --  Dev --  @MaayanGlikser
+    Sasha Khamkov   --  Dev --  @sanusart
+
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    AngularJS, jQuery, Jekyll, SCSS
+

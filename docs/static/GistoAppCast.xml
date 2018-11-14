@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Gisto</title>
+    <link>https://www.gistoapp.com/GistoAppCast.xml</link>
+    <description>Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as
+      searching, tagging and sharing gists while including a rich code editor. All your data is stored on GitHub and you
+      can access it from GitHub Gists at any time with changes carrying over to Gisto.
+    </description>
+    <docs>https://www.gistoapp.com/documentation/</docs>
+    <language>en</language>
+    <item>
+      <title>Version 0.3.0</title>
+      <description>
+        <![CDATA[<ul class=fa-ul><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FEATURE (gist polling): Add polling to update changed gists</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FEATURE (enterprise): Add GitHub Enterprise support</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FEATURE (enterprise): Add ability to use a custom notification server</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FEATURE (hotkeys): Add keyboard shortcuts, press ? to see available shortcuts</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FEATURE (toggle file content): You can now fold and unfold certain file in gists</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FEATURE (editor): Add option to wrap editor lines</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FEATURE (single gist): Add "Copy link to clipboard" for whole gist</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FEATURE (editor): Add .adoc and .asciidoc syntax highlighting</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> IMPROVE (settings): Settings changes are now reflected immediately</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> IMPROVE (version checking): Better version checking</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> UI (settings): Change checkboxes to toggles in settings screen</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> UI (settings): Add indication that settings were saved or imported.</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> UI (theme): Fix input and select colors on dark themes</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> UI (notifications): Add default avatar to Gisto share notifications</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> UI (fonts): Fix default fonts in windows</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> UI (revisions dialog): Fix Revisions popup UI location</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FIX (gists pagination): Fix gists pagination to pull all pages instead of stopping at 10 pages resulting in not all gists shown.</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FIX (editor) Ace Editor cursor wrongly placed when UI zoom is other than 100%</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FIX (API): Fix Delete not generating correct url</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FIX (gist list): Fix icons (star and private) not showing in gist list</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FIX (rename gist files): Prevent files from duplicating themselves when being renamed</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FIX (tags): Allow use of tags such as C# F#</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FIX (settings): Fix settings screen is not able to scroll down</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FIX (revisions): Fix revision history link</li><li class=icons-li><i class="fa fa-chevron-circle-right"></i> FIX (shared gist view): Fix links to the gist when viewing a shared gist</li></ul>]]>
+      </description>
+      <pubDate>Mon, 23 Mar 2015 20:08:18 +0200</pubDate>
+      <sparkle:releaseNotesLink>https://www.gistoapp.com/changelog</sparkle:releaseNotesLink>
+      <enclosure url="https://download.gistoapp.com/Gisto-0.3.0-OSX_x86_64.dmg"
+                 sparkle:version="0.3.0"
+                 length="37507769"
+                 type="application/x-apple-diskimage"
+                 sparkle:dsaSignature="cI5TSwasTWOPF5wQseCl2c+uPqp2uOA0/TbSU5BtLkM="/>
+    </item>
+    <item>
+      <title>Version 0.2.6b</title>
+      <description>
+        <![CDATA[<ul class="icons-ul"><li class="icons-li"><i class="icon-chevron-sign-right"></i> FEATURE (editor): add vim mode</li><li class="icons-li"><i class="icon-chevron-sign-right"></i> FIX (create gist): Fix text overflowing from the description field</li><li class="icons-li"><i class="icon-chevron-sign-right"></i> FIX (single gist): wrong direct link for uppercase characters in filename or extension</li><li class="icons-li"><i class="icon-chevron-sign-right"></i> FIX (editor): paste now updates correctly in the angular file model</li><li class="icons-li"><i class="icon-chevron-sign-right"></i> FIX (edit mode): Edit mode is now canceled upon route change</li><li class="icons-li"><i class="icon-chevron-sign-right"></i> FIX (Open file in browser): Open file in browser is now opening correctly</li></ul>]]>
+      </description>
+      <pubDate>Sun, 20 Jul 2014 20:08:18 +0200</pubDate>
+      <sparkle:releaseNotesLink>https://www.gistoapp.com/changelog</sparkle:releaseNotesLink>
+      <enclosure url="https://download.gistoapp.com/Gisto-0.2.6b-OSX_x86.dmg"
+                 sparkle:version="0.2.6b"
+                 length="36405542"
+                 type="application/x-apple-diskimage"
+                 sparkle:dsaSignature="yzu9NUabQe2gsjNhhOasCEQPK3y4WAtp+0MJ5xGwQHI="/>
+    </item>
+  </channel>
+</rss>
