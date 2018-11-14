@@ -1,0 +1,34 @@
+{
+  "name": "gistoapp.com",
+  "version": "1.10.14",
+  "description": "gisoapp.com - Gisto web pages",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "site-deploy": "git push origin `git subtree split --prefix public src`:master --force"
+  },
+  "engines": {
+    "node": ">8.12.0"
+  },
+  "dependencies": {
+    "disqus-react": "^1.0.5",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "font-awesome": "^4.7.0",
+    "gatsby": "^2.0.33",
+    "gatsby-plugin-sass": "^2.0.4",
+    "gatsby-plugin-sharp": "^2.0.12",
+    "gatsby-remark-images": "^2.0.6",
+    "gatsby-source-filesystem": "^2.0.8",
+    "gatsby-transformer-remark": "^2.1.12",
+    "node-sass": "^4.10.0",
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-helmet": "^5.2.0",
+    "react-media": "^1.8.0"
+  }
+}

@@ -42,20 +42,30 @@ script:
       electronuserland/builder:wine \
       /bin/bash -c "npm install npm@latest -g && npm ci && npm run test:ci && npm run pack"
   else
-    npm ci && npm run test:ci && npm run pack && npm run build:web && echo "web.gistoapp.com" > ./web/CNAME
+    npm ci && npm run test:ci && npm run pack && npm run build:web && echo "web.gistoapp.com" > ./web/CNAME && cd docs && npm ci && npm run build && cd -
   fi
 
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GH_TOKEN
-  keep-history: true
-  local-dir: web
-  target-branch: master
-  repo: Gisto/web.gistoapp.com
-  on:
-    branch: master
-    condition: $TRAVIS_OS_NAME == "osx"
+  - provider: pages
+    skip-cleanup: true
+    github-token: $GH_TOKEN
+    keep-history: true
+    local-dir: web
+    target-branch: master
+    repo: Gisto/web.gistoapp.com
+    on:
+      branch: master
+      condition: $TRAVIS_OS_NAME == "osx"
+  - provider: pages
+    skip-cleanup: true
+    github-token: $GH_TOKEN
+    keep-history: true
+    local-dir: docs/public
+    target-branch: master
+    repo: Gisto/gisto.github.com
+    on:
+      all_branches: true
+      condition: $TRAVIS_OS_NAME == "osx"
 
 before_cache:
 - rm -rf $HOME/.cache/electron-builder/wine
