@@ -15,7 +15,9 @@ import 'github-markdown-css/github-markdown.css';
 import Comments from 'components/layout/content/snippet/Comments';
 import { toUnixTimeStamp } from 'utils/date';
 import { getSetting } from 'utils/settings';
+import { randomString } from 'utils/string';
 import DropZone from 'components/common/DropZone';
+import Icon from 'components/common/Icon';
 
 const SnippetWrapper = styled.div`
   background: #fff;
@@ -29,8 +31,27 @@ const SnippetWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
+const EditArea = styled.div`
+  display: flex;
+`;
+
+const Or = styled.div`
+  margin-right: 20px;
+  line-height: 60px;
+`;
+
+const AddNewFile = styled.button`
+  margin: 0 20px 20px 0;
+  background: ${(props) => props.theme.baseAppColor};
+  border-radius: 10px;
+  width: 60px;
+  color: #fff;
+  cursor: pointer;
+`;
+
 const StyledDropZone = styled(DropZone)`
   margin-bottom: 20px;
+  flex: 1;
 `;
 
 export class Snippet extends React.Component {
@@ -70,7 +91,13 @@ export class Snippet extends React.Component {
         { showComments && <Comments snippetId={ this.props.match.params.id }/> }
 
         { edit && (
-          <StyledDropZone onAddFile={ addTempFile }/>
+          <EditArea>
+            <AddNewFile title="Add new file" onClick={ () => addTempFile(randomString(5), '') }>
+              <Icon type="add" size={ 40 }/>
+            </AddNewFile>
+            <Or>Or</Or>
+            <StyledDropZone onAddFile={ addTempFile }/>
+          </EditArea>
         ) }
 
         { map((file) => (
