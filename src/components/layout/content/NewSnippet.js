@@ -16,6 +16,7 @@ import { syntaxMap } from 'constants/editor';
 import { prepareFiles } from 'utils/snippets';
 import { gaPage } from 'utils/ga';
 import { getSetting } from 'utils/settings';
+import { randomString } from 'utils/string';
 
 import Input from 'components/common/controls/Input';
 import Editor from 'components/common/controls/Editor';
@@ -134,10 +135,10 @@ export class NewSnippet extends React.Component {
     }));
   };
 
-  addFile = (name = '', content = '') => {
+  addFile = (name, content = '') => {
     const fileStructure = {
       uuid: uuid.v4(),
-      name,
+      name: name || randomString(5),
       language: getSetting('setings-default-new-snippet-language', 'Text'),
       content
     };

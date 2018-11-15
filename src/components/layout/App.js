@@ -31,6 +31,10 @@ const GlobalStyle = createGlobalStyle`
   span:hover {
     transition: all .3s ease-in-out;
   }
+  
+  *:focus {
+    outline-color: ${(props) => props.theme.baseAppColor};
+  }
 `;
 
 const AppWrapper = styled.div`
