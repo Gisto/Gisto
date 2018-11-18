@@ -1,7 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+
 import Header from 'components/header';
 import Footer from 'components/footer';
+
+import addNewSnippet from '../images/add-new-snippet.png';
 
 const Docs = () => (
   <React.Fragment>
@@ -24,6 +27,7 @@ const Docs = () => (
               <ul>
                 <li><a className="innsite" href="#tags">Tag gist</a></li>
                 <li><a className="innsite" href="#proxy">Usage via proxy</a></li>
+                <li><a className="innsite" href="#new-snippet">Add new snippet</a></li>
                 <li><a className="innsite" href="#devs">For developers</a></li>
               </ul>
             </nav>
@@ -53,6 +57,14 @@ const Docs = () => (
             </p>
 
             <pre><span>SHELL</span>./Gisto-x.x.x.exe --args --proxy-server=proxyhost:port</pre>
+
+            <h2 id="new-snippet">Add new snippet</h2>
+
+            <p>
+              To add new snippet, simply click the "+ New snippet" button on the top of the app.
+            </p>
+
+            <img src={ addNewSnippet }/>
 
             <h2 id="devs">Setting up for development</h2>
 
