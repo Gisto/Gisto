@@ -4,6 +4,9 @@ module.exports = {
     '/src',
     '<rootDir>'
   ],
+  modulePathIgnorePatterns: [
+    '<rootDir>/docs'
+  ],
   moduleFileExtensions: [
     'js',
     'json'

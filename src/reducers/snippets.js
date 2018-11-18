@@ -220,11 +220,13 @@ export const snippets = (state = initialState, action) => {
     }
 
     case AT.UPDATE_SNIPPET.SUCCESS: {
-      return set(
-        ['snippets', action.payload.id],
-        snippetStructure(action.payload, state.starred),
-        state
-      );
+      return flow([
+        set('edit', {}),
+        set(
+          ['snippets', action.payload.id],
+          snippetStructure(action.payload, state.starred)
+        )
+      ])(state);
     }
 
     case AT.GET_SNIPPET_COMMENTS.SUCCESS: {
