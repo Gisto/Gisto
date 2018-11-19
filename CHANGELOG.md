@@ -1,3 +1,9 @@
+### v1.10.15
+*  DOCS (site): host new site with docs alongside the app [View](https://github.com/Gisto/Gisto/commit/51ca500686105de77bad57bdb7936e93418d1764)
+*  FEATURE (snippet): better UX to add new file to edit snippet [View](https://github.com/Gisto/Gisto/commit/2bc01cfd7961f6f6a540df405c3c0392028957f3)
+*  FIX (edit snippet): some flow not saves changes [View](https://github.com/Gisto/Gisto/commit/8f1c847b92069e30757a85beb184d20bc77c04f9)
+*  DOCS (site): document create new snippet [View](https://github.com/Gisto/Gisto/commit/53da6c394d51c4359de0646740956b6cfe9f6fe0)
+
 ### v1.10.14
 *  FEATURE (editor): allow sandboxed HTML preview [View](https://github.com/Gisto/Gisto/commit/f519cea9528fb9c08b1c69955d0fde3301faa4b4)
 *  FEAURE (settings): add control over files preview [View](https://github.com/Gisto/Gisto/commit/d4fdcaca4043d3556e9091c7ab35f9122c0c0072)
