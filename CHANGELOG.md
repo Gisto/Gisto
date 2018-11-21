@@ -1,3 +1,6 @@
+### v1.10.16
+*  CHORE (optimize load): use terser and reacr-loadable [View](https://github.com/Gisto/Gisto/commit/b1800667b91a733ba651ed2e96993ef4cbeb4e4e)
+
 ### v1.10.15
 *  DOCS (site): host new site with docs alongside the app [View](https://github.com/Gisto/Gisto/commit/51ca500686105de77bad57bdb7936e93418d1764)
 *  FEATURE (snippet): better UX to add new file to edit snippet [View](https://github.com/Gisto/Gisto/commit/2bc01cfd7961f6f6a540df405c3c0392028957f3)
