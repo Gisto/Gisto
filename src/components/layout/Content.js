@@ -1,12 +1,36 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
+import Loadable from 'react-loadable';
 
-import DashBoard from 'components/layout/content/DashBoard';
-import Settings from 'components/layout/content/Settings';
-import Snippet from 'components/layout/content/Snippet';
-import About from 'components/layout/content/About';
-import NewSnippet from 'components/layout/content/NewSnippet';
+import { getSetting } from 'utils/settings';
+
+import Loading from 'components/common/Loading';
+
+const DashBoard = Loadable({
+  loader: () => import('components/layout/content/DashBoard'),
+  loading: () => <Loading color={ getSetting('color') }/>
+});
+
+const Settings = Loadable({
+  loader: () => import('components/layout/content/Settings'),
+  loading: () => <Loading color={ getSetting('color') }/>
+});
+
+const Snippet = Loadable({
+  loader: () => import('components/layout/content/Snippet'),
+  loading: () => <Loading color={ getSetting('color') }/>
+});
+
+const About = Loadable({
+  loader: () => import('components/layout/content/About'),
+  loading: () => <Loading color={ getSetting('color') }/>
+});
+
+const NewSnippet = Loadable({
+  loader: () => import('components/layout/content/NewSnippet'),
+  loading: () => <Loading color={ getSetting('color') }/>
+});
 
 const ContentWrapper = styled.div`
   flex: 1;
