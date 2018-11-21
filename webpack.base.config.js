@@ -4,6 +4,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const SizePlugin = require('size-plugin');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const packageJson = require('./package.json');
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -62,6 +64,7 @@ module.exports = {
     ]
   },
   plugins: [
+    // new BundleAnalyzerPlugin(),
     new SizePlugin(),
     new webpack.DefinePlugin({
       'global.GENTLY': false,
