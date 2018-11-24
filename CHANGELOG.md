@@ -1,3 +1,6 @@
+### v1.10.17-beta.5
+*  TOOLS (betas): support beta versions prerelease [View](https://github.com/Gisto/Gisto/commit/823a543212a3ada120354ac3d63f79707d6c9476)
+
 ### v1.10.17-beta.4
 *  FIX (updates): only check updates for latest stable release [View](https://github.com/Gisto/Gisto/commit/a5dbaacb5ac02d12ebb589ecefa4da6220259222)
 *  TOOLS (build): build site and docs on every commit [View](https://github.com/Gisto/Gisto/commit/224522945adb0adbb2af5ecb6547bbe17f401591)
