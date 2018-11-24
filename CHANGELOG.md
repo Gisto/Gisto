@@ -1,3 +1,6 @@
+### v1.10.17-beta.6
+*  TOOLS (release): add beta releases as pre-releases on github [View](https://github.com/Gisto/Gisto/commit/3a9c4c6317d7209eca42e451b21003482d09c70a)
+
 ### v1.10.17-beta.5
 *  TOOLS (betas): support beta versions prerelease [View](https://github.com/Gisto/Gisto/commit/823a543212a3ada120354ac3d63f79707d6c9476)
 
