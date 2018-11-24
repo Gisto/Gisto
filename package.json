@@ -146,7 +146,8 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.4.0",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "workbox-webpack-plugin": "^3.6.3"
   },
   "dependencies": {
     "@sentry/electron": "^0.14.0",
