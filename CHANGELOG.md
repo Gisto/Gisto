@@ -1,3 +1,7 @@
+### v1.10.18-beta.0
+*  v1.10.17 See changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/d1b2da951db2beb3160f522fcea77237f3147201)
+*  merge master [View](https://github.com/Gisto/Gisto/commit/2707cb75a7616f24027208a4112ec7f57a4c8808)
+
 ### v1.10.17
 
 
