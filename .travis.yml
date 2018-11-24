@@ -67,7 +67,7 @@ deploy:
     target-branch: master
     repo: Gisto/gisto.github.com
     on:
-      branch: master
+      all_branches: true
       condition: $TRAVIS_OS_NAME == "osx"
 
 before_cache:
