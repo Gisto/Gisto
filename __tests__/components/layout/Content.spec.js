@@ -6,7 +6,7 @@ const propSetup = (props = {}) => ({
 
 const setup = (props) => shallow(<Content { ...propSetup(props) }/>);
 
-describe('COMPONENTS - <Content>', () => {
+describe.skip('COMPONENTS - <Content>', () => {
   test('render Content', () => {
     const component = setup();
 

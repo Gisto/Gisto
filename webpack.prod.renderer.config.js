@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const TerserPlugin = require('terser-webpack-plugin');
 const baseConfig = require('./webpack.base.config');
 
 const buildPath = path.resolve(__dirname, './dist');
@@ -14,10 +13,6 @@ const config = merge.smart(baseConfig, {
   },
   bail: true,
   mode: 'production',
-  optimization: {
-    runtimeChunk: false,
-    minimizer: [new TerserPlugin()]
-  },
   module: {
     rules: [
       {

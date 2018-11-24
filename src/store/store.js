@@ -1,8 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from 'reducers/root';
 import createHistory from 'history/createHashHistory';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
-
+import { routerMiddleware } from 'connected-react-router';
+import createRootReducer from 'reducers/root';
 import gitHubAPIMiddleware from 'middlewares/gitHubAPI';
 
 export const history = createHistory();
@@ -28,7 +27,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const store = createStore(
-  connectRouter(history)(rootReducer),
+  createRootReducer(history),
   composeEnhancers(applyMiddleware(...middlewares))
 );
 
