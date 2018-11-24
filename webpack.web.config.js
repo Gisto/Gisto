@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const WorkboxPlugin  = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -98,7 +99,27 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: 'src/icons', to: 'src/icons' },
       { from: 'node_modules/leaflet/dist/images', to: 'src/img' }
-    ])
+    ]),
+    new WorkboxPlugin.GenerateSW({
+      swDest: 'service-worker.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      globIgnores: [
+        '**/node_modules/**/*',
+        'service-worker.js'
+      ],
+      include: [/\.html$/, /\.js$/, /\.svg$/, /\.jpg$/, /\.gif$/, /\.png$/, /\.css$/],
+      offlineGoogleAnalytics: true,
+      runtimeCaching: [{
+        urlPattern: new RegExp('^https://api.github.com/'),
+        handler: 'staleWhileRevalidate',
+        options: {
+          cacheableResponse: {
+            statuses: [0, 200]
+          }
+        }
+      }]
+    })
   ],
   node: {
     __dirname: false,
