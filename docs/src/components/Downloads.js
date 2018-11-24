@@ -60,11 +60,11 @@ class Downloads extends Component {
 
     componentDidMount() {
         if (!sessionStorage.getItem('gistoReleases')) {
-            fetch('https://api.github.com/repos/Gisto/Gisto/releases')
+            fetch('https://api.github.com/repos/Gisto/Gisto/releases/latest')
                 .then((response) => response.json())
                 .then((data) => {
                     sessionStorage.setItem('gistoReleases', JSON.stringify(data));
-                    const latest = data[0];
+                    const latest = data;
                     const downloads = latest.assets.map((asset) => {
                         return dataStructure(asset);
                     })
@@ -80,7 +80,7 @@ class Downloads extends Component {
                 });
         } else {
             const latest = JSON.parse(sessionStorage.getItem('gistoReleases'));
-            const downloads = latest[0].assets.map((asset) => {
+            const downloads = latest.assets.map((asset) => {
                 return dataStructure(asset);
             })
                 .filter((os) => {
@@ -88,8 +88,8 @@ class Downloads extends Component {
                 });
 
             this.setState({
-                publishedAt: formateDate(latest[0].published_at),
-                latestVersion: `v${latest[0].name}`,
+                publishedAt: formateDate(latest.published_at),
+                latestVersion: `v${latest.name}`,
                 downloads
             });
         }
