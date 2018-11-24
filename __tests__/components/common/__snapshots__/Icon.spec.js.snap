@@ -10,7 +10,7 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
     forwardedClass={
       Object {
         "$$typeof": Symbol(react.forward_ref),
-        "attrs": undefined,
+        "attrs": Array [],
         "componentStyle": ComponentStyle {
           "componentId": "Icon-vk4qna-0",
           "isStatic": false,

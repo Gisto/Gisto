@@ -21,7 +21,7 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
       forwardedClass={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
+          "attrs": Array [],
           "componentStyle": ComponentStyle {
             "componentId": "StyledInput-sc-1zkbel-0",
             "isStatic": false,

@@ -7,7 +7,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
       forwardedClass={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
+          "attrs": Array [],
           "componentStyle": ComponentStyle {
             "componentId": "Wrapper-l90ydr-0",
             "isStatic": true,
@@ -67,7 +67,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   forwardedClass={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
-                      "attrs": undefined,
+                      "attrs": Array [],
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
@@ -120,7 +120,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   forwardedClass={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
-                      "attrs": undefined,
+                      "attrs": Array [],
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
@@ -173,7 +173,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   forwardedClass={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
-                      "attrs": undefined,
+                      "attrs": Array [],
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
@@ -226,7 +226,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   forwardedClass={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
-                      "attrs": undefined,
+                      "attrs": Array [],
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,
@@ -279,7 +279,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   forwardedClass={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
-                      "attrs": undefined,
+                      "attrs": Array [],
                       "componentStyle": ComponentStyle {
                         "componentId": "Link-sc-17j1f2u-0",
                         "isStatic": false,

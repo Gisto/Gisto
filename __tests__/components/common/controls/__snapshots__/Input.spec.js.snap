@@ -22,7 +22,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
       forwardedClass={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
+          "attrs": Array [],
           "componentStyle": ComponentStyle {
             "componentId": "StyledInput-sc-86zjwb-0",
             "isStatic": false,

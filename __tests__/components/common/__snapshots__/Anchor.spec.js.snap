@@ -14,7 +14,7 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
       forwardedClass={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
+          "attrs": Array [],
           "componentStyle": ComponentStyle {
             "componentId": "Link-sc-17j1f2u-0",
             "isStatic": false,

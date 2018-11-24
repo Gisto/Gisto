@@ -35,7 +35,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
       forwardedClass={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
+          "attrs": Array [],
           "componentStyle": ComponentStyle {
             "componentId": "SuperSearchWrapper-sc-1mnove5-0",
             "isStatic": true,
@@ -63,7 +63,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
             forwardedClass={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": undefined,
+                "attrs": Array [],
                 "componentStyle": ComponentStyle {
                   "componentId": "SearchWrapper-sc-1mnove5-1",
                   "isStatic": true,
@@ -91,7 +91,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   forwardedClass={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
-                      "attrs": undefined,
+                      "attrs": Array [],
                       "componentStyle": ComponentStyle {
                         "componentId": "SearchBar-sc-1mnove5-2",
                         "isStatic": true,
@@ -122,7 +122,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                         forwardedClass={
                           Object {
                             "$$typeof": Symbol(react.forward_ref),
-                            "attrs": undefined,
+                            "attrs": Array [],
                             "componentStyle": ComponentStyle {
                               "componentId": "StyledLookingGlass-sc-1mnove5-3",
                               "isStatic": false,
@@ -180,7 +180,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                         forwardedClass={
                           Object {
                             "$$typeof": Symbol(react.forward_ref),
-                            "attrs": undefined,
+                            "attrs": Array [],
                             "componentStyle": ComponentStyle {
                               "componentId": "StyledInput-sc-1mnove5-8",
                               "isStatic": true,
@@ -227,7 +227,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                               forwardedClass={
                                 Object {
                                   "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": undefined,
+                                  "attrs": Array [],
                                   "componentStyle": ComponentStyle {
                                     "componentId": "StyledInput-sc-86zjwb-0",
                                     "isStatic": false,
@@ -281,7 +281,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   forwardedClass={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
-                      "attrs": undefined,
+                      "attrs": Array [],
                       "componentStyle": ComponentStyle {
                         "componentId": "SnippetResults-sc-1mnove5-4",
                         "isStatic": true,

@@ -45,7 +45,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
       forwardedClass={
         Object {
           "$$typeof": Symbol(react.forward_ref),
-          "attrs": undefined,
+          "attrs": Array [],
           "componentStyle": ComponentStyle {
             "componentId": "ButtonComponent-sc-1hy9a8c-0",
             "isStatic": false,
@@ -99,7 +99,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
             forwardedClass={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": undefined,
+                "attrs": Array [],
                 "componentStyle": ComponentStyle {
                   "componentId": "Icon-vk4qna-0",
                   "isStatic": false,
