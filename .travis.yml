@@ -29,6 +29,7 @@ before_script:
   - export NODE_OPTIONS="--max-old-space-size=2000"
   - export TOOL_NODE_FLAGS="--max-old-space-size=2000"
   - echo "GISTO_GITHUB_CLIENT_ID=$GISTO_GITHUB_CLIENT_ID" >> $TRAVIS_BUILD_DIR/.env
+  # configure build command for master or next (beta) branches
   - |
     if [ "$TRAVIS_BRANCH" == "next" ]; then
       export GISTO_PACK_COMMAND="npm run pack:beta"
