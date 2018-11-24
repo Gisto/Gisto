@@ -1,3 +1,6 @@
+### v1.10.17-beta.12
+*  FIX (app load): add service worker [View](https://github.com/Gisto/Gisto/commit/039af365017dbb2b5283df798c25244556e8169c)
+
 ### v1.10.17-beta.11
 *  TOOLS (releases): fix beta releases functionality of appveyor builds, wrong config file [View](https://github.com/Gisto/Gisto/commit/d15c4308c7b2285792ad8ee262633881f0e04bf6)
 
