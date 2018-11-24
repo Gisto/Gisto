@@ -27,7 +27,7 @@
     "release": "npm version patch -m \"v%s \nSee changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md\"",
     "release:minor": "npm version minor -m \"v%s \nSee changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md\"",
     "pack:mac": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build --m --publish=always",
-    "pack:win:beta": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build --config electron-builder.json -w --x64 --ia32 --publish=always",
+    "pack:win:beta": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build --config electron-builder-prerelease.json -w --x64 --ia32 --publish=always",
     "pack:win": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build -w --x64 --ia32 --publish=always",
     "pack:linux": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build --l --x64 --publish=always",
     "pack:all": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build -mwl --x64 --publish=always",
