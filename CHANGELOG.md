@@ -1,3 +1,6 @@
+### v1.10.17-beta.8
+*  TOOLS (releases): add beta releases functionality to appveyor build [View](https://github.com/Gisto/Gisto/commit/1bbde28e19c3251536c18321c9aca872586bcec5)
+
 ### v1.10.17-beta.7
 *  TOOLS (releases): add beta releases functionality to appveyor build [View](https://github.com/Gisto/Gisto/commit/36a6511d01ef304994d795c93888c8faca47206e)
 
