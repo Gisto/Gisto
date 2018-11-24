@@ -14,67 +14,45 @@ cache:
   - '%USERPROFILE%\.electron'
   - node_modules -> package.json
 
+clone_folder: c:\gisto
+
+init:
+  - git config --global core.autocrlf input
+
+shallow_clone: true
+clone_depth: 1
+
+matrix:
+  fast_finish: true
+
+build: off
+
+install:
+  - ps: Add-Content c:\gisto\.env "GISTO_GITHUB_CLIENT_ID=$env:GISTO_GITHUB_CLIENT_ID"
+  - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
+  - cmd: set NODE_OPTIONS=--max_old_space_size=2000
+  - npm install -g npm@6
+  - set PATH=%APPDATA%\npm;%PATH%
+  - node --version && npm --version
+  - npm install -g cross-env rimraf electron-builder
+  - npm ci
+  - npm run test
+
+
 for:
-  -
-    branches:
-      only:
-        - master
 
-    clone_folder: c:\gisto
+-
+  branches:
+    only:
+      - master
 
-    init:
-      - git config --global core.autocrlf input
+  build_script:
+    - npm run pack:win
 
-    shallow_clone: true
-    clone_depth: 1
+-
+  branches:
+    only:
+      - next
 
-    matrix:
-      fast_finish: true
-
-    build: off
-
-    install:
-      - ps: Add-Content c:\gisto\.env "GISTO_GITHUB_CLIENT_ID=$env:GISTO_GITHUB_CLIENT_ID"
-      - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
-      - cmd: set NODE_OPTIONS=--max_old_space_size=2000
-      - npm install -g npm@6
-      - set PATH=%APPDATA%\npm;%PATH%
-      - node --version && npm --version
-      - npm install -g cross-env rimraf electron-builder
-      - npm ci
-      - npm run test
-
-    build_script:
-      - npm run pack:win
-
-  -
-    branches:
-      only:
-        - next
-
-    clone_folder: c:\gisto
-
-    init:
-      - git config --global core.autocrlf input
-
-    shallow_clone: true
-    clone_depth: 1
-
-    matrix:
-      fast_finish: true
-
-    build: off
-
-    install:
-      - ps: Add-Content c:\gisto\.env "GISTO_GITHUB_CLIENT_ID=$env:GISTO_GITHUB_CLIENT_ID"
-      - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
-      - cmd: set NODE_OPTIONS=--max_old_space_size=2000
-      - npm install -g npm@6
-      - set PATH=%APPDATA%\npm;%PATH%
-      - node --version && npm --version
-      - npm install -g cross-env rimraf electron-builder
-      - npm ci
-      - npm run test
-
-    build_script:
-      - npm run pack:win:beta
+  build_script:
+    - npm run pack:win:beta
