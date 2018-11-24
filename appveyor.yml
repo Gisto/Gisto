@@ -14,37 +14,38 @@ cache:
   - '%USERPROFILE%\.electron'
   - node_modules -> package.json
 
--
-  branches:
-    only:
-      - master
+for:
+  -
+    branches:
+      only:
+        - master
 
-  clone_folder: c:\gisto
+    clone_folder: c:\gisto
 
-  init:
-    - git config --global core.autocrlf input
+    init:
+      - git config --global core.autocrlf input
 
-  shallow_clone: true
-  clone_depth: 1
+    shallow_clone: true
+    clone_depth: 1
 
-  matrix:
-    fast_finish: true
+    matrix:
+      fast_finish: true
 
-  build: off
+    build: off
 
-  install:
-    - ps: Add-Content c:\gisto\.env "GISTO_GITHUB_CLIENT_ID=$env:GISTO_GITHUB_CLIENT_ID"
-    - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
-    - cmd: set NODE_OPTIONS=--max_old_space_size=2000
-    - npm install -g npm@6
-    - set PATH=%APPDATA%\npm;%PATH%
-    - node --version && npm --version
-    - npm install -g cross-env rimraf electron-builder
-    - npm ci
-    - npm run test
+    install:
+      - ps: Add-Content c:\gisto\.env "GISTO_GITHUB_CLIENT_ID=$env:GISTO_GITHUB_CLIENT_ID"
+      - cmd: appveyor-retry powershell Install-Product node $env:nodejs_version
+      - cmd: set NODE_OPTIONS=--max_old_space_size=2000
+      - npm install -g npm@6
+      - set PATH=%APPDATA%\npm;%PATH%
+      - node --version && npm --version
+      - npm install -g cross-env rimraf electron-builder
+      - npm ci
+      - npm run test
 
-  build_script:
-    - npm run pack:win
+    build_script:
+      - npm run pack:win
 
   -
     branches:
