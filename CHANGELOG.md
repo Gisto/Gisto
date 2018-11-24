@@ -1,3 +1,6 @@
+### v1.10.17-beta.3
+*  TOOLS (betas): support beta versions prerelease [View](https://github.com/Gisto/Gisto/commit/fb6a6189f58bf273a1614d2143e2194dd6248dca)
+
 ### v1.10.17-beta.2
 *  TOOLS (betas): support beta versions prerelease [View](https://github.com/Gisto/Gisto/commit/7c30c62ab07fbeb0d414accbe70f9c8020ab7860)
 
