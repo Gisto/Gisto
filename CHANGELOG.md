@@ -1,3 +1,7 @@
+### v1.10.17-beta.0
+*  CHORE (maintains): update packages [View](https://github.com/Gisto/Gisto/commit/044553fc17b7de5ec810445882119519ed0e1507)
+*  TOOLS (betas): support beta versions prerelease [View](https://github.com/Gisto/Gisto/commit/90bc33d2dcd8fd71d8928eb9f3e0f0d98947b96a)
+
 ### v1.10.16
 *  CHORE (optimize load): use terser and reacr-loadable [View](https://github.com/Gisto/Gisto/commit/b1800667b91a733ba651ed2e96993ef4cbeb4e4e)
 
