@@ -20,7 +20,7 @@
     "prod": "cross-env NODE_ENV=production concurrently \"npm run start:prod\" \"wait-on dist && npm run electron:prod\"",
     "dev": "cross-env NODE_ENV=development concurrently \"npm run start:dev\" \"wait-on dist && npm run electron:dev\"",
     "preversion": "sh change-log-builder.sh",
-    "preversion:readme": "replace \"v\\d+\\.\\d+\\.\\d+\" \"v$npm_package_version\" ./README.md",
+    "preversion:readme": "replace \"v(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-(0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(\\.(0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\\+[0-9a-zA-Z-]+(\\.[0-9a-zA-Z-]+)*)?\" \"v$npm_package_version\" ./README.md",
     "preversion:changelog": "replace \"vPLACEHOLDER\" \"v$npm_package_version\" ./CHANGELOG.md",
     "version": "npm run preversion:readme && npm run preversion:changelog && git add .",
     "postversion": "git push && git push origin --tags",
