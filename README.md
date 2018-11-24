@@ -162,10 +162,17 @@ _(for more commands, see `package.json` script section)_
 
 ## Release cycle
 
+#### pre-release (_beta_ from _next_ branch)
+
+- make changes on `next` brnch **ONLY**
+- commit (this will run lint and tests)
+- **do not push**, run `npm run make:release:beta` - will commit new tag with `-beta.0` prefix and will also push
+
+#### release
+
 - make changes on `next` brnch **ONLY**
 - commit (this will run lint and tests) and push
-- merge `next` -> `master` with `git checkout master && git merge next --no-edit`
-- **do not push**, run `npm run release` (for patch version) or `npm run release:minor` (for minor version), will update readme and changelog, add and commit new tag and will also push
+- **do not push**, run `npm run make:release` (for minor version), will update readme and changelog, add and commit new tag and will also push
 
 ## License
 
