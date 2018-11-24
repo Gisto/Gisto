@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 const {
-  shell, app, Menu, ipcMain 
+  shell, app, Menu, ipcMain
 } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
@@ -204,16 +204,16 @@ function buildMenu(mainWindow) {
 
 function handleMacOSUpdates(mainWindow) {
   if (isMacOS) {
-    const LATEST_RELEASED_VERSION_URL = 'https://api.github.com/repos/Gisto/Gisto/releases';
+    const LATEST_RELEASED_VERSION_URL = 'https://api.github.com/repos/Gisto/Gisto/releases/latest';
     const request = require('superagent');
     const semver = require('semver');
 
     sendStatusToWindow('Gisto checking for new version...', {}, mainWindow, 'update-info');
 
     request.get(LATEST_RELEASED_VERSION_URL).end((error, result) => {
-      if (result.body[0]) {
-        const serverVersion = result.body[0].name;
-        const serverAssets = result.body[0].assets;
+      if (result.body) {
+        const serverVersion = result.body.name;
+        const serverAssets = result.body.assets;
         const shouldUpdate = semver.lt(packageJson.version, serverVersion);
 
         if (shouldUpdate) {
@@ -246,7 +246,7 @@ function handleMacOSUpdates(mainWindow) {
 function updateChecker(mainWindow) {
   ipcMain.on('downloadUpdate', () => autoUpdater.downloadUpdate());
   ipcMain.on('quitAndInstall', () => autoUpdater.quitAndInstall(true, true));
-    
+
   autoUpdater.logger = log;
   autoUpdater.logger.transports.file.level = 'debug';
 
@@ -268,7 +268,7 @@ function updateChecker(mainWindow) {
   autoUpdater.on('download-progress', (progress, bytesPerSecond, percent, total, transferred) => {
     sendStatusToWindow(
       'Downloaded: ', {
-        progress, bytesPerSecond, percent, total, transferred 
+        progress, bytesPerSecond, percent, total, transferred
       }, mainWindow, 'download-progress'
     );
   });
