@@ -30,8 +30,10 @@
     "pack:win": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build -w --x64 --ia32 --publish=always",
     "pack:linux": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build --l --x64 --publish=always",
     "pack:all": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build -mwl --x64 --publish=always",
-    "pack": "NODE_ENV=production npm run start:prod && npx electron-builder build --publish=always",
-    "make:release": "git checkout master && git merge next --no-edit && npm run release"
+    "pack:beta": "NODE_ENV=production npm run start:prod && npx electron-builder build --config electron-builder-prerelease.json --publish=always",
+    "pack": "NODE_ENV=production npm run start:prod && npx electron-builder build --config electron-builder.json --publish=always",
+    "make:release": "git checkout master && git merge next --no-edit && npm run release",
+    "make:release:beta": "npm version prerelease --preid=beta"
   },
   "repository": {
     "type": "git",

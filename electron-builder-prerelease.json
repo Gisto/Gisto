@@ -1,0 +1,72 @@
+{
+  "directories": {
+    "app": "dist",
+    "buildResources": "build",
+    "output": "release"
+  },
+  "appId": "com.gistoapp.gisto2",
+  "artifactName": "${productName}-${version}-${arch}.${ext}",
+  "mac": {
+    "publish": {
+      "provider": "github",
+      "releaseType": "prerelease"
+    },
+    "category": "public.app-category.productivity",
+    "icon": "build/icon.png"
+  },
+  "dmg": {
+    "publish": {
+      "provider": "github",
+      "releaseType": "prerelease"
+    },
+    "window": {
+      "width": 540,
+      "height": 328
+    },
+    "contents": [
+      {
+        "x": 100,
+        "y": 200
+      },
+      {
+        "x": 440,
+        "y": 200,
+        "type": "link",
+        "path": "/Applications"
+      }
+    ]
+  },
+  "win": {
+    "publish": {
+      "provider": "github",
+      "releaseType": "prerelease"
+    },
+    "target": "nsis",
+    "icon": "build/icon.ico"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": false,
+    "createDesktopShortcut": "always"
+  },
+  "linux": {
+    "maintainer": "Sasha Khamkov <sanusart@gmail.com>",
+    "icon": "build/icon/",
+    "desktop": {
+      "StartupWMClass": "gisto"
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "prerelease"
+    },
+    "target": [
+      "deb",
+      "rpm",
+      "pacman",
+      "AppImage",
+      "snap"
+    ],
+    "synopsis": "Gisto - snippets made awesome",
+    "category": "Development"
+  }
+}
