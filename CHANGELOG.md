@@ -1,3 +1,6 @@
+### v1.10.17
+
+
 ### v1.10.17-beta.11
 *  TOOLS (releases): fix beta releases functionality of appveyor builds, wrong config file [View](https://github.com/Gisto/Gisto/commit/d15c4308c7b2285792ad8ee262633881f0e04bf6)
 
