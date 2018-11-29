@@ -11,7 +11,7 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
   >
     <StyledComponent
       download="file.zip"
-      forwardedClass={
+      forwardedComponent={
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
@@ -28,6 +28,7 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
             ],
           },
           "displayName": "Link",
+          "foldedComponentIds": Array [],
           "render": [Function],
           "styledComponentId": "Link-sc-17j1f2u-0",
           "target": "a",

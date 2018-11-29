@@ -4,7 +4,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
 <About>
   <Wrapper>
     <StyledComponent
-      forwardedClass={
+      forwardedComponent={
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
@@ -17,6 +17,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
             ],
           },
           "displayName": "Wrapper",
+          "foldedComponentIds": Array [],
           "render": [Function],
           "styledComponentId": "Wrapper-l90ydr-0",
           "target": "div",
@@ -64,7 +65,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                 onClick={[Function]}
               >
                 <StyledComponent
-                  forwardedClass={
+                  forwardedComponent={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
@@ -81,6 +82,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                         ],
                       },
                       "displayName": "Link",
+                      "foldedComponentIds": Array [],
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",
@@ -117,7 +119,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                 onClick={[Function]}
               >
                 <StyledComponent
-                  forwardedClass={
+                  forwardedComponent={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
@@ -134,6 +136,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                         ],
                       },
                       "displayName": "Link",
+                      "foldedComponentIds": Array [],
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",
@@ -170,7 +173,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                 onClick={[Function]}
               >
                 <StyledComponent
-                  forwardedClass={
+                  forwardedComponent={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
@@ -187,6 +190,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                         ],
                       },
                       "displayName": "Link",
+                      "foldedComponentIds": Array [],
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",
@@ -223,7 +227,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                 onClick={[Function]}
               >
                 <StyledComponent
-                  forwardedClass={
+                  forwardedComponent={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
@@ -240,6 +244,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                         ],
                       },
                       "displayName": "Link",
+                      "foldedComponentIds": Array [],
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",
@@ -276,7 +281,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                 onClick={[Function]}
               >
                 <StyledComponent
-                  forwardedClass={
+                  forwardedComponent={
                     Object {
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
@@ -293,6 +298,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
                         ],
                       },
                       "displayName": "Link",
+                      "foldedComponentIds": Array [],
                       "render": [Function],
                       "styledComponentId": "Link-sc-17j1f2u-0",
                       "target": "a",

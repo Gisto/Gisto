@@ -7,7 +7,7 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
 >
   <StyledComponent
     color="#ff0000"
-    forwardedClass={
+    forwardedComponent={
       Object {
         "$$typeof": Symbol(react.forward_ref),
         "attrs": Array [],
@@ -35,6 +35,7 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
           ],
         },
         "displayName": "Icon",
+        "foldedComponentIds": Array [],
         "render": [Function],
         "styledComponentId": "Icon-vk4qna-0",
         "target": "span",

@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40972813-6"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-40972813-6', {
-			'cookie_name': 'gaCookie',
-			'cookie_domain': 'web.gistoapp.com',
-			'cookie_expires': 2419200
-		});
-	</script>
-
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="desciption" content="Gisto snippet manager for desktop and web, snippets made awesome">
@@ -24,12 +10,5 @@
 </head>
 <body>
 <div id="gisto"></div>
-<script>
-	if ('serviceWorker' in navigator) {
-		window.addEventListener('load', () => {
-			navigator.serviceWorker.register('/service-worker.js');
-		});
-	}
-</script>
 </body>
 </html>

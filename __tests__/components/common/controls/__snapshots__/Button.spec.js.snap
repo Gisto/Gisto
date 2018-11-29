@@ -42,7 +42,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
     <StyledComponent
       className="btn"
       disabled={false}
-      forwardedClass={
+      forwardedComponent={
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
@@ -71,6 +71,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
             ],
           },
           "displayName": "ButtonComponent",
+          "foldedComponentIds": Array [],
           "render": [Function],
           "styledComponentId": "ButtonComponent-sc-1hy9a8c-0",
           "target": "button",
@@ -96,7 +97,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
           type="menu"
         >
           <StyledComponent
-            forwardedClass={
+            forwardedComponent={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
@@ -124,6 +125,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
                   ],
                 },
                 "displayName": "Icon",
+                "foldedComponentIds": Array [],
                 "render": [Function],
                 "styledComponentId": "Icon-vk4qna-0",
                 "target": "span",

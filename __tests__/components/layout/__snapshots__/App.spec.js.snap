@@ -2,8 +2,6 @@
 
 exports[`COMPONENTS - <App> render App 1`] = `
 <AppWrapper>
-  <GlobalStyleComponent
-    suppressMultiMountWarning={false}
-  />
+  <GlobalStyleComponent />
 </AppWrapper>
 `;

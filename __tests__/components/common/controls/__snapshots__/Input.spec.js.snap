@@ -19,7 +19,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
       className="classified"
       defaultValue="typetypetype"
       disabled={false}
-      forwardedClass={
+      forwardedComponent={
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
@@ -40,6 +40,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
             ],
           },
           "displayName": "StyledInput",
+          "foldedComponentIds": Array [],
           "render": [Function],
           "styledComponentId": "StyledInput-sc-86zjwb-0",
           "target": "input",
