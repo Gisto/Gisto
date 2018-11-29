@@ -85,7 +85,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       title: 'Gisto',
       favicon: './build/icon.png',
-      template: './src/index.html',
+      template: './src/index-web.html',
       filename: './index.html',
       hash: true
     }),

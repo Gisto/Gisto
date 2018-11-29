@@ -7,7 +7,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
   <div>
     <H4>
       <StyledComponent
-        forwardedClass={
+        forwardedComponent={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
@@ -24,6 +24,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               ],
             },
             "displayName": "H4",
+            "foldedComponentIds": Array [],
             "render": [Function],
             "styledComponentId": "H4-sc-3i0r91-6",
             "target": "h4",
@@ -43,7 +44,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
     </H4>
     <Wrapper>
       <StyledComponent
-        forwardedClass={
+        forwardedComponent={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
@@ -56,6 +57,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               ],
             },
             "displayName": "Wrapper",
+            "foldedComponentIds": Array [],
             "render": [Function],
             "styledComponentId": "Wrapper-sc-3i0r91-0",
             "target": "div",
@@ -71,7 +73,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
         >
           <Section>
             <StyledComponent
-              forwardedClass={
+              forwardedComponent={
                 Object {
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
@@ -84,6 +86,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     ],
                   },
                   "displayName": "Section",
+                  "foldedComponentIds": Array [],
                   "render": [Function],
                   "styledComponentId": "Section-sc-3i0r91-2",
                   "target": "div",
@@ -99,7 +102,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               >
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -112,6 +115,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -127,7 +131,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -140,6 +144,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -161,7 +166,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               value="vs"
                             >
                               <StyledComponent
-                                forwardedClass={
+                                forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
@@ -174,6 +179,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       ],
                                     },
                                     "displayName": "StyledISelect",
+                                    "foldedComponentIds": Array [],
                                     "render": [Function],
                                     "styledComponentId": "StyledISelect-sc-3i0r91-5",
                                     "target": [Function],
@@ -200,7 +206,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     <StyledComponent
                                       className="StyledISelect-sc-3i0r91-5 bnSweD"
                                       defaultValue="vs"
-                                      forwardedClass={
+                                      forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
@@ -227,6 +233,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                             ],
                                           },
                                           "displayName": "SelectInput",
+                                          "foldedComponentIds": Array [],
                                           "render": [Function],
                                           "styledComponentId": "SelectInput-sc-13maoso-0",
                                           "target": "select",
@@ -272,7 +279,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -285,6 +292,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -300,7 +308,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -313,6 +321,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -340,7 +349,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={false}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -357,6 +366,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -386,7 +396,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -399,6 +409,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -414,7 +425,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -427,6 +438,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -454,7 +466,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={false}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -471,6 +483,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -500,7 +513,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -513,6 +526,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -528,7 +542,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -541,6 +555,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -568,7 +583,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={true}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -585,6 +600,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -614,7 +630,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -627,6 +643,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -642,7 +659,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -655,6 +672,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -682,7 +700,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={true}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -699,6 +717,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -728,7 +747,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -741,6 +760,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -756,7 +776,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -769,6 +789,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -796,7 +817,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={true}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -813,6 +834,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -842,7 +864,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -855,6 +877,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -870,7 +893,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -883,6 +906,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -910,7 +934,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={false}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -927,6 +951,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -959,7 +984,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
           </Section>
           <Section>
             <StyledComponent
-              forwardedClass={
+              forwardedComponent={
                 Object {
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
@@ -972,6 +997,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     ],
                   },
                   "displayName": "Section",
+                  "foldedComponentIds": Array [],
                   "render": [Function],
                   "styledComponentId": "Section-sc-3i0r91-2",
                   "target": "div",
@@ -987,7 +1013,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               >
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -1000,6 +1026,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -1015,7 +1042,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -1028,6 +1055,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -1050,7 +1078,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               value="monospace"
                             >
                               <StyledComponent
-                                forwardedClass={
+                                forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
@@ -1063,6 +1091,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       ],
                                     },
                                     "displayName": "StyledInput",
+                                    "foldedComponentIds": Array [],
                                     "render": [Function],
                                     "styledComponentId": "StyledInput-sc-3i0r91-4",
                                     "target": [Function],
@@ -1095,7 +1124,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       className="StyledInput-sc-3i0r91-4 lIHVh"
                                       defaultValue="monospace"
                                       disabled={false}
-                                      forwardedClass={
+                                      forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
@@ -1116,6 +1145,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                             ],
                                           },
                                           "displayName": "StyledInput",
+                                          "foldedComponentIds": Array [],
                                           "render": [Function],
                                           "styledComponentId": "StyledInput-sc-86zjwb-0",
                                           "target": "input",
@@ -1150,7 +1180,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -1163,6 +1193,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -1178,7 +1209,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -1191,6 +1222,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -1213,7 +1245,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               value={12}
                             >
                               <StyledComponent
-                                forwardedClass={
+                                forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
@@ -1226,6 +1258,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       ],
                                     },
                                     "displayName": "StyledInput",
+                                    "foldedComponentIds": Array [],
                                     "render": [Function],
                                     "styledComponentId": "StyledInput-sc-3i0r91-4",
                                     "target": [Function],
@@ -1258,7 +1291,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       className="StyledInput-sc-3i0r91-4 lIHVh"
                                       defaultValue={12}
                                       disabled={false}
-                                      forwardedClass={
+                                      forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
@@ -1279,6 +1312,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                             ],
                                           },
                                           "displayName": "StyledInput",
+                                          "foldedComponentIds": Array [],
                                           "render": [Function],
                                           "styledComponentId": "StyledInput-sc-86zjwb-0",
                                           "target": "input",
@@ -1313,7 +1347,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -1326,6 +1360,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -1341,7 +1376,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -1354,6 +1389,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -1376,7 +1412,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               value={21}
                             >
                               <StyledComponent
-                                forwardedClass={
+                                forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
@@ -1389,6 +1425,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       ],
                                     },
                                     "displayName": "StyledInput",
+                                    "foldedComponentIds": Array [],
                                     "render": [Function],
                                     "styledComponentId": "StyledInput-sc-3i0r91-4",
                                     "target": [Function],
@@ -1421,7 +1458,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       className="StyledInput-sc-3i0r91-4 lIHVh"
                                       defaultValue={21}
                                       disabled={false}
-                                      forwardedClass={
+                                      forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
@@ -1442,6 +1479,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                             ],
                                           },
                                           "displayName": "StyledInput",
+                                          "foldedComponentIds": Array [],
                                           "render": [Function],
                                           "styledComponentId": "StyledInput-sc-86zjwb-0",
                                           "target": "input",
@@ -1476,7 +1514,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -1489,6 +1527,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -1504,7 +1543,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -1517,6 +1556,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -1544,7 +1584,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={false}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -1561,6 +1601,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -1590,7 +1631,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -1603,6 +1644,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -1618,7 +1660,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -1631,6 +1673,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -1652,7 +1695,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               value="blink"
                             >
                               <StyledComponent
-                                forwardedClass={
+                                forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
@@ -1665,6 +1708,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       ],
                                     },
                                     "displayName": "StyledISelect",
+                                    "foldedComponentIds": Array [],
                                     "render": [Function],
                                     "styledComponentId": "StyledISelect-sc-3i0r91-5",
                                     "target": [Function],
@@ -1691,7 +1735,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     <StyledComponent
                                       className="StyledISelect-sc-3i0r91-5 bnSweD"
                                       defaultValue="blink"
-                                      forwardedClass={
+                                      forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
@@ -1718,6 +1762,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                             ],
                                           },
                                           "displayName": "SelectInput",
+                                          "foldedComponentIds": Array [],
                                           "render": [Function],
                                           "styledComponentId": "SelectInput-sc-13maoso-0",
                                           "target": "select",
@@ -1773,7 +1818,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -1786,6 +1831,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -1801,7 +1847,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -1814,6 +1860,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -1835,7 +1882,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               value="bounded"
                             >
                               <StyledComponent
-                                forwardedClass={
+                                forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
@@ -1848,6 +1895,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       ],
                                     },
                                     "displayName": "StyledISelect",
+                                    "foldedComponentIds": Array [],
                                     "render": [Function],
                                     "styledComponentId": "StyledISelect-sc-3i0r91-5",
                                     "target": [Function],
@@ -1874,7 +1922,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     <StyledComponent
                                       className="StyledISelect-sc-3i0r91-5 bnSweD"
                                       defaultValue="bounded"
-                                      forwardedClass={
+                                      forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
@@ -1901,6 +1949,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                             ],
                                           },
                                           "displayName": "SelectInput",
+                                          "foldedComponentIds": Array [],
                                           "render": [Function],
                                           "styledComponentId": "SelectInput-sc-13maoso-0",
                                           "target": "select",
@@ -1951,7 +2000,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -1964,6 +2013,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -1979,7 +2029,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -1992,6 +2042,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -2014,7 +2065,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               value={80}
                             >
                               <StyledComponent
-                                forwardedClass={
+                                forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
@@ -2027,6 +2078,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       ],
                                     },
                                     "displayName": "StyledInput",
+                                    "foldedComponentIds": Array [],
                                     "render": [Function],
                                     "styledComponentId": "StyledInput-sc-3i0r91-4",
                                     "target": [Function],
@@ -2059,7 +2111,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       className="StyledInput-sc-3i0r91-4 lIHVh"
                                       defaultValue={80}
                                       disabled={false}
-                                      forwardedClass={
+                                      forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
@@ -2080,6 +2132,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                             ],
                                           },
                                           "displayName": "StyledInput",
+                                          "foldedComponentIds": Array [],
                                           "render": [Function],
                                           "styledComponentId": "StyledInput-sc-86zjwb-0",
                                           "target": "input",
@@ -2120,7 +2173,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
     </Wrapper>
     <H4>
       <StyledComponent
-        forwardedClass={
+        forwardedComponent={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
@@ -2137,6 +2190,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               ],
             },
             "displayName": "H4",
+            "foldedComponentIds": Array [],
             "render": [Function],
             "styledComponentId": "H4-sc-3i0r91-6",
             "target": "h4",
@@ -2156,7 +2210,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
     </H4>
     <Wrapper>
       <StyledComponent
-        forwardedClass={
+        forwardedComponent={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
@@ -2169,6 +2223,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               ],
             },
             "displayName": "Wrapper",
+            "foldedComponentIds": Array [],
             "render": [Function],
             "styledComponentId": "Wrapper-sc-3i0r91-0",
             "target": "div",
@@ -2184,7 +2239,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
         >
           <Section>
             <StyledComponent
-              forwardedClass={
+              forwardedComponent={
                 Object {
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
@@ -2197,6 +2252,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     ],
                   },
                   "displayName": "Section",
+                  "foldedComponentIds": Array [],
                   "render": [Function],
                   "styledComponentId": "Section-sc-3i0r91-2",
                   "target": "div",
@@ -2212,7 +2268,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               >
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -2225,6 +2281,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -2240,7 +2297,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -2253,6 +2310,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -2280,7 +2338,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={false}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -2297,6 +2355,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -2326,7 +2385,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -2339,6 +2398,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -2354,7 +2414,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -2367,6 +2427,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -2394,7 +2455,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={true}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -2411,6 +2472,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -2440,7 +2502,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -2453,6 +2515,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -2468,7 +2531,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -2481,6 +2544,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -2508,7 +2572,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={true}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -2525,6 +2589,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -2554,7 +2619,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -2567,6 +2632,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -2582,7 +2648,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -2595,6 +2661,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -2622,7 +2689,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={true}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -2639,6 +2706,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -2671,7 +2739,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
           </Section>
           <Section>
             <StyledComponent
-              forwardedClass={
+              forwardedComponent={
                 Object {
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
@@ -2684,6 +2752,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     ],
                   },
                   "displayName": "Section",
+                  "foldedComponentIds": Array [],
                   "render": [Function],
                   "styledComponentId": "Section-sc-3i0r91-2",
                   "target": "div",
@@ -2699,7 +2768,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               >
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -2712,6 +2781,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -2727,7 +2797,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -2740,6 +2810,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -2767,7 +2838,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={true}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -2784,6 +2855,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -2813,7 +2885,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -2826,6 +2898,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -2841,7 +2914,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -2854,6 +2927,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -2881,7 +2955,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={true}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -2898,6 +2972,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",
@@ -2927,7 +3002,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                 </Field>
                 <Field>
                   <StyledComponent
-                    forwardedClass={
+                    forwardedComponent={
                       Object {
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
@@ -2940,6 +3015,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           ],
                         },
                         "displayName": "Field",
+                        "foldedComponentIds": Array [],
                         "render": [Function],
                         "styledComponentId": "Field-sc-3i0r91-3",
                         "target": "div",
@@ -2955,7 +3031,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     >
                       <Label>
                         <StyledComponent
-                          forwardedClass={
+                          forwardedComponent={
                             Object {
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
@@ -2968,6 +3044,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 ],
                               },
                               "displayName": "Label",
+                              "foldedComponentIds": Array [],
                               "render": [Function],
                               "styledComponentId": "Label-sc-3i0r91-1",
                               "target": "div",
@@ -2995,7 +3072,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               >
                                 <StyledComponent
                                   defaultChecked={true}
-                                  forwardedClass={
+                                  forwardedComponent={
                                     Object {
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
@@ -3012,6 +3089,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                         ],
                                       },
                                       "displayName": "Box",
+                                      "foldedComponentIds": Array [],
                                       "render": [Function],
                                       "styledComponentId": "Box-sc-1bw5uxh-0",
                                       "target": "input",

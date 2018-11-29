@@ -40,7 +40,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
     <StyledComponent
       className="UtilityIcon"
       color="red"
-      forwardedClass={
+      forwardedComponent={
         Object {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
@@ -89,6 +89,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
             ],
           },
           "displayName": "Util",
+          "foldedComponentIds": Array [],
           "render": [Function],
           "styledComponentId": "Util-d02m7m-0",
           "target": "span",
@@ -114,7 +115,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
         >
           <StyledComponent
             color="red"
-            forwardedClass={
+            forwardedComponent={
               Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
@@ -142,6 +143,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
                   ],
                 },
                 "displayName": "Icon",
+                "foldedComponentIds": Array [],
                 "render": [Function],
                 "styledComponentId": "Icon-vk4qna-0",
                 "target": "span",
