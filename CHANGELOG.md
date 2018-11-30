@@ -1,3 +1,9 @@
+### v1.10.18-beta.1
+*  FIX (app load): add service worker [View](https://github.com/Gisto/Gisto/commit/039af365017dbb2b5283df798c25244556e8169c)
+*  CHORE (readme): update readme [View](https://github.com/Gisto/Gisto/commit/00e7cb8649c391e84c733df0438b2f5d91414951)
+*  CHORE (packages): update packages and service worker for web [View](https://github.com/Gisto/Gisto/commit/8b44801925c2b2af40349451340a240fc837b5ac)
+*  1.10.18-beta.0 [View](https://github.com/Gisto/Gisto/commit/bc673617cb3e9125785f66eb961354b7a8c74927)
+
 ### v1.10.18-beta.0
 *  FIX (app load): add service worker [View](https://github.com/Gisto/Gisto/commit/039af365017dbb2b5283df798c25244556e8169c)
 *  CHORE (readme): update readme [View](https://github.com/Gisto/Gisto/commit/00e7cb8649c391e84c733df0438b2f5d91414951)
