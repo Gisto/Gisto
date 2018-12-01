@@ -1,3 +1,6 @@
+### v1.10.18-beta.2
+*  FIX (icons): optimize size with svgo [View](https://github.com/Gisto/Gisto/commit/d2cdb0f7a83efc11bf8231a05c6d9c500a2f05f0)
+
 ### v1.10.18-beta.1
 *  FIX (app load): add service worker [View](https://github.com/Gisto/Gisto/commit/039af365017dbb2b5283df798c25244556e8169c)
 *  CHORE (readme): update readme [View](https://github.com/Gisto/Gisto/commit/00e7cb8649c391e84c733df0438b2f5d91414951)
