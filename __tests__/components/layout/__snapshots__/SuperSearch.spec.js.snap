@@ -129,7 +129,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "StyledLookingGlass-sc-1mnove5-3",
                               "isStatic": false,
-                              "lastClassName": "bWmVrt",
+                              "lastClassName": "HmNJQ",
                               "rules": Array [
                                 "background-color:",
                                 [Function],
@@ -137,11 +137,11 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                                 [Function],
                                 "px;height:",
                                 [Function],
-                                "px;-webkit-mask-image:url('src/icons/",
+                                "px;mask-image:url('src/icons/",
                                 "ionic",
                                 "/",
                                 [Function],
-                                "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                                "');mask-repeat:no-repeat;mask-size:contain;mask-position:center;",
                                 [Function],
                                 " ",
                                 [Function],
@@ -167,7 +167,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                         type="search"
                       >
                         <span
-                          className="Icon-vk4qna-0 StyledLookingGlass-sc-1mnove5-3 bWmVrt"
+                          className="Icon-vk4qna-0 StyledLookingGlass-sc-1mnove5-3 HmNJQ"
                           size={32}
                           type="search"
                         />

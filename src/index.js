@@ -15,14 +15,14 @@ if (isElectron) {
   const { init } = require('@sentry/electron');
 
   init({
-    dsn: 'https://9b448264479b47418f9e248c208632ae@sentry.io/1245680',
+    dsn: process.env.SENTRY_DSN,
     release: version,
     environment: process.env.NODE_ENV
   });
 } else {
   const Raven = require('raven-js');
 
-  Raven.config('https://9b448264479b47418f9e248c208632ae@sentry.io/1245680', {
+  Raven.config(process.env.SENTRY_DSN, {
     release: version,
     environment: process.env.NODE_ENV
   }).install();
@@ -36,12 +36,10 @@ const Gisto = () => (
 );
 
 if (process.env.NODE_ENV === 'development') {
-  const _ = require('lodash');
-  const fp = require('lodash/fp');
+  const _ = require('lodash/fp');
 
-  window.gistostore = store;
+  window.store = store;
   window._ = _;
-  window.fp = fp;
 }
 
 ReactDOM.render(

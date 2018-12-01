@@ -104,7 +104,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
                 "componentStyle": ComponentStyle {
                   "componentId": "Icon-vk4qna-0",
                   "isStatic": false,
-                  "lastClassName": "dJnqmR",
+                  "lastClassName": "kGLNCw",
                   "rules": Array [
                     "background-color:",
                     [Function],
@@ -112,11 +112,11 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
                     [Function],
                     "px;height:",
                     [Function],
-                    "px;-webkit-mask-image:url('src/icons/",
+                    "px;mask-image:url('src/icons/",
                     "ionic",
                     "/",
                     [Function],
-                    "');-webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;",
+                    "');mask-repeat:no-repeat;mask-size:contain;mask-position:center;",
                     [Function],
                     " ",
                     [Function],
@@ -138,7 +138,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
             type="menu"
           >
             <span
-              className="Icon-vk4qna-0 dJnqmR"
+              className="Icon-vk4qna-0 kGLNCw"
               type="menu"
             />
           </StyledComponent>
