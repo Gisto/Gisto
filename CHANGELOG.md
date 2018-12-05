@@ -1,3 +1,7 @@
+### v1.10.18-beta.3
+*  CHORE (cleanup): remove unused [View](https://github.com/Gisto/Gisto/commit/3be47728abd60e7b596cf2c47cc6bf6ead3463f2)
+*  CHORE (typescript): convert to typescript [View](https://github.com/Gisto/Gisto/commit/e20ea96cf0126a4e5aee3a625c6acbcb27d94344)
+
 ### v1.10.18-beta.2
 *  FIX (icons): optimize size with svgo [View](https://github.com/Gisto/Gisto/commit/d2cdb0f7a83efc11bf8231a05c6d9c500a2f05f0)
 
