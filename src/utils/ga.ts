@@ -1,11 +1,17 @@
 import { GAUA } from 'constants/config';
 import { isElectron } from 'utils/electron';
 
-export const gaPage = (page) => {
+interface IGaEvent {
+  category: string;
+  action: string;
+  label: string;
+  value: string;
+}
+export const gaPage = (page: string) => {
   if (isElectron) {
     const cid = localStorage.getItem('unique-app-id');
 
-    const Analytics  = require('electron-google-analytics').default;
+    const Analytics = require('electron-google-analytics').default;
     const analytics = new Analytics(GAUA);
     const cookieDomain = 'https://web.gistoapp.com';
 
@@ -13,19 +19,17 @@ export const gaPage = (page) => {
   }
 
   gtag('config', GAUA, {
-    page_title: page,
-    page_path: page
+    page_path: page,
+    page_title: page
   });
 
   return true;
 };
 
-export const gaEvent = ({
-  category, action, label, value
-}) => {
+export const gaEvent = ({ category, action, label, value }: IGaEvent): boolean => {
   if (isElectron) {
     const cid = localStorage.getItem('unique-app-id');
-    const Analytics  = require('electron-google-analytics').default;
+    const Analytics = require('electron-google-analytics').default;
     const analytics = new Analytics(GAUA);
 
     return analytics.event(category, action, { evLabel: label, evValue: value, clientID: cid });

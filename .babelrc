@@ -1,9 +1,12 @@
 {
   "presets": [
+		"@babel/typescript",
 		"@babel/preset-env",
 		"@babel/preset-react"
 	],
 	"plugins": [
+		"@babel/proposal-class-properties",
+		"@babel/proposal-object-rest-spread",
 		"transform-dynamic-import",
 		"@babel/plugin-syntax-object-rest-spread",
 		"@babel/plugin-syntax-class-properties",
@@ -50,11 +53,6 @@
 		// Stage 3
 		"@babel/plugin-syntax-dynamic-import",
 		"@babel/plugin-syntax-import-meta",
-		[
-			"@babel/plugin-proposal-class-properties", {
-				"loose": false
-			}
-		],
 		"@babel/plugin-proposal-json-strings"
 	]
 }

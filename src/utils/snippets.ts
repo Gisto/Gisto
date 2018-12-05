@@ -1,33 +1,63 @@
 import {
-  filter,
-  includes,
-  startsWith,
-  trim,
-  sortBy,
-  flow,
-  reverse,
-  isEmpty,
   difference,
-  size,
+  filter,
+  flow,
+  head,
+  includes,
+  isEmpty,
   keyBy,
   map,
   pick,
   reduce,
-  head
+  reverse,
+  size,
+  sortBy,
+  startsWith,
+  trim
 } from 'lodash/fp';
-import { removeTags } from 'utils/tags';
 import { getFileLanguage } from 'utils/files';
 import { setNotification } from 'utils/notifications';
+import { removeTags } from 'utils/tags';
 
-export const isTag = (filterText) => startsWith('#', filterText);
+interface ISnippet {
+  id: string;
+  language: string;
+  filename?: string;
+  name?: string;
+  type?: any;
+  description?: string;
+  url?: string;
+  files: object[];
+  size: number;
+  fork_of: string;
+  history: object[];
+  public: boolean;
+  html_url: string;
+  comments: null | object[];
+  created_at: number;
+  updated_at: number;
+  lastModified: number;
+  tags: string[];
+}
 
-export const hasTag = (filterText) => filterText.match(/#.+/ig);
+interface IFile {
+  language: string;
+  filename: string;
+  name: string;
+  type: any;
+  size: number;
+  content?: string;
+}
 
-const filterByTagsText = (snippets, filterText) => {
+export const isTag = (filterText: string) => startsWith('#', filterText);
+
+export const hasTag = (filterText: string) => filterText.match(/#.+/gi);
+
+const filterByTagsText = (snippets: ISnippet, filterText: string) => {
   return filter((snippet) => includes(filterText, snippet.tags), snippets);
 };
 
-const filterByFreeText = (snippets, filterText) => {
+const filterByFreeText = (snippets: ISnippet, filterText: string) => {
   try {
     // eslint-disable-next-line no-new
     new RegExp(filterText, 'gi');
@@ -47,7 +77,7 @@ const filterByFreeText = (snippets, filterText) => {
         return !!snippet.description.includes(removeTags(filterText));
       }, snippets);
 
-      const matchedTag = head(filterText.match(/#.+/ig));
+      const matchedTag = head(filterText.match(/#.+/gi));
 
       return filter((snippet) => {
         return !!includes(matchedTag, snippet.tags);
@@ -56,12 +86,9 @@ const filterByFreeText = (snippets, filterText) => {
 
     return filter((snippet) => {
       const descriptionMatch = snippet.description.match(regex);
-      const fileNameMatch = size(
-        filter((file) => file.filename.match(regex), snippet.files)
-      ) > 0;
-      const contentMatch = size(
-        filter((file) => file.content && file.content.match(regex), snippet.files)
-      ) > 0;
+      const fileNameMatch = size(filter((file) => file.filename.match(regex), snippet.files)) > 0;
+      const contentMatch =
+        size(filter((file) => file.content && file.content.match(regex), snippet.files)) > 0;
 
       return descriptionMatch || fileNameMatch || contentMatch;
     }, snippets);
@@ -70,27 +97,27 @@ const filterByFreeText = (snippets, filterText) => {
   return snippets;
 };
 
-const filterByTags = (snippets, filterTags) => {
+const filterByTags = (snippets: ISnippet, filterTags: string) => {
   return filter((snippet) => size(difference(filterTags, snippet.tags)) === 0, snippets);
 };
 
-const filterByLanguage = (snippets, filterLanguage) => {
+const filterByLanguage = (snippets: ISnippet, filterLanguage: string | null) => {
   return filter((snippet) => includes(filterLanguage, snippet.languages), snippets);
 };
 
-const filterByStatus = (snippets, filterStatus) => {
+const filterByStatus = (snippets: ISnippet, filterStatus: string) => {
   switch (filterStatus) {
     case 'private': {
-      return filter({ public: false }, snippets);
+      return filter((snippet) => snippet.public === false, snippets);
     }
     case 'public': {
-      return filter({ public: true }, snippets);
+      return filter((snippet) => snippet.public === true, snippets);
     }
     case 'starred': {
-      return filter({ star: true }, snippets);
+      return filter((snippet) => snippet.star === true, snippets);
     }
     case 'untitled': {
-      return filter({ description: 'untitled' }, snippets);
+      return filter((snippet) => snippet.description === 'untitled', snippets);
     }
     default: {
       return snippets;
@@ -99,7 +126,13 @@ const filterByStatus = (snippets, filterStatus) => {
 };
 
 export const filterSnippetsList = (
-  snippets, filterText, filterTags, filterLanguage, filterStatus, filterTruncated, filterUntagged
+  snippets: ISnippet,
+  filterText: string,
+  filterTags: string,
+  filterLanguage: string,
+  filterStatus: string,
+  filterTruncated: string,
+  filterUntagged: string
 ) => {
   const sortedSnippets = flow([sortBy(['created']), reverse])(snippets);
 
@@ -124,28 +157,29 @@ export const filterSnippetsList = (
   }
 
   if (filterUntagged) {
-    return filter((snippet) => (snippet.tags === null || size(snippet.tags) === 0), sortedSnippets);
+    return filter((snippet) => snippet.tags === null || size(snippet.tags) === 0, sortedSnippets);
   }
 
   return sortedSnippets;
 };
 
-export const copyToClipboard = (event, text, message) => {
-  const notification = message || { title: 'Copied to clipboard' };
-  const handleCopy = (copyEvent) => {
+export const copyToClipboard = (event: Event, text: string, message: string) => {
+  const notification = { title: message || 'Copied to clipboard' };
+  const handleCopy = (copyEvent: ClipboardEvent) => {
     copyEvent.clipboardData.setData('text/plain', text);
     copyEvent.preventDefault();
     document.removeEventListener('copy', handleCopy, true);
   };
 
+  // @ts-ignore
   document.addEventListener('copy', handleCopy.bind(this), true);
   document.execCommand('copy');
   setNotification({ ...notification, type: 'success' });
 };
 
-export const prepareFiles = (files) => {
+export const prepareFiles = (files: IFile[]) => {
   return flow([
-    map((file) => ({
+    map((file: IFile) => ({
       name: file.name,
       content: file.content
     })),
@@ -153,13 +187,18 @@ export const prepareFiles = (files) => {
   ])(files);
 };
 
-export const prepareFilesForUpdate = (snippet) => {
+export const prepareFilesForUpdate = (snippet: ISnippet) => {
   const cleanFiles = flow([
     map((file) => {
       return pick(['filename', 'content', 'originalFileName', 'delete', 'isNew'], file);
     }),
     // we do not support saving/editing specific files
-    filter((file) => !file.filename.match(/png|jpg|jpeg|gif|bmp|tiff|tif|webp|xpm|exif|icns|ico|jp2|ai|psd|pdf/ig))
+    filter(
+      (file: IFile) =>
+        !file.filename.match(
+          /png|jpg|jpeg|gif|bmp|tiff|tif|webp|xpm|exif|icns|ico|jp2|ai|psd|pdf/gi
+        )
+    )
   ])(snippet.files);
 
   const filesClean = keyBy('originalFileName', cleanFiles);
@@ -192,4 +231,4 @@ export const prepareFilesForUpdate = (snippet) => {
   };
 };
 
-export const fileTypesList = (files) => map((file) => getFileLanguage(file), files);
+export const fileTypesList = (files: IFile) => map((file) => getFileLanguage(file), files);

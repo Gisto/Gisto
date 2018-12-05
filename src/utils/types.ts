@@ -1,4 +1,4 @@
-export const handleTypes = (item) => {
+export const handleTypes = (item: string) => {
   if (item === 'true') {
     return true;
   }

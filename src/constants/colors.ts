@@ -1,8 +1,8 @@
-import { getSetting } from 'utils/settings';
 import { tint } from 'polished';
+import { getSetting } from 'utils/settings';
 
-export const tintBackground = (color) => tint(0.90, color);
-export const tintHeaderBgLightest = (color) => tint(0.75, color);
+export const tintBackground = (color: string) => tint(0.9, color);
+export const tintHeaderBgLightest = (color: string) => tint(0.75, color);
 
 export const theme = {
   baseAppColor: getSetting('color', '#3F84A8'),

@@ -2,5 +2,7 @@
   "singleQuote": true,
   "arrowParens": "always",
   "printWidth": 100,
-  "jsxBracketSameLine": true
+  "jsxBracketSameLine": true,
+  "useTabs": false,
+  "tabWidth": 2
 }

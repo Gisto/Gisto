@@ -4,17 +4,17 @@ export const getRateLimit = () => ({
   type: AT.GET_RATE_LIMIT
 });
 
-export const getSnippets = (since) => ({
+export const getSnippets = (since: string) => ({
   type: AT.GET_SNIPPETS,
   payload: { since }
 });
 
-export const getStarredSnippets = (since) => ({
+export const getStarredSnippets = (since: string) => ({
   type: AT.GET_STARRED_SNIPPETS,
   payload: { since }
 });
 
-export const getSnippet = (id) => ({
+export const getSnippet = (id: string) => ({
   meta: {
     id
   },
@@ -22,7 +22,7 @@ export const getSnippet = (id) => ({
   payload: { id }
 });
 
-export const filterSnippetsByText = (value) => ({
+export const filterSnippetsByText = (value: string) => ({
   meta: {
     value
   },
@@ -30,7 +30,7 @@ export const filterSnippetsByText = (value) => ({
   payload: { value }
 });
 
-export const filterSnippetsByTags = (value) => ({
+export const filterSnippetsByTags = (value: string) => ({
   meta: {
     value
   },
@@ -38,7 +38,7 @@ export const filterSnippetsByTags = (value) => ({
   payload: { value }
 });
 
-export const filterSnippetsByLanguage = (value) => ({
+export const filterSnippetsByLanguage = (value: string) => ({
   meta: {
     value
   },
@@ -46,7 +46,7 @@ export const filterSnippetsByLanguage = (value) => ({
   payload: { value }
 });
 
-export const filterSnippetsByStatus = (status) => ({
+export const filterSnippetsByStatus = (status: string) => ({
   meta: {
     status
   },
@@ -66,7 +66,7 @@ export const clearAllFilters = () => ({
   type: AT.CLEAR_FILTERS
 });
 
-export const removeTagFromFilter = (tag) => ({
+export const removeTagFromFilter = (tag: string) => ({
   meta: {
     tag
   },
@@ -74,7 +74,7 @@ export const removeTagFromFilter = (tag) => ({
   payload: { tag }
 });
 
-export const starSnippet = (id) => ({
+export const starSnippet = (id: string) => ({
   meta: {
     id
   },
@@ -82,7 +82,7 @@ export const starSnippet = (id) => ({
   payload: { id }
 });
 
-export const unStarSnippet = (id) => ({
+export const unStarSnippet = (id: string) => ({
   meta: {
     id
   },
@@ -91,7 +91,13 @@ export const unStarSnippet = (id) => ({
 });
 
 export const createSnippet = ({
-  description, files, isPublic
+  description,
+  files,
+  isPublic
+}: {
+  description: string;
+  files: string[];
+  isPublic: boolean;
 }) => ({
   meta: {
     description,
@@ -106,7 +112,7 @@ export const createSnippet = ({
   }
 });
 
-export const deleteSnippet = (id) => ({
+export const deleteSnippet = (id: string) => ({
   meta: {
     id
   },
@@ -114,7 +120,7 @@ export const deleteSnippet = (id) => ({
   payload: { id }
 });
 
-export const editSnippet = (id) => ({
+export const editSnippet = (id: string) => ({
   meta: {
     id
   },
@@ -126,7 +132,7 @@ export const cancelEditSnippet = () => ({
   type: AT.STOP_EDIT_SNIPPET
 });
 
-export const updateTempSnippet = (path, value) => ({
+export const updateTempSnippet = (path: string, value: string) => ({
   meta: {
     path,
     value
@@ -138,7 +144,7 @@ export const updateTempSnippet = (path, value) => ({
   }
 });
 
-export const deleteTempFile = (uuid) => ({
+export const deleteTempFile = (uuid: string) => ({
   meta: {
     uuid
   },
@@ -148,7 +154,7 @@ export const deleteTempFile = (uuid) => ({
   }
 });
 
-export const addTempFile = (fileName, fileContent) => ({
+export const addTempFile = (fileName: string, fileContent: string) => ({
   type: AT.ADD_TEMP_FILE,
   payload: {
     fileName,
@@ -156,7 +162,7 @@ export const addTempFile = (fileName, fileContent) => ({
   }
 });
 
-export const updateSnippet = (snippet, id) => ({
+export const updateSnippet = (snippet: object, id: string) => ({
   meta: {
     snippet,
     id
@@ -165,7 +171,7 @@ export const updateSnippet = (snippet, id) => ({
   payload: { snippet, id }
 });
 
-export const getSnippetComments = (id) => ({
+export const getSnippetComments = (id: string) => ({
   meta: {
     id
   },
@@ -173,7 +179,7 @@ export const getSnippetComments = (id) => ({
   payload: { id }
 });
 
-export const createSnippetComment = (id, body) => ({
+export const createSnippetComment = (id: string, body: string) => ({
   meta: {
     id,
     body
@@ -185,7 +191,7 @@ export const createSnippetComment = (id, body) => ({
   }
 });
 
-export const deleteComment = (id, commentId) => ({
+export const deleteComment = (id: string, commentId: string) => ({
   meta: {
     id,
     commentId
@@ -201,7 +207,7 @@ export const toggleSnippetComments = () => ({
   type: AT.TOGGLE_SNIPPET_COMMENTS
 });
 
-export const toggleCollapse = (snippetId, fileName) => ({
+export const toggleCollapse = (snippetId: string, fileName: string) => ({
   type: AT.TOGGLE_FILE_COLLAPSE,
   payload: {
     snippetId,
