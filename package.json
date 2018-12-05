@@ -11,6 +11,7 @@
     "test:coverage": "jest --coverage",
     "clean": "rimraf dist release web",
     "lint": "eslint src",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
     "start:dev": "cross-env NODE_ENV=development npm run clean && webpack --mode development --watch --progress",
     "start:prod": "cross-env NODE_ENV=production npm run clean && webpack --mode production --progress",
     "start:web": "cross-env NODE_ENV=development && npm run clean && webpack --config webpack.web.config.js --mode development --watch --progress",
@@ -67,7 +68,8 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@babel/core": "^7.1.6",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.6",
     "@babel/plugin-proposal-do-expressions": "^7.0.0",
@@ -86,8 +88,17 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/jest": "^23.3.10",
+    "@types/lodash": "^4.14.118",
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-redux": "^6.0.10",
+    "@types/react-toastify": "^4.0.1",
+    "@types/styled-components": "^4.1.3",
+    "@types/uuid": "^3.4.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -139,6 +150,8 @@
     "size-plugin": "^1.0.1",
     "style-loader": "^0.23.1",
     "styled-components": "^4.1.2",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.1",
     "webpack": "^4.26.1",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
@@ -177,12 +190,13 @@
     "reselect": "^4.0.0",
     "semver": "^5.6.0",
     "superagent": "^4.0.0",
+    "tslint": "^5.11.0",
     "wait-on": "^3.2.0",
     "yargs": "^12.0.5"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm test"
+      "pre-commit": "npm run lint && npm run tslint && npm test"
     }
   },
   "engines": {

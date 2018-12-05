@@ -1,6 +1,6 @@
 import * as AT from 'constants/actionTypes';
 
-export const loginWithBasicAuth = (user, pass, twoFactorAuth = null) => ({
+export const loginWithBasicAuth = (user: string, pass: string, twoFactorAuth = null) => ({
   meta: {
     user,
     pass,
@@ -14,7 +14,7 @@ export const loginWithBasicAuth = (user, pass, twoFactorAuth = null) => ({
   }
 });
 
-export const loginWithToken = (token) => ({
+export const loginWithToken = (token: string) => ({
   meta: {
     token
   },

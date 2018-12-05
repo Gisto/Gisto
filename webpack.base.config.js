@@ -8,6 +8,10 @@ const SizePlugin = require('size-plugin');
 
 const packageJson = require('./package.json');
 
+function srcPath(subdir) {
+  return path.join(__dirname, "src", subdir);
+}
+
 const isDev = process.env.NODE_ENV === 'development';
 const copyPaths = [
   'build/icon.ico',
@@ -30,7 +34,12 @@ if (isDev) {
 module.exports = {
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+    alias: {
+      components: srcPath('components'),
+      utils: srcPath('utils'),
+      store: srcPath('store')
+    },
   },
   module: {
     rules: [

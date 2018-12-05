@@ -7,10 +7,24 @@ module.exports = {
   modulePathIgnorePatterns: [
     '<rootDir>/docs'
   ],
+  globals: {
+    'ts-jest': {
+      diagnostics: false
+    }
+  },
+  transform: {
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.tsx?$": "ts-jest",
+  },
   moduleFileExtensions: [
-    'js',
-    'json'
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
   ],
+  verbose: true,
   moduleDirectories: [
     'node_modules',
     'src'

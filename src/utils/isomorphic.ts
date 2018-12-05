@@ -10,8 +10,7 @@ export const isomorphicReload = () => {
   }
 };
 
-
-export const isomorphicHrefRedirect = (href) => {
+export const isomorphicHrefRedirect = (href: string) => {
   if (isElectron) {
     const { shell } = require('electron');
 

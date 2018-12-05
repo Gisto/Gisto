@@ -1,6 +1,6 @@
 import * as AT from 'constants/actionTypes';
 
-export const changeSettings = (key, value, isTheme = false, isBoolean = false) => ({
+export const changeSettings = (key: string, value: string, isTheme = false, isBoolean = false) => ({
   meta: {
     key,
     value,
