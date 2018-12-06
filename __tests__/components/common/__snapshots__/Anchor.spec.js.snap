@@ -5,7 +5,7 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
   download="file.zip"
   href="https://github.com"
 >
-  <Link
+  <styled.a
     download="file.zip"
     href="https://github.com"
   >
@@ -16,21 +16,29 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "Link-sc-17j1f2u-0",
+            "componentId": "sc-bdVaJa",
             "isStatic": false,
-            "lastClassName": "dtxsCT",
+            "lastClassName": "kmhQnl",
             "rules": Array [
-              "cursor:pointer;color:",
+              "
+  cursor: pointer;
+  color: ",
               [Function],
-              ";text-decoration:none;:hover{color:",
+              ";
+  text-decoration: none;
+
+  :hover {
+    color: ",
               [Function],
-              ";}",
+              ";
+  }
+",
             ],
           },
-          "displayName": "Link",
+          "displayName": "styled.a",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "Link-sc-17j1f2u-0",
+          "styledComponentId": "sc-bdVaJa",
           "target": "a",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -41,13 +49,13 @@ exports[`COMPONENTS - <Anchor> render Anchor 1`] = `
       href="https://github.com"
     >
       <a
-        className="Link-sc-17j1f2u-0 dtxsCT"
+        className="sc-bdVaJa kmhQnl"
         download="file.zip"
         href="https://github.com"
       >
         link
       </a>
     </StyledComponent>
-  </Link>
+  </styled.a>
 </Anchor>
 `;

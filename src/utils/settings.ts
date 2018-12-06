@@ -46,7 +46,7 @@ if (isElectron) {
 }
 
 // @ts-ignore
-export const getSetting = (key: string, fallback: string | boolean) => settings.get(key, fallback);
+export const getSetting = (key: string, fallback?: string | boolean) => settings.get(key, fallback);
 
 export const setSetting = (key: string, value: string | boolean) => {
   gaEvent({
