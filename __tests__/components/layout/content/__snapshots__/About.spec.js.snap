@@ -60,7 +60,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <Link
+              <styled.a
                 href="#"
                 onClick={[Function]}
               >
@@ -70,21 +70,29 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "Link-sc-17j1f2u-0",
+                        "componentId": "sc-bdVaJa",
                         "isStatic": false,
-                        "lastClassName": "dtxsCT",
+                        "lastClassName": "kmhQnl",
                         "rules": Array [
-                          "cursor:pointer;color:",
+                          "
+  cursor: pointer;
+  color: ",
                           [Function],
-                          ";text-decoration:none;:hover{color:",
+                          ";
+  text-decoration: none;
+
+  :hover {
+    color: ",
                           [Function],
-                          ";}",
+                          ";
+  }
+",
                         ],
                       },
-                      "displayName": "Link",
+                      "displayName": "styled.a",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "styledComponentId": "sc-bdVaJa",
                       "target": "a",
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -96,14 +104,14 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 dtxsCT"
+                    className="sc-bdVaJa kmhQnl"
                     href="#"
                     onClick={[Function]}
                   >
                     Change log
                   </a>
                 </StyledComponent>
-              </Link>
+              </styled.a>
             </Anchor>
           </ExternalLink>
            | 
@@ -114,7 +122,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <Link
+              <styled.a
                 href="#"
                 onClick={[Function]}
               >
@@ -124,21 +132,29 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "Link-sc-17j1f2u-0",
+                        "componentId": "sc-bdVaJa",
                         "isStatic": false,
-                        "lastClassName": "dtxsCT",
+                        "lastClassName": "kmhQnl",
                         "rules": Array [
-                          "cursor:pointer;color:",
+                          "
+  cursor: pointer;
+  color: ",
                           [Function],
-                          ";text-decoration:none;:hover{color:",
+                          ";
+  text-decoration: none;
+
+  :hover {
+    color: ",
                           [Function],
-                          ";}",
+                          ";
+  }
+",
                         ],
                       },
-                      "displayName": "Link",
+                      "displayName": "styled.a",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "styledComponentId": "sc-bdVaJa",
                       "target": "a",
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -150,14 +166,14 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 dtxsCT"
+                    className="sc-bdVaJa kmhQnl"
                     href="#"
                     onClick={[Function]}
                   >
                     GitHub
                   </a>
                 </StyledComponent>
-              </Link>
+              </styled.a>
             </Anchor>
           </ExternalLink>
            | 
@@ -168,7 +184,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <Link
+              <styled.a
                 href="#"
                 onClick={[Function]}
               >
@@ -178,21 +194,29 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "Link-sc-17j1f2u-0",
+                        "componentId": "sc-bdVaJa",
                         "isStatic": false,
-                        "lastClassName": "dtxsCT",
+                        "lastClassName": "kmhQnl",
                         "rules": Array [
-                          "cursor:pointer;color:",
+                          "
+  cursor: pointer;
+  color: ",
                           [Function],
-                          ";text-decoration:none;:hover{color:",
+                          ";
+  text-decoration: none;
+
+  :hover {
+    color: ",
                           [Function],
-                          ";}",
+                          ";
+  }
+",
                         ],
                       },
-                      "displayName": "Link",
+                      "displayName": "styled.a",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "styledComponentId": "sc-bdVaJa",
                       "target": "a",
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -204,14 +228,14 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 dtxsCT"
+                    className="sc-bdVaJa kmhQnl"
                     href="#"
                     onClick={[Function]}
                   >
                     Website gistoapp.com
                   </a>
                 </StyledComponent>
-              </Link>
+              </styled.a>
             </Anchor>
           </ExternalLink>
            | 
@@ -222,7 +246,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <Link
+              <styled.a
                 href="#"
                 onClick={[Function]}
               >
@@ -232,21 +256,29 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "Link-sc-17j1f2u-0",
+                        "componentId": "sc-bdVaJa",
                         "isStatic": false,
-                        "lastClassName": "dtxsCT",
+                        "lastClassName": "kmhQnl",
                         "rules": Array [
-                          "cursor:pointer;color:",
+                          "
+  cursor: pointer;
+  color: ",
                           [Function],
-                          ";text-decoration:none;:hover{color:",
+                          ";
+  text-decoration: none;
+
+  :hover {
+    color: ",
                           [Function],
-                          ";}",
+                          ";
+  }
+",
                         ],
                       },
-                      "displayName": "Link",
+                      "displayName": "styled.a",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "styledComponentId": "sc-bdVaJa",
                       "target": "a",
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -258,14 +290,14 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 dtxsCT"
+                    className="sc-bdVaJa kmhQnl"
                     href="#"
                     onClick={[Function]}
                   >
                     Issues
                   </a>
                 </StyledComponent>
-              </Link>
+              </styled.a>
             </Anchor>
           </ExternalLink>
            | 
@@ -276,7 +308,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
               href="#"
               onClick={[Function]}
             >
-              <Link
+              <styled.a
                 href="#"
                 onClick={[Function]}
               >
@@ -286,21 +318,29 @@ exports[`COMPONENTS - <About> render About 1`] = `
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "Link-sc-17j1f2u-0",
+                        "componentId": "sc-bdVaJa",
                         "isStatic": false,
-                        "lastClassName": "dtxsCT",
+                        "lastClassName": "kmhQnl",
                         "rules": Array [
-                          "cursor:pointer;color:",
+                          "
+  cursor: pointer;
+  color: ",
                           [Function],
-                          ";text-decoration:none;:hover{color:",
+                          ";
+  text-decoration: none;
+
+  :hover {
+    color: ",
                           [Function],
-                          ";}",
+                          ";
+  }
+",
                         ],
                       },
-                      "displayName": "Link",
+                      "displayName": "styled.a",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "Link-sc-17j1f2u-0",
+                      "styledComponentId": "sc-bdVaJa",
                       "target": "a",
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -312,14 +352,14 @@ exports[`COMPONENTS - <About> render About 1`] = `
                   onClick={[Function]}
                 >
                   <a
-                    className="Link-sc-17j1f2u-0 dtxsCT"
+                    className="sc-bdVaJa kmhQnl"
                     href="#"
                     onClick={[Function]}
                   >
                     Twitter
                   </a>
                 </StyledComponent>
-              </Link>
+              </styled.a>
             </Anchor>
           </ExternalLink>
         </p>
