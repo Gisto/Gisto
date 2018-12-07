@@ -7,33 +7,7 @@ import { getFileLanguage } from 'utils/files';
 import { fileTypesList } from 'utils/snippets';
 import { removeTags } from 'utils/tags';
 
-interface ISnippet {
-  id: string;
-  language: string;
-  filename?: string;
-  name?: string;
-  type?: any;
-  description?: string;
-  url?: string;
-  files: object[];
-  size: number;
-  fork_of: string;
-  history: object[];
-  public: boolean;
-  html_url: string;
-  comments: null | object[];
-  created_at: number;
-  updated_at: number;
-  lastModified: number;
-}
-
-interface IFile {
-  language: string;
-  filename: string;
-  name: string;
-  type: any;
-  size: number;
-}
+import { IFile, ISnippet } from 'types/Interfaces.d';
 
 const prepareTags = (snippet: Partial<ISnippet>) => {
   if (!isEmpty(snippet.description)) {
@@ -57,7 +31,7 @@ const getService = (snippet: Partial<ISnippet>) => {
 
 const prepareFiles = (snippet: Partial<ISnippet>) => {
   return map(
-    (file) => ({
+    (file: IFile) => ({
       ...file,
       collapsed: false,
       viewed: toUnixTimeStamp(new Date().getTime()),

@@ -5,6 +5,8 @@ import styled, { withTheme } from 'styled-components';
 
 import Anchor from 'components/common/Anchor';
 
+import { INotification } from 'types/Interfaces.d';
+
 const Wrapper = styled.div`
   font-family: 'Roboto Condensed', sans-serif;
 `;
@@ -23,22 +25,6 @@ const Body = styled.div`
     font-weight: 700;
   }
 `;
-
-interface INotification {
-  title: string;
-  body: string;
-  actions: Array<{
-    title: string;
-    action: () => void;
-  }>;
-  theme: {
-    lightText: string;
-  };
-}
-
-interface INotificationAction {
-  title: string;
-}
 
 const Notification = ({ title, body, actions, theme }: INotification) => (
   <Wrapper>

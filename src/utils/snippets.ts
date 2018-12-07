@@ -19,35 +19,7 @@ import { getFileLanguage } from 'utils/files';
 import { setNotification } from 'utils/notifications';
 import { removeTags } from 'utils/tags';
 
-interface ISnippet {
-  id: string;
-  language: string;
-  filename?: string;
-  name?: string;
-  type?: any;
-  description?: string;
-  url?: string;
-  files: object[];
-  size: number;
-  fork_of: string;
-  history: object[];
-  public: boolean;
-  html_url: string;
-  comments: null | object[];
-  created_at: number;
-  updated_at: number;
-  lastModified: number;
-  tags: string[];
-}
-
-interface IFile {
-  language: string;
-  filename: string;
-  name: string;
-  type: any;
-  size: number;
-  content?: string;
-}
+import { IFile, INotification, ISnippet } from 'types/Interfaces.d';
 
 export const isTag = (filterText: string) => startsWith('#', filterText);
 
@@ -59,7 +31,6 @@ const filterByTagsText = (snippets: ISnippet, filterText: string) => {
 
 const filterByFreeText = (snippets: ISnippet, filterText: string) => {
   try {
-    // eslint-disable-next-line no-new
     new RegExp(filterText, 'gi');
   } catch (e) {
     return false;
@@ -164,7 +135,7 @@ export const filterSnippetsList = (
 };
 
 export const copyToClipboard = (event: Event, text: string, message: string) => {
-  const notification = { title: message || 'Copied to clipboard' };
+  const notification = { title: message || 'Copied to clipboard' } as INotification;
   const handleCopy = (copyEvent: ClipboardEvent) => {
     copyEvent.clipboardData.setData('text/plain', text);
     copyEvent.preventDefault();

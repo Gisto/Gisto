@@ -3,14 +3,7 @@ import { toast } from 'react-toastify';
 
 import Notification from 'components/common/Notification';
 
-interface INotification {
-  title: string;
-  body?: string;
-  type: string;
-  position?: string;
-  options?: object;
-  actions?: object[];
-}
+import { INotification } from 'types/Interfaces.d';
 
 export const setNotification = ({
   title,
@@ -20,6 +13,7 @@ export const setNotification = ({
   options = { autoClose: 5000 },
   actions = []
 }: INotification) => {
+  // @ts-ignore
   toast[type || 'info'](<Notification title={title} body={body} actions={actions} />, {
     position: position || toast.POSITION.TOP_CENTER,
     ...options
