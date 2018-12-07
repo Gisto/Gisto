@@ -1,7 +1,7 @@
 import { TAG_REGEX } from 'constants/config';
 import { trim } from 'lodash/fp';
 
-export const removeTags = (title: string) => {
+export const removeTags = (title: string | undefined) => {
   if (!title) {
     return null;
   }

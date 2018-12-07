@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
+import { IAnchor } from 'types/Interfaces.d';
+
 const Link = styled.a`
   cursor: pointer;
   color: ${(props) => (props.color ? props.color : props.theme.baseAppColor)};
@@ -11,14 +13,7 @@ const Link = styled.a`
     color: ${(props) => props.theme.headerBgLightest};
   }
 `;
-interface IAnchor {
-  href?: string;
-  onClick?: () => void;
-  children?: React.ReactChild;
-  download?: string;
-  color?: string;
-  className?: string;
-}
+
 const Anchor = ({ href, onClick, children, download, color, className }: IAnchor) => (
   <Link href={href} className={className} color={color} download={download} onClick={onClick}>
     {children}

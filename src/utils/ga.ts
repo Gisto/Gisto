@@ -1,12 +1,8 @@
 import { GAUA } from 'constants/config';
 import { isElectron } from 'utils/electron';
 
-interface IGaEvent {
-  category: string;
-  action: string;
-  label: string;
-  value: string;
-}
+import { IGaEvent } from 'types/Interfaces.d';
+
 export const gaPage = (page: string) => {
   if (isElectron) {
     const cid = localStorage.getItem('unique-app-id');
@@ -18,7 +14,7 @@ export const gaPage = (page: string) => {
     return analytics.pageview(cookieDomain, page, 'Gisto', cid);
   }
 
-  gtag('config', GAUA, {
+  (window as any).gtag('config', GAUA, {
     page_path: page,
     page_title: page
   });
@@ -35,7 +31,7 @@ export const gaEvent = ({ category, action, label, value }: IGaEvent): boolean =
     return analytics.event(category, action, { evLabel: label, evValue: value, clientID: cid });
   }
 
-  gtag('event', action, {
+  (window as any).gtag('event', action, {
     event_category: category,
     event_label: label,
     value

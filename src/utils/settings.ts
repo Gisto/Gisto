@@ -3,18 +3,7 @@ import { isElectron } from 'utils/electron';
 import { gaEvent } from 'utils/ga';
 import { handleTypes } from 'utils/types';
 
-interface ISettings {
-  get: () => void;
-  set: () => void;
-  getAll: () => void;
-}
-
-interface IGaEvent {
-  category: string;
-  action: string;
-  label: string;
-  value: string;
-}
+import { IGaEvent, ISettings } from 'types/Interfaces.d';
 
 let settings: ISettings;
 
