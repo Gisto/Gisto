@@ -12,9 +12,9 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
         "$$typeof": Symbol(react.forward_ref),
         "attrs": Array [],
         "componentStyle": ComponentStyle {
-          "componentId": "Icon-vk4qna-0",
+          "componentId": "Icon-cFRQJw",
           "isStatic": false,
-          "lastClassName": "bXTWsC",
+          "lastClassName": "ebwCqi",
           "rules": Array [
             "background-color:",
             [Function],
@@ -37,7 +37,7 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
         "displayName": "Icon",
         "foldedComponentIds": Array [],
         "render": [Function],
-        "styledComponentId": "Icon-vk4qna-0",
+        "styledComponentId": "Icon-cFRQJw",
         "target": "span",
         "toString": [Function],
         "warnTooManyClasses": [Function],
@@ -48,7 +48,7 @@ exports[`COMPONENTS - <Icon> render Icon 1`] = `
     type="menu"
   >
     <span
-      className="Icon-vk4qna-0 bXTWsC"
+      className="Icon-cFRQJw ebwCqi"
       color="#ff0000"
       type="menu"
     >

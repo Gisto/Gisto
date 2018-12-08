@@ -12,9 +12,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "H4-sc-3i0r91-6",
+              "componentId": "H4-grEgbN",
               "isStatic": false,
-              "lastClassName": "jCgAJR",
+              "lastClassName": "heiWZL",
               "rules": Array [
                 "color:",
                 [Function],
@@ -26,7 +26,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "displayName": "H4",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "H4-sc-3i0r91-6",
+            "styledComponentId": "H4-grEgbN",
             "target": "h4",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -36,7 +36,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
         forwardedRef={null}
       >
         <h4
-          className="H4-sc-3i0r91-6 jCgAJR"
+          className="H4-grEgbN heiWZL"
         >
           Editor settings:
         </h4>
@@ -49,9 +49,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "Wrapper-sc-3i0r91-0",
+              "componentId": "Wrapper-dyuznp",
               "isStatic": true,
-              "lastClassName": "jjrWCY",
+              "lastClassName": "ciFETj",
               "rules": Array [
                 "display:flex;justify-content:space-between;",
               ],
@@ -59,7 +59,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "displayName": "Wrapper",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "Wrapper-sc-3i0r91-0",
+            "styledComponentId": "Wrapper-dyuznp",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -69,7 +69,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
         forwardedRef={null}
       >
         <div
-          className="Wrapper-sc-3i0r91-0 jjrWCY"
+          className="Wrapper-dyuznp ciFETj"
         >
           <Section>
             <StyledComponent
@@ -78,9 +78,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "Section-sc-3i0r91-2",
+                    "componentId": "Section-hLnjej",
                     "isStatic": true,
-                    "lastClassName": "gqkeLg",
+                    "lastClassName": "bYTpNg",
                     "rules": Array [
                       "width:45%;",
                     ],
@@ -88,7 +88,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "displayName": "Section",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "Section-sc-3i0r91-2",
+                  "styledComponentId": "Section-hLnjej",
                   "target": "div",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -98,7 +98,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               forwardedRef={null}
             >
               <div
-                className="Section-sc-3i0r91-2 gqkeLg"
+                className="Section-hLnjej bYTpNg"
               >
                 <Field>
                   <StyledComponent
@@ -107,9 +107,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -117,7 +117,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -127,7 +127,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -136,9 +136,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -146,7 +146,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -156,7 +156,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Theme:
@@ -171,9 +171,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "StyledISelect-sc-3i0r91-5",
+                                      "componentId": "StyledISelect-ilVKaP",
                                       "isStatic": true,
-                                      "lastClassName": "bnSweD",
+                                      "lastClassName": "jUNncK",
                                       "rules": Array [
                                         "width:158px;",
                                       ],
@@ -181,7 +181,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "displayName": "StyledISelect",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "StyledISelect-sc-3i0r91-5",
+                                    "styledComponentId": "StyledISelect-ilVKaP",
                                     "target": [Function],
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
@@ -194,26 +194,26 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 value="vs"
                               >
                                 <Select
-                                  className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                  className="StyledISelect-ilVKaP jUNncK"
                                   onChange={[Function]}
                                   value="vs"
                                 >
                                   <SelectInput
-                                    className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                    className="StyledISelect-ilVKaP jUNncK"
                                     defaultValue="vs"
                                     onChange={[Function]}
                                   >
                                     <StyledComponent
-                                      className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                      className="StyledISelect-ilVKaP jUNncK"
                                       defaultValue="vs"
                                       forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
                                           "componentStyle": ComponentStyle {
-                                            "componentId": "SelectInput-sc-13maoso-0",
+                                            "componentId": "SelectInput-cUOTCZ",
                                             "isStatic": false,
-                                            "lastClassName": "gcStUK",
+                                            "lastClassName": "bNutMS",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
                                               [Function],
@@ -235,7 +235,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "displayName": "SelectInput",
                                           "foldedComponentIds": Array [],
                                           "render": [Function],
-                                          "styledComponentId": "SelectInput-sc-13maoso-0",
+                                          "styledComponentId": "SelectInput-cUOTCZ",
                                           "target": "select",
                                           "toString": [Function],
                                           "warnTooManyClasses": [Function],
@@ -246,7 +246,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gcStUK"
+                                        className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ bNutMS"
                                         defaultValue="vs"
                                         onChange={[Function]}
                                       >
@@ -284,9 +284,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -294,7 +294,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -304,7 +304,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -313,9 +313,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -323,7 +323,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -333,7 +333,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Minimap:
@@ -354,9 +354,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -368,7 +368,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -380,7 +380,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -401,9 +401,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -411,7 +411,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -421,7 +421,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -430,9 +430,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -440,7 +440,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -450,7 +450,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Code lens:
@@ -471,9 +471,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -485,7 +485,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -497,7 +497,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -518,9 +518,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -528,7 +528,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -538,7 +538,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -547,9 +547,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -557,7 +557,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -567,7 +567,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Line Numbers:
@@ -588,9 +588,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -602,7 +602,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -614,7 +614,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -635,9 +635,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -645,7 +645,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -655,7 +655,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -664,9 +664,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -674,7 +674,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -684,7 +684,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Format On Paste:
@@ -705,9 +705,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -719,7 +719,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -731,7 +731,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -752,9 +752,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -762,7 +762,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -772,7 +772,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -781,9 +781,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -791,7 +791,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -801,7 +801,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Format On Type:
@@ -822,9 +822,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -836,7 +836,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -848,7 +848,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -869,9 +869,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -879,7 +879,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -889,7 +889,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -898,9 +898,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -908,7 +908,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -918,7 +918,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Select On Line Numbers:
@@ -939,9 +939,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -953,7 +953,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -965,7 +965,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -989,9 +989,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "Section-sc-3i0r91-2",
+                    "componentId": "Section-hLnjej",
                     "isStatic": true,
-                    "lastClassName": "gqkeLg",
+                    "lastClassName": "bYTpNg",
                     "rules": Array [
                       "width:45%;",
                     ],
@@ -999,7 +999,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "displayName": "Section",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "Section-sc-3i0r91-2",
+                  "styledComponentId": "Section-hLnjej",
                   "target": "div",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -1009,7 +1009,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               forwardedRef={null}
             >
               <div
-                className="Section-sc-3i0r91-2 gqkeLg"
+                className="Section-hLnjej bYTpNg"
               >
                 <Field>
                   <StyledComponent
@@ -1018,9 +1018,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -1028,7 +1028,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -1038,7 +1038,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -1047,9 +1047,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -1057,7 +1057,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -1067,7 +1067,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Font Family:
@@ -1083,9 +1083,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "StyledInput-sc-3i0r91-4",
+                                      "componentId": "StyledInput-hbWqm",
                                       "isStatic": true,
-                                      "lastClassName": "lIHVh",
+                                      "lastClassName": "ciXLeq",
                                       "rules": Array [
                                         "padding:0 5px;width:148px;",
                                       ],
@@ -1093,7 +1093,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "displayName": "StyledInput",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "StyledInput-sc-3i0r91-4",
+                                    "styledComponentId": "StyledInput-hbWqm",
                                     "target": [Function],
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
@@ -1107,13 +1107,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 value="monospace"
                               >
                                 <Input
-                                  className="StyledInput-sc-3i0r91-4 lIHVh"
+                                  className="StyledInput-hbWqm ciXLeq"
                                   onChange={[Function]}
                                   type="text"
                                   value="monospace"
                                 >
                                   <StyledInput
-                                    className="StyledInput-sc-3i0r91-4 lIHVh"
+                                    className="StyledInput-hbWqm ciXLeq"
                                     defaultValue="monospace"
                                     disabled={false}
                                     onChange={[Function]}
@@ -1121,7 +1121,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="text"
                                   >
                                     <StyledComponent
-                                      className="StyledInput-sc-3i0r91-4 lIHVh"
+                                      className="StyledInput-hbWqm ciXLeq"
                                       defaultValue="monospace"
                                       disabled={false}
                                       forwardedComponent={
@@ -1129,9 +1129,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
                                           "componentStyle": ComponentStyle {
-                                            "componentId": "StyledInput-sc-86zjwb-0",
+                                            "componentId": "StyledInput-kKifnt",
                                             "isStatic": false,
-                                            "lastClassName": "bQeLId",
+                                            "lastClassName": "jgtHRQ",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -1147,7 +1147,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "displayName": "StyledInput",
                                           "foldedComponentIds": Array [],
                                           "render": [Function],
-                                          "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                          "styledComponentId": "StyledInput-kKifnt",
                                           "target": "input",
                                           "toString": [Function],
                                           "warnTooManyClasses": [Function],
@@ -1160,7 +1160,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="text"
                                     >
                                       <input
-                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 bQeLId"
+                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt jgtHRQ"
                                         defaultValue="monospace"
                                         disabled={false}
                                         onChange={[Function]}
@@ -1185,9 +1185,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -1195,7 +1195,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -1205,7 +1205,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -1214,9 +1214,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -1224,7 +1224,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -1234,7 +1234,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Font Size:
@@ -1250,9 +1250,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "StyledInput-sc-3i0r91-4",
+                                      "componentId": "StyledInput-hbWqm",
                                       "isStatic": true,
-                                      "lastClassName": "lIHVh",
+                                      "lastClassName": "ciXLeq",
                                       "rules": Array [
                                         "padding:0 5px;width:148px;",
                                       ],
@@ -1260,7 +1260,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "displayName": "StyledInput",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "StyledInput-sc-3i0r91-4",
+                                    "styledComponentId": "StyledInput-hbWqm",
                                     "target": [Function],
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
@@ -1274,13 +1274,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 value={12}
                               >
                                 <Input
-                                  className="StyledInput-sc-3i0r91-4 lIHVh"
+                                  className="StyledInput-hbWqm ciXLeq"
                                   onChange={[Function]}
                                   type="number"
                                   value={12}
                                 >
                                   <StyledInput
-                                    className="StyledInput-sc-3i0r91-4 lIHVh"
+                                    className="StyledInput-hbWqm ciXLeq"
                                     defaultValue={12}
                                     disabled={false}
                                     onChange={[Function]}
@@ -1288,7 +1288,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="number"
                                   >
                                     <StyledComponent
-                                      className="StyledInput-sc-3i0r91-4 lIHVh"
+                                      className="StyledInput-hbWqm ciXLeq"
                                       defaultValue={12}
                                       disabled={false}
                                       forwardedComponent={
@@ -1296,9 +1296,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
                                           "componentStyle": ComponentStyle {
-                                            "componentId": "StyledInput-sc-86zjwb-0",
+                                            "componentId": "StyledInput-kKifnt",
                                             "isStatic": false,
-                                            "lastClassName": "bQeLId",
+                                            "lastClassName": "jgtHRQ",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -1314,7 +1314,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "displayName": "StyledInput",
                                           "foldedComponentIds": Array [],
                                           "render": [Function],
-                                          "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                          "styledComponentId": "StyledInput-kKifnt",
                                           "target": "input",
                                           "toString": [Function],
                                           "warnTooManyClasses": [Function],
@@ -1327,7 +1327,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="number"
                                     >
                                       <input
-                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 bQeLId"
+                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt jgtHRQ"
                                         defaultValue={12}
                                         disabled={false}
                                         onChange={[Function]}
@@ -1352,9 +1352,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -1362,7 +1362,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -1372,7 +1372,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -1381,9 +1381,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -1391,7 +1391,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -1401,7 +1401,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Line height:
@@ -1417,9 +1417,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "StyledInput-sc-3i0r91-4",
+                                      "componentId": "StyledInput-hbWqm",
                                       "isStatic": true,
-                                      "lastClassName": "lIHVh",
+                                      "lastClassName": "ciXLeq",
                                       "rules": Array [
                                         "padding:0 5px;width:148px;",
                                       ],
@@ -1427,7 +1427,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "displayName": "StyledInput",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "StyledInput-sc-3i0r91-4",
+                                    "styledComponentId": "StyledInput-hbWqm",
                                     "target": [Function],
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
@@ -1441,13 +1441,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 value={21}
                               >
                                 <Input
-                                  className="StyledInput-sc-3i0r91-4 lIHVh"
+                                  className="StyledInput-hbWqm ciXLeq"
                                   onChange={[Function]}
                                   type="number"
                                   value={21}
                                 >
                                   <StyledInput
-                                    className="StyledInput-sc-3i0r91-4 lIHVh"
+                                    className="StyledInput-hbWqm ciXLeq"
                                     defaultValue={21}
                                     disabled={false}
                                     onChange={[Function]}
@@ -1455,7 +1455,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="number"
                                   >
                                     <StyledComponent
-                                      className="StyledInput-sc-3i0r91-4 lIHVh"
+                                      className="StyledInput-hbWqm ciXLeq"
                                       defaultValue={21}
                                       disabled={false}
                                       forwardedComponent={
@@ -1463,9 +1463,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
                                           "componentStyle": ComponentStyle {
-                                            "componentId": "StyledInput-sc-86zjwb-0",
+                                            "componentId": "StyledInput-kKifnt",
                                             "isStatic": false,
-                                            "lastClassName": "bQeLId",
+                                            "lastClassName": "jgtHRQ",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -1481,7 +1481,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "displayName": "StyledInput",
                                           "foldedComponentIds": Array [],
                                           "render": [Function],
-                                          "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                          "styledComponentId": "StyledInput-kKifnt",
                                           "target": "input",
                                           "toString": [Function],
                                           "warnTooManyClasses": [Function],
@@ -1494,7 +1494,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="number"
                                     >
                                       <input
-                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 bQeLId"
+                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt jgtHRQ"
                                         defaultValue={21}
                                         disabled={false}
                                         onChange={[Function]}
@@ -1519,9 +1519,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -1529,7 +1529,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -1539,7 +1539,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -1548,9 +1548,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -1558,7 +1558,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -1568,7 +1568,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Font Ligatures:
@@ -1589,9 +1589,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -1603,7 +1603,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -1615,7 +1615,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -1636,9 +1636,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -1646,7 +1646,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -1656,7 +1656,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -1665,9 +1665,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -1675,7 +1675,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -1685,7 +1685,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Cursor Blinking:
@@ -1700,9 +1700,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "StyledISelect-sc-3i0r91-5",
+                                      "componentId": "StyledISelect-ilVKaP",
                                       "isStatic": true,
-                                      "lastClassName": "bnSweD",
+                                      "lastClassName": "jUNncK",
                                       "rules": Array [
                                         "width:158px;",
                                       ],
@@ -1710,7 +1710,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "displayName": "StyledISelect",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "StyledISelect-sc-3i0r91-5",
+                                    "styledComponentId": "StyledISelect-ilVKaP",
                                     "target": [Function],
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
@@ -1723,26 +1723,26 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 value="blink"
                               >
                                 <Select
-                                  className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                  className="StyledISelect-ilVKaP jUNncK"
                                   onChange={[Function]}
                                   value="blink"
                                 >
                                   <SelectInput
-                                    className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                    className="StyledISelect-ilVKaP jUNncK"
                                     defaultValue="blink"
                                     onChange={[Function]}
                                   >
                                     <StyledComponent
-                                      className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                      className="StyledISelect-ilVKaP jUNncK"
                                       defaultValue="blink"
                                       forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
                                           "componentStyle": ComponentStyle {
-                                            "componentId": "SelectInput-sc-13maoso-0",
+                                            "componentId": "SelectInput-cUOTCZ",
                                             "isStatic": false,
-                                            "lastClassName": "gcStUK",
+                                            "lastClassName": "bNutMS",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
                                               [Function],
@@ -1764,7 +1764,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "displayName": "SelectInput",
                                           "foldedComponentIds": Array [],
                                           "render": [Function],
-                                          "styledComponentId": "SelectInput-sc-13maoso-0",
+                                          "styledComponentId": "SelectInput-cUOTCZ",
                                           "target": "select",
                                           "toString": [Function],
                                           "warnTooManyClasses": [Function],
@@ -1775,7 +1775,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gcStUK"
+                                        className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ bNutMS"
                                         defaultValue="blink"
                                         onChange={[Function]}
                                       >
@@ -1823,9 +1823,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -1833,7 +1833,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -1843,7 +1843,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -1852,9 +1852,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -1862,7 +1862,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -1872,7 +1872,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               World wrap:
@@ -1887,9 +1887,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "StyledISelect-sc-3i0r91-5",
+                                      "componentId": "StyledISelect-ilVKaP",
                                       "isStatic": true,
-                                      "lastClassName": "bnSweD",
+                                      "lastClassName": "jUNncK",
                                       "rules": Array [
                                         "width:158px;",
                                       ],
@@ -1897,7 +1897,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "displayName": "StyledISelect",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "StyledISelect-sc-3i0r91-5",
+                                    "styledComponentId": "StyledISelect-ilVKaP",
                                     "target": [Function],
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
@@ -1910,26 +1910,26 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 value="bounded"
                               >
                                 <Select
-                                  className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                  className="StyledISelect-ilVKaP jUNncK"
                                   onChange={[Function]}
                                   value="bounded"
                                 >
                                   <SelectInput
-                                    className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                    className="StyledISelect-ilVKaP jUNncK"
                                     defaultValue="bounded"
                                     onChange={[Function]}
                                   >
                                     <StyledComponent
-                                      className="StyledISelect-sc-3i0r91-5 bnSweD"
+                                      className="StyledISelect-ilVKaP jUNncK"
                                       defaultValue="bounded"
                                       forwardedComponent={
                                         Object {
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
                                           "componentStyle": ComponentStyle {
-                                            "componentId": "SelectInput-sc-13maoso-0",
+                                            "componentId": "SelectInput-cUOTCZ",
                                             "isStatic": false,
-                                            "lastClassName": "gcStUK",
+                                            "lastClassName": "bNutMS",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
                                               [Function],
@@ -1951,7 +1951,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "displayName": "SelectInput",
                                           "foldedComponentIds": Array [],
                                           "render": [Function],
-                                          "styledComponentId": "SelectInput-sc-13maoso-0",
+                                          "styledComponentId": "SelectInput-cUOTCZ",
                                           "target": "select",
                                           "toString": [Function],
                                           "warnTooManyClasses": [Function],
@@ -1962,7 +1962,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-sc-3i0r91-5 bnSweD SelectInput-sc-13maoso-0 gcStUK"
+                                        className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ bNutMS"
                                         defaultValue="bounded"
                                         onChange={[Function]}
                                       >
@@ -2005,9 +2005,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -2015,7 +2015,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -2025,7 +2025,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -2034,9 +2034,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -2044,7 +2044,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -2054,7 +2054,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               World wrap column size:
@@ -2070,9 +2070,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "StyledInput-sc-3i0r91-4",
+                                      "componentId": "StyledInput-hbWqm",
                                       "isStatic": true,
-                                      "lastClassName": "lIHVh",
+                                      "lastClassName": "ciXLeq",
                                       "rules": Array [
                                         "padding:0 5px;width:148px;",
                                       ],
@@ -2080,7 +2080,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "displayName": "StyledInput",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "StyledInput-sc-3i0r91-4",
+                                    "styledComponentId": "StyledInput-hbWqm",
                                     "target": [Function],
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
@@ -2094,13 +2094,13 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                 value={80}
                               >
                                 <Input
-                                  className="StyledInput-sc-3i0r91-4 lIHVh"
+                                  className="StyledInput-hbWqm ciXLeq"
                                   onChange={[Function]}
                                   type="number"
                                   value={80}
                                 >
                                   <StyledInput
-                                    className="StyledInput-sc-3i0r91-4 lIHVh"
+                                    className="StyledInput-hbWqm ciXLeq"
                                     defaultValue={80}
                                     disabled={false}
                                     onChange={[Function]}
@@ -2108,7 +2108,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     type="number"
                                   >
                                     <StyledComponent
-                                      className="StyledInput-sc-3i0r91-4 lIHVh"
+                                      className="StyledInput-hbWqm ciXLeq"
                                       defaultValue={80}
                                       disabled={false}
                                       forwardedComponent={
@@ -2116,9 +2116,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "$$typeof": Symbol(react.forward_ref),
                                           "attrs": Array [],
                                           "componentStyle": ComponentStyle {
-                                            "componentId": "StyledInput-sc-86zjwb-0",
+                                            "componentId": "StyledInput-kKifnt",
                                             "isStatic": false,
-                                            "lastClassName": "bQeLId",
+                                            "lastClassName": "jgtHRQ",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -2134,7 +2134,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "displayName": "StyledInput",
                                           "foldedComponentIds": Array [],
                                           "render": [Function],
-                                          "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                          "styledComponentId": "StyledInput-kKifnt",
                                           "target": "input",
                                           "toString": [Function],
                                           "warnTooManyClasses": [Function],
@@ -2147,7 +2147,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="number"
                                     >
                                       <input
-                                        className="StyledInput-sc-3i0r91-4 lIHVh StyledInput-sc-86zjwb-0 bQeLId"
+                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt jgtHRQ"
                                         defaultValue={80}
                                         disabled={false}
                                         onChange={[Function]}
@@ -2178,9 +2178,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "H4-sc-3i0r91-6",
+              "componentId": "H4-grEgbN",
               "isStatic": false,
-              "lastClassName": "jCgAJR",
+              "lastClassName": "heiWZL",
               "rules": Array [
                 "color:",
                 [Function],
@@ -2192,7 +2192,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "displayName": "H4",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "H4-sc-3i0r91-6",
+            "styledComponentId": "H4-grEgbN",
             "target": "h4",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2202,7 +2202,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
         forwardedRef={null}
       >
         <h4
-          className="H4-sc-3i0r91-6 jCgAJR"
+          className="H4-grEgbN heiWZL"
         >
           Preview settings:
         </h4>
@@ -2215,9 +2215,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "Wrapper-sc-3i0r91-0",
+              "componentId": "Wrapper-dyuznp",
               "isStatic": true,
-              "lastClassName": "jjrWCY",
+              "lastClassName": "ciFETj",
               "rules": Array [
                 "display:flex;justify-content:space-between;",
               ],
@@ -2225,7 +2225,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
             "displayName": "Wrapper",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "Wrapper-sc-3i0r91-0",
+            "styledComponentId": "Wrapper-dyuznp",
             "target": "div",
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -2235,7 +2235,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
         forwardedRef={null}
       >
         <div
-          className="Wrapper-sc-3i0r91-0 jjrWCY"
+          className="Wrapper-dyuznp ciFETj"
         >
           <Section>
             <StyledComponent
@@ -2244,9 +2244,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "Section-sc-3i0r91-2",
+                    "componentId": "Section-hLnjej",
                     "isStatic": true,
-                    "lastClassName": "gqkeLg",
+                    "lastClassName": "bYTpNg",
                     "rules": Array [
                       "width:45%;",
                     ],
@@ -2254,7 +2254,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "displayName": "Section",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "Section-sc-3i0r91-2",
+                  "styledComponentId": "Section-hLnjej",
                   "target": "div",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -2264,7 +2264,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               forwardedRef={null}
             >
               <div
-                className="Section-sc-3i0r91-2 gqkeLg"
+                className="Section-hLnjej bYTpNg"
               >
                 <Field>
                   <StyledComponent
@@ -2273,9 +2273,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -2283,7 +2283,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -2293,7 +2293,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -2302,9 +2302,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -2312,7 +2312,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -2322,7 +2322,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Preview HTML files:
@@ -2343,9 +2343,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -2357,7 +2357,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -2369,7 +2369,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -2390,9 +2390,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -2400,7 +2400,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -2410,7 +2410,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -2419,9 +2419,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -2429,7 +2429,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -2439,7 +2439,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Preview Image files:
@@ -2460,9 +2460,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -2474,7 +2474,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -2486,7 +2486,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -2507,9 +2507,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -2517,7 +2517,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -2527,7 +2527,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -2536,9 +2536,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -2546,7 +2546,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -2556,7 +2556,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Preview PDF files:
@@ -2577,9 +2577,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -2591,7 +2591,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -2603,7 +2603,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -2624,9 +2624,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -2634,7 +2634,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -2644,7 +2644,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -2653,9 +2653,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -2663,7 +2663,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -2673,7 +2673,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Preview CSV/TSV files:
@@ -2694,9 +2694,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -2708,7 +2708,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -2720,7 +2720,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -2744,9 +2744,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "$$typeof": Symbol(react.forward_ref),
                   "attrs": Array [],
                   "componentStyle": ComponentStyle {
-                    "componentId": "Section-sc-3i0r91-2",
+                    "componentId": "Section-hLnjej",
                     "isStatic": true,
-                    "lastClassName": "gqkeLg",
+                    "lastClassName": "bYTpNg",
                     "rules": Array [
                       "width:45%;",
                     ],
@@ -2754,7 +2754,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                   "displayName": "Section",
                   "foldedComponentIds": Array [],
                   "render": [Function],
-                  "styledComponentId": "Section-sc-3i0r91-2",
+                  "styledComponentId": "Section-hLnjej",
                   "target": "div",
                   "toString": [Function],
                   "warnTooManyClasses": [Function],
@@ -2764,7 +2764,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
               forwardedRef={null}
             >
               <div
-                className="Section-sc-3i0r91-2 gqkeLg"
+                className="Section-hLnjej bYTpNg"
               >
                 <Field>
                   <StyledComponent
@@ -2773,9 +2773,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -2783,7 +2783,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -2793,7 +2793,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -2802,9 +2802,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -2812,7 +2812,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -2822,7 +2822,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Preview GeoJSON:
@@ -2843,9 +2843,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -2857,7 +2857,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -2869,7 +2869,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -2890,9 +2890,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -2900,7 +2900,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -2910,7 +2910,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -2919,9 +2919,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -2929,7 +2929,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -2939,7 +2939,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Preview Markdown files:
@@ -2960,9 +2960,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -2974,7 +2974,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -2986,7 +2986,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -3007,9 +3007,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "$$typeof": Symbol(react.forward_ref),
                         "attrs": Array [],
                         "componentStyle": ComponentStyle {
-                          "componentId": "Field-sc-3i0r91-3",
+                          "componentId": "Field-eieelf",
                           "isStatic": true,
-                          "lastClassName": "fjKIlx",
+                          "lastClassName": "fXkcEo",
                           "rules": Array [
                             "height:35px;",
                           ],
@@ -3017,7 +3017,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                         "displayName": "Field",
                         "foldedComponentIds": Array [],
                         "render": [Function],
-                        "styledComponentId": "Field-sc-3i0r91-3",
+                        "styledComponentId": "Field-eieelf",
                         "target": "div",
                         "toString": [Function],
                         "warnTooManyClasses": [Function],
@@ -3027,7 +3027,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                     forwardedRef={null}
                   >
                     <div
-                      className="Field-sc-3i0r91-3 fjKIlx"
+                      className="Field-eieelf fXkcEo"
                     >
                       <Label>
                         <StyledComponent
@@ -3036,9 +3036,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "$$typeof": Symbol(react.forward_ref),
                               "attrs": Array [],
                               "componentStyle": ComponentStyle {
-                                "componentId": "Label-sc-3i0r91-1",
+                                "componentId": "Label-ghyrbC",
                                 "isStatic": true,
-                                "lastClassName": "hpqRMW",
+                                "lastClassName": "kZMEPD",
                                 "rules": Array [
                                   "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
                                 ],
@@ -3046,7 +3046,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                               "displayName": "Label",
                               "foldedComponentIds": Array [],
                               "render": [Function],
-                              "styledComponentId": "Label-sc-3i0r91-1",
+                              "styledComponentId": "Label-ghyrbC",
                               "target": "div",
                               "toString": [Function],
                               "warnTooManyClasses": [Function],
@@ -3056,7 +3056,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                           forwardedRef={null}
                         >
                           <div
-                            className="Label-sc-3i0r91-1 hpqRMW"
+                            className="Label-ghyrbC kZMEPD"
                           >
                             <span>
                               Preview AsciiDoc files:
@@ -3077,9 +3077,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "$$typeof": Symbol(react.forward_ref),
                                       "attrs": Array [],
                                       "componentStyle": ComponentStyle {
-                                        "componentId": "Box-sc-1bw5uxh-0",
+                                        "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "bEJBJa",
+                                        "lastClassName": "cusFML",
                                         "rules": Array [
                                           "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
@@ -3091,7 +3091,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "displayName": "Box",
                                       "foldedComponentIds": Array [],
                                       "render": [Function],
-                                      "styledComponentId": "Box-sc-1bw5uxh-0",
+                                      "styledComponentId": "Box-jLJQJw",
                                       "target": "input",
                                       "toString": [Function],
                                       "warnTooManyClasses": [Function],
@@ -3103,7 +3103,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-sc-1bw5uxh-0 bEJBJa"
+                                    className="Box-jLJQJw cusFML"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"

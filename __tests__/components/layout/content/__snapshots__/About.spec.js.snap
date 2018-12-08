@@ -9,9 +9,9 @@ exports[`COMPONENTS - <About> render About 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "Wrapper-l90ydr-0",
+            "componentId": "Wrapper-dyuznp",
             "isStatic": true,
-            "lastClassName": "hPMCSw",
+            "lastClassName": "izLMrr",
             "rules": Array [
               "display:flex;flex-direction:column;align-items:center;color:#555;height:100%;width:50%;transform:translate(50%);justify-content:center;text-align:left;",
             ],
@@ -19,7 +19,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
           "displayName": "Wrapper",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "Wrapper-l90ydr-0",
+          "styledComponentId": "Wrapper-dyuznp",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -29,7 +29,7 @@ exports[`COMPONENTS - <About> render About 1`] = `
       forwardedRef={null}
     >
       <div
-        className="Wrapper-l90ydr-0 hPMCSw"
+        className="Wrapper-dyuznp izLMrr"
       >
         <img
           alt=""
