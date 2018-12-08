@@ -11,7 +11,7 @@
     "test:coverage": "jest --coverage",
     "clean": "rimraf dist release web",
     "lint": "eslint src",
-    "tslint": "tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
+    "tslint": "tsc --noEmit && tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
     "start:dev": "cross-env NODE_ENV=development npm run clean && webpack --mode development --watch --progress",
     "start:prod": "cross-env NODE_ENV=production npm run clean && webpack --mode production --progress",
     "start:web": "cross-env NODE_ENV=development && npm run clean && webpack --config webpack.web.config.js --mode development --watch --progress",
