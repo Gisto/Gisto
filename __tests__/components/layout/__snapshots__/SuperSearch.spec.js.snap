@@ -37,9 +37,9 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "SuperSearchWrapper-sc-1mnove5-0",
+            "componentId": "SuperSearchWrapper-gsIfNo",
             "isStatic": true,
-            "lastClassName": "bAwZkz",
+            "lastClassName": "gKiIto",
             "rules": Array [
               "position:absolute;display:flex;top:0;left:0;height:100vh;width:100vw;flex-direction:column;z-index:99;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;",
             ],
@@ -47,7 +47,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
           "displayName": "SuperSearchWrapper",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "SuperSearchWrapper-sc-1mnove5-0",
+          "styledComponentId": "SuperSearchWrapper-gsIfNo",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -57,7 +57,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
       forwardedRef={null}
     >
       <div
-        className="SuperSearchWrapper-sc-1mnove5-0 bAwZkz"
+        className="SuperSearchWrapper-gsIfNo gKiIto"
       >
         <SearchWrapper>
           <StyledComponent
@@ -66,9 +66,9 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "SearchWrapper-sc-1mnove5-1",
+                  "componentId": "SearchWrapper-ihPHph",
                   "isStatic": true,
-                  "lastClassName": "ijKtSQ",
+                  "lastClassName": "fdLWUt",
                   "rules": Array [
                     "width:700px;position:absolute;top:120px;",
                   ],
@@ -76,7 +76,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                 "displayName": "SearchWrapper",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "SearchWrapper-sc-1mnove5-1",
+                "styledComponentId": "SearchWrapper-ihPHph",
                 "target": "div",
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -86,7 +86,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
             forwardedRef={null}
           >
             <div
-              className="SearchWrapper-sc-1mnove5-1 ijKtSQ"
+              className="SearchWrapper-ihPHph fdLWUt"
             >
               <SearchBar>
                 <StyledComponent
@@ -95,9 +95,9 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "SearchBar-sc-1mnove5-2",
+                        "componentId": "SearchBar-iyoeeB",
                         "isStatic": true,
-                        "lastClassName": "dllRVk",
+                        "lastClassName": "fphlzg",
                         "rules": Array [
                           "display:flex;align-items:center;margin:0 -18px 0 -30px;",
                         ],
@@ -105,7 +105,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                       "displayName": "SearchBar",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "SearchBar-sc-1mnove5-2",
+                      "styledComponentId": "SearchBar-iyoeeB",
                       "target": "div",
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -115,7 +115,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   forwardedRef={null}
                 >
                   <div
-                    className="SearchBar-sc-1mnove5-2 dllRVk"
+                    className="SearchBar-iyoeeB fphlzg"
                   >
                     <StyledLookingGlass
                       size={32}
@@ -127,9 +127,9 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             "$$typeof": Symbol(react.forward_ref),
                             "attrs": Array [],
                             "componentStyle": ComponentStyle {
-                              "componentId": "StyledLookingGlass-sc-1mnove5-3",
+                              "componentId": "StyledLookingGlass-bFmLLL",
                               "isStatic": false,
-                              "lastClassName": "HmNJQ",
+                              "lastClassName": "fyeaC",
                               "rules": Array [
                                 "background-color:",
                                 [Function],
@@ -152,10 +152,10 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             },
                             "displayName": "StyledLookingGlass",
                             "foldedComponentIds": Array [
-                              "Icon-vk4qna-0",
+                              "Icon-cFRQJw",
                             ],
                             "render": [Function],
-                            "styledComponentId": "StyledLookingGlass-sc-1mnove5-3",
+                            "styledComponentId": "StyledLookingGlass-bFmLLL",
                             "target": "span",
                             "toString": [Function],
                             "warnTooManyClasses": [Function],
@@ -167,7 +167,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                         type="search"
                       >
                         <span
-                          className="Icon-vk4qna-0 StyledLookingGlass-sc-1mnove5-3 HmNJQ"
+                          className="Icon-cFRQJw StyledLookingGlass-bFmLLL fyeaC"
                           size={32}
                           type="search"
                         />
@@ -188,9 +188,9 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             "$$typeof": Symbol(react.forward_ref),
                             "attrs": Array [],
                             "componentStyle": ComponentStyle {
-                              "componentId": "StyledInput-sc-1mnove5-8",
+                              "componentId": "StyledInput-hbWqm",
                               "isStatic": true,
-                              "lastClassName": "bxYJks",
+                              "lastClassName": "jSsKFV",
                               "rules": Array [
                                 "padding:30px 20px;box-shadow:0 0 150px #fff;border-radius:3px;text-indent:50px;width:100%;",
                               ],
@@ -198,7 +198,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             "displayName": "StyledInput",
                             "foldedComponentIds": Array [],
                             "render": [Function],
-                            "styledComponentId": "StyledInput-sc-1mnove5-8",
+                            "styledComponentId": "StyledInput-hbWqm",
                             "target": [Function],
                             "toString": [Function],
                             "warnTooManyClasses": [Function],
@@ -213,14 +213,14 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                       >
                         <Input
                           autoFocus={true}
-                          className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
+                          className="mousetrap StyledInput-hbWqm jSsKFV"
                           onChange={[Function]}
                           placeholder="Search"
                           type="search"
                         >
                           <StyledInput
                             autoFocus={true}
-                            className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
+                            className="mousetrap StyledInput-hbWqm jSsKFV"
                             disabled={false}
                             onChange={[Function]}
                             placeholder="Search"
@@ -229,16 +229,16 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                           >
                             <StyledComponent
                               autoFocus={true}
-                              className="mousetrap StyledInput-sc-1mnove5-8 bxYJks"
+                              className="mousetrap StyledInput-hbWqm jSsKFV"
                               disabled={false}
                               forwardedComponent={
                                 Object {
                                   "$$typeof": Symbol(react.forward_ref),
                                   "attrs": Array [],
                                   "componentStyle": ComponentStyle {
-                                    "componentId": "StyledInput-sc-86zjwb-0",
+                                    "componentId": "StyledInput-kKifnt",
                                     "isStatic": false,
-                                    "lastClassName": "bQeLId",
+                                    "lastClassName": "jgtHRQ",
                                     "rules": Array [
                                       "border:none;border-radius:0;height:30px;color:",
                                       [Function],
@@ -254,7 +254,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                                   "displayName": "StyledInput",
                                   "foldedComponentIds": Array [],
                                   "render": [Function],
-                                  "styledComponentId": "StyledInput-sc-86zjwb-0",
+                                  "styledComponentId": "StyledInput-kKifnt",
                                   "target": "input",
                                   "toString": [Function],
                                   "warnTooManyClasses": [Function],
@@ -269,7 +269,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             >
                               <input
                                 autoFocus={true}
-                                className="mousetrap StyledInput-sc-1mnove5-8 bxYJks StyledInput-sc-86zjwb-0 bQeLId"
+                                className="mousetrap StyledInput-hbWqm jSsKFV StyledInput-kKifnt jgtHRQ"
                                 disabled={false}
                                 onChange={[Function]}
                                 placeholder="Search"
@@ -291,9 +291,9 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                       "$$typeof": Symbol(react.forward_ref),
                       "attrs": Array [],
                       "componentStyle": ComponentStyle {
-                        "componentId": "SnippetResults-sc-1mnove5-4",
+                        "componentId": "SnippetResults-hgDhSA",
                         "isStatic": true,
-                        "lastClassName": "eUdsVx",
+                        "lastClassName": "cfesNO",
                         "rules": Array [
                           "background:transparent;align-items:center;flex-direction:column;width:638px;padding:0 30px;margin:0 0 0 10px;height:60vh;overflow:auto;display:block;",
                         ],
@@ -301,7 +301,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                       "displayName": "SnippetResults",
                       "foldedComponentIds": Array [],
                       "render": [Function],
-                      "styledComponentId": "SnippetResults-sc-1mnove5-4",
+                      "styledComponentId": "SnippetResults-hgDhSA",
                       "target": "div",
                       "toString": [Function],
                       "warnTooManyClasses": [Function],
@@ -311,7 +311,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                   forwardedRef={null}
                 >
                   <div
-                    className="SnippetResults-sc-1mnove5-4 eUdsVx"
+                    className="SnippetResults-hgDhSA cfesNO"
                   />
                 </StyledComponent>
               </SnippetResults>

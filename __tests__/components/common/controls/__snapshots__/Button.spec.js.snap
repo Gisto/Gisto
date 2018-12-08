@@ -47,9 +47,9 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "ButtonComponent-sc-1hy9a8c-0",
+            "componentId": "ButtonComponent-fVGrXr",
             "isStatic": false,
-            "lastClassName": "htLuZh",
+            "lastClassName": "eWvqbl",
             "rules": Array [
               "background:",
               [Function],
@@ -73,7 +73,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
           "displayName": "ButtonComponent",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "ButtonComponent-sc-1hy9a8c-0",
+          "styledComponentId": "ButtonComponent-fVGrXr",
           "target": "button",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -87,7 +87,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
       width="200px"
     >
       <button
-        className="btn ButtonComponent-sc-1hy9a8c-0 htLuZh"
+        className="btn ButtonComponent-fVGrXr eWvqbl"
         disabled={false}
         height="30px"
         onClick={[MockFunction]}
@@ -102,9 +102,9 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
                 "$$typeof": Symbol(react.forward_ref),
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "Icon-vk4qna-0",
+                  "componentId": "Icon-cFRQJw",
                   "isStatic": false,
-                  "lastClassName": "kGLNCw",
+                  "lastClassName": "dIRwHy",
                   "rules": Array [
                     "background-color:",
                     [Function],
@@ -127,7 +127,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
                 "displayName": "Icon",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "Icon-vk4qna-0",
+                "styledComponentId": "Icon-cFRQJw",
                 "target": "span",
                 "toString": [Function],
                 "warnTooManyClasses": [Function],
@@ -138,7 +138,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
             type="menu"
           >
             <span
-              className="Icon-vk4qna-0 kGLNCw"
+              className="Icon-cFRQJw dIRwHy"
               type="menu"
             />
           </StyledComponent>

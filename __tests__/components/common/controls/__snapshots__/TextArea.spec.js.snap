@@ -23,9 +23,9 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "StyledInput-sc-1zkbel-0",
+            "componentId": "StyledInput-kKifnt",
             "isStatic": false,
-            "lastClassName": "itETYq",
+            "lastClassName": "hTdJwo",
             "rules": Array [
               "border:none;border-radius:0;margin-bottom:10px;width:calc(100% - 20px);height:",
               [Function],
@@ -43,7 +43,7 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
           "displayName": "StyledInput",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "StyledInput-sc-1zkbel-0",
+          "styledComponentId": "StyledInput-kKifnt",
           "target": "textarea",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -55,7 +55,7 @@ exports[`COMPONENTS - <TextArea> render TextArea 1`] = `
       title=""
     >
       <textarea
-        className="classified StyledInput-sc-1zkbel-0 itETYq"
+        className="classified StyledInput-kKifnt hTdJwo"
         defaultValue="typetypetype"
         disabled={false}
         placeholder="I am temporary"

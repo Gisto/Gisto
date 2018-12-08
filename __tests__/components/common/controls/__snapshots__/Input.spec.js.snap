@@ -24,9 +24,9 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "StyledInput-sc-86zjwb-0",
+            "componentId": "StyledInput-kKifnt",
             "isStatic": false,
-            "lastClassName": "bQeLId",
+            "lastClassName": "jgtHRQ",
             "rules": Array [
               "border:none;border-radius:0;height:30px;color:",
               [Function],
@@ -42,7 +42,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
           "displayName": "StyledInput",
           "foldedComponentIds": Array [],
           "render": [Function],
-          "styledComponentId": "StyledInput-sc-86zjwb-0",
+          "styledComponentId": "StyledInput-kKifnt",
           "target": "input",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -55,7 +55,7 @@ exports[`COMPONENTS - <Input> render Input 1`] = `
       type="search"
     >
       <input
-        className="classified StyledInput-sc-86zjwb-0 bQeLId"
+        className="classified StyledInput-kKifnt jgtHRQ"
         defaultValue="typetypetype"
         disabled={false}
         placeholder="I am temporary"
