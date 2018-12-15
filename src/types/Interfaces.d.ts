@@ -66,3 +66,10 @@ interface ISettings {
   set: () => void;
   getAll: () => void;
 }
+
+interface IState {
+  snippets: {
+    snippets: ISnippet[];
+    starred: string[];
+  };
+}
