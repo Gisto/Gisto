@@ -237,6 +237,74 @@ describe('reducer - snippets', () => {
       .toEqual(expected);
   });
 
+  test('should filter snippets by truncated', () => {
+    const action = {
+      type: AT.FILTER_SNIPPETS_BY_TRUNCATED,
+      payload: {
+        status: 'truncated'
+      }
+    };
+
+    const initial = initialState({
+      filter: {
+        text: '',
+        tags: [],
+        language: '',
+        status: '',
+        truncated: false,
+        untagged: false
+      }
+    });
+
+    const expected = initialState({
+      filter: {
+        text: '',
+        tags: [],
+        language: '',
+        status: '',
+        truncated: true,
+        untagged: false
+      }
+    });
+
+    expect(reducer(initial, action))
+      .toEqual(expected);
+  });
+
+  test('should filter snippets by untagged', () => {
+    const action = {
+      type: AT.FILTER_SNIPPETS_BY_UNTAGGED,
+      payload: {
+        status: 'untagged'
+      }
+    };
+
+    const initial = initialState({
+      filter: {
+        text: '',
+        tags: [],
+        language: '',
+        status: '',
+        truncated: false,
+        untagged: false
+      }
+    });
+
+    const expected = initialState({
+      filter: {
+        text: '',
+        tags: [],
+        language: '',
+        status: '',
+        truncated: false,
+        untagged: true
+      }
+    });
+
+    expect(reducer(initial, action))
+      .toEqual(expected);
+  });
+
   test('should get snippets', () => {
     const action = {
       type: AT.GET_SNIPPETS.SUCCESS,
