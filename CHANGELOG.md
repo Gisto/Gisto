@@ -1,3 +1,13 @@
+### v1.10.18
+*  CHORE (typescript): convert Notification and Anchore to typescript [View](https://github.com/Gisto/Gisto/commit/d9cd80309d025d1d30e32c17d51d17e0b237b0a4)
+*  FIX (typescript): make all Interfaces shared [View](https://github.com/Gisto/Gisto/commit/185f254685e8fa98d04a684b4e774eee4232cf43)
+*  CHORE (type check): add ts type check to pre commit [View](https://github.com/Gisto/Gisto/commit/46cd41180a819ea82cc542e9a61d27b69a4d9da8)
+*  CLEANUP (babel): cleanup babel plugins [View](https://github.com/Gisto/Gisto/commit/bcea2c9eb2f98aa6c01f021bb88a1e0c45ae82f3)
+*  CHORE (CI): update travis [View](https://github.com/Gisto/Gisto/commit/1c6e2c49af048022b4fce14934608eeddef545e1)
+*  TEST (reducers+components): add more tests [View](https://github.com/Gisto/Gisto/commit/0b05291c363815b181c3b03bbcb3874651c64d2d)
+*  CHORE (ci): fix ci build [View](https://github.com/Gisto/Gisto/commit/6449107309c22a73bd46c425e17d6c9906e08274)
+*  FIX (web): workbox config remove globPatterns [View](https://github.com/Gisto/Gisto/commit/33e7049bb07d4bb6fb278dafb8cce88f255e4f33)
+
 ### v1.10.18-beta.3
 *  CHORE (cleanup): remove unused [View](https://github.com/Gisto/Gisto/commit/3be47728abd60e7b596cf2c47cc6bf6ead3463f2)
 *  CHORE (typescript): convert to typescript [View](https://github.com/Gisto/Gisto/commit/e20ea96cf0126a4e5aee3a625c6acbcb27d94344)
