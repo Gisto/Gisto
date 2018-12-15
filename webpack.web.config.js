@@ -101,10 +101,6 @@ module.exports = {
       swDest: 'service-worker.js',
       clientsClaim: true,
       skipWaiting: true,
-      globIgnores: [
-        '**/node_modules/**/*',
-        'service-worker.js'
-      ],
       include: [/\.html$/, /\.js$/, /\.svg$/, /\.jpg$/, /\.gif$/, /\.png$/, /\.css$/],
       offlineGoogleAnalytics: true,
       runtimeCaching: [{
