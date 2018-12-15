@@ -6,7 +6,6 @@
   "main": "main.js",
   "scripts": {
     "test": "jest --bail",
-    "test:ci": "jest --coverage --coverageReporters=text-lcov",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "clean": "rimraf dist release web",
