@@ -211,10 +211,15 @@ function handleMacOSUpdates(mainWindow) {
     sendStatusToWindow('Gisto checking for new version...', {}, mainWindow, 'update-info');
 
     request.get(LATEST_RELEASED_VERSION_URL).end((error, result) => {
+      let shouldUpdate = false;
+
       if (result.body) {
         const serverVersion = result.body.name;
         const serverAssets = result.body.assets;
-        const shouldUpdate = semver.lt(packageJson.version, serverVersion);
+
+        if (serverVersion && serverVersion) {
+          shouldUpdate = semver.lt(serverVersion, serverVersion);
+        }
 
         if (shouldUpdate) {
           const dmgUrl = serverAssets.filter(

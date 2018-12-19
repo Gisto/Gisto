@@ -15,16 +15,12 @@ export const setToken = (token: string) => {
 export const removeToken = () => localStorage.setItem(GITHUB_TOKEN_KEY_IN_STORAGE, '');
 
 export const setEnterpriseDomain = (domain: string) => {
-  return localStorage.setItem(
-    GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE,
-    stripTrailingSlash(domain)
-  );
+  return localStorage.setItem(GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE, stripTrailingSlash(domain));
 };
 
 export const getEnterpriseDomain = () => localStorage.getItem(GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE);
 
 export const isEnterpriseLogin = () => !!localStorage.getItem(GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE);
 
-export const removeEnterpriseDomain = () => localStorage.removeItem(
-  GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE
-);
+export const removeEnterpriseDomain = () =>
+  localStorage.removeItem(GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE);
