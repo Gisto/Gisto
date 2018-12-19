@@ -297,7 +297,7 @@ export class SnippetHeader extends React.Component {
           { map((change) => (
             <li key={ change.version }>
               <ExternalLink href={
-                `${snippetUrl}/${change.user.login}/${snippetId}/revisions#diff-${change.version}`
+                `${snippetUrl}/${snippetId}/revisions#diff-${change.version}`
               }>
                 <History>
                   <div className="changed">

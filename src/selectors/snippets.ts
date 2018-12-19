@@ -46,7 +46,8 @@ export const getLanguagesWithCounts = createSelector(
     ])(snippets)
 );
 
-const getFlattenedTags = (snippets: ISnippet[]) => flow([map('tags'), flattenDeep, compact])(snippets);
+const getFlattenedTags = (snippets: ISnippet[]) =>
+  flow([map('tags'), flattenDeep, compact])(snippets);
 
 const countUniqueItems = (keyName: string) => (items: ISnippet[]) =>
   flow([
