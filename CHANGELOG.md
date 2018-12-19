@@ -1,3 +1,6 @@
+### v1.10.20
+
+
 ### v1.10.19
 *  CHORE (typescript): move snippets selector to typescript [View](https://github.com/Gisto/Gisto/commit/9a612973704c2507f4e25998a0f6f3b501f50c92)
 *  FIX (crush): on history with non existing user and version check [View](https://github.com/Gisto/Gisto/commit/59353562b09d4ccf9958701d1c10806d69d8151c)
