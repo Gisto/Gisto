@@ -1,3 +1,7 @@
+### v1.10.19
+*  CHORE (typescript): move snippets selector to typescript [View](https://github.com/Gisto/Gisto/commit/9a612973704c2507f4e25998a0f6f3b501f50c92)
+*  FIX (crush): on history with non existing user and version check [View](https://github.com/Gisto/Gisto/commit/59353562b09d4ccf9958701d1c10806d69d8151c)
+
 ### v1.10.18
 *  CHORE (typescript): convert Notification and Anchore to typescript [View](https://github.com/Gisto/Gisto/commit/d9cd80309d025d1d30e32c17d51d17e0b237b0a4)
 *  FIX (typescript): make all Interfaces shared [View](https://github.com/Gisto/Gisto/commit/185f254685e8fa98d04a684b4e774eee4232cf43)
