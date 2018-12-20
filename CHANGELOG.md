@@ -1,3 +1,6 @@
+### v1.10.21-beta.1
+*  CHORE (size): reduce  bundle size + remove webpack merges [View](https://github.com/Gisto/Gisto/commit/200bc13365b02d5881cd478e5cdd0a896b864cd3)
+
 ### v1.10.21-beta.0
 *  CHORE (packages): update packages [View](https://github.com/Gisto/Gisto/commit/cd4a5a903d8aea43dd919f8b518df06dcd6251d7)
 *  CHORE (size): reduce  bundle size + remove webpack merges [View](https://github.com/Gisto/Gisto/commit/4481ee5525a4109d96fdd6e8a7bd50689bf200a2)
