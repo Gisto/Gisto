@@ -3,7 +3,7 @@ import PropType from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
-  set, findIndex, map, filter, isEmpty, get, keys
+ filter, findIndex, get, head, isEmpty, keys, map, set 
 } from 'lodash/fp';
 import uuid from 'uuid';
 import { HashRouter as Router, Link } from 'react-router-dom';
@@ -25,7 +25,7 @@ import ExternalLink from 'components/common/ExternalLink';
 import Button from 'components/common/controls/Button';
 import Checkbox from 'components/common/controls/Checkbox';
 import DropZone from 'components/common/DropZone';
-import Select from 'components/common/controls/Select';
+import Select from 'react-dropdown-select';
 
 const StyledInput = styled(Input)`
   margin: 0;
@@ -46,14 +46,14 @@ const FileSection = styled(Section)`
   border: 1px solid ${(props) => props.theme.baseAppColor};
   padding: 20px;
   border-radius: 3px;
-  
+
   > div {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 0 0 -20px 0;
   }
-  
+
   &:last-of-type {
     margin-bottom: 70px;
   }
@@ -70,7 +70,7 @@ const StyledDeleteButton = styled(StyledButton)`
   white-space: nowrap;
   color: ${(props) => props.theme.colorDanger};
   border-color: ${(props) => props.theme.colorDanger};
-  
+
   span {
     background-color: ${(props) => props.theme.colorDanger};
   }
@@ -102,7 +102,15 @@ const StyledLink = styled(Link)`
 
 const StyledSelect = styled(Select)`
   margin-left: 20px;
-  height: 33px;
+  z-index: 1;
+  width: 250px !important;
+  background: #fff;
+  border: none !important;
+  border-bottom: 1px solid ${(props) => props.theme.baseAppColor} !important;
+  border-radius: 0 !important;
+  padding: 0 10px;
+  min-height: 28px !important;
+  height: 28px !important;
 `;
 
 export class NewSnippet extends React.Component {
@@ -119,7 +127,6 @@ export class NewSnippet extends React.Component {
   setDescription = (description) => {
     this.setState({ description });
   };
-
 
   setFileData = (value, id, type) => {
     const { files } = this.state;
@@ -168,81 +175,85 @@ export class NewSnippet extends React.Component {
 
     return (
       <div>
-
         <DropZone onAddFile={ this.addFile }/>
 
-        <H1><strong>New { this.state.public ? 'public' : 'private' } snippet:</strong> { this.state.description }</H1>
+        <H1>
+          <strong>New {this.state.public ? 'public' : 'private'} snippet:</strong>{' '}
+          {this.state.description}
+        </H1>
 
         <Section>
-          <StyledInput type="text"
-                       onChange={ (event) => this.setDescription(event.target.value) }
-                       placeholder={ `Description (default ${DEFAULT_SNIPPET_DESCRIPTION})` }/>
+          <StyledInput
+            type="text"
+            onChange={ (event) => this.setDescription(event.target.value) }
+            placeholder={ `Description (default ${DEFAULT_SNIPPET_DESCRIPTION})` }/>
         </Section>
 
         <Section>
-          <StyledCheckbox checked={ this.state.public }
-                          value={ getSetting('defaultNewIsPublic', false) }
-                          onChange={ () => this.togglePublic() }/>
+          <StyledCheckbox
+            checked={ this.state.public }
+            value={ getSetting('defaultNewIsPublic', false) }
+            onChange={ () => this.togglePublic() }/>
           &nbsp;
           <span>
-          Public snippet
-            &nbsp;
+            Public snippet &nbsp;
             <ExternalLink href="https://help.github.com/articles/about-gists/#types-of-gists">
               <Icon type="info" size="16" color={ theme.baseAppColor }/>
             </ExternalLink>
           </span>
         </Section>
 
-        { map((file) => (
-          <FileSection key={ file.uuid }>
-            <div>
-              <StyledInput type="text"
-                           value={ file.name }
-                           onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
-                           placeholder="file.ext"/>
-              <StyledSelect value={ getSetting('setings-default-new-snippet-language', 'Text') }
-                            onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'language') }>
-                { map((language) => (
-                  <option value={ language } key={ language }>{ language }</option>
-                ), keys(syntaxMap)) }
-              </StyledSelect>
-              <StyledDeleteButton icon="delete"
-                                  invert
-                                  onClick={ () => this.deleteFile(file.uuid) }>
-                <strong>Remove</strong> { file.name || 'this file' }
-              </StyledDeleteButton>
-            </div>
-            <br/>
-            <br/>
+        {map(
+          (file) => (
+            <FileSection key={ file.uuid }>
+              <div>
+                <StyledInput
+                  type="text"
+                  value={ file.name }
+                  onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
+                  placeholder="file.ext"/>
+                <StyledSelect
+                  values={ [{ label: 'Text', value: 'text' }] }
+                  color={ theme.baseAppColor }
+                  addPlaceholder="+ or add different"
+                  placeholder="Select language"
+                  options={ map((key) => ({ label: key, value: key }), keys(syntaxMap)) }
+                  onChange={ (value) => this.setFileData(get('value', head(value)), file.uuid, 'language')
+                  }/>
+                <StyledDeleteButton icon="delete" invert onClick={ () => this.deleteFile(file.uuid) }>
+                  <strong>Remove</strong> {file.name || 'this file'}
+                </StyledDeleteButton>
+              </div>
+              <br/>
+              <br/>
 
-            <Editor file={ file }
-                    isNew
-                    id={ file.uuid }
-                    onChange={ (value) => this.setFileData(value, file.uuid, 'content') }/>
-
-          </FileSection>
-        ), this.state.files) }
+              <Editor
+                file={ file }
+                isNew
+                id={ file.uuid }
+                onChange={ (value) => this.setFileData(value, file.uuid, 'content') }/>
+            </FileSection>
+          ),
+          this.state.files
+        )}
 
         <ButtonsSection>
-
           <Router>
             <StyledButton icon="arrow-left" invert>
               <StyledLink to="/">Back to list</StyledLink>
             </StyledButton>
           </Router>
 
-          <StyledButton invert
-                        icon="add"
-                        onClick={ () => this.addFile() }>
+          <StyledButton invert icon="add" onClick={ () => this.addFile() }>
             Add file
           </StyledButton>
 
-          <StyledButton icon="success"
-                        onClick={ () => this.save() }
-                        disabled={ isEmpty(this.state.files) }>
+          <StyledButton
+            icon="success"
+            onClick={ () => this.save() }
+            disabled={ isEmpty(this.state.files) }>
             Save
           </StyledButton>
-
         </ButtonsSection>
       </div>
     );
@@ -258,6 +269,9 @@ NewSnippet.propTypes = {
   theme: PropType.object
 };
 
-export default connect(mapStateToProps, {
-  createSnippet: snippetActions.createSnippet
-})(NewSnippet);
+export default connect(
+  mapStateToProps,
+  {
+    createSnippet: snippetActions.createSnippet
+  }
+)(NewSnippet);
