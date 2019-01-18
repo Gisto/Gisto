@@ -2,6 +2,7 @@ import {
   compact,
   countBy,
   filter,
+  flatten,
   flattenDeep,
   flow,
   get,
@@ -11,7 +12,8 @@ import {
   map,
   reverse,
   size,
-  sortBy
+  sortBy,
+  uniq
 } from 'lodash/fp';
 import { createSelector } from 'reselect';
 import { ISnippet, IState } from 'types/Interfaces';
@@ -32,8 +34,7 @@ export const getStarredCount = createSelector(
 
 export const getLanguagesWithCounts = createSelector(
   [getSnippetsFromState],
-  (snippets) =>
-    flow([
+  (snippets) => flow([
       map('files'),
       flattenDeep,
       groupBy('language'),
@@ -46,11 +47,9 @@ export const getLanguagesWithCounts = createSelector(
     ])(snippets)
 );
 
-const getFlattenedTags = (snippets: ISnippet[]) =>
-  flow([map('tags'), flattenDeep, compact])(snippets);
+const getFlattenedTags = (snippets: ISnippet[]) => flow([map('tags'), flattenDeep, compact])(snippets);
 
-const countUniqueItems = (keyName: string) => (items: ISnippet[]) =>
-  flow([
+const countUniqueItems = (keyName: string) => (items: ISnippet[]) => flow([
     countBy(identity),
     // tslint:disable-next-line:no-shadowed-variable
     mapValuesWithKey((size: number, item: number) => ({ [keyName]: item, size }))
@@ -76,4 +75,14 @@ export const getTruncated = createSelector(
 export const getUntagged = createSelector(
   [getSnippetsFromState],
   (snippets) => flow([filter((snippet: ISnippet) => size(snippet.tags) === 0), size])(snippets)
+);
+
+export const getTags = createSelector(
+  [getSnippetsFromState],
+  (snippets) => flow([
+  map('tags'),
+  flatten,
+  compact,
+  uniq
+])(snippets)
 );

@@ -3,7 +3,16 @@ import PropType from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
- filter, findIndex, get, head, isEmpty, keys, map, set 
+  filter,
+  findIndex,
+  get,
+  head,
+  isEmpty,
+  keys,
+  map,
+  set,
+  replace,
+  startsWith
 } from 'lodash/fp';
 import uuid from 'uuid';
 import { HashRouter as Router, Link } from 'react-router-dom';
@@ -26,6 +35,7 @@ import Button from 'components/common/controls/Button';
 import Checkbox from 'components/common/controls/Checkbox';
 import DropZone from 'components/common/DropZone';
 import Select from 'react-dropdown-select';
+import { getTags } from 'selectors/snippets';
 
 const StyledInput = styled(Input)`
   margin: 0;
@@ -40,6 +50,10 @@ const StyledCheckbox = styled(Checkbox)`
 
 const Section = styled.div`
   margin: 20px 0;
+`;
+
+const DescriptionSection = styled(Section)`
+  display: flex;
 `;
 
 const FileSection = styled(Section)`
@@ -103,21 +117,21 @@ const StyledLink = styled(Link)`
 const StyledSelect = styled(Select)`
   margin-left: 20px;
   z-index: 1;
-  width: 250px !important;
+  width: 350px !important;
   background: #fff;
   border: none !important;
   border-bottom: 1px solid ${(props) => props.theme.baseAppColor} !important;
   border-radius: 0 !important;
   padding: 0 10px;
   min-height: 28px !important;
-  height: 28px !important;
 `;
 
 export class NewSnippet extends React.Component {
   state = {
     public: getSetting('defaultNewIsPublic', false),
     description: '',
-    files: []
+    files: [],
+    tags: []
   };
 
   componentDidMount() {
@@ -164,30 +178,54 @@ export class NewSnippet extends React.Component {
 
   save = () => {
     this.props.createSnippet({
-      description: this.state.description,
+      description: `${this.state.description} ${map('value', this.state.tags).join(' ')}`,
       isPublic: this.state.public,
       files: prepareFiles(this.state.files)
     });
   };
 
+  seTags = (tagList) => {
+    const tags = map((tag) => {
+      if (!startsWith('#', tag.value)) {
+        return set('value', `#${tag.value}`, tag);
+      }
+
+return tag;
+    }, tagList);
+
+    this.setState({ tags });
+  };
+
   render() {
-    const { theme } = this.props;
+    const { theme, tags } = this.props;
 
     return (
       <div>
-        <DropZone onAddFile={ this.addFile }/>
+        <DropZone onAddFile={ this.addFile } />
 
         <H1>
           <strong>New {this.state.public ? 'public' : 'private'} snippet:</strong>{' '}
-          {this.state.description}
+          {this.state.description} {map('value', this.state.tags).join(', ')}
         </H1>
 
-        <Section>
+        <DescriptionSection>
           <StyledInput
             type="text"
             onChange={ (event) => this.setDescription(event.target.value) }
             placeholder={ `Description (default ${DEFAULT_SNIPPET_DESCRIPTION})` }/>
-        </Section>
+          <StyledSelect
+            multi
+            create
+            createNewLabel="add '{search}' tag"
+            values={ this.state.tags }
+            options={ map((tag) => ({ label: startsWith('#', tag) ? replace('#', '', tag) : tag, value: tag }), tags) }
+            color={ theme.baseAppColor }
+            keepSelectedInList={ false }
+            dropdownHeight="200px"
+            addPlaceholder="+ Add more tags"
+            placeholder="Tags"
+            onChange={ (values) => this.seTags(values) }/>
+        </DescriptionSection>
 
         <Section>
           <StyledCheckbox
@@ -198,7 +236,7 @@ export class NewSnippet extends React.Component {
           <span>
             Public snippet &nbsp;
             <ExternalLink href="https://help.github.com/articles/about-gists/#types-of-gists">
-              <Icon type="info" size="16" color={ theme.baseAppColor }/>
+              <Icon type="info" size="16" color={ theme.baseAppColor } />
             </ExternalLink>
           </span>
         </Section>
@@ -215,7 +253,8 @@ export class NewSnippet extends React.Component {
                 <StyledSelect
                   values={ [{ label: 'Text', value: 'text' }] }
                   color={ theme.baseAppColor }
-                  addPlaceholder="+ or add different"
+                  dropdownHeight="200px"
+                  addPlaceholder="click to change"
                   placeholder="Select language"
                   options={ map((key) => ({ label: key, value: key }), keys(syntaxMap)) }
                   onChange={ (value) => this.setFileData(get('value', head(value)), file.uuid, 'language')
@@ -224,8 +263,8 @@ export class NewSnippet extends React.Component {
                   <strong>Remove</strong> {file.name || 'this file'}
                 </StyledDeleteButton>
               </div>
-              <br/>
-              <br/>
+              <br />
+              <br />
 
               <Editor
                 file={ file }
@@ -261,12 +300,14 @@ export class NewSnippet extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  theme: get(['ui', 'settings', 'theme'], state)
+  theme: get(['ui', 'settings', 'theme'], state),
+  tags: getTags(state)
 });
 
 NewSnippet.propTypes = {
   createSnippet: PropType.func,
-  theme: PropType.object
+  theme: PropType.object,
+  tags: PropType.array
 };
 
 export default connect(
