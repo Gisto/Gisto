@@ -12,14 +12,27 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
        snippet:
     </strong>
      
+     
   </H1>
-  <Section>
+  <DescriptionSection>
     <StyledInput
       onChange={[Function]}
       placeholder="Description (default untitled)"
       type="text"
     />
-  </Section>
+    <StyledSelect
+      addPlaceholder="+ Add more tags"
+      create={true}
+      createNewLabel="add '{search}' tag"
+      dropdownHeight="200px"
+      keepSelectedInList={false}
+      multi={true}
+      onChange={[Function]}
+      options={Array []}
+      placeholder="Tags"
+      values={Array []}
+    />
+  </DescriptionSection>
   <Section>
     <StyledCheckbox
       checked={false}
