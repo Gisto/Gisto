@@ -164,7 +164,7 @@
     "raven-js": "^3.27.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-dropdown-select": "^1.5.1",
+    "react-dropdown-select": "^1.5.2",
     "react-monaco-editor": "^0.22.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.4.0-beta.6",
