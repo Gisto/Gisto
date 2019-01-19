@@ -176,14 +176,16 @@ export class LogIn extends React.Component {
   };
 
   checkLogin = () => {
-    const code = window.location.href.match(/\?code=(.*)/)[1];
+    if (window.location.href.match(/\?code=(.*)/) && window.location.href.match(/\?code=(.*)/)[1]) {
+      const code = window.location.href.match(/\?code=(.*)/)[1];
 
-    if (code) {
-      superagent.get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code.replace('#/', '')}`)
-        .end((error, result) => {
-          console.log(result.token, result);
-          this.props.loginWithToken(result.token);
-        });
+      if (code) {
+        superagent.get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code.replace('#/', '')}`)
+          .end((error, result) => {
+            console.log(result.token, result);
+            this.props.loginWithToken(result.token);
+          });
+      }
     }
   };
 
