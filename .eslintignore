@@ -1,2 +1,5 @@
 *.spec.js
 *.test.js
+*.ts
+*.tsx
+!*.js
