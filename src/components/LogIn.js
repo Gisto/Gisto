@@ -174,7 +174,7 @@ export class LogIn extends React.Component {
       ipcRenderer.send('oauth2-login');
     } else {
       this.showAuthWindow({
-        path: "https://github.com/login/oauth/authorize?client_id=193ae0478f15bfda404e&scope=['user', 'gist']",
+        path: 'https://github.com/login/oauth/authorize?client_id=193ae0478f15bfda404e&scope=user,gist',
         callback() {
           isomorphicReload();
         }
