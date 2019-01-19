@@ -25,7 +25,8 @@ describe('ACTIONS - login', () => {
   test('loginWithToken action should be created', () => {
     expect(loginActions.loginWithToken('213-dsf-234-sdf')).toEqual({
       meta: {
-        token: '213-dsf-234-sdf'
+        token: '213-dsf-234-sdf',
+        popup: false
       },
       type: AT.LOGIN_WITH_TOKEN,
       payload: {

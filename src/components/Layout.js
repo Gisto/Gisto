@@ -14,20 +14,31 @@ import SubHeader from 'components/layout/headers/SubHeader';
 import Main from 'components/layout/Main';
 import LogIn from 'components/LogIn';
 
-export const Layout = ({ theme }) => (
-  <ThemeProvider theme={ theme }>
-    <App>
-      { isLoggedIn ? (
-        <React.Fragment>
-          <MainHeader/>
-          <SubHeader/>
-          <Main/>
-        </React.Fragment>
-      ) : <LogIn/> }
-      <ToastContainer autoClose={ 8000 } />
-    </App>
-  </ThemeProvider>
-);
+export const Layout = ({ theme }) => {
+  // Check if it is oauth login window and close it
+  if (window.location.href.match('tokenSet') && window.location.href.match('tokenSet').length > 0) {
+    window.close();
+
+    return <h4>You can close this window now</h4>;
+  }
+
+  return (
+    <ThemeProvider theme={ theme }>
+      <App>
+        {isLoggedIn ? (
+          <React.Fragment>
+            <MainHeader />
+            <SubHeader />
+            <Main />
+          </React.Fragment>
+        ) : (
+          <LogIn />
+        )}
+        <ToastContainer autoClose={ 8000 } />
+      </App>
+    </ThemeProvider>
+  );
+};
 
 Layout.propTypes = {
   theme: PropTypes.object
