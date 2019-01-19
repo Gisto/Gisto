@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  drop, get, isEmpty, map, size, toString
+ drop, get, isEmpty, map, size, toString 
 } from 'lodash/fp';
 import styled from 'styled-components';
 
@@ -30,9 +30,9 @@ const History = styled.span`
     display: flex;
     margin: 10px 0;
     justify-content: space-between;
-    
+
     &.changed {
-      width: 230px;    
+      width: 230px;
     }
   }
 `;
@@ -41,7 +41,7 @@ const Additions = styled.span`
   background: ${(props) => props.theme.colorSuccess};
   color: #fff;
   padding: 0 5px;
-  
+
   + span {
     margin: 0 0 0 10px;
   }
@@ -51,32 +51,44 @@ const Deletions = styled.span`
   background: ${(props) => props.theme.colorDanger};
   color: #fff;
   padding: 0 7px;
-  
+
   + span {
     margin: 0 0 0 10px;
   }
 `;
 
 const Title = styled.div`
-    flex: 1;
-    text-align: left;
-    padding: 1px 20px 1px 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    position: relative;
-    width: 50vw;
-    
-    &:after {
-      content: "";
-      width: 100px;
-      height: 50px;
-      position: absolute;
-      top: 3px;
-      right: 0;
-      background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(56%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 1)));
-      background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 56%, rgba(255, 255, 255, 1) 100%);
-    }
+  flex: 1;
+  text-align: left;
+  padding: 1px 20px 1px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  width: 50vw;
+
+  &:after {
+    content: '';
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    top: 3px;
+    right: 0;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(0%, rgba(255, 255, 255, 0)),
+      color-stop(56%, rgba(255, 255, 255, 1)),
+      color-stop(100%, rgba(255, 255, 255, 1))
+    );
+    background: -webkit-linear-gradient(
+      left,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 56%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
 `;
 
 const Description = styled.span`
@@ -105,12 +117,12 @@ const LockIcon = styled(Icon)`
 const Fork = styled.div`
   width: 200px;
   text-align: left;
-  
+
   h3 {
     white-space: nowrap;
     font-weight: 100;
   }
-  
+
   img {
     width: 22px;
     vertical-align: middle;
@@ -132,7 +144,7 @@ export class SnippetHeader extends React.Component {
     }
   };
 
-  toggleStar = (id, starred) => starred ? this.props.unsetStar(id) : this.props.setStar(id);
+  toggleStar = (id, starred) => (starred ? this.props.unsetStar(id) : this.props.setStar(id));
 
   deleteSnippet = (id) => {
     // eslint-disable-next-line no-restricted-globals, no-alert
@@ -159,17 +171,18 @@ export class SnippetHeader extends React.Component {
     const iconType = starred ? 'star-full' : 'star-empty';
 
     return (
-      <UtilityIcon size={ 22 }
-                   color={ this.props.theme.baseAppColor }
-                   onClick={ () => this.toggleStar(snippet.id, starred) }
-                   type={ iconType }/>
+      <UtilityIcon
+        size={ 22 }
+        color={ this.props.theme.baseAppColor }
+        onClick={ () => this.toggleStar(snippet.id, starred) }
+        type={ iconType }/>
     );
   };
 
   countFiles = () => {
     const {
-      edit, match, snippets, tempSnippet
-    } = this.props;
+ edit, match, snippets, tempSnippet 
+} = this.props;
 
     const snippet = get(match.params.id, snippets);
     let count = size(get('files', snippet));
@@ -185,7 +198,13 @@ export class SnippetHeader extends React.Component {
 
   renderEditControls = () => {
     const {
-      editSnippet, cancelEditSnippet, edit, addTempFile, match, snippets, theme
+      editSnippet,
+      cancelEditSnippet,
+      edit,
+      addTempFile,
+      match,
+      snippets,
+      theme
     } = this.props;
     const snippet = get(match.params.id, snippets);
 
@@ -196,26 +215,27 @@ export class SnippetHeader extends React.Component {
     if (edit) {
       return (
         <React.Fragment>
-          <UtilityIcon size={ 22 }
-                       color={ theme.colorSuccess }
-                       onClick={ () => this.prepareAndUpdateSnippet() }
-                       type="check"
-                       text="Save"/>
-          <UtilityIcon size={ 22 }
-                       color={ theme.colorDanger }
-                       onClick={ () => cancelEditSnippet() }
-                       type="close"
-                       text="Cancel"/>
-          <UtilityIcon size={ 22 }
-                       color={ theme.baseAppColor }
-                       type="file"
-                       dropdown
-                       text={ this.countFiles() }>
+          <UtilityIcon
+            size={ 22 }
+            color={ theme.colorSuccess }
+            onClick={ () => this.prepareAndUpdateSnippet() }
+            type="check"
+            text="Save"/>
+          <UtilityIcon
+            size={ 22 }
+            color={ theme.colorDanger }
+            onClick={ () => cancelEditSnippet() }
+            type="close"
+            text="Cancel"/>
+          <UtilityIcon
+            size={ 22 }
+            color={ theme.baseAppColor }
+            type="file"
+            dropdown
+            text={ this.countFiles() }>
             <ul>
               <li>
-                <Anchor onClick={ () => addTempFile() }>
-                  Add new file
-                </Anchor>
+                <Anchor onClick={ () => addTempFile() }>Add new file</Anchor>
               </li>
             </ul>
           </UtilityIcon>
@@ -224,59 +244,74 @@ export class SnippetHeader extends React.Component {
     }
 
     return (
-      <UtilityIcon size={ 22 } color={ theme.baseAppColor } onClick={ () => editSnippet(snippet.id) } type="edit"/>
+      <UtilityIcon
+        size={ 22 }
+        color={ theme.baseAppColor }
+        onClick={ () => editSnippet(snippet.id) }
+        type="edit"/>
     );
   };
 
   renderSnippetDescription = () => {
     const {
-      edit, tempSnippet, snippets, match, updateTempSnippet
-    } = this.props;
+ edit, tempSnippet, snippets, match, updateTempSnippet 
+} = this.props;
     const snippet = get(match.params.id, snippets);
 
     if (!edit) {
       return (
-        <Description title={ get('description', snippet) }>
-          {get('description', snippet)}
-        </Description>
+        <Description title={ get('description', snippet) }>{get('description', snippet)}</Description>
       );
     }
 
     return (
-      <StyledInput value={ get('description', tempSnippet) }
-                   onChange={ (event) => updateTempSnippet('description', event.target.value) }/>
+      <StyledInput
+        value={ get('description', tempSnippet) }
+        onChange={ (event) => updateTempSnippet('description', event.target.value) }/>
     );
   };
 
   renderTitle = () => {
     const {
-      snippets, match, searchByLanguages, searchByTags, edit
-    } = this.props;
+ snippets, match, searchByLanguages, searchByTags, edit 
+} = this.props;
     const snippet = get(match.params.id, snippets);
 
     return (
-      <Title onMouseOver={ () => this.toggleToolbox() }
-             onMouseOut={ () => this.toggleToolbox() }
-             onBlur={ () => this.toggleToolbox() }
-             onDoubleClick={
-                 (event) => copyToClipboard(event, get('description', snippet), { title: 'Snippet description copied to clipboard' })
-             }
-             onFocus={ () => this.toggleToolbox() }>
-        { !edit && map((language) => (
-          <Languages key={ `${language}${snippet.id}` }
-                     onClick={ () => searchByLanguages(language) }>
-            { language }
-          </Languages>
-        ), get('languages', snippet)) }
+      <Title
+        onMouseOver={ () => this.toggleToolbox() }
+        onMouseOut={ () => this.toggleToolbox() }
+        onBlur={ () => this.toggleToolbox() }
+        onDoubleClick={ (event) => copyToClipboard(
+            event,
+            get('description', snippet),
+            'Snippet description copied to clipboard'
+          )
+        }
+        onFocus={ () => this.toggleToolbox() }>
+        {!edit
+          && map(
+            (language) => (
+              <Languages
+                key={ `${language}${snippet.id}` }
+                onClick={ () => searchByLanguages(language) }>
+                {language}
+              </Languages>
+            ),
+            get('languages', snippet)
+          )}
         &nbsp;
-        { this.renderSnippetDescription() }
+        {this.renderSnippetDescription()}
         &nbsp;
-        { !edit && map((tag) => (
-          <Anchor key={ tag }
-                  onClick={ () => searchByTags(tag) }>
-            { tag }&nbsp;
-          </Anchor>
-        ), get('tags', snippet)) }
+        {!edit
+          && map(
+            (tag) => (
+              <Anchor key={ tag } onClick={ () => searchByTags(tag) }>
+                {tag}&nbsp;
+              </Anchor>
+            ),
+            get('tags', snippet)
+          )}
       </Title>
     );
   };
@@ -287,45 +322,46 @@ export class SnippetHeader extends React.Component {
     const snippetId = get('id', snippet);
     const snippetUrl = getSnippetUrl('/gist');
 
-    return size(get('history', snippet)) > 1 && (
-      <UtilityIcon size={ 19 }
-                   color={ theme.baseAppColor }
-                   type="time"
-                   title="View change history"
-                   dropdown>
-        <ul>
-          { map((change) => (
-            <li key={ change.version }>
-              <ExternalLink href={
-                `${snippetUrl}/${snippetId}/revisions#diff-${change.version}`
-              }>
-                <History>
-                  <div className="changed">
-                    <strong>Changed:</strong>
-                    <span>{ dateFormatToString(change.committed_at) }</span>
-                  </div>
-                  { !isEmpty(change.change_status) && (
-                    <div>
-                      <span>
-                        <Additions>+</Additions>
-                        <span>
-                          { change.change_status.additions }
-                        </span>
-                      </span>
-                      <span>
-                        <Deletions>-</Deletions>
-                        <span>
-                          { change.change_status.deletions }
-                        </span>
-                      </span>
-                    </div>
-                  ) }
-                </History>
-              </ExternalLink>
-            </li>
-          ), drop(1, snippet.history)) }
-        </ul>
-      </UtilityIcon>
+    return (
+      size(get('history', snippet)) > 1 && (
+        <UtilityIcon
+          size={ 19 }
+          color={ theme.baseAppColor }
+          type="time"
+          title="View change history"
+          dropdown>
+          <ul>
+            {map(
+              (change) => (
+                <li key={ change.version }>
+                  <ExternalLink
+                    href={ `${snippetUrl}/${snippetId}/revisions#diff-${change.version}` }>
+                    <History>
+                      <div className="changed">
+                        <strong>Changed:</strong>
+                        <span>{dateFormatToString(change.committed_at)}</span>
+                      </div>
+                      {!isEmpty(change.change_status) && (
+                        <div>
+                          <span>
+                            <Additions>+</Additions>
+                            <span>{change.change_status.additions}</span>
+                          </span>
+                          <span>
+                            <Deletions>-</Deletions>
+                            <span>{change.change_status.deletions}</span>
+                          </span>
+                        </div>
+                      )}
+                    </History>
+                  </ExternalLink>
+                </li>
+              ),
+              drop(1, snippet.history)
+            )}
+          </ul>
+        </UtilityIcon>
+      )
     );
   };
 
@@ -333,34 +369,39 @@ export class SnippetHeader extends React.Component {
     const { snippets, match, theme } = this.props;
     const snippet = get(match.params.id, snippets);
 
-    return !isEmpty(get('fork', snippet)) && (
-      <UtilityIcon size={ 22 }
-                   color={ theme.baseAppColor }
-                   type="fork"
-                   title={ `This snippet is forked from ${get('fork.owner.login', snippet)}` }
-                   dropdown>
-        <Fork className="list">
-          <div>
-            <h3>
-            Forked from <img src={ get('fork.owner.avatar_url', snippet) }
-                              size={ 22 }
-                              alt={ get('fork.owner.login', snippet) }/>
-              <strong>{ get('fork.owner.login', snippet) }</strong>
-            </h3>
+    return (
+      !isEmpty(get('fork', snippet)) && (
+        <UtilityIcon
+          size={ 22 }
+          color={ theme.baseAppColor }
+          type="fork"
+          title={ `This snippet is forked from ${get('fork.owner.login', snippet)}` }
+          dropdown>
+          <Fork className="list">
             <div>
-              <Anchor href={ get('fork.html_url', snippet) }>view original snippet</Anchor>
+              <h3>
+                Forked from{' '}
+                <img
+                  src={ get('fork.owner.avatar_url', snippet) }
+                  size={ 22 }
+                  alt={ get('fork.owner.login', snippet) }/>
+                <strong>{get('fork.owner.login', snippet)}</strong>
+              </h3>
+              <div>
+                <Anchor href={ get('fork.html_url', snippet) }>view original snippet</Anchor>
+              </div>
             </div>
-          </div>
-        </Fork>
-      </UtilityIcon>
+          </Fork>
+        </UtilityIcon>
+      )
     );
   };
 
   render() {
     const snippetUrl = getSnippetUrl('/gist');
     const {
-      snippets, match, editSnippet, comments
-    } = this.props;
+ snippets, match, editSnippet, comments 
+} = this.props;
     const snippet = get(match.params.id, snippets);
     const snippetId = get('id', snippet);
     const openOnWebUrl = `${snippetUrl}/${get('username', snippet)}/${snippetId}`;
@@ -371,74 +412,96 @@ export class SnippetHeader extends React.Component {
 
     return (
       <SnippetHeaderWrapper>
+        {this.renderTitle()}
 
-        { this.renderTitle() }
+        <LockIcon
+          type={ isPublic ? 'unlock' : 'lock' }
+          size={ 22 }
+          title={ `Snippet is ${isPublic ? 'public' : 'private'}` }
+          color={ this.props.theme.borderColor }/>
 
-        <LockIcon type={ isPublic ? 'unlock' : 'lock' }
-                  size={ 22 }
-                  title={ `Snippet is ${isPublic ? 'public' : 'private'}` }
-                  color={ this.props.theme.borderColor }/>
-
-        { this.state.showToolbox && (
+        {this.state.showToolbox && (
           <div>
+            {this.renderEditControls()}
 
-            { this.renderEditControls() }
+            {this.renderHistoryControls()}
 
-            { this.renderHistoryControls() }
+            {this.renderFork()}
 
-            { this.renderFork() }
-
-            <UtilityIcon size={ 22 } color={ this.props.theme.colorDanger } onClick={ () => this.deleteSnippet(snippetId) } type="delete"/>
-            <UtilityIcon size={ 22 }
-                         color={ this.props.theme.baseAppColor }
-                         type="chat"
-                         onClick={ () => this.props.toggleSnippetComments() }
-                         text={ !isEmpty(comments) ? toString(size(comments)) : toString(get('comments', snippet)) }/>
-            <UtilityIcon size={ 22 }
-                         color={ this.props.theme.baseAppColor }
-                         type="copy"
-                         title="Copy Snippet URL to clipboard"
-                         onClick={ (event) => copyToClipboard(event, openOnWebUrl, { title: 'Snippet URL copied to clipboard' }) }/>
-            { this.renderStarControl(snippet) }
+            <UtilityIcon
+              size={ 22 }
+              color={ this.props.theme.colorDanger }
+              onClick={ () => this.deleteSnippet(snippetId) }
+              type="delete"/>
+            <UtilityIcon
+              size={ 22 }
+              color={ this.props.theme.baseAppColor }
+              type="chat"
+              onClick={ () => this.props.toggleSnippetComments() }
+              text={
+                !isEmpty(comments) ? toString(size(comments)) : toString(get('comments', snippet))
+              }/>
+            <UtilityIcon
+              size={ 22 }
+              color={ this.props.theme.baseAppColor }
+              type="copy"
+              title="Copy Snippet URL to clipboard"
+              onClick={ (event) => copyToClipboard(event, openOnWebUrl, 'Snippet URL copied to clipboard')
+              }/>
+            {this.renderStarControl(snippet)}
 
             <UtilityIcon size={ 22 } color={ this.props.theme.baseAppColor } type="ellipsis" dropdown>
               <ul>
-                { !this.isEditDisabled(snippet) && (
-                  <li><Anchor onClick={ () => editSnippet(snippetId) }>Edit</Anchor></li>
-                ) }
-                <li><ExternalLink href={ openOnWebUrl }>Open on web</ExternalLink></li>
-                <li><Anchor href={ `${openOnWebUrl}/download` }>Download</Anchor></li>
+                {!this.isEditDisabled(snippet) && (
+                  <li>
+                    <Anchor onClick={ () => editSnippet(snippetId) }>Edit</Anchor>
+                  </li>
+                )}
+                <li>
+                  <ExternalLink href={ openOnWebUrl }>Open on web</ExternalLink>
+                </li>
+                <li>
+                  <Anchor href={ `${openOnWebUrl}/download` }>Download</Anchor>
+                </li>
                 <li className="color-danger">
-                  <Anchor onClick={ () => this.deleteSnippet(snippetId) }>
-                    Delete
+                  <Anchor onClick={ () => this.deleteSnippet(snippetId) }>Delete</Anchor>
+                </li>
+                <li>
+                  <Anchor
+                    onClick={ (event) => copyToClipboard(event, snippetId, 'Snippet ID copied to clipboard')
+                    }>
+                    Copy snippet ID to clipboard
                   </Anchor>
                 </li>
                 <li>
-                  <Anchor onClick={ (event) => copyToClipboard(event, snippetId, { title: 'Snippet ID copied to clipboard' }) }>
-                  Copy snippet ID to clipboard
-                  </Anchor>
-                </li>
-                <li>
-                  <Anchor onClick={ (event) => copyToClipboard(event, openOnWebUrl, { title: 'Snippet URL copied to clipboard' }) }>
+                  <Anchor
+                    onClick={ (event) => copyToClipboard(event, openOnWebUrl, 'Snippet URL copied to clipboard')
+                    }>
                     Copy Snippet URL to clipboard
                   </Anchor>
                 </li>
                 <li>
-                  <Anchor onClick={ (event) => copyToClipboard(event, httpCloneUrl, { title: 'HTTPS clone command copied to clipboard' }) }>
+                  <Anchor
+                    onClick={ (event) => copyToClipboard(
+                        event,
+                        httpCloneUrl,
+                        'HTTPS clone command copied to clipboard'
+                      )
+                    }>
                     Copy HTTPS clone command to clipboard
                   </Anchor>
                 </li>
                 <li>
-                  <Anchor onClick={ (event) => copyToClipboard(event, sshCloneUrl, { title: 'SSH clone command copied to clipboard' }) }>
+                  <Anchor
+                    onClick={ (event) => copyToClipboard(event, sshCloneUrl, 'SSH clone command copied to clipboard')
+                    }>
                     Copy SSH clone command to clipboard
                   </Anchor>
                 </li>
                 <li>
-                  <ExternalLink href={ openInGHDesktop }>
-                    Open in GitHub desktop
-                  </ExternalLink>
+                  <ExternalLink href={ openInGHDesktop }>Open in GitHub desktop</ExternalLink>
                 </li>
-                { !isEnterpriseLogin() && (
+                {!isEnterpriseLogin() && (
                   <React.Fragment>
                     <li>
                       <ExternalLink href={ `http://plnkr.co/edit/gist:${snippetId}?p=preview` }>
@@ -456,11 +519,11 @@ export class SnippetHeader extends React.Component {
                       </ExternalLink>
                     </li>
                   </React.Fragment>
-                ) }
+                )}
               </ul>
             </UtilityIcon>
           </div>
-        ) }
+        )}
       </SnippetHeaderWrapper>
     );
   }
@@ -494,16 +557,19 @@ SnippetHeader.propTypes = {
   comments: PropTypes.array
 };
 
-export default connect(mapStateToProps, {
-  searchByLanguages: snippetActions.filterSnippetsByLanguage,
-  searchByTags: snippetActions.filterSnippetsByTags,
-  setStar: snippetActions.starSnippet,
-  unsetStar: snippetActions.unStarSnippet,
-  deleteSnippet: snippetActions.deleteSnippet,
-  editSnippet: snippetActions.editSnippet,
-  cancelEditSnippet: snippetActions.cancelEditSnippet,
-  updateTempSnippet: snippetActions.updateTempSnippet,
-  addTempFile: snippetActions.addTempFile,
-  updateSnippet: snippetActions.updateSnippet,
-  toggleSnippetComments: snippetActions.toggleSnippetComments
-})(SnippetHeader);
+export default connect(
+  mapStateToProps,
+  {
+    searchByLanguages: snippetActions.filterSnippetsByLanguage,
+    searchByTags: snippetActions.filterSnippetsByTags,
+    setStar: snippetActions.starSnippet,
+    unsetStar: snippetActions.unStarSnippet,
+    deleteSnippet: snippetActions.deleteSnippet,
+    editSnippet: snippetActions.editSnippet,
+    cancelEditSnippet: snippetActions.cancelEditSnippet,
+    updateTempSnippet: snippetActions.updateTempSnippet,
+    addTempFile: snippetActions.addTempFile,
+    updateSnippet: snippetActions.updateSnippet,
+    toggleSnippetComments: snippetActions.toggleSnippetComments
+  }
+)(SnippetHeader);

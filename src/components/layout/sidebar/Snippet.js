@@ -99,7 +99,7 @@ export class Snippet extends Component {
 
     menu.append(new MenuItem({
       label: 'Copy description to clipboard',
-      click: () => copyToClipboard(event, get('description', snippet), { title: 'Snippet description copied to clipboard' })
+      click: () => copyToClipboard(event, get('description', snippet), 'Snippet description copied to clipboard')
     }));
 
     menu.append(new MenuItem({
