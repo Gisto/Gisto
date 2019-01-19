@@ -1,3 +1,6 @@
+### v1.10.25
+*  FIX (oauth): oauth scope correct url [View](https://github.com/Gisto/Gisto/commit/09a4d42a7e6780dea44cc73ceadf16f67b3c78bd)
+
 ### v1.10.24
 *  FIX (oauth2): fix login with oauth2 on webapp closes #243 [View](https://github.com/Gisto/Gisto/commit/c6bff10f71b47f71ff9a7acaefcb6cdc20b59184)
 
