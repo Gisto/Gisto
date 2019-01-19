@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { get, isEmpty } from 'lodash/fp';
 import styled from 'styled-components';
 import { setNotification } from 'utils/notifications';
-
+import * as superagent from 'superagent';
 import * as loginActions from 'actions/login';
 
 import { setEnterpriseDomain, setToken, removeEnterpriseDomain } from 'utils/login';
@@ -170,6 +170,20 @@ export class LogIn extends React.Component {
       const { ipcRenderer } = require('electron');
 
       ipcRenderer.send('oauth2-login');
+    } else {
+      window.open("https://github.com/login/oauth/authorize?client_id=193ae0478f15bfda404e&scope=['user', 'gist']");
+    }
+  };
+
+  checkLogin = () => {
+    const code = window.location.href.match(/\?code=(.*)/)[1];
+
+    if (code) {
+      superagent.get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code.replace('#/', '')}`)
+        .end((error, result) => {
+          console.log(result.token, result);
+          this.props.loginWithToken(result.token);
+        });
     }
   };
 
@@ -182,6 +196,8 @@ export class LogIn extends React.Component {
 
         isomorphicReload();
       });
+    } else {
+      this.checkLogin();
     }
 
     return (
