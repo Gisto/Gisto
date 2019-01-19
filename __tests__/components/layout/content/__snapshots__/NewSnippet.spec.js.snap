@@ -12,7 +12,6 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
        snippet:
     </strong>
      
-     
   </H1>
   <DescriptionSection>
     <StyledInput
@@ -30,6 +29,11 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
       onChange={[Function]}
       options={Array []}
       placeholder="Tags"
+      style={
+        Object {
+          "zIndex": 2,
+        }
+      }
       values={Array []}
     />
   </DescriptionSection>

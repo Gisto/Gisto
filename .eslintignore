@@ -1,3 +1,2 @@
 *.spec.js
 *.test.js
-!**/*.js

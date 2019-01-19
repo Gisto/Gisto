@@ -117,7 +117,7 @@ const StyledLink = styled(Link)`
 const StyledSelect = styled(Select)`
   margin-left: 20px;
   z-index: 1;
-  width: 350px !important;
+  width: 400px !important;
   background: #fff;
   border: none !important;
   border-bottom: 1px solid ${(props) => props.theme.baseAppColor} !important;
@@ -190,11 +190,13 @@ export class NewSnippet extends React.Component {
         return set('value', `#${tag.value}`, tag);
       }
 
-return tag;
+      return tag;
     }, tagList);
 
     this.setState({ tags });
   };
+
+  mapArrayToSelectObject = (array) => map((key) => ({ label: key, value: key }), array);
 
   render() {
     const { theme, tags } = this.props;
@@ -205,7 +207,7 @@ return tag;
 
         <H1>
           <strong>New {this.state.public ? 'public' : 'private'} snippet:</strong>{' '}
-          {this.state.description} {map('value', this.state.tags).join(', ')}
+          {this.state.description}
         </H1>
 
         <DescriptionSection>
@@ -216,9 +218,13 @@ return tag;
           <StyledSelect
             multi
             create
+            style={ { zIndex: 2 } }
             createNewLabel="add '{search}' tag"
             values={ this.state.tags }
-            options={ map((tag) => ({ label: startsWith('#', tag) ? replace('#', '', tag) : tag, value: tag }), tags) }
+            options={ map(
+              (tag) => ({ label: startsWith('#', tag) ? replace('#', '', tag) : tag, value: tag }),
+              tags
+            ) }
             color={ theme.baseAppColor }
             keepSelectedInList={ false }
             dropdownHeight="200px"
@@ -251,12 +257,12 @@ return tag;
                   onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
                   placeholder="file.ext"/>
                 <StyledSelect
-                  values={ [{ label: 'Text', value: 'text' }] }
+                  values={ this.mapArrayToSelectObject(filter((key) => key === 'JavaScript', keys(syntaxMap))) }
                   color={ theme.baseAppColor }
                   dropdownHeight="200px"
-                  addPlaceholder="click to change"
+                  addPlaceholder="used, click to change?"
                   placeholder="Select language"
-                  options={ map((key) => ({ label: key, value: key }), keys(syntaxMap)) }
+                  options={ this.mapArrayToSelectObject(keys(syntaxMap)) }
                   onChange={ (value) => this.setFileData(get('value', head(value)), file.uuid, 'language')
                   }/>
                 <StyledDeleteButton icon="delete" invert onClick={ () => this.deleteFile(file.uuid) }>
