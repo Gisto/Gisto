@@ -97,7 +97,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
           if (result.statusCode === 200) {
             setToken(action.payload.token);
 
-            window.location.reload(true);
+            window.location.href('/');
           }
         });
     }
