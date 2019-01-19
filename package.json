@@ -97,7 +97,7 @@
     "css-loader": "^2.0.1",
     "devtron": "^1.4.0",
     "electron": "^3.0.13",
-    "electron-builder": "^20.38.4",
+    "electron-builder": "^20.38.5",
     "electron-debug": "^2.0.0",
     "electron-devtools-installer": "^2.2.4",
     "electron-reload": "^1.4.0",
