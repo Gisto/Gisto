@@ -1,3 +1,6 @@
+### v1.10.24
+*  FIX (oauth2): fix login with oauth2 on webapp closes #243 [View](https://github.com/Gisto/Gisto/commit/c6bff10f71b47f71ff9a7acaefcb6cdc20b59184)
+
 ### v1.10.23
 *  FIX (login): oauth [View](https://github.com/Gisto/Gisto/commit/7dad8429c2c621b91d28269ac6e890329bf9d2f4)
 
