@@ -1,3 +1,10 @@
+### v1.10.21
+*  FIX (new snippet): use react-dropdown-select to choose language [View](https://github.com/Gisto/Gisto/commit/cf6510e101d929419c13980906fbc16cebcaee78)
+*  FEATURE (new snippet): use react-dropdown-select for both tags and language closes #242 [View](https://github.com/Gisto/Gisto/commit/265d75b069e5466507c2b3b40cd0da10f1bceb70)
+*  FIX (new snippet): tags and syntax highlighting layout [View](https://github.com/Gisto/Gisto/commit/d6448e0a5c9f11d5e81ea1489ed8a12cd9d4775e)
+*  FIX (notifications): Clipboard notifications failing closing #241 [View](https://github.com/Gisto/Gisto/commit/5bef272c10d8a943aa9d0339d76f40829c79cc29)
+*  FIX (web): oauth on web [View](https://github.com/Gisto/Gisto/commit/703d938e37faee39a3329cbf6e4c9511af67459c)
+
 ### v1.10.21-beta.2
 *  CHORE (size): reduce  bundle size + remove webpack merges [View](https://github.com/Gisto/Gisto/commit/27516b013f145c6c89f55a8e607e348a992967c8)
 
