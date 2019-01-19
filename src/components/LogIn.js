@@ -7,7 +7,9 @@ import { setNotification } from 'utils/notifications';
 import * as superagent from 'superagent';
 import * as loginActions from 'actions/login';
 
-import { setEnterpriseDomain, setToken, removeEnterpriseDomain } from 'utils/login';
+import {
+ setEnterpriseDomain, setToken, isLoggedIn, removeEnterpriseDomain
+} from 'utils/login';
 import { isElectron } from 'utils/electron';
 import { isomorphicReload } from 'utils/isomorphic';
 
@@ -171,22 +173,47 @@ export class LogIn extends React.Component {
 
       ipcRenderer.send('oauth2-login');
     } else {
-      window.open("https://github.com/login/oauth/authorize?client_id=193ae0478f15bfda404e&scope=['user', 'gist']");
+      this.showAuthWindow({
+        path: "https://github.com/login/oauth/authorize?client_id=193ae0478f15bfda404e&scope=['user', 'gist']",
+        callback() {
+          isomorphicReload();
+        }
+      });
     }
   };
 
   checkLogin = () => {
-    if (window.location.href.match(/\?code=(.*)/) && window.location.href.match(/\?code=(.*)/)[1]) {
+    if (!isLoggedIn && window.location.href.match(/\?code=(.*)#\//) && window.location.href.match(/\?code=(.*)#\//)[1]) {
       const code = window.location.href.match(/\?code=(.*)/)[1];
 
       if (code) {
-        superagent.get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code.replace('#/', '')}`)
+        superagent.get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code}`)
           .end((error, result) => {
-            console.log(result.body.token, result.body);
-            this.props.loginWithToken(result.body.token);
+           if (result && result.body.token) {
+             this.props.loginWithToken(result.body.token, true);
+           }
           });
       }
     }
+  };
+
+  showAuthWindow = (options) => {
+    const w = 800;
+    const h = 600;
+    const left = Number((window.screen.width / 2) - (w / 2));
+    const tops = Number((window.screen.height / 2) - (h / 2));
+
+    const windowName = 'Login with github';
+    const windowOptions = `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${tops}, left=${left}`;
+    const that = this;
+
+    that._oauthWindow = window.open(options.path, windowName, windowOptions);
+    that._oauthInterval = window.setInterval(() => {
+      if (that._oauthWindow.closed) {
+        window.clearInterval(that._oauthInterval);
+        options.callback();
+      }
+    }, 1000);
   };
 
   render() {
@@ -198,8 +225,9 @@ export class LogIn extends React.Component {
 
         isomorphicReload();
       });
-    } else {
-      this.checkLogin();
+    }
+    if (!isLoggedIn) {
+        this.checkLogin();
     }
 
     return (
