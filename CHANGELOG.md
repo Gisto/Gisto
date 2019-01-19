@@ -1,3 +1,6 @@
+### v1.10.26
+*  FIX (autoUpdater): correct version check [View](https://github.com/Gisto/Gisto/commit/6da949be5412053cc8389d338f97fbbe2b34d8bf)
+
 ### v1.10.25
 *  FIX (oauth): oauth scope correct url [View](https://github.com/Gisto/Gisto/commit/09a4d42a7e6780dea44cc73ceadf16f67b3c78bd)
 
