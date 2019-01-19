@@ -182,8 +182,8 @@ export class LogIn extends React.Component {
       if (code) {
         superagent.get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code.replace('#/', '')}`)
           .end((error, result) => {
-            console.log(result.token, result);
-            this.props.loginWithToken(result.token);
+            console.log(result.body.token, result.body);
+            this.props.loginWithToken(result.body.token);
           });
       }
     }
