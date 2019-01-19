@@ -1,3 +1,6 @@
+### v1.10.22
+*  FIX (check url): fix url checks [View](https://github.com/Gisto/Gisto/commit/45d92a8525e35228388ecc916dac65b4dab3561f)
+
 ### v1.10.21
 *  FIX (new snippet): use react-dropdown-select to choose language [View](https://github.com/Gisto/Gisto/commit/cf6510e101d929419c13980906fbc16cebcaee78)
 *  FEATURE (new snippet): use react-dropdown-select for both tags and language closes #242 [View](https://github.com/Gisto/Gisto/commit/265d75b069e5466507c2b3b40cd0da10f1bceb70)
