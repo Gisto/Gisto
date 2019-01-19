@@ -1,3 +1,6 @@
+### v1.10.23
+*  FIX (login): oauth [View](https://github.com/Gisto/Gisto/commit/7dad8429c2c621b91d28269ac6e890329bf9d2f4)
+
 ### v1.10.22
 *  FIX (check url): fix url checks [View](https://github.com/Gisto/Gisto/commit/45d92a8525e35228388ecc916dac65b4dab3561f)
 
