@@ -217,8 +217,8 @@ function handleMacOSUpdates(mainWindow) {
         const serverVersion = result.body.name;
         const serverAssets = result.body.assets;
 
-        if (serverVersion && serverVersion) {
-          shouldUpdate = semver.lt(serverVersion, serverVersion);
+        if (serverVersion && packageJson.version) {
+          shouldUpdate = semver.lt(packageJson.version, serverVersion);
         }
 
         if (shouldUpdate) {
