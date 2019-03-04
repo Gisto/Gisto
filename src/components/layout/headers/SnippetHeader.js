@@ -185,6 +185,7 @@ export class SnippetHeader extends React.Component {
 } = this.props;
 
     const snippet = get(match.params.id, snippets);
+
     let count = size(get('files', snippet));
 
     if (edit) {
