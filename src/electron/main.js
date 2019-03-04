@@ -20,7 +20,9 @@ const helpers = require('./main/helpers');
 helpers.initSentry();
 
 let mainWindow;
+
 let splashWindow;
+
 let envPath = path.join(app.getAppPath(), '.env');
 
 if (isDev) {

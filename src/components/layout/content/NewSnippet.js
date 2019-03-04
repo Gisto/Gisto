@@ -26,6 +26,7 @@ import { prepareFiles } from 'utils/snippets';
 import { gaPage } from 'utils/ga';
 import { getSetting } from 'utils/settings';
 import { randomString } from 'utils/string';
+import { hexToRGBA } from 'utils/color';
 
 import Input from 'components/common/controls/Input';
 import Editor from 'components/common/controls/Editor';
@@ -126,6 +127,51 @@ const StyledSelect = styled(Select)`
   min-height: 28px !important;
 `;
 
+const SearchAndToggle = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  input {
+    margin: 10px 10px 0;
+    line-height: 30px;
+    padding: 0px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    :focus {
+      outline: none;
+    }
+  }
+`;
+
+const Items = styled.div`
+  overflow: auto;
+  min-height: 10px;
+  max-height: 200px;
+`;
+
+const Item = styled.div`
+  display: flex;
+  align-items: baseline;
+  ${({ disabled }) => disabled && 'text-decoration: line-through;'};
+  cursor: pointer;
+
+  :hover {
+    background: ${(props) => hexToRGBA(props.theme.baseAppColor, 0.1)};
+  }
+
+  :first-child {
+    margin-top: 10px;
+  }
+
+  :last-child {
+    margin-bottom: 10px;
+  }
+`;
+
+const ItemLabel = styled.div`
+  margin: 5px 10px;
+`;
+
 export class NewSnippet extends React.Component {
   state = {
     public: getSetting('defaultNewIsPublic', false),
@@ -198,6 +244,42 @@ export class NewSnippet extends React.Component {
 
   mapArrayToSelectObject = (array) => map((key) => ({ label: key, value: key }), array);
 
+  customDropdownRenderer = ({ props, state, methods }) => {
+    const regexp = new RegExp(state.search, 'i');
+
+    return (
+      <div>
+        <SearchAndToggle color={ props.color }>
+          <input
+            type="text"
+            value={ state.search }
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
+            onChange={ methods.setSearch }
+            placeholder="Find language"/>
+        </SearchAndToggle>
+        <Items>
+          {props.options
+            .filter((item) => regexp.test(item[props.searchBy] || item[props.labelField]))
+            .map((option) => {
+              if (!props.keepSelectedInList && methods.isSelected(option)) {
+                return null;
+              }
+
+              return (
+                <Item
+                  disabled={ option.disabled }
+                  key={ option[props.valueField] }
+                  onClick={ option.disabled ? null : () => methods.addItem(option) }>
+                  <ItemLabel>{option[props.labelField]}</ItemLabel>
+                </Item>
+              );
+            })}
+        </Items>
+      </div>
+    );
+  };
+
   render() {
     const { theme, tags } = this.props;
 
@@ -228,8 +310,8 @@ export class NewSnippet extends React.Component {
             color={ theme.baseAppColor }
             keepSelectedInList={ false }
             dropdownHeight="200px"
-            addPlaceholder="+ Add more tags"
-            placeholder="Tags"
+            addPlaceholder="+ Add more"
+            placeholder="Add tags"
             onChange={ (values) => this.seTags(values) }/>
         </DescriptionSection>
 
@@ -257,10 +339,14 @@ export class NewSnippet extends React.Component {
                   onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
                   placeholder="file.ext"/>
                 <StyledSelect
-                  values={ this.mapArrayToSelectObject(filter((key) => key === 'JavaScript', keys(syntaxMap))) }
+                  values={ this.mapArrayToSelectObject(
+                    filter((key) => key === 'JavaScript', keys(syntaxMap))
+                  ) }
                   color={ theme.baseAppColor }
-                  dropdownHeight="200px"
-                  addPlaceholder="used, click to change?"
+                  contentRenderer={ ({ state }) => (
+                    <div>{state.values && state.values[0].label}</div>
+                  ) }
+                  dropdownRenderer={ this.customDropdownRenderer }
                   placeholder="Select language"
                   options={ this.mapArrayToSelectObject(keys(syntaxMap)) }
                   onChange={ (value) => this.setFileData(get('value', head(value)), file.uuid, 'language')

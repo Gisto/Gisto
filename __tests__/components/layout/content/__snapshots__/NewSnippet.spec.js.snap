@@ -20,7 +20,7 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
       type="text"
     />
     <StyledSelect
-      addPlaceholder="+ Add more tags"
+      addPlaceholder="+ Add more"
       create={true}
       createNewLabel="add '{search}' tag"
       dropdownHeight="200px"
@@ -28,7 +28,7 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
       multi={true}
       onChange={[Function]}
       options={Array []}
-      placeholder="Tags"
+      placeholder="Add tags"
       style={
         Object {
           "zIndex": 2,

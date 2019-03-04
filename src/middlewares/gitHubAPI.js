@@ -50,6 +50,7 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     if (action.type === AT.LOGIN_BASIC) {
       dispatch({ type: AT.LOGIN_BASIC.PENDING, action });
       const tokenString = btoa(`${action.payload.user}:${action.payload.pass}`);
+
       let basicAuthHeader = {
         Authorization: `basic ${tokenString}`,
         'Content-Type': 'application/json',

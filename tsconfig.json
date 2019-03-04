@@ -10,6 +10,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "strict": true,
+    "skipLibCheck": true,
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "node",
     "baseUrl": "src",
@@ -22,6 +23,5 @@
     "esModuleInterop": true,
     "noEmitOnError": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts", "__mocks__", "__tests__"]
+  "include": ["src/**/*"]
 }
