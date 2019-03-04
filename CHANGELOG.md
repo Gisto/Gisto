@@ -1,3 +1,6 @@
+### v1.10.27-beta.0
+*  FIX (create new): update Select and improve usability [View](https://github.com/Gisto/Gisto/commit/4cc81662d26e9a589ca27465b9dac312317c8875)
+
 ### v1.10.26
 *  FIX (autoUpdater): correct version check [View](https://github.com/Gisto/Gisto/commit/6da949be5412053cc8389d338f97fbbe2b34d8bf)
 
