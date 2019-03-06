@@ -106,7 +106,7 @@ const editorOptions = (options) => ({
 });
 
 export class Editor extends React.Component {
-  editorWillMount = (monaco) => {
+  editorDidMount = (editor, monaco) => {
     monaco.languages.register({ id: 'ada' });
     monaco.languages.register({ id: 'clojure' });
     monaco.languages.register({ id: 'cobol' });
@@ -155,8 +155,11 @@ export class Editor extends React.Component {
       theme={ getSetting('editorTheme', 'vs') }
       name={ this.props.id }
       value={ this.props.file.content }
-      options={ editorOptions() }
-      editorWillMount={ this.editorWillMount }
+      options={ editorOptions({ readOnly: !this.props.edit }) }
+      // eslint-disable-next-line no-extra-boolean-cast
+      editorDidMount={ () => Boolean(getSetting('settings-editor-register-extra-langs', false))
+        ? this.editorDidMount
+        : null }
       onChange={ this.props.onChange }/>
   );
 
