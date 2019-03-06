@@ -32,6 +32,7 @@ exports[`COMPONENTS - <Editor> render Editor 1`] = `
         "minimap": Object {
           "enabled": false,
         },
+        "readOnly": false,
         "roundedSelection": false,
         "scrollBeyondLastLine": false,
         "selectOnLineNumbers": false,
@@ -78,6 +79,7 @@ exports[`COMPONENTS - <Editor> render markdown Editor 1`] = `
         "minimap": Object {
           "enabled": false,
         },
+        "readOnly": false,
         "roundedSelection": false,
         "scrollBeyondLastLine": false,
         "selectOnLineNumbers": false,
