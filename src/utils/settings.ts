@@ -55,3 +55,7 @@ export const setBooleanSetting = (key: string) => {
 };
 
 export const getAllSettings = () => settings.getAll();
+
+export const setSession = (key: string, value: string) => sessionStorage.setItem(key, value);
+
+export const getSession = (key: string) => sessionStorage.getItem(key);
