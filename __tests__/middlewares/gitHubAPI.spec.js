@@ -10,24 +10,27 @@ const createFakeStore = (initialState, dispatch = undefined) => ({
   }
 });
 
-const createMiddlewareDispatcher = middleware => async (
+const createMiddlewareDispatcher = (middleware) => async (
   storeData,
   action,
   dispatcher
 ) => {
   let dispatched = null;
   const dispatch = middleware(createFakeStore(storeData, dispatcher))(
-    actionAttempt => (dispatched = actionAttempt)
+    (actionAttempt) => (dispatched = actionAttempt)
   );
+
   await dispatch(action);
-  return dispatched;
+
+return dispatched;
 };
 
 
 describe('middleware - gitHubApi', () => {
-
   let dispatchSpy;
-  let middlewareDispatcher;
+
+  let middlewareDispatcher = null;
+
   let initState;
 
   beforeEach(() => {
@@ -37,22 +40,22 @@ describe('middleware - gitHubApi', () => {
   beforeAll(() => {
     initState = {
       rateLimit: {
-        'resources': {
-          'core': {
-            'limit': 5000,
-            'remaining': 4999,
-            'reset': 1372700873
+        resources: {
+          core: {
+            limit: 5000,
+            remaining: 4999,
+            reset: 1372700873
           },
-          'search': {
-            'limit': 30,
-            'remaining': 18,
-            'reset': 1372697452
+          search: {
+            limit: 30,
+            remaining: 18,
+            reset: 1372697452
           }
         },
-        'rate': {
-          'limit': 5000,
-          'remaining': 4999,
-          'reset': 1372700873
+        rate: {
+          limit: 5000,
+          remaining: 4999,
+          reset: 1372700873
         }
       }
     };
@@ -108,5 +111,4 @@ describe('middleware - gitHubApi', () => {
         type: 'LOGIN_BASIC_PENDING'
       });
   });
-
 });

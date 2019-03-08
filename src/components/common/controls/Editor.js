@@ -23,7 +23,7 @@ import SbclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/sbcl';
 import ScalaHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/scala';
 import TclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/tcl';
 
-import { getSetting } from 'utils/settings';
+import { getSetting, getSession, setSession } from 'utils/settings';
 import {
   isAsciiDoc, isCSV, isGeoJson, isMarkDown, isPDF, isImage, isTSV, isHTML
 } from 'utils/files';
@@ -107,6 +107,8 @@ const editorOptions = (options) => ({
 
 export class Editor extends React.Component {
   editorDidMount = (editor, monaco) => {
+    setSession('monaco-extra-langs-registred', true);
+
     monaco.languages.register({ id: 'ada' });
     monaco.languages.register({ id: 'clojure' });
     monaco.languages.register({ id: 'cobol' });
@@ -157,9 +159,9 @@ export class Editor extends React.Component {
       value={ this.props.file.content }
       options={ editorOptions({ readOnly: !this.props.edit }) }
       // eslint-disable-next-line no-extra-boolean-cast
-      editorDidMount={ () => Boolean(getSetting('settings-editor-register-extra-langs', false))
-        ? this.editorDidMount
-        : null }
+      editorDidMount={ (editor, monaco) => getSession('monaco-extra-langs-registred')
+        ? null
+        : this.editorDidMount(editor, monaco) }
       onChange={ this.props.onChange }/>
   );
 

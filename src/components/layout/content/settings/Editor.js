@@ -224,14 +224,6 @@ export const EditorSettings = ({ changeSettings }) => {
             </Label>
           </Field>
 
-          <Field>
-            <Label>
-              <span>Register extra languages (slow) <a title="Extra language highlight for: ada, clojure, cobol, d, elixir, erlang, fortran, groovy, haskell, julia, kotlin, ocaml, pascal, perl, racket, sbcl, scala and tcl">[?]</a>:</span>
-              <Checkbox checked={ getSetting('settings-editor-register-extra-langs', false) }
-                        onChange={ () => updateSettings('settings-editor-register-extra-langs', null, false) }/>
-            </Label>
-          </Field>
-
         </Section>
 
         <Section>
