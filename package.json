@@ -1,6 +1,6 @@
 {
   "name": "gisto",
-  "version": "1.10.27-beta.1",
+  "version": "1.10.27-beta.2",
   "description": "Cross-platform snippets management desktop application",
   "productName": "Gisto",
   "main": "main.js",

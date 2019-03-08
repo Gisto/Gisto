@@ -1,3 +1,6 @@
+### v1.10.27-beta.2
+*  FIX (update electron + editor): update electron and packages, register editor highlighting languages only once [View](https://github.com/Gisto/Gisto/commit/4f35f03f1d95c0717e57c7aa91f9dcd2cd259092)
+
 ### v1.10.27-beta.1
 *  DOCS (gatsby): fix gatsby build [View](https://github.com/Gisto/Gisto/commit/5b0f7750788e22ec653e5ba482643b82b2e6b7e9)
 *  FIX (settings): add setting to enable extra languages highlights loading for editor issue #244 [View](https://github.com/Gisto/Gisto/commit/4f54f454602397013f53f7b03fb1cbaa3d298444)
