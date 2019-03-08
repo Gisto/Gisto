@@ -1,3 +1,6 @@
+### v1.10.27
+
+
 ### v1.10.27-beta.2
 *  FIX (update electron + editor): update electron and packages, register editor highlighting languages only once [View](https://github.com/Gisto/Gisto/commit/4f35f03f1d95c0717e57c7aa91f9dcd2cd259092)
 
