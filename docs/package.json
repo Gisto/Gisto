@@ -17,19 +17,19 @@
   "dependencies": {
     "disqus-react": "^1.0.5",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.0.33",
-    "gatsby-plugin-sass": "^2.0.4",
-    "gatsby-plugin-sharp": "^2.0.15",
+    "gatsby": "^2.1.27",
+    "gatsby-plugin-sass": "^2.0.10",
+    "gatsby-plugin-sharp": "^2.0.25",
     "gatsby-remark-images": "^2.0.6",
-    "gatsby-source-filesystem": "^2.0.8",
-    "gatsby-transformer-remark": "^2.1.12",
-    "node-sass": "^4.10.0",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
+    "gatsby-source-filesystem": "^2.0.23",
+    "gatsby-transformer-remark": "^2.3.1",
+    "node-sass": "^4.11.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
-    "react-media": "^1.8.0"
+    "react-media": "^1.9.2"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.2.5"
