@@ -157,7 +157,7 @@ export class Editor extends React.Component {
       theme={ getSetting('editorTheme', 'vs') }
       name={ this.props.id }
       value={ this.props.file.content }
-      options={ editorOptions({ readOnly: !this.props.edit }) }
+      options={ editorOptions({ readOnly: !this.props.edit && !this.props.isNew }) }
       // eslint-disable-next-line no-extra-boolean-cast
       editorDidMount={ (editor, monaco) => getSession('monaco-extra-langs-registred')
         ? null
