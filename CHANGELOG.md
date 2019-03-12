@@ -1,3 +1,7 @@
+### v1.10.28
+*  DOCS (update): packages [View](https://github.com/Gisto/Gisto/commit/de0901089173448aed749199bb55bff54f8e8cab)
+*  FIX (editor): regression in new snippets editor when editor is always read only fixed #245 [View](https://github.com/Gisto/Gisto/commit/a0c7df6a1271fe45ed43726729d3e5661cfb13c4)
+
 ### v1.10.27
 
 
