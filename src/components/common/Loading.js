@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
 
+import { setNotification } from 'utils/notifications';
 import Icon from 'components/common/Icon';
 
 const Spinner = styled.div`
-  border: 1px solid ${(props) => props.color ? props.color : '#fff'};
-  border-top: 1px solid rgba(255,255,255,.3);
+  border: 1px solid ${(props) => (props.color ? props.color : '#fff')};
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -15,10 +16,14 @@ const Spinner = styled.div`
   vertical-align: middle;
   display: inline-block;
   margin: 0 5px 0 0;
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 class Loading extends Component {
@@ -40,20 +45,29 @@ class Loading extends Component {
 
   render() {
     const {
-      color, text, spinner = true, theme
-    } = this.props;
+ color, text, spinner = true, theme 
+} = this.props;
 
     if (this.state.online) {
-      return  spinner && (
-        <React.Fragment>
-          <Spinner color={ color }/> { text }
-        </React.Fragment>
+      return (
+        spinner && (
+          <React.Fragment>
+            <Spinner color={ color } /> {text}
+          </React.Fragment>
+        )
       );
-    }
+    } 
+      setNotification({
+        type: 'warn',
+        title: "Looks like you're offline",
+        body: 'Please note, that any changes will not be saved while off-line',
+        options: { autoClose: 10000 }
+      });
+    
 
     return (
       <React.Fragment>
-        <Icon type="globe" color={ theme.colorDanger }/> { 'Looks like you\'r off-line' }
+        <Icon type="globe" color={ theme.colorDanger } /> {"Looks like you're off-line"}
       </React.Fragment>
     );
   }

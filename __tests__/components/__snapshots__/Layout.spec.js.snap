@@ -30,11 +30,7 @@ exports[`COMPONENTS - <Layout> render Layout when logged in 1`] = `
       autoClose={8000}
       bodyClassName={null}
       className={null}
-      closeButton={
-        <CloseButton
-          ariaLabel="close"
-        />
-      }
+      closeButton={<CloseButton />}
       closeOnClick={true}
       draggable={true}
       draggablePercent={80}
@@ -42,7 +38,7 @@ exports[`COMPONENTS - <Layout> render Layout when logged in 1`] = `
       newestOnTop={false}
       pauseOnFocusLoss={true}
       pauseOnHover={true}
-      position="top-right"
+      position="top-center"
       progressClassName={null}
       progressStyle={null}
       rtl={false}
@@ -84,11 +80,7 @@ exports[`COMPONENTS - <Layout> render Layout when not logged in 1`] = `
       autoClose={8000}
       bodyClassName={null}
       className={null}
-      closeButton={
-        <CloseButton
-          ariaLabel="close"
-        />
-      }
+      closeButton={<CloseButton />}
       closeOnClick={true}
       draggable={true}
       draggablePercent={80}
@@ -96,7 +88,7 @@ exports[`COMPONENTS - <Layout> render Layout when not logged in 1`] = `
       newestOnTop={false}
       pauseOnFocusLoss={true}
       pauseOnHover={true}
-      position="top-right"
+      position="top-center"
       progressClassName={null}
       progressStyle={null}
       rtl={false}
