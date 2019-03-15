@@ -8,12 +8,12 @@ export const Pill = styled.span`
   position: relative;
   text-overflow: clip;
   overflow: hidden;
-  cursor: pointer;
+  cursor: ${(props) => props.clickable ? 'pointer' : 'not-allowed'};
   text-align: left;
   line-height: 15px;
   
   &:hover {
-    border: 1px solid ${(props) => props.theme.baseAppColor};
+    ${(props) => props.clickable && `border: 1px solid ${props.theme.baseAppColor};`};
   }
   
   &:after {
@@ -27,3 +27,7 @@ export const Pill = styled.span`
     background: -webkit-linear-gradient(left,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 56%,rgba(255,255,255,1) 100%);
   }
 `;
+
+Pill.defaultProps = {
+  clickable: true
+};

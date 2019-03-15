@@ -24,14 +24,15 @@ export const Languagelist = ({
     const language = get('language', languageItem);
     const filesCount = get('size', languageItem);
 
-    return (
-      <Pill style={ linearGradient(filesCount) }
+return (
+  <Pill style={ linearGradient(filesCount) }
             key={ language }
+            clickable={ language !== null }
             onClick={ () => searchByLanguages(language) }>
-        { language || 'Other' }
-        <br/>
-        <strong>{ filesCount }</strong> <small>files</small>
-      </Pill>
+    { language || 'Other' }
+    <br/>
+    <strong>{ filesCount }</strong> <small>files</small>
+  </Pill>
     );
   }, snippetsLanguages);
 
