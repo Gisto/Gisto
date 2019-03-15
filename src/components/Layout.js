@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
-import 'assets/styles.css';
 import 'react-toastify/dist/ReactToastify.min.css';
+import 'assets/styles.css';
 
 import { isLoggedIn } from 'utils/login';
 
@@ -13,6 +13,16 @@ import MainHeader from 'components/layout/headers/MainHeader';
 import SubHeader from 'components/layout/headers/SubHeader';
 import Main from 'components/layout/Main';
 import LogIn from 'components/LogIn';
+import { getSetting } from 'utils/settings';
+import Icon from 'components/common/Icon';
+
+const CloseButton = ({ closeToast }) => (
+  <Icon clickable onClick={ closeToast } type="close"/>
+);
+
+CloseButton.propTypes = {
+  closeToast: PropTypes.func
+};
 
 export const Layout = ({ theme }) => {
   // Check if it is oauth login window and close it
@@ -34,7 +44,10 @@ export const Layout = ({ theme }) => {
         ) : (
           <LogIn />
         )}
-        <ToastContainer autoClose={ 8000 } />
+        <ToastContainer
+          position={ getSetting('settings-notification-position', 'top-center') }
+          closeButton={ <CloseButton/> }
+          autoClose={ 8000 }/>
       </App>
     </ThemeProvider>
   );

@@ -49,6 +49,54 @@ exports[`COMPONENTS - <BaseSettings> render BaseSettings 1`] = `
     <Field>
       <Label>
         <span>
+          Notification position:
+        </span>
+        <StyledSelect
+          onChange={[Function]}
+          value="top-center"
+        >
+          <option
+            key="top-left"
+            value="top-left"
+          >
+            top-left
+          </option>
+          <option
+            key="top-right"
+            value="top-right"
+          >
+            top-right
+          </option>
+          <option
+            key="top-center"
+            value="top-center"
+          >
+            top-center
+          </option>
+          <option
+            key="bottom-left"
+            value="bottom-left"
+          >
+            bottom-left
+          </option>
+          <option
+            key="bottom-right"
+            value="bottom-right"
+          >
+            bottom-right
+          </option>
+          <option
+            key="bottom-center"
+            value="bottom-center"
+          >
+            bottom-center
+          </option>
+        </StyledSelect>
+      </Label>
+    </Field>
+    <Field>
+      <Label>
+        <span>
           Show API rate limit on header:
         </span>
         <Checkbox

@@ -56,3 +56,16 @@ html {
 #gisto .markdown-body {
   -webkit-user-select: text;
 }
+
+.Toastify__toast--success {
+	background-color: cadetblue;
+}
+.Toastify__toast--error {
+	background-color: tomato;
+}
+.Toastify__toast--info {
+	background-color: #3F84A8;
+}
+.Toastify__toast--warning {
+	background-color: #e0b01e;
+}

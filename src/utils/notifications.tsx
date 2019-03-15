@@ -15,7 +15,7 @@ export const setNotification = ({
 }: INotification) => {
   // @ts-ignore
   toast[type || 'info'](<Notification title={title} body={body} actions={actions} />, {
-    position: position || toast.POSITION.TOP_CENTER,
+    position,
     ...options
   });
 };
