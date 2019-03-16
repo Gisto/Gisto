@@ -1,3 +1,8 @@
+### v1.10.29-beta.0
+*  FIX (settings): allow notifications configurations [View](https://github.com/Gisto/Gisto/commit/e3d2711987b7b6c960e62c75d9da3d28365999c0)
+*  FIX (tags/languages): ui inndication of not clickables [View](https://github.com/Gisto/Gisto/commit/87b0fa9fd9b3f0b270b4dcb3d7f9785e20246b53)
+*  FIX (update): add link to change log in update icon [View](https://github.com/Gisto/Gisto/commit/56359d4edd5df2eb06b3674293dd77d729d86d04)
+
 ### v1.10.28
 *  DOCS (update): packages [View](https://github.com/Gisto/Gisto/commit/de0901089173448aed749199bb55bff54f8e8cab)
 *  FIX (editor): regression in new snippets editor when editor is always read only fixed #245 [View](https://github.com/Gisto/Gisto/commit/a0c7df6a1271fe45ed43726729d3e5661cfb13c4)
