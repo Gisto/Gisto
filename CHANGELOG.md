@@ -1,3 +1,6 @@
+### v1.10.29-beta.1
+*  FEATURE (editor): add highlighting for Apex, Batch, F# and Razor [View](https://github.com/Gisto/Gisto/commit/fd1091b696089832c37c77b74b7f1ea77f051336)
+
 ### v1.10.29-beta.0
 *  FIX (settings): allow notifications configurations [View](https://github.com/Gisto/Gisto/commit/e3d2711987b7b6c960e62c75d9da3d28365999c0)
 *  FIX (tags/languages): ui inndication of not clickables [View](https://github.com/Gisto/Gisto/commit/87b0fa9fd9b3f0b270b4dcb3d7f9785e20246b53)
