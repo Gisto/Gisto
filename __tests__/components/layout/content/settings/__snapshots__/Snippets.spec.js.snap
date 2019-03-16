@@ -821,6 +821,12 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
               HTML+PHP
             </option>
             <option
+              key="HTML+Razor"
+              value="HTML+Razor"
+            >
+              HTML+Razor
+            </option>
+            <option
               key="HTTP"
               value="HTTP"
             >
@@ -1485,6 +1491,12 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
               value="Protocol Buffer"
             >
               Protocol Buffer
+            </option>
+            <option
+              key="Pug"
+              value="Pug"
+            >
+              Pug
             </option>
             <option
               key="Public Key"
