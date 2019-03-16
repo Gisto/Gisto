@@ -52,6 +52,10 @@ const Downloading = styled(StyledUtilityIcon)`
   cursor: default;
 `;
 
+const StyledAnchor = styled(Anchor)`
+  text-decoration: underline;
+`;
+
 export class Updater extends React.Component {
   state = {
     message: '',
@@ -75,7 +79,9 @@ export class Updater extends React.Component {
               <React.Fragment>
                 <strong>{text}</strong>
                 <br />
-                <Anchor href={ replace('-mac.zip', '.dmg', url) }>Download</Anchor>
+                <StyledAnchor href={ replace('-mac.zip', '.dmg', url) }>Download</StyledAnchor>
+                <span> or see </span>
+                <StyledAnchor href="https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md">Changelog</StyledAnchor>
               </React.Fragment>
             );
 
@@ -117,7 +123,7 @@ export class Updater extends React.Component {
                 exec(`open ${info.path}`);
                 app.quit();
               },
-              title: 'Yes' 
+              title: 'Yes'
             }],
             options: { autoClose: false }
           });

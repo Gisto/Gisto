@@ -146,6 +146,7 @@
     "@sentry/electron": "^0.14.0",
     "asciidoctor.js": "^1.5.9",
     "connected-react-router": "^6.0.0",
+    "core-js": "^2.6.5",
     "dotenv": "^6.2.0",
     "electron-google-analytics": "^0.1.0",
     "electron-log": "^2.2.17",
