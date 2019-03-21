@@ -1,3 +1,6 @@
+### v1.11.0
+*  FIX (typography): add more charsets [View](https://github.com/Gisto/Gisto/commit/3dd7b14e2b155b6b6d87a7cc758bbc67005c74d4)
+
 ### v1.10.29
 
 
