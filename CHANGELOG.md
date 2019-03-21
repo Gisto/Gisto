@@ -1,3 +1,6 @@
+### v1.10.29-beta.2
+*  FIX (typography): add more charsets [View](https://github.com/Gisto/Gisto/commit/2adee2aeb2a500e992c535946af22fe6d80acab1)
+
 ### v1.10.29-beta.1
 *  FEATURE (editor): add highlighting for Apex, Batch, F# and Razor [View](https://github.com/Gisto/Gisto/commit/fd1091b696089832c37c77b74b7f1ea77f051336)
 
