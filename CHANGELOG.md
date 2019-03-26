@@ -1,3 +1,8 @@
+### v1.11.1-beta.0
+*  FIX (typography): add more charsets [View](https://github.com/Gisto/Gisto/commit/2adee2aeb2a500e992c535946af22fe6d80acab1)
+*  1.10.29-beta.2 [View](https://github.com/Gisto/Gisto/commit/7cb5c6fd99279bc02c2dfd8bf67b3e8ba413283e)
+*  FIX (dark mode): osx dark mode support partial implementation partial fix #247 [View](https://github.com/Gisto/Gisto/commit/bba7f09f6280cfaa339ccf74d31a81afba6ddd90)
+
 ### v1.11.0
 *  FIX (typography): add more charsets [View](https://github.com/Gisto/Gisto/commit/3dd7b14e2b155b6b6d87a7cc758bbc67005c74d4)
 
