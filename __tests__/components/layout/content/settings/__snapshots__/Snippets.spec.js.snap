@@ -1775,6 +1775,18 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
               SQL
             </option>
             <option
+              key="PLSQL"
+              value="PLSQL"
+            >
+              PLSQL
+            </option>
+            <option
+              key="PLpgSQL"
+              value="PLpgSQL"
+            >
+              PLpgSQL
+            </option>
+            <option
               key="Squirrel"
               value="Squirrel"
             >

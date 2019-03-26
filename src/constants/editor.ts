@@ -287,6 +287,8 @@ export const syntaxMap = {
   SourcePawn: 'text',
   SQF: 'text',
   SQL: 'sql',
+  PLSQL: 'sql',
+  PLpgSQL: 'pgsql',
   Squirrel: 'cpp',
   'Standard ML': 'text',
   Stata: 'text',
