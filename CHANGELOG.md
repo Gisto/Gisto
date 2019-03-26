@@ -1,3 +1,6 @@
+### v1.11.1
+*  FIX (editor): support syntax highlighting for PLpgSQL and PLSQL sql flavors [View](https://github.com/Gisto/Gisto/commit/e5c17be3b527d12c9efce705b537a5b3181dfbc4)
+
 ### v1.11.1-beta.0
 *  FIX (typography): add more charsets [View](https://github.com/Gisto/Gisto/commit/2adee2aeb2a500e992c535946af22fe6d80acab1)
 *  1.10.29-beta.2 [View](https://github.com/Gisto/Gisto/commit/7cb5c6fd99279bc02c2dfd8bf67b3e8ba413283e)
