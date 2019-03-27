@@ -147,6 +147,8 @@ export const syntaxMap = {
   Java: 'java',
   'Java Server Pages': 'jsp',
   JavaScript: 'javascript',
+  JSX: 'javascript',
+  TSX: 'javascript',
   JSON: 'json',
   JSON5: 'javascript',
   JSONiq: 'jsoniq',

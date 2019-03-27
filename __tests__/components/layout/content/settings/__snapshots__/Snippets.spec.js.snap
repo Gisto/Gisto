@@ -935,6 +935,18 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
               JavaScript
             </option>
             <option
+              key="JSX"
+              value="JSX"
+            >
+              JSX
+            </option>
+            <option
+              key="TSX"
+              value="TSX"
+            >
+              TSX
+            </option>
+            <option
               key="JSON"
               value="JSON"
             >
