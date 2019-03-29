@@ -7,33 +7,41 @@ const StyledInput = styled.textarea`
   border-radius: 0;
   margin-bottom: 10px;
   width: calc(100% - 20px);
-  height: ${(props) => props.height ? props.height : '60px'};
-  color: ${(props) => props.disabled ? props.theme.disabledColor : props.theme.baseAppColor};
-  border-bottom: 1px solid ${(props) => props.disabled ? props.theme.disabledColor : props.theme.baseAppColor};
-  background: ${(props) => props.disabled ? props.theme.disabledColor : props.theme.lightText};
+  height: ${(props) => (props.height ? props.height : '60px')};
+  color: ${(props) => (props.disabled ? props.theme.disabledColor : props.theme.baseAppColor)};
+  border-bottom: 1px solid
+    ${(props) => (props.disabled ? props.theme.disabledColor : props.theme.baseAppColor)};
+  background: ${(props) => (props.disabled ? props.theme.disabledColor : props.theme.lightText)};
   line-height: 21px;
   padding: 10px;
 
   &:focus {
     outline: none;
   }
-  
+
   ::placeholder {
-      color: ${(props) => props.disabled ? props.theme.disabledColor : props.theme.bg};
-      opacity: 1;
+    color: ${(props) => (props.disabled ? props.theme.disabledColor : props.theme.bg)};
+    opacity: 1;
   }
 `;
 
 const TextArea = ({
-  placeholder, onChange, className, value, autoFocus, disabled = false, title = ''
+  placeholder,
+  onChange,
+  className,
+  value,
+  autoFocus,
+  disabled = false,
+  title = ''
 }) => (
-  <StyledInput className={ className }
-               autoFocus={ autoFocus }
-               title={ title }
-               disabled={ disabled }
-               onChange={ onChange }
-               defaultValue={ value }
-               placeholder={ placeholder }/>
+  <StyledInput
+    className={ className }
+    autoFocus={ autoFocus }
+    title={ title }
+    disabled={ disabled }
+    onChange={ onChange }
+    defaultValue={ value }
+    placeholder={ placeholder }/>
 );
 
 TextArea.propTypes = {

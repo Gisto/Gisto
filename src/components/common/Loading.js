@@ -44,9 +44,7 @@ class Loading extends Component {
   setOnlineState = (event) => this.setState({ online: event.type === 'online' });
 
   render() {
-    const {
- color, text, spinner = true, theme 
-} = this.props;
+    const { color, text, spinner = true, theme } = this.props;
 
     if (this.state.online) {
       return (
@@ -56,14 +54,13 @@ class Loading extends Component {
           </React.Fragment>
         )
       );
-    } 
-      setNotification({
-        type: 'warn',
-        title: "Looks like you're offline",
-        body: 'Please note, that any changes will not be saved while off-line',
-        options: { autoClose: 10000 }
-      });
-    
+    }
+    setNotification({
+      type: 'warn',
+      title: "Looks like you're offline",
+      body: 'Please note, that any changes will not be saved while off-line',
+      options: { autoClose: 10000 }
+    });
 
     return (
       <React.Fragment>

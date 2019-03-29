@@ -15,8 +15,9 @@ const Iframe = styled.iframe`
 
 const Pdf = ({ file }) => (
   <StyledPdfWrapper>
-    <Iframe title={ file.fillename }
-            src={ `https://drive.google.com/viewerng/viewer?embedded=true&url=${file.raw_url}` }/>
+    <Iframe
+      title={ file.fillename }
+      src={ `https://drive.google.com/viewerng/viewer?embedded=true&url=${file.raw_url}` }/>
   </StyledPdfWrapper>
 );
 

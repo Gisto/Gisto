@@ -22,14 +22,14 @@ const ContentWrapper = styled.div`
 
 export const Content = () => (
   <ContentWrapper>
-    <Suspense fallback={ <Loading color={ getSetting('color') }/> }>
+    <Suspense fallback={ <Loading color={ getSetting('color') } /> }>
       <Router>
         <Switch>
-          <Route exact path="/" component={ DashBoard }/>
-          <Route path="/about" component={ About }/>
-          <Route path="/settings" component={ Settings }/>
-          <Route path="/snippet/:id" component={ Snippet }/>
-          <Route path="/new" component={ NewSnippet }/>
+          <Route exact path="/" component={ DashBoard } />
+          <Route path="/about" component={ About } />
+          <Route path="/settings" component={ Settings } />
+          <Route path="/snippet/:id" component={ Snippet } />
+          <Route path="/new" component={ NewSnippet } />
         </Switch>
       </Router>
     </Suspense>

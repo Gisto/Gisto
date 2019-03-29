@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  get, isEmpty, join, map, size 
-} from 'lodash/fp';
+import { get, isEmpty, join, map, size } from 'lodash/fp';
 import styled, { withTheme } from 'styled-components';
 import { HashRouter as Router, NavLink } from 'react-router-dom';
 
@@ -67,13 +65,13 @@ const Result = styled.div`
   width: initial;
   border-bottom: 1px solid #ccc;
   cursor: pointer;
-  
+
   &:hover {
     background: ${(props) => props.theme.bg};
   }
 `;
 
-const  StyledNavLink = styled(NavLink)`
+const StyledNavLink = styled(NavLink)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -114,40 +112,49 @@ export class SuperSearch extends Component {
 
   render() {
     const {
-      snippets, filterText, filterTags, filterLanguage, toggleSuperSesrch, theme
+      snippets,
+      filterText,
+      filterTags,
+      filterLanguage,
+      toggleSuperSesrch,
+      theme
     } = this.props;
-    const filteredSnippets = size(filterText) <= MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH
-      ? []
-      : filterSnippetsList(snippets, filterText, filterTags, filterLanguage);
-    
+    const filteredSnippets =
+      size(filterText) <= MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH
+        ? []
+        : filterSnippetsList(snippets, filterText, filterTags, filterLanguage);
+
     return (
       <SuperSearchWrapper>
         <SearchWrapper>
           <SearchBar>
-            <StyledLookingGlass type="search"
-                                size={ 32 }
-                                color={ theme.baseAppColor }/>
-            <StyledInput autoFocus
-                         type="search"
-                         className="mousetrap"
-                         onChange={ (event) => this.handleSearchTerm(event) }
-                         placeholder="Search"/>
+            <StyledLookingGlass type="search" size={ 32 } color={ theme.baseAppColor } />
+            <StyledInput
+              autoFocus
+              type="search"
+              className="mousetrap"
+              onChange={ (event) => this.handleSearchTerm(event) }
+              placeholder="Search"/>
           </SearchBar>
           <SnippetResults>
-            { map((snippet) => (
-              <Result key={ snippet.id }>
-                <Router>
-                  <StyledNavLink exact
-                           onClick={ () => toggleSuperSesrch() }
-                           to={ `/snippet/${snippet.id}` }>
-                    <StyledIcon type="book"
-                              size={ 32 }
-                              color={ theme.baseAppColor }/>
-                    <Description>{ snippet.description } { join(', ', snippet.tags) }</Description>
-                  </StyledNavLink>
-                </Router>
-              </Result>
-            ), filteredSnippets) }
+            {map(
+              (snippet) => (
+                <Result key={ snippet.id }>
+                  <Router>
+                    <StyledNavLink
+                      exact
+                      onClick={ () => toggleSuperSesrch() }
+                      to={ `/snippet/${snippet.id}` }>
+                      <StyledIcon type="book" size={ 32 } color={ theme.baseAppColor } />
+                      <Description>
+                        {snippet.description} {join(', ', snippet.tags)}
+                      </Description>
+                    </StyledNavLink>
+                  </Router>
+                </Result>
+              ),
+              filteredSnippets
+            )}
           </SnippetResults>
         </SearchWrapper>
       </SuperSearchWrapper>
@@ -173,7 +180,10 @@ SuperSearch.propTypes = {
 };
 
 export default withTheme(
-  connect(mapStateToProps, {
-    filterSnippets: snippetActions.filterSnippetsByText
-  })(SuperSearch)
+  connect(
+    mapStateToProps,
+    {
+      filterSnippets: snippetActions.filterSnippetsByText
+    }
+  )(SuperSearch)
 );

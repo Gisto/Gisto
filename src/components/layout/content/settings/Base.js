@@ -87,7 +87,8 @@ export const BaseSettings = ({ changeSettings }) => {
             <span>Notification position:</span>
             <StyledSelect
               value={ getSetting('settings-notification-position', toast.POSITION.TOP_CENTER) }
-              onChange={ (event) => updateSettings('settings-notification-position', event.target.value)
+              onChange={ (event) =>
+                updateSettings('settings-notification-position', event.target.value)
               }>
               {[
                 toast.POSITION.TOP_LEFT,
@@ -97,7 +98,9 @@ export const BaseSettings = ({ changeSettings }) => {
                 toast.POSITION.BOTTOM_RIGHT,
                 toast.POSITION.BOTTOM_CENTER
               ].map((position) => (
-                <option key={ position } value={ position }>{position}</option>
+                <option key={ position } value={ position }>
+                  {position}
+                </option>
               ))}
             </StyledSelect>
           </Label>

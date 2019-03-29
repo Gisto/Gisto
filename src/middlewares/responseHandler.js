@@ -48,12 +48,11 @@ export const responseHandler = (error, result, dispatch, action) => {
     dispatch({
       type: AT.GET_RATE_LIMIT.SUCCESS,
       payload: {
-        rate:
-          {
-            limit: result.headers['x-ratelimit-limit'],
-            remaining: result.headers['x-ratelimit-remaining'],
-            reset: result.headers['x-ratelimit-reset']
-          }
+        rate: {
+          limit: result.headers['x-ratelimit-limit'],
+          remaining: result.headers['x-ratelimit-remaining'],
+          reset: result.headers['x-ratelimit-reset']
+        }
       }
     });
   }

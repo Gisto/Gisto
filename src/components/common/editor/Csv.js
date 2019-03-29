@@ -5,11 +5,11 @@ import Papa from 'papaparse';
 
 const TableWrapper = styled.div`
   overflow: auto;
-  ${(props) => props.height ? `height: ${props.height}px` : 'auto'};
+  ${(props) => (props.height ? `height: ${props.height}px` : 'auto')};
 `;
 
 const Table = styled.table`
-  margin: 0; 
+  margin: 0;
   padding: 0;
   border-collapse: collapse;
   table-layout: fixed;
@@ -17,7 +17,7 @@ const Table = styled.table`
   tr:nth-child(even) {
     background-color: ${(props) => props.theme.bg};
   }
-  
+
   tr:hover {
     background-color: ${(props) => props.theme.headerBgLightest};
   }
@@ -37,19 +37,19 @@ const IndexCell = css`
   width: 32px;
   display: block;
   position: relative;
-  
+
   tr:hover & {
     font-weight: bold;
   }
 `;
 
 const Cell = styled.td`
-  margin: 0; 
+  margin: 0;
   padding: 10px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  ${(props) => props.isIndex ? `${IndexCell}` : ''};
+  ${(props) => (props.isIndex ? `${IndexCell}` : '')};
   max-width: 300px;
 `;
 
@@ -60,20 +60,20 @@ const Csv = ({ text, className, height }) => {
     <TableWrapper className={ `csv-body ${className}` } height={ height }>
       <Table>
         <tbody>
-          { csvData.data && csvData.data.map((row, rowIndex) => (
-            <Row key={ `row-${rowIndex + 1}` }>
-              <Cell isIndex 
-                    key={ `row-cell-${rowIndex + 1}` }>
-                { rowIndex + 1 }
-              </Cell>
-              { row && row.map((cell, cellIndex) => (
-                <Cell title={ cell }
-                      key={ `cell-${cellIndex + 1}-${cell}` }>
-                  { cell }
+          {csvData.data &&
+            csvData.data.map((row, rowIndex) => (
+              <Row key={ `row-${rowIndex + 1}` }>
+                <Cell isIndex key={ `row-cell-${rowIndex + 1}` }>
+                  {rowIndex + 1}
                 </Cell>
-              )) }
-            </Row>
-          )) }
+                {row &&
+                  row.map((cell, cellIndex) => (
+                    <Cell title={ cell } key={ `cell-${cellIndex + 1}-${cell}` }>
+                      {cell}
+                    </Cell>
+                  ))}
+              </Row>
+            ))}
         </tbody>
       </Table>
     </TableWrapper>

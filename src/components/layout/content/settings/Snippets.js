@@ -46,7 +46,7 @@ const Section = styled.div`
 const H4 = styled.h4`
   color: ${(props) => props.theme.baseAppColor};
   border-bottom: 1px dashed ${(props) => props.theme.baseAppColor};
-  padding-bottom: 20px; 
+  padding-bottom: 20px;
 `;
 
 export const SnippetsSettings = ({ changeSettings }) => {
@@ -67,37 +67,55 @@ export const SnippetsSettings = ({ changeSettings }) => {
           <Field>
             <Label>
               <span>Snippet cache (seconds):</span>
-              <StyledInput type="number"
-                         title={ `Keep snippet in cache for ${getSetting('snippet-fetch-cache-in-seconds', 100)} seconds and do not call the server` }
-                         value={ getSetting('snippet-fetch-cache-in-seconds', 100) }
-                         onChange={ (event) => updateSettings('snippet-fetch-cache-in-seconds', event.target.value) }/>
+              <StyledInput
+                type="number"
+                title={ `Keep snippet in cache for ${getSetting(
+                  'snippet-fetch-cache-in-seconds',
+                  100
+                )} seconds and do not call the server` }
+                value={ getSetting('snippet-fetch-cache-in-seconds', 100) }
+                onChange={ (event) =>
+                  updateSettings('snippet-fetch-cache-in-seconds', event.target.value)
+                }/>
             </Label>
           </Field>
 
           <Field>
             <Label>
               <span>Snippets polling (seconds):</span>
-              <StyledInput type="number"
-                         title={ `Polling the server for new snippets every ${getSetting('snippets-server-polling-in-seconds', 300)} seconds` }
-                         min={ 1 }
-                         max={ 10000 }
-                         value={ getSetting('snippets-server-polling-in-seconds', 300) }
-                         onChange={ (event) => updateSettings('snippets-server-polling-in-seconds', event.target.value) }/>
+              <StyledInput
+                type="number"
+                title={ `Polling the server for new snippets every ${getSetting(
+                  'snippets-server-polling-in-seconds',
+                  300
+                )} seconds` }
+                min={ 1 }
+                max={ 10000 }
+                value={ getSetting('snippets-server-polling-in-seconds', 300) }
+                onChange={ (event) =>
+                  updateSettings('snippets-server-polling-in-seconds', event.target.value)
+                }/>
             </Label>
           </Field>
-
         </Section>
 
         <Section>
-
           <Field>
             <Label>
               <span>Default new snippet language:</span>
-              <StyledSelect value={ getSetting('setings-default-new-snippet-language', 'Text') }
-                            onChange={ (event) => updateSettings('setings-default-new-snippet-language', event.target.value) }>
-                { map((language) => (
-                  <option value={ language } key={ language }>{ language }</option>
-                ), keys(syntaxMap)) }
+              <StyledSelect
+                value={ getSetting('setings-default-new-snippet-language', 'Text') }
+                onChange={ (event) =>
+                  updateSettings('setings-default-new-snippet-language', event.target.value)
+                }>
+                {map(
+                  (language) => (
+                    <option value={ language } key={ language }>
+                      {language}
+                    </option>
+                  ),
+                  keys(syntaxMap)
+                )}
               </StyledSelect>
             </Label>
           </Field>
@@ -105,11 +123,11 @@ export const SnippetsSettings = ({ changeSettings }) => {
           <Field>
             <Label>
               <span>Default new snippet is public:</span>
-              <Checkbox checked={ getSetting('defaultNewIsPublic', false) }
-                      onChange={ () => updateSettings('defaultNewIsPublic', null, true) }/>
+              <Checkbox
+                checked={ getSetting('defaultNewIsPublic', false) }
+                onChange={ () => updateSettings('defaultNewIsPublic', null, true) }/>
             </Label>
           </Field>
-
         </Section>
       </Wrapper>
     </div>
@@ -120,6 +138,9 @@ SnippetsSettings.propTypes = {
   changeSettings: PropTypes.func
 };
 
-export default connect(null, {
-  changeSettings: uiActions.changeSettings
-})(SnippetsSettings);
+export default connect(
+  null,
+  {
+    changeSettings: uiActions.changeSettings
+  }
+)(SnippetsSettings);

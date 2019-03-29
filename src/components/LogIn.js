@@ -7,9 +7,7 @@ import { setNotification } from 'utils/notifications';
 import * as superagent from 'superagent';
 import * as loginActions from 'actions/login';
 
-import {
- setEnterpriseDomain, setToken, isLoggedIn, removeEnterpriseDomain
-} from 'utils/login';
+import { setEnterpriseDomain, setToken, isLoggedIn, removeEnterpriseDomain } from 'utils/login';
 import { isElectron } from 'utils/electron';
 import { isomorphicReload } from 'utils/isomorphic';
 
@@ -63,7 +61,7 @@ const LoginWrapper = styled.div`
       color: ${(props) => props.theme.baseAppColor};
       text-decoration: underline;
       cursor: pointer;
-      
+
       :hover {
         color: ${(props) => props.theme.headerBgLightest};
       }
@@ -174,7 +172,8 @@ export class LogIn extends React.Component {
       ipcRenderer.send('oauth2-login');
     } else {
       this.showAuthWindow({
-        path: 'https://github.com/login/oauth/authorize?client_id=193ae0478f15bfda404e&scope=user,gist',
+        path:
+          'https://github.com/login/oauth/authorize?client_id=193ae0478f15bfda404e&scope=user,gist',
         callback() {
           isomorphicReload();
         }
@@ -183,15 +182,20 @@ export class LogIn extends React.Component {
   };
 
   checkLogin = () => {
-    if (!isLoggedIn && window.location.href.match(/\?code=(.*)#\//) && window.location.href.match(/\?code=(.*)#\//)[1]) {
+    if (
+      !isLoggedIn &&
+      window.location.href.match(/\?code=(.*)#\//) &&
+      window.location.href.match(/\?code=(.*)#\//)[1]
+    ) {
       const code = window.location.href.match(/\?code=(.*)/)[1];
 
       if (code) {
-        superagent.get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code}`)
+        superagent
+          .get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code}`)
           .end((error, result) => {
-           if (result && result.body.token) {
-             this.props.loginWithToken(result.body.token, true);
-           }
+            if (result && result.body.token) {
+              this.props.loginWithToken(result.body.token, true);
+            }
           });
       }
     }
@@ -200,8 +204,8 @@ export class LogIn extends React.Component {
   showAuthWindow = (options) => {
     const w = 800;
     const h = 600;
-    const left = Number((window.screen.width / 2) - (w / 2));
-    const tops = Number((window.screen.height / 2) - (h / 2));
+    const left = Number(window.screen.width / 2 - w / 2);
+    const tops = Number(window.screen.height / 2 - h / 2);
 
     const windowName = 'Login with github';
     const windowOptions = `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${tops}, left=${left}`;
@@ -227,7 +231,7 @@ export class LogIn extends React.Component {
       });
     }
     if (!isLoggedIn) {
-        this.checkLogin();
+      this.checkLogin();
     }
 
     return (
@@ -244,20 +248,19 @@ export class LogIn extends React.Component {
         {this.state.loginType.token && (
           <div>
             <h4>Sign-in using GitHub token</h4>
-            <TokenInput type="text"
-                        placeholder="GitHub token"
-                        onChange={ (event) => this.setField('token', event.target.value) }/>
+            <TokenInput
+              type="text"
+              placeholder="GitHub token"
+              onChange={ (event) => this.setField('token', event.target.value) }/>
             <ExternalLink target="_new" href="https://github.com/settings/tokens">
-              <Icon type="info" size="16" color={ this.props.theme.baseAppColor }/>
+              <Icon type="info" size="16" color={ this.props.theme.baseAppColor } />
             </ExternalLink>
-            <br/>
-            <Button
-              icon="success"
-              onClick={ () => this.loginWithToken(this.state.fieldsData.token) }>
+            <br />
+            <Button icon="success" onClick={ () => this.loginWithToken(this.state.fieldsData.token) }>
               Log-in
             </Button>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
           </div>
         )}
@@ -283,13 +286,13 @@ export class LogIn extends React.Component {
               type="text"
               onChange={ (event) => this.setField('username', event.target.value) }
               placeholder="Email or username"/>
-            <br/>
+            <br />
 
             <Input
               type="password"
               onChange={ (event) => this.setField('password', event.target.value) }
               placeholder="Password"/>
-            <br/>
+            <br />
 
             {this.props.twoFactorAuth && (
               <Input
@@ -303,18 +306,20 @@ export class LogIn extends React.Component {
               <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
             </ResetLoginType>
 
-            <br/>
-            <br/>
+            <br />
+            <br />
             <Button
-              onClick={ () => this.loginWithBasic(
-                this.state.fieldsData.username,
-                this.state.fieldsData.password,
-                this.state.fieldsData.twoFactorAuth
-              ) }
+              onClick={ () =>
+                this.loginWithBasic(
+                  this.state.fieldsData.username,
+                  this.state.fieldsData.password,
+                  this.state.fieldsData.twoFactorAuth
+                )
+              }
               icon="success">
               Log-in
             </Button>
-            <br/>
+            <br />
           </div>
         )}
 
@@ -352,7 +357,10 @@ LogIn.propTypes = {
   theme: PropTypes.object
 };
 
-export default connect(mapStateToProps, {
-  loginBasic: loginActions.loginWithBasicAuth,
-  loginWithToken: loginActions.loginWithToken
-})(LogIn);
+export default connect(
+  mapStateToProps,
+  {
+    loginBasic: loginActions.loginWithBasicAuth,
+    loginWithToken: loginActions.loginWithToken
+  }
+)(LogIn);

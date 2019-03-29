@@ -9,7 +9,7 @@ const Zone = styled.div`
   text-align: center;
 `;
 
-export class DropZone extends React.Component  {
+export class DropZone extends React.Component {
   state = {
     dragOver: false,
     progress: {}
@@ -67,18 +67,19 @@ export class DropZone extends React.Component  {
     const { dragOver, progress } = this.state;
 
     return (
-      <Zone className={ this.props.className }
-            onDrop={ this.handleOnDrop }
-            onDragOver={ this.handleDragOver }
-            onDragEnter={ this.handleDragOver }
-            onDragLeave={ this.handleDragLeave }>
-        { dragOver ? 'Drop now' : 'Drag file(s) over here to add' }
+      <Zone
+        className={ this.props.className }
+        onDrop={ this.handleOnDrop }
+        onDragOver={ this.handleDragOver }
+        onDragEnter={ this.handleDragOver }
+        onDragLeave={ this.handleDragLeave }>
+        {dragOver ? 'Drop now' : 'Drag file(s) over here to add'}
 
-        { progress.max && (
+        {progress.max && (
           <p>
-            <progress max={ progress.max } value={ progress.value }/>
+            <progress max={ progress.max } value={ progress.value } />
           </p>
-        ) }
+        )}
       </Zone>
     );
   }

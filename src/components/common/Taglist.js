@@ -5,21 +5,19 @@ import { connect } from 'react-redux';
 import { withTheme } from 'styled-components';
 
 import * as snippetActions from 'actions/snippets';
-import {
-  filter, get, isEmpty, map, size
-} from 'lodash/fp';
+import { filter, get, isEmpty, map, size } from 'lodash/fp';
 
 import { Pill } from 'components/common/Pill';
 
-export const Taglist = ({
-  snippets, searchTags, searchByTags, snippetsTags, theme
-}) => {
+export const Taglist = ({ snippets, searchTags, searchByTags, snippetsTags, theme }) => {
   const taggedSnippets = filter((snippet) => !isEmpty(snippet.tags), snippets);
   const linearGradient = (percentOf) => {
     const percents = (percentOf / size(taggedSnippets)) * 100;
 
     return {
-      background: `linear-gradient(to right, ${theme.headerBgLightest} ${Math.floor(percents)}%, #fff ${Math.floor(percents)}%)`
+      background: `linear-gradient(to right, ${theme.headerBgLightest} ${Math.floor(
+        percents
+      )}%, #fff ${Math.floor(percents)}%)`
     };
   };
 
@@ -39,22 +37,16 @@ export const Taglist = ({
       const filesCount = get('size', tagItem);
 
       return (
-        <Pill style={ linearGradient(filesCount) }
-              key={ tag }
-              onClick={ () => searchByTags(tag) }>
-          { tag }
-          <br/>
-          <strong>{ filesCount }</strong> <small>snippets</small>
+        <Pill style={ linearGradient(filesCount) } key={ tag } onClick={ () => searchByTags(tag) }>
+          {tag}
+          <br />
+          <strong>{filesCount}</strong> <small>snippets</small>
         </Pill>
       );
     }, list);
   };
 
-  return (
-    <React.Fragment>
-      { renderTags() }
-    </React.Fragment>
-  );
+  return <React.Fragment>{renderTags()}</React.Fragment>;
 };
 
 Taglist.propTypes = {
@@ -71,7 +63,10 @@ const mapStateToProps = (state) => ({
 });
 
 export default withTheme(
-  connect(mapStateToProps, {
-    searchByTags: snippetActions.filterSnippetsByTags
-  })(Taglist)
+  connect(
+    mapStateToProps,
+    {
+      searchByTags: snippetActions.filterSnippetsByTags
+    }
+  )(Taglist)
 );

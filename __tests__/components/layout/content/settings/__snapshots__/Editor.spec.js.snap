@@ -213,17 +213,17 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "SelectInput-cUOTCZ",
                                             "isStatic": false,
-                                            "lastClassName": "bNutMS",
+                                            "lastClassName": "hcBgmG",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
                                               [Function],
                                               ";line-height:1;outline:0;color:",
                                               [Function],
-                                              ";padding:5px;border-radius:0;background:linear-gradient(",
+                                              ";padding:5px;border-radius:0;background:linear-gradient( ",
                                               [Function],
                                               ",",
                                               [Function],
-                                              ") no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
+                                              " ) no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
                                               [Function],
                                               ",",
                                               [Function],
@@ -246,7 +246,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ bNutMS"
+                                        className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ hcBgmG"
                                         defaultValue="vs"
                                         onChange={[Function]}
                                       >
@@ -614,9 +614,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -638,7 +638,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -731,9 +731,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -755,7 +755,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -848,9 +848,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -872,7 +872,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -965,9 +965,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -989,7 +989,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -1082,9 +1082,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -1106,7 +1106,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -1199,9 +1199,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -1223,7 +1223,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -1849,9 +1849,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -1873,7 +1873,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -2000,17 +2000,17 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "SelectInput-cUOTCZ",
                                             "isStatic": false,
-                                            "lastClassName": "bNutMS",
+                                            "lastClassName": "hcBgmG",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
                                               [Function],
                                               ";line-height:1;outline:0;color:",
                                               [Function],
-                                              ";padding:5px;border-radius:0;background:linear-gradient(",
+                                              ";padding:5px;border-radius:0;background:linear-gradient( ",
                                               [Function],
                                               ",",
                                               [Function],
-                                              ") no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
+                                              " ) no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
                                               [Function],
                                               ",",
                                               [Function],
@@ -2033,7 +2033,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ bNutMS"
+                                        className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ hcBgmG"
                                         defaultValue="blink"
                                         onChange={[Function]}
                                       >
@@ -2187,17 +2187,17 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "SelectInput-cUOTCZ",
                                             "isStatic": false,
-                                            "lastClassName": "bNutMS",
+                                            "lastClassName": "hcBgmG",
                                             "rules": Array [
                                               "-webkit-appearance:none;border:1px solid ",
                                               [Function],
                                               ";line-height:1;outline:0;color:",
                                               [Function],
-                                              ";padding:5px;border-radius:0;background:linear-gradient(",
+                                              ";padding:5px;border-radius:0;background:linear-gradient( ",
                                               [Function],
                                               ",",
                                               [Function],
-                                              ") no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
+                                              " ) no-repeat,linear-gradient(-135deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(-225deg,rgba(255,255,255,0) 50%,white 50%) no-repeat,linear-gradient(",
                                               [Function],
                                               ",",
                                               [Function],
@@ -2220,7 +2220,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       onChange={[Function]}
                                     >
                                       <select
-                                        className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ bNutMS"
+                                        className="StyledISelect-ilVKaP jUNncK SelectInput-cUOTCZ hcBgmG"
                                         defaultValue="bounded"
                                         onChange={[Function]}
                                       >
@@ -2603,9 +2603,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -2627,7 +2627,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={false}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -2720,9 +2720,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -2744,7 +2744,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -2837,9 +2837,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -2861,7 +2861,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -2954,9 +2954,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -2978,7 +2978,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -3103,9 +3103,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -3127,7 +3127,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -3220,9 +3220,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -3244,7 +3244,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"
@@ -3337,9 +3337,9 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Box-jLJQJw",
                                         "isStatic": false,
-                                        "lastClassName": "cusFML",
+                                        "lastClassName": "bCTiKl",
                                         "rules": Array [
-                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:\\"\\";vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
                                           [Function],
                                           ";background:#fff;}:checked:after{content:'\\\\2714';color:",
                                           [Function],
@@ -3361,7 +3361,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                   type="checkbox"
                                 >
                                   <input
-                                    className="Box-jLJQJw cusFML"
+                                    className="Box-jLJQJw bCTiKl"
                                     defaultChecked={true}
                                     onChange={[Function]}
                                     type="checkbox"

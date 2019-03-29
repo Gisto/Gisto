@@ -28,44 +28,44 @@ const Util = styled.span`
   display: inline-block;
   text-align: center;
   line-height: 50px;
-  color: ${(props) => props.color ? props.color : 'inherit'};
+  color: ${(props) => (props.color ? props.color : 'inherit')};
   cursor: pointer;
   position: relative;
-  background: ${(props) => props.background ? props.background : 'inherit'};
-  ${(props) => props.text ? 'padding: 0 15px;' : ''}
-  ${(props) => props.text ? '' : 'width: 50px;'}
+  background: ${(props) => (props.background ? props.background : 'inherit')};
+  ${(props) => (props.text ? 'padding: 0 15px;' : '')}
+  ${(props) => (props.text ? '' : 'width: 50px;')}
   
   &:hover {
-    background: ${(props) => props.background ? props.background : props.theme.lightBorderColor};
+    background: ${(props) => (props.background ? props.background : props.theme.lightBorderColor)};
   }
-  
+
   div.list {
     ${DropdownMixin};
     padding: 10px 20px;
   }
-  
+
   ul {
     ${DropdownMixin}
-    
+
     li {
       border-bottom: 1px dotted ${(props) => props.theme.orderColor};
       margin: 0;
       white-space: nowrap;
       text-align: left;
-      
+
       > * {
         padding: 5px 20px;
         display: block;
       }
-      
+
       &:hover {
         background: ${(props) => props.theme.lightBorderColor};
         cursor: pointer;
       }
-      
+
       &:last-child {
         border: none;
-      }  
+      }
     }
   }
 `;
@@ -113,19 +113,20 @@ export class UtilityIcon extends React.Component {
     const { childrenShown } = this.state;
 
     return (
-      <Util className={ className }
-            background={ background }
-            onClick={ () => dropdown ? this.toggleChildren() : onClick() }
-            title={ title }
-            text={ text }
-            color={ childrenShown ? colorDanger : color }>
-        <Icon size={ size }
-              spin={ spin }
-              type={ childrenShown ? 'close' : type }
-              color={ childrenShown ? colorDanger : color }/> { text && text }
-        { dropdown && childrenShown && (
-          <span ref={ this.childrenDropdown }>{ children }</span>
-        ) }
+      <Util
+        className={ className }
+        background={ background }
+        onClick={ () => (dropdown ? this.toggleChildren() : onClick()) }
+        title={ title }
+        text={ text }
+        color={ childrenShown ? colorDanger : color }>
+        <Icon
+          size={ size }
+          spin={ spin }
+          type={ childrenShown ? 'close' : type }
+          color={ childrenShown ? colorDanger : color }/>{' '}
+        {text && text}
+        {dropdown && childrenShown && <span ref={ this.childrenDropdown }>{children}</span>}
       </Util>
     );
   }

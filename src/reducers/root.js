@@ -14,9 +14,10 @@ const reducers = {
   emoji
 };
 
-const rootReducer = (history) => combineReducers({
-  router: connectRouter(history),
-  ...reducers
-});
+const rootReducer = (history) =>
+  combineReducers({
+    router: connectRouter(history),
+    ...reducers
+  });
 
 export default rootReducer;

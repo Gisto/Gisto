@@ -119,8 +119,11 @@ export class Editor extends React.Component {
   editorDidMount = (editor, monaco) => {
     setSession('monaco-extra-langs-registred', true);
 
-    toPairs(themeList).map((theme) => import(`monaco-themes/themes/${theme[1]}`)
-      .then((data) => monaco.editor.defineTheme(theme[0], data)));
+    toPairs(themeList).map((theme) =>
+      import(`monaco-themes/themes/${theme[1]}`).then((data) =>
+        monaco.editor.defineTheme(theme[0], data)
+      )
+    );
 
     monaco.editor.setTheme(getSetting('editorTheme', 'vs'));
 
@@ -174,15 +177,14 @@ export class Editor extends React.Component {
       value={ this.props.file.content }
       options={ editorOptions({ readOnly: !this.props.edit && !this.props.isNew }) }
       // eslint-disable-next-line no-extra-boolean-cast
-      editorDidMount={ (editor, monaco) => getSession('monaco-extra-langs-registred') ? null : this.editorDidMount(editor, monaco)
+      editorDidMount={ (editor, monaco) =>
+        getSession('monaco-extra-langs-registred') ? null : this.editorDidMount(editor, monaco)
       }
       onChange={ this.props.onChange }/>
   );
 
   renderEditor = () => {
-    const {
- edit, file, filesCount, isNew, theme
-} = this.props;
+    const { edit, file, filesCount, isNew, theme } = this.props;
 
     if (file.collapsed) {
       return null;
@@ -197,10 +199,10 @@ export class Editor extends React.Component {
     }
 
     if (
-      file.content
-      && Boolean(getSetting('settings-editor-preview-image', false))
-      && isImage(file)
-      && !file.collapsed
+      file.content &&
+      Boolean(getSetting('settings-editor-preview-image', false)) &&
+      isImage(file) &&
+      !file.collapsed
     ) {
       return (
         <Image>
@@ -236,9 +238,9 @@ export class Editor extends React.Component {
     }
 
     if (
-      Boolean(getSetting('settings-editor-preview-pdf', false))
-      && isPDF(file)
-      && navigator.onLine
+      Boolean(getSetting('settings-editor-preview-pdf', false)) &&
+      isPDF(file) &&
+      navigator.onLine
     ) {
       if (!isNew) {
         return <Pdf file={ file } />;
@@ -246,9 +248,9 @@ export class Editor extends React.Component {
     }
 
     if (
-      Boolean(getSetting('settings-editor-preview-geojson', false))
-      && isGeoJson(file)
-      && navigator.onLine
+      Boolean(getSetting('settings-editor-preview-geojson', false)) &&
+      isGeoJson(file) &&
+      navigator.onLine
     ) {
       if (!edit && !isNew && !file.collapsed) {
         return <GeoJson file={ file } />;

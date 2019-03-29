@@ -63,12 +63,14 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
       API.post(`${getApiUrl('/api/v3')}/authorizations`)
         .set(basicAuthHeader)
-        .send(JSON.stringify({
-          scopes: ['gist'],
-          note: 'Gisto - Snippets made simple',
-          note_url: 'http://www.gistoapp.com',
-          fingerprint: new Date().getTime()
-        }))
+        .send(
+          JSON.stringify({
+            scopes: ['gist'],
+            note: 'Gisto - Snippets made simple',
+            note_url: 'http://www.gistoapp.com',
+            fingerprint: new Date().getTime()
+          })
+        )
         .end((error, result) => {
           errorHandler(error, result);
 
@@ -98,7 +100,9 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
           if (result.statusCode === 200) {
             setToken(action.payload.token);
 
-            document.location.replace(`${document.location.origin}${action.meta.popup ? '#/tokenSet=true' : ''}`);
+            document.location.replace(
+              `${document.location.origin}${action.meta.popup ? '#/tokenSet=true' : ''}`
+            );
           }
         });
     }
@@ -151,22 +155,23 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
       dispatch({ type: AT.GET_SNIPPETS.PENDING, action });
 
       const sinceLastUpdate = action.payload.since ? `&since=${action.payload.since}` : '';
-      const getGists = (page) => API.get(`${getApiUrl('/api/v3')}/gists?page=${page}&per_page=100${sinceLastUpdate}`)
-        .set(_headers())
-        .end((error, result) => {
-          errorHandler(error, result);
+      const getGists = (page) =>
+        API.get(`${getApiUrl('/api/v3')}/gists?page=${page}&per_page=100${sinceLastUpdate}`)
+          .set(_headers())
+          .end((error, result) => {
+            errorHandler(error, result);
 
-          if (!error && result) {
-            dispatch({
-              type: AT.GET_SNIPPETS.SUCCESS,
-              payload: result.body,
-              meta: { since: action.payload.since }
-            });
-          }
-          if (result.headers.link && result.headers.link.match(/next/ig)) {
-            getGists(page + 1);
-          }
-        });
+            if (!error && result) {
+              dispatch({
+                type: AT.GET_SNIPPETS.SUCCESS,
+                payload: result.body,
+                meta: { since: action.payload.since }
+              });
+            }
+            if (result.headers.link && result.headers.link.match(/next/gi)) {
+              getGists(page + 1);
+            }
+          });
 
       getGists(1);
     }
@@ -329,7 +334,9 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
 
     if (action.type === AT.DELETE_COMMENT) {
       dispatch({ type: AT.DELETE_COMMENT.PENDING, action });
-      API.delete(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/comments/${action.payload.commentId}`)
+      API.delete(
+        `${getApiUrl('/api/v3')}/gists/${action.payload.id}/comments/${action.payload.commentId}`
+      )
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);

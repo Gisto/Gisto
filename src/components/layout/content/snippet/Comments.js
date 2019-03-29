@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  get, isEmpty, map, size, orderBy
-} from 'lodash/fp';
+import { get, isEmpty, map, size, orderBy } from 'lodash/fp';
 import styled, { withTheme } from 'styled-components';
 
 import Icon from 'components/common/Icon';
@@ -24,17 +22,17 @@ const CommentsWrapper = styled.div`
   box-shadow: 0 1px 2px #555;
   padding: 0 20px;
   transition: all 0.5s ease;
-  right: ${(props) => props.show ? '0px' : '-500px'};
+  right: ${(props) => (props.show ? '0px' : '-500px')};
   color: ${(props) => props.theme.textColor};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+
   h3 {
     font-weight: 300;
     font-size: 22px;
   }
-  
+
   h4 {
     font-weight: 300;
     font-size: 16px;
@@ -95,49 +93,54 @@ export class Comments extends React.Component {
   };
 
   render() {
-    const {
-      comments, showComments, snippetId, deleteComment, theme
-    } = this.props;
+    const { comments, showComments, snippetId, deleteComment, theme } = this.props;
 
     return (
       <CommentsWrapper show={ showComments }>
-        <h3><Icon type="chat" color={ theme.textColor }/> { size(comments) } Comment(s)</h3>
+        <h3>
+          <Icon type="chat" color={ theme.textColor } /> {size(comments)} Comment(s)
+        </h3>
 
         <CommentsList>
-          { isEmpty(comments)
-            ? <NoComments>No comments to display</NoComments>
-            : map((comment) => {
+          {isEmpty(comments) ? (
+            <NoComments>No comments to display</NoComments>
+          ) : (
+            map((comment) => {
               return (
                 <Comment key={ comment.id }>
-                  <StyledDeleteIcon type="delete"
-                                    color={ theme.colorDanger  }
-                                    onClick={ () => deleteComment(snippetId, comment.id) }/>
+                  <StyledDeleteIcon
+                    type="delete"
+                    color={ theme.colorDanger }
+                    onClick={ () => deleteComment(snippetId, comment.id) }/>
                   <CommentHeader>
                     <Avatar
                       title={ comment.user.login }
                       src={ comment.user.avatar_url }
                       width="32"
                       height="32"/>
-                    <span>by: { comment.user.login }<br/>{ comment.updated_at }</span>
+                    <span>
+                      by: {comment.user.login}
+                      <br />
+                      {comment.updated_at}
+                    </span>
                   </CommentHeader>
-                  <Markdown text={ comment.body }/>
+                  <Markdown text={ comment.body } />
                 </Comment>
               );
             }, orderBy((comment) => new Date(comment.updated_at), 'desc', comments))
-          }
+          )}
         </CommentsList>
 
         <NewComment>
           <h4>Add new</h4>
-          <TextArea placeholder="Content"
-                    value={ this.state.newCommentBody }
-                    onChange={ (event) => this.handleTextAreaChange(event.target.value) }/>
-          <Button icon="add"
-                  onClick={ () => this.createComment() }>
+          <TextArea
+            placeholder="Content"
+            value={ this.state.newCommentBody }
+            onChange={ (event) => this.handleTextAreaChange(event.target.value) }/>
+          <Button icon="add" onClick={ () => this.createComment() }>
             Add new comment
           </Button>
         </NewComment>
-
       </CommentsWrapper>
     );
   }
@@ -159,9 +162,12 @@ Comments.propTypes = {
 };
 
 export default withTheme(
-  connect(mapStateToProps, {
-    getSnippetComments: snippetActions.getSnippetComments,
-    createSnippetComment: snippetActions.createSnippetComment,
-    deleteComment: snippetActions.deleteComment
-  })(Comments)
+  connect(
+    mapStateToProps,
+    {
+      getSnippetComments: snippetActions.getSnippetComments,
+      createSnippetComment: snippetActions.createSnippetComment,
+      deleteComment: snippetActions.deleteComment
+    }
+  )(Comments)
 );

@@ -10,11 +10,11 @@ const Color = styled.input`
   background: none;
   vertical-align: middle;
   margin: 0 -3px 2px 5px;
-  
+
   ::-webkit-color-swatch-wrapper {
     padding: 0;
   }
-  
+
   ::-webkit-color-swatch {
     border: none;
     border-radius: 40px;
@@ -22,9 +22,7 @@ const Color = styled.input`
 `;
 
 const InputColor = ({ color, onChange }) => (
-  <Color type="color"
-         defaultValue={ color }
-         onChange={ onChange } />
+  <Color type="color" defaultValue={ color } onChange={ onChange } />
 );
 
 InputColor.propTypes = {

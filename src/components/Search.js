@@ -37,7 +37,7 @@ const StyledInput = styled(Input)`
 const StyledTaglistWrapper = styled.div`
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr) ) ;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   color: ${(props) => props.theme.baseAppColor};
   max-height: 50vh;
   overflow: auto;
@@ -47,7 +47,7 @@ const StyledTaglistWrapper = styled.div`
   width: 300px;
   background: #fff;
   z-index: 3;
-  
+
   > span {
     cursor: pointer;
   }
@@ -55,7 +55,7 @@ const StyledTaglistWrapper = styled.div`
 
 const StyledLanguagesWrapper = styled(StyledTaglistWrapper)`
   margin: 0 -50px 0 0 !important;
-  
+
   > span {
     cursor: pointer;
     text-align: left;
@@ -63,8 +63,15 @@ const StyledLanguagesWrapper = styled(StyledTaglistWrapper)`
 `;
 
 export const Search = ({
-  snippets, filterSnippets, filterText, filterTags, filterLanguage,
-  filterStatus, filterTruncated, filterUntagged, theme
+  snippets,
+  filterSnippets,
+  filterText,
+  filterTags,
+  filterLanguage,
+  filterStatus,
+  filterTruncated,
+  filterUntagged,
+  theme
 }) => {
   const countSnippets = size(
     filterSnippetsList(
@@ -84,19 +91,17 @@ export const Search = ({
 
   return (
     <SearchWrapper>
-      <Icon type="search" size="22" color={ theme.baseAppColor }/>
-      <StyledInput type="search"
-                   placeholder={ `Search ${countSnippets} snippets` }
-                   onChange={
-                     (event) => shouldFilter(event.target.value)
-                       && filterSnippets(event.target.value)
-                   }/>
+      <Icon type="search" size="22" color={ theme.baseAppColor } />
+      <StyledInput
+        type="search"
+        placeholder={ `Search ${countSnippets} snippets` }
+        onChange={ (event) => shouldFilter(event.target.value) && filterSnippets(event.target.value) }/>
 
       <UtilityIcon dropdown type="code" color={ theme.baseAppColor }>
         <ScrollPad>
           <div>
             <StyledLanguagesWrapper className="list">
-              <Languagelist/>
+              <Languagelist />
             </StyledLanguagesWrapper>
           </div>
         </ScrollPad>
@@ -105,12 +110,11 @@ export const Search = ({
         <ScrollPad>
           <div>
             <StyledTaglistWrapper className="list">
-              <Taglist/>
+              <Taglist />
             </StyledTaglistWrapper>
           </div>
         </ScrollPad>
       </UtilityIcon>
-
     </SearchWrapper>
   );
 };
@@ -138,7 +142,10 @@ const mapStateToProps = (state) => ({
 });
 
 export default withTheme(
-  connect(mapStateToProps, {
-    filterSnippets: snippetActions.filterSnippetsByText
-  })(Search)
+  connect(
+    mapStateToProps,
+    {
+      filterSnippets: snippetActions.filterSnippetsByText
+    }
+  )(Search)
 );

@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  isEmpty, map, trim, startCase
-} from 'lodash/fp';
+import { isEmpty, map, trim, startCase } from 'lodash/fp';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
@@ -47,8 +45,16 @@ const Tag = styled.span`
 `;
 
 export const Sidebar = ({
-  snippets, filterText, filterTags, filterLanguage, clearFilters, removeTag,
-  filterStatus, filterTruncated, filterUntagged, theme
+  snippets,
+  filterText,
+  filterTags,
+  filterLanguage,
+  clearFilters,
+  removeTag,
+  filterStatus,
+  filterTruncated,
+  filterUntagged,
+  theme
 }) => {
   const searchType = () => {
     if (!isEmpty(trim(filterText))) {
@@ -58,17 +64,22 @@ export const Sidebar = ({
     if (!isEmpty(filterTags)) {
       return (
         <span>
-          { 'tags ' } { map((tag) => (
-            <Tag key={ tag }>
-              { tag }
-              &nbsp;
-              <Icon type="close"
-                    clickable
-                    size={ 12 }
-                    onClick={ () => removeTag(tag) }
-                    color={ theme.baseAppColor }/>
-            </Tag>
-          ), filterTags) }
+          {'tags '}{' '}
+          {map(
+            (tag) => (
+              <Tag key={ tag }>
+                {tag}
+                &nbsp;
+                <Icon
+                  type="close"
+                  clickable
+                  size={ 12 }
+                  onClick={ () => removeTag(tag) }
+                  color={ theme.baseAppColor }/>
+              </Tag>
+            ),
+            filterTags
+          )}
         </span>
       );
     }
@@ -92,38 +103,42 @@ export const Sidebar = ({
     return '';
   };
 
-  const shouldShowFilteredBy = !isEmpty(trim(filterText))
-    || !isEmpty(trim(filterTags))
-    || !isEmpty(trim(filterStatus))
-    || !isEmpty(trim(filterLanguage)) || filterTruncated || filterUntagged;
+  const shouldShowFilteredBy =
+    !isEmpty(trim(filterText)) ||
+    !isEmpty(trim(filterTags)) ||
+    !isEmpty(trim(filterStatus)) ||
+    !isEmpty(trim(filterLanguage)) ||
+    filterTruncated ||
+    filterUntagged;
 
   return (
     <SideBarWrapper>
-      { shouldShowFilteredBy && (
-      <SearchFilters>
-        Filtered by <strong>{ searchType() }</strong>
+      {shouldShowFilteredBy && (
+        <SearchFilters>
+          Filtered by <strong>{searchType()}</strong>
+          &nbsp;
+          <ClearAll onClick={ () => clearFilters() }>
+            <Icon type="close-circle" size={ 12 } color={ theme.colorDanger } />
             &nbsp;
-        <ClearAll onClick={ () => clearFilters() }>
-          <Icon type="close-circle"
-                    size={ 12 }
-                    color={ theme.colorDanger }/>
-              &nbsp;
-          <strong>clear</strong>
-        </ClearAll>
-      </SearchFilters>
-      ) }
+            <strong>clear</strong>
+          </ClearAll>
+        </SearchFilters>
+      )}
       <SnippetsList>
-        { map((snippet) => (
-          <Snippet key={ snippet.id } snippet={ snippet }/>
-        ), filterSnippetsList(
-          snippets,
-          filterText,
-          filterTags,
-          filterLanguage,
-          filterStatus,
-          filterTruncated,
-          filterUntagged
-        )) }
+        {map(
+          (snippet) => (
+            <Snippet key={ snippet.id } snippet={ snippet } />
+          ),
+          filterSnippetsList(
+            snippets,
+            filterText,
+            filterTags,
+            filterLanguage,
+            filterStatus,
+            filterTruncated,
+            filterUntagged
+          )
+        )}
       </SnippetsList>
     </SideBarWrapper>
   );
@@ -153,8 +168,11 @@ Sidebar.propTypes = {
 };
 
 export default withTheme(
-  connect(mapStateToProps, {
-    clearFilters: snippetActions.clearAllFilters,
-    removeTag: snippetActions.removeTagFromFilter
-  })(Sidebar)
+  connect(
+    mapStateToProps,
+    {
+      clearFilters: snippetActions.clearAllFilters,
+      removeTag: snippetActions.removeTagFromFilter
+    }
+  )(Sidebar)
 );

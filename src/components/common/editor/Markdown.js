@@ -7,11 +7,18 @@ import hljs from 'highlight.js';
 import { get } from 'lodash/fp';
 
 export const Markdown = ({ text, className, emoji }) => {
-  const md = (textInput)  => {
+  const md = (textInput) => {
     const renderer = new marked.Renderer();
 
     renderer.text = (input) => {
-      return input.replace(/:(.\w+?):/g, (matcher, capture) => `<img src="${get([capture], emoji)}" style="width: 18px;vertical-align: middle;background: transparent;"/>`);
+      return input.replace(
+        /:(.\w+?):/g,
+        (matcher, capture) =>
+          `<img src="${get(
+            [capture],
+            emoji
+          )}" style="width: 18px;vertical-align: middle;background: transparent;"/>`
+      );
     };
 
     marked.setOptions({
@@ -30,8 +37,7 @@ export const Markdown = ({ text, className, emoji }) => {
   };
 
   return (
-    <div className={ `markdown-body ${className}` }
-         dangerouslySetInnerHTML={ { __html: md(text) } }/>
+    <div className={ `markdown-body ${className}` } dangerouslySetInnerHTML={ { __html: md(text) } } />
   );
 };
 
