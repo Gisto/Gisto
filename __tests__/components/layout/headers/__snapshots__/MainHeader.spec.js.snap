@@ -4,7 +4,6 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
 <HeaderWrapper>
   <Logo>
     <Link
-      replace={false}
       to="/"
     >
       { Gisto }

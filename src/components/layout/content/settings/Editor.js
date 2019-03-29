@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import themeList from 'monaco-themes/themes/themelist';
+
 import * as uiActions from 'actions/ui';
 
 import { getSetting, setBooleanSetting, setSetting } from 'utils/settings';
@@ -10,6 +12,7 @@ import { getSetting, setBooleanSetting, setSetting } from 'utils/settings';
 import Input from 'components/common/controls/Input';
 import Checkbox from 'components/common/controls/Checkbox';
 import Select from 'components/common/controls/Select';
+import { toPairs } from 'lodash/fp';
 
 const Wrapper = styled.div`
   display: flex;
@@ -69,6 +72,9 @@ export const EditorSettings = ({ changeSettings }) => {
                 <option value="vs">vs light</option>
                 <option value="vs-dark">vs dark</option>
                 <option value="hc-black">hc dark</option>
+                {toPairs(themeList).map((theme) => (
+                  <option key={ theme[0] } value={ theme[0] }>{theme[1]}</option>
+                ))}
               </StyledISelect>
             </Label>
           </Field>

@@ -11,11 +11,19 @@ import * as emojiActions from 'actions/emoji';
 import { gaEvent } from 'utils/ga';
 import { getSetting } from 'utils/settings';
 
+import Editor from 'components/common/controls/Editor';
+
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 100%;
+`;
+
+const HiddenEditor = styled.div`
+  width: 0;
+  height: 0;
+  display: none;
 `;
 
 export class Main extends React.Component {
@@ -54,6 +62,9 @@ export class Main extends React.Component {
       <MainWrapper>
         { !edit && !isCreateNew && <Sidebar/> }
         <Content/>
+        <HiddenEditor>
+          <Editor file={ { collapsed: false, content: 'temp' } }/>
+        </HiddenEditor>
       </MainWrapper>
     );
   }
