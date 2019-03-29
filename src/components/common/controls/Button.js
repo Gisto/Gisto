@@ -7,18 +7,18 @@ import { get } from 'lodash/fp';
 import Icon from 'components/common/Icon';
 
 const ButtonComponent = styled.button`
-  background: ${(props) => props.invert ? 'transparent' : props.theme.baseAppColor};
-  border: 1px solid ${(props) => props.outline ? props.theme.lightText : props.theme.baseAppColor};
-  color: ${(props) => props.invert ? props.theme.baseAppColor : props.theme.lightText};
+  background: ${(props) => (props.invert ? 'transparent' : props.theme.baseAppColor)};
+  border: 1px solid ${(props) => (props.outline ? props.theme.lightText : props.theme.baseAppColor)};
+  color: ${(props) => (props.invert ? props.theme.baseAppColor : props.theme.lightText)};
   border-radius: 3px;
   font-weight: 200;
   font-size: 14px;
   text-align: center;
-  ${(props) => props.height ? `height: ${props.height};` : ''}
-  ${(props) => props.width ? `width: ${props.width};` : ''}
+  ${(props) => (props.height ? `height: ${props.height};` : '')}
+  ${(props) => (props.width ? `width: ${props.width};` : '')}
   -webkit-appearance: none;
   cursor: pointer;
-  
+
   &[disabled] {
     background: ${(props) => props.theme.borderColor};
     border: 1px solid ${(props) => props.theme.borderColor};
@@ -28,29 +28,40 @@ const ButtonComponent = styled.button`
 `;
 
 export const Button = ({
-  icon, children, width, height, invert, outline, className, onClick, disabled, theme, ...rest
+  icon,
+  children,
+  width,
+  height,
+  invert,
+  outline,
+  className,
+  onClick,
+  disabled,
+  theme,
+  ...rest
 }) => {
   const iconColor = () => {
     if (invert) {
       return theme.baseAppColor;
-    } if (disabled) {
-      return  theme.textColor;
-    } 
-    
+    }
+    if (disabled) {
+      return theme.textColor;
+    }
+
     return theme.lightText;
   };
 
   return (
-    <ButtonComponent invert={ invert }
-                     outline={ outline }
-                     width={ width }
-                     disabled={ disabled }
-                     title={ disabled ? 'Currently not available' : rest.title }
-                     height={ height }
-                     className={ className }
-                     onClick={ onClick }>
-      <Icon color={ iconColor() }
-            type={ icon }/> {children}
+    <ButtonComponent
+      invert={ invert }
+      outline={ outline }
+      width={ width }
+      disabled={ disabled }
+      title={ disabled ? 'Currently not available' : rest.title }
+      height={ height }
+      className={ className }
+      onClick={ onClick }>
+      <Icon color={ iconColor() } type={ icon } /> {children}
     </ButtonComponent>
   );
 };

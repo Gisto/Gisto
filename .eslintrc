@@ -1,7 +1,14 @@
 {
-	"extends": ["airbnb"],
-	"parser": "babel-eslint",
-	"plugins": ["prettier"],
+	"extends": [
+		"airbnb",
+		"prettier",
+		"prettier/@typescript-eslint"
+	],
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"@typescript-eslint",
+		"prettier"
+	],
 	"env": {
 		"browser": true,
 		"node": true,
@@ -26,7 +33,10 @@
 		"gtag": true
 	},
 	"settings": {
-		"import/resolver": "webpack"
+		"import/resolver": "webpack",
+		"react": {
+			"version": "detect"
+		}
 	},
 	"rules" : {
 		"arrow-parens": ["error", "always"],
@@ -81,8 +91,10 @@
 		"indent": "off"
 	},
 	"parserOptions": {
+		"ecmaVersion": 2018,
+		"sourceType": "module",
 		"ecmaFeatures": {
-			"experimentalObjectRestSpread": true
+			"jsx": true
 		}
 	}
 }

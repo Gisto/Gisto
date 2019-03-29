@@ -1,7 +1,5 @@
 /* eslint no-console: 0 */
-const {
-  shell, app, Menu, ipcMain
-} = require('electron');
+const { shell, app, Menu, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
 const { init } = require('@sentry/electron');
@@ -41,7 +39,10 @@ function sendStatusToWindow(text, info, targetWindow, channel = 'update-info') {
 
 function handleDownload(win) {
   win.webContents.session.on('will-download', (event, item, sender) => {
-    const isUpdateUrl = includes(['https://github.com/Gisto/Gisto/releases/download/'], head(item.getURLChain()));
+    const isUpdateUrl = includes(
+      ['https://github.com/Gisto/Gisto/releases/download/'],
+      head(item.getURLChain())
+    );
 
     if (isUpdateUrl) {
       item.on('updated', (updateEvent, state) => {
@@ -54,14 +55,17 @@ function handleDownload(win) {
             const downloaded = item.getReceivedBytes() / 1048576;
             const total = item.getTotalBytes() / 1048576;
 
-            sender.send('download-progress', null, { progress: { percent: (downloaded / total) * 100 } });
+            sender.send('download-progress', null, {
+              progress: { percent: (downloaded / total) * 100 }
+            });
           }
         }
       });
       item.once('done', (doneEvent, state) => {
         if (state === 'completed') {
           sender.send('update-downloaded', 'New version downloaded, quit and run installer?', {
-            success: true, path: item.getSavePath()
+            success: true,
+            path: item.getSavePath()
           });
         } else {
           sender.send('update-downloaded', null, { success: false });
@@ -260,21 +264,34 @@ function updateChecker(mainWindow) {
 
   autoUpdater.on('update-available', (info) => {
     sendStatusToWindow(
-      `Update from ${packageJson.version} to ${info.version} available`, info, mainWindow, 'update-available'
+      `Update from ${packageJson.version} to ${info.version} available`,
+      info,
+      mainWindow,
+      'update-available'
     );
   });
 
   autoUpdater.on('update-downloaded', (info) => {
     sendStatusToWindow(
-      'New version downloaded, quit and Install?', info, mainWindow, 'update-downloaded'
+      'New version downloaded, quit and Install?',
+      info,
+      mainWindow,
+      'update-downloaded'
     );
   });
 
   autoUpdater.on('download-progress', (progress, bytesPerSecond, percent, total, transferred) => {
     sendStatusToWindow(
-      'Downloaded: ', {
-        progress, bytesPerSecond, percent, total, transferred
-      }, mainWindow, 'download-progress'
+      'Downloaded: ',
+      {
+        progress,
+        bytesPerSecond,
+        percent,
+        total,
+        transferred
+      },
+      mainWindow,
+      'download-progress'
     );
   });
 }

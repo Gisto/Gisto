@@ -349,7 +349,8 @@ export class NewSnippet extends React.Component {
                   dropdownRenderer={ this.customDropdownRenderer }
                   placeholder="Select language"
                   options={ this.mapArrayToSelectObject(keys(syntaxMap)) }
-                  onChange={ (value) => this.setFileData(get('value', head(value)), file.uuid, 'language')
+                  onChange={ (value) =>
+                    this.setFileData(get('value', head(value)), file.uuid, 'language')
                   }/>
                 <StyledDeleteButton icon="delete" invert onClick={ () => this.deleteFile(file.uuid) }>
                   <strong>Remove</strong> {file.name || 'this file'}

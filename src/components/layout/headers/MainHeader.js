@@ -72,51 +72,53 @@ const RateLimit = styled.span`
   text-align: center;
   color: ${(props) => props.theme.headerBgLightest};
   cursor: pointer;
-  
+
   &:hover {
     color: ${(props) => props.theme.lightText};
   }
-  
+
   > small {
     font-size: 8px;
-  } 
+  }
 `;
 
 export class MainHeader extends Component {
   renderLoading = () => {
     if (!this.props.loading) {
-      return <div/>;
+      return <div />;
     }
 
     return (
       <LoadingIndicator>
-        <Loading text="Loading..."/>
+        <Loading text="Loading..." />
       </LoadingIndicator>
     );
   };
 
   renderRateLimit = () => {
     const { rateLimit, getRateLimit, settings } = this.props;
-    const apiLimitResetTime = Math.floor((get(['rate', 'reset'], rateLimit) - toUnixTimeStamp(new Date().getTime())) / 60);
+    const apiLimitResetTime = Math.floor(
+      (get(['rate', 'reset'], rateLimit) - toUnixTimeStamp(new Date().getTime())) / 60
+    );
 
-    if (!settings['settings-show-api-rate-limit'] || !getSetting('settings-show-api-rate-limit', true)) {
+    if (
+      !settings['settings-show-api-rate-limit'] ||
+      !getSetting('settings-show-api-rate-limit', true)
+    ) {
       return null;
     }
 
     if (get('loading', rateLimit)) {
-      return (
-        <Loading text=""/>
-      );
+      return <Loading text="" />;
     }
 
     return (
-      <RateLimit onClick={ () => getRateLimit() }
-                 title="Click to reload">
+      <RateLimit onClick={ () => getRateLimit() } title="Click to reload">
         <small>API rate limit:</small>
-        <br/>
-        { `${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}` }
-        <br/>
-        <small>Reset in { apiLimitResetTime } min.</small>
+        <br />
+        {`${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}`}
+        <br />
+        <small>Reset in {apiLimitResetTime} min.</small>
       </RateLimit>
     );
   };
@@ -126,30 +128,26 @@ export class MainHeader extends Component {
 
     return (
       <HeaderWrapper>
-        { !edit && (
+        {!edit && (
           <Logo>
             <Link to="/">
-              { LOGO_TEXT } { isEnterpriseLogin() && <small>enterprise</small> }
+              {LOGO_TEXT} {isEnterpriseLogin() && <small>enterprise</small>}
             </Link>
-            { !isCreateNew && (
+            {!isCreateNew && (
               <Router>
-                <Button title="Create new snippet"
-                        icon="add"
-                        height="30px"
-                        outline>
+                <Button title="Create new snippet" icon="add" height="30px" outline>
                   <StyledLink to="/new">New snippet</StyledLink>
                 </Button>
               </Router>
-            ) }
+            )}
           </Logo>
-        ) }
+        )}
         <MiddleArea>
-          { this.renderLoading() }
+          {this.renderLoading()}
 
-          { this.renderRateLimit() }
-
+          {this.renderRateLimit()}
         </MiddleArea>
-        <UserArea/>
+        <UserArea />
       </HeaderWrapper>
     );
   }
@@ -172,6 +170,9 @@ MainHeader.propTypes = {
   getRateLimit: PropTypes.func
 };
 
-export default connect(mapStateToProps, {
-  getRateLimit: snippetsActions.getRateLimit
-})(MainHeader);
+export default connect(
+  mapStateToProps,
+  {
+    getRateLimit: snippetsActions.getRateLimit
+  }
+)(MainHeader);

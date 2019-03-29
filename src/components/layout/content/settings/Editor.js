@@ -46,7 +46,7 @@ const StyledISelect = styled(Select)`
 const H4 = styled.h4`
   color: ${(props) => props.theme.baseAppColor};
   border-bottom: 1px dashed ${(props) => props.theme.baseAppColor};
-  padding-bottom: 20px; 
+  padding-bottom: 20px;
 `;
 
 export const EditorSettings = ({ changeSettings }) => {
@@ -67,13 +67,16 @@ export const EditorSettings = ({ changeSettings }) => {
           <Field>
             <Label>
               <span>Theme:</span>
-              <StyledISelect value={ getSetting('editorTheme', 'vs') }
-                             onChange={ (event) => updateSettings('editorTheme', event.target.value) }>
+              <StyledISelect
+                value={ getSetting('editorTheme', 'vs') }
+                onChange={ (event) => updateSettings('editorTheme', event.target.value) }>
                 <option value="vs">vs light</option>
                 <option value="vs-dark">vs dark</option>
                 <option value="hc-black">hc dark</option>
                 {toPairs(themeList).map((theme) => (
-                  <option key={ theme[0] } value={ theme[0] }>{theme[1]}</option>
+                  <option key={ theme[0] } value={ theme[0] }>
+                    {theme[1]}
+                  </option>
                 ))}
               </StyledISelect>
             </Label>
@@ -81,86 +84,96 @@ export const EditorSettings = ({ changeSettings }) => {
           <Field>
             <Label>
               <span>Minimap:</span>
-              <Checkbox checked={ getSetting('minimap', false) }
-                        onChange={ () => updateSettings('minimap', null, true) }/>
+              <Checkbox
+                checked={ getSetting('minimap', false) }
+                onChange={ () => updateSettings('minimap', null, true) }/>
             </Label>
           </Field>
           <Field>
             <Label>
               <span>Code lens:</span>
-              <Checkbox checked={ getSetting('codeLens', false) }
-                        onChange={ () => updateSettings('codeLens', null, true) }/>
+              <Checkbox
+                checked={ getSetting('codeLens', false) }
+                onChange={ () => updateSettings('codeLens', null, true) }/>
             </Label>
           </Field>
           <Field>
             <Label>
               <span>Line Numbers:</span>
-              <Checkbox checked={ getSetting('lineNumbers', true) }
-                        onChange={ () => updateSettings('lineNumbers', null, true) }/>
+              <Checkbox
+                checked={ getSetting('lineNumbers', true) }
+                onChange={ () => updateSettings('lineNumbers', null, true) }/>
             </Label>
           </Field>
           <Field>
             <Label>
               <span>Format On Paste:</span>
-              <Checkbox checked={ getSetting('formatOnPaste', true) }
-                        onChange={ () => updateSettings('formatOnPaste', null, true) }/>
+              <Checkbox
+                checked={ getSetting('formatOnPaste', true) }
+                onChange={ () => updateSettings('formatOnPaste', null, true) }/>
             </Label>
           </Field>
           <Field>
             <Label>
               <span>Format On Type:</span>
-              <Checkbox checked={ getSetting('settings-editor-formatOnType', true) }
-                        onChange={ () => updateSettings('v', null, true) }/>
+              <Checkbox
+                checked={ getSetting('settings-editor-formatOnType', true) }
+                onChange={ () => updateSettings('v', null, true) }/>
             </Label>
           </Field>
 
           <Field>
             <Label>
               <span>Select On Line Numbers:</span>
-              <Checkbox checked={ getSetting('SelectOnLineNumbers', false) }
-                        onChange={ () => updateSettings('SelectOnLineNumbers', null, true) }/>
+              <Checkbox
+                checked={ getSetting('SelectOnLineNumbers', false) }
+                onChange={ () => updateSettings('SelectOnLineNumbers', null, true) }/>
             </Label>
           </Field>
-
         </Section>
         <Section>
           <Field>
             <Label>
               <span>Font Family:</span>
-              <StyledInput type="text"
-                           value={ getSetting('fontFamily', 'monospace') }
-                           onChange={ (event) => updateSettings('fontFamily', event.target.value) }/>
+              <StyledInput
+                type="text"
+                value={ getSetting('fontFamily', 'monospace') }
+                onChange={ (event) => updateSettings('fontFamily', event.target.value) }/>
             </Label>
           </Field>
           <Field>
             <Label>
               <span>Font Size:</span>
-              <StyledInput type="number"
-                           value={ getSetting('fontSize', 12) }
-                           onChange={ (event) => updateSettings('fontSize', event.target.value) }/>
+              <StyledInput
+                type="number"
+                value={ getSetting('fontSize', 12) }
+                onChange={ (event) => updateSettings('fontSize', event.target.value) }/>
             </Label>
           </Field>
           <Field>
             <Label>
               <span>Line height:</span>
-              <StyledInput type="number"
-                           value={ getSetting('lineHeight', 21) }
-                           onChange={ (event) => updateSettings('lineHeight', event.target.value) }/>
+              <StyledInput
+                type="number"
+                value={ getSetting('lineHeight', 21) }
+                onChange={ (event) => updateSettings('lineHeight', event.target.value) }/>
             </Label>
           </Field>
           <Field>
             <Label>
               <span>Font Ligatures:</span>
-              <Checkbox checked={ getSetting('fontLigatures', false) }
-                        onChange={ () => updateSettings('fontLigatures', null, true) }/>
+              <Checkbox
+                checked={ getSetting('fontLigatures', false) }
+                onChange={ () => updateSettings('fontLigatures', null, true) }/>
             </Label>
           </Field>
 
           <Field>
             <Label>
               <span>Cursor Blinking:</span>
-              <StyledISelect value={ getSetting('cursorBlinking', 'blink') }
-                             onChange={ (event) => updateSettings('cursorBlinking', event.target.value) }>
+              <StyledISelect
+                value={ getSetting('cursorBlinking', 'blink') }
+                onChange={ (event) => updateSettings('cursorBlinking', event.target.value) }>
                 <option value="blink">blink</option>
                 <option value="smooth">smooth</option>
                 <option value="phase">phase</option>
@@ -173,8 +186,11 @@ export const EditorSettings = ({ changeSettings }) => {
           <Field>
             <Label>
               <span>World wrap:</span>
-              <StyledISelect value={ getSetting('settings-editor-wordWrap', 'bounded') }
-                             onChange={ (event) => updateSettings('settings-editor-wordWrap', event.target.value) }>
+              <StyledISelect
+                value={ getSetting('settings-editor-wordWrap', 'bounded') }
+                onChange={ (event) =>
+                  updateSettings('settings-editor-wordWrap', event.target.value)
+                }>
                 <option value="off">off</option>
                 <option value="on">on</option>
                 <option value="bounded">bounded</option>
@@ -185,79 +201,84 @@ export const EditorSettings = ({ changeSettings }) => {
           <Field>
             <Label>
               <span>World wrap column size:</span>
-              <StyledInput type="number"
-                           value={ getSetting('settings-editor-wordWrapColumn', 80) }
-                           onChange={ (event) => updateSettings('settings-editor-wordWrapColumn', event.target.value) }/>
+              <StyledInput
+                type="number"
+                value={ getSetting('settings-editor-wordWrapColumn', 80) }
+                onChange={ (event) =>
+                  updateSettings('settings-editor-wordWrapColumn', event.target.value)
+                }/>
             </Label>
           </Field>
-
         </Section>
       </Wrapper>
 
       <H4>Preview settings:</H4>
       <Wrapper>
         <Section>
-
           <Field>
             <Label>
               <span>Preview HTML files:</span>
-              <Checkbox checked={ getSetting('settings-editor-preview-html', false) }
-                      onChange={ () => updateSettings('settings-editor-preview-html', null, true) }/>
+              <Checkbox
+                checked={ getSetting('settings-editor-preview-html', false) }
+                onChange={ () => updateSettings('settings-editor-preview-html', null, true) }/>
             </Label>
           </Field>
 
           <Field>
             <Label>
               <span>Preview Image files:</span>
-              <Checkbox checked={ getSetting('settings-editor-preview-image', true) }
-                        onChange={ () => updateSettings('settings-editor-preview-image', null, true) }/>
+              <Checkbox
+                checked={ getSetting('settings-editor-preview-image', true) }
+                onChange={ () => updateSettings('settings-editor-preview-image', null, true) }/>
             </Label>
           </Field>
 
           <Field>
             <Label>
               <span>Preview PDF files:</span>
-              <Checkbox checked={ getSetting('settings-editor-preview-pdf', true) }
-                        onChange={ () => updateSettings('settings-editor-preview-pdf', null, true) }/>
+              <Checkbox
+                checked={ getSetting('settings-editor-preview-pdf', true) }
+                onChange={ () => updateSettings('settings-editor-preview-pdf', null, true) }/>
             </Label>
           </Field>
 
           <Field>
             <Label>
               <span>Preview CSV/TSV files:</span>
-              <Checkbox checked={ getSetting('settings-editor-preview-csv', true) }
-                        onChange={ () => updateSettings('settings-editor-preview-csv', null, true) }/>
+              <Checkbox
+                checked={ getSetting('settings-editor-preview-csv', true) }
+                onChange={ () => updateSettings('settings-editor-preview-csv', null, true) }/>
             </Label>
           </Field>
-
         </Section>
 
         <Section>
-
           <Field>
             <Label>
               <span>Preview GeoJSON:</span>
-              <Checkbox checked={ getSetting('settings-editor-preview-geojson', true) }
-                        onChange={ () => updateSettings('settings-editor-preview-geojson', null, true) }/>
+              <Checkbox
+                checked={ getSetting('settings-editor-preview-geojson', true) }
+                onChange={ () => updateSettings('settings-editor-preview-geojson', null, true) }/>
             </Label>
           </Field>
 
           <Field>
             <Label>
               <span>Preview Markdown files:</span>
-              <Checkbox checked={ getSetting('settings-editor-preview-markdown', true) }
-                        onChange={ () => updateSettings('settings-editor-preview-markdown', null, true) }/>
+              <Checkbox
+                checked={ getSetting('settings-editor-preview-markdown', true) }
+                onChange={ () => updateSettings('settings-editor-preview-markdown', null, true) }/>
             </Label>
           </Field>
 
           <Field>
             <Label>
               <span>Preview AsciiDoc files:</span>
-              <Checkbox checked={ getSetting('settings-editor-preview-asciidoc', true) }
-                        onChange={ () => updateSettings('settings-editor-preview-asciidoc', null, true) }/>
+              <Checkbox
+                checked={ getSetting('settings-editor-preview-asciidoc', true) }
+                onChange={ () => updateSettings('settings-editor-preview-asciidoc', null, true) }/>
             </Label>
           </Field>
-
         </Section>
       </Wrapper>
     </div>
@@ -268,6 +289,9 @@ EditorSettings.propTypes = {
   changeSettings: PropTypes.func
 };
 
-export default connect(null, {
-  changeSettings: uiActions.changeSettings
-})(EditorSettings);
+export default connect(
+  null,
+  {
+    changeSettings: uiActions.changeSettings
+  }
+)(EditorSettings);

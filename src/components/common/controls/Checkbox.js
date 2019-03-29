@@ -14,9 +14,9 @@ const Box = styled.input`
   cursor: pointer;
   -webkit-appearance: none;
   outline: none;
-  
+
   :after {
-    content: "";
+    content: '';
     vertical-align: middle;
     text-align: center;
     line-height: 15px;
@@ -30,7 +30,7 @@ const Box = styled.input`
     border: 1px solid ${(props) => props.theme.baseAppColor};
     background: #fff;
   }
-  
+
   :checked:after {
     content: '\\2714';
     color: ${(props) => props.theme.baseAppColor};
@@ -38,10 +38,7 @@ const Box = styled.input`
 `;
 
 const Checkbox = ({ checked, onChange, className }) => (
-  <Box type="checkbox"
-       className={ className }
-       defaultChecked={ checked }
-       onChange={ onChange }/>
+  <Box type="checkbox" className={ className } defaultChecked={ checked } onChange={ onChange } />
 );
 
 Checkbox.propTypes = {

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
- drop, get, isEmpty, map, size, toString 
-} from 'lodash/fp';
+import { drop, get, isEmpty, map, size, toString } from 'lodash/fp';
 import styled from 'styled-components';
 
 import * as snippetActions from 'actions/snippets';
@@ -180,9 +178,7 @@ export class SnippetHeader extends React.Component {
   };
 
   countFiles = () => {
-    const {
- edit, match, snippets, tempSnippet 
-} = this.props;
+    const { edit, match, snippets, tempSnippet } = this.props;
 
     const snippet = get(match.params.id, snippets);
 
@@ -254,9 +250,7 @@ export class SnippetHeader extends React.Component {
   };
 
   renderSnippetDescription = () => {
-    const {
- edit, tempSnippet, snippets, match, updateTempSnippet 
-} = this.props;
+    const { edit, tempSnippet, snippets, match, updateTempSnippet } = this.props;
     const snippet = get(match.params.id, snippets);
 
     if (!edit) {
@@ -273,9 +267,7 @@ export class SnippetHeader extends React.Component {
   };
 
   renderTitle = () => {
-    const {
- snippets, match, searchByLanguages, searchByTags, edit 
-} = this.props;
+    const { snippets, match, searchByLanguages, searchByTags, edit } = this.props;
     const snippet = get(match.params.id, snippets);
 
     return (
@@ -283,15 +275,16 @@ export class SnippetHeader extends React.Component {
         onMouseOver={ () => this.toggleToolbox() }
         onMouseOut={ () => this.toggleToolbox() }
         onBlur={ () => this.toggleToolbox() }
-        onDoubleClick={ (event) => copyToClipboard(
+        onDoubleClick={ (event) =>
+          copyToClipboard(
             event,
             get('description', snippet),
             'Snippet description copied to clipboard'
           )
         }
         onFocus={ () => this.toggleToolbox() }>
-        {!edit
-          && map(
+        {!edit &&
+          map(
             (language) => (
               <Languages
                 key={ `${language}${snippet.id}` }
@@ -304,8 +297,8 @@ export class SnippetHeader extends React.Component {
         &nbsp;
         {this.renderSnippetDescription()}
         &nbsp;
-        {!edit
-          && map(
+        {!edit &&
+          map(
             (tag) => (
               <Anchor key={ tag } onClick={ () => searchByTags(tag) }>
                 {tag}&nbsp;
@@ -400,9 +393,7 @@ export class SnippetHeader extends React.Component {
 
   render() {
     const snippetUrl = getSnippetUrl('/gist');
-    const {
- snippets, match, editSnippet, comments 
-} = this.props;
+    const { snippets, match, editSnippet, comments } = this.props;
     const snippet = get(match.params.id, snippets);
     const snippetId = get('id', snippet);
     const openOnWebUrl = `${snippetUrl}/${get('username', snippet)}/${snippetId}`;
@@ -447,7 +438,8 @@ export class SnippetHeader extends React.Component {
               color={ this.props.theme.baseAppColor }
               type="copy"
               title="Copy Snippet URL to clipboard"
-              onClick={ (event) => copyToClipboard(event, openOnWebUrl, 'Snippet URL copied to clipboard')
+              onClick={ (event) =>
+                copyToClipboard(event, openOnWebUrl, 'Snippet URL copied to clipboard')
               }/>
             {this.renderStarControl(snippet)}
 
@@ -469,21 +461,24 @@ export class SnippetHeader extends React.Component {
                 </li>
                 <li>
                   <Anchor
-                    onClick={ (event) => copyToClipboard(event, snippetId, 'Snippet ID copied to clipboard')
+                    onClick={ (event) =>
+                      copyToClipboard(event, snippetId, 'Snippet ID copied to clipboard')
                     }>
                     Copy snippet ID to clipboard
                   </Anchor>
                 </li>
                 <li>
                   <Anchor
-                    onClick={ (event) => copyToClipboard(event, openOnWebUrl, 'Snippet URL copied to clipboard')
+                    onClick={ (event) =>
+                      copyToClipboard(event, openOnWebUrl, 'Snippet URL copied to clipboard')
                     }>
                     Copy Snippet URL to clipboard
                   </Anchor>
                 </li>
                 <li>
                   <Anchor
-                    onClick={ (event) => copyToClipboard(
+                    onClick={ (event) =>
+                      copyToClipboard(
                         event,
                         httpCloneUrl,
                         'HTTPS clone command copied to clipboard'
@@ -494,7 +489,8 @@ export class SnippetHeader extends React.Component {
                 </li>
                 <li>
                   <Anchor
-                    onClick={ (event) => copyToClipboard(event, sshCloneUrl, 'SSH clone command copied to clipboard')
+                    onClick={ (event) =>
+                      copyToClipboard(event, sshCloneUrl, 'SSH clone command copied to clipboard')
                     }>
                     Copy SSH clone command to clipboard
                   </Anchor>

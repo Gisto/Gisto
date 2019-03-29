@@ -29,10 +29,7 @@ if (isElectron) {
 }
 
 const Gisto = () => (
-  <Layout
-    env={ process.env.NODE_ENV }
-    electron={ process.version }
-    chrome={ process.versions.chrome }/>
+  <Layout env={ process.env.NODE_ENV } electron={ process.version } chrome={ process.versions.chrome } />
 );
 
 if (process.env.NODE_ENV === 'development') {
@@ -45,7 +42,7 @@ if (process.env.NODE_ENV === 'development') {
 ReactDOM.render(
   <Provider store={ store }>
     <ConnectedRouter history={ history }>
-      <Gisto/>
+      <Gisto />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('gisto')

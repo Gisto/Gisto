@@ -28,9 +28,7 @@ const HiddenEditor = styled.div`
 
 export class Main extends React.Component {
   componentDidMount() {
-    const {
-      getStarredSnippets, getSnippets, getEmoji
-    } = this.props;
+    const { getStarredSnippets, getSnippets, getEmoji } = this.props;
 
     getStarredSnippets();
     getSnippets();
@@ -44,14 +42,18 @@ export class Main extends React.Component {
     if (prevProps.sinceLastUpdated === null || this.props.sinceLastUpdated !== null) {
       const interval = getSetting('snippets-server-polling-in-seconds', 300);
 
-      this.poll(() => new Promise(() => {
-        getSnippets(this.props.sinceLastUpdated);
-      }), parseInt(interval) * 1000);
+      this.poll(
+        () =>
+          new Promise(() => {
+            getSnippets(this.props.sinceLastUpdated);
+          }),
+        parseInt(interval) * 1000
+      );
     }
   }
 
-  poll = (promiseFn, time) => promiseFn()
-    .then(this.sleep(time).then(() => this.poll(promiseFn, time)));
+  poll = (promiseFn, time) =>
+    promiseFn().then(this.sleep(time).then(() => this.poll(promiseFn, time)));
 
   sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
@@ -60,10 +62,10 @@ export class Main extends React.Component {
 
     return (
       <MainWrapper>
-        { !edit && !isCreateNew && <Sidebar/> }
-        <Content/>
+        {!edit && !isCreateNew && <Sidebar />}
+        <Content />
         <HiddenEditor>
-          <Editor file={ { collapsed: false, content: 'temp' } }/>
+          <Editor file={ { collapsed: false, content: 'temp' } } />
         </HiddenEditor>
       </MainWrapper>
     );
@@ -85,8 +87,11 @@ Main.propTypes = {
   sinceLastUpdated: PropTypes.string
 };
 
-export default connect(mapStateToProps, {
-  getSnippets: snippetActions.getSnippets,
-  getEmoji: emojiActions.getEmoji,
-  getStarredSnippets: snippetActions.getStarredSnippets
-})(Main);
+export default connect(
+  mapStateToProps,
+  {
+    getSnippets: snippetActions.getSnippets,
+    getEmoji: emojiActions.getEmoji,
+    getStarredSnippets: snippetActions.getStarredSnippets
+  }
+)(Main);

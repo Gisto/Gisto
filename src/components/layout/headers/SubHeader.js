@@ -29,16 +29,14 @@ const SnippetHeaderBlock = styled.div`
 
 export const SubHeader = ({ edit, isCreateNew }) => (
   <SubHeaderWrapper>
-    { !edit && !isCreateNew && (
-      <Search/>
-    ) }
+    {!edit && !isCreateNew && <Search />}
     <SnippetHeaderBlock>
       <Router>
         <Switch>
-          <Route exact path="/" component={ () => <div>Dashboard</div> }/>
-          <Route exact path="/about" component={ () => <div>About</div> }/>
-          <Route exact path="/settings" component={ () => <div>Settings</div> }/>
-          <Route path="/snippet/:id" component={ SnippetHeader }/>
+          <Route exact path="/" component={ () => <div>Dashboard</div> } />
+          <Route exact path="/about" component={ () => <div>About</div> } />
+          <Route exact path="/settings" component={ () => <div>Settings</div> } />
+          <Route path="/snippet/:id" component={ SnippetHeader } />
         </Switch>
       </Router>
     </SnippetHeaderBlock>

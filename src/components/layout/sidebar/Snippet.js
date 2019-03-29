@@ -26,7 +26,7 @@ const StyledNavLink = styled(NavLink)`
   align-items: center;
 
   &:hover {
-    background: rgba(255,255,255,.2);
+    background: rgba(255, 255, 255, 0.2);
     color: ${(props) => props.theme.bg};
   }
   &.selected {
@@ -44,12 +44,14 @@ const Title = styled.span`
 const StyledIcon = styled(Icon)`
   transition: all 0.2s ease-in-out;
 
-  ${(props) => props.onClick && `
+  ${(props) =>
+    props.onClick &&
+    `
   &:hover {
     transform: scale(1.5); 
   }
   `}
-  
+
   .selected & {
     background-color: ${(props) => props.theme.baseAppColor};
   }
@@ -92,24 +94,37 @@ export class Snippet extends Component {
     const { Menu, MenuItem } = remote;
     const menu = new Menu();
 
-    menu.append(new MenuItem({
-      label: snippet.star ? 'Un-star' : 'Star',
-      click: () => this.toggleStar(event)
-    }));
+    menu.append(
+      new MenuItem({
+        label: snippet.star ? 'Un-star' : 'Star',
+        click: () => this.toggleStar(event)
+      })
+    );
 
-    menu.append(new MenuItem({
-      label: 'Copy description to clipboard',
-      click: () => copyToClipboard(event, get('description', snippet), 'Snippet description copied to clipboard')
-    }));
+    menu.append(
+      new MenuItem({
+        label: 'Copy description to clipboard',
+        click: () =>
+          copyToClipboard(
+            event,
+            get('description', snippet),
+            'Snippet description copied to clipboard'
+          )
+      })
+    );
 
-    menu.append(new MenuItem({
-      type: 'separator'
-    }));
+    menu.append(
+      new MenuItem({
+        type: 'separator'
+      })
+    );
 
-    menu.append(new MenuItem({
-      label: 'Delete',
-      click: () => this.deleteSnippet(event)
-    }));
+    menu.append(
+      new MenuItem({
+        label: 'Delete',
+        click: () => this.deleteSnippet(event)
+      })
+    );
 
     menu.popup({ window: remote.getCurrentWindow() });
   };
@@ -119,27 +134,26 @@ export class Snippet extends Component {
 
     return (
       <Router>
-        <StyledNavLink exact
-                       className="link"
-                       activeClassName="selected"
-                       to={ `/snippet/${snippet.id}` }
-                       onContextMenu={ isElectron
-                         ? (event) => this.onContextMenu(event, snippet)
-                         : null }>
+        <StyledNavLink
+          exact
+          className="link"
+          activeClassName="selected"
+          to={ `/snippet/${snippet.id}` }
+          onContextMenu={ isElectron ? (event) => this.onContextMenu(event, snippet) : null }>
           <span>
-            <StyledIcon size={ 24 }
-                      type={ snippet.public ? 'unlock' : 'lock' }
-                      color={ theme.lightText }/>
+            <StyledIcon
+              size={ 24 }
+              type={ snippet.public ? 'unlock' : 'lock' }
+              color={ theme.lightText }/>
           </span>
           <span>
-            <StyledIcon size={ 16 }
-                      onClick={ this.toggleStar }
-                      type={ snippet.star ? 'star-full' : 'star-empty' }
-                      color={ theme.lightText }/>
+            <StyledIcon
+              size={ 16 }
+              onClick={ this.toggleStar }
+              type={ snippet.star ? 'star-full' : 'star-empty' }
+              color={ theme.lightText }/>
           </span>
-          <Title>
-            { removeTags(snippet.description) || 'unnamed' }
-          </Title>
+          <Title>{removeTags(snippet.description) || 'unnamed'}</Title>
         </StyledNavLink>
       </Router>
     );
@@ -155,9 +169,12 @@ Snippet.propTypes = {
 };
 
 export default withTheme(
-  connect(null, {
-    setStar: snippetActions.starSnippet,
-    unsetStar: snippetActions.unStarSnippet,
-    deleteSnippet: snippetActions.deleteSnippet
-  })(Snippet)
+  connect(
+    null,
+    {
+      setStar: snippetActions.starSnippet,
+      unsetStar: snippetActions.unStarSnippet,
+      deleteSnippet: snippetActions.deleteSnippet
+    }
+  )(Snippet)
 );

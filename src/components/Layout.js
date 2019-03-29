@@ -16,9 +16,7 @@ import LogIn from 'components/LogIn';
 import { getSetting } from 'utils/settings';
 import Icon from 'components/common/Icon';
 
-const CloseButton = ({ closeToast }) => (
-  <Icon clickable onClick={ closeToast } type="close"/>
-);
+const CloseButton = ({ closeToast }) => <Icon clickable onClick={ closeToast } type="close" />;
 
 CloseButton.propTypes = {
   closeToast: PropTypes.func
@@ -46,7 +44,7 @@ export const Layout = ({ theme }) => {
         )}
         <ToastContainer
           position={ getSetting('settings-notification-position', 'top-center') }
-          closeButton={ <CloseButton/> }
+          closeButton={ <CloseButton /> }
           autoClose={ 8000 }/>
       </App>
     </ThemeProvider>

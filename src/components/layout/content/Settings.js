@@ -58,19 +58,18 @@ export class Settings extends React.Component {
 
         <details>
           <summary>General</summary>
-          <BaseSettings/>
+          <BaseSettings />
         </details>
 
         <details>
           <summary>Snippets</summary>
-          <SnippetsSettings/>
+          <SnippetsSettings />
         </details>
 
         <details>
           <summary>Editor</summary>
-          <EditorSettings/>
+          <EditorSettings />
         </details>
-
       </Wrapper>
     );
   }

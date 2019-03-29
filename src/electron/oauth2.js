@@ -7,7 +7,9 @@ const options = {
 };
 
 async function requestGithubToken(ops, code) {
-  const res = await tokenRequest.get(`https://gisto-gatekeeper.azurewebsites.net/authenticate/${code}`);
+  const res = await tokenRequest.get(
+    `https://gisto-gatekeeper.azurewebsites.net/authenticate/${code}`
+  );
 
   return res.body.token;
 }
@@ -28,7 +30,7 @@ ipcMain.on('oauth2-login', (event) => {
 
   async function handleCallback(url) {
     const rawCode = /code=([^&]*)/.exec(url) || null;
-    const code = (rawCode && rawCode.length > 1) ? rawCode[1] : null;
+    const code = rawCode && rawCode.length > 1 ? rawCode[1] : null;
     const error = /\?error=(.+)$/.exec(url);
 
     if (code || error) {
@@ -43,8 +45,9 @@ ipcMain.on('oauth2-login', (event) => {
       }
     } else if (error) {
       // eslint-disable-next-line no-alert
-      alert('Oops! Something went wrong and we couldn\'t'
-        + 'log you in using Github. Please try again.');
+      alert(
+        `Oops! Something went wrong and we couldn't log you in using Github. Please try again.`
+      );
     }
   }
 
@@ -52,11 +55,18 @@ ipcMain.on('oauth2-login', (event) => {
     handleCallback(url);
   });
 
-  session.defaultSession.webRequest.onBeforeRedirect({ urls: ['*//web.gistoapp.com/?code=*'] }, (details) => {
-    handleCallback(details.redirectURL);
-  });
+  session.defaultSession.webRequest.onBeforeRedirect(
+    { urls: ['*//web.gistoapp.com/?code=*'] },
+    (details) => {
+      handleCallback(details.redirectURL);
+    }
+  );
 
-  authWindow.on('close', () => {
-    authWindow = null;
-  }, false);
+  authWindow.on(
+    'close',
+    () => {
+      authWindow = null;
+    },
+    false
+  );
 });

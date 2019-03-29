@@ -15,8 +15,7 @@ const Iframe = styled.iframe`
 
 const Html = ({ file }) => (
   <StyledPdfWrapper>
-    <Iframe sandbox=""
-            srcDoc={ file.content }/>
+    <Iframe sandbox="" srcDoc={ file.content } />
   </StyledPdfWrapper>
 );
 

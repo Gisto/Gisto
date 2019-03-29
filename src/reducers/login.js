@@ -25,11 +25,9 @@ export const login = (state = initialState, action) => {
     }
 
     case AT.LOGIN_BASIC.SUCCESS: {
-      return flow([
-        set('loggedIn', true),
-        set('twoFactorAuth', false),
-        set('loading', false)
-      ])(state);
+      return flow([set('loggedIn', true), set('twoFactorAuth', false), set('loading', false)])(
+        state
+      );
     }
 
     default: {

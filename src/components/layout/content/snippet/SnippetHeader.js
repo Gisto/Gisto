@@ -56,72 +56,72 @@ export class SnippetHeader extends React.Component {
   };
 
   renderFileName = () => {
-    const {
-      file, edit, tempSnippet, updateTempSnippet
-    } = this.props;
+    const { file, edit, tempSnippet, updateTempSnippet } = this.props;
 
     if (!edit || (edit && (isImage(file) || isPDF(file)))) {
       return get('filename', file);
     }
 
     return (
-      <Input value={ get(['files', file.uuid, 'filename'], tempSnippet) }
-             onChange={ (event) => updateTempSnippet(['files', file.uuid, 'filename'], event.target.value) }/>
+      <Input
+        value={ get(['files', file.uuid, 'filename'], tempSnippet) }
+        onChange={ (event) =>
+          updateTempSnippet(['files', file.uuid, 'filename'], event.target.value)
+        }/>
     );
   };
 
   render() {
-    const {
-      file, username, snippetId, edit, toggleCollapse, theme
-    } = this.props;
+    const { file, username, snippetId, edit, toggleCollapse, theme } = this.props;
     const openOnWebUrl = `${getSnippetUrl('/gist')}/${username}/${snippetId}#file-${file.filename}`;
 
     return (
       <SnippetHeaderWrapper>
         <FileName>
-          <FilenameIcon size={ 22 }
-                        color={ theme.baseAppColor }
-                        type="file"/> { this.renderFileName() } { edit && (isPDF(file) || isImage(file)) && (
-                        <em>
-                          <small style={ { color: theme.colorDanger } }>
-                            &nbsp;&nbsp;&nbsp;
-                            { `(${file.language || 'this kind of '} files are read only)` }
-                          </small>
-                        </em>
-                        ) }
+          <FilenameIcon size={ 22 } color={ theme.baseAppColor } type="file" /> {this.renderFileName()}{' '}
+          {edit && (isPDF(file) || isImage(file)) && (
+            <em>
+              <small style={ { color: theme.colorDanger } }>
+                &nbsp;&nbsp;&nbsp;
+                {`(${file.language || 'this kind of '} files are read only)`}
+              </small>
+            </em>
+          )}
         </FileName>
 
-        { !edit ? (
+        {!edit ? (
           <div>
             <Language>{getOr('Plain text', 'language', file)}</Language>
             <UtilityIcon size={ 22 } color={ theme.baseAppColor } type="ellipsis" dropdown>
               <ul>
                 <li>
-                  <ExternalLink href={ openOnWebUrl }>
-                  Open on web
-                  </ExternalLink>
+                  <ExternalLink href={ openOnWebUrl }>Open on web</ExternalLink>
                 </li>
                 <li>
                   <Anchor onClick={ (event) => copyToClipboard(event, file.content) }>
-                  Copy file content to clipboard
+                    Copy file content to clipboard
                   </Anchor>
                 </li>
                 <li>
                   <Anchor download={ file.filename } href={ file.raw_url }>
-                  Download
+                    Download
                   </Anchor>
                 </li>
               </ul>
             </UtilityIcon>
-            <UtilityIcon size={ 22 }
-                         color={ theme.baseAppColor }
-                         type={ file.collapsed ? 'arrow-up' :  'arrow-down' }
-                         onClick={ () => toggleCollapse(snippetId, file.filename) }/>
+            <UtilityIcon
+              size={ 22 }
+              color={ theme.baseAppColor }
+              type={ file.collapsed ? 'arrow-up' : 'arrow-down' }
+              onClick={ () => toggleCollapse(snippetId, file.filename) }/>
           </div>
         ) : (
-          <UtilityIcon size={ 22 } color={ theme.colorDanger } type="delete" onClick={ () => this.deleteFile(file.uuid, file.filename) }/>
-        ) }
-
+          <UtilityIcon
+            size={ 22 }
+            color={ theme.colorDanger }
+            type="delete"
+            onClick={ () => this.deleteFile(file.uuid, file.filename) }/>
+        )}
       </SnippetHeaderWrapper>
     );
   }
@@ -145,8 +145,11 @@ SnippetHeader.propTypes = {
   toggleCollapse: PropTypes.func
 };
 
-export default connect(mapStateToProps, {
-  updateTempSnippet: snippetActions.updateTempSnippet,
-  deleteFile: snippetActions.deleteTempFile,
-  toggleCollapse: snippetActions.toggleCollapse
-})(SnippetHeader);
+export default connect(
+  mapStateToProps,
+  {
+    updateTempSnippet: snippetActions.updateTempSnippet,
+    deleteFile: snippetActions.deleteTempFile,
+    toggleCollapse: snippetActions.toggleCollapse
+  }
+)(SnippetHeader);

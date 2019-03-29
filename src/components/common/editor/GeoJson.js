@@ -6,8 +6,8 @@ import 'leaflet/dist/leaflet.css';
 import { setNotification } from 'utils/notifications';
 
 const Map = styled.div`
-  width: 100%; 
-  height: 70vh; 
+  width: 100%;
+  height: 70vh;
   z-index: 1;
 `;
 
@@ -38,9 +38,7 @@ class GeoJson extends Component {
   }
 
   render() {
-    return (
-      <Map id="map"/>
-    );
+    return <Map id="map" />;
   }
 }
 
