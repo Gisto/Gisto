@@ -1,3 +1,6 @@
+### v1.11.2-beta.1
+*  CHORE (lint): fix lint and prettier [View](https://github.com/Gisto/Gisto/commit/166466ffc56b5167b619e493d37005a8a0a30ea1)
+
 ### v1.11.2-beta.0
 *  FIX (editor): map JSX and TSX syntax to javascript highlighter [View](https://github.com/Gisto/Gisto/commit/c3dade64371cc3deaabcf69b5a2bab79ced81753)
 *  FIX (editor): load theme on app start [View](https://github.com/Gisto/Gisto/commit/21e86d87fd41a0ba78f87fb52c8aa3bc8f93843c)
