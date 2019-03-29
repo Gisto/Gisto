@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css, withTheme } from 'styled-components';
 import MonacoEditor from 'react-monaco-editor';
 import { registerRulesForLanguage } from 'monaco-ace-tokenizer';
+import { toPairs } from 'lodash/fp';
 
 import AdaHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/ada';
 import ClojureHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/clojure';
@@ -23,9 +24,18 @@ import SbclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/sbcl';
 import ScalaHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/scala';
 import TclHighlightRules from 'monaco-ace-tokenizer/lib/ace/definitions/tcl';
 
+import themeList from 'monaco-themes/themes/themelist';
+
 import { getSetting, getSession, setSession } from 'utils/settings';
 import {
-  isAsciiDoc, isCSV, isGeoJson, isMarkDown, isPDF, isImage, isTSV, isHTML
+  isAsciiDoc,
+  isCSV,
+  isGeoJson,
+  isMarkDown,
+  isPDF,
+  isImage,
+  isTSV,
+  isHTML
 } from 'utils/files';
 
 import { syntaxMap } from 'constants/editor';
@@ -69,7 +79,7 @@ const LoadingIndicator = styled.div`
 
 const Image = styled.div`
   text-align: center;
-  
+
   img {
     max-width: 100%;
   }
@@ -108,6 +118,11 @@ const editorOptions = (options) => ({
 export class Editor extends React.Component {
   editorDidMount = (editor, monaco) => {
     setSession('monaco-extra-langs-registred', true);
+
+    toPairs(themeList).map((theme) => import(`monaco-themes/themes/${theme[1]}`)
+      .then((data) => monaco.editor.defineTheme(theme[0], data)));
+
+    monaco.editor.setTheme(getSetting('editorTheme', 'vs'));
 
     monaco.languages.register({ id: 'ada' });
     monaco.languages.register({ id: 'clojure' });
@@ -159,16 +174,15 @@ export class Editor extends React.Component {
       value={ this.props.file.content }
       options={ editorOptions({ readOnly: !this.props.edit && !this.props.isNew }) }
       // eslint-disable-next-line no-extra-boolean-cast
-      editorDidMount={ (editor, monaco) => getSession('monaco-extra-langs-registred')
-        ? null
-        : this.editorDidMount(editor, monaco) }
+      editorDidMount={ (editor, monaco) => getSession('monaco-extra-langs-registred') ? null : this.editorDidMount(editor, monaco)
+      }
       onChange={ this.props.onChange }/>
   );
 
   renderEditor = () => {
     const {
-      edit, file, filesCount, isNew, theme
-    } = this.props;
+ edit, file, filesCount, isNew, theme
+} = this.props;
 
     if (file.collapsed) {
       return null;
@@ -177,15 +191,24 @@ export class Editor extends React.Component {
     if (!isNew && !file.content && !edit) {
       return (
         <LoadingIndicator>
-          <Loading color={ theme.baseAppColor } text=""/>
+          <Loading color={ theme.baseAppColor } text="" />
         </LoadingIndicator>
       );
     }
 
-    if (file.content && Boolean(getSetting('settings-editor-preview-image', false)) && isImage(file) && !file.collapsed) {
+    if (
+      file.content
+      && Boolean(getSetting('settings-editor-preview-image', false))
+      && isImage(file)
+      && !file.collapsed
+    ) {
       return (
         <Image>
-          <img id="img" src={ file.raw_url } title={ `File type: ${file.type}` } alt={ `File type: ${file.type}` }/>
+          <img
+            id="img"
+            src={ file.raw_url }
+            title={ `File type: ${file.type}` }
+            alt={ `File type: ${file.type}` }/>
         </Image>
       );
     }
@@ -193,8 +216,8 @@ export class Editor extends React.Component {
     if (!file.collapsed && file.truncated) {
       return (
         <BigFile>
-          This file has been truncated, it contains { file.size } characters.
-          <br/>
+          This file has been truncated, it contains {file.size} characters.
+          <br />
           You can view the <StyledAnchor href={ file.raw_url }>full file</StyledAnchor> on web.
         </BigFile>
       );
@@ -202,66 +225,62 @@ export class Editor extends React.Component {
 
     if (Boolean(getSetting('settings-editor-preview-csv', false)) && (isCSV(file) || isTSV(file))) {
       if (!edit && !isNew) {
-        return (
-          <Csv text={ file.content }/>
-        );
+        return <Csv text={ file.content } />;
       }
     }
 
     if (Boolean(getSetting('settings-editor-preview-html', false)) && isHTML(file)) {
       if (!edit && !isNew) {
-        return (
-          <Html file={ file }/>
-        );
+        return <Html file={ file } />;
       }
     }
 
-    if (Boolean(getSetting('settings-editor-preview-pdf', false)) && isPDF(file) && navigator.onLine) {
+    if (
+      Boolean(getSetting('settings-editor-preview-pdf', false))
+      && isPDF(file)
+      && navigator.onLine
+    ) {
       if (!isNew) {
-        return (
-          <Pdf file={ file }/>
-        );
+        return <Pdf file={ file } />;
       }
     }
 
-    if (Boolean(getSetting('settings-editor-preview-geojson', false)) && isGeoJson(file) && navigator.onLine) {
-      if (!edit && !isNew  && !file.collapsed) {
-        return (
-          <GeoJson file={ file }/>
-        );
+    if (
+      Boolean(getSetting('settings-editor-preview-geojson', false))
+      && isGeoJson(file)
+      && navigator.onLine
+    ) {
+      if (!edit && !isNew && !file.collapsed) {
+        return <GeoJson file={ file } />;
       }
     }
 
     if (Boolean(getSetting('settings-editor-preview-asciidoc', false)) && isAsciiDoc(file)) {
-      if (!edit && !isNew  && !file.collapsed) {
-        return (
-          <AsciidocComponent text={ file.content }/>
-        );
+      if (!edit && !isNew && !file.collapsed) {
+        return <AsciidocComponent text={ file.content } />;
       }
 
       const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 300;
 
       return (
         <EditorWrapper>
-          { this.renderMonacoEdito('50%', calculatedHeight, 'AsciiDoc') }
-          <AsciidocComponent width="50%" text={ file.content }/>
+          {this.renderMonacoEdito('50%', calculatedHeight, 'AsciiDoc')}
+          <AsciidocComponent width="50%" text={ file.content } />
         </EditorWrapper>
       );
     }
 
     if (Boolean(getSetting('settings-editor-preview-markdown', false)) && isMarkDown(file)) {
-      if (!edit && !isNew  && !file.collapsed) {
-        return (
-          <MarkdownComponent text={ file.content }/>
-        );
+      if (!edit && !isNew && !file.collapsed) {
+        return <MarkdownComponent text={ file.content } />;
       }
 
       const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 300;
 
       return (
         <EditorWrapper>
-          { this.renderMonacoEdito('50%', calculatedHeight, 'Markdown') }
-          <MarkdownComponent width="50%" text={ file.content }/>
+          {this.renderMonacoEdito('50%', calculatedHeight, 'Markdown')}
+          <MarkdownComponent width="50%" text={ file.content } />
         </EditorWrapper>
       );
     }
@@ -270,7 +289,7 @@ export class Editor extends React.Component {
 
     return (
       <span style={ { display: file.collapsed ? 'none' : 'inherit' } }>
-        { this.renderMonacoEdito('100%', calculatedHeight) }
+        {this.renderMonacoEdito('100%', calculatedHeight)}
       </span>
     );
   };

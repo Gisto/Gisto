@@ -159,6 +159,7 @@
     "lodash": "^4.17.11",
     "marked": "^0.5.2",
     "monaco-ace-tokenizer": "^0.1.1",
+    "monaco-themes": "^0.2.5",
     "mousetrap": "^1.6.2",
     "normalize.css": "^8.0.1",
     "polished": "^2.3.1",

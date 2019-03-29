@@ -9,7 +9,7 @@ const SizePlugin = require('size-plugin');
 const packageJson = require('./package.json');
 
 function srcPath(subdir) {
-  return path.join(__dirname, "src", subdir);
+  return path.join(__dirname, 'src', subdir);
 }
 const buildPath = path.resolve(__dirname, './dist');
 
@@ -48,7 +48,7 @@ const config = {
       components: srcPath('components'),
       utils: srcPath('utils'),
       store: srcPath('store')
-    },
+    }
   },
   optimization: {
     splitChunks: {

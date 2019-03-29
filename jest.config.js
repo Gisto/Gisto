@@ -13,21 +13,23 @@ module.exports = {
     }
   },
   transform: {
-    "^.+\\.js$": "babel-jest",
-    "^.+\\.tsx?$": "ts-jest",
+    '^.+\\.js$': 'babel-jest',
+    '^.+\\.tsx?$': 'ts-jest'
   },
   moduleFileExtensions: [
-    "ts",
-    "tsx",
-    "js",
-    "jsx",
-    "json",
-    "node"
+    'ts',
+    'tsx',
+    'js',
+    'jsx',
+    'json',
+    'node'
   ],
-  verbose: true,
   moduleDirectories: [
     'node_modules',
     'src'
+  ],
+  modulePaths: [
+    '<rootDir>'
   ],
   setupFiles: [
     '<rootDir>/test/jest-setup.js',

@@ -4,7 +4,6 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
 <UserAreaWrapper>
   <WithTheme(Updater) />
   <Link
-    replace={false}
     to="/"
   >
     <Icon
@@ -13,7 +12,6 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     />
   </Link>
   <Link
-    replace={false}
     to="/about"
   >
     <Icon
@@ -25,7 +23,6 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     spinner={false}
   />
   <Link
-    replace={false}
     to="/settings"
   >
     <Icon
@@ -40,7 +37,6 @@ exports[`COMPONENTS - <AppArea> render AppArea 1`] = `
     width="32"
   />
   <Link
-    replace={false}
     to="/"
   >
     <Icon

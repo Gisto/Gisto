@@ -3,5 +3,15 @@
 exports[`COMPONENTS - <Main> render Main 1`] = `
 <MainWrapper>
   <Content />
+  <HiddenEditor>
+    <WithTheme(Editor)
+      file={
+        Object {
+          "collapsed": false,
+          "content": "temp",
+        }
+      }
+    />
+  </HiddenEditor>
 </MainWrapper>
 `;
