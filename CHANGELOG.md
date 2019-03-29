@@ -1,3 +1,6 @@
+### v1.11.2
+
+
 ### v1.11.2-beta.1
 *  CHORE (lint): fix lint and prettier [View](https://github.com/Gisto/Gisto/commit/166466ffc56b5167b619e493d37005a8a0a30ea1)
 
