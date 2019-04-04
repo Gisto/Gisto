@@ -2,7 +2,7 @@
 
 exports[`COMPONENTS - <Main> render Main 1`] = `
 <MainWrapper>
-  <Content />
+  <withRouter(Content) />
   <HiddenEditor>
     <WithTheme(Editor)
       file={
