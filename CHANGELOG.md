@@ -1,3 +1,12 @@
+### v1.11.3-beta.0
+*  Update README.md [View](https://github.com/Gisto/Gisto/commit/732d25694b469aa2d5b092ee80a2f0615e7d3ff4)
+*  Update README.md [View](https://github.com/Gisto/Gisto/commit/1605253e3be15e35f6ba18d093f72050a37b0822)
+*  CHORE (build): cleanup [View](https://github.com/Gisto/Gisto/commit/1244e764277ba987d0d372536e360a17c796a7ef)
+*  FEATURE (esitor): add latex preview with katex [View](https://github.com/Gisto/Gisto/commit/f885cf243a7ccef7227a0a181c1d9275481ca33e)
+*  FIX (router): use proper import instead of depricated [View](https://github.com/Gisto/Gisto/commit/f8787b6bccd15d8850a10ea66a9d13bb059437cc)
+*  FIX (UtilityIcon): sometime errors in case of click outside [View](https://github.com/Gisto/Gisto/commit/39cb44f3cf4f2b3e9dcffa3a1b9033cdfbf0a0d5)
+*  FEATURE (UI): add background to some app pages [View](https://github.com/Gisto/Gisto/commit/e9723cc7f7c3b6246cc0ad13e855b21f731e8e54)
+
 ### v1.11.2
 
 
