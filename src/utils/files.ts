@@ -23,6 +23,8 @@ export const isAsciiDoc = (file: IFile) => {
   );
 };
 
+export const isLaTex = (file: Partial<IFile>): boolean => file.language === 'TeX';
+
 export const isCSV = (file: Partial<IFile>): boolean => file.language === 'CSV';
 
 export const isTSV = (file: Partial<IFile>): boolean => file.type === 'text/tab-separated-values';

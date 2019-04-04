@@ -35,7 +35,8 @@ import {
   isPDF,
   isImage,
   isTSV,
-  isHTML
+  isHTML,
+  isLaTex
 } from 'utils/files';
 
 import { syntaxMap } from 'constants/editor';
@@ -51,6 +52,7 @@ import Csv from 'components/common/editor/Csv';
 import GeoJson from 'components/common/editor/GeoJson';
 import Pdf from 'components/common/editor/Pdf';
 import Html from 'components/common/editor/Html';
+import LaTex from 'components/common/editor/LaTex';
 
 const RenderedComponent = css`
   padding: 20px 30px;
@@ -234,6 +236,12 @@ export class Editor extends React.Component {
     if (Boolean(getSetting('settings-editor-preview-html', false)) && isHTML(file)) {
       if (!edit && !isNew) {
         return <Html file={ file } />;
+      }
+    }
+
+    if (Boolean(getSetting('settings-editor-preview-latex', false)) && isLaTex(file)) {
+      if (!edit && !isNew) {
+        return <LaTex text={ file.content } />;
       }
     }
 
