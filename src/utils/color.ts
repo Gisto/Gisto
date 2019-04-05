@@ -1,7 +1,15 @@
-export const hexToRGBA = (hex: string, alpha: number) => {
-  const RR = parseInt(hex.slice(1, 3), 16);
-  const GG = parseInt(hex.slice(3, 5), 16);
-  const BB = parseInt(hex.slice(5, 7), 16);
+import { slice } from 'lodash/fp';
 
-  return `rgba(${RR}, ${GG}, ${BB}${alpha && `, ${alpha}`})`;
+export const hexToRGBA = (hex: string, alpha: number) => {
+  if (!alpha) {
+    return hex;
+  }
+  // @ts-ignore
+  const RR = parseInt(slice(1, 3, hex), 16);
+  // @ts-ignore
+  const GG = parseInt(slice(3, 5, hex), 16);
+  // @ts-ignore
+  const BB = parseInt(slice(5, 7, hex), 16);
+
+  return `rgba(${RR}, ${GG}, ${BB}, ${alpha})`;
 };

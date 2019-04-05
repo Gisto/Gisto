@@ -28,9 +28,6 @@ module.exports = {
     'node_modules',
     'src'
   ],
-  modulePaths: [
-    '<rootDir>'
-  ],
   setupFiles: [
     '<rootDir>/test/jest-setup.js',
     '<rootDir>/__mocks__/settings.js',

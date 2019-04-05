@@ -30,7 +30,7 @@ const ContentWrapper = styled.div`
 `;
 
 const shouldHaveBackground = (location) => {
-  const disallowed = ['/about', '/new', '/settings'];
+  const disallowed = ['/new', '/settings'];
 
   return !includes(location.pathname, disallowed);
 };

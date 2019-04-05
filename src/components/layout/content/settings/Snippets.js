@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { keys, map } from 'lodash/fp';
+import { keys, map, startCase } from 'lodash/fp';
 
 import { syntaxMap } from 'constants/editor';
 
@@ -13,6 +13,7 @@ import { getSetting, setBooleanSetting, setSetting } from 'utils/settings';
 import Input from 'components/common/controls/Input';
 import Checkbox from 'components/common/controls/Checkbox';
 import Select from 'components/common/controls/Select';
+import { isomorphicReload } from 'utils/isomorphic';
 
 const Wrapper = styled.div`
   display: flex;
@@ -56,6 +57,9 @@ export const SnippetsSettings = ({ changeSettings }) => {
       setBooleanSetting(key);
     } else {
       setSetting(key, value);
+      if (key === 'settings-snippet-order-direction' || key === 'settings-snippet-order-field') {
+        isomorphicReload();
+      }
     }
   };
 
@@ -126,6 +130,52 @@ export const SnippetsSettings = ({ changeSettings }) => {
               <Checkbox
                 checked={ getSetting('defaultNewIsPublic', false) }
                 onChange={ () => updateSettings('defaultNewIsPublic', null, true) }/>
+            </Label>
+          </Field>
+        </Section>
+      </Wrapper>
+
+      <H4>Snippets order settings:</H4>
+      <Wrapper>
+        <Section>
+          <Field>
+            <Label>
+              <span>Order field:</span>
+              <StyledSelect
+                value={ getSetting('settings-snippet-order-field', 'created') }
+                onChange={ (event) =>
+                  updateSettings('settings-snippet-order-field', event.target.value)
+                }>
+                {map(
+                  (order) => (
+                    <option value={ order } key={ order }>
+                      {startCase(order)}
+                    </option>
+                  ),
+                  ['created', 'updated', 'description']
+                )}
+              </StyledSelect>
+            </Label>
+          </Field>
+        </Section>
+        <Section>
+          <Field>
+            <Label>
+              <span>Order direction:</span>
+              <StyledSelect
+                value={ getSetting('settings-snippet-order-direction', 'desc') }
+                onChange={ (event) =>
+                  updateSettings('settings-snippet-order-direction', event.target.value)
+                }>
+                {map(
+                  (direction) => (
+                    <option value={ direction === 'descending' ? 'desc' : 'asc' } key={ direction }>
+                      {startCase(direction)}
+                    </option>
+                  ),
+                  ['descending', 'ascending']
+                )}
+              </StyledSelect>
             </Label>
           </Field>
         </Section>

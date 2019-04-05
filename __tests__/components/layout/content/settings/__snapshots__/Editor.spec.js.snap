@@ -186,7 +186,6 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
-                                    Symbol(Symbol.hasInstance): [Function],
                                   }
                                 }
                                 forwardedRef={null}
@@ -1356,7 +1355,6 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
-                                    Symbol(Symbol.hasInstance): [Function],
                                   }
                                 }
                                 forwardedRef={null}
@@ -1389,7 +1387,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "StyledInput-kKifnt",
                                             "isStatic": false,
-                                            "lastClassName": "jgtHRQ",
+                                            "lastClassName": "fRvIJP",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -1418,7 +1416,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="text"
                                     >
                                       <input
-                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt jgtHRQ"
+                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt fRvIJP"
                                         defaultValue="monospace"
                                         disabled={false}
                                         onChange={[Function]}
@@ -1523,7 +1521,6 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
-                                    Symbol(Symbol.hasInstance): [Function],
                                   }
                                 }
                                 forwardedRef={null}
@@ -1556,7 +1553,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "StyledInput-kKifnt",
                                             "isStatic": false,
-                                            "lastClassName": "jgtHRQ",
+                                            "lastClassName": "fRvIJP",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -1585,7 +1582,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="number"
                                     >
                                       <input
-                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt jgtHRQ"
+                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt fRvIJP"
                                         defaultValue={12}
                                         disabled={false}
                                         onChange={[Function]}
@@ -1690,7 +1687,6 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
-                                    Symbol(Symbol.hasInstance): [Function],
                                   }
                                 }
                                 forwardedRef={null}
@@ -1723,7 +1719,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "StyledInput-kKifnt",
                                             "isStatic": false,
-                                            "lastClassName": "jgtHRQ",
+                                            "lastClassName": "fRvIJP",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -1752,7 +1748,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="number"
                                     >
                                       <input
-                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt jgtHRQ"
+                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt fRvIJP"
                                         defaultValue={21}
                                         disabled={false}
                                         onChange={[Function]}
@@ -1973,7 +1969,6 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
-                                    Symbol(Symbol.hasInstance): [Function],
                                   }
                                 }
                                 forwardedRef={null}
@@ -2160,7 +2155,6 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
-                                    Symbol(Symbol.hasInstance): [Function],
                                   }
                                 }
                                 forwardedRef={null}
@@ -2343,7 +2337,6 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
-                                    Symbol(Symbol.hasInstance): [Function],
                                   }
                                 }
                                 forwardedRef={null}
@@ -2376,7 +2369,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "StyledInput-kKifnt",
                                             "isStatic": false,
-                                            "lastClassName": "jgtHRQ",
+                                            "lastClassName": "fRvIJP",
                                             "rules": Array [
                                               "border:none;border-radius:0;height:30px;color:",
                                               [Function],
@@ -2405,7 +2398,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                       type="number"
                                     >
                                       <input
-                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt jgtHRQ"
+                                        className="StyledInput-hbWqm ciXLeq StyledInput-kKifnt fRvIJP"
                                         defaultValue={80}
                                         disabled={false}
                                         onChange={[Function]}
