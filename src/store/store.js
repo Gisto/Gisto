@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import createHistory from 'history/createHashHistory';
+import { createHashHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import createRootReducer from 'reducers/root';
 import gitHubAPIMiddleware from 'middlewares/gitHubAPI';
 
-export const history = createHistory();
+export const history = createHashHistory();
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = [routerMiddleware(history), gitHubAPIMiddleware];

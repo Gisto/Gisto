@@ -90,7 +90,11 @@ export class UtilityIcon extends React.Component {
   };
 
   handleOutsideClick = (e) => {
-    if (this.childrenDropdown && this.childrenDropdown.current.contains(e.target) === false) {
+    if (
+      this.childrenDropdown &&
+      e.target &&
+      this.childrenDropdown.current.contains(e.target) === false
+    ) {
       this.toggleChildren();
     }
   };

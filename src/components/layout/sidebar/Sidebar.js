@@ -111,6 +111,19 @@ export const Sidebar = ({
     filterTruncated ||
     filterUntagged;
 
+  const snippetList = map(
+    (snippet) => <Snippet key={ snippet.id } snippet={ snippet } />,
+    filterSnippetsList(
+      snippets,
+      filterText,
+      filterTags,
+      filterLanguage,
+      filterStatus,
+      filterTruncated,
+      filterUntagged
+    )
+  );
+
   return (
     <SideBarWrapper>
       {shouldShowFilteredBy && (
@@ -124,22 +137,7 @@ export const Sidebar = ({
           </ClearAll>
         </SearchFilters>
       )}
-      <SnippetsList>
-        {map(
-          (snippet) => (
-            <Snippet key={ snippet.id } snippet={ snippet } />
-          ),
-          filterSnippetsList(
-            snippets,
-            filterText,
-            filterTags,
-            filterLanguage,
-            filterStatus,
-            filterTruncated,
-            filterUntagged
-          )
-        )}
-      </SnippetsList>
+      <SnippetsList>{snippetList}</SnippetsList>
     </SideBarWrapper>
   );
 };

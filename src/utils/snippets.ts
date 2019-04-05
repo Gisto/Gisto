@@ -7,11 +7,10 @@ import {
   isEmpty,
   keyBy,
   map,
+  orderBy,
   pick,
   reduce,
-  reverse,
   size,
-  sortBy,
   startsWith,
   trim
 } from 'lodash/fp';
@@ -20,6 +19,7 @@ import { setNotification } from 'utils/notifications';
 import { removeTags } from 'utils/tags';
 
 import { IFile, INotification, ISnippet } from 'types/Interfaces.d';
+import { getSetting } from './settings';
 
 export const isTag = (filterText: string) => startsWith('#', filterText);
 
@@ -105,7 +105,12 @@ export const filterSnippetsList = (
   filterTruncated: string,
   filterUntagged: string
 ) => {
-  const sortedSnippets = flow([sortBy(['created']), reverse])(snippets);
+  // @ts-ignore
+  const sortedSnippets: ISnippet = orderBy(
+    [getSetting('settings-snippet-order-field', 'created')],
+    [getSetting('settings-snippet-order-direction', 'desc')],
+    snippets
+  );
 
   if (!isEmpty(trim(filterText))) {
     return filterByFreeText(sortedSnippets, trim(filterText));
@@ -124,6 +129,7 @@ export const filterSnippetsList = (
   }
 
   if (filterTruncated) {
+    // @ts-ignore
     return filter({ truncated: true }, sortedSnippets);
   }
 
