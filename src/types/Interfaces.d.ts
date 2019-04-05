@@ -34,6 +34,7 @@ export interface ISnippet {
   updated_at: number;
   lastModified: number;
   tags: string[];
+  truncated: boolean;
 }
 
 export interface IFile {

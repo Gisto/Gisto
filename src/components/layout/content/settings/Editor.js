@@ -279,6 +279,15 @@ export const EditorSettings = ({ changeSettings }) => {
                 onChange={ () => updateSettings('settings-editor-preview-asciidoc', null, true) }/>
             </Label>
           </Field>
+
+          <Field>
+            <Label>
+              <span>Preview LaTex files (using katex):</span>
+              <Checkbox
+                checked={ getSetting('settings-editor-preview-latex', true) }
+                onChange={ () => updateSettings('settings-editor-preview-latex', null, true) }/>
+            </Label>
+          </Field>
         </Section>
       </Wrapper>
     </div>
