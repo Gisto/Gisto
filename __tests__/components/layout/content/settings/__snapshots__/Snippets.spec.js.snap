@@ -2072,5 +2072,68 @@ exports[`COMPONENTS - <SnippetsSettings> render SnippetsSettings 1`] = `
       </Field>
     </Section>
   </Wrapper>
+  <H4>
+    Snippets order settings:
+  </H4>
+  <Wrapper>
+    <Section>
+      <Field>
+        <Label>
+          <span>
+            Order field:
+          </span>
+          <StyledSelect
+            onChange={[Function]}
+            value="created"
+          >
+            <option
+              key="created"
+              value="created"
+            >
+              Created
+            </option>
+            <option
+              key="updated"
+              value="updated"
+            >
+              Updated
+            </option>
+            <option
+              key="description"
+              value="description"
+            >
+              Description
+            </option>
+          </StyledSelect>
+        </Label>
+      </Field>
+    </Section>
+    <Section>
+      <Field>
+        <Label>
+          <span>
+            Order direction:
+          </span>
+          <StyledSelect
+            onChange={[Function]}
+            value="desc"
+          >
+            <option
+              key="descending"
+              value="desc"
+            >
+              Descending
+            </option>
+            <option
+              key="ascending"
+              value="asc"
+            >
+              Ascending
+            </option>
+          </StyledSelect>
+        </Label>
+      </Field>
+    </Section>
+  </Wrapper>
 </div>
 `;

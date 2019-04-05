@@ -203,7 +203,6 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             "toString": [Function],
                             "warnTooManyClasses": [Function],
                             "withComponent": [Function],
-                            Symbol(Symbol.hasInstance): [Function],
                           }
                         }
                         forwardedRef={null}
@@ -238,7 +237,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                                   "componentStyle": ComponentStyle {
                                     "componentId": "StyledInput-kKifnt",
                                     "isStatic": false,
-                                    "lastClassName": "jgtHRQ",
+                                    "lastClassName": "fRvIJP",
                                     "rules": Array [
                                       "border:none;border-radius:0;height:30px;color:",
                                       [Function],
@@ -269,7 +268,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
                             >
                               <input
                                 autoFocus={true}
-                                className="mousetrap StyledInput-hbWqm jSsKFV StyledInput-kKifnt jgtHRQ"
+                                className="mousetrap StyledInput-hbWqm jSsKFV StyledInput-kKifnt fRvIJP"
                                 disabled={false}
                                 onChange={[Function]}
                                 placeholder="Search"
