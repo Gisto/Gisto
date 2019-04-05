@@ -1,3 +1,7 @@
+### v1.11.3
+*  Update README.md [View](https://github.com/Gisto/Gisto/commit/21110b71500e3a0a91f403e6c50e1110bef72456)
+*  Update README.md [View](https://github.com/Gisto/Gisto/commit/dbbd264437dc49b1f5a004ce43ab7b0d5391eee0)
+
 ### v1.11.3-beta.1
 *  FEATURE (snippets order): allow setting order by field and direction from settings closes #249 [View](https://github.com/Gisto/Gisto/commit/c8385ac672c4309b0be067a4fcf65f51b2122de4)
 
