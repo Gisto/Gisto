@@ -74,3 +74,8 @@ interface IState {
     starred: string[];
   };
 }
+
+interface IClipboardEvent {
+  clipboardData: any;
+  preventDefault: any;
+}

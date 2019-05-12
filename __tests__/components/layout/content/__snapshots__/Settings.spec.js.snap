@@ -9,19 +9,19 @@ exports[`COMPONENTS - <Settings> render Settings 1`] = `
     <summary>
       General
     </summary>
-    <Connect(BaseSettings) />
+    <ConnectFunction />
   </details>
   <details>
     <summary>
       Snippets
     </summary>
-    <Connect(SnippetsSettings) />
+    <ConnectFunction />
   </details>
   <details>
     <summary>
       Editor
     </summary>
-    <Connect(EditorSettings) />
+    <ConnectFunction />
   </details>
 </Wrapper>
 `;

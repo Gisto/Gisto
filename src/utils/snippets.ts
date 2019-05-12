@@ -18,7 +18,7 @@ import { getFileLanguage } from 'utils/files';
 import { setNotification } from 'utils/notifications';
 import { removeTags } from 'utils/tags';
 
-import { IFile, INotification, ISnippet } from 'types/Interfaces.d';
+import { IClipboardEvent, IFile, INotification, ISnippet } from 'types/Interfaces.d';
 import { getSetting } from './settings';
 
 export const isTag = (filterText: string) => startsWith('#', filterText);
@@ -142,7 +142,7 @@ export const filterSnippetsList = (
 
 export const copyToClipboard = (event: Event, text: string, message: string) => {
   const notification = { title: message || 'Copied to clipboard' } as INotification;
-  const handleCopy = (copyEvent: ClipboardEvent) => {
+  const handleCopy = (copyEvent: IClipboardEvent) => {
     copyEvent.clipboardData.setData('text/plain', text);
     copyEvent.preventDefault();
     document.removeEventListener('copy', handleCopy, true);
