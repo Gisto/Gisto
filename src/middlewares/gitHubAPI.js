@@ -14,7 +14,7 @@ let API = superagent;
 if (process.env.NODE_ENV === 'development') {
   // We use browser based superagent in dev in order to log to network tab instead of node streams
   // eslint-disable-next-line no-shadow, no-unused-vars
-  API = require('superagent/superagent');
+  API = require('superagent/dist/superagent');
 }
 const getToken = localStorage.getItem(GITHUB_TOKEN_KEY_IN_STORAGE);
 

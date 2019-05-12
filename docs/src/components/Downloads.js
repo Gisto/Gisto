@@ -166,10 +166,26 @@ class Downloads extends Component {
                     <div className="w-col w-col-pull-1 w-col-push-3 w-col-6 ">
                       <h2>Other install options:</h2>
 
-                      <div>via <b>Homebrew cask</b>:
+                      <div>
+                        <p>via <b>Homebrew cask</b> (MacOS):</p>
+
                         <pre><span>SHELL</span>$ brew cask install gisto</pre>
                         <small>Please note that it might be slightly outdated
                                             version
+                        </small>
+                        <br/>
+                        <br/>
+                      </div>
+
+                      <div>
+                        <p>via <b>AUR</b> (ArchLinux):</p>
+
+                        <pre><span>SHELL (using yay)</span>$ yay -S gisto</pre>
+                        <pre><span>SHELL (using pakku)</span>$ pakku -S gisto</pre>
+                        <pre><span>SHELL (using trizen)</span>$ trizen -S gisto</pre>
+
+                        <small>Please note that it might be slightly outdated
+                          version
                         </small>
                       </div>
 
