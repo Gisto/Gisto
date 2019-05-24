@@ -10,7 +10,7 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
        
     </Link>
     <HashRouter>
-      <Connect(Button)
+      <ConnectFunction
         height="30px"
         icon="add"
         outline={true}
@@ -21,7 +21,7 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
         >
           New snippet
         </StyledLink>
-      </Connect(Button)>
+      </ConnectFunction>
     </HashRouter>
   </Logo>
   <MiddleArea>
