@@ -340,7 +340,10 @@ export class NewSnippet extends React.Component {
                   placeholder="file.ext"/>
                 <StyledSelect
                   values={ this.mapArrayToSelectObject(
-                    filter((key) => key === 'JavaScript', keys(syntaxMap))
+                    filter(
+                      (key) => key === getSetting('setings-default-new-snippet-language', 'Text'),
+                      keys(syntaxMap)
+                    )
                   ) }
                   color={ theme.baseAppColor }
                   contentRenderer={ ({ state }) => (
