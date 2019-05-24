@@ -1,3 +1,6 @@
+### v1.12.1
+
+
 ### v1.12.0
 *  DOCS (install): add AUR install options [View](https://github.com/Gisto/Gisto/commit/94807a1a360336ea83a72cfb2ee883bc2a97c03b)
 *  FIX (new snippet): honor 'default language' setting for new snippets closes #250 [View](https://github.com/Gisto/Gisto/commit/d93d652b0817382608dc3c3efcd004099875af0a)
