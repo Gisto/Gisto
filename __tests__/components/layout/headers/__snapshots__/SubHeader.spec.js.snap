@@ -22,7 +22,15 @@ exports[`COMPONENTS - <SubHeader> render SubHeader 1`] = `
           path="/settings"
         />
         <Route
-          component={[Function]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [Function],
+              "compare": null,
+              "displayName": "Connect(SnippetHeader)",
+              "type": [Function],
+            }
+          }
           path="/snippet/:id"
         />
       </Switch>

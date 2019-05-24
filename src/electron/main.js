@@ -59,7 +59,6 @@ const createWindow = () => {
     backgroundColor,
     frame: false,
     alwaysOnTop: true,
-    'node-integration': false,
     icon: path.join(__dirname, '/icon/Icon-512x512.png')
   });
   splashWindow.loadURL(`file://${__dirname}/loading.html`);
@@ -70,7 +69,9 @@ const createWindow = () => {
       height: 700,
       backgroundColor,
       title: isDev ? `dev ${app.getVersion()}` : `Gisto v${app.getVersion()}`,
-      'node-integration': false,
+      webPreferences: {
+        nodeIntegration: true
+      },
       show: false,
       icon: path.join(__dirname, '/icon/Icon-512x512.png')
     });
