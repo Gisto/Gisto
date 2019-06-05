@@ -1,3 +1,6 @@
+### v1.12.2
+*  FIX (new snippet): performance issues fixed #252 [View](https://github.com/Gisto/Gisto/commit/446fbb06f9366c314dd81df5a2bce62e460f1d23)
+
 ### v1.12.1
 
 
