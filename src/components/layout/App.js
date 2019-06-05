@@ -42,7 +42,7 @@ const AppWrapper = styled.div`
   background: #fff;
   flex-direction: column;
   justify-content: flex-start;
-  height: 100vh;
+  height: calc(100vh - 70px - 50px);
   color: ${(props) => props.theme.baseAppColor};
 `;
 
