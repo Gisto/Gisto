@@ -282,6 +282,7 @@ export class NewSnippet extends React.Component {
 
   render() {
     const { theme, tags } = this.props;
+    const languageFromSettings = getSetting('setings-default-new-snippet-language', 'Text');
 
     return (
       <div>
@@ -339,12 +340,12 @@ export class NewSnippet extends React.Component {
                   onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
                   placeholder="file.ext"/>
                 <StyledSelect
-                  values={ this.mapArrayToSelectObject(
-                    filter(
-                      (key) => key === getSetting('setings-default-new-snippet-language', 'Text'),
-                      keys(syntaxMap)
-                    )
-                  ) }
+                  values={ [
+                    {
+                      label: languageFromSettings,
+                      value: languageFromSettings
+                    }
+                  ] }
                   color={ theme.baseAppColor }
                   contentRenderer={ ({ state }) => (
                     <div>{state.values && state.values[0].label}</div>
