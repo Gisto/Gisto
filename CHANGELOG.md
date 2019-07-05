@@ -1,3 +1,6 @@
+### v1.12.3
+*  FIX (layout + inputs): debounce inputs and fix layout glitch caused by chromium upstream [View](https://github.com/Gisto/Gisto/commit/0b30a8229a7374c909621876c5b470a535bebba7)
+
 ### v1.12.2
 *  FIX (new snippet): performance issues fixed #252 [View](https://github.com/Gisto/Gisto/commit/446fbb06f9366c314dd81df5a2bce62e460f1d23)
 
