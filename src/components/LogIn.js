@@ -256,14 +256,14 @@ export class LogIn extends React.Component {
               placeholder="GitHub token"
               onChange={ (event) => this.setField('token', event.target.value) }/>
             <ExternalLink target="_new" href="https://github.com/settings/tokens">
-              <Icon type="info" size="16" color={ this.props.theme.baseAppColor } />
+              <Icon type="info" size="16" color={ this.props.theme.baseAppColor }/>
             </ExternalLink>
-            <br />
+            <br/>
             <Button icon="success" onClick={ () => this.loginWithToken(this.state.fieldsData.token) }>
               Log-in
             </Button>
-            <br />
-            <br />
+            <br/>
+            <br/>
             <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
           </div>
         )}
@@ -289,13 +289,13 @@ export class LogIn extends React.Component {
               type="text"
               onChange={ (event) => this.setField('username', event.target.value) }
               placeholder="Email or username"/>
-            <br />
+            <br/>
 
             <Input
               type="password"
               onChange={ (event) => this.setField('password', event.target.value) }
               placeholder="Password"/>
-            <br />
+            <br/>
 
             {this.props.twoFactorAuth && (
               <Input
@@ -309,8 +309,8 @@ export class LogIn extends React.Component {
               <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
             </ResetLoginType>
 
-            <br />
-            <br />
+            <br/>
+            <br/>
             <Button
               onClick={ () =>
                 this.loginWithBasic(
@@ -322,7 +322,7 @@ export class LogIn extends React.Component {
               icon="success">
               Log-in
             </Button>
-            <br />
+            <br/>
           </div>
         )}
 
@@ -338,7 +338,7 @@ export class LogIn extends React.Component {
 
         {this.props.loading && (
           <p>
-            <Loading color={ this.props.theme.baseAppColor } text="Loading..." />
+            <Loading color={ this.props.theme.baseAppColor } text="Loading..."/>
           </p>
         )}
       </LoginWrapper>

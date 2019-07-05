@@ -41,18 +41,18 @@ export class AppArea extends React.Component {
 
     return (
       <UserAreaWrapper>
-        <Updater />
+        <Updater/>
         <Link to="/">
-          <Icon color={ theme.lightText } type="dashboard" spin />
+          <Icon color={ theme.lightText } type="dashboard" spin/>
         </Link>
         <Link to="/about">
-          <Icon color={ theme.lightText } type="info" spin />
+          <Icon color={ theme.lightText } type="info" spin/>
         </Link>
 
-        {!this.props.online && <Loading spinner={ false } />}
+        {!this.props.online && <Loading spinner={ false }/>}
 
         <Link to="/settings">
-          <Icon color={ theme.lightText } type="cog" spin />
+          <Icon color={ theme.lightText } type="cog" spin/>
         </Link>
         <Avatar
           title={ login && login.charAt(0) + login.charAt(1) }
@@ -61,7 +61,7 @@ export class AppArea extends React.Component {
           width="32"
           height="32"/>
         <Link to="/">
-          <Icon type="logout" color={ theme.lightText } onClick={ () => logout() } />
+          <Icon type="logout" color={ theme.lightText } onClick={ () => logout() }/>
         </Link>
       </UserAreaWrapper>
     );

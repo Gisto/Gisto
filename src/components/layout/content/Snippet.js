@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { get, map, filter, size, isNaN } from 'lodash/fp';
+import { get, map, filter, size, isNaN, debounce } from 'lodash/fp';
 
 import * as snippetActions from 'actions/snippets';
 
@@ -53,6 +53,8 @@ const StyledDropZone = styled(DropZone)`
 `;
 
 export class Snippet extends React.Component {
+  updateSnippet = debounce(300, this.props.updateTempSnippet);
+
   componentDidMount() {
     const id = this.props.match.params.id || this.props.snippet.id;
 
@@ -76,7 +78,7 @@ export class Snippet extends React.Component {
   }
 
   render() {
-    const { snippet, edit, tempSnippet, updateTempSnippet, showComments, addTempFile } = this.props;
+    const { snippet, edit, tempSnippet, showComments, addTempFile } = this.props;
     const currentSnippet = edit ? tempSnippet : snippet;
     const files = filter((file) => !file.delete, get('files', currentSnippet));
 
@@ -86,28 +88,28 @@ export class Snippet extends React.Component {
 
     return (
       <React.Fragment>
-        {showComments && <Comments snippetId={ this.props.match.params.id } />}
+        {showComments && <Comments snippetId={ this.props.match.params.id }/>}
 
         {edit && (
           <EditArea>
             <AddNewFile title="Add new file" onClick={ () => addTempFile(randomString(5), '') }>
-              <Icon type="add" size={ 40 } />
+              <Icon type="add" size={ 40 }/>
             </AddNewFile>
             <Or>Or</Or>
-            <StyledDropZone onAddFile={ addTempFile } />
+            <StyledDropZone onAddFile={ addTempFile }/>
           </EditArea>
         )}
 
         {map(
           (file) => (
             <SnippetWrapper key={ file.uuid || `${file.size}-${file.viewed}-${file.filename}` }>
-              <SnippetHeader file={ file } username={ snippet.username } snippetId={ snippet.id } />
+              <SnippetHeader file={ file } username={ snippet.username } snippetId={ snippet.id }/>
               <Editor
                 file={ file }
                 edit={ edit }
                 filesCount={ size(files) }
                 height={ file.collapsed ? 0 : 400 }
-                onChange={ (value) => updateTempSnippet(['files', file.uuid, 'content'], value) }/>
+                onChange={ (value) => this.updateSnippet(['files', file.uuid, 'content'], value) }/>
             </SnippetWrapper>
           ),
           files

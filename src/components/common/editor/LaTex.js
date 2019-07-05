@@ -10,7 +10,7 @@ const Katex = ({ text, className }) => {
     throwOnError: false
   });
 
-  return <TeX className={ `latex-body ${className}` } dangerouslySetInnerHTML={ { __html: html } } />;
+  return <TeX className={ `latex-body ${className}` } dangerouslySetInnerHTML={ { __html: html } }/>;
 };
 
 Katex.propTypes = {

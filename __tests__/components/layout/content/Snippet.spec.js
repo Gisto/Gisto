@@ -1,5 +1,11 @@
 import { Snippet } from 'components/layout/content/Snippet';
 
+jest.mock('lodash/fp', () => ({
+  debounce: (fn) => fn,
+  get: (fn) => fn,
+  filter: (fn) => fn
+}));
+
 const propSetup = (props = {}) => ({
   ...props
 });

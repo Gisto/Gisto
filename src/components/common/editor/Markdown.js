@@ -37,7 +37,7 @@ export const Markdown = ({ text, className, emoji }) => {
   };
 
   return (
-    <div className={ `markdown-body ${className}` } dangerouslySetInnerHTML={ { __html: md(text) } } />
+    <div className={ `markdown-body ${className}` } dangerouslySetInnerHTML={ { __html: md(text) } }/>
   );
 };
 

@@ -128,7 +128,7 @@ export class SuperSearch extends Component {
       <SuperSearchWrapper>
         <SearchWrapper>
           <SearchBar>
-            <StyledLookingGlass type="search" size={ 32 } color={ theme.baseAppColor } />
+            <StyledLookingGlass type="search" size={ 32 } color={ theme.baseAppColor }/>
             <StyledInput
               autoFocus
               type="search"
@@ -145,7 +145,7 @@ export class SuperSearch extends Component {
                       exact
                       onClick={ () => toggleSuperSesrch() }
                       to={ `/snippet/${snippet.id}` }>
-                      <StyledIcon type="book" size={ 32 } color={ theme.baseAppColor } />
+                      <StyledIcon type="book" size={ 32 } color={ theme.baseAppColor }/>
                       <Description>
                         {snippet.description} {join(', ', snippet.tags)}
                       </Description>

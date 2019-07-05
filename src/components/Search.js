@@ -91,7 +91,7 @@ export const Search = ({
 
   return (
     <SearchWrapper>
-      <Icon type="search" size="22" color={ theme.baseAppColor } />
+      <Icon type="search" size="22" color={ theme.baseAppColor }/>
       <StyledInput
         type="search"
         placeholder={ `Search ${countSnippets} snippets` }
@@ -101,7 +101,7 @@ export const Search = ({
         <ScrollPad>
           <div>
             <StyledLanguagesWrapper className="list">
-              <Languagelist />
+              <Languagelist/>
             </StyledLanguagesWrapper>
           </div>
         </ScrollPad>
@@ -110,7 +110,7 @@ export const Search = ({
         <ScrollPad>
           <div>
             <StyledTaglistWrapper className="list">
-              <Taglist />
+              <Taglist/>
             </StyledTaglistWrapper>
           </div>
         </ScrollPad>

@@ -195,7 +195,7 @@ export class Editor extends React.Component {
     if (!isNew && !file.content && !edit) {
       return (
         <LoadingIndicator>
-          <Loading color={ theme.baseAppColor } text="" />
+          <Loading color={ theme.baseAppColor } text=""/>
         </LoadingIndicator>
       );
     }
@@ -221,7 +221,7 @@ export class Editor extends React.Component {
       return (
         <BigFile>
           This file has been truncated, it contains {file.size} characters.
-          <br />
+          <br/>
           You can view the <StyledAnchor href={ file.raw_url }>full file</StyledAnchor> on web.
         </BigFile>
       );
@@ -229,19 +229,19 @@ export class Editor extends React.Component {
 
     if (Boolean(getSetting('settings-editor-preview-csv', false)) && (isCSV(file) || isTSV(file))) {
       if (!edit && !isNew) {
-        return <Csv text={ file.content } />;
+        return <Csv text={ file.content }/>;
       }
     }
 
     if (Boolean(getSetting('settings-editor-preview-html', false)) && isHTML(file)) {
       if (!edit && !isNew) {
-        return <Html file={ file } />;
+        return <Html file={ file }/>;
       }
     }
 
     if (Boolean(getSetting('settings-editor-preview-latex', false)) && isLaTex(file)) {
       if (!edit && !isNew) {
-        return <LaTex text={ file.content } />;
+        return <LaTex text={ file.content }/>;
       }
     }
 
@@ -251,7 +251,7 @@ export class Editor extends React.Component {
       navigator.onLine
     ) {
       if (!isNew) {
-        return <Pdf file={ file } />;
+        return <Pdf file={ file }/>;
       }
     }
 
@@ -261,13 +261,13 @@ export class Editor extends React.Component {
       navigator.onLine
     ) {
       if (!edit && !isNew && !file.collapsed) {
-        return <GeoJson file={ file } />;
+        return <GeoJson file={ file }/>;
       }
     }
 
     if (Boolean(getSetting('settings-editor-preview-asciidoc', false)) && isAsciiDoc(file)) {
       if (!edit && !isNew && !file.collapsed) {
-        return <AsciidocComponent text={ file.content } />;
+        return <AsciidocComponent text={ file.content }/>;
       }
 
       const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 300;
@@ -275,14 +275,14 @@ export class Editor extends React.Component {
       return (
         <EditorWrapper>
           {this.renderMonacoEdito('50%', calculatedHeight, 'AsciiDoc')}
-          <AsciidocComponent width="50%" text={ file.content } />
+          <AsciidocComponent width="50%" text={ file.content }/>
         </EditorWrapper>
       );
     }
 
     if (Boolean(getSetting('settings-editor-preview-markdown', false)) && isMarkDown(file)) {
       if (!edit && !isNew && !file.collapsed) {
-        return <MarkdownComponent text={ file.content } />;
+        return <MarkdownComponent text={ file.content }/>;
       }
 
       const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 300;
@@ -290,7 +290,7 @@ export class Editor extends React.Component {
       return (
         <EditorWrapper>
           {this.renderMonacoEdito('50%', calculatedHeight, 'Markdown')}
-          <MarkdownComponent width="50%" text={ file.content } />
+          <MarkdownComponent width="50%" text={ file.content }/>
         </EditorWrapper>
       );
     }

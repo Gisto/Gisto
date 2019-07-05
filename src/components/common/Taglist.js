@@ -39,7 +39,7 @@ export const Taglist = ({ snippets, searchTags, searchByTags, snippetsTags, them
       return (
         <Pill style={ linearGradient(filesCount) } key={ tag } onClick={ () => searchByTags(tag) }>
           {tag}
-          <br />
+          <br/>
           <strong>{filesCount}</strong> <small>snippets</small>
         </Pill>
       );

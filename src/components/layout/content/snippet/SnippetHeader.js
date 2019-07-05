@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { get, getOr } from 'lodash/fp';
+import { get, getOr, debounce } from 'lodash/fp';
 import styled from 'styled-components';
 
 import { copyToClipboard } from 'utils/snippets';
@@ -42,6 +42,8 @@ const FileName = styled.div`
 `;
 
 export class SnippetHeader extends React.Component {
+  updateSnippet = debounce(300, this.props.updateTempSnippet);
+
   deleteFile = (id, fileName) => {
     // eslint-disable-next-line no-restricted-globals, no-alert
     const sure = confirm(`Are you sure you want to delete "${fileName}" file?`);
@@ -56,7 +58,7 @@ export class SnippetHeader extends React.Component {
   };
 
   renderFileName = () => {
-    const { file, edit, tempSnippet, updateTempSnippet } = this.props;
+    const { file, edit, tempSnippet } = this.props;
 
     if (!edit || (edit && (isImage(file) || isPDF(file)))) {
       return get('filename', file);
@@ -66,7 +68,7 @@ export class SnippetHeader extends React.Component {
       <Input
         value={ get(['files', file.uuid, 'filename'], tempSnippet) }
         onChange={ (event) =>
-          updateTempSnippet(['files', file.uuid, 'filename'], event.target.value)
+          this.updateSnippet(['files', file.uuid, 'filename'], event.target.value)
         }/>
     );
   };
@@ -78,7 +80,7 @@ export class SnippetHeader extends React.Component {
     return (
       <SnippetHeaderWrapper>
         <FileName>
-          <FilenameIcon size={ 22 } color={ theme.baseAppColor } type="file" /> {this.renderFileName()}{' '}
+          <FilenameIcon size={ 22 } color={ theme.baseAppColor } type="file"/> {this.renderFileName()}{' '}
           {edit && (isPDF(file) || isImage(file)) && (
             <em>
               <small style={ { color: theme.colorDanger } }>

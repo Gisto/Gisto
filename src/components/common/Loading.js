@@ -50,7 +50,7 @@ class Loading extends Component {
       return (
         spinner && (
           <React.Fragment>
-            <Spinner color={ color } /> {text}
+            <Spinner color={ color }/> {text}
           </React.Fragment>
         )
       );
@@ -64,7 +64,7 @@ class Loading extends Component {
 
     return (
       <React.Fragment>
-        <Icon type="globe" color={ theme.colorDanger } /> {"Looks like you're off-line"}
+        <Icon type="globe" color={ theme.colorDanger }/> {"Looks like you're off-line"}
       </React.Fragment>
     );
   }

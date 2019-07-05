@@ -14,9 +14,9 @@ import Markdown from 'components/common/editor/Markdown';
 const CommentsWrapper = styled.div`
   margin: 0;
   background: ${(props) => props.theme.headerBgLightest};
-  top: 110px;
+  bottom: 0;
   position: fixed;
-  height: calc(100% - 110px);
+  height: calc(100% - 50px - 70px);
   z-index: 1;
   width: 460px;
   box-shadow: 0 1px 2px #555;
@@ -98,7 +98,7 @@ export class Comments extends React.Component {
     return (
       <CommentsWrapper show={ showComments }>
         <h3>
-          <Icon type="chat" color={ theme.textColor } /> {size(comments)} Comment(s)
+          <Icon type="chat" color={ theme.textColor }/> {size(comments)} Comment(s)
         </h3>
 
         <CommentsList>
@@ -120,11 +120,11 @@ export class Comments extends React.Component {
                       height="32"/>
                     <span>
                       by: {comment.user.login}
-                      <br />
+                      <br/>
                       {comment.updated_at}
                     </span>
                   </CommentHeader>
-                  <Markdown text={ comment.body } />
+                  <Markdown text={ comment.body }/>
                 </Comment>
               );
             }, orderBy((comment) => new Date(comment.updated_at), 'desc', comments))
