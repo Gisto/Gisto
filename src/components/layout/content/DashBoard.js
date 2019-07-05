@@ -272,7 +272,7 @@ export class DashBoard extends React.Component {
     map(
       (snippet) => (
         <li key={ snippet.id }>
-          <Icon type={ snippet.public ? 'unlock' : 'lock' } color={ this.props.theme.baseAppColor } />
+          <Icon type={ snippet.public ? 'unlock' : 'lock' } color={ this.props.theme.baseAppColor }/>
           &nbsp;
           <Router>
             <StyledNavLink
@@ -362,7 +362,7 @@ export class DashBoard extends React.Component {
             <h3>Languages:</h3>
             <ScrollPad>
               <div>
-                <Languagelist />
+                <Languagelist/>
               </div>
             </ScrollPad>
           </Language>
@@ -373,7 +373,7 @@ export class DashBoard extends React.Component {
             <HeadingWithSearch>
               <h3>Starred:</h3>
               <div>
-                <Icon type="search" size="22" color={ theme.baseAppColor } />
+                <Icon type="search" size="22" color={ theme.baseAppColor }/>
                 <StyledInput
                   type="search"
                   placeholder="Search starred"
@@ -390,7 +390,7 @@ export class DashBoard extends React.Component {
           <HeadingWithSearch>
             <h3>Tags:</h3>
             <div>
-              <Icon type="search" size="22" color={ theme.baseAppColor } />
+              <Icon type="search" size="22" color={ theme.baseAppColor }/>
               <StyledInput
                 type="search"
                 placeholder="Search tags"
@@ -399,7 +399,7 @@ export class DashBoard extends React.Component {
           </HeadingWithSearch>
           <ScrollPad>
             <div>
-              <Taglist searchTags={ this.state.searchTags } />
+              <Taglist searchTags={ this.state.searchTags }/>
             </div>
           </ScrollPad>
         </Tags>

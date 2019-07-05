@@ -85,12 +85,12 @@ const RateLimit = styled.span`
 export class MainHeader extends Component {
   renderLoading = () => {
     if (!this.props.loading) {
-      return <div />;
+      return <div/>;
     }
 
     return (
       <LoadingIndicator>
-        <Loading text="Loading..." />
+        <Loading text="Loading..."/>
       </LoadingIndicator>
     );
   };
@@ -109,15 +109,15 @@ export class MainHeader extends Component {
     }
 
     if (get('loading', rateLimit)) {
-      return <Loading text="" />;
+      return <Loading text=""/>;
     }
 
     return (
       <RateLimit onClick={ () => getRateLimit() } title="Click to reload">
         <small>API rate limit:</small>
-        <br />
+        <br/>
         {`${get(['rate', 'remaining'], rateLimit)}/${get(['rate', 'limit'], rateLimit)}`}
-        <br />
+        <br/>
         <small>Reset in {apiLimitResetTime} min.</small>
       </RateLimit>
     );
@@ -147,7 +147,7 @@ export class MainHeader extends Component {
 
           {this.renderRateLimit()}
         </MiddleArea>
-        <UserArea />
+        <UserArea/>
       </HeaderWrapper>
     );
   }

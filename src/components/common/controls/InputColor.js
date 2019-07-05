@@ -22,7 +22,7 @@ const Color = styled.input`
 `;
 
 const InputColor = ({ color, onChange }) => (
-  <Color type="color" defaultValue={ color } onChange={ onChange } />
+  <Color type="color" defaultValue={ color } onChange={ onChange }/>
 );
 
 InputColor.propTypes = {

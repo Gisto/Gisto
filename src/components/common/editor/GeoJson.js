@@ -38,7 +38,7 @@ class GeoJson extends Component {
   }
 
   render() {
-    return <Map id="map" />;
+    return <Map id="map"/>;
   }
 }
 

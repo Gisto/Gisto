@@ -66,7 +66,7 @@ export class About extends React.Component {
   render() {
     return (
       <Wrapper>
-        <img src={ logoImg } width="80" alt="" />
+        <img src={ logoImg } width="80" alt=""/>
         <h2>About Gisto</h2>
         <p>
           Current version <strong>v{packageJson.version}</strong>

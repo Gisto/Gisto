@@ -61,7 +61,7 @@ export const Button = ({
       height={ height }
       className={ className }
       onClick={ onClick }>
-      <Icon color={ iconColor() } type={ icon } /> {children}
+      <Icon color={ iconColor() } type={ icon }/> {children}
     </ButtonComponent>
   );
 };

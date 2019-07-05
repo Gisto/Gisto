@@ -283,6 +283,12 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           Amy
                                         </option>
                                         <option
+                                          key="birds-of-paradise"
+                                          value="birds-of-paradise"
+                                        >
+                                          Birds of Paradise
+                                        </option>
+                                        <option
                                           key="blackboard"
                                           value="blackboard"
                                         >
@@ -397,10 +403,28 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           Merbivore
                                         </option>
                                         <option
+                                          key="monokai-bright"
+                                          value="monokai-bright"
+                                        >
+                                          Monokai Bright
+                                        </option>
+                                        <option
                                           key="monokai"
                                           value="monokai"
                                         >
                                           Monokai
+                                        </option>
+                                        <option
+                                          key="night-owl"
+                                          value="night-owl"
+                                        >
+                                          Night Owl
+                                        </option>
+                                        <option
+                                          key="oceanic-next"
+                                          value="oceanic-next"
+                                        >
+                                          Oceanic Next
                                         </option>
                                         <option
                                           key="pastels-on-dark"
@@ -479,6 +503,12 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                                           value="twilight"
                                         >
                                           Twilight
+                                        </option>
+                                        <option
+                                          key="upstream-sunburst"
+                                          value="upstream-sunburst"
+                                        >
+                                          Upstream Sunburst
                                         </option>
                                         <option
                                           key="vibrant-ink"

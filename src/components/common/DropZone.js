@@ -77,7 +77,7 @@ export class DropZone extends React.Component {
 
         {progress.max && (
           <p>
-            <progress max={ progress.max } value={ progress.value } />
+            <progress max={ progress.max } value={ progress.value }/>
           </p>
         )}
       </Zone>

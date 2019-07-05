@@ -112,7 +112,7 @@ export const Sidebar = ({
     filterUntagged;
 
   const snippetList = map(
-    (snippet) => <Snippet key={ snippet.id } snippet={ snippet } />,
+    (snippet) => <Snippet key={ snippet.id } snippet={ snippet }/>,
     filterSnippetsList(
       snippets,
       filterText,
@@ -131,7 +131,7 @@ export const Sidebar = ({
           Filtered by <strong>{searchType()}</strong>
           &nbsp;
           <ClearAll onClick={ () => clearFilters() }>
-            <Icon type="close-circle" size={ 12 } color={ theme.colorDanger } />
+            <Icon type="close-circle" size={ 12 } color={ theme.colorDanger }/>
             &nbsp;
             <strong>clear</strong>
           </ClearAll>

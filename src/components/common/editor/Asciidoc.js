@@ -8,7 +8,7 @@ const Asciidoc = ({ text, className }) => {
   const html = asciidoctor.convert(text);
 
   return (
-    <div className={ `markdown-body ${className}` } dangerouslySetInnerHTML={ { __html: html } } />
+    <div className={ `markdown-body ${className}` } dangerouslySetInnerHTML={ { __html: html } }/>
   );
 };
 

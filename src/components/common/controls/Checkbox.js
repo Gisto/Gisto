@@ -38,7 +38,7 @@ const Box = styled.input`
 `;
 
 const Checkbox = ({ checked, onChange, className }) => (
-  <Box type="checkbox" className={ className } defaultChecked={ checked } onChange={ onChange } />
+  <Box type="checkbox" className={ className } defaultChecked={ checked } onChange={ onChange }/>
 );
 
 Checkbox.propTypes = {

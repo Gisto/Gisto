@@ -78,7 +78,7 @@ export class Updater extends React.Component {
             const message = (
               <React.Fragment>
                 <strong>{text}</strong>
-                <br />
+                <br/>
                 <StyledAnchor href={ replace('-mac.zip', '.dmg', url) }>Download</StyledAnchor>
                 <span> or see </span>
                 <StyledAnchor href="https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md">
@@ -96,7 +96,7 @@ export class Updater extends React.Component {
         const message = (
           <React.Fragment>
             <strong>{text}</strong>
-            <br />
+            <br/>
             <Anchor onClick={ () => this.startDownload(ipcRenderer) }>Download</Anchor>
           </React.Fragment>
         );
@@ -179,7 +179,7 @@ export class Updater extends React.Component {
         )}
 
         {this.state.download && this.state.message && (
-          <Downloading type="download" text={ this.state.message } />
+          <Downloading type="download" text={ this.state.message }/>
         )}
       </React.Fragment>
     );

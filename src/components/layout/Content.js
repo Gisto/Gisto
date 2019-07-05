@@ -37,14 +37,14 @@ const shouldHaveBackground = (location) => {
 
 export const Content = ({ location }) => (
   <ContentWrapper background={ shouldHaveBackground(location) }>
-    <Suspense fallback={ <Loading color={ getSetting('color') } /> }>
+    <Suspense fallback={ <Loading color={ getSetting('color') }/> }>
       <Router>
         <Switch>
-          <Route exact path="/" component={ DashBoard } />
-          <Route path="/about" component={ About } />
-          <Route path="/settings" component={ Settings } />
-          <Route path="/snippet/:id" component={ Snippet } />
-          <Route path="/new" component={ NewSnippet } />
+          <Route exact path="/" component={ DashBoard }/>
+          <Route path="/about" component={ About }/>
+          <Route path="/settings" component={ Settings }/>
+          <Route path="/snippet/:id" component={ Snippet }/>
+          <Route path="/new" component={ NewSnippet }/>
         </Switch>
       </Router>
     </Suspense>

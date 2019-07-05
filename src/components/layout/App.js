@@ -42,7 +42,7 @@ const AppWrapper = styled.div`
   background: #fff;
   flex-direction: column;
   justify-content: flex-start;
-  height: calc(100vh - 70px - 50px);
+  height: 100vh;
   color: ${(props) => props.theme.baseAppColor};
 `;
 
@@ -101,12 +101,12 @@ export class App extends React.Component {
   render() {
     return (
       <AppWrapper>
-        <GlobalStyle />
+        <GlobalStyle/>
         {this.props.children}
         {this.state.showSuperSearch && (
-          <SuperSearch toggleSuperSesrch={ () => this.toggleSuperSesrch() } />
+          <SuperSearch toggleSuperSesrch={ () => this.toggleSuperSesrch() }/>
         )}
-        {this.state.showKeyBindings && <KeyBindings />}
+        {this.state.showKeyBindings && <KeyBindings/>}
       </AppWrapper>
     );
   }

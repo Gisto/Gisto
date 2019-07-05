@@ -12,7 +12,8 @@ import {
   map,
   set,
   replace,
-  startsWith
+  startsWith,
+  debounce
 } from 'lodash/fp';
 import uuid from 'uuid';
 import { HashRouter as Router, Link } from 'react-router-dom';
@@ -184,9 +185,9 @@ export class NewSnippet extends React.Component {
     gaPage('Add new');
   }
 
-  setDescription = (description) => {
+  setDescription = debounce(300, (description) => {
     this.setState({ description });
-  };
+  });
 
   setFileData = (value, id, type) => {
     const { files } = this.state;
@@ -195,6 +196,8 @@ export class NewSnippet extends React.Component {
 
     this.setState({ files: newFiles });
   };
+
+  setFileDataDebounced = debounce(300, this.setFileData);
 
   togglePublic = () => {
     this.setState((prevState) => ({
@@ -253,7 +256,6 @@ export class NewSnippet extends React.Component {
           <input
             type="text"
             value={ state.search }
-            // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus
             onChange={ methods.setSearch }
             placeholder="Find language"/>
@@ -286,7 +288,7 @@ export class NewSnippet extends React.Component {
 
     return (
       <div>
-        <DropZone onAddFile={ this.addFile } />
+        <DropZone onAddFile={ this.addFile }/>
 
         <H1>
           <strong>New {this.state.public ? 'public' : 'private'} snippet:</strong>{' '}
@@ -325,7 +327,7 @@ export class NewSnippet extends React.Component {
           <span>
             Public snippet &nbsp;
             <ExternalLink href="https://help.github.com/articles/about-gists/#types-of-gists">
-              <Icon type="info" size="16" color={ theme.baseAppColor } />
+              <Icon type="info" size="16" color={ theme.baseAppColor }/>
             </ExternalLink>
           </span>
         </Section>
@@ -337,7 +339,9 @@ export class NewSnippet extends React.Component {
                 <StyledInput
                   type="text"
                   value={ file.name }
-                  onChange={ (event) => this.setFileData(event.target.value, file.uuid, 'name') }
+                  onChange={ (event) =>
+                    this.setFileDataDebounced(event.target.value, file.uuid, 'name')
+                  }
                   placeholder="file.ext"/>
                 <StyledSelect
                   values={ [
@@ -354,20 +358,20 @@ export class NewSnippet extends React.Component {
                   placeholder="Select language"
                   options={ this.mapArrayToSelectObject(keys(syntaxMap)) }
                   onChange={ (value) =>
-                    this.setFileData(get('value', head(value)), file.uuid, 'language')
+                    this.setFileDataDebounced(get('value', head(value)), file.uuid, 'language')
                   }/>
                 <StyledDeleteButton icon="delete" invert onClick={ () => this.deleteFile(file.uuid) }>
                   <strong>Remove</strong> {file.name || 'this file'}
                 </StyledDeleteButton>
               </div>
-              <br />
-              <br />
+              <br/>
+              <br/>
 
               <Editor
                 file={ file }
                 isNew
                 id={ file.uuid }
-                onChange={ (value) => this.setFileData(value, file.uuid, 'content') }/>
+                onChange={ (value) => this.setFileDataDebounced(value, file.uuid, 'content') }/>
             </FileSection>
           ),
           this.state.files
