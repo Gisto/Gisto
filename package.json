@@ -120,6 +120,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "24.8.0",
     "jest-styled-components": "6.3.3",
+    "lint-staged": "9.0.2",
     "mimic": "2.0.9",
     "monaco-editor-webpack-plugin": "1.7.0",
     "nock": "10.0.6",
@@ -187,8 +188,17 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "prettier --write \"src/**/*.js\" && eslint src --fix && npm run lint && npm run tslint && npm test"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css,scss,ts,tsx}": [
+      "eslint src --fix",
+      "npm run lint",
+      "prettier --single-quote --write",
+      "jest --bail --findRelatedTests",
+      "git add"
+    ]
   },
   "engines": {
     "node": ">=8.12.0",
