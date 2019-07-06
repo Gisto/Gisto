@@ -1,3 +1,7 @@
+### v1.12.4
+*  CHORE (lint): add lint-staged [View](https://github.com/Gisto/Gisto/commit/2fe7041c457fbd3531eadd5a3c4d8ac216504e98)
+*  FIX (new snippet): Make the edit window larger, closes #254 [View](https://github.com/Gisto/Gisto/commit/7281ff2d138cda377b90a21771e1afe617b738e2)
+
 ### v1.12.3
 *  FIX (layout + inputs): debounce inputs and fix layout glitch caused by chromium upstream [View](https://github.com/Gisto/Gisto/commit/0b30a8229a7374c909621876c5b470a535bebba7)
 
