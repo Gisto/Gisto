@@ -193,9 +193,9 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css,scss,ts,tsx}": [
+      "prettier --single-quote --write",
       "eslint src --fix",
       "npm run lint",
-      "prettier --single-quote --write",
       "jest --bail --findRelatedTests",
       "git add"
     ]

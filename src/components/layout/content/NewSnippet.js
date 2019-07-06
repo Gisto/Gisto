@@ -1,5 +1,5 @@
 import React from 'react';
-import PropType from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
@@ -39,140 +39,6 @@ import DropZone from 'components/common/DropZone';
 import Select from 'react-dropdown-select';
 import { getTags } from 'selectors/snippets';
 
-const StyledInput = styled(Input)`
-  margin: 0;
-  text-indent: 10px;
-  width: 100%;
-  z-index: 1;
-`;
-
-const StyledCheckbox = styled(Checkbox)`
-  margin: 0 10px 0 0;
-`;
-
-const Section = styled.div`
-  margin: 20px 0;
-`;
-
-const DescriptionSection = styled(Section)`
-  display: flex;
-`;
-
-const FileSection = styled(Section)`
-  border: 1px solid ${(props) => props.theme.baseAppColor};
-  padding: 20px;
-  border-radius: 3px;
-
-  > div {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 0 -20px 0;
-  }
-
-  &:last-of-type {
-    margin-bottom: 70px;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  margin: 0 10px 0 0;
-`;
-
-const StyledDeleteButton = styled(StyledButton)`
-  line-height: 21px;
-  margin: 0 0 0 20px;
-  width: auto;
-  white-space: nowrap;
-  color: ${(props) => props.theme.colorDanger};
-  border-color: ${(props) => props.theme.colorDanger};
-
-  span {
-    background-color: ${(props) => props.theme.colorDanger};
-  }
-`;
-
-const H1 = styled.h1`
-  font-weight: 300;
-  font-size: 22px;
-`;
-
-const ButtonsSection = styled.section`
-  position: fixed;
-  bottom: 0;
-  padding: 20px;
-  margin: 0 0 0 -25px;
-  background: ${(props) => props.theme.bg};
-  box-shadow: 0 -1px 2px ${(props) => props.theme.boxShadow};
-  display: flex;
-  justify-content: space-between;
-  width: calc(100vw - 25px);
-  z-index: 1;
-`;
-
-const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.baseAppColor};
-  text-decoration: none;
-  line-height: 25px;
-`;
-
-const StyledSelect = styled(Select)`
-  margin-left: 20px;
-  z-index: 1;
-  width: 400px !important;
-  background: #fff;
-  border: none !important;
-  border-bottom: 1px solid ${(props) => props.theme.baseAppColor} !important;
-  border-radius: 0 !important;
-  padding: 0 10px;
-  min-height: 28px !important;
-`;
-
-const SearchAndToggle = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  input {
-    margin: 10px 10px 0;
-    line-height: 30px;
-    padding: 0px 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    :focus {
-      outline: none;
-    }
-  }
-`;
-
-const Items = styled.div`
-  overflow: auto;
-  min-height: 10px;
-  max-height: 200px;
-`;
-
-const Item = styled.div`
-  display: flex;
-  align-items: baseline;
-  ${({ disabled }) => disabled && 'text-decoration: line-through;'};
-  cursor: pointer;
-
-  :hover {
-    background: ${(props) => hexToRGBA(props.theme.baseAppColor, 0.1)};
-  }
-
-  :first-child {
-    margin-top: 10px;
-  }
-
-  :last-child {
-    margin-bottom: 10px;
-  }
-`;
-
-const ItemLabel = styled.div`
-  margin: 5px 10px;
-`;
-
 export class NewSnippet extends React.Component {
   state = {
     public: getSetting('defaultNewIsPublic', false),
@@ -183,6 +49,7 @@ export class NewSnippet extends React.Component {
 
   componentDidMount() {
     gaPage('Add new');
+    this.addFile();
   }
 
   setDescription = debounce(300, (description) => {
@@ -227,7 +94,10 @@ export class NewSnippet extends React.Component {
 
   save = () => {
     this.props.createSnippet({
-      description: `${this.state.description} ${map('value', this.state.tags).join(' ')}`,
+      description: `${this.state.description || DEFAULT_SNIPPET_DESCRIPTION} ${map(
+        'value',
+        this.state.tags
+      ).join(' ')}`,
       isPublic: this.state.public,
       files: prepareFiles(this.state.files)
     });
@@ -287,115 +157,126 @@ export class NewSnippet extends React.Component {
     const languageFromSettings = getSetting('setings-default-new-snippet-language', 'Text');
 
     return (
-      <div>
-        <DropZone onAddFile={ this.addFile }/>
+      <Wrapper>
+        <Side>
+          <SideInner>
+            <DropZone onAddFile={ this.addFile }/>
 
-        <H1>
-          <strong>New {this.state.public ? 'public' : 'private'} snippet:</strong>{' '}
-          {this.state.description}
-        </H1>
+            <H1>
+              <strong>New {this.state.public ? 'public' : 'private'} snippet:</strong>{' '}
+              {this.state.description}
+            </H1>
 
-        <DescriptionSection>
-          <StyledInput
-            type="text"
-            onChange={ (event) => this.setDescription(event.target.value) }
-            placeholder={ `Description (default ${DEFAULT_SNIPPET_DESCRIPTION})` }/>
-          <StyledSelect
-            multi
-            create
-            style={ { zIndex: 2 } }
-            createNewLabel="add '{search}' tag"
-            values={ this.state.tags }
-            options={ map(
-              (tag) => ({ label: startsWith('#', tag) ? replace('#', '', tag) : tag, value: tag }),
-              tags
-            ) }
-            color={ theme.baseAppColor }
-            keepSelectedInList={ false }
-            dropdownHeight="200px"
-            addPlaceholder="+ Add more"
-            placeholder="Add tags"
-            onChange={ (values) => this.seTags(values) }/>
-        </DescriptionSection>
+            <DescriptionSection>
+              <StyledInput
+                type="text"
+                onChange={ (event) => this.setDescription(event.target.value) }
+                placeholder={ `Description (default ${DEFAULT_SNIPPET_DESCRIPTION})` }/>
+              <StyledSelect
+                multi
+                create
+                style={ { zIndex: 2 } }
+                createNewLabel="add '{search}' tag"
+                values={ this.state.tags }
+                options={ map(
+                  (tag) => ({
+                    label: startsWith('#', tag) ? replace('#', '', tag) : tag,
+                    value: tag
+                  }),
+                  tags
+                ) }
+                color={ theme.baseAppColor }
+                keepSelectedInList={ false }
+                dropdownHeight="200px"
+                addPlaceholder="+ Add more"
+                placeholder="Add tags"
+                onChange={ (values) => this.seTags(values) }/>
+            </DescriptionSection>
 
-        <Section>
-          <StyledCheckbox
-            checked={ this.state.public }
-            value={ getSetting('defaultNewIsPublic', false) }
-            onChange={ () => this.togglePublic() }/>
-          &nbsp;
-          <span>
-            Public snippet &nbsp;
-            <ExternalLink href="https://help.github.com/articles/about-gists/#types-of-gists">
-              <Icon type="info" size="16" color={ theme.baseAppColor }/>
-            </ExternalLink>
-          </span>
-        </Section>
+            <Section>
+              <StyledCheckbox
+                checked={ this.state.public }
+                value={ getSetting('defaultNewIsPublic', false) }
+                onChange={ () => this.togglePublic() }/>
+              &nbsp;
+              <span>
+                Public snippet &nbsp;
+                <ExternalLink href="https://help.github.com/articles/about-gists/#types-of-gists">
+                  <Icon type="info" size="16" color={ theme.baseAppColor }/>
+                </ExternalLink>
+              </span>
+            </Section>
 
-        {map(
-          (file) => (
-            <FileSection key={ file.uuid }>
-              <div>
-                <StyledInput
-                  type="text"
-                  value={ file.name }
-                  onChange={ (event) =>
-                    this.setFileDataDebounced(event.target.value, file.uuid, 'name')
-                  }
-                  placeholder="file.ext"/>
-                <StyledSelect
-                  values={ [
-                    {
-                      label: languageFromSettings,
-                      value: languageFromSettings
+            <ButtonsSection>
+              <Router>
+                <StyledButton icon="arrow-left" invert>
+                  <StyledLink to="/">Back to list</StyledLink>
+                </StyledButton>
+              </Router>
+
+              <StyledButton invert icon="add" onClick={ () => this.addFile() }>
+                Add file
+              </StyledButton>
+
+              <StyledButton
+                icon="success"
+                onClick={ () => this.save() }
+                disabled={ isEmpty(this.state.files) }>
+                Save
+              </StyledButton>
+            </ButtonsSection>
+          </SideInner>
+        </Side>
+        <Files>
+          {map(
+            (file) => (
+              <FileSection key={ file.uuid }>
+                <div>
+                  <StyledFileName
+                    type="text"
+                    value={ file.name }
+                    onChange={ (event) =>
+                      this.setFileDataDebounced(event.target.value, file.uuid, 'name')
                     }
-                  ] }
-                  color={ theme.baseAppColor }
-                  contentRenderer={ ({ state }) => (
-                    <div>{state.values && state.values[0].label}</div>
-                  ) }
-                  dropdownRenderer={ this.customDropdownRenderer }
-                  placeholder="Select language"
-                  options={ this.mapArrayToSelectObject(keys(syntaxMap)) }
-                  onChange={ (value) =>
-                    this.setFileDataDebounced(get('value', head(value)), file.uuid, 'language')
-                  }/>
-                <StyledDeleteButton icon="delete" invert onClick={ () => this.deleteFile(file.uuid) }>
-                  <strong>Remove</strong> {file.name || 'this file'}
-                </StyledDeleteButton>
-              </div>
-              <br/>
-              <br/>
+                    placeholder="file.ext"/>
+                  <StyledSelect
+                    values={ [
+                      {
+                        label: languageFromSettings,
+                        value: languageFromSettings
+                      }
+                    ] }
+                    color={ theme.baseAppColor }
+                    contentRenderer={ ({ state }) => (
+                      <div>{state.values && state.values[0].label}</div>
+                    ) }
+                    dropdownRenderer={ this.customDropdownRenderer }
+                    placeholder="Select language"
+                    options={ this.mapArrayToSelectObject(keys(syntaxMap)) }
+                    onChange={ (value) =>
+                      this.setFileDataDebounced(get('value', head(value)), file.uuid, 'language')
+                    }/>
+                  <StyledDeleteButton
+                    icon="delete"
+                    invert
+                    onClick={ () => this.deleteFile(file.uuid) }>
+                    <strong>Remove</strong> {file.name || 'this file'}
+                  </StyledDeleteButton>
+                </div>
+                <br/>
+                <br/>
 
-              <Editor
-                file={ file }
-                isNew
-                id={ file.uuid }
-                onChange={ (value) => this.setFileDataDebounced(value, file.uuid, 'content') }/>
-            </FileSection>
-          ),
-          this.state.files
-        )}
-
-        <ButtonsSection>
-          <Router>
-            <StyledButton icon="arrow-left" invert>
-              <StyledLink to="/">Back to list</StyledLink>
-            </StyledButton>
-          </Router>
-
-          <StyledButton invert icon="add" onClick={ () => this.addFile() }>
-            Add file
-          </StyledButton>
-
-          <StyledButton
-            icon="success"
-            onClick={ () => this.save() }
-            disabled={ isEmpty(this.state.files) }>
-            Save
-          </StyledButton>
-        </ButtonsSection>
-      </div>
+                <Editor
+                  file={ file }
+                  isNew
+                  id={ file.uuid }
+                  onChange={ (value) => this.setFileDataDebounced(value, file.uuid, 'content') }/>
+              </FileSection>
+            ),
+            this.state.files
+          )}
+        </Files>
+      </Wrapper>
     );
   }
 }
@@ -406,9 +287,9 @@ const mapStateToProps = (state) => ({
 });
 
 NewSnippet.propTypes = {
-  createSnippet: PropType.func,
-  theme: PropType.object,
-  tags: PropType.array
+  createSnippet: PropTypes.func,
+  theme: PropTypes.object,
+  tags: PropTypes.array
 };
 
 export default connect(
@@ -417,3 +298,158 @@ export default connect(
     createSnippet: snippetActions.createSnippet
   }
 )(NewSnippet);
+
+const Wrapper = styled.div`
+  display: flex;
+`;
+const Side = styled.div`
+  width: 310px;
+  height: calc(100vh - 157px);
+  position: relative;
+`;
+const SideInner = styled.div`
+  position: fixed;
+  width: 275px;
+  height: calc(100vh - 157px);
+`;
+
+const Files = styled.div`
+  width: calc(100% - 147px);
+  margin: -20px 0 0 30px;
+`;
+
+const StyledInput = styled(Input)`
+  margin: 0;
+  text-indent: 10px;
+  width: 100%;
+  z-index: 1;
+`;
+
+const StyledFileName = styled(StyledInput)`
+  width: 40%;
+`;
+
+const StyledCheckbox = styled(Checkbox)`
+  margin: 0 10px 0 0;
+`;
+
+const Section = styled.div`
+  margin: 20px 0;
+  flex-direction: column;
+`;
+
+const DescriptionSection = styled(Section)`
+  display: flex;
+`;
+
+const FileSection = styled(Section)`
+  border: 1px solid ${(props) => props.theme.baseAppColor};
+  padding: 20px;
+  border-radius: 3px;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0;
+    margin: 10px 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 70px;
+  }
+`;
+
+const StyledButton = styled(Button)``;
+
+const StyledDeleteButton = styled(StyledButton)`
+  line-height: 21px;
+  margin: 0 0 0 20px;
+  width: auto;
+  white-space: nowrap;
+  color: ${(props) => props.theme.colorDanger};
+  border-color: ${(props) => props.theme.colorDanger};
+
+  span {
+    background-color: ${(props) => props.theme.colorDanger};
+  }
+`;
+
+const H1 = styled.h1`
+  font-weight: 300;
+  font-size: 22px;
+`;
+
+const ButtonsSection = styled.section`
+  position: absolute;
+  bottom: 0;
+  padding: 20px 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 1;
+`;
+
+const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.baseAppColor};
+  text-decoration: none;
+  line-height: 25px;
+`;
+
+const StyledSelect = styled(Select)`
+  background: #fff;
+  border: none !important;
+  border-bottom: 1px solid ${(props) => props.theme.baseAppColor} !important;
+  border-radius: 0 !important;
+  padding: 0 10px;
+  min-height: 28px !important;
+  z-index: 2;
+  margin: 20px 0;
+  width: 267px !important;
+`;
+
+const SearchAndToggle = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  input {
+    margin: 10px 10px 0;
+    line-height: 30px;
+    padding: 0px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    :focus {
+      outline: none;
+    }
+  }
+`;
+
+const Items = styled.div`
+  overflow: auto;
+  min-height: 10px;
+  max-height: 200px;
+`;
+
+const Item = styled.div`
+  display: flex;
+  align-items: baseline;
+  ${({ disabled }) => disabled && 'text-decoration: line-through;'};
+  cursor: pointer;
+
+  :hover {
+    background: ${(props) => hexToRGBA(props.theme.baseAppColor, 0.1)};
+  }
+
+  :first-child {
+    margin-top: 10px;
+  }
+
+  :last-child {
+    margin-bottom: 10px;
+  }
+`;
+
+const ItemLabel = styled.div`
+  margin: 5px 10px;
+`;

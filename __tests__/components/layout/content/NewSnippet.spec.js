@@ -5,6 +5,10 @@ jest.mock('uuid', () => ({
   v4: () => '123123123123'
 }));
 
+jest.mock('utils/string', () => ({
+  randomString: () => 'abcdabcd'
+}));
+
 const propSetup = (props = {}) => ({
   theme,
   ...props
