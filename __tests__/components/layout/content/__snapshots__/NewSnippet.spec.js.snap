@@ -1,88 +1,1490 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
-<div>
-  <DropZone
-    onAddFile={[Function]}
-  />
-  <H1>
-    <strong>
-      New 
-      private
-       snippet:
-    </strong>
-     
-  </H1>
-  <DescriptionSection>
-    <StyledInput
-      onChange={[Function]}
-      placeholder="Description (default untitled)"
-      type="text"
-    />
-    <StyledSelect
-      addPlaceholder="+ Add more"
-      create={true}
-      createNewLabel="add '{search}' tag"
-      dropdownHeight="200px"
-      keepSelectedInList={false}
-      multi={true}
-      onChange={[Function]}
-      options={Array []}
-      placeholder="Add tags"
-      style={
-        Object {
-          "zIndex": 2,
-        }
-      }
-      values={Array []}
-    />
-  </DescriptionSection>
-  <Section>
-    <StyledCheckbox
-      checked={false}
-      onChange={[Function]}
-      value={false}
-    />
-     
-    <span>
-      Public snippet  
-      <ExternalLink
-        href="https://help.github.com/articles/about-gists/#types-of-gists"
-      >
-        <Icon
-          size="16"
-          type="info"
+<Wrapper>
+  <Side>
+    <SideInner>
+      <DropZone
+        onAddFile={[Function]}
+      />
+      <H1>
+        <strong>
+          New 
+          private
+           snippet:
+        </strong>
+         
+      </H1>
+      <DescriptionSection>
+        <StyledInput
+          onChange={[Function]}
+          placeholder="Description (default untitled)"
+          type="text"
         />
-      </ExternalLink>
-    </span>
-  </Section>
-  <ButtonsSection>
-    <HashRouter>
-      <StyledButton
-        icon="arrow-left"
-        invert={true}
-      >
-        <StyledLink
-          to="/"
+        <StyledSelect
+          addPlaceholder="+ Add more"
+          create={true}
+          createNewLabel="add '{search}' tag"
+          dropdownHeight="200px"
+          keepSelectedInList={false}
+          multi={true}
+          onChange={[Function]}
+          options={Array []}
+          placeholder="Add tags"
+          style={
+            Object {
+              "zIndex": 2,
+            }
+          }
+          values={Array []}
+        />
+      </DescriptionSection>
+      <Section>
+        <StyledCheckbox
+          checked={false}
+          onChange={[Function]}
+          value={false}
+        />
+         
+        <span>
+          Public snippet  
+          <ExternalLink
+            href="https://help.github.com/articles/about-gists/#types-of-gists"
+          >
+            <Icon
+              size="16"
+              type="info"
+            />
+          </ExternalLink>
+        </span>
+      </Section>
+      <ButtonsSection>
+        <HashRouter>
+          <StyledButton
+            icon="arrow-left"
+            invert={true}
+          >
+            <StyledLink
+              to="/"
+            >
+              Back to list
+            </StyledLink>
+          </StyledButton>
+        </HashRouter>
+        <StyledButton
+          icon="add"
+          invert={true}
+          onClick={[Function]}
         >
-          Back to list
-        </StyledLink>
-      </StyledButton>
-    </HashRouter>
-    <StyledButton
-      icon="add"
-      invert={true}
-      onClick={[Function]}
+          Add file
+        </StyledButton>
+        <StyledButton
+          disabled={false}
+          icon="success"
+          onClick={[Function]}
+        >
+          Save
+        </StyledButton>
+      </ButtonsSection>
+    </SideInner>
+  </Side>
+  <Files>
+    <FileSection
+      key="123123123123"
     >
-      Add file
-    </StyledButton>
-    <StyledButton
-      disabled={true}
-      icon="success"
-      onClick={[Function]}
-    >
-      Save
-    </StyledButton>
-  </ButtonsSection>
-</div>
+      <div>
+        <StyledFileName
+          onChange={[Function]}
+          placeholder="file.ext"
+          type="text"
+          value="abcdabcd"
+        />
+        <StyledSelect
+          contentRenderer={[Function]}
+          dropdownRenderer={[Function]}
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "label": "ABAP",
+                "value": "ABAP",
+              },
+              Object {
+                "label": "ActionScript",
+                "value": "ActionScript",
+              },
+              Object {
+                "label": "Ada",
+                "value": "Ada",
+              },
+              Object {
+                "label": "Agda",
+                "value": "Agda",
+              },
+              Object {
+                "label": "AGS Script",
+                "value": "AGS Script",
+              },
+              Object {
+                "label": "Alloy",
+                "value": "Alloy",
+              },
+              Object {
+                "label": "Ant Build System",
+                "value": "Ant Build System",
+              },
+              Object {
+                "label": "ANTLR",
+                "value": "ANTLR",
+              },
+              Object {
+                "label": "ApacheConf",
+                "value": "ApacheConf",
+              },
+              Object {
+                "label": "Apex",
+                "value": "Apex",
+              },
+              Object {
+                "label": "APL",
+                "value": "APL",
+              },
+              Object {
+                "label": "AppleScript",
+                "value": "AppleScript",
+              },
+              Object {
+                "label": "Arc",
+                "value": "Arc",
+              },
+              Object {
+                "label": "Arduino",
+                "value": "Arduino",
+              },
+              Object {
+                "label": "AsciiDoc",
+                "value": "AsciiDoc",
+              },
+              Object {
+                "label": "ASP",
+                "value": "ASP",
+              },
+              Object {
+                "label": "AspectJ",
+                "value": "AspectJ",
+              },
+              Object {
+                "label": "Assembly",
+                "value": "Assembly",
+              },
+              Object {
+                "label": "ATS",
+                "value": "ATS",
+              },
+              Object {
+                "label": "Augeas",
+                "value": "Augeas",
+              },
+              Object {
+                "label": "AutoHotkey",
+                "value": "AutoHotkey",
+              },
+              Object {
+                "label": "AutoIt",
+                "value": "AutoIt",
+              },
+              Object {
+                "label": "Awk",
+                "value": "Awk",
+              },
+              Object {
+                "label": "Batchfile",
+                "value": "Batchfile",
+              },
+              Object {
+                "label": "Befunge",
+                "value": "Befunge",
+              },
+              Object {
+                "label": "Bison",
+                "value": "Bison",
+              },
+              Object {
+                "label": "BitBake",
+                "value": "BitBake",
+              },
+              Object {
+                "label": "BlitzBasic",
+                "value": "BlitzBasic",
+              },
+              Object {
+                "label": "BlitzMax",
+                "value": "BlitzMax",
+              },
+              Object {
+                "label": "Bluespec",
+                "value": "Bluespec",
+              },
+              Object {
+                "label": "Boo",
+                "value": "Boo",
+              },
+              Object {
+                "label": "Brainfuck",
+                "value": "Brainfuck",
+              },
+              Object {
+                "label": "Brightscript",
+                "value": "Brightscript",
+              },
+              Object {
+                "label": "Bro",
+                "value": "Bro",
+              },
+              Object {
+                "label": "C",
+                "value": "C",
+              },
+              Object {
+                "label": "C#",
+                "value": "C#",
+              },
+              Object {
+                "label": "C++",
+                "value": "C++",
+              },
+              Object {
+                "label": "C-ObjDump",
+                "value": "C-ObjDump",
+              },
+              Object {
+                "label": "C2hs Haskell",
+                "value": "C2hs Haskell",
+              },
+              Object {
+                "label": "Cap'n Proto",
+                "value": "Cap'n Proto",
+              },
+              Object {
+                "label": "CartoCSS",
+                "value": "CartoCSS",
+              },
+              Object {
+                "label": "Ceylon",
+                "value": "Ceylon",
+              },
+              Object {
+                "label": "Chapel",
+                "value": "Chapel",
+              },
+              Object {
+                "label": "ChucK",
+                "value": "ChucK",
+              },
+              Object {
+                "label": "Cirru",
+                "value": "Cirru",
+              },
+              Object {
+                "label": "Clean",
+                "value": "Clean",
+              },
+              Object {
+                "label": "CLIPS",
+                "value": "CLIPS",
+              },
+              Object {
+                "label": "Clojure",
+                "value": "Clojure",
+              },
+              Object {
+                "label": "CMake",
+                "value": "CMake",
+              },
+              Object {
+                "label": "COBOL",
+                "value": "COBOL",
+              },
+              Object {
+                "label": "CoffeeScript",
+                "value": "CoffeeScript",
+              },
+              Object {
+                "label": "ColdFusion",
+                "value": "ColdFusion",
+              },
+              Object {
+                "label": "ColdFusion CFC",
+                "value": "ColdFusion CFC",
+              },
+              Object {
+                "label": "Common Lisp",
+                "value": "Common Lisp",
+              },
+              Object {
+                "label": "Component Pascal",
+                "value": "Component Pascal",
+              },
+              Object {
+                "label": "Cool",
+                "value": "Cool",
+              },
+              Object {
+                "label": "Coq",
+                "value": "Coq",
+              },
+              Object {
+                "label": "Cpp-ObjDump",
+                "value": "Cpp-ObjDump",
+              },
+              Object {
+                "label": "Creole",
+                "value": "Creole",
+              },
+              Object {
+                "label": "Crystal",
+                "value": "Crystal",
+              },
+              Object {
+                "label": "CSS",
+                "value": "CSS",
+              },
+              Object {
+                "label": "Cucumber",
+                "value": "Cucumber",
+              },
+              Object {
+                "label": "Cuda",
+                "value": "Cuda",
+              },
+              Object {
+                "label": "Cycript",
+                "value": "Cycript",
+              },
+              Object {
+                "label": "Cython",
+                "value": "Cython",
+              },
+              Object {
+                "label": "D",
+                "value": "D",
+              },
+              Object {
+                "label": "D-ObjDump",
+                "value": "D-ObjDump",
+              },
+              Object {
+                "label": "Darcs Patch",
+                "value": "Darcs Patch",
+              },
+              Object {
+                "label": "Dart",
+                "value": "Dart",
+              },
+              Object {
+                "label": "Diff",
+                "value": "Diff",
+              },
+              Object {
+                "label": "DM",
+                "value": "DM",
+              },
+              Object {
+                "label": "Dockerfile",
+                "value": "Dockerfile",
+              },
+              Object {
+                "label": "Dogescript",
+                "value": "Dogescript",
+              },
+              Object {
+                "label": "Dylan",
+                "value": "Dylan",
+              },
+              Object {
+                "label": "E",
+                "value": "E",
+              },
+              Object {
+                "label": "Eagle",
+                "value": "Eagle",
+              },
+              Object {
+                "label": "eC",
+                "value": "eC",
+              },
+              Object {
+                "label": "Ecere Projects",
+                "value": "Ecere Projects",
+              },
+              Object {
+                "label": "ECL",
+                "value": "ECL",
+              },
+              Object {
+                "label": "edn",
+                "value": "edn",
+              },
+              Object {
+                "label": "Eiffel",
+                "value": "Eiffel",
+              },
+              Object {
+                "label": "Elixir",
+                "value": "Elixir",
+              },
+              Object {
+                "label": "Elm",
+                "value": "Elm",
+              },
+              Object {
+                "label": "Emacs Lisp",
+                "value": "Emacs Lisp",
+              },
+              Object {
+                "label": "EmberScript",
+                "value": "EmberScript",
+              },
+              Object {
+                "label": "Erlang",
+                "value": "Erlang",
+              },
+              Object {
+                "label": "F#",
+                "value": "F#",
+              },
+              Object {
+                "label": "Factor",
+                "value": "Factor",
+              },
+              Object {
+                "label": "Fancy",
+                "value": "Fancy",
+              },
+              Object {
+                "label": "Fantom",
+                "value": "Fantom",
+              },
+              Object {
+                "label": "fish",
+                "value": "fish",
+              },
+              Object {
+                "label": "FLUX",
+                "value": "FLUX",
+              },
+              Object {
+                "label": "Forth",
+                "value": "Forth",
+              },
+              Object {
+                "label": "FORTRAN",
+                "value": "FORTRAN",
+              },
+              Object {
+                "label": "Frege",
+                "value": "Frege",
+              },
+              Object {
+                "label": "G-code",
+                "value": "G-code",
+              },
+              Object {
+                "label": "Game Maker Language",
+                "value": "Game Maker Language",
+              },
+              Object {
+                "label": "GAMS",
+                "value": "GAMS",
+              },
+              Object {
+                "label": "GAP",
+                "value": "GAP",
+              },
+              Object {
+                "label": "GAS",
+                "value": "GAS",
+              },
+              Object {
+                "label": "GDScript",
+                "value": "GDScript",
+              },
+              Object {
+                "label": "Genshi",
+                "value": "Genshi",
+              },
+              Object {
+                "label": "Gentoo Ebuild",
+                "value": "Gentoo Ebuild",
+              },
+              Object {
+                "label": "Gentoo Eclass",
+                "value": "Gentoo Eclass",
+              },
+              Object {
+                "label": "Gettext Catalog",
+                "value": "Gettext Catalog",
+              },
+              Object {
+                "label": "GLSL",
+                "value": "GLSL",
+              },
+              Object {
+                "label": "Glyph",
+                "value": "Glyph",
+              },
+              Object {
+                "label": "Gnuplot",
+                "value": "Gnuplot",
+              },
+              Object {
+                "label": "Go",
+                "value": "Go",
+              },
+              Object {
+                "label": "Golo",
+                "value": "Golo",
+              },
+              Object {
+                "label": "Gosu",
+                "value": "Gosu",
+              },
+              Object {
+                "label": "Grace",
+                "value": "Grace",
+              },
+              Object {
+                "label": "Gradle",
+                "value": "Gradle",
+              },
+              Object {
+                "label": "Grammatical Framework",
+                "value": "Grammatical Framework",
+              },
+              Object {
+                "label": "Graph Modeling Language",
+                "value": "Graph Modeling Language",
+              },
+              Object {
+                "label": "Graphviz (DOT)",
+                "value": "Graphviz (DOT)",
+              },
+              Object {
+                "label": "Groff",
+                "value": "Groff",
+              },
+              Object {
+                "label": "Groovy",
+                "value": "Groovy",
+              },
+              Object {
+                "label": "Groovy Server Pages",
+                "value": "Groovy Server Pages",
+              },
+              Object {
+                "label": "Hack",
+                "value": "Hack",
+              },
+              Object {
+                "label": "Haml",
+                "value": "Haml",
+              },
+              Object {
+                "label": "Handlebars",
+                "value": "Handlebars",
+              },
+              Object {
+                "label": "Harbour",
+                "value": "Harbour",
+              },
+              Object {
+                "label": "Haskell",
+                "value": "Haskell",
+              },
+              Object {
+                "label": "Haxe",
+                "value": "Haxe",
+              },
+              Object {
+                "label": "HTML",
+                "value": "HTML",
+              },
+              Object {
+                "label": "HTML+Django",
+                "value": "HTML+Django",
+              },
+              Object {
+                "label": "HTML+ERB",
+                "value": "HTML+ERB",
+              },
+              Object {
+                "label": "HTML+PHP",
+                "value": "HTML+PHP",
+              },
+              Object {
+                "label": "HTML+Razor",
+                "value": "HTML+Razor",
+              },
+              Object {
+                "label": "HTTP",
+                "value": "HTTP",
+              },
+              Object {
+                "label": "Hy",
+                "value": "Hy",
+              },
+              Object {
+                "label": "IDL",
+                "value": "IDL",
+              },
+              Object {
+                "label": "Idris",
+                "value": "Idris",
+              },
+              Object {
+                "label": "IGOR Pro",
+                "value": "IGOR Pro",
+              },
+              Object {
+                "label": "Inform 7",
+                "value": "Inform 7",
+              },
+              Object {
+                "label": "INI",
+                "value": "INI",
+              },
+              Object {
+                "label": "Inno Setup",
+                "value": "Inno Setup",
+              },
+              Object {
+                "label": "Io",
+                "value": "Io",
+              },
+              Object {
+                "label": "Ioke",
+                "value": "Ioke",
+              },
+              Object {
+                "label": "IRC log",
+                "value": "IRC log",
+              },
+              Object {
+                "label": "Isabelle",
+                "value": "Isabelle",
+              },
+              Object {
+                "label": "J",
+                "value": "J",
+              },
+              Object {
+                "label": "Jade",
+                "value": "Jade",
+              },
+              Object {
+                "label": "Jasmin",
+                "value": "Jasmin",
+              },
+              Object {
+                "label": "Java",
+                "value": "Java",
+              },
+              Object {
+                "label": "Java Server Pages",
+                "value": "Java Server Pages",
+              },
+              Object {
+                "label": "JavaScript",
+                "value": "JavaScript",
+              },
+              Object {
+                "label": "JSX",
+                "value": "JSX",
+              },
+              Object {
+                "label": "TSX",
+                "value": "TSX",
+              },
+              Object {
+                "label": "JSON",
+                "value": "JSON",
+              },
+              Object {
+                "label": "JSON5",
+                "value": "JSON5",
+              },
+              Object {
+                "label": "JSONiq",
+                "value": "JSONiq",
+              },
+              Object {
+                "label": "JSONLD",
+                "value": "JSONLD",
+              },
+              Object {
+                "label": "Julia",
+                "value": "Julia",
+              },
+              Object {
+                "label": "Kit",
+                "value": "Kit",
+              },
+              Object {
+                "label": "Kotlin",
+                "value": "Kotlin",
+              },
+              Object {
+                "label": "KRL",
+                "value": "KRL",
+              },
+              Object {
+                "label": "LabVIEW",
+                "value": "LabVIEW",
+              },
+              Object {
+                "label": "Lasso",
+                "value": "Lasso",
+              },
+              Object {
+                "label": "Latte",
+                "value": "Latte",
+              },
+              Object {
+                "label": "Less",
+                "value": "Less",
+              },
+              Object {
+                "label": "LFE",
+                "value": "LFE",
+              },
+              Object {
+                "label": "LilyPond",
+                "value": "LilyPond",
+              },
+              Object {
+                "label": "Liquid",
+                "value": "Liquid",
+              },
+              Object {
+                "label": "Literate Agda",
+                "value": "Literate Agda",
+              },
+              Object {
+                "label": "Literate CoffeeScript",
+                "value": "Literate CoffeeScript",
+              },
+              Object {
+                "label": "Literate Haskell",
+                "value": "Literate Haskell",
+              },
+              Object {
+                "label": "LiveScript",
+                "value": "LiveScript",
+              },
+              Object {
+                "label": "LLVM",
+                "value": "LLVM",
+              },
+              Object {
+                "label": "Logos",
+                "value": "Logos",
+              },
+              Object {
+                "label": "Logtalk",
+                "value": "Logtalk",
+              },
+              Object {
+                "label": "LOLCODE",
+                "value": "LOLCODE",
+              },
+              Object {
+                "label": "LookML",
+                "value": "LookML",
+              },
+              Object {
+                "label": "LoomScript",
+                "value": "LoomScript",
+              },
+              Object {
+                "label": "LSL",
+                "value": "LSL",
+              },
+              Object {
+                "label": "Lua",
+                "value": "Lua",
+              },
+              Object {
+                "label": "M",
+                "value": "M",
+              },
+              Object {
+                "label": "Makefile",
+                "value": "Makefile",
+              },
+              Object {
+                "label": "Mako",
+                "value": "Mako",
+              },
+              Object {
+                "label": "Markdown",
+                "value": "Markdown",
+              },
+              Object {
+                "label": "Mask",
+                "value": "Mask",
+              },
+              Object {
+                "label": "Mathematica",
+                "value": "Mathematica",
+              },
+              Object {
+                "label": "Matlab",
+                "value": "Matlab",
+              },
+              Object {
+                "label": "Maven POM",
+                "value": "Maven POM",
+              },
+              Object {
+                "label": "Max",
+                "value": "Max",
+              },
+              Object {
+                "label": "MediaWiki",
+                "value": "MediaWiki",
+              },
+              Object {
+                "label": "Mercury",
+                "value": "Mercury",
+              },
+              Object {
+                "label": "MiniD",
+                "value": "MiniD",
+              },
+              Object {
+                "label": "Mirah",
+                "value": "Mirah",
+              },
+              Object {
+                "label": "Monkey",
+                "value": "Monkey",
+              },
+              Object {
+                "label": "Moocode",
+                "value": "Moocode",
+              },
+              Object {
+                "label": "MoonScript",
+                "value": "MoonScript",
+              },
+              Object {
+                "label": "MTML",
+                "value": "MTML",
+              },
+              Object {
+                "label": "mupad",
+                "value": "mupad",
+              },
+              Object {
+                "label": "Myghty",
+                "value": "Myghty",
+              },
+              Object {
+                "label": "Nemerle",
+                "value": "Nemerle",
+              },
+              Object {
+                "label": "nesC",
+                "value": "nesC",
+              },
+              Object {
+                "label": "NetLogo",
+                "value": "NetLogo",
+              },
+              Object {
+                "label": "Nginx",
+                "value": "Nginx",
+              },
+              Object {
+                "label": "Nimrod",
+                "value": "Nimrod",
+              },
+              Object {
+                "label": "Ninja",
+                "value": "Ninja",
+              },
+              Object {
+                "label": "Nit",
+                "value": "Nit",
+              },
+              Object {
+                "label": "Nix",
+                "value": "Nix",
+              },
+              Object {
+                "label": "NSIS",
+                "value": "NSIS",
+              },
+              Object {
+                "label": "Nu",
+                "value": "Nu",
+              },
+              Object {
+                "label": "NumPy",
+                "value": "NumPy",
+              },
+              Object {
+                "label": "ObjDump",
+                "value": "ObjDump",
+              },
+              Object {
+                "label": "Objective-C",
+                "value": "Objective-C",
+              },
+              Object {
+                "label": "Objective-C++",
+                "value": "Objective-C++",
+              },
+              Object {
+                "label": "Objective-J",
+                "value": "Objective-J",
+              },
+              Object {
+                "label": "OCaml",
+                "value": "OCaml",
+              },
+              Object {
+                "label": "Omgrofl",
+                "value": "Omgrofl",
+              },
+              Object {
+                "label": "ooc",
+                "value": "ooc",
+              },
+              Object {
+                "label": "Opa",
+                "value": "Opa",
+              },
+              Object {
+                "label": "Opal",
+                "value": "Opal",
+              },
+              Object {
+                "label": "OpenCL",
+                "value": "OpenCL",
+              },
+              Object {
+                "label": "OpenEdge ABL",
+                "value": "OpenEdge ABL",
+              },
+              Object {
+                "label": "OpenSCAD",
+                "value": "OpenSCAD",
+              },
+              Object {
+                "label": "Org",
+                "value": "Org",
+              },
+              Object {
+                "label": "Ox",
+                "value": "Ox",
+              },
+              Object {
+                "label": "Oxygene",
+                "value": "Oxygene",
+              },
+              Object {
+                "label": "Oz",
+                "value": "Oz",
+              },
+              Object {
+                "label": "Pan",
+                "value": "Pan",
+              },
+              Object {
+                "label": "Papyrus",
+                "value": "Papyrus",
+              },
+              Object {
+                "label": "Parrot",
+                "value": "Parrot",
+              },
+              Object {
+                "label": "Parrot Assembly",
+                "value": "Parrot Assembly",
+              },
+              Object {
+                "label": "Parrot Internal Representation",
+                "value": "Parrot Internal Representation",
+              },
+              Object {
+                "label": "Pascal",
+                "value": "Pascal",
+              },
+              Object {
+                "label": "PAWN",
+                "value": "PAWN",
+              },
+              Object {
+                "label": "Perl",
+                "value": "Perl",
+              },
+              Object {
+                "label": "Perl6",
+                "value": "Perl6",
+              },
+              Object {
+                "label": "PHP",
+                "value": "PHP",
+              },
+              Object {
+                "label": "PigLatin",
+                "value": "PigLatin",
+              },
+              Object {
+                "label": "Pike",
+                "value": "Pike",
+              },
+              Object {
+                "label": "Pod",
+                "value": "Pod",
+              },
+              Object {
+                "label": "PogoScript",
+                "value": "PogoScript",
+              },
+              Object {
+                "label": "PostScript",
+                "value": "PostScript",
+              },
+              Object {
+                "label": "PowerShell",
+                "value": "PowerShell",
+              },
+              Object {
+                "label": "Processing",
+                "value": "Processing",
+              },
+              Object {
+                "label": "Prolog",
+                "value": "Prolog",
+              },
+              Object {
+                "label": "Propeller Spin",
+                "value": "Propeller Spin",
+              },
+              Object {
+                "label": "Protocol Buffer",
+                "value": "Protocol Buffer",
+              },
+              Object {
+                "label": "Pug",
+                "value": "Pug",
+              },
+              Object {
+                "label": "Public Key",
+                "value": "Public Key",
+              },
+              Object {
+                "label": "Puppet",
+                "value": "Puppet",
+              },
+              Object {
+                "label": "Pure Data",
+                "value": "Pure Data",
+              },
+              Object {
+                "label": "PureBasic",
+                "value": "PureBasic",
+              },
+              Object {
+                "label": "PureScript",
+                "value": "PureScript",
+              },
+              Object {
+                "label": "Python",
+                "value": "Python",
+              },
+              Object {
+                "label": "Python traceback",
+                "value": "Python traceback",
+              },
+              Object {
+                "label": "QMake",
+                "value": "QMake",
+              },
+              Object {
+                "label": "QML",
+                "value": "QML",
+              },
+              Object {
+                "label": "R",
+                "value": "R",
+              },
+              Object {
+                "label": "Racket",
+                "value": "Racket",
+              },
+              Object {
+                "label": "Ragel in Ruby Host",
+                "value": "Ragel in Ruby Host",
+              },
+              Object {
+                "label": "RAML",
+                "value": "RAML",
+              },
+              Object {
+                "label": "Raw token data",
+                "value": "Raw token data",
+              },
+              Object {
+                "label": "RDoc",
+                "value": "RDoc",
+              },
+              Object {
+                "label": "REALbasic",
+                "value": "REALbasic",
+              },
+              Object {
+                "label": "Rebol",
+                "value": "Rebol",
+              },
+              Object {
+                "label": "Red",
+                "value": "Red",
+              },
+              Object {
+                "label": "Redcode",
+                "value": "Redcode",
+              },
+              Object {
+                "label": "reStructuredText",
+                "value": "reStructuredText",
+              },
+              Object {
+                "label": "RHTML",
+                "value": "RHTML",
+              },
+              Object {
+                "label": "RMarkdown",
+                "value": "RMarkdown",
+              },
+              Object {
+                "label": "RobotFramework",
+                "value": "RobotFramework",
+              },
+              Object {
+                "label": "Rouge",
+                "value": "Rouge",
+              },
+              Object {
+                "label": "Ruby",
+                "value": "Ruby",
+              },
+              Object {
+                "label": "Rust",
+                "value": "Rust",
+              },
+              Object {
+                "label": "Sage",
+                "value": "Sage",
+              },
+              Object {
+                "label": "SaltStack",
+                "value": "SaltStack",
+              },
+              Object {
+                "label": "SAS",
+                "value": "SAS",
+              },
+              Object {
+                "label": "Sass",
+                "value": "Sass",
+              },
+              Object {
+                "label": "Scala",
+                "value": "Scala",
+              },
+              Object {
+                "label": "Scaml",
+                "value": "Scaml",
+              },
+              Object {
+                "label": "Scheme",
+                "value": "Scheme",
+              },
+              Object {
+                "label": "Scilab",
+                "value": "Scilab",
+              },
+              Object {
+                "label": "SCSS",
+                "value": "SCSS",
+              },
+              Object {
+                "label": "Self",
+                "value": "Self",
+              },
+              Object {
+                "label": "Shell",
+                "value": "Shell",
+              },
+              Object {
+                "label": "ShellSession",
+                "value": "ShellSession",
+              },
+              Object {
+                "label": "Shen",
+                "value": "Shen",
+              },
+              Object {
+                "label": "Slash",
+                "value": "Slash",
+              },
+              Object {
+                "label": "Slim",
+                "value": "Slim",
+              },
+              Object {
+                "label": "Smalltalk",
+                "value": "Smalltalk",
+              },
+              Object {
+                "label": "Smarty",
+                "value": "Smarty",
+              },
+              Object {
+                "label": "SourcePawn",
+                "value": "SourcePawn",
+              },
+              Object {
+                "label": "SQF",
+                "value": "SQF",
+              },
+              Object {
+                "label": "SQL",
+                "value": "SQL",
+              },
+              Object {
+                "label": "PLSQL",
+                "value": "PLSQL",
+              },
+              Object {
+                "label": "PLpgSQL",
+                "value": "PLpgSQL",
+              },
+              Object {
+                "label": "Squirrel",
+                "value": "Squirrel",
+              },
+              Object {
+                "label": "Standard ML",
+                "value": "Standard ML",
+              },
+              Object {
+                "label": "Stata",
+                "value": "Stata",
+              },
+              Object {
+                "label": "STON",
+                "value": "STON",
+              },
+              Object {
+                "label": "Stylus",
+                "value": "Stylus",
+              },
+              Object {
+                "label": "SuperCollider",
+                "value": "SuperCollider",
+              },
+              Object {
+                "label": "Swift",
+                "value": "Swift",
+              },
+              Object {
+                "label": "SystemVerilog",
+                "value": "SystemVerilog",
+              },
+              Object {
+                "label": "Tcl",
+                "value": "Tcl",
+              },
+              Object {
+                "label": "Tcsh",
+                "value": "Tcsh",
+              },
+              Object {
+                "label": "Tea",
+                "value": "Tea",
+              },
+              Object {
+                "label": "TeX",
+                "value": "TeX",
+              },
+              Object {
+                "label": "Text",
+                "value": "Text",
+              },
+              Object {
+                "label": "Textile",
+                "value": "Textile",
+              },
+              Object {
+                "label": "Thrift",
+                "value": "Thrift",
+              },
+              Object {
+                "label": "TOML",
+                "value": "TOML",
+              },
+              Object {
+                "label": "Turing",
+                "value": "Turing",
+              },
+              Object {
+                "label": "Twig",
+                "value": "Twig",
+              },
+              Object {
+                "label": "TXL",
+                "value": "TXL",
+              },
+              Object {
+                "label": "TypeScript",
+                "value": "TypeScript",
+              },
+              Object {
+                "label": "Unified Parallel C",
+                "value": "Unified Parallel C",
+              },
+              Object {
+                "label": "UnrealScript",
+                "value": "UnrealScript",
+              },
+              Object {
+                "label": "Vala",
+                "value": "Vala",
+              },
+              Object {
+                "label": "VCL",
+                "value": "VCL",
+              },
+              Object {
+                "label": "Verilog",
+                "value": "Verilog",
+              },
+              Object {
+                "label": "VHDL",
+                "value": "VHDL",
+              },
+              Object {
+                "label": "VimL",
+                "value": "VimL",
+              },
+              Object {
+                "label": "Visual Basic",
+                "value": "Visual Basic",
+              },
+              Object {
+                "label": "Volt",
+                "value": "Volt",
+              },
+              Object {
+                "label": "WebIDL",
+                "value": "WebIDL",
+              },
+              Object {
+                "label": "wisp",
+                "value": "wisp",
+              },
+              Object {
+                "label": "xBase",
+                "value": "xBase",
+              },
+              Object {
+                "label": "XC",
+                "value": "XC",
+              },
+              Object {
+                "label": "XML",
+                "value": "XML",
+              },
+              Object {
+                "label": "Xojo",
+                "value": "Xojo",
+              },
+              Object {
+                "label": "XProc",
+                "value": "XProc",
+              },
+              Object {
+                "label": "XQuery",
+                "value": "XQuery",
+              },
+              Object {
+                "label": "XS",
+                "value": "XS",
+              },
+              Object {
+                "label": "XSLT",
+                "value": "XSLT",
+              },
+              Object {
+                "label": "Xtend",
+                "value": "Xtend",
+              },
+              Object {
+                "label": "YAML",
+                "value": "YAML",
+              },
+              Object {
+                "label": "Zephir",
+                "value": "Zephir",
+              },
+              Object {
+                "label": "Zimpl",
+                "value": "Zimpl",
+              },
+            ]
+          }
+          placeholder="Select language"
+          values={
+            Array [
+              Object {
+                "label": "Text",
+                "value": "Text",
+              },
+            ]
+          }
+        />
+        <StyledDeleteButton
+          icon="delete"
+          invert={true}
+          onClick={[Function]}
+        >
+          <strong>
+            Remove
+          </strong>
+           
+          abcdabcd
+        </StyledDeleteButton>
+      </div>
+      <br />
+      <br />
+      <WithTheme(Editor)
+        file={
+          Object {
+            "content": "",
+            "language": "Text",
+            "name": "abcdabcd",
+            "uuid": "123123123123",
+          }
+        }
+        id="123123123123"
+        isNew={true}
+        onChange={[Function]}
+      />
+    </FileSection>
+  </Files>
+</Wrapper>
 `;
