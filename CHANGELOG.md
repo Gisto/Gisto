@@ -1,3 +1,6 @@
+### v1.12.5
+*  FIX (updaer): macos add user agent [View](https://github.com/Gisto/Gisto/commit/b11aaedc931425ad241020956198ff82d869147f)
+
 ### v1.12.4
 *  CHORE (lint): add lint-staged [View](https://github.com/Gisto/Gisto/commit/2fe7041c457fbd3531eadd5a3c4d8ac216504e98)
 *  FIX (new snippet): Make the edit window larger, closes #254 [View](https://github.com/Gisto/Gisto/commit/7281ff2d138cda377b90a21771e1afe617b738e2)
