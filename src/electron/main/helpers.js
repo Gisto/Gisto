@@ -213,42 +213,47 @@ function handleMacOSUpdates(mainWindow) {
     const semver = require('semver');
 
     sendStatusToWindow('Gisto checking for new version...', {}, mainWindow, 'update-info');
+    request
+      .get(LATEST_RELEASED_VERSION_URL)
+      .set(
+        'User-Agent',
+        `Gisto app v${packageJson.version} (https://www.gistoapp.com) Snippets made awesome`
+      )
+      .end((error, result) => {
+        let shouldUpdate = false;
 
-    request.get(LATEST_RELEASED_VERSION_URL).end((error, result) => {
-      let shouldUpdate = false;
+        if (result.body) {
+          const serverVersion = result.body.name;
+          const serverAssets = result.body.assets;
 
-      if (result.body) {
-        const serverVersion = result.body.name;
-        const serverAssets = result.body.assets;
+          if (serverVersion && packageJson.version) {
+            shouldUpdate = semver.lt(packageJson.version, serverVersion);
+          }
 
-        if (serverVersion && packageJson.version) {
-          shouldUpdate = semver.lt(packageJson.version, serverVersion);
+          if (shouldUpdate) {
+            const dmgUrl = serverAssets.filter(
+              (asset) => asset.name === `Gisto-${serverVersion}.dmg`
+            );
+
+            sendStatusToWindow(
+              `Update from ${packageJson.version} to ${serverVersion} available`,
+              { url: dmgUrl },
+              mainWindow,
+              'update-info'
+            );
+          } else {
+            sendStatusToWindow('No updates available at the moment', {}, mainWindow, 'no-updates');
+          }
         }
-
-        if (shouldUpdate) {
-          const dmgUrl = serverAssets.filter(
-            (asset) => asset.name === `Gisto-${serverVersion}.dmg`
-          );
-
+        if (error) {
           sendStatusToWindow(
-            `Update from ${packageJson.version} to ${serverVersion} available`,
-            { url: dmgUrl },
+            'No new version information at the moment',
+            {},
             mainWindow,
             'update-info'
           );
-        } else {
-          sendStatusToWindow('No updates available at the moment', {}, mainWindow, 'no-updates');
         }
-      }
-      if (error) {
-        sendStatusToWindow(
-          'No new version information at the moment',
-          {},
-          mainWindow,
-          'update-info'
-        );
-      }
-    });
+      });
   }
 }
 
