@@ -1,3 +1,6 @@
+### v1.12.7
+*  FEATURE (snippet): open in external tool: carbon.now.sh closes #255 [View](https://github.com/Gisto/Gisto/commit/6320a132c01aa348c44ee6d1e3c46f443fa827ef)
+
 ### v1.12.6
 *  FIX (new snippet): screen ui tweaks closes #254 [View](https://github.com/Gisto/Gisto/commit/2600a99d7b113c666c7050162a04a3bce39f4190)
 
