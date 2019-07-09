@@ -1,3 +1,6 @@
+### v1.12.6
+*  FIX (new snippet): screen ui tweaks closes #254 [View](https://github.com/Gisto/Gisto/commit/2600a99d7b113c666c7050162a04a3bce39f4190)
+
 ### v1.12.5
 *  FIX (updaer): macos add user agent [View](https://github.com/Gisto/Gisto/commit/b11aaedc931425ad241020956198ff82d869147f)
 
