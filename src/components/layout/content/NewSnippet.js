@@ -327,6 +327,8 @@ const StyledInput = styled(Input)`
 
 const StyledFileName = styled(StyledInput)`
   width: 40%;
+  flex: 1;
+  margin: 0 20px 0 0;
 `;
 
 const StyledCheckbox = styled(Checkbox)`
@@ -356,7 +358,7 @@ const FileSection = styled(Section)`
   }
 
   &:last-of-type {
-    margin-bottom: 70px;
+    height: calc(100vh - 198px);
   }
 `;
 
@@ -383,7 +385,7 @@ const H1 = styled.h1`
 const ButtonsSection = styled.section`
   position: absolute;
   bottom: 0;
-  padding: 20px 0;
+  padding: 20px 0 0;
   margin: 0;
   display: flex;
   justify-content: space-between;
