@@ -75,6 +75,7 @@ change.log of current version for more detailed info regarding new features, bug
 * Quick snippet actions
 * Copy to clipboard
 * Copy file contents to clipboard
+* Open in external tools like plunkr, jsbin, carbon.now.sh, jsfiddle, etc.
 * Editor settings
 * Theme color changer
 * Drag and drop to create files

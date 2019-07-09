@@ -138,6 +138,13 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
             Open in jsfiddle
           </ExternalLink>
         </li>
+        <li>
+          <ExternalLink
+            href="https://carbon.now.sh/undefined"
+          >
+            Open in carbon.now.sh
+          </ExternalLink>
+        </li>
       </ul>
     </WithTheme(UtilityIcon)>
   </div>
