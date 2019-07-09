@@ -17,7 +17,7 @@ const DropdownMixin = css`
   box-shadow: 0 5px 10px ${(props) => props.theme.borderColor};
   z-index: 4;
   overflow: auto;
-  max-height: 60vh;
+  max-height: 65vh;
   color: ${(props) => props.theme.baseAppColor};
   cursor: default;
 `;

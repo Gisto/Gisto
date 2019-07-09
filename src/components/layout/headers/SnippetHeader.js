@@ -515,6 +515,11 @@ export class SnippetHeader extends React.Component {
                         Open in jsfiddle
                       </ExternalLink>
                     </li>
+                    <li>
+                      <ExternalLink href={ `https://carbon.now.sh/${snippetId}` }>
+                        Open in carbon.now.sh
+                      </ExternalLink>
+                    </li>
                   </React.Fragment>
                 )}
               </ul>

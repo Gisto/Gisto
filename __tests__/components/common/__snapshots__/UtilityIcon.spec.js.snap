@@ -47,7 +47,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
           "componentStyle": ComponentStyle {
             "componentId": "Util-iuPPCj",
             "isStatic": false,
-            "lastClassName": "hDZWfM",
+            "lastClassName": "lcecbi",
             "rules": Array [
               "border-left:1px solid ",
               [Function],
@@ -68,7 +68,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
               [Function],
               ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
               [Function],
-              ";z-index:4;overflow:auto;max-height:60vh;color:",
+              ";z-index:4;overflow:auto;max-height:65vh;color:",
               [Function],
               ";cursor:default;",
               ";padding:10px 20px;}ul{",
@@ -78,7 +78,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
               [Function],
               ";line-height:21px;list-style-type:none;margin:0;padding:0;box-shadow:0 5px 10px ",
               [Function],
-              ";z-index:4;overflow:auto;max-height:60vh;color:",
+              ";z-index:4;overflow:auto;max-height:65vh;color:",
               [Function],
               ";cursor:default;",
               " li{border-bottom:1px dotted ",
@@ -103,7 +103,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
       title="UtilityIcon"
     >
       <span
-        className="UtilityIcon Util-iuPPCj hDZWfM"
+        className="UtilityIcon Util-iuPPCj lcecbi"
         color="red"
         onClick={[Function]}
         title="UtilityIcon"
