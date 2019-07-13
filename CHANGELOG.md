@@ -1,3 +1,6 @@
+### v1.12.8
+*  FIX (layout): small layout fixes [View](https://github.com/Gisto/Gisto/commit/c9ee5734aaaff1bbb0c3a0d87a951b084955282b)
+
 ### v1.12.7
 *  FEATURE (snippet): open in external tool: carbon.now.sh closes #255 [View](https://github.com/Gisto/Gisto/commit/6320a132c01aa348c44ee6d1e3c46f443fa827ef)
 
