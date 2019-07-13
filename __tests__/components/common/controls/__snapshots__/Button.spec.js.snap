@@ -49,7 +49,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
           "componentStyle": ComponentStyle {
             "componentId": "ButtonComponent-fVGrXr",
             "isStatic": false,
-            "lastClassName": "eWvqbl",
+            "lastClassName": "eqyqRk",
             "rules": Array [
               "background:",
               [Function],
@@ -61,7 +61,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
               [Function],
               " ",
               [Function],
-              " -webkit-appearance:none;cursor:pointer;&[disabled]{background:",
+              " -webkit-appearance:none;cursor:pointer;align-items:center;display:flex;white-space:pre;&[disabled]{background:",
               [Function],
               ";border:1px solid ",
               [Function],
@@ -87,7 +87,7 @@ exports[`COMPONENTS - <Button> render Button 1`] = `
       width="200px"
     >
       <button
-        className="btn ButtonComponent-fVGrXr eWvqbl"
+        className="btn ButtonComponent-fVGrXr eqyqRk"
         disabled={false}
         height="30px"
         onClick={[MockFunction]}

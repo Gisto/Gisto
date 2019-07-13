@@ -1462,10 +1462,6 @@ exports[`COMPONENTS - <NewSnippet> render NewSnippet 1`] = `
           invert={true}
           onClick={[Function]}
         >
-          <strong>
-            Remove
-          </strong>
-           
           abcdabcd
         </StyledDeleteButton>
       </div>

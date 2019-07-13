@@ -13,7 +13,8 @@ import {
   set,
   replace,
   startsWith,
-  debounce
+  debounce,
+  truncate
 } from 'lodash/fp';
 import uuid from 'uuid';
 import { HashRouter as Router, Link } from 'react-router-dom';
@@ -260,7 +261,7 @@ export class NewSnippet extends React.Component {
                     icon="delete"
                     invert
                     onClick={ () => this.deleteFile(file.uuid) }>
-                    <strong>Remove</strong> {file.name || 'this file'}
+                    {truncate({ length: 15 }, file.name) || 'this file'}
                   </StyledDeleteButton>
                 </div>
                 <br/>
@@ -304,17 +305,17 @@ const Wrapper = styled.div`
 `;
 const Side = styled.div`
   width: 310px;
-  height: calc(100vh - 157px);
+  height: calc(100vh - 137px);
   position: relative;
 `;
 const SideInner = styled.div`
   position: fixed;
   width: 275px;
-  height: calc(100vh - 157px);
+  height: calc(100vh - 137px);
 `;
 
 const Files = styled.div`
-  width: calc(100% - 147px);
+  width: calc(100% - 137px);
   margin: -20px 0 0 30px;
 `;
 
@@ -358,7 +359,7 @@ const FileSection = styled(Section)`
   }
 
   &:last-of-type {
-    height: calc(100vh - 198px);
+    height: calc(100vh - 178px);
   }
 `;
 
@@ -368,7 +369,6 @@ const StyledDeleteButton = styled(StyledButton)`
   line-height: 21px;
   margin: 0 0 0 20px;
   width: auto;
-  white-space: nowrap;
   color: ${(props) => props.theme.colorDanger};
   border-color: ${(props) => props.theme.colorDanger};
 
@@ -418,7 +418,7 @@ const SearchAndToggle = styled.div`
   input {
     margin: 10px 10px 0;
     line-height: 30px;
-    padding: 0px 10px;
+    padding: 0 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
     :focus {
