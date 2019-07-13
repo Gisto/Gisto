@@ -22,7 +22,7 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   color: #fff;
   vertical-align: middle;
-  height: 70px;
+  height: 50px;
   line-height: 11px;
 `;
 
@@ -135,9 +135,11 @@ export class MainHeader extends Component {
             </Link>
             {!isCreateNew && (
               <Router>
-                <Button title="Create new snippet" icon="add" height="30px" outline>
-                  <StyledLink to="/new">New snippet</StyledLink>
-                </Button>
+                <StyledLink to="/new">
+                  <Button title="Create new snippet" icon="add" height="30px" outline>
+                    New snippet
+                  </Button>
+                </StyledLink>
               </Router>
             )}
           </Logo>

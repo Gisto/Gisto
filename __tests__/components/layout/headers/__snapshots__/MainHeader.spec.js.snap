@@ -10,18 +10,18 @@ exports[`COMPONENTS - <MainHeader> render MainHeader 1`] = `
        
     </Link>
     <HashRouter>
-      <Connect(Button)
-        height="30px"
-        icon="add"
-        outline={true}
-        title="Create new snippet"
+      <StyledLink
+        to="/new"
       >
-        <StyledLink
-          to="/new"
+        <Connect(Button)
+          height="30px"
+          icon="add"
+          outline={true}
+          title="Create new snippet"
         >
           New snippet
-        </StyledLink>
-      </Connect(Button)>
+        </Connect(Button)>
+      </StyledLink>
     </HashRouter>
   </Logo>
   <MiddleArea>

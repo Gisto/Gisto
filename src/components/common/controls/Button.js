@@ -18,6 +18,9 @@ const ButtonComponent = styled.button`
   ${(props) => (props.width ? `width: ${props.width};` : '')}
   -webkit-appearance: none;
   cursor: pointer;
+  align-items: center;
+  display: flex;
+  white-space: pre;
 
   &[disabled] {
     background: ${(props) => props.theme.borderColor};

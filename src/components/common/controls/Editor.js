@@ -295,7 +295,7 @@ export class Editor extends React.Component {
       );
     }
 
-    const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 'calc(100vh - 255px)';
+    const calculatedHeight = filesCount === 1 ? window.outerHeight - 220 : 'calc(100vh - 235px)';
 
     return (
       <span style={ { display: file.collapsed ? 'none' : 'inherit' } }>

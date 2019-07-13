@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledPdfWrapper = styled.div`
+const StyledHtmlWrapper = styled.div`
   width: 100%;
   height: 70vh;
 `;
@@ -14,9 +14,9 @@ const Iframe = styled.iframe`
 `;
 
 const Html = ({ file }) => (
-  <StyledPdfWrapper>
+  <StyledHtmlWrapper collapsed={ file.collapsed }>
     <Iframe sandbox="" srcDoc={ file.content }/>
-  </StyledPdfWrapper>
+  </StyledHtmlWrapper>
 );
 
 Html.propTypes = {
