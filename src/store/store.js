@@ -2,12 +2,12 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { createHashHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import createRootReducer from 'reducers/root';
-import gitHubAPIMiddleware from 'middlewares/gitHubAPI';
+import gatewayMiddleware from 'middlewares/gatewayMiddleware';
 
 export const history = createHashHistory();
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middlewares = [routerMiddleware(history), gitHubAPIMiddleware];
+const middlewares = [routerMiddleware(history), gatewayMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
   const freeze = require('redux-freeze');

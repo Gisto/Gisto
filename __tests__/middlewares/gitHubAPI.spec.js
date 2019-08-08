@@ -1,6 +1,6 @@
 import nock from 'nock';
 import * as AT from 'constants/actionTypes';
-import gitHubAPIMiddleware from 'middlewares/gitHubAPI';
+import gitHubAPIMiddleware from 'src/middlewares/gatewayMiddleware';
 import { DEFAULT_API_ENDPOINT_URL } from 'constants/config';
 
 const createFakeStore = (initialState, dispatch = undefined) => ({

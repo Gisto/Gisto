@@ -20,6 +20,7 @@ import { removeTags } from 'utils/tags';
 
 import { IClipboardEvent, IFile, INotification, ISnippet } from 'types/Interfaces.d';
 import { getSetting } from './settings';
+import { GITLAB } from 'constants/service';
 
 export const isTag = (filterText: string) => startsWith('#', filterText);
 
@@ -165,6 +166,10 @@ export const prepareFiles = (files: IFile[]) => {
 };
 
 export const prepareFilesForUpdate = (snippet: ISnippet) => {
+  if (snippet.service === GITLAB) {
+    return snippet;
+  }
+
   const cleanFiles = flow([
     map((file) => {
       return pick(['filename', 'content', 'originalFileName', 'delete', 'isNew'], file);

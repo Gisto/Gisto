@@ -35,6 +35,13 @@ export interface ISnippet {
   lastModified: number;
   tags: string[];
   truncated: boolean;
+  service: string;
+  // gitlab specific
+  visibility: string;
+  web_url: string;
+  title: string;
+  file_name: string;
+  raw_url: string;
 }
 
 export interface IFile {

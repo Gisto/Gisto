@@ -8,6 +8,7 @@ import { fileTypesList } from 'utils/snippets';
 import { removeTags } from 'utils/tags';
 
 import { IFile, ISnippet } from 'types/Interfaces.d';
+import { GITHUB, GITLAB } from 'constants/service';
 
 const prepareTags = (snippet: Partial<ISnippet>) => {
   if (!isEmpty(snippet.description)) {
@@ -18,6 +19,10 @@ const prepareTags = (snippet: Partial<ISnippet>) => {
 };
 
 const prepareDescription = (snippet: Partial<ISnippet>, raw = false) => {
+  if (snippet.title) {
+    return raw ? snippet.title : removeTags(snippet.title);
+  }
+
   if (!isEmpty(snippet.description)) {
     return raw ? snippet.description : removeTags(snippet.description);
   }
@@ -26,19 +31,43 @@ const prepareDescription = (snippet: Partial<ISnippet>, raw = false) => {
 };
 
 const getService = (snippet: Partial<ISnippet>) => {
-  return snippet.url && snippet.url.match(/github\.com/gi) ? 'GITHUB' : 'NOT-GITHUB-FOR-NOW';
+  if (snippet.url && snippet.url.match(/github\.com/gi)) {
+    return GITHUB;
+  }
+  if (snippet.raw_url && snippet.raw_url.match(/gitlab\.com/gi)) {
+    return GITLAB;
+  }
+
+  return 'UNKNOWN';
+};
+
+const getTitle = (snippet: Partial<ISnippet>) => {
+  return snippet.title || null;
 };
 
 const prepareFiles = (snippet: Partial<ISnippet>) => {
-  return map(
-    (file: IFile) => ({
-      ...file,
-      collapsed: false,
-      viewed: toUnixTimeStamp(new Date().getTime()),
-      language: getFileLanguage(file)
-    }),
-    snippet.files
-  );
+  if (snippet.file_name) {
+    return [
+      {
+        filename: snippet.file_name,
+        collapsed: false,
+        viewed: toUnixTimeStamp(new Date().getTime()),
+        language: null
+      }
+    ];
+  }
+
+  if (snippet.files) {
+    return map(
+      (file: IFile) => ({
+        ...file,
+        collapsed: false,
+        viewed: toUnixTimeStamp(new Date().getTime()),
+        language: getFileLanguage(file)
+      }),
+      snippet.files
+    );
+  }
 };
 
 const prepareTruncated = (snippet: Partial<ISnippet>) => {
@@ -48,9 +77,18 @@ const prepareTruncated = (snippet: Partial<ISnippet>) => {
 const prepareLanguages = (snippet: Partial<ISnippet>) =>
   flow([fileTypesList, uniq, compact])(snippet.files);
 
+const prepareVisibility = (snippet: Partial<ISnippet>) => {
+  if (!snippet.public || snippet.visibility === 'private') {
+    return false;
+  }
+
+  return true;
+};
+
 const prepareFork = (snippet: Partial<ISnippet>) => snippet.fork_of || {};
 
-const prepareAvatar = (snippet: Partial<ISnippet>) => get('owner.avatar_url', snippet);
+const prepareAvatar = (snippet: Partial<ISnippet>) =>
+  get('owner.avatar_url', snippet) || get('author.avatar_url', snippet);
 
 const prepareUserName = (snippet: Partial<ISnippet>) => get('owner.login', snippet);
 
@@ -58,6 +96,7 @@ const prepareHistory = (snippet: Partial<ISnippet>) => snippet.history || [];
 
 export const snippetStructure = (snippet: ISnippet, starred: string[]) => ({
   service: getService(snippet),
+  title: getTitle(snippet),
   description: prepareDescription(snippet),
   rawDescription: prepareDescription(snippet, true),
   id: snippet.id,
@@ -65,9 +104,9 @@ export const snippetStructure = (snippet: ISnippet, starred: string[]) => ({
   tags: prepareTags(snippet),
   files: prepareFiles(snippet),
   languages: prepareLanguages(snippet),
-  public: snippet.public,
+  public: prepareVisibility(snippet),
   url: snippet.url,
-  htmlUrl: snippet.html_url,
+  htmlUrl: snippet.html_url || snippet.web_url,
   comments: snippet.comments,
   avatarUrl: prepareAvatar(snippet),
   username: prepareUserName(snippet),

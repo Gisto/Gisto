@@ -15,6 +15,7 @@ import ExternalLink from 'components/common/ExternalLink';
 import { getSnippetUrl } from 'utils/url';
 import { isEnterpriseLogin } from 'utils/login';
 import Icon from 'components/common/Icon';
+import { GITLAB } from 'constants/service';
 
 const SnippetHeaderWrapper = styled.div`
   display: flex;
@@ -160,13 +161,21 @@ export class SnippetHeader extends React.Component {
   prepareAndUpdateSnippet = () => {
     const snippet = get(this.props.match.params.id, this.props.snippets);
 
-    this.props.updateSnippet(prepareFilesForUpdate(this.props.tempSnippet), snippet.id);
+    this.props.updateSnippet(
+      prepareFilesForUpdate({ ...this.props.tempSnippet, service: snippet.service }),
+      snippet.id
+    );
   };
 
   renderStarControl = () => {
     const snippet = get(this.props.match.params.id, this.props.snippets);
     const starred = get('star', snippet);
+    const service = get('service', snippet);
     const iconType = starred ? 'star-full' : 'star-empty';
+
+    if (service === GITLAB) {
+      return null;
+    }
 
     return (
       <UtilityIcon

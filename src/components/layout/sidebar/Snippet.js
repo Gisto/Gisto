@@ -143,16 +143,24 @@ export class Snippet extends Component {
           <span>
             <StyledIcon
               size={ 24 }
-              type={ snippet.public ? 'unlock' : 'lock' }
+              type={ `logo-${snippet.service && snippet.service.toLowerCase()}` }
               color={ theme.lightText }/>
           </span>
           <span>
             <StyledIcon
-              size={ 16 }
-              onClick={ this.toggleStar }
-              type={ snippet.star ? 'star-full' : 'star-empty' }
+              size={ 24 }
+              type={ snippet.public ? 'unlock' : 'lock' }
               color={ theme.lightText }/>
           </span>
+          {snippet.service !== 'GITLAB' && (
+            <span>
+              <StyledIcon
+                size={ 16 }
+                onClick={ this.toggleStar }
+                type={ snippet.star ? 'star-full' : 'star-empty' }
+                color={ theme.lightText }/>
+            </span>
+          )}
           <Title>{removeTags(snippet.description) || 'unnamed'}</Title>
         </StyledNavLink>
       </Router>

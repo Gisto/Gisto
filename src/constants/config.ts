@@ -6,6 +6,7 @@ export const SIDEBAR_WIDTH = 350;
 export const GAUA = 'UA-40972813-6';
 
 export const GITHUB_TOKEN_KEY_IN_STORAGE = 'github-api-key';
+export const GITLAB_TOKEN_KEY_IN_STORAGE = 'gitlab-api-key';
 
 export const GITHUB_ENTERPRISE_DOMAIN_IN_STORAGE = 'github-enterprise-url';
 export const DEFAULT_URL = 'https://github.com';

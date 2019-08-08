@@ -40,6 +40,7 @@ export const iconsMap = {
   code: 'code-working.svg',
   'code-empty': 'code.svg',
   'logo-github': 'logo-github.svg',
+  'logo-gitlab': 'logo-gitlab.svg',
   logout: 'log-out.svg',
   flash: 'flash.svg',
   time: 'history.svg',

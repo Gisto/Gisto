@@ -12,7 +12,8 @@ import {
   pick,
   get,
   filter,
-  findIndex
+  findIndex,
+  head
 } from 'lodash/fp';
 import uuid from 'uuid';
 import * as AT from 'constants/actionTypes';
@@ -59,6 +60,10 @@ export const snippets = (state = initialState, action) => {
     }
 
     case AT.GET_SNIPPET.SUCCESS: {
+      if (get('service', action.meta) === 'GITLAB') {
+        return set(`snippets.${action.payload.id}.files[0].content`, action.payload.content, state);
+      }
+
       return flow([
         set(['snippets', action.payload.id], snippetStructure(action.payload, state.starred)),
         set('lastOpenedId', action.payload.id)

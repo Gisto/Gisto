@@ -2,12 +2,15 @@
 
 import * as superagent from 'superagent';
 import * as AT from 'constants/actionTypes';
-import { responseHandler } from 'middlewares/responseHandler';
+import { responseHandler } from 'middlewares/helpers/responseHandler';
 import { GITHUB_TOKEN_KEY_IN_STORAGE } from 'constants/config';
 import { getApiUrl } from 'utils/url';
 import { setToken, removeToken, removeEnterpriseDomain } from 'utils/login';
 import { get, set } from 'lodash/fp';
 import { push } from 'connected-react-router';
+import * as gitHubAPI from 'middlewares/helpers/gitHubAPI';
+import * as gitLabAPI from 'middlewares/helpers/gitLabAPI';
+import { GITHUB, GITLAB } from "constants/service";
 
 let API = superagent;
 
@@ -24,9 +27,11 @@ const _headers = (additional) => ({
   ...additional
 });
 
-const gitHubAPIMiddleware = ({ dispatch }) => {
+const gatewayMiddleware = ({ dispatch, getState }) => {
   return (next) => (action) => {
     const errorHandler = (error, result) => responseHandler(error, result, dispatch, action);
+    const isGitLab = (id) => get('service', getState().snippets.snippets[id]) === GITLAB;
+    const isGitHub = (id) => get('service', getState().snippets.snippets[id]) === GITHUB;
 
     if (action.type === AT.GET_RATE_LIMIT) {
       dispatch({ type: AT.GET_RATE_LIMIT.PENDING, action });
@@ -152,46 +157,18 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     }
 
     if (action.type === AT.GET_SNIPPETS) {
-      dispatch({ type: AT.GET_SNIPPETS.PENDING, action });
-
-      const sinceLastUpdate = action.payload.since ? `&since=${action.payload.since}` : '';
-      const getGists = (page) =>
-        API.get(`${getApiUrl('/api/v3')}/gists?page=${page}&per_page=100${sinceLastUpdate}`)
-          .set(_headers())
-          .end((error, result) => {
-            errorHandler(error, result);
-
-            if (!error && result) {
-              dispatch({
-                type: AT.GET_SNIPPETS.SUCCESS,
-                payload: result.body,
-                meta: { since: action.payload.since }
-              });
-            }
-            if (result.headers.link && result.headers.link.match(/next/gi)) {
-              getGists(page + 1);
-            }
-          });
-
-      getGists(1);
+      gitHubAPI.getSnippets({ action, dispatch });
+      gitLabAPI.getSnippets({ action, dispatch });
     }
 
     if (action.type === AT.GET_SNIPPET) {
-      dispatch({ type: AT.GET_SNIPPET.PENDING, action });
+      if (isGitLab(action.payload.id)) {
+        gitLabAPI.getSnippet({ action, dispatch });
+      }
 
-      return API.get(`${getApiUrl('/api/v3')}/gists/${action.payload.id}`)
-        .set(_headers())
-        .end((error, result) => {
-          errorHandler(error, result);
-          const lastModified = result.headers['last-modified'] || '';
-
-          if (!error && result) {
-            dispatch({
-              type: AT.GET_SNIPPET.SUCCESS,
-              payload: { ...result.body, lastModified }
-            });
-          }
-        });
+      if (isGitHub(action.payload.id)) {
+        gitHubAPI.getSnippet({ action, dispatch });
+      }
     }
 
     if (action.type === AT.SET_STAR) {
@@ -281,20 +258,13 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
     }
 
     if (action.type === AT.UPDATE_SNIPPET) {
-      dispatch({ type: AT.UPDATE_SNIPPET.PENDING, action });
+      if (isGitLab(action.payload.id)) {
+        gitLabAPI.updateSnippet({ action, dispatch });
+      }
 
-      API.patch(`${getApiUrl('/api/v3')}/gists/${action.payload.id}`)
-        .set(_headers())
-        .send(action.payload.snippet)
-        .end((error, result) => {
-          errorHandler(error, result);
-
-          dispatch({
-            type: AT.UPDATE_SNIPPET.SUCCESS,
-            meta: action.meta,
-            payload: result.body
-          });
-        });
+      if (isGitHub(action.payload.id)) {
+        gitHubAPI.updateSnippet({ action, dispatch });
+      }
     }
 
     if (action.type === AT.GET_SNIPPET_COMMENTS) {
@@ -354,4 +324,4 @@ const gitHubAPIMiddleware = ({ dispatch }) => {
   };
 };
 
-export default gitHubAPIMiddleware;
+export default gatewayMiddleware;
