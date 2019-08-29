@@ -4,6 +4,7 @@ import { SIDEBAR_WIDTH } from 'constants/config';
 import BaseSettings from 'components/layout/content/settings/Base';
 import EditorSettings from 'components/layout/content/settings/Editor';
 import SnippetsSettings from 'components/layout/content/settings/Snippets';
+import GitlabSettings from 'components/layout/content/settings/Gitlab';
 import { gaPage } from 'utils/ga';
 import { getAllSettings } from 'utils/settings';
 
@@ -59,6 +60,11 @@ export class Settings extends React.Component {
         <details>
           <summary>General</summary>
           <BaseSettings/>
+        </details>
+
+        <details>
+          <summary>GitLab</summary>
+          <GitlabSettings/>
         </details>
 
         <details>

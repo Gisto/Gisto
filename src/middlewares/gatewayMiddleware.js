@@ -3,14 +3,20 @@
 import * as superagent from 'superagent';
 import * as AT from 'constants/actionTypes';
 import { responseHandler } from 'middlewares/helpers/responseHandler';
-import { GITHUB_TOKEN_KEY_IN_STORAGE } from 'constants/config';
-import { getApiUrl } from 'utils/url';
-import { setToken, removeToken, removeEnterpriseDomain } from 'utils/login';
+import { GITHUB_TOKEN_KEY_IN_STORAGE, GITLAB_TOKEN_KEY_IN_STORAGE } from 'constants/config';
+import { getGithubApiUrl } from 'utils/url';
+import {
+  setGithubToken,
+  removeGithubToken,
+  removeGithubEnterpriseDomain,
+  removeGitlabEnterpriseDomain,
+  removeGitlabToken
+} from 'utils/login';
 import { get, set } from 'lodash/fp';
 import { push } from 'connected-react-router';
 import * as gitHubAPI from 'middlewares/helpers/gitHubAPI';
 import * as gitLabAPI from 'middlewares/helpers/gitLabAPI';
-import { GITHUB, GITLAB } from "constants/service";
+import { GITHUB, GITLAB } from 'constants/service';
 
 let API = superagent;
 
@@ -35,7 +41,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
     if (action.type === AT.GET_RATE_LIMIT) {
       dispatch({ type: AT.GET_RATE_LIMIT.PENDING, action });
-      API.get(`${getApiUrl('/api/v3')}/rate_limit`)
+      API.get(`${getGithubApiUrl('/api/v3')}/rate_limit`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -47,8 +53,10 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
     }
 
     if (action.type === AT.LOGOUT) {
-      removeToken();
-      removeEnterpriseDomain();
+      removeGithubToken();
+      removeGithubEnterpriseDomain();
+      removeGitlabToken();
+      removeGitlabEnterpriseDomain();
       window.location.reload(true);
     }
 
@@ -66,7 +74,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
         basicAuthHeader = set('X-GitHub-OTP', action.payload.twoFactorAuth, basicAuthHeader);
       }
 
-      API.post(`${getApiUrl('/api/v3')}/authorizations`)
+      API.post(`${getGithubApiUrl('/api/v3')}/authorizations`)
         .set(basicAuthHeader)
         .send(
           JSON.stringify({
@@ -88,7 +96,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
             const token = get('token', result.body);
 
             if (token) {
-              setToken(token);
+              setGithubToken(token);
               dispatch({ type: AT.LOGIN_BASIC.SUCCESS, payload: result.body });
               window.location.reload(true);
             }
@@ -98,12 +106,12 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
     if (action.type === AT.LOGIN_WITH_TOKEN) {
       dispatch({ type: AT.LOGIN_WITH_TOKEN.PENDING, action });
-      API.get(`${getApiUrl('/api/v3')}/user`)
+      API.get(`${getGithubApiUrl('/api/v3')}/user`)
         .set({ Authorization: `token ${action.payload.token}` })
         .end((error, result) => {
           errorHandler(error, result);
           if (result.statusCode === 200) {
-            setToken(action.payload.token);
+            setGithubToken(action.payload.token);
 
             document.location.replace(
               `${document.location.origin}${action.meta.popup ? '#/tokenSet=true' : ''}`
@@ -114,7 +122,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
     if (action.type === AT.GET_USER) {
       dispatch({ type: AT.GET_USER.PENDING, action });
-      API.get(`${getApiUrl('/api/v3')}/user`)
+      API.get(`${getGithubApiUrl('/api/v3')}/user`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -127,7 +135,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
     if (action.type === AT.GET_EMOJI) {
       dispatch({ type: AT.GET_EMOJI.PENDING, action });
-      API.get(`${getApiUrl('/api/v3')}/emojis`)
+      API.get(`${getGithubApiUrl('/api/v3')}/emojis`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -143,7 +151,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
       const sinceLastUpdate = action.payload.since ? `?since=${action.payload.since}` : '';
 
-      return API.get(`${getApiUrl('/api/v3')}/gists/starred${sinceLastUpdate}`)
+      return API.get(`${getGithubApiUrl('/api/v3')}/gists/starred${sinceLastUpdate}`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -158,7 +166,9 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
     if (action.type === AT.GET_SNIPPETS) {
       gitHubAPI.getSnippets({ action, dispatch });
-      gitLabAPI.getSnippets({ action, dispatch });
+      if (localStorage.getItem(GITLAB_TOKEN_KEY_IN_STORAGE)) {
+        gitLabAPI.getSnippets({ action, dispatch });
+      }
     }
 
     if (action.type === AT.GET_SNIPPET) {
@@ -174,7 +184,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
     if (action.type === AT.SET_STAR) {
       dispatch({ type: AT.SET_STAR.PENDING, action });
 
-      return API.put(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/star`)
+      return API.put(`${getGithubApiUrl('/api/v3')}/gists/${action.payload.id}/star`)
         .set(_headers({ 'Content-Length': 0 }))
         .end((error, result) => {
           errorHandler(error, result);
@@ -198,7 +208,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
     if (action.type === AT.UNSET_STAR) {
       dispatch({ type: AT.UNSET_STAR.PENDING, action });
 
-      return API.delete(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/star`)
+      return API.delete(`${getGithubApiUrl('/api/v3')}/gists/${action.payload.id}/star`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -221,7 +231,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
     if (action.type === AT.CREATE_SNIPPET) {
       dispatch({ type: AT.CREATE_SNIPPET.PENDING, action });
-      API.post(`${getApiUrl('/api/v3')}/gists`)
+      API.post(`${getGithubApiUrl('/api/v3')}/gists`)
         .set(_headers())
         .send(JSON.stringify(action.payload))
         .end((error, result) => {
@@ -241,7 +251,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
     if (action.type === AT.DELETE_SNIPPET) {
       dispatch({ type: AT.DELETE_SNIPPET.PENDING, action });
-      API.delete(`${getApiUrl('/api/v3')}/gists/${action.payload.id}`)
+      API.delete(`${getGithubApiUrl('/api/v3')}/gists/${action.payload.id}`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -269,7 +279,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
     if (action.type === AT.GET_SNIPPET_COMMENTS) {
       dispatch({ type: AT.GET_SNIPPET_COMMENTS.PENDING, meta: action.meta });
-      API.get(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/comments`)
+      API.get(`${getGithubApiUrl('/api/v3')}/gists/${action.payload.id}/comments`)
         .set(_headers())
         .end((error, result) => {
           errorHandler(error, result);
@@ -286,7 +296,7 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
 
     if (action.type === AT.CREATE_SNIPPET_COMMENT) {
       dispatch({ type: AT.CREATE_SNIPPET_COMMENT.PENDING, action });
-      API.post(`${getApiUrl('/api/v3')}/gists/${action.payload.id}/comments`)
+      API.post(`${getGithubApiUrl('/api/v3')}/gists/${action.payload.id}/comments`)
         .set(_headers())
         .send({ body: action.payload.body })
         .end((error, result) => {
@@ -305,7 +315,9 @@ const gatewayMiddleware = ({ dispatch, getState }) => {
     if (action.type === AT.DELETE_COMMENT) {
       dispatch({ type: AT.DELETE_COMMENT.PENDING, action });
       API.delete(
-        `${getApiUrl('/api/v3')}/gists/${action.payload.id}/comments/${action.payload.commentId}`
+        `${getGithubApiUrl('/api/v3')}/gists/${action.payload.id}/comments/${
+          action.payload.commentId
+        }`
       )
         .set(_headers())
         .end((error, result) => {

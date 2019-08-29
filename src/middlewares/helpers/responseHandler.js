@@ -1,5 +1,5 @@
 import { setNotification } from 'utils/notifications';
-import { removeEnterpriseDomain, removeToken } from 'utils/login';
+import { removeGithubEnterpriseDomain, removeGithubToken } from 'utils/login';
 import { getOr } from 'lodash/fp';
 import * as AT from 'constants/actionTypes';
 
@@ -18,8 +18,8 @@ export const responseHandler = (error, result, dispatch, action) => {
         type: 'error'
       });
 
-      removeToken();
-      removeEnterpriseDomain();
+      removeGithubToken();
+      removeGithubEnterpriseDomain();
       window.location.reload(true);
     } else {
       setNotification({

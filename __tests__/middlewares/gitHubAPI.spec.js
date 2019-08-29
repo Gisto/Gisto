@@ -1,7 +1,7 @@
 import nock from 'nock';
 import * as AT from 'constants/actionTypes';
 import gitHubAPIMiddleware from 'src/middlewares/gatewayMiddleware';
-import { DEFAULT_API_ENDPOINT_URL } from 'constants/config';
+import { DEFAULT_GITHUB_API_ENDPOINT_URL } from 'constants/config';
 
 const createFakeStore = (initialState, dispatch = undefined) => ({
   dispatch,
@@ -67,7 +67,7 @@ describe('middleware - gitHubApi', () => {
   });
 
   test('dispatch called', () => {
-    nock(DEFAULT_API_ENDPOINT_URL)
+    nock(DEFAULT_GITHUB_API_ENDPOINT_URL)
       .get('/rate_limit')
       .reply(200, { lala: 'fafa' });
 

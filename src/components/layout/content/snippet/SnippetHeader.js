@@ -13,7 +13,7 @@ import UtilityIcon from 'components/common/UtilityIcon';
 import ExternalLink from 'components/common/ExternalLink';
 import Input from 'components/common/controls/Input';
 import Anchor from 'components/common/Anchor';
-import { getSnippetUrl } from 'utils/url';
+import { getGithubSnippetUrl } from 'utils/url';
 
 const SnippetHeaderWrapper = styled.div`
   display: flex;
@@ -75,7 +75,9 @@ export class SnippetHeader extends React.Component {
 
   render() {
     const { file, username, snippetId, edit, toggleCollapse, theme } = this.props;
-    const openOnWebUrl = `${getSnippetUrl('/gist')}/${username}/${snippetId}#file-${file.filename}`;
+    const openOnWebUrl = `${getGithubSnippetUrl('/gist')}/${username}/${snippetId}#file-${
+      file.filename
+    }`;
 
     return (
       <SnippetHeaderWrapper>

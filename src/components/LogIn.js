@@ -7,7 +7,12 @@ import { setNotification } from 'utils/notifications';
 import * as superagent from 'superagent';
 import * as loginActions from 'actions/login';
 
-import { setEnterpriseDomain, setToken, isLoggedIn, removeEnterpriseDomain } from 'utils/login';
+import {
+  setGithubEnterpriseDomain,
+  setGithubToken,
+  isLoggedIn,
+  removeGithubEnterpriseDomain
+} from 'utils/login';
 import { isElectron } from 'utils/electron';
 import { isomorphicReload } from 'utils/isomorphic';
 
@@ -115,7 +120,7 @@ export class LogIn extends React.Component {
   }
 
   setLoginType = (type) => {
-    removeEnterpriseDomain();
+    removeGithubEnterpriseDomain();
     this.setState({
       fieldsData: {},
       loginType: {
@@ -162,7 +167,7 @@ export class LogIn extends React.Component {
     }
 
     if (this.state.fieldsData.enterpriseDomain) {
-      setEnterpriseDomain(this.state.fieldsData.enterpriseDomain);
+      setGithubEnterpriseDomain(this.state.fieldsData.enterpriseDomain);
     }
 
     return this.props.loginBasic(user, pass, twoFactorAuth);
@@ -228,7 +233,7 @@ export class LogIn extends React.Component {
       const { ipcRenderer } = require('electron');
 
       ipcRenderer.on('token', (event, token) => {
-        setToken(token);
+        setGithubToken(token);
 
         isomorphicReload();
       });

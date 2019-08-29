@@ -1,6 +1,6 @@
 import * as superagent from 'superagent';
 import * as AT from 'constants/actionTypes';
-import { getApiUrl } from 'utils/url';
+import { getGithubApiUrl } from 'utils/url';
 import { responseHandler } from 'middlewares/helpers/responseHandler';
 import { GITHUB_TOKEN_KEY_IN_STORAGE } from 'constants/config';
 
@@ -25,7 +25,7 @@ export const getSnippets = ({ action, dispatch }) => {
 
   const sinceLastUpdate = action.payload.since ? `&since=${action.payload.since}` : '';
   const getGists = (page) =>
-    API.get(`${getApiUrl('/api/v3')}/gists?page=${page}&per_page=100${sinceLastUpdate}`)
+    API.get(`${getGithubApiUrl('/api/v3')}/gists?page=${page}&per_page=100${sinceLastUpdate}`)
       .set(_headers())
       .end((error, result) => {
         responseHandler(error, result, dispatch, action);
@@ -48,7 +48,7 @@ export const getSnippets = ({ action, dispatch }) => {
 export const getSnippet = ({ action, dispatch }) => {
   dispatch({ type: AT.GET_SNIPPET.PENDING, action });
 
-  return API.get(`${getApiUrl('/api/v3')}/gists/${action.payload.id}`)
+  return API.get(`${getGithubApiUrl('/api/v3')}/gists/${action.payload.id}`)
     .set(_headers())
     .end((error, result) => {
       responseHandler(error, result, dispatch, action);
@@ -66,7 +66,7 @@ export const getSnippet = ({ action, dispatch }) => {
 export const updateSnippet = ({ action, dispatch }) => {
   dispatch({ type: AT.UPDATE_SNIPPET.PENDING, action });
 
-  API.patch(`${getApiUrl('/api/v3')}/gists/${action.payload.id}`)
+  API.patch(`${getGithubApiUrl('/api/v3')}/gists/${action.payload.id}`)
     .set(_headers())
     .send(action.payload.snippet)
     .end((error, result) => {

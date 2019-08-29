@@ -12,8 +12,8 @@ import UtilityIcon from 'components/common/UtilityIcon';
 import Input from 'components/common/controls/Input';
 import Anchor from 'components/common/Anchor';
 import ExternalLink from 'components/common/ExternalLink';
-import { getSnippetUrl } from 'utils/url';
-import { isEnterpriseLogin } from 'utils/login';
+import { getGithubSnippetUrl } from 'utils/url';
+import { isGithubEnterpriseLogin } from 'utils/login';
 import Icon from 'components/common/Icon';
 import { GITLAB } from 'constants/service';
 
@@ -323,7 +323,7 @@ export class SnippetHeader extends React.Component {
     const { snippets, match, theme } = this.props;
     const snippet = get(match.params.id, snippets);
     const snippetId = get('id', snippet);
-    const snippetUrl = getSnippetUrl('/gist');
+    const snippetUrl = getGithubSnippetUrl('/gist');
 
     return (
       size(get('history', snippet)) > 1 && (
@@ -401,7 +401,7 @@ export class SnippetHeader extends React.Component {
   };
 
   render() {
-    const snippetUrl = getSnippetUrl('/gist');
+    const snippetUrl = getGithubSnippetUrl('/gist');
     const { snippets, match, editSnippet, comments } = this.props;
     const snippet = get(match.params.id, snippets);
     const snippetId = get('id', snippet);
@@ -507,7 +507,7 @@ export class SnippetHeader extends React.Component {
                 <li>
                   <ExternalLink href={ openInGHDesktop }>Open in GitHub desktop</ExternalLink>
                 </li>
-                {!isEnterpriseLogin() && (
+                {!isGithubEnterpriseLogin() && (
                   <React.Fragment>
                     <li>
                       <ExternalLink href={ `http://plnkr.co/edit/gist:${snippetId}?p=preview` }>

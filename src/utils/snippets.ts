@@ -178,7 +178,7 @@ export const prepareFilesForUpdate = (snippet: ISnippet) => {
     filter(
       (file: IFile) =>
         !file.filename.match(
-          /png|jpg|jpeg|gif|bmp|tiff|tif|webp|xpm|exif|icns|ico|jp2|ai|psd|pdf/gi
+          /\.png|\.jpg|\.jpeg|\.gif|\.bmp|\.tiff|\.tif|\.webp|\.xpm|\.exif|\.icns|\.ico|\.jp2|\.ai|\.psd|\.pdf/gi
         )
     )
   ])(snippet.files);

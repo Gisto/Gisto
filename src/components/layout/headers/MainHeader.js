@@ -8,7 +8,7 @@ import { get } from 'lodash/fp';
 import * as snippetsActions from 'actions/snippets';
 
 import { SIDEBAR_WIDTH, LOGO_TEXT } from 'constants/config';
-import { isEnterpriseLogin } from 'utils/login';
+import { isGithubEnterpriseLogin } from 'utils/login';
 import { toUnixTimeStamp } from 'utils/date';
 
 import UserArea from 'components/AppArea';
@@ -131,7 +131,7 @@ export class MainHeader extends Component {
         {!edit && (
           <Logo>
             <Link to="/">
-              {LOGO_TEXT} {isEnterpriseLogin() && <small>enterprise</small>}
+              {LOGO_TEXT} {isGithubEnterpriseLogin() && <small>enterprise</small>}
             </Link>
             {!isCreateNew && (
               <Router>
