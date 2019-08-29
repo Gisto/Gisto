@@ -1,3 +1,6 @@
+### v1.12.9
+*  FIX (snippets): save snippet, correct unsupported files filtering closes ##257 [View](https://github.com/Gisto/Gisto/commit/889db8059c56b188277bb03d6e90b673f3dce36e)
+
 ### v1.12.8
 *  FIX (layout): small layout fixes [View](https://github.com/Gisto/Gisto/commit/c9ee5734aaaff1bbb0c3a0d87a951b084955282b)
 
