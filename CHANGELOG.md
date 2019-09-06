@@ -1,3 +1,6 @@
+### v1.12.10
+*  FIX (editor): allow to fit editor height to file content via settings | closes #258 [View](https://github.com/Gisto/Gisto/commit/eafb1daae5e1e15e7171de4d2d18dbf561e927bb)
+
 ### v1.12.9
 *  FIX (snippets): save snippet, correct unsupported files filtering closes ##257 [View](https://github.com/Gisto/Gisto/commit/889db8059c56b188277bb03d6e90b673f3dce36e)
 
