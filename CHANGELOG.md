@@ -1,6 +1,4 @@
 ### v1.12.11
-*  FIX (log-in): fix layout and hover of buttons [View](https://github.com/Gisto/Gisto/commit/add0181d1e9e9ce9f31406c7a5081bc239f0c242)
-*  FIX (log-in): fix layout and hover of buttons [View](https://github.com/Gisto/Gisto/commit/3005dcd957b7bef57422065541282e757ad10b43)
 *  FIX (log-in): fix layout and hover of buttons [View](https://github.com/Gisto/Gisto/commit/05775fcc29ba6cfd25f002c500fbebde244c2258)
 
 ### v1.12.10
