@@ -11,6 +11,8 @@ import { setEnterpriseDomain, setToken, isLoggedIn, removeEnterpriseDomain } fro
 import { isElectron } from 'utils/electron';
 import { isomorphicReload } from 'utils/isomorphic';
 
+import { ligten } from 'constants/colors';
+
 import Button from 'components/common/controls/Button';
 import Input from 'components/common/controls/Input';
 import Icon from 'components/common/Icon';
@@ -75,6 +77,18 @@ const LoginWrapper = styled.div`
 const StyledGithubLoginButton = styled(Button)`
   width: 200px;
   align-self: center;
+
+  :hover {
+    background: ${(props) => ligten(props.theme.baseAppColor)};
+  }
+`;
+
+const StyledLoginButton = styled(Button)`
+  margin: 0 auto;
+
+  :hover {
+    background: ${(props) => ligten(props.theme.baseAppColor)};
+  }
 `;
 
 const Logo = styled.div`
@@ -259,9 +273,11 @@ export class LogIn extends React.Component {
               <Icon type="info" size="16" color={ this.props.theme.baseAppColor }/>
             </ExternalLink>
             <br/>
-            <Button icon="success" onClick={ () => this.loginWithToken(this.state.fieldsData.token) }>
+            <StyledLoginButton
+              icon="success"
+              onClick={ () => this.loginWithToken(this.state.fieldsData.token) }>
               Log-in
-            </Button>
+            </StyledLoginButton>
             <br/>
             <br/>
             <Anchor onClick={ () => this.setLoginType('basic') }>Cancel</Anchor>
@@ -311,7 +327,7 @@ export class LogIn extends React.Component {
 
             <br/>
             <br/>
-            <Button
+            <StyledLoginButton
               onClick={ () =>
                 this.loginWithBasic(
                   this.state.fieldsData.username,
@@ -321,7 +337,7 @@ export class LogIn extends React.Component {
               }
               icon="success">
               Log-in
-            </Button>
+            </StyledLoginButton>
             <br/>
           </div>
         )}

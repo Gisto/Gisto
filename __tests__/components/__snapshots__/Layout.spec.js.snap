@@ -4,6 +4,7 @@ exports[`COMPONENTS - <Layout> render Layout when logged in 1`] = `
 <ThemeProvider
   theme={
     Object {
+      "ligten": [Function],
       "theme": Object {
         "baseAppColor": "#3F84A8",
         "bg": "#ebf2f6",
@@ -55,6 +56,7 @@ exports[`COMPONENTS - <Layout> render Layout when not logged in 1`] = `
 <ThemeProvider
   theme={
     Object {
+      "ligten": [Function],
       "theme": Object {
         "baseAppColor": "#3F84A8",
         "bg": "#ebf2f6",
