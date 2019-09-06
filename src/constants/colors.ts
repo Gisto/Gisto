@@ -2,6 +2,7 @@ import { tint } from 'polished';
 import { getSetting } from 'utils/settings';
 
 export const tintBackground = (color: string) => tint(0.9, color);
+export const ligten = (color: string) => tint(0.1, color);
 export const tintHeaderBgLightest = (color: string) => tint(0.75, color);
 
 export const theme = {

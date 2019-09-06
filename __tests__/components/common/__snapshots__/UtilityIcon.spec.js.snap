@@ -9,6 +9,7 @@ exports[`COMPONENTS - <UtilityIcon> render UtilityIcon 1`] = `
   size={20}
   theme={
     Object {
+      "ligten": [Function],
       "theme": Object {
         "baseAppColor": "#3F84A8",
         "bg": "#ebf2f6",
