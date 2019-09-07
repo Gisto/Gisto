@@ -181,7 +181,7 @@ class Downloads extends Component {
                         <p>via <b>snapcraft</b> (Linux):</p>
 
                         <pre><span>SHELL</span>$ sudo snap install gisto</pre>
-                        <small>Install Gisto on your Linux distribution: https://snapcraft.io/gisto</small>
+                        <small>Install Gisto on your Linux distribution: <a href="https://snapcraft.io/gisto">https://snapcraft.io/gisto</a></small>
                         <br/>
                         <br/>
                       </div>
