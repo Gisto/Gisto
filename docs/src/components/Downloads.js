@@ -177,6 +177,15 @@ class Downloads extends Component {
                         <br/>
                       </div>
 
+<div>
+                        <p>via <b>snapcraft</b> (Linux):</p>
+
+                        <pre><span>SHELL</span>$ sudo snap install gisto</pre>
+                        <small>Install Gisto on your Linux distribution: https://snapcraft.io/gisto</small>
+                        <br/>
+                        <br/>
+                      </div>
+
                       <div>
                         <p>via <b>AUR</b> (ArchLinux):</p>
 
