@@ -1,3 +1,9 @@
+### v1.12.12
+*  Update CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/aee832afb7a2a58bac47dbebfb2e7ca105d2e6cb)
+*  Update Downloads.js [View](https://github.com/Gisto/Gisto/commit/6663108892bd2d1cbecaa3946f99929b4b4a0747)
+*  DOCS (snap): add snap install instructions [View](https://github.com/Gisto/Gisto/commit/7ecf297c2ddabaa9a0eeb138d9e305bcc9ba6d10)
+*  FIX (snippet): remove title fade out truncation closes #259 [View](https://github.com/Gisto/Gisto/commit/23cc8348a55b4e97099a4d7d727180cbb9b0b6bd)
+
 ### v1.12.11
 *  FIX (log-in): fix layout and hover of buttons [View](https://github.com/Gisto/Gisto/commit/05775fcc29ba6cfd25f002c500fbebde244c2258)
 
