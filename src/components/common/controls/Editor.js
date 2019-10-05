@@ -171,7 +171,11 @@ export class Editor extends React.Component {
   renderMonacoEdito = (width, height, language = this.props.language) => (
     <MonacoEditor
       width={ width }
-      height={ height }
+      height={
+        getSetting('editor-fit-to-content', false) && !this.props.isNew && !this.props.edit
+          ? false
+          : height
+      }
       className={ this.props.className }
       language={ language || syntaxMap[this.props.file.language] || 'text' }
       theme={ getSetting('editorTheme', 'vs') }
@@ -179,9 +183,21 @@ export class Editor extends React.Component {
       value={ this.props.file.content }
       options={ editorOptions({ readOnly: !this.props.edit && !this.props.isNew }) }
       // eslint-disable-next-line no-extra-boolean-cast
-      editorDidMount={ (editor, monaco) =>
-        getSession('monaco-extra-langs-registred') ? null : this.editorDidMount(editor, monaco)
-      }
+      editorDidMount={ (editor, monaco) => {
+        const fitContentHeight = editor.getModel().getLineCount() * getSetting('lineHeight', 21);
+
+        // eslint-disable-next-line no-param-reassign
+        editor.getDomNode().style.height = `${
+          getSetting('editor-fit-to-content', false) && !this.props.isNew && !this.props.edit
+            ? fitContentHeight
+            : height
+        }px`;
+        editor.layout();
+
+        return getSession('monaco-extra-langs-registred')
+          ? null
+          : this.editorDidMount(editor, monaco);
+      } }
       onChange={ this.props.onChange }/>
   );
 

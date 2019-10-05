@@ -130,6 +130,14 @@ export const EditorSettings = ({ changeSettings }) => {
                 onChange={ () => updateSettings('SelectOnLineNumbers', null, true) }/>
             </Label>
           </Field>
+          <Field>
+            <Label>
+              <span>Fit editor height to content:</span>
+              <Checkbox
+                checked={ getSetting('editor-fit-to-content', false) }
+                onChange={ () => updateSettings('editor-fit-to-content', null, true) }/>
+            </Label>
+          </Field>
         </Section>
         <Section>
           <Field>

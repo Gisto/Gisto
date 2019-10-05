@@ -9,6 +9,7 @@ exports[`COMPONENTS - <SuperSearch> render SuperSearch 1`] = `
   snippets={Object {}}
   theme={
     Object {
+      "ligten": [Function],
       "theme": Object {
         "baseAppColor": "#3F84A8",
         "bg": "#ebf2f6",

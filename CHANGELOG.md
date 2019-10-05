@@ -1,3 +1,18 @@
+### v1.12.12
+*  Update CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/aee832afb7a2a58bac47dbebfb2e7ca105d2e6cb)
+*  Update Downloads.js [View](https://github.com/Gisto/Gisto/commit/6663108892bd2d1cbecaa3946f99929b4b4a0747)
+*  DOCS (snap): add snap install instructions [View](https://github.com/Gisto/Gisto/commit/7ecf297c2ddabaa9a0eeb138d9e305bcc9ba6d10)
+*  FIX (snippet): remove title fade out truncation closes #259 [View](https://github.com/Gisto/Gisto/commit/23cc8348a55b4e97099a4d7d727180cbb9b0b6bd)
+
+### v1.12.11
+*  FIX (log-in): fix layout and hover of buttons [View](https://github.com/Gisto/Gisto/commit/05775fcc29ba6cfd25f002c500fbebde244c2258)
+
+### v1.12.10
+*  FIX (editor): allow to fit editor height to file content via settings | closes #258 [View](https://github.com/Gisto/Gisto/commit/eafb1daae5e1e15e7171de4d2d18dbf561e927bb)
+
+### v1.12.9
+*  FIX (snippets): save snippet, correct unsupported files filtering closes ##257 [View](https://github.com/Gisto/Gisto/commit/889db8059c56b188277bb03d6e90b673f3dce36e)
+
 ### v1.12.8
 *  FIX (layout): small layout fixes [View](https://github.com/Gisto/Gisto/commit/c9ee5734aaaff1bbb0c3a0d87a951b084955282b)
 

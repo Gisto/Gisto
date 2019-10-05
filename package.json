@@ -1,6 +1,6 @@
 {
   "name": "gisto",
-  "version": "1.12.8",
+  "version": "1.12.12",
   "description": "Cross-platform snippets management desktop application",
   "productName": "Gisto",
   "main": "main.js",
@@ -24,8 +24,9 @@
     "preversion:changelog": "replace \"vPLACEHOLDER\" \"v$npm_package_version\" ./CHANGELOG.md",
     "version": "npm run preversion:changelog && git add .",
     "postversion": "git push && git push origin --tags",
-    "release": "npm version patch -m \"v%s \nSee changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md\"",
+    "release:patch": "npm version patch -m \"v%s \nSee changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md\"",
     "release:minor": "npm version minor -m \"v%s \nSee changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md\"",
+    "release:major": "npm version major -m \"v%s \nSee changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md\"",
     "pack:mac": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build --m --publish=always",
     "pack:win:beta": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build --config electron-builder-prerelease.json -w --x64 --ia32 --publish=always",
     "pack:win": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build -w --x64 --ia32 --publish=always",
@@ -33,7 +34,7 @@
     "pack:all": "cross-env NODE_ENV=production npm run start:prod && npx electron-builder build -mwl --x64 --publish=always",
     "pack:beta": "NODE_ENV=production npm run start:prod && npx electron-builder build --config electron-builder-prerelease.json --publish=always",
     "pack": "NODE_ENV=production npm run start:prod && npx electron-builder build --config electron-builder.json --publish=always",
-    "make:release": "git checkout master && git merge next --no-edit && npm run release",
+    "make:release": "git checkout master && git merge next --no-edit && npm run release:patch",
     "make:release:beta": "npm version prerelease --preid=beta"
   },
   "repository": {
