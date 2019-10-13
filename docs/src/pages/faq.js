@@ -125,6 +125,10 @@ const Faq = () => (
 
             <h2 id="run-as-portable">Use gisto as portable application on windows?</h2>
 
+            <blockquote>
+              Please note this instructions refers to legacy version (up to v0.3.2)
+            </blockquote>
+
             <p>For a non-installer version of Gisto, you can:</p>
 
             <ul className="fa-ul">
