@@ -42,7 +42,7 @@
       "provider": "github",
       "releaseType": "prerelease"
     },
-    "target": "nsis",
+    "target": ["nsis", "portable"],
     "icon": "build/icon.ico"
   },
   "nsis": {
