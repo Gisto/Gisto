@@ -50,6 +50,9 @@
     "allowToChangeInstallationDirectory": false,
     "createDesktopShortcut": "always"
   },
+  "portable": {
+    "artifactName": "${productName}-${version}-${arch}-Portable.${ext}"
+  },
   "linux": {
     "maintainer": "Sasha Khamkov <sanusart@gmail.com>",
     "icon": "build/icon/",
