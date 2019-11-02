@@ -1,3 +1,7 @@
+### v1.12.13
+*  v1.12.12 See changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/9fddae15ab63e31331e154015872e434df32a3e2)
+*  DOCS (faq): update faq [View](https://github.com/Gisto/Gisto/commit/4040f4ac7b9cc683fbaa67c3a57c4e4db3517906)
+
 ### v1.12.12
 *  Update CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/aee832afb7a2a58bac47dbebfb2e7ca105d2e6cb)
 *  Update Downloads.js [View](https://github.com/Gisto/Gisto/commit/6663108892bd2d1cbecaa3946f99929b4b4a0747)
