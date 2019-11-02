@@ -1,3 +1,6 @@
+### v1.12.12-beta.1
+*  CHORE (targets): fix portable target [View](https://github.com/Gisto/Gisto/commit/18dff0eeb9e9bd991b2a69df0a67e64e64c54cf0)
+
 ### v1.12.12-beta.0
 *  Update CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/aee832afb7a2a58bac47dbebfb2e7ca105d2e6cb)
 *  Update Downloads.js [View](https://github.com/Gisto/Gisto/commit/6663108892bd2d1cbecaa3946f99929b4b4a0747)
