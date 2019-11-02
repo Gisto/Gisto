@@ -108,18 +108,12 @@
     "react/forbid-prop-types": 0,
     "react/destructuring-assignment": 0,
     "react/jsx-one-expression-per-line": 0,
-    "react/jsx-tag-spacing": {
-      "closingSlash": "never",
-      "beforeSelfClosing": "never",
-      "afterOpening": "never",
-      "beforeClosing": "never"
-    },
+    "react/jsx-tag-spacing": 2,
     "jsx-a11y/no-static-element-interactions": 0,
     "jsx-a11y/anchor-has-content": 2,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/heading-has-content": 0,
-    "_comment": "remove after https://github.com/babel/babel-eslint/issues/530 fix",
     "template-curly-spacing": "off",
     "indent": "off"
   },
