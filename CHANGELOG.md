@@ -1,3 +1,6 @@
+### v1.12.12-beta.2
+*  CHORE (targets): fix portable target [View](https://github.com/Gisto/Gisto/commit/690c7603d8cc8b5c1d0b6d13c2a2aa5726abc815)
+
 ### v1.12.12-beta.1
 *  CHORE (targets): fix portable target [View](https://github.com/Gisto/Gisto/commit/18dff0eeb9e9bd991b2a69df0a67e64e64c54cf0)
 
