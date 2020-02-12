@@ -25,11 +25,7 @@ export const Taglist = ({ snippets, searchTags, searchByTags, snippetsTags, them
     let list = snippetsTags;
 
     if (!isEmpty(searchTags)) {
-      list = filter((tag) => {
-        const regex = new RegExp(searchTags, 'gi');
-
-        return tag.tag.match(regex);
-      }, snippetsTags);
+      list = filter((tag) => tag.tag.includes(searchTags), snippetsTags);
     }
 
     return map((tagItem) => {
