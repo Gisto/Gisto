@@ -3,7 +3,7 @@ const tokenRequest = require('superagent');
 
 const options = {
   client_id: process.env.GISTO_GITHUB_CLIENT_ID,
-  scopes: ['user', 'gist']
+  scopes: ['gist']
 };
 
 async function requestGithubToken(ops, code) {
