@@ -1,3 +1,14 @@
+### v1.12.14
+*  DOCS (downloads): add portable [View](https://github.com/Gisto/Gisto/commit/c19955b629226f59768e2a2de2f858001c33fa34)
+*  CHORE (travis): update node version [View](https://github.com/Gisto/Gisto/commit/d5815b1477b35ed736586c43a74fa4225ad1fbd3)
+*  CHORE (travis): update script [View](https://github.com/Gisto/Gisto/commit/d54bb0a6fb184713ce8bcb7e3378c2b9561b8c43)
+*  CHORE (travis): update script [View](https://github.com/Gisto/Gisto/commit/f6d6a0a2e34dc9a24ef13cfeabe408ee9be0385e)
+*  CHORE (travis): update script [View](https://github.com/Gisto/Gisto/commit/5f8170a6bb8a69f36c5b1b068ac13d299c1c6bcb)
+*  CHORE (travis): update script [View](https://github.com/Gisto/Gisto/commit/8884c1b219fb77c4e8dbbc63465cfdce808b981f)
+*  CHORE (travis): update script [View](https://github.com/Gisto/Gisto/commit/3b225f907839ab933d9dbc056ecc2f5ad66d28fa)
+*  FIX (scope): OAuth scope for 'user' read/write may not needed anymore closes #269 [View](https://github.com/Gisto/Gisto/commit/9a9c1891be224d3eae8fc39f9df5ab272c18fe58)
+*  FIX (tags): Crash when searching "c++" closes #270 [View](https://github.com/Gisto/Gisto/commit/b83fb606ea7fecc1a54c286d4e71767cf4aa8737)
+
 ### v1.12.13
 *  v1.12.12 See changelog: https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/9fddae15ab63e31331e154015872e434df32a3e2)
 *  DOCS (faq): update faq [View](https://github.com/Gisto/Gisto/commit/4040f4ac7b9cc683fbaa67c3a57c4e4db3517906)
