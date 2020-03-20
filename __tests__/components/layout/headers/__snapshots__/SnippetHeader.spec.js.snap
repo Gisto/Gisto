@@ -68,6 +68,13 @@ exports[`COMPONENTS - <SnippetHeader> render SnippetHeader 1`] = `
         </li>
         <li>
           <Anchor
+            onClick={[Function]}
+          >
+            Duplicate
+          </Anchor>
+        </li>
+        <li>
+          <Anchor
             href="https://gist.github.com/undefined/undefined/download"
           >
             Download

@@ -164,6 +164,20 @@ export const prepareFiles = (files: IFile[]) => {
   ])(files);
 };
 
+export const prepareFilesForDuplication = (files: IFile[]) =>
+  reduce(
+    (acc, file) => {
+      acc[file.filename] = {
+        filename: file.filename,
+        content: file.content
+      };
+
+      return acc;
+    },
+    {},
+    files
+  );
+
 export const prepareFilesForUpdate = (snippet: ISnippet) => {
   const cleanFiles = flow([
     map((file) => {
