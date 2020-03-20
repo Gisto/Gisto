@@ -109,6 +109,11 @@ const TokenInput = styled(Input)`
   margin-left: 10px;
 `;
 
+const Small = styled.p`
+  font-size: 12px;
+  margin: -20px 0 10px;
+`;
+
 export class LogIn extends React.Component {
   state = {
     fieldsData: {},
@@ -265,12 +270,17 @@ export class LogIn extends React.Component {
         {this.state.loginType.token && (
           <div>
             <h4>Sign-in using GitHub token</h4>
+            <Small>(Only &quot;gist&quot; scope needed)</Small>
             <TokenInput
               type="text"
               placeholder="GitHub token"
               onChange={ (event) => this.setField('token', event.target.value) }/>
             <ExternalLink target="_new" href="https://github.com/settings/tokens">
-              <Icon type="info" size="16" color={ this.props.theme.baseAppColor }/>
+              <Icon
+                title="(Only 'gist' scope needed)"
+                type="info"
+                size="16"
+                color={ this.props.theme.baseAppColor }/>
             </ExternalLink>
             <br/>
             <StyledLoginButton
