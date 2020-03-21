@@ -1,3 +1,9 @@
+### v$npm_package_version
+*  Create snapcraft.yaml [View](https://github.com/Gisto/Gisto/commit/1ccef3480dd426d76d930fe827fb71f244b9b866)
+*  FIX (login)[#276]: show needed permission above login with token to help generating token [View](https://github.com/Gisto/Gisto/commit/aa3e6b256985e05002eba729b770ccc7920a1ef1)
+*  FIX (shortcuts)[#274]: use ctrl instead of Win key under windows, closes #274 [View](https://github.com/Gisto/Gisto/commit/966609f1ebb402a51d88e1c2090a12ae4eeb5996)
+*  FIX (snippet)[#275]: add 'Duplicate' into snippet menu to allow to create a copy of the snippet, closes #275 [View](https://github.com/Gisto/Gisto/commit/ce353cbc2d4b86ff7c956c6a1e62da9ef600431b)
+
 ### v1.12.14
 *  DOCS (downloads): add portable [View](https://github.com/Gisto/Gisto/commit/c19955b629226f59768e2a2de2f858001c33fa34)
 *  CHORE (travis): update node version [View](https://github.com/Gisto/Gisto/commit/d5815b1477b35ed736586c43a74fa4225ad1fbd3)
