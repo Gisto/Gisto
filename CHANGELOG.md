@@ -1,3 +1,7 @@
+### v$npm_package_version
+*  Update CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/6e88d17475ed062af101f72b22f9c92ecef3481b)
+*  FIX (edit)[#277]: fix snipped description in edit mode on web app [View](https://github.com/Gisto/Gisto/commit/1d743883985815579ec3d39b9c0238427191fb18)
+
 ### v1.13.0
 *  Create snapcraft.yaml [View](https://github.com/Gisto/Gisto/commit/1ccef3480dd426d76d930fe827fb71f244b9b866)
 *  FIX (login)[#276]: show needed permission above login with token to help generating token [View](https://github.com/Gisto/Gisto/commit/aa3e6b256985e05002eba729b770ccc7920a1ef1)
