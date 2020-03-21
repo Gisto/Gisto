@@ -84,6 +84,7 @@ const Languages = styled.span`
 
 const StyledInput = styled(Input)`
   width: 100%;
+  display: flex;
 `;
 
 const LockIcon = styled(Icon)`
