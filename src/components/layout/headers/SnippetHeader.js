@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { drop, get, isEmpty, map, size, toString } from 'lodash/fp';
+import { drop, get, isEmpty, map, size, toString, isArray } from 'lodash/fp';
 import styled from 'styled-components';
 
+import { DEFAULT_SNIPPET_DUPLICATE_SUFFIX } from 'constants/config';
 import * as snippetActions from 'actions/snippets';
-import { copyToClipboard, prepareFilesForUpdate } from 'utils/snippets';
+import { copyToClipboard, prepareFilesForUpdate, prepareFilesForDuplication } from 'utils/snippets';
 import { dateFormatToString } from 'utils/date';
 
 import UtilityIcon from 'components/common/UtilityIcon';
@@ -373,6 +374,9 @@ export class SnippetHeader extends React.Component {
     const { snippets, match, editSnippet, comments } = this.props;
     const snippet = get(match.params.id, snippets);
     const snippetId = get('id', snippet);
+    const snippetFiles = get('files', snippet);
+    const snippetDescription = get('description', snippet);
+    const snippetTags = get('tags', snippet);
     const openOnWebUrl = `${snippetUrl}/${get('username', snippet)}/${snippetId}`;
     const httpCloneUrl = `git clone ${snippetUrl}/${snippetId}.git`;
     const sshCloneUrl = `git clone git@${snippetUrl}:${snippetId}.git`;
@@ -429,6 +433,20 @@ export class SnippetHeader extends React.Component {
                 )}
                 <li>
                   <ExternalLink href={ openOnWebUrl }>Open on web</ExternalLink>
+                </li>
+                <li>
+                  <Anchor
+                    onClick={ () =>
+                      this.props.createSnippet({
+                        description: `${snippetDescription} ${DEFAULT_SNIPPET_DUPLICATE_SUFFIX} ${
+                          isArray(snippetTags) ? snippetTags.join(', ') : ''
+                        }`,
+                        files: prepareFilesForDuplication(snippetFiles),
+                        isPublic
+                      })
+                    }>
+                    Duplicate
+                  </Anchor>
                 </li>
                 <li>
                   <Anchor href={ `${openOnWebUrl}/download` }>Download</Anchor>
@@ -533,7 +551,8 @@ SnippetHeader.propTypes = {
   edit: PropTypes.bool,
   tempSnippet: PropTypes.object,
   theme: PropTypes.object,
-  comments: PropTypes.array
+  comments: PropTypes.array,
+  createSnippet: PropTypes.func
 };
 
 export default connect(
@@ -549,6 +568,7 @@ export default connect(
     updateTempSnippet: snippetActions.updateTempSnippet,
     addTempFile: snippetActions.addTempFile,
     updateSnippet: snippetActions.updateSnippet,
-    toggleSnippetComments: snippetActions.toggleSnippetComments
+    toggleSnippetComments: snippetActions.toggleSnippetComments,
+    createSnippet: snippetActions.createSnippet
   }
 )(SnippetHeader);
