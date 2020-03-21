@@ -1,4 +1,4 @@
-### v$npm_package_version
+### v1.13.0
 *  Create snapcraft.yaml [View](https://github.com/Gisto/Gisto/commit/1ccef3480dd426d76d930fe827fb71f244b9b866)
 *  FIX (login)[#276]: show needed permission above login with token to help generating token [View](https://github.com/Gisto/Gisto/commit/aa3e6b256985e05002eba729b770ccc7920a1ef1)
 *  FIX (shortcuts)[#274]: use ctrl instead of Win key under windows, closes #274 [View](https://github.com/Gisto/Gisto/commit/966609f1ebb402a51d88e1c2090a12ae4eeb5996)
