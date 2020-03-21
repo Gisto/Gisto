@@ -1,5 +1,4 @@
-### v$npm_package_version
-*  Update CHANGELOG.md [View](https://github.com/Gisto/Gisto/commit/6e88d17475ed062af101f72b22f9c92ecef3481b)
+### v1.13.2
 *  FIX (edit)[#277]: fix snipped description in edit mode on web app [View](https://github.com/Gisto/Gisto/commit/1d743883985815579ec3d39b9c0238427191fb18)
 
 ### v1.13.0
