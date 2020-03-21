@@ -1,6 +1,7 @@
 export const LOGO_TEXT = '{ Gisto }';
 export const TAG_REGEX = /#(\d*[A-Za-z_0-9\+]+\d*)/g;
 export const DEFAULT_SNIPPET_DESCRIPTION = 'untitled';
+export const DEFAULT_SNIPPET_DUPLICATE_SUFFIX = '(Copy)';
 export const MINIMUM_CHARACTERS_TO_TRIGGER_SEARCH = 2;
 export const SIDEBAR_WIDTH = 350;
 export const GAUA = 'UA-40972813-6';
