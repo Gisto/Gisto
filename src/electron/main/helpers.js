@@ -118,7 +118,7 @@ function buildMenu(mainWindow) {
         },
         {
           label: 'Preferences',
-          accelerator: 'Command+,',
+          accelerator: 'CmdOrCtrl+,',
           click: () => mainWindow.webContents.send('routeTo', '/settings')
         },
         {
@@ -128,7 +128,7 @@ function buildMenu(mainWindow) {
         },
         {
           label: 'Reload',
-          accelerator: 'Command+R',
+          accelerator: 'CmdOrCtrl+R',
           click: () => mainWindow.webContents.reload()
         },
         {
@@ -141,7 +141,7 @@ function buildMenu(mainWindow) {
         },
         {
           label: 'Quit',
-          accelerator: 'Command+Q',
+          accelerator: 'CmdOrCtrl+Q',
           click: () => app.quit()
         }
       ]
