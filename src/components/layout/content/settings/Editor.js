@@ -193,7 +193,7 @@ export const EditorSettings = ({ changeSettings }) => {
 
           <Field>
             <Label>
-              <span>World wrap:</span>
+              <span>Word wrap:</span>
               <StyledISelect
                 value={ getSetting('settings-editor-wordWrap', 'bounded') }
                 onChange={ (event) =>
@@ -208,7 +208,7 @@ export const EditorSettings = ({ changeSettings }) => {
           </Field>
           <Field>
             <Label>
-              <span>World wrap column size:</span>
+              <span>Word wrap column size:</span>
               <StyledInput
                 type="number"
                 value={ getSetting('settings-editor-wordWrapColumn', 80) }
