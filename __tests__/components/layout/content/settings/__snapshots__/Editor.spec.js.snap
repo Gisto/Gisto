@@ -2275,7 +2275,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                             className="Label-ghyrbC kZMEPD"
                           >
                             <span>
-                              World wrap:
+                              Word wrap:
                             </span>
                             <StyledISelect
                               onChange={[Function]}
@@ -2456,7 +2456,7 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                             className="Label-ghyrbC kZMEPD"
                           >
                             <span>
-                              World wrap column size:
+                              Word wrap column size:
                             </span>
                             <StyledInput
                               onChange={[Function]}
