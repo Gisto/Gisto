@@ -126,7 +126,7 @@
     "mimic": "2.0.9",
     "monaco-editor-webpack-plugin": "1.7.0",
     "nock": "10.0.6",
-    "papaparse": "5.0.0",
+    "papaparse": "5.2.0",
     "prettier": "1.18.2",
     "prop-types": "15.7.2",
     "react-test-renderer": "16.8.6",
