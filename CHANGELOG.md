@@ -1,3 +1,8 @@
+### v1.13.3
+*  Fix changelog [View](https://github.com/Gisto/Gisto/commit/0eb6bf6d6a804581e6eb516ee496dc93e56bb285)
+*  Fix #286 Typo in settings label (#287) [View](https://github.com/Gisto/Gisto/commit/0786cb38c7c7d77b1886e25148872fa10981e1ed)
+*  CHORE (packages): update [View](https://github.com/Gisto/Gisto/commit/259dcebf88d01f94cdd70245a1df5afb2657eb57)
+
 ### v1.13.2
 *  FIX (edit)[#277]: fix snipped description in edit mode on web app [View](https://github.com/Gisto/Gisto/commit/1d743883985815579ec3d39b9c0238427191fb18)
 
