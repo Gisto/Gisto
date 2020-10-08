@@ -44,6 +44,7 @@ export interface IFile {
   type: any;
   size: number;
   content?: string;
+  raw_url?: string;
 }
 
 export interface IAnchor {

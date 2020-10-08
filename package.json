@@ -184,6 +184,7 @@
     "reselect": "4.0.0",
     "semver": "6.2.0",
     "superagent": "5.1.0",
+    "swagger-ui-react": "3.35.0",
     "tslint": "5.18.0",
     "uuid": "3.3.2",
     "wait-on": "3.2.0",

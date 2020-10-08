@@ -36,7 +36,8 @@ import {
   isImage,
   isTSV,
   isHTML,
-  isLaTex
+  isLaTex,
+  isOpenApi
 } from 'utils/files';
 
 import { syntaxMap } from 'constants/editor';
@@ -53,6 +54,7 @@ import GeoJson from 'components/common/editor/GeoJson';
 import Pdf from 'components/common/editor/Pdf';
 import Html from 'components/common/editor/Html';
 import LaTex from 'components/common/editor/LaTex';
+import OpenApi from 'components/common/editor/OpenApi';
 
 const RenderedComponent = css`
   padding: 20px 30px;
@@ -247,6 +249,10 @@ export class Editor extends React.Component {
       if (!edit && !isNew) {
         return <Csv text={ file.content }/>;
       }
+    }
+
+    if (isOpenApi(file)) {
+      return <OpenApi url={ file.raw_url }/>;
     }
 
     if (Boolean(getSetting('settings-editor-preview-html', false)) && isHTML(file)) {
