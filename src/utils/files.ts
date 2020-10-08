@@ -31,10 +31,21 @@ export const isTSV = (file: Partial<IFile>): boolean => file.type === 'text/tab-
 
 export const isImage = (file: Partial<IFile>): boolean => startsWith('image/', file.type);
 
+export const isJson = (file: IFile): boolean => file.language === 'JSON';
+
 export const isGeoJson = (file: IFile): boolean => {
   return (
-    file.language === 'JSON' &&
+    isJson(file) &&
     (getFileExtension(file.filename) === 'geojson' || getFileExtension(file.name) === 'geojson')
+  );
+};
+
+export const isOpenApi = (file: Partial<IFile>): void => {
+  return (
+    // @ts-ignore
+    (file.language === 'YAML' && file.content.startsWith('openapi:')) ||
+    // @ts-ignore
+    (file.language === 'JSON' && JSON.parse(file.content).swagger)
   );
 };
 
