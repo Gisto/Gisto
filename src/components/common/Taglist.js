@@ -33,10 +33,14 @@ export const Taglist = ({ snippets, searchTags, searchByTags, snippetsTags, them
       const filesCount = get('size', tagItem);
 
       return (
-        <Pill style={ linearGradient(filesCount) } key={ tag } onClick={ () => searchByTags(tag) }>
+        <Pill
+          title={ tag }
+          style={ linearGradient(filesCount) }
+          key={ tag }
+          onClick={ () => searchByTags(tag) }>
           {tag}
           <br/>
-          <strong>{filesCount}</strong> <small>snippets</small>
+          <strong>{filesCount}</strong> <small>{filesCount > 1 ? 'snippets' : 'snippet'}</small>
         </Pill>
       );
     }, list);
