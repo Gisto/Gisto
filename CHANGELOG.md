@@ -1,3 +1,8 @@
+### v1.13.4
+*  FEATURE (preview): openapi/swagger [View](https://github.com/Gisto/Gisto/commit/b2da41e87c2fbdf1fdd6f4098bef0db4efb73969)
+*  FIX (tag list): show full tag name on hover, closes #294 [View](https://github.com/Gisto/Gisto/commit/8dd3c23a433b7e3050edcc584fc8cbc8acdb8802)
+*  FEATURE (preview): openapi/swagger [View](https://github.com/Gisto/Gisto/commit/c1f87dee2fa1a61587f98ae7e0bbc9bdf92d3fa1)
+
 ### v1.13.3
 *  Fix changelog [View](https://github.com/Gisto/Gisto/commit/0eb6bf6d6a804581e6eb516ee496dc93e56bb285)
 *  Fix #286 Typo in settings label (#287) [View](https://github.com/Gisto/Gisto/commit/0786cb38c7c7d77b1886e25148872fa10981e1ed)
