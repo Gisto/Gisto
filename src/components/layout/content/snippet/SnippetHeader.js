@@ -15,32 +15,6 @@ import Input from 'components/common/controls/Input';
 import Anchor from 'components/common/Anchor';
 import { getSnippetUrl } from 'utils/url';
 
-const SnippetHeaderWrapper = styled.div`
-  display: flex;
-  flex: 1;
-  padding: 0 0 0 20px;
-  border-bottom: 1px solid ${(props) => props.theme.borderColor};
-  border-radius: 3px 3px 0 0;
-  line-height: 50px;
-  justify-content: space-between;
-  background: ${(props) => props.theme.headerBgLightest};
-  color: ${(props) => props.theme.baseAppColor};
-`;
-
-const Language = styled.span`
-  padding: 0 20px 0 0;
-  font-size: 14px;
-`;
-
-const FilenameIcon = styled(Icon)`
-  margin: 0 20px 0 0;
-`;
-
-const FileName = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
 export class SnippetHeader extends React.Component {
   updateSnippet = debounce(300, this.props.updateTempSnippet);
 
@@ -146,6 +120,32 @@ SnippetHeader.propTypes = {
   deleteFile: PropTypes.func,
   toggleCollapse: PropTypes.func
 };
+
+const SnippetHeaderWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  padding: 0 0 0 20px;
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
+  border-radius: 3px 3px 0 0;
+  line-height: 50px;
+  justify-content: space-between;
+  background: ${(props) => props.theme.headerBgLightest};
+  color: ${(props) => props.theme.baseAppColor};
+`;
+
+const Language = styled.span`
+  padding: 0 20px 0 0;
+  font-size: 14px;
+`;
+
+const FilenameIcon = styled(Icon)`
+  margin: 0 20px 0 0;
+`;
+
+const FileName = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export default connect(
   mapStateToProps,

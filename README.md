@@ -91,6 +91,7 @@ change.log of current version for more detailed info regarding new features, bug
 * GeoJSON preview
 * Images preview _(read only, pushed to gist by git)_
 * PDF preview _(read only, pushed to gist by git)_
+* Open API/Swagger preview
 
 And more...
 

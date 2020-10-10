@@ -32,7 +32,7 @@ export const Languagelist = ({ snippetsLanguages, searchByLanguages, snippets, t
           onClick={ () => searchByLanguages(language) }>
           {language || 'Other'}
           <br/>
-          <strong>{filesCount}</strong> <small>files</small>
+          <strong>{filesCount}</strong> <small>{filesCount > 1 ? 'files' : 'file'}</small>
         </Pill>
       );
     }, snippetsLanguages);

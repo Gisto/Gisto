@@ -15,48 +15,6 @@ import { copyToClipboard } from 'utils/snippets';
 
 import Icon from 'components/common/Icon';
 
-const StyledNavLink = styled(NavLink)`
-  background: ${(props) => props.theme.baseAppColor};
-  line-height: 30px;
-  padding: 10px;
-  text-decoration: none;
-  color: ${(props) => props.theme.bg};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: ${(props) => props.theme.bg};
-  }
-  &.selected {
-    background: ${(props) => props.theme.bg};
-    color: ${(props) => props.theme.baseAppColor};
-  }
-`;
-
-const Title = styled.span`
-  width: ${SIDEBAR_WIDTH - 100}px;
-  line-height: 23px;
-  font-size: 16px;
-`;
-
-const StyledIcon = styled(Icon)`
-  transition: all 0.2s ease-in-out;
-
-  ${(props) =>
-    props.onClick &&
-    `
-  &:hover {
-    transform: scale(1.5); 
-  }
-  `}
-
-  .selected & {
-    background-color: ${(props) => props.theme.baseAppColor};
-  }
-`;
-
 export class Snippet extends Component {
   toggleStar = (event) => {
     event.preventDefault();
@@ -167,6 +125,48 @@ Snippet.propTypes = {
   unsetStar: PropTypes.func,
   deleteSnippet: PropTypes.func
 };
+
+const StyledNavLink = styled(NavLink)`
+  background: ${(props) => props.theme.baseAppColor};
+  line-height: 30px;
+  padding: 10px;
+  text-decoration: none;
+  color: ${(props) => props.theme.bg};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: ${(props) => props.theme.bg};
+  }
+  &.selected {
+    background: ${(props) => props.theme.bg};
+    color: ${(props) => props.theme.baseAppColor};
+  }
+`;
+
+const Title = styled.span`
+  width: ${SIDEBAR_WIDTH - 100}px;
+  line-height: 23px;
+  font-size: 16px;
+`;
+
+const StyledIcon = styled(Icon)`
+  transition: all 0.2s ease-in-out;
+
+  ${(props) =>
+    props.onClick &&
+    `
+  &:hover {
+    transform: scale(1.5);
+  }
+  `}
+
+  .selected & {
+    background-color: ${(props) => props.theme.baseAppColor};
+  }
+`;
 
 export default withTheme(
   connect(

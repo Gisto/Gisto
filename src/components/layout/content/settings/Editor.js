@@ -252,6 +252,15 @@ export const EditorSettings = ({ changeSettings }) => {
 
           <Field>
             <Label>
+              <span>Preview Open API/swagger files:</span>
+              <Checkbox
+                checked={ getSetting('settings-editor-preview-open-api', true) }
+                onChange={ () => updateSettings('settings-editor-preview-open-api', null, true) }/>
+            </Label>
+          </Field>
+
+          <Field>
+            <Label>
               <span>Preview CSV/TSV files:</span>
               <Checkbox
                 checked={ getSetting('settings-editor-preview-csv', true) }

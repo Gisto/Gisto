@@ -3074,6 +3074,123 @@ exports[`COMPONENTS - <EditorSettings> render EditorSettings 1`] = `
                             className="Label-ghyrbC kZMEPD"
                           >
                             <span>
+                              Preview Open API/swagger files:
+                            </span>
+                            <Checkbox
+                              checked={true}
+                              onChange={[Function]}
+                            >
+                              <Box
+                                defaultChecked={true}
+                                onChange={[Function]}
+                                type="checkbox"
+                              >
+                                <StyledComponent
+                                  defaultChecked={true}
+                                  forwardedComponent={
+                                    Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "attrs": Array [],
+                                      "componentStyle": ComponentStyle {
+                                        "componentId": "Box-jLJQJw",
+                                        "isStatic": false,
+                                        "lastClassName": "bCTiKl",
+                                        "rules": Array [
+                                          "-webkit-font-smoothing:antialiased;text-rendering:optimizeSpeed;width:15px;height:15px;margin-right:1px;display:block;float:left;position:relative;cursor:pointer;-webkit-appearance:none;outline:none;:after{content:'';vertical-align:middle;text-align:center;line-height:15px;position:absolute;cursor:pointer;height:15px;width:15px;left:0;top:0;font-size:10px;border:1px solid ",
+                                          [Function],
+                                          ";background:#fff;}:checked:after{content:'\\\\2714';color:",
+                                          [Function],
+                                          ";}",
+                                        ],
+                                      },
+                                      "displayName": "Box",
+                                      "foldedComponentIds": Array [],
+                                      "render": [Function],
+                                      "styledComponentId": "Box-jLJQJw",
+                                      "target": "input",
+                                      "toString": [Function],
+                                      "warnTooManyClasses": [Function],
+                                      "withComponent": [Function],
+                                    }
+                                  }
+                                  forwardedRef={null}
+                                  onChange={[Function]}
+                                  type="checkbox"
+                                >
+                                  <input
+                                    className="Box-jLJQJw bCTiKl"
+                                    defaultChecked={true}
+                                    onChange={[Function]}
+                                    type="checkbox"
+                                  />
+                                </StyledComponent>
+                              </Box>
+                            </Checkbox>
+                          </div>
+                        </StyledComponent>
+                      </Label>
+                    </div>
+                  </StyledComponent>
+                </Field>
+                <Field>
+                  <StyledComponent
+                    forwardedComponent={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [],
+                        "componentStyle": ComponentStyle {
+                          "componentId": "Field-eieelf",
+                          "isStatic": true,
+                          "lastClassName": "fXkcEo",
+                          "rules": Array [
+                            "height:35px;",
+                          ],
+                        },
+                        "displayName": "Field",
+                        "foldedComponentIds": Array [],
+                        "render": [Function],
+                        "styledComponentId": "Field-eieelf",
+                        "target": "div",
+                        "toString": [Function],
+                        "warnTooManyClasses": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    forwardedRef={null}
+                  >
+                    <div
+                      className="Field-eieelf fXkcEo"
+                    >
+                      <Label>
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "Label-ghyrbC",
+                                "isStatic": true,
+                                "lastClassName": "kZMEPD",
+                                "rules": Array [
+                                  "display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;",
+                                ],
+                              },
+                              "displayName": "Label",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "Label-ghyrbC",
+                              "target": "div",
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                        >
+                          <div
+                            className="Label-ghyrbC kZMEPD"
+                          >
+                            <span>
                               Preview CSV/TSV files:
                             </span>
                             <Checkbox
