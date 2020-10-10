@@ -25,7 +25,10 @@ export const Taglist = ({ snippets, searchTags, searchByTags, snippetsTags, them
     let list = snippetsTags;
 
     if (!isEmpty(searchTags)) {
-      list = filter((tag) => tag.tag.includes(searchTags), snippetsTags);
+      list = filter(
+        (tag) => tag.tag.toLowerCase().includes(searchTags.toLowerCase()),
+        snippetsTags
+      );
     }
 
     return map((tagItem) => {

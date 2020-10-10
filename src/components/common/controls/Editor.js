@@ -251,7 +251,7 @@ export class Editor extends React.Component {
       }
     }
 
-    if (isOpenApi(file)) {
+    if (Boolean(getSetting('settings-editor-preview-open-api', false)) && isOpenApi(file)) {
       return <OpenApi url={ file.raw_url }/>;
     }
 

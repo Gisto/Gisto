@@ -24,202 +24,6 @@ import { gaPage } from 'utils/ga';
 import Taglist from 'components/common/Taglist';
 import Languagelist from 'components/common/Languagelist';
 
-const DashbordWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
-  grid-gap: 30px;
-  color: #444;
-  height: 100%;
-  h3 {
-    margin: 9px 0 20px;
-    color: ${(props) => props.theme.baseAppColor};
-    font-weight: 300;
-    font-size: 16px;
-  }
-`;
-
-const ContainerWithPills = `
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr) ) ;
-  color: ${(props) => props.theme.baseAppColor};
-  max-height: 50vh;
-  overflow: auto;
-  font-size: smaller;
-  cursor: pointer;
-`;
-
-const Box = styled.div`
-  background: ${(props) => props.theme.lightText};
-  padding: 20px;
-  border-radius: 3px;
-  box-shadow: 0 0 10px ${(props) => props.theme.borderColor};
-`;
-
-const gridBoxInnerCss = css`
-  h3 {
-    font-size: 22px;
-    margin: 0 0 10px 0;
-  }
-
-  span {
-    font-size: 42px;
-    float: right;
-    color: ${(props) => props.theme.baseAppColor};
-
-    small {
-      font-size: 10px;
-      float: right;
-    }
-  }
-
-  :hover {
-    box-shadow: 0 0 50px ${(props) => props.theme.borderColor};
-    cursor: pointer;
-  }
-`;
-
-const Public = styled(Box)`
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 1;
-
-  ${gridBoxInnerCss};
-`;
-
-const Private = styled(Box)`
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 1;
-
-  ${gridBoxInnerCss};
-`;
-
-const Starred = styled(Box)`
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 1;
-
-  ${gridBoxInnerCss};
-`;
-
-const Truncated = styled(Box)`
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 1;
-  grid-row-end: 1;
-
-  ${gridBoxInnerCss};
-`;
-
-const Untagged = styled(Box)`
-  grid-column-start: 5;
-  grid-column-end: 6;
-  grid-row-start: 1;
-  grid-row-end: 1;
-
-  ${gridBoxInnerCss};
-`;
-
-const Untitled = styled(Box)`
-  grid-column-start: 6;
-  grid-column-end: 7;
-  grid-row-start: 1;
-  grid-row-end: 1;
-
-  ${gridBoxInnerCss};
-`;
-
-const Language = styled(Box)`
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 2;
-  max-height: 40vh;
-  > div {
-    ${ContainerWithPills};
-    max-height: 35vh;
-    overflow: auto;
-  }
-`;
-
-const Stars = styled(Box)`
-  grid-column-start: 4;
-  grid-column-end: 7;
-  grid-row-start: 2;
-  grid-row-end: 2;
-  max-height: 40vh;
-  > ul {
-    overflow: auto;
-    max-height: 35vh;
-    list-style-type: none;
-    padding: 0;
-    margin-top: 0;
-
-    li {
-      margin: 10px 0;
-      position: relative;
-      overflow: hidden;
-      white-space: nowrap;
-      &:after {
-        content: '';
-        width: 100px;
-        height: 50px;
-        position: absolute;
-        top: 0;
-        right: 0;
-        background: -webkit-gradient(
-          linear,
-          left top,
-          right top,
-          color-stop(0%, rgba(255, 255, 255, 0)),
-          color-stop(56%, rgba(255, 255, 255, 1)),
-          color-stop(100%, rgba(255, 255, 255, 1))
-        );
-        background: -webkit-linear-gradient(
-          left,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 1) 56%,
-          rgba(255, 255, 255, 1) 100%
-        );
-      }
-    }
-  }
-`;
-
-const Tags = styled(Box)`
-  grid-column-start: 1;
-  grid-column-end: 7;
-  grid-row-start: 3;
-  grid-row-end: 3;
-  > div {
-    ${ContainerWithPills}
-  }
-`;
-
-const HeadingWithSearch = styled.span`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-`;
-
-const StyledInput = styled(Input)`
-  width: 15vw;
-  margin: 0 10px;
-`;
-
-const StyledNavLink = styled(NavLink)`
-  text-decoration: none;
-  color: ${(props) => props.theme.baseAppColor};
-
-  :hover {
-    color: ${(props) => props.theme.headerBgLightest};
-  }
-`;
-
 export class DashBoard extends React.Component {
   state = {
     searchTags: '',
@@ -416,6 +220,202 @@ const mapStateToProps = (state) => ({
   untaggedSnippets: getUntagged(state),
   theme: get(['ui', 'settings', 'theme'], state)
 });
+
+const DashbordWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+  grid-gap: 30px;
+  color: #444;
+  height: 100%;
+  h3 {
+    margin: 9px 0 20px;
+    color: ${(props) => props.theme.baseAppColor};
+    font-weight: 300;
+    font-size: 16px;
+  }
+`;
+
+const ContainerWithPills = `
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr) ) ;
+  color: ${(props) => props.theme.baseAppColor};
+  max-height: 50vh;
+  overflow: auto;
+  font-size: smaller;
+  cursor: pointer;
+`;
+
+const Box = styled.div`
+  background: ${(props) => props.theme.lightText};
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 0 0 10px ${(props) => props.theme.borderColor};
+`;
+
+const gridBoxInnerCss = css`
+  h3 {
+    font-size: 22px;
+    margin: 0 0 10px 0;
+  }
+
+  span {
+    font-size: 42px;
+    float: right;
+    color: ${(props) => props.theme.baseAppColor};
+
+    small {
+      font-size: 10px;
+      float: right;
+    }
+  }
+
+  :hover {
+    box-shadow: 0 0 50px ${(props) => props.theme.borderColor};
+    cursor: pointer;
+  }
+`;
+
+const Public = styled(Box)`
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+
+  ${gridBoxInnerCss};
+`;
+
+const Private = styled(Box)`
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 1;
+
+  ${gridBoxInnerCss};
+`;
+
+const Starred = styled(Box)`
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 1;
+
+  ${gridBoxInnerCss};
+`;
+
+const Truncated = styled(Box)`
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 1;
+
+  ${gridBoxInnerCss};
+`;
+
+const Untagged = styled(Box)`
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 1;
+
+  ${gridBoxInnerCss};
+`;
+
+const Untitled = styled(Box)`
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 1;
+
+  ${gridBoxInnerCss};
+`;
+
+const Language = styled(Box)`
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  max-height: 40vh;
+  > div {
+    ${ContainerWithPills};
+    max-height: 35vh;
+    overflow: auto;
+  }
+`;
+
+const Stars = styled(Box)`
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  max-height: 40vh;
+  > ul {
+    overflow: auto;
+    max-height: 35vh;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+
+    li {
+      margin: 10px 0;
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      &:after {
+        content: '';
+        width: 100px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: -webkit-gradient(
+          linear,
+          left top,
+          right top,
+          color-stop(0%, rgba(255, 255, 255, 0)),
+          color-stop(56%, rgba(255, 255, 255, 1)),
+          color-stop(100%, rgba(255, 255, 255, 1))
+        );
+        background: -webkit-linear-gradient(
+          left,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 1) 56%,
+          rgba(255, 255, 255, 1) 100%
+        );
+      }
+    }
+  }
+`;
+
+const Tags = styled(Box)`
+  grid-column-start: 1;
+  grid-column-end: 7;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  > div {
+    ${ContainerWithPills}
+  }
+`;
+
+const HeadingWithSearch = styled.span`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`;
+
+const StyledInput = styled(Input)`
+  width: 15vw;
+  margin: 0 10px;
+`;
+
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: ${(props) => props.theme.baseAppColor};
+
+  :hover {
+    color: ${(props) => props.theme.headerBgLightest};
+  }
+`;
 
 DashBoard.propTypes = {
   snippets: PropTypes.object,
