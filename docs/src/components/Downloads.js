@@ -199,7 +199,7 @@ class Downloads extends Component {
                     </p>
 
                     <pre>
-                      <span>SHELL</span>$ brew cask install gisto
+                      <span>SHELL</span>$ brew install --cask gisto
                     </pre>
                     <small>Please note that it might be slightly outdated version</small>
                     <br />
