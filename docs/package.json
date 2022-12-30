@@ -19,7 +19,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.1.27",
+    "gatsby": "^2.32.13",
     "gatsby-plugin-sass": "^2.0.10",
     "gatsby-plugin-sharp": "^2.0.25",
     "gatsby-remark-images": "^2.0.6",
