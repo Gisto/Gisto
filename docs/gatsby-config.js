@@ -35,23 +35,23 @@ module.exports = {
             displayName: 'Home'
           },
           {
-            path: 'features',
+            path: '/features',
             displayName: 'Features'
           },
           {
-            path: 'documentation',
+            path: '/documentation',
             displayName: 'Docs'
           },
           {
-            path: 'faq',
+            path: '/faq',
             displayName: 'F.A.Q.'
           },
           {
-            path: 'blog',
+            path: '/blog',
             displayName: 'Blog'
           },
           {
-            path: 'downloads',
+            path: '/downloads',
             displayName: 'Download'
           }
         ],
