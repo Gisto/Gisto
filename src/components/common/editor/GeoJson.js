@@ -18,7 +18,7 @@ class GeoJson extends Component {
         center: [0, 0],
         zoom: 5,
         layers: [
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           })
         ]
