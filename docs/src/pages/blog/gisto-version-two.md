@@ -7,6 +7,7 @@ post_title: "Gisto version 2 is in active development"
 author: "Gisto team"
 date: "2018-02-10"
 path: "/blog/gisto-version-2-in-development"
+slug: "/blog/gisto-version-2-in-development"
 
 ---
 
