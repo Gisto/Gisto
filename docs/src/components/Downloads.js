@@ -1,3 +1,5 @@
+import 'isomorphic-fetch';
+
 import React, { Component } from 'react';
 
 function getFileType(file) {

@@ -36,26 +36,21 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
-    resolve(graphql(`
-    {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
-        edges {
-          node {
-              fields{
-                  slug
-              }
-            frontmatter {
-              title
-              path
-            }
-          }
+    resolve(graphql(`{
+  allMarkdownRemark(sort: {frontmatter: {date: DESC}}, limit: 1000) {
+    edges {
+      node {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          path
         }
       }
     }
-  `)
+  }
+}`)
       .then((result) => {
         if (result.errors) {
           console.log(result.errors);

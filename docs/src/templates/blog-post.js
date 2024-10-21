@@ -7,7 +7,13 @@ import Footer from 'components/footer';
 
 const BlogPost = ({ data, location }) => {
   const url = `https://www.gistoapp.com${location.pathname}`;
-  const title = data.markdownRemark.frontmatter.title;
+
+  const { markdownRemark } = data // data.markdownRemark holds your post data
+  const { frontmatter, html } = markdownRemark
+
+
+
+  const title = frontmatter.title;
   const disqusShortname = 'gisto';
   const disqusConfig = {
     url,
@@ -32,15 +38,15 @@ const BlogPost = ({ data, location }) => {
                 className="fa fa-chevron-left"/> Back
               </Link>
 
-              <h2>{data.markdownRemark.frontmatter.post_title}</h2>
+              <h2>{frontmatter.post_title}</h2>
 
               <p>
-                <i>by <b>{data.markdownRemark.frontmatter.author}</b> | {data.markdownRemark.frontmatter.date}
+                <i>by <b>{frontmatter.author}</b> | {frontmatter.date}
                 </i>
               </p>
 
 
-              <div dangerouslySetInnerHTML={ { __html: data.markdownRemark.html } }/>
+              <div dangerouslySetInnerHTML={ { __html: html } }/>
 
               <br/>
 
@@ -92,8 +98,8 @@ const BlogPost = ({ data, location }) => {
 export default BlogPost;
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
-    markdownRemark(frontmatter: {path: {eq: $path}}) {
+  query($slug: String!) {
+    markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
@@ -103,5 +109,4 @@ export const pageQuery = graphql`
         post_title
       }
     }
-  }
-`;
+  }`;

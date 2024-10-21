@@ -7,6 +7,7 @@ post_title: "Gisto \"nightly\" builds available"
 author: "Gisto team"
 date: "2015-02-01"
 path: "/blog/nightly-builds"
+slug: "/blog/nightly-builds"
 
 ---
 

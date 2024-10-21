@@ -3,12 +3,15 @@ import React from 'react';
 import colortTemesImage from '../images/colours2.png';
 
 const images = [
-  'https://camo.githubusercontent.com/5d6d4a596d8a290f34c3d4997314076d27c68683/68747470733a2f2f696d6775722e636f6d2f4a7838546339732e706e67',
-  'https://camo.githubusercontent.com/167453afa79d0f2b3eee9b5436be08682976f5b9/68747470733a2f2f696d6775722e636f6d2f4f777365796b562e706e67',
-  'https://camo.githubusercontent.com/7c6db3c04ccbc2b60b41a079016a40a3edc687b8/68747470733a2f2f696d6775722e636f6d2f7969454a524e742e706e67',
-  'https://camo.githubusercontent.com/3ab6b0d1da376692ee05e5096cc0f1481c75563a/68747470733a2f2f696d6775722e636f6d2f4a7455437366492e706e67',
-  'https://camo.githubusercontent.com/d878121736eb99225f5449cf3f5b8e65e324893c/68747470733a2f2f696d6775722e636f6d2f31796c695968522e706e67',
-  'https://camo.githubusercontent.com/2a727b8251db908fa58552b631786e96c84a5019/68747470733a2f2f696d6775722e636f6d2f616f57355638452e706e67',
+  'https://imgur.com/Jx8Tc9s.png',
+  'https://imgur.com/OwseykV.png',
+  'https://imgur.com/yiEJRNt.png',
+  'https://imgur.com/JtUCsfI.png',
+  'https://imgur.com/1yliYhR.png',
+  'https://imgur.com/aoW5V8E.png',
+  'https://imgur.com/Aac48m9.png',
+  'https://imgur.com/LW6SFg2.png',
+  'https://imgur.com/bXySAUt.png',
   colortTemesImage
 ];
 
