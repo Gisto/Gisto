@@ -3,6 +3,10 @@ import Media from 'react-media';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import Logo from './Logo';
 
+import 'styles/grid.css';
+import 'font-awesome/css/font-awesome.min.css';
+import 'styles/gisto.scss';
+
 class Header extends Component {
   state = {
     open: false

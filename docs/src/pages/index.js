@@ -4,12 +4,6 @@ import { Link } from 'gatsby';
 
 import Header from 'components/header';
 import Footer from 'components/footer';
-import Slider from 'components/Slider';
-
-import 'styles/grid.css';
-import 'font-awesome/css/font-awesome.min.css';
-import 'styles/gisto.scss';
-
 
 import editImg from 'images/edit.png';
 import searchImg from 'images/search.png';
