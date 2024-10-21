@@ -149,7 +149,7 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "dependencies": {
-    "@sentry/electron": "0.17.1",
+    "@sentry/electron": "5.6.0",
     "asciidoctor.js": "1.5.9",
     "connected-react-router": "6.5.0",
     "core-js": "3.1.4",
