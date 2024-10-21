@@ -38,9 +38,9 @@ All your data is stored on GitHub and you can access it from GitHub Gists at any
 
 ## Getting gisto
 
-- You can download Gisto for (macOS, Windows, Linux) desktop from [our website](https://www.gistoapp.com/) or from [releases](https://github.com/Gisto/Gisto/releases) tab
+- You can download Gisto for (macOS, Windows, Linux) desktop from [our website](https://gistoapp.netlify.app) or from [releases](https://github.com/Gisto/Gisto/releases) tab
 
-- Use featured Web based client available at: [https://web.gistoapp.com](https://web.gistoapp.com) 
+- Use featured Web based client available at: [https://gistoapp.netlify.app](https://gistoapp.netlify.app) 
 
 ## Future and Status
 
@@ -127,14 +127,14 @@ Gisto only saves the oAuth2 token received after authenticating and nothing else
 
 This token will be saved permanently until you log out.
 
-You can find out more at the [F.A.Q.](http://www.gistoapp.com/faq/) section
+You can find out more at the [F.A.Q.](https://gistoapp.netlify.app) section
 
 ## How to help/contribute
 
 - fix issues, pull request are very welcome
 - write, improve docs
 - write tests (we use jest)
-- fix/contribute to Gisto's website (https://gistoapp.com)
+- fix/contribute to Gisto's website (https://gistoapp.netlify.app)
 - suggest features and improvements
 - spread the word
 
