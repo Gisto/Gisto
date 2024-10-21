@@ -7,6 +7,7 @@ post_title: "All you need to know about working with Gisto on GitHub Enterprise"
 author: "Gisto team"
 date: "2015-03-23"
 path: "/blog/gisto-enterprise-mode"
+slug: "/blog/gisto-enterprise-mode"
 
 ---
 

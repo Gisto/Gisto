@@ -19,19 +19,16 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.1.27",
-    "gatsby-plugin-sass": "^2.0.10",
-    "gatsby-plugin-sharp": "^2.0.25",
-    "gatsby-remark-images": "^2.0.6",
-    "gatsby-source-filesystem": "^2.0.23",
-    "gatsby-transformer-remark": "^2.3.1",
-    "node-sass": "^4.11.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-helmet": "^5.2.0",
-    "react-media": "^1.9.2"
-  },
-  "devDependencies": {
-    "@babel/polyfill": "^7.2.5"
+    "gatsby": "^5.13.7",
+    "gatsby-plugin-sass": "^6.13.1",
+    "gatsby-plugin-sharp": "^5.13.1",
+    "gatsby-remark-images": "^7.13.2",
+    "gatsby-source-filesystem": "^5.13.1",
+    "gatsby-transformer-remark": "^6.13.1",
+    "sass": "^1.80.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
+    "react-media": "^1.10.0"
   }
 }

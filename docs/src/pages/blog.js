@@ -46,22 +46,20 @@ const Blog = ({ data }) => (
   </React.Fragment>
   );
 
-export const query = graphql`
-  query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
-      edges {
-        node {
-          id
-          excerpt(pruneLength: 250)
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            path
-            title
-          }
+export const query = graphql`{
+  allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+    edges {
+      node {
+        id
+        excerpt(pruneLength: 250)
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          path
+          title
         }
       }
     }
   }
-`;
+}`;
 
 export default Blog;
