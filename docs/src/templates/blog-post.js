@@ -97,31 +97,6 @@ const BlogPost = ({ data, location }) => {
 
 export default BlogPost;
 
-// export const pageQuery = graphql`
-//   query BlogPostBySlug($slug: String!) {
-//     site {
-//       siteMetadata {
-//         title
-//         author
-//       }
-//     }
-//     markdownRemark(fields: { slug: { eq: $slug } }) {
-//       id
-//       excerpt
-//       html
-//       fields {
-//         readingTime {
-//           text
-//         }
-//       }
-//       frontmatter {
-//         title
-//         date(formatString: "MMMM DD, YYYY")
-//       }
-//     }
-//   }
-// `;
-
 export const pageQuery = graphql`
   query($slug: String!) {
     markdownRemark(fields: {slug: {eq: $slug}}) {
