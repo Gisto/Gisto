@@ -1,8 +1,6 @@
-# www.gistoapp.com
+# https://gistoapp.netlify.app
 
-Web pages of [www.gistoapp.com](http://www.gistoapp.com)
-
-**NOTE!** Default branch is `src`, deployment branch is `master`
+Web pages of [https://gistoapp.netlify.app](https://gistoapp.netlify.app)
 
 ### Built with:
 
@@ -13,8 +11,6 @@ Web pages of [www.gistoapp.com](http://www.gistoapp.com)
 - `npm install` - to install dependencies (runs `bower install` via postinstall script)
 - `npm run start` - to run the site
 
-### Deploy
+### Deployment
 
-- `npm run build` - generate `public` dir
-- Commit and push changes (to `src` branch)
-- `npm run site-deploy` - will deploy content of generated `_site` with git subtree 
+Site automatically deploys to netlify upon merge to master
