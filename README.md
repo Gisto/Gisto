@@ -80,7 +80,7 @@ change.log of current version for more detailed info regarding new features, bug
 * Theme color changer
 * Drag and drop to create files
 * Comments
-* [Web app](https://web.gistoapp.com)
+* [Web app](https://web-gistoapp.netlify.app)
 * Open source
 
 ### Preview of:
@@ -127,7 +127,7 @@ Gisto only saves the oAuth2 token received after authenticating and nothing else
 
 This token will be saved permanently until you log out.
 
-You can find out more at the [F.A.Q.](https://gistoapp.netlify.app) section
+You can find out more at the [F.A.Q.](https://gistoapp.netlify.app/faq) section
 
 ## How to help/contribute
 
