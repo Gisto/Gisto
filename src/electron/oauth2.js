@@ -56,7 +56,7 @@ ipcMain.on('oauth2-login', (event) => {
   });
 
   session.defaultSession.webRequest.onBeforeRedirect(
-    { urls: ['*//web.gistoapp.com/?code=*'] },
+    { urls: ['*//web-gistoapp.netlify.app/?code=*'] },
     (details) => {
       handleCallback(details.redirectURL);
     }

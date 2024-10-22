@@ -108,7 +108,7 @@ const Features = () => (
 
             <p>Since version <b>v1.9.84</b>, <Logo/> available as a full featured web app.
                             You can navigate your browser to
-              <a href="https://web.gistoapp.com">web.gistoapp.com</a> to access web
+              <a href="https://web-gistoapp.netlify.app">web-gistoapp.netlify.app</a> to access web
                             app.
             </p>
           </div>

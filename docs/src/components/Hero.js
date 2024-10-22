@@ -57,7 +57,7 @@ const Hero = () => (
               <i>List of features and new additions</i> <i className="fa fa-chevron-right"/>
             </span>
           </Link>
-          <a href="https://web.gistoapp.com"
+          <a href="https://web-gistoapp.netlify.app"
              className="w-col w-col-4 w-clearfix box bg-greyer txt-white uppercase">
             <i className="fa fa-laptop fa-4x pull-left"/>
 
@@ -82,10 +82,8 @@ const Hero = () => (
     </section>
 
     <div className="social w-clearfix">
-
       <GithubButtonWithCount repo="gisto" user="gisto" type="fork" count/>
-      <GithubButtonWithCount repo="gisto" user="gisto" type="watch" count/>
-
+      <GithubButtonWithCount repo="gisto" user="gisto" type="star" count/>
     </div>
 
   </React.Fragment>
