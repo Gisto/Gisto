@@ -1,0 +1,29 @@
+name: run eslint and ts lint
+
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 22
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.11.0
+
+      - name: Install
+        run: pnpm install
+
+      - name: eslint
+        run: pnpm lint
+
+      - name: TS lint
+        run: pnpm ts:lint
+
