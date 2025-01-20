@@ -16,6 +16,9 @@ All progress of current version can be tracked on the ["main"](https://github.co
 
 Previous version can be tracked via the ["master"](https://github.com/Gisto/Gisto/tree/master) branch.
 
+[![Gisto MK-II](https://img.youtube.com/vi/n5UnZ_Jp4N8/0.jpg)](https://www.youtube.com/watch?v=n5UnZ_Jp4N8 "Gisto MK-II")
+
+
 # About
 
 Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor. All your data is stored on GitHub and you can access it from GitHub Gists at any time with changes carrying over to Gisto
