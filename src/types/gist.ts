@@ -15,7 +15,7 @@ export type GistType = {
   files: Record<string, GistFileType>;
   id: string;
   isPublic: boolean;
-  createdAt: Date;
+  createdAt: string;
   description: string;
   stars: number;
 };
