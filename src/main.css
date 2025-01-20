@@ -128,15 +128,7 @@
 }
 
 @layer components {
-  p,
-  a,
-  em,
-  ul,
-  li,
-  small,
-  div,
-  span,
-  article {
+  body {
     @apply font-body;
   }
 
