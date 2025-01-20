@@ -16,6 +16,9 @@ All progress of current version can be tracked on the ["main"](https://github.co
 
 Previous version can be tracked via the ["master"](https://github.com/Gisto/Gisto/tree/master) branch.
 
+
+# Preview 
+
 [![Gisto MK-II](https://img.youtube.com/vi/n5UnZ_Jp4N8/0.jpg)](https://www.youtube.com/watch?v=n5UnZ_Jp4N8 "Gisto MK-II")
 
 
