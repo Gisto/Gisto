@@ -70,7 +70,7 @@ export const SnippetFile = ({ file, snippet }: { file: GistFileType; snippet: Gi
           {file.filename}
         </div>
       </div>
-      <div className="bg-background py-2 px-4 overflow-auto mb-8">
+      <div className="bg-background py-2 px-4 overflow-auto mb-8 font-mono">
         {file.truncated ? (
           <div className="p-4">
             File too large, please{' '}
@@ -91,6 +91,8 @@ export const SnippetFile = ({ file, snippet }: { file: GistFileType; snippet: Gi
               scrollBeyondLastLine: false,
               readOnly: true,
               automaticLayout: true,
+              fontFamily: '"Fira Code", "Fira Mono", monospace',
+              fontSize: 13,
             }}
             onMount={handleEditorDidMount}
             height={height}
