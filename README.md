@@ -30,7 +30,7 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 
 You can download Gisto for (macOS, Windows, Linux) desktop from [releases](https://github.com/Gisto/Gisto/releases) tab
 
-Or use full featured Web based client available at: [Web app](https://gisto-web-app.netlify.app)  (old one still available at: https://web-gistoapp.netlify.app)
+Or use full featured Web based client available at: [Web app](https://gisto-web-app.netlify.app)  (old one still [available](https://web-gistoapp.netlify.app) as well )
 
 # Features
 
