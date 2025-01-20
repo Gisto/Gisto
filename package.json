@@ -10,7 +10,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "ts:lint": "tsc -b --noEmit",
-    "preview": "vite preview",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
