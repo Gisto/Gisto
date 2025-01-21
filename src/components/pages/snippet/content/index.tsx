@@ -24,7 +24,7 @@ import { Loading } from '@/components/Loading.tsx';
 export const SnippetContent = () => {
   const [snippet, setSnippet] = useState<GistType | null>(null);
   const [loading, setLoading] = useState(true);
-  const { params } = useRouter();
+  const { params, navigate } = useRouter();
 
   useEffect(() => {
     setLoading(true);
@@ -128,7 +128,13 @@ export const SnippetContent = () => {
                   <ExternalLink /> Open in <strong>jsfiddle</strong>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={async () => {
+                  const value = await GithubAPI.deleteGist(snippet.id);
+
+                  if (value.success) {
+                    navigate('/');
+                  }
+                }}>
                   <Trash /> Delete
                 </DropdownMenuItem>
               </DropdownMenuContent>

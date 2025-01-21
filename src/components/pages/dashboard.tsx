@@ -122,7 +122,7 @@ export const DashBoard = () => {
     },
     {
       title: 'Untitled',
-      value: list.filter((snippet) => snippet.description.toLowerCase() === 'untitled').length,
+      value: list.filter((snippet) =>  snippet.isUntitled || snippet.description.trim().toLowerCase() === 'untitled').length,
     },
   ];
 

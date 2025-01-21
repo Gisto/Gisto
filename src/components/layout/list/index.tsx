@@ -58,7 +58,7 @@ export const Lists = ({
   const listOfSnippets = () => {
     return search !== '' && search.length > 0
       ? currentSnippets.filter(
-          (listItem) => listItem.description && listItem.description.includes(search)
+          (listItem) => listItem.description.trim() && listItem.description.includes(search.trim())
         )
       : currentSnippets;
   };

@@ -34,30 +34,37 @@ export const getTags = (title: string) => {
 
 export const copyToClipboard = (text: string) => navigator.clipboard.writeText(text);
 
+export const processSnippet = (snippet: GistType) => {
+  const description = snippet.description ?? 'Untitled';
+
+  return {
+    ...snippet,
+    id: snippet.resourcePath,
+    description: description,
+    isUntitled: !description,
+    tags: getTags(description),
+    title: removeTags(description),
+    languages: Array.from(
+      Object.values(
+        Object.keys(snippet.files)
+          .map((file) => snippet.files[file]?.language)
+          .filter(Boolean)
+          .reduce((acc: Record<string, string>, lang) => {
+            acc[lang] = lang;
+            return acc;
+          }, {})
+      )
+    ),
+  };
+};
+
 export const fetchAndUpdateSnippets = async () => {
   const allFetchedSnippetIds = new Set();
 
-  for await (const gistPage of GithubAPI.getGistsGenerator()) {
+  for await (const snippetsPage of GithubAPI.getGistsGenerator()) {
     const currentSnippetsState = globalState.getState().snippets;
 
-    const newSnippets = gistPage.map((gist: GistType) => ({
-      ...gist,
-      id: gist.resourcePath,
-      description: gist.description ?? 'Untitled',
-      tags: getTags(gist.description),
-      title: removeTags(gist.description),
-      languages: Array.from(
-        Object.values(
-          Object.keys(gist.files)
-            .map((file) => gist.files[file]?.language)
-            .filter(Boolean)
-            .reduce((acc: Record<string, string>, lang) => {
-              acc[lang] = lang;
-              return acc;
-            }, {})
-        )
-      ),
-    }));
+    const newSnippets = snippetsPage.map((snippet) => processSnippet(snippet));
 
     newSnippets.forEach((snippet) => allFetchedSnippetIds.add(snippet.id));
 
@@ -72,16 +79,16 @@ export const fetchAndUpdateSnippets = async () => {
       (newSnippet) => !updatedSnippets.some((snippet) => snippet.id === newSnippet.id)
     );
 
-    const isLastPage = gistPage.length < ITEMS_PER_PAGE;
+    const isLastPage = snippetsPage.length < ITEMS_PER_PAGE;
     const filteredSnippets = isLastPage
       ? updatedSnippets.filter((snippet) => allFetchedSnippetIds.has(snippet.id))
       : updatedSnippets;
 
     globalState.setState({
       // @ts-expect-error no need to specify all ATM
-      snippets: [...completelyNewSnippets, ...filteredSnippets].sort(
-        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      ),
+      snippets: [...completelyNewSnippets, ...filteredSnippets]
+        // TODO: we probably should sort on the client page where interactions are later on
+        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()),
     });
 
     if (isLastPage) {

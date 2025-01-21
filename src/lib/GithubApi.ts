@@ -109,7 +109,7 @@ export const GithubAPI = {
       body: body ? JSON.stringify(body) : undefined,
     });
 
-    if (response.status !== 200) {
+    if (response.status > 399) {
       if (response.status === 401) {
         document.location.href = '/';
       }
@@ -129,7 +129,7 @@ export const GithubAPI = {
     // const responseClone = response.clone();
     // await cache.put(url, responseClone);
 
-    const data = await response.json();
+    const data = method === "DELETE" ? null : await response.json();
 
     return { data, headers: response.headers, status: response.status };
   },
@@ -167,9 +167,19 @@ export const GithubAPI = {
     return data;
   },
 
-  async deleteGist(gistId: string): Promise<void> {
+  async deleteGist(gistId: string): Promise<{ success: boolean }> {
     // TODO delete from storage if success
-    await this.request({ endpoint: `/${gistId}`, method: 'DELETE' });
+    const {status} = await this.request({ endpoint: `/${gistId}`, method: 'DELETE' });
+
+    if (status === 204) {
+      globalState.setState({
+        snippets: globalState.getState().snippets.filter((snippet) => snippet.id !== gistId)
+      });
+
+      return {success: true}
+    }
+
+    return {success: false}
   },
 
   async fetchGithubGraphQL<T>(query: string, variables?: Record<string, unknown>): Promise<T> {

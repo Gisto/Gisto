@@ -23,5 +23,6 @@ export type GistType = {
 export type GistEnrichedType = GistType & {
   title: string;
   tags: string[];
+  isUntitled: boolean;
   languages: { name: string; color: string }[];
 };
