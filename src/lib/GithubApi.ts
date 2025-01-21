@@ -168,6 +168,7 @@ export const GithubAPI = {
   },
 
   async deleteGist(gistId: string): Promise<void> {
+    // TODO delete from storage if success
     await this.request({ endpoint: `/${gistId}`, method: 'DELETE' });
   },
 
@@ -286,6 +287,7 @@ export const GithubAPI = {
     }
   },
 
+  // TODO: let's keep in case we want to come back to only load when all pages fetched
   async getGists(): Promise<GistType[]> {
     const allGists: GistType[] = [];
     for await (const gistPage of this.getGistsGenerator()) {
@@ -300,7 +302,7 @@ export const GithubAPI = {
 
     while (hasNextPage) {
       const gistsPage = await this.fetchGists(cursor);
-      // @ts-expect-error align GQL types with response types
+      // @ts-expect-error align GraphQL types with response types
       yield gistsPage.nodes;
       hasNextPage = gistsPage.pageInfo.hasNextPage;
       cursor = gistsPage.pageInfo.endCursor;
