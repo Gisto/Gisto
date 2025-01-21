@@ -20,6 +20,7 @@ import { GistType } from '@/types/gist.ts';
 import { SnippetFile } from '@/components/pages/snippet/content/snippet-file.tsx';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { Loading } from '@/components/Loading.tsx';
+import { globalState } from '@/lib/store/globalState.ts';
 
 export const SnippetContent = () => {
   const [snippet, setSnippet] = useState<GistType | null>(null);
@@ -113,6 +114,15 @@ export const SnippetContent = () => {
                   <Copy /> Copy snippet ID
                 </DropdownMenuItem>
                 <DropdownMenuItem
+                  onClick={() =>
+                    copyToClipboard(
+                      `<script src="https://gist.github.com/${globalState.getState()?.user?.login ?? ''}/${snippet.id}.js"></script>`
+                    )
+                  }
+                >
+                  <Copy /> Copy embed code to clipboard
+                </DropdownMenuItem>
+                <DropdownMenuItem
                   onClick={() => {
                     window.open(`https://plnkr.co/edit/gist:${snippet?.id}?preview`);
                   }}
@@ -128,13 +138,15 @@ export const SnippetContent = () => {
                   <ExternalLink /> Open in <strong>jsfiddle</strong>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={async () => {
-                  const value = await GithubAPI.deleteGist(snippet.id);
+                <DropdownMenuItem
+                  onClick={async () => {
+                    const value = await GithubAPI.deleteGist(snippet.id);
 
-                  if (value.success) {
-                    navigate('/');
-                  }
-                }}>
+                    if (value.success) {
+                      navigate('/');
+                    }
+                  }}
+                >
                   <Trash /> Delete
                 </DropdownMenuItem>
               </DropdownMenuContent>

@@ -1,4 +1,4 @@
-import { FileCode, MoreVertical } from 'lucide-react';
+import { FileCode, MoreVertical, ChevronsDownUp, ChevronsUpDown, Eye } from 'lucide-react';
 
 import Editor from '@monaco-editor/react';
 
@@ -15,9 +15,11 @@ import { Button } from '@/components/ui/button.tsx';
 import { useTheme } from '@/components/layout/theme-provider.tsx';
 import { languageMap } from '@/constants/language-map.ts';
 import { copyToClipboard } from '@/lib/utils.ts';
+import { EDITOR_OPTIONS } from '@/constants';
 
 export const SnippetFile = ({ file, snippet }: { file: GistFileType; snippet: GistType }) => {
   const [height, setHeight] = useState('65vh');
+  const [collapsed, setCollapsed] = useState(false);
   const { theme } = useTheme();
   const editorRef = useRef(null);
 
@@ -69,39 +71,49 @@ export const SnippetFile = ({ file, snippet }: { file: GistFileType; snippet: Gi
 
           {file.filename}
         </div>
+        <div className="flex items-center gap-2">
+          <Button disabled variant="ghost" size="icon" onClick={() => null}>
+            <Eye className="size-4" />
+          </Button>
+          <Button variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)}>
+            {collapsed ? (
+              <ChevronsUpDown className="size-4" />
+            ) : (
+              <ChevronsDownUp className="size-4" />
+            )}
+          </Button>
+        </div>
       </div>
-      <div className="bg-background py-2 px-4 overflow-auto mb-8 font-mono">
-        {file.truncated ? (
-          <div className="p-4">
-            File too large, please{' '}
-            <a
-              className="underline hover:underline-offset-2"
-              target="_blank"
-              href={`${snippet.html_url}#file-${file.filename
-                .replace(/\\|-|\./g, '-')
-                .replace(/--/g, '-')
-                .toLowerCase()}`}
-            >
-              open on web
-            </a>
-          </div>
-        ) : (
-          <Editor
-            options={{
-              scrollBeyondLastLine: false,
-              readOnly: true,
-              automaticLayout: true,
-              fontFamily: '"Fira Code", "Fira Mono", monospace',
-              fontSize: 13,
-            }}
-            onMount={handleEditorDidMount}
-            height={height}
-            theme={theme === 'dark' ? 'vs-dark' : 'light'}
-            defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
-            defaultValue={file.content}
-          />
-        )}
-      </div>
+      {collapsed ? (
+        <div className="mb-4" />
+      ) : (
+        <div className="bg-background py-2 px-4 overflow-auto mb-4 font-mono">
+          {file.truncated ? (
+            <div className="p-4">
+              File too large, please{' '}
+              <a
+                className="underline hover:underline-offset-2"
+                target="_blank"
+                href={`${snippet.html_url}#file-${file.filename
+                  .replace(/\\|-|\./g, '-')
+                  .replace(/--/g, '-')
+                  .toLowerCase()}`}
+              >
+                open on web
+              </a>
+            </div>
+          ) : (
+            <Editor
+              options={EDITOR_OPTIONS}
+              onMount={handleEditorDidMount}
+              height={height}
+              theme={theme === 'dark' ? 'vs-dark' : 'light'}
+              defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
+              defaultValue={file.content}
+            />
+          )}
+        </div>
+      )}
     </div>
   );
 };
