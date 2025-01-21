@@ -25,6 +25,7 @@ import {
 } from '@/components/ui/card.tsx';
 import { globalState } from '@/lib/store/globalState.ts';
 import { DashBoard } from '@/components/pages/dashboard.tsx';
+import { CreateNew } from '@/components/pages/create-new.tsx';
 
 const routes: RouteType[] = [
   {
@@ -42,6 +43,10 @@ const routes: RouteType[] = [
   {
     path: '/',
     component: DashBoard,
+  },
+  {
+    path: '/new-snippet',
+    component: CreateNew,
   },
   // {
   //   path: '*',
