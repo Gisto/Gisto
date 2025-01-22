@@ -18,10 +18,24 @@ export type GistType = {
   createdAt: string;
   description: string;
   stars: number;
+  comments: {
+    edges: Array<{
+      node: {
+        id: string;
+        author: {
+          login: string;
+          avatarUrl: string;
+        };
+        bodyHTML: string;
+        createdAt: string;
+      };
+    }>;
+  };
 };
 
 export type GistEnrichedType = GistType & {
   title: string;
   tags: string[];
+  isUntitled: boolean;
   languages: { name: string; color: string }[];
 };

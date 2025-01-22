@@ -26,7 +26,11 @@ export default tseslint.config(
       'import/order': [
         'error',
         {
-          'newlines-between': 'always-and-inside-groups',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+          'newlines-between': 'always',
           groups: [
             'builtin',
             'external',
