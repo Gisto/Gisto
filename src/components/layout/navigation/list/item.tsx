@@ -1,12 +1,21 @@
-import { Lock, Unlock, Star, Calendar, SquareArrowOutUpRight, FileCode } from 'lucide-react';
-
 import { useRouter } from 'dirty-react-router';
+import {
+  Lock,
+  Unlock,
+  Star,
+  StarOff,
+  Calendar,
+  SquareArrowOutUpRight,
+  FileCode,
+  MessageSquareText,
+} from 'lucide-react';
 
-import { Separator } from '@/components/ui/separator.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
+import { Separator } from '@/components/ui/separator.tsx';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
+import { GithubAPI } from '@/lib/GithubApi.ts';
 import { cn, getTags, removeTags } from '@/lib/utils.ts';
 import { GistEnrichedType } from '@/types/gist.ts';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 
 export const ListItem = ({
   gist,
@@ -71,6 +80,24 @@ export const ListItem = ({
         </div>
 
         <div className="flex items-center">
+          {gist.comments.edges.length > 0 && (
+            <>
+              <Tooltip delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <div className="flex items-center gap-1 cursor-help">
+                    <MessageSquareText className="size-3" />{' '}
+                    <span className="text-xs">{gist.comments.edges.length}</span>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  Snippet has {gist.comments.edges.length}{' '}
+                  {gist.comments.edges.length === 1 ? 'comment' : 'comments'}
+                </TooltipContent>
+              </Tooltip>
+              <Separator orientation="vertical" className="mx-2 h-6" />
+            </>
+          )}
+
           <Tooltip delayDuration={0}>
             <TooltipTrigger asChild>
               <div className="flex items-center gap-1 cursor-help">
@@ -117,7 +144,10 @@ export const ListItem = ({
               <Separator orientation="vertical" className="mx-2 h-6" />
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <Star className="size-3 stroke-primary cursor-pointer hover:stroke-primary" />
+                  <Star
+                    className="size-3 stroke-primary cursor-pointer hover:stroke-primary"
+                    onClick={async () => await GithubAPI.deleteStar(gist.id)}
+                  />
                 </TooltipTrigger>
                 <TooltipContent>Starred snippet</TooltipContent>
               </Tooltip>
@@ -127,7 +157,10 @@ export const ListItem = ({
               <Separator orientation="vertical" className="mx-2 h-6" />
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <Star className="size-3 stroke-zinc-300 cursor-pointer hover:stroke-primary" />
+                  <StarOff
+                    className="size-3 stroke-zinc-300 cursor-pointer hover:stroke-primary"
+                    onClick={async () => await GithubAPI.addStar(gist.id)}
+                  />
                 </TooltipTrigger>
                 <TooltipContent>Not starred snippet</TooltipContent>
               </Tooltip>

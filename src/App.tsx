@@ -1,19 +1,17 @@
 import './main.css';
 
-import { useEffect, useState } from 'react';
-import { Info } from 'lucide-react';
-
 import { RouterProvider, RouteType } from 'dirty-react-router';
+import { Info } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
-import { Label } from '@/components/ui/label';
-
-import { Gisto } from '@/components/gisto.tsx';
-import { ThemeProvider } from '@/components/layout/theme-provider.tsx';
-import { TooltipProvider } from '@/components/ui/tooltip.tsx';
-import { SnippetContent } from '@/components/pages/snippet/content';
-import { About } from '@/components/pages/about.tsx';
-import { Settings } from '@/components/pages/settings.tsx';
-import { Input } from '@/components/ui/input.tsx';
+import { Gisto } from '@/components/layout/gisto.tsx';
+import { About } from '@/components/layout/pages/about.tsx';
+import { CreateNew } from '@/components/layout/pages/create-new.tsx';
+import { DashBoard } from '@/components/layout/pages/dashboard.tsx';
+import { Settings } from '@/components/layout/pages/settings.tsx';
+import { SnippetContent } from '@/components/layout/pages/snippet/content';
+import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
+import ToastManager, { toast } from '@/components/toast/ToastManager.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
   Card,
@@ -23,9 +21,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card.tsx';
+import { Input } from '@/components/ui/input.tsx';
+import { Label } from '@/components/ui/label';
+import { TooltipProvider } from '@/components/ui/tooltip.tsx';
 import { globalState } from '@/lib/store/globalState.ts';
-import { DashBoard } from '@/components/pages/dashboard.tsx';
-import { CreateNew } from '@/components/pages/create-new.tsx';
 
 const routes: RouteType[] = [
   {
@@ -83,6 +82,7 @@ function App() {
         setIsValid(response.status === 200);
       }
     } catch (error) {
+      toast.error({ message: 'Token not valid' });
       console.error('Error validating GitHub token:', error);
       setIsValid(false);
     } finally {
@@ -113,6 +113,7 @@ function App() {
         <RouterProvider routes={routes}>
           <TooltipProvider>
             <Gisto />
+            <ToastManager />
           </TooltipProvider>
         </RouterProvider>
       </ThemeProvider>

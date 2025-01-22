@@ -1,19 +1,12 @@
-import { Plus, SidebarClose, SidebarOpen } from 'lucide-react';
 import Editor from '@monaco-editor/react';
-import { PageHeader } from '@/components/layout/page-header.tsx';
+import { Plus, SidebarClose, SidebarOpen } from 'lucide-react';
+
+import { PageHeader } from '@/components/layout/pages/page-header.tsx';
+import { useTheme } from '@/components/theme/theme-provider.tsx';
 import { Button } from '@/components/ui/button.tsx';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card.tsx';
 import { Input } from '@/components/ui/input.tsx';
-import { useTheme } from '@/components/layout/theme-provider.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card.tsx';
-import React from 'react';
 
 type Props = {
   isCollapsed?: boolean;

@@ -1,6 +1,6 @@
 import { SidebarClose, SidebarOpen } from 'lucide-react';
 
-import { PageHeader } from '@/components/layout/page-header.tsx';
+import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Button } from '@/components/ui/button.tsx';
 
 type Props = {
@@ -9,10 +9,7 @@ type Props = {
   params?: Record<string, string>;
 };
 
-export const Settings = ({ 
-  isCollapsed = false, 
-  setIsCollapsed = () => {} 
-}: Props = {}) => {
+export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props = {}) => {
   return (
     <div className="h-screen w-full border-r border-collapse">
       <PageHeader>
