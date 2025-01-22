@@ -51,12 +51,6 @@ export const Editor = ({
     );
   }
 
-  console.log(
-    ' 🪲 %c debug ',
-    'background: #3D9970; border: 1px solid #3D9970; border-radius: 3px; padding: 2px 0px 0px 0px; color: #fff',
-    file
-  );
-
   if (preview) {
     if (isMarkdown(file)) {
       return <Markdown file={file} />;
