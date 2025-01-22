@@ -22,6 +22,7 @@ interface GistQueryData {
         id: string;
         isFork: boolean;
         stars: number;
+        starred: boolean;
         resourcePath: string;
         isPublic: boolean;
         name: string;
@@ -72,7 +73,7 @@ interface GistQueryData {
 }
 
 export const GithubAPI = {
-  baseUrl: 'https://api.github.com/gists',
+  baseUrl: 'https://api.github.com',
   gitHubApiVersion: '2022-11-28',
 
   async request<T>({
@@ -136,9 +137,30 @@ export const GithubAPI = {
   },
 
   async getGist(gistId: string): Promise<GistType> {
-    const { data } = await this.request<GistType>({ endpoint: `/${gistId}` });
+    const { data } = await this.request<GistType>({ endpoint: `/gists/${gistId}` });
 
     return data;
+  },
+
+  async getMarkdown(text: string): Promise<string> {
+    const token = localStorage.getItem('GITHUB_TOKEN');
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': this.gitHubApiVersion,
+      'User-agent': `Gisto app v${version}`,
+    };
+
+    const response: Response = await fetch(`${this.baseUrl}/markdown`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        text,
+      }),
+    });
+
+    return response.text();
   },
 
   async createGist(
@@ -147,7 +169,7 @@ export const GithubAPI = {
     isPublic: boolean
   ): Promise<GistType> {
     const { data } = await this.request<GistType>({
-      endpoint: '',
+      endpoint: '/gists',
       method: 'POST',
       body: { files, description, public: isPublic },
     });
@@ -160,7 +182,7 @@ export const GithubAPI = {
     files: Record<string, { content: string } | null>
   ): Promise<GistType> {
     const { data } = await this.request<GistType>({
-      endpoint: `/${gistId}`,
+      endpoint: `/gists/${gistId}`,
       method: 'PATCH',
       body: { files },
     });
@@ -169,13 +191,13 @@ export const GithubAPI = {
   },
 
   async deleteStar(gistId: string): Promise<{ success: boolean }> {
-    const { status } = await this.request({ endpoint: `/${gistId}/star`, method: 'DELETE' });
+    const { status } = await this.request({ endpoint: `/gists/${gistId}/star`, method: 'DELETE' });
 
     if (status === 204) {
       const updatedSnippets = globalState
         .getState()
         .snippets.map((snippet) =>
-          snippet.id === gistId ? { ...snippet, stars: snippet.stars - 1 } : snippet
+          snippet.id === gistId ? { ...snippet, starred: false } : snippet
         );
 
       globalState.setState({
@@ -191,13 +213,13 @@ export const GithubAPI = {
   },
 
   async addStar(gistId: string): Promise<{ success: boolean }> {
-    const { status } = await this.request({ endpoint: `/${gistId}/star`, method: 'PUT' });
+    const { status } = await this.request({ endpoint: `/gists/${gistId}/star`, method: 'PUT' });
 
     if (status === 204) {
       const updatedSnippets = globalState
         .getState()
         .snippets.map((snippet) =>
-          snippet.id === gistId ? { ...snippet, stars: snippet.stars + 1 } : snippet
+          snippet.id === gistId ? { ...snippet, starred: true } : snippet
         );
 
       globalState.setState({
@@ -213,7 +235,7 @@ export const GithubAPI = {
   },
 
   async deleteGist(gistId: string): Promise<{ success: boolean }> {
-    const { status } = await this.request({ endpoint: `/${gistId}`, method: 'DELETE' });
+    const { status } = await this.request({ endpoint: `/gists/${gistId}`, method: 'DELETE' });
 
     if (status === 204) {
       globalState.setState({
@@ -281,6 +303,7 @@ export const GithubAPI = {
             id
             isFork
             stars: stargazerCount
+            starred: viewerHasStarred
             resourcePath
             isPublic
             name
