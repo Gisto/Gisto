@@ -42,10 +42,10 @@ export const ListItem = ({
       <h4 className="cursor-pointer" onClick={() => navigate(`/snippets/${gist.id}`)}>
         {removeTags(gist.description) || 'Untitled'}
       </h4>
-      {badges.length > 0 && (
+      {
         <div className="flex items-center mt-2 gap-2">
           <div className="flex flex-wrap gap-2 mb-4">
-            {[...new Set(gist.languages)].map((language) => (
+            {gist.languages.map((language) => (
               <Badge
                 key={language.name}
                 variant="primary-outline"
@@ -55,23 +55,25 @@ export const ListItem = ({
                 {language.name}
               </Badge>
             ))}
-            {badges.map((tag) => (
-              <Badge
-                key={tag}
-                onClick={() => {
-                  if (setSearch) {
-                    setSearch(tag === search ? '' : tag);
-                  }
-                }}
-                variant={search === tag ? 'default' : 'primary-outline'}
-                className="whitespace-nowrap cursor-pointer hover:text-primary/50 hover:border-primary/50"
-              >
-                {tag}
-              </Badge>
-            ))}
+
+            {badges.length > 0 &&
+              badges.map((tag) => (
+                <Badge
+                  key={tag}
+                  onClick={() => {
+                    if (setSearch) {
+                      setSearch(tag === search ? '' : tag);
+                    }
+                  }}
+                  variant={search === tag ? 'default' : 'primary-outline'}
+                  className="whitespace-nowrap cursor-pointer hover:text-primary/50 hover:border-primary/50"
+                >
+                  {tag}
+                </Badge>
+              ))}
           </div>
         </div>
-      )}
+      }
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -139,7 +141,7 @@ export const ListItem = ({
             </>
           )}
 
-          {gist.stars > 0 ? (
+          {gist.starred ? (
             <>
               <Separator orientation="vertical" className="mx-2 h-6" />
               <Tooltip delayDuration={0}>
