@@ -1,16 +1,21 @@
-import * as React from 'react';
-
 import { useRouter, Outlet } from 'dirty-react-router';
+import * as React from 'react';
+import { useEffect } from 'react';
 
+import { Lists } from '@/components/layout/navigation/list';
+import { Navigation } from '@/components/layout/navigation/navigation.tsx';
+import { PATHS_WITHOUT_SNIPPET_LIST } from '@/constants';
+import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/lib/utils.ts';
 
-import { Lists } from '@/components/layout/list';
-import { Navigation } from '@/components/layout/navigation.tsx';
-import { PATHS_WITHOUT_SNIPPET_LIST } from '@/constants';
-
 export const Gisto = () => {
-  const [isCollapsed, setIsCollapsed] = React.useState(false);
+  const settings = useStoreValue('settings');
+  const [isCollapsed, setIsCollapsed] = React.useState(settings.sidebarCollapsedByDefault);
   const { path } = useRouter();
+
+  useEffect(() => {
+    updateSettings({ sidebarCollapsedByDefault: isCollapsed });
+  }, [isCollapsed]);
 
   return (
     <div className="overflow-hidden bg-background w-screen h-screen sticky">
@@ -25,7 +30,7 @@ export const Gisto = () => {
         </div>
 
         {PATHS_WITHOUT_SNIPPET_LIST.includes(path) ? null : (
-          <div className={cn('h-screen w-[400px] min-w-[400px] border-r')}>
+          <div className={cn('h-screen w-[340px] min-w-[340px] border-r')}>
             <Lists isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
           </div>
         )}

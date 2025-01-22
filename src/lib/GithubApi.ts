@@ -1,7 +1,8 @@
 import { version } from '../../package.json';
 
-import { GistType } from '@/types/gist.ts';
+import { toast } from '@/components/toast/ToastManager.tsx';
 import { globalState } from '@/lib/store/globalState.ts';
+import { GistType } from '@/types/gist.ts';
 
 interface GraphQLResponse<T> {
   data: T;
@@ -109,7 +110,7 @@ export const GithubAPI = {
       body: body ? JSON.stringify(body) : undefined,
     });
 
-    if (response.status !== 200) {
+    if (response.status > 399) {
       if (response.status === 401) {
         document.location.href = '/';
       }
@@ -129,7 +130,7 @@ export const GithubAPI = {
     // const responseClone = response.clone();
     // await cache.put(url, responseClone);
 
-    const data = await response.json();
+    const data = method === 'DELETE' || method === 'PUT' ? null : await response.json();
 
     return { data, headers: response.headers, status: response.status };
   },
@@ -167,8 +168,64 @@ export const GithubAPI = {
     return data;
   },
 
-  async deleteGist(gistId: string): Promise<void> {
-    await this.request({ endpoint: `/${gistId}`, method: 'DELETE' });
+  async deleteStar(gistId: string): Promise<{ success: boolean }> {
+    const { status } = await this.request({ endpoint: `/${gistId}/star`, method: 'DELETE' });
+
+    if (status === 204) {
+      const updatedSnippets = globalState
+        .getState()
+        .snippets.map((snippet) =>
+          snippet.id === gistId ? { ...snippet, stars: snippet.stars - 1 } : snippet
+        );
+
+      globalState.setState({
+        snippets: updatedSnippets,
+      });
+
+      toast.info({ message: 'Star removed' });
+
+      return { success: true };
+    }
+
+    return { success: false };
+  },
+
+  async addStar(gistId: string): Promise<{ success: boolean }> {
+    const { status } = await this.request({ endpoint: `/${gistId}/star`, method: 'PUT' });
+
+    if (status === 204) {
+      const updatedSnippets = globalState
+        .getState()
+        .snippets.map((snippet) =>
+          snippet.id === gistId ? { ...snippet, stars: snippet.stars + 1 } : snippet
+        );
+
+      globalState.setState({
+        snippets: updatedSnippets,
+      });
+
+      toast.info({ message: 'Star added' });
+
+      return { success: true };
+    }
+
+    return { success: false };
+  },
+
+  async deleteGist(gistId: string): Promise<{ success: boolean }> {
+    const { status } = await this.request({ endpoint: `/${gistId}`, method: 'DELETE' });
+
+    if (status === 204) {
+      globalState.setState({
+        snippets: globalState.getState().snippets.filter((snippet) => snippet.id !== gistId),
+      });
+
+      toast.info({ message: 'Gist deleted' });
+
+      return { success: true };
+    }
+
+    return { success: false };
   },
 
   async fetchGithubGraphQL<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
@@ -282,10 +339,12 @@ export const GithubAPI = {
       return data.viewer.gists;
     } catch (error) {
       console.error('Error fetching gists:', error);
+      toast.error({ message: 'Error fetching gists', duration: 5000 });
       throw error;
     }
   },
 
+  // TODO: let's keep in case we want to come back to only load when all pages fetched
   async getGists(): Promise<GistType[]> {
     const allGists: GistType[] = [];
     for await (const gistPage of this.getGistsGenerator()) {
@@ -300,7 +359,7 @@ export const GithubAPI = {
 
     while (hasNextPage) {
       const gistsPage = await this.fetchGists(cursor);
-      // @ts-expect-error align GQL types with response types
+      // @ts-expect-error align GraphQL types with response types
       yield gistsPage.nodes;
       hasNextPage = gistsPage.pageInfo.hasNextPage;
       cursor = gistsPage.pageInfo.endCursor;

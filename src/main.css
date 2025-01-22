@@ -77,8 +77,8 @@
     --accent-foreground: 201 0% 15%;
     --destructive: 0 50% 50%;
     --destructive-foreground: 201 0% 100%;
-    --border: 210 40% 96.1%;
-    --input: 201 20% 50%;
+    --border: 240 5.9% 90%;
+    --input: 163 10% 90%;
     --ring: 201 45.5% 45.3%;
     --radius: 0.3rem;
     --chart-1: 12 76% 61%;
@@ -128,15 +128,7 @@
 }
 
 @layer components {
-  p,
-  a,
-  em,
-  ul,
-  li,
-  small,
-  div,
-  span,
-  article {
+  body {
     @apply font-body;
   }
 
