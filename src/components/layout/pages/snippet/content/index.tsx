@@ -1,11 +1,21 @@
-import { Lock, Pencil, MoreVertical, Star, Trash, Globe, ExternalLink, Copy } from 'lucide-react';
-
+import { useRouter } from 'dirty-react-router';
+import {
+  Lock,
+  Pencil,
+  MoreVertical,
+  Star,
+  Trash,
+  Globe,
+  ExternalLink,
+  Copy,
+  StarOff,
+} from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-import { useRouter } from 'dirty-react-router';
-
+import { PageHeader } from '@/components/layout/pages/page-header.tsx';
+import { SnippetFile } from '@/components/layout/pages/snippet/content/snippet-file.tsx';
+import { Loading } from '@/components/Loading.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
-import { Separator } from '@/components/ui/separator.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
   DropdownMenu,
@@ -14,18 +24,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
-import { PageHeader } from '@/components/layout/page-header.tsx';
+import { Separator } from '@/components/ui/separator.tsx';
+import { GithubAPI } from '@/lib/GithubApi.ts';
+import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { copyToClipboard, getTags, removeTags } from '@/lib/utils.ts';
 import { GistType } from '@/types/gist.ts';
-import { SnippetFile } from '@/components/pages/snippet/content/snippet-file.tsx';
-import { GithubAPI } from '@/lib/GithubApi.ts';
-import { Loading } from '@/components/Loading.tsx';
-import { globalState } from '@/lib/store/globalState.ts';
 
 export const SnippetContent = () => {
   const [snippet, setSnippet] = useState<GistType | null>(null);
   const [loading, setLoading] = useState(true);
   const { params, navigate } = useRouter();
+  const snippetState = useStoreValue('snippets').find((s) => s.id === params.id);
 
   useEffect(() => {
     setLoading(true);
@@ -88,10 +97,27 @@ export const SnippetContent = () => {
 
             <Separator orientation="vertical" className="mx-2 h-6" />
 
-            <Button variant="ghost" size="icon" className="-mx-3">
-              <Star className="size-4" />
-              <span className="sr-only">Star</span>
-            </Button>
+            {snippetState && snippetState.stars > 0 ? (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="-mx-3"
+                onClick={async () => await GithubAPI.deleteStar(snippet.id)}
+              >
+                <Star className="size-4" />
+                <span className="sr-only">Starred</span>
+              </Button>
+            ) : (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="-mx-3"
+                onClick={async () => await GithubAPI.addStar(snippet.id)}
+              >
+                <StarOff className="size-4" />
+                <span className="sr-only">Not starred</span>
+              </Button>
+            )}
 
             <Separator orientation="vertical" className="mx-2 h-6" />
 
@@ -103,12 +129,10 @@ export const SnippetContent = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem
-                  onClick={() => {
-                    window.open(snippet.html_url);
-                  }}
-                >
-                  <Globe /> Open on web
+                <DropdownMenuItem asChild>
+                  <a className="cursor-pointer" href={snippet.html_url} target="_blank">
+                    <Globe /> Open on web
+                  </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => copyToClipboard(snippet.id)}>
                   <Copy /> Copy snippet ID
@@ -122,32 +146,43 @@ export const SnippetContent = () => {
                 >
                   <Copy /> Copy embed code to clipboard
                 </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => {
-                    window.open(`https://plnkr.co/edit/gist:${snippet?.id}?preview`);
-                  }}
-                >
-                  <ExternalLink /> Open in <strong>plnkr</strong>
+                <DropdownMenuItem asChild>
+                  <a
+                    className="cursor-pointer"
+                    href={`https://plnkr.co/edit/gist:${snippet?.id}?preview`}
+                    target="_blank"
+                  >
+                    <ExternalLink /> Open in <strong>plnkr</strong>
+                  </a>
                 </DropdownMenuItem>
 
-                <DropdownMenuItem
-                  onClick={() => {
-                    window.open(`https://jsfiddle.net/gh/gist/library/pure/${snippet?.id}`);
-                  }}
-                >
-                  <ExternalLink /> Open in <strong>jsfiddle</strong>
+                <DropdownMenuItem asChild>
+                  <a
+                    className="cursor-pointer"
+                    href={`https://jsfiddle.net/gh/gist/library/pure/${snippet?.id}`}
+                    target="_blank"
+                  >
+                    <ExternalLink /> Open in <strong>jsfiddle</strong>
+                  </a>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
+                  className={'text-pink-700'}
                   onClick={async () => {
-                    const value = await GithubAPI.deleteGist(snippet.id);
+                    const confirmation = await confirm(
+                      `Are you sure you want to delete "${removeTags(snippet.description)}" snippet?`
+                    );
 
-                    if (value.success) {
-                      navigate('/');
+                    if (confirmation) {
+                      const value = await GithubAPI.deleteGist(snippet.id);
+
+                      if (value.success) {
+                        navigate('/');
+                      }
                     }
                   }}
                 >
-                  <Trash /> Delete
+                  <Trash /> Delete <small>(can not be undone)</small>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

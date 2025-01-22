@@ -1,17 +1,16 @@
-import React, { useCallback, useState } from 'react';
 import { FileCode, Filter, Loader, Search, SidebarClose, SidebarOpen } from 'lucide-react';
+import React, { useCallback, useState } from 'react';
 
+import { ListItem } from '@/components/layout/navigation/list/item.tsx';
+import { PageHeader } from '@/components/layout/pages/page-header.tsx';
+import { Loading } from '@/components/Loading.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
-import { PageHeader } from '@/components/layout/page-header.tsx';
-import { ListItem } from '@/components/layout/list/item.tsx';
-
-import { GistEnrichedType } from '@/types/gist.ts';
-import { useStoreValue } from '@/lib/store/globalState.ts';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
-import { useSnippets } from '@/hooks/use-snippets.tsx';
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
-import { Loading } from '@/components/Loading.tsx';
+import { useSnippets } from '@/hooks/use-snippets.tsx';
+import { useStoreValue } from '@/lib/store/globalState.ts';
+import { GistEnrichedType } from '@/types/gist.ts';
 
 const LazyListItem = ({
   gist,

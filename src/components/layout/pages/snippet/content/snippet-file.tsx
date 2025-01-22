@@ -1,25 +1,25 @@
-import { FileCode, MoreVertical, ChevronsDownUp, ChevronsUpDown, Eye } from 'lucide-react';
-
 import Editor from '@monaco-editor/react';
-
+import { FileCode, MoreVertical, ChevronsDownUp, ChevronsUpDown, Eye } from 'lucide-react';
 import { useRef, useState } from 'react';
 
-import { GistFileType, GistType } from '@/types/gist.ts';
+import { useTheme } from '@/components/theme/theme-provider.tsx';
+import { Button } from '@/components/ui/button.tsx';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
-import { Button } from '@/components/ui/button.tsx';
-import { useTheme } from '@/components/layout/theme-provider.tsx';
-import { languageMap } from '@/constants/language-map.ts';
-import { copyToClipboard } from '@/lib/utils.ts';
 import { EDITOR_OPTIONS } from '@/constants';
+import { languageMap } from '@/constants/language-map.ts';
+import { useStoreValue } from '@/lib/store/globalState.ts';
+import { copyToClipboard } from '@/lib/utils.ts';
+import { GistFileType, GistType } from '@/types/gist.ts';
 
 export const SnippetFile = ({ file, snippet }: { file: GistFileType; snippet: GistType }) => {
+  const settings = useStoreValue('settings');
   const [height, setHeight] = useState('65vh');
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(settings.filesCollapsedByDefault);
   const { theme } = useTheme();
   const editorRef = useRef(null);
 
@@ -43,27 +43,29 @@ export const SnippetFile = ({ file, snippet }: { file: GistFileType; snippet: Gi
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
-              <DropdownMenuItem
-                onClick={() => {
-                  window.open(
-                    `${snippet.html_url}#file-${file.filename
-                      .replace(/\\|-|\./g, '-')
-                      .replace(/--/g, '-')
-                      .toLowerCase()}`
-                  );
-                }}
-              >
-                Open on web
+              <DropdownMenuItem asChild>
+                <a
+                  className="cursor-pointer"
+                  href={`${snippet.html_url}#file-${file.filename
+                    .replace(/\\|-|\./g, '-')
+                    .replace(/--/g, '-')
+                    .toLowerCase()}`}
+                  target="_blank"
+                >
+                  Open on web
+                </a>
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => copyToClipboard(file.content)}>
                 Copy file contents to clipboard
               </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={() =>
-                  window.open(`https://carbon.now.sh/${snippet.id}?filename=${file.filename}`)
-                }
-              >
-                Open in carbon.now.sh
+              <DropdownMenuItem asChild>
+                <a
+                  className="cursor-pointer"
+                  href={`https://carbon.now.sh/${snippet.id}?filename=${file.filename}`}
+                  target="_blank"
+                >
+                  Open in carbon.now.sh
+                </a>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -104,7 +106,10 @@ export const SnippetFile = ({ file, snippet }: { file: GistFileType; snippet: Gi
             </div>
           ) : (
             <Editor
-              options={EDITOR_OPTIONS}
+              options={{
+                ...EDITOR_OPTIONS,
+                ...settings.editor,
+              }}
               onMount={handleEditorDidMount}
               height={height}
               theme={theme === 'dark' ? 'vs-dark' : 'light'}

@@ -13,8 +13,8 @@
     "windows": [
       {
         "title": "Gisto",
-        "width": 1200,
-        "height": 700,
+        "width": 1300,
+        "height": 750,
         "resizable": true,
         "fullscreen": false
       }
@@ -26,9 +26,6 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": [
-      "icons/icon.png",
-      "icons/icon.ico"
-    ]
+    "icon": ["icons/icon.png", "icons/icon.ico"]
   }
 }

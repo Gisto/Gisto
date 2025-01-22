@@ -1,9 +1,16 @@
 import { useState } from 'react';
-
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
 
-import { PageHeader } from '@/components/layout/page-header.tsx';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { PageHeader } from '@/components/layout/pages/page-header.tsx';
+import { Loading } from '@/components/Loading.tsx';
+import { Badge } from '@/components/ui/badge.tsx';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card.tsx';
 import {
   ChartConfig,
   ChartContainer,
@@ -11,8 +18,8 @@ import {
   ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
-} from '@/components/ui/chart';
-
+} from '@/components/ui/chart.tsx';
+import { Input } from '@/components/ui/input.tsx';
 import {
   Select,
   SelectContent,
@@ -21,11 +28,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-
-import { Badge } from '@/components/ui/badge.tsx';
-import { Input } from '@/components/ui/input.tsx';
-import { Loading } from '@/components/Loading.tsx';
+} from '@/components/ui/select.tsx';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { GistEnrichedType } from '@/types/gist.ts';
 
@@ -114,15 +117,24 @@ export const DashBoard = () => {
     {
       title: 'Public / Private',
       value: `${list.filter((snippet) => snippet.isPublic).length} / ${list.filter((snippet) => !snippet.isPublic).length}`,
+      description: `Private and public of ${list.length} snippets`,
     },
-    { title: 'Starred', value: list.filter((snippet) => snippet.stars).length },
+    {
+      title: 'Starred',
+      value: list.filter((snippet) => snippet.stars).length,
+      description: `Starred snippets among ${list.length}`,
+    },
     {
       title: 'Untagged',
       value: list.filter((snippet) => snippet.tags.length === 0).length,
+      description: `Snippets with no tags`,
     },
     {
       title: 'Untitled',
-      value: list.filter((snippet) =>  snippet.isUntitled || snippet.description.trim().toLowerCase() === 'untitled').length,
+      value: list.filter(
+        (snippet) => snippet.isUntitled || snippet.description.trim().toLowerCase() === 'untitled'
+      ).length,
+      description: `Snippets with no description`,
     },
   ];
 
@@ -137,15 +149,16 @@ export const DashBoard = () => {
       </PageHeader>
 
       <div className="p-8">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
+        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-8">
           {cardCharts.map((chart) => (
             <Card key={chart.title}>
               <CardHeader>
-                <CardDescription className="text-foreground text-lg whitespace-nowrap">
-                  {chart.title}
+                <CardTitle className="text-primary">{chart.title}</CardTitle>
+                <CardDescription className="text-foreground text-xs min-h-8">
+                  {chart.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="text-primary text-2xl text-right font-bold font-numbers">
+              <CardContent className="text-primary text-[2vw] text-right font-bold font-numbers">
                 {chart.value}
               </CardContent>
             </Card>
@@ -212,6 +225,7 @@ export const DashBoard = () => {
                 />
                 <ChartLegend content={<ChartLegendContent />} />
                 <Bar
+                  barSize={20}
                   dataKey="private"
                   stackId="a"
                   fill="var(--color-private)"
@@ -314,38 +328,38 @@ export const DashBoard = () => {
                 </Badge>
               ))}
           </CardContent>
+        </Card>
 
-          <Card className="mt-8">
-            <CardHeader>
-              <CardTitle className="flex justify-between items-center">
-                <div>Tags</div>{' '}
-                <div>
-                  <Input placeholder="Filter tags" />
-                </div>
-              </CardTitle>
-              <CardDescription>All, unique tags</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {[...new Set(allTags)]
-                .map((tag) => ({
-                  tag,
-                  count: allTags.filter((t) => t === tag).length,
-                }))
-                .sort((a, b) => b.count - a.count)
-                .map(({ tag, count }) => (
-                  <Badge
-                    key={tag}
-                    variant="primary-outline"
-                    className="m-1 cursor-pointer hover:opacity-70"
-                  >
-                    {tag} <small className="ml-1">({count})</small>
-                    {/*<div className="ml-[6px] -mr-[9px]  w-5 h-4 bg-primary text-background text-[9px] text-center">*/}
-                    {/*  {count}*/}
-                    {/*</div>*/}
-                  </Badge>
-                ))}
-            </CardContent>
-          </Card>
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle className="flex justify-between items-center">
+              <div>Tags</div>{' '}
+              <div>
+                <Input placeholder="Filter tags" />
+              </div>
+            </CardTitle>
+            <CardDescription>All, unique tags</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {[...new Set(allTags)]
+              .map((tag) => ({
+                tag,
+                count: allTags.filter((t) => t === tag).length,
+              }))
+              .sort((a, b) => b.count - a.count)
+              .map(({ tag, count }) => (
+                <Badge
+                  key={tag}
+                  variant="primary-outline"
+                  className="m-1 cursor-pointer hover:opacity-70"
+                >
+                  {tag} <small className="ml-1">({count})</small>
+                  {/*<div className="ml-[6px] -mr-[9px]  w-5 h-4 bg-primary text-background text-[9px] text-center">*/}
+                  {/*  {count}*/}
+                  {/*</div>*/}
+                </Badge>
+              ))}
+          </CardContent>
         </Card>
       </div>
     </div>

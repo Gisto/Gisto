@@ -1,7 +1,8 @@
 import { version } from '../../package.json';
 
-import { GistType } from '@/types/gist.ts';
+import { toast } from '@/components/toast/ToastManager.tsx';
 import { globalState } from '@/lib/store/globalState.ts';
+import { GistType } from '@/types/gist.ts';
 
 interface GraphQLResponse<T> {
   data: T;
@@ -129,7 +130,7 @@ export const GithubAPI = {
     // const responseClone = response.clone();
     // await cache.put(url, responseClone);
 
-    const data = method === "DELETE" ? null : await response.json();
+    const data = method === 'DELETE' || method === 'PUT' ? null : await response.json();
 
     return { data, headers: response.headers, status: response.status };
   },
@@ -167,19 +168,64 @@ export const GithubAPI = {
     return data;
   },
 
+  async deleteStar(gistId: string): Promise<{ success: boolean }> {
+    const { status } = await this.request({ endpoint: `/${gistId}/star`, method: 'DELETE' });
+
+    if (status === 204) {
+      const updatedSnippets = globalState
+        .getState()
+        .snippets.map((snippet) =>
+          snippet.id === gistId ? { ...snippet, stars: snippet.stars - 1 } : snippet
+        );
+
+      globalState.setState({
+        snippets: updatedSnippets,
+      });
+
+      toast.info({ message: 'Star removed' });
+
+      return { success: true };
+    }
+
+    return { success: false };
+  },
+
+  async addStar(gistId: string): Promise<{ success: boolean }> {
+    const { status } = await this.request({ endpoint: `/${gistId}/star`, method: 'PUT' });
+
+    if (status === 204) {
+      const updatedSnippets = globalState
+        .getState()
+        .snippets.map((snippet) =>
+          snippet.id === gistId ? { ...snippet, stars: snippet.stars + 1 } : snippet
+        );
+
+      globalState.setState({
+        snippets: updatedSnippets,
+      });
+
+      toast.info({ message: 'Star added' });
+
+      return { success: true };
+    }
+
+    return { success: false };
+  },
+
   async deleteGist(gistId: string): Promise<{ success: boolean }> {
-    // TODO delete from storage if success
-    const {status} = await this.request({ endpoint: `/${gistId}`, method: 'DELETE' });
+    const { status } = await this.request({ endpoint: `/${gistId}`, method: 'DELETE' });
 
     if (status === 204) {
       globalState.setState({
-        snippets: globalState.getState().snippets.filter((snippet) => snippet.id !== gistId)
+        snippets: globalState.getState().snippets.filter((snippet) => snippet.id !== gistId),
       });
 
-      return {success: true}
+      toast.info({ message: 'Gist deleted' });
+
+      return { success: true };
     }
 
-    return {success: false}
+    return { success: false };
   },
 
   async fetchGithubGraphQL<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
@@ -293,6 +339,7 @@ export const GithubAPI = {
       return data.viewer.gists;
     } catch (error) {
       console.error('Error fetching gists:', error);
+      toast.error({ message: 'Error fetching gists', duration: 5000 });
       throw error;
     }
   },

@@ -1,15 +1,33 @@
+import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-import { clsx, type ClassValue } from 'clsx';
-
+import { ITEMS_PER_PAGE } from '@/constants';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState } from '@/lib/store/globalState.ts';
 import { GistType } from '@/types/gist.ts';
-import { ITEMS_PER_PAGE } from '@/constants';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const fancyCardStyle = cn(
+  'bg-gradient-to-bl to-50% from-primary dark:from-primary-950',
+  'hover:shadow-lg hover:border-secondary transition-all ease-in-out duration-300'
+);
+
+export const upperCaseFirst = (text: string) => {
+  const str = text.toLowerCase();
+  return String(str).charAt(0).toUpperCase() + String(str).slice(1);
+};
+
+export const camelToTitleCase = (text: string) =>
+  text
+    .replace(/([A-Z])/g, (match) => ` ${match}`)
+    .replace(/^./, (match) => match.toUpperCase())
+    .trim();
+
+export const snakeToTitleCase = (text: string) =>
+  upperCaseFirst(text.replace(/[_-]/g, ' ').trim().toLowerCase());
 
 const tagsRegex = /#(\d*[A-Za-z_\-0-9]+\d*)/g;
 
