@@ -9,7 +9,7 @@ import { About } from '@/components/layout/pages/about.tsx';
 import { CreateNew } from '@/components/layout/pages/create-new.tsx';
 import { DashBoard } from '@/components/layout/pages/dashboard.tsx';
 import { Settings } from '@/components/layout/pages/settings.tsx';
-import { SnippetContent } from '@/components/layout/pages/snippet/content';
+import { SnippetContent } from '@/components/layout/pages/snippet';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
 import ToastManager, { toast } from '@/components/toast/ToastManager.tsx';
 import { Button } from '@/components/ui/button.tsx';

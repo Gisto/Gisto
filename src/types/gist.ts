@@ -18,6 +18,7 @@ export type GistType = {
   createdAt: string;
   description: string;
   stars: number;
+  starred: boolean;
   comments: {
     edges: Array<{
       node: {
