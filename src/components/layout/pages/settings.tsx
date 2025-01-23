@@ -27,6 +27,8 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
           </div>
         </div>
       </PageHeader>
+
+      <div className="p-4"></div>
     </div>
   );
 };
