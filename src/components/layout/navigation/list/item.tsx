@@ -1,9 +1,8 @@
 import { useRouter } from 'dirty-react-router';
 import {
-  Lock,
-  Unlock,
+  ShieldCheck,
+  Shield,
   Star,
-  StarOff,
   Calendar,
   SquareArrowOutUpRight,
   FileCode,
@@ -44,14 +43,17 @@ export const ListItem = ({
       </h4>
       {
         <div className="flex items-center mt-2 gap-2">
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-4 pr-4">
             {gist.languages.map((language) => (
               <Badge
                 key={language.name}
                 variant="primary-outline"
                 className="whitespace-nowrap cursor-pointer hover:text-primary/50 hover:border-primary/50"
               >
-                <div className="w-2 h-2 rounded-full mr-2" style={{ background: language.color }} />{' '}
+                <div
+                  className="w-2 h-2 rounded-full border mr-2"
+                  style={{ background: language.color }}
+                />{' '}
                 {language.name}
               </Badge>
             ))}
@@ -103,7 +105,7 @@ export const ListItem = ({
           <Tooltip delayDuration={0}>
             <TooltipTrigger asChild>
               <div className="flex items-center gap-1 cursor-help">
-                <FileCode className="size-3" />{' '}
+                <FileCode strokeWidth={1.5} className="size-3" />{' '}
                 <span className="text-xs">{Object.keys(gist.files).length}</span>
               </div>
             </TooltipTrigger>
@@ -120,7 +122,10 @@ export const ListItem = ({
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
                   <div>
-                    <Unlock className="size-3 cursor-pointer hover:text-primary" />
+                    <Shield
+                      strokeWidth={1.5}
+                      className="size-3 cursor-pointer hover:text-primary stroke-pink-500"
+                    />
                     <span className="sr-only">Lock</span>
                   </div>
                 </TooltipTrigger>
@@ -132,7 +137,10 @@ export const ListItem = ({
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
                   <div>
-                    <Lock className="size-3 cursor-pointer hover:text-primary" />
+                    <ShieldCheck
+                      strokeWidth={1.5}
+                      className="size-3 cursor-pointer hover:text-primary stroke-emerald-500"
+                    />
                     <span className="sr-only">Unlock</span>
                   </div>
                 </TooltipTrigger>
@@ -147,7 +155,8 @@ export const ListItem = ({
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
                   <Star
-                    className="size-3 stroke-primary cursor-pointer hover:stroke-primary"
+                    strokeWidth={1.5}
+                    className="size-3 stroke-primary cursor-pointer hover:stroke-primary fill-primary"
                     onClick={async () => await GithubAPI.deleteStar(gist.id)}
                   />
                 </TooltipTrigger>
@@ -159,8 +168,9 @@ export const ListItem = ({
               <Separator orientation="vertical" className="mx-2 h-6" />
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <StarOff
-                    className="size-3 stroke-zinc-300 cursor-pointer hover:stroke-primary"
+                  <Star
+                    strokeWidth={1.5}
+                    className="size-3 cursor-pointer hover:stroke-primary"
                     onClick={async () => await GithubAPI.addStar(gist.id)}
                   />
                 </TooltipTrigger>
@@ -174,6 +184,7 @@ export const ListItem = ({
           <Tooltip delayDuration={0}>
             <TooltipTrigger asChild>
               <SquareArrowOutUpRight
+                strokeWidth={1.5}
                 onClick={() => navigate(`/snippets/${gist.id}`)}
                 className="size-3 cursor-pointer hover:stroke-primary"
               />

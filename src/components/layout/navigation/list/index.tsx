@@ -1,4 +1,13 @@
-import { FileCode, Filter, Loader, Search, SidebarClose, SidebarOpen } from 'lucide-react';
+import {
+  FileCode,
+  Filter,
+  FilterX,
+  RefreshCcw,
+  Search,
+  SidebarClose,
+  SidebarOpen,
+  Loader,
+} from 'lucide-react';
 import React, { useCallback, useState } from 'react';
 
 import { ListItem } from '@/components/layout/navigation/list/item.tsx';
@@ -42,7 +51,7 @@ export const Lists = ({
   isCollapsed: boolean;
 }) => {
   const [search, setSearch] = useState<string>('');
-  const { isLoading } = useSnippets();
+  const { isLoading, refresh } = useSnippets();
   const currentSnippets = useStoreValue('snippets');
   const apiRateLimits = useStoreValue('apiRateLimits');
 
@@ -83,8 +92,8 @@ export const Lists = ({
           />
         </div>
 
-        <Button variant="ghost" size="icon">
-          <Filter className="size-4" />
+        <Button disabled={!search} variant="ghost" size="icon" onClick={() => setSearch('')}>
+          {search ? <FilterX className="size-4" /> : <Filter className="size-4" />}
         </Button>
       </PageHeader>
       <div className="h-[calc(100vh-104px)] overflow-auto shadow-inner">
@@ -97,11 +106,11 @@ export const Lists = ({
           ))
         )}
       </div>
-      <div className="h-[52px] border-t flex items-center justify-between p-4 gap-2 text-xs">
+      <div className="h-[52px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">
         <div className="flex items-center gap-2">
           {!isLoading ? (
             <>
-              <FileCode className="size-4" /> {listOfSnippets().length} of {currentSnippets.length}{' '}
+              <FileCode className="size-3" /> {listOfSnippets().length} of {currentSnippets.length}{' '}
               Snippets
             </>
           ) : (
@@ -109,12 +118,21 @@ export const Lists = ({
               <Loader className="animate-spin size-3" /> Refreshing data
             </>
           )}
+
+          {!isLoading && (
+            <Tooltip>
+              <TooltipTrigger>
+                <RefreshCcw className="size-3 cursor-pointer" onClick={refresh} />
+              </TooltipTrigger>
+              <TooltipContent>Refresh the list</TooltipContent>
+            </Tooltip>
+          )}
         </div>
         <div>
           {apiRateLimits && (
             <Tooltip>
               <TooltipTrigger>
-                API Rate limit: {apiRateLimits.remaining}/{apiRateLimits.limit}
+                API: {apiRateLimits.remaining}/{apiRateLimits.limit}
               </TooltipTrigger>
               <TooltipContent>
                 GitHub API rate limit, {apiRateLimits.limit}/hour Next reset: {apiRateLimits.reset}
