@@ -1,10 +1,10 @@
-import { clsx, type ClassValue } from 'clsx';
+import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 import { ITEMS_PER_PAGE } from '@/constants';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState } from '@/lib/store/globalState.ts';
-import { GistFileType, GistType } from '@/types/gist.ts';
+import { GistEnrichedType, GistFileType, GistType } from '@/types/gist.ts';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -121,6 +121,32 @@ export const fetchAndUpdateSnippets = async () => {
       break;
     }
   }
+};
+
+export const searchFilter = (search: string, currentSnippets: GistEnrichedType[] | []) => {
+  if (search === '' || search.length === 0) {
+    return currentSnippets;
+  }
+
+  const searchTerms = search.toLowerCase().split(' ');
+
+  return currentSnippets.filter((listItem) => {
+    return searchTerms.every((term) => {
+      if (term.startsWith('tag:')) {
+        const tagToSearch = term.slice(4).trim();
+        return listItem.tags.some((tag) =>
+          tag.replace('#', '').toLowerCase().startsWith(tagToSearch)
+        );
+      }
+
+      if (term.startsWith('lang:')) {
+        const langToSearch = term.slice(5).trim();
+        return listItem.languages.some((lang) => lang.name.toLowerCase().startsWith(langToSearch));
+      }
+
+      return listItem.description.trim().toLowerCase().includes(term);
+    });
+  });
 };
 
 export const getFileExtension = (file: GistFileType): string =>

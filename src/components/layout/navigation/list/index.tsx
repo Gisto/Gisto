@@ -7,20 +7,21 @@ import {
   SidebarClose,
   SidebarOpen,
   Loader,
+  Info,
 } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
 
 import { ListItem } from '@/components/layout/navigation/list/item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
-import { Loading } from '@/components/Loading.tsx';
+// import { Search as SearchField } from '@/components/search.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
 import { useStoreValue } from '@/lib/store/globalState.ts';
+import { searchFilter } from '@/lib/utils.ts';
 import { GistEnrichedType } from '@/types/gist.ts';
-
 const LazyListItem = ({
   gist,
   search,
@@ -43,6 +44,22 @@ const LazyListItem = ({
   );
 };
 
+const ListSkeleton = () =>
+  [...Array.from({ length: 10 })].map((_, index) => {
+    return (
+      <div key={`item-${index}`}>
+        <div className="p-4 animate-pulse border-b hover:border-l-primary hover:border-l-4 transform transition-all">
+          <div className="w-2/3 h-4 bg-accent rounded mb-4"></div>
+          <div className="w-full h-6 bg-accent rounded mb-4"></div>
+          <div className="flex justify-between gap-8">
+            <div className="w-1/2 h-3 bg-accent rounded"></div>
+            <div className="w-1/2 h-3 bg-accent rounded"></div>
+          </div>
+        </div>
+      </div>
+    );
+  });
+
 export const Lists = ({
   setIsCollapsed,
   isCollapsed,
@@ -52,7 +69,7 @@ export const Lists = ({
 }) => {
   const [search, setSearch] = useState<string>('');
   const { isLoading, refresh } = useSnippets();
-  const currentSnippets = useStoreValue('snippets');
+  const allSnippets = useStoreValue('snippets');
   const apiRateLimits = useStoreValue('apiRateLimits');
 
   const handleCollapse = useCallback(() => {
@@ -63,15 +80,9 @@ export const Lists = ({
     setSearch(event.target.value);
   }, []);
 
-  const listOfSnippets = () => {
-    return search !== '' && search.length > 0
-      ? currentSnippets.filter(
-          (listItem) => listItem.description.trim() && listItem.description.includes(search.trim())
-        )
-      : currentSnippets;
-  };
+  const listOfSnippets = searchFilter(search, allSnippets);
 
-  if (!listOfSnippets()) {
+  if (!listOfSnippets) {
     return null;
   }
 
@@ -84,12 +95,49 @@ export const Lists = ({
         <div className="relative w-full">
           <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder={`Search ${listOfSnippets().length} gists`}
+            placeholder={`Search ${listOfSnippets.length} gists`}
             className="pl-8 w-full"
             type="search"
             value={search}
             onChange={handleSearch}
           />
+          {!search && (
+            <Tooltip>
+              <TooltipTrigger className="absolute right-2 top-2.5 h-4 w-4 text-muted-foreground">
+                <Info className="size-4 text-muted-foreground" />
+              </TooltipTrigger>
+              <TooltipContent align="start">
+                <div className="text-sm">
+                  <h4 className="mb-3">
+                    Search for snippets by description, tags or language
+                    <br />
+                    Or a combinations of all:
+                  </h4>
+                  <div className="text-xs mb-2">
+                    <strong>Description:</strong>{' '}
+                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
+                      just free text
+                    </code>
+                  </div>
+                  <div className="text-xs mb-2">
+                    <strong>Tags:</strong>{' '}
+                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
+                      tag:{'<your-search>'}
+                    </code>
+                  </div>
+                  <div className="text-xs mb-2">
+                    <strong>Language:</strong>{' '}
+                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
+                      lang:{'<your-search>'}
+                    </code>
+                  </div>
+
+                  <small>You can also just click a tag or a language</small>
+                </div>
+              </TooltipContent>
+            </Tooltip>
+          )}
+          {/*<SearchField />*/}
         </div>
 
         <Button disabled={!search} variant="ghost" size="icon" onClick={() => setSearch('')}>
@@ -97,11 +145,11 @@ export const Lists = ({
         </Button>
       </PageHeader>
       <div className="h-[calc(100vh-104px)] overflow-auto shadow-inner">
-        {currentSnippets.length === 0 ? (
-          <Loading />
+        {allSnippets.length === 0 ? (
+          <ListSkeleton />
         ) : (
-          listOfSnippets().length > 0 &&
-          listOfSnippets().map((gist) => (
+          listOfSnippets.length > 0 &&
+          listOfSnippets.map((gist) => (
             <LazyListItem search={search} setSearch={setSearch} key={gist.id} gist={gist} />
           ))
         )}
@@ -110,7 +158,7 @@ export const Lists = ({
         <div className="flex items-center gap-2">
           {!isLoading ? (
             <>
-              <FileCode className="size-3" /> {listOfSnippets().length} of {currentSnippets.length}{' '}
+              <FileCode className="size-3" /> {listOfSnippets.length} of {allSnippets.length}{' '}
               Snippets
             </>
           ) : (
@@ -132,7 +180,7 @@ export const Lists = ({
           {apiRateLimits && (
             <Tooltip>
               <TooltipTrigger>
-                API: {apiRateLimits.remaining}/{apiRateLimits.limit}
+                API rate: {apiRateLimits.remaining}/{apiRateLimits.limit}
               </TooltipTrigger>
               <TooltipContent>
                 GitHub API rate limit, {apiRateLimits.limit}/hour Next reset: {apiRateLimits.reset}

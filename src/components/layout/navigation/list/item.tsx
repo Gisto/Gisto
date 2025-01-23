@@ -44,35 +44,48 @@ export const ListItem = ({
       {
         <div className="flex items-center mt-2 gap-2">
           <div className="flex flex-wrap gap-2 mb-4 pr-4">
-            {gist.languages.map((language) => (
-              <Badge
-                key={language.name}
-                variant="primary-outline"
-                className="whitespace-nowrap cursor-pointer hover:text-primary/50 hover:border-primary/50"
-              >
-                <div
-                  className="w-2 h-2 rounded-full border mr-2"
-                  style={{ background: language.color }}
-                />{' '}
-                {language.name}
-              </Badge>
-            ))}
+            {gist.languages.map((language) => {
+              const filter = `lang:${language.name.toLowerCase()}`;
 
-            {badges.length > 0 &&
-              badges.map((tag) => (
+              return (
                 <Badge
-                  key={tag}
+                  key={language.name}
                   onClick={() => {
                     if (setSearch) {
-                      setSearch(tag === search ? '' : tag);
+                      setSearch(filter === search ? '' : filter);
                     }
                   }}
-                  variant={search === tag ? 'default' : 'primary-outline'}
+                  variant={search === filter ? 'default' : 'primary-outline'}
                   className="whitespace-nowrap cursor-pointer hover:text-primary/50 hover:border-primary/50"
                 >
-                  {tag}
+                  <div
+                    className="w-2 h-2 rounded-full border mr-2"
+                    style={{ background: language.color }}
+                  />{' '}
+                  {language.name}
                 </Badge>
-              ))}
+              );
+            })}
+
+            {badges.length > 0 &&
+              badges.map((tag) => {
+                const filter = `tag:${tag.replace('#', '')}`;
+
+                return (
+                  <Badge
+                    key={tag}
+                    onClick={() => {
+                      if (setSearch) {
+                        setSearch(filter === search ? '' : filter);
+                      }
+                    }}
+                    variant={search === filter ? 'default' : 'primary-outline'}
+                    className="whitespace-nowrap cursor-pointer hover:text-primary/50 hover:border-primary/50"
+                  >
+                    {tag}
+                  </Badge>
+                );
+              })}
           </div>
         </div>
       }
@@ -124,7 +137,7 @@ export const ListItem = ({
                   <div>
                     <Shield
                       strokeWidth={1.5}
-                      className="size-3 cursor-pointer hover:text-primary stroke-pink-500"
+                      className="size-3 cursor-pointer hover:text-primary stroke-danger"
                     />
                     <span className="sr-only">Lock</span>
                   </div>
@@ -139,7 +152,7 @@ export const ListItem = ({
                   <div>
                     <ShieldCheck
                       strokeWidth={1.5}
-                      className="size-3 cursor-pointer hover:text-primary stroke-emerald-500"
+                      className="size-3 cursor-pointer hover:text-primary stroke-success"
                     />
                     <span className="sr-only">Unlock</span>
                   </div>
