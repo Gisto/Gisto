@@ -1,7 +1,6 @@
 import { SidebarClose, SidebarOpen } from 'lucide-react';
 
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
-import { Search } from '@/components/search.tsx';
 import { Button } from '@/components/ui/button.tsx';
 
 type Props = {
@@ -29,9 +28,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
         </div>
       </PageHeader>
 
-      <div className="p-4">
-        <Search />
-      </div>
+      <div className="p-4"></div>
     </div>
   );
 };
