@@ -1,5 +1,15 @@
 import { useRouter } from 'dirty-react-router';
-import { Lock, Pencil, MoreVertical, Star, Trash, Globe, ExternalLink, Copy } from 'lucide-react';
+import {
+  Pencil,
+  MoreVertical,
+  Star,
+  Trash,
+  Globe,
+  ExternalLink,
+  Copy,
+  ShieldCheck,
+  Shield,
+} from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
@@ -15,6 +25,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
 import { Separator } from '@/components/ui/separator.tsx';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { copyToClipboard, getTags, removeTags } from '@/lib/utils.ts';
@@ -80,10 +91,33 @@ export const SnippetContent = () => {
 
             <Separator orientation="vertical" className="mx-2 h-6" />
 
-            <Button variant="ghost" size="icon" className="-mx-3">
-              <Lock className="size-4" />
-              <span className="sr-only">Lock</span>
-            </Button>
+            {snippetState && snippetState.isPublic ? (
+              <Tooltip delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <Button variant="ghost" size="icon" className="-mx-3">
+                    <Shield
+                      strokeWidth={1.5}
+                      className="size-3 cursor-pointer hover:text-primary stroke-danger"
+                    />
+                    <span className="sr-only">Lock</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Public snippet</TooltipContent>
+              </Tooltip>
+            ) : (
+              <Tooltip delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <Button variant="ghost" size="icon" className="-mx-3">
+                    <ShieldCheck
+                      strokeWidth={1.5}
+                      className="size-3 cursor-pointer hover:text-primary stroke-success"
+                    />
+                    <span className="sr-only">Lock</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Private snippet</TooltipContent>
+              </Tooltip>
+            )}
 
             <Separator orientation="vertical" className="mx-2 h-6" />
 
@@ -157,7 +191,7 @@ export const SnippetContent = () => {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
-                  className={'text-pink-700'}
+                  className="text-danger"
                   onClick={async () => {
                     const confirmation = await confirm(
                       `Are you sure you want to delete "${removeTags(snippet.description)}" snippet?`

@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -17,6 +18,8 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        danger: colors.pink[500],
+        success: colors.emerald[500],
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
