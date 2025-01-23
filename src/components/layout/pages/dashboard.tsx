@@ -121,7 +121,7 @@ export const DashBoard = () => {
     },
     {
       title: 'Starred',
-      value: list.filter((snippet) => snippet.stars).length,
+      value: list.filter((snippet) => snippet.starred).length,
       description: `Starred snippets among ${list.length}`,
     },
     {

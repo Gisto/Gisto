@@ -1,13 +1,17 @@
 import { Link } from 'dirty-react-router';
-import { Info, SlidersHorizontal, LogOut, LayoutDashboard, Plus } from 'lucide-react';
+import { Info, SlidersHorizontal, LogOut, LayoutDashboard, Plus, Globe } from 'lucide-react';
 
 import { version } from '../../../../package.json';
 
 import { NavItem } from '@/components/layout/navigation/nav-item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
+import { useIsOnline } from '@/hooks/use-is-online.tsx';
+import { cn } from '@/lib/utils.ts';
 
 export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
+  const online = useIsOnline();
+
   return (
     <>
       <PageHeader>
@@ -50,6 +54,13 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
               }
             }}
             Icon={LogOut}
+          />
+
+          <NavItem
+            isCollapsed={isCollapsed}
+            label={online ? 'You are on-line' : 'You are off-line'}
+            onClick={() => null}
+            Icon={() => <Globe className={cn('size-4', online ? 'text-success' : 'text-danger')} />}
           />
 
           <ThemeSwitcher />

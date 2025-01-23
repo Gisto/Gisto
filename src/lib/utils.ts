@@ -1,10 +1,10 @@
-import { clsx, type ClassValue } from 'clsx';
+import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 import { ITEMS_PER_PAGE } from '@/constants';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState } from '@/lib/store/globalState.ts';
-import { GistType } from '@/types/gist.ts';
+import { GistEnrichedType, GistFileType, GistType } from '@/types/gist.ts';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -25,6 +25,12 @@ export const camelToTitleCase = (text: string) =>
     .replace(/([A-Z])/g, (match) => ` ${match}`)
     .replace(/^./, (match) => match.toUpperCase())
     .trim();
+
+export const randomString = (charsCount = 5) =>
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, '')
+    .slice(0, charsCount);
 
 export const snakeToTitleCase = (text: string) =>
   upperCaseFirst(text.replace(/[_-]/g, ' ').trim().toLowerCase());
@@ -62,17 +68,19 @@ export const processSnippet = (snippet: GistType) => {
     isUntitled: !description,
     tags: getTags(description),
     title: removeTags(description),
-    languages: Array.from(
-      Object.values(
-        Object.keys(snippet.files)
-          .map((file) => snippet.files[file]?.language)
-          .filter(Boolean)
-          .reduce((acc: Record<string, string>, lang) => {
-            acc[lang] = lang;
-            return acc;
-          }, {})
-      )
-    ),
+    languages: Object.keys(snippet.files)
+      .map((file) => snippet.files[file]?.language || { name: 'Text', color: 'white' })
+      .reduce((acc: { name: string; color?: string }[], lang) => {
+        if (
+          typeof lang === 'object' &&
+          lang !== null &&
+          !acc.some((item) => item.name === lang.name)
+        ) {
+          acc.push(lang);
+        }
+
+        return acc;
+      }, []),
   };
 };
 
@@ -114,3 +122,56 @@ export const fetchAndUpdateSnippets = async () => {
     }
   }
 };
+
+export const searchFilter = (search: string, currentSnippets: GistEnrichedType[] | []) => {
+  if (search === '' || search.length === 0) {
+    return currentSnippets;
+  }
+
+  const searchTerms = search.toLowerCase().split(' ');
+
+  return currentSnippets.filter((listItem) => {
+    return searchTerms.every((term) => {
+      if (term.startsWith('tag:')) {
+        const tagToSearch = term.slice(4).trim();
+        return listItem.tags.some((tag) =>
+          tag.replace('#', '').toLowerCase().startsWith(tagToSearch)
+        );
+      }
+
+      if (term.startsWith('lang:')) {
+        const langToSearch = term.slice(5).trim();
+        return listItem.languages.some((lang) => lang.name.toLowerCase().startsWith(langToSearch));
+      }
+
+      return listItem.description.trim().toLowerCase().includes(term);
+    });
+  });
+};
+
+export const getFileExtension = (file: GistFileType): string =>
+  file.filename.split('.').reverse()[0];
+
+export const isPDF = (file: GistFileType): boolean =>
+  file.type === 'application/pdf' && getFileExtension(file) === 'pdf';
+
+export const isHTML = (file: GistFileType): boolean => file.language === 'HTML';
+
+export const isCSV = (file: GistFileType): boolean => file.language === 'CSV';
+
+export const isTSV = (file: GistFileType): boolean => file.type === 'text/tab-separated-values';
+
+export const isImage = (file: GistFileType): boolean => file.type.startsWith('image/');
+
+export const isJson = (file: GistFileType): boolean => file.language === 'JSON';
+
+export const isMarkdown = (file: GistFileType): boolean => file.language === 'Markdown';
+
+export const previewAvailable = (file: GistFileType): boolean =>
+  isPDF(file) ||
+  isHTML(file) ||
+  isImage(file) ||
+  isCSV(file) ||
+  isTSV(file) ||
+  isJson(file) ||
+  isMarkdown(file);
