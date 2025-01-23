@@ -13,7 +13,6 @@ import React, { useCallback, useState } from 'react';
 
 import { ListItem } from '@/components/layout/navigation/list/item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
-// import { Search as SearchField } from '@/components/search.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
@@ -137,7 +136,6 @@ export const Lists = ({
               </TooltipContent>
             </Tooltip>
           )}
-          {/*<SearchField />*/}
         </div>
 
         <Button disabled={!search} variant="ghost" size="icon" onClick={() => setSearch('')}>
