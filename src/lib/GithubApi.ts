@@ -1,6 +1,7 @@
 import { version } from '../../package.json';
 
 import { toast } from '@/components/toast/ToastManager.tsx';
+import { ITEMS_PER_PAGE } from '@/constants';
 import { globalState } from '@/lib/store/globalState.ts';
 import { GistType } from '@/types/gist.ts';
 
@@ -292,7 +293,7 @@ export const GithubAPI = {
     const query = `
     query($cursor: String) {
       viewer {
-        gists(first: 100, after: $cursor, orderBy: {field: CREATED_AT, direction: DESC}, privacy: ALL) {
+        gists(first: ${ITEMS_PER_PAGE}, after: $cursor, orderBy: {field: CREATED_AT, direction: DESC}, privacy: ALL) {
           pageInfo {
             hasNextPage
             endCursor

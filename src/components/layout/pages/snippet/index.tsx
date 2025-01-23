@@ -1,15 +1,5 @@
 import { useRouter } from 'dirty-react-router';
-import {
-  Lock,
-  Pencil,
-  MoreVertical,
-  Star,
-  Trash,
-  Globe,
-  ExternalLink,
-  Copy,
-  StarOff,
-} from 'lucide-react';
+import { Lock, Pencil, MoreVertical, Star, Trash, Globe, ExternalLink, Copy } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
@@ -104,7 +94,7 @@ export const SnippetContent = () => {
                 className="-mx-3"
                 onClick={async () => await GithubAPI.deleteStar(snippet.id)}
               >
-                <Star className="size-4" />
+                <Star className="size-4 fill-primary stroke-primary" />
                 <span className="sr-only">Starred</span>
               </Button>
             ) : (
@@ -114,7 +104,7 @@ export const SnippetContent = () => {
                 className="-mx-3"
                 onClick={async () => await GithubAPI.addStar(snippet.id)}
               >
-                <StarOff className="size-4" />
+                <Star className="size-4" />
                 <span className="sr-only">Not starred</span>
               </Button>
             )}

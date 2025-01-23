@@ -69,7 +69,7 @@ export const processSnippet = (snippet: GistType) => {
     tags: getTags(description),
     title: removeTags(description),
     languages: Object.keys(snippet.files)
-      .map((file) => snippet.files[file]?.language || { name: 'Text', color: 'tomato' })
+      .map((file) => snippet.files[file]?.language || { name: 'Text', color: 'white' })
       .reduce((acc: { name: string; color?: string }[], lang) => {
         if (
           typeof lang === 'object' &&
