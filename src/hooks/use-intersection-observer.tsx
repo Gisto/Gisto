@@ -36,7 +36,7 @@ const useIntersectionObserver = <T extends Element>({
     };
   }, [threshold, root, rootMargin]);
 
-  return [isInView, ref];
+  return [isInView, ref as RefObject<T>];
 };
 
 export default useIntersectionObserver;
