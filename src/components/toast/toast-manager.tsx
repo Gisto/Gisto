@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import Toast, { ToastType } from './toast';
+import { Toast, ToastType } from './toast';
 
 const EVENT_NAME = 'gisto-add-toast';
 
@@ -51,7 +51,7 @@ export const toast = {
   show: ({
     message,
     title,
-    type = 'default',
+    type = 'info',
     duration = 3000,
     id,
   }: {

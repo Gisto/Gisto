@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
 
+import { AllTags } from '@/components/all-tags.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
-import { Loading } from '@/components/Loading.tsx';
+import { Loading } from '@/components/loading.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
 import {
   Card,
@@ -110,7 +111,6 @@ export const DashBoard = () => {
 
   if (!list || list.length === 0) return <Loading />;
 
-  const allTags = list.map((snippet) => snippet.tags).flat();
   const allLanguages = list.map((snippet) => snippet.languages).flat();
 
   const cardCharts = [
@@ -330,37 +330,9 @@ export const DashBoard = () => {
           </CardContent>
         </Card>
 
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle className="flex justify-between items-center">
-              <div>Tags</div>{' '}
-              <div>
-                <Input placeholder="Filter tags" />
-              </div>
-            </CardTitle>
-            <CardDescription>All, unique tags</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {[...new Set(allTags)]
-              .map((tag) => ({
-                tag,
-                count: allTags.filter((t) => t === tag).length,
-              }))
-              .sort((a, b) => b.count - a.count)
-              .map(({ tag, count }) => (
-                <Badge
-                  key={tag}
-                  variant="primary-outline"
-                  className="m-1 cursor-pointer hover:opacity-70"
-                >
-                  {tag} <small className="ml-1">({count})</small>
-                  {/*<div className="ml-[6px] -mr-[9px]  w-5 h-4 bg-primary text-background text-[9px] text-center">*/}
-                  {/*  {count}*/}
-                  {/*</div>*/}
-                </Badge>
-              ))}
-          </CardContent>
-        </Card>
+        <div className="mt-8">
+          <AllTags />
+        </div>
       </div>
     </div>
   );

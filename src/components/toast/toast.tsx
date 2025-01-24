@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import { Info, Rss, Skull, TriangleAlert } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert.tsx';
@@ -15,7 +15,7 @@ export type ToastType = {
   style?: React.CSSProperties;
 };
 
-const Toast = ({
+export const Toast = ({
   title,
   message,
   type = 'notification',
@@ -82,5 +82,3 @@ const Toast = ({
     </AnimatePresence>
   );
 };
-
-export default Toast;
