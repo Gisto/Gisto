@@ -1,6 +1,6 @@
 import { version } from '../../package.json';
 
-import { toast } from '@/components/toast/ToastManager.tsx';
+import { toast } from '@/components/toast/toast-manager.tsx';
 import { ITEMS_PER_PAGE } from '@/constants';
 import { globalState } from '@/lib/store/globalState.ts';
 import { GistType } from '@/types/gist.ts';
@@ -164,11 +164,15 @@ export const GithubAPI = {
     return response.text();
   },
 
-  async createGist(
-    files: Record<string, { content: string }>,
-    description: string,
-    isPublic: boolean
-  ): Promise<GistType> {
+  async createGist({
+    files,
+    description,
+    isPublic,
+  }: {
+    files: Record<string, { content: string }>;
+    description: string;
+    isPublic: boolean;
+  }): Promise<GistType> {
     const { data } = await this.request<GistType>({
       endpoint: '/gists',
       method: 'POST',

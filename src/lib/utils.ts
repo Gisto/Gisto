@@ -1,17 +1,16 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { z } from 'zod';
 
 import { ITEMS_PER_PAGE } from '@/constants';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState } from '@/lib/store/globalState.ts';
 import { GistEnrichedType, GistFileType, GistType } from '@/types/gist.ts';
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+export function cn(...classes: (string | undefined | null | false)[]) {
+  return classes.filter(Boolean).join(' ');
 }
 
 export const fancyCardStyle = cn(
-  'bg-gradient-to-bl to-50% from-primary dark:from-primary-950',
+  'bg-gradient-to-bl to-50% from-primary/30 dark:from-primary-950',
   'hover:shadow-lg hover:border-secondary transition-all ease-in-out duration-300'
 );
 
@@ -175,3 +174,35 @@ export const previewAvailable = (file: GistFileType): boolean =>
   isTSV(file) ||
   isJson(file) ||
   isMarkdown(file);
+
+export const formatSnippetForSaving = (snippet: {
+  description: string;
+  isPublic: boolean;
+  files: { filename: string; content: string }[];
+  tags?: string[] | undefined;
+}) => {
+  const files = snippet.files.reduce<{ [key: string]: { content: string } }>((acc, file) => {
+    acc[file.filename] = { content: file.content };
+    return acc;
+  }, {});
+
+  return {
+    description: snippet.description + ' ' + (snippet.tags?.join(' ') || ''),
+    isPublic: snippet.isPublic,
+    files,
+  };
+};
+
+export const formatZodErrors = (errors: z.ZodIssue[]): Record<string, string[]> => {
+  return errors.reduce(
+    (acc, error) => {
+      const path = error.path.join('.');
+      if (!acc[path]) {
+        acc[path] = [];
+      }
+      acc[path].push(error.message);
+      return acc;
+    },
+    {} as Record<string, string[]>
+  );
+};

@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { File } from '@/components/layout/pages/snippet/content';
-import { Loading } from '@/components/Loading.tsx';
+import { Loading } from '@/components/loading.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
