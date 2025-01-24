@@ -1,4 +1,5 @@
 import { BadgeAlert } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import { z } from 'zod';
 
 import { formatZodErrors } from '@/lib/utils.ts';
@@ -8,9 +9,13 @@ export const ZodError = ({ errors, path }: { errors: z.ZodIssue[]; path: string 
 
   if (error) {
     return (
-      <div className="text-danger text-xs flex items-center gap-2">
+      <motion.div
+        className="text-danger text-xs flex items-center gap-2"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+      >
         <BadgeAlert className="stroke-danger size-4" /> {error}
-      </div>
+      </motion.div>
     );
   }
 
