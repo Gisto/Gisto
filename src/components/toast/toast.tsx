@@ -15,7 +15,7 @@ export type ToastType = {
   style?: React.CSSProperties;
 };
 
-const Toast = ({
+export const Toast = ({
   title,
   message,
   type = 'notification',
@@ -82,5 +82,3 @@ const Toast = ({
     </AnimatePresence>
   );
 };
-
-export default Toast;
