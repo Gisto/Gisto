@@ -1,5 +1,3 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 import { z } from 'zod';
 
 import { ITEMS_PER_PAGE } from '@/constants';
@@ -7,8 +5,8 @@ import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState } from '@/lib/store/globalState.ts';
 import { GistEnrichedType, GistFileType, GistType } from '@/types/gist.ts';
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+export function cn(...classes: (string | undefined | null | false)[]) {
+  return classes.filter(Boolean).join(' ');
 }
 
 export const fancyCardStyle = cn(

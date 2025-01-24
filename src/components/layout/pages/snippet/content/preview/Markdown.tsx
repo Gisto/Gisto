@@ -11,6 +11,7 @@ export const Markdown = ({ file }: { file: GistFileType }) => {
     <head>
     <link href="/github-markdown.css" rel="stylesheet">
     <link href="/github-markdown-${theme}.css" rel="stylesheet">
+    <base target="_parent" />
     </head>
     <body class="markdown-body">
       ${parse(file.content)}
