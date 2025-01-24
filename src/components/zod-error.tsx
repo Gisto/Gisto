@@ -1,5 +1,5 @@
 import { BadgeAlert } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import { z } from 'zod';
 
 import { formatZodErrors } from '@/lib/utils.ts';
