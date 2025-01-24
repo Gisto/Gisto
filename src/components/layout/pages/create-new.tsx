@@ -1,6 +1,7 @@
 import Editor from '@monaco-editor/react';
 import { useRouter } from 'dirty-react-router';
 import { Plus, SidebarClose, SidebarOpen, Info, X, Trash, Shield, ShieldCheck } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useReducer, useState } from 'react';
 import { z } from 'zod';
 
@@ -203,17 +204,33 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
               </label>
               <div>
                 {state.tags.length === 0 ? (
-                  <small>Add tags to categorize your snippet</small>
+                  <motion.small
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                  >
+                    Add tags to categorize your snippet
+                  </motion.small>
                 ) : (
-                  state.tags.map((tag: string) => (
-                    <Badge className="mr-2 mb-2" key={tag} variant="primary-outline">
-                      {tag}{' '}
-                      <X
-                        className="size-3 ml-2 cursor-pointer hover:text-danger"
-                        onClick={() => dispatch({ type: 'REMOVE_TAG', payload: tag })}
-                      />
-                    </Badge>
-                  ))
+                  <AnimatePresence>
+                    {state.tags.map((tag: string) => (
+                      <motion.div
+                        key={tag}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.3, type: 'spring' }}
+                        style={{ display: 'inline-block' }}
+                      >
+                        <Badge className="mr-2 mb-2" variant="primary-outline">
+                          {tag}{' '}
+                          <X
+                            className="size-3 ml-2 cursor-pointer hover:text-danger"
+                            onClick={() => dispatch({ type: 'REMOVE_TAG', payload: tag })}
+                          />
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
                 )}
               </div>
             </div>
@@ -300,7 +317,7 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
           </div>
         </div>
         <div className="w-1/2">
-          <AllTags onClick={(tag) => dispatch({ type: 'ADD_TAG', payload: tag })} />
+          <AllTags allowCreate onClick={(tag) => dispatch({ type: 'ADD_TAG', payload: tag })} />
         </div>
       </div>
     </div>

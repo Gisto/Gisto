@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 
 import { Editor } from '@/components/layout/pages/snippet/content/editor.tsx';
@@ -20,7 +21,9 @@ export const File = ({ file, snippet }: { file: GistFileType; snippet: GistType 
         collapsed={collapsed}
         setCollapsed={setCollapsed}
       />
-      <Editor preview={preview} collapsed={collapsed} file={file} snippet={snippet} />
+      <AnimatePresence>
+        <Editor preview={preview} collapsed={collapsed} file={file} snippet={snippet} />
+      </AnimatePresence>
     </>
   );
 };

@@ -1,4 +1,5 @@
 import MonacoEditor from '@monaco-editor/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useRef, useState } from 'react';
 
 import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx';
@@ -26,10 +27,6 @@ export const Editor = ({
   const [height, setHeight] = useState('65vh');
   const { theme } = useTheme();
   const editorRef = useRef(null);
-
-  if (collapsed) {
-    return <div className="mb-4" />;
-  }
 
   if (file.truncated) {
     return (
@@ -74,18 +71,31 @@ export const Editor = ({
   }
 
   return (
-    <div className="bg-background py-2 px-4 overflow-auto mb-4 font-mono">
-      <MonacoEditor
-        options={{
-          ...EDITOR_OPTIONS,
-          ...settings.editor,
-        }}
-        onMount={handleEditorDidMount}
-        height={height}
-        theme={theme === 'dark' ? 'vs-dark' : 'light'}
-        defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
-        defaultValue={file.content}
-      />
-    </div>
+    <AnimatePresence initial={false}>
+      {!collapsed ? (
+        <motion.div
+          key="editor-container"
+          className="bg-background py-2 px-4 overflow-auto mb-4 font-mono"
+          initial={{ opacity: 0, y: -20, height: 0 }}
+          animate={{ opacity: 1, height: 'auto', y: 0 }}
+          exit={{ opacity: 0, y: -10, height: 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+        >
+          <MonacoEditor
+            options={{
+              ...EDITOR_OPTIONS,
+              ...settings.editor,
+            }}
+            onMount={handleEditorDidMount}
+            height={height}
+            theme={theme === 'dark' ? 'vs-dark' : 'light'}
+            defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
+            defaultValue={file.content}
+          />
+        </motion.div>
+      ) : (
+        <div className="mb-4" />
+      )}
+    </AnimatePresence>
   );
 };
