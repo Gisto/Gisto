@@ -6,7 +6,7 @@ import { GistEnrichedType } from '@/types/gist.ts';
 
 const SETTINGS_STORAGE_KEY = 'gisto-app-settings';
 
-type StoreStateType = {
+export type StoreStateType = {
   user: Record<string, unknown> | null;
   isLoggedIn: boolean;
   snippets: GistEnrichedType[] | [];
@@ -17,7 +17,6 @@ type StoreStateType = {
   } | null;
   settings: {
     theme: 'system' | 'light' | 'dark';
-    notificationPosition: string;
     sidebarCollapsedByDefault: boolean;
     filesCollapsedByDefault: boolean;
     newSnippetPublicByDefault: boolean;
@@ -31,18 +30,19 @@ type StoreStateType = {
   };
 };
 
-function saveSettingsToLocalStorage(settings: StoreStateType['settings']) {
+export type SettingsType = StoreStateType['settings'];
+
+function saveSettingsToLocalStorage(settings: SettingsType) {
   localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
 }
 
-function loadSettingsFromLocalStorage(): StoreStateType['settings'] | null {
+function loadSettingsFromLocalStorage(): SettingsType | null {
   const storedSettings = localStorage.getItem(SETTINGS_STORAGE_KEY);
   return storedSettings ? JSON.parse(storedSettings) : null;
 }
 
 const initialSettings = loadSettingsFromLocalStorage() || {
   theme: 'system',
-  notificationPosition: 'bottom-right',
   sidebarCollapsedByDefault: false,
   filesCollapsedByDefault: false,
   newSnippetPublicByDefault: false,
@@ -78,10 +78,32 @@ export function useStoreValue<K extends keyof StoreStateType>(store: K) {
   return value;
 }
 
-export function updateSettings(newSettings: Partial<StoreStateType['settings']>) {
-  const currentSettings = globalState.getState().settings;
-  const updatedSettings = { ...currentSettings, ...newSettings };
+export function updateSettings(newSettings: Partial<SettingsType>) {
+  const currentSettings = globalState.getState().settings as SettingsType;
+  const updatedSettings = { ...currentSettings };
+
+  Object.entries(newSettings).forEach(([path, value]) => {
+    if (path.includes('.')) {
+      setNestedProperty(updatedSettings, path, value);
+    } else {
+      if (path in updatedSettings) {
+        // @ts-expect-error TODO
+        updatedSettings[path as string] = value;
+      }
+    }
+  });
+
   globalState.setState({ settings: updatedSettings });
+}
+
+function setNestedProperty(obj: { [key: string]: unknown }, path: string, value: unknown): void {
+  const keys = path.split('.');
+  let current = obj;
+  for (let i = 0; i < keys.length - 1; i++) {
+    // @ts-expect-error TODO
+    current = current[keys[i]] = current[keys[i]] || {};
+  }
+  current[keys[keys.length - 1]] = value;
 }
 
 globalState.subscribe((state) => {

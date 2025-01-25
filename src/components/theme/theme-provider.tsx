@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
+import { useStoreValue } from '@/lib/store/globalState.ts';
+
 type Theme = 'dark' | 'light' | 'system';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
-  defaultTheme?: Theme;
   storageKey?: string;
 };
 
@@ -22,12 +23,12 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
-  storageKey = 'widgits-ui-theme',
+  storageKey = 'gisto-ui-theme',
   ...props
 }: ThemeProviderProps) {
+  const settings = useStoreValue('settings');
   const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
+    () => (localStorage.getItem(storageKey) as Theme) || settings.theme
   );
 
   useEffect(() => {
@@ -46,6 +47,10 @@ export function ThemeProvider({
 
     root.classList.add(theme);
   }, [theme]);
+
+  useEffect(() => {
+    setTheme(settings.theme);
+  }, [settings.theme]);
 
   const value = {
     theme,

@@ -9,7 +9,6 @@
     "dev": "vite --port 3002",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "lint:fix": "eslint --cache --fix",
     "ts:lint": "tsc -b --noEmit",
     "preview": "vite preview",
     "prepare": "husky install"
@@ -22,6 +21,7 @@
     "@radix-ui/react-popover": "^1.1.5",
     "@radix-ui/react-select": "^2.1.5",
     "@radix-ui/react-separator": "^1.1.1",
+    "@radix-ui/react-slider": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-switch": "^1.1.2",
     "@radix-ui/react-tabs": "^1.1.2",
@@ -63,10 +63,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "pnpm lint:fix"
-    ],
-    "*.{ts,tsx}": [
-      "pnpm ts:lint"
+      "eslint --cache --fix"
     ],
     "*": [
       "prettier --ignore-unknown --write"

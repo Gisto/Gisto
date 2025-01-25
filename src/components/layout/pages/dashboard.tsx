@@ -139,7 +139,7 @@ export const DashBoard = () => {
   ];
 
   return (
-    <div className="h-screen w-full border-r border-collapse overflow-auto">
+    <div className="h-screen w-full border-r border-collapse">
       <PageHeader>
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
@@ -148,7 +148,7 @@ export const DashBoard = () => {
         </div>
       </PageHeader>
 
-      <div className="p-8">
+      <div className="p-8 overflow-auto h-[calc(100vh-52px)] shadow-inner">
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-8">
           {cardCharts.map((chart) => (
             <Card key={chart.title}>
