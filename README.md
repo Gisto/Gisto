@@ -4,23 +4,26 @@
 
 Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor.
 
-> [!NOTE]  
+> [!INFO]
+> Alpha pre-releases available:
+>
+> Latest builds are always at the [releases](https://github.com/Gisto/Gisto/releases) tab
+
+> [!IMPORTANT]  
 > Current version is a complete rewrite of the original Gisto. It is a work in progress and should not yet be considered for production use.
-> 
- 
+
 ## Current version (2.x.x)
 
 All progress of current version can be tracked on the ["main"](https://github.com/Gisto/Gisto/tree/main) branch.
+New version uses [Tauri](https://v2.tauri.app/) instead of electron - what significantly reduces the file size
 
 ## Previous version (up to 1.13.4)
 
 Previous version can be tracked via the ["master"](https://github.com/Gisto/Gisto/tree/master) branch.
 
+# Preview
 
-# Preview 
-
-[![Gisto MK-II](https://img.youtube.com/vi/n5UnZ_Jp4N8/0.jpg)](https://www.youtube.com/watch?v=n5UnZ_Jp4N8 "Gisto MK-II")
-
+[![Gisto MK-II](https://img.youtube.com/vi/n5UnZ_Jp4N8/0.jpg)](https://www.youtube.com/watch?v=n5UnZ_Jp4N8 'Gisto MK-II')
 
 # About
 
@@ -30,7 +33,7 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 
 You can download Gisto for (macOS, Windows, Linux) desktop from [releases](https://github.com/Gisto/Gisto/releases) tab
 
-Or use full featured Web based client available at: [Web app](https://gisto-web-app.netlify.app)  (old one still [available](https://web-gistoapp.netlify.app) as well )
+Or use full featured Web based client available at: [Web app](https://gisto-web-app.netlify.app) (old one still [available](https://web-gistoapp.netlify.app) as well )
 
 # Features
 
@@ -74,22 +77,20 @@ Please feel free to add a bug / feature request / suggestions to the issue track
 
 # Development setup
 
-> Make sure you have **nodejs** and *pnpm* installed in the development machine
-
+> Make sure you have **nodejs** and _pnpm_ installed in the development machine
 
 ### Setup
 
 1. Clone the latest "main" branch: `git clone -b main --single-branch https://github.com/gisto/gisto.git`
 2. Run `pnpm install`
 3. Run `pnpm dev` to start the development app (vite)
-5. Run `pnpm tauri dev` to start the development desktop app (vite with Tauri)
-4. Run `pnpm build` to build the app
-5. Run `pnpm tauri build` to build the desktop app
+4. Run `pnpm tauri dev` to start the development desktop app (vite with Tauri)
+5. Run `pnpm build` to build the app
+6. Run `pnpm tauri build` to build the desktop app
 
 # Release cycle
 
 release.yml workflow of github actions is responsible for creating the release builds upon mergin to special branch called "release".
-
 
 ## License
 
