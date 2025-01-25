@@ -2,14 +2,9 @@ import './main.css';
 
 import { RouterProvider, RouteType } from 'dirty-react-router';
 import { Info } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 
 import { Gisto } from '@/components/layout/gisto.tsx';
-import { About } from '@/components/layout/pages/about.tsx';
-import { CreateNew } from '@/components/layout/pages/create-new.tsx';
-import { DashBoard } from '@/components/layout/pages/dashboard.tsx';
-import { Settings } from '@/components/layout/pages/settings.tsx';
-import { SnippetContent } from '@/components/layout/pages/snippet';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
 import ToastManager, { toast } from '@/components/toast/toast-manager.tsx';
 import { Button } from '@/components/ui/button.tsx';
@@ -26,26 +21,56 @@ import { Label } from '@/components/ui/label';
 import { TooltipProvider } from '@/components/ui/tooltip.tsx';
 import { globalState } from '@/lib/store/globalState.ts';
 
+const DashBoardPage = lazy(() =>
+  import('@/components/layout/pages/dashboard').then((module) => ({
+    default: module.DashBoard,
+  }))
+);
+
+const SnippetContentPage = lazy(() =>
+  import('@/components/layout/pages/snippet').then((module) => ({
+    default: module.SnippetContent,
+  }))
+);
+
+const CreateNewPage = lazy(() =>
+  import('@/components/layout/pages/create-new').then((module) => ({
+    default: module.CreateNew,
+  }))
+);
+
+const AboutPage = lazy(() =>
+  import('@/components/layout/pages/about').then((module) => ({
+    default: module.About,
+  }))
+);
+
+const SettingsPage = lazy(() =>
+  import('@/components/layout/pages/settings/index.tsx').then((module) => ({
+    default: module.Settings,
+  }))
+);
+
 const routes: RouteType[] = [
   {
-    path: '/snippets/:id',
-    component: SnippetContent,
-  },
-  {
-    path: '/about',
-    component: About,
-  },
-  {
-    path: '/settings',
-    component: Settings,
-  },
-  {
     path: '/',
-    component: DashBoard,
+    component: DashBoardPage,
+  },
+  {
+    path: '/snippets/:id',
+    component: SnippetContentPage,
   },
   {
     path: '/new-snippet',
-    component: CreateNew,
+    component: CreateNewPage,
+  },
+  {
+    path: '/about',
+    component: AboutPage,
+  },
+  {
+    path: '/settings',
+    component: SettingsPage,
   },
   // {
   //   path: '*',
@@ -109,7 +134,7 @@ function App() {
 
   if (isValid) {
     return (
-      <ThemeProvider defaultTheme="system">
+      <ThemeProvider>
         <RouterProvider routes={routes}>
           <TooltipProvider>
             <Gisto />

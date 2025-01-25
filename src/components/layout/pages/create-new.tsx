@@ -132,7 +132,7 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
   };
 
   return (
-    <div className="h-screen w-full border-r border-collapse overflow-auto">
+    <div className="h-screen w-full border-r border-collapse">
       <PageHeader>
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
@@ -148,176 +148,180 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
           </div>
         </div>
       </PageHeader>
-
-      <div className="m-8 flex gap-8">
-        <div className="flex flex-col gap-4 w-2/3">
-          <div className="flex justify-between gap-8">
-            <div className="flex flex-col gap-2 w-full">
-              <label htmlFor="description" className="text-sm font-medium text-primary flex gap-2">
-                Description <ZodError errors={errors} path={'description'} />
-              </label>
-              <Input
-                type="text"
-                id="description"
-                value={state.description}
-                onChange={(e) => dispatch({ type: 'SET_DESCRIPTION', payload: e.target.value })}
-                placeholder="Enter a description"
-              />
-              <div className="flex items-center gap-2 mt-2">
-                <Tabs
-                  value={state.isPublic ? 'true' : 'false'}
-                  onValueChange={(value) =>
-                    dispatch({ type: 'SET_PUBLIC', payload: value === 'true' })
-                  }
+      <div className=" overflow-auto h-[calc(100vh-52px)] shadow-inner">
+        <div className="m-8 flex gap-8">
+          <div className="flex flex-col gap-4 w-2/3">
+            <div className="flex justify-between gap-8">
+              <div className="flex flex-col gap-2 w-full">
+                <label
+                  htmlFor="description"
+                  className="text-sm font-medium text-primary flex gap-2"
                 >
-                  <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value={'true'}>
-                      <Shield className="size-4 stroke-danger mr-2" /> Public
-                    </TabsTrigger>
-                    <TabsTrigger value={'false'}>
-                      <ShieldCheck className="size-4 stroke-success mr-2" /> Private
-                    </TabsTrigger>
-                  </TabsList>
-                </Tabs>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2 w-2/3">
-              <label
-                htmlFor="tags"
-                className="text-sm font-medium text-primary flex items-center gap-2"
-              >
-                Tags (optional){' '}
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Info className="size-4 stroke-gray-500" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    Add tags by adding{' '}
-                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                      {'#<tag>'}
-                    </code>{' '}
-                    to the end of description, <br />
-                    or add tags by clicking on the tag on the side.
-                  </TooltipContent>
-                </Tooltip>
-              </label>
-              <div>
-                {state.tags.length === 0 ? (
-                  <motion.small
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                  Description <ZodError errors={errors} path={'description'} />
+                </label>
+                <Input
+                  type="text"
+                  id="description"
+                  value={state.description}
+                  onChange={(e) => dispatch({ type: 'SET_DESCRIPTION', payload: e.target.value })}
+                  placeholder="Enter a description"
+                />
+                <div className="flex items-center gap-2 mt-2">
+                  <Tabs
+                    value={state.isPublic ? 'true' : 'false'}
+                    onValueChange={(value) =>
+                      dispatch({ type: 'SET_PUBLIC', payload: value === 'true' })
+                    }
                   >
-                    Add tags to categorize your snippet
-                  </motion.small>
-                ) : (
-                  <AnimatePresence>
-                    {state.tags.map((tag: string) => (
-                      <motion.div
-                        key={tag}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.3, type: 'spring' }}
-                        style={{ display: 'inline-block' }}
+                    <TabsList className="grid w-full grid-cols-2">
+                      <TabsTrigger value={'true'}>
+                        <Shield className="size-4 stroke-danger mr-2" /> Public
+                      </TabsTrigger>
+                      <TabsTrigger value={'false'}>
+                        <ShieldCheck className="size-4 stroke-success mr-2" /> Private
+                      </TabsTrigger>
+                    </TabsList>
+                  </Tabs>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2 w-2/3">
+                <label
+                  htmlFor="tags"
+                  className="text-sm font-medium text-primary flex items-center gap-2"
+                >
+                  Tags (optional){' '}
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Info className="size-4 stroke-gray-500" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      Add tags by adding{' '}
+                      <code className="bg-muted-foreground dark:bg-accent rounded p-1">
+                        {'#<tag>'}
+                      </code>{' '}
+                      to the end of description, <br />
+                      or add tags by clicking on the tag on the side.
+                    </TooltipContent>
+                  </Tooltip>
+                </label>
+                <div>
+                  {state.tags.length === 0 ? (
+                    <motion.small
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                    >
+                      Add tags to categorize your snippet
+                    </motion.small>
+                  ) : (
+                    <AnimatePresence>
+                      {state.tags.map((tag: string) => (
+                        <motion.div
+                          key={tag}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.8 }}
+                          transition={{ duration: 0.3, type: 'spring' }}
+                          style={{ display: 'inline-block' }}
+                        >
+                          <Badge className="mr-2 mb-2" variant="primary-outline">
+                            {tag}{' '}
+                            <X
+                              className="size-3 ml-2 cursor-pointer hover:text-danger"
+                              onClick={() => dispatch({ type: 'REMOVE_TAG', payload: tag })}
+                            />
+                          </Badge>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {state.files.map(
+              (
+                file: {
+                  filename: string | number | readonly string[] | undefined;
+                  content: string | undefined;
+                },
+                index: number
+              ) => (
+                <Card className="hover:border-primary">
+                  <CardHeader>
+                    <CardTitle className="flex justify-between items-center">
+                      {file.filename || 'New file'}
+                      {state.files.length > 1 && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => dispatch({ type: 'REMOVE_FILE', index })}
+                        >
+                          <Trash className="size-4" /> Remove File
+                        </Button>
+                      )}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="file" className="text-sm font-medium text-primary flex gap-2">
+                        File name <ZodError errors={errors} path={`files.${index}.filename`} />
+                      </label>
+                      <Input
+                        type="text"
+                        id="file"
+                        value={file.filename}
+                        onChange={(e) =>
+                          dispatch({ type: 'SET_FILENAME', payload: e.target.value, index })
+                        }
+                        placeholder="Enter file name including extention"
+                      />
+
+                      <label
+                        htmlFor="file-content"
+                        className="text-sm font-medium text-primary flex gap-2"
                       >
-                        <Badge className="mr-2 mb-2" variant="primary-outline">
-                          {tag}{' '}
-                          <X
-                            className="size-3 ml-2 cursor-pointer hover:text-danger"
-                            onClick={() => dispatch({ type: 'REMOVE_TAG', payload: tag })}
-                          />
-                        </Badge>
-                      </motion.div>
-                    ))}
-                  </AnimatePresence>
-                )}
+                        File Content <ZodError errors={errors} path={`files.${index}.content`} />
+                      </label>
+                      <Editor
+                        value={file.content}
+                        onChange={(value) => {
+                          dispatch({ type: 'SET_CONTENT', payload: value || '', index });
+                        }}
+                        className="border-primary border rounded p-1  "
+                        options={{
+                          ...EDITOR_OPTIONS,
+                          readOnly: false,
+                          codeLens: false,
+                        }}
+                        height="32vh"
+                        theme={theme === 'dark' ? 'vs-dark' : 'light'}
+                        // defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
+                        // defaultValue={file.content}
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            )}
+
+            <div className="flex justify-between">
+              <Button variant="outline" onClick={() => dispatch({ type: 'ADD_FILE' })}>
+                <Plus className="size-4" />
+                Add another file
+              </Button>
+
+              <div className="flex gap-2">
+                <Button variant="ghost">Cancel</Button>
+                <Button variant="default" onClick={() => create()}>
+                  Create {state.isPublic ? 'public' : 'private'} snippet
+                </Button>
               </div>
             </div>
           </div>
-
-          {state.files.map(
-            (
-              file: {
-                filename: string | number | readonly string[] | undefined;
-                content: string | undefined;
-              },
-              index: number
-            ) => (
-              <Card className="hover:border-primary">
-                <CardHeader>
-                  <CardTitle className="flex justify-between items-center">
-                    {file.filename || 'New file'}
-                    {state.files.length > 1 && (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => dispatch({ type: 'REMOVE_FILE', index })}
-                      >
-                        <Trash className="size-4" /> Remove File
-                      </Button>
-                    )}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="file" className="text-sm font-medium text-primary flex gap-2">
-                      File name <ZodError errors={errors} path={`files.${index}.filename`} />
-                    </label>
-                    <Input
-                      type="text"
-                      id="file"
-                      value={file.filename}
-                      onChange={(e) =>
-                        dispatch({ type: 'SET_FILENAME', payload: e.target.value, index })
-                      }
-                      placeholder="Enter file name including extention"
-                    />
-
-                    <label
-                      htmlFor="file-content"
-                      className="text-sm font-medium text-primary flex gap-2"
-                    >
-                      File Content <ZodError errors={errors} path={`files.${index}.content`} />
-                    </label>
-                    <Editor
-                      value={file.content}
-                      onChange={(value) => {
-                        dispatch({ type: 'SET_CONTENT', payload: value || '', index });
-                      }}
-                      className="border-primary border rounded p-1  "
-                      options={{
-                        ...EDITOR_OPTIONS,
-                        readOnly: false,
-                        codeLens: false,
-                      }}
-                      height="32vh"
-                      theme={theme === 'dark' ? 'vs-dark' : 'light'}
-                      // defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
-                      // defaultValue={file.content}
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            )
-          )}
-
-          <div className="flex justify-between">
-            <Button variant="outline" onClick={() => dispatch({ type: 'ADD_FILE' })}>
-              <Plus className="size-4" />
-              Add another file
-            </Button>
-
-            <div className="flex gap-2">
-              <Button variant="ghost">Cancel</Button>
-              <Button variant="default" onClick={() => create()}>
-                Create {state.isPublic ? 'public' : 'private'} snippet
-              </Button>
-            </div>
+          <div className="w-1/2">
+            <AllTags allowCreate onClick={(tag) => dispatch({ type: 'ADD_TAG', payload: tag })} />
           </div>
-        </div>
-        <div className="w-1/2">
-          <AllTags allowCreate onClick={(tag) => dispatch({ type: 'ADD_TAG', payload: tag })} />
         </div>
       </div>
     </div>
