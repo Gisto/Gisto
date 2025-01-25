@@ -1,11 +1,20 @@
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-interface JsonViewerProps {
+import { CopyToClipboardButton } from '@/components/copy-to-clipboard-button.tsx';
+import { cn } from '@/lib/utils.ts';
+
+type JsonViewerProps = {
   data: Record<string, unknown> | Record<string, unknown>[];
-}
+  className?: string;
+};
 
-export const JsonViewer = ({ data }: JsonViewerProps) => {
+type CollapsibleNodeProps = {
+  label: string | number;
+  data: unknown;
+};
+
+export const JsonViewer = ({ data, className }: JsonViewerProps) => {
   const renderValue = (key: string | number, value: unknown) => {
     if (value && typeof value === 'object') {
       return (
@@ -18,49 +27,62 @@ export const JsonViewer = ({ data }: JsonViewerProps) => {
     }
 
     return (
-      <div className="ml-4">
+      <div className={cn('ml-4', className)}>
         <span className="font-medium text-gray-500">
           {typeof key === 'number' ? `[${key}]` : key}:
         </span>{' '}
-        <span className="">{value?.toString()}</span>
+        <div className="inline-flex items-center gap-2">
+          <span className="">{value?.toString()}</span> {nodeValue(value)}
+        </div>
       </div>
     );
   };
 
   if (Array.isArray(data)) {
-    return (
-      <div className="p-4  rounded-md">{data.map((value, index) => renderValue(index, value))}</div>
-    );
+    return <div>{data.map((value, index) => renderValue(index, value))}</div>;
   }
 
-  return (
-    <div className="p-2 rounded-md">
-      {Object.entries(data).map(([key, value]) => renderValue(key, value))}
-    </div>
-  );
+  return <div>{Object.entries(data).map(([key, value]) => renderValue(key, value))}</div>;
 };
 
-interface CollapsibleNodeProps {
-  label: string | number;
-  data: unknown;
-}
+const nodeValue = (value: unknown) => {
+  if (value === null) {
+    return <small className="-mt-2 text-sm text-primary">NULL</small>;
+  }
+  if (value?.toString() === '[]' || value?.toString() === '{}') {
+    return null;
+  }
+  return value?.toString() ? <CopyToClipboardButton text={value?.toString()} /> : '""';
+};
 
-const CollapsibleNode: React.FC<CollapsibleNodeProps> = ({ label, data }) => {
+const CollapsibleNode = ({ label, data }: CollapsibleNodeProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  if (Array.isArray(data) && data.length === 0) {
+    return <JsonViewer data={{ [label]: '[]' }} />;
+  }
+
+  if (Object.keys(data as unknown as Record<string, unknown>)?.length === 0) {
+    return <JsonViewer data={{ [label]: '{}' }} />;
+  }
 
   return (
     <div className="ml-4">
       <div className="flex items-center cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+        {isOpen ? (
+          <ChevronDown className="size-4 stroke-foreground" />
+        ) : (
+          <ChevronRight className="size-4  stroke-foreground" />
+        )}
         <span className="ml-1 font-semibold">
           {typeof label === 'number' ? `[${label}]` : label}
         </span>
       </div>
       {isOpen && (
-        <div className="ml-4 border-l pl-2">
+        <div className="ml-2 border-l pl-2">
           {Array.isArray(data)
             ? data.map((value, index) => <JsonViewer key={index} data={{ [index]: value }} />)
-            : Object.entries(data).map(([key, value]) => (
+            : Object.entries(data as unknown as Record<string, unknown>).map(([key, value]) => (
                 <JsonViewer key={key} data={{ [key]: value }} />
               ))}
         </div>
