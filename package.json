@@ -61,7 +61,11 @@
     "vite": "^6.0.11"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint --cache --fix",
-    "*.{js,ts,tsx,css,md}": "prettier --write"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{html,js,jsx,ts,tsx,json,css,md}": [
+      "prettier --write"
+    ]
   }
 }
