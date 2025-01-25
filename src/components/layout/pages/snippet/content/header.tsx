@@ -1,4 +1,4 @@
-import { ChevronsDownUp, ChevronsUpDown, Eye, EyeOff, FileCode, MoreVertical } from 'lucide-react';
+import { ChevronsDownUp, ChevronsUpDown, Eye, Code2, FileCode, MoreVertical } from 'lucide-react';
 
 import { Button } from '@/components/ui/button.tsx';
 import {
@@ -69,7 +69,7 @@ export const Header = ({
       <div className="flex items-center gap-2">
         {previewAvailable(file) && (
           <Button variant="ghost" size="icon" onClick={() => setPreview(!preview)}>
-            {preview ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+            {preview ? <Code2 className="size-4" /> : <Eye className="size-4" />}
           </Button>
         )}
         <Button variant="ghost" size="icon" onClick={() => setCollapsed(!collapsed)}>

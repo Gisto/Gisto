@@ -1,4 +1,4 @@
-import { AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useState } from 'react';
 
 import { Editor } from '@/components/layout/pages/snippet/content/editor.tsx';
@@ -9,7 +9,7 @@ import { GistFileType, GistType } from '@/types/gist.ts';
 export const File = ({ file, snippet }: { file: GistFileType; snippet: GistType }) => {
   const settings = useStoreValue('settings');
   const [collapsed, setCollapsed] = useState(settings.filesCollapsedByDefault);
-  const [preview, setPreview] = useState(false);
+  const [preview, setPreview] = useState(true);
 
   return (
     <>
@@ -21,8 +21,21 @@ export const File = ({ file, snippet }: { file: GistFileType; snippet: GistType 
         collapsed={collapsed}
         setCollapsed={setCollapsed}
       />
-      <AnimatePresence>
-        <Editor preview={preview} collapsed={collapsed} file={file} snippet={snippet} />
+      <AnimatePresence initial={false}>
+        {!collapsed ? (
+          <motion.div
+            key="editor-container"
+            className="bg-background py-2 px-4 overflow-auto mb-4 font-mono"
+            initial={{ opacity: 0, y: -20, height: 0 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, y: -10, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+          >
+            <Editor preview={preview} file={file} snippet={snippet} />
+          </motion.div>
+        ) : (
+          <div className="mb-4" />
+        )}
       </AnimatePresence>
     </>
   );
