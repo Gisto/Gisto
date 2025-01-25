@@ -9,6 +9,7 @@
     "dev": "vite --port 3002",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:fix": "eslint --cache --fix",
     "ts:lint": "tsc -b --noEmit",
     "preview": "vite preview",
     "prepare": "husky install"
@@ -62,10 +63,13 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
+      "pnpm lint:fix"
     ],
-    "*.{html,js,jsx,ts,tsx,json,css,md}": [
-      "prettier --write"
+    "*.{ts,tsx}": [
+      "pnpm ts:lint"
+    ],
+    "*": [
+      "prettier --ignore-unknown --write"
     ]
   }
 }
