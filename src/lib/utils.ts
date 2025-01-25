@@ -25,12 +25,6 @@ export const camelToTitleCase = (text: string) =>
     .replace(/^./, (match) => match.toUpperCase())
     .trim();
 
-export const randomString = (charsCount = 5) =>
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, '')
-    .slice(0, charsCount);
-
 export const snakeToTitleCase = (text: string) =>
   upperCaseFirst(text.replace(/[_-]/g, ' ').trim().toLowerCase());
 
@@ -206,3 +200,9 @@ export const formatZodErrors = (errors: z.ZodIssue[]): Record<string, string[]> 
     {} as Record<string, string[]>
   );
 };
+
+export const randomString = (charsCount = 5) =>
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z]+/g, '')
+    .slice(0, charsCount);
