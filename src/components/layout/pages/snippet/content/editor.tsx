@@ -1,26 +1,24 @@
 import MonacoEditor from '@monaco-editor/react';
-import { AnimatePresence, motion } from 'motion/react';
 import { useRef, useState } from 'react';
 
 import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx';
-import { Markdown } from '@/components/layout/pages/snippet/content/preview/Markdown.tsx';
+import { Image } from '@/components/layout/pages/snippet/content/preview/image.tsx';
+import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
 import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
 import { useTheme } from '@/components/theme/theme-provider.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { isHTML, isMarkdown, isPDF } from '@/lib/utils.ts';
+import { isHTML, isImage, isMarkdown, isPDF } from '@/lib/utils.ts';
 import { GistFileType, GistType } from '@/types/gist.ts';
 
 export const Editor = ({
   file,
   snippet,
-  collapsed,
   preview,
 }: {
   file: GistFileType;
   snippet: GistType;
-  collapsed: boolean;
   preview: boolean;
 }) => {
   const settings = useStoreValue('settings');
@@ -60,6 +58,10 @@ export const Editor = ({
     if (isHTML(file)) {
       return <Html file={file} />;
     }
+
+    if (isImage(file)) {
+      return <Image file={file} />;
+    }
   }
 
   // @ts-expect-error 3rd party types
@@ -71,31 +73,16 @@ export const Editor = ({
   }
 
   return (
-    <AnimatePresence initial={false}>
-      {!collapsed ? (
-        <motion.div
-          key="editor-container"
-          className="bg-background py-2 px-4 overflow-auto mb-4 font-mono"
-          initial={{ opacity: 0, y: -20, height: 0 }}
-          animate={{ opacity: 1, height: 'auto', y: 0 }}
-          exit={{ opacity: 0, y: -10, height: 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-        >
-          <MonacoEditor
-            options={{
-              ...EDITOR_OPTIONS,
-              ...settings.editor,
-            }}
-            onMount={handleEditorDidMount}
-            height={height}
-            theme={theme === 'dark' ? 'vs-dark' : 'light'}
-            defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
-            defaultValue={file.content}
-          />
-        </motion.div>
-      ) : (
-        <div className="mb-4" />
-      )}
-    </AnimatePresence>
+    <MonacoEditor
+      options={{
+        ...EDITOR_OPTIONS,
+        ...settings.editor,
+      }}
+      onMount={handleEditorDidMount}
+      height={height}
+      theme={theme === 'dark' ? 'vs-dark' : 'light'}
+      defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
+      defaultValue={file.content}
+    />
   );
 };
