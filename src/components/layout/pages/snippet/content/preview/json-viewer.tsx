@@ -2,6 +2,7 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 
 import { CopyToClipboardButton } from '@/components/copy-to-clipboard-button.tsx';
+import { useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/lib/utils.ts';
 
 type JsonViewerProps = {
@@ -56,7 +57,8 @@ const nodeValue = (value: unknown) => {
 };
 
 const CollapsibleNode = ({ label, data }: CollapsibleNodeProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const settings = useStoreValue('settings');
+  const [isOpen, setIsOpen] = useState(settings.jsonPreviewCollapsedByDefault);
 
   if (Array.isArray(data) && data.length === 0) {
     return <JsonViewer data={{ [label]: '[]' }} />;
