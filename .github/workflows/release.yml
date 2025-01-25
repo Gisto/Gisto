@@ -1,5 +1,8 @@
 name: 'publish'
 
+env:
+  HUSKY: 0
+
 on:
   workflow_dispatch:
   push:
@@ -56,7 +59,6 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      
 
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
@@ -69,7 +71,7 @@ jobs:
           workspaces: './src-tauri -> target'
 
       - name: install frontend dependencies
-        run: | 
+        run: |
           pnpm install
 
       - uses: tauri-apps/tauri-action@v0
