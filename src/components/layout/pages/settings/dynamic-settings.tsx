@@ -1,4 +1,8 @@
+import { Sun, Moon, LaptopMinimal } from 'lucide-react';
+
 import { Input } from '@/components/ui/input.tsx';
+import { Label } from '@/components/ui/label.tsx';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.tsx';
 import {
   Select,
   SelectContent,
@@ -8,6 +12,7 @@ import {
 } from '@/components/ui/select.tsx';
 import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
+import { languageMap } from '@/constants/language-map.ts';
 import { SettingsType } from '@/lib/store/globalState.ts';
 import { camelToTitleCase } from '@/lib/utils.ts';
 
@@ -60,22 +65,62 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
 
       case 'string':
         {
-          // theme
           if (key === 'theme') {
             return (
-              <div key={key} className="mb-4">
+              <>
                 <label className="block mb-1">{camelToTitleCase(key)}</label>
-                <Select onValueChange={(value) => onChange(fullPath, value)} value={value}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select theme" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="system">System</SelectItem>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+                <RadioGroup
+                  className="grid grid-cols-3 gap-4 mb-4"
+                  onValueChange={(value) => onChange(fullPath, value)}
+                  defaultValue={value}
+                >
+                  <div>
+                    <RadioGroupItem
+                      value="light"
+                      id="light"
+                      className="peer sr-only"
+                      aria-label="Light"
+                    />
+                    <Label
+                      htmlFor="light"
+                      className="cursor-pointer flex gap-3 flex-col items-center justify-between rounded-lg border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    >
+                      <Sun className="stroke-primary" />
+                      Light
+                    </Label>
+                  </div>
+                  <div>
+                    <RadioGroupItem
+                      value="dark"
+                      id="dark"
+                      className="peer sr-only"
+                      aria-label="Dark"
+                    />
+                    <Label
+                      htmlFor="dark"
+                      className="cursor-pointer flex gap-3 flex-col items-center justify-between rounded-lg border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    >
+                      <Moon className="stroke-primary" />
+                      Dark
+                    </Label>
+                  </div>
+                  <div>
+                    <RadioGroupItem
+                      value="system"
+                      id="system"
+                      className="peer sr-only"
+                      aria-label="System"
+                    />
+                    <Label
+                      htmlFor="system"
+                      className="cursor-pointer flex gap-3 flex-col items-center justify-between rounded-lg border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    >
+                      <LaptopMinimal className="stroke-primary" />
+                      System
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </>
             );
           }
 
@@ -91,6 +136,24 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   <SelectContent>
                     <SelectItem value="on">On</SelectItem>
                     <SelectItem value="off">Off</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            );
+          }
+
+          if (key === 'newSnippetDefaultLanguage') {
+            return (
+              <div key={key} className="mb-4">
+                <label className="block mb-1">{camelToTitleCase(key)}</label>
+                <Select onValueChange={(value) => onChange(fullPath, value)} value={value}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.keys(languageMap).map((language) => (
+                      <SelectItem value={language}>{language}</SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>

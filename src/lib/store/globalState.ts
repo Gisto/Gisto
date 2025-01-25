@@ -17,13 +17,18 @@ export type StoreStateType = {
   } | null;
   settings: {
     theme: 'system' | 'light' | 'dark';
+    newSnippetDefaultLanguage: string;
     sidebarCollapsedByDefault: boolean;
     filesCollapsedByDefault: boolean;
     newSnippetPublicByDefault: boolean;
+    jsonPreviewCollapsedByDefault: boolean;
     editor: {
       fontFamily: string;
-      lineNumbers: 'on' | 'off';
+      fontLigatures: boolean;
       fontSize: number;
+      tabSize: number;
+      wordWrapColumn: number;
+      lineNumbers: 'on' | 'off';
       codeLens: boolean;
       minimap: { enabled: boolean };
     };
@@ -36,22 +41,43 @@ function saveSettingsToLocalStorage(settings: SettingsType) {
   localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
 }
 
-function loadSettingsFromLocalStorage(): SettingsType | null {
-  const storedSettings = localStorage.getItem(SETTINGS_STORAGE_KEY);
-  return storedSettings ? JSON.parse(storedSettings) : null;
+function deepMerge(target: Record<string, unknown>, source: Record<string, unknown>) {
+  for (const key of Object.keys(source)) {
+    if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+      if (!target[key]) {
+        target[key] = {};
+      }
+      deepMerge(target[key] as Record<string, unknown>, source[key] as Record<string, unknown>);
+    } else {
+      target[key] = source[key];
+    }
+  }
+  return target;
 }
 
-const initialSettings = loadSettingsFromLocalStorage() || {
+function loadSettingsFromLocalStorage() {
+  const storedSettings = localStorage.getItem(SETTINGS_STORAGE_KEY);
+  const parsedSettings = storedSettings ? JSON.parse(storedSettings) : null;
+
+  return parsedSettings ? deepMerge({ ...defaultSettings }, parsedSettings) : defaultSettings;
+}
+
+const defaultSettings: SettingsType = {
   theme: 'system',
+  newSnippetDefaultLanguage: 'Text',
   sidebarCollapsedByDefault: false,
   filesCollapsedByDefault: false,
   newSnippetPublicByDefault: false,
+  jsonPreviewCollapsedByDefault: true,
   editor: {
     fontFamily: 'monospace',
+    fontLigatures: false,
     fontSize: 13,
+    tabSize: 2,
+    wordWrapColumn: 80,
+    lineNumbers: 'on',
     codeLens: false,
     minimap: { enabled: false },
-    lineNumbers: 'on',
   },
 };
 
@@ -60,7 +86,7 @@ export const globalState = new Store<StoreStateType>({
   isLoggedIn: false,
   snippets: [],
   apiRateLimits: null,
-  settings: initialSettings,
+  settings: loadSettingsFromLocalStorage() as SettingsType,
 });
 
 if (import.meta.env.MODE !== 'production') {

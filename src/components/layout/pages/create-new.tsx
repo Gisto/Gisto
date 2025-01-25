@@ -17,7 +17,9 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { ZodError } from '@/components/zod-error.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
+import { languageMap } from '@/constants/language-map.ts';
 import { GithubAPI } from '@/lib/GithubApi.ts';
+import { useStoreValue } from '@/lib/store/globalState.ts';
 import { formatSnippetForSaving } from '@/lib/utils.ts';
 
 type Props = {
@@ -109,6 +111,7 @@ const SnippetSchema = z.object({
 
 export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props = {}) => {
   const { theme } = useTheme();
+  const settings = useStoreValue('settings');
   const [state, dispatch] = useReducer(reducer, initialState);
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
   const { navigate } = useRouter();
@@ -296,8 +299,7 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
                         }}
                         height="32vh"
                         theme={theme === 'dark' ? 'vs-dark' : 'light'}
-                        // defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
-                        // defaultValue={file.content}
+                        defaultLanguage={languageMap[settings.newSnippetDefaultLanguage]}
                       />
                     </div>
                   </CardContent>
