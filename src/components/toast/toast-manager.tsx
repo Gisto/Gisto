@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 import { Toast, ToastType } from './toast';
 
+import { randomString } from '@/lib/utils.ts';
+
 const EVENT_NAME = 'gisto-add-toast';
 
 const ToastManager = () => {
@@ -10,7 +12,7 @@ const ToastManager = () => {
   useEffect(() => {
     const handleToast = (event: { detail: ToastType }) => {
       const { title, message, type, duration, id } = event.detail;
-      const identifier = id ?? String(Date.now());
+      const identifier = id ?? randomString(10);
 
       setToasts((prevToasts) => [
         ...prevToasts,

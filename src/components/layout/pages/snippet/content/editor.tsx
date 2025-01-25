@@ -1,15 +1,17 @@
 import MonacoEditor from '@monaco-editor/react';
+import { Skull } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx';
 import { Image } from '@/components/layout/pages/snippet/content/preview/image.tsx';
+import { JsonViewer } from '@/components/layout/pages/snippet/content/preview/json-viewer.tsx';
 import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
 import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
 import { useTheme } from '@/components/theme/theme-provider.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { isHTML, isImage, isMarkdown, isPDF } from '@/lib/utils.ts';
+import { isHTML, isImage, isJson, isMarkdown, isPDF } from '@/lib/utils.ts';
 import { GistFileType, GistType } from '@/types/gist.ts';
 
 export const Editor = ({
@@ -57,6 +59,26 @@ export const Editor = ({
 
     if (isHTML(file)) {
       return <Html file={file} />;
+    }
+
+    if (isJson(file)) {
+      try {
+        JSON.parse(file.content);
+      } catch {
+        console.log(
+          ' 🪲 %c debug ',
+          'background: #3D9970; border: 1px solid #3D9970; border-radius: 3px; padding: 2px 0px 0px 0px; color: #fff',
+          file
+        );
+        return (
+          <div className="bg-background overflow-auto font-body flex items-center">
+            <Skull className="stroke-danger" />
+            <div className="p-4 text-danger">Detected as JSON but not valid for preview</div>
+          </div>
+        );
+      }
+
+      return <JsonViewer data={JSON.parse(file.content)} />;
     }
 
     if (isImage(file)) {
