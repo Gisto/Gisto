@@ -29,7 +29,7 @@ export const Gisto = () => {
           <Navigation isCollapsed={isCollapsed} />
         </div>
 
-        {PATHS_WITHOUT_SNIPPET_LIST.includes(path) ? null : (
+        {PATHS_WITHOUT_SNIPPET_LIST.includes(path) || path.startsWith('/edit/') ? null : (
           <div className={cn('h-screen w-[340px] min-w-[340px] border-r')}>
             <Lists isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
           </div>
