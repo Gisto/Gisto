@@ -35,8 +35,8 @@ const SnippetContentPage = lazy(() =>
 );
 
 const CreateNewPage = lazy(() =>
-  import('@/components/layout/pages/create-new').then((module) => ({
-    default: module.CreateNew,
+  import('@/components/layout/pages/create-or-edit-snippet.tsx').then((module) => ({
+    default: module.CreateOrEditSnippet,
   }))
 );
 
@@ -63,6 +63,10 @@ const routes: RouteType[] = [
   },
   {
     path: '/new-snippet',
+    component: CreateNewPage,
+  },
+  {
+    path: '/edit/:id',
     component: CreateNewPage,
   },
   {
