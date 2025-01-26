@@ -6,6 +6,7 @@ import { useReducer, useState } from 'react';
 import { z } from 'zod';
 
 import { AllTags } from '@/components/all-tags.tsx';
+import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { useTheme } from '@/components/theme/theme-provider.tsx';
 import { toast } from '@/components/toast/toast-manager.tsx';
@@ -112,7 +113,10 @@ const SnippetSchema = z.object({
 export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props = {}) => {
   const { theme } = useTheme();
   const settings = useStoreValue('settings');
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, {
+    ...initialState,
+    isPublic: settings.newSnippetPublicByDefault,
+  });
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
   const { navigate } = useRouter();
 
@@ -151,7 +155,7 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
           </div>
         </div>
       </PageHeader>
-      <div className=" overflow-auto h-[calc(100vh-52px)] shadow-inner">
+      <PageContent>
         <div className="m-8 flex gap-8">
           <div className="flex flex-col gap-4 w-2/3">
             <div className="flex justify-between gap-8">
@@ -325,7 +329,7 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
             <AllTags allowCreate onClick={(tag) => dispatch({ type: 'ADD_TAG', payload: tag })} />
           </div>
         </div>
-      </div>
+      </PageContent>
     </div>
   );
 };

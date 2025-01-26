@@ -38,5 +38,6 @@ export type GistEnrichedType = GistType & {
   title: string;
   tags: string[];
   isUntitled: boolean;
+  files: GistFileType & { text?: string }[];
   languages: { name: string; color: string }[];
 };

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { useStoreValue } from '@/lib/store/globalState.ts';
+import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 
 type Theme = 'dark' | 'light' | 'system';
 
@@ -21,15 +21,9 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-export function ThemeProvider({
-  children,
-  storageKey = 'gisto-ui-theme',
-  ...props
-}: ThemeProviderProps) {
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   const settings = useStoreValue('settings');
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || settings.theme
-  );
+  const [theme, setTheme] = useState<Theme>(() => settings.theme);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -55,7 +49,7 @@ export function ThemeProvider({
   const value = {
     theme,
     setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
+      updateSettings({ theme });
       setTheme(theme);
     },
   };

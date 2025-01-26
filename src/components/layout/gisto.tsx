@@ -2,8 +2,8 @@ import { useRouter, Outlet } from 'dirty-react-router';
 import * as React from 'react';
 import { useEffect } from 'react';
 
-import { Lists } from '@/components/layout/navigation/list';
-import { Navigation } from '@/components/layout/navigation/navigation.tsx';
+import { Navigation } from '@/components/layout/navigation/main';
+import { Lists } from '@/components/layout/navigation/snippets-list';
 import { PATHS_WITHOUT_SNIPPET_LIST } from '@/constants';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/lib/utils.ts';

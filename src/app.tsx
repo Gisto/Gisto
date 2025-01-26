@@ -6,6 +6,7 @@ import { lazy, useEffect, useState } from 'react';
 
 import { Gisto } from '@/components/layout/gisto.tsx';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
+import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
 import ToastManager, { toast } from '@/components/toast/toast-manager.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
@@ -146,15 +147,23 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-secondary">
-      <h3 className="mb-8">{'{ Gisto }'}</h3>
+    <div className="flex flex-col justify-center items-center h-screen bg-secondary bg-light-pattern dark:bg-dark-pattern">
+      <div className="absolute top-2 right-2">
+        <ThemeProvider>
+          <ThemeSwitcher />
+        </ThemeProvider>
+      </div>
+      <img src="/favicon.ico" className="w-20 mb-8" alt="" />
+      <h3 className="">{'{ Gisto }'}</h3>
+
+      <p className="mb-8 text-primary">Snippets made awesome</p>
 
       <form onSubmit={handleSubmit}>
         <Card className="w-[350px]">
           <CardHeader>
             <CardTitle>Please sign-in using GitHub token</CardTitle>
             <CardDescription className="flex items-center gap-2">
-              Only "gists" scope is needed{' '}
+              Only "gists" scope is required{' '}
               <div title="Create token at Github">
                 <Info
                   className="size-4 cursor-pointer"
@@ -182,7 +191,7 @@ function App() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button type="submit" variant="ghost" className="w-full">
+            <Button type="submit" className="w-full">
               Sign-in
             </Button>
           </CardFooter>

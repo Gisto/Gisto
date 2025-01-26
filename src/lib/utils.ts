@@ -137,7 +137,11 @@ export const searchFilter = (search: string, currentSnippets: GistEnrichedType[]
         return listItem.languages.some((lang) => lang.name.toLowerCase().startsWith(langToSearch));
       }
 
-      return listItem.description.trim().toLowerCase().includes(term);
+      if (listItem.title.trim().toLowerCase().includes(term)) {
+        return true;
+      }
+
+      return listItem.files.some((file) => file.text?.toLowerCase().includes(term));
     });
   });
 };

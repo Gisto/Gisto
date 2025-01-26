@@ -1,6 +1,7 @@
 import MonacoEditor from '@monaco-editor/react';
 import { SidebarClose, SidebarOpen } from 'lucide-react';
 
+import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { DynamicSettings } from '@/components/layout/pages/settings/dynamic-settings.tsx';
 import { Button } from '@/components/ui/button.tsx';
@@ -42,7 +43,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
         </div>
       </PageHeader>
 
-      <div className="p-8 overflow-scroll h-[calc(100vh-52px)] shadow-inner">
+      <PageContent>
         {/*<pre>{JSON.stringify(settings, null, 2)}</pre>*/}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
           <Card>
@@ -87,7 +88,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
             </CardContent>
           </Card>
         </div>
-      </div>
+      </PageContent>
     </div>
   );
 };
