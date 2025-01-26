@@ -11,7 +11,9 @@
     "lint": "eslint .",
     "ts:lint": "tsc -b --noEmit",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s",
+    "commit": "cz"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
@@ -49,6 +51,8 @@
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
@@ -70,5 +74,10 @@
     "*": [
       "prettier --ignore-unknown --write"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
