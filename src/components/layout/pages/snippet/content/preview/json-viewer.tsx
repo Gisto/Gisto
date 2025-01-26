@@ -58,7 +58,7 @@ const nodeValue = (value: unknown) => {
 
 const CollapsibleNode = ({ label, data }: CollapsibleNodeProps) => {
   const settings = useStoreValue('settings');
-  const [isOpen, setIsOpen] = useState(settings.jsonPreviewCollapsedByDefault);
+  const [isOpen, setIsOpen] = useState(!settings.jsonPreviewCollapsedByDefault);
 
   if (Array.isArray(data) && data.length === 0) {
     return <JsonViewer data={{ [label]: '[]' }} />;
