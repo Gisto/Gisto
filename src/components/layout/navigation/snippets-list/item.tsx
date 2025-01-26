@@ -7,6 +7,7 @@ import {
   SquareArrowOutUpRight,
   FileCode,
   MessageSquareText,
+  Pencil,
 } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge.tsx';
@@ -56,7 +57,7 @@ export const ListItem = ({
                     }
                   }}
                   variant={search === filter ? 'default' : 'primary-outline'}
-                  className="whitespace-nowrap cursor-pointer hover:text-primary/50 hover:border-primary/50"
+                  className="whitespace-nowrap cursor-pointer"
                 >
                   <div
                     className="w-2 h-2 rounded-full border mr-2"
@@ -80,7 +81,7 @@ export const ListItem = ({
                       }
                     }}
                     variant={search === filter ? 'default' : 'primary-outline'}
-                    className="whitespace-nowrap cursor-pointer hover:text-primary/50 hover:border-primary/50"
+                    className="whitespace-nowrap cursor-pointer"
                   >
                     {tag}
                   </Badge>
@@ -191,6 +192,19 @@ export const ListItem = ({
               </Tooltip>
             </>
           )}
+
+          <Separator orientation="vertical" className="mx-2 h-6" />
+
+          <Tooltip delayDuration={0}>
+            <TooltipTrigger asChild>
+              <Pencil
+                strokeWidth={1.5}
+                onClick={() => navigate(`/edit/${gist.id}`)}
+                className="size-3 cursor-pointer hover:stroke-primary"
+              />
+            </TooltipTrigger>
+            <TooltipContent>Edit snippet</TooltipContent>
+          </Tooltip>
 
           <Separator orientation="vertical" className="mx-2 h-6" />
 
