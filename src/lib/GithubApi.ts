@@ -367,7 +367,7 @@ export const GithubAPI = {
       return data.viewer.gists;
     } catch (error) {
       console.error('Error fetching gists:', error);
-      toast.error({ message: 'Error fetching gists', duration: 5000 });
+      toast.error({ message: 'Error fetching gists, please try to refresh', duration: 5000 });
       throw error;
     }
   },

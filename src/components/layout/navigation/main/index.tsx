@@ -1,9 +1,9 @@
 import { Link } from 'dirty-react-router';
-import { Info, SlidersHorizontal, LogOut, LayoutDashboard, Plus, Globe } from 'lucide-react';
+import { BadgeHelp, SlidersHorizontal, LogOut, LayoutDashboard, Plus, Globe } from 'lucide-react';
 
-import { version } from '../../../../package.json';
+import { version } from '../../../../../package.json';
 
-import { NavItem } from '@/components/layout/navigation/nav-item.tsx';
+import { NavigationItem } from '@/components/layout/navigation/main/navigation-item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
 import { useIsOnline } from '@/hooks/use-is-online.tsx';
@@ -30,19 +30,29 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
       </PageHeader>
       <div className="flex flex-col justify-between h-[calc(100vh-52px)]">
         <div className="p-2">
-          <NavItem isCollapsed={isCollapsed} label="New snippet" path="/new-snippet" Icon={Plus} />
-          <NavItem isCollapsed={isCollapsed} label="Dashboard" path="/" Icon={LayoutDashboard} />
-          <NavItem isCollapsed={isCollapsed} label="About" path="/about" Icon={Info} />
+          <NavigationItem
+            isCollapsed={isCollapsed}
+            label="Dashboard"
+            path="/"
+            Icon={LayoutDashboard}
+          />
+          <NavigationItem
+            isCollapsed={isCollapsed}
+            label="New snippet"
+            path="/new-snippet"
+            Icon={Plus}
+          />
         </div>
 
         <div className="p-2">
-          <NavItem
+          <NavigationItem isCollapsed={isCollapsed} label="About" path="/about" Icon={BadgeHelp} />
+          <NavigationItem
             isCollapsed={isCollapsed}
             label="Settings"
             path="/settings"
             Icon={SlidersHorizontal}
           />
-          <NavItem
+          <NavigationItem
             isCollapsed={isCollapsed}
             label="Log-out"
             onClick={async () => {
@@ -56,7 +66,7 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
             Icon={LogOut}
           />
 
-          <NavItem
+          <NavigationItem
             isCollapsed={isCollapsed}
             label={online ? 'You are on-line' : 'You are off-line'}
             onClick={() => null}

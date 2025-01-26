@@ -81,7 +81,7 @@ export const SnippetContent = () => {
             )}
           </div>
 
-          <div className="flex items-center gap-2 shadow-inner">
+          <div className="flex items-center gap-2">
             <Separator orientation="vertical" className="mx-2 h-6" />
 
             <Button variant="ghost" size="icon" className="-mx-3">
@@ -213,7 +213,7 @@ export const SnippetContent = () => {
           </div>
         </div>
       </PageHeader>
-      <div className="bg-secondary h-full">
+      <div className="bg-secondary h-full shadow-inner">
         <div className="p-4 overflow-y-scroll h-full pb-10">
           {Object.keys(snippet.files).map((file) => {
             return <File key={file} snippet={snippet} file={snippet.files[file]} />;

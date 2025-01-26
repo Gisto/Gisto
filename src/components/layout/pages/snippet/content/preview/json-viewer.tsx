@@ -48,7 +48,7 @@ export const JsonViewer = ({ data, className }: JsonViewerProps) => {
 
 const nodeValue = (value: unknown) => {
   if (value === null) {
-    return <small className="-mt-2 text-sm text-primary">NULL</small>;
+    return <small className="-mt-2 text-sm">NULL</small>;
   }
   if (value?.toString() === '[]' || value?.toString() === '{}') {
     return null;

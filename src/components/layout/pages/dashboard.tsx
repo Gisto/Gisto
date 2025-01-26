@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
 
 import { AllTags } from '@/components/all-tags.tsx';
+import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Loading } from '@/components/loading.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
@@ -148,7 +149,7 @@ export const DashBoard = () => {
         </div>
       </PageHeader>
 
-      <div className="p-8 overflow-auto h-[calc(100vh-52px)] shadow-inner">
+      <PageContent>
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-8">
           {cardCharts.map((chart) => (
             <Card key={chart.title}>
@@ -333,7 +334,7 @@ export const DashBoard = () => {
         <div className="mt-8">
           <AllTags />
         </div>
-      </div>
+      </PageContent>
     </div>
   );
 };

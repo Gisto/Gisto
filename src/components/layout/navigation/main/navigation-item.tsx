@@ -4,7 +4,7 @@ import { ElementType } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { cn } from '@/lib/utils.ts';
 
-export const NavItem = ({
+export const NavigationItem = ({
   Icon,
   label,
   isCollapsed,

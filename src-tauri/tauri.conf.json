@@ -5,7 +5,7 @@
   "identifier": "com.gisto2.app",
   "build": {
     "frontendDist": "../dist",
-    "devUrl": "http://localhost:3002",
+    "devUrl": "http://localhost:61570",
     "beforeDevCommand": "pnpm dev",
     "beforeBuildCommand": "pnpm build"
   },

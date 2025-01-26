@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
 
-import { ListItem } from '@/components/layout/navigation/list/item.tsx';
+import { ListItem } from '@/components/layout/navigation/snippets-list/item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
@@ -108,7 +108,7 @@ export const Lists = ({
               <TooltipContent align="start">
                 <div className="text-sm">
                   <h4 className="mb-3">
-                    Search for snippets by description, tags or language
+                    Search for snippets by description/title, tags or language
                     <br />
                     Or a combinations of all:
                   </h4>
