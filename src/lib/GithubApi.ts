@@ -169,7 +169,7 @@ export const GithubAPI = {
     description,
     isPublic,
   }: {
-    files: Record<string, { content: string }>;
+    files: Record<string, { content: string | null } | null>;
     description: string;
     isPublic: boolean;
   }): Promise<GistType> {
@@ -182,14 +182,19 @@ export const GithubAPI = {
     return data;
   },
 
-  async updateGist(
-    gistId: string,
-    files: Record<string, { content: string } | null>
-  ): Promise<GistType> {
+  async updateGist({
+    gistId,
+    files,
+    description,
+  }: {
+    gistId: string;
+    files: Record<string, { content: string } | null>;
+    description: string;
+  }): Promise<GistType> {
     const { data } = await this.request<GistType>({
       endpoint: `/gists/${gistId}`,
       method: 'PATCH',
-      body: { files },
+      body: { files, description },
     });
 
     return data;
