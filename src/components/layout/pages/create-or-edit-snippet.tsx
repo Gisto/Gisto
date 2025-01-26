@@ -2,7 +2,7 @@ import Editor from '@monaco-editor/react';
 import { useRouter } from 'dirty-react-router';
 import { Plus, SidebarClose, SidebarOpen, Info, X, Trash, Shield, ShieldCheck } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { z } from 'zod';
 
 import { AllTags } from '@/components/all-tags.tsx';
@@ -21,7 +21,8 @@ import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { formatSnippetForSaving } from '@/lib/utils.ts';
+import { cn, formatSnippetForSaving, getTags, removeTags } from '@/lib/utils.ts';
+import { GistType } from '@/types/gist.ts';
 
 type Props = {
   isCollapsed?: boolean;
@@ -33,14 +34,14 @@ type StateType = {
   description: string;
   isPublic: boolean;
   tags: string[];
-  files: { filename: string; content: string }[];
+  files: { filename: string; content: string; language: string }[];
 };
 
 const initialState: StateType = {
   description: '',
   isPublic: true,
   tags: [],
-  files: [{ filename: '', content: '' }],
+  files: [{ filename: '', content: '', language: '' }],
 };
 
 type ActionType =
@@ -49,8 +50,11 @@ type ActionType =
   | { type: 'ADD_TAG'; payload: string }
   | { type: 'REMOVE_TAG'; payload: string }
   | { type: 'SET_FILENAME'; payload: string; index: number }
-  | { type: 'SET_CONTENT'; payload: string; index: number }
-  | { type: 'ADD_FILE' }
+  | { type: 'SET_CONTENT'; payload: string | null; index: number }
+  | {
+      type: 'ADD_FILE';
+      payload?: { filename?: string; content?: string; language?: string };
+    }
   | { type: 'REMOVE_FILE'; index: number }
   | { type: 'RESET' };
 
@@ -84,7 +88,14 @@ function reducer(state: StateType, action: ActionType) {
     case 'ADD_FILE':
       return {
         ...state,
-        files: [...state.files, { filename: '', content: '' }],
+        files: [
+          ...state.files,
+          {
+            filename: action?.payload?.filename ?? '',
+            content: action?.payload?.content ?? '',
+            language: action?.payload?.language ?? '',
+          },
+        ],
       };
     case 'REMOVE_FILE':
       return {
@@ -100,7 +111,7 @@ function reducer(state: StateType, action: ActionType) {
 
 const FileSchema = z.object({
   filename: z.string().min(1, 'File name is required'),
-  content: z.string().min(1, 'File content is required'),
+  content: z.union([z.string().min(1, 'File content is required'), z.null()]),
 });
 
 const SnippetSchema = z.object({
@@ -110,15 +121,58 @@ const SnippetSchema = z.object({
   tags: z.array(z.string()).optional(),
 });
 
-export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props = {}) => {
+export const CreateOrEditSnippet = ({
+  isCollapsed = false,
+  setIsCollapsed = () => {},
+}: Props = {}) => {
   const { theme } = useTheme();
+  const { navigate, params } = useRouter();
   const settings = useStoreValue('settings');
-  const [state, dispatch] = useReducer(reducer, {
-    ...initialState,
-    isPublic: settings.newSnippetPublicByDefault,
-  });
+
+  const [state, dispatch] = useReducer(
+    // TODO: check type
+    // @ts-expect-error not sure why reducer it is not happy ATM
+    reducer,
+    {
+      ...initialState,
+      isPublic: settings.newSnippetPublicByDefault,
+    }
+  );
+
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
-  const { navigate } = useRouter();
+  const [edit, setEdit] = useState<null | GistType>(null);
+  useEffect(() => {
+    if (params?.id) {
+      (async () => {
+        const snippet = await GithubAPI.getGist(params.id);
+
+        setEdit(snippet);
+
+        dispatch({ type: 'RESET' });
+
+        dispatch({ type: 'REMOVE_FILE', index: 0 });
+        dispatch({ type: 'SET_DESCRIPTION', payload: removeTags(snippet?.description) });
+
+        for (const tag of getTags(snippet.description)) {
+          dispatch({ type: 'ADD_TAG', payload: tag });
+        }
+
+        for (const file in snippet?.files) {
+          dispatch({
+            type: 'ADD_FILE',
+            payload: {
+              filename: snippet?.files[file].filename,
+              content: snippet?.files[file].content,
+              language: snippet?.files[file].language,
+            },
+          });
+        }
+      })();
+    }
+    return () => {
+      dispatch({ type: 'RESET' });
+    };
+  }, [params?.id]);
 
   const create = async () => {
     const validation = SnippetSchema.safeParse(state);
@@ -138,6 +192,29 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
     }
   };
 
+  const update = async () => {
+    const validation = SnippetSchema.safeParse(state);
+
+    if (!validation.success) {
+      setErrors(validation.error.errors);
+      return;
+    } else {
+      const {
+        // it is just an omit of isPublic
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        isPublic,
+        ...restOfTheSnippet
+      } = formatSnippetForSaving(validation.data);
+      const save = await GithubAPI.updateGist({ ...restOfTheSnippet, gistId: edit!.id });
+
+      if (save && save.id) {
+        navigate(`/snippets/${edit!.id}`);
+        toast.show({ message: 'Snippet updated' });
+
+        dispatch({ type: 'RESET' });
+      }
+    }
+  };
   return (
     <div className="h-screen w-full border-r border-collapse">
       <PageHeader>
@@ -151,7 +228,9 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
               )}
             </Button>
 
-            <div className="line-clamp-1">Crete new snippet</div>
+            <div className="line-clamp-1">
+              {edit ? `Edit snippet: ${removeTags(edit.description)}` : 'Crete new snippet'}
+            </div>
           </div>
         </div>
       </PageHeader>
@@ -173,23 +252,25 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
                   onChange={(e) => dispatch({ type: 'SET_DESCRIPTION', payload: e.target.value })}
                   placeholder="Enter a description"
                 />
-                <div className="flex items-center gap-2 mt-2">
-                  <Tabs
-                    value={state.isPublic ? 'true' : 'false'}
-                    onValueChange={(value) =>
-                      dispatch({ type: 'SET_PUBLIC', payload: value === 'true' })
-                    }
-                  >
-                    <TabsList className="grid w-full grid-cols-2">
-                      <TabsTrigger value={'true'}>
-                        <Shield className="size-4 stroke-danger mr-2" /> Public
-                      </TabsTrigger>
-                      <TabsTrigger value={'false'}>
-                        <ShieldCheck className="size-4 stroke-success mr-2" /> Private
-                      </TabsTrigger>
-                    </TabsList>
-                  </Tabs>
-                </div>
+                {edit ? null : (
+                  <div className="flex items-center gap-2 mt-2">
+                    <Tabs
+                      value={state.isPublic ? 'true' : 'false'}
+                      onValueChange={(value) =>
+                        dispatch({ type: 'SET_PUBLIC', payload: value === 'true' })
+                      }
+                    >
+                      <TabsList className="grid w-full grid-cols-2">
+                        <TabsTrigger value={'true'}>
+                          <Shield className="size-4 stroke-danger mr-2" /> Public
+                        </TabsTrigger>
+                        <TabsTrigger value={'false'}>
+                          <ShieldCheck className="size-4 stroke-success mr-2" /> Private
+                        </TabsTrigger>
+                      </TabsList>
+                    </Tabs>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-col gap-2 w-2/3">
@@ -249,6 +330,7 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
             {state.files.map(
               (
                 file: {
+                  language: string | undefined;
                   filename: string | number | readonly string[] | undefined;
                   content: string | undefined;
                 },
@@ -257,56 +339,77 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
                 <Card className="hover:border-primary">
                   <CardHeader>
                     <CardTitle className="flex justify-between items-center">
-                      {file.filename || 'New file'}
-                      {state.files.length > 1 && (
+                      <div
+                        className={cn(
+                          'flex items-center gap-2',
+                          file.content === null && 'text-danger'
+                        )}
+                      >
+                        {file.content === null && <Trash />} {file.filename || 'New file'}{' '}
+                        {file.content === null && <small>(Will be deleted upon update)</small>}
+                      </div>
+                      {state.files.length > 1 && file.content !== null && (
                         <Button
                           size="sm"
                           variant="outline"
-                          onClick={() => dispatch({ type: 'REMOVE_FILE', index })}
+                          onClick={() => {
+                            if (edit) {
+                              dispatch({ type: 'SET_CONTENT', payload: null, index });
+                            } else {
+                              dispatch({ type: 'REMOVE_FILE', index });
+                            }
+                          }}
                         >
                           <Trash className="size-4" /> Remove File
                         </Button>
                       )}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-col gap-2">
-                      <label htmlFor="file" className="text-sm font-medium text-primary flex gap-2">
-                        File name <ZodError errors={errors} path={`files.${index}.filename`} />
-                      </label>
-                      <Input
-                        type="text"
-                        id="file"
-                        value={file.filename}
-                        onChange={(e) =>
-                          dispatch({ type: 'SET_FILENAME', payload: e.target.value, index })
-                        }
-                        placeholder="Enter file name including extention"
-                      />
+                  {file.content !== null && (
+                    <CardContent>
+                      <div className="flex flex-col gap-2">
+                        <label
+                          htmlFor="file"
+                          className="text-sm font-medium text-primary flex gap-2"
+                        >
+                          File name <ZodError errors={errors} path={`files.${index}.filename`} />
+                        </label>
+                        <Input
+                          type="text"
+                          id="file"
+                          value={file.filename}
+                          onChange={(e) =>
+                            dispatch({ type: 'SET_FILENAME', payload: e.target.value, index })
+                          }
+                          placeholder="Enter file name including extention"
+                        />
 
-                      <label
-                        htmlFor="file-content"
-                        className="text-sm font-medium text-primary flex gap-2"
-                      >
-                        File Content <ZodError errors={errors} path={`files.${index}.content`} />
-                      </label>
-                      <Editor
-                        value={file.content}
-                        onChange={(value) => {
-                          dispatch({ type: 'SET_CONTENT', payload: value || '', index });
-                        }}
-                        className="border-primary border rounded p-1  "
-                        options={{
-                          ...EDITOR_OPTIONS,
-                          readOnly: false,
-                          codeLens: false,
-                        }}
-                        height="32vh"
-                        theme={theme === 'dark' ? 'vs-dark' : 'light'}
-                        defaultLanguage={languageMap[settings.newSnippetDefaultLanguage]}
-                      />
-                    </div>
-                  </CardContent>
+                        <label
+                          htmlFor="file-content"
+                          className="text-sm font-medium text-primary flex gap-2"
+                        >
+                          File Content <ZodError errors={errors} path={`files.${index}.content`} />
+                        </label>
+                        <Editor
+                          value={file.content}
+                          onChange={(value) => {
+                            dispatch({ type: 'SET_CONTENT', payload: value || '', index });
+                          }}
+                          className="border-primary border rounded p-1  "
+                          options={{
+                            ...EDITOR_OPTIONS,
+                            readOnly: false,
+                            codeLens: false,
+                          }}
+                          height="32vh"
+                          theme={theme === 'dark' ? 'vs-dark' : 'light'}
+                          defaultLanguage={
+                            languageMap[file.language ?? settings.newSnippetDefaultLanguage]
+                          }
+                        />
+                      </div>
+                    </CardContent>
+                  )}
                 </Card>
               )
             )}
@@ -318,9 +421,19 @@ export const CreateNew = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pr
               </Button>
 
               <div className="flex gap-2">
-                <Button variant="ghost">Cancel</Button>
-                <Button variant="default" onClick={() => create()}>
-                  Create {state.isPublic ? 'public' : 'private'} snippet
+                <Button
+                  variant="ghost"
+                  onClick={() => {
+                    dispatch({ type: 'RESET' });
+                    navigate('/');
+                  }}
+                >
+                  Cancel
+                </Button>
+                <Button variant="default" onClick={() => (edit ? update() : create())}>
+                  {edit
+                    ? 'Update snippet'
+                    : `Create ${state.isPublic ? 'public' : 'private'} snippet`}
                 </Button>
               </div>
             </div>

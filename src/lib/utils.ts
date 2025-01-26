@@ -176,11 +176,11 @@ export const previewAvailable = (file: GistFileType): boolean =>
 export const formatSnippetForSaving = (snippet: {
   description: string;
   isPublic: boolean;
-  files: { filename: string; content: string }[];
+  files: { filename: string; content: string | null }[];
   tags?: string[] | undefined;
 }) => {
-  const files = snippet.files.reduce<{ [key: string]: { content: string } }>((acc, file) => {
-    acc[file.filename] = { content: file.content };
+  const files = snippet.files.reduce<{ [key: string]: { content: string } | null }>((acc, file) => {
+    acc[file.filename] = file.content === null ? null : { content: file.content };
     return acc;
   }, {});
 
