@@ -29,7 +29,7 @@ Previous version can be tracked via the ["master"](https://github.com/Gisto/Gist
 
 # Early preview
 
-[![Gisto MK-II](https://img.youtube.com/vi/n5UnZ_Jp4N8/0.jpg)](https://www.youtube.com/watch?v=n5UnZ_Jp4N8 'Gisto MK-II')
+[![Gisto MK-II](https://img.youtube.com/vi/eJvADAZP2mg/0.jpg)](https://www.youtube.com/watch?v=eJvADAZP2mg 'Gisto MK-II')
 
 ---
 
