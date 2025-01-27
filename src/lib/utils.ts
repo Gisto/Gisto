@@ -173,19 +173,34 @@ export const previewAvailable = (file: GistFileType): boolean =>
   isJson(file) ||
   isMarkdown(file);
 
-export const formatSnippetForSaving = (snippet: {
-  description: string;
-  isPublic: boolean;
-  files: { filename: string; content: string | null }[];
-  tags?: string[] | undefined;
-}) => {
-  const files = snippet.files.reduce<{ [key: string]: { content: string } | null }>((acc, file) => {
-    acc[file.filename] = file.content === null ? null : { content: file.content };
-    return acc;
-  }, {});
+export const formatSnippetForSaving = (
+  snippet: {
+    description: string;
+    isPublic: boolean;
+    files: { filename: string; content: string | null }[];
+    tags?: string[];
+  },
+  edit: GistType | null = null
+) => {
+  const updatedFiles = edit
+    ? [
+        ...snippet.files,
+        ...Object.keys(edit.files)
+          .filter((filename) => !snippet.files.some((file) => file.filename === filename))
+          .map((filename) => ({ filename, content: null })),
+      ]
+    : snippet.files;
+
+  const files = updatedFiles.reduce<{ [key: string]: { content: string } | null }>(
+    (acc, { filename, content }) => {
+      acc[filename] = content === null ? null : { content };
+      return acc;
+    },
+    {}
+  );
 
   return {
-    description: snippet.description + ' ' + (snippet.tags?.join(' ') || ''),
+    description: snippet.description + (snippet.tags?.length ? ` ${snippet.tags.join(' ')}` : ''),
     isPublic: snippet.isPublic,
     files,
   };
