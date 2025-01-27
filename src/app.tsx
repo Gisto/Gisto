@@ -18,7 +18,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card.tsx';
-import { Input } from '@/components/ui/input.tsx';
+import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Label } from '@/components/ui/label';
 import { TooltipProvider } from '@/components/ui/tooltip.tsx';
 import { globalState } from '@/lib/store/globalState.ts';
@@ -164,7 +164,7 @@ export const Gisto = () => {
       <p className="mb-8 text-primary">Snippets made awesome</p>
 
       <form onSubmit={handleSubmit}>
-        <Card className="w-[350px]">
+        <Card className="w-[450px]">
           <CardHeader>
             <CardTitle>Please sign-in using GitHub token</CardTitle>
             <CardDescription className="flex items-center gap-2">
@@ -182,9 +182,8 @@ export const Gisto = () => {
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="token">GitHub token</Label>
 
-                <Input
+                <InputPassword
                   id="token"
-                  type="text"
                   value={newToken}
                   onChange={(e) => setNewToken(e.target.value)}
                   placeholder="Enter GitHub token"
