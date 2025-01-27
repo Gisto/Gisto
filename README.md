@@ -12,11 +12,11 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 > [!IMPORTANT]  
 > Current version is a complete rewrite of the original Gisto. It is a work in progress and should not yet be considered for production use.
 
-## Current version (2.x.x)
+# 🍾 New version (2.x.x)
 
 > Tracked Via issue: [#387](https://github.com/Gisto/Gisto/issues/387)
 
->[changelog](https://github.com/Gisto/Gisto/blob/main/CHANGELOG.md)
+> [changelog](https://github.com/Gisto/Gisto/blob/main/CHANGELOG.md)
 
 All progress of current version can be tracked on the ["main"](https://github.com/Gisto/Gisto/tree/main) branch.
 New version uses [Tauri](https://v2.tauri.app/) instead of electron - what significantly reduces the file size
@@ -25,21 +25,55 @@ New version uses [Tauri](https://v2.tauri.app/) instead of electron - what signi
 
 Previous version can be tracked via the ["master"](https://github.com/Gisto/Gisto/tree/master) branch.
 
-# Preview
+---
+
+# Early preview
 
 [![Gisto MK-II](https://img.youtube.com/vi/n5UnZ_Jp4N8/0.jpg)](https://www.youtube.com/watch?v=n5UnZ_Jp4N8 'Gisto MK-II')
 
-# About
+---
+
+# ℹ️ About
 
 Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor. All your data is stored on GitHub and you can access it from GitHub Gists at any time with changes carrying over to Gisto
 
-# Getting gisto
+---
+
+# ⬇️ Getting gisto
 
 You can download Gisto for (macOS, Windows, Linux) desktop from [releases](https://github.com/Gisto/Gisto/releases) tab
 
 Or use full featured Web based client available at: [Web app](https://gisto-web-app.netlify.app) (old one still [available](https://web-gistoapp.netlify.app) as well )
 
-# Features
+---
+
+# ⚠️ Important Notice About Installation
+
+### This App is Not Code-Signed
+
+Since this is an open-source project and we currently do not have the resources to purchase code-signing certificates, the application **is not signed**. As a result:
+
+- **On Windows**: You may see a warning like _"Windows protected your PC"_ or _"Unrecognized app."_
+- **On macOS**: You may see a message saying _"This app is from an unidentified developer."_
+
+These warnings are normal for unsigned applications and do not mean the app is harmful. However, always ensure you download the app from the **official release page of this repository** to avoid tampered files.
+
+## How to Install the Unsigned App
+
+### **Windows**:
+
+1. When the warning appears, click **More info**.
+2. Select **Run anyway** to proceed with the installation.
+
+### **macOS**:
+
+1. After downloading, if you see the warning, go to **System Preferences > Security & Privacy > General**.
+2. Click **Open Anyway** next to the blocked app message.
+3. Confirm by clicking **Open** when prompted.
+
+---
+
+# 🌱 Features
 
 - Advanced search
 - Enterprise log-in (under consideration)
@@ -57,7 +91,9 @@ Or use full featured Web based client available at: [Web app](https://gisto-web-
 
 and more...
 
-# Privacy/authentication
+---
+
+# 🔍 Privacy/authentication
 
 Gisto authenticates to GitHub by using GitHub Access token
 
@@ -67,19 +103,25 @@ Gisto only saves the Access token in your local storage and nothing else.
 
 This token will be saved permanently until you log out, or it will expire.
 
-# Latest builds
+---
+
+# ⚙️ Latest builds
 
 Latest builds are always at the [releases](https://github.com/Gisto/Gisto/releases) tab
 
-# Issues, bug reporting and pull requests
+---
+
+# 🐞 Issues, bug reporting and pull requests
 
 Please feel free to add a bug / feature request / suggestions to the issue tracker.
 
 **Pull requests are very welcome**
 
-# Development setup
+---
 
-> Make sure you have **nodejs** and _pnpm_ installed in the development machine
+# 👨‍💻 Development setup
+
+> Make sure you have **nodejs** and **pnpm** (we use pnpm) installed in the development machine
 
 ### Setup
 
@@ -87,10 +129,10 @@ Please feel free to add a bug / feature request / suggestions to the issue track
 2. Run `pnpm install`
 3. Run `pnpm dev` to start the development app (vite)
 4. Run `pnpm tauri dev` to start the development desktop app (vite with Tauri)
-5. Run `pnpm build` to build the app
-6. Run `pnpm tauri build` to build the desktop app
 
-# Release cycle
+---
+
+# 🚀 Release cycle
 
 release.yml workflow of github actions is responsible for creating the release builds upon mergin to special branch called "release".
 
