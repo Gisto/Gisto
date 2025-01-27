@@ -29,6 +29,7 @@ export type StoreStateType = {
       tabSize: number;
       wordWrapColumn: number;
       lineNumbers: 'on' | 'off';
+      formatOnPaste: boolean;
       codeLens: boolean;
       minimap: { enabled: boolean };
     };
@@ -76,6 +77,7 @@ const defaultSettings: SettingsType = {
     tabSize: 2,
     wordWrapColumn: 80,
     lineNumbers: 'on',
+    formatOnPaste: true,
     codeLens: false,
     minimap: { enabled: false },
   },
