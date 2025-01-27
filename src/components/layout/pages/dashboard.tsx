@@ -117,7 +117,7 @@ export const DashBoard = () => {
   const cardCharts = [
     {
       title: 'Public / Private',
-      value: `${list.filter((snippet) => snippet.isPublic).length} / ${list.filter((snippet) => !snippet.isPublic).length}`,
+      value: `${list.filter((snippet) => snippet.isPublic).length}/${list.filter((snippet) => !snippet.isPublic).length}`,
       description: `Private and public of ${list.length} snippets`,
     },
     {
@@ -159,7 +159,7 @@ export const DashBoard = () => {
                   {chart.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="text-primary text-[2vw] text-right font-bold font-numbers">
+              <CardContent className="text-primary text-[2.5vw] text-right font-numbers">
                 {chart.value}
               </CardContent>
             </Card>
