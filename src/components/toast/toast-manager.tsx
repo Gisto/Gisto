@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Toast, ToastType } from './toast';
+import { EVENT_NAME } from './index.ts';
+import { Toast, ToastType } from './toast.tsx';
 
 import { randomString } from '@/lib/utils.ts';
-
-const EVENT_NAME = 'gisto-add-toast';
 
 const ToastManager = () => {
   const [toasts, setToasts] = useState<ToastType[]>([]);
@@ -47,59 +46,6 @@ const ToastManager = () => {
       ))}
     </div>
   );
-};
-
-export const toast = {
-  show: ({
-    message,
-    title,
-    type = 'info',
-    duration = 3000,
-    id,
-  }: {
-    message: string;
-    title?: string;
-    type?: string;
-    duration?: number;
-    id?: string;
-  }) => {
-    window.dispatchEvent(
-      new CustomEvent(EVENT_NAME, { detail: { message, type, duration, title, id } })
-    );
-  },
-  info: ({
-    message,
-    title,
-    duration,
-    id,
-  }: {
-    message: string;
-    title?: string;
-    duration?: number | undefined;
-    id?: string;
-  }) => toast.show({ message: message, title: title, type: 'info', duration: duration, id: id }),
-  warn: ({
-    message,
-    title,
-    duration,
-    id,
-  }: {
-    message: string;
-    title?: string;
-    duration?: number | undefined;
-    id?: string;
-  }) => toast.show({ message: message, title: title, type: 'warn', duration: duration, id: id }),
-  error: ({
-    message,
-    title,
-    duration,
-    id,
-  }: {
-    message: string;
-    title?: string;
-    duration?: number | undefined;
-    id?: string;
-  }) => toast.show({ message: message, title: title, type: 'error', duration: duration, id: id }),
 };
 
 export default ToastManager;
