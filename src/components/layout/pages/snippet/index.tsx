@@ -24,6 +24,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { GithubAPI } from '@/lib/GithubApi.ts';
@@ -219,11 +220,13 @@ export const SnippetContent = () => {
         </div>
       </PageHeader>
       <div className="bg-secondary h-full shadow-inner">
-        <div className="p-4 overflow-y-scroll h-full pb-10">
-          {Object.keys(snippet.files).map((file) => {
-            return <File key={file} snippet={snippet} file={snippet.files[file]} />;
-          })}
-        </div>
+        <ScrollArea className="h-full pb-10">
+          <div className="p-4">
+            {Object.keys(snippet.files).map((file) => {
+              return <File key={file} snippet={snippet} file={snippet.files[file]} />;
+            })}
+          </div>
+        </ScrollArea>
       </div>
     </div>
   );
