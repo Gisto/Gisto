@@ -14,6 +14,8 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 
 ## Current version (2.x.x)
 
+> Tracked Via issue: [#387](https://github.com/Gisto/Gisto/issues/387)
+
 All progress of current version can be tracked on the ["main"](https://github.com/Gisto/Gisto/tree/main) branch.
 New version uses [Tauri](https://v2.tauri.app/) instead of electron - what significantly reduces the file size
 
@@ -38,18 +40,16 @@ Or use full featured Web based client available at: [Web app](https://gisto-web-
 # Features
 
 - Advanced search
-- Enterprise log-in
+- Enterprise log-in (under consideration)
 - Tags
 - Syntax highlight
 - Grouping by language
 - Quick snippet actions
 - Copy to clipboard
 - Copy file contents to clipboard
-- Open in external tools like plunkr, jsbin, carbon.now.sh, jsfiddle, etc.
+- Open in external tools like plunkr, carbon.now.sh, jsfiddle, etc.
 - Editor settings
 - Theme color changer
-- Drag and drop to create files
-- Comments
 - [Web app](https://gisto-web-app.netlify.app)
 - Open source
 
