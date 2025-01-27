@@ -7,11 +7,10 @@ import { Image } from '@/components/layout/pages/snippet/content/preview/image.t
 import { JsonViewer } from '@/components/layout/pages/snippet/content/preview/json-viewer.tsx';
 import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
 import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
-import { useTheme } from '@/components/theme/theme-provider.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { isHTML, isImage, isJson, isMarkdown, isPDF } from '@/lib/utils.ts';
+import { getEditorTheme, isHTML, isImage, isJson, isMarkdown, isPDF } from '@/lib/utils.ts';
 import { GistFileType, GistType } from '@/types/gist.ts';
 
 export const Editor = ({
@@ -25,7 +24,6 @@ export const Editor = ({
 }) => {
   const settings = useStoreValue('settings');
   const [height, setHeight] = useState('65vh');
-  const { theme } = useTheme();
   const editorRef = useRef(null);
 
   if (file.truncated) {
@@ -97,7 +95,7 @@ export const Editor = ({
       }}
       onMount={handleEditorDidMount}
       height={height}
-      theme={theme === 'dark' ? 'vs-dark' : 'light'}
+      theme={getEditorTheme()}
       defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
       defaultValue={file.content}
     />

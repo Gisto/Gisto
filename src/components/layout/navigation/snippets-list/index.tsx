@@ -113,7 +113,7 @@ export const Lists = ({
                     Or a combinations of all:
                   </h4>
                   <div className="text-xs mb-2">
-                    <strong>Description:</strong>{' '}
+                    <strong>Description or files contents:</strong>{' '}
                     <code className="bg-muted-foreground dark:bg-accent rounded p-1">
                       just free text
                     </code>

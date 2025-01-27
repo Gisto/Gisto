@@ -58,6 +58,9 @@ importers:
       dirty-react-router:
         specifier: ^0.1.0
         version: 0.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      gisto:
+        specifier: 'link:'
+        version: 'link:'
       lucide-react:
         specifier: ^0.471.2
         version: 0.471.2(react@19.0.0)
