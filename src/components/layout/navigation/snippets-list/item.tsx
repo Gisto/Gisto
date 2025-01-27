@@ -177,7 +177,7 @@ export const ListItem = ({
                   <TooltipTrigger asChild>
                     <Star
                       strokeWidth={1.5}
-                      className="size-3 stroke-primary cursor-pointer hover:stroke-primary fill-primary"
+                      className="size-3 stroke-primary cursor-pointer hover:stroke-primary fill-primary hover:scale-125 transition-all"
                       onClick={async (event) => {
                         event.preventDefault();
                         event.stopPropagation();
@@ -196,7 +196,7 @@ export const ListItem = ({
                   <TooltipTrigger asChild>
                     <Star
                       strokeWidth={1.5}
-                      className="size-3 cursor-pointer hover:stroke-primary"
+                      className="size-3 cursor-pointer hover:stroke-primary hover:scale-125 transition-all"
                       onClick={async (event) => {
                         event.preventDefault();
                         event.stopPropagation();
@@ -221,7 +221,7 @@ export const ListItem = ({
                     event.stopPropagation();
                     navigate(`/edit/${gist.id}`);
                   }}
-                  className="size-3 cursor-pointer hover:stroke-primary"
+                  className="size-3 cursor-pointer hover:stroke-primary hover:scale-125 transition-all"
                 />
               </TooltipTrigger>
               <TooltipContent>Edit snippet</TooltipContent>
@@ -248,7 +248,7 @@ export const ListItem = ({
                       }
                     }
                   }}
-                  className="size-3 cursor-pointer hover:stroke-danger"
+                  className="size-3 cursor-pointer hover:stroke-danger hover:scale-125 transition-all"
                 />
               </TooltipTrigger>
               <TooltipContent>Delete snippet</TooltipContent>
