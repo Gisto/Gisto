@@ -1,3 +1,19 @@
+## 2.0.0-alpha+9 (2025-01-27)
+
+- chore: add commitizen and conventional-changelog-cli ([bbf6d9b](https://github.com/Gisto/Gisto/commit/bbf6d9b))
+- chore: bump version ([a7cf034](https://github.com/Gisto/Gisto/commit/a7cf034))
+- chore(cleanup): remove unused files ([f83398f](https://github.com/Gisto/Gisto/commit/f83398f))
+- fix(dark theme): dark theme bg colors ([f7d07e0](https://github.com/Gisto/Gisto/commit/f7d07e0))
+- fix(dashboard): numbers sizing ([72f3931](https://github.com/Gisto/Gisto/commit/72f3931))
+- fix(new snippet): fix filename ([3513325](https://github.com/Gisto/Gisto/commit/3513325))
+- docs(readme): update readme ([d765338](https://github.com/Gisto/Gisto/commit/d765338))
+- fix for badge, edit on list, json settings fix ([044e73e](https://github.com/Gisto/Gisto/commit/044e73e))
+- refactor(toast, sippets list): refactor toast and snippets list components ([09e60d4](https://github.com/Gisto/Gisto/commit/09e60d4))
+- show badge with file language on file header ([33b0532](https://github.com/Gisto/Gisto/commit/33b0532))
+- build: move and rename layout files, fix lint ignore ([43e8dc1](https://github.com/Gisto/Gisto/commit/43e8dc1))
+- refactor(new snippet): fix defaults and add language type selector ([583d193](https://github.com/Gisto/Gisto/commit/583d193))
+- refactor(scroll areas): change scroll areas ([dc3137e](https://github.com/Gisto/Gisto/commit/dc3137e))
+
 ## 2.0.0-alpha+8 (2025-01-26)
 
 - add .eslintcache to gitignore ([54c06cb](https://github.com/Gisto/Gisto/commit/54c06cb))
