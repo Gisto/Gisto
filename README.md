@@ -16,6 +16,8 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 
 > Tracked Via issue: [#387](https://github.com/Gisto/Gisto/issues/387)
 
+>[changelog](https://github.com/Gisto/Gisto/blob/main/CHANGELOG.md)
+
 All progress of current version can be tracked on the ["main"](https://github.com/Gisto/Gisto/tree/main) branch.
 New version uses [Tauri](https://v2.tauri.app/) instead of electron - what significantly reduces the file size
 
