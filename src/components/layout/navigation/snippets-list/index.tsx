@@ -15,6 +15,7 @@ import { ListItem } from '@/components/layout/navigation/snippets-list/item.tsx'
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
+import { ScrollArea } from '@/components/ui/scroll-area.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
@@ -142,7 +143,7 @@ export const Lists = ({
           {search ? <FilterX className="size-4" /> : <Filter className="size-4" />}
         </Button>
       </PageHeader>
-      <div className="h-[calc(100vh-104px)] overflow-auto shadow-inner">
+      <ScrollArea className="h-[calc(100vh-104px)] shadow-inner">
         {allSnippets.length === 0 ? (
           <ListSkeleton />
         ) : (
@@ -151,7 +152,7 @@ export const Lists = ({
             <LazyListItem search={search} setSearch={setSearch} key={gist.id} gist={gist} />
           ))
         )}
-      </div>
+      </ScrollArea>
       <div className="h-[52px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">
         <div className="flex items-center gap-2">
           {!isLoading ? (
