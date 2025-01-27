@@ -220,7 +220,8 @@ export const CreateOrEditSnippet = ({
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         isPublic,
         ...restOfTheSnippet
-      } = formatSnippetForSaving(validation.data);
+      } = formatSnippetForSaving(validation.data, edit);
+
       const save = await GithubAPI.updateGist({ ...restOfTheSnippet, gistId: edit!.id });
 
       if (save && save.id) {
