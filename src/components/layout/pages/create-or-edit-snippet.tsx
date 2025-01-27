@@ -8,7 +8,7 @@ import { z } from 'zod';
 import { AllTags } from '@/components/all-tags.tsx';
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
-import { toast } from '@/components/toast/toast-manager.tsx';
+import { toast } from '@/components/toast';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx';

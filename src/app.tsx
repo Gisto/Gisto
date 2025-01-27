@@ -7,7 +7,8 @@ import { lazy, useEffect, useState } from 'react';
 import { MainLayout } from '@/components/layout';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
-import ToastManager, { toast } from '@/components/toast/toast-manager.tsx';
+import { toast } from '@/components/toast';
+import ToastManager from '@/components/toast/toast-manager.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
   Card,

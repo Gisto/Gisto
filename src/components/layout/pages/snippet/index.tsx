@@ -9,6 +9,7 @@ import {
   Copy,
   ShieldCheck,
   Shield,
+  Info,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -192,7 +193,15 @@ export const SnippetContent = () => {
                     href={`https://jsfiddle.net/gh/gist/library/pure/${snippet?.id}`}
                     target="_blank"
                   >
-                    <ExternalLink /> Open in <strong>jsfiddle</strong>
+                    <ExternalLink /> Open in <strong>jsfiddle</strong>{' '}
+                    <Tooltip delayDuration={0}>
+                      <TooltipTrigger asChild>
+                        <Info strokeWidth={1.5} className="size-3 cursor-pointer" />
+                      </TooltipTrigger>
+                      <TooltipContent align="end">
+                        Need to have CSS, JS and HTML files as part of the snippet
+                      </TooltipContent>
+                    </Tooltip>
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />

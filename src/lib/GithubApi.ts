@@ -1,6 +1,6 @@
 import { version } from '../../package.json';
 
-import { toast } from '@/components/toast/toast-manager.tsx';
+import { toast } from '@/components/toast';
 import { ITEMS_PER_PAGE } from '@/constants';
 import { globalState } from '@/lib/store/globalState.ts';
 import { GistType } from '@/types/gist.ts';
