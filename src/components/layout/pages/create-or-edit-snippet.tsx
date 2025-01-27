@@ -353,10 +353,7 @@ export const CreateOrEditSnippet = ({
                 },
                 index: number
               ) => (
-                <Card
-                  key={`${file.filename}-${index}-${file.language}`}
-                  className="hover:border-primary"
-                >
+                <Card key={`${index}-${file.language}`} className="hover:border-primary">
                   <CardHeader>
                     <CardTitle className="flex justify-between items-center">
                       <div
