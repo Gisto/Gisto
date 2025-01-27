@@ -8,7 +8,7 @@ import { PATHS_WITHOUT_SNIPPET_LIST } from '@/constants';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/lib/utils.ts';
 
-export const Gisto = () => {
+export const MainLayout = () => {
   const settings = useStoreValue('settings');
   const [isCollapsed, setIsCollapsed] = React.useState(settings.sidebarCollapsedByDefault);
   const { path } = useRouter();

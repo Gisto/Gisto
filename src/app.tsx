@@ -4,7 +4,7 @@ import { RouterProvider, RouteType } from 'dirty-react-router';
 import { Info } from 'lucide-react';
 import { lazy, useEffect, useState } from 'react';
 
-import { Gisto } from '@/components/layout/gisto.tsx';
+import { MainLayout } from '@/components/layout';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
 import ToastManager, { toast } from '@/components/toast/toast-manager.tsx';
@@ -83,7 +83,7 @@ const routes: RouteType[] = [
   // },
 ];
 
-function App() {
+export const Gisto = () => {
   const [token, setToken] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -142,7 +142,7 @@ function App() {
       <ThemeProvider>
         <RouterProvider routes={routes}>
           <TooltipProvider>
-            <Gisto />
+            <MainLayout />
             <ToastManager />
           </TooltipProvider>
         </RouterProvider>
@@ -203,6 +203,4 @@ function App() {
       </form>
     </div>
   );
-}
-
-export default App;
+};
