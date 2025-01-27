@@ -8,20 +8,26 @@ import { z } from 'zod';
 import { AllTags } from '@/components/all-tags.tsx';
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
-import { useTheme } from '@/components/theme/theme-provider.tsx';
 import { toast } from '@/components/toast/toast-manager.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx';
 import { Input } from '@/components/ui/input.tsx';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select.tsx';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { ZodError } from '@/components/zod-error.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { GithubAPI } from '@/lib/GithubApi.ts';
-import { useStoreValue } from '@/lib/store/globalState.ts';
-import { cn, formatSnippetForSaving, getTags, removeTags } from '@/lib/utils.ts';
+import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
+import { cn, formatSnippetForSaving, getEditorTheme, getTags, removeTags } from '@/lib/utils.ts';
 import { GistType } from '@/types/gist.ts';
 
 type Props = {
@@ -39,9 +45,15 @@ type StateType = {
 
 const initialState: StateType = {
   description: '',
-  isPublic: true,
+  isPublic: globalState.getState().settings.newSnippetPublicByDefault,
   tags: [],
-  files: [{ filename: '', content: '', language: '' }],
+  files: [
+    {
+      filename: '',
+      content: '',
+      language: globalState.getState().settings.newSnippetDefaultLanguage,
+    },
+  ],
 };
 
 type ActionType =
@@ -49,6 +61,7 @@ type ActionType =
   | { type: 'SET_PUBLIC'; payload: boolean }
   | { type: 'ADD_TAG'; payload: string }
   | { type: 'REMOVE_TAG'; payload: string }
+  | { type: 'SET_FILE_LANGUAGE'; payload: string; index: number }
   | { type: 'SET_FILENAME'; payload: string; index: number }
   | { type: 'SET_CONTENT'; payload: string | null; index: number }
   | {
@@ -71,6 +84,13 @@ function reducer(state: StateType, action: ActionType) {
       };
     case 'REMOVE_TAG':
       return { ...state, tags: state.tags.filter((tag) => tag !== action.payload) };
+    case 'SET_FILE_LANGUAGE':
+      return {
+        ...state,
+        files: state.files.map((file, index) =>
+          index === action.index ? { ...file, language: action.payload } : file
+        ),
+      };
     case 'SET_FILENAME':
       return {
         ...state,
@@ -125,7 +145,6 @@ export const CreateOrEditSnippet = ({
   isCollapsed = false,
   setIsCollapsed = () => {},
 }: Props = {}) => {
-  const { theme } = useTheme();
   const { navigate, params } = useRouter();
   const settings = useStoreValue('settings');
 
@@ -133,10 +152,7 @@ export const CreateOrEditSnippet = ({
     // TODO: check type
     // @ts-expect-error not sure why reducer it is not happy ATM
     reducer,
-    {
-      ...initialState,
-      isPublic: settings.newSnippetPublicByDefault,
-    }
+    initialState
   );
 
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
@@ -215,6 +231,7 @@ export const CreateOrEditSnippet = ({
       }
     }
   };
+
   return (
     <div className="h-screen w-full border-r border-collapse">
       <PageHeader>
@@ -336,7 +353,10 @@ export const CreateOrEditSnippet = ({
                 },
                 index: number
               ) => (
-                <Card className="hover:border-primary">
+                <Card
+                  key={`${file.filename}-${index}-${file.language}`}
+                  className="hover:border-primary"
+                >
                   <CardHeader>
                     <CardTitle className="flex justify-between items-center">
                       <div
@@ -368,21 +388,49 @@ export const CreateOrEditSnippet = ({
                   {file.content !== null && (
                     <CardContent>
                       <div className="flex flex-col gap-2">
-                        <label
-                          htmlFor="file"
-                          className="text-sm font-medium text-primary flex gap-2"
-                        >
-                          File name <ZodError errors={errors} path={`files.${index}.filename`} />
-                        </label>
-                        <Input
-                          type="text"
-                          id="file"
-                          value={file.filename}
-                          onChange={(e) =>
-                            dispatch({ type: 'SET_FILENAME', payload: e.target.value, index })
-                          }
-                          placeholder="Enter file name including extention"
-                        />
+                        <div className="flex items-center gap-8">
+                          <label
+                            htmlFor="file"
+                            className="w-1/2 text-sm font-medium text-primary flex gap-2"
+                          >
+                            File name <ZodError errors={errors} path={`files.${index}.filename`} />
+                          </label>
+                          <label
+                            htmlFor="file-language"
+                            className="w-1/2 text-sm font-medium text-primary flex gap-2"
+                          >
+                            File language (optional)
+                          </label>
+                        </div>
+                        <div className="flex items-center gap-8">
+                          <Input
+                            type="text"
+                            id="file"
+                            value={file.filename}
+                            onChange={(e) =>
+                              dispatch({ type: 'SET_FILENAME', payload: e.target.value, index })
+                            }
+                            placeholder="Enter file name including extention"
+                          />
+                          <Select
+                            onValueChange={(value) =>
+                              dispatch({ type: 'SET_FILE_LANGUAGE', payload: value, index })
+                            }
+                            defaultValue={settings.newSnippetDefaultLanguage}
+                            value={file.language ?? settings.newSnippetDefaultLanguage}
+                          >
+                            <SelectTrigger id="file-language">
+                              <SelectValue placeholder="Select file language" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {Object.keys(languageMap).map((language) => (
+                                <SelectItem key={language} value={language}>
+                                  {language}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
 
                         <label
                           htmlFor="file-content"
@@ -395,16 +443,16 @@ export const CreateOrEditSnippet = ({
                           onChange={(value) => {
                             dispatch({ type: 'SET_CONTENT', payload: value || '', index });
                           }}
-                          className="border-primary border rounded p-1  "
+                          className="border-primary border rounded p-1"
                           options={{
                             ...EDITOR_OPTIONS,
                             readOnly: false,
                             codeLens: false,
                           }}
-                          height="32vh"
-                          theme={theme === 'dark' ? 'vs-dark' : 'light'}
-                          defaultLanguage={
-                            languageMap[file.language ?? settings.newSnippetDefaultLanguage]
+                          height="30vh"
+                          theme={getEditorTheme()}
+                          language={
+                            languageMap[file?.language ?? settings.newSnippetDefaultLanguage]
                           }
                         />
                       </div>
@@ -415,7 +463,19 @@ export const CreateOrEditSnippet = ({
             )}
 
             <div className="flex justify-between">
-              <Button variant="outline" onClick={() => dispatch({ type: 'ADD_FILE' })}>
+              <Button
+                variant="outline"
+                onClick={() =>
+                  dispatch({
+                    type: 'ADD_FILE',
+                    payload: {
+                      filename: '',
+                      content: '',
+                      language: settings.newSnippetDefaultLanguage,
+                    },
+                  })
+                }
+              >
                 <Plus className="size-4" />
                 Add another file
               </Button>

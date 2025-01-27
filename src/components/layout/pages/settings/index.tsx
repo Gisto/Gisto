@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { EDITOR_OPTIONS } from '@/constants';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
+import { getEditorTheme } from '@/lib/utils.ts';
 
 type Props = {
   isCollapsed?: boolean;
@@ -79,7 +80,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
                   readOnly: false,
                 }}
                 height="300px"
-                theme={restOfTheSettings.theme === 'dark' ? 'vs-dark' : 'light'}
+                theme={getEditorTheme()}
                 defaultLanguage={'javascript'}
                 defaultValue={`function createObject(name, age) {
   return { name, age };

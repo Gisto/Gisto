@@ -210,3 +210,11 @@ export const randomString = (charsCount = 5) =>
     .toString(36)
     .replace(/[^a-z]+/g, '')
     .slice(0, charsCount);
+
+export const getEditorTheme = () => {
+  if (globalState.getState().settings.theme === 'system') {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'vs-dark' : 'light';
+  }
+
+  return globalState.getState().settings.theme === 'dark' ? 'vs-dark' : 'light';
+};
