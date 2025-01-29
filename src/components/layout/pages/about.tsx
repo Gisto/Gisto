@@ -54,7 +54,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
               <a
                 target="_blank"
                 className="underline hover:underline-offset-4"
-                href="https://github.com/Gisto/Gisto/blob/master/CHANGELOG.md"
+                href="https://github.com/Gisto/Gisto/blob/main/CHANGELOG.md"
               >
                 Change log
               </a>
@@ -62,7 +62,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
               <a
                 target="_blank"
                 className="underline hover:underline-offset-4"
-                href="https://gistoapp.netlify.app"
+                href="https://gisto.org"
               >
                 Website
               </a>
