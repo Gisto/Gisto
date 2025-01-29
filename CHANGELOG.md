@@ -1,3 +1,14 @@
+## 2.0.0-beta+1 (2025-01-29)
+
+- feat: hidden field for authentication token and adds formatOnPaste editor setting ([86211d8](https://github.com/Gisto/Gisto/commit/86211d8))
+- feat(snippet visibility): allow to toggle snippet visibility ([cffbec2](https://github.com/Gisto/Gisto/commit/cffbec2))
+- chore: update readme and app icons ([8067a14](https://github.com/Gisto/Gisto/commit/8067a14))
+- chore: Update README.md ([ea54d22](https://github.com/Gisto/Gisto/commit/ea54d22))
+- docs: update readme ([b981693](https://github.com/Gisto/Gisto/commit/b981693))
+- docs: Update README.md ([ea1e5c0](https://github.com/Gisto/Gisto/commit/ea1e5c0))
+- docs: Update README.md ([3f21350](https://github.com/Gisto/Gisto/commit/3f21350))
+- fix(new snippet and edit): fix filenames for updates ([f8f56b8](https://github.com/Gisto/Gisto/commit/f8f56b8))
+
 ## 2.0.0-alpha+9 (2025-01-27)
 
 - chore: add commitizen and conventional-changelog-cli ([bbf6d9b](https://github.com/Gisto/Gisto/commit/bbf6d9b))

@@ -28,7 +28,7 @@ import { languageMap } from '@/constants/language-map.ts';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, formatSnippetForSaving, getEditorTheme, getTags, removeTags } from '@/lib/utils.ts';
-import { GistType } from '@/types/gist.ts';
+import { GistSingleType } from '@/types/gist.ts';
 
 type Props = {
   isCollapsed?: boolean;
@@ -156,7 +156,7 @@ export const CreateOrEditSnippet = ({
   );
 
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
-  const [edit, setEdit] = useState<null | GistType>(null);
+  const [edit, setEdit] = useState<null | GistSingleType>(null);
   useEffect(() => {
     if (params?.id) {
       (async () => {

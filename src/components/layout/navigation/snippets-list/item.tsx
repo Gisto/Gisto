@@ -15,7 +15,7 @@ import { Badge } from '@/components/ui/badge.tsx';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { GithubAPI } from '@/lib/GithubApi.ts';
-import { cn, getTags, removeTags } from '@/lib/utils.ts';
+import { cn, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils.ts';
 import { GistEnrichedType } from '@/types/gist.ts';
 
 export const ListItem = ({
@@ -144,6 +144,18 @@ export const ListItem = ({
                   <TooltipTrigger asChild>
                     <div>
                       <Shield
+                        onClick={async (event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          const confirmation = await confirm(
+                            `Are you sure you want to change "${removeTags(gist.description).trim()}" snippet to private? This snippet will be removed and new one gonna be created instead.`
+                          );
+
+                          if (confirmation) {
+                            await GithubAPI.toggleGistVisibility(gist.id);
+                            await fetchAndUpdateSnippets();
+                          }
+                        }}
                         strokeWidth={1.5}
                         className="size-3 cursor-pointer hover:text-primary stroke-danger"
                       />
@@ -159,6 +171,18 @@ export const ListItem = ({
                   <TooltipTrigger asChild>
                     <div>
                       <ShieldCheck
+                        onClick={async (event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          const confirmation = await confirm(
+                            `Are you sure you want to change "${removeTags(gist.description).trim()}" snippet to public? This snippet will be removed and new one gonna be created instead.`
+                          );
+
+                          if (confirmation) {
+                            await GithubAPI.toggleGistVisibility(gist.id);
+                            await fetchAndUpdateSnippets();
+                          }
+                        }}
                         strokeWidth={1.5}
                         className="size-3 cursor-pointer hover:text-primary stroke-success"
                       />

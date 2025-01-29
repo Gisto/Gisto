@@ -30,11 +30,11 @@ import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { copyToClipboard, getTags, removeTags } from '@/lib/utils.ts';
-import { GistType } from '@/types/gist.ts';
+import { copyToClipboard, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils.ts';
+import { GistSingleType } from '@/types/gist.ts';
 
 export const SnippetContent = () => {
-  const [snippet, setSnippet] = useState<GistType | null>(null);
+  const [snippet, setSnippet] = useState<GistSingleType | null>(null);
   const [loading, setLoading] = useState(true);
   const { params, navigate } = useRouter();
   const snippetState = useStoreValue('snippets').find((s) => s.id === params.id);
@@ -101,7 +101,22 @@ export const SnippetContent = () => {
             {snippetState && snippetState.isPublic ? (
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" className="-mx-3">
+                  <Button
+                    onClick={async () => {
+                      const confirmation = await confirm(
+                        `Are you sure you want to change "${removeTags(snippet.description).trim()}" snippet to private? This snippet will be removed and new one gonna be created instead.`
+                      );
+
+                      if (confirmation) {
+                        await GithubAPI.toggleGistVisibility(snippet.id);
+                        navigate('/');
+                        await fetchAndUpdateSnippets();
+                      }
+                    }}
+                    variant="ghost"
+                    size="icon"
+                    className="-mx-3"
+                  >
                     <Shield
                       strokeWidth={1.5}
                       className="size-3 cursor-pointer hover:text-primary stroke-danger"
@@ -114,7 +129,22 @@ export const SnippetContent = () => {
             ) : (
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
-                  <Button variant="ghost" size="icon" className="-mx-3">
+                  <Button
+                    onClick={async () => {
+                      const confirmation = await confirm(
+                        `Are you sure you want to change "${removeTags(snippet.description).trim()}" snippet to public? This snippet will be removed and new one gonna be created instead.`
+                      );
+
+                      if (confirmation) {
+                        await GithubAPI.toggleGistVisibility(snippet.id);
+                        navigate('/');
+                        await fetchAndUpdateSnippets();
+                      }
+                    }}
+                    variant="ghost"
+                    size="icon"
+                    className="-mx-3"
+                  >
                     <ShieldCheck
                       strokeWidth={1.5}
                       className="size-3 cursor-pointer hover:text-primary stroke-success"

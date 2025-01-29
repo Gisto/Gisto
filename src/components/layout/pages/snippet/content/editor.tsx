@@ -11,7 +11,7 @@ import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { getEditorTheme, isHTML, isImage, isJson, isMarkdown, isPDF } from '@/lib/utils.ts';
-import { GistFileType, GistType } from '@/types/gist.ts';
+import { GistFileType, GistSingleType } from '@/types/gist.ts';
 
 export const Editor = ({
   file,
@@ -19,7 +19,7 @@ export const Editor = ({
   preview,
 }: {
   file: GistFileType;
-  snippet: GistType;
+  snippet: GistSingleType;
   preview: boolean;
 }) => {
   const settings = useStoreValue('settings');

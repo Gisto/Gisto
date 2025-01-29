@@ -3,7 +3,7 @@ import { version } from '../../package.json';
 import { toast } from '@/components/toast';
 import { ITEMS_PER_PAGE } from '@/constants';
 import { globalState } from '@/lib/store/globalState.ts';
-import { GistType } from '@/types/gist.ts';
+import { GistSingleType, GistType } from '@/types/gist.ts';
 
 interface GraphQLResponse<T> {
   data: T;
@@ -137,8 +137,8 @@ export const GithubAPI = {
     return { data, headers: response.headers, status: response.status };
   },
 
-  async getGist(gistId: string): Promise<GistType> {
-    const { data } = await this.request<GistType>({ endpoint: `/gists/${gistId}` });
+  async getGist(gistId: string): Promise<GistSingleType> {
+    const { data } = await this.request<GistSingleType>({ endpoint: `/gists/${gistId}` });
 
     return data;
   },
@@ -258,6 +258,44 @@ export const GithubAPI = {
     }
 
     return { success: false };
+  },
+
+  async toggleGistVisibility(gistId: string): Promise<GistType | null> {
+    const originalGist = await this.getGist(gistId);
+
+    const files = Object.entries(originalGist.files || {}).reduce(
+      (acc, [fileName, fileData]) => {
+        if (fileData && fileName) {
+          acc[fileName] = { content: fileData.content || '' };
+        }
+        return acc;
+      },
+      {} as Record<string, { content: string }>
+    );
+
+    const newVisibility = !originalGist.public;
+
+    const newGist = await this.createGist({
+      files,
+      description: originalGist.description || '',
+      isPublic: newVisibility,
+    });
+
+    if (newGist.id) {
+      await this.deleteGist(gistId);
+
+      toast.info({
+        message: `Gist visibility changed to ${newVisibility ? 'Public' : 'Private'}`,
+      });
+
+      return newGist;
+    }
+
+    toast.info({
+      message: `Gist visibility changed to ${newVisibility ? 'Public' : 'Private'}`,
+    });
+
+    return null;
   },
 
   async fetchGithubGraphQL<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
