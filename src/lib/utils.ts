@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { ITEMS_PER_PAGE } from '@/constants';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState } from '@/lib/store/globalState.ts';
-import { GistEnrichedType, GistFileType, GistType } from '@/types/gist.ts';
+import { GistEnrichedType, GistFileType, GistSingleType, GistType } from '@/types/gist.ts';
 
 export function cn(...classes: (string | undefined | null | false)[]) {
   return classes.filter(Boolean).join(' ');
@@ -180,7 +180,7 @@ export const formatSnippetForSaving = (
     files: { filename: string; content: string | null }[];
     tags?: string[];
   },
-  edit: GistType | null = null
+  edit: GistSingleType | null = null
 ) => {
   const updatedFiles = edit
     ? [

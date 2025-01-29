@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
 import { copyToClipboard, previewAvailable } from '@/lib/utils.ts';
-import { GistFileType, GistType } from '@/types/gist.ts';
+import { GistFileType, GistSingleType } from '@/types/gist.ts';
 
 export const Header = ({
   file,
@@ -20,7 +20,7 @@ export const Header = ({
   setPreview,
 }: {
   file: GistFileType;
-  snippet: GistType;
+  snippet: GistSingleType;
   collapsed: boolean;
   setCollapsed: (c: boolean) => void;
   preview: boolean;

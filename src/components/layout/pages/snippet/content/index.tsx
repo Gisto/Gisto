@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { Editor } from '@/components/layout/pages/snippet/content/editor.tsx';
 import { Header } from '@/components/layout/pages/snippet/content/header.tsx';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { GistFileType, GistType } from '@/types/gist.ts';
+import { GistFileType, GistSingleType } from '@/types/gist.ts';
 
-export const File = ({ file, snippet }: { file: GistFileType; snippet: GistType }) => {
+export const File = ({ file, snippet }: { file: GistFileType; snippet: GistSingleType }) => {
   const settings = useStoreValue('settings');
   const [collapsed, setCollapsed] = useState(settings.filesCollapsedByDefault);
   const [preview, setPreview] = useState(true);
