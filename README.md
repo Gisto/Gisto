@@ -5,7 +5,7 @@
 Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor.
 
 > [!NOTE]
-> Alpha pre-releases available:
+> Beta pre-releases available:
 >
 > Latest builds are always at the [releases](https://github.com/Gisto/Gisto/releases) tab
 
