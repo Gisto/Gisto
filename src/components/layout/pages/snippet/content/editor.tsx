@@ -7,6 +7,7 @@ import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx
 import { Image } from '@/components/layout/pages/snippet/content/preview/image.tsx';
 import { JsonViewer } from '@/components/layout/pages/snippet/content/preview/json-viewer.tsx';
 import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
+import { OpenApi } from '@/components/layout/pages/snippet/content/preview/open-api.tsx';
 import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
@@ -18,6 +19,7 @@ import {
   isImage,
   isJson,
   isMarkdown,
+  isOpenApi,
   isPDF,
   isTSV,
 } from '@/lib/utils.ts';
@@ -90,6 +92,10 @@ export const Editor = ({
 
     if (isCSV(file) || isTSV(file)) {
       return <Csv file={file} />;
+    }
+
+    if (isOpenApi(file)) {
+      return <OpenApi file={file} />;
     }
   }
 
