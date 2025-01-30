@@ -1,3 +1,8 @@
+## 2.0.0-1 (2025-01-30)
+
+- chore: bump version ([f8c45e6](https://github.com/Gisto/Gisto/commit/f8c45e6))
+- chore: create a release ([0277719](https://github.com/Gisto/Gisto/commit/0277719))
+
 ## 2.0.0-beta+2 (2025-01-30)
 
 - fix: redirect for netlify ([ee98ea4](https://github.com/Gisto/Gisto/commit/ee98ea4))
