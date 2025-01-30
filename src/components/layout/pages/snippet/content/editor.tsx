@@ -2,6 +2,7 @@ import MonacoEditor from '@monaco-editor/react';
 import { Skull } from 'lucide-react';
 import { useRef, useState } from 'react';
 
+import { Csv } from '@/components/layout/pages/snippet/content/preview/csv.tsx';
 import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx';
 import { Image } from '@/components/layout/pages/snippet/content/preview/image.tsx';
 import { JsonViewer } from '@/components/layout/pages/snippet/content/preview/json-viewer.tsx';
@@ -10,7 +11,16 @@ import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { getEditorTheme, isHTML, isImage, isJson, isMarkdown, isPDF } from '@/lib/utils.ts';
+import {
+  getEditorTheme,
+  isCSV,
+  isHTML,
+  isImage,
+  isJson,
+  isMarkdown,
+  isPDF,
+  isTSV,
+} from '@/lib/utils.ts';
 import { GistFileType, GistSingleType } from '@/types/gist.ts';
 
 export const Editor = ({
@@ -76,6 +86,10 @@ export const Editor = ({
 
     if (isImage(file)) {
       return <Image file={file} />;
+    }
+
+    if (isCSV(file) || isTSV(file)) {
+      return <Csv file={file} />;
     }
   }
 
