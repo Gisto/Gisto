@@ -32,6 +32,7 @@
     "@radix-ui/react-tooltip": "^1.1.7",
     "@tauri-apps/plugin-dialog": "~2.2.0",
     "@tauri-apps/plugin-opener": "~2.2.5",
+    "@tauri-apps/plugin-updater": "~2",
     "class-variance-authority": "^0.7.1",
     "dirty-react-router": "^0.1.0",
     "gisto": "link:",
