@@ -76,6 +76,9 @@ importers:
       motion:
         specifier: ^12.0.5
         version: 12.0.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      papaparse:
+        specifier: ^5.5.2
+        version: 5.5.2
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -104,6 +107,9 @@ importers:
       '@types/node':
         specifier: ^22.10.10
         version: 22.10.10
+      '@types/papaparse':
+        specifier: ^5.3.15
+        version: 5.3.15
       '@types/react':
         specifier: ^19.0.8
         version: 19.0.8
@@ -1729,6 +1735,12 @@ packages:
     resolution:
       {
         integrity: sha512-X47y/mPNzxviAGY5TcYPtYL8JsY3kAq2n8fMmKoRCxq/c4v4pyGNCzM2R6+M5/umG4ZfHuT+sgqDYqWc9rJ6ww==,
+      }
+
+  '@types/papaparse@5.3.15':
+    resolution:
+      {
+        integrity: sha512-JHe6vF6x/8Z85nCX4yFdDslN11d+1pr12E526X8WAfhadOeaOTx5AuIkvDKIBopfvlzpzkdMx4YyvSKCM9oqtw==,
       }
 
   '@types/react-dom@19.0.3':
@@ -3976,6 +3988,12 @@ packages:
         integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==,
       }
 
+  papaparse@5.5.2:
+    resolution:
+      {
+        integrity: sha512-PZXg8UuAc4PcVwLosEEDYjPyfWnTEhOrUfdv+3Bx+NuAb+5NhDmXzg5fHWmdCh1mP5p7JAZfFr3IMQfcntNAdA==,
+      }
+
   parent-module@1.0.1:
     resolution:
       {
@@ -6002,6 +6020,10 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
+  '@types/papaparse@5.3.15':
+    dependencies:
+      '@types/node': 22.10.10
+
   '@types/react-dom@19.0.3(@types/react@19.0.8)':
     dependencies:
       '@types/react': 19.0.8
@@ -7456,6 +7478,8 @@ snapshots:
       p-limit: 3.1.0
 
   package-json-from-dist@1.0.1: {}
+
+  papaparse@5.5.2: {}
 
   parent-module@1.0.1:
     dependencies:
