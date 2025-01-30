@@ -1,3 +1,10 @@
+## 2.0.0 (2025-01-30)
+
+- chore: add version script ([55d0f05](https://github.com/Gisto/Gisto/commit/55d0f05))
+- chore: Update README.md ([a9fb060](https://github.com/Gisto/Gisto/commit/a9fb060))
+- feat(csv preview): add csv/tsv preview ([9bc7d07](https://github.com/Gisto/Gisto/commit/9bc7d07)), closes [#395](https://github.com/Gisto/Gisto/issues/395)
+- add updater ([13c83ba](https://github.com/Gisto/Gisto/commit/13c83ba))
+
 ## 2.0.0-1 (2025-01-30)
 
 - chore: bump version ([f8c45e6](https://github.com/Gisto/Gisto/commit/f8c45e6))
