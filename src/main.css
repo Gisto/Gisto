@@ -114,6 +114,14 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* https://github.com/swagger-api/swagger-ui/issues/5327#issuecomment-742375520 😭 */
+    .swagger-ui {
+      filter: invert(88%) hue-rotate(180deg);
+    }
+    .swagger-ui .microlight {
+      filter: invert(100%) hue-rotate(180deg);
+    }
   }
 }
 
