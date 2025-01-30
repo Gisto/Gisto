@@ -11,28 +11,6 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 > [!IMPORTANT]  
 > Current version is a complete rewrite of the original Gisto.
 
-## Table of Contents
-
-- [Gisto MK II](#gisto-mk-ii)
-- [🍾 New version (2.x.x)](#-new-version-2xx)
-  - [Previous version (up to 1.13.4)](#previous-version-up-to-1134)
-- [Early preview](#early-preview)
-- [ℹ️ About](#-about)
-- [⬇️ Getting Gisto](#-getting-gisto)
-- [⚠️ Important Notice About Installation](#-important-notice-about-installation)
-  - [This App is Not Code-Signed](#this-app-is-not-code-signed)
-  - [How to Install the Unsigned App](#how-to-install-the-unsigned-app)
-    - [Windows](#windows)
-    - [macOS](#macos)
-- [🌱 Features](#-features)
-- [🔍 Privacy/authentication](#-privacyauthentication)
-- [⚙️ Latest builds](#-latest-builds)
-- [🐞 Issues, bug reporting and pull requests](#-issues-bug-reporting-and-pull-requests)
-- [👨‍💻 Development setup](#-development-setup)
-  - [Setup](#setup)
-- [🚀 Release cycle](#-release-cycle)
-- [License](#license)
-
 # Gisto MK II
 
 > Snippets made awesome
