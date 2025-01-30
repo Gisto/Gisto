@@ -32,9 +32,9 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
         </div>
       </PageHeader>
       <PageContent>
-        <div className="flex flex-col h-full justify-center items-center">
+        <div className="flex flex-col h-screen justify-center items-center">
           <div className="place-items-center m-auto w-1/2">
-            <img src="/favicon.ico" width="80" alt="" />
+            <img src="/icon-192.png" width="80" alt="" />
             <h2 className="mb-8">About Gisto</h2>
             <p className="mb-8">
               Current version: <strong>v{version}</strong>

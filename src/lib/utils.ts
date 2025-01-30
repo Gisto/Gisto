@@ -164,6 +164,10 @@ export const isJson = (file: GistFileType): boolean => file.language === 'JSON';
 
 export const isMarkdown = (file: GistFileType): boolean => file.language === 'Markdown';
 
+export const isOpenApi = (file: GistFileType): boolean => {
+  return file.language === 'OASv2-json' || file.language === 'OASv3-json';
+};
+
 export const previewAvailable = (file: GistFileType): boolean =>
   isPDF(file) ||
   isHTML(file) ||
@@ -171,7 +175,8 @@ export const previewAvailable = (file: GistFileType): boolean =>
   isCSV(file) ||
   isTSV(file) ||
   isJson(file) ||
-  isMarkdown(file);
+  isMarkdown(file) ||
+  isOpenApi(file);
 
 export const formatSnippetForSaving = (
   snippet: {
