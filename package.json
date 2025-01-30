@@ -12,8 +12,9 @@
     "ts:lint": "tsc -b --noEmit",
     "preview": "vite preview",
     "prepare": "husky",
+    "commit": "cz",
     "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s",
-    "commit": "cz"
+    "version": "npx conventional-changelog-cli -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
