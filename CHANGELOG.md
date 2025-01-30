@@ -1,3 +1,8 @@
+## 2.0.0-beta+2 (2025-01-30)
+
+- fix: redirect for netlify ([ee98ea4](https://github.com/Gisto/Gisto/commit/ee98ea4))
+- docs: Update README.md ([a2cae9a](https://github.com/Gisto/Gisto/commit/a2cae9a))
+
 ## 2.0.0-beta+1 (2025-01-29)
 
 - feat: hidden field for authentication token and adds formatOnPaste editor setting ([86211d8](https://github.com/Gisto/Gisto/commit/86211d8))
