@@ -7,6 +7,7 @@ import { GeoJson } from '@/components/layout/pages/snippet/content/preview/geo-j
 import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx';
 import { Image } from '@/components/layout/pages/snippet/content/preview/image.tsx';
 import { JsonViewer } from '@/components/layout/pages/snippet/content/preview/json-viewer.tsx';
+import { Latex } from '@/components/layout/pages/snippet/content/preview/latex.tsx';
 import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
 import { OpenApi } from '@/components/layout/pages/snippet/content/preview/open-api.tsx';
 import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
@@ -20,6 +21,7 @@ import {
   isHTML,
   isImage,
   isJson,
+  isLaTex,
   isMarkdown,
   isOpenApi,
   isPDF,
@@ -103,13 +105,18 @@ export const Editor = ({
     if (isOpenApi(file)) {
       return <OpenApi file={file} />;
     }
+
+    if (isLaTex(file)) {
+      return <Latex file={file} />;
+    }
   }
 
   // @ts-expect-error 3rd party types
   function handleEditorDidMount(editor) {
     editorRef.current = editor;
-    const originalLineCount = editor.getContentHeight() || 0;
 
+    const originalLineCount = editor.getContentHeight() || 0;
+    // editor.getAction('editor.action.formatDocument').run();
     setHeight(originalLineCount > 500 ? '65vh' : originalLineCount);
   }
 

@@ -168,6 +168,10 @@ export const isOpenApi = (file: GistFileType): boolean => {
   return file.language === 'OASv2-json' || file.language === 'OASv3-json';
 };
 
+export const isLaTex = (file: GistFileType): boolean => {
+  return file.language.toLowerCase() === 'tex';
+};
+
 export const isGeoJson = (file: GistFileType): boolean =>
   isJson(file) && getFileExtension(file) === 'geojson';
 
@@ -179,6 +183,7 @@ export const previewAvailable = (file: GistFileType): boolean =>
   isTSV(file) ||
   isJson(file) ||
   isMarkdown(file) ||
+  isLaTex(file) ||
   isOpenApi(file);
 
 export const formatSnippetForSaving = (
