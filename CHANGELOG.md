@@ -1,3 +1,9 @@
+## <small>2.0.2 (2025-01-31)</small>
+
+- docs (release): add changelog to release notes ([edc7359](https://github.com/Gisto/Gisto/commit/edc7359))
+- feat (preview): add latex preview using katex ref #395 ([cf90937](https://github.com/Gisto/Gisto/commit/cf90937)), closes [#395](https://github.com/Gisto/Gisto/issues/395)
+- fix (editor): wrong wordWrap values ([5705df8](https://github.com/Gisto/Gisto/commit/5705df8)), closes [#415](https://github.com/Gisto/Gisto/issues/415)
+
 ## <small>2.0.1 (2025-01-31)</small>
 
 - feat (geojson): preiew geojson files re #373 re #395 ([8748fc5](https://github.com/Gisto/Gisto/commit/8748fc5)), closes [#373](https://github.com/Gisto/Gisto/issues/373) [#395](https://github.com/Gisto/Gisto/issues/395)
