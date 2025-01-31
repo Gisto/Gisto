@@ -3,6 +3,7 @@ import { Skull } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 import { Csv } from '@/components/layout/pages/snippet/content/preview/csv.tsx';
+import { GeoJson } from '@/components/layout/pages/snippet/content/preview/geo-json.tsx';
 import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx';
 import { Image } from '@/components/layout/pages/snippet/content/preview/image.tsx';
 import { JsonViewer } from '@/components/layout/pages/snippet/content/preview/json-viewer.tsx';
@@ -15,6 +16,7 @@ import { useStoreValue } from '@/lib/store/globalState.ts';
 import {
   getEditorTheme,
   isCSV,
+  isGeoJson,
   isHTML,
   isImage,
   isJson,
@@ -69,6 +71,10 @@ export const Editor = ({
 
     if (isHTML(file)) {
       return <Html file={file} />;
+    }
+
+    if (isGeoJson(file)) {
+      return <GeoJson file={file} />;
     }
 
     if (isJson(file)) {
