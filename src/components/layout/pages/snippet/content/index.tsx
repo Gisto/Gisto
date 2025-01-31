@@ -9,7 +9,7 @@ import { GistFileType, GistSingleType } from '@/types/gist.ts';
 export const File = ({ file, snippet }: { file: GistFileType; snippet: GistSingleType }) => {
   const settings = useStoreValue('settings');
   const [collapsed, setCollapsed] = useState(settings.filesCollapsedByDefault);
-  const [preview, setPreview] = useState(true);
+  const [preview, setPreview] = useState(settings.filesPreviewEnabledByDefault ?? false);
 
   return (
     <>
