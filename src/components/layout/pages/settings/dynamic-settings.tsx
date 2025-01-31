@@ -26,6 +26,11 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
   const renderSetting = (key: string, value: SettingsType | unknown, currentPath: string) => {
     const fullPath = currentPath ? `${currentPath}.${key}` : key;
 
+    // temp migration
+    if (path === 'editor' && key === 'wordWrap' && typeof value === 'boolean') {
+      onChange('editor.wordWrap', 'wordWrapColumn');
+    }
+
     if (typeof value === 'object' && value !== null) {
       return (
         <div key={key} className="flex items-center space-x-2 mb-4">
@@ -136,6 +141,25 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   <SelectContent>
                     <SelectItem value="on">On</SelectItem>
                     <SelectItem value="off">Off</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            );
+          }
+
+          if (key === 'wordWrap') {
+            return (
+              <div key={key} className="mb-4">
+                <label className="block mb-1">{camelToTitleCase(key)}</label>
+                <Select onValueChange={(value) => onChange(fullPath, value)} value={value}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="on">On</SelectItem>
+                    <SelectItem value="off">Off</SelectItem>
+                    <SelectItem value="wordWrapColumn">Word wrap column</SelectItem>
+                    <SelectItem value="bounded">Bounded</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

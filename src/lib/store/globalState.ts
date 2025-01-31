@@ -27,6 +27,7 @@ export type StoreStateType = {
       fontLigatures: boolean;
       fontSize: number;
       tabSize: number;
+      wordWrap: 'wordWrapColumn' | 'on' | 'off' | 'bounded';
       wordWrapColumn: number;
       lineNumbers: 'on' | 'off';
       formatOnPaste: boolean;
@@ -75,6 +76,7 @@ const defaultSettings: SettingsType = {
     fontLigatures: false,
     fontSize: 13,
     tabSize: 2,
+    wordWrap: 'wordWrapColumn',
     wordWrapColumn: 80,
     lineNumbers: 'on',
     formatOnPaste: true,
