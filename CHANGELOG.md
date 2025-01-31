@@ -1,3 +1,12 @@
+## <small>2.0.1 (2025-01-31)</small>
+
+- feat (geojson): preiew geojson files re #373 re #395 ([8748fc5](https://github.com/Gisto/Gisto/commit/8748fc5)), closes [#373](https://github.com/Gisto/Gisto/issues/373) [#395](https://github.com/Gisto/Gisto/issues/395)
+- Update README.md ([ccadee8](https://github.com/Gisto/Gisto/commit/ccadee8))
+- docs: fix readme table of contents ([e55ad37](https://github.com/Gisto/Gisto/commit/e55ad37))
+- docs: readme table of contents ([5b65914](https://github.com/Gisto/Gisto/commit/5b65914))
+- build: add secrets ([6fd03b6](https://github.com/Gisto/Gisto/commit/6fd03b6))
+- feat: open api preview (#414) ([b8e2f9c](https://github.com/Gisto/Gisto/commit/b8e2f9c)), closes [#414](https://github.com/Gisto/Gisto/issues/414) [#395](https://github.com/Gisto/Gisto/issues/395)
+
 ## 2.0.0 (2025-01-30)
 
 - chore: add version script ([55d0f05](https://github.com/Gisto/Gisto/commit/55d0f05))
