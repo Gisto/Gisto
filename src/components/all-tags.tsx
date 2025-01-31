@@ -80,8 +80,8 @@ export const AllTags = ({
                 className="mt-2"
                 variant="outline"
                 size="sm"
-                onClick={() => onClick && onClick(search)}
-              >{`Create "${search}" tag`}</Button>
+                onClick={() => onClick && onClick(`#${search}`)}
+              >{`Create "#${search}" tag`}</Button>
             )}
           </div>
         ) : (
