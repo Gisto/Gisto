@@ -3,10 +3,12 @@ import { Skull } from 'lucide-react';
 import { useRef, useState } from 'react';
 
 import { Csv } from '@/components/layout/pages/snippet/content/preview/csv.tsx';
+import { GeoJson } from '@/components/layout/pages/snippet/content/preview/geo-json.tsx';
 import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx';
 import { Image } from '@/components/layout/pages/snippet/content/preview/image.tsx';
 import { JsonViewer } from '@/components/layout/pages/snippet/content/preview/json-viewer.tsx';
 import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
+import { OpenApi } from '@/components/layout/pages/snippet/content/preview/open-api.tsx';
 import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
@@ -14,10 +16,12 @@ import { useStoreValue } from '@/lib/store/globalState.ts';
 import {
   getEditorTheme,
   isCSV,
+  isGeoJson,
   isHTML,
   isImage,
   isJson,
   isMarkdown,
+  isOpenApi,
   isPDF,
   isTSV,
 } from '@/lib/utils.ts';
@@ -69,6 +73,10 @@ export const Editor = ({
       return <Html file={file} />;
     }
 
+    if (isGeoJson(file)) {
+      return <GeoJson file={file} />;
+    }
+
     if (isJson(file)) {
       try {
         JSON.parse(file.content);
@@ -90,6 +98,10 @@ export const Editor = ({
 
     if (isCSV(file) || isTSV(file)) {
       return <Csv file={file} />;
+    }
+
+    if (isOpenApi(file)) {
+      return <OpenApi file={file} />;
     }
   }
 
