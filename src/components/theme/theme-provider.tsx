@@ -1,7 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
-import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
-
 type Theme = 'dark' | 'light' | 'system';
 
 type ThemeProviderProps = {
@@ -11,19 +9,21 @@ type ThemeProviderProps = {
 
 type ThemeProviderState = {
   theme: Theme;
+  resolvedTheme: Theme;
   setTheme: (theme: Theme) => void;
 };
 
 const initialState: ThemeProviderState = {
   theme: 'system',
   setTheme: () => null,
+  resolvedTheme: 'system',
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  const settings = useStoreValue('settings');
-  const [theme, setTheme] = useState<Theme>(() => settings.theme);
+  const [theme, setTheme] = useState<Theme>('system');
+  const [resolvedTheme, setResolvedTheme] = useState<Theme>(theme);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -34,22 +34,18 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light';
-
+      setResolvedTheme(systemTheme);
       root.classList.add(systemTheme);
       return;
     }
-
+    setResolvedTheme(theme);
     root.classList.add(theme);
   }, [theme]);
 
-  useEffect(() => {
-    setTheme(settings.theme);
-  }, [settings.theme]);
-
   const value = {
     theme,
+    resolvedTheme,
     setTheme: (theme: Theme) => {
-      updateSettings({ theme });
       setTheme(theme);
     },
   };
