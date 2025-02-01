@@ -15,10 +15,14 @@ import { fetchAndUpdateSnippets } from '@/lib/utils';
 
 export const AllTags = ({
   onClick,
+  active,
   allowCreate = false,
+  className,
 }: {
   onClick?: (t: string) => void;
+  active?: string;
   allowCreate?: boolean;
+  className?: string;
 }) => {
   const [search, setSearch] = useState('');
 
@@ -45,7 +49,7 @@ export const AllTags = ({
     .map(({ tag, count }) => (
       <Badge
         key={tag}
-        variant="primary-outline"
+        variant={active === 'tag:' + tag.replace('#', '') ? 'default' : 'primary-outline'}
         className="m-1 cursor-pointer hover:opacity-70"
         onClick={() => onClick && onClick(tag)}
       >
@@ -54,7 +58,7 @@ export const AllTags = ({
     ));
 
   return (
-    <Card>
+    <Card className={className}>
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
           <div>

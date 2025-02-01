@@ -9,7 +9,7 @@ import {
   Loader,
   Info,
 } from 'lucide-react';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 
 import { ListItem } from '@/components/layout/navigation/snippets-list/item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
@@ -19,29 +19,13 @@ import { ScrollArea } from '@/components/ui/scroll-area.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
-import { useStoreValue } from '@/lib/store/globalState.ts';
+import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { searchFilter } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
-const LazyListItem = ({
-  gist,
-  search,
-  setSearch,
-}: {
-  gist: GistEnrichedType;
-  search?: string;
-  setSearch?: (s: string) => void;
-}) => {
+const LazyListItem = ({ gist }: { gist: GistEnrichedType }) => {
   const [isInView, ref] = useIntersectionObserver<HTMLDivElement>();
 
-  return (
-    <div ref={ref}>
-      {isInView ? (
-        <ListItem search={search} setSearch={setSearch} gist={gist} />
-      ) : (
-        <div className="h-[80px]" />
-      )}
-    </div>
-  );
+  return <div ref={ref}>{isInView ? <ListItem gist={gist} /> : <div className="h-[80px]" />}</div>;
 };
 
 const ListSkeleton = () =>
@@ -67,9 +51,9 @@ export const Lists = ({
   setIsCollapsed: (b: boolean) => void;
   isCollapsed: boolean;
 }) => {
-  const [search, setSearch] = useState<string>('');
   const { isLoading, refresh } = useSnippets();
   const allSnippets = useStoreValue('snippets');
+  const search = useStoreValue('search');
   const apiRateLimits = useStoreValue('apiRateLimits');
 
   const handleCollapse = useCallback(() => {
@@ -77,7 +61,7 @@ export const Lists = ({
   }, [isCollapsed, setIsCollapsed]);
 
   const handleSearch = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
+    globalState.setState({ search: event.target.value });
   }, []);
 
   const listOfSnippets = searchFilter(search, allSnippets);
@@ -139,7 +123,12 @@ export const Lists = ({
           )}
         </div>
 
-        <Button disabled={!search} variant="ghost" size="icon" onClick={() => setSearch('')}>
+        <Button
+          disabled={!search}
+          variant="ghost"
+          size="icon"
+          onClick={() => globalState.setState({ search: '' })}
+        >
           {search ? <FilterX className="size-4" /> : <Filter className="size-4" />}
         </Button>
       </PageHeader>
@@ -148,9 +137,7 @@ export const Lists = ({
           <ListSkeleton />
         ) : (
           listOfSnippets.length > 0 &&
-          listOfSnippets.map((gist) => (
-            <LazyListItem search={search} setSearch={setSearch} key={gist.id} gist={gist} />
-          ))
+          listOfSnippets.map((gist) => <LazyListItem key={gist.id} gist={gist} />)
         )}
       </ScrollArea>
       <div className="h-[52px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">

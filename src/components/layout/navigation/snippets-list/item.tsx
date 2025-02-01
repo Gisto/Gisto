@@ -15,18 +15,12 @@ import { Badge } from '@/components/ui/badge.tsx';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { GithubAPI } from '@/lib/GithubApi.ts';
+import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
 
-export const ListItem = ({
-  gist,
-  search,
-  setSearch,
-}: {
-  gist: GistEnrichedType;
-  search?: string;
-  setSearch?: (s: string) => void;
-}) => {
+export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
+  const search = useStoreValue('search');
   const { navigate, path } = useRouter();
 
   const active = path === `/snippets/${gist.id}`;
@@ -58,9 +52,7 @@ export const ListItem = ({
                   onClick={(event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    if (setSearch) {
-                      setSearch(filter === search ? '' : filter);
-                    }
+                    globalState.setState({ search: filter === search ? '' : filter });
                   }}
                   variant={search === filter ? 'default' : 'primary-outline'}
                   className="whitespace-nowrap cursor-pointer"
@@ -84,9 +76,7 @@ export const ListItem = ({
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
-                      if (setSearch) {
-                        setSearch(filter === search ? '' : filter);
-                      }
+                      globalState.setState({ search: filter === search ? '' : filter });
                     }}
                     variant={search === filter ? 'default' : 'primary-outline'}
                     className="whitespace-nowrap cursor-pointer"

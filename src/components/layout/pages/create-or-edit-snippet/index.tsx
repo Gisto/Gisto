@@ -214,7 +214,7 @@ export const CreateOrEditSnippet = ({
                 </label>
                 <div className="flex items-center flex-wrap">
                   <Sheet>
-                    <SheetTrigger>
+                    <SheetTrigger asChild>
                       <Button variant="ghost" className="mr-2" size="sm">
                         <Plus className="size-3" />
                       </Button>
