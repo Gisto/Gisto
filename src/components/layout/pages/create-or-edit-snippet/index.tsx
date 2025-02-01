@@ -6,6 +6,8 @@ import { useEffect, useReducer, useState } from 'react';
 import { z } from 'zod';
 
 import { AllTags } from '@/components/all-tags.tsx';
+import { initialState, reducer } from '@/components/layout/pages/create-or-edit-snippet/reducer.ts';
+import { SnippetSchema } from '@/components/layout/pages/create-or-edit-snippet/schema.ts';
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { toast } from '@/components/toast';
@@ -26,7 +28,7 @@ import { ZodError } from '@/components/zod-error.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { GithubAPI } from '@/lib/GithubApi.ts';
-import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
+import { useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, formatSnippetForSaving, getEditorTheme, getTags, removeTags } from '@/lib/utils';
 import { GistSingleType } from '@/types/gist.ts';
 
@@ -36,124 +38,13 @@ type Props = {
   params?: Record<string, string>;
 };
 
-type StateType = {
-  description: string;
-  isPublic: boolean;
-  tags: string[];
-  files: { filename: string; content: string; language: string }[];
-};
-
-const initialState: StateType = {
-  description: '',
-  isPublic: globalState.getState().settings.newSnippetPublicByDefault,
-  tags: [],
-  files: [
-    {
-      filename: '',
-      content: '',
-      language: globalState.getState().settings.newSnippetDefaultLanguage,
-    },
-  ],
-};
-
-type ActionType =
-  | { type: 'SET_DESCRIPTION'; payload?: string }
-  | { type: 'SET_PUBLIC'; payload: boolean }
-  | { type: 'ADD_TAG'; payload: string }
-  | { type: 'REMOVE_TAG'; payload: string }
-  | { type: 'SET_FILE_LANGUAGE'; payload: string; index: number }
-  | { type: 'SET_FILENAME'; payload: string; index: number }
-  | { type: 'SET_CONTENT'; payload: string | null; index: number }
-  | {
-      type: 'ADD_FILE';
-      payload?: { filename?: string; content?: string; language?: string };
-    }
-  | { type: 'REMOVE_FILE'; index: number }
-  | { type: 'RESET' };
-
-function reducer(state: StateType, action: ActionType) {
-  switch (action.type) {
-    case 'SET_DESCRIPTION':
-      return { ...state, description: action.payload || '' };
-    case 'SET_PUBLIC':
-      return { ...state, isPublic: action.payload };
-    case 'ADD_TAG':
-      return {
-        ...state,
-        tags: [...state.tags, action.payload!].filter((tag): tag is string => tag !== undefined),
-      };
-    case 'REMOVE_TAG':
-      return { ...state, tags: state.tags.filter((tag) => tag !== action.payload) };
-    case 'SET_FILE_LANGUAGE':
-      return {
-        ...state,
-        files: state.files.map((file, index) =>
-          index === action.index ? { ...file, language: action.payload } : file
-        ),
-      };
-    case 'SET_FILENAME':
-      return {
-        ...state,
-        files: state.files.map((file, index) =>
-          index === action.index ? { ...file, filename: action.payload } : file
-        ),
-      };
-    case 'SET_CONTENT':
-      return {
-        ...state,
-        files: state.files.map((file, index) =>
-          index === action.index ? { ...file, content: action.payload } : file
-        ),
-      };
-    case 'ADD_FILE':
-      return {
-        ...state,
-        files: [
-          ...state.files,
-          {
-            filename: action?.payload?.filename ?? '',
-            content: action?.payload?.content ?? '',
-            language: action?.payload?.language ?? '',
-          },
-        ],
-      };
-    case 'REMOVE_FILE':
-      return {
-        ...state,
-        files: state.files.filter((_, index) => index !== action.index),
-      };
-    case 'RESET':
-      return initialState;
-    default:
-      return state;
-  }
-}
-
-const FileSchema = z.object({
-  filename: z.string().min(1, 'File name is required'),
-  content: z.union([z.string().min(1, 'File content is required'), z.null()]),
-});
-
-const SnippetSchema = z.object({
-  description: z.string().min(1, 'Description is required'),
-  isPublic: z.boolean(),
-  files: z.array(FileSchema),
-  tags: z.array(z.string()).optional(),
-});
-
 export const CreateOrEditSnippet = ({
   isCollapsed = false,
   setIsCollapsed = () => {},
 }: Props = {}) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   const { navigate, params } = useRouter();
   const settings = useStoreValue('settings');
-
-  const [state, dispatch] = useReducer(
-    // TODO: check type
-    // @ts-expect-error not sure why reducer it is not happy ATM
-    reducer,
-    initialState
-  );
 
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
   const [edit, setEdit] = useState<null | GistSingleType>(null);
