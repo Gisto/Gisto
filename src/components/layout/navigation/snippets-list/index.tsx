@@ -20,7 +20,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { searchFilter } from '@/lib/utils.ts';
+import { searchFilter } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
 const LazyListItem = ({
   gist,

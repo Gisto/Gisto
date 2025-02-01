@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { EDITOR_OPTIONS } from '@/constants';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
-import { getEditorTheme } from '@/lib/utils.ts';
+import { getEditorTheme } from '@/lib/utils';
 
 type Props = {
   isCollapsed?: boolean;

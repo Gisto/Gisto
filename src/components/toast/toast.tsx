@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert.tsx';
-import { cn, upperCaseFirst } from '@/lib/utils.ts';
+import { cn, upperCaseFirst } from '@/lib/utils';
 
 export type ToastType = {
   title: string;

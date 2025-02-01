@@ -1,32 +1,7 @@
-import { z } from 'zod';
-
 import { ITEMS_PER_PAGE } from '@/constants';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState } from '@/lib/store/globalState.ts';
-import { GistEnrichedType, GistFileType, GistSingleType, GistType } from '@/types/gist.ts';
-
-export function cn(...classes: (string | undefined | null | false)[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
-export const fancyCardStyle = cn(
-  'bg-gradient-to-bl to-50% from-primary/30 dark:from-primary-950',
-  'hover:shadow-lg hover:border-secondary transition-all ease-in-out duration-300'
-);
-
-export const upperCaseFirst = (text: string) => {
-  const str = text.toLowerCase();
-  return String(str).charAt(0).toUpperCase() + String(str).slice(1);
-};
-
-export const camelToTitleCase = (text: string) =>
-  text
-    .replace(/([A-Z])/g, (match) => ` ${match}`)
-    .replace(/^./, (match) => match.toUpperCase())
-    .trim();
-
-export const snakeToTitleCase = (text: string) =>
-  upperCaseFirst(text.replace(/[_-]/g, ' ').trim().toLowerCase());
+import { GistFileType, GistSingleType, GistType } from '@/types/gist.ts';
 
 const tagsRegex = /#(\d*[A-Za-z_\-0-9]+\d*)/g;
 
@@ -48,8 +23,6 @@ export const getTags = (title: string) => {
 
   return tags || [];
 };
-
-export const copyToClipboard = (text: string) => navigator.clipboard.writeText(text);
 
 export const processSnippet = (snippet: GistType) => {
   const description = snippet.description ?? 'Untitled';
@@ -114,36 +87,6 @@ export const fetchAndUpdateSnippets = async () => {
       break;
     }
   }
-};
-
-export const searchFilter = (search: string, currentSnippets: GistEnrichedType[] | []) => {
-  if (search === '' || search.length === 0) {
-    return currentSnippets;
-  }
-
-  const searchTerms = search.toLowerCase().split(' ');
-
-  return currentSnippets.filter((listItem) => {
-    return searchTerms.every((term) => {
-      if (term.startsWith('tag:')) {
-        const tagToSearch = term.slice(4).trim();
-        return listItem.tags.some((tag) =>
-          tag.replace('#', '').toLowerCase().startsWith(tagToSearch)
-        );
-      }
-
-      if (term.startsWith('lang:')) {
-        const langToSearch = term.slice(5).trim();
-        return listItem.languages.some((lang) => lang.name.toLowerCase().startsWith(langToSearch));
-      }
-
-      if (listItem.title.trim().toLowerCase().includes(term)) {
-        return true;
-      }
-
-      return listItem.files.some((file) => file.text?.toLowerCase().includes(term));
-    });
-  });
 };
 
 export const getFileExtension = (file: GistFileType): string =>
@@ -217,32 +160,4 @@ export const formatSnippetForSaving = (
     isPublic: snippet.isPublic,
     files,
   };
-};
-
-export const formatZodErrors = (errors: z.ZodIssue[]): Record<string, string[]> => {
-  return errors.reduce(
-    (acc, error) => {
-      const path = error.path.join('.');
-      if (!acc[path]) {
-        acc[path] = [];
-      }
-      acc[path].push(error.message);
-      return acc;
-    },
-    {} as Record<string, string[]>
-  );
-};
-
-export const randomString = (charsCount = 5) =>
-  Math.random()
-    .toString(36)
-    .replace(/[^a-z]+/g, '')
-    .slice(0, charsCount);
-
-export const getEditorTheme = () => {
-  if (globalState.getState().settings.theme === 'system') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'vs-dark' : 'light';
-  }
-
-  return globalState.getState().settings.theme === 'dark' ? 'vs-dark' : 'light';
 };

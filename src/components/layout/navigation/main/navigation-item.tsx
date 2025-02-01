@@ -2,7 +2,7 @@ import { Link } from 'dirty-react-router';
 import { ElementType } from 'react';
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
-import { cn } from '@/lib/utils.ts';
+import { cn } from '@/lib/utils';
 
 export const NavigationItem = ({
   Icon,

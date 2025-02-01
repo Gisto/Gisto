@@ -2,7 +2,7 @@ import { BadgeAlert } from 'lucide-react';
 import { motion } from 'motion/react';
 import { z } from 'zod';
 
-import { formatZodErrors } from '@/lib/utils.ts';
+import { formatZodErrors } from '@/lib/utils';
 
 export const ZodError = ({ errors, path }: { errors: z.ZodIssue[]; path: string }) => {
   const error = formatZodErrors(errors)[path];

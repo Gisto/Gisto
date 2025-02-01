@@ -7,7 +7,7 @@ import { NavigationItem } from '@/components/layout/navigation/main/navigation-i
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
 import { useIsOnline } from '@/hooks/use-is-online.tsx';
-import { cn } from '@/lib/utils.ts';
+import { cn } from '@/lib/utils';
 
 export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
   const online = useIsOnline();

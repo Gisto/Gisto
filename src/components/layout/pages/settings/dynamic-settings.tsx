@@ -14,7 +14,7 @@ import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
 import { languageMap } from '@/constants/language-map.ts';
 import { SettingsType } from '@/lib/store/globalState.ts';
-import { camelToTitleCase } from '@/lib/utils.ts';
+import { camelToTitleCase } from '@/lib/utils';
 
 interface SettingsProps {
   settings: Omit<SettingsType, 'editor'> | SettingsType['editor'];
