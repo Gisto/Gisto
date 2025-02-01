@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { AllTags } from '@/components/all-tags.tsx';
 import { initialState, reducer } from '@/components/layout/pages/create-or-edit-snippet/reducer.ts';
 import { SnippetSchema } from '@/components/layout/pages/create-or-edit-snippet/schema.ts';
+import { FileUploadButton } from '@/components/layout/pages/create-or-edit-snippet/upload-file-button.tsx';
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { toast } from '@/components/toast';
@@ -15,6 +16,7 @@ import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx';
 import { Input } from '@/components/ui/input.tsx';
+import { ScrollArea } from '@/components/ui/scroll-area.tsx';
 import {
   Select,
   SelectContent,
@@ -22,6 +24,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select.tsx';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { ZodError } from '@/components/zod-error.tsx';
@@ -202,7 +212,27 @@ export const CreateOrEditSnippet = ({
                     </TooltipContent>
                   </Tooltip>
                 </label>
-                <div>
+                <div className="flex items-center flex-wrap">
+                  <Sheet>
+                    <SheetTrigger>
+                      <Button variant="ghost" className="mr-2" size="sm">
+                        <Plus className="size-3" />
+                      </Button>
+                    </SheetTrigger>
+                    <SheetContent>
+                      <SheetHeader>
+                        <SheetTitle>Tags</SheetTitle>
+                        <SheetDescription>
+                          <ScrollArea className="h-[calc(100vh-100px)]">
+                            <AllTags
+                              allowCreate
+                              onClick={(tag) => dispatch({ type: 'ADD_TAG', payload: tag })}
+                            />
+                          </ScrollArea>
+                        </SheetDescription>
+                      </SheetHeader>
+                    </SheetContent>
+                  </Sheet>
                   {state.tags.length === 0 ? (
                     <motion.small
                       initial={{ opacity: 0, scale: 0.8 }}
@@ -352,22 +382,26 @@ export const CreateOrEditSnippet = ({
             )}
 
             <div className="flex justify-between">
-              <Button
-                variant="outline"
-                onClick={() =>
-                  dispatch({
-                    type: 'ADD_FILE',
-                    payload: {
-                      filename: '',
-                      content: '',
-                      language: settings.newSnippetDefaultLanguage,
-                    },
-                  })
-                }
-              >
-                <Plus className="size-4" />
-                Add another file
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    dispatch({
+                      type: 'ADD_FILE',
+                      payload: {
+                        filename: '',
+                        content: '',
+                        language: settings.newSnippetDefaultLanguage,
+                      },
+                    })
+                  }
+                >
+                  <Plus className="size-4" />
+                  Add file
+                </Button>
+
+                <FileUploadButton dispatch={dispatch} />
+              </div>
 
               <div className="flex gap-2">
                 <Button
@@ -386,9 +420,6 @@ export const CreateOrEditSnippet = ({
                 </Button>
               </div>
             </div>
-          </div>
-          <div className="w-1/2">
-            <AllTags allowCreate onClick={(tag) => dispatch({ type: 'ADD_TAG', payload: tag })} />
           </div>
         </div>
       </PageContent>
