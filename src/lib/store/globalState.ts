@@ -10,6 +10,7 @@ export type StoreStateType = {
   user: Record<string, unknown> | null;
   isLoggedIn: boolean;
   snippets: GistEnrichedType[] | [];
+  search: string;
   apiRateLimits: {
     limit: number;
     remaining: number;
@@ -91,6 +92,7 @@ export const globalState = new Store<StoreStateType>({
   user: null,
   isLoggedIn: false,
   snippets: [],
+  search: '',
   apiRateLimits: null,
   settings: loadSettingsFromLocalStorage() as SettingsType,
 });
