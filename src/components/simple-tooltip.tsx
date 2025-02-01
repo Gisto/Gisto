@@ -1,0 +1,20 @@
+import { Info } from 'lucide-react';
+import { ReactNode } from 'react';
+
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
+
+export const SimpleTooltip = ({
+  children,
+  content,
+}: {
+  children?: ReactNode;
+  content: ReactNode;
+}) => {
+  const DefaultTrigger = <Info strokeWidth={1.5} className="size-3" />;
+  return (
+    <Tooltip>
+      <TooltipTrigger>{children ?? DefaultTrigger}</TooltipTrigger>
+      <TooltipContent>{content}</TooltipContent>
+    </Tooltip>
+  );
+};
