@@ -24,25 +24,14 @@ export const AllLanguages = ({
   const list = useStoreValue('snippets');
   const allLanguages = list.map((snippet) => snippet.languages).flat();
 
-  const languages = Array.from(new Set(allLanguages.map((lang) => lang.name)))
+  const languagesData = Array.from(new Set(allLanguages.map((lang) => lang.name)))
     .filter((lang) => lang.toLowerCase().includes(search.toLowerCase()))
     .map((name) => {
       const language = allLanguages.find((lang) => lang.name === name);
       const count = allLanguages.filter((lang) => lang.name === name).length;
       return { language, count };
     })
-    .sort((a, b) => b.count - a.count)
-    .map(({ language, count }) => (
-      <Badge
-        onClick={() => onClick && onClick(language?.name as string)}
-        key={language?.name}
-        variant={active === 'lang:' + language?.name?.toLowerCase() ? 'default' : 'primary-outline'}
-        className="m-1 cursor-pointer hover:opacity-70"
-      >
-        <div className="w-2 h-2 rounded-full mr-2" style={{ background: language?.color }} />{' '}
-        {language?.name} <small className="ml-1">({count})</small>
-      </Badge>
-    ));
+    .sort((a, b) => b.count - a.count);
 
   return (
     <Card className={className}>
@@ -52,7 +41,7 @@ export const AllLanguages = ({
           <div>
             <Input
               type="search"
-              placeholder={`Filter ${languages.length} languages`}
+              placeholder={`Filter ${languagesData.length} languages`}
               value={search}
               onChange={(event) => setSearch(event.target.value)}
             />
@@ -61,12 +50,24 @@ export const AllLanguages = ({
         <CardDescription>All, unique languages</CardDescription>
       </CardHeader>
       <CardContent>
-        {languages.length === 0 ? (
+        {languagesData.length === 0 ? (
           <div className="text-center">
             <p>{`No language matching ${search}`}</p>
           </div>
         ) : (
-          languages
+          languagesData.map(({ language, count }) => (
+            <Badge
+              onClick={() => onClick && onClick(language?.name as string)}
+              key={language?.name}
+              variant={
+                active === 'lang:' + language?.name?.toLowerCase() ? 'default' : 'primary-outline'
+              }
+              className="m-1 cursor-pointer hover:opacity-70"
+            >
+              <div className="w-2 h-2 rounded-full mr-2" style={{ background: language?.color }} />{' '}
+              {language?.name} <small className="ml-1">({count})</small>
+            </Badge>
+          ))
         )}
       </CardContent>
     </Card>
