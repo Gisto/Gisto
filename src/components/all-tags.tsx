@@ -38,36 +38,25 @@ export const AllTags = ({
     }
   }, [list]);
 
-  // this is extracted like that in order to get easy count
-  const tags = [...new Set(allTags)]
+  const tagsData = [...new Set(allTags)]
     .filter((tag) => tag.toLowerCase().includes(search.toLowerCase()))
     .map((tag) => ({
       tag,
       count: allTags.filter((t) => t === tag).length,
     }))
-    .sort((a, b) => b.count - a.count)
-    .map(({ tag, count }) => (
-      <Badge
-        key={tag}
-        variant={active === 'tag:' + tag.replace('#', '') ? 'default' : 'primary-outline'}
-        className="m-1 cursor-pointer hover:opacity-70"
-        onClick={() => onClick && onClick(tag)}
-      >
-        {tag} <small className="ml-1">({count})</small>
-      </Badge>
-    ));
+    .sort((a, b) => b.count - a.count);
 
   return (
     <Card className={className}>
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
           <div>
-            Tags <small>({tags.length})</small>
+            Tags <small>({tagsData.length})</small>
           </div>{' '}
           <div>
             <Input
               type="search"
-              placeholder={`Filter ${tags.length} tags`}
+              placeholder={`Filter ${tagsData.length} tags`}
               value={search}
               onChange={(event) => setSearch(event.target.value)}
             />
@@ -76,7 +65,7 @@ export const AllTags = ({
         <CardDescription>All, unique tags</CardDescription>
       </CardHeader>
       <CardContent>
-        {tags.length === 0 ? (
+        {tagsData.length === 0 ? (
           <div className="text-center">
             <p>{`No tags matching ${search}`}</p>
             {allowCreate && (
@@ -89,7 +78,16 @@ export const AllTags = ({
             )}
           </div>
         ) : (
-          tags
+          tagsData.map(({ tag, count }) => (
+            <Badge
+              key={tag}
+              variant={active === 'tag:' + tag.replace('#', '') ? 'default' : 'primary-outline'}
+              className="m-1 cursor-pointer hover:opacity-70"
+              onClick={() => onClick && onClick(tag)}
+            >
+              {tag} <small className="ml-1">({count})</small>
+            </Badge>
+          ))
         )}
       </CardContent>
     </Card>
