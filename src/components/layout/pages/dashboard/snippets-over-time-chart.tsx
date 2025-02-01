@@ -164,14 +164,8 @@ export const SnippetsOverTimeChart = () => {
               }
             />
             <ChartLegend content={<ChartLegendContent />} />
-            <Bar
-              barSize={20}
-              dataKey="private"
-              stackId="a"
-              fill="var(--color-private)"
-              radius={[0, 0, 4, 4]}
-            />
-            <Bar dataKey="public" stackId="a" fill="var(--color-public)" radius={[4, 4, 0, 0]} />
+            <Bar barSize={10} dataKey="private" stackId="a" fill="var(--color-private)" />
+            <Bar barSize={10} dataKey="public" stackId="a" fill="var(--color-public)" />
           </BarChart>
         </ChartContainer>
 
