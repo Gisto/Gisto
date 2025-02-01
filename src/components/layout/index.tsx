@@ -6,7 +6,7 @@ import { Navigation } from '@/components/layout/navigation/main';
 import { Lists } from '@/components/layout/navigation/snippets-list';
 import { PATHS_WITHOUT_SNIPPET_LIST } from '@/constants';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
-import { cn } from '@/lib/utils.ts';
+import { cn } from '@/lib/utils';
 
 export const MainLayout = () => {
   const settings = useStoreValue('settings');

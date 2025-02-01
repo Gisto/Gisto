@@ -15,7 +15,7 @@ import { Badge } from '@/components/ui/badge.tsx';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { GithubAPI } from '@/lib/GithubApi.ts';
-import { cn, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils.ts';
+import { cn, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
 
 export const ListItem = ({

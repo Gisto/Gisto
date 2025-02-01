@@ -27,7 +27,7 @@ import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { cn, formatSnippetForSaving, getEditorTheme, getTags, removeTags } from '@/lib/utils.ts';
+import { cn, formatSnippetForSaving, getEditorTheme, getTags, removeTags } from '@/lib/utils';
 import { GistSingleType } from '@/types/gist.ts';
 
 type Props = {

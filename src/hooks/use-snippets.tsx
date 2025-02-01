@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 
-import { fetchAndUpdateSnippets } from '@/lib/utils.ts';
+import { fetchAndUpdateSnippets } from '@/lib/utils';
 
 export const useSnippets = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);

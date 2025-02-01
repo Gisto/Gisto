@@ -26,7 +26,7 @@ import {
   isOpenApi,
   isPDF,
   isTSV,
-} from '@/lib/utils.ts';
+} from '@/lib/utils';
 import { GistFileType, GistSingleType } from '@/types/gist.ts';
 
 export const Editor = ({
@@ -116,7 +116,10 @@ export const Editor = ({
     editorRef.current = editor;
 
     const originalLineCount = editor.getContentHeight() || 0;
+
+    // TODO: see if we want, needs readOnly: false
     // editor.getAction('editor.action.formatDocument').run();
+
     setHeight(originalLineCount > 500 ? '65vh' : originalLineCount);
   }
 

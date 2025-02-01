@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/card.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { fetchAndUpdateSnippets } from '@/lib/utils.ts';
+import { fetchAndUpdateSnippets } from '@/lib/utils';
 
 export const AllTags = ({
   onClick,

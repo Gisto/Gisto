@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
-import { copyToClipboard, previewAvailable } from '@/lib/utils.ts';
+import { copyToClipboard, previewAvailable } from '@/lib/utils';
 import { GistFileType, GistSingleType } from '@/types/gist.ts';
 
 export const Header = ({

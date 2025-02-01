@@ -30,7 +30,7 @@ import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { GithubAPI } from '@/lib/GithubApi.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { copyToClipboard, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils.ts';
+import { copyToClipboard, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils';
 import { GistSingleType } from '@/types/gist.ts';
 
 export const SnippetContent = () => {

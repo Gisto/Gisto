@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { CopyToClipboardButton } from '@/components/copy-to-clipboard-button.tsx';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { cn } from '@/lib/utils.ts';
+import { cn } from '@/lib/utils';
 
 type JsonViewerProps = {
   data: Record<string, unknown> | Record<string, unknown>[];

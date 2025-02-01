@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { EVENT_NAME } from './index.ts';
 import { Toast, ToastType } from './toast.tsx';
 
-import { randomString } from '@/lib/utils.ts';
+import { randomString } from '@/lib/utils';
 
 const ToastManager = () => {
   const [toasts, setToasts] = useState<ToastType[]>([]);
