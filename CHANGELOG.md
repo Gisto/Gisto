@@ -1,3 +1,15 @@
+## <small>2.0.3 (2025-02-01)</small>
+
+- feat(edit or create): add upload ([c56a657](https://github.com/Gisto/Gisto/commit/c56a657))
+- feat(updater): check for new version and notify ([934c6b6](https://github.com/Gisto/Gisto/commit/934c6b6))
+- refactor: languages and tags lists ([6f90c36](https://github.com/Gisto/Gisto/commit/6f90c36))
+- refactor(create or update snippet): brake down components ([126073a](https://github.com/Gisto/Gisto/commit/126073a))
+- refactor(search and dashboard): refactor search to global and extract dashboard components ([1374932](https://github.com/Gisto/Gisto/commit/1374932))
+- refactor(utils): refactor and extract utils ([5580a41](https://github.com/Gisto/Gisto/commit/5580a41))
+- fix(dashboard): change bars ([67548cd](https://github.com/Gisto/Gisto/commit/67548cd))
+- chore: add pre-commit guard hook ([0c3054a](https://github.com/Gisto/Gisto/commit/0c3054a))
+- chore(lint): add commit message lint ([a6d75b8](https://github.com/Gisto/Gisto/commit/a6d75b8))
+
 ## <small>2.0.2 (2025-01-31)</small>
 
 - docs (release): add changelog to release notes ([edc7359](https://github.com/Gisto/Gisto/commit/edc7359))
