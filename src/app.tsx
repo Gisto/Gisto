@@ -1,5 +1,7 @@
 import './main.css';
 
+import { relaunch } from '@tauri-apps/plugin-process';
+import { check } from '@tauri-apps/plugin-updater';
 import { RouterProvider, RouteType } from 'dirty-react-router';
 import { Info } from 'lucide-react';
 import { lazy, useEffect, useState } from 'react';
@@ -89,6 +91,23 @@ export const Gisto = () => {
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [newToken, setNewToken] = useState<string>('');
+
+  useEffect(() => {
+    if ('isTauri' in window) {
+      (async () => {
+        const update = await check();
+
+        if (update?.available) {
+          const agree = confirm(`Update to ${update.version} available! Download and install?`);
+
+          if (agree) {
+            await update.downloadAndInstall();
+            await relaunch();
+          }
+        }
+      })();
+    }
+  }, []);
 
   useEffect(() => {
     const storedToken = localStorage.getItem('GITHUB_TOKEN');
