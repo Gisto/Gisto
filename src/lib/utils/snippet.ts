@@ -112,7 +112,7 @@ export const isOpenApi = (file: GistFileType): boolean => {
 };
 
 export const isLaTex = (file: GistFileType): boolean => {
-  return file.language.toLowerCase() === 'tex';
+  return file?.language?.toLowerCase() === 'tex';
 };
 
 export const isGeoJson = (file: GistFileType): boolean =>

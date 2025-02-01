@@ -36,7 +36,7 @@ const SnippetContentPage = lazy(() =>
 );
 
 const CreateNewPage = lazy(() =>
-  import('@/components/layout/pages/create-or-edit-snippet.tsx').then((module) => ({
+  import('@/components/layout/pages/create-or-edit-snippet').then((module) => ({
     default: module.CreateOrEditSnippet,
   }))
 );
