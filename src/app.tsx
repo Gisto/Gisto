@@ -1,16 +1,12 @@
 import './main.css';
 
-import { relaunch } from '@tauri-apps/plugin-process';
-import { check } from '@tauri-apps/plugin-updater';
-import { RouterProvider, RouteType } from 'dirty-react-router';
 import { Info } from 'lucide-react';
-import { lazy, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { MainLayout } from '@/components/layout';
+import { Gisto } from '@/components/gisto.tsx';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
 import { toast } from '@/components/toast';
-import ToastManager from '@/components/toast/toast-manager.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
   Card,
@@ -22,92 +18,14 @@ import {
 } from '@/components/ui/card.tsx';
 import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Label } from '@/components/ui/label';
-import { TooltipProvider } from '@/components/ui/tooltip.tsx';
+import { Updater } from '@/components/updater.tsx';
 import { globalState } from '@/lib/store/globalState.ts';
 
-const DashBoardPage = lazy(() =>
-  import('@/components/layout/pages/dashboard').then((module) => ({
-    default: module.DashBoard,
-  }))
-);
-
-const SnippetContentPage = lazy(() =>
-  import('@/components/layout/pages/snippet').then((module) => ({
-    default: module.SnippetContent,
-  }))
-);
-
-const CreateNewPage = lazy(() =>
-  import('@/components/layout/pages/create-or-edit-snippet').then((module) => ({
-    default: module.CreateOrEditSnippet,
-  }))
-);
-
-const AboutPage = lazy(() =>
-  import('@/components/layout/pages/about').then((module) => ({
-    default: module.About,
-  }))
-);
-
-const SettingsPage = lazy(() =>
-  import('@/components/layout/pages/settings/index.tsx').then((module) => ({
-    default: module.Settings,
-  }))
-);
-
-const routes: RouteType[] = [
-  {
-    path: '/',
-    component: DashBoardPage,
-  },
-  {
-    path: '/snippets/:id',
-    component: SnippetContentPage,
-  },
-  {
-    path: '/new-snippet',
-    component: CreateNewPage,
-  },
-  {
-    path: '/edit/:id',
-    component: CreateNewPage,
-  },
-  {
-    path: '/about',
-    component: AboutPage,
-  },
-  {
-    path: '/settings',
-    component: SettingsPage,
-  },
-  // {
-  //   path: '*',
-  //   component: () => <div>404</div>,
-  // },
-];
-
-export const Gisto = () => {
+export const App = () => {
   const [token, setToken] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [newToken, setNewToken] = useState<string>('');
-
-  useEffect(() => {
-    if ('isTauri' in window) {
-      (async () => {
-        const update = await check();
-
-        if (update?.available) {
-          const agree = confirm(`Update to ${update.version} available! Download and install?`);
-
-          if (agree) {
-            await update.downloadAndInstall();
-            await relaunch();
-          }
-        }
-      })();
-    }
-  }, []);
 
   useEffect(() => {
     const storedToken = localStorage.getItem('GITHUB_TOKEN');
@@ -158,16 +76,7 @@ export const Gisto = () => {
   }
 
   if (isValid) {
-    return (
-      <ThemeProvider>
-        <RouterProvider routes={routes}>
-          <TooltipProvider>
-            <MainLayout />
-            <ToastManager />
-          </TooltipProvider>
-        </RouterProvider>
-      </ThemeProvider>
-    );
+    return <Gisto />;
   }
 
   return (
@@ -177,7 +86,9 @@ export const Gisto = () => {
           <ThemeSwitcher />
         </ThemeProvider>
       </div>
-      <img src="/favicon.ico" className="w-20 mb-8" alt="" />
+      <Updater />
+      <img src="/icon-192.png" className="w-20 mb-8" alt="Gisto" />
+
       <h3 className="">{'{ Gisto }'}</h3>
 
       <p className="mb-8 text-primary">Snippets made awesome</p>
