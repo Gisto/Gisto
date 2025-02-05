@@ -23,6 +23,38 @@ interface SettingsProps {
   path?: string;
 }
 
+const SpecialSelect = ({
+  settingKey,
+  value,
+  onChange,
+  fullPath,
+  options,
+}: {
+  settingKey: string;
+  value: string;
+  onChange: (path: string, value: string) => void;
+  fullPath: string;
+  options: { value: string; label: string }[];
+}) => {
+  return (
+    <div className="mb-4">
+      <label className="block mb-1">{camelToTitleCase(settingKey)}</label>
+      <Select onValueChange={(value) => onChange(fullPath, value)} value={value}>
+        <SelectTrigger>
+          <SelectValue placeholder="Select" />
+        </SelectTrigger>
+        <SelectContent>
+          {options.map((option) => (
+            <SelectItem key={option.value} value={option.value}>
+              {option.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+};
+
 export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps) => {
   const { setTheme } = useTheme();
   const renderSetting = (key: string, value: SettingsType | unknown, currentPath: string) => {
@@ -137,55 +169,48 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
           // editor line numbers
           if (key === 'lineNumbers') {
             return (
-              <div key={key} className="mb-4">
-                <label className="block mb-1">{camelToTitleCase(key)}</label>
-                <Select onValueChange={(value) => onChange(fullPath, value)} value={value}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="on">On</SelectItem>
-                    <SelectItem value="off">Off</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <SpecialSelect
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={[
+                  { value: 'on', label: 'On' },
+                  { value: 'off', label: 'Off' },
+                ]}
+              />
             );
           }
 
           if (key === 'wordWrap') {
             return (
-              <div key={key} className="mb-4">
-                <label className="block mb-1">{camelToTitleCase(key)}</label>
-                <Select onValueChange={(value) => onChange(fullPath, value)} value={value}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="on">On</SelectItem>
-                    <SelectItem value="off">Off</SelectItem>
-                    <SelectItem value="wordWrapColumn">Word wrap column</SelectItem>
-                    <SelectItem value="bounded">Bounded</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <SpecialSelect
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={[
+                  { value: 'on', label: 'On' },
+                  { value: 'off', label: 'Off' },
+                  { value: 'wordWrapColumn', label: 'Word wrap column' },
+                  { value: 'bounded', label: 'Bounded' },
+                ]}
+              />
             );
           }
 
           if (key === 'newSnippetDefaultLanguage') {
             return (
-              <div key={key} className="mb-4">
-                <label className="block mb-1">{camelToTitleCase(key)}</label>
-                <Select onValueChange={(value) => onChange(fullPath, value)} value={value}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Object.keys(languageMap).map((language) => (
-                      <SelectItem value={language}>{language}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              <SpecialSelect
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={Object.keys(languageMap).map((language) => ({
+                  value: language,
+                  label: language,
+                }))}
+              />
             );
           }
         }
