@@ -1,5 +1,6 @@
 import { Sun, Moon, LaptopMinimal } from 'lucide-react';
 
+import { useTheme, type Theme } from '@/components/theme/theme-provider.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { Label } from '@/components/ui/label.tsx';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.tsx';
@@ -23,6 +24,7 @@ interface SettingsProps {
 }
 
 export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps) => {
+  const { setTheme } = useTheme();
   const renderSetting = (key: string, value: SettingsType | unknown, currentPath: string) => {
     const fullPath = currentPath ? `${currentPath}.${key}` : key;
 
@@ -76,7 +78,10 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 <label className="block mb-1">{camelToTitleCase(key)}</label>
                 <RadioGroup
                   className="grid grid-cols-3 gap-4 mb-4"
-                  onValueChange={(value) => onChange(fullPath, value)}
+                  onValueChange={(value: Theme) => {
+                    onChange(fullPath, value);
+                    setTheme(value);
+                  }}
                   defaultValue={value}
                 >
                   <div>
