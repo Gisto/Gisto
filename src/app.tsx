@@ -19,7 +19,6 @@ import {
 import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Label } from '@/components/ui/label';
 import { Updater } from '@/components/updater.tsx';
-import { useIsOnline } from '@/hooks/use-is-online.tsx';
 import { globalState } from '@/lib/store/globalState.ts';
 
 export const App = () => {
@@ -27,7 +26,6 @@ export const App = () => {
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [newToken, setNewToken] = useState<string>('');
-  const online = useIsOnline();
 
   useEffect(() => {
     const storedToken = localStorage.getItem('GITHUB_TOKEN');
@@ -95,7 +93,6 @@ export const App = () => {
 
       <p className="mb-8 text-primary">Snippets made awesome</p>
 
-      {!online && 'Off-line'}
       <form onSubmit={handleSubmit}>
         <Card className="w-[450px]">
           <CardHeader>

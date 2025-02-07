@@ -3,6 +3,7 @@ import { useRouter } from 'dirty-react-router';
 import { Plus, SidebarClose, SidebarOpen, Info, X, Trash, Shield, ShieldCheck } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useReducer, useState } from 'react';
+import Select from 'react-dropdown-select';
 import { z } from 'zod';
 
 import { AllTags } from '@/components/all-tags.tsx';
@@ -17,13 +18,6 @@ import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select.tsx';
 import {
   Sheet,
   SheetContent,
@@ -48,6 +42,7 @@ type Props = {
   params?: Record<string, string>;
 };
 
+// TODO: refactor to extract some parts
 export const CreateOrEditSnippet = ({
   isCollapsed = false,
   setIsCollapsed = () => {},
@@ -55,6 +50,63 @@ export const CreateOrEditSnippet = ({
   const [state, dispatch] = useReducer(reducer, initialState);
   const { navigate, params } = useRouter();
   const settings = useStoreValue('settings');
+
+  // @ts-expect-error sync select types
+  const customDropdownRenderer = ({ props, state, methods }) => {
+    const regexp = new RegExp(state.search, 'i');
+
+    const { options, labelField, searchBy } = props;
+    const { setSearch, isSelected } = methods;
+
+    return (
+      <div>
+        <div className="m-2">
+          <Input
+            type="search"
+            value={state.search}
+            autoFocus
+            onChange={setSearch}
+            placeholder="Find language"
+          />
+        </div>
+        {options
+          .filter((item: { [x: string]: string }) =>
+            regexp.test(item[searchBy] || item[labelField])
+          )
+          .map(
+            (option: {
+              disabled: boolean;
+              label: string;
+              fileIndex: number;
+              labelField: string;
+            }) => {
+              if (!props.keepSelectedInList && isSelected(option)) {
+                return null;
+              }
+
+              return (
+                <button
+                  className={cn('block w-full text-left text-sm rounded hover:bg-primary/10 p-2')}
+                  onClick={
+                    option.disabled
+                      ? undefined
+                      : () => {
+                          dispatch({
+                            type: 'SET_FILE_LANGUAGE',
+                            payload: option.label,
+                            index: option.fileIndex,
+                          });
+                        }
+                  }
+                >
+                  {option?.labelField && <div>{option.labelField}</div>}
+                </button>
+              );
+            }
+          )}
+      </div>
+    );
+  };
 
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
   const [edit, setEdit] = useState<null | GistSingleType>(null);
@@ -321,7 +373,7 @@ export const CreateOrEditSnippet = ({
                             File language (optional)
                           </label>
                         </div>
-                        <div className="flex items-center gap-8">
+                        <div className="flex items-center gap-6">
                           <Input
                             type="text"
                             id="file"
@@ -331,24 +383,44 @@ export const CreateOrEditSnippet = ({
                             }
                             placeholder="Enter file name including extention"
                           />
-                          <Select
-                            onValueChange={(value) =>
-                              dispatch({ type: 'SET_FILE_LANGUAGE', payload: value, index })
-                            }
-                            defaultValue={settings.newSnippetDefaultLanguage}
-                            value={file.language ?? settings.newSnippetDefaultLanguage}
-                          >
-                            <SelectTrigger id="file-language">
-                              <SelectValue placeholder="Select file language" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {Object.keys(languageMap).map((language) => (
-                                <SelectItem key={language} value={language}>
-                                  {language}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
+                          <div className="w-full">
+                            <Select
+                              options={[
+                                ...Object.keys(languageMap).map((language) => ({
+                                  label: language,
+                                  value: languageMap[language],
+                                  fileIndex: index,
+                                })),
+                              ]}
+                              onChange={(val) =>
+                                dispatch({
+                                  type: 'SET_FILE_LANGUAGE',
+                                  // @ts-expect-error TODO need to sync types
+                                  payload: val.value,
+                                  index,
+                                })
+                              }
+                              color="hsl(var(--primary))"
+                              contentRenderer={({ state }) => (
+                                <div className="text-sm">
+                                  {state.values && state.values[0].label}
+                                </div>
+                              )}
+                              dropdownRenderer={customDropdownRenderer}
+                              values={
+                                [
+                                  {
+                                    label: file.language
+                                      ? file.language
+                                      : settings.newSnippetDefaultLanguage,
+                                    value: file.language
+                                      ? languageMap[file.language]
+                                      : settings.newSnippetDefaultLanguage,
+                                  },
+                                ] as { label: string; value: string; fileIndex?: number }[]
+                              }
+                            />
+                          </div>
                         </div>
 
                         <label
