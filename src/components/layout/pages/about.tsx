@@ -15,7 +15,6 @@ type Props = {
 const Pipe = () => <div className="inline-block mx-4">|</div>;
 
 export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props = {}) => {
-  // TODO: Get releases and check for updates - https://api.github.com/repos/Gisto/Gisto/releases
   return (
     <div className="h-screen w-full border-r border-collapse">
       <PageHeader>
