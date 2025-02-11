@@ -1,3 +1,27 @@
+## <small>2.0.4 (2025-02-11)</small>
+
+- chore: add pre-commit guard hook ([0c3054a](https://github.com/Gisto/Gisto/commit/0c3054a))
+- chore: fix readme TOC ([88eaad5](https://github.com/Gisto/Gisto/commit/88eaad5))
+- chore(lint): add commit message lint ([a6d75b8](https://github.com/Gisto/Gisto/commit/a6d75b8))
+- fix(create or edit): add search in file language ([09afda4](https://github.com/Gisto/Gisto/commit/09afda4))
+- fix(dashboard): change bars ([67548cd](https://github.com/Gisto/Gisto/commit/67548cd))
+- refactor: languages and tags lists ([6f90c36](https://github.com/Gisto/Gisto/commit/6f90c36))
+- refactor(create or update snippet): brake down components ([126073a](https://github.com/Gisto/Gisto/commit/126073a))
+- refactor(search and dashboard): refactor search to global and extract dashboard components ([1374932](https://github.com/Gisto/Gisto/commit/1374932))
+- refactor(settings): settings selects ([9ab49d5](https://github.com/Gisto/Gisto/commit/9ab49d5))
+- refactor(utils): refactor and extract utils ([5580a41](https://github.com/Gisto/Gisto/commit/5580a41))
+- 2.0.2 ([de340f9](https://github.com/Gisto/Gisto/commit/de340f9))
+- 2.0.3 ([b02e26c](https://github.com/Gisto/Gisto/commit/b02e26c))
+- docs (release): add changelog to release notes ([edc7359](https://github.com/Gisto/Gisto/commit/edc7359))
+- feat (preview): add latex preview using katex ref #395 ([cf90937](https://github.com/Gisto/Gisto/commit/cf90937)), closes [#395](https://github.com/Gisto/Gisto/issues/395)
+- fix (create new/edit): none existing tag created without # ([a30bd87](https://github.com/Gisto/Gisto/commit/a30bd87))
+- fix (editor): wrong wordWrap values ([5705df8](https://github.com/Gisto/Gisto/commit/5705df8)), closes [#415](https://github.com/Gisto/Gisto/issues/415)
+- fix (settings): add 'Files Preview Enabled By Default' setting ([0723efe](https://github.com/Gisto/Gisto/commit/0723efe))
+- refactor(main, updater, settings): refactore main, updater and settings, extract components ([12b7c04](https://github.com/Gisto/Gisto/commit/12b7c04))
+- feat(edit or create): add upload ([c56a657](https://github.com/Gisto/Gisto/commit/c56a657))
+- feat(updater): check for new version and notify ([934c6b6](https://github.com/Gisto/Gisto/commit/934c6b6))
+- build: add secrets ([698b9cc](https://github.com/Gisto/Gisto/commit/698b9cc))
+
 ## <small>2.0.3 (2025-02-01)</small>
 
 - feat(edit or create): add upload ([c56a657](https://github.com/Gisto/Gisto/commit/c56a657))
