@@ -1,3 +1,10 @@
+## <small>2.0.4 (2025-02-11)</small>
+
+- chore: fix readme TOC ([88eaad5](https://github.com/Gisto/Gisto/commit/88eaad5))
+- fix(create or edit): add search in file language ([09afda4](https://github.com/Gisto/Gisto/commit/09afda4))
+- refactor(settings): settings selects ([9ab49d5](https://github.com/Gisto/Gisto/commit/9ab49d5))
+- refactor(main, updater, settings): refactore main, updater and settings, extract components ([12b7c04](https://github.com/Gisto/Gisto/commit/12b7c04))
+
 ## <small>2.0.3 (2025-02-01)</small>
 
 - feat(edit or create): add upload ([c56a657](https://github.com/Gisto/Gisto/commit/c56a657))
