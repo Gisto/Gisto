@@ -55,7 +55,7 @@ export const CreateOrEditSnippet = ({
   const customDropdownRenderer = ({ props, state, methods }) => {
     const regexp = new RegExp(state.search, 'i');
 
-    const { options, labelField, searchBy } = props;
+    const { options, searchBy } = props;
     const { setSearch, isSelected } = methods;
 
     return (
@@ -70,9 +70,7 @@ export const CreateOrEditSnippet = ({
           />
         </div>
         {options
-          .filter((item: { [x: string]: string }) =>
-            regexp.test(item[searchBy] || item[labelField])
-          )
+          .filter((item: { [x: string]: string }) => regexp.test(item[searchBy] || item[label]))
           .map(
             (option: {
               disabled: boolean;
@@ -93,13 +91,13 @@ export const CreateOrEditSnippet = ({
                       : () => {
                           dispatch({
                             type: 'SET_FILE_LANGUAGE',
-                            payload: option.label,
+                            payload: option?.label,
                             index: option.fileIndex,
                           });
                         }
                   }
                 >
-                  {option?.labelField && <div>{option.labelField}</div>}
+                  {option?.label && <div>{option.label}</div>}
                 </button>
               );
             }
@@ -403,7 +401,7 @@ export const CreateOrEditSnippet = ({
                               color="hsl(var(--primary))"
                               contentRenderer={({ state }) => (
                                 <div className="text-sm">
-                                  {state.values && state.values[0].label}
+                                  {state.values && state.values[0]?.label && state.values[0].label}
                                 </div>
                               )}
                               dropdownRenderer={customDropdownRenderer}
