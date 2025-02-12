@@ -1,3 +1,7 @@
+## <small>2.0.5 (2025-02-12)</small>
+
+- fix(create or edit): fix language select values ([473e531](https://github.com/Gisto/Gisto/commit/473e531))
+
 ## <small>2.0.4 (2025-02-11)</small>
 
 - chore: fix readme TOC ([88eaad5](https://github.com/Gisto/Gisto/commit/88eaad5))
