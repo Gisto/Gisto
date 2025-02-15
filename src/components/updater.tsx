@@ -9,7 +9,9 @@ export const Updater = () => {
         const update = await check();
 
         if (update?.available) {
-          const agree = confirm(`Update to ${update.version} available! Download and install?`);
+          const agree = await confirm(
+            `Update to ${update.version} available! Download and install?`
+          );
 
           if (agree) {
             await update.downloadAndInstall();
