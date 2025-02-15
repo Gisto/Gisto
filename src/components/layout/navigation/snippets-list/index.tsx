@@ -8,6 +8,7 @@ import {
   SidebarOpen,
   Loader,
   Info,
+  Lightbulb,
 } from 'lucide-react';
 import React, { useCallback } from 'react';
 
@@ -16,6 +17,7 @@ import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
+import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
@@ -116,7 +118,39 @@ export const Lists = ({
                     </code>
                   </div>
 
-                  <small>You can also just click a tag or a language</small>
+                  <div className="text-xs mb-2">
+                    <strong>Stars:</strong>{' '}
+                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
+                      is:starred
+                    </code>{' '}
+                    or{' '}
+                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
+                      is:unstarred
+                    </code>
+                  </div>
+
+                  <div className="text-xs mb-2">
+                    <strong>Visibility:</strong>{' '}
+                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
+                      is:private
+                    </code>{' '}
+                    or{' '}
+                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
+                      is:public
+                    </code>
+                  </div>
+
+                  <div className="text-xs mb-2">
+                    <strong>Un-tagged snippets:</strong>{' '}
+                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
+                      is:untagged
+                    </code>
+                  </div>
+                  <Separator className="mt-4 mb-2" />
+                  <small className="flex gap-2 items-center">
+                    <Lightbulb className="size-4 text-yellow-400" /> You can also just click a tag
+                    or a language
+                  </small>
                 </div>
               </TooltipContent>
             </Tooltip>

@@ -21,6 +21,26 @@ export const searchFilter = (search: string, currentSnippets: GistEnrichedType[]
         return listItem.languages.some((lang) => lang.name.toLowerCase().startsWith(langToSearch));
       }
 
+      if (term === 'is:starred') {
+        return listItem.starred;
+      }
+
+      if (term === 'is:unstarred') {
+        return !listItem.starred;
+      }
+
+      if (term === 'is:untagged') {
+        return listItem.tags.length === 0;
+      }
+
+      if (term === 'is:private') {
+        return !listItem.isPublic;
+      }
+
+      if (term === 'is:public') {
+        return listItem.isPublic;
+      }
+
       if (listItem.title.trim().toLowerCase().includes(term)) {
         return true;
       }
