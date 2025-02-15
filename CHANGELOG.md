@@ -1,3 +1,8 @@
+## <small>2.0.6 (2025-02-15)</small>
+
+* feat(search): allow to search for - is:starred, is:unstarred, is:untagged, is:private and is:public ([bcf8627](https://github.com/Gisto/Gisto/commit/bcf8627))
+* fix(updater): fix wait for confirmation ([6b6add1](https://github.com/Gisto/Gisto/commit/6b6add1))
+
 ## <small>2.0.5 (2025-02-12)</small>
 
 - fix(create or edit): fix language select values ([473e531](https://github.com/Gisto/Gisto/commit/473e531))
