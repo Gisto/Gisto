@@ -6,7 +6,7 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 
 > [!NOTE]
 >
-> Latest builds are always at the [releases](https://github.com/Gisto/Gisto/releases) tab or at [gisto.org](https:/gisto.org)
+> Latest builds are always at the [releases](https://github.com/Gisto/Gisto/releases) tab or at [gisto.org](https://gisto.org)
 
 > [!IMPORTANT]  
 > Current version is a complete rewrite of the original Gisto.
