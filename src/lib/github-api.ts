@@ -73,7 +73,7 @@ interface GistQueryData {
   };
 }
 
-export const GithubAPI = {
+export const GithubApi = {
   baseUrl: 'https://api.github.com',
   gitHubApiVersion: '2022-11-28',
 
