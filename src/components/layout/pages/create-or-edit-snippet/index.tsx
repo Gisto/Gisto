@@ -31,7 +31,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { ZodError } from '@/components/zod-error.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
-import { GithubAPI } from '@/lib/GithubApi.ts';
+import { GithubApi } from '@/lib/github-api.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, formatSnippetForSaving, getEditorTheme, getTags, removeTags } from '@/lib/utils';
 import { GistSingleType } from '@/types/gist.ts';
@@ -111,7 +111,7 @@ export const CreateOrEditSnippet = ({
   useEffect(() => {
     if (params?.id) {
       (async () => {
-        const snippet = await GithubAPI.getGist(params.id);
+        const snippet = await GithubApi.getGist(params.id);
 
         setEdit(snippet);
 
@@ -148,7 +148,7 @@ export const CreateOrEditSnippet = ({
       setErrors(validation.error.errors);
       return;
     } else {
-      const save = await GithubAPI.createGist(formatSnippetForSaving(validation.data));
+      const save = await GithubApi.createGist(formatSnippetForSaving(validation.data));
 
       if (save && save.id) {
         navigate(`/snippets/${save.id}`);
@@ -173,7 +173,7 @@ export const CreateOrEditSnippet = ({
         ...restOfTheSnippet
       } = formatSnippetForSaving(validation.data, edit);
 
-      const save = await GithubAPI.updateGist({ ...restOfTheSnippet, gistId: edit!.id });
+      const save = await GithubApi.updateGist({ ...restOfTheSnippet, gistId: edit!.id });
 
       if (save && save.id) {
         navigate(`/snippets/${edit!.id}`);

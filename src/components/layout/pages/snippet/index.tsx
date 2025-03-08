@@ -28,7 +28,7 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
-import { GithubAPI } from '@/lib/GithubApi.ts';
+import { GithubApi } from '@/lib/github-api.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { copyToClipboard, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils';
 import { GistSingleType } from '@/types/gist.ts';
@@ -42,7 +42,7 @@ export const SnippetContent = () => {
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
-      const gist = await GithubAPI.getGist(params.id);
+      const gist = await GithubApi.getGist(params.id);
 
       setSnippet(gist);
       setLoading(false);
@@ -108,7 +108,7 @@ export const SnippetContent = () => {
                       );
 
                       if (confirmation) {
-                        await GithubAPI.toggleGistVisibility(snippet.id);
+                        await GithubApi.toggleGistVisibility(snippet.id);
                         navigate('/');
                         await fetchAndUpdateSnippets();
                       }
@@ -136,7 +136,7 @@ export const SnippetContent = () => {
                       );
 
                       if (confirmation) {
-                        await GithubAPI.toggleGistVisibility(snippet.id);
+                        await GithubApi.toggleGistVisibility(snippet.id);
                         navigate('/');
                         await fetchAndUpdateSnippets();
                       }
@@ -163,7 +163,7 @@ export const SnippetContent = () => {
                 variant="ghost"
                 size="icon"
                 className="-mx-3"
-                onClick={async () => await GithubAPI.deleteStar(snippet.id)}
+                onClick={async () => await GithubApi.deleteStar(snippet.id)}
               >
                 <Star className="size-4 fill-primary stroke-primary" />
                 <span className="sr-only">Starred</span>
@@ -173,7 +173,7 @@ export const SnippetContent = () => {
                 variant="ghost"
                 size="icon"
                 className="-mx-3"
-                onClick={async () => await GithubAPI.addStar(snippet.id)}
+                onClick={async () => await GithubApi.addStar(snippet.id)}
               >
                 <Star className="size-4" />
                 <span className="sr-only">Not starred</span>
@@ -243,7 +243,7 @@ export const SnippetContent = () => {
                     );
 
                     if (confirmation) {
-                      const value = await GithubAPI.deleteGist(snippet.id);
+                      const value = await GithubApi.deleteGist(snippet.id);
 
                       if (value.success) {
                         navigate('/');

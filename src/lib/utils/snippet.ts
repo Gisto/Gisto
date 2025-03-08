@@ -1,5 +1,5 @@
 import { ITEMS_PER_PAGE } from '@/constants';
-import { GithubAPI } from '@/lib/GithubApi.ts';
+import { GithubApi } from '@/lib/github-api.ts';
 import { globalState } from '@/lib/store/globalState.ts';
 import { GistFileType, GistSingleType, GistType } from '@/types/gist.ts';
 
@@ -53,7 +53,7 @@ export const processSnippet = (snippet: GistType) => {
 export const fetchAndUpdateSnippets = async () => {
   const allFetchedSnippetIds = new Set();
 
-  for await (const snippetsPage of GithubAPI.getGistsGenerator()) {
+  for await (const snippetsPage of GithubApi.getGistsGenerator()) {
     const currentSnippetsState = globalState.getState().snippets;
 
     const newSnippets = snippetsPage.map((snippet) => processSnippet(snippet));
