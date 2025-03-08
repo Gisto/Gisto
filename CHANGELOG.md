@@ -1,3 +1,17 @@
+## <small>2.0.7 (2025-03-08)</small>
+
+* feat(app window): remember app window size and position ([d25175a](https://github.com/Gisto/Gisto/commit/d25175a)), closes [#386](https://github.com/Gisto/Gisto/issues/386)
+* build(deps-dev): bump postcss from 8.5.1 to 8.5.3 (#422) ([4dc48fb](https://github.com/Gisto/Gisto/commit/4dc48fb)), closes [#422](https://github.com/Gisto/Gisto/issues/422)
+* build(deps-dev): bump prettier from 3.4.2 to 3.5.3 (#430) ([50fd17f](https://github.com/Gisto/Gisto/commit/50fd17f)), closes [#430](https://github.com/Gisto/Gisto/issues/430)
+* build(deps): bump @radix-ui/react-label from 2.1.1 to 2.1.2 (#421) ([a55c2b4](https://github.com/Gisto/Gisto/commit/a55c2b4)), closes [#421](https://github.com/Gisto/Gisto/issues/421)
+* build(deps): bump @radix-ui/react-scroll-area from 1.2.2 to 1.2.3 (#429) ([c321931](https://github.com/Gisto/Gisto/commit/c321931)), closes [#429](https://github.com/Gisto/Gisto/issues/429)
+* build(deps): bump @radix-ui/react-slider from 1.2.2 to 1.2.3 (#426) ([3e9e44f](https://github.com/Gisto/Gisto/commit/3e9e44f)), closes [#426](https://github.com/Gisto/Gisto/issues/426)
+* build(deps): bump @radix-ui/react-slot from 1.1.1 to 1.1.2 (#424) ([ec408c6](https://github.com/Gisto/Gisto/commit/ec408c6)), closes [#424](https://github.com/Gisto/Gisto/issues/424)
+* build(deps): bump @radix-ui/react-switch from 1.1.2 to 1.1.3 (#420) ([deec653](https://github.com/Gisto/Gisto/commit/deec653)), closes [#420](https://github.com/Gisto/Gisto/issues/420)
+* build(deps): bump motion from 12.0.6 to 12.4.7 (#423) ([ebebb53](https://github.com/Gisto/Gisto/commit/ebebb53)), closes [#423](https://github.com/Gisto/Gisto/issues/423)
+* chore: create dependabot.yml ([f703058](https://github.com/Gisto/Gisto/commit/f703058))
+* chore: Migrate workflows to Blacksmith (#419) ([8225a15](https://github.com/Gisto/Gisto/commit/8225a15)), closes [#419](https://github.com/Gisto/Gisto/issues/419)
+
 ## <small>2.0.6 (2025-02-15)</small>
 
 * feat(search): allow to search for - is:starred, is:unstarred, is:untagged, is:private and is:public ([bcf8627](https://github.com/Gisto/Gisto/commit/bcf8627))
