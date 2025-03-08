@@ -1,4 +1,5 @@
 import { SidebarClose, SidebarOpen } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 import { version } from '../../../../package.json';
 
@@ -33,9 +34,9 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
         </div>
       </PageHeader>
       <PageContent>
-        <div className="flex justify-center items-center w-full h-[calc(100vh-116px)]">
-          <div className="place-items-center m-auto w-1/2">
-            <img src="/icon-192.png" className="w-20 mb-8" alt="Gisto" />
+        <div className="flex justify-center items-center w-full h-[calc(100vh-116px)] text-center">
+          <div className="place-items-center m-auto w-1/2  text-center">
+            <img src="/icon-192.png" className="w-20 mb-8 mx-auto" alt="Gisto" />
             <h2 className="mb-8">About Gisto</h2>
             <p className="mb-8">v{version}</p>
 
@@ -49,6 +50,16 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
               with changes carrying over to Gisto.
             </p>
 
+            <a
+              target="_blank"
+              className="underline hover:underline-offset-4"
+              href="https://github.com/sponsors/Gisto"
+            >
+              <div className="flex items-center gap-2 mx-auto justify-center">
+                <Heart className="text-danger size-4" /> Sponsor Gisto
+              </div>
+            </a>
+            <br />
             <div className="mb-8">
               <a
                 target="_blank"
