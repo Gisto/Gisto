@@ -14,7 +14,7 @@ import { toast } from '@/components/toast';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
-import { GithubAPI } from '@/lib/GithubApi.ts';
+import { GithubApi } from '@/lib/github-api.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
@@ -142,7 +142,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                           );
 
                           if (confirmation) {
-                            await GithubAPI.toggleGistVisibility(gist.id);
+                            await GithubApi.toggleGistVisibility(gist.id);
                             await fetchAndUpdateSnippets();
                           }
                         }}
@@ -169,7 +169,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                           );
 
                           if (confirmation) {
-                            await GithubAPI.toggleGistVisibility(gist.id);
+                            await GithubApi.toggleGistVisibility(gist.id);
                             await fetchAndUpdateSnippets();
                           }
                         }}
@@ -196,7 +196,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                         event.preventDefault();
                         event.stopPropagation();
 
-                        await GithubAPI.deleteStar(gist.id);
+                        await GithubApi.deleteStar(gist.id);
                       }}
                     />
                   </TooltipTrigger>
@@ -215,7 +215,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                         event.preventDefault();
                         event.stopPropagation();
 
-                        await GithubAPI.addStar(gist.id);
+                        await GithubApi.addStar(gist.id);
                       }}
                     />
                   </TooltipTrigger>
@@ -255,7 +255,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                     );
 
                     if (confirmation) {
-                      const value = await GithubAPI.deleteGist(gist.id);
+                      const value = await GithubApi.deleteGist(gist.id);
 
                       if (value.success) {
                         toast.info({ message: 'Snippet deleted' });
