@@ -49,7 +49,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
               with changes carrying over to Gisto.
             </p>
 
-            <p className="mb-8">
+            <div className="mb-8">
               <a
                 target="_blank"
                 className="underline hover:underline-offset-4"
@@ -89,7 +89,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
               >
                 Twitter
               </a>
-            </p>
+            </div>
           </div>
         </div>
       </PageContent>
