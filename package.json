@@ -50,7 +50,7 @@
     "react-dropdown-select": "^4.11.4",
     "react-leaflet": "^5.0.0",
     "recharts": "^2.15.1",
-    "swagger-ui-react": "^5.20.0",
+    "swagger-ui-react": "^5.20.1",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.2"
   },
