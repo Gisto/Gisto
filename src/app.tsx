@@ -94,7 +94,7 @@ export const App = () => {
       <p className="mb-8 text-primary">Snippets made awesome</p>
 
       <form onSubmit={handleSubmit}>
-        <Card className="w-[450px]">
+        <Card className="w-[85vw] max-w-[450px]">
           <CardHeader>
             <CardTitle>Please sign-in using GitHub token</CardTitle>
             <CardDescription className="flex items-center gap-2">

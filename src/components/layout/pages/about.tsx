@@ -35,7 +35,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
       </PageHeader>
       <PageContent>
         <div className="flex justify-center items-center w-full h-[calc(100vh-116px)] text-center">
-          <div className="place-items-center m-auto w-1/2  text-center">
+          <div className="place-items-center m-auto w-full sm:w-1/2  text-center">
             <img src="/icon-192.png" className="w-20 mb-8 mx-auto" alt="Gisto" />
             <h2 className="mb-8">About Gisto</h2>
             <p className="mb-8">v{version}</p>

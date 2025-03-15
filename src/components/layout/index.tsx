@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { Navigation } from '@/components/layout/navigation/main';
 import { Lists } from '@/components/layout/navigation/snippets-list';
 import { PATHS_WITHOUT_SNIPPET_LIST } from '@/constants';
+import { useIsMobile } from '@/hooks/use-mobile.tsx';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/lib/utils';
 
@@ -12,6 +13,12 @@ export const MainLayout = () => {
   const settings = useStoreValue('settings');
   const [isCollapsed, setIsCollapsed] = React.useState(settings.sidebarCollapsedByDefault);
   const { path } = useRouter();
+  const isMobile = useIsMobile();
+
+  const isListHidden =
+    (isMobile && path.startsWith('/snippets/')) ||
+    PATHS_WITHOUT_SNIPPET_LIST.includes(path) ||
+    path.startsWith('/edit/');
 
   useEffect(() => {
     updateSettings({ sidebarCollapsedByDefault: isCollapsed });
@@ -29,8 +36,12 @@ export const MainLayout = () => {
           <Navigation isCollapsed={isCollapsed} />
         </div>
 
-        {PATHS_WITHOUT_SNIPPET_LIST.includes(path) || path.startsWith('/edit/') ? null : (
-          <div className={cn('h-screen w-[340px] min-w-[340px] border-r')}>
+        {isListHidden ? null : (
+          <div
+            className={cn(
+              'h-screen w-[380px] min-w-[380px] sm:w-[340px] sm:min-w-[340px] border-r'
+            )}
+          >
             <Lists isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
           </div>
         )}
