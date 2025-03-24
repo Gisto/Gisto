@@ -61,7 +61,7 @@
     "@tauri-apps/cli": "^2.3.1",
     "@types/leaflet": "^1.9.16",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^22.13.10",
+    "@types/node": "^22.13.13",
     "@types/papaparse": "^5.3.15",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
