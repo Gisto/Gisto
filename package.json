@@ -59,7 +59,7 @@
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/js": "^9.22.0",
     "@tauri-apps/cli": "^2.3.1",
-    "@types/leaflet": "^1.9.16",
+    "@types/leaflet": "^1.9.17",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^22.13.10",
     "@types/papaparse": "^5.3.15",
