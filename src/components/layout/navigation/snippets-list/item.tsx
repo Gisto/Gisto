@@ -32,7 +32,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
       className={cn(
         'border-b p-4 cursor-pointer',
         active && 'bg-secondary',
-        'hover:bg-gradient-to-r hover:to-50% hover:from-primary/10 hover:dark:from-primary-950 transition-all ease-in-out duration-300'
+        'hover:bg-linear-to-r hover:to-50% hover:from-primary/10 dark:hover:from-primary-950 transition-all ease-in-out duration-300'
       )}
       onClick={() => navigate(`/snippets/${gist.id}`)}
     >
@@ -109,7 +109,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                     {gist.comments.edges.length === 1 ? 'comment' : 'comments'}
                   </TooltipContent>
                 </Tooltip>
-                <Separator orientation="vertical" className="mx-2 !h-4 bg-muted" />
+                <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
               </>
             )}
 
@@ -126,7 +126,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
               </TooltipContent>
             </Tooltip>
 
-            <Separator orientation="vertical" className="mx-2 !h-4 bg-muted" />
+            <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
 
             {gist.isPublic ? (
               <>
@@ -186,7 +186,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
 
             {gist.starred ? (
               <>
-                <Separator orientation="vertical" className="mx-2 !h-4 bg-muted" />
+                <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
                 <Tooltip delayDuration={100}>
                   <TooltipTrigger asChild>
                     <Star
@@ -205,7 +205,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
               </>
             ) : (
               <>
-                <Separator orientation="vertical" className="mx-2 !h-4 bg-muted" />
+                <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
                 <Tooltip delayDuration={100}>
                   <TooltipTrigger asChild>
                     <Star
@@ -224,7 +224,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
               </>
             )}
 
-            <Separator orientation="vertical" className="mx-2 !h-4 bg-muted" />
+            <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
 
             <Tooltip delayDuration={100}>
               <TooltipTrigger asChild>
@@ -241,7 +241,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
               <TooltipContent>Edit snippet</TooltipContent>
             </Tooltip>
 
-            <Separator orientation="vertical" className="mx-2 !h-4 bg-muted" />
+            <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
 
             <Tooltip delayDuration={100}>
               <TooltipTrigger asChild>
