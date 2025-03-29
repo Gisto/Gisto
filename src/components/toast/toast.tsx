@@ -36,11 +36,11 @@ export const Toast = ({
   const getToastStyle = () => {
     switch (type) {
       case 'warn':
-        return 'bg-gradient-to-bl to-50% from-[#f39c12]/50 dark:from-[#f39c12]';
+        return 'bg-linear-to-bl to-50% from-[#f39c12]/50 dark:from-[#f39c12]';
       case 'error':
-        return 'bg-gradient-to-bl to-50% from-[#e74c3c]/50 dark:from-[#e74c3c]';
+        return 'bg-linear-to-bl to-50% from-[#e74c3c]/50 dark:from-[#e74c3c]';
       default:
-        return 'bg-gradient-to-bl to-50% from-primary/50 dark:from-primary-950';
+        return 'bg-linear-to-bl to-50% from-primary/50 dark:from-primary-950';
     }
   };
 
