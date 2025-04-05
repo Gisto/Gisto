@@ -13,6 +13,43 @@ import { Input } from '@/components/ui/input.tsx';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { fetchAndUpdateSnippets } from '@/lib/utils';
 
+const CreateNew = ({
+  search,
+  allowCreate,
+  onClick,
+  tagsData,
+}: {
+  search: string;
+  allowCreate: boolean;
+  onClick?: () => void;
+  tagsData: { tag: string; count: number }[];
+}) => {
+  if (
+    search.length === 0 ||
+    (allowCreate &&
+      tagsData.some((tag) => {
+        return tag.tag.replace('#', '').toLowerCase() === search.toLowerCase();
+      }))
+  )
+    return null;
+
+  if (!allowCreate && tagsData.length > 0) return null;
+
+  return (
+    <div className="text-center mb-8">
+      <p>{`No tags matching ${search}`}</p>
+      {allowCreate && (
+        <Button
+          className="mt-2"
+          variant="outline"
+          size="sm"
+          onClick={onClick}
+        >{`Create "#${search}" tag`}</Button>
+      )}
+    </div>
+  );
+};
+
 export const AllTags = ({
   onClick,
   active,
@@ -65,30 +102,30 @@ export const AllTags = ({
         <CardDescription>All, unique tags</CardDescription>
       </CardHeader>
       <CardContent>
-        {tagsData.length === 0 ? (
-          <div className="text-center">
-            <p>{`No tags matching ${search}`}</p>
-            {allowCreate && (
-              <Button
-                className="mt-2"
-                variant="outline"
-                size="sm"
-                onClick={() => onClick && onClick(`#${search}`)}
-              >{`Create "#${search}" tag`}</Button>
-            )}
-          </div>
-        ) : (
-          tagsData.map(({ tag, count }) => (
-            <Badge
-              key={tag}
-              variant={active === 'tag:' + tag.replace('#', '') ? 'default' : 'primary-outline'}
-              className="m-1 cursor-pointer hover:opacity-70"
-              onClick={() => onClick && onClick(tag)}
-            >
-              {tag} <small className="ml-1">({count})</small>
-            </Badge>
-          ))
-        )}
+        <CreateNew
+          search={search}
+          allowCreate={allowCreate}
+          onClick={() => {
+            setSearch('');
+            if (onClick) {
+              onClick(`#${search}`);
+            }
+          }}
+          tagsData={tagsData}
+        />
+
+        {tagsData.length === 0
+          ? null
+          : tagsData.map(({ tag, count }) => (
+              <Badge
+                key={tag}
+                variant={active === 'tag:' + tag.replace('#', '') ? 'default' : 'primary-outline'}
+                className="m-1 cursor-pointer hover:opacity-70"
+                onClick={() => onClick && onClick(tag)}
+              >
+                {tag} <small className="ml-1">({count})</small>
+              </Badge>
+            ))}
       </CardContent>
     </Card>
   );
