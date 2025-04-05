@@ -1,0 +1,24 @@
+# Skip if already amended
+if [ "$SKIP_HOOK" = "true" ]; then
+  echo "Skipping pre-push due to SKIP_HOOK"
+  exit 0
+fi
+
+# Generate changelog
+pnpm changelog
+
+# Check if changelog changed
+if ! git diff --quiet -- CHANGELOG.md; then
+  echo "Changelog updated. Amending commit and pushing again..."
+
+  git add CHANGELOG.md
+  git commit --amend --no-edit
+
+  # Push with SKIP_HOOK=true to avoid infinite loop
+  SKIP_HOOK=true git push --force-with-lease
+
+  # Exit early to prevent original push from continuing
+  exit 0
+fi
+
+echo "No changes in changelog. Continuing with original push."

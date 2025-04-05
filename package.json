@@ -13,8 +13,7 @@
     "preview": "vite preview",
     "prepare": "husky",
     "commit": "cz",
-    "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s",
-    "version": "npx conventional-changelog-cli -i CHANGELOG.md -s && git add CHANGELOG.md"
+    "changelog": "npx git-cliff@latest --output CHANGELOG.md"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
@@ -41,7 +40,7 @@
     "gisto": "link:",
     "katex": "^0.16.21",
     "leaflet": "^1.9.4",
-    "lucide-react": "^0.483.0",
+    "lucide-react": "^0.487.0",
     "markdown-it": "^14.1.0",
     "motion": "^12.6.3",
     "papaparse": "^5.5.2",
