@@ -1,0 +1,10 @@
+pnpm changelog
+
+# Check if changelog was modified
+if ! git diff --quiet -- CHANGELOG.md; then
+  git add CHANGELOG.md
+  git commit --amend --no-edit
+  git push --force-with-lease
+else
+  echo "No changes in changelog. Skipping amend and force push."
+fi
