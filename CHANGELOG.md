@@ -4,503 +4,544 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 💼 Other
+
+- *(deps)* Bump lucide-react from 0.483.0 to 0.487.0 ([#457](https://github.com/gisto/gisto/issues/457))
+by dependabot[bot]
+([14a7f11](https://github.com/gisto/gisto/commit/14a7f11e19800b577a80c4612834c38f37353e72))
+
+- *(deps)* Bump @tauri-apps/plugin-updater from 2.6.1 to 2.7.0 ([#458](https://github.com/gisto/gisto/issues/458))
+by dependabot[bot]
+([3a01c39](https://github.com/gisto/gisto/commit/3a01c39a63caa862e36004f34c52fd3a59fb7b4b))
+
+
 ### 📚 Documentation
 
 - *(readme)* Add usefull badges
-by sasha
-([2802098](https://github.com/gisto/gisto/commit/280209854111289dc35666adb2791d075199fa59))
+by Sasha Khamkov
+([2c4710c](https://github.com/gisto/gisto/commit/2c4710cf7ee19860d01b733a4067754c96e9f88d))
 
 
 ### ⚙️ Miscellaneous Tasks
 
 - *(dependabot)* Update dependabot.yml
 by Sasha Khamkov
-([e1dd393](https://github.com/gisto/gisto/commit/e1dd393b8668d91e731afd7747314e440e01d3c7))
+([90bca8c](https://github.com/gisto/gisto/commit/90bca8c65a3f5d687dc17f2cf026bd9f79b0975f))
 
 - *(changelog)* Use git-cliff for changelog
-by sasha
-([0ad531d](https://github.com/gisto/gisto/commit/0ad531df384875a0c8a13f041e9ab69eb8bb5d07))
+by Sasha Khamkov
+([e724968](https://github.com/gisto/gisto/commit/e724968b2e9ecc16e6e957b263927148486de633))
 
 - *(changelog)* Generate changelog after commit and befor push with pre-push hook
-by sasha
-([eafab75](https://github.com/gisto/gisto/commit/eafab755af1c0e2e0a1fd3dc5a1dd4f639235360))
+by Sasha Khamkov
+([29825f3](https://github.com/gisto/gisto/commit/29825f388e6dde329d985257adb60318216c70fa))
 
 - *(lint)* Add lint hook
-by sasha
-([45538fd](https://github.com/gisto/gisto/commit/45538fd0602e0b7ccac918cbe0f12ac0d12313e0))
+by Sasha Khamkov
+([f980c7d](https://github.com/gisto/gisto/commit/f980c7d531248c2f034e006ba5f30de902adcbbd))
 
 - *(git-hooks)* Fixes
-by sasha
-([f742e12](https://github.com/gisto/gisto/commit/f742e12da40317e501929ac010a63655649910e7))
+by Sasha Khamkov
+([07a5b31](https://github.com/gisto/gisto/commit/07a5b31e46bdf56627a4a8f9d4702975620fe737))
+
+- *(change-log)* Format release header
+by Sasha Khamkov
+([94404f2](https://github.com/gisto/gisto/commit/94404f287f68f04f2dee82bd29b3e951258342f2))
 
 
-## [2.1.1] - 2025-04-05
+## [2.1.1]
+
+Released on: 2025-04-05
 
 ### 🐛 Bug Fixes
 
 - *(tags)* New tag creation
-by sasha
-([8ddb866](https://github.com/gisto/gisto/commit/8ddb86652a962c3566a2adc70b40b0976f4e27ba))
+by Sasha Khamkov
+([3d8861a](https://github.com/gisto/gisto/commit/3d8861aef7bf648aa941101ac7d783b649923f98))
 
 
 ### 💼 Other
 
 - *(deps-dev)* Bump vite from 6.2.3 to 6.2.5 in the npm_and_yarn group ([#456](https://github.com/gisto/gisto/issues/456))
 by dependabot[bot]
-([ecffe7d](https://github.com/gisto/gisto/commit/ecffe7dca938c195e275d1cabab670f77a18c4f5))
+([c534524](https://github.com/gisto/gisto/commit/c5345248b513eb7379b2c3e90572f664b75844c7))
 
 - *(packages)* Update packages to latest versions
-by sasha
-([1a450df](https://github.com/gisto/gisto/commit/1a450df8367d7b7c7b7ec5a800bd1db2e3c9faaa))
+by Sasha Khamkov
+([1c0b789](https://github.com/gisto/gisto/commit/1c0b7899a06710bdb4fb7ff6ea37a15ee5b35cc7))
 
 
-## [2.1.0] - 2025-03-29
+## [2.1.0]
+
+Released on: 2025-03-29
 
 ### 🚀 Features
 
 - *(responsiveness)* Responsive views adjustments ([#440](https://github.com/gisto/gisto/issues/440))
 by Sasha Khamkov
-([87792f0](https://github.com/gisto/gisto/commit/87792f0bd43b6712bd0e0b78b014fb0aebece399))
+([fbe35aa](https://github.com/gisto/gisto/commit/fbe35aaee205406c0599ec0f2cd350f3002df6db))
 
 
 ### 💼 Other
 
 - *(deps)* Bump axios from 1.7.9 to 1.8.2 in the npm_and_yarn group ([#432](https://github.com/gisto/gisto/issues/432))
 by dependabot[bot]
-([c859f44](https://github.com/gisto/gisto/commit/c859f44ffefe32bd097a0e66f842698021a297cb))
+([02290bf](https://github.com/gisto/gisto/commit/02290bf3708d6ce9daf5f12f939cdb49c9f61825))
 
 - *(deps)* Bump ring ([#431](https://github.com/gisto/gisto/issues/431))
 by dependabot[bot]
-([b6c7a97](https://github.com/gisto/gisto/commit/b6c7a97613e172a141652934bd56ae433bc1e35c))
+([09a2a29](https://github.com/gisto/gisto/commit/09a2a294415a2a17df466b96f9fe18ecdbc32036))
 
 - *(deps)* Bump @babel/runtime-corejs3 in the npm_and_yarn group ([#438](https://github.com/gisto/gisto/issues/438))
 by dependabot[bot]
-([bcfa2fb](https://github.com/gisto/gisto/commit/bcfa2fb92011043c270bacbf155a5972883ee300))
+([1ea4287](https://github.com/gisto/gisto/commit/1ea4287d69a30e744f1ce95b19c91a22aefe2e60))
 
 - *(deps)* Bump lucide-react from 0.474.0 to 0.479.0 ([#437](https://github.com/gisto/gisto/issues/437))
 by dependabot[bot]
-([7d883d0](https://github.com/gisto/gisto/commit/7d883d09c9aea164061b947a17fbc508c9a7615c))
+([ab1366f](https://github.com/gisto/gisto/commit/ab1366f8bbad287e1114a717b44c4cff35216504))
 
 - *(deps-dev)* Bump autoprefixer from 10.4.20 to 10.4.21 ([#433](https://github.com/gisto/gisto/issues/433))
 by dependabot[bot]
-([ca02ea1](https://github.com/gisto/gisto/commit/ca02ea114df1746e3339f2a4c020dae4f6ef005a))
+([7a677dc](https://github.com/gisto/gisto/commit/7a677dc7c2be06e29c746be81dee18b8f5424cf1))
 
 - *(deps-dev)* Bump globals from 15.15.0 to 16.0.0 ([#436](https://github.com/gisto/gisto/issues/436))
 by dependabot[bot]
-([6ad1058](https://github.com/gisto/gisto/commit/6ad105828fdce18f42ede49109cd165c87ce2844))
+([66eb637](https://github.com/gisto/gisto/commit/66eb63760370d7f4247f0493d60de5c26778b5a2))
 
 - *(deps)* Bump swagger-ui-react from 5.20.0 to 5.20.1 ([#435](https://github.com/gisto/gisto/issues/435))
 by dependabot[bot]
-([e040fd4](https://github.com/gisto/gisto/commit/e040fd445c6e6a7f6be591892128de4545c46ff6))
+([1a88c78](https://github.com/gisto/gisto/commit/1a88c78c764f440afaac2131671393369f3b49e6))
 
 - *(deps)* Bump lucide-react from 0.479.0 to 0.482.0 ([#444](https://github.com/gisto/gisto/issues/444))
 by dependabot[bot]
-([bd177a2](https://github.com/gisto/gisto/commit/bd177a2f65d948288e256f3244cd6a2ff886056c))
+([a894af1](https://github.com/gisto/gisto/commit/a894af17b02b57fe68a14abfa299fe3220343e07))
 
 - *(deps-dev)* Bump typescript-eslint from 8.26.0 to 8.26.1 ([#441](https://github.com/gisto/gisto/issues/441))
 by dependabot[bot]
-([eb49b77](https://github.com/gisto/gisto/commit/eb49b770d2e91bae84872820a630ec7d28f43f50))
+([051b816](https://github.com/gisto/gisto/commit/051b8163faa38d4d3b4b2c62d9cd903eb3b507cf))
 
 - *(deps)* Bump the npm_and_yarn group with 2 updates ([#439](https://github.com/gisto/gisto/issues/439))
 by dependabot[bot]
-([3c1beff](https://github.com/gisto/gisto/commit/3c1beff1aa37a54a252d86cff574e229d7cc7fcf))
+([d0e5b08](https://github.com/gisto/gisto/commit/d0e5b085eeb98686c3d0314e3c7ae4c34a7406d3))
 
 - *(deps)* Bump lucide-react from 0.482.0 to 0.483.0 ([#447](https://github.com/gisto/gisto/issues/447))
 by dependabot[bot]
-([faf4d2f](https://github.com/gisto/gisto/commit/faf4d2f47f08245380f1ea7996899c692956e3b1))
+([04a7f1f](https://github.com/gisto/gisto/commit/04a7f1fa1c97fe81d8e3a34af504ae3a6864e99a))
 
 - *(deps-dev)* Bump @types/leaflet from 1.9.16 to 1.9.17 ([#446](https://github.com/gisto/gisto/issues/446))
 by dependabot[bot]
-([941fbfd](https://github.com/gisto/gisto/commit/941fbfdef4589ba78e0a7b0ec94296426bb3f921))
+([5ffff6a](https://github.com/gisto/gisto/commit/5ffff6ae68ed968593b955fd424397eae35fabf6))
 
 - *(deps-dev)* Bump @types/node from 22.13.10 to 22.13.13 ([#448](https://github.com/gisto/gisto/issues/448))
 by dependabot[bot]
-([e4d579b](https://github.com/gisto/gisto/commit/e4d579bf4ef97d1648f1e93bac78095232436b13))
+([1122478](https://github.com/gisto/gisto/commit/1122478a9d7ff902b51292601343cad8483e1a6c))
 
 - *(deps-dev)* Bump vite from 6.2.1 to 6.2.3 in the npm_and_yarn group ([#450](https://github.com/gisto/gisto/issues/450))
 by dependabot[bot]
-([2722283](https://github.com/gisto/gisto/commit/272228326aca75f841f4118e7928acd3f034afc1))
+([ba4467e](https://github.com/gisto/gisto/commit/ba4467e107c7dfdee9815be74946557f1354a62a))
 
 - *(deps)* Bump @tauri-apps/plugin-updater from 2.5.1 to 2.6.1 ([#443](https://github.com/gisto/gisto/issues/443))
 by dependabot[bot]
-([c78fc63](https://github.com/gisto/gisto/commit/c78fc63cb6487b292ffcd31e36417a6ae407f623))
+([9589dad](https://github.com/gisto/gisto/commit/9589dad3c43ff3ada7cd2664ec9b78c36b063854))
 
 - *(deps)* Bump zip ([#445](https://github.com/gisto/gisto/issues/445))
 by dependabot[bot]
-([0aa024c](https://github.com/gisto/gisto/commit/0aa024c75f032a4d8ff2874a8f3b8766d9b733ee))
+([5a77c09](https://github.com/gisto/gisto/commit/5a77c098e4c1e65cd9a0daa7728cb30dbb13dba8))
 
 - *(deps-dev)* Bump tailwindcss from 3.4.17 to 4.0.15
-by sasha
-([433f6db](https://github.com/gisto/gisto/commit/433f6db1a3cd02292b52e4ac05e9140619d342d5))
+by Sasha Khamkov
+([207872c](https://github.com/gisto/gisto/commit/207872c96b628d3034ee85817e3c6c65dd037d0b))
 
 
 ### 📚 Documentation
 
 - Fix about page
-by sasha
-([47be5e4](https://github.com/gisto/gisto/commit/47be5e42335845a1b4057057716a44f31ef5ac94))
+by Sasha Khamkov
+([0e5d7f5](https://github.com/gisto/gisto/commit/0e5d7f5a6d30f50f4015a0bf2660e9dd2ffd3358))
 
 
 ### ⚙️ Miscellaneous Tasks
 
 - Release fix ubuntu platform name
-by sasha
-([690653a](https://github.com/gisto/gisto/commit/690653a5e3c833fb72369e3cfe99f5656dd5c338))
+by Sasha Khamkov
+([61358eb](https://github.com/gisto/gisto/commit/61358eb82b47f586e0b579f89643ca3e5befe1ec))
 
 - Update dependencies
-by sasha
-([1eca63d](https://github.com/gisto/gisto/commit/1eca63d574f57dc46e12e9c68804a874b04de72c))
+by Sasha Khamkov
+([9c89ca9](https://github.com/gisto/gisto/commit/9c89ca9475e14b45b4607e5f6281e56d7d7d1c43))
 
 
-## [2.0.7] - 2025-03-08
+## [2.0.7]
+
+Released on: 2025-03-08
 
 ### 🚀 Features
 
 - *(app window)* Remember app window size and position
-by sasha
-([d25175a](https://github.com/gisto/gisto/commit/d25175af8b80b1ce207971ab256da1bcf7fa111e))
+by Sasha Khamkov
+([570ff76](https://github.com/gisto/gisto/commit/570ff7630afc166ea9c5d974662cf0c4039c5517))
 
 
 ### 💼 Other
 
 - *(deps)* Bump @radix-ui/react-switch from 1.1.2 to 1.1.3 ([#420](https://github.com/gisto/gisto/issues/420))
 by dependabot[bot]
-([deec653](https://github.com/gisto/gisto/commit/deec653ba2126f0669d36076b52ac4410b15d447))
+([1232a83](https://github.com/gisto/gisto/commit/1232a83c350500de5e6f81a7e850df4d9e7ed487))
 
 - *(deps)* Bump @radix-ui/react-label from 2.1.1 to 2.1.2 ([#421](https://github.com/gisto/gisto/issues/421))
 by dependabot[bot]
-([a55c2b4](https://github.com/gisto/gisto/commit/a55c2b4f54a6c85618d850927a352ea5c057cd23))
+([9502a8f](https://github.com/gisto/gisto/commit/9502a8f36fa717e0e3c994b697c62d7629243ab6))
 
 - *(deps-dev)* Bump postcss from 8.5.1 to 8.5.3 ([#422](https://github.com/gisto/gisto/issues/422))
 by dependabot[bot]
-([4dc48fb](https://github.com/gisto/gisto/commit/4dc48fba09d784c3983a61c03fb84ce01470d79f))
+([23c43c2](https://github.com/gisto/gisto/commit/23c43c2ace0a261820cbbbc9e3a2a50faa2c410e))
 
 - *(deps)* Bump motion from 12.0.6 to 12.4.7 ([#423](https://github.com/gisto/gisto/issues/423))
 by dependabot[bot]
-([ebebb53](https://github.com/gisto/gisto/commit/ebebb53e4b1a0cafc6ef336acd821b330aa96a38))
+([3e475c4](https://github.com/gisto/gisto/commit/3e475c4bdff1f63b704d6ec2b7875d978e76fbc0))
 
 - *(deps)* Bump @radix-ui/react-slot from 1.1.1 to 1.1.2 ([#424](https://github.com/gisto/gisto/issues/424))
 by dependabot[bot]
-([ec408c6](https://github.com/gisto/gisto/commit/ec408c65a68d31a3420a44ca1c28013bf556c464))
+([4f8d114](https://github.com/gisto/gisto/commit/4f8d11497a5dd58f35620cb42bb74dcf44ad0592))
 
 - *(deps)* Bump @radix-ui/react-slider from 1.2.2 to 1.2.3 ([#426](https://github.com/gisto/gisto/issues/426))
 by dependabot[bot]
-([3e9e44f](https://github.com/gisto/gisto/commit/3e9e44ffe3409cf445ff733bb595b449cff31296))
+([3fa6ef5](https://github.com/gisto/gisto/commit/3fa6ef558ee194e1b68b85b2d9e96e20819244c5))
 
 - *(deps)* Bump @radix-ui/react-scroll-area from 1.2.2 to 1.2.3 ([#429](https://github.com/gisto/gisto/issues/429))
 by dependabot[bot]
-([c321931](https://github.com/gisto/gisto/commit/c321931bcacf24e46ce4270dea46258a5375fe9c))
+([603cd74](https://github.com/gisto/gisto/commit/603cd746cc718f69c8774323ca2bf5c7ac75144d))
 
 - *(deps-dev)* Bump prettier from 3.4.2 to 3.5.3 ([#430](https://github.com/gisto/gisto/issues/430))
 by dependabot[bot]
-([50fd17f](https://github.com/gisto/gisto/commit/50fd17f7d91bcbbf186dbd7a6d0abe6ac797e04d))
+([8bc451d](https://github.com/gisto/gisto/commit/8bc451deddb6c82c25007b423c9274c470cda32f))
 
 
 ### ⚙️ Miscellaneous Tasks
 
 - Create dependabot.yml
 by Sasha Khamkov
-([f703058](https://github.com/gisto/gisto/commit/f70305854081124741d137c906f7359cb5c4b86b))
+([8b92da6](https://github.com/gisto/gisto/commit/8b92da66b64ad51f60fc5ff3d70419650d5e0724))
 
 
-## [2.0.6] - 2025-02-15
+## [2.0.6]
+
+Released on: 2025-02-15
 
 ### 🚀 Features
 
 - *(search)* Allow to search for - is:starred, is:unstarred, is:untagged, is:private and is:public
-by sasha
-([bcf8627](https://github.com/gisto/gisto/commit/bcf86277d6e45e87eb9795a0cd0eeb8492e597cc))
+by Sasha Khamkov
+([8d4e215](https://github.com/gisto/gisto/commit/8d4e21569ffc42af046603a4d1ddbcb73ba4221f))
 
 
 ### 🐛 Bug Fixes
 
 - *(updater)* Fix wait for confirmation
-by sasha
-([6b6add1](https://github.com/gisto/gisto/commit/6b6add1a0eb524d51d81eb2dda62bf752e8ce569))
+by Sasha Khamkov
+([ea825e1](https://github.com/gisto/gisto/commit/ea825e185c572478803ca160ebc26bc3fc5ed99a))
 
 
-## [2.0.5] - 2025-02-12
+## [2.0.5]
+
+Released on: 2025-02-12
 
 ### 🐛 Bug Fixes
 
 - *(create or edit)* Fix language select values
-by sasha
-([473e531](https://github.com/gisto/gisto/commit/473e5311ec3f145c2f43f884a1ef61801e3a5058))
+by Sasha Khamkov
+([ee0838f](https://github.com/gisto/gisto/commit/ee0838fdaddd419141f8cc6c9f288c94c8cb2639))
 
 
-## [2.0.4] - 2025-02-11
+## [2.0.4]
+
+Released on: 2025-02-11
 
 ### 🐛 Bug Fixes
 
 - *(create or edit)* Add search in file language
-by sasha
-([09afda4](https://github.com/gisto/gisto/commit/09afda422fc708edc3a2ceda8f1bab78bc519a8c))
+by Sasha Khamkov
+([99e69cf](https://github.com/gisto/gisto/commit/99e69cf43e652314dab661508d7a4d1528840e93))
 
 
 ### 🚜 Refactor
 
 - *(main, updater, settings)* Refactore main, updater and settings, extract components
-by sasha
-([12b7c04](https://github.com/gisto/gisto/commit/12b7c04c637824da577853c380717b37a399e854))
+by Sasha Khamkov
+([08031a4](https://github.com/gisto/gisto/commit/08031a472b0362376db61987a9c374114ac116b8))
 
 - *(settings)* Settings selects
-by sasha
-([9ab49d5](https://github.com/gisto/gisto/commit/9ab49d54502d0b3ba2fa346ae706d72661d22561))
+by Sasha Khamkov
+([de67fe6](https://github.com/gisto/gisto/commit/de67fe6be5ad9909a289fe58642f601c8997bca1))
 
 
 ### ⚙️ Miscellaneous Tasks
 
 - Fix readme TOC
 by Sasha Khamkov
-([88eaad5](https://github.com/gisto/gisto/commit/88eaad565e5b390ce2724fa2ca3c1526bc4e9a37))
+([2b41cd2](https://github.com/gisto/gisto/commit/2b41cd2b523c62c0bfeaf44e42b5da7e621b890c))
 
 
-## [2.0.3] - 2025-02-01
+## [2.0.3]
+
+Released on: 2025-02-01
 
 ### 🚀 Features
 
 - *(edit or create)* Add upload
-by sasha
-([c56a657](https://github.com/gisto/gisto/commit/c56a6572465220d03099976cee136ac0bd46a59f))
+by Sasha Khamkov
+([6b390f9](https://github.com/gisto/gisto/commit/6b390f9a3f41cb4837a39cfcb4a51ed107b4c26d))
 
 - *(updater)* Check for new version and notify
-by sasha
-([934c6b6](https://github.com/gisto/gisto/commit/934c6b6718459c865695540e036e9a3d31f46ab2))
+by Sasha Khamkov
+([ffee51f](https://github.com/gisto/gisto/commit/ffee51f66205b9d2dd8c6f16c5c34e495d932137))
 
 
 ### 🐛 Bug Fixes
 
 - *(dashboard)* Change bars
-by sasha
-([67548cd](https://github.com/gisto/gisto/commit/67548cd7a557e3d86ebf7894c27a574484c6bd0e))
+by Sasha Khamkov
+([b6f631b](https://github.com/gisto/gisto/commit/b6f631b3e6c8e4c75e26a8ec8ebf805ae6b17a28))
 
 
 ### 🚜 Refactor
 
 - *(utils)* Refactor and extract utils
-by sasha
-([5580a41](https://github.com/gisto/gisto/commit/5580a4114f05429531b44b62db30eb19bac49643))
+by Sasha Khamkov
+([2597474](https://github.com/gisto/gisto/commit/2597474ca77d58877cc1baf1b80510b0ed2204e7))
 
 - *(create or update snippet)* Brake down components
-by sasha
-([126073a](https://github.com/gisto/gisto/commit/126073a4d1be85eac86391f36e358bf3cf06a9b3))
+by Sasha Khamkov
+([fe0e669](https://github.com/gisto/gisto/commit/fe0e6693f756137acedc3ab56677fc2123f6ab2f))
 
 - *(search and dashboard)* Refactor search to global and extract dashboard components
-by sasha
-([1374932](https://github.com/gisto/gisto/commit/137493274e3b9039a6d00ec9ff41cb2eeb2921ee))
+by Sasha Khamkov
+([269610a](https://github.com/gisto/gisto/commit/269610a2210db80eb9dd2c409fa603177ff31848))
 
 - Languages and tags lists
-by sasha
-([6f90c36](https://github.com/gisto/gisto/commit/6f90c369a79bb97d030e59d23809c87edc325a09))
+by Sasha Khamkov
+([833c676](https://github.com/gisto/gisto/commit/833c67659dcbbb0fb924630c7771345222a9fe8e))
 
 
 ### ⚙️ Miscellaneous Tasks
 
 - Add pre-commit guard hook
-by sasha
-([0c3054a](https://github.com/gisto/gisto/commit/0c3054a1b62e2c02ffd6a32a54237371798d73a0))
+by Sasha Khamkov
+([29b95ef](https://github.com/gisto/gisto/commit/29b95efaf4f9e9e2f6779ddef39a8dbac044504d))
 
 - *(lint)* Add commit message lint
-by sasha
-([a6d75b8](https://github.com/gisto/gisto/commit/a6d75b8457e777d4ec8b2a2e3b848a00bd650519))
+by Sasha Khamkov
+([60e8173](https://github.com/gisto/gisto/commit/60e81732014c6db2cd7199b57fca7e9ad2a554d3))
 
 
-## [2.0.1] - 2025-01-31
+## [2.0.1]
+
+Released on: 2025-01-31
 
 ### 🚀 Features
 
 - Open api preview ([#414](https://github.com/gisto/gisto/issues/414))
 by Sasha Khamkov
-([b8e2f9c](https://github.com/gisto/gisto/commit/b8e2f9cd4b2846c4522506bad42e5b66e10e841a))
+([862bbaf](https://github.com/gisto/gisto/commit/862bbaf75becb72f333149622cf875b81baf3905))
 
 
 ### 💼 Other
 
 - Add secrets
-by sasha
-([698b9cc](https://github.com/gisto/gisto/commit/698b9ccc78ffcb40fb8da951708d8e75fe109746))
+by Sasha Khamkov
+([14ee053](https://github.com/gisto/gisto/commit/14ee053c7a7ada187a67d2a5c88f82b3199ccf7b))
 
 - Add secrets
-by sasha
-([6fd03b6](https://github.com/gisto/gisto/commit/6fd03b6d36dd0992a72d2b87c9d9cf7c595bf987))
+by Sasha Khamkov
+([6e56235](https://github.com/gisto/gisto/commit/6e56235ee2bdf8ac4664c3268bb2608fd90afa97))
 
 
 ### 📚 Documentation
 
 - Readme table of contents
-by sasha
-([5b65914](https://github.com/gisto/gisto/commit/5b65914b5c7e2f4bfdce81be4e6c2e08fbc424c3))
+by Sasha Khamkov
+([e177a0f](https://github.com/gisto/gisto/commit/e177a0f50f91a534defa96d05efa82db5a266dab))
 
 - Fix readme table of contents
-by sasha
-([e55ad37](https://github.com/gisto/gisto/commit/e55ad37d4a3d380acb6a670da190f1aa6d4fab4c))
+by Sasha Khamkov
+([9c1378f](https://github.com/gisto/gisto/commit/9c1378f1147d4bca77c8b9a73a5fd434229407db))
 
 
-## [2.0.0] - 2025-01-30
+## [2.0.0]
+
+Released on: 2025-01-30
 
 ### 🚀 Features
 
 - *(csv preview)* Add csv/tsv preview
-by sasha
-([9bc7d07](https://github.com/gisto/gisto/commit/9bc7d07da3db34ef4d110deac71acec3cb4431fa))
+by Sasha Khamkov
+([b6b4d26](https://github.com/gisto/gisto/commit/b6b4d26f9e5bff65ef5b2120cec5f7e9e617fd9b))
 
 
 ### ⚙️ Miscellaneous Tasks
 
 - Update README.md
 by Sasha Khamkov
-([a9fb060](https://github.com/gisto/gisto/commit/a9fb06069d8d77a5e29b18c8e355769a976c248b))
+([6c7588a](https://github.com/gisto/gisto/commit/6c7588adb401833796debafd520f2643b3542645))
 
 - Add version script
-by sasha
-([55d0f05](https://github.com/gisto/gisto/commit/55d0f0511600e93924479507d749c3f506777e10))
+by Sasha Khamkov
+([ee4b244](https://github.com/gisto/gisto/commit/ee4b244867b512f4a8ac6af689690c07faae1036))
 
 
-## [2.0.0-1] - 2025-01-30
+## [2.0.0-1]
+
+Released on: 2025-01-30
 
 ### ⚙️ Miscellaneous Tasks
 
 - Create a release
-by sasha
-([0277719](https://github.com/gisto/gisto/commit/0277719eb7544a6c29892db2d14495b5864d9e5f))
+by Sasha Khamkov
+([9fbb3b2](https://github.com/gisto/gisto/commit/9fbb3b2b01c186b0bc38675dba427e3e8a641847))
 
 - Create a release changelog
-by sasha
-([ac51818](https://github.com/gisto/gisto/commit/ac518187f4d44e7a665daf7ce387271bf4ab5654))
+by Sasha Khamkov
+([858ff6c](https://github.com/gisto/gisto/commit/858ff6cc01af00519cab9c699b52a46b5666c991))
 
 
-## [2.0.0-beta+2] - 2025-01-30
+## [2.0.0-beta+2]
+
+Released on: 2025-01-30
 
 ### 🐛 Bug Fixes
 
 - Redirect for netlify
-by sasha
-([ee98ea4](https://github.com/gisto/gisto/commit/ee98ea4016cc128b9e14c938ca13e44d1621cba3))
+by Sasha Khamkov
+([b6e784d](https://github.com/gisto/gisto/commit/b6e784d320989381211d0b27e687ad1882bc08c3))
 
 
 ### 📚 Documentation
 
 - Update README.md
 by Sasha Khamkov
-([a2cae9a](https://github.com/gisto/gisto/commit/a2cae9abcca57a5a6300484431c707936aff8183))
+([0373868](https://github.com/gisto/gisto/commit/037386888fa4aef10f3be7e4e0fac7de97f2eed9))
 
 
 ### ⚙️ Miscellaneous Tasks
 
 - Bump version
-by sasha
-([f8c45e6](https://github.com/gisto/gisto/commit/f8c45e6f48a1a157c7d6ccabe46ca64e42ef6673))
+by Sasha Khamkov
+([bccb952](https://github.com/gisto/gisto/commit/bccb952eeed18da9eb96dfa8efcf37b7be53ae91))
 
 
-## [2.0.0-beta+1] - 2025-01-29
+## [2.0.0-beta+1]
+
+Released on: 2025-01-29
 
 ### 🚀 Features
 
 - Hidden field for authentication token and adds formatOnPaste editor setting
-by sasha
-([86211d8](https://github.com/gisto/gisto/commit/86211d843d2848ade19933615504f08c9a8c0264))
+by Sasha Khamkov
+([f8599e0](https://github.com/gisto/gisto/commit/f8599e07f3cb8c79836a5f8daf34d82ef15182f0))
 
 - *(snippet visibility)* Allow to toggle snippet visibility
-by sasha
-([c189277](https://github.com/gisto/gisto/commit/c1892777036fc2a6d8ecde683e1e06e7da058d80))
+by Sasha Khamkov
+([134ab7f](https://github.com/gisto/gisto/commit/134ab7f8686090d7edc136bd6bb22c620f854ca9))
 
 
 ### 🐛 Bug Fixes
 
 - *(new snippet and edit)* Fix filenames for updates
-by sasha
-([f8f56b8](https://github.com/gisto/gisto/commit/f8f56b8e8363d5bb27373f1bbe1e8f94fdd1978f))
+by Sasha Khamkov
+([41ccb84](https://github.com/gisto/gisto/commit/41ccb842d5ca66bf5fd4087e53a4d1c275a9beb8))
 
 
 ### 📚 Documentation
 
 - Update README.md
 by Sasha Khamkov
-([3f21350](https://github.com/gisto/gisto/commit/3f21350db5aa617cc124664c2995d3adc2672d35))
+([f1bd5eb](https://github.com/gisto/gisto/commit/f1bd5ebf854c1baa634a68ddd55ccf725d84345e))
 
 - Update readme
-by sasha
-([b981693](https://github.com/gisto/gisto/commit/b981693cf6b4c962c7f66ce587c1c2a5223892c5))
+by Sasha Khamkov
+([54c8247](https://github.com/gisto/gisto/commit/54c8247d7063f94cdb766636c8b457d7718058fd))
 
 - Update README.md
 by Sasha Khamkov
-([ea1e5c0](https://github.com/gisto/gisto/commit/ea1e5c0f15b9caecc4418b0d6d7d40f94630359b))
+([569c0fe](https://github.com/gisto/gisto/commit/569c0fedb646dac7e9971657945b90617a992f88))
 
 
 ### ⚙️ Miscellaneous Tasks
 
 - Update README.md
 by Sasha Khamkov
-([ea54d22](https://github.com/gisto/gisto/commit/ea54d22daede6cee3a38da36460f7d69802159b2))
+([2423507](https://github.com/gisto/gisto/commit/2423507bb193c2bb6a6e2c5db284916487612711))
 
 - Update readme and app icons
-by sasha
-([8067a14](https://github.com/gisto/gisto/commit/8067a14bdcf7ad409b17e17afb6fdf5bef9da740))
+by Sasha Khamkov
+([e04dc78](https://github.com/gisto/gisto/commit/e04dc78d966fdf8da4c4b935607d8d83478dc9d5))
 
 
-## [2.0.0-alpha+9] - 2025-01-27
+## [2.0.0-alpha+9]
+
+Released on: 2025-01-27
 
 ### 🐛 Bug Fixes
 
 - *(dark theme)* Dark theme bg colors
-by sasha
-([f7d07e0](https://github.com/gisto/gisto/commit/f7d07e0fcbf4ce239324e7f2d9d8089253a9cf2e))
+by Sasha Khamkov
+([9ae125e](https://github.com/gisto/gisto/commit/9ae125e9eb5f77d0721ec3a9d97e69666690ad03))
 
 - *(dashboard)* Numbers sizing
-by sasha
-([72f3931](https://github.com/gisto/gisto/commit/72f39312f8676889570111a6816b57f44c814b1a))
+by Sasha Khamkov
+([e169348](https://github.com/gisto/gisto/commit/e169348dfe4c86903ec1111635ecaf026a43a116))
 
 - *(new snippet)* Fix filename
-by sasha
-([3513325](https://github.com/gisto/gisto/commit/35133256e3ce68db9fe4e217c12dc6d54e6c5cf0))
+by Sasha Khamkov
+([484781d](https://github.com/gisto/gisto/commit/484781df4ee22e12c07e36625ffcb9a7e4331b14))
 
 
 ### 💼 Other
 
 - Move and rename layout files, fix lint ignore
-by sasha
-([43e8dc1](https://github.com/gisto/gisto/commit/43e8dc1a80f66fc010f4b94235f73858addebefb))
+by Sasha Khamkov
+([cb82a4f](https://github.com/gisto/gisto/commit/cb82a4faf9528d2f5ebc8be657727f3604211dc0))
 
 
 ### 🚜 Refactor
 
 - *(new snippet)* Fix defaults and add language type selector
-by sasha
-([583d193](https://github.com/gisto/gisto/commit/583d193d744e5c24a38209b69d326a77d826c760))
+by Sasha Khamkov
+([8cf9dfc](https://github.com/gisto/gisto/commit/8cf9dfcbbba1173cafef0a5965cc1e03acf60b5e))
 
 - *(scroll areas)* Change scroll areas
-by sasha
-([dc3137e](https://github.com/gisto/gisto/commit/dc3137eece4fe21c5353c85845a7237aa7bef661))
+by Sasha Khamkov
+([c8badc0](https://github.com/gisto/gisto/commit/c8badc09ec3ca9786a5b944c2370e0837b46d53d))
 
 - *(toast, sippets list)* Refactor toast and snippets list components
-by sasha
-([09e60d4](https://github.com/gisto/gisto/commit/09e60d4370858e6c712cc6fa23c0288e0abf4e69))
+by Sasha Khamkov
+([cc6cb82](https://github.com/gisto/gisto/commit/cc6cb82255a2b8e9fb75eddd2108d717addc6500))
 
 
 ### 📚 Documentation
 
 - *(readme)* Update readme
-by sasha
-([d765338](https://github.com/gisto/gisto/commit/d7653380b1d6271769b960288aaa2851a859e418))
+by Sasha Khamkov
+([0676f3e](https://github.com/gisto/gisto/commit/0676f3eb510a3809f3d25a67ce05c9ede06afc3c))
 
 
 ### ⚙️ Miscellaneous Tasks
 
 - Add commitizen and conventional-changelog-cli
-by sasha
-([bbf6d9b](https://github.com/gisto/gisto/commit/bbf6d9bc582822bc325133984b11b5add001d798))
+by Sasha Khamkov
+([01e340b](https://github.com/gisto/gisto/commit/01e340b2d08375d115cd44c32da290da7157bf70))
 
 - *(cleanup)* Remove unused files
-by sasha
-([f83398f](https://github.com/gisto/gisto/commit/f83398f1bfb0ff24a85e5d53e4bbb84305a70d32))
+by Sasha Khamkov
+([9d3ce88](https://github.com/gisto/gisto/commit/9d3ce880092c8124864c8d598b7487c7624e235f))
 
 - Bump version
-by sasha
-([a7cf034](https://github.com/gisto/gisto/commit/a7cf034f73ff94359d0018ce82f6856b518d3f56))
+by Sasha Khamkov
+([bd30a0c](https://github.com/gisto/gisto/commit/bd30a0cbf9c0fd09e24fc401cf7c720e29c117d7))
 
 - Update changlog
-by sasha
-([ec66e10](https://github.com/gisto/gisto/commit/ec66e102afc475d0794c8f7ae4c2b271d1274df8))
+by Sasha Khamkov
+([aa4dd85](https://github.com/gisto/gisto/commit/aa4dd8540f26dfb7502ec865a65162232d8636e9))
 
 
 <!-- generated by git-cliff -->
