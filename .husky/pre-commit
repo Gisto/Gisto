@@ -1,0 +1,2 @@
+pnpm lint
+pnpm ts:lint
