@@ -31,11 +31,11 @@
     "@radix-ui/react-switch": "^1.1.3",
     "@radix-ui/react-tabs": "^1.1.3",
     "@radix-ui/react-tooltip": "^1.1.8",
-    "@tauri-apps/plugin-dialog": "~2.2.0",
+    "@tauri-apps/plugin-dialog": "~2.2.1",
     "@tauri-apps/plugin-opener": "~2.2.6",
-    "@tauri-apps/plugin-process": "~2.2.0",
+    "@tauri-apps/plugin-process": "~2.2.1",
     "@tauri-apps/plugin-updater": "~2.6.1",
-    "@tauri-apps/plugin-window-state": "~2.2.1",
+    "@tauri-apps/plugin-window-state": "~2.2.2",
     "class-variance-authority": "^0.7.1",
     "dirty-react-router": "^0.1.0",
     "gisto": "link:",
@@ -43,34 +43,34 @@
     "leaflet": "^1.9.4",
     "lucide-react": "^0.483.0",
     "markdown-it": "^14.1.0",
-    "motion": "^12.4.10",
+    "motion": "^12.6.3",
     "papaparse": "^5.5.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-dropdown-select": "^4.11.4",
     "react-leaflet": "^5.0.0",
-    "recharts": "^2.15.1",
-    "swagger-ui-react": "^5.20.1",
+    "recharts": "^2.15.2",
+    "swagger-ui-react": "^5.20.6",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
-    "@eslint/js": "^9.22.0",
-    "@tailwindcss/postcss": "^4.0.17",
-    "@tauri-apps/cli": "^2.3.1",
+    "@eslint/js": "^9.24.0",
+    "@tailwindcss/postcss": "^4.1.3",
+    "@tauri-apps/cli": "^2.4.1",
     "@types/leaflet": "^1.9.17",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^22.13.13",
+    "@types/node": "^22.14.0",
     "@types/papaparse": "^5.3.15",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
     "@types/swagger-ui-react": "^5.18.0",
     "@vitejs/plugin-react": "^4.3.4",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^9.22.0",
+    "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react-hooks": "^5.2.0",
@@ -79,9 +79,9 @@
     "husky": "^9.1.7",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
-    "tailwindcss": "^4.0.17",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.1",
+    "tailwindcss": "^4.1.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.29.0",
     "vite": "^6.2.5"
   },
   "lint-staged": {
@@ -95,6 +95,11 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "pnpm": {
+    "overrides": {
+      "prismjs@<1.30.0": ">=1.30.0"
     }
   }
 }
