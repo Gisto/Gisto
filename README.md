@@ -1,5 +1,10 @@
 # Gisto MK II
 
+![GitHub License](https://img.shields.io/github/license/gisto/gisto)
+![GitHub Release](https://img.shields.io/github/v/release/gisto/gisto)
+
+
+
 > Snippets made awesome
 
 Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor.
