@@ -41,7 +41,7 @@
     "gisto": "link:",
     "katex": "^0.16.21",
     "leaflet": "^1.9.4",
-    "lucide-react": "^0.483.0",
+    "lucide-react": "^0.487.0",
     "markdown-it": "^14.1.0",
     "motion": "^12.6.3",
     "papaparse": "^5.5.2",
