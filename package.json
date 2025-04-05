@@ -13,8 +13,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "commit": "cz",
-    "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -s",
-    "version": "npx conventional-changelog-cli -i CHANGELOG.md -s && git add CHANGELOG.md"
+    "changelog": "npx git-cliff@latest --output CHANGELOG.md",
+    "version": "npx git-cliff@latest --output CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
