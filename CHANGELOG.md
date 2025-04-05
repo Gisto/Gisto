@@ -1,4 +1,10 @@
-## 2.1.0 (2025-03-29)
+## <small>2.1.1 (2025-04-05)</small>
+
+* fix(tags): new tag creation ([8ddb866](https://github.com/Gisto/Gisto/commit/8ddb866))
+* build(deps-dev): bump vite from 6.2.3 to 6.2.5 in the npm_and_yarn group (#456) ([ecffe7d](https://github.com/Gisto/Gisto/commit/ecffe7d)), closes [#456](https://github.com/Gisto/Gisto/issues/456)
+* build(packages): update packages to latest versions ([1a450df](https://github.com/Gisto/Gisto/commit/1a450df))
+
+## <small> 2.1.0 (2025-03-29)</small>
 
 * build(deps-dev): bump @types/leaflet from 1.9.16 to 1.9.17 (#446) ([941fbfd](https://github.com/Gisto/Gisto/commit/941fbfd)), closes [#446](https://github.com/Gisto/Gisto/issues/446)
 * build(deps-dev): bump @types/node from 22.13.10 to 22.13.13 (#448) ([e4d579b](https://github.com/Gisto/Gisto/commit/e4d579b)), closes [#448](https://github.com/Gisto/Gisto/issues/448)
