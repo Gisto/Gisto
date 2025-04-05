@@ -1,0 +1,42 @@
+name: Generate and Amend Changelog
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  generate-changelog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Needed for history and amending
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install git-cliff
+        uses: taiki-e/install-action@v2
+        with:
+          tool: git-cliff
+
+      - name: Generate CHANGELOG.md
+        run: git-cliff -o CHANGELOG.md
+
+      - name: Amend last commit and force push
+        run: |
+          if ! git diff --quiet CHANGELOG.md; then
+            git add CHANGELOG.md
+            git commit --amend --no-edit
+            git push --force
+          else
+            echo "No changes to CHANGELOG.md"
+          fi
