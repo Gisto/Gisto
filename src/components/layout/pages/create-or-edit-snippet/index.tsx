@@ -59,7 +59,7 @@ export const CreateOrEditSnippet = ({
     const { setSearch, isSelected } = methods;
 
     return (
-      <div>
+      <div className="bg-background">
         <div className="m-2">
           <Input
             type="search"
