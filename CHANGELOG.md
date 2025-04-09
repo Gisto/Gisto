@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🐛 Bug Fixes
+
+- *(theme)* Fix light theme leaking into dark
+by Sasha Khamkov
+([a4a09a9](https://github.com/gisto/gisto/commit/a4a09a99fd0a649545463a9a429b1c1862d3d07b))
+
+
 ### 💼 Other
 
 - *(deps)* Bump lucide-react from 0.483.0 to 0.487.0 ([#457](https://github.com/gisto/gisto/issues/457))
@@ -46,7 +53,7 @@ by Sasha Khamkov
 
 - *(change-log)* Format release header
 by Sasha Khamkov
-([94404f2](https://github.com/gisto/gisto/commit/94404f287f68f04f2dee82bd29b3e951258342f2))
+([0e6dc81](https://github.com/gisto/gisto/commit/0e6dc8151303ba1c0e0aa59f5f6c2eb7ca0d5945))
 
 
 ## [2.1.1]
