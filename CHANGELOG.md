@@ -6,9 +6,9 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes
 
-- *(theme)* Fix light theme leaking into dark
+- *(theme)* Fix light theme leaking into dark ([#464](https://github.com/gisto/gisto/issues/464))
 by Sasha Khamkov
-([a4a09a9](https://github.com/gisto/gisto/commit/a4a09a99fd0a649545463a9a429b1c1862d3d07b))
+([fa42cab](https://github.com/gisto/gisto/commit/fa42cab19e4987cd498f4a692ee5de09575463eb))
 
 
 ### 💼 Other
