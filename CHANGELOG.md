@@ -2,7 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [2.1.3]
+
+Released on: 2025-04-10
+
+### 🐛 Bug Fixes
+
+- *(create or edit)* Change fields labels to better reflect their purpose
+by Sasha Khamkov
+([9073981](https://github.com/gisto/gisto/commit/907398160707400847f247e2ce93b23b7771449b))
+
+
+## [2.1.2]
+
+Released on: 2025-04-09
 
 ### 🐛 Bug Fixes
 
