@@ -362,13 +362,13 @@ export const CreateOrEditSnippet = ({
                             htmlFor="file"
                             className="w-1/2 text-sm font-medium text-primary flex gap-2"
                           >
-                            File name <ZodError errors={errors} path={`files.${index}.filename`} />
+                            File <ZodError errors={errors} path={`files.${index}.filename`} />
                           </label>
                           <label
                             htmlFor="file-language"
                             className="w-1/2 text-sm font-medium text-primary flex gap-2"
                           >
-                            File language (optional)
+                            File syntax (optional)
                           </label>
                         </div>
                         <div className="flex items-center gap-6">
