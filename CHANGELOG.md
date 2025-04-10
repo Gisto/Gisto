@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.4]
+
+Released on: 2025-04-10
+
+### 🐛 Bug Fixes
+
+- *(updater)* Better updater flow
+by Sasha Khamkov
+([8522021](https://github.com/gisto/gisto/commit/8522021c6410d2135a389426bf710fe7e91500bc))
+
+
 ## [2.1.3]
 
 Released on: 2025-04-10
