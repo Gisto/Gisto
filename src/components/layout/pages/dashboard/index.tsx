@@ -5,6 +5,7 @@ import { SnippetsOverTimeChart } from '@/components/layout/pages/dashboard/snipp
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Loading } from '@/components/loading.tsx';
+import { Updater } from '@/components/updater.tsx';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 
 export const DashBoard = () => {
@@ -16,9 +17,10 @@ export const DashBoard = () => {
   return (
     <div className="h-screen w-full border-r border-collapse">
       <PageHeader>
-        <div className="flex items-center justify-between w-full">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center w-full">
+          <div className="flex items-center justify-between w-full">
             <div className="line-clamp-1">Dashboard</div>
+            <Updater />
           </div>
         </div>
       </PageHeader>
