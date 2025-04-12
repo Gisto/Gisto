@@ -237,24 +237,6 @@ by Sasha Khamkov
 ([207872c](https://github.com/gisto/gisto/commit/207872c96b628d3034ee85817e3c6c65dd037d0b))
 
 
-### 📚 Documentation
-
-- Fix about page
-by Sasha Khamkov
-([0e5d7f5](https://github.com/gisto/gisto/commit/0e5d7f5a6d30f50f4015a0bf2660e9dd2ffd3358))
-
-
-### ⚙️ Miscellaneous Tasks
-
-- Release fix ubuntu platform name
-by Sasha Khamkov
-([61358eb](https://github.com/gisto/gisto/commit/61358eb82b47f586e0b579f89643ca3e5befe1ec))
-
-- Update dependencies
-by Sasha Khamkov
-([9c89ca9](https://github.com/gisto/gisto/commit/9c89ca9475e14b45b4607e5f6281e56d7d7d1c43))
-
-
 ## [2.0.7]
 
 Released on: 2025-03-08
