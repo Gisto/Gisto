@@ -5,7 +5,6 @@ import { MainLayout } from '@/components/layout';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
 import ToastManager from '@/components/toast/toast-manager.tsx';
 import { TooltipProvider } from '@/components/ui/tooltip.tsx';
-import { Updater } from '@/components/updater.tsx';
 
 const DashBoardPage = lazy(() =>
   import('@/components/layout/pages/dashboard').then((module) => ({
@@ -75,7 +74,6 @@ export const Gisto = () => {
         <TooltipProvider>
           <MainLayout />
           <ToastManager />
-          <Updater />
         </TooltipProvider>
       </RouterProvider>
     </ThemeProvider>

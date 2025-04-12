@@ -4,6 +4,46 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🧪 Testing
+
+- *(infra)* Add test infra and basic tests
+by Sasha Khamkov
+([320e44b](https://github.com/gisto/gisto/commit/320e44ba3f2a769e0fe4b27a61076f6babf478ea))
+
+
+## [2.1.4]
+
+Released on: 2025-04-10
+
+### 🐛 Bug Fixes
+
+- *(updater)* Better updater flow
+by Sasha Khamkov
+([8522021](https://github.com/gisto/gisto/commit/8522021c6410d2135a389426bf710fe7e91500bc))
+
+
+## [2.1.3]
+
+Released on: 2025-04-10
+
+### 🐛 Bug Fixes
+
+- *(create or edit)* Change fields labels to better reflect their purpose
+by Sasha Khamkov
+([9073981](https://github.com/gisto/gisto/commit/907398160707400847f247e2ce93b23b7771449b))
+
+
+## [2.1.2]
+
+Released on: 2025-04-09
+
+### 🐛 Bug Fixes
+
+- *(theme)* Fix light theme leaking into dark ([#464](https://github.com/gisto/gisto/issues/464))
+by Sasha Khamkov
+([fa42cab](https://github.com/gisto/gisto/commit/fa42cab19e4987cd498f4a692ee5de09575463eb))
+
+
 ### 💼 Other
 
 - *(deps)* Bump lucide-react from 0.483.0 to 0.487.0 ([#457](https://github.com/gisto/gisto/issues/457))
@@ -46,7 +86,7 @@ by Sasha Khamkov
 
 - *(change-log)* Format release header
 by Sasha Khamkov
-([94404f2](https://github.com/gisto/gisto/commit/94404f287f68f04f2dee82bd29b3e951258342f2))
+([0e6dc81](https://github.com/gisto/gisto/commit/0e6dc8151303ba1c0e0aa59f5f6c2eb7ca0d5945))
 
 
 ## [2.1.1]

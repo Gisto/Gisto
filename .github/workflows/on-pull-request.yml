@@ -27,3 +27,6 @@ jobs:
       - name: TS lint
         run: pnpm ts:lint
 
+      - name: tests
+        run: pnpm test
+

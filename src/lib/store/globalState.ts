@@ -66,7 +66,7 @@ function loadSettingsFromLocalStorage() {
   return parsedSettings ? deepMerge({ ...defaultSettings }, parsedSettings) : defaultSettings;
 }
 
-const defaultSettings: SettingsType = {
+export const defaultSettings: SettingsType = {
   theme: 'system',
   newSnippetDefaultLanguage: 'Text',
   sidebarCollapsedByDefault: false,
