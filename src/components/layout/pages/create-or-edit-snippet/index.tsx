@@ -435,6 +435,7 @@ export const CreateOrEditSnippet = ({
                           className="border-primary border rounded p-1"
                           options={{
                             ...EDITOR_OPTIONS,
+                            ...settings.editor,
                             readOnly: false,
                             codeLens: false,
                           }}
