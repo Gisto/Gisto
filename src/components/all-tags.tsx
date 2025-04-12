@@ -118,6 +118,7 @@ export const AllTags = ({
           ? null
           : tagsData.map(({ tag, count }) => (
               <Badge
+                data-testid={`tag-${tag.replace('#', '')}`}
                 key={tag}
                 variant={active === 'tag:' + tag.replace('#', '') ? 'default' : 'primary-outline'}
                 className="m-1 cursor-pointer hover:opacity-70"

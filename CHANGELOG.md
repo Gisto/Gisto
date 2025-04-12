@@ -4,11 +4,26 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 💼 Other
+
+- *(deps-dev)* Bump vite from 6.2.5 to 6.2.6 in the npm_and_yarn group ([#467](https://github.com/gisto/gisto/issues/467))
+by dependabot[bot]
+([1f0af9c](https://github.com/gisto/gisto/commit/1f0af9c3efd8c5730c81dc2d25574f4db8a9e247))
+
+- *(deps)* Bump tokio ([#460](https://github.com/gisto/gisto/issues/460))
+by dependabot[bot]
+([485e1a9](https://github.com/gisto/gisto/commit/485e1a9cec30c4e48c997acd8c758943b2b2975e))
+
+
 ### 🧪 Testing
 
-- *(infra)* Add test infra and basic tests
+- *(infra)* Add test infra and basic tests ([#468](https://github.com/gisto/gisto/issues/468))
 by Sasha Khamkov
-([320e44b](https://github.com/gisto/gisto/commit/320e44ba3f2a769e0fe4b27a61076f6babf478ea))
+([049d552](https://github.com/gisto/gisto/commit/049d552d6cc0ef9aba9742be3233db0540f586d5))
+
+- *(components)* Add infra for components tests and test all-tags component
+by Sasha Khamkov
+([d230da1](https://github.com/gisto/gisto/commit/d230da134fcfb8dfb176ef8e40b69f820af64339))
 
 
 ## [2.1.4]
