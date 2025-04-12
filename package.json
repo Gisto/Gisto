@@ -8,13 +8,28 @@
   "scripts": {
     "dev": "vite --port 61570",
     "build": "tsc -b && vite build",
+
     "lint": "eslint ./src",
     "ts:lint": "tsc -b --noEmit",
+
     "preview": "vite preview",
     "prepare": "husky",
     "commit": "cz",
+
     "changelog": "npx git-cliff@latest --output CHANGELOG.md",
     "version": "pnpm run changelog && git add CHANGELOG.md",
+
+    "release:major": "pnpm run version:major && pnpm run changelog && pnpm run commit:changelog",
+    "version:major": "pnpm version major",
+
+    "release:minor": "pnpm run version:minor && pnpm run changelog && pnpm run commit:changelog",
+    "version:minor": "pnpm version minor",
+
+    "release:patch": "pnpm run version:patch && pnpm run changelog && pnpm run commit:changelog",
+    "version:patch": "pnpm version patch",
+
+    "commit:changelog": "git add CHANGELOG.md && git commit -m \"chore: update changelog for release\" && git push && git push --tags",
+
     "test": "vitest run",
     "test:watch": "vitest"
   },

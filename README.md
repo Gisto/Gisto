@@ -158,8 +158,8 @@ Please feel free to add a bug / feature request / suggestions to the issue track
 
 ## on branch `main`:
 
-- run `pnpm version major|minor|patch` - this will also create tag and generate changelog with commit
-- run `git push origin head`
+- run `pnpm release:major|minor|patch` - this will also create tag and generate changelog with commit
+> This will also push the changes and tag(s) to the remote repository
 
 ## on branch `release`:
 
