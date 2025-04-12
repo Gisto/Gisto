@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🧪 Testing
+
+- *(infra)* Add test infra and basic tests
+by Sasha Khamkov
+([320e44b](https://github.com/gisto/gisto/commit/320e44ba3f2a769e0fe4b27a61076f6babf478ea))
+
+
 ## [2.1.4]
 
 Released on: 2025-04-10
