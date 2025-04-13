@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🐛 Bug Fixes
+
+- *(editor)* Create/edit editor missing settings
+by Sasha Khamkov
+([1e4a097](https://github.com/gisto/gisto/commit/1e4a0978c620831f3bdace3170ee61e739f7fcbb))
+
+
 ### 🧪 Testing
 
 - *(infra)* Add test infra and basic tests ([#468](https://github.com/gisto/gisto/issues/468))
@@ -13,6 +20,10 @@ by Sasha Khamkov
 - *(components)* Add infra for components tests and test all-tags component
 by Sasha Khamkov
 ([0ad270b](https://github.com/gisto/gisto/commit/0ad270b1abf2f64f44b71a52f979ab5e2d686b1b))
+
+- Fix vitest types
+by Sasha Khamkov
+([97ddb1a](https://github.com/gisto/gisto/commit/97ddb1a3a0ce314c2de8e9de60637fee4f547d86))
 
 
 ### ⚙️ Miscellaneous Tasks
@@ -34,7 +45,7 @@ by dependabot[bot]
 
 - *(dependencies)* Update dependencies and packages to latest versions
 by Sasha Khamkov
-([6570c32](https://github.com/gisto/gisto/commit/6570c321b5026b926faa264838de552f8ceaef24))
+([9818966](https://github.com/gisto/gisto/commit/98189663ab71044a82fc165555862d30f763319b))
 
 
 ## [2.1.4]
