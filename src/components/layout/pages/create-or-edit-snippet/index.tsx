@@ -379,7 +379,7 @@ export const CreateOrEditSnippet = ({
                             onChange={(e) =>
                               dispatch({ type: 'SET_FILENAME', payload: e.target.value, index })
                             }
-                            placeholder="Enter file name including extention"
+                            placeholder="Enter file name including extension"
                           />
                           <div className="w-full">
                             <Select
