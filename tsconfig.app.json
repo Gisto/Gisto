@@ -30,6 +30,8 @@
   },
   "include": [
     "src",
-    "node_modules/.pnpm/vitest@3.1.1_@types+node@22.14.0_jiti@2.4.2_jsdom@26.0.0_lightningcss@1.29.2_yaml@2.7.0/node_modules/vitest/globals.d.ts"
+    "vite.config.ts",
+    "node_modules/vitest/globals.d.ts"
   ],
+  "types": ["vitest/globals"]
 }
