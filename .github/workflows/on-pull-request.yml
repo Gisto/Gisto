@@ -1,4 +1,4 @@
-name: run eslint and ts lint
+name: checks and tests
 
 on:
   pull_request:
