@@ -29,7 +29,7 @@ body = """
             {{ commit.message | upper_first }}\
 
             {% if commit.author.name %}
-              by {{ commit.author.name }}
+              ・ by {{ commit.author.name }}
             {%- endif %}\
 
             {% if commit.id %}
@@ -74,20 +74,21 @@ commit_preprocessors = [
 commit_parsers = [
   { message = "^feat", group = "<!-- 0 -->🚀 Features" },
   { message = "^fix", group = "<!-- 1 -->🐛 Bug Fixes" },
+  { message = "^refactor", group = "<!-- 2 -->🚜 Refactor" },
   { message = "^doc", group = "<!-- 3 -->📚 Documentation" },
   { message = "^perf", group = "<!-- 4 -->⚡ Performance" },
-  { message = "^refactor", group = "<!-- 2 -->🚜 Refactor" },
   { message = "^style", group = "<!-- 5 -->🎨 Styling" },
-  { message = "^test", group = "<!-- 6 -->🧪 Testing" },
+  { message = "^typo", group = "<!-- 6 -->🔤 Grammar" },
+  { message = "^test", group = "<!-- 7 -->🧪 Testing" },
   { message = "^chore\\(release\\): prepare for", skip = true },
   { message = "^chore\\(deps.*\\)", skip = true },
   { message = "^chore\\(pr\\)", skip = true },
   { message = "^chore\\(pull\\)", skip = true },
-  { message = "^chore|^ci", group = "<!-- 7 -->⚙️ Miscellaneous Tasks" },
-  { message = "^build|^ci", group = "<!-- 7 -->🛠️️ Build" },
-  { body = ".*security", group = "<!-- 8 -->🛡️ Security" },
-  { message = "^revert", group = "<!-- 9 -->◀️ Revert" },
-  { message = ".*", group = "<!-- 10 -->💼 Other" },
+  { message = "^chore|^ci", group = "<!-- 8 -->⚙️ Miscellaneous Tasks" },
+  { message = "^build|^ci", group = "<!-- 9 -->🛠️️ Build" },
+  { body = ".*security", group = "<!-- 10 -->🛡️ Security" },
+  { message = "^revert", group = "<!-- 11 -->◀️ Revert" },
+  { message = ".*", group = "<!-- 12 -->💼 Other" },
 ]
 # filter out the commits that are not matched by commit parsers
 filter_commits = false

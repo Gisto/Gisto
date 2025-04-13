@@ -1,27 +1,15 @@
 import { RuleConfigSeverity } from '@commitlint/types';
+import commitLint from '@commitlint/config-conventional';
 
-const Configuration = {
+const configuration = {
   extends: ['@commitlint/config-conventional'],
   rules: {
     'type-enum': [
       RuleConfigSeverity.Error,
       'always',
-      [
-        'build',
-        'chore',
-        'ci',
-        'docs',
-        'feat',
-        'fix',
-        'perf',
-        'refactor',
-        'revert',
-        'style',
-        'test',
-        'typo',
-      ],
+      [...commitLint.rules['type-enum'][2], 'typo'],
     ],
   },
 };
 
-export default Configuration;
+export default configuration;
