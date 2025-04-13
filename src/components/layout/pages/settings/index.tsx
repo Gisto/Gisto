@@ -7,6 +7,7 @@ import { DynamicSettings } from '@/components/layout/pages/settings/dynamic-sett
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { EDITOR_OPTIONS } from '@/constants';
+import { t } from '@/lib/i18n';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { getEditorTheme } from '@/lib/utils';
 
@@ -39,7 +40,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
               )}
             </Button>
 
-            <div className="line-clamp-1">Settings</div>
+            <div className="line-clamp-1">{t('pages.settings.title')}</div>
           </div>
         </div>
       </PageHeader>
@@ -48,8 +49,8 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card>
             <CardHeader>
-              <CardTitle>Settings</CardTitle>
-              <CardDescription>Main application settings</CardDescription>
+              <CardTitle>{t('pages.settings.title')}</CardTitle>
+              <CardDescription>{t('pages.settings.mainApplicationSettings')}</CardDescription>
             </CardHeader>
             <CardContent>
               <DynamicSettings settings={{ ...restOfTheSettings }} onChange={handleChange} />
@@ -58,8 +59,8 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
 
           <Card>
             <CardHeader>
-              <CardTitle>Editor</CardTitle>
-              <CardDescription>Editor specific settings</CardDescription>
+              <CardTitle>{t('pages.settings.editor')}</CardTitle>
+              <CardDescription>{t('pages.settings.editorSpecificSettings')}</CardDescription>
             </CardHeader>
             <CardContent>
               <DynamicSettings settings={{ ...editor }} path="editor" onChange={handleChange} />
@@ -68,8 +69,8 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
 
           <Card>
             <CardHeader>
-              <CardTitle>Preview</CardTitle>
-              <CardDescription>Basic editor settings preview</CardDescription>
+              <CardTitle>{t('pages.settings.preview')}</CardTitle>
+              <CardDescription>{t('pages.settings.basicEditorSettingsPreview')}</CardDescription>
             </CardHeader>
             <CardContent>
               <MonacoEditor

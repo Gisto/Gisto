@@ -19,6 +19,7 @@ import {
 import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Label } from '@/components/ui/label';
 import { Updater } from '@/components/updater.tsx';
+import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 
 export const App = () => {
@@ -50,7 +51,7 @@ export const App = () => {
         setIsValid(response.status === 200);
       }
     } catch (error) {
-      toast.error({ message: 'Token not valid' });
+      toast.error({ message: t('login.tokenNotValid') });
       console.error('Error validating GitHub token:', error);
       setIsValid(false);
     } finally {
@@ -70,7 +71,7 @@ export const App = () => {
   if (isLoading) {
     return (
       <div className="flex flex-col justify-center items-center h-screen">
-        <div>Checking token...</div>
+        <div>{t('login.checkingToken')}...</div>
       </div>
     );
   }
@@ -91,15 +92,15 @@ export const App = () => {
 
       <h3 className="">{'{ Gisto }'}</h3>
 
-      <p className="mb-8 text-primary">Snippets made awesome</p>
+      <p className="mb-8 text-primary">{t('common.slogan')}</p>
 
       <form onSubmit={handleSubmit}>
         <Card className="w-[85vw] max-w-[450px]">
           <CardHeader>
-            <CardTitle>Please sign-in using GitHub token</CardTitle>
+            <CardTitle>{t('login.pleaseSignInUsingToken')}</CardTitle>
             <CardDescription className="flex items-center gap-2">
-              Only "gists" scope is required{' '}
-              <div title="Create token at Github">
+              {t('login.scopeMessage')}{' '}
+              <div title={t('login.createTokenAtGithub')}>
                 <Info
                   className="size-4 cursor-pointer"
                   onClick={() => window.open('https://github.com/settings/tokens')}
@@ -110,23 +111,23 @@ export const App = () => {
           <CardContent>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="token">GitHub token</Label>
+                <Label htmlFor="token">{t('login.githubToken')}</Label>
 
                 <InputPassword
                   id="token"
                   value={newToken}
                   onChange={(e) => setNewToken(e.target.value)}
-                  placeholder="Enter GitHub token"
+                  placeholder={t('login.enterGithubToken')}
                 />
                 {token !== null && !isValid && (
-                  <div className="mb-4 text-xs text-destructive">Token not valid</div>
+                  <div className="mb-4 text-xs text-destructive">{t('login.tokenNotValid')}</div>
                 )}
               </div>
             </div>
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full">
-              Sign-in
+              {t('login.signIn')}
             </Button>
           </CardFooter>
         </Card>

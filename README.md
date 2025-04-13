@@ -26,6 +26,7 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 - [🌱 Features](#-features)
 - [🔍 Privacy/authentication](#-privacyauthentication)
 - [⚙️ Latest builds](#️-latest-builds)
+- [🌐️ Internationalization](#-internationalization)
 - [🐞 Issues, bug reporting and pull requests](#-issues-bug-reporting-and-pull-requests)
 - [👨‍💻 Development setup](#-development-setup)
 - [🚀 Release cycle](#-release-cycle)
@@ -109,6 +110,7 @@ These warnings are normal for unsigned applications and do not mean the app is h
 - Editor settings
 - Theme color changer
 - [Web app](https://app.gisto.org)
+- Support for multiple languages - (this feature machine generated, experimental and not fully implemented yet)
 - Open source
 
 and more...
@@ -126,6 +128,14 @@ Gisto only saves the Access token in your local storage and nothing else.
 This token will be saved permanently until you log out, or it will expire.
 
 ---
+
+# 🌐 Internationalization
+
+Gisto is available in multiple languages. You can change the language in the settings. 
+
+> [!NOTE]
+>
+> Please note that the translations are machine-generated and may not be perfect. If you would like to contribute to the translations, please feel free to submit a pull request.
 
 # ⚙️ Latest builds
 

@@ -29,8 +29,15 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { GithubApi } from '@/lib/github-api.ts';
+import { t } from '@/lib/i18n';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { copyToClipboard, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils';
+import {
+  copyToClipboard,
+  fetchAndUpdateSnippets,
+  getTags,
+  removeTags,
+  upperCaseFirst,
+} from '@/lib/utils';
 import { GistSingleType } from '@/types/gist.ts';
 
 export const SnippetContent = () => {
@@ -64,7 +71,9 @@ export const SnippetContent = () => {
       <PageHeader>
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
-            <div className="line-clamp-1">{removeTags(snippet.description) || 'Untitled'}</div>
+            <div className="line-clamp-1">
+              {removeTags(snippet.description) || t('common.untitled')}
+            </div>
 
             {badges.length > 0 && (
               <div className="flex items-center gap-2">
@@ -93,7 +102,7 @@ export const SnippetContent = () => {
               onClick={() => navigate(`/edit/${snippet.id}`)}
             >
               <Pencil className="size-4" />
-              <span className="sr-only">Edit</span>
+              <span className="sr-only">{upperCaseFirst(t('common.edit'))}</span>
             </Button>
 
             <Separator orientation="vertical" className="mx-2 h-6" />
@@ -103,8 +112,11 @@ export const SnippetContent = () => {
                 <TooltipTrigger asChild>
                   <Button
                     onClick={async () => {
-                      const confirmation = await confirm(
-                        `Are you sure you want to change "${removeTags(snippet.description).trim()}" snippet to private? This snippet will be removed and new one gonna be created instead.`
+                      const confirmation = confirm(
+                        t('list.sureToChangeVisibility', {
+                          name: removeTags(snippet.description),
+                          visibility: t('common.private'),
+                        })
                       );
 
                       if (confirmation) {
@@ -124,15 +136,20 @@ export const SnippetContent = () => {
                     <span className="sr-only">Lock</span>
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>Public snippet</TooltipContent>
+                <TooltipContent>
+                  {upperCaseFirst(t('common.public'))} {t('common.snippet')}
+                </TooltipContent>
               </Tooltip>
             ) : (
               <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
                   <Button
                     onClick={async () => {
-                      const confirmation = await confirm(
-                        `Are you sure you want to change "${removeTags(snippet.description).trim()}" snippet to public? This snippet will be removed and new one gonna be created instead.`
+                      const confirmation = confirm(
+                        t('list.sureToChangeVisibility', {
+                          name: removeTags(snippet.description),
+                          visibility: t('common.public'),
+                        })
                       );
 
                       if (confirmation) {
@@ -152,7 +169,9 @@ export const SnippetContent = () => {
                     <span className="sr-only">Lock</span>
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>Private snippet</TooltipContent>
+                <TooltipContent>
+                  {upperCaseFirst(t('common.private'))} {t('common.snippet')}
+                </TooltipContent>
               </Tooltip>
             )}
 
@@ -166,7 +185,7 @@ export const SnippetContent = () => {
                 onClick={async () => await GithubApi.deleteStar(snippet.id)}
               >
                 <Star className="size-4 fill-primary stroke-primary" />
-                <span className="sr-only">Starred</span>
+                <span className="sr-only">{upperCaseFirst(t('common.starred'))}</span>
               </Button>
             ) : (
               <Button
@@ -176,7 +195,7 @@ export const SnippetContent = () => {
                 onClick={async () => await GithubApi.addStar(snippet.id)}
               >
                 <Star className="size-4" />
-                <span className="sr-only">Not starred</span>
+                <span className="sr-only">{upperCaseFirst(t('common.star'))}</span>
               </Button>
             )}
 
@@ -192,11 +211,11 @@ export const SnippetContent = () => {
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
                   <a className="cursor-pointer" href={snippet.html_url} target="_blank">
-                    <Globe /> Open on web
+                    <Globe /> {upperCaseFirst(t('pages.snippet.openOnWeb'))}
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => copyToClipboard(snippet.id)}>
-                  <Copy /> Copy snippet ID
+                  <Copy /> {t('pages.snippet.copySnippetId')}
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() =>
@@ -205,7 +224,7 @@ export const SnippetContent = () => {
                     )
                   }
                 >
-                  <Copy /> Copy embed code to clipboard
+                  <Copy /> {t('pages.snippet.copyEmbed')}
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <a
@@ -213,7 +232,7 @@ export const SnippetContent = () => {
                     href={`https://plnkr.co/edit/gist:${snippet?.id}?preview`}
                     target="_blank"
                   >
-                    <ExternalLink /> Open in <strong>plnkr</strong>
+                    <ExternalLink /> {t('pages.snippet.openIn')} <strong>plnkr</strong>
                   </a>
                 </DropdownMenuItem>
 
@@ -223,13 +242,13 @@ export const SnippetContent = () => {
                     href={`https://jsfiddle.net/gh/gist/library/pure/${snippet?.id}`}
                     target="_blank"
                   >
-                    <ExternalLink /> Open in <strong>jsfiddle</strong>{' '}
+                    <ExternalLink /> {t('pages.snippet.openIn')} <strong>jsfiddle</strong>{' '}
                     <Tooltip delayDuration={0}>
                       <TooltipTrigger asChild>
                         <Info strokeWidth={1.5} className="size-3 cursor-pointer" />
                       </TooltipTrigger>
                       <TooltipContent align="end">
-                        Need to have CSS, JS and HTML files as part of the snippet
+                        {t('pages.snippet.jsfiddleInstructions')}
                       </TooltipContent>
                     </Tooltip>
                   </a>
@@ -238,8 +257,10 @@ export const SnippetContent = () => {
                 <DropdownMenuItem
                   className="text-danger"
                   onClick={async () => {
-                    const confirmation = await confirm(
-                      `Are you sure you want to delete "${removeTags(snippet.description)}" snippet?`
+                    const confirmation = confirm(
+                      t('list.sureToDelete', {
+                        description: removeTags(snippet.description),
+                      })
                     );
 
                     if (confirmation) {
@@ -251,7 +272,8 @@ export const SnippetContent = () => {
                     }
                   }}
                 >
-                  <Trash /> Delete <small>(can not be undone)</small>
+                  <Trash /> {upperCaseFirst(t('common.delete'))}{' '}
+                  <small>({t('pages.snippet.cannotBeUndone')})</small>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

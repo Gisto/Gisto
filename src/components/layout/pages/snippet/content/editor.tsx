@@ -13,6 +13,7 @@ import { OpenApi } from '@/components/layout/pages/snippet/content/preview/open-
 import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
+import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import {
   getEditorTheme,
@@ -46,7 +47,7 @@ export const Editor = ({
     return (
       <div className="bg-background py-2 px-4 overflow-auto mb-4 font-mono">
         <div className="p-4">
-          File too large, please{' '}
+          {t('pages.snippet.fileTooLarge')}{' '}
           <a
             className="underline hover:underline-offset-2"
             target="_blank"
@@ -55,7 +56,7 @@ export const Editor = ({
               .replace(/--/g, '-')
               .toLowerCase()}`}
           >
-            open on web
+            {t('pages.snippet.openOnWeb')}
           </a>
         </div>
       </div>
@@ -86,7 +87,7 @@ export const Editor = ({
         return (
           <div className="bg-background overflow-auto font-body flex items-center">
             <Skull className="stroke-danger" />
-            <div className="p-4 text-danger">Detected as JSON but not valid for preview</div>
+            <div className="p-4 text-danger">{t('pages.snippet.invalidJson')}</div>
           </div>
         );
       }

@@ -7,6 +7,7 @@ import { NavigationItem } from '@/components/layout/navigation/main/navigation-i
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
 import { useIsOnline } from '@/hooks/use-is-online.tsx';
+import { t } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 
 export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
@@ -32,29 +33,34 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
         <div className="p-2">
           <NavigationItem
             isCollapsed={isCollapsed}
-            label="Dashboard"
+            label={t('menu.dashboard')}
             path="/"
             Icon={LayoutDashboard}
           />
           <NavigationItem
             isCollapsed={isCollapsed}
-            label="New snippet"
+            label={t('menu.newSnippet')}
             path="/new-snippet"
             Icon={Plus}
           />
         </div>
 
         <div className="p-2">
-          <NavigationItem isCollapsed={isCollapsed} label="About" path="/about" Icon={BadgeHelp} />
           <NavigationItem
             isCollapsed={isCollapsed}
-            label="Settings"
+            label={t('menu.about')}
+            path="/about"
+            Icon={BadgeHelp}
+          />
+          <NavigationItem
+            isCollapsed={isCollapsed}
+            label={t('menu.settings')}
             path="/settings"
             Icon={SlidersHorizontal}
           />
           <NavigationItem
             isCollapsed={isCollapsed}
-            label="Log-out"
+            label={t('menu.logOut')}
             onClick={async () => {
               const confirmation = await confirm(`Are you sure you want to log-out?`);
 
@@ -68,7 +74,7 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
 
           <NavigationItem
             isCollapsed={isCollapsed}
-            label={online ? 'You are on-line' : 'You are off-line'}
+            label={online ? t('menu.onLine') : t('menu.offLine')}
             onClick={() => null}
             Icon={() => <Globe className={cn('size-4', online ? 'text-success' : 'text-danger')} />}
           />

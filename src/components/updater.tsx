@@ -4,6 +4,8 @@ import { CircleChevronDown, Loader } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button.tsx';
+import { t } from '@/lib/i18n';
+import { upperCaseFirst } from '@/lib/utils';
 
 export const Updater = () => {
   const [availableUpdate, setAvailableUpdate] = useState<Update | null>(null);
@@ -31,8 +33,10 @@ export const Updater = () => {
     <div className="flex items-center gap-2">
       <CircleChevronDown strokeWidth={1.5} className="animate-pulse stroke-lime-500" />
       {done
-        ? `Download of v${availableUpdate.version} finished`
-        : `Update to v${availableUpdate.version} is available`}
+        ? t('components.downloadFinished', {
+            version: availableUpdate.version,
+          })
+        : t('components.updateAvailable', { version: availableUpdate.version })}
       {!done && (
         <Button
           size="sm"
@@ -52,7 +56,11 @@ export const Updater = () => {
             }
           }}
         >
-          {downloaded === 0 ? 'Download' : <Loader strokeWidth={1.5} className="animate-spin" />}
+          {downloaded === 0 ? (
+            upperCaseFirst(t('common.download'))
+          ) : (
+            <Loader strokeWidth={1.5} className="animate-spin" />
+          )}
         </Button>
       )}
       {done && (
@@ -62,7 +70,7 @@ export const Updater = () => {
             await relaunch();
           }}
         >
-          Restart gisto
+          {upperCaseFirst(t('common.restart'))} gisto
         </Button>
       )}
     </div>

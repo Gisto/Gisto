@@ -32,8 +32,16 @@ import { ZodError } from '@/components/zod-error.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { GithubApi } from '@/lib/github-api.ts';
+import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { cn, formatSnippetForSaving, getEditorTheme, getTags, removeTags } from '@/lib/utils';
+import {
+  cn,
+  formatSnippetForSaving,
+  getEditorTheme,
+  getTags,
+  removeTags,
+  upperCaseFirst,
+} from '@/lib/utils';
 import { GistSingleType } from '@/types/gist.ts';
 
 type Props = {
@@ -66,7 +74,7 @@ export const CreateOrEditSnippet = ({
             value={state.search}
             autoFocus
             onChange={setSearch}
-            placeholder="Find language"
+            placeholder={t('pages.new.findLanguage')}
           />
         </div>
         {options
@@ -152,7 +160,7 @@ export const CreateOrEditSnippet = ({
 
       if (save && save.id) {
         navigate(`/snippets/${save.id}`);
-        toast.show({ message: 'Snippet created' });
+        toast.show({ message: t('pages.new.snippetCreated') });
 
         dispatch({ type: 'RESET' });
       }
@@ -177,7 +185,7 @@ export const CreateOrEditSnippet = ({
 
       if (save && save.id) {
         navigate(`/snippets/${edit!.id}`);
-        toast.show({ message: 'Snippet updated' });
+        toast.show({ message: t('pages.new.snippetUpdated') });
 
         dispatch({ type: 'RESET' });
       }
@@ -198,7 +206,9 @@ export const CreateOrEditSnippet = ({
             </Button>
 
             <div className="line-clamp-1">
-              {edit ? `Edit snippet: ${removeTags(edit.description)}` : 'Crete new snippet'}
+              {edit
+                ? `${t('pages.new.editSnippet')}: ${removeTags(edit.description)}`
+                : t('pages.new.createNewSnippet')}
             </div>
           </div>
         </div>
@@ -212,14 +222,14 @@ export const CreateOrEditSnippet = ({
                   htmlFor="description"
                   className="text-sm font-medium text-primary flex gap-2"
                 >
-                  Description <ZodError errors={errors} path={'description'} />
+                  {t('pages.new.description')} <ZodError errors={errors} path={'description'} />
                 </label>
                 <Input
                   type="text"
                   id="description"
                   value={state.description}
                   onChange={(e) => dispatch({ type: 'SET_DESCRIPTION', payload: e.target.value })}
-                  placeholder="Enter a description"
+                  placeholder={t('pages.new.enterDescription')}
                 />
                 {edit ? null : (
                   <div className="flex items-center gap-2 mt-2">
@@ -231,10 +241,11 @@ export const CreateOrEditSnippet = ({
                     >
                       <TabsList className="grid w-full grid-cols-2">
                         <TabsTrigger value={'true'}>
-                          <Shield className="size-4 stroke-danger mr-2" /> Public
+                          <Shield className="size-4 stroke-danger mr-2" /> {t('common.public')}
                         </TabsTrigger>
                         <TabsTrigger value={'false'}>
-                          <ShieldCheck className="size-4 stroke-success mr-2" /> Private
+                          <ShieldCheck className="size-4 stroke-success mr-2" />{' '}
+                          {t('common.private')}
                         </TabsTrigger>
                       </TabsList>
                     </Tabs>
@@ -247,18 +258,17 @@ export const CreateOrEditSnippet = ({
                   htmlFor="tags"
                   className="text-sm font-medium text-primary flex items-center gap-2"
                 >
-                  Tags (optional){' '}
+                  {upperCaseFirst(t('common.tags'))} ({t('common.optional').toLowerCase()}){' '}
                   <Tooltip>
                     <TooltipTrigger>
                       <Info className="size-4 stroke-gray-500" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      Add tags by adding{' '}
-                      <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                        {'#<tag>'}
-                      </code>{' '}
-                      to the end of description, <br />
-                      or add tags by clicking on the tag on the side.
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: t('pages.new.addTagsTooltipHtml'),
+                        }}
+                      />
                     </TooltipContent>
                   </Tooltip>
                 </label>
@@ -271,7 +281,7 @@ export const CreateOrEditSnippet = ({
                     </SheetTrigger>
                     <SheetContent>
                       <SheetHeader>
-                        <SheetTitle>Tags</SheetTitle>
+                        <SheetTitle>{upperCaseFirst(t('common.tags'))}</SheetTitle>
                         <SheetDescription>
                           <ScrollArea className="h-[calc(100vh-100px)]">
                             <AllTags
@@ -288,7 +298,7 @@ export const CreateOrEditSnippet = ({
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                     >
-                      Add tags to categorize your snippet
+                      {t('pages.new.addTagsHelpText')}
                     </motion.small>
                   ) : (
                     <AnimatePresence>
@@ -334,8 +344,11 @@ export const CreateOrEditSnippet = ({
                           file.content === null && 'text-danger'
                         )}
                       >
-                        {file.content === null && <Trash />} {file.filename || 'New file'}{' '}
-                        {file.content === null && <small>(Will be deleted upon update)</small>}
+                        {file.content === null && <Trash />}{' '}
+                        {file.filename || t('pages.new.newFile')}{' '}
+                        {file.content === null && (
+                          <small>({t('pages.new.willBeDeletedUponUpdate')})</small>
+                        )}
                       </div>
                       {state.files.length > 1 && file.content !== null && (
                         <Button
@@ -349,7 +362,7 @@ export const CreateOrEditSnippet = ({
                             }
                           }}
                         >
-                          <Trash className="size-4" /> Remove File
+                          <Trash className="size-4" /> {t('pages.new.removeFile')}
                         </Button>
                       )}
                     </CardTitle>
@@ -362,13 +375,14 @@ export const CreateOrEditSnippet = ({
                             htmlFor="file"
                             className="w-1/2 text-sm font-medium text-primary flex gap-2"
                           >
-                            File <ZodError errors={errors} path={`files.${index}.filename`} />
+                            {upperCaseFirst(t('common.file'))}{' '}
+                            <ZodError errors={errors} path={`files.${index}.filename`} />
                           </label>
                           <label
                             htmlFor="file-language"
                             className="w-1/2 text-sm font-medium text-primary flex gap-2"
                           >
-                            File syntax (optional)
+                            {t('pages.new.fileSyntax')} ({t('common.optional').toLowerCase()})
                           </label>
                         </div>
                         <div className="flex items-center gap-6">
@@ -379,7 +393,7 @@ export const CreateOrEditSnippet = ({
                             onChange={(e) =>
                               dispatch({ type: 'SET_FILENAME', payload: e.target.value, index })
                             }
-                            placeholder="Enter file name including extension"
+                            placeholder={t('pages.new.enterFileName')}
                           />
                           <div className="w-full">
                             <Select
@@ -425,7 +439,8 @@ export const CreateOrEditSnippet = ({
                           htmlFor="file-content"
                           className="text-sm font-medium text-primary flex gap-2"
                         >
-                          File Content <ZodError errors={errors} path={`files.${index}.content`} />
+                          {t('pages.new.fileContent')}{' '}
+                          <ZodError errors={errors} path={`files.${index}.content`} />
                         </label>
                         <Editor
                           value={file.content}
@@ -468,7 +483,7 @@ export const CreateOrEditSnippet = ({
                   }
                 >
                   <Plus className="size-4" />
-                  Add file
+                  {t('pages.new.addFile')}
                 </Button>
 
                 <FileUploadButton dispatch={dispatch} />
@@ -482,12 +497,12 @@ export const CreateOrEditSnippet = ({
                     navigate('/');
                   }}
                 >
-                  Cancel
+                  {upperCaseFirst(t('common.cancel'))}
                 </Button>
                 <Button variant="default" onClick={() => (edit ? update() : create())}>
                   {edit
-                    ? 'Update snippet'
-                    : `Create ${state.isPublic ? 'public' : 'private'} snippet`}
+                    ? upperCaseFirst(t('common.update')) + ' ' + upperCaseFirst(t('common.snippet'))
+                    : `${upperCaseFirst(t('common.create'))} ${state.isPublic ? t('common.public') : t('common.private')} ${t('common.snippet')}`}
                 </Button>
               </div>
             </div>

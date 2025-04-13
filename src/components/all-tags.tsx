@@ -10,8 +10,9 @@ import {
   CardTitle,
 } from '@/components/ui/card.tsx';
 import { Input } from '@/components/ui/input.tsx';
+import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { fetchAndUpdateSnippets } from '@/lib/utils';
+import { fetchAndUpdateSnippets, upperCaseFirst } from '@/lib/utils';
 
 const CreateNew = ({
   search,
@@ -37,7 +38,7 @@ const CreateNew = ({
 
   return (
     <div className="text-center mb-8">
-      <p>{`No tags matching ${search}`}</p>
+      <p>{t('components.noTagsMatching', { search })}</p>
       {allowCreate && (
         <Button
           className="mt-2"
@@ -88,18 +89,20 @@ export const AllTags = ({
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
           <div>
-            Tags <small>({tagsData.length})</small>
+            {upperCaseFirst(t('common.tags'))} <small>({tagsData.length})</small>
           </div>{' '}
           <div>
             <Input
               type="search"
-              placeholder={`Filter ${tagsData.length} tags`}
+              placeholder={t('components.filterTags', {
+                number: tagsData.length,
+              })}
               value={search}
               onChange={(event) => setSearch(event.target.value)}
             />
           </div>
         </CardTitle>
-        <CardDescription>All, unique tags</CardDescription>
+        <CardDescription>{t('components.allUniqueTags')}</CardDescription>
       </CardHeader>
       <CardContent>
         <CreateNew

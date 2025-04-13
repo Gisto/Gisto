@@ -25,7 +25,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select.tsx';
+import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
+import { upperCaseFirst } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
 
 function generateChartData(list: GistEnrichedType[], period = '6months') {
@@ -76,11 +78,11 @@ function generateChartData(list: GistEnrichedType[], period = '6months') {
 
 const chartConfig = {
   public: {
-    label: 'Public',
+    label: upperCaseFirst(t('common.public')),
     color: 'hsl(var(--chart-1))',
   },
   private: {
-    label: 'Private',
+    label: upperCaseFirst(t('common.private')),
     color: 'hsl(var(--chart-2))',
   },
 } satisfies ChartConfig;
@@ -88,13 +90,13 @@ const chartConfig = {
 const rangeToText = (range: string) => {
   switch (range) {
     case '7days':
-      return '1 week ago';
+      return t('pages.dashboard.oneWeekAgo');
     case '30days':
-      return '1 month ago';
+      return t('pages.dashboard.oneMonthAgo');
     case '6months':
-      return '6 months ago';
+      return t('pages.dashboard.sixMonthsAgo');
     case '1year':
-      return '1 year ago';
+      return t('pages.dashboard.oneYearAgo');
     default:
       return '';
   }
@@ -108,9 +110,9 @@ export const SnippetsOverTimeChart = () => {
     <Card>
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-          <CardTitle>Snippets over time</CardTitle>
+          <CardTitle>{t('pages.dashboard.snippetsOverTime')}</CardTitle>
           <CardDescription>
-            Showing snippets created during a period of today and {rangeToText(range)}
+            {t('pages.dashboard.snippetsOverTimeRange', { range: rangeToText(range) })}
           </CardDescription>
         </div>
         <div className="flex items-center p-8">
@@ -120,11 +122,11 @@ export const SnippetsOverTimeChart = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>Range</SelectLabel>
-                <SelectItem value="7days">1 week ago</SelectItem>
-                <SelectItem value="30days">1 month ago</SelectItem>
-                <SelectItem value="6months">6 months ago</SelectItem>
-                <SelectItem value="1year">1 year ago</SelectItem>
+                <SelectLabel>{t('common.range')}</SelectLabel>
+                <SelectItem value="7days">{t('pages.dashboard.oneWeekAgo')}</SelectItem>
+                <SelectItem value="30days">{t('pages.dashboard.oneMonthAgo')}</SelectItem>
+                <SelectItem value="6months">{t('pages.dashboard.sixMonthsAgo')}</SelectItem>
+                <SelectItem value="1year">{t('pages.dashboard.oneYearAgo')}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>

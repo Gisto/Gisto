@@ -2,6 +2,7 @@ import { version } from '../../package.json';
 
 import { toast } from '@/components/toast';
 import { ITEMS_PER_PAGE } from '@/constants';
+import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 import { GistSingleType, GistType } from '@/types/gist.ts';
 
@@ -214,7 +215,7 @@ export const GithubApi = {
         snippets: updatedSnippets,
       });
 
-      toast.info({ message: 'Star removed' });
+      toast.info({ message: t('api.starRemoved') });
 
       return { success: true };
     }
@@ -236,7 +237,7 @@ export const GithubApi = {
         snippets: updatedSnippets,
       });
 
-      toast.info({ message: 'Star added' });
+      toast.info({ message: t('api.starAdded') });
 
       return { success: true };
     }
@@ -244,7 +245,7 @@ export const GithubApi = {
     return { success: false };
   },
 
-  async deleteGist(gistId: string): Promise<{ success: boolean }> {
+  async deleteGist(gistId: string, notification: boolean = true): Promise<{ success: boolean }> {
     const { status } = await this.request({ endpoint: `/gists/${gistId}`, method: 'DELETE' });
 
     if (status === 204) {
@@ -252,7 +253,9 @@ export const GithubApi = {
         snippets: globalState.getState().snippets.filter((snippet) => snippet.id !== gistId),
       });
 
-      toast.info({ message: 'Gist deleted' });
+      if (notification) {
+        toast.info({ message: t('list.snippetDeleted') });
+      }
 
       return { success: true };
     }
@@ -285,14 +288,18 @@ export const GithubApi = {
       await this.deleteGist(gistId);
 
       toast.info({
-        message: `Gist visibility changed to ${newVisibility ? 'Public' : 'Private'}`,
+        message: newVisibility
+          ? t('api.visibilityChangedToPublic')
+          : t('api.visibilityChangedToPrivate'),
       });
 
       return newGist;
     }
 
     toast.info({
-      message: `Gist visibility changed to ${newVisibility ? 'Public' : 'Private'}`,
+      message: newVisibility
+        ? t('api.visibilityChangedToPublic')
+        : t('api.visibilityChangedToPrivate'),
     });
 
     return null;
@@ -410,7 +417,7 @@ export const GithubApi = {
       return data.viewer.gists;
     } catch (error) {
       console.error('Error fetching gists:', error);
-      toast.error({ message: 'Error fetching gists, please try to refresh', duration: 5000 });
+      toast.error({ message: t('api.errorTryToRefresh'), duration: 5000 });
       throw error;
     }
   },

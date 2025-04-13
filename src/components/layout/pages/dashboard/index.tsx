@@ -6,6 +6,7 @@ import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Loading } from '@/components/loading.tsx';
 import { Updater } from '@/components/updater.tsx';
+import { t } from '@/lib/i18n';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 
 export const DashBoard = () => {
@@ -19,7 +20,7 @@ export const DashBoard = () => {
       <PageHeader>
         <div className="flex items-center w-full">
           <div className="flex items-center justify-between w-full">
-            <div className="line-clamp-1">Dashboard</div>
+            <div className="line-clamp-1">{t('pages.dashboard.title')}</div>
             <Updater />
           </div>
         </div>
