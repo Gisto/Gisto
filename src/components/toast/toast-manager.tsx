@@ -31,7 +31,10 @@ const ToastManager = () => {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 transition-all ease-in-out duration-300">
+    <div
+      data-testid="toast-container"
+      className="fixed bottom-5 right-5 z-40 transition-all ease-in-out duration-300"
+    >
       {toasts.map((toast, index) => (
         <Toast
           {...toast}
