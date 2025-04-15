@@ -21,7 +21,7 @@
     "version:minor": "pnpm version minor",
     "release:patch": "pnpm run version:patch && pnpm run changelog && pnpm run commit:changelog",
     "version:patch": "pnpm version patch",
-    "commit:changelog": "git add CHANGELOG.md && git commit -m \"release: $npm_package_version\" && git push && git push --tags",
+    "commit:changelog": "git add CHANGELOG.md && git commit -m \"chore: release $npm_package_version\" && git push && git push --tags --no-verify",
     "test": "vitest run",
     "test:watch": "vitest"
   },
