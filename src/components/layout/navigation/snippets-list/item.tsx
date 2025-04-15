@@ -15,8 +15,9 @@ import { Badge } from '@/components/ui/badge.tsx';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { GithubApi } from '@/lib/github-api.ts';
+import { t } from '@/lib/i18n';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { cn, fetchAndUpdateSnippets, getTags, removeTags } from '@/lib/utils';
+import { cn, fetchAndUpdateSnippets, getTags, removeTags, upperCaseFirst } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
 
 export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
@@ -39,7 +40,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
       <div
       //  className="hover:scale-95 transition"
       >
-        <h4 className="cursor-pointer">{removeTags(gist.description) || 'Untitled'}</h4>
+        <h4 className="cursor-pointer">{removeTags(gist.description) || t('common.untitled')}</h4>
 
         <div className="flex items-center mt-2 gap-2">
           <div className="flex flex-wrap gap-2 mb-4 pr-4">
@@ -91,7 +92,12 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Calendar className="size-3" />
-            <span className="text-xs text-zinc-400">{new Date(gist.createdAt).toDateString()}</span>
+            <span className="text-xs text-zinc-400">
+              {
+                // TODO: get locale date formating?
+                new Date(gist.createdAt).toDateString()
+              }
+            </span>
           </div>
 
           <div className="flex items-center">
@@ -105,8 +111,8 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    Snippet has {gist.comments.edges.length}{' '}
-                    {gist.comments.edges.length === 1 ? 'comment' : 'comments'}
+                    {t('list.snippetHas')} {gist.comments.edges.length}{' '}
+                    {gist.comments.edges.length === 1 ? t('common.comment') : t('common.comments')}
                   </TooltipContent>
                 </Tooltip>
                 <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
@@ -121,8 +127,8 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                 </div>
               </TooltipTrigger>
               <TooltipContent>
-                Snippet has {Object.keys(gist.files).length}{' '}
-                {Object.keys(gist.files).length === 1 ? 'file' : 'files'}
+                {t('list.snippetHas')} {Object.keys(gist.files).length}{' '}
+                {Object.keys(gist.files).length === 1 ? t('common.file') : t('common.files')}
               </TooltipContent>
             </Tooltip>
 
@@ -137,10 +143,12 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                         onClick={async (event) => {
                           event.preventDefault();
                           event.stopPropagation();
-                          const confirmation = await confirm(
-                            `Are you sure you want to change "${removeTags(gist.description).trim()}" snippet to private? This snippet will be removed and new one gonna be created instead.`
+                          const confirmation = confirm(
+                            t('list.sureToChangeVisibility', {
+                              name: removeTags(gist.description).trim(),
+                              visibility: t('common.private'),
+                            })
                           );
-
                           if (confirmation) {
                             await GithubApi.toggleGistVisibility(gist.id);
                             await fetchAndUpdateSnippets();
@@ -152,7 +160,9 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                       <span className="sr-only">Lock</span>
                     </div>
                   </TooltipTrigger>
-                  <TooltipContent>Public snippet</TooltipContent>
+                  <TooltipContent>
+                    {upperCaseFirst(t('common.public'))} {t('common.snippet')}
+                  </TooltipContent>
                 </Tooltip>
               </>
             ) : (
@@ -164,8 +174,11 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                         onClick={async (event) => {
                           event.preventDefault();
                           event.stopPropagation();
-                          const confirmation = await confirm(
-                            `Are you sure you want to change "${removeTags(gist.description).trim()}" snippet to public? This snippet will be removed and new one gonna be created instead.`
+                          const confirmation = confirm(
+                            t('list.sureToChangeVisibility', {
+                              name: removeTags(gist.description).trim(),
+                              visibility: t('common.public'),
+                            })
                           );
 
                           if (confirmation) {
@@ -179,7 +192,9 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                       <span className="sr-only">Unlock</span>
                     </div>
                   </TooltipTrigger>
-                  <TooltipContent>Private snippet</TooltipContent>
+                  <TooltipContent>
+                    {upperCaseFirst(t('common.private'))} {t('common.snippet')}
+                  </TooltipContent>
                 </Tooltip>
               </>
             )}
@@ -200,7 +215,9 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                       }}
                     />
                   </TooltipTrigger>
-                  <TooltipContent>Starred snippet</TooltipContent>
+                  <TooltipContent>
+                    {upperCaseFirst(t('common.starred'))} {t('common.snippet')}
+                  </TooltipContent>
                 </Tooltip>
               </>
             ) : (
@@ -219,7 +236,9 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                       }}
                     />
                   </TooltipTrigger>
-                  <TooltipContent>Not starred snippet</TooltipContent>
+                  <TooltipContent>
+                    {upperCaseFirst(t('common.star'))} {t('common.snippet')}
+                  </TooltipContent>
                 </Tooltip>
               </>
             )}
@@ -238,7 +257,9 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                   className="size-3 cursor-pointer hover:stroke-primary hover:scale-125 transition-all"
                 />
               </TooltipTrigger>
-              <TooltipContent>Edit snippet</TooltipContent>
+              <TooltipContent>
+                {upperCaseFirst(t('common.edit'))} {t('common.snippet')}
+              </TooltipContent>
             </Tooltip>
 
             <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
@@ -250,22 +271,24 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                   onClick={async (event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    const confirmation = await confirm(
-                      `Are you sure you want to delete "${removeTags(gist.description).trim()}" snippet?`
+                    const confirmation = confirm(
+                      t('list.sureToDelete', { description: removeTags(gist.description).trim() })
                     );
 
                     if (confirmation) {
-                      const value = await GithubApi.deleteGist(gist.id);
+                      const value = await GithubApi.deleteGist(gist.id, false);
 
                       if (value.success) {
-                        toast.info({ message: 'Snippet deleted' });
+                        toast.info({ message: t('list.snippetDeleted') });
                       }
                     }
                   }}
                   className="size-3 cursor-pointer hover:stroke-danger hover:scale-125 transition-all"
                 />
               </TooltipTrigger>
-              <TooltipContent>Delete snippet</TooltipContent>
+              <TooltipContent>
+                {upperCaseFirst(t('common.delete'))} {t('common.snippet')}
+              </TooltipContent>
             </Tooltip>
           </div>
         </div>

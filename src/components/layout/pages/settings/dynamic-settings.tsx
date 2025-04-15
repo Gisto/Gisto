@@ -1,5 +1,7 @@
 import { Sun, Moon, LaptopMinimal } from 'lucide-react';
+import { ReactNode } from 'react';
 
+import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { useTheme, type Theme } from '@/components/theme/theme-provider.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { Label } from '@/components/ui/label.tsx';
@@ -14,8 +16,14 @@ import {
 import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
 import { languageMap } from '@/constants/language-map.ts';
+import { t } from '@/lib/i18n';
 import { SettingsType } from '@/lib/store/globalState.ts';
-import { camelToTitleCase } from '@/lib/utils';
+import {
+  camelToTitleCase,
+  getCountryNameFromLanguage,
+  getFlagEmojiFromLanguage,
+  upperCaseFirst,
+} from '@/lib/utils';
 
 interface SettingsProps {
   settings: Omit<SettingsType, 'editor'> | SettingsType['editor'];
@@ -29,19 +37,26 @@ const SpecialSelect = ({
   onChange,
   fullPath,
   options,
+  tooltip,
+  label,
 }: {
   settingKey: string;
   value: string;
   onChange: (path: string, value: string) => void;
   fullPath: string;
   options: { value: string; label: string }[];
+  tooltip?: ReactNode;
+  label?: ReactNode;
 }) => {
   return (
     <div className="mb-4">
-      <label className="block mb-1">{camelToTitleCase(settingKey)}</label>
+      <label className="mb-1 flex items-center gap-2">
+        {label ?? camelToTitleCase(settingKey)}
+        {tooltip && <SimpleTooltip className="max-w-2xs" content={tooltip} />}
+      </label>
       <Select onValueChange={(value) => onChange(fullPath, value)} value={value}>
         <SelectTrigger>
-          <SelectValue placeholder="Select" />
+          <SelectValue placeholder={upperCaseFirst(t('common.select'))} />
         </SelectTrigger>
         <SelectContent>
           {options.map((option) => (
@@ -107,7 +122,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
           if (key === 'theme') {
             return (
               <>
-                <label className="block mb-1">{camelToTitleCase(key)}</label>
+                <label className="block mb-1">{t('theme.theme')}</label>
                 <RadioGroup
                   className="grid grid-cols-3 gap-4 mb-4"
                   onValueChange={(value: Theme) => {
@@ -121,14 +136,14 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                       value="light"
                       id="light"
                       className="peer sr-only"
-                      aria-label="Light"
+                      aria-label={t('theme.light')}
                     />
                     <Label
                       htmlFor="light"
                       className="cursor-pointer flex gap-3 flex-col items-center justify-between rounded-lg border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
                       <Sun className="stroke-primary" />
-                      Light
+                      {t('theme.light')}
                     </Label>
                   </div>
                   <div>
@@ -136,14 +151,14 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                       value="dark"
                       id="dark"
                       className="peer sr-only"
-                      aria-label="Dark"
+                      aria-label={t('theme.dark')}
                     />
                     <Label
                       htmlFor="dark"
                       className="cursor-pointer flex gap-3 flex-col items-center justify-between rounded-lg border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
                       <Moon className="stroke-primary" />
-                      Dark
+                      {t('theme.dark')}
                     </Label>
                   </div>
                   <div>
@@ -151,14 +166,14 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                       value="system"
                       id="system"
                       className="peer sr-only"
-                      aria-label="System"
+                      aria-label={t('theme.system')}
                     />
                     <Label
                       htmlFor="system"
                       className="cursor-pointer flex gap-3 flex-col items-center justify-between rounded-lg border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                     >
                       <LaptopMinimal className="stroke-primary" />
-                      System
+                      {t('theme.system')}
                     </Label>
                   </div>
                 </RadioGroup>
@@ -175,8 +190,8 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 onChange={onChange}
                 fullPath={fullPath}
                 options={[
-                  { value: 'on', label: 'On' },
-                  { value: 'off', label: 'Off' },
+                  { value: 'on', label: upperCaseFirst(t('common.on')) },
+                  { value: 'off', label: upperCaseFirst(t('common.off')) },
                 ]}
               />
             );
@@ -190,10 +205,59 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 onChange={onChange}
                 fullPath={fullPath}
                 options={[
-                  { value: 'on', label: 'On' },
-                  { value: 'off', label: 'Off' },
-                  { value: 'wordWrapColumn', label: 'Word wrap column' },
-                  { value: 'bounded', label: 'Bounded' },
+                  { value: 'on', label: upperCaseFirst(t('common.on')) },
+                  { value: 'off', label: upperCaseFirst(t('common.off')) },
+                  { value: 'wordWrapColumn', label: t('pages.settings.wordWrapColumn') },
+                  { value: 'bounded', label: t('pages.settings.bounded') },
+                ]}
+              />
+            );
+          }
+
+          if (key === 'language') {
+            return (
+              <SpecialSelect
+                tooltip={
+                  <>
+                    <strong>Experimental</strong>, machine translated, some translations are not
+                    accurate or not available.
+                  </>
+                }
+                settingKey={key}
+                label="UI language (experimental)"
+                value={value}
+                onChange={(keyVal, lang) => {
+                  onChange(keyVal, lang);
+                  document.location.reload();
+                }}
+                fullPath={fullPath}
+                options={[
+                  {
+                    value: 'en',
+                    label:
+                      getFlagEmojiFromLanguage('en') + ' ' + getCountryNameFromLanguage('en', 'en'),
+                  },
+                  {
+                    value: 'es',
+                    label:
+                      getFlagEmojiFromLanguage('es') + ' ' + getCountryNameFromLanguage('es', 'es'),
+                  },
+                  {
+                    value: 'fr',
+                    label:
+                      getFlagEmojiFromLanguage('fr') + ' ' + getCountryNameFromLanguage('fr', 'fr'),
+                  },
+                  {
+                    value: 'de',
+                    label:
+                      getFlagEmojiFromLanguage('de') + ' ' + getCountryNameFromLanguage('de', 'de'),
+                  },
+                  {
+                    value: 'ru',
+                    label:
+                      getFlagEmojiFromLanguage('ru') + ' ' + getCountryNameFromLanguage('ru', 'ru'),
+                  },
+                  // TODO: Add more languages like zh, jp, etc. PRS are always welcome
                 ]}
               />
             );

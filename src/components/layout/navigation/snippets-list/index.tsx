@@ -8,7 +8,6 @@ import {
   SidebarOpen,
   Loader,
   Info,
-  Lightbulb,
 } from 'lucide-react';
 import React, { useCallback } from 'react';
 
@@ -21,6 +20,7 @@ import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
+import { t } from '@/lib/i18n';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { searchFilter } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
@@ -81,7 +81,7 @@ export const Lists = ({
         <div className="relative w-full">
           <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder={`Search ${listOfSnippets.length} gists`}
+            placeholder={t('list.searchSnippets', { number: allSnippets.length })}
             className="pl-8 w-full"
             type="search"
             value={search}
@@ -93,65 +93,37 @@ export const Lists = ({
                 <Info className="size-4 text-muted-foreground" />
               </TooltipTrigger>
               <TooltipContent align="start">
-                <div className="text-sm">
-                  <h4 className="mb-3">
-                    Search for snippets by description/title, tags or language
-                    <br />
-                    Or a combinations of all:
-                  </h4>
-                  <div className="text-xs mb-2">
-                    <strong>Description or files contents:</strong>{' '}
-                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                      just free text
-                    </code>
-                  </div>
-                  <div className="text-xs mb-2">
-                    <strong>Tags:</strong>{' '}
-                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                      tag:{'<your-search>'}
-                    </code>
-                  </div>
-                  <div className="text-xs mb-2">
-                    <strong>Language:</strong>{' '}
-                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                      lang:{'<your-search>'}
-                    </code>
-                  </div>
-
-                  <div className="text-xs mb-2">
-                    <strong>Stars:</strong>{' '}
-                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                      is:starred
-                    </code>{' '}
-                    or{' '}
-                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                      is:unstarred
-                    </code>
-                  </div>
-
-                  <div className="text-xs mb-2">
-                    <strong>Visibility:</strong>{' '}
-                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                      is:private
-                    </code>{' '}
-                    or{' '}
-                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                      is:public
-                    </code>
-                  </div>
-
-                  <div className="text-xs mb-2">
-                    <strong>Un-tagged snippets:</strong>{' '}
-                    <code className="bg-muted-foreground dark:bg-accent rounded p-1">
-                      is:untagged
-                    </code>
-                  </div>
-                  <Separator className="mt-4 mb-2" />
-                  <small className="flex gap-2 items-center">
-                    <Lightbulb className="size-4 text-yellow-400" /> You can also just click a tag
-                    or a language
-                  </small>
-                </div>
+                <div
+                  className="text-sm"
+                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.title') }}
+                />
+                <br />
+                <div
+                  className="text-xs mb-2"
+                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.description') }}
+                />
+                <div
+                  className="text-xs mb-2"
+                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.tags') }}
+                />
+                <div
+                  className="text-xs mb-2"
+                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.language') }}
+                />
+                <div
+                  className="text-xs mb-2"
+                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.stars') }}
+                />
+                <div
+                  className="text-xs mb-2"
+                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.visibility') }}
+                />
+                <div
+                  className="text-xs mb-2"
+                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.untagged') }}
+                />
+                <Separator className="mt-4 mb-2" />
+                <div className="flex gap-2 items-center">{t('list.searchHelp.tip')}</div>
               </TooltipContent>
             </Tooltip>
           )}
@@ -178,12 +150,15 @@ export const Lists = ({
         <div className="flex items-center gap-2">
           {!isLoading ? (
             <>
-              <FileCode className="size-3" /> {listOfSnippets.length} of {allSnippets.length}{' '}
-              Snippets
+              <FileCode className="size-3" />{' '}
+              {t('list.filteredSnippets', {
+                filtered: listOfSnippets.length,
+                number: allSnippets.length,
+              })}
             </>
           ) : (
             <>
-              <Loader className="animate-spin size-3" /> Refreshing data
+              <Loader className="animate-spin size-3" /> {t('list.refreshingData')}
             </>
           )}
 
@@ -192,7 +167,7 @@ export const Lists = ({
               <TooltipTrigger>
                 <RefreshCcw className="size-3 cursor-pointer" onClick={refresh} />
               </TooltipTrigger>
-              <TooltipContent>Refresh the list</TooltipContent>
+              <TooltipContent>{t('list.refreshTheList')}</TooltipContent>
             </Tooltip>
           )}
         </div>
@@ -200,10 +175,11 @@ export const Lists = ({
           {apiRateLimits && (
             <Tooltip>
               <TooltipTrigger>
-                API rate: {apiRateLimits.remaining}/{apiRateLimits.limit}
+                {t('list.apiRate')}: {apiRateLimits.remaining}/{apiRateLimits.limit}
               </TooltipTrigger>
               <TooltipContent>
-                GitHub API rate limit, {apiRateLimits.limit}/hour Next reset: {apiRateLimits.reset}
+                {t('list.apiRateLimit')}, {apiRateLimits.limit}/{t('common.hour')}{' '}
+                {t('list.nextReset')}: {apiRateLimits.reset}
               </TooltipContent>
             </Tooltip>
           )}

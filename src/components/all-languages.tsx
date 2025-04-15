@@ -9,7 +9,9 @@ import {
   CardTitle,
 } from '@/components/ui/card.tsx';
 import { Input } from '@/components/ui/input.tsx';
+import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
+import { upperCaseFirst } from '@/lib/utils';
 
 export const AllLanguages = ({
   className,
@@ -37,22 +39,22 @@ export const AllLanguages = ({
     <Card className={className}>
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
-          <div>Languages</div>{' '}
+          <div>{upperCaseFirst(t('common.languages'))}</div>{' '}
           <div>
             <Input
               type="search"
-              placeholder={`Filter ${languagesData.length} languages`}
+              placeholder={t('components.filterLanguages', { number: languagesData.length })}
               value={search}
               onChange={(event) => setSearch(event.target.value)}
             />
           </div>
         </CardTitle>
-        <CardDescription>All, unique languages</CardDescription>
+        <CardDescription>{t('components.allUniqueLanguages')}</CardDescription>
       </CardHeader>
       <CardContent>
         {languagesData.length === 0 ? (
           <div className="text-center">
-            <p>{`No language matching ${search}`}</p>
+            <p>{t('components.noLanguageMatching', { search })}</p>
           </div>
         ) : (
           languagesData.map(({ language, count }) => (

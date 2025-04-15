@@ -5,7 +5,9 @@ import { ActionType } from '@/components/layout/pages/create-or-edit-snippet/red
 import { toast } from '@/components/toast';
 import { Button } from '@/components/ui/button';
 import { languageMimeMap } from '@/constants/language-map.ts';
+import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
+import { upperCaseFirst } from '@/lib/utils';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
 
@@ -24,12 +26,12 @@ export const FileUploadButton = ({
       const isImage = file.type.startsWith('image/') && !file.type.startsWith('image/svg');
 
       if (file.size > MAX_FILE_SIZE) {
-        toast.error({ message: 'File size exceeds 5 MB. Please choose a smaller file.' });
+        toast.error({ message: t('pages.new.fileTooLargeError') });
         return;
       }
 
       if (isImage) {
-        toast.info({ message: 'Image files will be converted to base64 data URL' });
+        toast.info({ message: t('pages.new.fileWillBeConvertedToBase64') });
       }
 
       const reader = new FileReader();
@@ -58,7 +60,7 @@ export const FileUploadButton = ({
       <input ref={fileInputRef} type="file" className="hidden" onChange={handleFileUpload} />
       <Button variant="outline" onClick={() => fileInputRef.current?.click()}>
         <Upload className="size-4" />
-        Upload file
+        {upperCaseFirst(t('common.upload'))} {t('common.file')}
       </Button>
     </>
   );

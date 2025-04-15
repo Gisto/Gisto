@@ -17,6 +17,7 @@ export type StoreStateType = {
     reset: string;
   } | null;
   settings: {
+    language: 'en' | 'fr' | 'es' | 'de' | 'it' | 'ru' | 'zh';
     theme: 'system' | 'light' | 'dark';
     newSnippetDefaultLanguage: string;
     sidebarCollapsedByDefault: boolean;
@@ -68,6 +69,7 @@ function loadSettingsFromLocalStorage() {
 
 export const defaultSettings: SettingsType = {
   theme: 'system',
+  language: 'en',
   newSnippetDefaultLanguage: 'Text',
   sidebarCollapsedByDefault: false,
   filesCollapsedByDefault: false,

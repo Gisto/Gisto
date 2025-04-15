@@ -8,7 +8,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
-import { copyToClipboard, previewAvailable } from '@/lib/utils';
+import { t } from '@/lib/i18n';
+import { copyToClipboard, previewAvailable, upperCaseFirst } from '@/lib/utils';
 import { GistFileType, GistSingleType } from '@/types/gist.ts';
 
 export const Header = ({
@@ -46,11 +47,11 @@ export const Header = ({
                   .toLowerCase()}`}
                 target="_blank"
               >
-                Open on web
+                {upperCaseFirst(t('pages.snippet.openOnWeb'))}
               </a>
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => copyToClipboard(file.content)}>
-              Copy file contents to clipboard
+              {t('pages.snippet.copyContentToClipboard')}
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <a
@@ -58,7 +59,7 @@ export const Header = ({
                 href={`https://carbon.now.sh/${snippet.id}?filename=${file.filename}`}
                 target="_blank"
               >
-                Open in carbon.now.sh
+                {t('pages.snippet.openIn')} carbon.now.sh
               </a>
             </DropdownMenuItem>
           </DropdownMenuContent>

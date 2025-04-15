@@ -6,6 +6,7 @@ import { version } from '../../../../package.json';
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Button } from '@/components/ui/button.tsx';
+import { t } from '@/lib/i18n';
 
 type Props = {
   isCollapsed?: boolean;
@@ -29,7 +30,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
               )}
             </Button>
 
-            <div className="line-clamp-1">About</div>
+            <div className="line-clamp-1">{t('pages.about.title')}</div>
           </div>
         </div>
       </PageHeader>
@@ -37,18 +38,12 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
         <div className="flex justify-center items-center w-full h-[calc(100vh-116px)] text-center">
           <div className="place-items-center m-auto w-full sm:w-1/2  text-center">
             <img src="/icon-192.png" className="w-20 mb-8 mx-auto" alt="Gisto" />
-            <h2 className="mb-8">About Gisto</h2>
+            <h2 className="mb-8">{t('pages.about.title')} Gisto</h2>
             <p className="mb-8">v{version}</p>
 
-            <p className="mb-8">
-              Gisto is a code snippet manager that runs on GitHub Gists and adds additional features
-              such as searching, tagging and sharing gists while including a rich code editor.
-            </p>
+            <p className="mb-8">{t('pages.about.aboutParagraph')}</p>
 
-            <p className="mb-8">
-              All your data is stored on GitHub and you can access it from GitHub Gists at any time
-              with changes carrying over to Gisto.
-            </p>
+            <p className="mb-8">{t('pages.about.privacyParagraph')}</p>
 
             <a
               target="_blank"
@@ -56,7 +51,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
               href="https://github.com/sponsors/Gisto"
             >
               <div className="flex items-center gap-2 mx-auto justify-center">
-                <Heart className="text-danger size-4" /> Sponsor Gisto
+                <Heart className="text-danger size-4" /> {t('pages.about.sponsor')}
               </div>
             </a>
             <br />
@@ -66,7 +61,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
                 className="underline hover:underline-offset-4"
                 href="https://github.com/Gisto/Gisto/blob/main/CHANGELOG.md"
               >
-                Change log
+                {t('pages.about.changelog')}
               </a>
               <Pipe />
               <a
@@ -74,7 +69,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
                 className="underline hover:underline-offset-4"
                 href="https://gisto.org"
               >
-                Website
+                {t('pages.about.website')}
               </a>
               <Pipe />
               <a
@@ -82,7 +77,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
                 className="underline hover:underline-offset-4"
                 href="https://github.com/Gisto/Gisto/issues"
               >
-                Issues
+                {t('pages.about.issues')}
               </a>
               <Pipe />
               <a
