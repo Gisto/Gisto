@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🚀 Features
+
+- *(i18n)* Add basic, machine-generated i18n ([#472](https://github.com/gisto/gisto/issues/472))
+・ by Sasha Khamkov
+([b419554](https://github.com/gisto/gisto/commit/b41955480db577136abe15f740c903ca49f50a6c))
+
+
 ### 🔤 Grammar
 
 - Fix typo on create-or-edit-snippet
@@ -30,7 +37,11 @@ All notable changes to this project will be documented in this file.
 
 - *(cz and changelog)* Extend cz and fix changelog
 ・ by Sasha Khamkov
-([d3e147a](https://github.com/gisto/gisto/commit/d3e147ae0c0f613dd398bd0a0e0f91ab46f854c9))
+([ea4bda0](https://github.com/gisto/gisto/commit/ea4bda04b290db91bdd14e3544d5882e08115a07))
+
+- Add issue template
+・ by Sasha Khamkov
+([079cbd1](https://github.com/gisto/gisto/commit/079cbd19868bef7df76609d9dafe144dff4c7d59))
 
 
 ## [2.1.5]
