@@ -15,7 +15,7 @@ All notable changes to this project will be documented in this file.
 
 - Pre-commit hook generate changelog ([#474](https://github.com/gisto/gisto/issues/474))
 ・ by Sasha Khamkov
-([3f8d73b](https://github.com/gisto/gisto/commit/3f8d73bf5fa0d7a4a02da3a782ab354cadbc4a13))
+([bafca7e](https://github.com/gisto/gisto/commit/bafca7e799c0825054a528b0d2c59fc5b7e5706a))
 
 
 ## [2.2.0]
