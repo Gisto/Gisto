@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🐛 Bug Fixes
+
+- *(mobile)* Mobile device height ([#473](https://github.com/gisto/gisto/issues/473))
+・ by Sasha Khamkov
+([a516330](https://github.com/gisto/gisto/commit/a51633003f8264ace5aa0a8a6a67eb510e817f0a))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Pre-commit hook generate changelog
+・ by Sasha Khamkov
+([3023fd3](https://github.com/gisto/gisto/commit/3023fd35c2e9c947e45a370c8ef25cfd05cc1d20))
+
+
 ## [2.2.0]
 
 Released on: 2025-04-15
