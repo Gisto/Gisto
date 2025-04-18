@@ -2,7 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## Next version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
 
 ### 🐛 Bug Fixes
 
@@ -28,14 +30,18 @@ All notable changes to this project will be documented in this file.
 ・ by Sasha Khamkov
 ([bafca7e](https://github.com/gisto/gisto/commit/bafca7e799c0825054a528b0d2c59fc5b7e5706a))
 
-- Add post-commit hook with changelog
+- Add post-commit hook with changelog ([#477](https://github.com/gisto/gisto/issues/477))
 ・ by Sasha Khamkov
-([b4097dc](https://github.com/gisto/gisto/commit/b4097dcc9c903f611a831c0e45e71e80f916d7ed))
+([33db6a0](https://github.com/gisto/gisto/commit/33db6a00733107516d2280969436a41b7ab42121))
+
+- Reformate changelog add link to latest and format dates
+・ by Sasha Khamkov
+([e55bdd5](https://github.com/gisto/gisto/commit/e55bdd5f0bc3df4b1f4dfc97a86f407350a4f75c))
 
 
-## [2.2.0]
+## v2.2.0
 
-Released on: 2025-04-15
+Released on: Apr 15, 2025
 
 ### 🚀 Features
 
@@ -77,9 +83,9 @@ Released on: 2025-04-15
 ([079cbd1](https://github.com/gisto/gisto/commit/079cbd19868bef7df76609d9dafe144dff4c7d59))
 
 
-## [2.1.5]
+## v2.1.5
 
-Released on: 2025-04-13
+Released on: Apr 13, 2025
 
 ### 🐛 Bug Fixes
 
@@ -125,9 +131,9 @@ Released on: 2025-04-13
 ([9818966](https://github.com/gisto/gisto/commit/98189663ab71044a82fc165555862d30f763319b))
 
 
-## [2.1.4]
+## v2.1.4
 
-Released on: 2025-04-10
+Released on: Apr 10, 2025
 
 ### 🐛 Bug Fixes
 
@@ -136,9 +142,9 @@ Released on: 2025-04-10
 ([8522021](https://github.com/gisto/gisto/commit/8522021c6410d2135a389426bf710fe7e91500bc))
 
 
-## [2.1.3]
+## v2.1.3
 
-Released on: 2025-04-10
+Released on: Apr 10, 2025
 
 ### 🐛 Bug Fixes
 
@@ -147,9 +153,9 @@ Released on: 2025-04-10
 ([9073981](https://github.com/gisto/gisto/commit/907398160707400847f247e2ce93b23b7771449b))
 
 
-## [2.1.2]
+## v2.1.2
 
-Released on: 2025-04-09
+Released on: Apr 9, 2025
 
 ### 🐛 Bug Fixes
 
@@ -203,9 +209,9 @@ Released on: 2025-04-09
 ([3a01c39](https://github.com/gisto/gisto/commit/3a01c39a63caa862e36004f34c52fd3a59fb7b4b))
 
 
-## [2.1.1]
+## v2.1.1
 
-Released on: 2025-04-05
+Released on: Apr 5, 2025
 
 ### 🐛 Bug Fixes
 
@@ -225,9 +231,9 @@ Released on: 2025-04-05
 ([1c0b789](https://github.com/gisto/gisto/commit/1c0b7899a06710bdb4fb7ff6ea37a15ee5b35cc7))
 
 
-## [2.1.0]
+## v2.1.0
 
-Released on: 2025-03-29
+Released on: Mar 29, 2025
 
 ### 🚀 Features
 
@@ -325,9 +331,9 @@ Released on: 2025-03-29
 ([207872c](https://github.com/gisto/gisto/commit/207872c96b628d3034ee85817e3c6c65dd037d0b))
 
 
-## [2.0.7]
+## v2.0.7
 
-Released on: 2025-03-08
+Released on: Mar 8, 2025
 
 ### 🚀 Features
 
@@ -378,9 +384,9 @@ Released on: 2025-03-08
 ([8bc451d](https://github.com/gisto/gisto/commit/8bc451deddb6c82c25007b423c9274c470cda32f))
 
 
-## [2.0.6]
+## v2.0.6
 
-Released on: 2025-02-15
+Released on: Feb 15, 2025
 
 ### 🚀 Features
 
@@ -396,9 +402,9 @@ Released on: 2025-02-15
 ([ea825e1](https://github.com/gisto/gisto/commit/ea825e185c572478803ca160ebc26bc3fc5ed99a))
 
 
-## [2.0.5]
+## v2.0.5
 
-Released on: 2025-02-12
+Released on: Feb 12, 2025
 
 ### 🐛 Bug Fixes
 
@@ -407,9 +413,9 @@ Released on: 2025-02-12
 ([ee0838f](https://github.com/gisto/gisto/commit/ee0838fdaddd419141f8cc6c9f288c94c8cb2639))
 
 
-## [2.0.4]
+## v2.0.4
 
-Released on: 2025-02-11
+Released on: Feb 11, 2025
 
 ### 🐛 Bug Fixes
 
@@ -436,9 +442,9 @@ Released on: 2025-02-11
 ([2b41cd2](https://github.com/gisto/gisto/commit/2b41cd2b523c62c0bfeaf44e42b5da7e621b890c))
 
 
-## [2.0.3]
+## v2.0.3
 
-Released on: 2025-02-01
+Released on: Feb 1, 2025
 
 ### 🚀 Features
 
@@ -488,9 +494,9 @@ Released on: 2025-02-01
 ([60e8173](https://github.com/gisto/gisto/commit/60e81732014c6db2cd7199b57fca7e9ad2a554d3))
 
 
-## [2.0.1]
+## v2.0.1
 
-Released on: 2025-01-31
+Released on: Jan 31, 2025
 
 ### 🚀 Features
 
@@ -521,9 +527,9 @@ Released on: 2025-01-31
 ([6e56235](https://github.com/gisto/gisto/commit/6e56235ee2bdf8ac4664c3268bb2608fd90afa97))
 
 
-## [2.0.0]
+## v2.0.0
 
-Released on: 2025-01-30
+Released on: Jan 30, 2025
 
 ### 🚀 Features
 
@@ -543,9 +549,9 @@ Released on: 2025-01-30
 ([ee4b244](https://github.com/gisto/gisto/commit/ee4b244867b512f4a8ac6af689690c07faae1036))
 
 
-## [2.0.0-1]
+## v2.0.0-1
 
-Released on: 2025-01-30
+Released on: Jan 30, 2025
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -558,9 +564,9 @@ Released on: 2025-01-30
 ([858ff6c](https://github.com/gisto/gisto/commit/858ff6cc01af00519cab9c699b52a46b5666c991))
 
 
-## [2.0.0-beta+2]
+## v2.0.0-beta+2
 
-Released on: 2025-01-30
+Released on: Jan 30, 2025
 
 ### 🐛 Bug Fixes
 
@@ -583,9 +589,9 @@ Released on: 2025-01-30
 ([bccb952](https://github.com/gisto/gisto/commit/bccb952eeed18da9eb96dfa8efcf37b7be53ae91))
 
 
-## [2.0.0-beta+1]
+## v2.0.0-beta+1
 
-Released on: 2025-01-29
+Released on: Jan 29, 2025
 
 ### 🚀 Features
 
@@ -631,9 +637,9 @@ Released on: 2025-01-29
 ([e04dc78](https://github.com/gisto/gisto/commit/e04dc78d966fdf8da4c4b935607d8d83478dc9d5))
 
 
-## [2.0.0-alpha+9]
+## v2.0.0-alpha+9
 
-Released on: 2025-01-27
+Released on: Jan 27, 2025
 
 ### 🐛 Bug Fixes
 
