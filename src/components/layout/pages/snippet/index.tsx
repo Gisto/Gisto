@@ -56,7 +56,7 @@ export const SnippetContent = () => {
     };
 
     if (params.id) {
-      fetchData();
+      void fetchData();
     }
   }, [params.id]);
 
@@ -283,9 +283,23 @@ export const SnippetContent = () => {
       <div className="bg-secondary h-full shadow-inner">
         <ScrollArea className="h-full pb-10">
           <div className="p-4">
-            {Object.keys(snippet.files).map((file) => {
-              return <File key={file} snippet={snippet} file={snippet.files[file]} />;
-            })}
+            {Object.keys(snippet.files)
+              .sort((a, b) => {
+                const sortByMarkdownFirst =
+                  globalState.getState()?.settings?.sortFilesByMarkdownFirst;
+
+                if (sortByMarkdownFirst) {
+                  const isMarkdownA = a.endsWith('.md') || snippet.files[a].language === 'Markdown';
+                  const isMarkdownB = b.endsWith('.md') || snippet.files[b].language === 'Markdown';
+                  if (isMarkdownA && !isMarkdownB) return -1;
+                  if (!isMarkdownA && isMarkdownB) return 1;
+                }
+
+                return 0;
+              })
+              .map((file) => {
+                return <File key={file} snippet={snippet} file={snippet.files[file]} />;
+              })}
           </div>
         </ScrollArea>
       </div>

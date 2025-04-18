@@ -25,6 +25,7 @@ export type StoreStateType = {
     newSnippetPublicByDefault: boolean;
     jsonPreviewCollapsedByDefault: boolean;
     filesPreviewEnabledByDefault: boolean;
+    sortFilesByMarkdownFirst: boolean;
     editor: {
       fontFamily: string;
       fontLigatures: boolean;
@@ -76,6 +77,7 @@ export const defaultSettings: SettingsType = {
   newSnippetPublicByDefault: false,
   jsonPreviewCollapsedByDefault: true,
   filesPreviewEnabledByDefault: true,
+  sortFilesByMarkdownFirst: false,
   editor: {
     fontFamily: 'monospace',
     fontLigatures: false,
