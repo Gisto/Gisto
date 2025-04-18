@@ -1,17 +1,15 @@
 import { render, screen, act } from '@testing-library/react';
 import { vi } from 'vitest';
 
+import { mockUtils } from '../../../test/mockUtils.ts';
+
 import ToastManager from './toast-manager';
 
 import { EVENT_NAME } from './';
 
 import { randomString } from '@/lib/utils';
 
-// Mock the randomString utility
-vi.mock('@/lib/utils', () => ({
-  randomString: vi.fn(() => 'mock-random-string'),
-  cn: () => 'mock-class-name',
-}));
+mockUtils();
 
 describe('ToastManager', () => {
   beforeEach(() => {

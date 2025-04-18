@@ -25,3 +25,4 @@ dist-ssr
 .history
 *.eslintcache
 .zed/
+/coverage/
