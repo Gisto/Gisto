@@ -15,7 +15,11 @@ All notable changes to this project will be documented in this file.
 
 - Mock translations in tests ([#475](https://github.com/gisto/gisto/issues/475))
 ・ by Sasha Khamkov
-([f895529](https://github.com/gisto/gisto/commit/f8955293324f1bde0bd901344c0cc8f69a9f28be))
+([8bf7574](https://github.com/gisto/gisto/commit/8bf7574328196d8c4c8398fad65c4f7f6ae8fe34))
+
+- Add test mocks and more tests ([#476](https://github.com/gisto/gisto/issues/476))
+・ by Sasha Khamkov
+([5b17517](https://github.com/gisto/gisto/commit/5b175177a723e38cc70a4fddcaac4a941459e0b3))
 
 
 ### ⚙️ Miscellaneous Tasks

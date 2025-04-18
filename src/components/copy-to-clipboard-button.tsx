@@ -10,13 +10,18 @@ export const CopyToClipboardButton = ({ text }: { text: string }) => {
     <Button
       variant="link"
       size="sm"
+      data-testid="clipboard-button"
       onClick={() => {
         copyToClipboard(text);
         setCopyActive(true);
         setTimeout(() => setCopyActive(false), 2000);
       }}
     >
-      {copyActive ? <ClipboardCheck className="text-success" /> : <Clipboard />}
+      {copyActive ? (
+        <ClipboardCheck data-testid="clipboard-check-icon" className="text-success" />
+      ) : (
+        <Clipboard data-testid="clipboard-icon" />
+      )}
     </Button>
   );
 };

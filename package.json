@@ -80,6 +80,7 @@
     "@types/react-dom": "^19.1.2",
     "@types/swagger-ui-react": "^5.18.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "3.1.1",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.24.0",

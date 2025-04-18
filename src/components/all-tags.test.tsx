@@ -1,6 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Mock, vi } from 'vitest';
 
+import { mockUtils } from '../../test/mockUtils.ts';
+
 import { AllTags } from './all-tags';
 
 import { useStoreValue } from '@/lib/store/globalState';
@@ -10,11 +12,7 @@ vi.mock('@/lib/store/globalState', () => ({
   useStoreValue: vi.fn(),
 }));
 
-vi.mock('@/lib/utils', () => ({
-  fetchAndUpdateSnippets: vi.fn(),
-  cn: vi.fn(),
-  upperCaseFirst: vi.fn(),
-}));
+mockUtils();
 
 describe('AllTags', () => {
   it('renders all unique tags with their counts', () => {
