@@ -8,9 +8,9 @@ All notable changes to this project will be documented in this file.
 
 ### 🚀 Features
 
-- *(settings)* Add setting to allow to sort snippet files by markdown first
+- *(settings)* Add setting to allow to sort snippet files by markdown first ([#481](https://github.com/gisto/gisto/issues/481))
 ・ by Sasha Khamkov
-([1120fef](https://github.com/gisto/gisto/commit/1120fef51cd9331c3a620d88e909e52b5450df6f))
+([d9a5e69](https://github.com/gisto/gisto/commit/d9a5e69677aa4ead0d92cd9dd5115bc2c35b7629))
 
 
 ### 🐛 Bug Fixes
