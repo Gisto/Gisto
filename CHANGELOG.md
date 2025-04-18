@@ -46,7 +46,11 @@ All notable changes to this project will be documented in this file.
 
 - Pre-commit hook fix changelog
 ・ by Sasha Khamkov
-([92cd8f3](https://github.com/gisto/gisto/commit/92cd8f3d2e8593de4afacd52e86d65dee2d8e842))
+([f428493](https://github.com/gisto/gisto/commit/f428493d8de2256226d8b308fb18c6a7024c4e33))
+
+- Pre-commit hook fix changelog
+・ by Sasha Khamkov
+([fe8ff8a](https://github.com/gisto/gisto/commit/fe8ff8a26294d66b103f229f51a8ad3f59f3d916))
 
 
 ## [2.2.0]
