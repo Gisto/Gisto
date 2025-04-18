@@ -3,5 +3,5 @@ pnpm ts:lint
 pnpm test
 
 if [[ $(git rev-parse --abbrev-ref HEAD) != "main" && $(git rev-parse --abbrev-ref HEAD) != "release" ]]; then
-  npx git-cliff@latest --output CHANGELOG.md main..HEAD && git add CHANGELOG.md
+  npx git-cliff@latest --output CHANGELOG.md HEAD..main && git add CHANGELOG.md
 fi
