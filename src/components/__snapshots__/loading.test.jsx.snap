@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Loading > matches the snapshot 1`] = `
+<div>
+  <div
+    class="flex justify-center items-center w-full h-screen"
+  >
+    <svg
+      class="lucide lucide-loader size-8 animate-spin"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 2v4"
+      />
+      <path
+        d="m16.2 7.8 2.9-2.9"
+      />
+      <path
+        d="M18 12h4"
+      />
+      <path
+        d="m16.2 16.2 2.9 2.9"
+      />
+      <path
+        d="M12 18v4"
+      />
+      <path
+        d="m4.9 19.1 2.9-2.9"
+      />
+      <path
+        d="M2 12h4"
+      />
+      <path
+        d="m4.9 4.9 2.9 2.9"
+      />
+    </svg>
+  </div>
+</div>
+`;
