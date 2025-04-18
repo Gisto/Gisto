@@ -1,7 +1,7 @@
-pnpm lint
-pnpm ts:lint
-pnpm test
-
 if [[ $(git rev-parse --abbrev-ref HEAD) != "main" && $(git rev-parse --abbrev-ref HEAD) != "release" ]]; then
   pnpm changelog && git add CHANGELOG.md
 fi
+
+pnpm lint
+pnpm ts:lint
+pnpm test
