@@ -23,6 +23,10 @@ All notable changes to this project will be documented in this file.
 ・ by Sasha Khamkov
 ([b4648ff](https://github.com/gisto/gisto/commit/b4648ff75c0ed4df79e983661145e3616636b476))
 
+- Add tests for: loading, simple-tooltip, updater and zod-error components ([#479](https://github.com/gisto/gisto/issues/479))
+・ by Sasha Khamkov
+([93841e1](https://github.com/gisto/gisto/commit/93841e11a270cdc5ba0bb3777a2296ce4d804b73))
+
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -34,9 +38,9 @@ All notable changes to this project will be documented in this file.
 ・ by Sasha Khamkov
 ([33db6a0](https://github.com/gisto/gisto/commit/33db6a00733107516d2280969436a41b7ab42121))
 
-- Reformate changelog add link to latest and format dates
+- Reformate changelog add link to latest and format dates ([#478](https://github.com/gisto/gisto/issues/478))
 ・ by Sasha Khamkov
-([e55bdd5](https://github.com/gisto/gisto/commit/e55bdd5f0bc3df4b1f4dfc97a86f407350a4f75c))
+([1f3581b](https://github.com/gisto/gisto/commit/1f3581be7bcc6158726f8db9aa54297db5b2f7a3))
 
 
 ## v2.2.0

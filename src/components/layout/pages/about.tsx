@@ -1,5 +1,5 @@
 import { SidebarClose, SidebarOpen } from 'lucide-react';
-import { Heart } from 'lucide-react';
+import { Heart, GitCommit } from 'lucide-react';
 
 import { version } from '../../../../package.json';
 
@@ -38,8 +38,13 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
         <div className="flex justify-center items-center w-full h-[calc(100vh-116px)] text-center">
           <div className="place-items-center m-auto w-full sm:w-1/2  text-center">
             <img src="/icon-192.png" className="w-20 mb-8 mx-auto" alt="Gisto" />
-            <h2 className="mb-8">{t('pages.about.title')} Gisto</h2>
-            <p className="mb-8">v{version}</p>
+            <p className="mb-8">
+              v{version}
+              <br />
+              <small className="text-xs flex items-center gap-2">
+                git <GitCommit /> {__COMMIT_HASH__}
+              </small>
+            </p>
 
             <p className="mb-8">{t('pages.about.aboutParagraph')}</p>
 
