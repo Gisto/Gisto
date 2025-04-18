@@ -6,6 +6,13 @@ All notable changes to this project will be documented in this file.
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(settings)* Add setting to allow to sort snippet files by markdown first
+・ by Sasha Khamkov
+([1120fef](https://github.com/gisto/gisto/commit/1120fef51cd9331c3a620d88e909e52b5450df6f))
+
+
 ### 🐛 Bug Fixes
 
 - *(mobile)* Mobile device height ([#473](https://github.com/gisto/gisto/issues/473))
@@ -45,9 +52,9 @@ All notable changes to this project will be documented in this file.
 
 ### 🛠️️ Build
 
-- *(depencencies)* Update dependencies to lates
+- *(depencencies)* Update dependencies to lates ([#480](https://github.com/gisto/gisto/issues/480))
 ・ by Sasha Khamkov
-([7377628](https://github.com/gisto/gisto/commit/7377628ebdf6c62ded0dea2f8315d1a23f3a7946))
+([d317d7e](https://github.com/gisto/gisto/commit/d317d7e8d587027c82b9814015f26f27dea4111a))
 
 
 ## v2.2.0
