@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## Next version
+## v2.2.1
 
-[test build](https://main-branch-gisto-app.netlify.app/)
+Released on: Apr 18, 2025
 
 ### 🚀 Features
 
