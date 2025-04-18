@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file.
 
 - Add test mocks and more tests ([#476](https://github.com/gisto/gisto/issues/476))
 ・ by Sasha Khamkov
-([5b17517](https://github.com/gisto/gisto/commit/5b175177a723e38cc70a4fddcaac4a941459e0b3))
+([b4648ff](https://github.com/gisto/gisto/commit/b4648ff75c0ed4df79e983661145e3616636b476))
 
 
 ### ⚙️ Miscellaneous Tasks
@@ -27,6 +27,10 @@ All notable changes to this project will be documented in this file.
 - Pre-commit hook generate changelog ([#474](https://github.com/gisto/gisto/issues/474))
 ・ by Sasha Khamkov
 ([bafca7e](https://github.com/gisto/gisto/commit/bafca7e799c0825054a528b0d2c59fc5b7e5706a))
+
+- Add post-commit hook with changelog
+・ by Sasha Khamkov
+([b4097dc](https://github.com/gisto/gisto/commit/b4097dcc9c903f611a831c0e45e71e80f916d7ed))
 
 
 ## [2.2.0]

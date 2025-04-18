@@ -1,0 +1,4 @@
+  if [[ -z "$SKIP_POST_COMMIT" && $(git rev-parse --abbrev-ref HEAD) != "main" && $(git rev-parse --abbrev-ref HEAD) != "release" ]]; then
+    export SKIP_POST_COMMIT=1
+    npx git-cliff@latest --output CHANGELOG.md && git add CHANGELOG.md && git commit --amend --no-edit --no-verify
+  fi
