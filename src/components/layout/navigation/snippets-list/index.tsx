@@ -138,7 +138,7 @@ export const Lists = ({
           {search ? <FilterX className="size-4" /> : <Filter className="size-4" />}
         </Button>
       </PageHeader>
-      <ScrollArea className="h-[calc(100vh-104px)] shadow-inner">
+      <ScrollArea className="h-[calc(100dvh_-_104px)] shadow-inner">
         {allSnippets.length === 0 ? (
           <ListSkeleton />
         ) : (

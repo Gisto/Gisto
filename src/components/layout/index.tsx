@@ -25,7 +25,7 @@ export const MainLayout = () => {
   }, [isCollapsed]);
 
   return (
-    <div className="overflow-hidden bg-background w-screen h-screen sticky">
+    <div className="overflow-hidden bg-background w-screen h-dvh sticky">
       <div className="flex border-t">
         <div
           className={cn(
