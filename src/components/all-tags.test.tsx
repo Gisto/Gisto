@@ -16,7 +16,7 @@ vi.mock('@/lib/utils', () => ({
   upperCaseFirst: vi.fn(),
 }));
 
-describe.skip('AllTags', () => {
+describe('AllTags', () => {
   it('renders all unique tags with their counts', () => {
     (useStoreValue as Mock).mockReturnValue([
       { tags: ['#tag1', '#tag2'] },

@@ -5,6 +5,7 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

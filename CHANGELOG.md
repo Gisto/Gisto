@@ -11,11 +11,18 @@ All notable changes to this project will be documented in this file.
 ([a516330](https://github.com/gisto/gisto/commit/a51633003f8264ace5aa0a8a6a67eb510e817f0a))
 
 
+### 🧪 Testing
+
+- Mock translations in tests ([#475](https://github.com/gisto/gisto/issues/475))
+・ by Sasha Khamkov
+([f895529](https://github.com/gisto/gisto/commit/f8955293324f1bde0bd901344c0cc8f69a9f28be))
+
+
 ### ⚙️ Miscellaneous Tasks
 
 - Pre-commit hook generate changelog ([#474](https://github.com/gisto/gisto/issues/474))
 ・ by Sasha Khamkov
-([3f8d73b](https://github.com/gisto/gisto/commit/3f8d73bf5fa0d7a4a02da3a782ab354cadbc4a13))
+([bafca7e](https://github.com/gisto/gisto/commit/bafca7e799c0825054a528b0d2c59fc5b7e5706a))
 
 
 ## [2.2.0]
