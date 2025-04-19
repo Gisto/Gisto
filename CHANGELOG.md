@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## Next version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🐛 Bug Fixes
+
+- *(preview)* Previews height
+・ by Sasha Khamkov
+([6db5919](https://github.com/gisto/gisto/commit/6db591922e415553c84b98b9ccfe3a592682313a))
+
+
 ## v2.2.1
 
 Released on: Apr 18, 2025
@@ -551,68 +562,6 @@ Released on: Jan 30, 2025
 
 ### 🚀 Features
 
-- *(csv preview)* Add csv/tsv preview
-・ by Sasha Khamkov
-([b6b4d26](https://github.com/gisto/gisto/commit/b6b4d26f9e5bff65ef5b2120cec5f7e9e617fd9b))
-
-
-### ⚙️ Miscellaneous Tasks
-
-- Update README.md
-・ by Sasha Khamkov
-([6c7588a](https://github.com/gisto/gisto/commit/6c7588adb401833796debafd520f2643b3542645))
-
-- Add version script
-・ by Sasha Khamkov
-([ee4b244](https://github.com/gisto/gisto/commit/ee4b244867b512f4a8ac6af689690c07faae1036))
-
-
-## v2.0.0-1
-
-Released on: Jan 30, 2025
-
-### ⚙️ Miscellaneous Tasks
-
-- Create a release
-・ by Sasha Khamkov
-([9fbb3b2](https://github.com/gisto/gisto/commit/9fbb3b2b01c186b0bc38675dba427e3e8a641847))
-
-- Create a release changelog
-・ by Sasha Khamkov
-([858ff6c](https://github.com/gisto/gisto/commit/858ff6cc01af00519cab9c699b52a46b5666c991))
-
-
-## v2.0.0-beta+2
-
-Released on: Jan 30, 2025
-
-### 🐛 Bug Fixes
-
-- Redirect for netlify
-・ by Sasha Khamkov
-([b6e784d](https://github.com/gisto/gisto/commit/b6e784d320989381211d0b27e687ad1882bc08c3))
-
-
-### 📚 Documentation
-
-- Update README.md
-・ by Sasha Khamkov
-([0373868](https://github.com/gisto/gisto/commit/037386888fa4aef10f3be7e4e0fac7de97f2eed9))
-
-
-### ⚙️ Miscellaneous Tasks
-
-- Bump version
-・ by Sasha Khamkov
-([bccb952](https://github.com/gisto/gisto/commit/bccb952eeed18da9eb96dfa8efcf37b7be53ae91))
-
-
-## v2.0.0-beta+1
-
-Released on: Jan 29, 2025
-
-### 🚀 Features
-
 - Hidden field for authentication token and adds formatOnPaste editor setting
 ・ by Sasha Khamkov
 ([f8599e0](https://github.com/gisto/gisto/commit/f8599e07f3cb8c79836a5f8daf34d82ef15182f0))
@@ -621,43 +570,10 @@ Released on: Jan 29, 2025
 ・ by Sasha Khamkov
 ([134ab7f](https://github.com/gisto/gisto/commit/134ab7f8686090d7edc136bd6bb22c620f854ca9))
 
-
-### 🐛 Bug Fixes
-
-- *(new snippet and edit)* Fix filenames for updates
+- *(csv preview)* Add csv/tsv preview
 ・ by Sasha Khamkov
-([41ccb84](https://github.com/gisto/gisto/commit/41ccb842d5ca66bf5fd4087e53a4d1c275a9beb8))
+([b6b4d26](https://github.com/gisto/gisto/commit/b6b4d26f9e5bff65ef5b2120cec5f7e9e617fd9b))
 
-
-### 📚 Documentation
-
-- Update README.md
-・ by Sasha Khamkov
-([f1bd5eb](https://github.com/gisto/gisto/commit/f1bd5ebf854c1baa634a68ddd55ccf725d84345e))
-
-- Update readme
-・ by Sasha Khamkov
-([54c8247](https://github.com/gisto/gisto/commit/54c8247d7063f94cdb766636c8b457d7718058fd))
-
-- Update README.md
-・ by Sasha Khamkov
-([569c0fe](https://github.com/gisto/gisto/commit/569c0fedb646dac7e9971657945b90617a992f88))
-
-
-### ⚙️ Miscellaneous Tasks
-
-- Update README.md
-・ by Sasha Khamkov
-([2423507](https://github.com/gisto/gisto/commit/2423507bb193c2bb6a6e2c5db284916487612711))
-
-- Update readme and app icons
-・ by Sasha Khamkov
-([e04dc78](https://github.com/gisto/gisto/commit/e04dc78d966fdf8da4c4b935607d8d83478dc9d5))
-
-
-## v2.0.0-alpha+9
-
-Released on: Jan 27, 2025
 
 ### 🐛 Bug Fixes
 
@@ -672,6 +588,14 @@ Released on: Jan 27, 2025
 - *(new snippet)* Fix filename
 ・ by Sasha Khamkov
 ([484781d](https://github.com/gisto/gisto/commit/484781df4ee22e12c07e36625ffcb9a7e4331b14))
+
+- *(new snippet and edit)* Fix filenames for updates
+・ by Sasha Khamkov
+([41ccb84](https://github.com/gisto/gisto/commit/41ccb842d5ca66bf5fd4087e53a4d1c275a9beb8))
+
+- Redirect for netlify
+・ by Sasha Khamkov
+([b6e784d](https://github.com/gisto/gisto/commit/b6e784d320989381211d0b27e687ad1882bc08c3))
 
 
 ### 🚜 Refactor
@@ -695,6 +619,22 @@ Released on: Jan 27, 2025
 ・ by Sasha Khamkov
 ([0676f3e](https://github.com/gisto/gisto/commit/0676f3eb510a3809f3d25a67ce05c9ede06afc3c))
 
+- Update README.md
+・ by Sasha Khamkov
+([f1bd5eb](https://github.com/gisto/gisto/commit/f1bd5ebf854c1baa634a68ddd55ccf725d84345e))
+
+- Update readme
+・ by Sasha Khamkov
+([54c8247](https://github.com/gisto/gisto/commit/54c8247d7063f94cdb766636c8b457d7718058fd))
+
+- Update README.md
+・ by Sasha Khamkov
+([569c0fe](https://github.com/gisto/gisto/commit/569c0fedb646dac7e9971657945b90617a992f88))
+
+- Update README.md
+・ by Sasha Khamkov
+([0373868](https://github.com/gisto/gisto/commit/037386888fa4aef10f3be7e4e0fac7de97f2eed9))
+
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -713,6 +653,34 @@ Released on: Jan 27, 2025
 - Update changlog
 ・ by Sasha Khamkov
 ([aa4dd85](https://github.com/gisto/gisto/commit/aa4dd8540f26dfb7502ec865a65162232d8636e9))
+
+- Update README.md
+・ by Sasha Khamkov
+([2423507](https://github.com/gisto/gisto/commit/2423507bb193c2bb6a6e2c5db284916487612711))
+
+- Update readme and app icons
+・ by Sasha Khamkov
+([e04dc78](https://github.com/gisto/gisto/commit/e04dc78d966fdf8da4c4b935607d8d83478dc9d5))
+
+- Bump version
+・ by Sasha Khamkov
+([bccb952](https://github.com/gisto/gisto/commit/bccb952eeed18da9eb96dfa8efcf37b7be53ae91))
+
+- Create a release
+・ by Sasha Khamkov
+([9fbb3b2](https://github.com/gisto/gisto/commit/9fbb3b2b01c186b0bc38675dba427e3e8a641847))
+
+- Create a release changelog
+・ by Sasha Khamkov
+([858ff6c](https://github.com/gisto/gisto/commit/858ff6cc01af00519cab9c699b52a46b5666c991))
+
+- Update README.md
+・ by Sasha Khamkov
+([6c7588a](https://github.com/gisto/gisto/commit/6c7588adb401833796debafd520f2643b3542645))
+
+- Add version script
+・ by Sasha Khamkov
+([ee4b244](https://github.com/gisto/gisto/commit/ee4b244867b512f4a8ac6af689690c07faae1036))
 
 
 ### 🛠️️ Build

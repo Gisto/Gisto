@@ -27,7 +27,7 @@ export const GeoJson = ({ file }: { file: GistFileType }) => {
   const geoJsonData: JsonType = JSON.parse(file.content);
 
   return (
-    <MapContainer center={[0, 0]} zoom={2} className="h-[65vh]">
+    <MapContainer center={[0, 0]} zoom={2} className="h-65dvh">
       <TileLayer
         url={
           resolvedTheme === 'light'
