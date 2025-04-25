@@ -257,7 +257,12 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                     label:
                       getFlagEmojiFromLanguage('ru') + ' ' + getCountryNameFromLanguage('ru', 'ru'),
                   },
-                  // TODO: Add more languages like zh, jp, etc. PRS are always welcome
+                  {
+                    value: 'zh',
+                    label:
+                      getFlagEmojiFromLanguage('zh') + ' ' + getCountryNameFromLanguage('zh', 'zh'),
+                  },
+                  // TODO: Add more languages like jp, etc. PRS are always welcome
                 ]}
               />
             );
