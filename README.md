@@ -164,7 +164,23 @@ Please feel free to add a bug / feature request / suggestions to the issue track
 
 ---
 
+# 🕶️ Contribution
+
+> Please squash commits per "feature"
+
+### Flow
+
+1. **Create a branch** from latest `main`
+2. **Add new code additions**
+3. **Write meningfull commit message** using `pnpm commit` command (it will be linted, as we generate changelog from commits)
+4. **Push** (this will also trigger temporary changelog generation via post-commit hook)
+5. **Open pull request**
+
+---
+
 # 🚀 Release cycle
+
+⚠︎ For maintainers
 
 ## on branch `main`:
 
