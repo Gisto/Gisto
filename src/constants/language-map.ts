@@ -327,6 +327,7 @@ export const languageMap: Record<string, string> = {
   xBase: 'text',
   XC: 'cpp',
   XML: 'xml',
+  'XML Property List': 'xml',
   Xojo: 'text',
   XProc: 'xml',
   XQuery: 'xquery',
