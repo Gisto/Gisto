@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## Next version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🐛 Bug Fixes
+
+- *(editor)* Highlight plist files using xml syntax
+・ by Sasha Khamkov
+([40ecad5](https://github.com/gisto/gisto/commit/40ecad59d98c28c30609e9908788497a0f618571))
+
+
 ## v2.2.3
 
 Released on: Apr 26, 2025
