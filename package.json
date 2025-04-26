@@ -3,7 +3,7 @@
   "description": "Cross-platform snippets management desktop application",
   "productName": "Gisto",
   "private": true,
-  "version": "2.2.2",
+  "version": "2.2.3",
   "type": "module",
   "scripts": {
     "dev": "vite --port 61570",

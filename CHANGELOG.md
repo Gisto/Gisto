@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## Next version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🚀 Features
+
+- *(lang)* Add Chinese(zh) language support ([#484](https://github.com/gisto/gisto/issues/484))
+・ by Qi
+([7fe3547](https://github.com/gisto/gisto/commit/7fe3547890bcc9baac24deecfd4fa45ef03df7b2))
+
+
+### 📚 Documentation
+
+- Update readme with contribution instructions
+・ by Sasha Khamkov
+([d6f08fa](https://github.com/gisto/gisto/commit/d6f08fa4e1da493d8f76a48c6bd2670fc93cbe75))
+
+
 ## v2.2.2
 
 Released on: Apr 20, 2025
