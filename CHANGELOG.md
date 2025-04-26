@@ -10,7 +10,14 @@ All notable changes to this project will be documented in this file.
 
 - *(editor)* Highlight plist files using xml syntax
 ・ by Sasha Khamkov
-([40ecad5](https://github.com/gisto/gisto/commit/40ecad59d98c28c30609e9908788497a0f618571))
+([bf884f2](https://github.com/gisto/gisto/commit/bf884f2d15c662a54d9f03a359b36159f0d3f791))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Update workflows to take pnpm version from package.json packageManager field
+・ by Sasha Khamkov
+([0ba326b](https://github.com/gisto/gisto/commit/0ba326b5fa0c9fa478e56a6e2500fc5722d8e5f7))
 
 
 ## v2.2.3

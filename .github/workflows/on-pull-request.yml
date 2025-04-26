@@ -12,11 +12,11 @@ jobs:
       - uses: actions/checkout@v2
       - uses: useblacksmith/setup-node@v5
         with:
-          node-version: 22
+          node-version: 23
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.11.0
+          run_install: false
 
       - name: Install
         run: pnpm install
