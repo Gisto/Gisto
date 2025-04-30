@@ -17,7 +17,14 @@ All notable changes to this project will be documented in this file.
 
 - Update workflows to take pnpm version from package.json packageManager field
 ・ by Sasha Khamkov
-([0ba326b](https://github.com/gisto/gisto/commit/0ba326b5fa0c9fa478e56a6e2500fc5722d8e5f7))
+([fca191f](https://github.com/gisto/gisto/commit/fca191f0f9405e59cf7404ab4949957a2ffb99c9))
+
+
+### 🛠️️ Build
+
+- *(dependencies)* Update dependencies
+・ by Sasha Khamkov
+([56fa788](https://github.com/gisto/gisto/commit/56fa7881664eb7079e7e2e4239b322de4452238d))
 
 
 ## v2.2.3
