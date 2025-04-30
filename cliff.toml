@@ -9,7 +9,7 @@
 # template for the changelog header
 header = """
 # Changelog\n
-All notable changes to this project will be documented in this file.\n
+All significant updates and improvements\n
 """
 # template for the changelog body
 # https://keats.github.io/tera/docs/#introduction
@@ -19,7 +19,7 @@ body = """
 
     Released on: {{ timestamp | date(format="%b %-d, %Y") }}
 {% else %}\
-    ## Next version
+    ## Upcoming version
 
     [test build](https://main-branch-gisto-app.netlify.app/)
 {% endif %}\
@@ -31,7 +31,7 @@ body = """
             {{ commit.message | upper_first }}\
 
             {% if commit.author.name %}
-              ・ by {{ commit.author.name }}
+              ・ by {{ commit.author.name }} ([@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }}))
             {%- endif %}\
 
             {% if commit.id %}
