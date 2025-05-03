@@ -16,7 +16,7 @@ export const SimpleTooltip = ({
   return (
     <Tooltip>
       <TooltipTrigger>{children ?? DefaultTrigger}</TooltipTrigger>
-      <TooltipContent className={className}>⚠︎ {content}</TooltipContent>
+      <TooltipContent className={className}>{content}</TooltipContent>
     </Tooltip>
   );
 };

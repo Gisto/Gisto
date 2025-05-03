@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { useTheme, type Theme } from '@/components/theme/theme-provider.tsx';
 import { Input } from '@/components/ui/input.tsx';
+import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Label } from '@/components/ui/label.tsx';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.tsx';
 import {
@@ -280,6 +281,45 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   label: language,
                 }))}
               />
+            );
+          }
+
+          if (key === 'geminiApiKey') {
+            return (
+              <div key={key} className="mb-4">
+                <label className="mb-1 flex items-center gap-2">
+                  {camelToTitleCase(key)}
+                  <SimpleTooltip
+                    className="max-w-2xs"
+                    content={
+                      <div>
+                        Get your Gemini API key at{' '}
+                        <a
+                          className="text-primary-foreground hover:text-primary-foreground underline"
+                          target="_blank"
+                          href="https://aistudio.google.com/app/apikey"
+                        >
+                          https://aistudio.google.com/app/apikey
+                        </a>
+                        .
+                        <br />
+                        <br />
+                        It can be used to generate snippets description and tags on edit or create
+                        page.
+                        <br />
+                        <br />
+                        After adding the key, you will see assistant button near the description on
+                        edit or create page.
+                      </div>
+                    }
+                  />
+                </label>
+                <InputPassword
+                  value={value}
+                  onChange={(e) => onChange(fullPath, e.target.value)}
+                  placeholder="your api key"
+                />
+              </div>
             );
           }
         }

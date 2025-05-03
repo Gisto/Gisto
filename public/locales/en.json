@@ -94,7 +94,8 @@
       "fileWillBeConvertedToBase64": "Image files will be converted to base64 data URL",
       "fileError": "File name is required",
       "fileContentError": "File content is required",
-      "descriptionError": "Description is required"
+      "descriptionError": "Description is required",
+      "generateDescriptionAndTags": "Generate description and tags with AI"
     },
     "settings": {
       "title": "Settings",
@@ -168,4 +169,3 @@
     "errorTryToRefresh": "Error fetching gists, please try to refresh"
   }
 }
-

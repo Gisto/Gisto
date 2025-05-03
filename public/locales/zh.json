@@ -94,7 +94,8 @@
       "fileWillBeConvertedToBase64": "图片文件将被转换为base64数据URL",
       "fileError": "需要文件名",
       "fileContentError": "需要文件内容",
-      "descriptionError": "需要描述"
+      "descriptionError": "需要描述",
+      "generateDescriptionAndTags": "使用AI生成描述和标签"
     },
     "settings": {
       "title": "设置",
