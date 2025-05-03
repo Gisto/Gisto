@@ -94,7 +94,8 @@
       "fileWillBeConvertedToBase64": "Les fichiers image seront convertis en base64",
       "fileError": "Le nom du fichier est requis",
       "fileContentError": "Le contenu du fichier est requis",
-      "descriptionError": "La description est requise"
+      "descriptionError": "La description est requise",
+      "generateDescriptionAndTags": "Générer une description et des étiquettes avec l’IA"
     },
     "settings": {
       "title": "Paramètres",

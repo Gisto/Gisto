@@ -94,7 +94,8 @@
       "fileWillBeConvertedToBase64": "Bilddateien werden in base64 konvertiert",
       "fileError": "Dateiname erforderlich",
       "fileContentError": "Inhalt erforderlich",
-      "descriptionError": "Beschreibung erforderlich"
+      "descriptionError": "Beschreibung erforderlich",
+      "generateDescriptionAndTags": "Beschreibung und Tags mit KI generieren"
     },
     "settings": {
       "title": "Einstellungen",

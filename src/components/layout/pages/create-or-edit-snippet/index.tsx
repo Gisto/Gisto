@@ -7,6 +7,7 @@ import Select from 'react-dropdown-select';
 import { z } from 'zod';
 
 import { AllTags } from '@/components/all-tags.tsx';
+import { AiAssistantButton } from '@/components/layout/pages/create-or-edit-snippet/ai-assistant-button.tsx';
 import { initialState, reducer } from '@/components/layout/pages/create-or-edit-snippet/reducer.ts';
 import { SnippetSchema } from '@/components/layout/pages/create-or-edit-snippet/schema.ts';
 import { FileUploadButton } from '@/components/layout/pages/create-or-edit-snippet/upload-file-button.tsx';
@@ -27,6 +28,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs.tsx';
+import { Textarea } from '@/components/ui/textarea';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { ZodError } from '@/components/zod-error.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
@@ -224,13 +226,16 @@ export const CreateOrEditSnippet = ({
                 >
                   {t('pages.new.description')} <ZodError errors={errors} path={'description'} />
                 </label>
-                <Input
-                  type="text"
-                  id="description"
-                  value={state.description}
-                  onChange={(e) => dispatch({ type: 'SET_DESCRIPTION', payload: e.target.value })}
-                  placeholder={t('pages.new.enterDescription')}
-                />
+                <div className="flex items-baseline gap-2">
+                  <Textarea
+                    className="bg-white"
+                    id="description"
+                    value={state.description}
+                    onChange={(e) => dispatch({ type: 'SET_DESCRIPTION', payload: e.target.value })}
+                    placeholder={t('pages.new.enterDescription')}
+                  />
+                  <AiAssistantButton state={state} dispatch={dispatch} tags={state.tags} />
+                </div>
                 {edit ? null : (
                   <div className="flex items-center gap-2 mt-2">
                     <Tabs

@@ -31,7 +31,11 @@ body = """
             {{ commit.message | upper_first }}\
 
             {% if commit.author.name %}
-              ・ by {{ commit.author.name }} ([@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }}))
+              ・ by {{ commit.author.name }}
+            {%- endif %}\
+
+            {% if commit.remote.username %}
+              ([@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }}))
             {%- endif %}\
 
             {% if commit.id %}
