@@ -10,7 +10,7 @@ All significant updates and improvements
 
 - *(edit or create)* Add optional gogole gemini assistance to generate description and tags
 ・ by Sasha Khamkov
-([0c6a45c](https://github.com/gisto/gisto/commit/0c6a45c4b811f38a5f2d90a5e2a552a1ba3f5d86))
+([5c5e3f5](https://github.com/gisto/gisto/commit/5c5e3f5b5dec1c3375be3d7d1e148ccae88a73ac))
 
 
 ### 🐛 Bug Fixes
