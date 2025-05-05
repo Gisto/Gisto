@@ -38,6 +38,7 @@ export type StoreStateType = {
       codeLens: boolean;
       minimap: { enabled: boolean };
     };
+    geminiApiKey?: string;
   };
 };
 
@@ -90,6 +91,7 @@ export const defaultSettings: SettingsType = {
     codeLens: false,
     minimap: { enabled: false },
   },
+  geminiApiKey: '',
 };
 
 export const globalState = new Store<StoreStateType>({
