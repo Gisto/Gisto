@@ -94,7 +94,8 @@
       "fileWillBeConvertedToBase64": "Los archivos de imagen se convertirán a base64",
       "fileError": "El nombre del archivo es obligatorio",
       "fileContentError": "El contenido del archivo es obligatorio",
-      "descriptionError": "La descripción es obligatoria"
+      "descriptionError": "La descripción es obligatoria",
+      "generateDescriptionAndTags": "Generar descripción y etiquetas con IA"
     },
     "settings": {
       "title": "Configuraciones",

@@ -94,7 +94,8 @@
       "fileWillBeConvertedToBase64": "Изображения будут конвертированы в base64",
       "fileError": "Требуется имя файла",
       "fileContentError": "Требуется содержимое файла",
-      "descriptionError": "Требуется описание"
+      "descriptionError": "Требуется описание",
+      "generateDescriptionAndTags": "Сгенерировать описание и теги с помощью ИИ"
     },
     "settings": {
       "title": "Настройки",
