@@ -2,6 +2,30 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🐛 Bug Fixes
+
+- *(confirmation)* Confirmations does not wait for user confirmation
+・ by Sasha Khamkov
+([e71cc7d](https://github.com/gisto/gisto/commit/e71cc7d506c34dfb6f2838b6f11b2d0ff1b1eb4a))
+
+
+### 🛠️️ Build
+
+- *(deps-dev)* Bump @vitest/coverage-v8 from 3.1.1 to 3.1.2 ([#489](https://github.com/gisto/gisto/issues/489))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([5d07430](https://github.com/gisto/gisto/commit/5d074304b946c37f8e4f5f077f8c20e3001428df))
+
+- *(deps)* Bump motion from 12.9.2 to 12.9.4 ([#490](https://github.com/gisto/gisto/issues/490))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([8e3a0c4](https://github.com/gisto/gisto/commit/8e3a0c4bf43c9569617839e93f0d5b3afe3ef201))
+
+
 ## v2.2.4
 
 Released on: May 3, 2025
@@ -10,6 +34,7 @@ Released on: May 3, 2025
 
 - *(edit or create)* Add optional gogole gemini assistance to generate description and tags
 ・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
 ([5c5e3f5](https://github.com/gisto/gisto/commit/5c5e3f5b5dec1c3375be3d7d1e148ccae88a73ac))
 
 
