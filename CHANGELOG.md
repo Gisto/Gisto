@@ -8,9 +8,10 @@ All significant updates and improvements
 
 ### 🐛 Bug Fixes
 
-- *(confirmation)* Confirmations does not wait for user confirmation
+- *(confirmation)* Confirmations does not wait for user confirmation ([#494](https://github.com/gisto/gisto/issues/494))
 ・ by Sasha Khamkov
-([e71cc7d](https://github.com/gisto/gisto/commit/e71cc7d506c34dfb6f2838b6f11b2d0ff1b1eb4a))
+([@sanusart](https://github.com/sanusart))
+([9cd6c03](https://github.com/gisto/gisto/commit/9cd6c038ae9d6d1a5299b924302db4d5f1a212ea))
 
 
 ### 🛠️️ Build
