@@ -143,7 +143,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                         onClick={async (event) => {
                           event.preventDefault();
                           event.stopPropagation();
-                          const confirmation = confirm(
+                          const confirmation = await confirm(
                             t('list.sureToChangeVisibility', {
                               name: removeTags(gist.description).trim(),
                               visibility: t('common.private'),
@@ -174,7 +174,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                         onClick={async (event) => {
                           event.preventDefault();
                           event.stopPropagation();
-                          const confirmation = confirm(
+                          const confirmation = await confirm(
                             t('list.sureToChangeVisibility', {
                               name: removeTags(gist.description).trim(),
                               visibility: t('common.public'),
@@ -271,7 +271,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                   onClick={async (event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    const confirmation = confirm(
+                    const confirmation = await confirm(
                       t('list.sureToDelete', { description: removeTags(gist.description).trim() })
                     );
 

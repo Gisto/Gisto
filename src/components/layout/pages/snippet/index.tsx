@@ -112,7 +112,7 @@ export const SnippetContent = () => {
                 <TooltipTrigger asChild>
                   <Button
                     onClick={async () => {
-                      const confirmation = confirm(
+                      const confirmation = await confirm(
                         t('list.sureToChangeVisibility', {
                           name: removeTags(snippet.description),
                           visibility: t('common.private'),
@@ -145,7 +145,7 @@ export const SnippetContent = () => {
                 <TooltipTrigger asChild>
                   <Button
                     onClick={async () => {
-                      const confirmation = confirm(
+                      const confirmation = await confirm(
                         t('list.sureToChangeVisibility', {
                           name: removeTags(snippet.description),
                           visibility: t('common.public'),
@@ -257,7 +257,7 @@ export const SnippetContent = () => {
                 <DropdownMenuItem
                   className="text-danger"
                   onClick={async () => {
-                    const confirmation = confirm(
+                    const confirmation = await confirm(
                       t('list.sureToDelete', {
                         description: removeTags(snippet.description),
                       })
