@@ -6,6 +6,7 @@ exports[`Loading > matches the snapshot 1`] = `
     class="flex justify-center items-center w-full h-screen"
   >
     <svg
+      aria-hidden="true"
       class="lucide lucide-loader size-8 animate-spin"
       fill="none"
       height="24"

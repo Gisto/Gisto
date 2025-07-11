@@ -6,6 +6,7 @@ exports[`SimpleTooltip Component > applies custom className to TooltipContent 1`
     data-state="closed"
   >
     <svg
+      aria-hidden="true"
       class="lucide lucide-info size-3"
       fill="none"
       height="24"
@@ -51,6 +52,7 @@ exports[`SimpleTooltip Component > renders correctly with default trigger 1`] = 
     data-state="closed"
   >
     <svg
+      aria-hidden="true"
       class="lucide lucide-info size-3"
       fill="none"
       height="24"

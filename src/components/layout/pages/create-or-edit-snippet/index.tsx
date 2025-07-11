@@ -155,7 +155,7 @@ export const CreateOrEditSnippet = ({
     const validation = SnippetSchema.safeParse(state);
 
     if (!validation.success) {
-      setErrors(validation.error.errors);
+      setErrors(validation.error.issues);
       return;
     } else {
       const save = await GithubApi.createGist(formatSnippetForSaving(validation.data));
@@ -173,7 +173,7 @@ export const CreateOrEditSnippet = ({
     const validation = SnippetSchema.safeParse(state);
 
     if (!validation.success) {
-      setErrors(validation.error.errors);
+      setErrors(validation.error.issues);
       return;
     } else {
       const {
