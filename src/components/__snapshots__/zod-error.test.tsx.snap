@@ -7,6 +7,7 @@ exports[`ZodError Component > matches the snapshot 1`] = `
     style="opacity: 0; transform: scale(0.8);"
   >
     <svg
+      aria-hidden="true"
       class="lucide lucide-badge-alert stroke-danger size-4"
       fill="none"
       height="24"

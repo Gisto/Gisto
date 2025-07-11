@@ -42,9 +42,9 @@ describe('copyToClipboard', () => {
 describe('formatZodErrors', () => {
   it('formats Zod errors into a record of field paths and messages', () => {
     const errors: z.ZodIssue[] = [
-      { path: ['field1'], message: 'Error 1', code: 'custom' },
-      { path: ['field2'], message: 'Error 2', code: 'custom' },
-      { path: ['field1'], message: 'Error 3', code: 'custom' },
+      { path: ['field1'], message: 'Error 1', code: 'custom', input: undefined },
+      { path: ['field2'], message: 'Error 2', code: 'custom', input: undefined },
+      { path: ['field1'], message: 'Error 3', code: 'custom', input: undefined },
     ];
     expect(formatZodErrors(errors)).toEqual({
       field1: ['Error 1', 'Error 3'],

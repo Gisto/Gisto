@@ -5,8 +5,8 @@ import { ZodError } from './zod-error';
 
 describe('ZodError Component', () => {
   it('renders the error message when an error exists for the given path', () => {
-    const errors: z.ZodIssue[] = [
-      { path: ['field1'], message: 'Field1 is required', code: 'custom' },
+    const errors: z.core.$ZodIssue[] = [
+      { path: ['field1'], message: 'Field1 is required', code: 'custom', input: undefined },
     ];
     const path = 'field1';
 
@@ -16,8 +16,8 @@ describe('ZodError Component', () => {
   });
 
   it('renders nothing when no error exists for the given path', () => {
-    const errors: z.ZodIssue[] = [
-      { path: ['field1'], message: 'Field1 is required', code: 'custom' },
+    const errors: z.core.$ZodIssue[] = [
+      { path: ['field1'], message: 'Field1 is required', code: 'custom', input: undefined },
     ];
     const path = 'field2';
 
@@ -27,8 +27,8 @@ describe('ZodError Component', () => {
   });
 
   it('renders with correct styles and animation', () => {
-    const errors: z.ZodIssue[] = [
-      { path: ['field1'], message: 'Field1 is required', code: 'custom' },
+    const errors: z.core.$ZodIssue[] = [
+      { path: ['field1'], message: 'Field1 is required', code: 'custom', input: undefined },
     ];
     const path = 'field1';
 
@@ -39,8 +39,8 @@ describe('ZodError Component', () => {
   });
 
   it('matches the snapshot', () => {
-    const errors: z.ZodIssue[] = [
-      { path: ['field1'], message: 'Field1 is required', code: 'custom' },
+    const errors: z.core.$ZodIssue[] = [
+      { path: ['field1'], message: 'Field1 is required', code: 'custom', input: undefined },
     ];
     const path = 'field1';
 
