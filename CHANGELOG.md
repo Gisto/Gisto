@@ -16,7 +16,7 @@ All significant updates and improvements
 - *(deps)* Bump form-data in the npm_and_yarn group ([#503](https://github.com/gisto/gisto/issues/503))
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
-([8ab3500](https://github.com/gisto/gisto/commit/8ab35000def77bc80744aa70a5de18d4a1666d10))
+([aa9783c](https://github.com/gisto/gisto/commit/aa9783c492f58f64fbe9c7b9e6d8584d511c2eec))
 
 
 ## v2.2.5
