@@ -2,6 +2,9 @@ import MonacoEditor from '@monaco-editor/react';
 import { Skull } from 'lucide-react';
 import { useRef, useState } from 'react';
 
+import type { Monaco } from '@monaco-editor/react';
+
+import groovyLanguage from '@/components/layout/pages/snippet/content/monarchs/groovy.monarch';
 import { Csv } from '@/components/layout/pages/snippet/content/preview/csv.tsx';
 import { GeoJson } from '@/components/layout/pages/snippet/content/preview/geo-json.tsx';
 import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx';
@@ -124,6 +127,16 @@ export const Editor = ({
     setHeight(originalLineCount > 500 ? '65vh' : originalLineCount);
   }
 
+  const handleEditorWillMount = (monaco: Monaco) => {
+    monaco.languages.register({ id: 'groovy' });
+    monaco.languages.setMonarchTokensProvider(
+      'groovy',
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      groovyLanguage
+    );
+  };
+
   return (
     <MonacoEditor
       options={{
@@ -131,6 +144,7 @@ export const Editor = ({
         ...settings.editor,
       }}
       onMount={handleEditorDidMount}
+      beforeMount={handleEditorWillMount}
       height={height}
       theme={getEditorTheme()}
       defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
