@@ -2,6 +2,17 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🚀 Features
+
+- *(editor)* Add groovy syntax
+・ by Sasha Khamkov
+([9660dfa](https://github.com/gisto/gisto/commit/9660dfa038d07314c708345a5329d3780cd2075f))
+
+
 ## v2.2.7
 
 Released on: Aug 2, 2025
