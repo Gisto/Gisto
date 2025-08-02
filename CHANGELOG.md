@@ -8,9 +8,10 @@ All significant updates and improvements
 
 ### 🚀 Features
 
-- *(editor)* Add groovy syntax
+- *(editor)* Add groovy syntax ([#509](https://github.com/gisto/gisto/issues/509))
 ・ by Sasha Khamkov
-([9660dfa](https://github.com/gisto/gisto/commit/9660dfa038d07314c708345a5329d3780cd2075f))
+([@sanusart](https://github.com/sanusart))
+([d63f48e](https://github.com/gisto/gisto/commit/d63f48e0f71ae6e458b2ab7bfcb0ac62b2bf04a3))
 
 
 ## v2.2.7
