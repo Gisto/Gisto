@@ -2,6 +2,17 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🚀 Features
+
+- *(editor)* Support 1c language
+・ by Sasha Khamkov
+([781e66e](https://github.com/gisto/gisto/commit/781e66e4db444dc7e7af41ed6bd6159573abe5d5))
+
+
 ## v2.2.8
 
 Released on: Aug 2, 2025

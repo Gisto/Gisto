@@ -1,5 +1,6 @@
 // This maps gist file language to monaco editor equivalent
 export const languageMap: Record<string, string> = {
+  "1C Enterprise": "bsl",
   ABAP: 'abap',
   ActionScript: 'actionscript',
   Ada: 'ada',

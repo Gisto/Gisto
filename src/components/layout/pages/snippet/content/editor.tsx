@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 
 import type { Monaco } from '@monaco-editor/react';
 
+import bslLanguage from '@/components/layout/pages/snippet/content/monarchs/bsl.monarch';
 import groovyLanguage from '@/components/layout/pages/snippet/content/monarchs/groovy.monarch';
 import { Csv } from '@/components/layout/pages/snippet/content/preview/csv.tsx';
 import { GeoJson } from '@/components/layout/pages/snippet/content/preview/geo-json.tsx';
@@ -134,6 +135,13 @@ export const Editor = ({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       groovyLanguage
+    );
+    monaco.languages.register({ id: 'bsl', extensions: ['.bsl', '.os'] });
+    monaco.languages.setMonarchTokensProvider(
+      'bsl',
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      bslLanguage
     );
   };
 
