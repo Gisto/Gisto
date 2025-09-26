@@ -8,9 +8,10 @@ All significant updates and improvements
 
 ### 🚀 Features
 
-- *(editor)* Support 1c language
+- *(editor)* Support 1c language ([#518](https://github.com/gisto/gisto/issues/518))
 ・ by Sasha Khamkov
-([781e66e](https://github.com/gisto/gisto/commit/781e66e4db444dc7e7af41ed6bd6159573abe5d5))
+([@sanusart](https://github.com/sanusart))
+([ae04561](https://github.com/gisto/gisto/commit/ae04561bd54cd680262344d6d0955fe09e0e0339))
 
 
 ## v2.2.8
