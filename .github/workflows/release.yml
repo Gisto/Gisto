@@ -21,7 +21,7 @@ jobs:
             args: '--target aarch64-apple-darwin'
           - platform: 'macos-latest' # for Intel based macs.
             args: '--target x86_64-apple-darwin'
-          - platform: 'blacksmith-4vcpu-ubuntu-2204'
+          - platform: 'blacksmith-2vcpu-ubuntu-2404'
             args: ''
           - platform: 'windows-latest'
             args: ''
@@ -31,10 +31,19 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: install dependencies (ubuntu only)
-        if: matrix.platform == 'blacksmith-4vcpu-ubuntu-2204' # This must match the platform value defined above.
+        if: matrix.platform == 'blacksmith-2vcpu-ubuntu-2404' # This must match the platform value defined above.
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-0=2.44.0-2 \
+            libwebkit2gtk-4.1-dev=2.44.0-2 \
+            libjavascriptcoregtk-4.1-0=2.44.0-2 \
+            libjavascriptcoregtk-4.1-dev=2.44.0-2 \
+            gir1.2-javascriptcoregtk-4.1=2.44.0-2 \
+            gir1.2-webkit2-4.1=2.44.0-2 \
+            libappindicator3-dev \
+            librsvg2-dev \
+            patchelf
 
       - name: Set up Node.js
         uses: useblacksmith/setup-node@v5

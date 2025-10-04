@@ -2,6 +2,72 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🛠️️ Build
+
+- *(deps-dev)* Bump typescript-eslint from 8.36.0 to 8.41.0 ([#511](https://github.com/gisto/gisto/issues/511))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([9f5b7f4](https://github.com/gisto/gisto/commit/9f5b7f4842792335e27d5dd0a3ef156c3d47e570))
+
+- *(deps)* Bump @radix-ui/react-radio-group from 1.3.7 to 1.3.8 ([#512](https://github.com/gisto/gisto/issues/512))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([4bff79a](https://github.com/gisto/gisto/commit/4bff79a672410fd5a88ec6dfbd01fe4d3ed5451e))
+
+- *(deps-dev)* Bump tailwindcss from 4.1.11 to 4.1.12 ([#513](https://github.com/gisto/gisto/issues/513))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([5af39ec](https://github.com/gisto/gisto/commit/5af39ecbc43c6eef15ea3ec2d6fe5d1306b6a53a))
+
+- *(deps)* Bump swagger-ui-react from 5.26.2 to 5.28.0 ([#514](https://github.com/gisto/gisto/issues/514))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([9067bbd](https://github.com/gisto/gisto/commit/9067bbd41f6a78e168fe21ad7a34ce37bd351921))
+
+- *(deps)* Bump @radix-ui/react-slider from 1.3.5 to 1.3.6 ([#515](https://github.com/gisto/gisto/issues/515))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([964b887](https://github.com/gisto/gisto/commit/964b887dc22da565d2411be0cb74d5b74ce12c3b))
+
+- *(deps)* Bump vite version from 7.0.4 to 7.0.7
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([61f6729](https://github.com/gisto/gisto/commit/61f6729ac9147c8ff32cf62797490fb3bebf8872))
+
+- *(deps-dev)* Bump @testing-library/jest-dom from 6.6.3 to 6.9.0 ([#520](https://github.com/gisto/gisto/issues/520))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([969f785](https://github.com/gisto/gisto/commit/969f785dc8e532823498e7c25fc9aeda7d57374a))
+
+- *(deps)* Bump motion from 12.23.3 to 12.23.22 ([#521](https://github.com/gisto/gisto/issues/521))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([38c2dab](https://github.com/gisto/gisto/commit/38c2dab6bbcaa1a4afa6699c16432ddcf4a9c87d))
+
+- *(deps-dev)* Bump tailwindcss from 4.1.12 to 4.1.13 ([#522](https://github.com/gisto/gisto/issues/522))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([bf59032](https://github.com/gisto/gisto/commit/bf59032455830e03fd39516c687dc8e4e14b25d0))
+
+- *(deps)* Bump axios in the npm_and_yarn group across 1 directory ([#523](https://github.com/gisto/gisto/issues/523))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([bb54d72](https://github.com/gisto/gisto/commit/bb54d72d377373c00c2ecb0999fb318e32e6a429))
+
+- Add docker
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([e4402dc](https://github.com/gisto/gisto/commit/e4402dc9a4b0ecfeccc2cd536bc24b905958ba6e))
+
+- *(appimage)* Appimage fix
+・ by Sasha Khamkov
+([0691de7](https://github.com/gisto/gisto/commit/0691de7853831fc36076e43ec360c2dba68cb4aa))
+
+
 ## v2.3.0
 
 Released on: Sep 26, 2025
