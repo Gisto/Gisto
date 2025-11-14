@@ -42,7 +42,7 @@ All significant updates and improvements
 - *(deps-dev)* Bump vite from 7.1.7 to 7.1.12 ([#532](https://github.com/gisto/gisto/issues/532))
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
-([316d560](https://github.com/gisto/gisto/commit/316d560ffb24ae44261cc60d2fc7f5a2cfbfabb7))
+([dc2e3b8](https://github.com/gisto/gisto/commit/dc2e3b879e77d7a3cedc65acf7575d81d0279ada))
 
 
 ## v2.3.1
