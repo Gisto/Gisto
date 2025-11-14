@@ -40,7 +40,9 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
       <div
       //  className="hover:scale-95 transition"
       >
-        <h4 className="cursor-pointer">{removeTags(gist.description) || t('common.untitled')}</h4>
+        <h4 className="cursor-pointer [word-break:break-word]">
+          {removeTags(gist.description) || t('common.untitled')}
+        </h4>
 
         <div className="flex items-center mt-2 gap-2">
           <div className="flex flex-wrap gap-2 mb-4 pr-4">
