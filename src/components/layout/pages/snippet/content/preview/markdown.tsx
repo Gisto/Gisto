@@ -1,3 +1,5 @@
+import { alert } from '@mdit/plugin-alert';
+import { tasklist } from '@mdit/plugin-tasklist';
 import hljs from 'highlight.js';
 import markdownIt from 'markdown-it';
 import { useEffect, useRef } from 'react';
@@ -29,6 +31,9 @@ const md = markdownIt({
     }
   },
 });
+
+md.use(tasklist);
+md.use(alert);
 
 const defaultRender =
   md.renderer.rules.link_open ||

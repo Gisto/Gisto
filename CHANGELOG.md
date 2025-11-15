@@ -11,7 +11,11 @@ All significant updates and improvements
 - *(markdown)* Hightlight code blocks in markdown preview
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([52ebb6e](https://github.com/gisto/gisto/commit/52ebb6e9ae74dd749589d0bdd8e1ea743ac34dd9))
+([e40fc6d](https://github.com/gisto/gisto/commit/e40fc6d3c0f943250fd0391ae529496bf55f49b7))
+
+- *(markdown)* Add markdown-it alert and task-list plugin
+・ by Sasha Khamkov
+([70943fe](https://github.com/gisto/gisto/commit/70943fef4e76ce17cf46d422f58fbc2350c5b80f))
 
 
 ## v2.3.2

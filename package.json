@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@commitlint/types": "^20.0.0",
+    "@mdit/plugin-alert": "^0.22.3",
+    "@mdit/plugin-tasklist": "^0.22.2",
     "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
@@ -49,6 +51,7 @@
     "class-variance-authority": "^0.7.1",
     "dirty-react-router": "^0.1.0",
     "gisto": "link:",
+    "highlight.js": "^11.11.1",
     "katex": "^0.16.22",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.536.0",
