@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🚀 Features
+
+- *(markdown)* Hightlight code blocks in markdown preview
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([52ebb6e](https://github.com/gisto/gisto/commit/52ebb6e9ae74dd749589d0bdd8e1ea743ac34dd9))
+
+
 ## v2.3.2
 
 Released on: Nov 14, 2025

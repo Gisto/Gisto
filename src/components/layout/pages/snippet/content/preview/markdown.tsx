@@ -66,7 +66,7 @@ const setThemeCss = (theme: string) => {
       style.textContent = css.default;
       document.head.appendChild(style);
     });
-    import(`@/styles/github-markdown-${theme}.css?inline`).then((css) => {
+    import(`@/styles/github-markdown-dark.css?inline`).then((css) => {
       const style = document.createElement('style');
       style.textContent = css.default;
       document.head.appendChild(style);

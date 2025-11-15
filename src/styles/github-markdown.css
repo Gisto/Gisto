@@ -865,6 +865,7 @@
   line-height: 1.45;
   color: var(--fgColor-default);
   background-color: var(--bgColor-muted);
+  border-left: 4px var(--bgColor-neutral-muted) solid;
   border-radius: 6px;
 }
 
