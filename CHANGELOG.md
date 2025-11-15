@@ -15,7 +15,15 @@ All significant updates and improvements
 
 - *(markdown)* Add markdown-it alert and task-list plugin
 ・ by Sasha Khamkov
-([70943fe](https://github.com/gisto/gisto/commit/70943fef4e76ce17cf46d422f58fbc2350c5b80f))
+([@sanusart](https://github.com/sanusart))
+([29f9ef1](https://github.com/gisto/gisto/commit/29f9ef109e477b039d8ac817ec662f726517f0ff))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- *(audit)* Update pnpm audit
+・ by Sasha Khamkov
+([e4afdaa](https://github.com/gisto/gisto/commit/e4afdaa446d11d823d9271ddf7d0279514a9ce51))
 
 
 ## v2.3.2
