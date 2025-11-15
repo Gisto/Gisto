@@ -1,15 +1,33 @@
+import hljs from 'highlight.js';
 import markdownIt from 'markdown-it';
 import { useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { CopyToClipboardButton } from '@/components/copy-to-clipboard-button.tsx';
 import { useTheme } from '@/components/theme/theme-provider.tsx';
+import { upperCaseFirst } from '@/lib/utils';
 import { GistFileType } from '@/types/gist.ts';
 
 const md = markdownIt({
   html: true,
   linkify: true,
   typographer: true,
+  highlight: (str: string, lang?: string): string => {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return `<pre><div class="relative text-xs border-b bottom-1 pb-3 mb-4">${upperCaseFirst(lang)}</div><code class="hljs language-${lang}">${hljs.highlight(str, { language: lang }).value}</code></pre>`;
+      } catch (err) {
+        console.error('Error highlighting code:', err);
+        void err;
+      }
+    }
+    try {
+      return `<pre><code class="hljs">${hljs.highlightAuto(str).value}</code></pre>`;
+    } catch (err) {
+      void err;
+      return `<pre><code class="hljs">${md.utils.escapeHtml(str)}</code></pre>`;
+    }
+  },
 });
 
 const defaultRender =
@@ -42,16 +60,29 @@ md.renderer.rules.fence = function (tokens, idx, options, env, self) {
 };
 
 const setThemeCss = (theme: string) => {
-  import('@/styles/github-markdown.css?inline').then((css) => {
-    const style = document.createElement('style');
-    style.textContent = css.default;
-    document.head.appendChild(style);
-  });
-  import(`@/styles/github-markdown-${theme}.css?inline`).then((css) => {
-    const style = document.createElement('style');
-    style.textContent = css.default;
-    document.head.appendChild(style);
-  });
+  if (theme === 'dark') {
+    import(`highlight.js/styles/github-dark.css?inline`).then((css) => {
+      const style = document.createElement('style');
+      style.textContent = css.default;
+      document.head.appendChild(style);
+    });
+    import(`@/styles/github-markdown-${theme}.css?inline`).then((css) => {
+      const style = document.createElement('style');
+      style.textContent = css.default;
+      document.head.appendChild(style);
+    });
+  } else {
+    import(`highlight.js/styles/github.css?inline`).then((css) => {
+      const style = document.createElement('style');
+      style.textContent = css.default;
+      document.head.appendChild(style);
+    });
+    import('@/styles/github-markdown.css?inline').then((css) => {
+      const style = document.createElement('style');
+      style.textContent = css.default;
+      document.head.appendChild(style);
+    });
+  }
 };
 
 export const Markdown = ({ file }: { file: GistFileType }) => {
@@ -107,5 +138,3 @@ export const Markdown = ({ file }: { file: GistFileType }) => {
     </div>
   );
 };
-
-//
