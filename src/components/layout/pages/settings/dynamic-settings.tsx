@@ -27,7 +27,7 @@ import {
 } from '@/lib/utils';
 
 interface SettingsProps {
-  settings: Omit<SettingsType, 'editor'> | SettingsType['editor'];
+  settings: Omit<SettingsType, 'editor'> | SettingsType['editor'] | Record<string, unknown>;
   onChange: (key: string, value: unknown) => void;
   path?: string;
 }
@@ -73,8 +73,18 @@ const SpecialSelect = ({
 
 export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps) => {
   const { setTheme } = useTheme();
+
   const renderSetting = (key: string, value: SettingsType | unknown, currentPath: string) => {
     const fullPath = currentPath ? `${currentPath}.${key}` : key;
+
+    // When rendering the top-level `ai` group, we render a provider card that already
+    // contains API key, model and temperature inputs — avoid rendering those keys again.
+    if (
+      path === 'ai' &&
+      ['geminiApiKey', 'openRouterApiKey', 'openaiApiKey', 'model', 'temperature'].includes(key)
+    ) {
+      return null;
+    }
 
     // temp migration
     if (path === 'editor' && key === 'wordWrap' && typeof value === 'boolean') {
@@ -219,10 +229,10 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             return (
               <SpecialSelect
                 tooltip={
-                  <>
+                  <div className="text-primary-foreground">
                     <strong>Experimental</strong>, machine translated, some translations are not
                     accurate or not available.
-                  </>
+                  </div>
                 }
                 settingKey={key}
                 label="UI language (experimental)"
@@ -284,41 +294,185 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
-          if (key === 'geminiApiKey') {
-            return (
-              <div key={key} className="mb-4">
-                <label className="mb-1 flex items-center gap-2">
-                  {camelToTitleCase(key)}
-                  <SimpleTooltip
-                    className="max-w-2xs"
-                    content={
+          if (key === 'activeAiProvider') {
+            // Get all AI settings to display in the cards
+            const aiSettings =
+              path === 'ai'
+                ? (settings as Record<string, unknown>)
+                : ((settings as Record<string, unknown>)?.ai as Record<string, unknown>);
+            const currentProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
+
+            const renderProviderCard = (provider: 'openai' | 'gemini' | 'openrouter') => {
+              const isActive = currentProvider === provider;
+              const apiKeyField =
+                provider === 'openai'
+                  ? 'openaiApiKey'
+                  : provider === 'gemini'
+                    ? 'geminiApiKey'
+                    : 'openRouterApiKey';
+              const apiKey = (aiSettings?.[apiKeyField] as string) || '';
+              const activeModel = (aiSettings?.model as string) || '';
+
+              let providerLabel = '';
+              let providerDescription = '';
+              let apiKeyUrl = '';
+              let modelOptions: { value: string; label: string }[] = [];
+
+              if (provider === 'openai') {
+                providerLabel = 'OpenAI';
+                providerDescription = 'GPT-4, GPT-4o';
+                apiKeyUrl = 'https://platform.openai.com/api-keys';
+                modelOptions = [
+                  { value: 'gpt-4o', label: '🔥 GPT-4o (Latest & Smartest)' },
+                  { value: 'gpt-4-turbo', label: '🔥 GPT-4 Turbo (Fast & Smart)' },
+                  { value: 'gpt-4o-mini', label: '💸 GPT-4o Mini (Fast & Cheap)' },
+                  { value: 'gpt-4', label: '🏃‍♂️ GPT-4 (Legacy)' },
+                ];
+              } else if (provider === 'gemini') {
+                providerLabel = 'Gemini';
+                providerDescription = 'Google AI';
+                apiKeyUrl = 'https://aistudio.google.com/app/apikey';
+                modelOptions = [
+                  { value: 'gemini-2.0-flash', label: '🔥 Gemini 2.0 Flash (Latest)' },
+                  { value: 'gemini-1.5-pro', label: '🔥 Gemini 1.5 Pro' },
+                  { value: 'gemini-1.5-flash', label: '💸 Gemini 1.5 Flash' },
+                ];
+              } else {
+                providerLabel = 'OpenRouter';
+                providerDescription = 'Multiple Models';
+                apiKeyUrl = 'https://openrouter.ai/keys';
+                modelOptions = [
+                  {
+                    value: 'meta-llama/llama-3.2-3b-instruct:free',
+                    label: '💸 Llama 3.2 3B (Free)',
+                  },
+                  { value: 'mistralai/mistral-7b-instruct:free', label: '💸 Mistral 7B (Free)' },
+                  {
+                    value: 'google/gemini-2.0-flash-exp:free',
+                    label: '💸 Gemini 2.0 Flash (Free)',
+                  },
+                  { value: 'qwen/qwen3-4b:free', label: '💸 Qwen3 4B (Free)' },
+                  { value: 'moonshotai/kimi-k2:free', label: '💸 Kimi K2 (Free)' },
+                  { value: 'deepseek/deepseek-r1-0528:free', label: '💸 DeepSeek R1 (Free)' },
+                  {
+                    value: 'mistralai/mistral-small-3.1-24b-instruct:free',
+                    label: '💸 Mistral Small 24B (Free)',
+                  },
+                  {
+                    value: 'meta-llama/llama-3.3-70b-instruct:free',
+                    label: '💸 Llama 3.3 70B (Free)',
+                  },
+                  { value: 'google/gemma-3-12b-it:free', label: '💸 Gemma 3 12B (Free)' },
+                  { value: 'openai/gpt-4o-mini', label: '🏃‍♂️ GPT-4o Mini' },
+                  { value: 'anthropic/claude-3-haiku', label: '🏃‍♂️ Claude 3 Haiku' },
+                  { value: 'anthropic/claude-3.5-sonnet', label: '🔥 Claude 3.5 Sonnet' },
+                  { value: 'meta-llama/llama-3.1-70b-instruct', label: '🔥 Llama 3.1 70B' },
+                  { value: 'openai/gpt-4o', label: '🔥 GPT-4o' },
+                ];
+              }
+
+              return (
+                <div
+                  key={provider}
+                  className={`border-2 rounded-lg p-4 cursor-pointer transition ${
+                    isActive
+                      ? 'border-primary bg-primary/5'
+                      : 'border-muted hover:border-primary/50 hover:bg-accent/5'
+                  }`}
+                  onClick={() => onChange(fullPath, provider)}
+                >
+                  {/* Header */}
+                  <div className="mb-4">
+                    <div className="flex items-center justify-between mb-1">
                       <div>
-                        Get your Gemini API key at{' '}
-                        <a
-                          className="text-primary-foreground hover:text-primary-foreground underline"
-                          target="_blank"
-                          href="https://aistudio.google.com/app/apikey"
-                        >
-                          https://aistudio.google.com/app/apikey
-                        </a>
-                        .
-                        <br />
-                        <br />
-                        It can be used to generate snippets description and tags on edit or create
-                        page.
-                        <br />
-                        <br />
-                        After adding the key, you will see assistant button near the description on
-                        edit or create page.
+                        <div className="font-semibold text-sm">{providerLabel}</div>
+                        <div className="text-xs text-muted-foreground">{providerDescription}</div>
                       </div>
-                    }
-                  />
-                </label>
-                <InputPassword
-                  value={value}
-                  onChange={(e) => onChange(fullPath, e.target.value)}
-                  placeholder="your api key"
-                />
+                      <div
+                        className={`h-4 w-4 rounded-full border-2 ${isActive ? 'border-primary bg-primary' : 'border-muted'}`}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Expanded content - only show when active */}
+                  {isActive && (
+                    <div className="space-y-4 pt-4 border-t">
+                      {/* API Key Input */}
+                      <div onClick={(e) => e.stopPropagation()}>
+                        <label className="mb-2 flex items-center gap-2 text-sm font-medium">
+                          API Key
+                          <SimpleTooltip
+                            className="max-w-2xs"
+                            content={
+                              <div className="text-primary-foreground">
+                                Get your {providerLabel} API key at{' '}
+                                <a
+                                  className="text-primary-foreground hover:underline underline"
+                                  target="_blank"
+                                  href={apiKeyUrl}
+                                >
+                                  {apiKeyUrl}
+                                </a>
+                                .
+                              </div>
+                            }
+                          />
+                        </label>
+                        <InputPassword
+                          value={apiKey}
+                          onChange={(e) => onChange(`ai.${apiKeyField}`, e.target.value)}
+                          placeholder="your api key"
+                          className="w-full"
+                        />
+                      </div>
+
+                      {/* Model Selection */}
+                      <div onClick={(e) => e.stopPropagation()}>
+                        <label className="mb-2 block text-sm font-medium">Model</label>
+                        <Select
+                          value={activeModel}
+                          onValueChange={(value) => onChange('ai.model', value)}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder={upperCaseFirst(t('common.select'))} />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {modelOptions.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {/* Temperature Slider */}
+                      <div onClick={(e) => e.stopPropagation()}>
+                        <label className="mb-2 flex items-center gap-2 text-sm font-medium">
+                          Temperature <small>({(aiSettings?.temperature as number) || 0.7})</small>
+                        </label>
+                        <Slider
+                          value={[(aiSettings?.temperature as number) || 0.7]}
+                          onValueChange={(val) => onChange('ai.temperature', val[0])}
+                          min={0}
+                          max={2}
+                          step={0.1}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            };
+
+            return (
+              <div key={key} className="mb-6">
+                <label className="block mb-4 font-semibold">AI Provider</label>
+                <div className="space-y-3">
+                  {renderProviderCard('openai')}
+                  {renderProviderCard('gemini')}
+                  {renderProviderCard('openrouter')}
+                </div>
               </div>
             );
           }

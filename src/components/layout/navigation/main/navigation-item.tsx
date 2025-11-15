@@ -4,6 +4,29 @@ import { ElementType } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { cn } from '@/lib/utils';
 
+const Content = ({
+  label,
+  isCollapsed,
+  Icon,
+}: {
+  Icon: ElementType;
+  label: string;
+  isCollapsed: boolean;
+}) => (
+  <div className={cn('flex justify-start gap-2 items-center ', isCollapsed && 'justify-center')}>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Icon className="size-4" />
+      </TooltipTrigger>
+      <TooltipContent side="right" sideOffset={16}>
+        {label}
+      </TooltipContent>
+    </Tooltip>
+
+    {isCollapsed ? null : label}
+  </div>
+);
+
 export const NavigationItem = ({
   Icon,
   label,
@@ -19,32 +42,17 @@ export const NavigationItem = ({
     isCollapsed && 'justify-center'
   );
 
-  const Content = () => (
-    <div className={cn('flex justify-start gap-2 items-center ', isCollapsed && 'justify-center')}>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Icon className="size-4" />
-        </TooltipTrigger>
-        <TooltipContent side="right" sideOffset={16}>
-          {label}
-        </TooltipContent>
-      </Tooltip>
-
-      {isCollapsed ? null : label}
-    </div>
-  );
-
   if ('path' in props) {
     return (
       <Link to={props.path} className={wrapper}>
-        <Content />
+        <Content Icon={Icon} label={label} isCollapsed={isCollapsed} />
       </Link>
     );
   }
 
   return (
     <div onClick={props.onClick} className={wrapper}>
-      <Content />
+      <Content Icon={Icon} label={label} isCollapsed={isCollapsed} />
     </div>
   );
 };

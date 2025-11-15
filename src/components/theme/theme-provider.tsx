@@ -40,6 +40,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       updateSettings({
         theme: systemTheme,
       });
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setResolvedTheme(systemTheme);
       root.classList.add(systemTheme);
       return;

@@ -17,6 +17,7 @@ export type ActionType =
   | { type: 'SET_PUBLIC'; payload: boolean }
   | { type: 'ADD_TAG'; payload: string }
   | { type: 'REMOVE_TAG'; payload: string }
+  | { type: 'SET_TAGS'; payload: string[] }
   | { type: 'SET_FILE_LANGUAGE'; payload: string; index: number }
   | { type: 'SET_FILENAME'; payload: string; index: number }
   | { type: 'SET_CONTENT'; payload: string | null; index: number }
@@ -34,6 +35,8 @@ export function reducer(state: StateType, action: ActionType): StateType {
       return { ...state, tags: [...state.tags, action.payload] };
     case 'REMOVE_TAG':
       return { ...state, tags: state.tags.filter((tag) => tag !== action.payload) };
+    case 'SET_TAGS':
+      return { ...state, tags: action.payload };
     case 'SET_FILE_LANGUAGE':
       return {
         ...state,

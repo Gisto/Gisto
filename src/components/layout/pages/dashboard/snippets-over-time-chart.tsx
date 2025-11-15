@@ -109,13 +109,13 @@ export const SnippetsOverTimeChart = () => {
   return (
     <Card>
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
-        <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
+        <div className="flex flex-1 flex-col justify-center gap-1 sm:py-6">
           <CardTitle>{t('pages.dashboard.snippetsOverTime')}</CardTitle>
           <CardDescription>
             {t('pages.dashboard.snippetsOverTimeRange', { range: rangeToText(range) })}
           </CardDescription>
         </div>
-        <div className="flex items-center p-8">
+        <div className="flex items-center">
           <Select value={range} onValueChange={(value) => setRange(value)}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Select range" />
