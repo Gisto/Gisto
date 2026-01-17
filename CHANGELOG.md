@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## v2.4.1
+
+Released on: Jan 17, 2026
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump tauri versions
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([0e49427](https://github.com/gisto/gisto/commit/0e494272536f33b5d1500fe55cae80d1f9baf154))
+
+
 ## v2.4.0
 
 Released on: Jan 17, 2026
