@@ -10,7 +10,7 @@ All significant updates and improvements
 
 - Bump tauri versions
 ・ by Sasha Khamkov
-([042a01e](https://github.com/gisto/gisto/commit/042a01eb7afb7419658fc110706fb2c052d182af))
+([0e49427](https://github.com/gisto/gisto/commit/0e494272536f33b5d1500fe55cae80d1f9baf154))
 
 
 ## v2.4.0
