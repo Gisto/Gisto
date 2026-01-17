@@ -69,7 +69,9 @@
       "oneWeekAgo": "1周前",
       "oneMonthAgo": "1个月前",
       "sixMonthsAgo": "6个月前",
-      "oneYearAgo": "1年前"
+      "oneYearAgo": "1年前",
+      "topLanguages": "主要语言",
+      "topTags": "主要标签"
     },
     "new": {
       "title": "创建新代码片段",

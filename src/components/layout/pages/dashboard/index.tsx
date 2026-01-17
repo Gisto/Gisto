@@ -1,6 +1,7 @@
 import { AllLanguages } from '@/components/all-languages.tsx';
 import { AllTags } from '@/components/all-tags.tsx';
 import { CardsCharts } from '@/components/layout/pages/dashboard/cards-charts.tsx';
+import { Insights } from '@/components/layout/pages/dashboard/insights.tsx';
 import { SnippetsOverTimeChart } from '@/components/layout/pages/dashboard/snippets-over-time-chart.tsx';
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
@@ -29,6 +30,7 @@ export const DashBoard = () => {
       <PageContent>
         <CardsCharts />
         <SnippetsOverTimeChart />
+        <Insights />
         <AllLanguages
           className="mt-8"
           active={search}

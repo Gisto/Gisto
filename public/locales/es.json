@@ -69,7 +69,9 @@
       "oneWeekAgo": "hace 1 semana",
       "oneMonthAgo": "hace 1 mes",
       "sixMonthsAgo": "hace 6 meses",
-      "oneYearAgo": "hace 1 año"
+      "oneYearAgo": "hace 1 año",
+      "topLanguages": "Lenguajes principales",
+      "topTags": "Etiquetas principales"
     },
     "new": {
       "title": "Crear nuevo fragmento",

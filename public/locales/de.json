@@ -69,7 +69,9 @@
       "oneWeekAgo": "vor 1 Woche",
       "oneMonthAgo": "vor 1 Monat",
       "sixMonthsAgo": "vor 6 Monaten",
-      "oneYearAgo": "vor 1 Jahr"
+      "oneYearAgo": "vor 1 Jahr",
+      "topLanguages": "Top-Sprachen",
+      "topTags": "Top-Tags"
     },
     "new": {
       "title": "Snippet erstellen",
