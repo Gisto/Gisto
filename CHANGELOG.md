@@ -2,6 +2,17 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### ⚙️ Miscellaneous Tasks
+
+- Automate changelog
+・ by Sasha Khamkov
+([131cd28](https://github.com/gisto/gisto/commit/131cd284626a4c3bfe922140d93b6280b4312a5b))
+
+
 ## v2.4.1
 
 Released on: Jan 17, 2026

@@ -1,0 +1,43 @@
+name: update changelog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-changelog:
+    runs-on: blacksmith-4vcpu-ubuntu-2204
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # needed for git-cliff to work properly
+
+      - uses: useblacksmith/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Generate changelog
+        run: pnpm run changelog
+
+      - name: Check for changes and amend commit
+        run: |
+          git add CHANGELOG.md
+          if ! git diff --staged --quiet; then
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git commit --amend --no-edit
+            git push --force-with-lease
+          else
+            echo "No changes to CHANGELOG.md"
+          fi
