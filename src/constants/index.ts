@@ -10,3 +10,5 @@ export const EDITOR_OPTIONS = {
   fontSize: 13,
   codeLens: true,
 };
+
+export * from './ai-providers';

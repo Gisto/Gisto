@@ -4,12 +4,13 @@ const GEMINI_ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
 const OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+const CLAUDE_ENDPOINT = 'https://api.anthropic.com/v1/messages';
 
 export interface GenerateAiResponseOptions {
   prompt: string;
   model?: string;
   temperature?: number;
-  activeAiProvider?: 'openrouter' | 'gemini' | 'openai';
+  activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude';
 }
 
 export class AiApiError extends Error {
@@ -36,6 +37,8 @@ export function isAiAvailable(): boolean {
     apiKey = ai.openaiApiKey || '';
   } else if (activeAiProvider === 'gemini') {
     apiKey = ai.geminiApiKey || '';
+  } else if (activeAiProvider === 'claude') {
+    apiKey = ai.claudeApiKey || '';
   } else {
     apiKey = ai.openRouterApiKey || '';
   }
@@ -58,6 +61,8 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
     apiKey = ai.openaiApiKey || '';
   } else if (activeAiProvider === 'gemini') {
     apiKey = ai.geminiApiKey || '';
+  } else if (activeAiProvider === 'claude') {
+    apiKey = ai.claudeApiKey || '';
   } else {
     apiKey = ai.openRouterApiKey || '';
   }
@@ -159,6 +164,36 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
 
     const res = await response.json();
     rawResponse = res.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+  } else if (activeAiProvider === 'claude') {
+    response = await fetch(CLAUDE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model,
+        max_tokens: 4096,
+        messages: [
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
+        temperature,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.json().catch(() => null);
+      const message = errorBody?.error?.message || `HTTP ${response.status} ${response.statusText}`;
+
+      throw new AiApiError(message, 'claude', response.status);
+    }
+
+    const res = await response.json();
+    rawResponse = res.content?.[0]?.text ?? '';
   } else {
     throw new AiApiError('Invalid AI provider configured.', 'openrouter');
   }

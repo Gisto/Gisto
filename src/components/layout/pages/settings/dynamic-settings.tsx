@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/select.tsx';
 import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
+import { AI_PROVIDERS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { t } from '@/lib/i18n';
 import { SettingsType } from '@/lib/store/globalState.ts';
@@ -81,7 +82,14 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
     // contains API key, model and temperature inputs — avoid rendering those keys again.
     if (
       path === 'ai' &&
-      ['geminiApiKey', 'openRouterApiKey', 'openaiApiKey', 'model', 'temperature'].includes(key)
+      [
+        'geminiApiKey',
+        'openRouterApiKey',
+        'openaiApiKey',
+        'claudeApiKey',
+        'model',
+        'temperature',
+      ].includes(key)
     ) {
       return null;
     }
@@ -302,74 +310,30 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 : ((settings as Record<string, unknown>)?.ai as Record<string, unknown>);
             const currentProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
 
-            const renderProviderCard = (provider: 'openai' | 'gemini' | 'openrouter') => {
+            const renderProviderCard = (
+              provider: 'openai' | 'gemini' | 'openrouter' | 'claude'
+            ) => {
               const isActive = currentProvider === provider;
               const apiKeyField =
                 provider === 'openai'
                   ? 'openaiApiKey'
                   : provider === 'gemini'
                     ? 'geminiApiKey'
-                    : 'openRouterApiKey';
+                    : provider === 'claude'
+                      ? 'claudeApiKey'
+                      : 'openRouterApiKey';
               const apiKey = (aiSettings?.[apiKeyField] as string) || '';
               const activeModel = (aiSettings?.model as string) || '';
 
-              let providerLabel = '';
-              let providerDescription = '';
-              let apiKeyUrl = '';
-              let modelOptions: { value: string; label: string }[] = [];
+              const providerData = AI_PROVIDERS[provider];
+              if (!providerData) return null;
 
-              if (provider === 'openai') {
-                providerLabel = 'OpenAI';
-                providerDescription = 'GPT-4, GPT-4o';
-                apiKeyUrl = 'https://platform.openai.com/api-keys';
-                modelOptions = [
-                  { value: 'gpt-4o', label: '🔥 GPT-4o (Latest & Smartest)' },
-                  { value: 'gpt-4-turbo', label: '🔥 GPT-4 Turbo (Fast & Smart)' },
-                  { value: 'gpt-4o-mini', label: '💸 GPT-4o Mini (Fast & Cheap)' },
-                  { value: 'gpt-4', label: '🏃‍♂️ GPT-4 (Legacy)' },
-                ];
-              } else if (provider === 'gemini') {
-                providerLabel = 'Gemini';
-                providerDescription = 'Google AI';
-                apiKeyUrl = 'https://aistudio.google.com/app/apikey';
-                modelOptions = [
-                  { value: 'gemini-2.0-flash', label: '🔥 Gemini 2.0 Flash (Latest)' },
-                  { value: 'gemini-1.5-pro', label: '🔥 Gemini 1.5 Pro' },
-                  { value: 'gemini-1.5-flash', label: '💸 Gemini 1.5 Flash' },
-                ];
-              } else {
-                providerLabel = 'OpenRouter';
-                providerDescription = 'Multiple Models';
-                apiKeyUrl = 'https://openrouter.ai/keys';
-                modelOptions = [
-                  {
-                    value: 'meta-llama/llama-3.2-3b-instruct:free',
-                    label: '💸 Llama 3.2 3B (Free)',
-                  },
-                  { value: 'mistralai/mistral-7b-instruct:free', label: '💸 Mistral 7B (Free)' },
-                  {
-                    value: 'google/gemini-2.0-flash-exp:free',
-                    label: '💸 Gemini 2.0 Flash (Free)',
-                  },
-                  { value: 'qwen/qwen3-4b:free', label: '💸 Qwen3 4B (Free)' },
-                  { value: 'moonshotai/kimi-k2:free', label: '💸 Kimi K2 (Free)' },
-                  { value: 'deepseek/deepseek-r1-0528:free', label: '💸 DeepSeek R1 (Free)' },
-                  {
-                    value: 'mistralai/mistral-small-3.1-24b-instruct:free',
-                    label: '💸 Mistral Small 24B (Free)',
-                  },
-                  {
-                    value: 'meta-llama/llama-3.3-70b-instruct:free',
-                    label: '💸 Llama 3.3 70B (Free)',
-                  },
-                  { value: 'google/gemma-3-12b-it:free', label: '💸 Gemma 3 12B (Free)' },
-                  { value: 'openai/gpt-4o-mini', label: '🏃‍♂️ GPT-4o Mini' },
-                  { value: 'anthropic/claude-3-haiku', label: '🏃‍♂️ Claude 3 Haiku' },
-                  { value: 'anthropic/claude-3.5-sonnet', label: '🔥 Claude 3.5 Sonnet' },
-                  { value: 'meta-llama/llama-3.1-70b-instruct', label: '🔥 Llama 3.1 70B' },
-                  { value: 'openai/gpt-4o', label: '🔥 GPT-4o' },
-                ];
-              }
+              const {
+                label: providerLabel,
+                description: providerDescription,
+                apiKeyUrl,
+                modelOptions,
+              } = providerData;
 
               return (
                 <div
@@ -471,6 +435,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 <div className="space-y-3">
                   {renderProviderCard('openai')}
                   {renderProviderCard('gemini')}
+                  {renderProviderCard('claude')}
                   {renderProviderCard('openrouter')}
                 </div>
               </div>
