@@ -2,6 +2,17 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🧪 Testing
+
+- Add more tests to hooks and utils
+・ by Sasha Khamkov
+([45fd8f4](https://github.com/gisto/gisto/commit/45fd8f4583d22e85f52b278d570d70df6fafb173))
+
+
 ## v2.4.1
 
 Released on: Jan 17, 2026
