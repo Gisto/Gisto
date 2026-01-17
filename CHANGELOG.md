@@ -2,6 +2,17 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump tauri versions
+・ by Sasha Khamkov
+([042a01e](https://github.com/gisto/gisto/commit/042a01eb7afb7419658fc110706fb2c052d182af))
+
+
 ## v2.4.0
 
 Released on: Jan 17, 2026

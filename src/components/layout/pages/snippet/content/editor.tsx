@@ -130,19 +130,9 @@ export const Editor = ({
 
   const handleEditorWillMount = (monaco: Monaco) => {
     monaco.languages.register({ id: 'groovy' });
-    monaco.languages.setMonarchTokensProvider(
-      'groovy',
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      groovyLanguage
-    );
+    monaco.languages.setMonarchTokensProvider('groovy', groovyLanguage);
     monaco.languages.register({ id: 'bsl', extensions: ['.bsl', '.os'] });
-    monaco.languages.setMonarchTokensProvider(
-      'bsl',
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
-      bslLanguage
-    );
+    monaco.languages.setMonarchTokensProvider('bsl', bslLanguage);
   };
 
   return (
