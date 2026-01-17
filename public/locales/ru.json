@@ -69,7 +69,9 @@
       "oneWeekAgo": "1 нед. назад",
       "oneMonthAgo": "1 мес. назад",
       "sixMonthsAgo": "6 мес. назад",
-      "oneYearAgo": "1 год назад"
+      "oneYearAgo": "1 год назад",
+      "topLanguages": "Основные языки",
+      "topTags": "Основные теги"
     },
     "new": {
       "title": "Создать фрагмент",

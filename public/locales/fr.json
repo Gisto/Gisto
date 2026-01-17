@@ -69,7 +69,9 @@
       "oneWeekAgo": "il y a 1 semaine",
       "oneMonthAgo": "il y a 1 mois",
       "sixMonthsAgo": "il y a 6 mois",
-      "oneYearAgo": "il y a 1 an"
+      "oneYearAgo": "il y a 1 an",
+      "topLanguages": "Langages principaux",
+      "topTags": "Étiquettes principales"
     },
     "new": {
       "title": "Créer un nouvel extrait",

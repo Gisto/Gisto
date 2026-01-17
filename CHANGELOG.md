@@ -6,11 +6,19 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(dashboard)* Add top tags and top languages charts
+・ by Sasha Khamkov
+([ddeb662](https://github.com/gisto/gisto/commit/ddeb662f25e2719abe2c7c9289e4484785151c80))
+
+
 ### 🧪 Testing
 
-- Add more tests to hooks and utils
+- Add more tests to hooks and utils ([#547](https://github.com/gisto/gisto/issues/547))
 ・ by Sasha Khamkov
-([45fd8f4](https://github.com/gisto/gisto/commit/45fd8f4583d22e85f52b278d570d70df6fafb173))
+([@sanusart](https://github.com/sanusart))
+([01800fb](https://github.com/gisto/gisto/commit/01800fb92840d85ea8e214cfec869b06db9c046f))
 
 
 ## v2.4.1
