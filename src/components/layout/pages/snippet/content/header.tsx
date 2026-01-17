@@ -1,5 +1,6 @@
 import { ChevronsDownUp, ChevronsUpDown, Eye, Code2, FileCode, MoreVertical } from 'lucide-react';
 
+import { downloadFile } from '@/components/downloadFile.ts';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
@@ -53,6 +54,17 @@ export const Header = ({
             <DropdownMenuItem onClick={() => copyToClipboard(file.content)}>
               {t('pages.snippet.copyContentToClipboard')}
             </DropdownMenuItem>
+
+            <DropdownMenuItem>
+              <a
+                className="cursor-pointer"
+                onClick={() => downloadFile(file.content ?? '', file.filename)}
+                aria-label={t('pages.snippet.downloadFile')}
+              >
+                {t('pages.snippet.downloadFile')}
+              </a>
+            </DropdownMenuItem>
+
             <DropdownMenuItem asChild>
               <a
                 className="cursor-pointer"

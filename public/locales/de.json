@@ -109,6 +109,7 @@
     },
     "snippet": {
       "fileTooLarge": "Datei zu groß",
+      "downloadFile": "Datei herunterladen",
       "openOnWeb": "im Web öffnen",
       "invalidJson": "Ungültiges JSON",
       "copyContentToClipboard": "Inhalt kopieren",
