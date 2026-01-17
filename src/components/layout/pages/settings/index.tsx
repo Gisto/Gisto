@@ -1,12 +1,17 @@
 import MonacoEditor from '@monaco-editor/react';
-import { SidebarClose, SidebarOpen } from 'lucide-react';
+import { HelpCircle, SidebarClose, SidebarOpen } from 'lucide-react';
+import { useState } from 'react';
 
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { DynamicSettings } from '@/components/layout/pages/settings/dynamic-settings.tsx';
+import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Textarea } from '@/components/ui/textarea';
 import { EDITOR_OPTIONS } from '@/constants';
+import { generateAiResponse, AiApiError } from '@/lib/ai-api.ts';
 import { t } from '@/lib/i18n';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { getEditorTheme } from '@/lib/utils';
@@ -19,13 +24,72 @@ type Props = {
 
 export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props = {}) => {
   const settings = useStoreValue('settings');
+  const [testPrompt, setTestPrompt] = useState('');
+  const [testResponse, setTestResponse] = useState('');
+  const [isTesting, setIsTesting] = useState(false);
 
   const handleChange = (key: string, value: unknown) =>
     updateSettings({
       [key]: value,
     });
 
-  const { editor, ...restOfTheSettings } = settings;
+  const handleTestPrompt = async () => {
+    if (!testPrompt.trim()) return;
+
+    setIsTesting(true);
+    setTestResponse('');
+    try {
+      const response = await generateAiResponse({
+        prompt: testPrompt,
+      });
+      setTestResponse(response);
+    } catch (error) {
+      if (error instanceof AiApiError) {
+        const modelInfo = ai.model ? `\n\nModel: ${ai.model}` : '';
+        const providerInfo =
+          error.provider === 'openrouter'
+            ? '\n\nTip: If using a free model, it may be unavailable or have rate limits. Try a different model or check openrouter.ai/models for current availability.'
+            : '';
+        setTestResponse(`Error: ${error.message}${modelInfo}${providerInfo}`);
+      } else {
+        setTestResponse(
+          `Error: ${error instanceof Error ? error.message : 'An unexpected error occurred'}`
+        );
+      }
+    } finally {
+      setIsTesting(false);
+    }
+  };
+
+  const {
+    editor,
+    ai,
+    theme,
+    language,
+    newSnippetDefaultLanguage,
+    sidebarCollapsedByDefault,
+    filesCollapsedByDefault,
+    newSnippetPublicByDefault,
+    jsonPreviewCollapsedByDefault,
+    filesPreviewEnabledByDefault,
+    sortFilesByMarkdownFirst,
+  } = settings;
+
+  // Group settings into logical sections
+  const appearanceSettings = {
+    theme,
+    language,
+  };
+
+  const snippetSettings = {
+    newSnippetDefaultLanguage,
+    sidebarCollapsedByDefault,
+    filesCollapsedByDefault,
+    newSnippetPublicByDefault,
+    jsonPreviewCollapsedByDefault,
+    filesPreviewEnabledByDefault,
+    sortFilesByMarkdownFirst,
+  };
 
   return (
     <div className="h-screen w-full border-r border-collapse">
@@ -46,49 +110,161 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
       </PageHeader>
 
       <PageContent>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('pages.settings.title')}</CardTitle>
-              <CardDescription>{t('pages.settings.mainApplicationSettings')}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DynamicSettings settings={{ ...restOfTheSettings }} onChange={handleChange} />
-            </CardContent>
-          </Card>
+        <Tabs defaultValue="general" className="w-full">
+          <TabsList variant="line" className="w-full">
+            <TabsTrigger value="general">General</TabsTrigger>
+            <TabsTrigger value="editor">{t('pages.settings.editor')}</TabsTrigger>
+            <TabsTrigger value="ai">AI Assistant</TabsTrigger>
+          </TabsList>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('pages.settings.editor')}</CardTitle>
-              <CardDescription>{t('pages.settings.editorSpecificSettings')}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <DynamicSettings settings={{ ...editor }} path="editor" onChange={handleChange} />
-            </CardContent>
-          </Card>
+          <TabsContent value="general" className="mt-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Appearance</CardTitle>
+                  <CardDescription>Theme and language preferences</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <DynamicSettings
+                    settings={appearanceSettings as Record<string, unknown>}
+                    onChange={handleChange}
+                  />
+                </CardContent>
+              </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('pages.settings.preview')}</CardTitle>
-              <CardDescription>{t('pages.settings.basicEditorSettingsPreview')}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <MonacoEditor
-                options={{
-                  ...EDITOR_OPTIONS,
-                  ...settings.editor,
-                  readOnly: false,
-                }}
-                height="300px"
-                theme={getEditorTheme()}
-                defaultLanguage={'javascript'}
-                defaultValue={`function createObject(name, age) {
+              <Card>
+                <CardHeader>
+                  <CardTitle>Snippets</CardTitle>
+                  <CardDescription>Default behavior for new snippets</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <DynamicSettings
+                    settings={snippetSettings as Record<string, unknown>}
+                    onChange={handleChange}
+                  />
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="editor" className="mt-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>{t('pages.settings.editor')}</CardTitle>
+                  <CardDescription>{t('pages.settings.editorSpecificSettings')}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <DynamicSettings settings={{ ...editor }} path="editor" onChange={handleChange} />
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>{t('pages.settings.preview')}</CardTitle>
+                  <CardDescription>
+                    {t('pages.settings.basicEditorSettingsPreview')}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <MonacoEditor
+                    options={{
+                      ...EDITOR_OPTIONS,
+                      ...settings.editor,
+                      readOnly: false,
+                    }}
+                    height="400px"
+                    theme={getEditorTheme()}
+                    defaultLanguage={'javascript'}
+                    defaultValue={`function createObject(name, age) {
   return { name, age };
 }`}
-              />
-            </CardContent>
-          </Card>
-        </div>
+                  />
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="ai" className="mt-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>AI Assistant</CardTitle>
+                  <CardDescription>
+                    Configure AI models for generating descriptions and tags
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <DynamicSettings
+                    settings={{ ...ai } as Record<string, unknown>}
+                    path="ai"
+                    onChange={handleChange}
+                  />
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-2">
+                    <CardTitle>Prompt Assistant</CardTitle>
+                    <SimpleTooltip
+                      className="max-w-md"
+                      content={
+                        <div className="space-y-2 text-primary-foreground">
+                          <p>Interact with AI using your configured model and settings.</p>
+                          <p className="font-semibold mt-2">Example:</p>
+                          <pre className="text-xs bg-primary-foreground/20 p-2 rounded overflow-x-auto">
+                            {`Explain what this code does:
+function createObject(name, age) {
+  return { name, age };
+}`}
+                          </pre>
+                          <p className="text-xs opacity-90 mt-2">
+                            Current: {ai.model || 'Not configured'} (temp: {ai.temperature ?? 0.7})
+                          </p>
+                        </div>
+                      }
+                    >
+                      <HelpCircle className="size-4 text-muted-foreground cursor-help" />
+                    </SimpleTooltip>
+                  </div>
+                  <CardDescription>
+                    Interact with AI directly using your configured settings
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Your Prompt</label>
+                    <Textarea
+                      placeholder="e.g. Explain what this code does: console.log('Hello, world!');"
+                      value={testPrompt}
+                      onChange={(e) => setTestPrompt(e.target.value)}
+                      className="min-h-[150px] font-mono text-sm"
+                    />
+                    <Button
+                      onClick={handleTestPrompt}
+                      disabled={isTesting || !testPrompt.trim()}
+                      className="w-full"
+                    >
+                      {isTesting ? 'Sending...' : 'Send Prompt'}
+                    </Button>
+                  </div>
+
+                  {testResponse && (
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium">Response</label>
+                      <div className="rounded-md bg-muted p-3 border min-h-[150px]">
+                        <pre className="text-sm whitespace-pre-wrap break-words font-mono">
+                          {testResponse}
+                        </pre>
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+        </Tabs>
       </PageContent>
     </div>
   );

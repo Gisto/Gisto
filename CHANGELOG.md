@@ -11,6 +11,11 @@ All significant updates and improvements
 - *(markdown)* Hightlight code blocks in markdown preview
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
+([e36d240](https://github.com/gisto/gisto/commit/e36d240778c795fbdf99e2a1a8c5f6e6db8ee9f8))
+
+- *(markdown)* Hightlight code blocks in markdown preview
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
 ([e40fc6d](https://github.com/gisto/gisto/commit/e40fc6d3c0f943250fd0391ae529496bf55f49b7))
 
 - *(markdown)* Add markdown-it alert and task-list plugin
@@ -18,12 +23,46 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([29f9ef1](https://github.com/gisto/gisto/commit/29f9ef109e477b039d8ac817ec662f726517f0ff))
 
+- *(assistant)* Add openrouterai option ([#543](https://github.com/gisto/gisto/issues/543))
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([4d9ea2f](https://github.com/gisto/gisto/commit/4d9ea2fd5e638b82239721e8738801171f508d96))
+
 
 ### ⚙️ Miscellaneous Tasks
 
 - *(audit)* Update pnpm audit
 ・ by Sasha Khamkov
-([e4afdaa](https://github.com/gisto/gisto/commit/e4afdaa446d11d823d9271ddf7d0279514a9ce51))
+([@sanusart](https://github.com/sanusart))
+([774b95c](https://github.com/gisto/gisto/commit/774b95cac38af167306f02f917653cc75953cd55))
+
+
+### 🛠️️ Build
+
+- *(deps-dev)* Bump @testing-library/jest-dom from 6.9.0 to 6.9.1 ([#538](https://github.com/gisto/gisto/issues/538))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([7a4f6ce](https://github.com/gisto/gisto/commit/7a4f6cebb91d1cb9b8b692c8d0d711d899947889))
+
+- *(deps)* Bump zod from 4.0.14 to 4.1.13 ([#539](https://github.com/gisto/gisto/issues/539))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([e496d29](https://github.com/gisto/gisto/commit/e496d2996b17523f5bea2aa6f767e66353990905))
+
+- *(deps-dev)* Bump @commitlint/cli from 19.8.1 to 20.1.0 ([#540](https://github.com/gisto/gisto/issues/540))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([2b35662](https://github.com/gisto/gisto/commit/2b35662736c70def90692441b6d543844ab4c935))
+
+- *(deps)* Bump @radix-ui/react-dialog from 1.1.14 to 1.1.15 ([#542](https://github.com/gisto/gisto/issues/542))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([7923cbc](https://github.com/gisto/gisto/commit/7923cbc35209c50a85931ba33b4bccc801c77630))
+
+- *(deps)* Bump tar in the npm_and_yarn group across 1 directory ([#544](https://github.com/gisto/gisto/issues/544))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([627dd33](https://github.com/gisto/gisto/commit/627dd3316c94774e246b59d86b5e506dc9dce881))
 
 
 ## v2.3.2

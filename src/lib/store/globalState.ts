@@ -38,13 +38,24 @@ export type StoreStateType = {
       codeLens: boolean;
       minimap: { enabled: boolean };
     };
-    geminiApiKey?: string;
+    ai: {
+      activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude';
+      geminiApiKey?: string;
+      openRouterApiKey?: string;
+      openaiApiKey?: string;
+      claudeApiKey?: string;
+      model: string;
+      temperature: number;
+      cleanJson: boolean;
+    };
   };
 };
 
 export type SettingsType = StoreStateType['settings'];
 
 function saveSettingsToLocalStorage(settings: SettingsType) {
+  if (typeof localStorage === 'undefined') return;
+
   localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
 }
 
@@ -62,11 +73,47 @@ function deepMerge(target: Record<string, unknown>, source: Record<string, unkno
   return target;
 }
 
+function migrateSettings(settings: Record<string, unknown>): SettingsType {
+  // Migrate old API key structure to new AI section
+  if (settings.geminiApiKey || settings.openRouterApiKey || settings.openaiApiKey) {
+    if (!settings.ai) {
+      settings.ai = {};
+    }
+    const ai = settings.ai as Record<string, unknown>;
+    if (settings.geminiApiKey && !ai.geminiApiKey) {
+      ai.geminiApiKey = settings.geminiApiKey;
+    }
+    if (settings.openRouterApiKey && !ai.openRouterApiKey) {
+      ai.openRouterApiKey = settings.openRouterApiKey;
+    }
+    if (settings.openaiApiKey && !ai.openaiApiKey) {
+      ai.openaiApiKey = settings.openaiApiKey;
+    }
+    // Remove old keys
+    delete settings.geminiApiKey;
+    delete settings.openRouterApiKey;
+    delete settings.openaiApiKey;
+  }
+
+  // NOTE: cleanJson, model and temperature are intentional settings — do not remove them during migration.
+
+  return settings as SettingsType;
+}
+
 function loadSettingsFromLocalStorage() {
+  if (typeof localStorage === 'undefined') {
+    return defaultSettings;
+  }
+
   const storedSettings = localStorage.getItem(SETTINGS_STORAGE_KEY);
   const parsedSettings = storedSettings ? JSON.parse(storedSettings) : null;
 
-  return parsedSettings ? deepMerge({ ...defaultSettings }, parsedSettings) : defaultSettings;
+  if (!parsedSettings) {
+    return defaultSettings;
+  }
+
+  const migrated = migrateSettings(parsedSettings);
+  return deepMerge({ ...defaultSettings }, migrated);
 }
 
 export const defaultSettings: SettingsType = {
@@ -91,7 +138,16 @@ export const defaultSettings: SettingsType = {
     codeLens: false,
     minimap: { enabled: false },
   },
-  geminiApiKey: '',
+  ai: {
+    activeAiProvider: 'openrouter',
+    geminiApiKey: '',
+    openRouterApiKey: '',
+    openaiApiKey: '',
+    claudeApiKey: '',
+    model: 'meta-llama/llama-3.2-3b-instruct:free',
+    temperature: 0.7,
+    cleanJson: true,
+  },
 };
 
 export const globalState = new Store<StoreStateType>({

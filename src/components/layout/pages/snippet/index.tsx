@@ -47,6 +47,7 @@ export const SnippetContent = () => {
   const snippetState = useStoreValue('snippets').find((s) => s.id === params.id);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(true);
     const fetchData = async () => {
       const gist = await GithubApi.getGist(params.id);

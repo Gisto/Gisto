@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/select.tsx';
 import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
+import { AI_PROVIDERS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { t } from '@/lib/i18n';
 import { SettingsType } from '@/lib/store/globalState.ts';
@@ -27,7 +28,7 @@ import {
 } from '@/lib/utils';
 
 interface SettingsProps {
-  settings: Omit<SettingsType, 'editor'> | SettingsType['editor'];
+  settings: Omit<SettingsType, 'editor'> | SettingsType['editor'] | Record<string, unknown>;
   onChange: (key: string, value: unknown) => void;
   path?: string;
 }
@@ -73,6 +74,7 @@ const SpecialSelect = ({
 
 export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps) => {
   const { setTheme } = useTheme();
+
   const renderSetting = (key: string, value: SettingsType | unknown, currentPath: string) => {
     const fullPath = currentPath ? `${currentPath}.${key}` : key;
 
@@ -219,10 +221,10 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             return (
               <SpecialSelect
                 tooltip={
-                  <>
+                  <div className="text-primary-foreground">
                     <strong>Experimental</strong>, machine translated, some translations are not
                     accurate or not available.
-                  </>
+                  </div>
                 }
                 settingKey={key}
                 label="UI language (experimental)"
@@ -284,40 +286,155 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
-          if (key === 'geminiApiKey') {
+          if (key === 'activeAiProvider') {
+            const providers: Array<'openai' | 'gemini' | 'claude' | 'openrouter'> = [
+              'openai',
+              'gemini',
+              'claude',
+              'openrouter',
+            ];
+
+            return (
+              <>
+                <label className="block mb-4 font-medium">AI Provider</label>
+                <RadioGroup
+                  className="grid grid-cols-2 gap-4 mb-4"
+                  onValueChange={(selectedValue) => {
+                    onChange(fullPath, selectedValue);
+                  }}
+                  defaultValue={value}
+                >
+                  {providers.map((provider) => {
+                    const providerData = AI_PROVIDERS[provider];
+                    if (!providerData) return null;
+
+                    const IconComponent = providerData.icon;
+
+                    return (
+                      <div key={provider}>
+                        <RadioGroupItem
+                          value={provider}
+                          id={`provider-${provider}`}
+                          className="peer sr-only"
+                          aria-label={providerData.label}
+                        />
+                        <Label
+                          htmlFor={`provider-${provider}`}
+                          className="cursor-pointer flex gap-3 flex-col items-center justify-between rounded-lg border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                        >
+                          <div className="w-8 h-8">
+                            <IconComponent />
+                          </div>
+                          <div className="text-sm font-medium">{providerData.label}</div>
+                          <small className="text-xs text-muted-foreground text-center">
+                            {providerData.description}
+                          </small>
+                        </Label>
+                      </div>
+                    );
+                  })}
+                </RadioGroup>
+              </>
+            );
+          }
+
+          // API Key fields
+          if (
+            key === 'openaiApiKey' ||
+            key === 'geminiApiKey' ||
+            key === 'claudeApiKey' ||
+            key === 'openRouterApiKey'
+          ) {
+            const providerMap: Record<string, 'openai' | 'gemini' | 'claude' | 'openrouter'> = {
+              openaiApiKey: 'openai',
+              geminiApiKey: 'gemini',
+              claudeApiKey: 'claude',
+              openRouterApiKey: 'openrouter',
+            };
+            const provider = providerMap[key];
+            const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
+            const activeProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
+
+            // Only show the API key field for the currently selected provider
+            if (provider !== activeProvider) {
+              return null;
+            }
+
+            const providerData = AI_PROVIDERS[provider];
+
             return (
               <div key={key} className="mb-4">
-                <label className="mb-1 flex items-center gap-2">
-                  {camelToTitleCase(key)}
-                  <SimpleTooltip
-                    className="max-w-2xs"
-                    content={
-                      <div>
-                        Get your Gemini API key at{' '}
-                        <a
-                          className="text-primary-foreground hover:text-primary-foreground underline"
-                          target="_blank"
-                          href="https://aistudio.google.com/app/apikey"
-                        >
-                          https://aistudio.google.com/app/apikey
-                        </a>
-                        .
-                        <br />
-                        <br />
-                        It can be used to generate snippets description and tags on edit or create
-                        page.
-                        <br />
-                        <br />
-                        After adding the key, you will see assistant button near the description on
-                        edit or create page.
-                      </div>
-                    }
-                  />
+                <label className="mb-2 flex items-center gap-2 text-sm font-medium">
+                  API Key
+                  {providerData?.apiKeyUrl && (
+                    <SimpleTooltip
+                      className="max-w-2xs"
+                      content={
+                        <div className="text-primary-foreground">
+                          Get your {providerData.label} API key at{' '}
+                          <a
+                            className="text-primary-foreground hover:underline underline"
+                            target="_blank"
+                            href={providerData.apiKeyUrl}
+                          >
+                            {providerData.apiKeyUrl}
+                          </a>
+                          .
+                        </div>
+                      }
+                    />
+                  )}
                 </label>
                 <InputPassword
                   value={value}
                   onChange={(e) => onChange(fullPath, e.target.value)}
                   placeholder="your api key"
+                  className="w-full"
+                />
+              </div>
+            );
+          }
+
+          // Model selection
+          if (key === 'model') {
+            const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
+            const currentProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
+            const providerData = AI_PROVIDERS[currentProvider as keyof typeof AI_PROVIDERS];
+            const modelOptions = providerData?.modelOptions || [];
+
+            return (
+              <div key={key} className="mb-4">
+                <label className="mb-2 block text-sm font-medium">Model</label>
+                <Select onValueChange={(val) => onChange(fullPath, val)} value={value}>
+                  <SelectTrigger>
+                    <SelectValue placeholder={upperCaseFirst(t('common.select'))} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {modelOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            );
+          }
+
+          // Temperature slider
+          if (key === 'temperature') {
+            const tempValue = parseFloat(value as string);
+            return (
+              <div key={key} className="mb-4">
+                <label className="mb-2 flex items-center gap-2 text-sm font-medium">
+                  Temperature <small>({tempValue})</small>
+                </label>
+                <Slider
+                  value={[tempValue]}
+                  onValueChange={(val) => onChange(fullPath, val[0])}
+                  min={0}
+                  max={2}
+                  step={0.1}
                 />
               </div>
             );

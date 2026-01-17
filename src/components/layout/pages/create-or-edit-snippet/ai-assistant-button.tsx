@@ -5,11 +5,8 @@ import { ActionType } from '@/components/layout/pages/create-or-edit-snippet/red
 import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { toast } from '@/components/toast';
 import { Button } from '@/components/ui/button.tsx';
+import { generateAiResponse, AiApiError, isAiAvailable } from '@/lib/ai-api.ts';
 import { t } from '@/lib/i18n';
-import { useStoreValue } from '@/lib/store/globalState.ts';
-
-const GEMINI_ENDPOINT =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 interface AiAssistantButtonProps {
   state: {
@@ -20,80 +17,89 @@ interface AiAssistantButtonProps {
 }
 
 export const AiAssistantButton = ({ state, dispatch, tags }: AiAssistantButtonProps) => {
-  const { geminiApiKey } = useStoreValue('settings');
-
-  if (!geminiApiKey) {
+  if (!isAiAvailable()) {
     return null;
   }
 
   const generate = async () => {
     try {
-      const response = await fetch(GEMINI_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-goog-api-key': geminiApiKey,
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [
-                {
-                  text: [
-                    'Respond ONLY with a raw JSON object like this:',
-                    '{"description": "A short...", "tags": ["tag1", "tag2"]}',
-                    'Up to 3 tags.',
-                    'Do not use code block formatting (no ```).',
-                    'Generate the shortest description possible based on the following code snippets:',
-                    state.files.map((f) => f.content).join('\n'),
-                    `Don't add existing tags. These already exist: ${tags.join(', ')}`,
-                  ].join('\n'),
-                },
-              ],
-            },
-          ],
-        }),
+      const codeContent = state.files.map((f) => f.content).join('\n');
+
+      const prompt = [
+        'Respond ONLY with a raw JSON object like this:',
+        '{"description": "A short...", "tags": ["tag1", "tag2"]}',
+        'Up to 3 tags.',
+        'Tags should NOT include the # symbol - just plain tag names.',
+        'Do not use code block formatting (no ```).',
+        'Generate the shortest description possible based on the following code snippets:',
+        codeContent,
+        `Don't add existing tags. These already exist: ${tags.join(', ')}`,
+      ].join('\n');
+
+      const rawJson = await generateAiResponse({
+        prompt,
       });
-
-      if (!response.ok) {
-        const errorBody = await response.json().catch(() => null);
-        const message =
-          errorBody?.error?.message || `HTTP ${response.status} ${response.statusText}`;
-
-        toast.show({
-          message,
-          type: 'error',
-          duration: 5000,
-          title: 'Gemini API error',
-        });
-
-        throw new Error(`Gemini API error: ${message}`);
-      }
-
-      const res = await response.json();
-
-      let rawJson = res.candidates?.[0]?.content?.parts?.[0]?.text ?? '{}';
-
-      rawJson = rawJson
-        .trim()
-        .replace(/^```json\s*/i, '')
-        .replace(/```$/, '')
-        .trim();
 
       const { description, tags: newTags } = JSON.parse(rawJson);
 
       dispatch({ type: 'SET_DESCRIPTION', payload: description });
-      newTags.forEach((tag: string) => dispatch({ type: 'ADD_TAG', payload: `#${tag}` }));
+
+      const normalizedExistingTags = tags
+        .map((tag) => {
+          return String(tag || '')
+            .replace(/^#+/, '')
+            .toLowerCase()
+            .trim();
+        })
+        .filter((tag) => tag.length > 0);
+
+      const tagsArray = Array.isArray(newTags) ? newTags : [];
+      const normalizedNewTags = tagsArray
+        .map((tag: unknown) => {
+          const tagStr = String(tag || '').trim();
+          return tagStr.replace(/^#+/, '').toLowerCase().trim();
+        })
+        .filter((tag: string) => tag.length > 0);
+
+      const mergedTags = Array.from(new Set([...normalizedExistingTags, ...normalizedNewTags])).map(
+        (tag: string) => `#${tag}`
+      );
+
+      dispatch({ type: 'SET_TAGS', payload: mergedTags });
     } catch (error) {
       console.error('AI error:', error);
+
+      if (error instanceof AiApiError) {
+        const providerName =
+          error.provider === 'openrouter'
+            ? 'OpenRouter'
+            : error.provider === 'openai'
+              ? 'OpenAI'
+              : 'Gemini';
+        toast.show({
+          message: error.message,
+          type: 'error',
+          duration: 5000,
+          title: `${providerName} API error`,
+        });
+      } else {
+        toast.show({
+          message: error instanceof Error ? error.message : 'An unexpected error occurred',
+          type: 'error',
+          duration: 5000,
+          title: 'AI error',
+        });
+      }
     }
   };
 
   return (
-    <Button variant="outline" size="sm" onClick={generate}>
-      <SimpleTooltip content={t('pages.new.generateDescriptionAndTags')}>
-        <Sparkles />
-      </SimpleTooltip>
-    </Button>
+    <div className="flex items-center gap-2">
+      <Button variant="outline" size="sm" onClick={generate}>
+        <SimpleTooltip content={t('pages.new.generateDescriptionAndTags')}>
+          <Sparkles />
+        </SimpleTooltip>
+      </Button>
+    </div>
   );
 };

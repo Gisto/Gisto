@@ -15,6 +15,19 @@ export type ToastType = {
   style?: React.CSSProperties;
 };
 
+const Icon = ({ type = 'notification', className }: { type?: 'info' | 'warn' | 'error' | 'notification', className?: string }) => {
+  switch (type) {
+    case 'info':
+      return <Info className={cn(className, 'stroke-primary')} />;
+    case 'warn':
+      return <TriangleAlert className={cn(className, 'stroke-[#f39c12]')} />;
+    case 'error':
+      return <Skull className={cn(className, 'stroke-[#e74c3c]')} />;
+    default:
+      return <Rss className={cn(className, 'stroke-primary')} />;
+  }
+};
+
 export const Toast = ({
   title,
   message,
@@ -44,18 +57,7 @@ export const Toast = ({
     }
   };
 
-  const Icon = ({ className }: { className?: string }) => {
-    switch (type) {
-      case 'info':
-        return <Info className={cn(className, 'stroke-primary')} />;
-      case 'warn':
-        return <TriangleAlert className={cn(className, 'stroke-[#f39c12]')} />;
-      case 'error':
-        return <Skull className={cn(className, 'stroke-[#e74c3c]')} />;
-      default:
-        return <Rss className={cn(className, 'stroke-primary')} />;
-    }
-  };
+  
 
   return (
     <AnimatePresence onExitComplete={onClose}>
@@ -74,7 +76,7 @@ export const Toast = ({
           }}
         >
           <Alert className={cn('text-foreground shadow-md', getToastStyle())}>
-            <Icon className={cn('size-4')} />
+            <Icon type={type} className={cn('size-4')} />
             <AlertTitle className="font-semibold">{title ?? upperCaseFirst(type)}</AlertTitle>
             <AlertDescription className="font-light">{message}</AlertDescription>
           </Alert>
