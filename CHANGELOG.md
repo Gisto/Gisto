@@ -31,7 +31,7 @@ All significant updates and improvements
 - *(file)* Allow to download file via 3 dots menu ([#545](https://github.com/gisto/gisto/issues/545))
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([b83adc6](https://github.com/gisto/gisto/commit/b83adc6bd41579807fe2ed05eb987a9c5aec7034))
+([90dcb34](https://github.com/gisto/gisto/commit/90dcb3406ecb0a79d43763da9a321c7055d8f7cb))
 
 
 ### ⚙️ Miscellaneous Tasks
