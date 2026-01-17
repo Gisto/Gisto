@@ -20,7 +20,7 @@
     "delete": "delete",
     "of": "of",
     "hour": "hour",
-    "slogan":"Snippets made awesome",
+    "slogan": "Snippets made awesome",
     "untitled": "Untitled",
     "comment": "comment",
     "comments": "comments",
@@ -60,8 +60,8 @@
   "pages": {
     "dashboard": {
       "title": "Dashboard",
-      "publicAndPrivateNumbers":"Private and public of {number} snippets",
-      "starredNumbers":"Starred snippets among {number}",
+      "publicAndPrivateNumbers": "Private and public of {number} snippets",
+      "starredNumbers": "Starred snippets among {number}",
       "snippetsWithNoTags": "Snippets with no tags",
       "snippetsWithNoDescription": "Snippets with no description",
       "snippetsOverTime": "Snippets over time",
@@ -108,7 +108,8 @@
       "basicEditorSettingsPreview": "Basic editor settings preview"
     },
     "snippet": {
-      "fileTooLarge":"File too large, please",
+      "fileTooLarge": "File too large, please",
+      "downloadFile": "Download file",
       "openOnWeb": "open on web",
       "invalidJson": "Detected as JSON but not valid for preview",
       "copyContentToClipboard": "Copy file contents to clipboard",
@@ -123,7 +124,7 @@
       "aboutParagraph": "Gisto is a code snippet manager that runs on GitHub Gists and adds additional features\n              such as searching, tagging and sharing gists while including a rich code editor.",
       "privacyParagraph": "All your data is stored on GitHub and you can access it from GitHub Gists at any time\n              with changes carrying over to Gisto.",
       "sponsor": "Sponsor Gisto",
-      "changelog":"Change log",
+      "changelog": "Change log",
       "website": "Web site",
       "issues": "Report issue"
     }
@@ -144,9 +145,9 @@
       "untagged": "<strong>Un-tagged snippets:</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>is:untagged</code>",
       "tip": "💡 You can also just click a tag or a language"
     },
-    "snippetHas":"Snippet has",
+    "snippetHas": "Snippet has",
     "sureToChangeVisibility": "Are you sure you want to make \"{name}\" snippet \"{visibility}\"? This snippet will be removed and new one gonna be re-created instead.",
-    "snippetDeleted":"Snippet deleted",
+    "snippetDeleted": "Snippet deleted",
     "sureToDelete": "Are you sure you want to delete \"{description}\" snippet?",
     "searchSnippets": "Search in {number} snippets",
     "filteredSnippets": "{filtered} of {number} snippets"
@@ -154,16 +155,16 @@
   "login": {
     "tokenNotValid": "Token not valid",
     "checkingToken": "Checking token",
-    "pleaseSignInUsingToken":"Please sign-in using GitHub token",
-    "scopeMessage":"Only \"gists\" scope is required",
+    "pleaseSignInUsingToken": "Please sign-in using GitHub token",
+    "scopeMessage": "Only \"gists\" scope is required",
     "createTokenAtGithub": "Create token at Github",
     "githubToken": "GitHub token",
-    "enterGithubToken":"Enter GitHub token",
+    "enterGithubToken": "Enter GitHub token",
     "signIn": "Sign-in"
   },
   "api": {
-    "starRemoved":"Star removed",
-    "starAdded":"Star added",
+    "starRemoved": "Star removed",
+    "starAdded": "Star added",
     "visibilityChangedToPublic": "Snippet visibility changed to public",
     "visibilityChangedToPrivate": "Snippet visibility changed to private",
     "errorTryToRefresh": "Error fetching gists, please try to refresh"

@@ -26,7 +26,11 @@ All significant updates and improvements
 - *(assistant)* Add openrouterai option ([#543](https://github.com/gisto/gisto/issues/543))
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([4d9ea2f](https://github.com/gisto/gisto/commit/4d9ea2fd5e638b82239721e8738801171f508d96))
+([699e5f2](https://github.com/gisto/gisto/commit/699e5f284233c8f5791dc7763e499090cd0339a2))
+
+- *(file)* Allow to download file via 3 dots menu
+・ by Sasha Khamkov
+([9208db0](https://github.com/gisto/gisto/commit/9208db0e98bdc2fee78b1e45bf31a668ee6cf1f8))
 
 
 ### ⚙️ Miscellaneous Tasks

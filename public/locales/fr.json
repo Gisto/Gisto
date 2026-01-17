@@ -109,6 +109,7 @@
     },
     "snippet": {
       "fileTooLarge": "Fichier trop volumineux",
+      "downloadFile": "Télécharger le fichier",
       "openOnWeb": "ouvrir sur le web",
       "invalidJson": "Détecté comme JSON mais invalide pour l’aperçu",
       "copyContentToClipboard": "Copier le contenu du fichier dans le presse-papiers",
