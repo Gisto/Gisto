@@ -20,7 +20,7 @@
     "delete": "删除",
     "of": "的",
     "hour": "小时",
-    "slogan":"让代码片段更出色",
+    "slogan": "让代码片段更出色",
     "untitled": "未命名",
     "comment": "评论",
     "comments": "多条评论",
@@ -60,8 +60,8 @@
   "pages": {
     "dashboard": {
       "title": "仪表盘",
-      "publicAndPrivateNumbers":"私有和公开的 {number} 个代码片段",
-      "starredNumbers":"{number} 个代码片段中的加星标",
+      "publicAndPrivateNumbers": "私有和公开的 {number} 个代码片段",
+      "starredNumbers": "{number} 个代码片段中的加星标",
       "snippetsWithNoTags": "没有标签的代码片段",
       "snippetsWithNoDescription": "没有描述的代码片段",
       "snippetsOverTime": "时间分布看板",
@@ -108,7 +108,8 @@
       "basicEditorSettingsPreview": "基本编辑器设置预览"
     },
     "snippet": {
-      "fileTooLarge":"文件太大，请",
+      "fileTooLarge": "文件太大，请",
+      "downloadFile": "下载文件",
       "openOnWeb": "在网页中打开",
       "invalidJson": "检测为JSON但预览无效",
       "copyContentToClipboard": "复制文件内容到剪贴板",
@@ -123,7 +124,7 @@
       "aboutParagraph": "Gisto是一个运行在GitHub Gists上的代码片段管理器，增加了搜索、标记和共享gists等功能，同时包含一个丰富的代码编辑器。",
       "privacyParagraph": "您的所有数据都存储在GitHub上，您可以随时从GitHub Gists访问，更改会同步到Gisto。",
       "sponsor": "赞助Gisto",
-      "changelog":"更新日志",
+      "changelog": "更新日志",
       "website": "网站",
       "issues": "报告问题"
     }
@@ -144,9 +145,9 @@
       "untagged": "<strong>未标记的代码片段：</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>is:untagged</code>",
       "tip": "💡 您也可以直接点击标签或语言"
     },
-    "snippetHas":"代码片段有",
+    "snippetHas": "代码片段有",
     "sureToChangeVisibility": "确定要将\"{name}\"代码片段设为\"{visibility}\"吗？此代码片段将被移除并重新创建。",
-    "snippetDeleted":"代码片段已删除",
+    "snippetDeleted": "代码片段已删除",
     "sureToDelete": "确定要删除\"{description}\"代码片段吗？",
     "searchSnippets": "在 {number} 个代码片段中搜索",
     "filteredSnippets": "{filtered} / {number} 个代码片段"
@@ -154,16 +155,16 @@
   "login": {
     "tokenNotValid": "令牌无效",
     "checkingToken": "正在检查令牌",
-    "pleaseSignInUsingToken":"请使用GitHub令牌登录",
-    "scopeMessage":"仅需要\"gists\"权限",
+    "pleaseSignInUsingToken": "请使用GitHub令牌登录",
+    "scopeMessage": "仅需要\"gists\"权限",
     "createTokenAtGithub": "在Github创建令牌",
     "githubToken": "GitHub令牌",
-    "enterGithubToken":"输入GitHub令牌",
+    "enterGithubToken": "输入GitHub令牌",
     "signIn": "登录"
   },
   "api": {
-    "starRemoved":"已移除星标",
-    "starAdded":"已添加星标",
+    "starRemoved": "已移除星标",
+    "starAdded": "已添加星标",
     "visibilityChangedToPublic": "代码片段可见性已改为公开",
     "visibilityChangedToPrivate": "代码片段可见性已改为私有",
     "errorTryToRefresh": "获取gists出错，请尝试刷新"

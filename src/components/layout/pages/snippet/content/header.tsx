@@ -27,6 +27,9 @@ export const Header = ({
   preview: boolean;
   setPreview: (p: boolean) => void;
 }) => {
+  const mime = 'text/plain';
+  const downloadHref = `data:${mime};charset=utf-8,${encodeURIComponent(file.content ?? '')}`;
+
   return (
     <div className="flex items-center gap-2 justify-between bg-background py-2 px-4 border-b text-lg">
       <div className="flex items-center gap-2">
@@ -53,6 +56,18 @@ export const Header = ({
             <DropdownMenuItem onClick={() => copyToClipboard(file.content)}>
               {t('pages.snippet.copyContentToClipboard')}
             </DropdownMenuItem>
+
+            <DropdownMenuItem asChild>
+              <a
+                className="cursor-pointer"
+                href={downloadHref}
+                download={file.filename}
+                aria-label={t('pages.snippet.downloadFile')}
+              >
+                {t('pages.snippet.downloadFile')}
+              </a>
+            </DropdownMenuItem>
+
             <DropdownMenuItem asChild>
               <a
                 className="cursor-pointer"

@@ -109,6 +109,7 @@
     },
     "snippet": {
       "fileTooLarge": "Файл слишком большой, выберите другой",
+      "downloadFile": "Скачать файл",
       "openOnWeb": "открыть в браузере",
       "invalidJson": "Обнаружен JSON, но невалиден для предпросмотра",
       "copyContentToClipboard": "Копировать содержимое файла",
