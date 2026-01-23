@@ -264,7 +264,11 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                     label:
                       getFlagEmojiFromLanguage('zh') + ' ' + getCountryNameFromLanguage('zh', 'zh'),
                   },
-                  // TODO: Add more languages like jp, etc. PRS are always welcome
+                  {
+                    value: 'ja',
+                    label:
+                      getFlagEmojiFromLanguage('ja') + ' ' + getCountryNameFromLanguage('ja', 'ja'),
+                  },
                 ]}
               />
             );
@@ -398,7 +402,9 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
 
             return (
               <div key={key} className="mb-4">
-                <label className="mb-2 block text-sm font-medium">{t('pages.settings.model')}</label>
+                <label className="mb-2 block text-sm font-medium">
+                  {t('pages.settings.model')}
+                </label>
                 <Select onValueChange={(val) => onChange(fullPath, val)} value={value}>
                   <SelectTrigger>
                     <SelectValue placeholder={upperCaseFirst(t('common.select'))} />

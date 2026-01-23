@@ -17,7 +17,7 @@ export type StoreStateType = {
     reset: string;
   } | null;
   settings: {
-    language: 'en' | 'fr' | 'es' | 'de' | 'it' | 'ru' | 'zh';
+    language: 'en' | 'fr' | 'es' | 'de' | 'it' | 'ru' | 'zh' | 'ja';
     theme: 'system' | 'light' | 'dark';
     newSnippetDefaultLanguage: string;
     sidebarCollapsedByDefault: boolean;
