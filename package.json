@@ -162,6 +162,10 @@
         "typo": {
           "description": "Fixing typos in documentation or code comments",
           "title": "Typo"
+        },
+        "i18n": {
+          "description": "Internationalization and translation updates",
+          "title": "Translations"
         }
       }
     }

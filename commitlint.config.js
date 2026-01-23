@@ -7,7 +7,7 @@ const configuration = {
     'type-enum': [
       RuleConfigSeverity.Error,
       'always',
-      [...commitLint.rules['type-enum'][2], 'typo'],
+      [...commitLint.rules['type-enum'][2], 'typo', 'i18n'],
     ],
   },
 };
