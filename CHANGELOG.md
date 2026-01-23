@@ -42,6 +42,16 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([e620366](https://github.com/gisto/gisto/commit/e620366b493c4df000d3c0e929e5c82a25cbebb8))
 
+- Convert commitlint config to cjs format
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([66c7f94](https://github.com/gisto/gisto/commit/66c7f943216a9a7f0811f68fd30fbc248da197aa))
+
+- Fix commitlint config to include i18n type
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([eb1f523](https://github.com/gisto/gisto/commit/eb1f52388c632e3c554a6585c9381bd751429715))
+
 
 ## v2.4.2
 
