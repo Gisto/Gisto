@@ -35,6 +35,14 @@ All significant updates and improvements
 ([01800fb](https://github.com/gisto/gisto/commit/01800fb92840d85ea8e214cfec869b06db9c046f))
 
 
+### 🌍 Translations
+
+- *(translations)* Add machine translated japanese language 🇯🇵
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([da6f0bc](https://github.com/gisto/gisto/commit/da6f0bc415210d80302dc43d52891440eea15d71))
+
+
 ### ⚙️ Miscellaneous Tasks
 
 - *(changelog)* Generate chnangelog upon merge to main and commit
