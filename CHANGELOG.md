@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🚀 Features
+
+- *(new snippet)* Upload files by drag and drop ([#550](https://github.com/gisto/gisto/issues/550))
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([d5fc385](https://github.com/gisto/gisto/commit/d5fc385c0af7c04e27f8d075980b96a23512bf09))
+
+
 ## v2.4.3
 
 Released on: Jan 23, 2026
