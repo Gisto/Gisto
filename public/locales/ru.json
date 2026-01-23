@@ -69,7 +69,9 @@
       "oneWeekAgo": "1 нед. назад",
       "oneMonthAgo": "1 мес. назад",
       "sixMonthsAgo": "6 мес. назад",
-      "oneYearAgo": "1 год назад"
+      "oneYearAgo": "1 год назад",
+      "topLanguages": "Основные языки",
+      "topTags": "Основные теги"
     },
     "new": {
       "title": "Создать фрагмент",
@@ -105,7 +107,27 @@
       "editor": "Редактор",
       "preview": "Просмотр",
       "editorSpecificSettings": "Настройки редактора",
-      "basicEditorSettingsPreview": "Базовые настройки редактора"
+      "basicEditorSettingsPreview": "Базовые настройки редактора",
+      "general": "Основное",
+      "appearance": "Внешний вид",
+      "themeAndLanguagePreferences": "Предпочтения темы и языка",
+      "snippets": "Фрагменты",
+      "defaultBehaviorForNewSnippets": "Поведение по умолчанию для новых фрагментов",
+      "aiAssistant": "Помощник ИИ",
+      "configureAiModels": "Настройте модели ИИ для генерации описаний и тегов",
+      "promptAssistant": "Ассистент подсказок",
+      "interactWithAiDirectly": "Взаимодействуйте с ИИ напрямую, используя настроенные параметры",
+      "yourPrompt": "Ваша подсказка",
+      "sendPrompt": "Отправить подсказку",
+      "sending": "Отправка...",
+      "aiProvider": "Поставщик ИИ",
+      "model": "Модель",
+      "temperature": "Температура",
+      "apiKey": "API ключ",
+      "uiLanguage": "Язык интерфейса (экспериментально)",
+      "experimentalTranslation": "Экспериментально, машинный перевод, некоторые переводы неточны или недоступны.",
+      "getApiKey": "Получите API ключ {provider} на {url}.",
+      "apiKeyPlaceholder": "ваш api ключ"
     },
     "snippet": {
       "fileTooLarge": "Файл слишком большой, выберите другой",

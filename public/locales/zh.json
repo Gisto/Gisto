@@ -69,7 +69,9 @@
       "oneWeekAgo": "1周前",
       "oneMonthAgo": "1个月前",
       "sixMonthsAgo": "6个月前",
-      "oneYearAgo": "1年前"
+      "oneYearAgo": "1年前",
+      "topLanguages": "主要语言",
+      "topTags": "主要标签"
     },
     "new": {
       "title": "创建新代码片段",
@@ -105,7 +107,27 @@
       "editor": "编辑器",
       "preview": "预览",
       "editorSpecificSettings": "编辑器特定设置",
-      "basicEditorSettingsPreview": "基本编辑器设置预览"
+      "basicEditorSettingsPreview": "基本编辑器设置预览",
+      "general": "常规",
+      "appearance": "外观",
+      "themeAndLanguagePreferences": "主题和语言偏好",
+      "snippets": "代码片段",
+      "defaultBehaviorForNewSnippets": "新代码片段的默认行为",
+      "aiAssistant": "AI助手",
+      "configureAiModels": "配置AI模型以生成描述和标签",
+      "promptAssistant": "提示助手",
+      "interactWithAiDirectly": "使用配置的设置直接与AI交互",
+      "yourPrompt": "您的提示",
+      "sendPrompt": "发送提示",
+      "sending": "发送中...",
+      "aiProvider": "AI提供商",
+      "model": "模型",
+      "temperature": "温度",
+      "apiKey": "API密钥",
+      "uiLanguage": "UI语言(实验性)",
+      "experimentalTranslation": "实验性，机器翻译，某些翻译可能不准确或不可用。",
+      "getApiKey": "在{url}获取您的{provider} API密钥。",
+      "apiKeyPlaceholder": "您的api密钥"
     },
     "snippet": {
       "fileTooLarge": "文件太大，请",

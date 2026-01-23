@@ -222,12 +222,11 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
               <SpecialSelect
                 tooltip={
                   <div className="text-primary-foreground">
-                    <strong>Experimental</strong>, machine translated, some translations are not
-                    accurate or not available.
+                    {t('pages.settings.experimentalTranslation')}
                   </div>
                 }
                 settingKey={key}
-                label="UI language (experimental)"
+                label={t('pages.settings.uiLanguage')}
                 value={value}
                 onChange={(keyVal, lang) => {
                   onChange(keyVal, lang);
@@ -265,7 +264,11 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                     label:
                       getFlagEmojiFromLanguage('zh') + ' ' + getCountryNameFromLanguage('zh', 'zh'),
                   },
-                  // TODO: Add more languages like jp, etc. PRS are always welcome
+                  {
+                    value: 'ja',
+                    label:
+                      getFlagEmojiFromLanguage('ja') + ' ' + getCountryNameFromLanguage('ja', 'ja'),
+                  },
                 ]}
               />
             );
@@ -296,7 +299,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
 
             return (
               <>
-                <label className="block mb-4 font-medium">AI Provider</label>
+                <label className="block mb-4 font-medium">{t('pages.settings.aiProvider')}</label>
                 <RadioGroup
                   className="grid grid-cols-2 gap-4 mb-4"
                   onValueChange={(selectedValue) => {
@@ -365,21 +368,16 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             return (
               <div key={key} className="mb-4">
                 <label className="mb-2 flex items-center gap-2 text-sm font-medium">
-                  API Key
+                  {t('pages.settings.apiKey')}
                   {providerData?.apiKeyUrl && (
                     <SimpleTooltip
                       className="max-w-2xs"
                       content={
                         <div className="text-primary-foreground">
-                          Get your {providerData.label} API key at{' '}
-                          <a
-                            className="text-primary-foreground hover:underline underline"
-                            target="_blank"
-                            href={providerData.apiKeyUrl}
-                          >
-                            {providerData.apiKeyUrl}
-                          </a>
-                          .
+                          {t('pages.settings.getApiKey', {
+                            provider: providerData.label,
+                            url: providerData.apiKeyUrl,
+                          })}
                         </div>
                       }
                     />
@@ -388,7 +386,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 <InputPassword
                   value={value}
                   onChange={(e) => onChange(fullPath, e.target.value)}
-                  placeholder="your api key"
+                  placeholder={t('pages.settings.apiKeyPlaceholder')}
                   className="w-full"
                 />
               </div>
@@ -404,7 +402,9 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
 
             return (
               <div key={key} className="mb-4">
-                <label className="mb-2 block text-sm font-medium">Model</label>
+                <label className="mb-2 block text-sm font-medium">
+                  {t('pages.settings.model')}
+                </label>
                 <Select onValueChange={(val) => onChange(fullPath, val)} value={value}>
                   <SelectTrigger>
                     <SelectValue placeholder={upperCaseFirst(t('common.select'))} />
@@ -427,7 +427,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             return (
               <div key={key} className="mb-4">
                 <label className="mb-2 flex items-center gap-2 text-sm font-medium">
-                  Temperature <small>({tempValue})</small>
+                  {t('pages.settings.temperature')} <small>({tempValue})</small>
                 </label>
                 <Slider
                   value={[tempValue]}

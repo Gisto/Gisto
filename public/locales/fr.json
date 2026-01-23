@@ -69,7 +69,9 @@
       "oneWeekAgo": "il y a 1 semaine",
       "oneMonthAgo": "il y a 1 mois",
       "sixMonthsAgo": "il y a 6 mois",
-      "oneYearAgo": "il y a 1 an"
+      "oneYearAgo": "il y a 1 an",
+      "topLanguages": "Langages principaux",
+      "topTags": "Étiquettes principales"
     },
     "new": {
       "title": "Créer un nouvel extrait",
@@ -105,7 +107,27 @@
       "editor": "Éditeur",
       "preview": "Aperçu",
       "editorSpecificSettings": "Paramètres spécifiques à l’éditeur",
-      "basicEditorSettingsPreview": "Aperçu des paramètres de l’éditeur"
+      "basicEditorSettingsPreview": "Aperçu des paramètres de l'éditeur",
+      "general": "Général",
+      "appearance": "Apparence",
+      "themeAndLanguagePreferences": "Préférences de thème et de langue",
+      "snippets": "Extraits",
+      "defaultBehaviorForNewSnippets": "Comportement par défaut pour les nouveaux extraits",
+      "aiAssistant": "Assistant IA",
+      "configureAiModels": "Configurez les modèles d'IA pour générer des descriptions et des étiquettes",
+      "promptAssistant": "Assistant de Prompt",
+      "interactWithAiDirectly": "Interagissez directement avec l'IA en utilisant vos paramètres configurés",
+      "yourPrompt": "Votre Prompt",
+      "sendPrompt": "Envoyer le Prompt",
+      "sending": "Envoi...",
+      "aiProvider": "Fournisseur d'IA",
+      "model": "Modèle",
+      "temperature": "Température",
+      "apiKey": "Clé API",
+      "uiLanguage": "Langue de l'interface (expérimental)",
+      "experimentalTranslation": "Expérimental, traduit par machine, certaines traductions ne sont pas précises ou non disponibles.",
+      "getApiKey": "Obtenez votre clé API {provider} sur {url}.",
+      "apiKeyPlaceholder": "votre clé api"
     },
     "snippet": {
       "fileTooLarge": "Fichier trop volumineux",

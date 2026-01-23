@@ -86,16 +86,18 @@ commit_parsers = [
   { message = "^style", group = "<!-- 5 -->🎨 Styling" },
   { message = "^typo", group = "<!-- 6 -->🔤 Grammar" },
   { message = "^test", group = "<!-- 7 -->🧪 Testing" },
+  { message = "^i18n", group = "<!-- 8 -->🌍 Translations" },
   { message = "^chore\\(release\\): prepare for", skip = true },
   { message = "^chore: release \\d+\\.\\d+\\.\\d+$", skip = true },
+  { message = "^chore: update changelog", skip = true },
   { message = "^chore\\(deps.*\\)", skip = true },
   { message = "^chore\\(pr\\)", skip = true },
   { message = "^chore\\(pull\\)", skip = true },
-  { message = "^chore|^ci", group = "<!-- 8 -->⚙️ Miscellaneous Tasks" },
-  { message = "^build|^ci", group = "<!-- 9 -->🛠️️ Build" },
-  { body = ".*security", group = "<!-- 10 -->🛡️ Security" },
-  { message = "^revert", group = "<!-- 11 -->◀️ Revert" },
-  { message = ".*", group = "<!-- 12 -->💼 Other" },
+  { message = "^chore|^ci", group = "<!-- 9 -->⚙️ Miscellaneous Tasks" },
+  { message = "^build|^ci", group = "<!-- 10 -->🛠️️ Build" },
+  { body = ".*security", group = "<!-- 11 -->🛡️ Security" },
+  { message = "^revert", group = "<!-- 12 -->◀️ Revert" },
+  { message = ".*", group = "<!-- 13 -->💼 Other" },
 ]
 # filter out the commits that are not matched by commit parsers
 filter_commits = false

@@ -3,7 +3,7 @@
   "description": "Cross-platform snippets management desktop application",
   "productName": "Gisto",
   "private": true,
-  "version": "2.4.2",
+  "version": "2.4.3",
   "type": "module",
   "scripts": {
     "dev": "vite --port 61570",
@@ -162,6 +162,10 @@
         "typo": {
           "description": "Fixing typos in documentation or code comments",
           "title": "Typo"
+        },
+        "i18n": {
+          "description": "Internationalization and translation updates",
+          "title": "Translations"
         }
       }
     }

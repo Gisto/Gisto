@@ -3,8 +3,6 @@
 ![GitHub License](https://img.shields.io/github/license/gisto/gisto)
 ![GitHub Release](https://img.shields.io/github/v/release/gisto/gisto)
 
-
-
 > Snippets made awesome
 
 Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor.
@@ -31,7 +29,6 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 - [👨‍💻 Development setup](#-development-setup)
 - [🚀 Release cycle](#-release-cycle)
 - [⚖️ License](#%EF%B8%8F-license)
-
 
 # 🍾 New version (2.x.x)
 
@@ -131,7 +128,7 @@ This token will be saved permanently until you log out, or it will expire.
 
 # 🌐 Internationalization
 
-Gisto is available in multiple languages. You can change the language in the settings. 
+Gisto is available in multiple languages. You can change the language in the settings.
 
 > [!NOTE]
 >
@@ -173,8 +170,9 @@ Please feel free to add a bug / feature request / suggestions to the issue track
 1. **Create a branch** from latest `main`
 2. **Add new code additions**
 3. **Write meningfull commit message** using `pnpm commit` command (it will be linted, as we generate changelog from commits)
-4. **Push** (this will also trigger temporary changelog generation via post-commit hook)
+4. **Push**
 5. **Open pull request**
+6. **Merge to main** - changelog will be automatically updated via GitHub Actions
 
 ---
 
@@ -185,7 +183,7 @@ Please feel free to add a bug / feature request / suggestions to the issue track
 ## on branch `main`:
 
 - run `pnpm release:major|minor|patch` - this will also create tag and generate changelog with commit
-> This will also push the changes and tag(s) to the remote repository
+  > This will also push the changes and tag(s) to the remote repository
 
 ## on branch `release`:
 

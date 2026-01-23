@@ -1,15 +1,14 @@
-import { RuleConfigSeverity } from '@commitlint/types';
-import commitLint from '@commitlint/config-conventional';
+import config from '@commitlint/config-conventional';
 
-const configuration = {
+export default {
   extends: ['@commitlint/config-conventional'],
   rules: {
     'type-enum': [
-      RuleConfigSeverity.Error,
-      'always',
-      [...commitLint.rules['type-enum'][2], 'typo'],
+      2, 'always', [
+        ...(config.rules['type-enum']?.[2] || []), 
+        'typo', 
+        'i18n'
+      ],
     ],
   },
 };
-
-export default configuration;

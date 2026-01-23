@@ -69,7 +69,9 @@
       "oneWeekAgo": "hace 1 semana",
       "oneMonthAgo": "hace 1 mes",
       "sixMonthsAgo": "hace 6 meses",
-      "oneYearAgo": "hace 1 año"
+      "oneYearAgo": "hace 1 año",
+      "topLanguages": "Lenguajes principales",
+      "topTags": "Etiquetas principales"
     },
     "new": {
       "title": "Crear nuevo fragmento",
@@ -105,7 +107,27 @@
       "editor": "Editor",
       "preview": "Vista previa",
       "editorSpecificSettings": "Configuraciones específicas del editor",
-      "basicEditorSettingsPreview": "Vista previa de configuraciones básicas del editor"
+      "basicEditorSettingsPreview": "Vista previa de configuraciones básicas del editor",
+      "general": "General",
+      "appearance": "Apariencia",
+      "themeAndLanguagePreferences": "Preferencias de tema e idioma",
+      "snippets": "Fragmentos",
+      "defaultBehaviorForNewSnippets": "Comportamiento predeterminado para nuevos fragmentos",
+      "aiAssistant": "Asistente de IA",
+      "configureAiModels": "Configura modelos de IA para generar descripciones y etiquetas",
+      "promptAssistant": "Asistente de Prompt",
+      "interactWithAiDirectly": "Interactúa con IA directamente usando tu configuración",
+      "yourPrompt": "Tu Prompt",
+      "sendPrompt": "Enviar Prompt",
+      "sending": "Enviando...",
+      "aiProvider": "Proveedor de IA",
+      "model": "Modelo",
+      "temperature": "Temperatura",
+      "apiKey": "Clave API",
+      "uiLanguage": "Idioma de interfaz (experimental)",
+      "experimentalTranslation": "Experimental, traducido automáticamente, algunas traducciones no son precisas o no están disponibles.",
+      "getApiKey": "Obtén tu clave API de {provider} en {url}.",
+      "apiKeyPlaceholder": "tu clave api"
     },
     "snippet": {
       "fileTooLarge": "Archivo demasiado grande",
