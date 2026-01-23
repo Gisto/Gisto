@@ -97,7 +97,10 @@
       "fileError": "需要文件名",
       "fileContentError": "需要文件内容",
       "descriptionError": "需要描述",
-      "generateDescriptionAndTags": "使用AI生成描述和标签"
+      "generateDescriptionAndTags": "使用AI生成描述和标签",
+      "dragDropTip": "💡 提示: 您可以将文件拖放到这里",
+      "dropFilesHere": "在此处放下文件以添加它们",
+      "supportedFiles": "支持: 文本文件和图像"
     },
     "settings": {
       "title": "设置",

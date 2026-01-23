@@ -97,7 +97,10 @@
       "fileError": "El nombre del archivo es obligatorio",
       "fileContentError": "El contenido del archivo es obligatorio",
       "descriptionError": "La descripción es obligatoria",
-      "generateDescriptionAndTags": "Generar descripción y etiquetas con IA"
+      "generateDescriptionAndTags": "Generar descripción y etiquetas con IA",
+      "dragDropTip": "💡 Consejo: Puedes arrastrar y soltar archivos aquí",
+      "dropFilesHere": "Suelta los archivos aquí para añadirlos",
+      "supportedFiles": "Compatible: archivos de texto e imágenes"
     },
     "settings": {
       "title": "Configuraciones",

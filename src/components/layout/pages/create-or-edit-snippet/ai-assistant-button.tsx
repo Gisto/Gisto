@@ -2,9 +2,9 @@ import { Sparkles } from 'lucide-react';
 import React from 'react';
 
 import { ActionType } from '@/components/layout/pages/create-or-edit-snippet/reducer.ts';
-import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { toast } from '@/components/toast';
 import { Button } from '@/components/ui/button.tsx';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { generateAiResponse, AiApiError, isAiAvailable } from '@/lib/ai-api.ts';
 import { t } from '@/lib/i18n';
 
@@ -95,11 +95,14 @@ export const AiAssistantButton = ({ state, dispatch, tags }: AiAssistantButtonPr
 
   return (
     <div className="flex items-center gap-2">
-      <Button variant="outline" size="sm" onClick={generate}>
-        <SimpleTooltip content={t('pages.new.generateDescriptionAndTags')}>
-          <Sparkles />
-        </SimpleTooltip>
-      </Button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button variant="outline" size="sm" onClick={generate}>
+            <Sparkles />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>{t('pages.new.generateDescriptionAndTags')}</TooltipContent>
+      </Tooltip>
     </div>
   );
 };
