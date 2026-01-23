@@ -112,17 +112,17 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
       <PageContent>
         <Tabs defaultValue="general" className="w-full">
           <TabsList variant="line" className="w-full">
-            <TabsTrigger value="general">General</TabsTrigger>
+            <TabsTrigger value="general">{t('pages.settings.general')}</TabsTrigger>
             <TabsTrigger value="editor">{t('pages.settings.editor')}</TabsTrigger>
-            <TabsTrigger value="ai">AI Assistant</TabsTrigger>
+            <TabsTrigger value="ai">{t('pages.settings.aiAssistant')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="general" className="mt-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Appearance</CardTitle>
-                  <CardDescription>Theme and language preferences</CardDescription>
+                  <CardTitle>{t('pages.settings.appearance')}</CardTitle>
+                  <CardDescription>{t('pages.settings.themeAndLanguagePreferences')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <DynamicSettings
@@ -134,8 +134,8 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Snippets</CardTitle>
-                  <CardDescription>Default behavior for new snippets</CardDescription>
+                  <CardTitle>{t('pages.settings.snippets')}</CardTitle>
+                  <CardDescription>{t('pages.settings.defaultBehaviorForNewSnippets')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <DynamicSettings
@@ -189,9 +189,9 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>AI Assistant</CardTitle>
+                  <CardTitle>{t('pages.settings.aiAssistant')}</CardTitle>
                   <CardDescription>
-                    Configure AI models for generating descriptions and tags
+                    {t('pages.settings.configureAiModels')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -206,7 +206,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
               <Card>
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <CardTitle>Prompt Assistant</CardTitle>
+                    <CardTitle>{t('pages.settings.promptAssistant')}</CardTitle>
                     <SimpleTooltip
                       className="max-w-md"
                       content={
@@ -229,12 +229,12 @@ function createObject(name, age) {
                     </SimpleTooltip>
                   </div>
                   <CardDescription>
-                    Interact with AI directly using your configured settings
+                    {t('pages.settings.interactWithAiDirectly')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Your Prompt</label>
+                    <label className="text-sm font-medium">{t('pages.settings.yourPrompt')}</label>
                     <Textarea
                       placeholder="e.g. Explain what this code does: console.log('Hello, world!');"
                       value={testPrompt}
@@ -246,7 +246,7 @@ function createObject(name, age) {
                       disabled={isTesting || !testPrompt.trim()}
                       className="w-full"
                     >
-                      {isTesting ? 'Sending...' : 'Send Prompt'}
+                      {isTesting ? t('pages.settings.sending') : t('pages.settings.sendPrompt')}
                     </Button>
                   </div>
 

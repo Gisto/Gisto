@@ -8,9 +8,17 @@ All significant updates and improvements
 
 ### 🚀 Features
 
-- *(dashboard)* Add top tags and top languages charts
+- *(dashboard)* Add top tags and top languages charts ([#548](https://github.com/gisto/gisto/issues/548))
 ・ by Sasha Khamkov
-([ddeb662](https://github.com/gisto/gisto/commit/ddeb662f25e2719abe2c7c9289e4484785151c80))
+([@sanusart](https://github.com/sanusart))
+([f61db51](https://github.com/gisto/gisto/commit/f61db5160ca8d7ab2ee9d605a287ddeabb375316))
+
+
+### 🐛 Bug Fixes
+
+- *(i18n)* Add more string translations
+・ by Sasha Khamkov
+([800bba7](https://github.com/gisto/gisto/commit/800bba7cf611c0a0b18319b383c9344fe491aba7))
 
 
 ### 🧪 Testing
