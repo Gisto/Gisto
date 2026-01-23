@@ -87,14 +87,6 @@ Released on: Jan 17, 2026
 ([90dcb34](https://github.com/gisto/gisto/commit/90dcb3406ecb0a79d43763da9a321c7055d8f7cb))
 
 
-### ⚙️ Miscellaneous Tasks
-
-- *(audit)* Update pnpm audit
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([774b95c](https://github.com/gisto/gisto/commit/774b95cac38af167306f02f917653cc75953cd55))
-
-
 ### 🛠️️ Build
 
 - *(deps-dev)* Bump @testing-library/jest-dom from 6.9.0 to 6.9.1 ([#538](https://github.com/gisto/gisto/issues/538))
@@ -123,6 +115,14 @@ Released on: Jan 17, 2026
 ([627dd33](https://github.com/gisto/gisto/commit/627dd3316c94774e246b59d86b5e506dc9dce881))
 
 
+### ⚙️ Miscellaneous Tasks
+
+- *(audit)* Update pnpm audit
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([774b95c](https://github.com/gisto/gisto/commit/774b95cac38af167306f02f917653cc75953cd55))
+
+
 ## v2.3.2
 
 Released on: Nov 14, 2025
@@ -133,14 +133,6 @@ Released on: Nov 14, 2025
 ・ by Raythunder
 ([@raythunder](https://github.com/raythunder))
 ([43875ca](https://github.com/gisto/gisto/commit/43875ca25460d0f13e4b3770690d53b5d55327a0))
-
-
-### 🎨 Styling
-
-- *(snippets-list)* Improve snippet description text wrapping ([#537](https://github.com/gisto/gisto/issues/537))
-・ by Raythunder
-([@raythunder](https://github.com/raythunder))
-([581cc40](https://github.com/gisto/gisto/commit/581cc40f453f1e5a925f8e3753c0e584b1f45e72))
 
 
 ### 🛠️️ Build
@@ -164,6 +156,14 @@ Released on: Nov 14, 2025
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([dc2e3b8](https://github.com/gisto/gisto/commit/dc2e3b879e77d7a3cedc65acf7575d81d0279ada))
+
+
+### 🎨 Styling
+
+- *(snippets-list)* Improve snippet description text wrapping ([#537](https://github.com/gisto/gisto/issues/537))
+・ by Raythunder
+([@raythunder](https://github.com/raythunder))
+([581cc40](https://github.com/gisto/gisto/commit/581cc40f453f1e5a925f8e3753c0e584b1f45e72))
 
 
 ## v2.3.1
@@ -261,14 +261,6 @@ Released on: Aug 2, 2025
 
 Released on: Aug 2, 2025
 
-### ⚙️ Miscellaneous Tasks
-
-- Release $npm_package_version
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([8d43fb4](https://github.com/gisto/gisto/commit/8d43fb415697d7b798de4c7f31aa463d6c6fab59))
-
-
 ### 🛠️️ Build
 
 - *(deps)* Bump @eslint/plugin-kit in the npm_and_yarn group ([#504](https://github.com/gisto/gisto/issues/504))
@@ -295,6 +287,14 @@ Released on: Aug 2, 2025
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([bb8e288](https://github.com/gisto/gisto/commit/bb8e2882b93fcbe79021a31aa755cb9615b22ec7))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Release $npm_package_version
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([8d43fb4](https://github.com/gisto/gisto/commit/8d43fb415697d7b798de4c7f31aa463d6c6fab59))
 
 
 ## v2.2.6
@@ -359,6 +359,14 @@ Released on: May 3, 2025
 ([bf884f2](https://github.com/gisto/gisto/commit/bf884f2d15c662a54d9f03a359b36159f0d3f791))
 
 
+### 🛠️️ Build
+
+- *(dependencies)* Update dependencies ([#488](https://github.com/gisto/gisto/issues/488))
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([3dbeefd](https://github.com/gisto/gisto/commit/3dbeefdca47a6cd8c7d56372dd01637bd22eabc4))
+
+
 ### 📚 Documentation
 
 - *(changelog)* Improve changelog
@@ -373,14 +381,6 @@ Released on: May 3, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([fca191f](https://github.com/gisto/gisto/commit/fca191f0f9405e59cf7404ab4949957a2ffb99c9))
-
-
-### 🛠️️ Build
-
-- *(dependencies)* Update dependencies ([#488](https://github.com/gisto/gisto/issues/488))
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([3dbeefd](https://github.com/gisto/gisto/commit/3dbeefdca47a6cd8c7d56372dd01637bd22eabc4))
 
 
 ## v2.2.3
@@ -435,6 +435,14 @@ Released on: Apr 18, 2025
 ([a516330](https://github.com/gisto/gisto/commit/a51633003f8264ace5aa0a8a6a67eb510e817f0a))
 
 
+### 🛠️️ Build
+
+- *(depencencies)* Update dependencies to lates ([#480](https://github.com/gisto/gisto/issues/480))
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([d317d7e](https://github.com/gisto/gisto/commit/d317d7e8d587027c82b9814015f26f27dea4111a))
+
+
 ### 🧪 Testing
 
 - Mock translations in tests ([#475](https://github.com/gisto/gisto/issues/475))
@@ -471,14 +479,6 @@ Released on: Apr 18, 2025
 ([1f3581b](https://github.com/gisto/gisto/commit/1f3581be7bcc6158726f8db9aa54297db5b2f7a3))
 
 
-### 🛠️️ Build
-
-- *(depencencies)* Update dependencies to lates ([#480](https://github.com/gisto/gisto/issues/480))
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([d317d7e](https://github.com/gisto/gisto/commit/d317d7e8d587027c82b9814015f26f27dea4111a))
-
-
 ## v2.2.0
 
 Released on: Apr 15, 2025
@@ -509,11 +509,6 @@ Released on: Apr 15, 2025
 
 ### ⚙️ Miscellaneous Tasks
 
-- Update changelog for release
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([174e1ba](https://github.com/gisto/gisto/commit/174e1ba8f4a04d8ccb52830cb54e8f93dc6ed62e))
-
 - Update PR action name and add verson to release commit
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
@@ -542,6 +537,24 @@ Released on: Apr 13, 2025
 ([1e4a097](https://github.com/gisto/gisto/commit/1e4a0978c620831f3bdace3170ee61e739f7fcbb))
 
 
+### 🛠️️ Build
+
+- *(deps-dev)* Bump vite from 6.2.5 to 6.2.6 in the npm_and_yarn group ([#467](https://github.com/gisto/gisto/issues/467))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([1f0af9c](https://github.com/gisto/gisto/commit/1f0af9c3efd8c5730c81dc2d25574f4db8a9e247))
+
+- *(deps)* Bump tokio ([#460](https://github.com/gisto/gisto/issues/460))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([485e1a9](https://github.com/gisto/gisto/commit/485e1a9cec30c4e48c997acd8c758943b2b2975e))
+
+- *(dependencies)* Update dependencies and packages to latest versions
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([9818966](https://github.com/gisto/gisto/commit/98189663ab71044a82fc165555862d30f763319b))
+
+
 ### 🧪 Testing
 
 - *(infra)* Add test infra and basic tests ([#468](https://github.com/gisto/gisto/issues/468))
@@ -566,24 +579,6 @@ Released on: Apr 13, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([2849850](https://github.com/gisto/gisto/commit/2849850360c63ba2bfbf481048c5ab3b37561eff))
-
-
-### 🛠️️ Build
-
-- *(deps-dev)* Bump vite from 6.2.5 to 6.2.6 in the npm_and_yarn group ([#467](https://github.com/gisto/gisto/issues/467))
-・ by dependabot[bot]
-([@dependabot[bot]](https://github.com/dependabot[bot]))
-([1f0af9c](https://github.com/gisto/gisto/commit/1f0af9c3efd8c5730c81dc2d25574f4db8a9e247))
-
-- *(deps)* Bump tokio ([#460](https://github.com/gisto/gisto/issues/460))
-・ by dependabot[bot]
-([@dependabot[bot]](https://github.com/dependabot[bot]))
-([485e1a9](https://github.com/gisto/gisto/commit/485e1a9cec30c4e48c997acd8c758943b2b2975e))
-
-- *(dependencies)* Update dependencies and packages to latest versions
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([9818966](https://github.com/gisto/gisto/commit/98189663ab71044a82fc165555862d30f763319b))
 
 
 ## v2.1.4
@@ -620,6 +615,19 @@ Released on: Apr 9, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([fa42cab](https://github.com/gisto/gisto/commit/fa42cab19e4987cd498f4a692ee5de09575463eb))
+
+
+### 🛠️️ Build
+
+- *(deps)* Bump lucide-react from 0.483.0 to 0.487.0 ([#457](https://github.com/gisto/gisto/issues/457))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([14a7f11](https://github.com/gisto/gisto/commit/14a7f11e19800b577a80c4612834c38f37353e72))
+
+- *(deps)* Bump @tauri-apps/plugin-updater from 2.6.1 to 2.7.0 ([#458](https://github.com/gisto/gisto/issues/458))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([3a01c39](https://github.com/gisto/gisto/commit/3a01c39a63caa862e36004f34c52fd3a59fb7b4b))
 
 
 ### 📚 Documentation
@@ -663,19 +671,6 @@ Released on: Apr 9, 2025
 ([0e6dc81](https://github.com/gisto/gisto/commit/0e6dc8151303ba1c0e0aa59f5f6c2eb7ca0d5945))
 
 
-### 🛠️️ Build
-
-- *(deps)* Bump lucide-react from 0.483.0 to 0.487.0 ([#457](https://github.com/gisto/gisto/issues/457))
-・ by dependabot[bot]
-([@dependabot[bot]](https://github.com/dependabot[bot]))
-([14a7f11](https://github.com/gisto/gisto/commit/14a7f11e19800b577a80c4612834c38f37353e72))
-
-- *(deps)* Bump @tauri-apps/plugin-updater from 2.6.1 to 2.7.0 ([#458](https://github.com/gisto/gisto/issues/458))
-・ by dependabot[bot]
-([@dependabot[bot]](https://github.com/dependabot[bot]))
-([3a01c39](https://github.com/gisto/gisto/commit/3a01c39a63caa862e36004f34c52fd3a59fb7b4b))
-
-
 ## v2.1.1
 
 Released on: Apr 5, 2025
@@ -711,27 +706,6 @@ Released on: Mar 29, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([fbe35aa](https://github.com/gisto/gisto/commit/fbe35aaee205406c0599ec0f2cd350f3002df6db))
-
-
-### 📚 Documentation
-
-- Fix about page
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([0e5d7f5](https://github.com/gisto/gisto/commit/0e5d7f5a6d30f50f4015a0bf2660e9dd2ffd3358))
-
-
-### ⚙️ Miscellaneous Tasks
-
-- Release fix ubuntu platform name
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([61358eb](https://github.com/gisto/gisto/commit/61358eb82b47f586e0b579f89643ca3e5befe1ec))
-
-- Update dependencies
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([9c89ca9](https://github.com/gisto/gisto/commit/9c89ca9475e14b45b4607e5f6281e56d7d7d1c43))
 
 
 ### 🛠️️ Build
@@ -822,6 +796,27 @@ Released on: Mar 29, 2025
 ([207872c](https://github.com/gisto/gisto/commit/207872c96b628d3034ee85817e3c6c65dd037d0b))
 
 
+### 📚 Documentation
+
+- Fix about page
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([0e5d7f5](https://github.com/gisto/gisto/commit/0e5d7f5a6d30f50f4015a0bf2660e9dd2ffd3358))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Release fix ubuntu platform name
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([61358eb](https://github.com/gisto/gisto/commit/61358eb82b47f586e0b579f89643ca3e5befe1ec))
+
+- Update dependencies
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([9c89ca9](https://github.com/gisto/gisto/commit/9c89ca9475e14b45b4607e5f6281e56d7d7d1c43))
+
+
 ## v2.0.7
 
 Released on: Mar 8, 2025
@@ -832,14 +827,6 @@ Released on: Mar 8, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([570ff76](https://github.com/gisto/gisto/commit/570ff7630afc166ea9c5d974662cf0c4039c5517))
-
-
-### ⚙️ Miscellaneous Tasks
-
-- Create dependabot.yml
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([8b92da6](https://github.com/gisto/gisto/commit/8b92da66b64ad51f60fc5ff3d70419650d5e0724))
 
 
 ### 🛠️️ Build
@@ -883,6 +870,14 @@ Released on: Mar 8, 2025
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([8bc451d](https://github.com/gisto/gisto/commit/8bc451deddb6c82c25007b423c9274c470cda32f))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Create dependabot.yml
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([8b92da6](https://github.com/gisto/gisto/commit/8b92da66b64ad51f60fc5ff3d70419650d5e0724))
 
 
 ## v2.0.6
@@ -1023,19 +1018,6 @@ Released on: Jan 31, 2025
 ([862bbaf](https://github.com/gisto/gisto/commit/862bbaf75becb72f333149622cf875b81baf3905))
 
 
-### 📚 Documentation
-
-- Readme table of contents
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([e177a0f](https://github.com/gisto/gisto/commit/e177a0f50f91a534defa96d05efa82db5a266dab))
-
-- Fix readme table of contents
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([9c1378f](https://github.com/gisto/gisto/commit/9c1378f1147d4bca77c8b9a73a5fd434229407db))
-
-
 ### 🛠️️ Build
 
 - Add secrets
@@ -1047,6 +1029,19 @@ Released on: Jan 31, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([6e56235](https://github.com/gisto/gisto/commit/6e56235ee2bdf8ac4664c3268bb2608fd90afa97))
+
+
+### 📚 Documentation
+
+- Readme table of contents
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([e177a0f](https://github.com/gisto/gisto/commit/e177a0f50f91a534defa96d05efa82db5a266dab))
+
+- Fix readme table of contents
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([9c1378f](https://github.com/gisto/gisto/commit/9c1378f1147d4bca77c8b9a73a5fd434229407db))
 
 
 ## v2.0.0
@@ -1097,6 +1092,14 @@ Released on: Jan 30, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([b6e784d](https://github.com/gisto/gisto/commit/b6e784d320989381211d0b27e687ad1882bc08c3))
+
+
+### 🛠️️ Build
+
+- Move and rename layout files, fix lint ignore
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([cb82a4f](https://github.com/gisto/gisto/commit/cb82a4faf9528d2f5ebc8be657727f3604211dc0))
 
 
 ### 🚜 Refactor
@@ -1201,14 +1204,6 @@ Released on: Jan 30, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([ee4b244](https://github.com/gisto/gisto/commit/ee4b244867b512f4a8ac6af689690c07faae1036))
-
-
-### 🛠️️ Build
-
-- Move and rename layout files, fix lint ignore
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([cb82a4f](https://github.com/gisto/gisto/commit/cb82a4faf9528d2f5ebc8be657727f3604211dc0))
 
 
 ## v2.0.0-alpha.1
