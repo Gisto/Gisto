@@ -16,15 +16,7 @@ All significant updates and improvements
 - *(markdown)* Hightlight code blocks in markdown preview
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([1615824](https://github.com/gisto/gisto/commit/1615824215c7d9e097a9bd26e1129d1b3c209a90))
-
-
-### 🐛 Bug Fixes
-
-- *(i18n)* Add more string translations ([#549](https://github.com/gisto/gisto/issues/549))
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([dce2fdc](https://github.com/gisto/gisto/commit/dce2fdc5b7166d126367f7793a4dc200a3241425))
+([b6a9a78](https://github.com/gisto/gisto/commit/b6a9a78646dc020384acc284b6ca09f9fa40c0cb))
 
 
 ### 🧪 Testing
@@ -37,10 +29,15 @@ All significant updates and improvements
 
 ### 🌍 Translations
 
+- Add more string translations
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([7954145](https://github.com/gisto/gisto/commit/79541456d48da114c37f50d2f0b1c8f695eb150e))
+
 - *(translations)* Add machine translated japanese language 🇯🇵
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([da6f0bc](https://github.com/gisto/gisto/commit/da6f0bc415210d80302dc43d52891440eea15d71))
+([93d0d48](https://github.com/gisto/gisto/commit/93d0d48dbdd2df4d916942b84194001ef951f5c3))
 
 
 ### ⚙️ Miscellaneous Tasks
@@ -48,17 +45,17 @@ All significant updates and improvements
 - *(changelog)* Generate chnangelog upon merge to main and commit
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([e620366](https://github.com/gisto/gisto/commit/e620366b493c4df000d3c0e929e5c82a25cbebb8))
+([0d08275](https://github.com/gisto/gisto/commit/0d082753e610ee0d6d1557c1bbc9035ee1957d57))
 
 - Convert commitlint config to cjs format
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([66c7f94](https://github.com/gisto/gisto/commit/66c7f943216a9a7f0811f68fd30fbc248da197aa))
+([58c9d06](https://github.com/gisto/gisto/commit/58c9d0677352aaedde0d9753b06de024a2a482db))
 
 - Fix commitlint config to include i18n type
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([eb1f523](https://github.com/gisto/gisto/commit/eb1f52388c632e3c554a6585c9381bd751429715))
+([e5c2dcb](https://github.com/gisto/gisto/commit/e5c2dcb57c6bf2b32b29207a634d87bfe6ed97d9))
 
 
 ## v2.4.2
