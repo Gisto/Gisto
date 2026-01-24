@@ -5,7 +5,12 @@ import { Mock, vi } from 'vitest';
 
 import { mockUtils } from '../../test/mockUtils.ts';
 
+import { isTauri } from './isTauri';
 import { Updater } from './updater';
+
+vi.mock('./isTauri', () => ({
+  isTauri: vi.fn(),
+}));
 
 vi.mock('@tauri-apps/plugin-updater', () => ({
   check: vi.fn(),
@@ -23,6 +28,7 @@ describe('Updater', () => {
   });
 
   it('renders nothing if no update is available', async () => {
+    (isTauri as Mock).mockReturnValue(true);
     (check as Mock).mockResolvedValue(null);
 
     render(<Updater />);
@@ -33,7 +39,7 @@ describe('Updater', () => {
   });
 
   it('renders update available message when an update is available', async () => {
-    Object.defineProperty(window, 'isTauri', { value: true, configurable: true });
+    (isTauri as Mock).mockReturnValue(true);
 
     const mockUpdate = {
       version: '1.2.3',
@@ -52,7 +58,7 @@ describe('Updater', () => {
   });
 
   it('downloads and installs the update when the button is clicked', async () => {
-    Object.defineProperty(window, 'isTauri', { value: true, configurable: true });
+    (isTauri as Mock).mockReturnValue(true);
 
     const mockUpdate = {
       version: '1.2.3',
@@ -78,7 +84,7 @@ describe('Updater', () => {
   });
 
   it('relaunches the app when the restart button is clicked', async () => {
-    Object.defineProperty(window, 'isTauri', { value: true, configurable: true });
+    (isTauri as Mock).mockReturnValue(true);
     const mockUpdate = {
       version: '1.2.3',
       currentVersion: '1.0.0',

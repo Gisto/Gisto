@@ -1,8 +1,10 @@
 import { relaunch } from '@tauri-apps/plugin-process';
 import { check, Update } from '@tauri-apps/plugin-updater';
-import { CircleChevronDown, Loader } from 'lucide-react';
+import { CircleChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+import { isTauri } from '@/components/isTauri.ts';
+import { Loading } from '@/components/loading.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { t } from '@/lib/i18n';
 import { upperCaseFirst } from '@/lib/utils';
@@ -14,7 +16,7 @@ export const Updater = () => {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if ('isTauri' in window) {
+    if (isTauri()) {
       (async () => {
         const update = await check();
 
@@ -59,7 +61,7 @@ export const Updater = () => {
           {downloaded === 0 ? (
             upperCaseFirst(t('common.download'))
           ) : (
-            <Loader strokeWidth={1.5} className="animate-spin" />
+            <Loading size={4} className="flex items-center justify-center" />
           )}
         </Button>
       )}
