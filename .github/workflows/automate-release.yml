@@ -55,5 +55,5 @@ jobs:
           git fetch origin main
           git checkout release
           git pull origin release --rebase
-          git merge origin/main --ff-only
+          git merge origin/main --no-ff -m "chore: merge main to release"
           git push origin release
