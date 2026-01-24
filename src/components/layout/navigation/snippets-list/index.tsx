@@ -6,13 +6,13 @@ import {
   Search,
   SidebarClose,
   SidebarOpen,
-  Loader,
   Info,
 } from 'lucide-react';
 import React, { useCallback } from 'react';
 
 import { ListItem } from '@/components/layout/navigation/snippets-list/item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
+import { Loading } from '@/components/loading.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
@@ -158,7 +158,8 @@ export const Lists = ({
             </>
           ) : (
             <>
-              <Loader className="animate-spin size-3" /> {t('list.refreshingData')}
+              <Loading size={3} className="flex items-center justify-center mr-1" />{' '}
+              {t('list.refreshingData')}
             </>
           )}
 

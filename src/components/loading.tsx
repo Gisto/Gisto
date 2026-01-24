@@ -1,9 +1,16 @@
 import { Loader } from 'lucide-react';
 
-export const Loading = () => {
+type LoadingProps = {
+  message?: string;
+  className?: string;
+  size?: number;
+};
+
+export const Loading = ({ message, className, size = 8 }: LoadingProps) => {
   return (
-    <div className="flex justify-center items-center w-full h-screen">
-      <Loader className="size-8 animate-spin" />
+    <div className={className || 'flex flex-col justify-center items-center w-full h-screen'}>
+      <Loader className={`size-${size} animate-spin`} />
+      {message && <div className="mt-4">{message}</div>}
     </div>
   );
 };

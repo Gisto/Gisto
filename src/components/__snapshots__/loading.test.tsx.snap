@@ -3,7 +3,7 @@
 exports[`Loading > matches the snapshot 1`] = `
 <div>
   <div
-    class="flex justify-center items-center w-full h-screen"
+    class="flex flex-col justify-center items-center w-full h-screen"
   >
     <svg
       aria-hidden="true"

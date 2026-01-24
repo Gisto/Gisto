@@ -1,24 +1,11 @@
 import './main.css';
 
-import { Info } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-import { Gisto } from '@/components/gisto.tsx';
-import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
-import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
+import { Loading } from '@/components/loading.tsx';
+import { Gisto } from '@/components/main/gisto.tsx';
+import { Login } from '@/components/main/login.tsx';
 import { toast } from '@/components/toast';
-import { Button } from '@/components/ui/button.tsx';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card.tsx';
-import { InputPassword } from '@/components/ui/inputPassword.tsx';
-import { Label } from '@/components/ui/label';
-import { Updater } from '@/components/updater.tsx';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 
@@ -26,7 +13,6 @@ export const App = () => {
   const [token, setToken] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [newToken, setNewToken] = useState<string>('');
 
   useEffect(() => {
     const storedToken = localStorage.getItem('GITHUB_TOKEN');
@@ -59,79 +45,18 @@ export const App = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (newToken) {
-      setToken(newToken);
-      validateToken(newToken);
-      setNewToken('');
-    }
+  const handleTokenSubmit = (newToken: string) => {
+    setToken(newToken);
+    void validateToken(newToken);
   };
 
   if (isLoading) {
-    return (
-      <div className="flex flex-col justify-center items-center h-screen">
-        <div>{t('login.checkingToken')}...</div>
-      </div>
-    );
+    return <Loading message={`${t('login.checkingToken')}...`} />;
   }
 
   if (isValid) {
     return <Gisto />;
   }
 
-  return (
-    <div className="flex flex-col justify-center items-center h-screen bg-secondary bg-light-pattern dark:bg-dark-pattern">
-      <div className="absolute top-2 right-2">
-        <ThemeProvider>
-          <ThemeSwitcher />
-        </ThemeProvider>
-      </div>
-      <Updater />
-      <img src="/icon-192.png" className="w-20 mb-8" alt="Gisto" />
-
-      <h3 className="">{'{ Gisto }'}</h3>
-
-      <p className="mb-8 text-primary">{t('common.slogan')}</p>
-
-      <form onSubmit={handleSubmit}>
-        <Card className="w-[85vw] max-w-[450px]">
-          <CardHeader>
-            <CardTitle>{t('login.pleaseSignInUsingToken')}</CardTitle>
-            <CardDescription className="flex items-center gap-2">
-              {t('login.scopeMessage')}{' '}
-              <div title={t('login.createTokenAtGithub')}>
-                <Info
-                  className="size-4 cursor-pointer"
-                  onClick={() => window.open('https://github.com/settings/tokens')}
-                />
-              </div>
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="token">{t('login.githubToken')}</Label>
-
-                <InputPassword
-                  id="token"
-                  value={newToken}
-                  onChange={(e) => setNewToken(e.target.value)}
-                  placeholder={t('login.enterGithubToken')}
-                />
-                {token !== null && !isValid && (
-                  <div className="mb-4 text-xs text-destructive">{t('login.tokenNotValid')}</div>
-                )}
-              </div>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button type="submit" className="w-full">
-              {t('login.signIn')}
-            </Button>
-          </CardFooter>
-        </Card>
-      </form>
-    </div>
-  );
+  return <Login onTokenSubmit={handleTokenSubmit} token={token} isValid={isValid} />;
 };

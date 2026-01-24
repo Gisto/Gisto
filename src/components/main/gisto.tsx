@@ -25,13 +25,13 @@ const CreateNewPage = lazy(() =>
 );
 
 const AboutPage = lazy(() =>
-  import('@/components/layout/pages/about').then((module) => ({
+  import('@/components/layout/pages/about.tsx').then((module) => ({
     default: module.About,
   }))
 );
 
 const SettingsPage = lazy(() =>
-  import('@/components/layout/pages/settings/index.tsx').then((module) => ({
+  import('@/components/layout/pages/settings').then((module) => ({
     default: module.Settings,
   }))
 );
