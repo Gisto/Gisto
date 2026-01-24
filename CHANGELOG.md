@@ -14,6 +14,14 @@ All significant updates and improvements
 ([d5fc385](https://github.com/gisto/gisto/commit/d5fc385c0af7c04e27f8d075980b96a23512bf09))
 
 
+### 🚜 Refactor
+
+- *(app)* Main entry point app and login ([#551](https://github.com/gisto/gisto/issues/551))
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6f04361](https://github.com/gisto/gisto/commit/6f04361bdcf79a23df770507006f2bf7f395cd27))
+
+
 ## v2.4.3
 
 Released on: Jan 23, 2026
