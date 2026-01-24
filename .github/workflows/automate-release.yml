@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -57,3 +58,9 @@ jobs:
           git pull origin release --rebase
           git merge origin/main --no-ff -m "chore: merge main to release"
           git push origin release
+
+      - name: Trigger release workflow
+        run: |
+          gh workflow run release.yml --ref release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
