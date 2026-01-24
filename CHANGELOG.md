@@ -2,9 +2,9 @@
 
 All significant updates and improvements
 
-## v2.4.4
+## Upcoming version
 
-Released on: Jan 24, 2026
+[test build](https://main-branch-gisto-app.netlify.app/)
 
 ### 🚀 Features
 
@@ -28,6 +28,11 @@ Released on: Jan 24, 2026
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([b167690](https://github.com/gisto/gisto/commit/b1676901b271fd8b2dea7e1639979e8f60cb068d))
+
+- Version and release workflow
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([bba7b02](https://github.com/gisto/gisto/commit/bba7b02a7b1161c069cf34e6f77d67b173b3fdb4))
 
 
 ## v2.4.3
