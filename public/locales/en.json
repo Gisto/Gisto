@@ -97,7 +97,10 @@
       "fileError": "File name is required",
       "fileContentError": "File content is required",
       "descriptionError": "Description is required",
-      "generateDescriptionAndTags": "Generate description and tags with AI"
+      "generateDescriptionAndTags": "Generate description and tags with AI",
+      "dragDropTip": "💡 Tip: You can drag and drop files here",
+      "dropFilesHere": "Drop files here to add them",
+      "supportedFiles": "Supported: text files and images"
     },
     "settings": {
       "title": "Settings",

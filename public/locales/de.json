@@ -97,7 +97,10 @@
       "fileError": "Dateiname erforderlich",
       "fileContentError": "Inhalt erforderlich",
       "descriptionError": "Beschreibung erforderlich",
-      "generateDescriptionAndTags": "Beschreibung und Tags mit KI generieren"
+      "generateDescriptionAndTags": "Beschreibung und Tags mit KI generieren",
+      "dragDropTip": "💡 Tipp: Dateien hier ziehen und ablegen",
+      "dropFilesHere": "Dateien hier ablegen zum Hinzufügen",
+      "supportedFiles": "Unterstützt: Textdateien und Bilder"
     },
     "settings": {
       "title": "Einstellungen",

@@ -97,7 +97,10 @@
       "fileError": "Le nom du fichier est requis",
       "fileContentError": "Le contenu du fichier est requis",
       "descriptionError": "La description est requise",
-      "generateDescriptionAndTags": "Générer une description et des étiquettes avec l’IA"
+      "generateDescriptionAndTags": "Générer une description et des étiquettes avec l'IA",
+      "dragDropTip": "💡 Conseil : Vous pouvez glisser-déposer des fichiers ici",
+      "dropFilesHere": "Déposez les fichiers ici pour les ajouter",
+      "supportedFiles": "Pris en charge : fichiers texte et images"
     },
     "settings": {
       "title": "Paramètres",

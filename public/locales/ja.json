@@ -97,7 +97,10 @@
       "fileError": "ファイル名が必須です",
       "fileContentError": "ファイルの内容が必須です",
       "descriptionError": "説明が必須です",
-      "generateDescriptionAndTags": "AIで説明とタグを生成"
+      "generateDescriptionAndTags": "AIで説明とタグを生成",
+      "dragDropTip": "💡 ヒント: ファイルをここにドラッグ＆ドロップできます",
+      "dropFilesHere": "ファイルをここにドロップして追加",
+      "supportedFiles": "対応: テキストファイルと画像"
     },
     "settings": {
       "title": "設定",
