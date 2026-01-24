@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### ⚙️ Miscellaneous Tasks
+
+- Automate-release workflow to explicitly trigger the release (publish) workflow
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([97417c6](https://github.com/gisto/gisto/commit/97417c68340359bd6546629254a776c626717ab7))
+
+
 ## v2.4.4
 
 Released on: Jan 24, 2026
