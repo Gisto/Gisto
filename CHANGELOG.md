@@ -22,6 +22,14 @@ All significant updates and improvements
 ([6f04361](https://github.com/gisto/gisto/commit/6f04361bdcf79a23df770507006f2bf7f395cd27))
 
 
+### ⚙️ Miscellaneous Tasks
+
+- Version and release workflow ([#552](https://github.com/gisto/gisto/issues/552))
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([b167690](https://github.com/gisto/gisto/commit/b1676901b271fd8b2dea7e1639979e8f60cb068d))
+
+
 ## v2.4.3
 
 Released on: Jan 23, 2026
