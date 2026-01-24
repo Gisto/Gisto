@@ -6,7 +6,7 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
-### ⚙️ Miscellaneous Tasks
+### 👷 Continuous Integration
 
 - Automate-release workflow to explicitly trigger the release (publish) workflow
 ・ by Sasha Khamkov
@@ -26,15 +26,7 @@ Released on: Jan 24, 2026
 ([d5fc385](https://github.com/gisto/gisto/commit/d5fc385c0af7c04e27f8d075980b96a23512bf09))
 
 
-### 🚜 Refactor
-
-- *(app)* Main entry point app and login ([#551](https://github.com/gisto/gisto/issues/551))
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([6f04361](https://github.com/gisto/gisto/commit/6f04361bdcf79a23df770507006f2bf7f395cd27))
-
-
-### ⚙️ Miscellaneous Tasks
+### 👷 Continuous Integration
 
 - Version and release workflow ([#552](https://github.com/gisto/gisto/issues/552))
 ・ by Sasha Khamkov
@@ -45,6 +37,14 @@ Released on: Jan 24, 2026
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([bba7b02](https://github.com/gisto/gisto/commit/bba7b02a7b1161c069cf34e6f77d67b173b3fdb4))
+
+
+### 🚜 Refactor
+
+- *(app)* Main entry point app and login ([#551](https://github.com/gisto/gisto/issues/551))
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6f04361](https://github.com/gisto/gisto/commit/6f04361bdcf79a23df770507006f2bf7f395cd27))
 
 
 ## v2.4.3
@@ -419,6 +419,14 @@ Released on: May 3, 2025
 ([bf884f2](https://github.com/gisto/gisto/commit/bf884f2d15c662a54d9f03a359b36159f0d3f791))
 
 
+### 👷 Continuous Integration
+
+- Update workflows to take pnpm version from package.json packageManager field
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([fca191f](https://github.com/gisto/gisto/commit/fca191f0f9405e59cf7404ab4949957a2ffb99c9))
+
+
 ### 🛠️️ Build
 
 - *(dependencies)* Update dependencies ([#488](https://github.com/gisto/gisto/issues/488))
@@ -433,14 +441,6 @@ Released on: May 3, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([c2f3d83](https://github.com/gisto/gisto/commit/c2f3d834934794f8cf9abb34b43bdef418f0c94b))
-
-
-### ⚙️ Miscellaneous Tasks
-
-- Update workflows to take pnpm version from package.json packageManager field
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([fca191f](https://github.com/gisto/gisto/commit/fca191f0f9405e59cf7404ab4949957a2ffb99c9))
 
 
 ## v2.2.3
@@ -551,6 +551,14 @@ Released on: Apr 15, 2025
 ([b419554](https://github.com/gisto/gisto/commit/b41955480db577136abe15f740c903ca49f50a6c))
 
 
+### 👷 Continuous Integration
+
+- Update PR action name and add verson to release commit
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([7e27aad](https://github.com/gisto/gisto/commit/7e27aad9731e80336a901de9bd30de9aa62bc737))
+
+
 ### 🔤 Grammar
 
 - Fix typo on create-or-edit-snippet
@@ -568,11 +576,6 @@ Released on: Apr 15, 2025
 
 
 ### ⚙️ Miscellaneous Tasks
-
-- Update PR action name and add verson to release commit
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([7e27aad](https://github.com/gisto/gisto/commit/7e27aad9731e80336a901de9bd30de9aa62bc737))
 
 - *(cz and changelog)* Extend cz and fix changelog
 ・ by Sasha Khamkov
@@ -677,6 +680,14 @@ Released on: Apr 9, 2025
 ([fa42cab](https://github.com/gisto/gisto/commit/fa42cab19e4987cd498f4a692ee5de09575463eb))
 
 
+### 👷 Continuous Integration
+
+- *(dependabot)* Update dependabot.yml
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([90bca8c](https://github.com/gisto/gisto/commit/90bca8c65a3f5d687dc17f2cf026bd9f79b0975f))
+
+
 ### 🛠️️ Build
 
 - *(deps)* Bump lucide-react from 0.483.0 to 0.487.0 ([#457](https://github.com/gisto/gisto/issues/457))
@@ -699,11 +710,6 @@ Released on: Apr 9, 2025
 
 
 ### ⚙️ Miscellaneous Tasks
-
-- *(dependabot)* Update dependabot.yml
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([90bca8c](https://github.com/gisto/gisto/commit/90bca8c65a3f5d687dc17f2cf026bd9f79b0975f))
 
 - *(changelog)* Use git-cliff for changelog
 ・ by Sasha Khamkov
