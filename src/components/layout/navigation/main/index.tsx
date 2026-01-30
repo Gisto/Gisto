@@ -66,6 +66,7 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
 
               if (confirmation) {
                 localStorage.removeItem('GITHUB_TOKEN');
+                localStorage.removeItem('GITLAB_TOKEN');
                 document.location.reload();
               }
             }}

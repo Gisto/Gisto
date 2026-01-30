@@ -31,6 +31,7 @@ import {
   isOpenApi,
   isPDF,
   isTSV,
+  getLanguageName,
 } from '@/lib/utils';
 import { GistFileType, GistSingleType } from '@/types/gist.ts';
 
@@ -145,7 +146,7 @@ export const Editor = ({
       beforeMount={handleEditorWillMount}
       height={height}
       theme={getEditorTheme()}
-      defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
+      defaultLanguage={languageMap[getLanguageName(file) || file.filename.split('.')[1]] ?? 'text'}
       defaultValue={file.content}
     />
   );

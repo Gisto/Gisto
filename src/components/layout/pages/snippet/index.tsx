@@ -28,8 +28,8 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
-import { GithubApi } from '@/lib/github-api.ts';
 import { t } from '@/lib/i18n';
+import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import {
   copyToClipboard,
@@ -50,7 +50,7 @@ export const SnippetContent = () => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(true);
     const fetchData = async () => {
-      const gist = await GithubApi.getGist(params.id);
+      const gist = await snippetService.getGist(params.id);
 
       setSnippet(gist);
       setLoading(false);
@@ -121,7 +121,7 @@ export const SnippetContent = () => {
                       );
 
                       if (confirmation) {
-                        await GithubApi.toggleGistVisibility(snippet.id);
+                        await snippetService.toggleGistVisibility(snippet.id);
                         navigate('/');
                         await fetchAndUpdateSnippets();
                       }
@@ -154,7 +154,7 @@ export const SnippetContent = () => {
                       );
 
                       if (confirmation) {
-                        await GithubApi.toggleGistVisibility(snippet.id);
+                        await snippetService.toggleGistVisibility(snippet.id);
                         navigate('/');
                         await fetchAndUpdateSnippets();
                       }
@@ -177,30 +177,33 @@ export const SnippetContent = () => {
             )}
 
             <Separator orientation="vertical" className="mx-2 h-6" />
+            {snippetService.capabilities.supportsStars && (
+              <>
+                {snippetState && snippetState.starred ? (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="-mx-3"
+                    onClick={async () => await snippetService.deleteStar(snippet.id)}
+                  >
+                    <Star className="size-4 fill-primary stroke-primary" />
+                    <span className="sr-only">{upperCaseFirst(t('common.starred'))}</span>
+                  </Button>
+                ) : (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="-mx-3"
+                    onClick={async () => await snippetService.addStar(snippet.id)}
+                  >
+                    <Star className="size-4" />
+                    <span className="sr-only">{upperCaseFirst(t('common.star'))}</span>
+                  </Button>
+                )}
 
-            {snippetState && snippetState.starred ? (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="-mx-3"
-                onClick={async () => await GithubApi.deleteStar(snippet.id)}
-              >
-                <Star className="size-4 fill-primary stroke-primary" />
-                <span className="sr-only">{upperCaseFirst(t('common.starred'))}</span>
-              </Button>
-            ) : (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="-mx-3"
-                onClick={async () => await GithubApi.addStar(snippet.id)}
-              >
-                <Star className="size-4" />
-                <span className="sr-only">{upperCaseFirst(t('common.star'))}</span>
-              </Button>
+                <Separator orientation="vertical" className="mx-2 h-6" />
+              </>
             )}
-
-            <Separator orientation="vertical" className="mx-2 h-6" />
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild className="">
@@ -265,7 +268,7 @@ export const SnippetContent = () => {
                     );
 
                     if (confirmation) {
-                      const value = await GithubApi.deleteGist(snippet.id);
+                      const value = await snippetService.deleteGist(snippet.id);
 
                       if (value.success) {
                         navigate('/');

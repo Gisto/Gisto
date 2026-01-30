@@ -1,7 +1,7 @@
 export type GistFileType = {
   filename: string;
   content: string;
-  language: string;
+  language: string | { name: string; color?: string | null };
   encoding: string;
   raw_url: string;
   size: number;

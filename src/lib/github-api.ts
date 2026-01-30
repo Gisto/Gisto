@@ -1,14 +1,73 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { version } from '../../package.json';
+
+import { requestApi } from './providers/request-utils';
+import { guessLanguage, guessMimeType } from './providers/snippet-utils';
+import { SnippetProvider } from './providers/types';
 
 import { toast } from '@/components/toast';
 import { ITEMS_PER_PAGE } from '@/constants';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
-import { GistSingleType, GistType } from '@/types/gist.ts';
+import { GistFileType, GistSingleType, GistType } from '@/types/gist.ts';
 
 interface GraphQLResponse<T> {
   data: T;
   errors?: string[];
+}
+
+interface GitHubNode {
+  description: string | null;
+  createdAt: string;
+  id: string; // resourcePath or id? Query alias id: resourcePath
+  isFork: boolean;
+  stars: number;
+  starred: boolean;
+  resourcePath: string;
+  isPublic: boolean;
+  name: string;
+  owner: {
+    id: string;
+    login: string;
+    avatarUrl: string;
+    resourcePath: string;
+  };
+  html_url: string;
+  comments: {
+    edges: Array<{
+      node: {
+        id: string;
+        createdAt: string;
+        author: {
+          login: string;
+          avatarUrl: string;
+        };
+        bodyHTML: string;
+      };
+    }>;
+  };
+  files: Array<{
+    name: string;
+    encoding: string;
+    extension: string;
+    isTruncated: boolean;
+    isImage: boolean;
+    language: {
+      color: string | null;
+      name: string | null;
+    } | null;
+    encodedName: string;
+    size: number;
+    text: string;
+  }>;
+  forks: {
+    edges: Array<{
+      node: {
+        createdAt: string;
+        id: string;
+      };
+    }>;
+  };
 }
 
 interface GistQueryData {
@@ -18,63 +77,15 @@ interface GistQueryData {
         hasNextPage: boolean;
         endCursor: string | null;
       };
-      nodes: Array<{
-        description: string | null;
-        createdAt: string;
-        id: string;
-        isFork: boolean;
-        stars: number;
-        starred: boolean;
-        resourcePath: string;
-        isPublic: boolean;
-        name: string;
-        owner: {
-          id: string;
-          login: string;
-          avatarUrl: string;
-          resourcePath: string;
-        };
-        comments: {
-          edges: Array<{
-            node: {
-              id: string;
-              createdAt: string;
-              author: {
-                login: string;
-                avatarUrl: string;
-              };
-              bodyHTML: string;
-            };
-          }>;
-        };
-        files: Array<{
-          name: string;
-          encoding: string;
-          extension: string;
-          isTruncated: boolean;
-          isImage: boolean;
-          language: {
-            color: string | null;
-            name: string | null;
-          } | null;
-          encodedName: string;
-          size: number;
-          text: string;
-        }>;
-        forks: {
-          edges: Array<{
-            node: {
-              createdAt: string;
-              id: string;
-            };
-          }>;
-        };
-      }>;
+      nodes: Array<GitHubNode>;
     };
   };
 }
 
-export const GithubApi = {
+export const GithubApi: SnippetProvider<any> = {
+  capabilities: {
+    supportsStars: true,
+  },
   baseUrl: 'https://api.github.com',
   gitHubApiVersion: '2022-11-28',
 
@@ -88,37 +99,23 @@ export const GithubApi = {
     body?: Record<string, unknown>;
   }): Promise<{ data: T; headers: Headers; status: number }> {
     const token = localStorage.getItem('GITHUB_TOKEN');
-    const url = `${this.baseUrl}${endpoint}`;
-
-    // const cache = await caches.open(url);
-    // const cachedResponse = await cache.match(url);
-    // if (cachedResponse) {
-    //   return {
-    //     data: await cachedResponse.json(),
-    //     headers: cachedResponse.headers,
-    //     status: cachedResponse.status,
-    //   };
-    // }
-
     const headers = {
       Authorization: `Bearer ${token}`,
       Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': this.gitHubApiVersion,
+      'X-GitHub-Api-Version': this.gitHubApiVersion || '2022-11-28',
       'User-agent': `Gisto app v${version}`,
     };
 
-    const response: Response = await fetch(url, {
+    const response = await requestApi<T>({
+      baseUrl: this.baseUrl,
+      endpoint,
       method,
       headers,
-      body: body ? JSON.stringify(body) : undefined,
-    });
-
-    if (response.status > 399) {
-      if (response.status === 401) {
+      body,
+      onUnauthorized: () => {
         document.location.href = '/';
-      }
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+      },
+    });
 
     globalState.setState({
       apiRateLimits: {
@@ -130,12 +127,7 @@ export const GithubApi = {
       },
     });
 
-    // const responseClone = response.clone();
-    // await cache.put(url, responseClone);
-
-    const data = method === 'DELETE' || method === 'PUT' ? null : await response.json();
-
-    return { data, headers: response.headers, status: response.status };
+    return response;
   },
 
   async getGist(gistId: string): Promise<GistSingleType> {
@@ -145,24 +137,13 @@ export const GithubApi = {
   },
 
   async getMarkdown(text: string): Promise<string> {
-    const token = localStorage.getItem('GITHUB_TOKEN');
-
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': this.gitHubApiVersion,
-      'User-agent': `Gisto app v${version}`,
-    };
-
-    const response: Response = await fetch(`${this.baseUrl}/markdown`, {
+    const { data } = await this.request<string>({
+      endpoint: '/markdown',
       method: 'POST',
-      headers,
-      body: JSON.stringify({
-        text,
-      }),
+      body: { text },
     });
 
-    return response.text();
+    return data;
   },
 
   async createGist({
@@ -305,42 +286,14 @@ export const GithubApi = {
     return null;
   },
 
-  async fetchGithubGraphQL<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
-    // const cacheKey = JSON.stringify({ query, variables });
-    // const cachedItem = cache.get(cacheKey);
-    //
-    // if (cachedItem && Date.now() - cachedItem.timestamp < CACHE_DURATION) {
-    //   return cachedItem.data as T;
-    // }
-
-    const token = localStorage.getItem('GITHUB_TOKEN');
-    const response = await fetch('https://api.github.com/graphql', {
+  async fetchGithubGraphQL<T>(query?: string, params?: { cursor: string | null }): Promise<T> {
+    const { data } = await this.request<GraphQLResponse<T>>({
+      endpoint: 'https://api.github.com/graphql',
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ query, variables }),
+      body: { query, variables: params },
     });
 
-    if (!response.ok) {
-      throw new Error(`GitHub GraphQL request failed: ${response.statusText}`);
-    }
-
-    globalState.setState({
-      apiRateLimits: {
-        limit: Number(response.headers.get('x-ratelimit-limit')),
-        remaining: Number(response.headers.get('x-ratelimit-remaining')),
-        reset: new Date(
-          Number(response.headers.get('x-ratelimit-reset')) * 1000
-        ).toLocaleTimeString(),
-      },
-    });
-
-    const result: GraphQLResponse<T> = await response.json();
-    // cache.set(cacheKey, { data: result.data, timestamp: Date.now() });
-
-    return result.data;
+    return data.data;
   },
 
   async fetchGists(cursor: string | null = null) {
@@ -355,7 +308,7 @@ export const GithubApi = {
           nodes {
             description
             createdAt
-            id
+            id: resourcePath
             isFork
             stars: stargazerCount
             starred: viewerHasStarred
@@ -368,6 +321,7 @@ export const GithubApi = {
               avatarUrl
               resourcePath
             }
+            html_url: url
             comments(last: 100) {
               edges {
                 node {
@@ -414,7 +368,10 @@ export const GithubApi = {
         cursor,
       });
 
-      return data.viewer.gists;
+      return {
+        nodes: data.viewer.gists.nodes.map((node) => this.mapToGistType(node)),
+        pageInfo: data.viewer.gists.pageInfo
+      };
     } catch (error) {
       console.error('Error fetching gists:', error);
       toast.error({ message: t('api.errorTryToRefresh'), duration: 5000 });
@@ -437,10 +394,83 @@ export const GithubApi = {
 
     while (hasNextPage) {
       const gistsPage = await this.fetchGists(cursor);
-      // @ts-expect-error align GraphQL types with response types
       yield gistsPage.nodes;
       hasNextPage = gistsPage.pageInfo.hasNextPage;
       cursor = gistsPage.pageInfo.endCursor;
     }
   },
+
+  mapToGistType(data: any): GistType {
+    // If it's already in the correct format (e.g. from create/update Gist response)
+    if (!('files' in data && Array.isArray(data.files))) {
+      return data as GistType;
+    }
+
+    // Map from GraphQL format to GistType
+    const node = data as GitHubNode;
+    const files: Record<string, GistFileType> = {};
+
+    if (node.files && Array.isArray(node.files)) {
+      node.files.forEach((file) => {
+        files[file.name] = {
+          filename: file.name,
+          content: file.text,
+          type: 'text/plain', // Default used in logic
+          language: file.language
+            ? { name: file.language.name || 'Text', color: file.language.color }
+            : { name: 'Text', color: null },
+          size: file.size,
+          truncated: file.isTruncated,
+          encoding: 'utf-8',
+          raw_url: '', // Not provided in GraphQL node directly easily without constructing it
+        };
+      });
+    }
+
+    return {
+      id: node.name, // Use name as ID for compatibility
+      description: node.description || '',
+      html_url: node.html_url,
+      createdAt: node.createdAt,
+      updated_at: node.createdAt, // createdAt as fallback
+      files: files,
+      public: node.isPublic,
+      owner: {
+        login: node.owner.login,
+        avatar_url: node.owner.avatarUrl,
+        id: 0, // Not present in partial view
+        // ... fill other dummy if needed, or assume partial
+      } as any, // Cast to any to avoid filling all User fields if not strictly needed in list view
+      history: [],
+      comments: node.comments,
+      url: node.html_url,
+      forks: [],
+      truncated: false,
+      forks_url: '',
+      commits_url: '',
+      node_id: '',
+      git_pull_url: '',
+      git_push_url: '',
+      comments_url: '',
+      user: null,
+      comments_enabled: true,
+      // Add optional GistType fields...
+      isPublic: node.isPublic,
+      starred: node.starred,
+      stars: node.stars,
+      resourcePath: node.resourcePath
+    } as unknown as GistType;
+  },
+
+  mapToGistSingleType(data: GistSingleType): GistSingleType {
+    return data;
+  },
+
+  guessMimeType(extension: string): string {
+    return guessMimeType(extension);
+  },
+
+  guessLanguage(extension: string): string {
+    return guessLanguage(extension);
+  }
 };

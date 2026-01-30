@@ -21,6 +21,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
 import { t } from '@/lib/i18n';
+import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { searchFilter } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
@@ -110,10 +111,12 @@ export const Lists = ({
                   className="text-xs mb-2"
                   dangerouslySetInnerHTML={{ __html: t('list.searchHelp.language') }}
                 />
-                <div
-                  className="text-xs mb-2"
-                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.stars') }}
-                />
+                {snippetService.capabilities.supportsStars && (
+                  <div
+                    className="text-xs mb-2"
+                    dangerouslySetInnerHTML={{ __html: t('list.searchHelp.stars') }}
+                  />
+                )}
                 <div
                   className="text-xs mb-2"
                   dangerouslySetInnerHTML={{ __html: t('list.searchHelp.visibility') }}

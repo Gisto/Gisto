@@ -81,7 +81,7 @@ describe('snippet utils', () => {
     it('should process snippet correctly', () => {
       const result = processSnippet(mockSnippet as unknown as GistType);
 
-      expect(result.id).toBe('/gist/1');
+      expect(result.id).toBe('1');
       expect(result.title).toBe('Test ');
       expect(result.tags).toEqual(['#tag']);
       expect(result.languages).toEqual([
@@ -137,6 +137,12 @@ describe('snippet utils', () => {
       expect(previewAvailable({ language: 'JavaScript', type: 'text/plain' } as GistFileType)).toBe(
         false
       );
+    });
+
+    it('should not crash if type is missing', () => {
+      expect(() =>
+        previewAvailable({ language: 'Text', filename: 'test.txt' } as GistFileType)
+      ).not.toThrow();
     });
   });
 

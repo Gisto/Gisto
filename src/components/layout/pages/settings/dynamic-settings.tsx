@@ -217,6 +217,22 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
+          if (key === 'activeSnippetProvider') {
+            return (
+              <SpecialSelect
+                settingKey={key}
+                label={t('pages.settings.snippetProvider')}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={[
+                  { value: 'github', label: 'GitHub' },
+                  { value: 'gitlab', label: 'GitLab' },
+                ]}
+              />
+            );
+          }
+
           if (key === 'language') {
             return (
               <SpecialSelect

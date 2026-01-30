@@ -14,8 +14,8 @@ import { toast } from '@/components/toast';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
-import { GithubApi } from '@/lib/github-api.ts';
 import { t } from '@/lib/i18n';
+import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, fetchAndUpdateSnippets, getTags, removeTags, upperCaseFirst } from '@/lib/utils';
 import { GistEnrichedType } from '@/types/gist.ts';
@@ -152,7 +152,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                             })
                           );
                           if (confirmation) {
-                            await GithubApi.toggleGistVisibility(gist.id);
+                            await snippetService.toggleGistVisibility(gist.id);
                             await fetchAndUpdateSnippets();
                           }
                         }}
@@ -184,7 +184,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                           );
 
                           if (confirmation) {
-                            await GithubApi.toggleGistVisibility(gist.id);
+                            await snippetService.toggleGistVisibility(gist.id);
                             await fetchAndUpdateSnippets();
                           }
                         }}
@@ -201,47 +201,51 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
               </>
             )}
 
-            {gist.starred ? (
+            {snippetService.capabilities.supportsStars && (
               <>
-                <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
-                <Tooltip delayDuration={100}>
-                  <TooltipTrigger asChild>
-                    <Star
-                      strokeWidth={1.5}
-                      className="size-3 stroke-primary cursor-pointer hover:stroke-primary fill-primary hover:scale-125 transition-all"
-                      onClick={async (event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
+                {gist.starred ? (
+                  <>
+                    <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
+                    <Tooltip delayDuration={100}>
+                      <TooltipTrigger asChild>
+                        <Star
+                          strokeWidth={1.5}
+                          className="size-3 stroke-primary cursor-pointer hover:stroke-primary fill-primary hover:scale-125 transition-all"
+                          onClick={async (event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
 
-                        await GithubApi.deleteStar(gist.id);
-                      }}
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    {upperCaseFirst(t('common.starred'))} {t('common.snippet')}
-                  </TooltipContent>
-                </Tooltip>
-              </>
-            ) : (
-              <>
-                <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
-                <Tooltip delayDuration={100}>
-                  <TooltipTrigger asChild>
-                    <Star
-                      strokeWidth={1.5}
-                      className="size-3 cursor-pointer hover:stroke-primary hover:scale-125 transition-all"
-                      onClick={async (event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
+                            await snippetService.deleteStar(gist.id);
+                          }}
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        {upperCaseFirst(t('common.starred'))} {t('common.snippet')}
+                      </TooltipContent>
+                    </Tooltip>
+                  </>
+                ) : (
+                  <>
+                    <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
+                    <Tooltip delayDuration={100}>
+                      <TooltipTrigger asChild>
+                        <Star
+                          strokeWidth={1.5}
+                          className="size-3 cursor-pointer hover:stroke-primary hover:scale-125 transition-all"
+                          onClick={async (event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
 
-                        await GithubApi.addStar(gist.id);
-                      }}
-                    />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    {upperCaseFirst(t('common.star'))} {t('common.snippet')}
-                  </TooltipContent>
-                </Tooltip>
+                            await snippetService.addStar(gist.id);
+                          }}
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        {upperCaseFirst(t('common.star'))} {t('common.snippet')}
+                      </TooltipContent>
+                    </Tooltip>
+                  </>
+                )}
               </>
             )}
 
@@ -278,7 +282,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                     );
 
                     if (confirmation) {
-                      const value = await GithubApi.deleteGist(gist.id, false);
+                      const value = await snippetService.deleteGist(gist.id, false);
 
                       if (value.success) {
                         toast.info({ message: t('list.snippetDeleted') });
