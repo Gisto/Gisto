@@ -8,6 +8,7 @@ import { DynamicSettings } from '@/components/layout/pages/settings/dynamic-sett
 import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { EDITOR_OPTIONS } from '@/constants';
@@ -27,6 +28,9 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
   const [testPrompt, setTestPrompt] = useState('');
   const [testResponse, setTestResponse] = useState('');
   const [isTesting, setIsTesting] = useState(false);
+  const [, setTick] = useState(0);
+
+  const forceUpdate = () => setTick((tick) => tick + 1);
 
   const handleChange = (key: string, value: unknown) =>
     updateSettings({
@@ -66,6 +70,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     ai,
     theme,
     language,
+    activeSnippetProvider,
     newSnippetDefaultLanguage,
     sidebarCollapsedByDefault,
     filesCollapsedByDefault,
@@ -79,6 +84,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
   const appearanceSettings = {
     theme,
     language,
+    activeSnippetProvider,
   };
 
   const snippetSettings = {
@@ -122,7 +128,9 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
               <Card>
                 <CardHeader>
                   <CardTitle>{t('pages.settings.appearance')}</CardTitle>
-                  <CardDescription>{t('pages.settings.themeAndLanguagePreferences')}</CardDescription>
+                  <CardDescription>
+                    {t('pages.settings.themeAndLanguagePreferences')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <DynamicSettings
@@ -134,8 +142,41 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
 
               <Card>
                 <CardHeader>
+                  <CardTitle>{t('menu.settings')}</CardTitle>
+                  <CardDescription>{t('pages.settings.mainApplicationSettings')}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex flex-col space-y-1.5">
+                    <label className="text-sm font-medium">{t('login.githubToken')}</label>
+                    <InputPassword
+                      value={localStorage.getItem('GITHUB_TOKEN') || ''}
+                      onChange={(e) => {
+                        localStorage.setItem('GITHUB_TOKEN', e.target.value);
+                        forceUpdate();
+                      }}
+                      placeholder={t('login.enterGithubToken')}
+                    />
+                  </div>
+                  <div className="flex flex-col space-y-1.5">
+                    <label className="text-sm font-medium">{t('login.gitlabToken')}</label>
+                    <InputPassword
+                      value={localStorage.getItem('GITLAB_TOKEN') || ''}
+                      onChange={(e) => {
+                        localStorage.setItem('GITLAB_TOKEN', e.target.value);
+                        forceUpdate();
+                      }}
+                      placeholder={t('login.enterGitlabToken')}
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
                   <CardTitle>{t('pages.settings.snippets')}</CardTitle>
-                  <CardDescription>{t('pages.settings.defaultBehaviorForNewSnippets')}</CardDescription>
+                  <CardDescription>
+                    {t('pages.settings.defaultBehaviorForNewSnippets')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <DynamicSettings
@@ -190,9 +231,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
               <Card>
                 <CardHeader>
                   <CardTitle>{t('pages.settings.aiAssistant')}</CardTitle>
-                  <CardDescription>
-                    {t('pages.settings.configureAiModels')}
-                  </CardDescription>
+                  <CardDescription>{t('pages.settings.configureAiModels')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <DynamicSettings
@@ -228,9 +267,7 @@ function createObject(name, age) {
                       <HelpCircle className="size-4 text-muted-foreground cursor-help" />
                     </SimpleTooltip>
                   </div>
-                  <CardDescription>
-                    {t('pages.settings.interactWithAiDirectly')}
-                  </CardDescription>
+                  <CardDescription>{t('pages.settings.interactWithAiDirectly')}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">

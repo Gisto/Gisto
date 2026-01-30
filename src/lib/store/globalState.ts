@@ -48,6 +48,7 @@ export type StoreStateType = {
       temperature: number;
       cleanJson: boolean;
     };
+    activeSnippetProvider: 'github' | 'gitlab';
   };
 };
 
@@ -148,6 +149,7 @@ export const defaultSettings: SettingsType = {
     temperature: 0.7,
     cleanJson: true,
   },
+  activeSnippetProvider: 'github',
 };
 
 export const globalState = new Store<StoreStateType>({

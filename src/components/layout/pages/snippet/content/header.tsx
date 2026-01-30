@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
 import { t } from '@/lib/i18n';
-import { copyToClipboard, previewAvailable, upperCaseFirst } from '@/lib/utils';
+import { copyToClipboard, getLanguageName, previewAvailable, upperCaseFirst } from '@/lib/utils';
 import { GistFileType, GistSingleType } from '@/types/gist.ts';
 
 export const Header = ({
@@ -82,7 +82,7 @@ export const Header = ({
       </div>
 
       <div className="flex items-center gap-2">
-        <Badge variant="primary-outline">{file.language ?? 'Text'}</Badge>
+        <Badge variant="primary-outline">{getLanguageName(file) ?? 'Text'}</Badge>
         {previewAvailable(file) && (
           <Button variant="ghost" size="icon" onClick={() => setPreview(!preview)}>
             {preview ? <Code2 className="size-4" /> : <Eye className="size-4" />}
