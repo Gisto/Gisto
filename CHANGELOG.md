@@ -26,6 +26,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([7c6b758](https://github.com/gisto/gisto/commit/7c6b7580872eb91890ca1d2abbc6602e644b63f3))
 
+- *(deps)* Bump lucide-react from 0.553.0 to 0.563.0 ([#557](https://github.com/gisto/gisto/issues/557))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([6b01de2](https://github.com/gisto/gisto/commit/6b01de2f55f646a5c1373fd568be82d08a73767a))
+
 
 ## v2.4.4
 
