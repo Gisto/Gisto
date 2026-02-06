@@ -191,7 +191,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="lg:sticky lg:top-4 self-start">
                 <CardHeader>
                   <CardTitle>{t('pages.settings.preview')}</CardTitle>
                   <CardDescription>
@@ -208,9 +208,20 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
                     height="400px"
                     theme={getEditorTheme()}
                     defaultLanguage={'javascript'}
-                    defaultValue={`function createObject(name, age) {
-  return { name, age };
-}`}
+                    defaultValue={`type Note = { id: string; title: string; tags?: string[] };
+
+const normalizeTags = (tags: string[] = []) =>
+  Array.from(new Set(tags.map((t) => t.trim().toLowerCase()))).filter(Boolean);
+
+function createNote(title: string, tags?: string[]): Note {
+  return {
+    id: crypto.randomUUID(),
+    title: title.trim(),
+    tags: normalizeTags(tags),
+  };
+}
+
+console.log(createNote('Gisto Settings', ['UI', 'ui', ' Editor ']));`}
                   />
                 </CardContent>
               </Card>

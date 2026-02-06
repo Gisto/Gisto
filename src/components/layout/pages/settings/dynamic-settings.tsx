@@ -122,6 +122,18 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
 
       case 'string':
         {
+          if (key === 'lineNumbers') {
+            return (
+              <div key={key} className="flex items-center space-x-2 mb-4">
+                <Switch
+                  checked={value === 'on'}
+                  onCheckedChange={(checked) => onChange(fullPath, checked ? 'on' : 'off')}
+                />
+                <label>{camelToTitleCase(key)}</label>
+              </div>
+            );
+          }
+
           if (key === 'theme') {
             return (
               <>
@@ -184,22 +196,6 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
-          // editor line numbers
-          if (key === 'lineNumbers') {
-            return (
-              <SpecialSelect
-                settingKey={key}
-                value={value}
-                onChange={onChange}
-                fullPath={fullPath}
-                options={[
-                  { value: 'on', label: upperCaseFirst(t('common.on')) },
-                  { value: 'off', label: upperCaseFirst(t('common.off')) },
-                ]}
-              />
-            );
-          }
-
           if (key === 'wordWrap') {
             return (
               <SpecialSelect
@@ -212,6 +208,41 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   { value: 'off', label: upperCaseFirst(t('common.off')) },
                   { value: 'wordWrapColumn', label: t('pages.settings.wordWrapColumn') },
                   { value: 'bounded', label: t('pages.settings.bounded') },
+                ]}
+              />
+            );
+          }
+
+          if (key === 'renderWhitespace') {
+            return (
+              <SpecialSelect
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={[
+                  { value: 'none', label: upperCaseFirst(t('common.off')) },
+                  { value: 'selection', label: 'Selection' },
+                  { value: 'boundary', label: 'Boundary' },
+                  { value: 'trailing', label: 'Trailing' },
+                  { value: 'all', label: 'All' },
+                ]}
+              />
+            );
+          }
+
+          if (key === 'renderLineHighlight') {
+            return (
+              <SpecialSelect
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={[
+                  { value: 'line', label: 'Line' },
+                  { value: 'all', label: 'All' },
+                  { value: 'gutter', label: 'Gutter' },
+                  { value: 'none', label: upperCaseFirst(t('common.off')) },
                 ]}
               />
             );
