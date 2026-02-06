@@ -30,12 +30,19 @@ export type StoreStateType = {
       fontFamily: string;
       fontLigatures: boolean;
       fontSize: number;
+      lineHeight: number;
       tabSize: number;
+      insertSpaces: boolean;
+      detectIndentation: boolean;
       wordWrap: 'wordWrapColumn' | 'on' | 'off' | 'bounded';
       wordWrapColumn: number;
       lineNumbers: 'on' | 'off';
       formatOnPaste: boolean;
+      formatOnType: boolean;
       codeLens: boolean;
+      smoothScrolling: boolean;
+      renderWhitespace: 'none' | 'boundary' | 'selection' | 'trailing' | 'all';
+      renderLineHighlight: 'all' | 'line' | 'none' | 'gutter';
       minimap: { enabled: boolean };
     };
     ai: {
@@ -131,12 +138,19 @@ export const defaultSettings: SettingsType = {
     fontFamily: 'monospace',
     fontLigatures: false,
     fontSize: 13,
+    lineHeight: 20,
     tabSize: 2,
+    insertSpaces: true,
+    detectIndentation: true,
     wordWrap: 'wordWrapColumn',
     wordWrapColumn: 80,
     lineNumbers: 'on',
     formatOnPaste: true,
+    formatOnType: true,
     codeLens: false,
+    smoothScrolling: true,
+    renderWhitespace: 'selection',
+    renderLineHighlight: 'line',
     minimap: { enabled: false },
   },
   ai: {
