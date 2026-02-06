@@ -55,7 +55,7 @@
     "highlight.js": "^11.11.1",
     "katex": "^0.16.25",
     "leaflet": "^1.9.4",
-    "lucide-react": "^0.553.0",
+    "lucide-react": "^0.563.0",
     "markdown-it": "^14.1.0",
     "motion": "^12.23.24",
     "papaparse": "^5.5.3",
