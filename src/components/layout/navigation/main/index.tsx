@@ -39,12 +39,12 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
     <>
       <PageHeader>
         {isCollapsed ? (
-          <h1 className="text-[1rem] whitespace-nowrap text-primary hover:text-primary/80 font-semibold">
+          <h1 className="text-[1rem] whitespace-nowrap text-primary hover:text-primary/80 font-semibold transition-all duration-300 ease-in-out">
             <Link to={'/'}>{'{ G }'}</Link>
           </h1>
         ) : (
-          <div className="flex items-center justify-between w-full">
-            <h2 className="text-primary hover:text-primary/80 font-semibold text-xl">
+          <div className="flex items-center justify-between w-full transition-all duration-300 ease-in-out">
+            <h2 className="text-primary hover:text-primary/80 font-semibold text-xl transition-all duration-300 ease-in-out">
               <Link to={'/'}>{'{ Gisto } '}</Link>{' '}
               <small className="text-xs font-light">v{version}</small>
             </h2>
@@ -111,7 +111,7 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
           {displayName && (
             <div
               className={cn(
-                'mb-2 flex items-center gap-3 rounded-lg px-2 py-2',
+                'mb-2 flex items-center gap-3 rounded-lg px-2 py-2 transition-all duration-300 ease-in-out',
                 isCollapsed && 'justify-center px-0'
               )}
               title={displayName}
@@ -126,7 +126,7 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
                 )}
               </div>
               {!isCollapsed && (
-                <div className="min-w-0">
+                <div className="min-w-0 transition-all duration-300 ease-in-out">
                   <div className="truncate text-sm font-medium">{displayName}</div>
                   {handle && handle !== displayName && (
                     <div className="truncate text-xs text-muted-foreground flex items-center gap-1">

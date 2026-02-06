@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { version } from '../../package.json';
 
 import { requestApi } from './providers/request-utils';
@@ -82,7 +81,13 @@ interface SnippetQueryData {
   };
 }
 
-export const GithubApi: SnippetProvider<any> = {
+type GitHubSnippetListItem = GitHubNode | SnippetType;
+
+function isGitHubNode(data: GitHubSnippetListItem): data is GitHubNode {
+  return Array.isArray(data.files);
+}
+
+export const GithubApi: SnippetProvider<GitHubSnippetListItem, SnippetSingleType> = {
   capabilities: {
     supportsStars: true,
   },
@@ -406,10 +411,10 @@ export const GithubApi: SnippetProvider<any> = {
     }
   },
 
-  mapToSnippetType(data: any): SnippetType {
+  mapToSnippetType(data: GitHubSnippetListItem): SnippetType {
     // If it's already in the correct format (e.g. from create/update snippet response)
-    if (!('files' in data && Array.isArray(data.files))) {
-      return data as SnippetType;
+    if (!isGitHubNode(data)) {
+      return data;
     }
 
     // Map from GraphQL format to SnippetType
@@ -438,34 +443,13 @@ export const GithubApi: SnippetProvider<any> = {
       description: node.description || '',
       html_url: node.html_url,
       createdAt: node.createdAt,
-      updated_at: node.createdAt, // createdAt as fallback
       files: files,
-      public: node.isPublic,
-      owner: {
-        login: node.owner.login,
-        avatar_url: node.owner.avatarUrl,
-        id: 0, // Not present in partial view
-        // ... fill other dummy if needed, or assume partial
-      } as any, // Cast to any to avoid filling all User fields if not strictly needed in list view
-      history: [],
-      comments: node.comments,
-      url: node.html_url,
-      forks: [],
-      truncated: false,
-      forks_url: '',
-      commits_url: '',
-      node_id: '',
-      git_pull_url: '',
-      git_push_url: '',
-      comments_url: '',
-      user: null,
-      comments_enabled: true,
-      // Add optional SnippetType fields...
       isPublic: node.isPublic,
       starred: node.starred,
       stars: node.stars,
-      resourcePath: node.resourcePath
-    } as unknown as SnippetType;
+      resourcePath: node.resourcePath,
+      comments: node.comments,
+    };
   },
 
   mapToSnippetSingleType(data: SnippetSingleType): SnippetSingleType {

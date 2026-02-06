@@ -35,7 +35,7 @@ interface GitLabFile {
   raw_url?: string;
 }
 
-export const GitlabApi: SnippetProvider<GitLabSnippet> = {
+export const GitlabApi: SnippetProvider<GitLabSnippet, GitLabSnippet> = {
   capabilities: {
     supportsStars: false,
   },
