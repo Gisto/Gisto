@@ -14,6 +14,19 @@ All significant updates and improvements
 ([97417c6](https://github.com/gisto/gisto/commit/97417c68340359bd6546629254a776c626717ab7))
 
 
+### 🛠️️ Build
+
+- *(deps-dev)* Bump eslint-plugin-react-refresh from 0.4.26 to 0.5.0 ([#554](https://github.com/gisto/gisto/issues/554))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([79ca3e9](https://github.com/gisto/gisto/commit/79ca3e980bcc3d9ad403189bb401e0a4653ca22a))
+
+- *(deps-dev)* Bump @types/node from 24.10.9 to 25.1.0 ([#555](https://github.com/gisto/gisto/issues/555))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([7c6b758](https://github.com/gisto/gisto/commit/7c6b7580872eb91890ca1d2abbc6602e644b63f3))
+
+
 ## v2.4.4
 
 Released on: Jan 24, 2026
