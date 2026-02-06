@@ -127,25 +127,16 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>{t('pages.settings.appearance')}</CardTitle>
+                  <CardTitle>Gisto settings</CardTitle>
                   <CardDescription>
-                    {t('pages.settings.themeAndLanguagePreferences')}
+                    Theme, language, and access tokens.
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-4">
                   <DynamicSettings
                     settings={appearanceSettings as Record<string, unknown>}
                     onChange={handleChange}
                   />
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>{t('menu.settings')}</CardTitle>
-                  <CardDescription>{t('pages.settings.mainApplicationSettings')}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
                   <div className="flex flex-col space-y-1.5">
                     <label className="text-sm font-medium">{t('login.githubToken')}</label>
                     <InputPassword
