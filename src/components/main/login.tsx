@@ -1,4 +1,4 @@
-import { Info } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 
 import { GitHubIcon, GitLabIcon } from '@/components/icons';
@@ -40,7 +40,7 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
   const helpUrl =
     provider === 'github'
       ? 'https://github.com/settings/tokens/new?scopes=gist&description=Gisto%20(created%20via%20Gisto%20App)'
-      : 'https://gitlab.com/-/profile/personal_access_tokens?name=Gisto&scopes=api';
+      : 'https://gitlab.com/-/user_settings/personal_access_tokens?name=Gisto&scopes=api';
 
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-secondary bg-light-pattern dark:bg-dark-pattern">
@@ -61,7 +61,9 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
           <CardHeader>
             <CardTitle>{t('login.pleaseSignInUsingToken')}</CardTitle>
             <CardDescription className="flex items-center gap-2">
-              {t('login.scopeMessage')}{' '}
+              {provider === 'github'
+                ? t('login.scopeMessageGithub')
+                : t('login.scopeMessageGitlab')}{' '}
               <div
                 title={
                   provider === 'github'
@@ -69,7 +71,10 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
                     : t('login.createTokenAtGitlab')
                 }
               >
-                <Info className="size-4 cursor-pointer" onClick={() => window.open(helpUrl)} />
+                <ExternalLink
+                  className="size-4 cursor-pointer"
+                  onClick={() => window.open(helpUrl)}
+                />
               </div>
             </CardDescription>
           </CardHeader>

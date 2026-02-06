@@ -18,15 +18,15 @@ import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, fetchAndUpdateSnippets, getTags, removeTags, upperCaseFirst } from '@/lib/utils';
-import { GistEnrichedType } from '@/types/gist.ts';
+import { SnippetEnrichedType } from '@/types/snippet.ts';
 
-export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
+export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
   const search = useStoreValue('search');
   const { navigate, path } = useRouter();
 
-  const active = path === `/snippets/${gist.id}`;
+  const active = path === `/snippets/${snippet.id}`;
 
-  const badges = getTags(gist.description);
+  const badges = getTags(snippet.description);
 
   return (
     <div
@@ -35,18 +35,18 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
         active && 'bg-secondary',
         'hover:bg-linear-to-r hover:to-50% hover:from-primary/10 dark:hover:from-primary-950 transition-all ease-in-out duration-300'
       )}
-      onClick={() => navigate(`/snippets/${gist.id}`)}
+      onClick={() => navigate(`/snippets/${snippet.id}`)}
     >
       <div
       //  className="hover:scale-95 transition"
       >
         <h4 className="cursor-pointer [word-break:break-word]">
-          {removeTags(gist.description) || t('common.untitled')}
+          {removeTags(snippet.description) || t('common.untitled')}
         </h4>
 
         <div className="flex items-center mt-2 gap-2">
           <div className="flex flex-wrap gap-2 mb-4 pr-4">
-            {gist.languages.map((language) => {
+            {snippet.languages.map((language) => {
               const filter = `lang:${language.name.toLowerCase()}`;
 
               return (
@@ -97,24 +97,26 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
             <span className="text-xs text-zinc-400">
               {
                 // TODO: get locale date formating?
-                new Date(gist.createdAt).toDateString()
+                new Date(snippet.createdAt).toDateString()
               }
             </span>
           </div>
 
           <div className="flex items-center">
-            {gist.comments.edges.length > 0 && (
+            {snippet.comments.edges.length > 0 && (
               <>
                 <Tooltip delayDuration={100}>
                   <TooltipTrigger asChild>
                     <div className="flex items-center gap-1 cursor-help">
                       <MessageSquareText className="size-3" />{' '}
-                      <span className="text-xs">{gist.comments.edges.length}</span>
+                      <span className="text-xs">{snippet.comments.edges.length}</span>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    {t('list.snippetHas')} {gist.comments.edges.length}{' '}
-                    {gist.comments.edges.length === 1 ? t('common.comment') : t('common.comments')}
+                    {t('list.snippetHas')} {snippet.comments.edges.length}{' '}
+                    {snippet.comments.edges.length === 1
+                      ? t('common.comment')
+                      : t('common.comments')}
                   </TooltipContent>
                 </Tooltip>
                 <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
@@ -125,18 +127,18 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
               <TooltipTrigger asChild>
                 <div className="flex items-center gap-1 cursor-help">
                   <File strokeWidth={1.5} className="size-3" />{' '}
-                  <span className="text-xs">{Object.keys(gist.files).length}</span>
+                  <span className="text-xs">{Object.keys(snippet.files).length}</span>
                 </div>
               </TooltipTrigger>
               <TooltipContent>
-                {t('list.snippetHas')} {Object.keys(gist.files).length}{' '}
-                {Object.keys(gist.files).length === 1 ? t('common.file') : t('common.files')}
+                {t('list.snippetHas')} {Object.keys(snippet.files).length}{' '}
+                {Object.keys(snippet.files).length === 1 ? t('common.file') : t('common.files')}
               </TooltipContent>
             </Tooltip>
 
             <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
 
-            {gist.isPublic ? (
+            {snippet.isPublic ? (
               <>
                 <Tooltip delayDuration={100}>
                   <TooltipTrigger asChild>
@@ -147,12 +149,12 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                           event.stopPropagation();
                           const confirmation = await confirm(
                             t('list.sureToChangeVisibility', {
-                              name: removeTags(gist.description).trim(),
+                              name: removeTags(snippet.description).trim(),
                               visibility: t('common.private'),
                             })
                           );
                           if (confirmation) {
-                            await snippetService.toggleGistVisibility(gist.id);
+                            await snippetService.toggleSnippetVisibility(snippet.id);
                             await fetchAndUpdateSnippets();
                           }
                         }}
@@ -178,13 +180,13 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                           event.stopPropagation();
                           const confirmation = await confirm(
                             t('list.sureToChangeVisibility', {
-                              name: removeTags(gist.description).trim(),
+                              name: removeTags(snippet.description).trim(),
                               visibility: t('common.public'),
                             })
                           );
 
                           if (confirmation) {
-                            await snippetService.toggleGistVisibility(gist.id);
+                            await snippetService.toggleSnippetVisibility(snippet.id);
                             await fetchAndUpdateSnippets();
                           }
                         }}
@@ -203,7 +205,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
 
             {snippetService.capabilities.supportsStars && (
               <>
-                {gist.starred ? (
+                {snippet.starred ? (
                   <>
                     <Separator orientation="vertical" className="mx-2 h-4! bg-muted" />
                     <Tooltip delayDuration={100}>
@@ -215,7 +217,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                             event.preventDefault();
                             event.stopPropagation();
 
-                            await snippetService.deleteStar(gist.id);
+                            await snippetService.deleteStar(snippet.id);
                           }}
                         />
                       </TooltipTrigger>
@@ -236,7 +238,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                             event.preventDefault();
                             event.stopPropagation();
 
-                            await snippetService.addStar(gist.id);
+                            await snippetService.addStar(snippet.id);
                           }}
                         />
                       </TooltipTrigger>
@@ -258,7 +260,7 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                   onClick={(event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    navigate(`/edit/${gist.id}`);
+                    navigate(`/edit/${snippet.id}`);
                   }}
                   className="size-3 cursor-pointer hover:stroke-primary hover:scale-125 transition-all"
                 />
@@ -278,11 +280,11 @@ export const ListItem = ({ gist }: { gist: GistEnrichedType }) => {
                     event.preventDefault();
                     event.stopPropagation();
                     const confirmation = await confirm(
-                      t('list.sureToDelete', { description: removeTags(gist.description).trim() })
+                      t('list.sureToDelete', { description: removeTags(snippet.description).trim() })
                     );
 
                     if (confirmation) {
-                      const value = await snippetService.deleteGist(gist.id, false);
+                      const value = await snippetService.deleteSnippet(snippet.id, false);
 
                       if (value.success) {
                         toast.info({ message: t('list.snippetDeleted') });

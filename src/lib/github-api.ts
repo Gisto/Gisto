@@ -9,7 +9,7 @@ import { toast } from '@/components/toast';
 import { ITEMS_PER_PAGE } from '@/constants';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
-import { GistFileType, GistSingleType, GistType } from '@/types/gist.ts';
+import { SnippetFileType, SnippetSingleType, SnippetType } from '@/types/snippet.ts';
 
 interface GraphQLResponse<T> {
   data: T;
@@ -70,7 +70,7 @@ interface GitHubNode {
   };
 }
 
-interface GistQueryData {
+interface SnippetQueryData {
   viewer: {
     gists: {
       pageInfo: {
@@ -130,8 +130,8 @@ export const GithubApi: SnippetProvider<any> = {
     return response;
   },
 
-  async getGist(gistId: string): Promise<GistSingleType> {
-    const { data } = await this.request<GistSingleType>({ endpoint: `/gists/${gistId}` });
+  async getSnippet(snippetId: string): Promise<SnippetSingleType> {
+    const { data } = await this.request<SnippetSingleType>({ endpoint: `/gists/${snippetId}` });
 
     return data;
   },
@@ -146,7 +146,7 @@ export const GithubApi: SnippetProvider<any> = {
     return data;
   },
 
-  async createGist({
+  async createSnippet({
     files,
     description,
     isPublic,
@@ -154,8 +154,8 @@ export const GithubApi: SnippetProvider<any> = {
     files: Record<string, { content: string | null } | null>;
     description: string;
     isPublic: boolean;
-  }): Promise<GistType> {
-    const { data } = await this.request<GistType>({
+  }): Promise<SnippetType> {
+    const { data } = await this.request<SnippetType>({
       endpoint: '/gists',
       method: 'POST',
       body: { files, description, public: isPublic },
@@ -164,17 +164,17 @@ export const GithubApi: SnippetProvider<any> = {
     return data;
   },
 
-  async updateGist({
-    gistId,
+  async updateSnippet({
+    snippetId,
     files,
     description,
   }: {
-    gistId: string;
+    snippetId: string;
     files: Record<string, { content: string } | null>;
     description: string;
-  }): Promise<GistType> {
-    const { data } = await this.request<GistType>({
-      endpoint: `/gists/${gistId}`,
+  }): Promise<SnippetType> {
+    const { data } = await this.request<SnippetType>({
+      endpoint: `/gists/${snippetId}`,
       method: 'PATCH',
       body: { files, description },
     });
@@ -182,14 +182,17 @@ export const GithubApi: SnippetProvider<any> = {
     return data;
   },
 
-  async deleteStar(gistId: string): Promise<{ success: boolean }> {
-    const { status } = await this.request({ endpoint: `/gists/${gistId}/star`, method: 'DELETE' });
+  async deleteStar(snippetId: string): Promise<{ success: boolean }> {
+    const { status } = await this.request({
+      endpoint: `/gists/${snippetId}/star`,
+      method: 'DELETE',
+    });
 
     if (status === 204) {
       const updatedSnippets = globalState
         .getState()
         .snippets.map((snippet) =>
-          snippet.id === gistId ? { ...snippet, starred: false } : snippet
+          snippet.id === snippetId ? { ...snippet, starred: false } : snippet
         );
 
       globalState.setState({
@@ -204,14 +207,14 @@ export const GithubApi: SnippetProvider<any> = {
     return { success: false };
   },
 
-  async addStar(gistId: string): Promise<{ success: boolean }> {
-    const { status } = await this.request({ endpoint: `/gists/${gistId}/star`, method: 'PUT' });
+  async addStar(snippetId: string): Promise<{ success: boolean }> {
+    const { status } = await this.request({ endpoint: `/gists/${snippetId}/star`, method: 'PUT' });
 
     if (status === 204) {
       const updatedSnippets = globalState
         .getState()
         .snippets.map((snippet) =>
-          snippet.id === gistId ? { ...snippet, starred: true } : snippet
+          snippet.id === snippetId ? { ...snippet, starred: true } : snippet
         );
 
       globalState.setState({
@@ -226,12 +229,15 @@ export const GithubApi: SnippetProvider<any> = {
     return { success: false };
   },
 
-  async deleteGist(gistId: string, notification: boolean = true): Promise<{ success: boolean }> {
-    const { status } = await this.request({ endpoint: `/gists/${gistId}`, method: 'DELETE' });
+  async deleteSnippet(
+    snippetId: string,
+    notification: boolean = true
+  ): Promise<{ success: boolean }> {
+    const { status } = await this.request({ endpoint: `/gists/${snippetId}`, method: 'DELETE' });
 
     if (status === 204) {
       globalState.setState({
-        snippets: globalState.getState().snippets.filter((snippet) => snippet.id !== gistId),
+        snippets: globalState.getState().snippets.filter((snippet) => snippet.id !== snippetId),
       });
 
       if (notification) {
@@ -244,10 +250,10 @@ export const GithubApi: SnippetProvider<any> = {
     return { success: false };
   },
 
-  async toggleGistVisibility(gistId: string): Promise<GistType | null> {
-    const originalGist = await this.getGist(gistId);
+  async toggleSnippetVisibility(snippetId: string): Promise<SnippetType | null> {
+    const originalSnippet = await this.getSnippet(snippetId);
 
-    const files = Object.entries(originalGist.files || {}).reduce(
+    const files = Object.entries(originalSnippet.files || {}).reduce(
       (acc, [fileName, fileData]) => {
         if (fileData && fileName) {
           acc[fileName] = { content: fileData.content || '' };
@@ -257,16 +263,16 @@ export const GithubApi: SnippetProvider<any> = {
       {} as Record<string, { content: string }>
     );
 
-    const newVisibility = !originalGist.public;
+    const newVisibility = !originalSnippet.public;
 
-    const newGist = await this.createGist({
+    const newSnippet = await this.createSnippet({
       files,
-      description: originalGist.description || '',
+      description: originalSnippet.description || '',
       isPublic: newVisibility,
     });
 
-    if (newGist.id) {
-      await this.deleteGist(gistId);
+    if (newSnippet.id) {
+      await this.deleteSnippet(snippetId);
 
       toast.info({
         message: newVisibility
@@ -274,7 +280,7 @@ export const GithubApi: SnippetProvider<any> = {
           : t('api.visibilityChangedToPrivate'),
       });
 
-      return newGist;
+      return newSnippet;
     }
 
     toast.info({
@@ -296,7 +302,7 @@ export const GithubApi: SnippetProvider<any> = {
     return data.data;
   },
 
-  async fetchGists(cursor: string | null = null) {
+  async fetchSnippets(cursor: string | null = null) {
     const query = `
     query($cursor: String) {
       viewer {
@@ -364,51 +370,51 @@ export const GithubApi: SnippetProvider<any> = {
   `;
 
     try {
-      const data = await this.fetchGithubGraphQL<GistQueryData>(query, {
+      const data = await this.fetchGithubGraphQL<SnippetQueryData>(query, {
         cursor,
       });
 
       return {
-        nodes: data.viewer.gists.nodes.map((node) => this.mapToGistType(node)),
-        pageInfo: data.viewer.gists.pageInfo
+        nodes: data.viewer.gists.nodes.map((node) => this.mapToSnippetType(node)),
+        pageInfo: data.viewer.gists.pageInfo,
       };
     } catch (error) {
-      console.error('Error fetching gists:', error);
+      console.error('Error fetching snippets:', error);
       toast.error({ message: t('api.errorTryToRefresh'), duration: 5000 });
       throw error;
     }
   },
 
   // TODO: let's keep in case we want to come back to only load when all pages fetched
-  async getGists(): Promise<GistType[]> {
-    const allGists: GistType[] = [];
-    for await (const gistPage of this.getGistsGenerator()) {
-      allGists.push(...gistPage);
+  async getSnippets(): Promise<SnippetType[]> {
+    const allSnippets: SnippetType[] = [];
+    for await (const snippetPage of this.getSnippetsGenerator()) {
+      allSnippets.push(...snippetPage);
     }
-    return allGists;
+    return allSnippets;
   },
 
-  async *getGistsGenerator(): AsyncGenerator<GistType[], void, unknown> {
+  async *getSnippetsGenerator(): AsyncGenerator<SnippetType[], void, unknown> {
     let hasNextPage = true;
     let cursor: string | null = null;
 
     while (hasNextPage) {
-      const gistsPage = await this.fetchGists(cursor);
-      yield gistsPage.nodes;
-      hasNextPage = gistsPage.pageInfo.hasNextPage;
-      cursor = gistsPage.pageInfo.endCursor;
+      const snippetsPage = await this.fetchSnippets(cursor);
+      yield snippetsPage.nodes;
+      hasNextPage = snippetsPage.pageInfo.hasNextPage;
+      cursor = snippetsPage.pageInfo.endCursor;
     }
   },
 
-  mapToGistType(data: any): GistType {
-    // If it's already in the correct format (e.g. from create/update Gist response)
+  mapToSnippetType(data: any): SnippetType {
+    // If it's already in the correct format (e.g. from create/update snippet response)
     if (!('files' in data && Array.isArray(data.files))) {
-      return data as GistType;
+      return data as SnippetType;
     }
 
-    // Map from GraphQL format to GistType
+    // Map from GraphQL format to SnippetType
     const node = data as GitHubNode;
-    const files: Record<string, GistFileType> = {};
+    const files: Record<string, SnippetFileType> = {};
 
     if (node.files && Array.isArray(node.files)) {
       node.files.forEach((file) => {
@@ -454,15 +460,15 @@ export const GithubApi: SnippetProvider<any> = {
       comments_url: '',
       user: null,
       comments_enabled: true,
-      // Add optional GistType fields...
+      // Add optional SnippetType fields...
       isPublic: node.isPublic,
       starred: node.starred,
       stars: node.stars,
       resourcePath: node.resourcePath
-    } as unknown as GistType;
+    } as unknown as SnippetType;
   },
 
-  mapToGistSingleType(data: GistSingleType): GistSingleType {
+  mapToSnippetSingleType(data: SnippetSingleType): SnippetSingleType {
     return data;
   },
 

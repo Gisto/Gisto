@@ -2,13 +2,13 @@ import { describe, it, expect } from 'vitest';
 
 import { searchFilter } from './search';
 
-import { GistEnrichedType } from '@/types/gist.ts';
+import { SnippetEnrichedType } from '@/types/snippet.ts';
 
 describe('searchFilter', () => {
   it('returns all snippets when search is empty', () => {
     const snippets = [
       { title: 'Snippet 1', tags: [], languages: [], starred: false, isPublic: true, files: [] },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('', snippets)).toEqual(snippets);
   });
 
@@ -30,7 +30,7 @@ describe('searchFilter', () => {
         isPublic: true,
         files: [],
       },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('tag:tag1', snippets)).toEqual([snippets[0]]);
   });
 
@@ -52,7 +52,7 @@ describe('searchFilter', () => {
         isPublic: true,
         files: [],
       },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('lang:javascript', snippets)).toEqual([snippets[0]]);
   });
 
@@ -60,7 +60,7 @@ describe('searchFilter', () => {
     const snippets = [
       { title: 'Snippet 1', tags: [], languages: [], starred: true, isPublic: true, files: [] },
       { title: 'Snippet 2', tags: [], languages: [], starred: false, isPublic: true, files: [] },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('is:starred', snippets)).toEqual([snippets[0]]);
   });
 
@@ -75,7 +75,7 @@ describe('searchFilter', () => {
         isPublic: true,
         files: [],
       },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('is:untagged', snippets)).toEqual([snippets[0]]);
   });
 
@@ -83,7 +83,7 @@ describe('searchFilter', () => {
     const snippets = [
       { title: 'Snippet 1', tags: [], languages: [], starred: false, isPublic: false, files: [] },
       { title: 'Snippet 2', tags: [], languages: [], starred: false, isPublic: true, files: [] },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('is:private', snippets)).toEqual([snippets[0]]);
   });
 
@@ -105,7 +105,7 @@ describe('searchFilter', () => {
         isPublic: true,
         files: [],
       },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('javascript', snippets)).toEqual([snippets[0]]);
   });
 
@@ -127,14 +127,14 @@ describe('searchFilter', () => {
         isPublic: true,
         files: [{ text: 'print("Hello")' }],
       },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('console', snippets)).toEqual([snippets[0]]);
   });
 
   it('returns no snippets when no match is found', () => {
     const snippets = [
       { title: 'Snippet 1', tags: [], languages: [], starred: false, isPublic: true, files: [] },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('nonexistent', snippets)).toEqual([]);
   });
 
@@ -156,7 +156,7 @@ describe('searchFilter', () => {
         isPublic: true,
         files: [],
       },
-    ] as unknown as GistEnrichedType[];
+    ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('tag:tag1 lang:javascript is:starred', snippets)).toEqual([snippets[0]]);
   });
 });

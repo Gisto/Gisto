@@ -8,7 +8,7 @@ import { toast } from '@/components/toast';
 import { ITEMS_PER_PAGE } from '@/constants';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
-import { GistFileType, GistSingleType, GistType } from '@/types/gist.ts';
+import { SnippetFileType, SnippetSingleType, SnippetType } from '@/types/snippet.ts';
 
 // GitLab API type definitions
 interface GitLabSnippet {
@@ -69,12 +69,12 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
     });
   },
 
-  async getGist(gistId: string): Promise<GistSingleType> {
-    if (!/^\d+$/.test(gistId)) {
+  async getSnippet(snippetId: string): Promise<SnippetSingleType> {
+    if (!/^\d+$/.test(snippetId)) {
       throw new Error('Invalid snippet ID for GitLab');
     }
-    const { data } = await this.request<GitLabSnippet>({ endpoint: `/snippets/${gistId}` });
-    const mapped = this.mapToGistSingleType(data);
+    const { data } = await this.request<GitLabSnippet>({ endpoint: `/snippets/${snippetId}` });
+    const mapped = this.mapToSnippetSingleType(data);
 
     // GitLab snippets API might not return content for all files in the initial request
     // if there are multiple files or they are large.
@@ -85,7 +85,7 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
         try {
           const encodedFilePath = file.raw_url.split('/raw/')[1];
           const { data: rawContent } = await this.request<string>({
-            endpoint: `/snippets/${gistId}/files/${encodedFilePath}/raw`,
+            endpoint: `/snippets/${snippetId}/files/${encodedFilePath}/raw`,
           });
           file.content = rawContent;
         } catch (error) {
@@ -112,7 +112,7 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
     }
   },
 
-  async createGist({
+  async createSnippet({
     files,
     description,
     isPublic,
@@ -120,7 +120,7 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
     files: Record<string, { content: string | null } | null>;
     description: string;
     isPublic: boolean;
-  }): Promise<GistType> {
+  }): Promise<SnippetType> {
     const gitlabFiles = Object.entries(files).map(([filePath, fileData]) => ({
       file_path: filePath,
       content: fileData?.content || '',
@@ -139,23 +139,25 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
       },
     });
 
-    return this.mapToGistType(data);
+    return this.mapToSnippetType(data);
   },
 
-  async updateGist({
-    gistId,
+  async updateSnippet({
+    snippetId,
     files,
     description,
   }: {
-    gistId: string;
+    snippetId: string;
     files: Record<string, { content: string } | null>;
     description: string;
-  }): Promise<GistType> {
-    if (!/^\d+$/.test(gistId)) {
+  }): Promise<SnippetType> {
+    if (!/^\d+$/.test(snippetId)) {
       throw new Error('Invalid snippet ID for GitLab');
     }
-    const originalGist = await this.request<GitLabSnippet>({ endpoint: `/snippets/${gistId}` });
-    const existingFiles = (originalGist.data.files || []).map((f: GitLabFile) => f.path);
+    const originalSnippet = await this.request<GitLabSnippet>({
+      endpoint: `/snippets/${snippetId}`,
+    });
+    const existingFiles = (originalSnippet.data.files || []).map((f: GitLabFile) => f.path);
 
     const gitlabFiles = Object.entries(files).map(([filePath, fileData]) => {
       let action: 'create' | 'update' | 'delete' = 'update';
@@ -184,7 +186,7 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
     const title = description.split('\n')[0] || 'Untitled';
 
     const { data } = await this.request<GitLabSnippet>({
-      endpoint: `/snippets/${gistId}`,
+      endpoint: `/snippets/${snippetId}`,
       method: 'PUT',
       body: {
         title: title.length > 255 ? title.substring(0, 252) + '...' : title,
@@ -193,7 +195,7 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
       },
     });
 
-    return this.mapToGistType(data);
+    return this.mapToSnippetType(data);
   },
 
   async deleteStar(): Promise<{ success: boolean }> {
@@ -204,15 +206,21 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
     return { success: false };
   },
 
-  async deleteGist(gistId: string, notification: boolean = true): Promise<{ success: boolean }> {
-    if (!/^\d+$/.test(gistId)) {
+  async deleteSnippet(
+    snippetId: string,
+    notification: boolean = true
+  ): Promise<{ success: boolean }> {
+    if (!/^\d+$/.test(snippetId)) {
       return { success: false };
     }
-    const { status } = await this.request({ endpoint: `/snippets/${gistId}`, method: 'DELETE' });
+    const { status } = await this.request({
+      endpoint: `/snippets/${snippetId}`,
+      method: 'DELETE',
+    });
 
     if (status === 204 || status === 202) {
       globalState.setState({
-        snippets: globalState.getState().snippets.filter((snippet) => snippet.id !== gistId),
+        snippets: globalState.getState().snippets.filter((snippet) => snippet.id !== snippetId),
       });
 
       if (notification) {
@@ -225,22 +233,22 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
     return { success: false };
   },
 
-  async toggleGistVisibility(gistId: string): Promise<GistType | null> {
-    if (!/^\d+$/.test(gistId)) {
+  async toggleSnippetVisibility(snippetId: string): Promise<SnippetType | null> {
+    if (!/^\d+$/.test(snippetId)) {
       return null;
     }
-    const originalGist = await this.getGist(gistId);
-    const newVisibility = originalGist.public ? 'private' : 'public';
+    const originalSnippet = await this.getSnippet(snippetId);
+    const newVisibility = originalSnippet.public ? 'private' : 'public';
 
     const { data } = await this.request<GitLabSnippet>({
-      endpoint: `/snippets/${gistId}`,
+      endpoint: `/snippets/${snippetId}`,
       method: 'PUT',
       body: {
         visibility: newVisibility,
       },
     });
 
-    const mapped = this.mapToGistType(data);
+    const mapped = this.mapToSnippetType(data);
 
     toast.info({
       message: mapped.isPublic
@@ -251,14 +259,14 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
     return mapped;
   },
 
-  async fetchGists(cursor?: string | null) {
+  async fetchSnippets(cursor?: string | null) {
     const page = cursor ? parseInt(cursor, 10) : 1;
     const userSnippets = await this.request<GitLabSnippet[]>({
       endpoint: `/snippets?page=${page}&per_page=${ITEMS_PER_PAGE}`,
     });
 
     return {
-      nodes: userSnippets.data.map((s: GitLabSnippet) => this.mapToGistType(s)),
+      nodes: userSnippets.data.map((s: GitLabSnippet) => this.mapToSnippetType(s)),
       pageInfo: {
         hasNextPage: userSnippets.headers.get('x-next-page') !== '',
         endCursor: userSnippets.headers.get('x-next-page') || null,
@@ -271,38 +279,38 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
     throw new Error('GraphQL is not supported by GitLab API');
   },
 
-  async getGists(): Promise<GistType[]> {
-    const allGists: GistType[] = [];
-    for await (const gistPage of this.getGistsGenerator()) {
-      allGists.push(...gistPage);
+  async getSnippets(): Promise<SnippetType[]> {
+    const allSnippets: SnippetType[] = [];
+    for await (const snippetPage of this.getSnippetsGenerator()) {
+      allSnippets.push(...snippetPage);
     }
-    return allGists;
+    return allSnippets;
   },
 
-  async *getGistsGenerator(): AsyncGenerator<GistType[], void, unknown> {
+  async *getSnippetsGenerator(): AsyncGenerator<SnippetType[], void, unknown> {
     let nextPage: string | null = null;
     let isFirst = true;
 
     while (isFirst || nextPage) {
       isFirst = false;
-      const gistsPage = await this.fetchGists(nextPage);
-      yield gistsPage.nodes;
+      const snippetsPage = await this.fetchSnippets(nextPage);
+      yield snippetsPage.nodes;
 
-      if (gistsPage.pageInfo.hasNextPage) {
-        nextPage = gistsPage.pageInfo.endCursor;
+      if (snippetsPage.pageInfo.hasNextPage) {
+        nextPage = snippetsPage.pageInfo.endCursor;
       } else {
         nextPage = null;
       }
     }
   },
 
-  mapToGistType(gitlabSnippet: GitLabSnippet): GistType {
+  mapToSnippetType(gitlabSnippet: GitLabSnippet): SnippetType {
     const description = buildGitlabDescription(
       gitlabSnippet.title || '',
       gitlabSnippet.description || ''
     );
 
-    const files: Record<string, GistFileType> = {};
+    const files: Record<string, SnippetFileType> = {};
     if (gitlabSnippet.files) {
       gitlabSnippet.files.forEach((file: GitLabFile) => {
         const filename = file.path || file.file_name || 'untitled';
@@ -336,13 +344,13 @@ export const GitlabApi: SnippetProvider<GitLabSnippet> = {
     };
   },
 
-  mapToGistSingleType(gitlabSnippet: GitLabSnippet): GistSingleType {
+  mapToSnippetSingleType(gitlabSnippet: GitLabSnippet): SnippetSingleType {
     const description = buildGitlabDescription(
       gitlabSnippet.title || '',
       gitlabSnippet.description || ''
     );
 
-    const files: Record<string, GistFileType> = {};
+    const files: Record<string, SnippetFileType> = {};
     if (gitlabSnippet.files) {
       gitlabSnippet.files.forEach((file: GitLabFile) => {
         const filename = file.path || file.file_name || 'untitled';

@@ -182,6 +182,8 @@
     "checkingToken": "トークンを確認中",
     "pleaseSignInUsingToken": "GitHubトークンを使用してサインイン",
     "scopeMessage": "「gists」スコープのみが必須です",
+    "scopeMessageGithub": "GitHubは「gist」スコープのみ必須です",
+    "scopeMessageGitlab": "GitLabは「api」スコープのみ必須です",
     "createTokenAtGithub": "Githubでトークンを作成",
     "githubToken": "GitHubトークン",
     "enterGithubToken": "GitHubトークンを入力",

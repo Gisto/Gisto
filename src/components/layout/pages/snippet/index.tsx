@@ -38,10 +38,10 @@ import {
   removeTags,
   upperCaseFirst,
 } from '@/lib/utils';
-import { GistSingleType } from '@/types/gist.ts';
+import { SnippetSingleType } from '@/types/snippet.ts';
 
 export const SnippetContent = () => {
-  const [snippet, setSnippet] = useState<GistSingleType | null>(null);
+  const [snippet, setSnippet] = useState<SnippetSingleType | null>(null);
   const [loading, setLoading] = useState(true);
   const { params, navigate } = useRouter();
   const snippetState = useStoreValue('snippets').find((s) => s.id === params.id);
@@ -50,9 +50,9 @@ export const SnippetContent = () => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(true);
     const fetchData = async () => {
-      const gist = await snippetService.getGist(params.id);
+      const snippetData = await snippetService.getSnippet(params.id);
 
-      setSnippet(gist);
+      setSnippet(snippetData);
       setLoading(false);
     };
 
@@ -121,7 +121,7 @@ export const SnippetContent = () => {
                       );
 
                       if (confirmation) {
-                        await snippetService.toggleGistVisibility(snippet.id);
+                        await snippetService.toggleSnippetVisibility(snippet.id);
                         navigate('/');
                         await fetchAndUpdateSnippets();
                       }
@@ -154,7 +154,7 @@ export const SnippetContent = () => {
                       );
 
                       if (confirmation) {
-                        await snippetService.toggleGistVisibility(snippet.id);
+                        await snippetService.toggleSnippetVisibility(snippet.id);
                         navigate('/');
                         await fetchAndUpdateSnippets();
                       }
@@ -268,7 +268,7 @@ export const SnippetContent = () => {
                     );
 
                     if (confirmation) {
-                      const value = await snippetService.deleteGist(snippet.id);
+                      const value = await snippetService.deleteSnippet(snippet.id);
 
                       if (value.success) {
                         navigate('/');

@@ -33,15 +33,15 @@ import {
   isTSV,
   getLanguageName,
 } from '@/lib/utils';
-import { GistFileType, GistSingleType } from '@/types/gist.ts';
+import { SnippetFileType, SnippetSingleType } from '@/types/snippet.ts';
 
 export const Editor = ({
   file,
   snippet,
   preview,
 }: {
-  file: GistFileType;
-  snippet: GistSingleType;
+  file: SnippetFileType;
+  snippet: SnippetSingleType;
   preview: boolean;
 }) => {
   const settings = useStoreValue('settings');

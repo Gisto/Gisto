@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { useTheme } from '@/components/theme/theme-provider.tsx';
-import { GistFileType } from '@/types/gist.ts';
+import { SnippetFileType } from '@/types/snippet.ts';
 
 type JsonType = Record<string, unknown> | Record<string, unknown>[];
 
@@ -22,7 +22,7 @@ const GeoJsonLayer = ({ data }: { data: JsonType }) => {
   return <GeoJSON data={data as never} />;
 };
 
-export const GeoJson = ({ file }: { file: GistFileType }) => {
+export const GeoJson = ({ file }: { file: SnippetFileType }) => {
   const { resolvedTheme } = useTheme();
   const geoJsonData: JsonType = JSON.parse(file.content);
 

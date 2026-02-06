@@ -1,7 +1,7 @@
 import { ITEMS_PER_PAGE } from '@/constants';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState } from '@/lib/store/globalState.ts';
-import { GistFileType, GistSingleType, GistType } from '@/types/gist.ts';
+import { SnippetFileType, SnippetSingleType, SnippetType } from '@/types/snippet.ts';
 
 const tagsRegex = /#(\d*[A-Za-z_\-0-9]+\d*)/g;
 
@@ -24,7 +24,7 @@ export const getTags = (title: string) => {
   return tags || [];
 };
 
-export const processSnippet = (snippet: GistType) => {
+export const processSnippet = (snippet: SnippetType) => {
   const description = snippet.description ?? 'Untitled';
 
   return {
@@ -56,7 +56,7 @@ export const processSnippet = (snippet: GistType) => {
   };
 };
 
-export const getLanguageName = (file: GistFileType): string => {
+export const getLanguageName = (file: SnippetFileType): string => {
   if (!file?.language) return '';
   return typeof file.language === 'string'
     ? file.language
@@ -66,7 +66,7 @@ export const getLanguageName = (file: GistFileType): string => {
 export const fetchAndUpdateSnippets = async () => {
   const allFetchedSnippetIds = new Set();
 
-  for await (const snippetsPage of snippetService.getGistsGenerator()) {
+  for await (const snippetsPage of snippetService.getSnippetsGenerator()) {
     const currentSnippetsState = globalState.getState().snippets;
 
     const newSnippets = snippetsPage.map((snippet) => processSnippet(snippet));
@@ -102,37 +102,37 @@ export const fetchAndUpdateSnippets = async () => {
   }
 };
 
-export const getFileExtension = (file: GistFileType): string =>
+export const getFileExtension = (file: SnippetFileType): string =>
   file.filename.split('.').reverse()[0];
 
-export const isPDF = (file: GistFileType): boolean =>
+export const isPDF = (file: SnippetFileType): boolean =>
   file?.type === 'application/pdf' && getFileExtension(file) === 'pdf';
 
-export const isHTML = (file: GistFileType): boolean => getLanguageName(file) === 'HTML';
+export const isHTML = (file: SnippetFileType): boolean => getLanguageName(file) === 'HTML';
 
-export const isCSV = (file: GistFileType): boolean => getLanguageName(file) === 'CSV';
+export const isCSV = (file: SnippetFileType): boolean => getLanguageName(file) === 'CSV';
 
-export const isTSV = (file: GistFileType): boolean => file?.type === 'text/tab-separated-values';
+export const isTSV = (file: SnippetFileType): boolean => file?.type === 'text/tab-separated-values';
 
-export const isImage = (file: GistFileType): boolean => file?.type?.startsWith('image/');
+export const isImage = (file: SnippetFileType): boolean => file?.type?.startsWith('image/');
 
-export const isJson = (file: GistFileType): boolean => getLanguageName(file) === 'JSON';
+export const isJson = (file: SnippetFileType): boolean => getLanguageName(file) === 'JSON';
 
-export const isMarkdown = (file: GistFileType): boolean => getLanguageName(file) === 'Markdown';
+export const isMarkdown = (file: SnippetFileType): boolean => getLanguageName(file) === 'Markdown';
 
-export const isOpenApi = (file: GistFileType): boolean => {
+export const isOpenApi = (file: SnippetFileType): boolean => {
   const lang = getLanguageName(file);
   return lang === 'OASv2-json' || lang === 'OASv3-json';
 };
 
-export const isLaTex = (file: GistFileType): boolean => {
+export const isLaTex = (file: SnippetFileType): boolean => {
   return getLanguageName(file)?.toLowerCase() === 'tex';
 };
 
-export const isGeoJson = (file: GistFileType): boolean =>
+export const isGeoJson = (file: SnippetFileType): boolean =>
   isJson(file) && getFileExtension(file) === 'geojson';
 
-export const previewAvailable = (file: GistFileType): boolean =>
+export const previewAvailable = (file: SnippetFileType): boolean =>
   isPDF(file) ||
   isHTML(file) ||
   isImage(file) ||
@@ -150,7 +150,7 @@ export const formatSnippetForSaving = (
     files: { filename: string; content: string | null }[];
     tags?: string[];
   },
-  edit: GistSingleType | null = null
+  edit: SnippetSingleType | null = null
 ) => {
   const updatedFiles = edit
     ? [

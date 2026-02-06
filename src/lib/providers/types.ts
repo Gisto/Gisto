@@ -1,37 +1,37 @@
-import { GistSingleType, GistType } from '@/types/gist.ts';
+import { SnippetSingleType, SnippetType } from '@/types/snippet.ts';
 
-export interface SnippetProvider<TRaw = GistSingleType> {
+export interface SnippetProvider<TRaw = SnippetSingleType> {
   capabilities: {
     supportsStars: boolean;
   };
   baseUrl: string;
   gitHubApiVersion?: string;
   fetchGithubGraphQL<T>(query?: string, params?: { cursor: string | null }): Promise<T>;
-  getGist(gistId: string): Promise<GistSingleType>;
+  getSnippet(snippetId: string): Promise<SnippetSingleType>;
   getMarkdown(text: string): Promise<string>;
-  createGist(params: {
+  createSnippet(params: {
     files: Record<string, { content: string | null } | null>;
     description: string;
     isPublic: boolean;
-  }): Promise<GistType>;
-  updateGist(params: {
-    gistId: string;
+  }): Promise<SnippetType>;
+  updateSnippet(params: {
+    snippetId: string;
     files: Record<string, { content: string } | null>;
     description: string;
-  }): Promise<GistType>;
-  deleteStar(gistId: string): Promise<{ success: boolean }>;
-  addStar(gistId: string): Promise<{ success: boolean }>;
-  deleteGist(gistId: string, notification?: boolean): Promise<{ success: boolean }>;
-  toggleGistVisibility(gistId: string): Promise<GistType | null>;
-  fetchGists(cursor?: string | null): Promise<{
-    nodes: GistType[];
+  }): Promise<SnippetType>;
+  deleteStar(snippetId: string): Promise<{ success: boolean }>;
+  addStar(snippetId: string): Promise<{ success: boolean }>;
+  deleteSnippet(snippetId: string, notification?: boolean): Promise<{ success: boolean }>;
+  toggleSnippetVisibility(snippetId: string): Promise<SnippetType | null>;
+  fetchSnippets(cursor?: string | null): Promise<{
+    nodes: SnippetType[];
     pageInfo: {
       hasNextPage: boolean;
       endCursor: string | null;
     };
   }>;
-  getGists(): Promise<GistType[]>;
-  getGistsGenerator(): AsyncGenerator<GistType[], void, unknown>;
+  getSnippets(): Promise<SnippetType[]>;
+  getSnippetsGenerator(): AsyncGenerator<SnippetType[], void, unknown>;
   // Additional methods used by implementations
   request<T>(params: {
     endpoint?: string;
@@ -40,6 +40,6 @@ export interface SnippetProvider<TRaw = GistSingleType> {
   }): Promise<{ data: T; headers: Headers; status: number }>;
   guessMimeType(extension: string): string;
   guessLanguage(extension: string): string;
-  mapToGistType(data: TRaw): GistType;
-  mapToGistSingleType(data: TRaw): GistSingleType;
+  mapToSnippetType(data: TRaw): SnippetType;
+  mapToSnippetSingleType(data: TRaw): SnippetSingleType;
 }
