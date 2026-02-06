@@ -1,6 +1,7 @@
-import { GistEnrichedType } from '@/types/gist.ts';
+import { snippetService } from '@/lib/providers/snippet-service.ts';
+import { SnippetEnrichedType } from '@/types/snippet.ts';
 
-export const searchFilter = (search: string, currentSnippets: GistEnrichedType[] | []) => {
+export const searchFilter = (search: string, currentSnippets: SnippetEnrichedType[] | []) => {
   if (search === '' || search.length === 0) {
     return currentSnippets;
   }
@@ -22,11 +23,11 @@ export const searchFilter = (search: string, currentSnippets: GistEnrichedType[]
       }
 
       if (term === 'is:starred') {
-        return listItem.starred;
+        return snippetService.capabilities.supportsStars && listItem.starred;
       }
 
       if (term === 'is:unstarred') {
-        return !listItem.starred;
+        return snippetService.capabilities.supportsStars && !listItem.starred;
       }
 
       if (term === 'is:untagged') {

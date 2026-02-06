@@ -1,8 +1,8 @@
 import Papa from 'papaparse';
 
-import { GistFileType } from '@/types/gist.ts';
+import { SnippetFileType } from '@/types/snippet.ts';
 
-export const Csv = ({ file }: { file: GistFileType }) => {
+export const Csv = ({ file }: { file: SnippetFileType }) => {
   const { data } = Papa.parse<string[]>(file.content, { header: false });
 
   if (!data || data.length === 0) {

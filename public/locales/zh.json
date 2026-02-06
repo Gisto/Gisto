@@ -146,7 +146,7 @@
     },
     "about": {
       "title": "关于",
-      "aboutParagraph": "Gisto是一个运行在GitHub Gists上的代码片段管理器，增加了搜索、标记和共享gists等功能，同时包含一个丰富的代码编辑器。",
+      "aboutParagraph": "Gisto是一个运行在GitHub Gists上的代码片段管理器，增加了搜索、标记和共享snippets等功能，同时包含一个丰富的代码编辑器。",
       "privacyParagraph": "您的所有数据都存储在GitHub上，您可以随时从GitHub Gists访问，更改会同步到Gisto。",
       "sponsor": "赞助Gisto",
       "changelog": "更新日志",
@@ -182,6 +182,8 @@
     "checkingToken": "正在检查令牌",
     "pleaseSignInUsingToken": "请使用GitHub令牌登录",
     "scopeMessage": "仅需要\"gists\"权限",
+    "scopeMessageGithub": "GitHub仅需要\"gist\"权限",
+    "scopeMessageGitlab": "GitLab仅需要\"api\"权限",
     "createTokenAtGithub": "在Github创建令牌",
     "githubToken": "GitHub令牌",
     "enterGithubToken": "输入GitHub令牌",
@@ -192,6 +194,6 @@
     "starAdded": "已添加星标",
     "visibilityChangedToPublic": "代码片段可见性已改为公开",
     "visibilityChangedToPrivate": "代码片段可见性已改为私有",
-    "errorTryToRefresh": "获取gists出错，请尝试刷新"
+    "errorTryToRefresh": "获取snippets出错，请尝试刷新"
   }
 }

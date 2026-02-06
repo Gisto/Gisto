@@ -13,6 +13,30 @@ export interface GenerateAiResponseOptions {
   activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude';
 }
 
+type AiProvider = NonNullable<GenerateAiResponseOptions['activeAiProvider']>;
+type AiApiKeyField = 'openRouterApiKey' | 'geminiApiKey' | 'openaiApiKey' | 'claudeApiKey';
+
+const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
+  openrouter: 'openRouterApiKey',
+  gemini: 'geminiApiKey',
+  openai: 'openaiApiKey',
+  claude: 'claudeApiKey',
+};
+
+type OpenAiChatResponse = {
+  choices?: Array<{ message?: { content?: string } }>;
+};
+
+type OpenRouterChatResponse = OpenAiChatResponse;
+
+type GeminiResponse = {
+  candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+};
+
+type ClaudeResponse = {
+  content?: Array<{ text?: string }>;
+};
+
 export class AiApiError extends Error {
   constructor(
     message: string,
@@ -30,20 +54,10 @@ export class AiApiError extends Error {
 export function isAiAvailable(): boolean {
   const { ai } = globalState.getState().settings;
 
-  const activeAiProvider = ai.activeAiProvider || 'openrouter';
-  let apiKey = '';
+  const activeAiProvider = (ai.activeAiProvider || 'openrouter') as AiProvider;
+  const apiKey = ai[AI_PROVIDER_API_KEYS[activeAiProvider]] || '';
 
-  if (activeAiProvider === 'openai') {
-    apiKey = ai.openaiApiKey || '';
-  } else if (activeAiProvider === 'gemini') {
-    apiKey = ai.geminiApiKey || '';
-  } else if (activeAiProvider === 'claude') {
-    apiKey = ai.claudeApiKey || '';
-  } else {
-    apiKey = ai.openRouterApiKey || '';
-  }
-
-  return !!apiKey;
+  return Boolean(apiKey);
 }
 
 export async function generateAiResponse(options: GenerateAiResponseOptions): Promise<string> {
@@ -54,18 +68,8 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
   const temperature = overrideTemperature ?? ai.temperature;
 
   // Get the active provider and its API key
-  const activeAiProvider = ai.activeAiProvider || 'openrouter';
-  let apiKey = '';
-
-  if (activeAiProvider === 'openai') {
-    apiKey = ai.openaiApiKey || '';
-  } else if (activeAiProvider === 'gemini') {
-    apiKey = ai.geminiApiKey || '';
-  } else if (activeAiProvider === 'claude') {
-    apiKey = ai.claudeApiKey || '';
-  } else {
-    apiKey = ai.openRouterApiKey || '';
-  }
+  const activeAiProvider = (ai.activeAiProvider || 'openrouter') as AiProvider;
+  const apiKey = ai[AI_PROVIDER_API_KEYS[activeAiProvider]] || '';
 
   if (!apiKey) {
     throw new AiApiError(
@@ -74,11 +78,24 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
     );
   }
 
-  let response: Response;
   let rawResponse: string;
 
+  const parseErrorMessage = (response: Response, errorBody: unknown) =>
+    (errorBody as { error?: { message?: string } } | null)?.error?.message ||
+    `HTTP ${response.status} ${response.statusText}`;
+
+  const parseJsonResponse = async <T>(response: Response, provider: AiProvider): Promise<T> => {
+    if (!response.ok) {
+      const errorBody = await response.json().catch(() => null);
+      const message = parseErrorMessage(response, errorBody);
+      throw new AiApiError(message, provider, response.status);
+    }
+
+    return response.json();
+  };
+
   if (activeAiProvider === 'openrouter') {
-    response = await fetch(OPENROUTER_ENDPOINT, {
+    const response = await fetch(OPENROUTER_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -88,27 +105,15 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
       },
       body: JSON.stringify({
         model,
-        messages: [
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
+        messages: [{ role: 'user', content: prompt }],
         temperature,
       }),
     });
 
-    if (!response.ok) {
-      const errorBody = await response.json().catch(() => null);
-      const message = errorBody?.error?.message || `HTTP ${response.status} ${response.statusText}`;
-
-      throw new AiApiError(message, 'openrouter', response.status);
-    }
-
-    const res = await response.json();
+    const res = await parseJsonResponse<OpenRouterChatResponse>(response, 'openrouter');
     rawResponse = res.choices?.[0]?.message?.content ?? '';
   } else if (activeAiProvider === 'openai') {
-    response = await fetch(OPENAI_ENDPOINT, {
+    const response = await fetch(OPENAI_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,56 +121,29 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
       },
       body: JSON.stringify({
         model,
-        messages: [
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
+        messages: [{ role: 'user', content: prompt }],
         temperature,
       }),
     });
 
-    if (!response.ok) {
-      const errorBody = await response.json().catch(() => null);
-      const message = errorBody?.error?.message || `HTTP ${response.status} ${response.statusText}`;
-
-      throw new AiApiError(message, 'openai', response.status);
-    }
-
-    const res = await response.json();
+    const res = await parseJsonResponse<OpenAiChatResponse>(response, 'openai');
     rawResponse = res.choices?.[0]?.message?.content ?? '';
   } else if (activeAiProvider === 'gemini') {
-    response = await fetch(GEMINI_ENDPOINT, {
+    const response = await fetch(GEMINI_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'x-goog-api-key': apiKey,
       },
       body: JSON.stringify({
-        contents: [
-          {
-            parts: [
-              {
-                text: prompt,
-              },
-            ],
-          },
-        ],
+        contents: [{ parts: [{ text: prompt }] }],
       }),
     });
 
-    if (!response.ok) {
-      const errorBody = await response.json().catch(() => null);
-      const message = errorBody?.error?.message || `HTTP ${response.status} ${response.statusText}`;
-
-      throw new AiApiError(message, 'gemini', response.status);
-    }
-
-    const res = await response.json();
+    const res = await parseJsonResponse<GeminiResponse>(response, 'gemini');
     rawResponse = res.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
   } else if (activeAiProvider === 'claude') {
-    response = await fetch(CLAUDE_ENDPOINT, {
+    const response = await fetch(CLAUDE_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -175,27 +153,15 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
       body: JSON.stringify({
         model,
         max_tokens: 4096,
-        messages: [
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
+        messages: [{ role: 'user', content: prompt }],
         temperature,
       }),
     });
 
-    if (!response.ok) {
-      const errorBody = await response.json().catch(() => null);
-      const message = errorBody?.error?.message || `HTTP ${response.status} ${response.statusText}`;
-
-      throw new AiApiError(message, 'claude', response.status);
-    }
-
-    const res = await response.json();
+    const res = await parseJsonResponse<ClaudeResponse>(response, 'claude');
     rawResponse = res.content?.[0]?.text ?? '';
   } else {
-    throw new AiApiError('Invalid AI provider configured.', 'openrouter');
+    throw new AiApiError('Invalid AI provider configured.', activeAiProvider);
   }
 
   // Always clean JSON responses to handle any markdown formatting from AI

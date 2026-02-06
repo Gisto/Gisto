@@ -6,7 +6,7 @@ import { ThemeSwitcher } from './theme-switcher';
 const mockSetTheme = vi.fn();
 
 vi.mock('./theme-provider', () => ({
-  useTheme: () => ({ setTheme: mockSetTheme }),
+  useTheme: () => ({ setTheme: mockSetTheme, theme: 'system', resolvedTheme: 'dark' }),
 }));
 
 vi.mock('@/lib/i18n', () => ({

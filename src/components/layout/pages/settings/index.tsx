@@ -8,6 +8,7 @@ import { DynamicSettings } from '@/components/layout/pages/settings/dynamic-sett
 import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { EDITOR_OPTIONS } from '@/constants';
@@ -27,6 +28,9 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
   const [testPrompt, setTestPrompt] = useState('');
   const [testResponse, setTestResponse] = useState('');
   const [isTesting, setIsTesting] = useState(false);
+  const [, setTick] = useState(0);
+
+  const forceUpdate = () => setTick((tick) => tick + 1);
 
   const handleChange = (key: string, value: unknown) =>
     updateSettings({
@@ -66,6 +70,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     ai,
     theme,
     language,
+    activeSnippetProvider,
     newSnippetDefaultLanguage,
     sidebarCollapsedByDefault,
     filesCollapsedByDefault,
@@ -79,6 +84,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
   const appearanceSettings = {
     theme,
     language,
+    activeSnippetProvider,
   };
 
   const snippetSettings = {
@@ -121,21 +127,47 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>{t('pages.settings.appearance')}</CardTitle>
-                  <CardDescription>{t('pages.settings.themeAndLanguagePreferences')}</CardDescription>
+                  <CardTitle>Gisto settings</CardTitle>
+                  <CardDescription>
+                    Theme, language, and access tokens.
+                  </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-4">
                   <DynamicSettings
                     settings={appearanceSettings as Record<string, unknown>}
                     onChange={handleChange}
                   />
+                  <div className="flex flex-col space-y-1.5">
+                    <label className="text-sm font-medium">{t('login.githubToken')}</label>
+                    <InputPassword
+                      value={localStorage.getItem('GITHUB_TOKEN') || ''}
+                      onChange={(e) => {
+                        localStorage.setItem('GITHUB_TOKEN', e.target.value);
+                        forceUpdate();
+                      }}
+                      placeholder={t('login.enterGithubToken')}
+                    />
+                  </div>
+                  <div className="flex flex-col space-y-1.5">
+                    <label className="text-sm font-medium">{t('login.gitlabToken')}</label>
+                    <InputPassword
+                      value={localStorage.getItem('GITLAB_TOKEN') || ''}
+                      onChange={(e) => {
+                        localStorage.setItem('GITLAB_TOKEN', e.target.value);
+                        forceUpdate();
+                      }}
+                      placeholder={t('login.enterGitlabToken')}
+                    />
+                  </div>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
                   <CardTitle>{t('pages.settings.snippets')}</CardTitle>
-                  <CardDescription>{t('pages.settings.defaultBehaviorForNewSnippets')}</CardDescription>
+                  <CardDescription>
+                    {t('pages.settings.defaultBehaviorForNewSnippets')}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <DynamicSettings
@@ -159,7 +191,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="lg:sticky lg:top-4 self-start">
                 <CardHeader>
                   <CardTitle>{t('pages.settings.preview')}</CardTitle>
                   <CardDescription>
@@ -176,9 +208,20 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
                     height="400px"
                     theme={getEditorTheme()}
                     defaultLanguage={'javascript'}
-                    defaultValue={`function createObject(name, age) {
-  return { name, age };
-}`}
+                    defaultValue={`type Note = { id: string; title: string; tags?: string[] };
+
+const normalizeTags = (tags: string[] = []) =>
+  Array.from(new Set(tags.map((t) => t.trim().toLowerCase()))).filter(Boolean);
+
+function createNote(title: string, tags?: string[]): Note {
+  return {
+    id: crypto.randomUUID(),
+    title: title.trim(),
+    tags: normalizeTags(tags),
+  };
+}
+
+console.log(createNote('Gisto Settings', ['UI', 'ui', ' Editor ']));`}
                   />
                 </CardContent>
               </Card>
@@ -190,9 +233,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
               <Card>
                 <CardHeader>
                   <CardTitle>{t('pages.settings.aiAssistant')}</CardTitle>
-                  <CardDescription>
-                    {t('pages.settings.configureAiModels')}
-                  </CardDescription>
+                  <CardDescription>{t('pages.settings.configureAiModels')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <DynamicSettings
@@ -228,9 +269,7 @@ function createObject(name, age) {
                       <HelpCircle className="size-4 text-muted-foreground cursor-help" />
                     </SimpleTooltip>
                   </div>
-                  <CardDescription>
-                    {t('pages.settings.interactWithAiDirectly')}
-                  </CardDescription>
+                  <CardDescription>{t('pages.settings.interactWithAiDirectly')}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">

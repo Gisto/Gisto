@@ -29,7 +29,7 @@ export const MainLayout = () => {
       <div className="flex border-t">
         <div
           className={cn(
-            'h-screen border-b border-r border-collapse',
+            'h-screen border-b border-r border-collapse transition-all duration-300 ease-in-out',
             isCollapsed ? 'w-[52px] min-w-[52px]' : 'w-[200px] min-w-[200px]'
           )}
         >
@@ -39,7 +39,7 @@ export const MainLayout = () => {
         {isListHidden ? null : (
           <div
             className={cn(
-              'h-screen w-[380px] min-w-[380px] sm:w-[340px] sm:min-w-[340px] border-r'
+              'h-screen w-[380px] min-w-[380px] sm:w-[340px] sm:min-w-[340px] border-r transition-all duration-300 ease-in-out'
             )}
           >
             <Lists isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />

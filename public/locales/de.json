@@ -182,6 +182,8 @@
     "checkingToken": "Token prüfen",
     "pleaseSignInUsingToken": "Mit GitHub-Token anmelden",
     "scopeMessage": "Nur Berechtigung „gists“ nötig",
+    "scopeMessageGithub": "Nur Berechtigung „gist“ nötig für GitHub",
+    "scopeMessageGitlab": "Nur Berechtigung „api“ nötig für GitLab",
     "createTokenAtGithub": "Token auf GitHub erstellen",
     "githubToken": "GitHub-Token",
     "enterGithubToken": "Token eingeben",

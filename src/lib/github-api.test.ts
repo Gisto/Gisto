@@ -30,6 +30,7 @@ describe('GithubApi', () => {
             if (key === 'x-ratelimit-limit') return '5000';
             if (key === 'x-ratelimit-remaining') return '4999';
             if (key === 'x-ratelimit-reset') return '1638360000';
+            if (key === 'Content-Type') return 'application/json';
           }),
         },
         json: vi.fn().mockResolvedValue({ data: 'test' }),
@@ -67,7 +68,9 @@ describe('GithubApi', () => {
         ok: true,
         status: 201,
         headers: {
-          get: vi.fn(),
+          get: vi.fn((key) => {
+            if (key === 'Content-Type') return 'application/json';
+          }),
         },
         json: vi.fn().mockResolvedValue({ id: '123' }),
       };

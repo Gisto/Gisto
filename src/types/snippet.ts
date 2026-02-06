@@ -1,7 +1,7 @@
-export type GistFileType = {
+export type SnippetFileType = {
   filename: string;
   content: string;
-  language: string;
+  language: string | { name: string; color?: string | null };
   encoding: string;
   raw_url: string;
   size: number;
@@ -9,7 +9,7 @@ export type GistFileType = {
   type: string;
 };
 
-export type GistOwner = {
+export type SnippetOwner = {
   login: string;
   id: number;
   node_id: string;
@@ -31,21 +31,21 @@ export type GistOwner = {
   site_admin: boolean;
 };
 
-export type GistChangeStatus = {
+export type SnippetChangeStatus = {
   total: number;
   additions: number;
   deletions: number;
 };
 
-export type GistHistoryItem = {
-  user: GistOwner;
+export type SnippetHistoryItem = {
+  user: SnippetOwner;
   version: string;
   committed_at: string;
-  change_status: GistChangeStatus;
+  change_status: SnippetChangeStatus;
   url: string;
 };
 
-export type GistSingleType = {
+export type SnippetSingleType = {
   url: string;
   forks_url: string;
   commits_url: string;
@@ -54,25 +54,25 @@ export type GistSingleType = {
   git_pull_url: string;
   git_push_url: string;
   html_url: string;
-  files: Record<string, GistFileType>;
+  files: Record<string, SnippetFileType>;
   public: boolean;
   created_at: string;
   updated_at: string;
   description: string;
   comments: number;
-  user: GistOwner | null;
+  user: SnippetOwner | null;
   comments_enabled: boolean;
   comments_url: string;
-  owner: GistOwner;
+  owner: SnippetOwner;
   forks: never[];
-  history: GistHistoryItem[];
+  history: SnippetHistoryItem[];
   truncated: boolean;
 };
 
-export type GistType = {
+export type SnippetType = {
   resourcePath: string;
   html_url: string;
-  files: Record<string, GistFileType>;
+  files: Record<string, SnippetFileType>;
   id: string;
   isPublic: boolean;
   createdAt: string;
@@ -94,10 +94,10 @@ export type GistType = {
   };
 };
 
-export type GistEnrichedType = GistType & {
+export type SnippetEnrichedType = SnippetType & {
   title: string;
   tags: string[];
   isUntitled: boolean;
-  files: GistFileType & { text?: string }[];
+  files: SnippetFileType & { text?: string }[];
   languages: { name: string; color: string }[];
 };

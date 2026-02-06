@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 
 import { Store } from './store.ts';
 
-import { GistEnrichedType } from '@/types/gist.ts';
+import { SnippetEnrichedType } from '@/types/snippet.ts';
 
 const SETTINGS_STORAGE_KEY = 'gisto-app-settings';
 
 export type StoreStateType = {
   user: Record<string, unknown> | null;
   isLoggedIn: boolean;
-  snippets: GistEnrichedType[] | [];
+  snippets: SnippetEnrichedType[] | [];
   search: string;
   apiRateLimits: {
     limit: number;
@@ -30,12 +30,19 @@ export type StoreStateType = {
       fontFamily: string;
       fontLigatures: boolean;
       fontSize: number;
+      lineHeight: number;
       tabSize: number;
+      insertSpaces: boolean;
+      detectIndentation: boolean;
       wordWrap: 'wordWrapColumn' | 'on' | 'off' | 'bounded';
       wordWrapColumn: number;
       lineNumbers: 'on' | 'off';
       formatOnPaste: boolean;
+      formatOnType: boolean;
       codeLens: boolean;
+      smoothScrolling: boolean;
+      renderWhitespace: 'none' | 'boundary' | 'selection' | 'trailing' | 'all';
+      renderLineHighlight: 'all' | 'line' | 'none' | 'gutter';
       minimap: { enabled: boolean };
     };
     ai: {
@@ -48,6 +55,7 @@ export type StoreStateType = {
       temperature: number;
       cleanJson: boolean;
     };
+    activeSnippetProvider: 'github' | 'gitlab';
   };
 };
 
@@ -130,12 +138,19 @@ export const defaultSettings: SettingsType = {
     fontFamily: 'monospace',
     fontLigatures: false,
     fontSize: 13,
+    lineHeight: 20,
     tabSize: 2,
+    insertSpaces: true,
+    detectIndentation: true,
     wordWrap: 'wordWrapColumn',
     wordWrapColumn: 80,
     lineNumbers: 'on',
     formatOnPaste: true,
+    formatOnType: true,
     codeLens: false,
+    smoothScrolling: true,
+    renderWhitespace: 'selection',
+    renderLineHighlight: 'line',
     minimap: { enabled: false },
   },
   ai: {
@@ -148,6 +163,7 @@ export const defaultSettings: SettingsType = {
     temperature: 0.7,
     cleanJson: true,
   },
+  activeSnippetProvider: 'github',
 };
 
 export const globalState = new Store<StoreStateType>({

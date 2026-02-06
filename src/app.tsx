@@ -13,41 +13,58 @@ export const App = () => {
   const [token, setToken] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const activeProvider = globalState.getState().settings.activeSnippetProvider;
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('GITHUB_TOKEN');
+    const tokenKey = activeProvider === 'gitlab' ? 'GITLAB_TOKEN' : 'GITHUB_TOKEN';
+    const storedToken = localStorage.getItem(tokenKey);
     if (storedToken) {
       setToken(storedToken);
-      validateToken(storedToken);
+      validateToken(storedToken, activeProvider);
     }
-  }, []);
+  }, [activeProvider]);
 
-  const validateToken = async (tokenToValidate: string) => {
+  const validateToken = async (tokenToValidate: string, provider: 'github' | 'gitlab') => {
     setIsLoading(true);
     try {
-      const response = await fetch('https://api.github.com/user', {
-        headers: {
-          Authorization: `token ${tokenToValidate}`,
-        },
-      });
+      const url =
+        provider === 'gitlab' ? 'https://gitlab.com/api/v4/user' : 'https://api.github.com/user';
+      const headers: Record<string, string> = {};
+
+      if (provider === 'gitlab') {
+        headers['Private-Token'] = tokenToValidate;
+      } else {
+        headers['Authorization'] = `token ${tokenToValidate}`;
+      }
+
+      const response = await fetch(url, { headers });
 
       if (response.status === 200) {
-        localStorage.setItem('GITHUB_TOKEN', tokenToValidate);
+        const tokenKey = provider === 'gitlab' ? 'GITLAB_TOKEN' : 'GITHUB_TOKEN';
+        localStorage.setItem(tokenKey, tokenToValidate);
         globalState.setState({ user: await response.json(), isLoggedIn: true });
-        setIsValid(response.status === 200);
+        setIsValid(true);
+      } else {
+        setIsValid(false);
       }
     } catch (error) {
       toast.error({ message: t('login.tokenNotValid') });
-      console.error('Error validating GitHub token:', error);
+      console.error(`Error validating ${provider} token:`, error);
       setIsValid(false);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleTokenSubmit = (newToken: string) => {
+  const handleTokenSubmit = (newToken: string, provider: 'github' | 'gitlab') => {
+    globalState.setState({
+      settings: {
+        ...globalState.getState().settings,
+        activeSnippetProvider: provider,
+      },
+    });
     setToken(newToken);
-    void validateToken(newToken);
+    void validateToken(newToken, provider);
   };
 
   if (isLoading) {

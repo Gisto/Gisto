@@ -34,18 +34,19 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { ZodError } from '@/components/zod-error.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
-import { GithubApi } from '@/lib/github-api.ts';
 import { t } from '@/lib/i18n';
+import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import {
   cn,
   formatSnippetForSaving,
   getEditorTheme,
+  getLanguageName,
   getTags,
   removeTags,
   upperCaseFirst,
 } from '@/lib/utils';
-import { GistSingleType } from '@/types/gist.ts';
+import { SnippetSingleType } from '@/types/snippet.ts';
 
 type Props = {
   isCollapsed?: boolean;
@@ -56,7 +57,7 @@ type Props = {
 // TODO: refactor to extract some parts
 export const CreateOrEditSnippet = ({
   isCollapsed = false,
-  setIsCollapsed = () => {},
+  setIsCollapsed = () => { },
 }: Props = {}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { navigate, params } = useRouter();
@@ -100,12 +101,12 @@ export const CreateOrEditSnippet = ({
                     option.disabled
                       ? undefined
                       : () => {
-                          dispatch({
-                            type: 'SET_FILE_LANGUAGE',
-                            payload: option?.label,
-                            index: option.fileIndex,
-                          });
-                        }
+                        dispatch({
+                          type: 'SET_FILE_LANGUAGE',
+                          payload: option?.label,
+                          index: option.fileIndex,
+                        });
+                      }
                   }
                 >
                   {option?.label && <div>{option.label}</div>}
@@ -118,11 +119,11 @@ export const CreateOrEditSnippet = ({
   };
 
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
-  const [edit, setEdit] = useState<null | GistSingleType>(null);
+  const [edit, setEdit] = useState<null | SnippetSingleType>(null);
   useEffect(() => {
     if (params?.id) {
       (async () => {
-        const snippet = await GithubApi.getGist(params.id);
+        const snippet = await snippetService.getSnippet(params.id);
 
         setEdit(snippet);
 
@@ -141,7 +142,7 @@ export const CreateOrEditSnippet = ({
             payload: {
               filename: snippet?.files[file].filename,
               content: snippet?.files[file].content,
-              language: snippet?.files[file].language,
+              language: getLanguageName(snippet?.files[file]),
             },
           });
         }
@@ -159,7 +160,7 @@ export const CreateOrEditSnippet = ({
       setErrors(validation.error.issues);
       return;
     } else {
-      const save = await GithubApi.createGist(formatSnippetForSaving(validation.data));
+      const save = await snippetService.createSnippet(formatSnippetForSaving(validation.data));
 
       if (save && save.id) {
         navigate(`/snippets/${save.id}`);
@@ -184,7 +185,10 @@ export const CreateOrEditSnippet = ({
         ...restOfTheSnippet
       } = formatSnippetForSaving(validation.data, edit);
 
-      const save = await GithubApi.updateGist({ ...restOfTheSnippet, gistId: edit!.id });
+      const save = await snippetService.updateSnippet({
+        ...restOfTheSnippet,
+        snippetId: edit!.id,
+      });
 
       if (save && save.id) {
         navigate(`/snippets/${edit!.id}`);
@@ -470,6 +474,7 @@ export const CreateOrEditSnippet = ({
                             language={
                               languageMap[file?.language ?? settings.newSnippetDefaultLanguage]
                             }
+                            path={`model-${index}-${new Date().getTime()}`}
                           />
                         </div>
                       </CardContent>
@@ -512,8 +517,8 @@ export const CreateOrEditSnippet = ({
                   <Button variant="default" onClick={() => (edit ? update() : create())}>
                     {edit
                       ? upperCaseFirst(t('common.update')) +
-                        ' ' +
-                        upperCaseFirst(t('common.snippet'))
+                      ' ' +
+                      upperCaseFirst(t('common.snippet'))
                       : `${upperCaseFirst(t('common.create'))} ${state.isPublic ? t('common.public') : t('common.private')} ${t('common.snippet')}`}
                   </Button>
                 </div>

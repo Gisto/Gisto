@@ -182,6 +182,8 @@
     "checkingToken": "Проверка токена",
     "pleaseSignInUsingToken": "Войдите с помощью GitHub токена",
     "scopeMessage": "Требуется только \"gists\" scope",
+    "scopeMessageGithub": "Требуется только \"gist\" scope для GitHub",
+    "scopeMessageGitlab": "Требуется только \"api\" scope для GitLab",
     "createTokenAtGithub": "Создать токен на Github",
     "githubToken": "GitHub токен",
     "enterGithubToken": "Введите GitHub токен",
@@ -192,6 +194,6 @@
     "starAdded": "Добавлено в избранное",
     "visibilityChangedToPublic": "Фрагмент стал публичным",
     "visibilityChangedToPrivate": "Фрагмент стал приватным",
-    "errorTryToRefresh": "Ошибка загрузки gists, попробуйте обновить"
+    "errorTryToRefresh": "Ошибка загрузки snippets, попробуйте обновить"
   }
 }
