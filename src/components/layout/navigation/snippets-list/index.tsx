@@ -8,7 +8,7 @@ import {
   SidebarOpen,
   Info,
 } from 'lucide-react';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo, useState, useEffect } from 'react';
 
 import { ListItem } from '@/components/layout/navigation/snippets-list/item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
@@ -29,9 +29,7 @@ const LazyListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
   const [isInView, ref] = useIntersectionObserver<HTMLDivElement>();
 
   return (
-    <div ref={ref}>
-      {isInView ? <ListItem snippet={snippet} /> : <div className="h-[80px]" />}
-    </div>
+    <div ref={ref}>{isInView ? <ListItem snippet={snippet} /> : <div className="h-[80px]" />}</div>
   );
 };
 
@@ -62,16 +60,35 @@ export const Lists = ({
   const allSnippets = useStoreValue('snippets');
   const search = useStoreValue('search');
   const apiRateLimits = useStoreValue('apiRateLimits');
+  const [localSearch, setLocalSearch] = useState(search);
+
+  // Sync local state with global state when it changes externally
+  useEffect(() => {
+    setLocalSearch(search);
+  }, [search]);
 
   const handleCollapse = useCallback(() => {
     setIsCollapsed(!isCollapsed);
   }, [isCollapsed, setIsCollapsed]);
 
   const handleSearch = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    globalState.setState({ search: event.target.value });
+    const value = event.target.value;
+    setLocalSearch(value);
   }, []);
 
-  const listOfSnippets = searchFilter(search, allSnippets);
+  // Debounce global state update
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      globalState.setState({ search: localSearch });
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [localSearch]);
+
+  // Memoize filtered results using only the debounced global search
+  const listOfSnippets = useMemo(() => {
+    return searchFilter(search, allSnippets);
+  }, [search, allSnippets]);
 
   if (!listOfSnippets) {
     return null;
@@ -80,8 +97,17 @@ export const Lists = ({
   return (
     <div className="flex flex-col gap-0">
       <PageHeader>
-        <Button variant="ghost" size="icon" onClick={handleCollapse}>
-          {!isCollapsed ? <SidebarClose className="size-4" /> : <SidebarOpen className="size-4" />}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handleCollapse}
+          className="transition-transform duration-300 ease-in-out hover:scale-110"
+        >
+          {!isCollapsed ? (
+            <SidebarClose className="size-4 transition-transform duration-300 ease-in-out" />
+          ) : (
+            <SidebarOpen className="size-4 transition-transform duration-300 ease-in-out" />
+          )}
         </Button>
         <div className="relative w-full">
           <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -89,10 +115,10 @@ export const Lists = ({
             placeholder={t('list.searchSnippets', { number: allSnippets.length })}
             className="pl-8 w-full"
             type="search"
-            value={search}
+            value={localSearch}
             onChange={handleSearch}
           />
-          {!search && (
+          {!localSearch && (
             <Tooltip>
               <TooltipTrigger className="absolute right-2 top-2.5 h-4 w-4 text-muted-foreground">
                 <Info className="size-4 text-muted-foreground" />
@@ -140,7 +166,10 @@ export const Lists = ({
           disabled={!search}
           variant="ghost"
           size="icon"
-          onClick={() => globalState.setState({ search: '' })}
+          onClick={() => {
+            setLocalSearch('');
+            globalState.setState({ search: '' });
+          }}
         >
           {search ? <FilterX className="size-4" /> : <Filter className="size-4" />}
         </Button>
@@ -150,9 +179,7 @@ export const Lists = ({
           <ListSkeleton />
         ) : (
           listOfSnippets.length > 0 &&
-          listOfSnippets.map((snippet) => (
-            <LazyListItem key={snippet.id} snippet={snippet} />
-          ))
+          listOfSnippets.map((snippet) => <LazyListItem key={snippet.id} snippet={snippet} />)
         )}
       </ScrollArea>
       <div className="h-[52px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">

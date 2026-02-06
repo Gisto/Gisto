@@ -1,6 +1,6 @@
 import { SnippetSingleType, SnippetType } from '@/types/snippet.ts';
 
-export interface SnippetProvider<TRaw = SnippetSingleType> {
+export interface SnippetProvider<TRawList = SnippetSingleType, TRawSingle = TRawList> {
   capabilities: {
     supportsStars: boolean;
   };
@@ -40,6 +40,6 @@ export interface SnippetProvider<TRaw = SnippetSingleType> {
   }): Promise<{ data: T; headers: Headers; status: number }>;
   guessMimeType(extension: string): string;
   guessLanguage(extension: string): string;
-  mapToSnippetType(data: TRaw): SnippetType;
-  mapToSnippetSingleType(data: TRaw): SnippetSingleType;
+  mapToSnippetType(data: TRawList): SnippetType;
+  mapToSnippetSingleType(data: TRawSingle): SnippetSingleType;
 }

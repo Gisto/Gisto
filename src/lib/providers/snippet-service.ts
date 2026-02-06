@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SnippetProvider } from './types';
 
 import { GithubApi } from '@/lib/github-api';
@@ -7,12 +6,12 @@ import { globalState } from '@/lib/store/globalState';
 
 type SnippetProviderKey = 'github' | 'gitlab';
 
-const SNIPPET_PROVIDERS: Record<SnippetProviderKey, SnippetProvider<any>> = {
-  github: GithubApi as SnippetProvider<any>,
-  gitlab: GitlabApi as SnippetProvider<any>,
+const SNIPPET_PROVIDERS: Record<SnippetProviderKey, SnippetProvider<unknown, unknown>> = {
+  github: GithubApi as SnippetProvider<unknown, unknown>,
+  gitlab: GitlabApi as SnippetProvider<unknown, unknown>,
 };
 
-function resolveProvider(activeProvider?: string): SnippetProvider<any> {
+function resolveProvider(activeProvider?: string): SnippetProvider<unknown, unknown> {
   if (activeProvider && activeProvider in SNIPPET_PROVIDERS) {
     return SNIPPET_PROVIDERS[activeProvider as SnippetProviderKey];
   }
@@ -20,8 +19,8 @@ function resolveProvider(activeProvider?: string): SnippetProvider<any> {
   return SNIPPET_PROVIDERS.github;
 }
 
-class SnippetService implements SnippetProvider<any> {
-  private get provider(): SnippetProvider<any> {
+class SnippetService implements SnippetProvider<unknown, unknown> {
+  private get provider(): SnippetProvider<unknown, unknown> {
     const activeProvider = globalState.getState().settings.activeSnippetProvider;
     return resolveProvider(activeProvider);
   }
@@ -102,15 +101,13 @@ class SnippetService implements SnippetProvider<any> {
     return this.provider.request(options);
   }
 
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  mapToSnippetType(data: any): import('@/types/snippet.ts').SnippetType {
+  mapToSnippetType(data: unknown): import('@/types/snippet.ts').SnippetType {
     return this.provider.mapToSnippetType(data);
   }
 
-  mapToSnippetSingleType(data: any): import('@/types/snippet.ts').SnippetSingleType {
+  mapToSnippetSingleType(data: unknown): import('@/types/snippet.ts').SnippetSingleType {
     return this.provider.mapToSnippetSingleType(data);
   }
-  /* eslint-enable @typescript-eslint/no-explicit-any */
 
   guessMimeType(extension: string): string {
     return this.provider.guessMimeType(extension);

@@ -53,14 +53,16 @@ export const processSnippet = (snippet: SnippetType) => {
 
         return acc;
       }, []),
+    files: Object.values(snippet.files).map((file) => ({
+      ...file,
+      text: file.content,
+    })),
   };
 };
 
 export const getLanguageName = (file: SnippetFileType): string => {
   if (!file?.language) return '';
-  return typeof file.language === 'string'
-    ? file.language
-    : file.language.name;
+  return typeof file.language === 'string' ? file.language : file.language.name;
 };
 
 export const fetchAndUpdateSnippets = async () => {
@@ -154,11 +156,11 @@ export const formatSnippetForSaving = (
 ) => {
   const updatedFiles = edit
     ? [
-      ...snippet.files,
-      ...Object.keys(edit.files)
-        .filter((filename) => !snippet.files.some((file) => file.filename === filename))
-        .map((filename) => ({ filename, content: null })),
-    ]
+        ...snippet.files,
+        ...Object.keys(edit.files)
+          .filter((filename) => !snippet.files.some((file) => file.filename === filename))
+          .map((filename) => ({ filename, content: null })),
+      ]
     : snippet.files;
 
   const files = updatedFiles.reduce<{ [key: string]: { content: string } | null }>(

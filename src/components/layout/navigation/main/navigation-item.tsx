@@ -13,7 +13,12 @@ const Content = ({
   label: string;
   isCollapsed: boolean;
 }) => (
-  <div className={cn('flex justify-start gap-2 items-center ', isCollapsed && 'justify-center')}>
+  <div
+    className={cn(
+      'flex justify-start gap-2 items-center transition-all duration-300 ease-in-out',
+      isCollapsed && 'justify-center'
+    )}
+  >
     <Tooltip>
       <TooltipTrigger asChild>
         <Icon className="size-4" />
@@ -38,7 +43,7 @@ export const NavigationItem = ({
   isCollapsed: boolean;
 } & ({ onClick: () => void } | { path: string })) => {
   const wrapper = cn(
-    'flex justify-start gap-2 items-center mb-2 p-2 w-full cursor-pointer rounded hover:bg-secondary',
+    'flex justify-start gap-2 items-center mb-2 p-2 w-full cursor-pointer rounded hover:bg-secondary transition-all duration-300 ease-in-out',
     isCollapsed && 'justify-center'
   );
 
