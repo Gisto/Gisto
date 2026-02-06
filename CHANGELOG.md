@@ -31,6 +31,16 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([6b01de2](https://github.com/gisto/gisto/commit/6b01de2f55f646a5c1373fd568be82d08a73767a))
 
+- *(deps)* Bump @commitlint/types from 20.3.1 to 20.4.0 ([#556](https://github.com/gisto/gisto/issues/556))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b6039f5](https://github.com/gisto/gisto/commit/b6039f57a0112dbcceea77357121fe0432413959))
+
+- *(deps-dev)* Bump @vitest/coverage-v8 from 4.0.9 to 4.0.18 ([#558](https://github.com/gisto/gisto/issues/558))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([4c8c7bf](https://github.com/gisto/gisto/commit/4c8c7bf2f0fb95d0532a2d7b464f0b4d230f7442))
+
 
 ## v2.4.4
 
