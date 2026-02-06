@@ -56,7 +56,7 @@ describe('GitlabApi', () => {
     });
   });
 
-  describe('getGist', () => {
+  describe('getSnippet', () => {
     it('should fetch snippet and its raw file content if missing', async () => {
       const snippetId = '123';
       const rawUrl = 'https://gitlab.com/-/snippets/123/raw/main/file1.txt';
@@ -87,7 +87,7 @@ describe('GitlabApi', () => {
         .mockResolvedValueOnce(mockSnippetResponse as unknown as Response)
         .mockResolvedValueOnce(mockRawResponse as unknown as Response);
 
-      const result = await GitlabApi.getGist(snippetId);
+      const result = await GitlabApi.getSnippet(snippetId);
 
       expect(global.fetch).toHaveBeenCalledWith(
         `https://gitlab.com/api/v4/snippets/${snippetId}`,
@@ -145,7 +145,7 @@ describe('GitlabApi', () => {
         .mockResolvedValueOnce(mockRaw1Response as unknown as Response)
         .mockResolvedValueOnce(mockRaw2Response as unknown as Response);
 
-      const result = await GitlabApi.getGist(snippetId);
+      const result = await GitlabApi.getSnippet(snippetId);
 
       expect(global.fetch).toHaveBeenCalledWith(
         `https://gitlab.com/api/v4/snippets/${snippetId}/files/main/file1.txt/raw`,
@@ -160,9 +160,9 @@ describe('GitlabApi', () => {
     });
   });
 
-  describe('updateGist', () => {
+  describe('updateSnippet', () => {
     it('should update snippet with correct file actions and no content for delete', async () => {
-      const gistId = '123';
+      const snippetId = '123';
       const files = {
         'new.js': { content: 'console.log("new")' },
         'existing.js': { content: 'console.log("updated")' },
@@ -177,33 +177,33 @@ describe('GitlabApi', () => {
           get: vi.fn((key) => (key === 'Content-Type' ? 'application/json' : null)),
         },
         json: vi.fn().mockResolvedValue({
-          id: gistId,
+          id: snippetId,
           title: 'Updated Description',
           description: 'Updated Description',
           web_url: 'https://gitlab.com/snippets/123',
         }),
       };
 
-      const mockGistResponse = {
+      const mockSnippetResponse = {
         ok: true,
         status: 200,
         headers: {
           get: vi.fn((key) => (key === 'Content-Type' ? 'application/json' : null)),
         },
         json: vi.fn().mockResolvedValue({
-          id: gistId,
+          id: snippetId,
           files: [{ path: 'existing.js' }, { path: 'deleted.js' }],
         }),
       };
 
       (global.fetch as MockedFunction<typeof fetch>)
-        .mockResolvedValueOnce(mockGistResponse as unknown as Response)
+        .mockResolvedValueOnce(mockSnippetResponse as unknown as Response)
         .mockResolvedValueOnce(mockUpdateResponse as unknown as Response);
 
-      await GitlabApi.updateGist({ gistId, files, description });
+      await GitlabApi.updateSnippet({ snippetId, files, description });
 
       expect(global.fetch).toHaveBeenLastCalledWith(
-        `https://gitlab.com/api/v4/snippets/${gistId}`,
+        `https://gitlab.com/api/v4/snippets/${snippetId}`,
         expect.objectContaining({
           method: 'PUT',
           body: JSON.stringify({
@@ -220,12 +220,12 @@ describe('GitlabApi', () => {
     });
   });
 
-  describe('createGist', () => {
-    it('should create a gist with multiple files and distinct content', async () => {
+  describe('createSnippet', () => {
+    it('should create a snippet with multiple files and distinct content', async () => {
       const requestMock = vi.spyOn(GitlabApi, 'request').mockResolvedValue({
         data: {
           id: 123,
-          title: 'Test Gist',
+          title: 'Test Snippet',
           description: 'Test Description',
           visibility: 'public',
           web_url: 'https://gitlab.com/snippets/123',
@@ -245,7 +245,7 @@ describe('GitlabApi', () => {
         'file2.txt': { content: 'Content 2' }
       };
 
-      await GitlabApi.createGist({
+      await GitlabApi.createSnippet({
         files,
         description: 'Test Description',
         isPublic: true
@@ -267,8 +267,8 @@ describe('GitlabApi', () => {
     });
   });
 
-  describe('mapToGistType', () => {
-    it('should map GitLab snippet to GistType with full description and tags', () => {
+  describe('mapToSnippetType', () => {
+    it('should map GitLab snippet to SnippetType with full description and tags', () => {
       const gitlabSnippet = {
         id: 123,
         title: 'Snippet Title',
@@ -280,7 +280,7 @@ describe('GitlabApi', () => {
         files: [],
       };
 
-      const result = GitlabApi.mapToGistType(gitlabSnippet);
+      const result = GitlabApi.mapToSnippetType(gitlabSnippet);
 
       expect(result.description).toBe('Snippet Title\nFull description #tag1 #tag2');
     });
@@ -297,7 +297,7 @@ describe('GitlabApi', () => {
         files: [],
       };
 
-      const result = GitlabApi.mapToGistType(gitlabSnippet);
+      const result = GitlabApi.mapToSnippetType(gitlabSnippet);
 
       expect(result.description).toBe('Snippet Title with more text #tag');
     });
@@ -314,7 +314,7 @@ describe('GitlabApi', () => {
         files: [],
       };
 
-      const result = GitlabApi.mapToGistType(gitlabSnippet);
+      const result = GitlabApi.mapToSnippetType(gitlabSnippet);
 
       expect(result.description).toBe('Headline #tag\nDetail notes');
     });
@@ -330,7 +330,7 @@ describe('GitlabApi', () => {
         files: [],
       };
 
-      const result = GitlabApi.mapToGistType(gitlabSnippet);
+      const result = GitlabApi.mapToSnippetType(gitlabSnippet);
 
       expect(result.description).toBe('Snippet Title #tag');
     });

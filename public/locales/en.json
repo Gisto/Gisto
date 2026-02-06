@@ -147,7 +147,7 @@
     },
     "about": {
       "title": "About",
-      "aboutParagraph": "Gisto is a code snippet manager that runs on GitHub Gists and adds additional features\n              such as searching, tagging and sharing gists while including a rich code editor.",
+      "aboutParagraph": "Gisto is a code snippet manager that runs on GitHub Gists and adds additional features\n              such as searching, tagging and sharing snippets while including a rich code editor.",
       "privacyParagraph": "All your data is stored on GitHub and you can access it from GitHub Gists at any time\n              with changes carrying over to Gisto.",
       "sponsor": "Sponsor Gisto",
       "changelog": "Change log",
@@ -183,6 +183,8 @@
     "checkingToken": "Checking token",
     "pleaseSignInUsingToken": "Please sign-in using token",
     "scopeMessage": "Only \"gists\" scope is required for GitHub, \"api\" for GitLab",
+    "scopeMessageGithub": "Only \"gist\" scope is required for GitHub",
+    "scopeMessageGitlab": "Only \"api\" scope is required for GitLab",
     "createTokenAtGithub": "Create token at GitHub",
     "createTokenAtGitlab": "Create token at GitLab",
     "githubToken": "GitHub token",
@@ -196,7 +198,7 @@
     "starAdded": "Star added",
     "visibilityChangedToPublic": "Snippet visibility changed to public",
     "visibilityChangedToPrivate": "Snippet visibility changed to private",
-    "errorTryToRefresh": "Error fetching gists, please try to refresh",
+    "errorTryToRefresh": "Error fetching snippets, please try to refresh",
     "featureNotSupported": "This feature is not supported for {provider} yet"
   }
 }

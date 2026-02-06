@@ -30,56 +30,56 @@ class SnippetService implements SnippetProvider<any> {
     return this.provider.capabilities;
   }
 
-  getGist(gistId: string) {
-    return this.provider.getGist(gistId);
+  getSnippet(snippetId: string) {
+    return this.provider.getSnippet(snippetId);
   }
 
   getMarkdown(text: string) {
     return this.provider.getMarkdown(text);
   }
 
-  createGist(params: {
+  createSnippet(params: {
     files: Record<string, { content: string | null } | null>;
     description: string;
     isPublic: boolean;
   }) {
-    return this.provider.createGist(params);
+    return this.provider.createSnippet(params);
   }
 
-  updateGist(params: {
-    gistId: string;
+  updateSnippet(params: {
+    snippetId: string;
     files: Record<string, { content: string } | null>;
     description: string;
   }) {
-    return this.provider.updateGist(params);
+    return this.provider.updateSnippet(params);
   }
 
-  deleteStar(gistId: string) {
-    return this.provider.deleteStar(gistId);
+  deleteStar(snippetId: string) {
+    return this.provider.deleteStar(snippetId);
   }
 
-  addStar(gistId: string) {
-    return this.provider.addStar(gistId);
+  addStar(snippetId: string) {
+    return this.provider.addStar(snippetId);
   }
 
-  deleteGist(gistId: string, notification?: boolean) {
-    return this.provider.deleteGist(gistId, notification);
+  deleteSnippet(snippetId: string, notification?: boolean) {
+    return this.provider.deleteSnippet(snippetId, notification);
   }
 
-  toggleGistVisibility(gistId: string) {
-    return this.provider.toggleGistVisibility(gistId);
+  toggleSnippetVisibility(snippetId: string) {
+    return this.provider.toggleSnippetVisibility(snippetId);
   }
 
-  fetchGists(cursor?: string | null) {
-    return this.provider.fetchGists(cursor);
+  fetchSnippets(cursor?: string | null) {
+    return this.provider.fetchSnippets(cursor);
   }
 
-  getGists() {
-    return this.provider.getGists();
+  getSnippets() {
+    return this.provider.getSnippets();
   }
 
-  getGistsGenerator() {
-    return this.provider.getGistsGenerator();
+  getSnippetsGenerator() {
+    return this.provider.getSnippetsGenerator();
   }
 
   get baseUrl(): string {
@@ -103,12 +103,12 @@ class SnippetService implements SnippetProvider<any> {
   }
 
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  mapToGistType(data: any): import('@/types/gist.ts').GistType {
-    return this.provider.mapToGistType(data);
+  mapToSnippetType(data: any): import('@/types/snippet.ts').SnippetType {
+    return this.provider.mapToSnippetType(data);
   }
 
-  mapToGistSingleType(data: any): import('@/types/gist.ts').GistSingleType {
-    return this.provider.mapToGistSingleType(data);
+  mapToSnippetSingleType(data: any): import('@/types/snippet.ts').SnippetSingleType {
+    return this.provider.mapToSnippetSingleType(data);
   }
   /* eslint-enable @typescript-eslint/no-explicit-any */
 

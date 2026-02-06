@@ -3,6 +3,7 @@ import { BadgeHelp, SlidersHorizontal, LogOut, LayoutDashboard, Plus, Globe } fr
 
 import { version } from '../../../../../package.json';
 
+import { GitHubIcon, GitLabIcon } from '@/components/icons';
 import { NavigationItem } from '@/components/layout/navigation/main/navigation-item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
@@ -14,6 +15,7 @@ import { cn } from '@/lib/utils';
 export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
   const online = useIsOnline();
   const user = useStoreValue('user');
+  const settings = useStoreValue('settings');
   const userRecord = (user ?? {}) as Record<string, unknown>;
   const displayName =
     (typeof userRecord.name === 'string' && userRecord.name) ||
@@ -127,7 +129,16 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
                 <div className="min-w-0">
                   <div className="truncate text-sm font-medium">{displayName}</div>
                   {handle && handle !== displayName && (
-                    <div className="truncate text-xs text-muted-foreground">@{handle}</div>
+                    <div className="truncate text-xs text-muted-foreground flex items-center gap-1">
+                      @{handle} /
+                      <span className="inline-flex items-center size-3">
+                        {settings.activeSnippetProvider === 'gitlab' ? (
+                          <GitLabIcon />
+                        ) : (
+                          <GitHubIcon />
+                        )}
+                      </span>
+                    </div>
                   )}
                 </div>
               )}

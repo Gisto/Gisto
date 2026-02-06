@@ -46,7 +46,7 @@ import {
   removeTags,
   upperCaseFirst,
 } from '@/lib/utils';
-import { GistSingleType } from '@/types/gist.ts';
+import { SnippetSingleType } from '@/types/snippet.ts';
 
 type Props = {
   isCollapsed?: boolean;
@@ -119,11 +119,11 @@ export const CreateOrEditSnippet = ({
   };
 
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
-  const [edit, setEdit] = useState<null | GistSingleType>(null);
+  const [edit, setEdit] = useState<null | SnippetSingleType>(null);
   useEffect(() => {
     if (params?.id) {
       (async () => {
-        const snippet = await snippetService.getGist(params.id);
+        const snippet = await snippetService.getSnippet(params.id);
 
         setEdit(snippet);
 
@@ -160,7 +160,7 @@ export const CreateOrEditSnippet = ({
       setErrors(validation.error.issues);
       return;
     } else {
-      const save = await snippetService.createGist(formatSnippetForSaving(validation.data));
+      const save = await snippetService.createSnippet(formatSnippetForSaving(validation.data));
 
       if (save && save.id) {
         navigate(`/snippets/${save.id}`);
@@ -185,7 +185,10 @@ export const CreateOrEditSnippet = ({
         ...restOfTheSnippet
       } = formatSnippetForSaving(validation.data, edit);
 
-      const save = await snippetService.updateGist({ ...restOfTheSnippet, gistId: edit!.id });
+      const save = await snippetService.updateSnippet({
+        ...restOfTheSnippet,
+        snippetId: edit!.id,
+      });
 
       if (save && save.id) {
         navigate(`/snippets/${edit!.id}`);

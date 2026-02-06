@@ -182,6 +182,8 @@
     "checkingToken": "Vérification du jeton",
     "pleaseSignInUsingToken": "Veuillez vous connecter avec un jeton GitHub",
     "scopeMessage": "Seule l’autorisation \"gists\" est requise",
+    "scopeMessageGithub": "Seule l’autorisation \"gist\" est requise pour GitHub",
+    "scopeMessageGitlab": "Seule l’autorisation \"api\" est requise pour GitLab",
     "createTokenAtGithub": "Créer un jeton sur GitHub",
     "githubToken": "Jeton GitHub",
     "enterGithubToken": "Entrez le jeton GitHub",
@@ -192,6 +194,6 @@
     "starAdded": "Favori ajouté",
     "visibilityChangedToPublic": "Visibilité modifiée en public",
     "visibilityChangedToPrivate": "Visibilité modifiée en privé",
-    "errorTryToRefresh": "Erreur lors de la récupération des gists, veuillez essayer d’actualiser"
+    "errorTryToRefresh": "Erreur lors de la récupération des snippets, veuillez essayer d’actualiser"
   }
 }

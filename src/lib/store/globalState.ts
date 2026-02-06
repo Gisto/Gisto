@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 
 import { Store } from './store.ts';
 
-import { GistEnrichedType } from '@/types/gist.ts';
+import { SnippetEnrichedType } from '@/types/snippet.ts';
 
 const SETTINGS_STORAGE_KEY = 'gisto-app-settings';
 
 export type StoreStateType = {
   user: Record<string, unknown> | null;
   isLoggedIn: boolean;
-  snippets: GistEnrichedType[] | [];
+  snippets: SnippetEnrichedType[] | [];
   search: string;
   apiRateLimits: {
     limit: number;

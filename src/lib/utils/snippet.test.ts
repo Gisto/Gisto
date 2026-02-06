@@ -13,7 +13,7 @@ import {
   formatSnippetForSaving,
 } from './snippet';
 
-import { GistFileType, GistType, GistSingleType } from '@/types/gist';
+import { SnippetFileType, SnippetType, SnippetSingleType } from '@/types/snippet';
 
 type MockSnippet = {
   id: string;
@@ -64,7 +64,7 @@ describe('snippet utils', () => {
   describe('processSnippet', () => {
     const mockSnippet: MockSnippet = {
       id: '1',
-      resourcePath: '/gist/1',
+      resourcePath: '/snippet/1',
       html_url: 'https://gist.github.com/1',
       description: 'Test #tag',
       createdAt: '2023-01-01',
@@ -79,7 +79,7 @@ describe('snippet utils', () => {
     };
 
     it('should process snippet correctly', () => {
-      const result = processSnippet(mockSnippet as unknown as GistType);
+      const result = processSnippet(mockSnippet as unknown as SnippetType);
 
       expect(result.id).toBe('1');
       expect(result.title).toBe('Test ');
@@ -92,7 +92,7 @@ describe('snippet utils', () => {
 
     it('should handle untitled snippets', () => {
       const untitled = { ...mockSnippet, description: null };
-      const result = processSnippet(untitled as unknown as GistType);
+      const result = processSnippet(untitled as unknown as SnippetType);
 
       expect(result.isUntitled).toBe(false);
       expect(result.description).toBe('Untitled');
@@ -100,7 +100,7 @@ describe('snippet utils', () => {
   });
 
   describe('file type checks', () => {
-    const mockFile = (props: Partial<GistFileType>) => ({ ...props }) as GistFileType;
+    const mockFile = (props: Partial<SnippetFileType>) => ({ ...props }) as SnippetFileType;
 
     it('should detect PDF', () => {
       expect(isPDF(mockFile({ type: 'application/pdf', filename: 'test.pdf' }))).toBe(true);
@@ -132,16 +132,16 @@ describe('snippet utils', () => {
 
   describe('previewAvailable', () => {
     it('should return true for supported formats', () => {
-      expect(previewAvailable({ language: 'HTML', type: 'text/html' } as GistFileType)).toBe(true);
-      expect(previewAvailable({ type: 'image/png' } as GistFileType)).toBe(true);
-      expect(previewAvailable({ language: 'JavaScript', type: 'text/plain' } as GistFileType)).toBe(
+      expect(previewAvailable({ language: 'HTML', type: 'text/html' } as SnippetFileType)).toBe(true);
+      expect(previewAvailable({ type: 'image/png' } as SnippetFileType)).toBe(true);
+      expect(previewAvailable({ language: 'JavaScript', type: 'text/plain' } as SnippetFileType)).toBe(
         false
       );
     });
 
     it('should not crash if type is missing', () => {
       expect(() =>
-        previewAvailable({ language: 'Text', filename: 'test.txt' } as GistFileType)
+        previewAvailable({ language: 'Text', filename: 'test.txt' } as SnippetFileType)
       ).not.toThrow();
     });
   });
@@ -161,9 +161,9 @@ describe('snippet utils', () => {
     });
 
     it('should handle edit mode', () => {
-      const editGist = {
+      const editSnippet = {
         files: { 'old.js': { content: 'old' } },
-      } as unknown as GistSingleType;
+      } as unknown as SnippetSingleType;
 
       const result = formatSnippetForSaving(
         {
@@ -171,7 +171,7 @@ describe('snippet utils', () => {
           isPublic: false,
           files: [{ filename: 'new.js', content: 'new' }],
         },
-        editGist
+        editSnippet
       );
 
       expect(result.files).toHaveProperty('new.js');
@@ -181,8 +181,8 @@ describe('snippet utils', () => {
 
   describe('getFileExtension', () => {
     it('should return file extension', () => {
-      expect(getFileExtension({ filename: 'test.js' } as GistFileType)).toBe('js');
-      expect(getFileExtension({ filename: 'file.tar.gz' } as GistFileType)).toBe('gz');
+      expect(getFileExtension({ filename: 'test.js' } as SnippetFileType)).toBe('js');
+      expect(getFileExtension({ filename: 'file.tar.gz' } as SnippetFileType)).toBe('gz');
     });
   });
 });

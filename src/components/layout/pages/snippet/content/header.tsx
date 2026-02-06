@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu.tsx';
 import { t } from '@/lib/i18n';
 import { copyToClipboard, getLanguageName, previewAvailable, upperCaseFirst } from '@/lib/utils';
-import { GistFileType, GistSingleType } from '@/types/gist.ts';
+import { SnippetFileType, SnippetSingleType } from '@/types/snippet.ts';
 
 export const Header = ({
   file,
@@ -21,8 +21,8 @@ export const Header = ({
   preview,
   setPreview,
 }: {
-  file: GistFileType;
-  snippet: GistSingleType;
+  file: SnippetFileType;
+  snippet: SnippetSingleType;
   collapsed: boolean;
   setCollapsed: (c: boolean) => void;
   preview: boolean;

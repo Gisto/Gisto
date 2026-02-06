@@ -28,9 +28,9 @@ import {
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { upperCaseFirst } from '@/lib/utils';
-import { GistEnrichedType } from '@/types/gist.ts';
+import { SnippetEnrichedType } from '@/types/snippet.ts';
 
-function generateChartData(list: GistEnrichedType[], period = '6months') {
+function generateChartData(list: SnippetEnrichedType[], period = '6months') {
   const now = new Date();
   const startDate = new Date(now);
 
@@ -57,11 +57,11 @@ function generateChartData(list: GistEnrichedType[], period = '6months') {
     dateMap.set(d.toISOString().split('T')[0], { public: 0, private: 0 });
   }
 
-  list.forEach((gist) => {
-    const createdDate = gist.createdAt.split('T')[0];
+  list.forEach((snippet) => {
+    const createdDate = snippet.createdAt.split('T')[0];
     if (dateMap.has(createdDate)) {
       const entry = dateMap.get(createdDate);
-      if (gist.isPublic) {
+      if (snippet.isPublic) {
         entry.public++;
       } else {
         entry.private++;

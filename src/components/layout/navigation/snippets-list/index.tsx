@@ -24,11 +24,15 @@ import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { searchFilter } from '@/lib/utils';
-import { GistEnrichedType } from '@/types/gist.ts';
-const LazyListItem = ({ gist }: { gist: GistEnrichedType }) => {
+import { SnippetEnrichedType } from '@/types/snippet.ts';
+const LazyListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
   const [isInView, ref] = useIntersectionObserver<HTMLDivElement>();
 
-  return <div ref={ref}>{isInView ? <ListItem gist={gist} /> : <div className="h-[80px]" />}</div>;
+  return (
+    <div ref={ref}>
+      {isInView ? <ListItem snippet={snippet} /> : <div className="h-[80px]" />}
+    </div>
+  );
 };
 
 const ListSkeleton = () =>
@@ -146,7 +150,9 @@ export const Lists = ({
           <ListSkeleton />
         ) : (
           listOfSnippets.length > 0 &&
-          listOfSnippets.map((gist) => <LazyListItem key={gist.id} gist={gist} />)
+          listOfSnippets.map((snippet) => (
+            <LazyListItem key={snippet.id} snippet={snippet} />
+          ))
         )}
       </ScrollArea>
       <div className="h-[52px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">

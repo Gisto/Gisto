@@ -1,7 +1,7 @@
 import { snippetService } from '@/lib/providers/snippet-service.ts';
-import { GistEnrichedType } from '@/types/gist.ts';
+import { SnippetEnrichedType } from '@/types/snippet.ts';
 
-export const searchFilter = (search: string, currentSnippets: GistEnrichedType[] | []) => {
+export const searchFilter = (search: string, currentSnippets: SnippetEnrichedType[] | []) => {
   if (search === '' || search.length === 0) {
     return currentSnippets;
   }
