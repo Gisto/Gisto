@@ -26,7 +26,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@commitlint/types": "^20.0.0",
+    "@commitlint/types": "^20.4.0",
     "@mdit/plugin-alert": "^0.22.3",
     "@mdit/plugin-tasklist": "^0.22.2",
     "@monaco-editor/react": "^4.7.0",
