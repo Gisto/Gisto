@@ -41,6 +41,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([4c8c7bf](https://github.com/gisto/gisto/commit/4c8c7bf2f0fb95d0532a2d7b464f0b4d230f7442))
 
+- *(deps)* Bump axios in the npm_and_yarn group across 1 directory ([#562](https://github.com/gisto/gisto/issues/562))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([c1a2f15](https://github.com/gisto/gisto/commit/c1a2f1594f92a3eb1fbe51aef3e57a6836083878))
+
 
 ## v2.4.4
 
