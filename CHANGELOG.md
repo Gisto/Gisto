@@ -2,6 +2,100 @@
 
 All significant updates and improvements
 
+## v2.5.0
+
+Released on: Feb 14, 2026
+
+### 🚀 Features
+
+- *(snippets)* Initial gitlab support
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([8f5af43](https://github.com/gisto/gisto/commit/8f5af431a0055d6a9dddcd36fbb57cafc6368d70))
+
+- *(user)* Add user info to sidebar
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([1a1869f](https://github.com/gisto/gisto/commit/1a1869f44c7cbff0701a15c77d2047d4c56f8ba6))
+
+- *(editor)* Add more editor settings
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([5be2325](https://github.com/gisto/gisto/commit/5be2325b7572581aa8672328702c3758fbc11f52))
+
+
+### 🐛 Bug Fixes
+
+- *(search)* Add debounce to make search smoother
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([73cc46a](https://github.com/gisto/gisto/commit/73cc46aa7300e924d8060a8b4e1be578f48341c8))
+
+- *(dashboard)* Adjust sizes and spacing
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([bff4013](https://github.com/gisto/gisto/commit/bff401375c962aa1100bcedfffc799d0a25ccc7a))
+
+
+### 👷 Continuous Integration
+
+- Automate-release workflow to explicitly trigger the release (publish) workflow
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([97417c6](https://github.com/gisto/gisto/commit/97417c68340359bd6546629254a776c626717ab7))
+
+- *(changelog)* Authenticate changelog generator
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([9790a7e](https://github.com/gisto/gisto/commit/9790a7e098f45b998cce6981dce21b4acf4113e1))
+
+
+### 🛠️️ Build
+
+- *(deps-dev)* Bump eslint-plugin-react-refresh from 0.4.26 to 0.5.0 ([#554](https://github.com/gisto/gisto/issues/554))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([79ca3e9](https://github.com/gisto/gisto/commit/79ca3e980bcc3d9ad403189bb401e0a4653ca22a))
+
+- *(deps-dev)* Bump @types/node from 24.10.9 to 25.1.0 ([#555](https://github.com/gisto/gisto/issues/555))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([7c6b758](https://github.com/gisto/gisto/commit/7c6b7580872eb91890ca1d2abbc6602e644b63f3))
+
+- *(deps)* Bump lucide-react from 0.553.0 to 0.563.0 ([#557](https://github.com/gisto/gisto/issues/557))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([6b01de2](https://github.com/gisto/gisto/commit/6b01de2f55f646a5c1373fd568be82d08a73767a))
+
+- *(deps)* Bump @commitlint/types from 20.3.1 to 20.4.0 ([#556](https://github.com/gisto/gisto/issues/556))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b6039f5](https://github.com/gisto/gisto/commit/b6039f57a0112dbcceea77357121fe0432413959))
+
+- *(deps-dev)* Bump @vitest/coverage-v8 from 4.0.9 to 4.0.18 ([#558](https://github.com/gisto/gisto/issues/558))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([4c8c7bf](https://github.com/gisto/gisto/commit/4c8c7bf2f0fb95d0532a2d7b464f0b4d230f7442))
+
+- *(deps)* Bump axios in the npm_and_yarn group across 1 directory ([#562](https://github.com/gisto/gisto/issues/562))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([c1a2f15](https://github.com/gisto/gisto/commit/c1a2f1594f92a3eb1fbe51aef3e57a6836083878))
+
+- *(deps)* Bump markdown-it ([#563](https://github.com/gisto/gisto/issues/563))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([21164cf](https://github.com/gisto/gisto/commit/21164cfdcc36511dcec1c6ce6a0d3a85010a440b))
+
+
+### 🚜 Refactor
+
+- *(snippets)* Refactor names to align with any snippet provider
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([ef9e0a0](https://github.com/gisto/gisto/commit/ef9e0a0fbac2e7e99e95ae0f00aba92fa1814813))
+
+
 ## v2.4.4
 
 Released on: Jan 24, 2026
@@ -14,15 +108,7 @@ Released on: Jan 24, 2026
 ([d5fc385](https://github.com/gisto/gisto/commit/d5fc385c0af7c04e27f8d075980b96a23512bf09))
 
 
-### 🚜 Refactor
-
-- *(app)* Main entry point app and login ([#551](https://github.com/gisto/gisto/issues/551))
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([6f04361](https://github.com/gisto/gisto/commit/6f04361bdcf79a23df770507006f2bf7f395cd27))
-
-
-### ⚙️ Miscellaneous Tasks
+### 👷 Continuous Integration
 
 - Version and release workflow ([#552](https://github.com/gisto/gisto/issues/552))
 ・ by Sasha Khamkov
@@ -33,6 +119,14 @@ Released on: Jan 24, 2026
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([bba7b02](https://github.com/gisto/gisto/commit/bba7b02a7b1161c069cf34e6f77d67b173b3fdb4))
+
+
+### 🚜 Refactor
+
+- *(app)* Main entry point app and login ([#551](https://github.com/gisto/gisto/issues/551))
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6f04361](https://github.com/gisto/gisto/commit/6f04361bdcf79a23df770507006f2bf7f395cd27))
 
 
 ## v2.4.3
@@ -407,6 +501,14 @@ Released on: May 3, 2025
 ([bf884f2](https://github.com/gisto/gisto/commit/bf884f2d15c662a54d9f03a359b36159f0d3f791))
 
 
+### 👷 Continuous Integration
+
+- Update workflows to take pnpm version from package.json packageManager field
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([fca191f](https://github.com/gisto/gisto/commit/fca191f0f9405e59cf7404ab4949957a2ffb99c9))
+
+
 ### 🛠️️ Build
 
 - *(dependencies)* Update dependencies ([#488](https://github.com/gisto/gisto/issues/488))
@@ -421,14 +523,6 @@ Released on: May 3, 2025
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([c2f3d83](https://github.com/gisto/gisto/commit/c2f3d834934794f8cf9abb34b43bdef418f0c94b))
-
-
-### ⚙️ Miscellaneous Tasks
-
-- Update workflows to take pnpm version from package.json packageManager field
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([fca191f](https://github.com/gisto/gisto/commit/fca191f0f9405e59cf7404ab4949957a2ffb99c9))
 
 
 ## v2.2.3
@@ -539,6 +633,14 @@ Released on: Apr 15, 2025
 ([b419554](https://github.com/gisto/gisto/commit/b41955480db577136abe15f740c903ca49f50a6c))
 
 
+### 👷 Continuous Integration
+
+- Update PR action name and add verson to release commit
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([7e27aad](https://github.com/gisto/gisto/commit/7e27aad9731e80336a901de9bd30de9aa62bc737))
+
+
 ### 🔤 Grammar
 
 - Fix typo on create-or-edit-snippet
@@ -556,11 +658,6 @@ Released on: Apr 15, 2025
 
 
 ### ⚙️ Miscellaneous Tasks
-
-- Update PR action name and add verson to release commit
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([7e27aad](https://github.com/gisto/gisto/commit/7e27aad9731e80336a901de9bd30de9aa62bc737))
 
 - *(cz and changelog)* Extend cz and fix changelog
 ・ by Sasha Khamkov
@@ -665,6 +762,14 @@ Released on: Apr 9, 2025
 ([fa42cab](https://github.com/gisto/gisto/commit/fa42cab19e4987cd498f4a692ee5de09575463eb))
 
 
+### 👷 Continuous Integration
+
+- *(dependabot)* Update dependabot.yml
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([90bca8c](https://github.com/gisto/gisto/commit/90bca8c65a3f5d687dc17f2cf026bd9f79b0975f))
+
+
 ### 🛠️️ Build
 
 - *(deps)* Bump lucide-react from 0.483.0 to 0.487.0 ([#457](https://github.com/gisto/gisto/issues/457))
@@ -687,11 +792,6 @@ Released on: Apr 9, 2025
 
 
 ### ⚙️ Miscellaneous Tasks
-
-- *(dependabot)* Update dependabot.yml
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([90bca8c](https://github.com/gisto/gisto/commit/90bca8c65a3f5d687dc17f2cf026bd9f79b0975f))
 
 - *(changelog)* Use git-cliff for changelog
 ・ by Sasha Khamkov

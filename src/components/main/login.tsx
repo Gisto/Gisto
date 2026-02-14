@@ -1,8 +1,10 @@
-import { Info } from 'lucide-react';
+import { AlertTriangleIcon, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 
+import { GitHubIcon, GitLabIcon } from '@/components/icons';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
   Card,
@@ -14,25 +16,32 @@ import {
 } from '@/components/ui/card.tsx';
 import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Label } from '@/components/ui/label.tsx';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.tsx';
 import { Updater } from '@/components/updater.tsx';
 import { t } from '@/lib/i18n';
 
 type LoginProps = {
-  onTokenSubmit: (token: string) => void;
+  onTokenSubmit: (token: string, provider: 'github' | 'gitlab') => void;
   token: string | null;
   isValid: boolean | null;
 };
 
 export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
   const [newToken, setNewToken] = useState<string>('');
+  const [provider, setProvider] = useState<'github' | 'gitlab'>('github');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (newToken) {
-      onTokenSubmit(newToken);
+      onTokenSubmit(newToken, provider);
       setNewToken('');
     }
   };
+
+  const helpUrl =
+    provider === 'github'
+      ? 'https://github.com/settings/tokens/new?scopes=gist&description=Gisto%20(created%20via%20Gisto%20App)'
+      : 'https://gitlab.com/-/user_settings/personal_access_tokens?name=Gisto&scopes=api';
 
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-secondary bg-light-pattern dark:bg-dark-pattern">
@@ -53,15 +62,19 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
           <CardHeader>
             <CardTitle>{t('login.pleaseSignInUsingToken')}</CardTitle>
             <CardDescription className="flex items-center gap-2">
-              {t('login.scopeMessage')}{' '}
-              <div title={t('login.createTokenAtGithub')}>
-                <Info
+              {provider === 'github'
+                ? t('login.scopeMessageGithub')
+                : t('login.scopeMessageGitlab')}{' '}
+              <div
+                title={
+                  provider === 'github'
+                    ? t('login.createTokenAtGithub')
+                    : t('login.createTokenAtGitlab')
+                }
+              >
+                <ExternalLink
                   className="size-4 cursor-pointer"
-                  onClick={() =>
-                    window.open(
-                      'https://github.com/settings/tokens/new?scopes=gist&description=Gisto%20(created%20via%20Gisto%20App)'
-                    )
-                  }
+                  onClick={() => window.open(helpUrl)}
                 />
               </div>
             </CardDescription>
@@ -69,13 +82,67 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
           <CardContent>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="token">{t('login.githubToken')}</Label>
+                <Label htmlFor="provider">{t('pages.settings.snippetProvider')}</Label>
+                <RadioGroup
+                  id="provider"
+                  className="grid grid-cols-2 gap-3"
+                  onValueChange={(value) => setProvider(value as 'github' | 'gitlab')}
+                  value={provider}
+                >
+                  {[
+                    { value: 'github', label: 'GitHub' },
+                    { value: 'gitlab', label: 'GitLab' },
+                  ].map((option) => (
+                    <div key={option.value}>
+                      <RadioGroupItem
+                        value={option.value}
+                        id={`provider-${option.value}`}
+                        className="peer sr-only"
+                        aria-label={option.label}
+                      />
+
+                      <Label
+                        htmlFor={`provider-${option.value}`}
+                        className="cursor-pointer flex items-center justify-center gap-2 rounded-lg border-2 border-muted bg-transparent px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                      >
+                        {option.value === 'github' ? (
+                          <span className="size-4 text-current" aria-hidden="true">
+                            <GitHubIcon />
+                          </span>
+                        ) : (
+                          <span className="size-4 text-current" aria-hidden="true">
+                            <GitLabIcon />
+                          </span>
+                        )}
+                        {option.label}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+
+                {provider === 'gitlab' && (
+                  <Alert className="max-w-md mt-2 border-amber-200 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
+                    <AlertTriangleIcon size="16" />
+                    <AlertTitle>Please note!</AlertTitle>
+                    <AlertDescription>GitLab support is in it's early stages</AlertDescription>
+                  </Alert>
+                )}
+              </div>
+
+              <div className="flex flex-col space-y-1.5">
+                <Label htmlFor="token">
+                  {provider === 'github' ? t('login.githubToken') : t('login.gitlabToken')}
+                </Label>
 
                 <InputPassword
                   id="token"
                   value={newToken}
                   onChange={(e) => setNewToken(e.target.value)}
-                  placeholder={t('login.enterGithubToken')}
+                  placeholder={
+                    provider === 'github'
+                      ? t('login.enterGithubToken')
+                      : t('login.enterGitlabToken')
+                  }
                 />
                 {token !== null && !isValid && (
                   <div className="mb-4 text-xs text-destructive">{t('login.tokenNotValid')}</div>

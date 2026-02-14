@@ -8,7 +8,7 @@ import { createRoot } from 'react-dom/client';
 import { CopyToClipboardButton } from '@/components/copy-to-clipboard-button.tsx';
 import { useTheme } from '@/components/theme/theme-provider.tsx';
 import { upperCaseFirst } from '@/lib/utils';
-import { GistFileType } from '@/types/gist.ts';
+import { SnippetFileType } from '@/types/snippet.ts';
 
 const md = markdownIt({
   html: true,
@@ -90,7 +90,7 @@ const setThemeCss = (theme: string) => {
   }
 };
 
-export const Markdown = ({ file }: { file: GistFileType }) => {
+export const Markdown = ({ file }: { file: SnippetFileType }) => {
   const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
 

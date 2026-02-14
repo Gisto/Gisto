@@ -1,6 +1,6 @@
-import { GistFileType } from '@/types/gist.ts';
+import { SnippetFileType } from '@/types/snippet.ts';
 
-export const Image = ({ file }: { file: GistFileType }) => {
+export const Image = ({ file }: { file: SnippetFileType }) => {
   let src = file.raw_url;
 
   if (file.content.startsWith('data:image')) {

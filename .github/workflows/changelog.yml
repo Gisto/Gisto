@@ -30,6 +30,8 @@ jobs:
         run: pnpm install
 
       - name: Generate changelog
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm run changelog
 
       - name: Check if changelog changed

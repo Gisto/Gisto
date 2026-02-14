@@ -10,8 +10,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
 import { t } from '@/lib/i18n';
-import { copyToClipboard, previewAvailable, upperCaseFirst } from '@/lib/utils';
-import { GistFileType, GistSingleType } from '@/types/gist.ts';
+import { copyToClipboard, getLanguageName, previewAvailable, upperCaseFirst } from '@/lib/utils';
+import { SnippetFileType, SnippetSingleType } from '@/types/snippet.ts';
 
 export const Header = ({
   file,
@@ -21,8 +21,8 @@ export const Header = ({
   preview,
   setPreview,
 }: {
-  file: GistFileType;
-  snippet: GistSingleType;
+  file: SnippetFileType;
+  snippet: SnippetSingleType;
   collapsed: boolean;
   setCollapsed: (c: boolean) => void;
   preview: boolean;
@@ -82,7 +82,7 @@ export const Header = ({
       </div>
 
       <div className="flex items-center gap-2">
-        <Badge variant="primary-outline">{file.language ?? 'Text'}</Badge>
+        <Badge variant="primary-outline">{getLanguageName(file) ?? 'Text'}</Badge>
         {previewAvailable(file) && (
           <Button variant="ghost" size="icon" onClick={() => setPreview(!preview)}>
             {preview ? <Code2 className="size-4" /> : <Eye className="size-4" />}

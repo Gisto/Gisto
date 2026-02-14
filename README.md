@@ -5,7 +5,7 @@
 
 > Snippets made awesome
 
-Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor.
+Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing snippets while including a rich code editor.
 
 > [!NOTE]
 >
@@ -55,7 +55,7 @@ Previous version can be tracked via the ["master"](https://github.com/Gisto/Gist
 
 # ℹ️ About
 
-Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing gists while including a rich code editor. All your data is stored on GitHub and you can access it from GitHub Gists at any time with changes carrying over to Gisto
+Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing snippets while including a rich code editor. All your data is stored on GitHub and you can access it from GitHub Gists at any time with changes carrying over to Gisto
 
 ---
 

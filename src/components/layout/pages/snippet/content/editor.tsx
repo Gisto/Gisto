@@ -31,16 +31,17 @@ import {
   isOpenApi,
   isPDF,
   isTSV,
+  getLanguageName,
 } from '@/lib/utils';
-import { GistFileType, GistSingleType } from '@/types/gist.ts';
+import { SnippetFileType, SnippetSingleType } from '@/types/snippet.ts';
 
 export const Editor = ({
   file,
   snippet,
   preview,
 }: {
-  file: GistFileType;
-  snippet: GistSingleType;
+  file: SnippetFileType;
+  snippet: SnippetSingleType;
   preview: boolean;
 }) => {
   const settings = useStoreValue('settings');
@@ -145,7 +146,7 @@ export const Editor = ({
       beforeMount={handleEditorWillMount}
       height={height}
       theme={getEditorTheme()}
-      defaultLanguage={languageMap[file.language || file.filename.split('.')[1]] ?? 'text'}
+      defaultLanguage={languageMap[getLanguageName(file) || file.filename.split('.')[1]] ?? 'text'}
       defaultValue={file.content}
     />
   );
