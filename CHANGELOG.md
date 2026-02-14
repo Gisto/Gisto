@@ -2,6 +2,26 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🚀 Features
+
+- *(search)* Add tags and languages autocompletion
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([29ad3a3](https://github.com/gisto/gisto/commit/29ad3a3f4202bddac033b37e46096010a51dfe0d))
+
+
+### 🐛 Bug Fixes
+
+- *(dashboard)* Cards layout
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([5e1dc2d](https://github.com/gisto/gisto/commit/5e1dc2d217f5111560096b0378b093a020d84061))
+
+
 ## v2.5.0
 
 Released on: Feb 14, 2026
