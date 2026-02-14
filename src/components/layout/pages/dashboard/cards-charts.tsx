@@ -43,9 +43,11 @@ export const CardsCharts = () => {
   ];
 
   const numberOfCards = cardCharts.filter((c) => c.show).length;
+  const gridCols = `${numberOfCards === 4 ? 2 : 3}`;
+  const largeGridCols = `lg:grid-cols-${numberOfCards}`;
 
   return (
-    <div className={`grid gap-4 grid-cols-${numberOfCards} lg:grid-cols-${numberOfCards} mb-8`}>
+    <div className={`grid gap-4 ${gridCols} ${largeGridCols} mb-8`}>
       {cardCharts
         .filter((chart) => chart.show)
         .map((chart) => (
