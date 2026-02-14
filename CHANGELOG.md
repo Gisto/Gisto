@@ -8,15 +8,20 @@ All significant updates and improvements
 
 ### 🚀 Features
 
+- *(snippets)* Initial gitlab support
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([8f5af43](https://github.com/gisto/gisto/commit/8f5af431a0055d6a9dddcd36fbb57cafc6368d70))
+
 - *(user)* Add user info to sidebar
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([4dc4a3a](https://github.com/gisto/gisto/commit/4dc4a3a5d0c22ec6c41b508e05a7b98f7b5cd139))
+([1a1869f](https://github.com/gisto/gisto/commit/1a1869f44c7cbff0701a15c77d2047d4c56f8ba6))
 
 - *(editor)* Add more editor settings
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([a923257](https://github.com/gisto/gisto/commit/a92325798e8fc33cbf31aedb75202782e3b8a524))
+([5be2325](https://github.com/gisto/gisto/commit/5be2325b7572581aa8672328702c3758fbc11f52))
 
 
 ### 🐛 Bug Fixes
@@ -24,12 +29,12 @@ All significant updates and improvements
 - *(search)* Add debounce to make search smoother
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([557a2a8](https://github.com/gisto/gisto/commit/557a2a8d2788bde8a53f4b511e6d99b30b3b6c17))
+([73cc46a](https://github.com/gisto/gisto/commit/73cc46aa7300e924d8060a8b4e1be578f48341c8))
 
 - *(dashboard)* Adjust sizes and spacing
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([4eebac9](https://github.com/gisto/gisto/commit/4eebac9a6df6edbb37c1897d9608123c41a4c61d))
+([bff4013](https://github.com/gisto/gisto/commit/bff401375c962aa1100bcedfffc799d0a25ccc7a))
 
 
 ### 👷 Continuous Integration
@@ -42,7 +47,7 @@ All significant updates and improvements
 - *(changelog)* Authenticate changelog generator
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([b1925d7](https://github.com/gisto/gisto/commit/b1925d7cdd0c9ffdb7cdad0704c1994629aa13cb))
+([9790a7e](https://github.com/gisto/gisto/commit/9790a7e098f45b998cce6981dce21b4acf4113e1))
 
 
 ### 🛠️️ Build
@@ -88,15 +93,7 @@ All significant updates and improvements
 - *(snippets)* Refactor names to align with any snippet provider
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
-([f9be626](https://github.com/gisto/gisto/commit/f9be626b04eedd77bcb2e57b34ecf4bf03b6c47a))
-
-
-### ⚙️ Miscellaneous Tasks
-
-- Poc gitlab support
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([c900d89](https://github.com/gisto/gisto/commit/c900d892c9d466f021756edcef13f712394885c2))
+([ef9e0a0](https://github.com/gisto/gisto/commit/ef9e0a0fbac2e7e99e95ae0f00aba92fa1814813))
 
 
 ## v2.4.4
