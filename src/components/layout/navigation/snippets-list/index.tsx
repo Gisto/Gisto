@@ -1,27 +1,16 @@
-import {
-  FileCode,
-  Filter,
-  FilterX,
-  RefreshCcw,
-  Search,
-  SidebarClose,
-  SidebarOpen,
-  Info,
-} from 'lucide-react';
-import React, { useCallback, useMemo, useState, useEffect } from 'react';
+import { FileCode, Filter, FilterX, RefreshCcw, SidebarClose, SidebarOpen } from 'lucide-react';
+import { useCallback, useMemo } from 'react';
 
 import { ListItem } from '@/components/layout/navigation/snippets-list/item.tsx';
+import { SearchInput } from '@/components/layout/navigation/snippets-list/search-input.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Loading } from '@/components/loading.tsx';
 import { Button } from '@/components/ui/button.tsx';
-import { Input } from '@/components/ui/input.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
-import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
 import { t } from '@/lib/i18n';
-import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { searchFilter } from '@/lib/utils';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
@@ -60,30 +49,10 @@ export const Lists = ({
   const allSnippets = useStoreValue('snippets');
   const search = useStoreValue('search');
   const apiRateLimits = useStoreValue('apiRateLimits');
-  const [localSearch, setLocalSearch] = useState(search);
-
-  // Sync local state with global state when it changes externally
-  useEffect(() => {
-    setLocalSearch(search);
-  }, [search]);
 
   const handleCollapse = useCallback(() => {
     setIsCollapsed(!isCollapsed);
   }, [isCollapsed, setIsCollapsed]);
-
-  const handleSearch = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setLocalSearch(value);
-  }, []);
-
-  // Debounce global state update
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      globalState.setState({ search: localSearch });
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [localSearch]);
 
   // Memoize filtered results using only the debounced global search
   const listOfSnippets = useMemo(() => {
@@ -109,65 +78,13 @@ export const Lists = ({
             <SidebarOpen className="size-4 transition-transform duration-300 ease-in-out" />
           )}
         </Button>
-        <div className="relative w-full">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder={t('list.searchSnippets', { number: allSnippets.length })}
-            className="pl-8 w-full"
-            type="search"
-            value={localSearch}
-            onChange={handleSearch}
-          />
-          {!localSearch && (
-            <Tooltip>
-              <TooltipTrigger className="absolute right-2 top-2.5 h-4 w-4 text-muted-foreground">
-                <Info className="size-4 text-muted-foreground" />
-              </TooltipTrigger>
-              <TooltipContent align="start">
-                <div
-                  className="text-sm"
-                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.title') }}
-                />
-                <br />
-                <div
-                  className="text-xs mb-2"
-                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.description') }}
-                />
-                <div
-                  className="text-xs mb-2"
-                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.tags') }}
-                />
-                <div
-                  className="text-xs mb-2"
-                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.language') }}
-                />
-                {snippetService.capabilities.supportsStars && (
-                  <div
-                    className="text-xs mb-2"
-                    dangerouslySetInnerHTML={{ __html: t('list.searchHelp.stars') }}
-                  />
-                )}
-                <div
-                  className="text-xs mb-2"
-                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.visibility') }}
-                />
-                <div
-                  className="text-xs mb-2"
-                  dangerouslySetInnerHTML={{ __html: t('list.searchHelp.untagged') }}
-                />
-                <Separator className="mt-4 mb-2" />
-                <div className="flex gap-2 items-center">{t('list.searchHelp.tip')}</div>
-              </TooltipContent>
-            </Tooltip>
-          )}
-        </div>
+        <SearchInput allSnippets={allSnippets} />
 
         <Button
           disabled={!search}
           variant="ghost"
           size="icon"
           onClick={() => {
-            setLocalSearch('');
             globalState.setState({ search: '' });
           }}
         >
