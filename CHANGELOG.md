@@ -46,6 +46,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([c1a2f15](https://github.com/gisto/gisto/commit/c1a2f1594f92a3eb1fbe51aef3e57a6836083878))
 
+- *(deps)* Bump markdown-it ([#563](https://github.com/gisto/gisto/issues/563))
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([21164cf](https://github.com/gisto/gisto/commit/21164cfdcc36511dcec1c6ce6a0d3a85010a440b))
+
 
 ## v2.4.4
 
