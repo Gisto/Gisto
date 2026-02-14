@@ -50,3 +50,23 @@ export const searchFilter = (search: string, currentSnippets: SnippetEnrichedTyp
     });
   });
 };
+
+export const getAllTags = (snippets: SnippetEnrichedType[]): string[] => {
+  const tagsSet = new Set<string>();
+  snippets.forEach((snippet) => {
+    snippet.tags.forEach((tag) => {
+      tagsSet.add(tag.replace('#', ''));
+    });
+  });
+  return Array.from(tagsSet).sort();
+};
+
+export const getAllLanguages = (snippets: SnippetEnrichedType[]): string[] => {
+  const languagesSet = new Set<string>();
+  snippets.forEach((snippet) => {
+    snippet.languages.forEach((lang) => {
+      languagesSet.add(lang.name);
+    });
+  });
+  return Array.from(languagesSet).sort();
+};
