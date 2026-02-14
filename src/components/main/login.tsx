@@ -1,9 +1,10 @@
-import { ExternalLink } from 'lucide-react';
+import { AlertTriangleIcon, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 
 import { GitHubIcon, GitLabIcon } from '@/components/icons';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
   Card,
@@ -99,6 +100,7 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
                         className="peer sr-only"
                         aria-label={option.label}
                       />
+
                       <Label
                         htmlFor={`provider-${option.value}`}
                         className="cursor-pointer flex items-center justify-center gap-2 rounded-lg border-2 border-muted bg-transparent px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
@@ -117,7 +119,16 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
                     </div>
                   ))}
                 </RadioGroup>
+
+                {provider === 'gitlab' && (
+                  <Alert className="max-w-md mt-2 border-amber-200 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
+                    <AlertTriangleIcon size="16" />
+                    <AlertTitle>Please note!</AlertTitle>
+                    <AlertDescription>GitLab support is in it's early stages</AlertDescription>
+                  </Alert>
+                )}
               </div>
+
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="token">
                   {provider === 'github' ? t('login.githubToken') : t('login.gitlabToken')}

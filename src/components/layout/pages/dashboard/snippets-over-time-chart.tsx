@@ -48,7 +48,7 @@ function generateChartData(list: SnippetEnrichedType[], period = '6months') {
       startDate.setFullYear(startDate.getFullYear() - 1);
       break;
     default:
-      throw new Error('Invalid period');
+      startDate.setFullYear(startDate.getFullYear() - 1);
   }
 
   const dateMap = new Map();
@@ -133,7 +133,7 @@ export const SnippetsOverTimeChart = () => {
         </div>
       </CardHeader>
       <CardContent className="px-2 sm:p-6">
-        <ChartContainer config={chartConfig} className="w-full h-[300px]">
+        <ChartContainer config={chartConfig} className="w-full h-50">
           <BarChart accessibilityLayer data={generateChartData(list, range)}>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -170,60 +170,6 @@ export const SnippetsOverTimeChart = () => {
             <Bar barSize={10} dataKey="public" stackId="a" fill="var(--color-public)" />
           </BarChart>
         </ChartContainer>
-
-        {/*<ChartContainer config={chartConfig}>*/}
-        {/*  <AreaChart*/}
-        {/*    accessibilityLayer*/}
-        {/*    data={generateChartData(list)}*/}
-        {/*    margin={{*/}
-        {/*      left: 12,*/}
-        {/*      right: 12,*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    <CartesianGrid vertical={false} />*/}
-        {/*    <XAxis*/}
-        {/*      dataKey="date"*/}
-        {/*      tickLine={false}*/}
-        {/*      axisLine={false}*/}
-        {/*      tickMargin={8}*/}
-        {/*      minTickGap={32}*/}
-        {/*      tickFormatter={(value) => {*/}
-        {/*        const date = new Date(value);*/}
-        {/*        return date.toLocaleDateString('en-US', {*/}
-        {/*          month: 'short',*/}
-        {/*          day: 'numeric',*/}
-        {/*        });*/}
-        {/*      }}*/}
-        {/*    />*/}
-        {/*    <ChartTooltip cursor={false} content={<ChartTooltipContent />} />*/}
-        {/*    <defs>*/}
-        {/*      <linearGradient id="fillPrivate" x1="0" y1="0" x2="0" y2="1">*/}
-        {/*        <stop offset="5%" stopColor="var(--color-private)" stopOpacity={0.8} />*/}
-        {/*        <stop offset="95%" stopColor="var(--color-private)" stopOpacity={0.1} />*/}
-        {/*      </linearGradient>*/}
-        {/*      <linearGradient id="fillPublic" x1="0" y1="0" x2="0" y2="1">*/}
-        {/*        <stop offset="5%" stopColor="var(--color-public)" stopOpacity={0.8} />*/}
-        {/*        <stop offset="95%" stopColor="var(--color-public)" stopOpacity={0.1} />*/}
-        {/*      </linearGradient>*/}
-        {/*    </defs>*/}
-        {/*    <Area*/}
-        {/*      dataKey="public"*/}
-        {/*      type="natural"*/}
-        {/*      fill="url(#fillPublic)"*/}
-        {/*      fillOpacity={0.4}*/}
-        {/*      stroke="var(--color-public)"*/}
-        {/*      stackId="a"*/}
-        {/*    />*/}
-        {/*    <Area*/}
-        {/*      dataKey="private"*/}
-        {/*      type="natural"*/}
-        {/*      fill="url(#fillPrivate)"*/}
-        {/*      fillOpacity={0.4}*/}
-        {/*      stroke="var(--color-private)"*/}
-        {/*      stackId="a"*/}
-        {/*    />*/}
-        {/*  </AreaChart>*/}
-        {/*</ChartContainer>*/}
       </CardContent>
     </Card>
   );
