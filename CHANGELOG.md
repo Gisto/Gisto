@@ -6,12 +6,43 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(user)* Add user info to sidebar
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([4dc4a3a](https://github.com/gisto/gisto/commit/4dc4a3a5d0c22ec6c41b508e05a7b98f7b5cd139))
+
+- *(editor)* Add more editor settings
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([a923257](https://github.com/gisto/gisto/commit/a92325798e8fc33cbf31aedb75202782e3b8a524))
+
+
+### 🐛 Bug Fixes
+
+- *(search)* Add debounce to make search smoother
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([557a2a8](https://github.com/gisto/gisto/commit/557a2a8d2788bde8a53f4b511e6d99b30b3b6c17))
+
+- *(dashboard)* Adjust sizes and spacing
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([4eebac9](https://github.com/gisto/gisto/commit/4eebac9a6df6edbb37c1897d9608123c41a4c61d))
+
+
 ### 👷 Continuous Integration
 
 - Automate-release workflow to explicitly trigger the release (publish) workflow
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([97417c6](https://github.com/gisto/gisto/commit/97417c68340359bd6546629254a776c626717ab7))
+
+- *(changelog)* Authenticate changelog generator
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([b1925d7](https://github.com/gisto/gisto/commit/b1925d7cdd0c9ffdb7cdad0704c1994629aa13cb))
 
 
 ### 🛠️️ Build
@@ -50,6 +81,22 @@ All significant updates and improvements
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([21164cf](https://github.com/gisto/gisto/commit/21164cfdcc36511dcec1c6ce6a0d3a85010a440b))
+
+
+### 🚜 Refactor
+
+- *(snippets)* Refactor names to align with any snippet provider
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([f9be626](https://github.com/gisto/gisto/commit/f9be626b04eedd77bcb2e57b34ecf4bf03b6c47a))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Poc gitlab support
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([c900d89](https://github.com/gisto/gisto/commit/c900d892c9d466f021756edcef13f712394885c2))
 
 
 ## v2.4.4
