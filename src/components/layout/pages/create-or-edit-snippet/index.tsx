@@ -474,7 +474,7 @@ export const CreateOrEditSnippet = ({
                             language={
                               languageMap[file?.language ?? settings.newSnippetDefaultLanguage]
                             }
-                            path={`model-${index}-${new Date().getTime()}`}
+                            path={`file-${index}`}
                           />
                         </div>
                       </CardContent>
