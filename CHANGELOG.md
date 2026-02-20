@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(snippets)* Add local snippets service
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([d136dbc](https://github.com/gisto/gisto/commit/d136dbcae8c87c378a135d8e485d1a406be0fe8a))
+
+
 ### 🐛 Bug Fixes
 
 - *(editor)* Editor cursor position get reset
