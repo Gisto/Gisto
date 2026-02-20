@@ -130,7 +130,11 @@
       "uiLanguage": "UI-Sprache (experimentell)",
       "experimentalTranslation": "Experimentell, maschinell übersetzt, einige Übersetzungen sind ungenau oder nicht verfügbar.",
       "getApiKey": "Erhalten Sie Ihren {provider} API-Schlüssel unter {url}.",
-      "apiKeyPlaceholder": "Ihr API-Schlüssel"
+      "apiKeyPlaceholder": "Ihr API-Schlüssel",
+      "localDatabase": "Lokale Datenbank",
+      "localDatabaseDescription": "Exportieren oder importieren Sie Ihre lokalen Snippets. Der Import wird mit vorhandenen Daten zusammengeführt.",
+      "export": "Exportieren",
+      "import": "Importieren"
     },
     "snippet": {
       "fileTooLarge": "Datei zu groß",
@@ -184,10 +188,22 @@
     "scopeMessage": "Nur Berechtigung „gists“ nötig",
     "scopeMessageGithub": "Nur Berechtigung „gist“ nötig für GitHub",
     "scopeMessageGitlab": "Nur Berechtigung „api“ nötig für GitLab",
+    "scopeMessageLocal": "Snippets lokal mit IndexedDB speichern",
     "createTokenAtGithub": "Token auf GitHub erstellen",
+    "createTokenAtGitlab": "Token auf GitLab erstellen",
     "githubToken": "GitHub-Token",
+    "gitlabToken": "GitLab-Token",
     "enterGithubToken": "Token eingeben",
-    "signIn": "Anmelden"
+    "enterGitlabToken": "GitLab-Token eingeben",
+    "signIn": "Anmelden",
+    "continue": "Weiter",
+    "localWarning": "Lokale Browser-Datenbank",
+    "localDescription": "Ihre Snippets werden lokal mit IndexedDB gespeichert. Kein Konto erforderlich. Sie können sie aus den Einstellungen importieren/exportieren.",
+    "gitlabWarning": "Bitte beachten!",
+    "gitlabWarningDescription": "GitLab-Unterstützung befindet sich in einem frühen Stadium",
+    "providerGithub": "GitHub",
+    "providerGitlab": "GitLab",
+    "providerLocal": "Lokal"
   },
   "api": {
     "starRemoved": "Markierung entfernt",

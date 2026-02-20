@@ -130,7 +130,11 @@
       "uiLanguage": "Langue de l'interface (expérimental)",
       "experimentalTranslation": "Expérimental, traduit par machine, certaines traductions ne sont pas précises ou non disponibles.",
       "getApiKey": "Obtenez votre clé API {provider} sur {url}.",
-      "apiKeyPlaceholder": "votre clé api"
+      "apiKeyPlaceholder": "votre clé api",
+      "localDatabase": "Base de données locale",
+      "localDatabaseDescription": "Exportez ou importez vos snippets locaux. L'importation fusionnera avec les données existantes.",
+      "export": "Exporter",
+      "import": "Importer"
     },
     "snippet": {
       "fileTooLarge": "Fichier trop volumineux",
@@ -181,13 +185,25 @@
     "tokenNotValid": "Jeton non valide",
     "checkingToken": "Vérification du jeton",
     "pleaseSignInUsingToken": "Veuillez vous connecter avec un jeton GitHub",
-    "scopeMessage": "Seule l’autorisation \"gists\" est requise",
-    "scopeMessageGithub": "Seule l’autorisation \"gist\" est requise pour GitHub",
-    "scopeMessageGitlab": "Seule l’autorisation \"api\" est requise pour GitLab",
+    "scopeMessage": "Seule l'autorisation \"gists\" est requise",
+    "scopeMessageGithub": "Seule l'autorisation \"gist\" est requise pour GitHub",
+    "scopeMessageGitlab": "Seule l'autorisation \"api\" est requise pour GitLab",
+    "scopeMessageLocal": "Stockez les snippets localement avec IndexedDB",
     "createTokenAtGithub": "Créer un jeton sur GitHub",
+    "createTokenAtGitlab": "Créer un jeton sur GitLab",
     "githubToken": "Jeton GitHub",
+    "gitlabToken": "Jeton GitLab",
     "enterGithubToken": "Entrez le jeton GitHub",
-    "signIn": "Se connecter"
+    "enterGitlabToken": "Entrez le jeton GitLab",
+    "signIn": "Se connecter",
+    "continue": "Continuer",
+    "localWarning": "Base de données locale dans le navigateur",
+    "localDescription": "Vos snippets seront stockés localement avec IndexedDB. Pas de compte requis. Vous pouvez les importer/exporter depuis les paramètres.",
+    "gitlabWarning": "Veuillez noter !",
+    "gitlabWarningDescription": "Le support GitLab est à ses début",
+    "providerGithub": "GitHub",
+    "providerGitlab": "GitLab",
+    "providerLocal": "Local"
   },
   "api": {
     "starRemoved": "Favori supprimé",

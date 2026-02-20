@@ -2,13 +2,15 @@ import { SnippetProvider } from './types';
 
 import { GithubApi } from '@/lib/api/github-api.ts';
 import { GitlabApi } from '@/lib/api/gitlab-api.ts';
+import { LocalApi } from '@/lib/api/local-api.ts';
 import { globalState } from '@/lib/store/globalState';
 
-type SnippetProviderKey = 'github' | 'gitlab';
+type SnippetProviderKey = 'github' | 'gitlab' | 'local';
 
 const SNIPPET_PROVIDERS: Record<SnippetProviderKey, SnippetProvider<unknown, unknown>> = {
   github: GithubApi as SnippetProvider<unknown, unknown>,
   gitlab: GitlabApi as SnippetProvider<unknown, unknown>,
+  local: LocalApi as SnippetProvider<unknown, unknown>,
 };
 
 function resolveProvider(activeProvider?: string): SnippetProvider<unknown, unknown> {

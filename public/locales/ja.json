@@ -130,7 +130,11 @@
       "uiLanguage": "UI言語（実験的）",
       "experimentalTranslation": "実験的、機械翻訳、一部の翻訳は正確でない、または利用できません。",
       "getApiKey": "{url}であなたの{provider} APIキーを取得します。",
-      "apiKeyPlaceholder": "あなたのAPIキー"
+      "apiKeyPlaceholder": "あなたのAPIキー",
+      "localDatabase": "ローカルデータベース",
+      "localDatabaseDescription": "ローカルのスニペットをエクスポートまたはインポートします。インポートは既存のデータとマージされます。",
+      "export": "エクスポート",
+      "import": "インポート"
     },
     "snippet": {
       "fileTooLarge": "ファイルが大きすぎます。してください",
@@ -184,10 +188,22 @@
     "scopeMessage": "「gists」スコープのみが必須です",
     "scopeMessageGithub": "GitHubは「gist」スコープのみ必須です",
     "scopeMessageGitlab": "GitLabは「api」スコープのみ必須です",
+    "scopeMessageLocal": "IndexedDBを使用してスニペットをローカルに保存",
     "createTokenAtGithub": "Githubでトークンを作成",
+    "createTokenAtGitlab": "GitLabでトークンを作成",
     "githubToken": "GitHubトークン",
+    "gitlabToken": "GitLabトークン",
     "enterGithubToken": "GitHubトークンを入力",
-    "signIn": "サインイン"
+    "enterGitlabToken": "GitLabトークンを入力",
+    "signIn": "サインイン",
+    "continue": "続行",
+    "localWarning": "ブラウザ内ローカルデータベース",
+    "localDescription": "スニペットはIndexedDBを使用してローカルに保存されます。アカウントは不要です。設定からインポート/エクスポートできます。",
+    "gitlabWarning": "注意点",
+    "gitlabWarningDescription": "GitLabサポートはまだ初期段階です",
+    "providerGithub": "GitHub",
+    "providerGitlab": "GitLab",
+    "providerLocal": "ローカル"
   },
   "api": {
     "starRemoved": "スターが削除されました",

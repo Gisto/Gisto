@@ -130,7 +130,11 @@
       "uiLanguage": "Язык интерфейса (экспериментально)",
       "experimentalTranslation": "Экспериментально, машинный перевод, некоторые переводы неточны или недоступны.",
       "getApiKey": "Получите API ключ {provider} на {url}.",
-      "apiKeyPlaceholder": "ваш api ключ"
+      "apiKeyPlaceholder": "ваш api ключ",
+      "localDatabase": "Локальная база данных",
+      "localDatabaseDescription": "Экспортируйте или импортируйте ваши локальные сниппеты. Импорт объединится с существующими данными.",
+      "export": "Экспорт",
+      "import": "Импорт"
     },
     "snippet": {
       "fileTooLarge": "Файл слишком большой, выберите другой",
@@ -184,10 +188,22 @@
     "scopeMessage": "Требуется только \"gists\" scope",
     "scopeMessageGithub": "Требуется только \"gist\" scope для GitHub",
     "scopeMessageGitlab": "Требуется только \"api\" scope для GitLab",
+    "scopeMessageLocal": "Храните сниппеты локально с помощью IndexedDB",
     "createTokenAtGithub": "Создать токен на Github",
+    "createTokenAtGitlab": "Создать токен на GitLab",
     "githubToken": "GitHub токен",
+    "gitlabToken": "GitLab токен",
     "enterGithubToken": "Введите GitHub токен",
-    "signIn": "Войти"
+    "enterGitlabToken": "Введите GitLab токен",
+    "signIn": "Войти",
+    "continue": "Продолжить",
+    "localWarning": "Локальная база данных в браузере",
+    "localDescription": "Ваши сниппеты будут храниться локально с помощью IndexedDB. Аккаунт не требуется. Вы можете импортировать/экспортировать их из настроек.",
+    "gitlabWarning": "Пожалуйста, обратите внимание!",
+    "gitlabWarningDescription": "Поддержка GitLab находится на ранней стадии",
+    "providerGithub": "GitHub",
+    "providerGitlab": "GitLab",
+    "providerLocal": "Локально"
   },
   "api": {
     "starRemoved": "Звезда снята",

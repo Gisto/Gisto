@@ -50,6 +50,8 @@
     "@tauri-apps/plugin-updater": "~2.9.0",
     "@tauri-apps/plugin-window-state": "~2.4.1",
     "class-variance-authority": "^0.7.1",
+    "dexie": "^4.3.0",
+    "dexie-export-import": "^4.1.4",
     "dirty-react-router": "^0.1.0",
     "gisto": "link:",
     "highlight.js": "^11.11.1",
