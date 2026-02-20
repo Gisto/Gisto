@@ -1,7 +1,7 @@
 import { SnippetProvider } from './types';
 
-import { GithubApi } from '@/lib/github-api';
-import { GitlabApi } from '@/lib/gitlab-api';
+import { GithubApi } from '@/lib/api/github-api.ts';
+import { GitlabApi } from '@/lib/api/gitlab-api.ts';
 import { globalState } from '@/lib/store/globalState';
 
 type SnippetProviderKey = 'github' | 'gitlab';

@@ -10,7 +10,7 @@ import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
 import { useIsOnline } from '@/hooks/use-is-online.tsx';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 
 export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
   const online = useIsOnline();

@@ -1,8 +1,11 @@
-import { version } from '../../package.json';
-
-import { requestApi } from './providers/request-utils';
-import { buildGitlabDescription, guessLanguage, guessMimeType } from './providers/snippet-utils';
-import { SnippetProvider } from './providers/types';
+import { version } from '../../../package.json';
+import { requestApi } from '../providers/request-utils.ts';
+import {
+  buildGitlabDescription,
+  guessLanguage,
+  guessMimeType,
+} from '../providers/snippet-utils.ts';
+import { SnippetProvider } from '../providers/types.ts';
 
 import { toast } from '@/components/toast';
 import { ITEMS_PER_PAGE } from '@/constants';

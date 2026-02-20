@@ -8,7 +8,7 @@ import {
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { upperCaseFirst } from '@/lib/utils';
+import { cn, upperCaseFirst } from '@/utils';
 
 export const CardsCharts = () => {
   const list = useStoreValue('snippets');
@@ -43,11 +43,11 @@ export const CardsCharts = () => {
   ];
 
   const numberOfCards = cardCharts.filter((c) => c.show).length;
-  const gridCols = `${numberOfCards === 4 ? 2 : 3}`;
+  const gridCols = `grid-cols-${numberOfCards === 4 ? 2 : 3}`;
   const largeGridCols = `lg:grid-cols-${numberOfCards}`;
 
   return (
-    <div className={`grid gap-4 ${gridCols} ${largeGridCols} mb-8`}>
+    <div className={cn('grid gap-4 mb-8', gridCols, largeGridCols)}>
       {cardCharts
         .filter((chart) => chart.show)
         .map((chart) => (

@@ -7,8 +7,8 @@ import { createRoot } from 'react-dom/client';
 
 import { CopyToClipboardButton } from '@/components/copy-to-clipboard-button.tsx';
 import { useTheme } from '@/components/theme/theme-provider.tsx';
-import { upperCaseFirst } from '@/lib/utils';
 import { SnippetFileType } from '@/types/snippet.ts';
+import { upperCaseFirst } from '@/utils';
 
 const md = markdownIt({
   html: true,

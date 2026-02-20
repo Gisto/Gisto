@@ -7,7 +7,7 @@ import ToastManager from './toast-manager';
 
 import { EVENT_NAME } from './';
 
-import { randomString } from '@/lib/utils';
+import { randomString } from '@/utils';
 
 mockUtils();
 

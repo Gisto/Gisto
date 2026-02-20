@@ -25,7 +25,7 @@ import {
   getCountryNameFromLanguage,
   getFlagEmojiFromLanguage,
   upperCaseFirst,
-} from '@/lib/utils';
+} from '@/utils';
 
 interface SettingsProps {
   settings: Omit<SettingsType, 'editor'> | SettingsType['editor'] | Record<string, unknown>;

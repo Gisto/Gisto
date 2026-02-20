@@ -1,6 +1,6 @@
 import { vi, MockedFunction } from 'vitest';
 
-import { GitlabApi } from './gitlab-api';
+import { GitlabApi } from './gitlab-api.ts';
 
 describe('GitlabApi', () => {
   const originalFetch = global.fetch;
@@ -116,7 +116,7 @@ describe('GitlabApi', () => {
           title: 'Multiple Files',
           files: [
             { path: 'file1.txt', raw_url: rawUrl1 },
-            { path: 'file2.txt', raw_url: rawUrl2 }
+            { path: 'file2.txt', raw_url: rawUrl2 },
           ],
           author: { username: 'testuser' },
         }),
@@ -231,24 +231,24 @@ describe('GitlabApi', () => {
           web_url: 'https://gitlab.com/snippets/123',
           files: [
             { path: 'file1.txt', content: 'Content 1', raw_url: '' },
-            { path: 'file2.txt', content: 'Content 2', raw_url: '' }
+            { path: 'file2.txt', content: 'Content 2', raw_url: '' },
           ],
           created_at: '2023-01-01T00:00:00Z',
-          updated_at: '2023-01-01T00:00:00Z'
+          updated_at: '2023-01-01T00:00:00Z',
         },
         headers: new Headers(),
-        status: 201
+        status: 201,
       });
 
       const files = {
         'file1.txt': { content: 'Content 1' },
-        'file2.txt': { content: 'Content 2' }
+        'file2.txt': { content: 'Content 2' },
       };
 
       await GitlabApi.createSnippet({
         files,
         description: 'Test Description',
-        isPublic: true
+        isPublic: true,
       });
 
       expect(requestMock).toHaveBeenCalledWith({
@@ -260,9 +260,9 @@ describe('GitlabApi', () => {
           visibility: 'public',
           files: [
             { file_path: 'file1.txt', content: 'Content 1' },
-            { file_path: 'file2.txt', content: 'Content 2' }
-          ]
-        }
+            { file_path: 'file2.txt', content: 'Content 2' },
+          ],
+        },
       });
     });
   });

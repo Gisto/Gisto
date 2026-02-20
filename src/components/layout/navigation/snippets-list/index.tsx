@@ -12,8 +12,8 @@ import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
 import { t } from '@/lib/i18n';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { searchFilter } from '@/lib/utils';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
+import { searchFilter } from '@/utils';
 const LazyListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
   const [isInView, ref] = useIntersectionObserver<HTMLDivElement>();
 

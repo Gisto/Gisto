@@ -2,9 +2,9 @@ import { z } from 'zod';
 
 import { globalState } from '@/lib/store/globalState.ts';
 
-export * from './string';
-export * from './snippet';
-export * from './search';
+export * from './string.ts';
+export * from './snippet.ts';
+export * from './search.ts';
 
 export function cn(...classes: (string | undefined | null | false)[]) {
   return classes.filter(Boolean).join(' ');

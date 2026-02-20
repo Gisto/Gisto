@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import { upperCaseFirst, camelToTitleCase, snakeToTitleCase, randomString } from './string';
+import { upperCaseFirst, camelToTitleCase, snakeToTitleCase, randomString } from './string.ts';
 
 describe('upperCaseFirst', () => {
   it('converts the first character to uppercase', () => {

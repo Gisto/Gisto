@@ -7,7 +7,7 @@ import { Lists } from '@/components/layout/navigation/snippets-list';
 import { PATHS_WITHOUT_SNIPPET_LIST } from '@/constants';
 import { useIsMobile } from '@/hooks/use-mobile.tsx';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 
 export const MainLayout = () => {
   const settings = useStoreValue('settings');

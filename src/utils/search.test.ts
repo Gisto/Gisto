@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import { searchFilter } from './search';
+import { searchFilter } from './search.ts';
 
 import { SnippetEnrichedType } from '@/types/snippet.ts';
 

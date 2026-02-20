@@ -11,9 +11,9 @@ import {
   isMarkdown,
   previewAvailable,
   formatSnippetForSaving,
-} from './snippet';
+} from './snippet.ts';
 
-import { SnippetFileType, SnippetType, SnippetSingleType } from '@/types/snippet';
+import { SnippetFileType, SnippetType, SnippetSingleType } from '@/types/snippet.ts';
 
 type MockSnippet = {
   id: string;
@@ -132,11 +132,13 @@ describe('snippet utils', () => {
 
   describe('previewAvailable', () => {
     it('should return true for supported formats', () => {
-      expect(previewAvailable({ language: 'HTML', type: 'text/html' } as SnippetFileType)).toBe(true);
-      expect(previewAvailable({ type: 'image/png' } as SnippetFileType)).toBe(true);
-      expect(previewAvailable({ language: 'JavaScript', type: 'text/plain' } as SnippetFileType)).toBe(
-        false
+      expect(previewAvailable({ language: 'HTML', type: 'text/html' } as SnippetFileType)).toBe(
+        true
       );
+      expect(previewAvailable({ type: 'image/png' } as SnippetFileType)).toBe(true);
+      expect(
+        previewAvailable({ language: 'JavaScript', type: 'text/plain' } as SnippetFileType)
+      ).toBe(false);
     });
 
     it('should not crash if type is missing', () => {

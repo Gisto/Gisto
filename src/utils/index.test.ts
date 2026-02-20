@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { z } from 'zod';
 
-import { cn, copyToClipboard, formatZodErrors, getEditorTheme } from './index';
+import { cn, copyToClipboard, formatZodErrors, getEditorTheme } from './index.ts';
 
 import { globalState } from '@/lib/store/globalState.ts';
 

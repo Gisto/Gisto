@@ -2,9 +2,9 @@ import { motion } from 'motion/react';
 import { ReactNode, useState } from 'react';
 
 import { ActionType } from '@/components/layout/pages/create-or-edit-snippet/reducer.ts';
-import { handleMultipleFilesUpload } from '@/lib/file-upload-utils.ts';
 import { t } from '@/lib/i18n';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
+import { handleMultipleFilesUpload } from '@/utils/file-upload.ts';
 
 type DropZoneOverlayProps = {
   children: ReactNode;

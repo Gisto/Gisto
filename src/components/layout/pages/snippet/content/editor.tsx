@@ -19,6 +19,7 @@ import { EDITOR_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
+import { SnippetFileType, SnippetSingleType } from '@/types/snippet.ts';
 import {
   getEditorTheme,
   isCSV,
@@ -32,8 +33,7 @@ import {
   isPDF,
   isTSV,
   getLanguageName,
-} from '@/lib/utils';
-import { SnippetFileType, SnippetSingleType } from '@/types/snippet.ts';
+} from '@/utils';
 
 export const Editor = ({
   file,

@@ -7,8 +7,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { cn, getAllLanguages, getAllTags } from '@/lib/utils';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
+import { cn, getAllLanguages, getAllTags } from '@/utils';
 
 interface SearchInputProps {
   allSnippets: SnippetEnrichedType[];

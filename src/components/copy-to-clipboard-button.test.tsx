@@ -4,7 +4,7 @@ import { vi } from 'vitest';
 import { mockUtils } from '../../test/mockUtils.ts';
 
 import { CopyToClipboardButton } from '@/components/copy-to-clipboard-button';
-import { copyToClipboard } from '@/lib/utils';
+import { copyToClipboard } from '@/utils';
 
 describe('CopyToClipboardButton', () => {
   beforeEach(() => {

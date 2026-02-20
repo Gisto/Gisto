@@ -6,7 +6,7 @@ import { mockUtils } from '../../test/mockUtils.ts';
 import { AllTags } from './all-tags';
 
 import { useStoreValue } from '@/lib/store/globalState';
-import { fetchAndUpdateSnippets } from '@/lib/utils';
+import { fetchAndUpdateSnippets } from '@/utils';
 
 vi.mock('@/lib/store/globalState', () => ({
   useStoreValue: vi.fn(),

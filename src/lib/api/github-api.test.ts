@@ -1,6 +1,6 @@
 import { vi, MockedFunction } from 'vitest';
 
-import { GithubApi } from './github-api';
+import { GithubApi } from './github-api.ts';
 
 describe('GithubApi', () => {
   const originalFetch = global.fetch;

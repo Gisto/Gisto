@@ -5,7 +5,7 @@ import { ActionType } from '@/components/layout/pages/create-or-edit-snippet/red
 import { toast } from '@/components/toast';
 import { Button } from '@/components/ui/button.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
-import { generateAiResponse, AiApiError, isAiAvailable } from '@/lib/ai-api.ts';
+import { generateAiResponse, AiApiError, isAiAvailable } from '@/lib/api/ai-api.ts';
 import { t } from '@/lib/i18n';
 
 interface AiAssistantButtonProps {

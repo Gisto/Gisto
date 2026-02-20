@@ -12,10 +12,10 @@ import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { EDITOR_OPTIONS } from '@/constants';
-import { generateAiResponse, AiApiError } from '@/lib/ai-api.ts';
+import { generateAiResponse, AiApiError } from '@/lib/api/ai-api.ts';
 import { t } from '@/lib/i18n';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
-import { getEditorTheme } from '@/lib/utils';
+import { getEditorTheme } from '@/utils';
 
 type Props = {
   isCollapsed?: boolean;
@@ -128,9 +128,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
               <Card>
                 <CardHeader>
                   <CardTitle>Gisto settings</CardTitle>
-                  <CardDescription>
-                    Theme, language, and access tokens.
-                  </CardDescription>
+                  <CardDescription>Theme, language, and access tokens.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <DynamicSettings

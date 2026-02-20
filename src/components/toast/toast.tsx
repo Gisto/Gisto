@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert.tsx';
-import { cn, upperCaseFirst } from '@/lib/utils';
+import { cn, upperCaseFirst } from '@/utils';
 
 export type ToastType = {
   title: string;
@@ -15,7 +15,13 @@ export type ToastType = {
   style?: React.CSSProperties;
 };
 
-const Icon = ({ type = 'notification', className }: { type?: 'info' | 'warn' | 'error' | 'notification', className?: string }) => {
+const Icon = ({
+  type = 'notification',
+  className,
+}: {
+  type?: 'info' | 'warn' | 'error' | 'notification';
+  className?: string;
+}) => {
   switch (type) {
     case 'info':
       return <Info className={cn(className, 'stroke-primary')} />;
@@ -56,8 +62,6 @@ export const Toast = ({
         return 'bg-linear-to-bl to-50% from-primary/50 dark:from-primary-950';
     }
   };
-
-  
 
   return (
     <AnimatePresence onExitComplete={onClose}>

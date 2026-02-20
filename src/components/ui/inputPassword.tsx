@@ -2,7 +2,7 @@ import { Eye, EyeClosed } from 'lucide-react';
 import * as React from 'react';
 import { useState } from 'react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 
 const InputPassword = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
   ({ className, ...props }, ref) => {
