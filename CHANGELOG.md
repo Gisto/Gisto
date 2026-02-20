@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🐛 Bug Fixes
+
+- *(editor)* Editor cursor position get reset
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([1d5f0a5](https://github.com/gisto/gisto/commit/1d5f0a5983c1d2d929e8ef84a236f17085cee2d1))
+
+
 ### 🚜 Refactor
 
 - Project file structure and imports
