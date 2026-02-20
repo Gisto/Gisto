@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🚜 Refactor
+
+- Project file structure and imports
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([47a6ba0](https://github.com/gisto/gisto/commit/47a6ba068c98361e5c012754da294432c22c8052))
+
+
 ## v2.5.1
 
 Released on: Feb 14, 2026
