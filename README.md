@@ -5,7 +5,7 @@
 
 > Snippets made awesome
 
-Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing snippets while including a rich code editor.
+Gisto is a code snippet manager that runs on GitHub Gists / GitLab Snippets / local in-browser database and adds additional features such as searching, tagging and sharing snippets while including a rich code editor. You can also use local storage to save snippets directly in your browser.
 
 > [!NOTE]
 >
@@ -55,7 +55,7 @@ Previous version can be tracked via the ["master"](https://github.com/Gisto/Gist
 
 # ℹ️ About
 
-Gisto is a code snippet manager that runs on GitHub Gists and adds additional features such as searching, tagging and sharing snippets while including a rich code editor. All your data is stored on GitHub and you can access it from GitHub Gists at any time with changes carrying over to Gisto
+Gisto is a code snippet manager that runs on GitHub Gists / GitLab Snippets / local in-browser database and adds additional features such as searching, tagging and sharing snippets while including a rich code editor. All your data is stored on GitHub/GitLab and you can access it from GitHub Gists or GitLab Snippets at any time with changes carrying over to Gisto. You can also use local storage to save snippets directly in your browser without an account.
 
 ---
 
@@ -63,7 +63,9 @@ Gisto is a code snippet manager that runs on GitHub Gists and adds additional fe
 
 You can download Gisto for (macOS, Windows, Linux) desktop from [releases](https://github.com/Gisto/Gisto/releases) tab
 
-Or use full-featured Web based client available at: [Web app](https://app.gisto.org) (old one still [available](https://web-gistoapp.netlify.app) as well )
+Or use a full-featured Web-based client available at: [Web app](https://app.gisto.org) (old one still [available](https://web-gistoapp.netlify.app) as well )
+
+Desktop app is built with [Tauri](https://v2.tauri.app/) for a smaller file size.
 
 ---
 
@@ -109,6 +111,7 @@ These warnings are normal for unsigned applications and do not mean the app is h
 - [Web app](https://app.gisto.org)
 - Support for multiple languages - (this feature machine generated, experimental and not fully implemented yet)
 - Open source
+- **Local storage mode** - Use IndexedDB to store snippets locally without a GitHub/GitLab account
 
 and more...
 
@@ -116,13 +119,19 @@ and more...
 
 # 🔍 Privacy/authentication
 
-Gisto authenticates to GitHub by using GitHub Access token
+Gisto supports two authentication modes:
 
-You may manually create an access token from the account settings at GitHub and login using the generated token.
+1. **GitHub/GitLab** - Authenticate using GitHub Access token or GitLab Personal Access Token
 
-Gisto only saves the Access token in your local storage and nothing else.
+   You may manually create an access token from the account settings at GitHub and login using the generated token.
 
-This token will be saved permanently until you log out, or it will expire.
+   Gisto only saves the Access token in your local storage and nothing else.
+
+   This token will be saved permanently until you log out, or it will expire.
+
+2. **Local Mode** - Store snippets locally using IndexedDB
+
+   No account required. Your snippets are stored in your browser's local database. You can export and import your snippets as JSON files from Settings.
 
 ---
 

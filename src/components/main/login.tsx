@@ -1,4 +1,4 @@
-import { AlertTriangleIcon, ExternalLink } from 'lucide-react';
+import { AlertTriangleIcon, ExternalLink, HardDrive } from 'lucide-react';
 import { useState } from 'react';
 
 import { GitHubIcon, GitLabIcon } from '@/components/icons';
@@ -21,18 +21,20 @@ import { Updater } from '@/components/updater.tsx';
 import { t } from '@/lib/i18n';
 
 type LoginProps = {
-  onTokenSubmit: (token: string, provider: 'github' | 'gitlab') => void;
+  onTokenSubmit: (token: string, provider: 'github' | 'gitlab' | 'local') => void;
   token: string | null;
   isValid: boolean | null;
 };
 
 export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
   const [newToken, setNewToken] = useState<string>('');
-  const [provider, setProvider] = useState<'github' | 'gitlab'>('github');
+  const [provider, setProvider] = useState<'github' | 'gitlab' | 'local'>('github');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (newToken) {
+    if (provider === 'local') {
+      onTokenSubmit('', 'local');
+    } else if (newToken) {
       onTokenSubmit(newToken, provider);
       setNewToken('');
     }
@@ -41,7 +43,11 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
   const helpUrl =
     provider === 'github'
       ? 'https://github.com/settings/tokens/new?scopes=gist&description=Gisto%20(created%20via%20Gisto%20App)'
-      : 'https://gitlab.com/-/user_settings/personal_access_tokens?name=Gisto&scopes=api';
+      : provider === 'gitlab'
+        ? 'https://gitlab.com/-/user_settings/personal_access_tokens?name=Gisto&scopes=api'
+        : '';
+
+  const showTokenField = provider !== 'local';
 
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-secondary bg-light-pattern dark:bg-dark-pattern">
@@ -62,21 +68,25 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
           <CardHeader>
             <CardTitle>{t('login.pleaseSignInUsingToken')}</CardTitle>
             <CardDescription className="flex items-center gap-2">
-              {provider === 'github'
-                ? t('login.scopeMessageGithub')
-                : t('login.scopeMessageGitlab')}{' '}
-              <div
-                title={
-                  provider === 'github'
-                    ? t('login.createTokenAtGithub')
-                    : t('login.createTokenAtGitlab')
-                }
-              >
-                <ExternalLink
-                  className="size-4 cursor-pointer"
-                  onClick={() => window.open(helpUrl)}
-                />
-              </div>
+              {provider === 'local'
+                ? t('login.scopeMessageLocal')
+                : provider === 'github'
+                  ? t('login.scopeMessageGithub')
+                  : t('login.scopeMessageGitlab')}{' '}
+              {provider !== 'local' && (
+                <div
+                  title={
+                    provider === 'github'
+                      ? t('login.createTokenAtGithub')
+                      : t('login.createTokenAtGitlab')
+                  }
+                >
+                  <ExternalLink
+                    className="size-4 cursor-pointer"
+                    onClick={() => window.open(helpUrl)}
+                  />
+                </div>
+              )}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -85,13 +95,14 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
                 <Label htmlFor="provider">{t('pages.settings.snippetProvider')}</Label>
                 <RadioGroup
                   id="provider"
-                  className="grid grid-cols-2 gap-3"
-                  onValueChange={(value) => setProvider(value as 'github' | 'gitlab')}
+                  className="grid grid-cols-3 gap-3"
+                  onValueChange={(value) => setProvider(value as 'github' | 'gitlab' | 'local')}
                   value={provider}
                 >
                   {[
-                    { value: 'github', label: 'GitHub' },
-                    { value: 'gitlab', label: 'GitLab' },
+                    { value: 'github', label: t('login.providerGithub') },
+                    { value: 'gitlab', label: t('login.providerGitlab') },
+                    { value: 'local', label: t('login.providerLocal') },
                   ].map((option) => (
                     <div key={option.value}>
                       <RadioGroupItem
@@ -109,10 +120,12 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
                           <span className="size-4 text-current" aria-hidden="true">
                             <GitHubIcon />
                           </span>
-                        ) : (
+                        ) : option.value === 'gitlab' ? (
                           <span className="size-4 text-current" aria-hidden="true">
                             <GitLabIcon />
                           </span>
+                        ) : (
+                          <HardDrive className="size-4" />
                         )}
                         {option.label}
                       </Label>
@@ -123,36 +136,46 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
                 {provider === 'gitlab' && (
                   <Alert className="max-w-md mt-2 border-amber-200 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
                     <AlertTriangleIcon size="16" />
-                    <AlertTitle>Please note!</AlertTitle>
-                    <AlertDescription>GitLab support is in it's early stages</AlertDescription>
+                    <AlertTitle>{t('login.gitlabWarning')}</AlertTitle>
+                    <AlertDescription>{t('login.gitlabWarningDescription')}</AlertDescription>
+                  </Alert>
+                )}
+
+                {provider === 'local' && (
+                  <Alert className="max-w-md mt-2 border-blue-200 text-blue-900 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-50">
+                    <AlertTriangleIcon size="16" />
+                    <AlertTitle>{t('login.localWarning')}</AlertTitle>
+                    <AlertDescription>{t('login.localDescription')}</AlertDescription>
                   </Alert>
                 )}
               </div>
 
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="token">
-                  {provider === 'github' ? t('login.githubToken') : t('login.gitlabToken')}
-                </Label>
+              {showTokenField && (
+                <div className="flex flex-col space-y-1.5">
+                  <Label htmlFor="token">
+                    {provider === 'github' ? t('login.githubToken') : t('login.gitlabToken')}
+                  </Label>
 
-                <InputPassword
-                  id="token"
-                  value={newToken}
-                  onChange={(e) => setNewToken(e.target.value)}
-                  placeholder={
-                    provider === 'github'
-                      ? t('login.enterGithubToken')
-                      : t('login.enterGitlabToken')
-                  }
-                />
-                {token !== null && !isValid && (
-                  <div className="mb-4 text-xs text-destructive">{t('login.tokenNotValid')}</div>
-                )}
-              </div>
+                  <InputPassword
+                    id="token"
+                    value={newToken}
+                    onChange={(e) => setNewToken(e.target.value)}
+                    placeholder={
+                      provider === 'github'
+                        ? t('login.enterGithubToken')
+                        : t('login.enterGitlabToken')
+                    }
+                  />
+                  {token !== null && !isValid && (
+                    <div className="mb-4 text-xs text-destructive">{t('login.tokenNotValid')}</div>
+                  )}
+                </div>
+              )}
             </div>
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full">
-              {t('login.signIn')}
+              {provider === 'local' ? t('login.continue') : t('login.signIn')}
             </Button>
           </CardFooter>
         </Card>

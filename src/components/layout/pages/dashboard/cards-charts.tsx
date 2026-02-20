@@ -8,7 +8,7 @@ import {
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { cn, upperCaseFirst } from '@/utils';
+import { upperCaseFirst } from '@/utils';
 
 export const CardsCharts = () => {
   const list = useStoreValue('snippets');
@@ -42,23 +42,19 @@ export const CardsCharts = () => {
     },
   ];
 
-  const numberOfCards = cardCharts.filter((c) => c.show).length;
-  const gridCols = `grid-cols-${numberOfCards === 4 ? 2 : 3}`;
-  const largeGridCols = `lg:grid-cols-${numberOfCards}`;
-
   return (
-    <div className={cn('grid gap-4 mb-8', gridCols, largeGridCols)}>
+    <div className="flex gap-4 mb-8">
       {cardCharts
         .filter((chart) => chart.show)
         .map((chart) => (
-          <Card key={chart.title}>
+          <Card key={chart.title} className="flex-1">
             <CardHeader>
               <CardTitle className="text-primary">{chart.title}</CardTitle>
               <CardDescription className="text-foreground text-xs min-h-8">
                 {chart.description}
               </CardDescription>
             </CardHeader>
-            <CardContent className="text-primary text-[2.5vw] text-right font-numbers">
+            <CardContent className="text-primary text-4xl text-right font-numbers">
               {chart.value}
             </CardContent>
           </Card>

@@ -1,4 +1,3 @@
-import { ITEMS_PER_PAGE } from '@/constants';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState } from '@/lib/store/globalState.ts';
 import { SnippetFileType, SnippetSingleType, SnippetType } from '@/types/snippet.ts';
@@ -66,40 +65,17 @@ export const getLanguageName = (file: SnippetFileType): string => {
 };
 
 export const fetchAndUpdateSnippets = async () => {
-  const allFetchedSnippetIds = new Set();
-
   for await (const snippetsPage of snippetService.getSnippetsGenerator()) {
-    const currentSnippetsState = globalState.getState().snippets;
-
     const newSnippets = snippetsPage.map((snippet) => processSnippet(snippet));
 
-    newSnippets.forEach((snippet) => allFetchedSnippetIds.add(snippet.id));
+    const currentSnippets = globalState.getState().snippets;
+    const existingIds = new Set(currentSnippets.map((s) => s.id));
+    const onlyNewSnippets = newSnippets.filter((s) => !existingIds.has(s.id));
 
-    const updatedSnippets = currentSnippetsState.map((existingSnippet) => {
-      const matchingNewSnippet = newSnippets.find(
-        (newSnippet) => newSnippet.id === existingSnippet.id
-      );
-      return matchingNewSnippet || existingSnippet;
-    });
-
-    const completelyNewSnippets = newSnippets.filter(
-      (newSnippet) => !updatedSnippets.some((snippet) => snippet.id === newSnippet.id)
-    );
-
-    const isLastPage = snippetsPage.length < ITEMS_PER_PAGE;
-    const filteredSnippets = isLastPage
-      ? updatedSnippets.filter((snippet) => allFetchedSnippetIds.has(snippet.id))
-      : updatedSnippets;
-
-    globalState.setState({
-      // @ts-expect-error no need to specify all ATM
-      snippets: [...completelyNewSnippets, ...filteredSnippets]
-        // TODO: we probably should sort on the client page where interactions are later on
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()),
-    });
-
-    if (isLastPage) {
-      break;
+    if (onlyNewSnippets.length > 0) {
+      globalState.setState({
+        snippets: [...currentSnippets, ...onlyNewSnippets],
+      } as unknown as { snippets: typeof currentSnippets });
     }
   }
 };
