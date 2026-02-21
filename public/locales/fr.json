@@ -185,6 +185,7 @@
     "tokenNotValid": "Jeton non valide",
     "checkingToken": "Vérification du jeton",
     "pleaseSignInUsingToken": "Veuillez vous connecter avec un jeton GitHub",
+    "getStarted": "Commencer",
     "scopeMessage": "Seule l'autorisation \"gists\" est requise",
     "scopeMessageGithub": "Seule l'autorisation \"gist\" est requise pour GitHub",
     "scopeMessageGitlab": "Seule l'autorisation \"api\" est requise pour GitLab",

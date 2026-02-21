@@ -185,6 +185,7 @@
     "tokenNotValid": "Token no válido",
     "checkingToken": "Verificando token",
     "pleaseSignInUsingToken": "Por favor inicia sesión usando un token de GitHub",
+    "getStarted": "Comenzar",
     "scopeMessage": "Solo se requiere el alcance \"gists\"",
     "scopeMessageGithub": "Solo se requiere el alcance \"gist\" para GitHub",
     "scopeMessageGitlab": "Solo se requiere el alcance \"api\" para GitLab",

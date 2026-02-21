@@ -188,6 +188,7 @@
     "tokenNotValid": "Token not valid",
     "checkingToken": "Checking token",
     "pleaseSignInUsingToken": "Please sign-in using token",
+    "getStarted": "Get started",
     "scopeMessage": "Only \"gists\" scope is required for GitHub, \"api\" for GitLab",
     "scopeMessageGithub": "Only \"gist\" scope is required for GitHub",
     "scopeMessageGitlab": "Only \"api\" scope is required for GitLab",

@@ -185,6 +185,7 @@
     "tokenNotValid": "トークンが無効です",
     "checkingToken": "トークンを確認中",
     "pleaseSignInUsingToken": "GitHubトークンを使用してサインイン",
+    "getStarted": "始める",
     "scopeMessage": "「gists」スコープのみが必須です",
     "scopeMessageGithub": "GitHubは「gist」スコープのみ必須です",
     "scopeMessageGitlab": "GitLabは「api」スコープのみ必須です",

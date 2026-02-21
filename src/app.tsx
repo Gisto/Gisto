@@ -12,7 +12,7 @@ import { globalState } from '@/lib/store/globalState.ts';
 export const App = () => {
   const [token, setToken] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const storedProvider = localStorage.getItem('ACTIVE_PROVIDER') as
     | 'github'
     | 'gitlab'
@@ -23,6 +23,7 @@ export const App = () => {
   useEffect(() => {
     if (activeProvider === 'local') {
       setIsValid(true);
+      setIsLoading(false);
       return;
     }
     const tokenKey = activeProvider === 'gitlab' ? 'GITLAB_TOKEN' : 'GITHUB_TOKEN';
@@ -30,6 +31,8 @@ export const App = () => {
     if (storedToken) {
       setToken(storedToken);
       validateToken(storedToken, activeProvider);
+    } else {
+      setIsLoading(false);
     }
   }, [activeProvider]);
 
@@ -74,6 +77,7 @@ export const App = () => {
       },
     });
     if (provider === 'local') {
+      globalState.setState({ isLoggedIn: true });
       setIsValid(true);
       return;
     }
