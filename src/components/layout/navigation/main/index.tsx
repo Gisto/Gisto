@@ -1,4 +1,4 @@
-import { Link } from 'dirty-react-router';
+import { Link, useRouter } from 'dirty-react-router';
 import { BadgeHelp, SlidersHorizontal, LogOut, LayoutDashboard, Plus, Globe } from 'lucide-react';
 
 import { version } from '../../../../../package.json';
@@ -16,6 +16,7 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
   const online = useIsOnline();
   const user = useStoreValue('user');
   const settings = useStoreValue('settings');
+  const { navigate } = useRouter();
   const userRecord = (user ?? {}) as Record<string, unknown>;
   const displayName =
     (typeof userRecord.name === 'string' && userRecord.name) ||
@@ -111,6 +112,8 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
                     activeSnippetProvider: 'github',
                   },
                 });
+
+                navigate('/');
                 window.location.reload();
               }
             }}

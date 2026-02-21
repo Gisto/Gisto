@@ -185,6 +185,7 @@
     "tokenNotValid": "Токен недействителен",
     "checkingToken": "Проверка токена",
     "pleaseSignInUsingToken": "Войдите с помощью GitHub токена",
+    "getStarted": "Начать",
     "scopeMessage": "Требуется только \"gists\" scope",
     "scopeMessageGithub": "Требуется только \"gist\" scope для GitHub",
     "scopeMessageGitlab": "Требуется только \"api\" scope для GitLab",

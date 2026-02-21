@@ -19,6 +19,7 @@ import { Label } from '@/components/ui/label.tsx';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.tsx';
 import { Updater } from '@/components/updater.tsx';
 import { t } from '@/lib/i18n';
+import { cn } from '@/utils';
 
 type LoginProps = {
   onTokenSubmit: (token: string, provider: 'github' | 'gitlab' | 'local') => void;
@@ -64,9 +65,11 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
       <p className="mb-8 text-primary">{t('common.slogan')}</p>
 
       <form onSubmit={handleSubmit}>
-        <Card className="w-[85vw] max-w-[450px]">
+        <Card className="w-[85vw] max-w-[450px] overflow-hidden">
           <CardHeader>
-            <CardTitle>{t('login.pleaseSignInUsingToken')}</CardTitle>
+            <CardTitle>
+              {provider === 'local' ? t('login.getStarted') : t('login.pleaseSignInUsingToken')}
+            </CardTitle>
             <CardDescription className="flex items-center gap-2">
               {provider === 'local'
                 ? t('login.scopeMessageLocal')
@@ -134,7 +137,7 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
                 </RadioGroup>
 
                 {provider === 'gitlab' && (
-                  <Alert className="max-w-md mt-2 border-amber-200 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50">
+                  <Alert className="max-w-md mt-2 border-amber-200 text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-50 animate-in fade-in slide-in-from-top-2 duration-200">
                     <AlertTriangleIcon size="16" />
                     <AlertTitle>{t('login.gitlabWarning')}</AlertTitle>
                     <AlertDescription>{t('login.gitlabWarningDescription')}</AlertDescription>
@@ -142,7 +145,7 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
                 )}
 
                 {provider === 'local' && (
-                  <Alert className="max-w-md mt-2 border-blue-200 text-blue-900 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-50">
+                  <Alert className="max-w-md mt-2 border-blue-200 text-blue-900 dark:border-blue-900 dark:bg-blue-950 dark:text-blue-50 animate-in fade-in slide-in-from-top-2 duration-200">
                     <AlertTriangleIcon size="16" />
                     <AlertTitle>{t('login.localWarning')}</AlertTitle>
                     <AlertDescription>{t('login.localDescription')}</AlertDescription>
@@ -150,27 +153,38 @@ export const Login = ({ onTokenSubmit, token, isValid }: LoginProps) => {
                 )}
               </div>
 
-              {showTokenField && (
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="token">
-                    {provider === 'github' ? t('login.githubToken') : t('login.gitlabToken')}
-                  </Label>
+              <div
+                className={cn(
+                  'grid transition-all duration-300 ease-in-out',
+                  showTokenField ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                )}
+              >
+                <div className="overflow-hidden">
+                  <div className={cn(!showTokenField && 'hidden')}>
+                    <div className="flex flex-col space-y-1.5">
+                      <Label htmlFor="token">
+                        {provider === 'github' ? t('login.githubToken') : t('login.gitlabToken')}
+                      </Label>
 
-                  <InputPassword
-                    id="token"
-                    value={newToken}
-                    onChange={(e) => setNewToken(e.target.value)}
-                    placeholder={
-                      provider === 'github'
-                        ? t('login.enterGithubToken')
-                        : t('login.enterGitlabToken')
-                    }
-                  />
-                  {token !== null && !isValid && (
-                    <div className="mb-4 text-xs text-destructive">{t('login.tokenNotValid')}</div>
-                  )}
+                      <InputPassword
+                        id="token"
+                        value={newToken}
+                        onChange={(e) => setNewToken(e.target.value)}
+                        placeholder={
+                          provider === 'github'
+                            ? t('login.enterGithubToken')
+                            : t('login.enterGitlabToken')
+                        }
+                      />
+                      {token !== null && !isValid && (
+                        <div className="mb-4 text-xs text-destructive">
+                          {t('login.tokenNotValid')}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           </CardContent>
           <CardFooter>

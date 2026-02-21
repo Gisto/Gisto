@@ -185,6 +185,7 @@
     "tokenNotValid": "令牌无效",
     "checkingToken": "正在检查令牌",
     "pleaseSignInUsingToken": "请使用GitHub令牌登录",
+    "getStarted": "开始",
     "scopeMessage": "仅需要\"gists\"权限",
     "scopeMessageGithub": "GitHub仅需要\"gist\"权限",
     "scopeMessageGitlab": "GitLab仅需要\"api\"权限",

@@ -185,6 +185,7 @@
     "tokenNotValid": "Token ungültig",
     "checkingToken": "Token prüfen",
     "pleaseSignInUsingToken": "Mit GitHub-Token anmelden",
+    "getStarted": "Loslegen",
     "scopeMessage": "Nur Berechtigung „gists“ nötig",
     "scopeMessageGithub": "Nur Berechtigung „gist“ nötig für GitHub",
     "scopeMessageGitlab": "Nur Berechtigung „api“ nötig für GitLab",
