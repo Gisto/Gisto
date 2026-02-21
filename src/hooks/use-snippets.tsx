@@ -1,15 +1,19 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 
-import { globalState } from '@/lib/store/globalState.ts';
 import { fetchAndUpdateSnippets } from '@/utils';
 
 export const useSnippets = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
   const hasLoadedRef = useRef(false);
 
-  const fetchSnippets = useCallback(async () => {
-    if (hasLoadedRef.current) {
+  const fetchSnippets = useCallback(async (isRefresh = false) => {
+    if (hasLoadedRef.current && !isRefresh) {
       return;
+    }
+
+    if (isRefresh) {
+      setIsRefreshing(true);
     }
 
     try {
@@ -19,6 +23,9 @@ export const useSnippets = () => {
     } finally {
       hasLoadedRef.current = true;
       setIsLoading(false);
+      if (isRefresh) {
+        setIsRefreshing(false);
+      }
     }
   }, []);
 
@@ -26,8 +33,5 @@ export const useSnippets = () => {
     fetchSnippets();
   }, [fetchSnippets]);
 
-  const allSnippets = globalState.getState().snippets;
-  const hasSnippets = allSnippets.length > 0;
-
-  return { isLoading: isLoading && !hasSnippets, refresh: fetchSnippets };
+  return { isLoading, isRefreshing, refresh: () => fetchSnippets(true) };
 };
