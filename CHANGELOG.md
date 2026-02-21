@@ -2,9 +2,9 @@
 
 All significant updates and improvements
 
-## Upcoming version
+## v2.6.0
 
-[test build](https://main-branch-gisto-app.netlify.app/)
+Released on: Feb 21, 2026
 
 ### 🚀 Features
 
