@@ -2,6 +2,55 @@
 
 All significant updates and improvements
 
+## v2.6.0
+
+Released on: Feb 21, 2026
+
+### 🚀 Features
+
+- *(snippets)* Add local snippets service
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([d136dbc](https://github.com/gisto/gisto/commit/d136dbcae8c87c378a135d8e485d1a406be0fe8a))
+
+
+### 🐛 Bug Fixes
+
+- *(editor)* Editor cursor position get reset
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([1d5f0a5](https://github.com/gisto/gisto/commit/1d5f0a5983c1d2d929e8ef84a236f17085cee2d1))
+
+- *(snippets)* Loading and re-fetching indicators
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([f7ddbd7](https://github.com/gisto/gisto/commit/f7ddbd73940943e4bc815ef9f27e582b396a3c3e))
+
+
+### 🛠️️ Build
+
+- *(deps)* Bump ajv in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([7994a56](https://github.com/gisto/gisto/commit/7994a565cfc096b7f5a693221f3a048d3f4c7444))
+
+
+### 🚜 Refactor
+
+- Project file structure and imports
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([47a6ba0](https://github.com/gisto/gisto/commit/47a6ba068c98361e5c012754da294432c22c8052))
+
+
+### 🧪 Testing
+
+- *(e2e)* Add e2e sanity with playwright infrastructure
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6849653](https://github.com/gisto/gisto/commit/6849653f305d89f82deb74b7df4faa1b5c16cd4a))
+
+
 ## v2.5.1
 
 Released on: Feb 14, 2026

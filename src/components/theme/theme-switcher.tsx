@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
 import { t } from '@/lib/i18n';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 
 type ThemeSwitcherProps = {
   showLabel?: boolean;
@@ -53,7 +53,9 @@ export function ThemeSwitcher({
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={() => setTheme('light')}>{t('theme.light')}</DropdownMenuItem>
           <DropdownMenuItem onClick={() => setTheme('dark')}>{t('theme.dark')}</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme('system')}>{t('theme.system')}</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setTheme('system')}>
+            {t('theme.system')}
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     );
@@ -72,7 +74,9 @@ export function ThemeSwitcher({
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={() => setTheme('light')}>{t('theme.light')}</DropdownMenuItem>
           <DropdownMenuItem onClick={() => setTheme('dark')}>{t('theme.dark')}</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme('system')}>{t('theme.system')}</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setTheme('system')}>
+            {t('theme.system')}
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       {showLabel && <span className="text-sm text-muted-foreground">{label}</span>}

@@ -25,7 +25,7 @@ import {
   getCountryNameFromLanguage,
   getFlagEmojiFromLanguage,
   upperCaseFirst,
-} from '@/lib/utils';
+} from '@/utils';
 
 interface SettingsProps {
   settings: Omit<SettingsType, 'editor'> | SettingsType['editor'] | Record<string, unknown>;
@@ -41,6 +41,7 @@ const SpecialSelect = ({
   options,
   tooltip,
   label,
+  disabled,
 }: {
   settingKey: string;
   value: string;
@@ -49,6 +50,7 @@ const SpecialSelect = ({
   options: { value: string; label: string }[];
   tooltip?: ReactNode;
   label?: ReactNode;
+  disabled?: boolean;
 }) => {
   return (
     <div className="mb-4">
@@ -56,7 +58,11 @@ const SpecialSelect = ({
         {label ?? camelToTitleCase(settingKey)}
         {tooltip && <SimpleTooltip className="max-w-2xs" content={tooltip} />}
       </label>
-      <Select onValueChange={(value) => onChange(fullPath, value)} value={value}>
+      <Select
+        onValueChange={(value) => onChange(fullPath, value)}
+        value={value}
+        disabled={disabled}
+      >
         <SelectTrigger>
           <SelectValue placeholder={upperCaseFirst(t('common.select'))} />
         </SelectTrigger>
@@ -259,6 +265,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 options={[
                   { value: 'github', label: 'GitHub' },
                   { value: 'gitlab', label: 'GitLab' },
+                  { value: 'local', label: 'Local' },
                 ]}
               />
             );

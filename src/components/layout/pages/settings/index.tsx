@@ -1,6 +1,6 @@
 import MonacoEditor from '@monaco-editor/react';
-import { HelpCircle, SidebarClose, SidebarOpen } from 'lucide-react';
-import { useState } from 'react';
+import { HelpCircle, SidebarClose, SidebarOpen, Download, Upload } from 'lucide-react';
+import { useState, useRef } from 'react';
 
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
@@ -12,10 +12,11 @@ import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { EDITOR_OPTIONS } from '@/constants';
-import { generateAiResponse, AiApiError } from '@/lib/ai-api.ts';
+import { generateAiResponse, AiApiError } from '@/lib/api/ai-api.ts';
+import { exportLocalDatabase, importLocalDatabase } from '@/lib/api/local-api.ts';
 import { t } from '@/lib/i18n';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
-import { getEditorTheme } from '@/lib/utils';
+import { getEditorTheme } from '@/utils';
 
 type Props = {
   isCollapsed?: boolean;
@@ -29,6 +30,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
   const [testResponse, setTestResponse] = useState('');
   const [isTesting, setIsTesting] = useState(false);
   const [, setTick] = useState(0);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const forceUpdate = () => setTick((tick) => tick + 1);
 
@@ -36,6 +38,38 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     updateSettings({
       [key]: value,
     });
+
+  const handleExport = async () => {
+    try {
+      const blob = await exportLocalDatabase();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `gisto-backup-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Export failed:', error);
+    }
+  };
+
+  const handleImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      await importLocalDatabase(file);
+      forceUpdate();
+    } catch (error) {
+      console.error('Import failed:', error);
+    }
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
   const handleTestPrompt = async () => {
     if (!testPrompt.trim()) return;
@@ -84,7 +118,6 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
   const appearanceSettings = {
     theme,
     language,
-    activeSnippetProvider,
   };
 
   const snippetSettings = {
@@ -128,37 +161,82 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
               <Card>
                 <CardHeader>
                   <CardTitle>Gisto settings</CardTitle>
-                  <CardDescription>
-                    Theme, language, and access tokens.
-                  </CardDescription>
+                  <CardDescription>Theme, language, and access tokens.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <DynamicSettings
                     settings={appearanceSettings as Record<string, unknown>}
                     onChange={handleChange}
                   />
-                  <div className="flex flex-col space-y-1.5">
-                    <label className="text-sm font-medium">{t('login.githubToken')}</label>
-                    <InputPassword
-                      value={localStorage.getItem('GITHUB_TOKEN') || ''}
-                      onChange={(e) => {
-                        localStorage.setItem('GITHUB_TOKEN', e.target.value);
-                        forceUpdate();
-                      }}
-                      placeholder={t('login.enterGithubToken')}
-                    />
+                  <div className="mb-4">
+                    <label className="text-sm font-medium block mb-1">
+                      {t('pages.settings.snippetProvider')}
+                    </label>
+                    <div className="text-sm py-2 px-3 bg-muted rounded-md">
+                      {activeSnippetProvider === 'github'
+                        ? 'GitHub'
+                        : activeSnippetProvider === 'gitlab'
+                          ? 'GitLab'
+                          : 'Local'}
+                    </div>
                   </div>
-                  <div className="flex flex-col space-y-1.5">
-                    <label className="text-sm font-medium">{t('login.gitlabToken')}</label>
-                    <InputPassword
-                      value={localStorage.getItem('GITLAB_TOKEN') || ''}
-                      onChange={(e) => {
-                        localStorage.setItem('GITLAB_TOKEN', e.target.value);
-                        forceUpdate();
-                      }}
-                      placeholder={t('login.enterGitlabToken')}
-                    />
-                  </div>
+                  {activeSnippetProvider === 'github' && (
+                    <div className="flex flex-col space-y-1.5">
+                      <label className="text-sm font-medium">{t('login.githubToken')}</label>
+                      <InputPassword
+                        value={localStorage.getItem('GITHUB_TOKEN') || ''}
+                        onChange={(e) => {
+                          localStorage.setItem('GITHUB_TOKEN', e.target.value);
+                          forceUpdate();
+                        }}
+                        placeholder={t('login.enterGithubToken')}
+                      />
+                    </div>
+                  )}
+                  {activeSnippetProvider === 'gitlab' && (
+                    <div className="flex flex-col space-y-1.5">
+                      <label className="text-sm font-medium">{t('login.gitlabToken')}</label>
+                      <InputPassword
+                        value={localStorage.getItem('GITLAB_TOKEN') || ''}
+                        onChange={(e) => {
+                          localStorage.setItem('GITLAB_TOKEN', e.target.value);
+                          forceUpdate();
+                        }}
+                        placeholder={t('login.enterGitlabToken')}
+                      />
+                    </div>
+                  )}
+                  {activeSnippetProvider === 'local' && (
+                    <div className="flex flex-col space-y-3 pt-4 border-t">
+                      <label className="text-sm font-medium">
+                        {t('pages.settings.localDatabase')}
+                      </label>
+                      <div className="flex gap-2">
+                        <Button variant="outline" onClick={handleExport} className="flex-1">
+                          <Download className="size-4 mr-2" />
+                          {t('pages.settings.export')}
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() => fileInputRef.current?.click()}
+                          className="flex-1"
+                        >
+                          <Upload className="size-4 mr-2" />
+                          {t('pages.settings.import')}
+                        </Button>
+                        <input
+                          ref={fileInputRef}
+                          type="file"
+                          accept=".json"
+                          onChange={handleImport}
+                          className="hidden"
+                        />
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        {t('pages.settings.localDatabaseDescription')}
+                      </p>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
 

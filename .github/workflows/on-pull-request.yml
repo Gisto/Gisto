@@ -1,32 +1,36 @@
-name: checks and tests
+name: Validate
 
 on:
   pull_request:
     branches:
-    - main
+      - main
 
 jobs:
-  build:
+  checks:
     runs-on: blacksmith-4vcpu-ubuntu-2204
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [lint, ts:lint, test, e2e]
+
+    name: ${{ matrix.task }}
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: useblacksmith/setup-node@v5
-        with:
-          node-version: 24
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
         with:
           run_install: false
 
-      - name: Install
-        run: pnpm install
+      - uses: useblacksmith/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'pnpm'
 
-      - name: eslint
-        run: pnpm lint
+      - run: pnpm install --frozen-lockfile
 
-      - name: TS lint
-        run: pnpm ts:lint
+      - name: Install Playwright Browsers
+        if: matrix.task == 'e2e'
+        run: pnpm exec playwright install chromium
 
-      - name: tests
-        run: pnpm test
-
+      - run: pnpm ${{ matrix.task }}

@@ -12,7 +12,7 @@ import {
 import { Input } from '@/components/ui/input.tsx';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { fetchAndUpdateSnippets, upperCaseFirst } from '@/lib/utils';
+import { fetchAndUpdateSnippets, upperCaseFirst } from '@/utils';
 
 const CreateNew = ({
   search,

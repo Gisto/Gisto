@@ -130,7 +130,11 @@
       "uiLanguage": "UI语言(实验性)",
       "experimentalTranslation": "实验性，机器翻译，某些翻译可能不准确或不可用。",
       "getApiKey": "在{url}获取您的{provider} API密钥。",
-      "apiKeyPlaceholder": "您的api密钥"
+      "apiKeyPlaceholder": "您的api密钥",
+      "localDatabase": "本地数据库",
+      "localDatabaseDescription": "导出或导入您的本地代码片段。导入将与现有数据合并。",
+      "export": "导出",
+      "import": "导入"
     },
     "snippet": {
       "fileTooLarge": "文件太大，请",
@@ -181,13 +185,26 @@
     "tokenNotValid": "令牌无效",
     "checkingToken": "正在检查令牌",
     "pleaseSignInUsingToken": "请使用GitHub令牌登录",
+    "getStarted": "开始",
     "scopeMessage": "仅需要\"gists\"权限",
     "scopeMessageGithub": "GitHub仅需要\"gist\"权限",
     "scopeMessageGitlab": "GitLab仅需要\"api\"权限",
+    "scopeMessageLocal": "使用IndexedDB在本地存储代码片段",
     "createTokenAtGithub": "在Github创建令牌",
+    "createTokenAtGitlab": "在GitLab创建令牌",
     "githubToken": "GitHub令牌",
+    "gitlabToken": "GitLab令牌",
     "enterGithubToken": "输入GitHub令牌",
-    "signIn": "登录"
+    "enterGitlabToken": "输入GitLab令牌",
+    "signIn": "登录",
+    "continue": "继续",
+    "localWarning": "本地浏览器数据库",
+    "localDescription": "您的代码片段将使用IndexedDB存储在本地。无需账户。您可以从设置中导入/导出它们。",
+    "gitlabWarning": "请注意！",
+    "gitlabWarningDescription": "GitLab支持尚处于早期阶段",
+    "providerGithub": "GitHub",
+    "providerGitlab": "GitLab",
+    "providerLocal": "本地"
   },
   "api": {
     "starRemoved": "已移除星标",

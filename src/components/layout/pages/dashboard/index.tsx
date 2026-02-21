@@ -1,3 +1,5 @@
+import { FolderKanbanIcon } from 'lucide-react';
+
 import { AllLanguages } from '@/components/all-languages.tsx';
 import { AllTags } from '@/components/all-tags.tsx';
 import { CardsCharts } from '@/components/layout/pages/dashboard/cards-charts.tsx';
@@ -14,7 +16,15 @@ export const DashBoard = () => {
   const search = useStoreValue('search');
   const list = useStoreValue('snippets');
 
-  if (!list || list.length === 0) return <Loading />;
+  if (!list || (list.length === 0 && !list)) return <Loading />;
+
+  if (list.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-screen w-full border-r border-collapse">
+        <FolderKanbanIcon size={256} className="opacity-5" />
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen w-full border-r border-collapse">

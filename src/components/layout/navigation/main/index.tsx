@@ -1,4 +1,4 @@
-import { Link } from 'dirty-react-router';
+import { Link, useRouter } from 'dirty-react-router';
 import { BadgeHelp, SlidersHorizontal, LogOut, LayoutDashboard, Plus, Globe } from 'lucide-react';
 
 import { version } from '../../../../../package.json';
@@ -9,13 +9,14 @@ import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
 import { useIsOnline } from '@/hooks/use-is-online.tsx';
 import { t } from '@/lib/i18n';
-import { useStoreValue } from '@/lib/store/globalState.ts';
-import { cn } from '@/lib/utils';
+import { useStoreValue, globalState } from '@/lib/store/globalState.ts';
+import { cn } from '@/utils';
 
 export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
   const online = useIsOnline();
   const user = useStoreValue('user');
   const settings = useStoreValue('settings');
+  const { navigate } = useRouter();
   const userRecord = (user ?? {}) as Record<string, unknown>;
   const displayName =
     (typeof userRecord.name === 'string' && userRecord.name) ||
@@ -102,7 +103,18 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
               if (confirmation) {
                 localStorage.removeItem('GITHUB_TOKEN');
                 localStorage.removeItem('GITLAB_TOKEN');
-                document.location.reload();
+                localStorage.removeItem('ACTIVE_PROVIDER');
+                globalState.setState({
+                  user: null,
+                  isLoggedIn: false,
+                  settings: {
+                    ...globalState.getState().settings,
+                    activeSnippetProvider: 'github',
+                  },
+                });
+
+                navigate('/');
+                window.location.reload();
               }
             }}
             Icon={LogOut}

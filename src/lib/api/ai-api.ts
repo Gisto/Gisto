@@ -1,4 +1,4 @@
-import { globalState } from './store/globalState.ts';
+import { globalState } from '../store/globalState.ts';
 
 const GEMINI_ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';

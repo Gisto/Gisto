@@ -31,14 +31,14 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
+import { SnippetSingleType } from '@/types/snippet.ts';
 import {
   copyToClipboard,
   fetchAndUpdateSnippets,
   getTags,
   removeTags,
   upperCaseFirst,
-} from '@/lib/utils';
-import { SnippetSingleType } from '@/types/snippet.ts';
+} from '@/utils';
 
 export const SnippetContent = () => {
   const [snippet, setSnippet] = useState<SnippetSingleType | null>(null);

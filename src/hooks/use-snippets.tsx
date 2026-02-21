@@ -1,18 +1,31 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 
-import { fetchAndUpdateSnippets } from '@/lib/utils';
+import { fetchAndUpdateSnippets } from '@/utils';
 
 export const useSnippets = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+  const hasLoadedRef = useRef(false);
 
-  const fetchSnippets = useCallback(async () => {
-    setIsLoading(true);
+  const fetchSnippets = useCallback(async (isRefresh = false) => {
+    if (hasLoadedRef.current && !isRefresh) {
+      return;
+    }
+
+    if (isRefresh) {
+      setIsRefreshing(true);
+    }
+
     try {
       await fetchAndUpdateSnippets();
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
+      hasLoadedRef.current = true;
       setIsLoading(false);
+      if (isRefresh) {
+        setIsRefreshing(false);
+      }
     }
   }, []);
 
@@ -20,5 +33,5 @@ export const useSnippets = () => {
     fetchSnippets();
   }, [fetchSnippets]);
 
-  return { isLoading, refresh: fetchSnippets };
+  return { isLoading, isRefreshing, refresh: () => fetchSnippets(true) };
 };

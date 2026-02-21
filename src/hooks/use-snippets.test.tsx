@@ -9,8 +9,8 @@ mockUtils();
 
 const mockFetchAndUpdateSnippets = vi.fn();
 
-vi.mock('@/lib/utils', async () => {
-  const actual = await vi.importActual('@/lib/utils');
+vi.mock('@/utils', async () => {
+  const actual = await vi.importActual('@/utils');
   return {
     ...actual,
     fetchAndUpdateSnippets: mockFetchAndUpdateSnippets,

@@ -6,8 +6,8 @@ vi.mock('@/lib/store/globalState', () => ({
   },
 }));
 
-import { GithubApi } from '../github-api';
-import { GitlabApi } from '../gitlab-api';
+import { GithubApi } from '../api/github-api.ts';
+import { GitlabApi } from '../api/gitlab-api.ts';
 
 import { snippetService } from './snippet-service';
 

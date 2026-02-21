@@ -27,8 +27,8 @@ import {
 } from '@/components/ui/select.tsx';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { upperCaseFirst } from '@/lib/utils';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
+import { upperCaseFirst } from '@/utils';
 
 function generateChartData(list: SnippetEnrichedType[], period = '6months') {
   const now = new Date();

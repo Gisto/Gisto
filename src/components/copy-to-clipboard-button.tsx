@@ -2,7 +2,7 @@ import { Clipboard, ClipboardCheck } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button.tsx';
-import { copyToClipboard } from '@/lib/utils';
+import { copyToClipboard } from '@/utils';
 
 export const CopyToClipboardButton = ({ text }: { text: string }) => {
   const [copyActive, setCopyActive] = useState<boolean>(false);

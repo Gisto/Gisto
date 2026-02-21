@@ -7,7 +7,7 @@ import { isTauri } from '@/components/isTauri.ts';
 import { Loading } from '@/components/loading.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { t } from '@/lib/i18n';
-import { upperCaseFirst } from '@/lib/utils';
+import { upperCaseFirst } from '@/utils';
 
 export const Updater = () => {
   const [availableUpdate, setAvailableUpdate] = useState<Update | null>(null);

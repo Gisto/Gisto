@@ -17,8 +17,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { cn, fetchAndUpdateSnippets, getTags, removeTags, upperCaseFirst } from '@/lib/utils';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
+import { cn, fetchAndUpdateSnippets, getTags, removeTags, upperCaseFirst } from '@/utils';
 
 export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
   const search = useStoreValue('search');
@@ -280,7 +280,9 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                     event.preventDefault();
                     event.stopPropagation();
                     const confirmation = await confirm(
-                      t('list.sureToDelete', { description: removeTags(snippet.description).trim() })
+                      t('list.sureToDelete', {
+                        description: removeTags(snippet.description).trim(),
+                      })
                     );
 
                     if (confirmation) {

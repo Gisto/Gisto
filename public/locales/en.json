@@ -131,7 +131,11 @@
       "snippetProvider": "Snippet provider",
       "experimentalTranslation": "Experimental, machine translated, some translations are not accurate or not available.",
       "getApiKey": "Get your {provider} API key at {url}.",
-      "apiKeyPlaceholder": "your api key"
+      "apiKeyPlaceholder": "your api key",
+      "localDatabase": "Local Database",
+      "localDatabaseDescription": "Export or import your local snippets. Import will merge with existing data.",
+      "export": "Export",
+      "import": "Import"
     },
     "snippet": {
       "fileTooLarge": "File too large, please",
@@ -161,6 +165,8 @@
     "apiRate": "API rate",
     "apiRateLimit": "API rate limit",
     "nextReset": "Next reset",
+    "noSnippets": "No snippets yet",
+    "noSnippetsDescription": "Create your first snippet to get started",
     "searchHelp": {
       "title": "Search for snippets by description/title, tags or language<br />Or a combinations of all:",
       "description": "<strong>Description or files contents:</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>just free text</code>",
@@ -182,16 +188,26 @@
     "tokenNotValid": "Token not valid",
     "checkingToken": "Checking token",
     "pleaseSignInUsingToken": "Please sign-in using token",
+    "getStarted": "Get started",
     "scopeMessage": "Only \"gists\" scope is required for GitHub, \"api\" for GitLab",
     "scopeMessageGithub": "Only \"gist\" scope is required for GitHub",
     "scopeMessageGitlab": "Only \"api\" scope is required for GitLab",
+    "scopeMessageLocal": "Store snippets locally using IndexedDB",
     "createTokenAtGithub": "Create token at GitHub",
     "createTokenAtGitlab": "Create token at GitLab",
     "githubToken": "GitHub token",
     "gitlabToken": "GitLab token",
     "enterGithubToken": "Enter GitHub token",
     "enterGitlabToken": "Enter GitLab token",
-    "signIn": "Sign-in"
+    "signIn": "Sign-in",
+    "continue": "Continue",
+    "localWarning": "Local in-browser database",
+    "localDescription": "Your snippets will be stored locally using IndexedDB. No account required. You can import/export them from settings.",
+    "gitlabWarning": "Please note!",
+    "gitlabWarningDescription": "GitLab support is in it's early stages",
+    "providerGithub": "GitHub",
+    "providerGitlab": "GitLab",
+    "providerLocal": "Local"
   },
   "api": {
     "starRemoved": "Star removed",

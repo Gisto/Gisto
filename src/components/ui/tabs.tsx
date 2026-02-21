@@ -5,7 +5,7 @@ import * as React from 'react';
 import { cloneElement, isValidElement } from 'react';
 
 import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils';
 
 interface ChildProps {
   variant?: 'line' | 'pill';

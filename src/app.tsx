@@ -12,15 +12,27 @@ import { globalState } from '@/lib/store/globalState.ts';
 export const App = () => {
   const [token, setToken] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const activeProvider = globalState.getState().settings.activeSnippetProvider;
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const storedProvider = localStorage.getItem('ACTIVE_PROVIDER') as
+    | 'github'
+    | 'gitlab'
+    | 'local'
+    | null;
+  const activeProvider = storedProvider || globalState.getState().settings.activeSnippetProvider;
 
   useEffect(() => {
+    if (activeProvider === 'local') {
+      setIsValid(true);
+      setIsLoading(false);
+      return;
+    }
     const tokenKey = activeProvider === 'gitlab' ? 'GITLAB_TOKEN' : 'GITHUB_TOKEN';
     const storedToken = localStorage.getItem(tokenKey);
     if (storedToken) {
       setToken(storedToken);
       validateToken(storedToken, activeProvider);
+    } else {
+      setIsLoading(false);
     }
   }, [activeProvider]);
 
@@ -56,13 +68,19 @@ export const App = () => {
     }
   };
 
-  const handleTokenSubmit = (newToken: string, provider: 'github' | 'gitlab') => {
+  const handleTokenSubmit = (newToken: string, provider: 'github' | 'gitlab' | 'local') => {
+    localStorage.setItem('ACTIVE_PROVIDER', provider);
     globalState.setState({
       settings: {
         ...globalState.getState().settings,
         activeSnippetProvider: provider,
       },
     });
+    if (provider === 'local') {
+      globalState.setState({ isLoggedIn: true });
+      setIsValid(true);
+      return;
+    }
     setToken(newToken);
     void validateToken(newToken, provider);
   };

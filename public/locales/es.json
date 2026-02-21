@@ -130,7 +130,11 @@
       "uiLanguage": "Idioma de interfaz (experimental)",
       "experimentalTranslation": "Experimental, traducido automáticamente, algunas traducciones no son precisas o no están disponibles.",
       "getApiKey": "Obtén tu clave API de {provider} en {url}.",
-      "apiKeyPlaceholder": "tu clave api"
+      "apiKeyPlaceholder": "tu clave api",
+      "localDatabase": "Base de datos local",
+      "localDatabaseDescription": "Exporta o importa tus fragmentos locales. La importación se fusionará con los datos existentes.",
+      "export": "Exportar",
+      "import": "Importar"
     },
     "snippet": {
       "fileTooLarge": "Archivo demasiado grande",
@@ -181,13 +185,26 @@
     "tokenNotValid": "Token no válido",
     "checkingToken": "Verificando token",
     "pleaseSignInUsingToken": "Por favor inicia sesión usando un token de GitHub",
+    "getStarted": "Comenzar",
     "scopeMessage": "Solo se requiere el alcance \"gists\"",
     "scopeMessageGithub": "Solo se requiere el alcance \"gist\" para GitHub",
     "scopeMessageGitlab": "Solo se requiere el alcance \"api\" para GitLab",
+    "scopeMessageLocal": "Almacena fragmentos localmente usando IndexedDB",
     "createTokenAtGithub": "Crear token en GitHub",
+    "createTokenAtGitlab": "Crear token en GitLab",
     "githubToken": "Token de GitHub",
+    "gitlabToken": "Token de GitLab",
     "enterGithubToken": "Introduce el token de GitHub",
-    "signIn": "Iniciar sesión"
+    "enterGitlabToken": "Introduce el token de GitLab",
+    "signIn": "Iniciar sesión",
+    "continue": "Continuar",
+    "localWarning": "Base de datos local en el navegador",
+    "localDescription": "Tus fragmentos se almacenarán localmente usando IndexedDB. No se requiere cuenta. Puedes importarlos/exportarlos desde configuración.",
+    "gitlabWarning": "¡Por favor ten en cuenta!",
+    "gitlabWarningDescription": "El soporte de GitLab está en sus primeras etapas",
+    "providerGithub": "GitHub",
+    "providerGitlab": "GitLab",
+    "providerLocal": "Local"
   },
   "api": {
     "starRemoved": "Favorito eliminado",

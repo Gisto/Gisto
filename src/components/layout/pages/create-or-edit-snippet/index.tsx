@@ -37,6 +37,7 @@ import { languageMap } from '@/constants/language-map.ts';
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
+import { SnippetSingleType } from '@/types/snippet.ts';
 import {
   cn,
   formatSnippetForSaving,
@@ -45,8 +46,7 @@ import {
   getTags,
   removeTags,
   upperCaseFirst,
-} from '@/lib/utils';
-import { SnippetSingleType } from '@/types/snippet.ts';
+} from '@/utils';
 
 type Props = {
   isCollapsed?: boolean;
@@ -57,7 +57,7 @@ type Props = {
 // TODO: refactor to extract some parts
 export const CreateOrEditSnippet = ({
   isCollapsed = false,
-  setIsCollapsed = () => { },
+  setIsCollapsed = () => {},
 }: Props = {}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { navigate, params } = useRouter();
@@ -101,12 +101,12 @@ export const CreateOrEditSnippet = ({
                     option.disabled
                       ? undefined
                       : () => {
-                        dispatch({
-                          type: 'SET_FILE_LANGUAGE',
-                          payload: option?.label,
-                          index: option.fileIndex,
-                        });
-                      }
+                          dispatch({
+                            type: 'SET_FILE_LANGUAGE',
+                            payload: option?.label,
+                            index: option.fileIndex,
+                          });
+                        }
                   }
                 >
                   {option?.label && <div>{option.label}</div>}
@@ -474,7 +474,7 @@ export const CreateOrEditSnippet = ({
                             language={
                               languageMap[file?.language ?? settings.newSnippetDefaultLanguage]
                             }
-                            path={`model-${index}-${new Date().getTime()}`}
+                            path={`file-${index}`}
                           />
                         </div>
                       </CardContent>
@@ -517,8 +517,8 @@ export const CreateOrEditSnippet = ({
                   <Button variant="default" onClick={() => (edit ? update() : create())}>
                     {edit
                       ? upperCaseFirst(t('common.update')) +
-                      ' ' +
-                      upperCaseFirst(t('common.snippet'))
+                        ' ' +
+                        upperCaseFirst(t('common.snippet'))
                       : `${upperCaseFirst(t('common.create'))} ${state.isPublic ? t('common.public') : t('common.private')} ${t('common.snippet')}`}
                   </Button>
                 </div>

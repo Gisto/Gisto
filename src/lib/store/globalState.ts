@@ -55,7 +55,7 @@ export type StoreStateType = {
       temperature: number;
       cleanJson: boolean;
     };
-    activeSnippetProvider: 'github' | 'gitlab';
+    activeSnippetProvider: 'github' | 'gitlab' | 'local';
   };
 };
 

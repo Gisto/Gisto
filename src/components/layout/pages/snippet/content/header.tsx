@@ -1,6 +1,6 @@
 import { ChevronsDownUp, ChevronsUpDown, Eye, Code2, FileCode, MoreVertical } from 'lucide-react';
 
-import { downloadFile } from '@/components/downloadFile.ts';
+import { downloadFile } from '@/components/download-file.ts';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
@@ -10,8 +10,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu.tsx';
 import { t } from '@/lib/i18n';
-import { copyToClipboard, getLanguageName, previewAvailable, upperCaseFirst } from '@/lib/utils';
 import { SnippetFileType, SnippetSingleType } from '@/types/snippet.ts';
+import { copyToClipboard, getLanguageName, previewAvailable, upperCaseFirst } from '@/utils';
 
 export const Header = ({
   file,

@@ -11,7 +11,7 @@ import {
 import { Input } from '@/components/ui/input.tsx';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { upperCaseFirst } from '@/lib/utils';
+import { upperCaseFirst } from '@/utils';
 
 export const AllLanguages = ({
   className,

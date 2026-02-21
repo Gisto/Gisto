@@ -1,4 +1,14 @@
-import { FileCode, Filter, FilterX, RefreshCcw, SidebarClose, SidebarOpen } from 'lucide-react';
+import { useRouter } from 'dirty-react-router';
+import {
+  FileCode,
+  Filter,
+  FilterX,
+  RefreshCcw,
+  SidebarClose,
+  SidebarOpen,
+  Plus,
+  Loader,
+} from 'lucide-react';
 import { useCallback, useMemo } from 'react';
 
 import { ListItem } from '@/components/layout/navigation/snippets-list/item.tsx';
@@ -6,14 +16,15 @@ import { SearchInput } from '@/components/layout/navigation/snippets-list/search
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Loading } from '@/components/loading.tsx';
 import { Button } from '@/components/ui/button.tsx';
+import { EmptyState } from '@/components/ui/empty-state.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
 import { t } from '@/lib/i18n';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { searchFilter } from '@/lib/utils';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
+import { searchFilter } from '@/utils';
 const LazyListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
   const [isInView, ref] = useIntersectionObserver<HTMLDivElement>();
 
@@ -38,6 +49,86 @@ const ListSkeleton = () =>
     );
   });
 
+const RefreshButton = ({
+  isLoading,
+  isRefreshing,
+  onClick,
+}: {
+  isLoading: boolean;
+  isRefreshing: boolean;
+  onClick: () => void;
+}) => {
+  if (isRefreshing) {
+    return <Loader size={16} className="animate-spin" />;
+  }
+
+  if (!isLoading) {
+    return (
+      <Tooltip>
+        <TooltipTrigger>
+          <RefreshCcw className="size-3 cursor-pointer" onClick={onClick} />
+        </TooltipTrigger>
+        <TooltipContent>{t('list.refreshTheList')}</TooltipContent>
+      </Tooltip>
+    );
+  }
+
+  return null;
+};
+
+const SnippetsListFooter = ({
+  isLoading,
+  isRefreshing,
+  refresh,
+  filteredCount,
+  totalCount,
+  apiRateLimits,
+}: {
+  isLoading: boolean;
+  isRefreshing: boolean;
+  refresh: () => void;
+  filteredCount: number;
+  totalCount: number;
+  apiRateLimits?: { remaining: number; limit: number; reset: string } | null;
+}) => {
+  return (
+    <div className="h-[52px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">
+      <div className="flex items-center gap-2">
+        {totalCount > 0 ? (
+          <>
+            <FileCode className="size-3" />{' '}
+            {t('list.filteredSnippets', {
+              filtered: filteredCount,
+              number: totalCount,
+            })}
+            {isLoading && <Loader size={16} className="animate-spin" />}
+          </>
+        ) : isLoading ? (
+          <>
+            <Loading size={3} className="flex items-center justify-center mr-1" />{' '}
+            {t('list.refreshingData')}
+          </>
+        ) : null}
+
+        <RefreshButton isLoading={isLoading} isRefreshing={isRefreshing} onClick={refresh} />
+      </div>
+      <div>
+        {apiRateLimits && (
+          <Tooltip>
+            <TooltipTrigger>
+              {t('list.apiRate')}: {apiRateLimits.remaining}/{apiRateLimits.limit}
+            </TooltipTrigger>
+            <TooltipContent>
+              {t('list.apiRateLimit')}, {apiRateLimits.limit}/{t('common.hour')}{' '}
+              {t('list.nextReset')}: {apiRateLimits.reset}
+            </TooltipContent>
+          </Tooltip>
+        )}
+      </div>
+    </div>
+  );
+};
+
 export const Lists = ({
   setIsCollapsed,
   isCollapsed,
@@ -45,7 +136,8 @@ export const Lists = ({
   setIsCollapsed: (b: boolean) => void;
   isCollapsed: boolean;
 }) => {
-  const { isLoading, refresh } = useSnippets();
+  const { navigate } = useRouter();
+  const { isLoading, isRefreshing, refresh } = useSnippets();
   const allSnippets = useStoreValue('snippets');
   const search = useStoreValue('search');
   const apiRateLimits = useStoreValue('apiRateLimits');
@@ -92,53 +184,38 @@ export const Lists = ({
         </Button>
       </PageHeader>
       <ScrollArea className="h-[calc(100dvh_-_104px)] shadow-inner">
-        {allSnippets.length === 0 ? (
+        {allSnippets.length === 0 && isLoading ? (
           <ListSkeleton />
+        ) : allSnippets.length === 0 ? (
+          <EmptyState
+            className="h-[calc(100dvh_-_200px)]"
+            title={t('list.noSnippets')}
+            description={t('list.noSnippetsDescription')}
+            action={
+              <Button
+                className="cursor-pointer"
+                variant="outline"
+                size="sm"
+                onClick={() => navigate('/new-snippet')}
+              >
+                <Plus className="size-4" />
+                {t('common.create')} {t('common.snippet')}
+              </Button>
+            }
+          />
         ) : (
           listOfSnippets.length > 0 &&
           listOfSnippets.map((snippet) => <LazyListItem key={snippet.id} snippet={snippet} />)
         )}
       </ScrollArea>
-      <div className="h-[52px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">
-        <div className="flex items-center gap-2">
-          {!isLoading ? (
-            <>
-              <FileCode className="size-3" />{' '}
-              {t('list.filteredSnippets', {
-                filtered: listOfSnippets.length,
-                number: allSnippets.length,
-              })}
-            </>
-          ) : (
-            <>
-              <Loading size={3} className="flex items-center justify-center mr-1" />{' '}
-              {t('list.refreshingData')}
-            </>
-          )}
-
-          {!isLoading && (
-            <Tooltip>
-              <TooltipTrigger>
-                <RefreshCcw className="size-3 cursor-pointer" onClick={refresh} />
-              </TooltipTrigger>
-              <TooltipContent>{t('list.refreshTheList')}</TooltipContent>
-            </Tooltip>
-          )}
-        </div>
-        <div>
-          {apiRateLimits && (
-            <Tooltip>
-              <TooltipTrigger>
-                {t('list.apiRate')}: {apiRateLimits.remaining}/{apiRateLimits.limit}
-              </TooltipTrigger>
-              <TooltipContent>
-                {t('list.apiRateLimit')}, {apiRateLimits.limit}/{t('common.hour')}{' '}
-                {t('list.nextReset')}: {apiRateLimits.reset}
-              </TooltipContent>
-            </Tooltip>
-          )}
-        </div>
-      </div>
+      <SnippetsListFooter
+        isLoading={isLoading}
+        isRefreshing={isRefreshing}
+        refresh={refresh}
+        filteredCount={listOfSnippets.length}
+        totalCount={allSnippets.length}
+        apiRateLimits={apiRateLimits}
+      />
     </div>
   );
 };
