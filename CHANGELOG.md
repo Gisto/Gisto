@@ -13,6 +13,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([fa02c3a](https://github.com/gisto/gisto/commit/fa02c3a07658405df1ef8c374a6c188345970c02))
 
+- *(dependencies)* Update dependencies overrides to patch vulnerabilities
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([f2af277](https://github.com/gisto/gisto/commit/f2af27713625bd5c33d4f42abc252a5e1e4ffe1e))
+
 
 ### 🚜 Refactor
 
