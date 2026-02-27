@@ -271,6 +271,23 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
+          if (key === 'dashboardSnippetsOverTimeRange') {
+            return (
+              <SpecialSelect
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={[
+                  { value: '7days', label: t('pages.dashboard.oneWeekAgo') },
+                  { value: '30days', label: t('pages.dashboard.oneMonthAgo') },
+                  { value: '6months', label: t('pages.dashboard.sixMonthsAgo') },
+                  { value: '1year', label: t('pages.dashboard.oneYearAgo') },
+                ]}
+              />
+            );
+          }
+
           if (key === 'language') {
             return (
               <SpecialSelect

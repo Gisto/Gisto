@@ -112,12 +112,14 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     jsonPreviewCollapsedByDefault,
     filesPreviewEnabledByDefault,
     sortFilesByMarkdownFirst,
+    dashboardSnippetsOverTimeRange,
   } = settings;
 
   // Group settings into logical sections
   const appearanceSettings = {
     theme,
     language,
+    dashboardSnippetsOverTimeRange,
   };
 
   const snippetSettings = {
