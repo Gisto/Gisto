@@ -14,6 +14,14 @@ All significant updates and improvements
 ([fa02c3a](https://github.com/gisto/gisto/commit/fa02c3a07658405df1ef8c374a6c188345970c02))
 
 
+### 🚜 Refactor
+
+- *(create or edit)* Simplify create and edit screen
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([c99ed7c](https://github.com/gisto/gisto/commit/c99ed7c041d42dc1b1ce40cda3c879dd137e130d))
+
+
 ## v2.6.0
 
 Released on: Feb 21, 2026
