@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(settings)* Persist and allow to set snippet over time range
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([98ce0e4](https://github.com/gisto/gisto/commit/98ce0e4791d8c77f4be10db9d3f564b357cb1dff))
+
+
 ### 🛠️️ Build
 
 - *(deps)* Bump bytes
