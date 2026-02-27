@@ -18,6 +18,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([f2af277](https://github.com/gisto/gisto/commit/f2af27713625bd5c33d4f42abc252a5e1e4ffe1e))
 
+- *(deps)* Bump minimatch in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([6996cad](https://github.com/gisto/gisto/commit/6996cad3a01e83a8560152c4236a7b844023cd44))
+
 
 ### 🚜 Refactor
 
