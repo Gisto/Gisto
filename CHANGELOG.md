@@ -2,6 +2,64 @@
 
 All significant updates and improvements
 
+## v2.6.1
+
+Released on: Mar 1, 2026
+
+### 🚀 Features
+
+- *(settings)* Persist and allow to set snippet over time range
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([98ce0e4](https://github.com/gisto/gisto/commit/98ce0e4791d8c77f4be10db9d3f564b357cb1dff))
+
+
+### 🛠️️ Build
+
+- *(deps)* Bump bytes
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([fa02c3a](https://github.com/gisto/gisto/commit/fa02c3a07658405df1ef8c374a6c188345970c02))
+
+- *(dependencies)* Update dependencies overrides to patch vulnerabilities
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([f2af277](https://github.com/gisto/gisto/commit/f2af27713625bd5c33d4f42abc252a5e1e4ffe1e))
+
+- *(deps)* Bump minimatch in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([6996cad](https://github.com/gisto/gisto/commit/6996cad3a01e83a8560152c4236a7b844023cd44))
+
+- *(deps)* Bump zod from 4.3.5 to 4.3.6
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([bdb948b](https://github.com/gisto/gisto/commit/bdb948b2c7e8221a8a2e1b497e70d55d3e63563b))
+
+- *(deps-dev)* Bump vitest from 4.0.17 to 4.0.18
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([9a81e65](https://github.com/gisto/gisto/commit/9a81e65f31d1f2da9badd4fb9dcc1abd0ce14b6f))
+
+- *(deps-dev)* Bump @types/node from 25.1.0 to 25.3.3
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([7409a2f](https://github.com/gisto/gisto/commit/7409a2f500f4513244a114eaa39ec3ee4e5041d8))
+
+- *(deps)* Bump @mdit/plugin-tasklist from 0.22.2 to 0.23.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([bf7d3a9](https://github.com/gisto/gisto/commit/bf7d3a9b6d00c67ffa8f5cd7007383d3879bf755))
+
+
+### 🚜 Refactor
+
+- *(create or edit)* Simplify create and edit screen
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([c99ed7c](https://github.com/gisto/gisto/commit/c99ed7c041d42dc1b1ce40cda3c879dd137e130d))
+
+
 ## v2.6.0
 
 Released on: Feb 21, 2026

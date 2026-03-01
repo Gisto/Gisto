@@ -56,6 +56,7 @@ export type StoreStateType = {
       cleanJson: boolean;
     };
     activeSnippetProvider: 'github' | 'gitlab' | 'local';
+    dashboardSnippetsOverTimeRange: '7days' | '30days' | '6months' | '1year';
   };
 };
 
@@ -164,6 +165,7 @@ export const defaultSettings: SettingsType = {
     cleanJson: true,
   },
   activeSnippetProvider: 'github',
+  dashboardSnippetsOverTimeRange: '6months',
 };
 
 export const globalState = new Store<StoreStateType>({

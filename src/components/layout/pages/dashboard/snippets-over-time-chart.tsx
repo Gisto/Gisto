@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
 
 import {
@@ -26,7 +25,7 @@ import {
   SelectValue,
 } from '@/components/ui/select.tsx';
 import { t } from '@/lib/i18n';
-import { useStoreValue } from '@/lib/store/globalState.ts';
+import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
 import { upperCaseFirst } from '@/utils';
 
@@ -103,8 +102,15 @@ const rangeToText = (range: string) => {
 };
 
 export const SnippetsOverTimeChart = () => {
-  const [range, setRange] = useState('30days');
+  const settings = useStoreValue('settings');
+  const range = settings.dashboardSnippetsOverTimeRange;
   const list = useStoreValue('snippets');
+
+  const handleRangeChange = (value: string) => {
+    updateSettings({
+      dashboardSnippetsOverTimeRange: value as '7days' | '30days' | '6months' | '1year',
+    });
+  };
 
   return (
     <Card>
@@ -116,7 +122,7 @@ export const SnippetsOverTimeChart = () => {
           </CardDescription>
         </div>
         <div className="flex items-center">
-          <Select value={range} onValueChange={(value) => setRange(value)}>
+          <Select value={range} onValueChange={handleRangeChange}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Select range" />
             </SelectTrigger>
