@@ -3,7 +3,7 @@
   "description": "Cross-platform snippets management desktop application",
   "productName": "Gisto",
   "private": true,
-  "version": "2.6.0",
+  "version": "2.6.1",
   "type": "module",
   "scripts": {
     "// ℹ️ ------- build and develop -------": "",
