@@ -41,6 +41,16 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([9a81e65](https://github.com/gisto/gisto/commit/9a81e65f31d1f2da9badd4fb9dcc1abd0ce14b6f))
 
+- *(deps-dev)* Bump @types/node from 25.1.0 to 25.3.3
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([7409a2f](https://github.com/gisto/gisto/commit/7409a2f500f4513244a114eaa39ec3ee4e5041d8))
+
+- *(deps)* Bump @mdit/plugin-tasklist from 0.22.2 to 0.23.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([bf7d3a9](https://github.com/gisto/gisto/commit/bf7d3a9b6d00c67ffa8f5cd7007383d3879bf755))
+
 
 ### 🚜 Refactor
 
