@@ -31,6 +31,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([6996cad](https://github.com/gisto/gisto/commit/6996cad3a01e83a8560152c4236a7b844023cd44))
 
+- *(deps)* Bump zod from 4.3.5 to 4.3.6
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([bdb948b](https://github.com/gisto/gisto/commit/bdb948b2c7e8221a8a2e1b497e70d55d3e63563b))
+
 
 ### 🚜 Refactor
 
