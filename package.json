@@ -74,7 +74,7 @@
     "recharts": "^2.15.4",
     "swagger-ui-react": "^5.30.2",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^4.1.13"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
