@@ -34,7 +34,7 @@
   "dependencies": {
     "@commitlint/types": "^20.4.0",
     "@mdit/plugin-alert": "^0.22.3",
-    "@mdit/plugin-tasklist": "^0.22.2",
+    "@mdit/plugin-tasklist": "^0.23.0",
     "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
