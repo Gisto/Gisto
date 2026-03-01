@@ -36,6 +36,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([bdb948b](https://github.com/gisto/gisto/commit/bdb948b2c7e8221a8a2e1b497e70d55d3e63563b))
 
+- *(deps-dev)* Bump vitest from 4.0.17 to 4.0.18
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([9a81e65](https://github.com/gisto/gisto/commit/9a81e65f31d1f2da9badd4fb9dcc1abd0ce14b6f))
+
 
 ### 🚜 Refactor
 
