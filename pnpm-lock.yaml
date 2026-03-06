@@ -2970,8 +2970,8 @@ packages:
     resolution: {integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==}
     engines: {node: '>= 4'}
 
-  immutable@3.8.2:
-    resolution: {integrity: sha512-15gZoQ38eYjEjxkorfbcgBKBL6R7T459OuK+CpcWt7O3KF4uPCx2tD0uFETlUDIyo+1789crbMhTvQBSR5yBMg==}
+  immutable@3.8.3:
+    resolution: {integrity: sha512-AUY/VyX0E5XlibOmWt10uabJzam1zlYjwiEgQSDc5+UIkFNaF9WM0JxXKaNMGf+F/ffUF+7kRKXM9A7C0xXqMg==}
     engines: {node: '>=0.10.0'}
 
   import-fresh@3.3.1:
@@ -7691,7 +7691,7 @@ snapshots:
 
   ignore@7.0.5: {}
 
-  immutable@3.8.2: {}
+  immutable@3.8.3: {}
 
   import-fresh@3.3.1:
     dependencies:
@@ -8442,14 +8442,14 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  react-immutable-proptypes@2.2.0(immutable@3.8.2):
+  react-immutable-proptypes@2.2.0(immutable@3.8.3):
     dependencies:
-      immutable: 3.8.2
+      immutable: 3.8.3
       invariant: 2.2.4
 
-  react-immutable-pure-component@2.2.2(immutable@3.8.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  react-immutable-pure-component@2.2.2(immutable@3.8.3)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      immutable: 3.8.2
+      immutable: 3.8.3
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
@@ -8565,9 +8565,9 @@ snapshots:
       indent-string: 4.0.0
       strip-indent: 3.0.0
 
-  redux-immutable@4.0.0(immutable@3.8.2):
+  redux-immutable@4.0.0(immutable@3.8.3):
     dependencies:
-      immutable: 3.8.2
+      immutable: 3.8.3
 
   redux@5.0.1: {}
 
@@ -8893,7 +8893,7 @@ snapshots:
       deep-extend: 0.6.0
       dompurify: 3.2.6
       ieee754: 1.2.1
-      immutable: 3.8.2
+      immutable: 3.8.3
       js-file-download: 0.4.12
       js-yaml: 4.1.1
       lodash: 4.17.23
@@ -8904,13 +8904,13 @@ snapshots:
       react-copy-to-clipboard: 5.1.0(react@19.2.3)
       react-debounce-input: 3.3.0(react@19.2.3)
       react-dom: 19.2.3(react@19.2.3)
-      react-immutable-proptypes: 2.2.0(immutable@3.8.2)
-      react-immutable-pure-component: 2.2.2(immutable@3.8.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react-immutable-proptypes: 2.2.0(immutable@3.8.3)
+      react-immutable-pure-component: 2.2.2(immutable@3.8.3)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-inspector: 6.0.2(react@19.2.3)
       react-redux: 9.2.0(@types/react@19.2.8)(react@19.2.3)(redux@5.0.1)
       react-syntax-highlighter: 16.1.0(react@19.2.3)
       redux: 5.0.1
-      redux-immutable: 4.0.0(immutable@3.8.2)
+      redux-immutable: 4.0.0(immutable@3.8.3)
       remarkable: 2.0.1
       reselect: 5.1.1
       serialize-error: 8.1.0
