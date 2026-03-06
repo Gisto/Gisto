@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🛠️️ Build
+
+- *(deps)* Bump immutable in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([1588f09](https://github.com/gisto/gisto/commit/1588f092bd4819eb60adb5892974b0cfdbd79dcc))
+
+
 ## v2.6.1
 
 Released on: Mar 1, 2026
