@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(markdown)* Support mermaid in markdown
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([69e6840](https://github.com/gisto/gisto/commit/69e684038b936aa91ef20aa510218d776dc5e229))
+
+
 ### 🛠️️ Build
 
 - *(deps)* Bump immutable in the npm_and_yarn group across 1 directory
