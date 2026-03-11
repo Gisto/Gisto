@@ -1,5 +1,6 @@
 import { alert } from '@mdit/plugin-alert';
 import { tasklist } from '@mdit/plugin-tasklist';
+import markdownItMermaid from '@wekanteam/markdown-it-mermaid';
 import hljs from 'highlight.js';
 import markdownIt from 'markdown-it';
 import { useEffect, useRef } from 'react';
@@ -34,6 +35,7 @@ const md = markdownIt({
 
 md.use(tasklist);
 md.use(alert);
+md.use(markdownItMermaid);
 
 const defaultRender =
   md.renderer.rules.link_open ||
@@ -124,12 +126,20 @@ export const Markdown = ({ file }: { file: SnippetFileType }) => {
       roots.push({ root, element: buttonContainer });
     });
 
+    import('mermaid').then((mermaid) => {
+      mermaid.default.initialize({
+        startOnLoad: false,
+        theme: theme === 'dark' ? 'dark' : 'default',
+      });
+      mermaid.default.run({ querySelector: '.mermaid' });
+    });
+
     return () => {
       roots.forEach(({ root }) => {
         root.unmount();
       });
     };
-  }, [result]);
+  }, [result, theme]);
 
   return (
     <div className="bg-background py-4 px-8 overflow-scroll mb-4">
