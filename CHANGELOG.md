@@ -2,6 +2,26 @@
 
 All significant updates and improvements
 
+## v2.6.2
+
+Released on: Mar 11, 2026
+
+### 🚀 Features
+
+- *(markdown)* Support mermaid in markdown
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([69e6840](https://github.com/gisto/gisto/commit/69e684038b936aa91ef20aa510218d776dc5e229))
+
+
+### 🛠️️ Build
+
+- *(deps)* Bump immutable in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([1588f09](https://github.com/gisto/gisto/commit/1588f092bd4819eb60adb5892974b0cfdbd79dcc))
+
+
 ## v2.6.1
 
 Released on: Mar 1, 2026
