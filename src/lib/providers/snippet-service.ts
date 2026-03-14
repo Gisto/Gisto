@@ -3,14 +3,16 @@ import { SnippetProvider } from './types';
 import { GithubApi } from '@/lib/api/github-api.ts';
 import { GitlabApi } from '@/lib/api/gitlab-api.ts';
 import { LocalApi } from '@/lib/api/local-api.ts';
+import { SnippetBinApi } from '@/lib/api/snippet-bin-api.ts';
 import { globalState } from '@/lib/store/globalState';
 
-type SnippetProviderKey = 'github' | 'gitlab' | 'local';
+type SnippetProviderKey = 'github' | 'gitlab' | 'local' | 'snippet-bin';
 
 const SNIPPET_PROVIDERS: Record<SnippetProviderKey, SnippetProvider<unknown, unknown>> = {
   github: GithubApi as SnippetProvider<unknown, unknown>,
   gitlab: GitlabApi as SnippetProvider<unknown, unknown>,
   local: LocalApi as SnippetProvider<unknown, unknown>,
+  'snippet-bin': SnippetBinApi as SnippetProvider<unknown, unknown>,
 };
 
 function resolveProvider(activeProvider?: string): SnippetProvider<unknown, unknown> {
@@ -92,6 +94,9 @@ class SnippetService implements SnippetProvider<unknown, unknown> {
   }
 
   fetchGithubGraphQL<T>(query?: string, params?: { cursor: string | null }): Promise<T> {
+    if (!this.provider.fetchGithubGraphQL) {
+      throw new Error('fetchGithubGraphQL is not supported by this provider');
+    }
     return this.provider.fetchGithubGraphQL(query, params);
   }
 

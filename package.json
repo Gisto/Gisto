@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "prepare": "husky",
     "// ℹ️ ------- test  and lint-------": "",
+    "validate": "pnpm lint && pnpm ts:lint && pnpm test && pnpm e2e",
     "lint": "eslint ./src",
     "ts:lint": "tsc -b --noEmit",
     "test": "vitest run --dir src",

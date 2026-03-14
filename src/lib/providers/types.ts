@@ -6,7 +6,7 @@ export interface SnippetProvider<TRawList = SnippetSingleType, TRawSingle = TRaw
   };
   baseUrl: string;
   gitHubApiVersion?: string;
-  fetchGithubGraphQL<T>(query?: string, params?: { cursor: string | null }): Promise<T>;
+  fetchGithubGraphQL?<T>(query?: string, params?: { cursor: string | null }): Promise<T>;
   getSnippet(snippetId: string): Promise<SnippetSingleType>;
   getMarkdown(text: string): Promise<string>;
   createSnippet(params: {

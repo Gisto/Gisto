@@ -6,6 +6,7 @@ import { Loading } from '@/components/loading.tsx';
 import { Gisto } from '@/components/main/gisto.tsx';
 import { Login } from '@/components/main/login.tsx';
 import { toast } from '@/components/toast';
+import { getProviderConfig, SnippetProviderType } from '@/constants/providers.tsx';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 
@@ -14,9 +15,7 @@ export const App = () => {
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const storedProvider = localStorage.getItem('ACTIVE_PROVIDER') as
-    | 'github'
-    | 'gitlab'
-    | 'local'
+    | SnippetProviderType
     | null;
   const activeProvider = storedProvider || globalState.getState().settings.activeSnippetProvider;
 
@@ -26,7 +25,7 @@ export const App = () => {
       setIsLoading(false);
       return;
     }
-    const tokenKey = activeProvider === 'gitlab' ? 'GITLAB_TOKEN' : 'GITHUB_TOKEN';
+    const tokenKey = getProviderConfig(activeProvider as SnippetProviderType).tokenKey;
     const storedToken = localStorage.getItem(tokenKey);
     if (storedToken) {
       setToken(storedToken);
@@ -36,15 +35,26 @@ export const App = () => {
     }
   }, [activeProvider]);
 
-  const validateToken = async (tokenToValidate: string, provider: 'github' | 'gitlab') => {
+  const validateToken = async (
+    tokenToValidate: string,
+    provider: Exclude<SnippetProviderType, 'local'>,
+    baseUrl?: string
+  ) => {
     setIsLoading(true);
     try {
+      const currentBaseUrl = baseUrl || globalState.getState().settings.snippetBinBaseUrl;
       const url =
-        provider === 'gitlab' ? 'https://gitlab.com/api/v4/user' : 'https://api.github.com/user';
+        provider === 'gitlab'
+          ? 'https://gitlab.com/api/v4/user'
+          : provider === 'snippet-bin'
+            ? `${currentBaseUrl}/auth/user`
+            : 'https://api.github.com/user';
       const headers: Record<string, string> = {};
 
       if (provider === 'gitlab') {
         headers['Private-Token'] = tokenToValidate;
+      } else if (provider === 'snippet-bin') {
+        headers['Authorization'] = `token ${tokenToValidate}`;
       } else {
         headers['Authorization'] = `token ${tokenToValidate}`;
       }
@@ -52,9 +62,17 @@ export const App = () => {
       const response = await fetch(url, { headers });
 
       if (response.status === 200) {
-        const tokenKey = provider === 'gitlab' ? 'GITLAB_TOKEN' : 'GITHUB_TOKEN';
+        const tokenKey = getProviderConfig(provider).tokenKey;
         localStorage.setItem(tokenKey, tokenToValidate);
-        globalState.setState({ user: await response.json(), isLoggedIn: true });
+        const userData = await response.json();
+        globalState.setState({
+          user: {
+            ...userData,
+            login: userData.login || userData.username,
+            avatar_url: userData.avatar_url || `https://api.dicebear.com/7.x/initials/svg?seed=${userData.login || userData.username || 'Gisto'}`,
+          },
+          isLoggedIn: true,
+        });
         setIsValid(true);
       } else {
         setIsValid(false);
@@ -68,21 +86,33 @@ export const App = () => {
     }
   };
 
-  const handleTokenSubmit = (newToken: string, provider: 'github' | 'gitlab' | 'local') => {
+  const handleTokenSubmit = (
+    newToken: string,
+    provider: SnippetProviderType,
+    snippetBinBaseUrl?: string
+  ) => {
     localStorage.setItem('ACTIVE_PROVIDER', provider);
+
+    const updatedSettings = {
+      ...globalState.getState().settings,
+      activeSnippetProvider: provider,
+    };
+
+    if (provider === 'snippet-bin' && snippetBinBaseUrl) {
+      updatedSettings.snippetBinBaseUrl = snippetBinBaseUrl;
+    }
+
     globalState.setState({
-      settings: {
-        ...globalState.getState().settings,
-        activeSnippetProvider: provider,
-      },
+      settings: updatedSettings,
     });
+
     if (provider === 'local') {
       globalState.setState({ isLoggedIn: true });
       setIsValid(true);
       return;
     }
     setToken(newToken);
-    void validateToken(newToken, provider);
+    void validateToken(newToken, provider, snippetBinBaseUrl);
   };
 
   if (isLoading) {

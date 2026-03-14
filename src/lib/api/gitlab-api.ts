@@ -277,11 +277,6 @@ export const GitlabApi: SnippetProvider<GitLabSnippet, GitLabSnippet> = {
     };
   },
 
-  // GitLab doesn't have GraphQL, so this is a no-op implementation
-  async fetchGithubGraphQL<T>(): Promise<T> {
-    throw new Error('GraphQL is not supported by GitLab API');
-  },
-
   async getSnippets(): Promise<SnippetType[]> {
     const allSnippets: SnippetType[] = [];
     for await (const snippetPage of this.getSnippetsGenerator()) {
