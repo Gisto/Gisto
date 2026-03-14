@@ -254,6 +254,23 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
+          if (key === 'snippetBinBaseUrl') {
+            const activeProvider = (settings as Record<string, unknown>)?.activeSnippetProvider;
+            if (activeProvider !== 'snippet-bin') {
+              return null;
+            }
+            return (
+              <div key={key} className="mb-4">
+                <label className="block mb-1">{t('login.snippetBinBaseUrl')}</label>
+                <Input
+                  type="text"
+                  value={value}
+                  onChange={(e) => onChange(fullPath, e.target.value)}
+                />
+              </div>
+            );
+          }
+
           if (key === 'activeSnippetProvider') {
             return (
               <SpecialSelect
@@ -265,6 +282,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 options={[
                   { value: 'github', label: 'GitHub' },
                   { value: 'gitlab', label: 'GitLab' },
+                  { value: 'snippet-bin', label: 'Snippet-bin' },
                   { value: 'local', label: 'Local' },
                 ]}
               />
