@@ -12,6 +12,7 @@ import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { EDITOR_OPTIONS } from '@/constants';
+import { getProviderConfig, getTranslation, SnippetProviderType } from '@/constants/providers.tsx';
 import { generateAiResponse, AiApiError } from '@/lib/api/ai-api.ts';
 import { exportLocalDatabase, importLocalDatabase } from '@/lib/api/local-api.ts';
 import { t } from '@/lib/i18n';
@@ -175,36 +176,36 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
                       {t('pages.settings.snippetProvider')}
                     </label>
                     <div className="text-sm py-2 px-3 bg-muted rounded-md">
-                      {activeSnippetProvider === 'github'
-                        ? 'GitHub'
-                        : activeSnippetProvider === 'gitlab'
-                          ? 'GitLab'
-                          : 'Local'}
+                      {getTranslation(
+                        getProviderConfig(activeSnippetProvider as SnippetProviderType).label
+                      )}
                     </div>
                   </div>
-                  {activeSnippetProvider === 'github' && (
+                  {activeSnippetProvider !== 'local' && activeSnippetProvider !== 'snippet-bin' && (
                     <div className="flex flex-col space-y-1.5">
-                      <label className="text-sm font-medium">{t('login.githubToken')}</label>
+                      <label className="text-sm font-medium">
+                        {getTranslation(
+                          getProviderConfig(activeSnippetProvider as SnippetProviderType).tokenLabel
+                        )}
+                      </label>
                       <InputPassword
-                        value={localStorage.getItem('GITHUB_TOKEN') || ''}
+                        value={
+                          localStorage.getItem(
+                            getProviderConfig(activeSnippetProvider as SnippetProviderType).tokenKey
+                          ) || ''
+                        }
                         onChange={(e) => {
-                          localStorage.setItem('GITHUB_TOKEN', e.target.value);
+                          localStorage.setItem(
+                            getProviderConfig(activeSnippetProvider as SnippetProviderType)
+                              .tokenKey,
+                            e.target.value
+                          );
                           forceUpdate();
                         }}
-                        placeholder={t('login.enterGithubToken')}
-                      />
-                    </div>
-                  )}
-                  {activeSnippetProvider === 'gitlab' && (
-                    <div className="flex flex-col space-y-1.5">
-                      <label className="text-sm font-medium">{t('login.gitlabToken')}</label>
-                      <InputPassword
-                        value={localStorage.getItem('GITLAB_TOKEN') || ''}
-                        onChange={(e) => {
-                          localStorage.setItem('GITLAB_TOKEN', e.target.value);
-                          forceUpdate();
-                        }}
-                        placeholder={t('login.enterGitlabToken')}
+                        placeholder={getTranslation(
+                          getProviderConfig(activeSnippetProvider as SnippetProviderType)
+                            .tokenPlaceholder
+                        )}
                       />
                     </div>
                   )}

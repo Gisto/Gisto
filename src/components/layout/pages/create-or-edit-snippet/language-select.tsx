@@ -3,7 +3,7 @@ import Select, { SelectRenderer } from 'react-dropdown-select';
 import { ActionType } from './reducer';
 
 import { Input } from '@/components/ui/input.tsx';
-import { languageMap } from '@/constants/language-map.ts';
+import { getLanguage, languageMap } from '@/constants/language-map.ts';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/utils';
@@ -97,7 +97,7 @@ export const LanguageSelect = ({ index, fileLanguage, dispatch }: LanguageSelect
           [
             {
               label: fileLanguage ? fileLanguage : settings.newSnippetDefaultLanguage,
-              value: fileLanguage ? languageMap[fileLanguage] : settings.newSnippetDefaultLanguage,
+              value: fileLanguage ? getLanguage(fileLanguage) : settings.newSnippetDefaultLanguage,
             },
           ] as SelectOption[]
         }

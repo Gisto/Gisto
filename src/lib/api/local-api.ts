@@ -132,10 +132,6 @@ export const LocalApi: SnippetProvider<LocalSnippet, LocalSnippet> = {
   },
   baseUrl: 'local',
 
-  async fetchGithubGraphQL() {
-    throw new Error('GraphQL is not supported in local mode');
-  },
-
   async getSnippet(snippetId: string): Promise<SnippetSingleType> {
     const snippet = await db.snippets.get(snippetId);
     if (!snippet) {
