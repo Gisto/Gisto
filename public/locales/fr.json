@@ -128,6 +128,7 @@
       "temperature": "Température",
       "apiKey": "Clé API",
       "uiLanguage": "Langue de l'interface (expérimental)",
+      "snippetProvider": "Fournisseur d'extraits",
       "experimentalTranslation": "Expérimental, traduit par machine, certaines traductions ne sont pas précises ou non disponibles.",
       "getApiKey": "Obtenez votre clé API {provider} sur {url}.",
       "apiKeyPlaceholder": "votre clé api",
@@ -164,6 +165,8 @@
     "apiRate": "Limite d’API",
     "apiRateLimit": "Limite de l’API GitHub",
     "nextReset": "Prochaine réinitialisation",
+    "noSnippets": "Pas encore d'extraits",
+    "noSnippetsDescription": "Créez votre premier extrait pour commencer",
     "searchHelp": {
       "title": "Recherchez des extraits par description/titre, étiquettes ou langage<br />Ou une combinaison :",
       "description": "<strong>Description ou contenu du fichier :</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>texte libre</code>",
@@ -204,13 +207,22 @@
     "gitlabWarningDescription": "Le support GitLab est à ses début",
     "providerGithub": "GitHub",
     "providerGitlab": "GitLab",
-    "providerLocal": "Local"
+    "providerLocal": "Local",
+    "providerSnippetBin": "Snippet-bin",
+    "snippetBinToken": "Jeton Snippet-bin",
+    "snippetBinBaseUrl": "URL de base Snippet-bin",
+    "enterSnippetBinToken": "Entrez le jeton snippet-bin",
+    "enterSnippetBinBaseUrl": "Entrez l'URL de base snippet-bin",
+    "scopeMessageSnippetBin": "Entrez votre jeton d'accès personnel pour snippet-bin",
+    "snippetBinWarning": "Instance personnalisée",
+    "snippetBinDescription": "Connexion à l'instance snippet-bin sur {baseUrl}"
   },
   "api": {
     "starRemoved": "Favori supprimé",
     "starAdded": "Favori ajouté",
     "visibilityChangedToPublic": "Visibilité modifiée en public",
     "visibilityChangedToPrivate": "Visibilité modifiée en privé",
-    "errorTryToRefresh": "Erreur lors de la récupération des snippets, veuillez essayer d’actualiser"
+    "errorTryToRefresh": "Erreur lors de la récupération des snippets, veuillez essayer d’actualiser",
+    "featureNotSupported": "Cette fonctionnalité n'est pas encore prise en charge pour {provider}"
   }
 }

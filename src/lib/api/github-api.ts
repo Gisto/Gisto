@@ -374,9 +374,13 @@ export const GithubApi: SnippetProvider<GitHubSnippetListItem, SnippetSingleType
   `;
 
     try {
-      const data = await this.fetchGithubGraphQL<SnippetQueryData>(query, {
+      const data = await this.fetchGithubGraphQL!<SnippetQueryData>(query, {
         cursor,
       });
+
+      if (!data) {
+        throw new Error('No data returned from GitHub GraphQL API');
+      }
 
       return {
         nodes: data.viewer.gists.nodes.map((node) => this.mapToSnippetType(node)),

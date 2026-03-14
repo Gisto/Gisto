@@ -207,7 +207,15 @@
     "gitlabWarningDescription": "GitLab support is in it's early stages",
     "providerGithub": "GitHub",
     "providerGitlab": "GitLab",
-    "providerLocal": "Local"
+    "providerLocal": "Local",
+    "providerSnippetBin": "Snippet-bin",
+    "snippetBinToken": "Snippet-bin token",
+    "snippetBinBaseUrl": "Snippet-bin base URL",
+    "enterSnippetBinToken": "Enter snippet-bin token",
+    "enterSnippetBinBaseUrl": "Enter snippet-bin base URL",
+    "scopeMessageSnippetBin": "Enter your personal access token for snippet-bin",
+    "snippetBinWarning": "Custom Instance",
+    "snippetBinDescription": "Connecting to snippet-bin instance at {baseUrl}"
   },
   "api": {
     "starRemoved": "Star removed",

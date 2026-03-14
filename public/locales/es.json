@@ -128,6 +128,7 @@
       "temperature": "Temperatura",
       "apiKey": "Clave API",
       "uiLanguage": "Idioma de interfaz (experimental)",
+      "snippetProvider": "Proveedor de fragmentos",
       "experimentalTranslation": "Experimental, traducido automáticamente, algunas traducciones no son precisas o no están disponibles.",
       "getApiKey": "Obtén tu clave API de {provider} en {url}.",
       "apiKeyPlaceholder": "tu clave api",
@@ -164,6 +165,8 @@
     "apiRate": "Límite de API",
     "apiRateLimit": "Límite de la API de GitHub",
     "nextReset": "Próximo reinicio",
+    "noSnippets": "No hay fragmentos aún",
+    "noSnippetsDescription": "Crea tu primer fragmento para comenzar",
     "searchHelp": {
       "title": "Busca fragmentos por descripción/título, etiquetas o lenguaje<br />O una combinación de todos:",
       "description": "<strong>Descripción o contenido de archivos:</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>texto libre</code>",
@@ -204,13 +207,22 @@
     "gitlabWarningDescription": "El soporte de GitLab está en sus primeras etapas",
     "providerGithub": "GitHub",
     "providerGitlab": "GitLab",
-    "providerLocal": "Local"
+    "providerLocal": "Local",
+    "providerSnippetBin": "Snippet-bin",
+    "snippetBinToken": "Token de Snippet-bin",
+    "snippetBinBaseUrl": "URL base de Snippet-bin",
+    "enterSnippetBinToken": "Introduce el token de snippet-bin",
+    "enterSnippetBinBaseUrl": "Introduce la URL base de snippet-bin",
+    "scopeMessageSnippetBin": "Introduce tu token de acceso personal para snippet-bin",
+    "snippetBinWarning": "Instancia personalizada",
+    "snippetBinDescription": "Conectando a la instancia de snippet-bin en {baseUrl}"
   },
   "api": {
     "starRemoved": "Favorito eliminado",
     "starAdded": "Favorito agregado",
     "visibilityChangedToPublic": "Visibilidad del fragmento cambiada a público",
     "visibilityChangedToPrivate": "Visibilidad del fragmento cambiada a privado",
-    "errorTryToRefresh": "Error al obtener snippets, intenta actualizar"
+    "errorTryToRefresh": "Error al obtener snippets, intenta actualizar",
+    "featureNotSupported": "Esta función aún no es compatible con {provider}"
   }
 }

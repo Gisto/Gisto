@@ -4,3 +4,4 @@ export { ClaudeIcon } from './claude-icon';
 export { OpenRouterIcon } from './openrouter-icon';
 export { GitHubIcon } from './github-icon';
 export { GitLabIcon } from './gitlab-icon';
+export { SnippetBinIcon } from './snippet-bin-icon';
