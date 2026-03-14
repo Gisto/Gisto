@@ -340,6 +340,24 @@ export const languageMap: Record<string, string> = {
   Zimpl: 'text',
 };
 
+export const getLanguage = (language: string | undefined): string => {
+  if (!language) {
+    return 'text';
+  }
+
+  const result = languageMap[language];
+
+  if (result) {
+    return result;
+  }
+
+  const entry = Object.entries(languageMap).find(
+    ([key]) => key.toLowerCase() === language.toLowerCase()
+  );
+
+  return entry ? entry[1] : 'text';
+};
+
 export const languageMimeMap: Record<string, string> = {
   'text/x-abap': 'abap',
   'application/x-actionscript': 'actionscript',

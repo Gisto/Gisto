@@ -268,7 +268,7 @@ export const SnippetContent = () => {
                     );
 
                     if (confirmation) {
-                      const value = await snippetService.deleteSnippet(snippet.id);
+                      const value = await snippetService.deleteSnippet(snippet.id, true);
 
                       if (value.success) {
                         navigate('/');

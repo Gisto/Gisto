@@ -92,6 +92,18 @@ export type SnippetType = {
       };
     }>;
   };
+  owner?: {
+    login: string;
+    avatarUrl: string;
+    avatar_url: string;
+    id: string;
+    node_id: string;
+    gravatar_id: string;
+    url: string;
+    html_url: string;
+    followers_url: string;
+    following_url: string;
+  };
 };
 
 export type SnippetEnrichedType = SnippetType & {
