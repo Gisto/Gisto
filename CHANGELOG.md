@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🛠️️ Build
+
+- *(deps)* Bump flatted in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([4cbd6a4](https://github.com/gisto/gisto/commit/4cbd6a489256fbf250a19cda3e49b8ed5758086f))
+
+
 ## v2.6.2
 
 Released on: Mar 11, 2026
