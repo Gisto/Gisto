@@ -51,6 +51,18 @@ const CreateNew = ({
   );
 };
 
+const SkeletonBadgeSection = () => (
+  <div className="border rounded-lg p-4">
+    <div className="h-5 w-24 bg-foreground/10 rounded mb-4 animate-pulse" />
+    <div className="h-10 w-full bg-foreground/10 rounded mb-4 animate-pulse" />
+    <div className="flex flex-wrap gap-2">
+      {Array.from({ length: 15 }).map((_, i) => (
+        <div key={i} className="h-6 w-20 bg-foreground/10 rounded-full animate-pulse" />
+      ))}
+    </div>
+  </div>
+);
+
 export const AllTags = ({
   onClick,
   active,
@@ -65,12 +77,13 @@ export const AllTags = ({
   const [search, setSearch] = useState('');
 
   const list = useStoreValue('snippets');
+  const totalSnippetCount = useStoreValue('totalSnippetCount');
+
+  const isLoading = !list || (list.length === 0 && totalSnippetCount === 0);
+
   const allTags = list.map((snippet) => snippet.tags).flat();
 
   useEffect(() => {
-    // NOTE:
-    // if the list is empty, fetch the snippets
-    // Edge case for refresh on the first load while on create new page
     if (list.length === 0) {
       (async () => await fetchAndUpdateSnippets())();
     }
@@ -83,6 +96,14 @@ export const AllTags = ({
       count: allTags.filter((t) => t === tag).length,
     }))
     .sort((a, b) => b.count - a.count);
+
+  if (isLoading) {
+    return (
+      <Card className={className}>
+        <SkeletonBadgeSection />
+      </Card>
+    );
+  }
 
   return (
     <Card className={className}>

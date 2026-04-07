@@ -7,7 +7,6 @@ import { Insights } from '@/components/layout/pages/dashboard/insights.tsx';
 import { SnippetsOverTimeChart } from '@/components/layout/pages/dashboard/snippets-over-time-chart.tsx';
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
-import { Loading } from '@/components/loading.tsx';
 import { Updater } from '@/components/updater.tsx';
 import { t } from '@/lib/i18n';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
@@ -15,13 +14,20 @@ import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 export const DashBoard = () => {
   const search = useStoreValue('search');
   const list = useStoreValue('snippets');
+  const isLoading = useStoreValue('isLoading');
+  const totalSnippetCount = useStoreValue('totalSnippetCount');
 
-  if (!list || (list.length === 0 && !list)) return <Loading />;
+  const hasNoData = !list || (list.length === 0 && totalSnippetCount === 0);
 
-  if (list.length === 0) {
+  if (hasNoData && !isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen w-full border-r border-collapse">
-        <FolderKanbanIcon size={256} className="opacity-5" />
+      <div className="h-screen w-full border-r border-collapse">
+        <div className="flex gap-2 h-[52px] items-center p-2 border-b">
+          <div className="line-clamp-1">{t('pages.dashboard.title')}</div>
+        </div>
+        <div className="flex items-center justify-center h-[calc(100vh-52px)] w-full">
+          <FolderKanbanIcon size={256} className="opacity-5" />
+        </div>
       </div>
     );
   }

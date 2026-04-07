@@ -82,6 +82,7 @@ const SnippetsListFooter = ({
   refresh,
   filteredCount,
   totalCount,
+  totalSnippetCount,
   apiRateLimits,
 }: {
   isLoading: boolean;
@@ -89,6 +90,7 @@ const SnippetsListFooter = ({
   refresh: () => void;
   filteredCount: number;
   totalCount: number;
+  totalSnippetCount: number;
   apiRateLimits?: { remaining: number; limit: number; reset: string } | null;
 }) => {
   return (
@@ -99,7 +101,7 @@ const SnippetsListFooter = ({
             <FileCode className="size-3" />{' '}
             {t('list.filteredSnippets', {
               filtered: filteredCount,
-              number: totalCount,
+              number: totalSnippetCount || totalCount,
             })}
             {isLoading && <Loader size={16} className="animate-spin" />}
           </>
@@ -141,6 +143,7 @@ export const Lists = ({
   const allSnippets = useStoreValue('snippets');
   const search = useStoreValue('search');
   const apiRateLimits = useStoreValue('apiRateLimits');
+  const totalSnippetCount = useStoreValue('totalSnippetCount');
 
   const handleCollapse = useCallback(() => {
     setIsCollapsed(!isCollapsed);
@@ -214,6 +217,7 @@ export const Lists = ({
         refresh={refresh}
         filteredCount={listOfSnippets.length}
         totalCount={allSnippets.length}
+        totalSnippetCount={totalSnippetCount}
         apiRateLimits={apiRateLimits}
       />
     </div>

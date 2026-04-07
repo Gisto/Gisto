@@ -18,7 +18,7 @@ test.describe('Login', () => {
   test('can switch to local provider and continue', async ({ page }) => {
     await loginWithLocal(page);
 
-    await expect(page.getByText('Dashboard')).toBeVisible();
+    await expect(page.getByText('Dashboard').last()).toBeVisible();
     await expect(page.getByText('No snippets yet')).toBeVisible();
   });
 

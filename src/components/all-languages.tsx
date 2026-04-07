@@ -13,6 +13,18 @@ import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { upperCaseFirst } from '@/utils';
 
+const SkeletonBadgeSection = () => (
+  <div className="border rounded-lg p-4">
+    <div className="h-5 w-24 bg-foreground/10 rounded mb-4 animate-pulse" />
+    <div className="h-10 w-full bg-foreground/10 rounded mb-4 animate-pulse" />
+    <div className="flex flex-wrap gap-2">
+      {Array.from({ length: 15 }).map((_, i) => (
+        <div key={i} className="h-6 w-20 bg-foreground/10 rounded-full animate-pulse" />
+      ))}
+    </div>
+  </div>
+);
+
 export const AllLanguages = ({
   className,
   active,
@@ -24,6 +36,18 @@ export const AllLanguages = ({
 }) => {
   const [search, setSearch] = useState('');
   const list = useStoreValue('snippets');
+  const totalSnippetCount = useStoreValue('totalSnippetCount');
+
+  const isLoading = !list || (list.length === 0 && totalSnippetCount === 0);
+
+  if (isLoading) {
+    return (
+      <Card className={className}>
+        <SkeletonBadgeSection />
+      </Card>
+    );
+  }
+
   const allLanguages = list.map((snippet) => snippet.languages).flat();
 
   const languagesData = Array.from(new Set(allLanguages.map((lang) => lang.name)))
