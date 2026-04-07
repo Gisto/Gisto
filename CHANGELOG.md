@@ -19,6 +19,14 @@ All significant updates and improvements
 ([35285cf](https://github.com/gisto/gisto/commit/35285cfceba558190fdc01ff684e1dd3d301b2c7))
 
 
+### ⚙️ Miscellaneous Tasks
+
+- *(brew tap)* Add brew tap for Gisto because of issue #560
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([cb1fe5c](https://github.com/gisto/gisto/commit/cb1fe5ced11fec63ab3b2b11e8c3814a65613000))
+
+
 ## v2.6.2
 
 Released on: Mar 11, 2026
