@@ -18,6 +18,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([35285cf](https://github.com/gisto/gisto/commit/35285cfceba558190fdc01ff684e1dd3d301b2c7))
 
+- *(deps-dev)* Bump vite in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([f9c6385](https://github.com/gisto/gisto/commit/f9c6385bc0eed44e9d9d45706dfe90690ec1d21e))
+
 
 ### ⚙️ Miscellaneous Tasks
 
