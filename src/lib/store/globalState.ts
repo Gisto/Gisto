@@ -9,6 +9,9 @@ const SETTINGS_STORAGE_KEY = 'gisto-app-settings';
 export type StoreStateType = {
   user: Record<string, unknown> | null;
   isLoggedIn: boolean;
+  isLoading: boolean;
+  loadingProgress: number;
+  totalSnippetCount: number;
   snippets: SnippetEnrichedType[] | [];
   search: string;
   apiRateLimits: {
@@ -171,6 +174,9 @@ export const defaultSettings: SettingsType = {
 export const globalState = new Store<StoreStateType>({
   user: null,
   isLoggedIn: false,
+  isLoading: false,
+  loadingProgress: 0,
+  totalSnippetCount: 0,
   snippets: [],
   search: '',
   apiRateLimits: null,

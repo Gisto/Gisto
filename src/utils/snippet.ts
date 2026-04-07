@@ -1,3 +1,4 @@
+import { ITEMS_PER_PAGE } from '@/constants';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState } from '@/lib/store/globalState.ts';
 import {
@@ -72,34 +73,65 @@ export const getLanguageName = (file: SnippetFileType): string => {
 export const fetchAndUpdateSnippets = async () => {
   const allFetchedSnippetIds = new Set<string>();
 
-  for await (const snippetsPage of snippetService.getSnippetsGenerator()) {
-    const currentSnippetsState = globalState.getState().snippets;
+  globalState.setState({ isLoading: true, loadingProgress: 0 });
 
-    const newSnippets = snippetsPage.map((snippet) => processSnippet(snippet));
+  try {
+    let hasNextPage = true;
+    let cursor: string | null = null;
+    let totalFetched = 0;
+    let totalCount = 0;
 
-    newSnippets.forEach((snippet) => allFetchedSnippetIds.add(snippet.id));
+    while (hasNextPage) {
+      const snippetsPage = await snippetService.fetchSnippets(cursor);
+      const currentSnippetsState = globalState.getState().snippets;
+      totalFetched += snippetsPage.nodes.length;
 
-    const updatedSnippets = currentSnippetsState.map((existingSnippet) => {
-      const matchingNewSnippet = newSnippets.find(
-        (newSnippet) => newSnippet.id === existingSnippet.id
+      if (!totalCount && snippetsPage.totalCount) {
+        totalCount = snippetsPage.totalCount;
+        globalState.setState({ totalSnippetCount: totalCount });
+      }
+
+      const progress = totalCount
+        ? Math.min(90, Math.round((totalFetched / totalCount) * 100))
+        : Math.min(90, Math.round((totalFetched / (totalFetched + ITEMS_PER_PAGE)) * 100));
+      globalState.setState({ loadingProgress: progress });
+
+      const newSnippets = snippetsPage.nodes.map((snippet) => processSnippet(snippet));
+
+      newSnippets.forEach((snippet) => allFetchedSnippetIds.add(snippet.id));
+
+      const updatedSnippets = currentSnippetsState.map((existingSnippet) => {
+        const matchingNewSnippet = newSnippets.find(
+          (newSnippet) => newSnippet.id === existingSnippet.id
+        );
+        return matchingNewSnippet || existingSnippet;
+      });
+
+      const completelyNewSnippets = newSnippets.filter(
+        (newSnippet) => !updatedSnippets.some((snippet) => snippet.id === newSnippet.id)
       );
-      return matchingNewSnippet || existingSnippet;
-    });
 
-    const completelyNewSnippets = newSnippets.filter(
-      (newSnippet) => !updatedSnippets.some((snippet) => snippet.id === newSnippet.id)
-    );
+      const filteredSnippets = updatedSnippets.filter((snippet) =>
+        allFetchedSnippetIds.has(snippet.id)
+      );
 
-    // Filter to only include snippets that exist in API - this removes deleted ones
-    const filteredSnippets = updatedSnippets.filter((snippet) =>
-      allFetchedSnippetIds.has(snippet.id)
-    );
+      const snippets: SnippetEnrichedType[] = [...completelyNewSnippets, ...filteredSnippets].sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
 
-    const snippets: SnippetEnrichedType[] = [...completelyNewSnippets, ...filteredSnippets].sort(
-      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    );
+      globalState.setState({ snippets });
 
-    globalState.setState({ snippets });
+      hasNextPage = snippetsPage.pageInfo.hasNextPage;
+      cursor = snippetsPage.pageInfo.endCursor;
+
+      if (snippetsPage.nodes.length < ITEMS_PER_PAGE) {
+        break;
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching snippets:', error);
+  } finally {
+    globalState.setState({ isLoading: false, loadingProgress: 100 });
   }
 };
 

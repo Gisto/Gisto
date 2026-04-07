@@ -10,12 +10,34 @@ import {
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState';
 
+const ChartSkeleton = () => (
+  <Card>
+    <CardHeader>
+      <div className="h-5 w-32 bg-foreground/10 rounded animate-pulse" />
+    </CardHeader>
+    <CardContent>
+      <div className="h-[250px] bg-foreground/10 rounded animate-pulse" />
+    </CardContent>
+  </Card>
+);
+
 export const Insights = () => {
   const list = useStoreValue('snippets');
+  const totalSnippetCount = useStoreValue('totalSnippetCount');
+
+  const isLoading = !list || (list.length === 0 && totalSnippetCount === 0);
+
+  if (isLoading) {
+    return (
+      <div className="mt-8 grid gap-4 grid-cols-1 lg:grid-cols-2">
+        <ChartSkeleton />
+        <ChartSkeleton />
+      </div>
+    );
+  }
 
   if (!list || list.length === 0) return null;
 
-  // Compute stats
   const languages = list.reduce(
     (acc, snippet) => {
       snippet.languages.forEach((lang) => {

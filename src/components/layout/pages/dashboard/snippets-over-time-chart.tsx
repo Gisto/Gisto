@@ -101,10 +101,36 @@ const rangeToText = (range: string) => {
   }
 };
 
+const min = 10;
+const max = 100;
+
+const randomNumbers = Array.from(
+  { length: 40 },
+  () => Math.floor(Math.random() * (max - min + 1)) + min
+);
+
+const ChartSkeleton = () => (
+  <div className="border rounded-lg p-4">
+    <div className="h-5 w-40 bg-muted rounded mb-6 animate-pulse" />
+    <div className="h-48 rounded flex items-end justify-around gap-2 p-4">
+      {randomNumbers.map((height, i) => (
+        <div
+          key={i}
+          className="w-6 bg-muted rounded-t animate-pulse"
+          style={{ height: `${height}%`, width: '10px' }}
+        />
+      ))}
+    </div>
+  </div>
+);
+
 export const SnippetsOverTimeChart = () => {
   const settings = useStoreValue('settings');
   const range = settings.dashboardSnippetsOverTimeRange;
   const list = useStoreValue('snippets');
+  const totalSnippetCount = useStoreValue('totalSnippetCount');
+
+  const isLoading = !list || (list.length === 0 && totalSnippetCount === 0);
 
   const handleRangeChange = (value: string) => {
     updateSettings({
@@ -112,10 +138,29 @@ export const SnippetsOverTimeChart = () => {
     });
   };
 
+  if (isLoading) {
+    return (
+      <Card>
+        <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
+          <div className="flex flex-1 flex-col justify-center gap-1">
+            <div className="h-5 w-48 bg-muted rounded animate-pulse" />
+            <div className="h-3 w-32 bg-muted rounded animate-pulse" />
+          </div>
+          <div className="flex items-center">
+            <div className="h-10 w-[180px] bg-muted rounded animate-pulse" />
+          </div>
+        </CardHeader>
+        <CardContent className="px-2 sm:p-6">
+          <ChartSkeleton />
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card>
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
-        <div className="flex flex-1 flex-col justify-center gap-1 sm:py-6">
+        <div className="flex flex-1 flex-col justify-center gap-1">
           <CardTitle>{t('pages.dashboard.snippetsOverTime')}</CardTitle>
           <CardDescription>
             {t('pages.dashboard.snippetsOverTimeRange', { range: rangeToText(range) })}
@@ -171,7 +216,7 @@ export const SnippetsOverTimeChart = () => {
                 />
               }
             />
-            <ChartLegend content={<ChartLegendContent />} />
+            <ChartLegend content={<ChartLegendContent payload={undefined} />} />
             <Bar barSize={10} dataKey="private" stackId="a" fill="var(--color-private)" />
             <Bar barSize={10} dataKey="public" stackId="a" fill="var(--color-public)" />
           </BarChart>
