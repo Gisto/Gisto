@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(loading)* Adds better global loading indications of progress, totals and skeletons
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([8a79166](https://github.com/gisto/gisto/commit/8a79166add9afae4a631aee3a809deae0817aae2))
+
+
 ### 🛠️️ Build
 
 - *(deps)* Bump flatted in the npm_and_yarn group across 1 directory
