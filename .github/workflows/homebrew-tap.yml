@@ -1,0 +1,88 @@
+name: Update Homebrew Tap
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  update-tap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download x64 tarball and calculate SHA256
+        run: |
+          curl -sL "https://github.com/Gisto/Gisto/releases/download/${{ github.event.release.tag_name }}/Gisto_x64.app.tar.gz" -o Gisto_x64.tar.gz
+          echo "sha_x64=$(shasum -a 256 Gisto_x64.tar.gz | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+        id: hash_x64
+
+      - name: Download aarch64 tarball and calculate SHA256
+        run: |
+          curl -sL "https://github.com/Gisto/Gisto/releases/download/${{ github.event.release.tag_name }}/Gisto_aarch64.app.tar.gz" -o Gisto_aarch64.tar.gz
+          echo "sha_aarch64=$(shasum -a 256 Gisto_aarch64.tar.gz | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+        id: hash_aarch64
+
+      - name: Create homebrew-tap directory
+        run: mkdir -p homebrew-tap/Formula
+
+      - name: Create formula
+        env:
+          VERSION: ${{ github.event.release.tag_name }}
+          SHA_X64: ${{ steps.hash_x64.outputs.sha_x64 }}
+          SHA_AARCH64: ${{ steps.hash_aarch64.outputs.sha_aarch64 }}
+        run: |
+          cat > homebrew-tap/Formula/gisto.rb << 'RUBY'
+          class Gisto < Formula
+            desc "Cross-platform snippets management desktop application"
+            homepage "https://github.com/Gisto/Gisto"
+            version "<VERSION>"
+
+            on_macos do
+              if Hardware::CPU.arm?
+                url "https://github.com/Gisto/Gisto/releases/download/v<VERSION>/Gisto_aarch64.app.tar.gz"
+                sha256 "<SHA_AARCH64>"
+              else
+                url "https://github.com/Gisto/Gisto/releases/download/v<VERSION>/Gisto_x64.app.tar.gz"
+                sha256 "<SHA_X64>"
+              end
+            end
+
+            def install
+              prefix.install "Gisto.app"
+            end
+
+            def post_install
+              return unless OS.mac?
+
+              appdir = HOMEBREW_PREFIX/"Applications"
+              appdir.mkpath unless appdir.exist?
+              return if (appdir/"Gisto.app").exist?
+
+              cp_r "#{prefix}/Gisto.app", appdir
+            end
+
+            def caveats
+              <<~EOS
+                Gisto is not code-signed. On macOS, you may need to run:
+                  xattr -dr com.apple.quarantine /Applications/Gisto.app
+                to allow the app to launch.
+              EOS
+            end
+          end
+          RUBY
+
+          sed -i "s|<VERSION>|${VERSION#v}|g" homebrew-tap/Formula/gisto.rb
+          sed -i "s|<SHA_X64>|${SHA_X64}|g" homebrew-tap/Formula/gisto.rb
+          sed -i "s|<SHA_AARCH64>|${SHA_AARCH64}|g" homebrew-tap/Formula/gisto.rb
+
+      - name: Create PR
+        run: |
+          gh pr create -R Gisto/homebrew-tap \
+            --title "Update Gisto to ${{ github.event.release.tag_name }}" \
+            --body "Auto-generated PR to update Gisto to ${{ github.event.release.tag_name }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show generated formula
+        run: cat homebrew-tap/Formula/gisto.rb
