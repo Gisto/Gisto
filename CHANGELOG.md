@@ -18,6 +18,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([c9cbdca](https://github.com/gisto/gisto/commit/c9cbdcaa15892cd01b32c684f0bdce77a3085837))
 
+- *(homebrew-tap)* Add caveats block in cask
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([f8e117b](https://github.com/gisto/gisto/commit/f8e117b38e32b52dd086a4e4b8c0ad08a23c59eb))
+
 
 ## v2.7.0
 
