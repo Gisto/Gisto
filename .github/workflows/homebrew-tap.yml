@@ -1,88 +1,107 @@
 name: Update Homebrew Tap
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
 jobs:
   update-tap:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download x64 tarball and calculate SHA256
+      - name: Get release tag
+        id: release
         run: |
-          curl -sL "https://github.com/Gisto/Gisto/releases/download/${{ github.event.release.tag_name }}/Gisto_x64.app.tar.gz" -o Gisto_x64.tar.gz
-          echo "sha_x64=$(shasum -a 256 Gisto_x64.tar.gz | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+          if [ -n "${{ github.event.release.tag_name }}" ]; then
+            echo "tag=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=$(curl -s https://api.github.com/repos/Gisto/Gisto/releases/latest | jq -r '.tag_name')" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download x64 DMG and calculate SHA256
+        run: |
+          TAG="${{ steps.release.outputs.tag }}"
+          TAG_NO_V=$(echo "$TAG" | sed 's/^v//')
+          curl -sL "https://github.com/Gisto/Gisto/releases/download/v${TAG_NO_V}/Gisto_${TAG_NO_V}_x64.dmg" -o Gisto_x64.dmg
+          echo "sha_x64=$(shasum -a 256 Gisto_x64.dmg | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+          test -s Gisto_x64.dmg || exit 1
         id: hash_x64
 
-      - name: Download aarch64 tarball and calculate SHA256
+      - name: Download aarch64 DMG and calculate SHA256
         run: |
-          curl -sL "https://github.com/Gisto/Gisto/releases/download/${{ github.event.release.tag_name }}/Gisto_aarch64.app.tar.gz" -o Gisto_aarch64.tar.gz
-          echo "sha_aarch64=$(shasum -a 256 Gisto_aarch64.tar.gz | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+          TAG="${{ steps.release.outputs.tag }}"
+          TAG_NO_V=$(echo "$TAG" | sed 's/^v//')
+          curl -sL "https://github.com/Gisto/Gisto/releases/download/v${TAG_NO_V}/Gisto_${TAG_NO_V}_aarch64.dmg" -o Gisto_aarch64.dmg
+          echo "sha_aarch64=$(shasum -a 256 Gisto_aarch64.dmg | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+          test -s Gisto_aarch64.dmg || exit 1
         id: hash_aarch64
 
       - name: Create homebrew-tap directory
-        run: mkdir -p homebrew-tap/Formula
+        run: mkdir -p homebrew-tap/Casks
 
-      - name: Create formula
+      - name: Create cask
         env:
-          VERSION: ${{ github.event.release.tag_name }}
+          VERSION: ${{ steps.release.outputs.tag }}
           SHA_X64: ${{ steps.hash_x64.outputs.sha_x64 }}
           SHA_AARCH64: ${{ steps.hash_aarch64.outputs.sha_aarch64 }}
         run: |
-          cat > homebrew-tap/Formula/gisto.rb << 'RUBY'
-          class Gisto < Formula
-            desc "Cross-platform snippets management desktop application"
-            homepage "https://github.com/Gisto/Gisto"
+          VERSION_NO_V=$(echo "$VERSION" | sed 's/^v//')
+          cat > homebrew-tap/Casks/gisto.rb << 'RUBY'
+          cask "gisto" do
+            arch arm: "aarch64", intel: "x64"
+
             version "<VERSION>"
+            sha256 arm:   "<SHA_AARCH64>",
+                   intel: "<SHA_X64>"
 
-            on_macos do
-              if Hardware::CPU.arm?
-                url "https://github.com/Gisto/Gisto/releases/download/v<VERSION>/Gisto_aarch64.app.tar.gz"
-                sha256 "<SHA_AARCH64>"
-              else
-                url "https://github.com/Gisto/Gisto/releases/download/v<VERSION>/Gisto_x64.app.tar.gz"
-                sha256 "<SHA_X64>"
-              end
+            url do
+              base_url = "https://github.com/Gisto/Gisto/releases/download/v<VERSION>/Gisto_<VERSION>_<arch>.dmg"
+              base_url.gsub("<arch>", Hardware::CPU.arch == :arm ? "aarch64" : "x64")
             end
+            name "Gisto"
+            desc "Cross-platform snippets management desktop application"
+            homepage "https://www.gisto.org/"
 
-            def install
-              prefix.install "Gisto.app"
-            end
+            app "Gisto.app"
 
-            def post_install
-              return unless OS.mac?
-
-              appdir = HOMEBREW_PREFIX/"Applications"
-              appdir.mkpath unless appdir.exist?
-              return if (appdir/"Gisto.app").exist?
-
-              cp_r "#{prefix}/Gisto.app", appdir
-            end
-
-            def caveats
-              <<~EOS
-                Gisto is not code-signed. On macOS, you may need to run:
-                  xattr -dr com.apple.quarantine /Applications/Gisto.app
-                to allow the app to launch.
-              EOS
-            end
+            zap trash: [
+              "~/Library/Application Support/Gisto",
+              "~/Library/Caches/com.gistoapp.gisto2",
+              "~/Library/Logs/Gisto",
+              "~/Library/Preferences/com.gistoapp.gisto2.helper.plist",
+              "~/Library/Preferences/com.gistoapp.gisto2.plist",
+              "~/Library/Saved Application State/com.gistoapp.gisto2.savedState",
+            ]
           end
           RUBY
 
-          sed -i "s|<VERSION>|${VERSION#v}|g" homebrew-tap/Formula/gisto.rb
-          sed -i "s|<SHA_X64>|${SHA_X64}|g" homebrew-tap/Formula/gisto.rb
-          sed -i "s|<SHA_AARCH64>|${SHA_AARCH64}|g" homebrew-tap/Formula/gisto.rb
+          sed -i "s|<VERSION>|${VERSION_NO_V}|g" homebrew-tap/Casks/gisto.rb
+          sed -i "s|<SHA_X64>|${SHA_X64}|g" homebrew-tap/Casks/gisto.rb
+          sed -i "s|<SHA_AARCH64>|${SHA_AARCH64}|g" homebrew-tap/Casks/gisto.rb
 
-      - name: Create PR
+      - name: Get current cask SHA
+        id: sha
         run: |
-          gh pr create -R Gisto/homebrew-tap \
-            --title "Update Gisto to ${{ github.event.release.tag_name }}" \
-            --body "Auto-generated PR to update Gisto to ${{ github.event.release.tag_name }}"
+          echo "sha=$(gh api repos/Gisto/homebrew-tap/contents/Casks/gisto.rb --jq '.sha')" >> $GITHUB_OUTPUT
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
 
-      - name: Show generated formula
-        run: cat homebrew-tap/Formula/gisto.rb
+      - name: Update cask in tap repository
+        run: |
+          content=$(base64 homebrew-tap/Casks/gisto.rb)
+          gh api repos/Gisto/homebrew-tap/contents/Casks/gisto.rb \
+            -X PUT \
+            -f content="$content" \
+            -f branch=main \
+            -f message='Update Gisto to ${{ steps.release.outputs.tag }}' \
+            -f sha='${{ steps.sha.outputs.sha }}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+
+      - name: Show generated cask
+        run: cat homebrew-tap/Casks/gisto.rb
