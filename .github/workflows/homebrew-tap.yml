@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,22 +25,28 @@ jobs:
           fi
 
       - name: Download x64 DMG and calculate SHA256
+        id: hash_x64
         run: |
           TAG="${{ steps.release.outputs.tag }}"
-          TAG_NO_V=$(echo "$TAG" | sed 's/^v//')
-          curl -sL "https://github.com/Gisto/Gisto/releases/download/v${TAG_NO_V}/Gisto_${TAG_NO_V}_x64.dmg" -o Gisto_x64.dmg
-          echo "sha_x64=$(shasum -a 256 Gisto_x64.dmg | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+          VERSION_NO_V=$(echo "$TAG" | sed 's/^v//')
+
+          URL="https://github.com/Gisto/Gisto/releases/download/v${VERSION_NO_V}/Gisto_${VERSION_NO_V}_x64.dmg"
+          curl -fL "$URL" -o Gisto_x64.dmg
+
           test -s Gisto_x64.dmg || exit 1
-        id: hash_x64
+          echo "sha_x64=$(shasum -a 256 Gisto_x64.dmg | cut -d' ' -f1)" >> $GITHUB_OUTPUT
 
       - name: Download aarch64 DMG and calculate SHA256
+        id: hash_aarch64
         run: |
           TAG="${{ steps.release.outputs.tag }}"
-          TAG_NO_V=$(echo "$TAG" | sed 's/^v//')
-          curl -sL "https://github.com/Gisto/Gisto/releases/download/v${TAG_NO_V}/Gisto_${TAG_NO_V}_aarch64.dmg" -o Gisto_aarch64.dmg
-          echo "sha_aarch64=$(shasum -a 256 Gisto_aarch64.dmg | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+          VERSION_NO_V=$(echo "$TAG" | sed 's/^v//')
+
+          URL="https://github.com/Gisto/Gisto/releases/download/v${VERSION_NO_V}/Gisto_${VERSION_NO_V}_aarch64.dmg"
+          curl -fL "$URL" -o Gisto_aarch64.dmg
+
           test -s Gisto_aarch64.dmg || exit 1
-        id: hash_aarch64
+          echo "sha_aarch64=$(shasum -a 256 Gisto_aarch64.dmg | cut -d' ' -f1)" >> $GITHUB_OUTPUT
 
       - name: Create homebrew-tap directory
         run: mkdir -p homebrew-tap/Casks
@@ -51,18 +58,16 @@ jobs:
           SHA_AARCH64: ${{ steps.hash_aarch64.outputs.sha_aarch64 }}
         run: |
           VERSION_NO_V=$(echo "$VERSION" | sed 's/^v//')
-          cat > homebrew-tap/Casks/gisto.rb << 'RUBY'
+
+          cat > homebrew-tap/Casks/gisto.rb <<RUBY
           cask "gisto" do
             arch arm: "aarch64", intel: "x64"
 
-            version "<VERSION>"
-            sha256 arm:   "<SHA_AARCH64>",
-                   intel: "<SHA_X64>"
+            version "${VERSION_NO_V}"
+            sha256 arm:   "${SHA_AARCH64}",
+                   intel: "${SHA_X64}"
 
-            url do
-              base_url = "https://github.com/Gisto/Gisto/releases/download/v<VERSION>/Gisto_<VERSION>_<arch>.dmg"
-              base_url.gsub("<arch>", Hardware::CPU.arch == :arm ? "aarch64" : "x64")
-            end
+            url "https://github.com/Gisto/Gisto/releases/download/v#{version}/Gisto_#{version}_#{arch}.dmg"
             name "Gisto"
             desc "Cross-platform snippets management desktop application"
             homepage "https://www.gisto.org/"
@@ -80,10 +85,6 @@ jobs:
           end
           RUBY
 
-          sed -i "s|<VERSION>|${VERSION_NO_V}|g" homebrew-tap/Casks/gisto.rb
-          sed -i "s|<SHA_X64>|${SHA_X64}|g" homebrew-tap/Casks/gisto.rb
-          sed -i "s|<SHA_AARCH64>|${SHA_AARCH64}|g" homebrew-tap/Casks/gisto.rb
-
       - name: Get current cask SHA
         id: sha
         run: |
@@ -94,12 +95,13 @@ jobs:
       - name: Update cask in tap repository
         run: |
           content=$(base64 homebrew-tap/Casks/gisto.rb)
+
           gh api repos/Gisto/homebrew-tap/contents/Casks/gisto.rb \
             -X PUT \
             -f content="$content" \
             -f branch=main \
-            -f message='Update Gisto to ${{ steps.release.outputs.tag }}' \
-            -f sha='${{ steps.sha.outputs.sha }}'
+            -f message="Update Gisto to ${{ steps.release.outputs.tag }}" \
+            -f sha="${{ steps.sha.outputs.sha }}"
         env:
           GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
 
