@@ -13,6 +13,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([23215b6](https://github.com/gisto/gisto/commit/23215b620ba6d220125b157f676c6020987cc7ee))
 
+- *(homebrew-tap)* Fix url in cask
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([c9cbdca](https://github.com/gisto/gisto/commit/c9cbdcaa15892cd01b32c684f0bdce77a3085837))
+
 
 ## v2.7.0
 
