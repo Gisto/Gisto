@@ -72,6 +72,23 @@ jobs:
             desc "Cross-platform snippets management desktop application"
             homepage "https://www.gisto.org/"
 
+            caveats do
+              <<~EOS
+                This app is signed with a self-signed certificate and is not notarized.
+
+                macOS may block it on first launch. To open:
+            
+                  - Right-click the app and choose "Open", or
+                  - Open System Settings → Privacy & Security and click "Open Anyway"
+            
+                You can also remove the quarantine flag:
+            
+                  xattr -dr com.apple.quarantine /Applications/Gisto.app
+            
+                Only run this app if you trust the source.
+              EOS
+            end
+
             app "Gisto.app"
 
             zap trash: [
