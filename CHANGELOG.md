@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🐛 Bug Fixes
+
+- *(homebrew-tap)* Fix release flow
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([23215b6](https://github.com/gisto/gisto/commit/23215b620ba6d220125b157f676c6020987cc7ee))
+
+
 ## v2.7.0
 
 Released on: Apr 8, 2026
