@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(dashboard)* Add average files per snippet chart
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([e056c75](https://github.com/gisto/gisto/commit/e056c752edf394a4f31c478e745e4d971e4dcc7f))
+
+
 ### 🛠️️ Build
 
 - *(deps)* Bump axios in the npm_and_yarn group across 1 directory
