@@ -14,6 +14,14 @@ All significant updates and improvements
 ([4813862](https://github.com/gisto/gisto/commit/4813862268e6ef7253a149e22659bc1cd6ee7ef0))
 
 
+### ⚙️ Miscellaneous Tasks
+
+- Fix home brew cask workflow
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([ffe8e35](https://github.com/gisto/gisto/commit/ffe8e356af6ec16538fc26291db99354829e9218))
+
+
 ## v2.7.1
 
 Released on: Apr 11, 2026
