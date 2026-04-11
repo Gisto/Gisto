@@ -4,6 +4,9 @@
     "tags": "tags",
     "file": "file",
     "files": "files",
+    "total": "total",
+    "average": "average",
+    "filesPerSnippet": "files per snippet",
     "cancel": "cancel",
     "update": "update",
     "upload": "upload",
@@ -72,7 +75,8 @@
       "sixMonthsAgo": "6 months ago",
       "oneYearAgo": "1 year ago",
       "topLanguages": "Top Languages",
-      "topTags": "Top Tags"
+      "topTags": "Top Tags",
+      "filesPerSnippet": "Files per Snippet"
     },
     "new": {
       "title": "Create new snippet",
