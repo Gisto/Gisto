@@ -14,6 +14,14 @@ All significant updates and improvements
 ([e056c75](https://github.com/gisto/gisto/commit/e056c752edf394a4f31c478e745e4d971e4dcc7f))
 
 
+### 🐛 Bug Fixes
+
+- *(search)* Filter tags and snippets tabs
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([14c7bd2](https://github.com/gisto/gisto/commit/14c7bd262f1336a35cbf1f6df7e2bd15178f5644))
+
+
 ### 🛠️️ Build
 
 - *(deps)* Bump axios in the npm_and_yarn group across 1 directory
