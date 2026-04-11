@@ -63,7 +63,9 @@ export const AllLanguages = ({
     <Card className={className}>
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
-          <div>{upperCaseFirst(t('common.languages'))}</div>{' '}
+          <div>
+            {upperCaseFirst(t('common.languages'))} <small>({languagesData.length})</small>
+          </div>{' '}
           <div>
             <Input
               type="search"
