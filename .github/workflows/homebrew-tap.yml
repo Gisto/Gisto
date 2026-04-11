@@ -1,12 +1,14 @@
 name: Update Homebrew Tap
 
 on:
-  workflow_dispatch:
-  release:
-    types: [published]
+  workflow_run:
+    workflows: ["publish"]
+    types:
+      - completed
 
 jobs:
   update-tap:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
