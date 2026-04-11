@@ -13,6 +13,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([e056c75](https://github.com/gisto/gisto/commit/e056c752edf394a4f31c478e745e4d971e4dcc7f))
 
+- *(editor)* Allow to expand create new snippet file content while editing
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([26769b2](https://github.com/gisto/gisto/commit/26769b229d62edecb2515754b370ca6c8d617720))
+
 
 ### 🐛 Bug Fixes
 
