@@ -1,7 +1,9 @@
-import Editor from '@monaco-editor/react';
+import Editor, { OnMount } from '@monaco-editor/react';
 import { Trash } from 'lucide-react';
+import { useRef, useState } from 'react';
 import { z } from 'zod';
 
+import { ExpandedEditor } from './expanded-editor.tsx';
 import { LanguageSelect } from './language-select.tsx';
 import { ActionType } from './reducer';
 
@@ -30,6 +32,26 @@ type FileCardProps = {
 
 export const FileCard = ({ file, index, dispatch, isEdit, errors, totalFiles }: FileCardProps) => {
   const settings = useStoreValue('settings');
+  const [content, setContent] = useState(file.content || '');
+  const [modalOpen, setModalOpen] = useState(false);
+  const editorRef = useRef<Parameters<OnMount>[0] | null>(null);
+
+  const fileLanguage = file.language || settings.newSnippetDefaultLanguage;
+  const isMarkdownFile =
+    fileLanguage.toLowerCase() === 'markdown' ||
+    String(file.filename).toLowerCase().endsWith('.md');
+
+  const handleContentChange = (value: string | undefined) => {
+    const newValue = value || '';
+    setContent(newValue);
+    dispatch({ type: 'SET_CONTENT', payload: newValue, index });
+  };
+
+  const handleEditorMount: OnMount = (editor, monaco) => {
+    editorRef.current = editor;
+    const lang = languageMap[fileLanguage] ?? 'text';
+    monaco.editor.setModelLanguage(editor.getModel()!, lang);
+  };
 
   return (
     <Card key={`${index}-${file.language}`} className="hover:border-primary mb-4">
@@ -81,27 +103,40 @@ export const FileCard = ({ file, index, dispatch, isEdit, errors, totalFiles }: 
               <LanguageSelect index={index} fileLanguage={file.language} dispatch={dispatch} />
             </div>
 
-            <label htmlFor="file-content" className="text-sm font-medium text-primary flex gap-2">
-              {t('pages.new.fileContent')}{' '}
-              <ZodError errors={errors} path={`files.${index}.content`} />
-            </label>
-            <Editor
-              value={file.content}
-              onChange={(value) => {
-                dispatch({ type: 'SET_CONTENT', payload: value || '', index });
-              }}
-              className="border-primary border rounded p-1"
-              options={{
-                ...EDITOR_OPTIONS,
-                ...settings.editor,
-                readOnly: false,
-                codeLens: false,
-              }}
-              height="30vh"
-              theme={getEditorTheme()}
-              language={languageMap[file?.language ?? settings.newSnippetDefaultLanguage]}
-              path={`file-${index}`}
-            />
+            <div className="flex items-center justify-between">
+              <label htmlFor="file-content" className="text-sm font-medium text-primary flex gap-2">
+                {t('pages.new.fileContent')}{' '}
+                <ZodError errors={errors} path={`files.${index}.content`} />
+              </label>
+              <ExpandedEditor
+                content={content}
+                onChange={handleContentChange}
+                filename={String(file.filename)}
+                language={fileLanguage}
+                index={index}
+                isMarkdown={isMarkdownFile}
+                onOpenChange={setModalOpen}
+              />
+            </div>
+            {!modalOpen && (
+              <Editor
+                key={`${index}-${fileLanguage}`}
+                value={content}
+                onChange={handleContentChange}
+                onMount={handleEditorMount}
+                className="border-primary border rounded p-1"
+                options={{
+                  ...EDITOR_OPTIONS,
+                  ...settings.editor,
+                  readOnly: false,
+                  codeLens: false,
+                }}
+                height={isMarkdownFile ? '60vh' : '30vh'}
+                theme={getEditorTheme()}
+                language={languageMap[fileLanguage] ?? 'text'}
+                path={`file-${index}`}
+              />
+            )}
           </div>
         </CardContent>
       )}

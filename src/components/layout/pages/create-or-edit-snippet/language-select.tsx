@@ -82,7 +82,7 @@ export const LanguageSelect = ({ index, fileLanguage, dispatch }: LanguageSelect
         onChange={(val) =>
           dispatch({
             type: 'SET_FILE_LANGUAGE',
-            payload: val[0]?.value,
+            payload: val[0]?.label,
             index,
           })
         }
