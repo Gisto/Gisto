@@ -30,7 +30,8 @@
     "select": "seleccionar",
     "languages": "lenguajes",
     "download": "descargar",
-    "restart": "reiniciar"
+    "restart": "reiniciar",
+    "activeFilters": "Filtros activos"
   },
   "components": {
     "filterTags": "Filtrar {number} etiquetas",
@@ -179,7 +180,10 @@
     "snippetDeleted": "Fragmento eliminado",
     "sureToDelete": "¿Estás seguro de que deseas eliminar el fragmento \"{description}\"?",
     "searchSnippets": "Buscar en {number} fragmentos",
-    "filteredSnippets": "{filtered} de {number} fragmentos"
+    "filteredSnippets": "{filtered} de {number} fragmentos",
+    "noTags": "Sin etiquetas aun",
+    "noLanguages": "Sin idiomas aun",
+    "clearAllFilters": "Borrar todos los filtros"
   },
   "login": {
     "tokenNotValid": "Token no válido",

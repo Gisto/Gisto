@@ -30,7 +30,8 @@
     "select": "选择",
     "languages": "语言",
     "download": "下载",
-    "restart": "重新启动"
+    "restart": "重新启动",
+    "activeFilters": "活动筛选"
   },
   "components": {
     "filterTags": "过滤 {number} 个标签",
@@ -179,7 +180,10 @@
     "snippetDeleted": "代码片段已删除",
     "sureToDelete": "确定要删除\"{description}\"代码片段吗？",
     "searchSnippets": "在 {number} 个代码片段中搜索",
-    "filteredSnippets": "{filtered} / {number} 个代码片段"
+    "filteredSnippets": "{filtered} / {number} 个代码片段",
+    "noTags": "暂无标签",
+    "noLanguages": "暂无语言",
+    "clearAllFilters": "清除所有筛选"
   },
   "login": {
     "tokenNotValid": "令牌无效",

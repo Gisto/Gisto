@@ -30,7 +30,8 @@
     "select": "выбрать",
     "languages": "языки",
     "download": "скачать",
-    "restart": "перезапуск"
+    "restart": "перезапуск",
+    "activeFilters": "Активные фильтры"
   },
   "components": {
     "filterTags": "Фильтр {number} тегов",
@@ -179,7 +180,10 @@
     "snippetDeleted": "Фрагмент удалён",
     "sureToDelete": "Удалить фрагмент \"{description}\"?",
     "searchSnippets": "Поиск в {number} фрагментах",
-    "filteredSnippets": "{filtered} из {number} фрагментов"
+    "filteredSnippets": "{filtered} из {number} фрагментов",
+    "noTags": "Пока нет тегов",
+    "noLanguages": "Пока нет языков",
+    "clearAllFilters": "Очистить все фильтры"
   },
   "login": {
     "tokenNotValid": "Токен недействителен",

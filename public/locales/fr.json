@@ -30,7 +30,8 @@
     "select": "sélectionner",
     "languages": "langages",
     "download": "télécharger",
-    "restart": "redémarrer"
+    "restart": "redémarrer",
+    "activeFilters": "Filtres actifs"
   },
   "components": {
     "filterTags": "Filtrer {number} étiquettes",
@@ -179,7 +180,10 @@
     "snippetDeleted": "Extrait supprimé",
     "sureToDelete": "Voulez-vous vraiment supprimer l’extrait \"{description}\" ?",
     "searchSnippets": "Rechercher dans {number} extraits",
-    "filteredSnippets": "{filtered} sur {number} extraits"
+    "filteredSnippets": "{filtered} sur {number} extraits",
+    "noTags": "Pas encore de tags",
+    "noLanguages": "Pas encore de langues",
+    "clearAllFilters": "Effacer tous les filtres"
   },
   "login": {
     "tokenNotValid": "Jeton non valide",
