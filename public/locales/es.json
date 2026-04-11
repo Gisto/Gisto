@@ -4,6 +4,9 @@
     "tags": "etiquetas",
     "file": "archivo",
     "files": "archivos",
+    "total": "total",
+    "average": "promedio",
+    "filesPerSnippet": "archivos por fragmento",
     "cancel": "cancelar",
     "update": "actualizar",
     "upload": "subir",
@@ -72,7 +75,8 @@
       "sixMonthsAgo": "hace 6 meses",
       "oneYearAgo": "hace 1 año",
       "topLanguages": "Lenguajes principales",
-      "topTags": "Etiquetas principales"
+      "topTags": "Etiquetas principales",
+      "filesPerSnippet": "Archivos por fragmento"
     },
     "new": {
       "title": "Crear nuevo fragmento",

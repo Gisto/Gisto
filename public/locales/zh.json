@@ -4,6 +4,9 @@
     "tags": "标签",
     "file": "文件",
     "files": "多个文件",
+    "total": "总计",
+    "average": "平均",
+    "filesPerSnippet": "每个片段的文件数",
     "cancel": "取消",
     "update": "更新",
     "upload": "上传",
@@ -72,7 +75,8 @@
       "sixMonthsAgo": "6个月前",
       "oneYearAgo": "1年前",
       "topLanguages": "主要语言",
-      "topTags": "主要标签"
+      "topTags": "主要标签",
+      "filesPerSnippet": "每个片段的文件数"
     },
     "new": {
       "title": "创建新代码片段",
