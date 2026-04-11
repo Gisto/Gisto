@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(search)* Filter icon button to open dropdown with tag language filters on search bar
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([47e0dcc](https://github.com/gisto/gisto/commit/47e0dccebb767388810720c288be74d4f61dc083))
+
+
 ### 🐛 Bug Fixes
 
 - *(homebrew-tap)* Fix release flow
