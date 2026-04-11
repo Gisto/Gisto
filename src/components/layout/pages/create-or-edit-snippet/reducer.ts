@@ -1,18 +1,24 @@
+import { StoreStateType } from '@/lib/store/globalState.ts';
+
 export type StateType = {
   description: string;
   isPublic: boolean;
   tags: string[];
   files: { filename: string; content: string; language: string }[];
 };
+type SettingsType = StoreStateType['settings'];
 
-export const initialState: StateType = {
+const getInitialState = (settings: Partial<SettingsType>): StateType => ({
   description: '',
-  isPublic: false,
+  isPublic: settings.newSnippetPublicByDefault ?? false,
   tags: [],
-  files: [{ filename: '', content: '', language: '' }],
-};
+  files: [{ filename: '', content: '', language: settings.newSnippetDefaultLanguage ?? '' }],
+});
+
+export const initialState = getInitialState({});
 
 export type ActionType =
+  | { type: 'INIT'; payload: Partial<SettingsType> }
   | { type: 'SET_DESCRIPTION'; payload: string }
   | { type: 'SET_PUBLIC'; payload: boolean }
   | { type: 'ADD_TAG'; payload: string }
@@ -27,6 +33,8 @@ export type ActionType =
 
 export function reducer(state: StateType, action: ActionType): StateType {
   switch (action.type) {
+    case 'INIT':
+      return { ...getInitialState(action.payload) };
     case 'SET_DESCRIPTION':
       return { ...state, description: action.payload };
     case 'SET_PUBLIC':
@@ -61,12 +69,20 @@ export function reducer(state: StateType, action: ActionType): StateType {
     case 'ADD_FILE':
       return {
         ...state,
-        files: [...state.files, action.payload || { filename: '', content: '', language: '' }],
+        files: [
+          ...state.files,
+          action.payload || { filename: '', content: '', language: state.files[0]?.language || '' },
+        ],
       };
     case 'REMOVE_FILE':
       return { ...state, files: state.files.filter((_, i) => i !== action.index) };
     case 'RESET':
-      return initialState;
+      return {
+        ...state,
+        description: '',
+        tags: [],
+        files: [{ filename: '', content: '', language: state.files[0]?.language || '' }],
+      };
     default:
       return state;
   }
