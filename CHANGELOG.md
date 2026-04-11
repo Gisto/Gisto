@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🛠️️ Build
+
+- *(deps)* Bump axios in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([4813862](https://github.com/gisto/gisto/commit/4813862268e6ef7253a149e22659bc1cd6ee7ef0))
+
+
 ## v2.7.1
 
 Released on: Apr 11, 2026
