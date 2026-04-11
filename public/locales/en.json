@@ -30,7 +30,8 @@
     "select": "select",
     "languages": "languages",
     "download": "download",
-    "restart": "restart"
+    "restart": "restart",
+    "activeFilters": "Active filters"
   },
   "components": {
     "filterTags": "Filter {number} tags",
@@ -182,7 +183,10 @@
     "snippetDeleted": "Snippet deleted",
     "sureToDelete": "Are you sure you want to delete \"{description}\" snippet?",
     "searchSnippets": "Search in {number} snippets",
-    "filteredSnippets": "{filtered} of {number} snippets"
+    "filteredSnippets": "{filtered} of {number} snippets",
+    "noTags": "No tags yet",
+    "noLanguages": "No languages yet",
+    "clearAllFilters": "Clear all filters"
   },
   "login": {
     "tokenNotValid": "Token not valid",

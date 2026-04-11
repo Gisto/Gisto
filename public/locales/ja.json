@@ -30,7 +30,8 @@
     "select": "選択",
     "languages": "言語",
     "download": "ダウンロード",
-    "restart": "再起動"
+    "restart": "再起動",
+    "activeFilters": "アクティブなフィルタ"
   },
   "components": {
     "filterTags": "{number}個のタグをフィルタリング",
@@ -179,7 +180,10 @@
     "snippetDeleted": "スニペットが削除されました",
     "sureToDelete": "「{description}」スニペットを削除してもよろしいですか?",
     "searchSnippets": "{number}個のスニペットで検索",
-    "filteredSnippets": "{number}個のうち{filtered}個のスニペット"
+    "filteredSnippets": "{number}個のうち{filtered}個のスニペット",
+    "noTags": "タグなし",
+    "noLanguages": "言語なし",
+    "clearAllFilters": "すべてのフィルタをクリア"
   },
   "login": {
     "tokenNotValid": "トークンが無効です",
