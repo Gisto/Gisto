@@ -4,6 +4,9 @@
     "tags": "タグ",
     "file": "ファイル",
     "files": "ファイル",
+    "total": "合計",
+    "average": "平均",
+    "filesPerSnippet": "スニペットあたりのファイル数",
     "cancel": "キャンセル",
     "update": "更新",
     "upload": "アップロード",
@@ -18,6 +21,8 @@
     "untagged": "タグなし",
     "edit": "編集",
     "delete": "削除",
+    "expand": "展開",
+    "done": "完了",
     "of": "の",
     "hour": "時間",
     "slogan": "Snippets made awesome",
@@ -72,7 +77,8 @@
       "sixMonthsAgo": "6ヶ月前",
       "oneYearAgo": "1年前",
       "topLanguages": "トップ言語",
-      "topTags": "トップタグ"
+      "topTags": "トップタグ",
+      "filesPerSnippet": "スニペットあたりのファイル数"
     },
     "new": {
       "title": "新しいスニペットを作成",

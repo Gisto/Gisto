@@ -121,12 +121,12 @@ export const FilterDropdown = () => {
             </TabsList>
             <TabsContent value="tags" className="mt-0">
               <ScrollArea className="h-[50vh]">
-                <AllTags onClick={handleAddTag} />
+                <AllTags onClick={handleAddTag} className="border-0" />
               </ScrollArea>
             </TabsContent>
             <TabsContent value="languages" className="mt-0">
               <ScrollArea className="h-[50vh]">
-                <AllLanguages onClick={handleAddLanguage} />
+                <AllLanguages onClick={handleAddLanguage} className="border-0" />
               </ScrollArea>
             </TabsContent>
           </Tabs>

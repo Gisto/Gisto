@@ -142,14 +142,12 @@ export const Markdown = ({ file }: { file: SnippetFileType }) => {
   }, [result, theme]);
 
   return (
-    <div className="bg-background py-4 px-8 overflow-scroll mb-4">
-      <div className="max-w-[53vw] h-auto">
-        <div
-          ref={containerRef}
-          className="markdown-body"
-          dangerouslySetInnerHTML={{ __html: result }}
-        />
-      </div>
+    <div className="bg-background p-4 overflow-auto h-full">
+      <div
+        ref={containerRef}
+        className="markdown-body"
+        dangerouslySetInnerHTML={{ __html: result }}
+      />
     </div>
   );
 };

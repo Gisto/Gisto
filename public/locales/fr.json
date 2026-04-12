@@ -4,6 +4,9 @@
     "tags": "étiquettes",
     "file": "fichier",
     "files": "fichiers",
+    "total": "total",
+    "average": "moyenne",
+    "filesPerSnippet": "fichiers par extrait",
     "cancel": "annuler",
     "update": "mettre à jour",
     "upload": "téléverser",
@@ -18,6 +21,8 @@
     "untagged": "sans étiquette",
     "edit": "modifier",
     "delete": "supprimer",
+    "expand": "étendre",
+    "done": "terminé",
     "of": "de",
     "hour": "heure",
     "slogan": "Snippets made awesome",
@@ -72,7 +77,8 @@
       "sixMonthsAgo": "il y a 6 mois",
       "oneYearAgo": "il y a 1 an",
       "topLanguages": "Langages principaux",
-      "topTags": "Étiquettes principales"
+      "topTags": "Étiquettes principales",
+      "filesPerSnippet": "Fichiers par extrait"
     },
     "new": {
       "title": "Créer un nouvel extrait",

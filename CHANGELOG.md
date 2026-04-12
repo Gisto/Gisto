@@ -2,6 +2,47 @@
 
 All significant updates and improvements
 
+## v2.8.0
+
+Released on: Apr 12, 2026
+
+### 🚀 Features
+
+- *(dashboard)* Add average files per snippet chart
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([e056c75](https://github.com/gisto/gisto/commit/e056c752edf394a4f31c478e745e4d971e4dcc7f))
+
+- *(editor)* Allow to expand create new snippet file content while editing
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([26769b2](https://github.com/gisto/gisto/commit/26769b229d62edecb2515754b370ca6c8d617720))
+
+
+### 🐛 Bug Fixes
+
+- *(search)* Filter tags and snippets tabs
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([14c7bd2](https://github.com/gisto/gisto/commit/14c7bd262f1336a35cbf1f6df7e2bd15178f5644))
+
+
+### 🛠️️ Build
+
+- *(deps)* Bump axios in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([4813862](https://github.com/gisto/gisto/commit/4813862268e6ef7253a149e22659bc1cd6ee7ef0))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix home brew cask workflow
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([ffe8e35](https://github.com/gisto/gisto/commit/ffe8e356af6ec16538fc26291db99354829e9218))
+
+
 ## v2.7.1
 
 Released on: Apr 11, 2026

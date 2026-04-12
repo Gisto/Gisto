@@ -4,6 +4,9 @@
     "tags": "tags",
     "file": "file",
     "files": "files",
+    "total": "total",
+    "average": "average",
+    "filesPerSnippet": "files per snippet",
     "cancel": "cancel",
     "update": "update",
     "upload": "upload",
@@ -18,6 +21,10 @@
     "untagged": "untagged",
     "edit": "edit",
     "delete": "delete",
+    "code": "code",
+    "preview": "preview",
+    "expand": "expand",
+    "done": "Done",
     "of": "of",
     "hour": "hour",
     "slogan": "Snippets made awesome",
@@ -72,7 +79,8 @@
       "sixMonthsAgo": "6 months ago",
       "oneYearAgo": "1 year ago",
       "topLanguages": "Top Languages",
-      "topTags": "Top Tags"
+      "topTags": "Top Tags",
+      "filesPerSnippet": "Files per Snippet"
     },
     "new": {
       "title": "Create new snippet",

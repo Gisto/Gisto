@@ -4,6 +4,9 @@
     "tags": "теги",
     "file": "файл",
     "files": "файлы",
+    "total": "всего",
+    "average": "среднее",
+    "filesPerSnippet": "файлов на фрагмент",
     "cancel": "отмена",
     "update": "обновить",
     "upload": "загрузить",
@@ -18,6 +21,8 @@
     "untagged": "без тегов",
     "edit": "редакт.",
     "delete": "удалить",
+    "expand": "расширить",
+    "done": "готово",
     "of": "из",
     "hour": "ч",
     "slogan": "Snippets made awesome",
@@ -72,7 +77,8 @@
       "sixMonthsAgo": "6 мес. назад",
       "oneYearAgo": "1 год назад",
       "topLanguages": "Основные языки",
-      "topTags": "Основные теги"
+      "topTags": "Основные теги",
+      "filesPerSnippet": "Файлов на фрагмент"
     },
     "new": {
       "title": "Создать фрагмент",
