@@ -61,6 +61,6 @@ jobs:
 
       - name: Trigger release workflow
         run: |
-          gh workflow run release.yml --ref release
+          gh workflow run publish.yml --ref release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
