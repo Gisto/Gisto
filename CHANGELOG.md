@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### 🛠️️ Build
+
+- Update automate-release.yml
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([78611b6](https://github.com/gisto/gisto/commit/78611b658d08936789d743cb2eef2c45898924cc))
+
+
 ## v2.8.0
 
 Released on: Apr 12, 2026
