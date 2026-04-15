@@ -13,6 +13,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([78611b6](https://github.com/gisto/gisto/commit/78611b658d08936789d743cb2eef2c45898924cc))
 
+- *(deps)* Bump follow-redirects
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([0a8b14a](https://github.com/gisto/gisto/commit/0a8b14af66fe112545c5f265789d02ed2ee75367))
+
 
 ## v2.8.0
 
