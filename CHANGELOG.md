@@ -2,6 +2,26 @@
 
 All significant updates and improvements
 
+## v2.9.2
+
+Released on: Apr 18, 2026
+
+### 🛠️️ Build
+
+- *(homebrew)* Fix homebrewbrew tap job trigger
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([a8d45bf](https://github.com/gisto/gisto/commit/a8d45bf8b47d49556394b6b08dac34cff172ed97))
+
+
+### 📚 Documentation
+
+- Rename RC build
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([8a9e360](https://github.com/gisto/gisto/commit/8a9e3608648e9e7e2885fd4efad8ddc1ca1f5b8a))
+
+
 ## v2.9.1
 
 Released on: Apr 18, 2026

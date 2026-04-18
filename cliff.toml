@@ -21,7 +21,7 @@ body = """
 {% else %}\
     ## Upcoming version
 
-    [test build](https://main-branch-gisto-app.netlify.app/)
+    [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 {% endif %}\
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | striptags | trim | upper_first }}
