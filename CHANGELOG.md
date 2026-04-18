@@ -2,6 +2,31 @@
 
 All significant updates and improvements
 
+## v2.9.0
+
+Released on: Apr 18, 2026
+
+### 🚀 Features
+
+- *(create new or edit)* Adds preview for more files on edit
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([24f570e](https://github.com/gisto/gisto/commit/24f570e738fc14ef78c3ec064af2199fa21afdba))
+
+
+### 🛠️️ Build
+
+- Update automate-release.yml
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([78611b6](https://github.com/gisto/gisto/commit/78611b658d08936789d743cb2eef2c45898924cc))
+
+- *(deps)* Bump follow-redirects
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([0a8b14a](https://github.com/gisto/gisto/commit/0a8b14af66fe112545c5f265789d02ed2ee75367))
+
+
 ## v2.8.0
 
 Released on: Apr 12, 2026

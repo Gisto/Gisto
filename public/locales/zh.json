@@ -36,7 +36,9 @@
     "languages": "语言",
     "download": "下载",
     "restart": "重新启动",
-    "activeFilters": "活动筛选"
+    "activeFilters": "活动筛选",
+    "hidePreview": "隐藏预览",
+    "showPreview": "显示预览"
   },
   "components": {
     "filterTags": "过滤 {number} 个标签",
