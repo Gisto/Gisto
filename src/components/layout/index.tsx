@@ -2,9 +2,13 @@ import { useRouter, Outlet } from 'dirty-react-router';
 import * as React from 'react';
 import { useEffect } from 'react';
 
+import { CommandPalette } from '@/components/command-palette-modal.tsx';
+import { KeyboardShortcutsModal } from '@/components/keyboard-shortcuts-modal.tsx';
 import { Navigation } from '@/components/layout/navigation/main';
 import { Lists } from '@/components/layout/navigation/snippets-list';
 import { PATHS_WITHOUT_SNIPPET_LIST } from '@/constants';
+import { doReload } from '@/constants/shortcuts.ts';
+import { useKeybindings } from '@/hooks/use-keyboard-shortcuts.tsx';
 import { useIsMobile } from '@/hooks/use-mobile.tsx';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/utils';
@@ -14,6 +18,22 @@ export const MainLayout = () => {
   const [isCollapsed, setIsCollapsed] = React.useState(settings.sidebarCollapsedByDefault);
   const { path } = useRouter();
   const isMobile = useIsMobile();
+
+  const {
+    showShortcutsModal,
+    setShowShortcutsModal,
+    showCommandPalette,
+    setShowCommandPalette,
+    navigate,
+  } = useKeybindings();
+
+  const handleNavigate = (target: string) => {
+    if (target === 'reload') {
+      doReload();
+    } else if (target) {
+      navigate(target);
+    }
+  };
 
   const isListHidden =
     (isMobile && path.startsWith('/snippets/')) ||
@@ -47,6 +67,12 @@ export const MainLayout = () => {
         )}
 
         <Outlet setIsCollapsed={setIsCollapsed} isCollapsed={isCollapsed} />
+        <KeyboardShortcutsModal open={showShortcutsModal} onOpenChange={setShowShortcutsModal} />
+        <CommandPalette
+          open={showCommandPalette}
+          onOpenChange={setShowCommandPalette}
+          onNavigate={handleNavigate}
+        />
       </div>
     </div>
   );
