@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### 📚 Documentation
+
+- Update readme with download info
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([f9ccbbc](https://github.com/gisto/gisto/commit/f9ccbbc66ce644a987715bb622c0af91c8daaaf4))
+
+
 ## v2.9.2
 
 Released on: Apr 18, 2026
