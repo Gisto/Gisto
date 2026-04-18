@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[test build](https://main-branch-gisto-app.netlify.app/)
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix brew tap trigger
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([5bc7927](https://github.com/gisto/gisto/commit/5bc792792e73d5c74253e1f76689de628f59fe82))
+
+
 ## v2.9.0
 
 Released on: Apr 18, 2026
