@@ -41,4 +41,33 @@ describe('useSnippets', () => {
       expect(result.current.isLoading).toBe(false);
     });
   });
+
+  it('should return initial loading state', async () => {
+    mockFetchAndUpdateSnippets.mockImplementation(() => new Promise(() => {}));
+
+    const { result } = renderHook(() => useSnippets());
+
+    expect(result.current.isLoading).toBe(true);
+  });
+
+  it('should return isRefreshing state', async () => {
+    mockFetchAndUpdateSnippets.mockResolvedValueOnce(undefined);
+
+    const { result } = renderHook(() => useSnippets());
+
+    await waitFor(() => {
+      expect(result.current.isRefreshing).toBe(false);
+    });
+  });
+
+  it('should return refresh function', async () => {
+    mockFetchAndUpdateSnippets.mockResolvedValueOnce(undefined);
+
+    const { result } = renderHook(() => useSnippets());
+
+    await waitFor(() => {
+      expect(result.current.refresh).toBeDefined();
+      expect(typeof result.current.refresh).toBe('function');
+    });
+  });
 });

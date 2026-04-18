@@ -5,7 +5,6 @@ import useIntersectionObserver from './use-intersection-observer';
 
 describe('useIntersectionObserver', () => {
   it('should return false initially and ref', () => {
-    // Mock IntersectionObserver for this test
     global.IntersectionObserver = vi.fn().mockImplementation(function () {
       return {
         observe: vi.fn(),

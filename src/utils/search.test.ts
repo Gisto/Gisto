@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import { searchFilter } from './search.ts';
+import { searchFilter, getAllTags, getAllLanguages } from './search.ts';
 
 import { SnippetEnrichedType } from '@/types/snippet.ts';
 
@@ -158,5 +158,52 @@ describe('searchFilter', () => {
       },
     ] as unknown as SnippetEnrichedType[];
     expect(searchFilter('tag:tag1 lang:javascript is:starred', snippets)).toEqual([snippets[0]]);
+  });
+
+  describe('getAllTags', () => {
+    it('extracts unique tags from snippets', () => {
+      const snippets = [
+        { tags: ['#tag1', '#tag2'] },
+        { tags: ['#tag2', '#tag3'] },
+      ] as unknown as SnippetEnrichedType[];
+      expect(getAllTags(snippets)).toEqual(['tag1', 'tag2', 'tag3']);
+    });
+
+    it('returns empty array for no tags', () => {
+      const snippets = [{ tags: [] }] as unknown as SnippetEnrichedType[];
+      expect(getAllTags(snippets)).toEqual([]);
+    });
+
+    it('removes # from tags', () => {
+      const snippets = [{ tags: ['#tag1'] }] as unknown as SnippetEnrichedType[];
+      expect(getAllTags(snippets)).toEqual(['tag1']);
+    });
+
+    it('sorts tags alphabetically', () => {
+      const snippets = [{ tags: ['#zebra', '#alpha'] }] as unknown as SnippetEnrichedType[];
+      expect(getAllTags(snippets)).toEqual(['alpha', 'zebra']);
+    });
+  });
+
+  describe('getAllLanguages', () => {
+    it('extracts unique languages from snippets', () => {
+      const snippets = [
+        { languages: [{ name: 'JavaScript' }] },
+        { languages: [{ name: 'TypeScript' }] },
+      ] as unknown as SnippetEnrichedType[];
+      expect(getAllLanguages(snippets)).toEqual(['JavaScript', 'TypeScript']);
+    });
+
+    it('returns empty array for no languages', () => {
+      const snippets = [{ languages: [] }] as unknown as SnippetEnrichedType[];
+      expect(getAllLanguages(snippets)).toEqual([]);
+    });
+
+    it('sorts languages alphabetically', () => {
+      const snippets = [
+        { languages: [{ name: 'TypeScript' }, { name: 'JavaScript' }] },
+      ] as unknown as SnippetEnrichedType[];
+      expect(getAllLanguages(snippets)).toEqual(['JavaScript', 'TypeScript']);
+    });
   });
 });
