@@ -6,12 +6,28 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(navigation)* Add shortcuts
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([bf7bb46](https://github.com/gisto/gisto/commit/bf7bb46393066b86e82c5fdcb4f2286bd3ca66fe))
+
+
 ### 📚 Documentation
 
 - Update about screen
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([acff1d1](https://github.com/gisto/gisto/commit/acff1d116c636bfdc480856ecac1c25ca9ccc71d))
+
+
+### 🧪 Testing
+
+- Add reports
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([20874e6](https://github.com/gisto/gisto/commit/20874e605bc8a8e2758248af6cbec58cad3c1962))
 
 
 ### ⚙️ Miscellaneous Tasks
