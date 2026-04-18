@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(create new or edit)* Adds preview for more files on edit
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([24f570e](https://github.com/gisto/gisto/commit/24f570e738fc14ef78c3ec064af2199fa21afdba))
+
+
 ### 🛠️️ Build
 
 - Update automate-release.yml
