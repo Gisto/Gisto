@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [test build](https://main-branch-gisto-app.netlify.app/)
 
+### 📚 Documentation
+
+- Update about screen
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([acff1d1](https://github.com/gisto/gisto/commit/acff1d116c636bfdc480856ecac1c25ca9ccc71d))
+
+
 ### ⚙️ Miscellaneous Tasks
 
 - Fix brew tap trigger
