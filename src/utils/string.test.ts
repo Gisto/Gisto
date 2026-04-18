@@ -1,6 +1,13 @@
 import { describe, it, expect } from 'vitest';
 
-import { upperCaseFirst, camelToTitleCase, snakeToTitleCase, randomString } from './string.ts';
+import {
+  upperCaseFirst,
+  camelToTitleCase,
+  snakeToTitleCase,
+  randomString,
+  getFlagEmojiFromLanguage,
+  getCountryNameFromLanguage,
+} from './string.ts';
 
 describe('upperCaseFirst', () => {
   it('converts the first character to uppercase', () => {
@@ -71,5 +78,62 @@ describe('randomString', () => {
 
   it('handles a length of zero', () => {
     expect(randomString(0)).toBe('');
+  });
+});
+
+describe('getFlagEmojiFromLanguage', () => {
+  it('returns flag emoji for en', () => {
+    expect(getFlagEmojiFromLanguage('en')).toBe('🇺🇸');
+  });
+
+  it('returns flag emoji for zh', () => {
+    expect(getFlagEmojiFromLanguage('zh')).toBe('🇨🇳');
+  });
+
+  it('returns flag emoji for ja', () => {
+    expect(getFlagEmojiFromLanguage('ja')).toBe('🇯🇵');
+  });
+
+  it('returns flag emoji for ko', () => {
+    expect(getFlagEmojiFromLanguage('ko')).toBe('🇰🇷');
+  });
+
+  it('returns flag emoji for ru', () => {
+    expect(getFlagEmojiFromLanguage('ru')).toBe('🇷🇺');
+  });
+
+  it('returns flag emoji for hi', () => {
+    expect(getFlagEmojiFromLanguage('hi')).toBe('🇮🇳');
+  });
+
+  it('returns flag emoji for sv', () => {
+    expect(getFlagEmojiFromLanguage('sv')).toBe('🇸🇪');
+  });
+
+  it('throws for invalid language code', () => {
+    expect(() => getFlagEmojiFromLanguage('')).toThrow();
+    expect(() => getFlagEmojiFromLanguage('abc')).toThrow();
+  });
+});
+
+describe('getCountryNameFromLanguage', () => {
+  it('returns English name for en', () => {
+    expect(getCountryNameFromLanguage('en')).toBe('English');
+  });
+
+  it('returns Chinese for zh', () => {
+    expect(getCountryNameFromLanguage('zh')).toBe('Chinese');
+  });
+
+  it('returns Japanese for ja', () => {
+    expect(getCountryNameFromLanguage('ja')).toBe('Japanese');
+  });
+
+  it('returns Korean for ko', () => {
+    expect(getCountryNameFromLanguage('ko')).toBe('Korean');
+  });
+
+  it('handles unknown language gracefully', () => {
+    expect(getCountryNameFromLanguage('xyz')).toBeDefined();
   });
 });

@@ -95,3 +95,13 @@ jobs:
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
+  trigger-homebrew:
+    needs: publish-tauri
+    runs-on: ubuntu-latest
+    if: success()
+
+    steps:
+      - name: Trigger Homebrew tap workflow
+        run: gh workflow run homebrew-tap.yml --ref main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

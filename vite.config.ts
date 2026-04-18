@@ -18,6 +18,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts', './test/setup.ts'],
+    reporters: process.env.CI ? ['default', 'github-actions'] : ['default'],
   },
   define: {
     __COMMIT_HASH__: JSON.stringify(commitHash),

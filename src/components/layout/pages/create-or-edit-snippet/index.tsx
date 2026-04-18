@@ -263,7 +263,11 @@ export const CreateOrEditSnippet = ({
                   >
                     {upperCaseFirst(t('common.cancel'))}
                   </Button>
-                  <Button variant="default" onClick={() => (edit ? update() : create())}>
+                  <Button
+                    variant="default"
+                    onClick={() => (edit ? update() : create())}
+                    data-save-button
+                  >
                     {edit
                       ? upperCaseFirst(t('common.update')) +
                         ' ' +

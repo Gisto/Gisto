@@ -2,6 +2,42 @@
 
 All significant updates and improvements
 
+## v2.9.1
+
+Released on: Apr 18, 2026
+
+### 🚀 Features
+
+- *(navigation)* Add shortcuts
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([bf7bb46](https://github.com/gisto/gisto/commit/bf7bb46393066b86e82c5fdcb4f2286bd3ca66fe))
+
+
+### 📚 Documentation
+
+- Update about screen
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([acff1d1](https://github.com/gisto/gisto/commit/acff1d116c636bfdc480856ecac1c25ca9ccc71d))
+
+
+### 🧪 Testing
+
+- Add reports
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([20874e6](https://github.com/gisto/gisto/commit/20874e605bc8a8e2758248af6cbec58cad3c1962))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix brew tap trigger
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([5bc7927](https://github.com/gisto/gisto/commit/5bc792792e73d5c74253e1f76689de628f59fe82))
+
+
 ## v2.9.0
 
 Released on: Apr 18, 2026

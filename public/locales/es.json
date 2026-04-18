@@ -159,8 +159,8 @@
     },
     "about": {
       "title": "Acerca de",
-      "aboutParagraph": "Gisto es un gestor de fragmentos de código que se basa en GitHub Gists y agrega funciones adicionales\ncomo búsqueda, etiquetado y compartición de snippets, incluyendo un editor de código avanzado.",
-      "privacyParagraph": "Todos tus datos se almacenan en GitHub y puedes acceder a ellos desde GitHub Gists en cualquier momento,\ncon los cambios reflejados en Gisto.",
+      "aboutParagraph": "Gisto es un gestor de snippets que sincroniza con GitHub Gists, GitLab o almacenamiento local. Ofrece funciones como búsqueda, etiquetas y Compartición con un editor moderno.",
+      "privacyParagraph": "Tus datos se almacenan en tu proveedor elegido (GitHub, GitLab o localmente en el navegador) y se sincronizan perfectamente con Gisto.",
       "sponsor": "Patrocinar Gisto",
       "changelog": "Registro de cambios",
       "website": "Sitio web",

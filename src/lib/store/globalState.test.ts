@@ -6,6 +6,12 @@ import { globalState, useStoreValue, updateSettings, defaultSettings } from './g
 describe('globalState', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    globalState.setState({
+      isLoading: false,
+      loadingProgress: 0,
+      search: '',
+      snippets: [],
+    });
   });
 
   describe('useStoreValue', () => {
@@ -25,6 +31,36 @@ describe('globalState', () => {
       await waitFor(() => {
         expect(result.current).toBe(true);
       });
+    });
+
+    it('should return isLoading state', () => {
+      const { result } = renderHook(() => useStoreValue('isLoading'));
+      expect(result.current).toBe(false);
+    });
+
+    it('should return loadingProgress state', () => {
+      const { result } = renderHook(() => useStoreValue('loadingProgress'));
+      expect(result.current).toBe(0);
+    });
+
+    it('should return search state', () => {
+      const { result } = renderHook(() => useStoreValue('search'));
+      expect(result.current).toBe('');
+    });
+
+    it('should return snippets array', () => {
+      const { result } = renderHook(() => useStoreValue('snippets'));
+      expect(result.current).toEqual([]);
+    });
+
+    it('should return totalSnippetCount', () => {
+      const { result } = renderHook(() => useStoreValue('totalSnippetCount'));
+      expect(result.current).toBe(0);
+    });
+
+    it('should return apiRateLimits', () => {
+      const { result } = renderHook(() => useStoreValue('apiRateLimits'));
+      expect(result.current).toBeNull();
     });
   });
 
@@ -52,6 +88,24 @@ describe('globalState', () => {
       const settings = globalState.getState().settings;
       expect(settings.language).toBe('es');
       expect(settings.editor.fontSize).toBe(16);
+    });
+
+    it('should update theme setting', () => {
+      updateSettings({ theme: 'dark' });
+
+      expect(globalState.getState().settings.theme).toBe('dark');
+    });
+
+    it('should update sidebarCollapsedByDefault', () => {
+      updateSettings({ sidebarCollapsedByDefault: true });
+
+      expect(globalState.getState().settings.sidebarCollapsedByDefault).toBe(true);
+    });
+
+    it('should update ai settings', () => {
+      updateSettings({ 'ai.activeAiProvider': 'claude' } as Record<string, unknown>);
+
+      expect(globalState.getState().settings.ai.activeAiProvider).toBe('claude');
     });
   });
 });

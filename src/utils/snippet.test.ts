@@ -3,12 +3,17 @@ import {
   getTags,
   processSnippet,
   getFileExtension,
+  getLanguageName,
   isPDF,
   isHTML,
   isCSV,
+  isTSV,
   isImage,
   isJson,
   isMarkdown,
+  isOpenApi,
+  isLaTex,
+  isGeoJson,
   previewAvailable,
   formatSnippetForSaving,
 } from './snippet.ts';
@@ -185,6 +190,57 @@ describe('snippet utils', () => {
     it('should return file extension', () => {
       expect(getFileExtension({ filename: 'test.js' } as SnippetFileType)).toBe('js');
       expect(getFileExtension({ filename: 'file.tar.gz' } as SnippetFileType)).toBe('gz');
+    });
+  });
+
+  describe('getLanguageName', () => {
+    it('should return language name from string', () => {
+      expect(getLanguageName({ language: 'JavaScript' } as SnippetFileType)).toBe('JavaScript');
+    });
+
+    it('should return language name from object', () => {
+      expect(
+        getLanguageName({
+          language: { name: 'TypeScript', color: 'blue' },
+        } as unknown as SnippetFileType)
+      ).toBe('TypeScript');
+    });
+
+    it('should return empty string for missing language', () => {
+      expect(getLanguageName({} as SnippetFileType)).toBe('');
+    });
+  });
+
+  describe('isTSV', () => {
+    it('should detect TSV files', () => {
+      expect(isTSV({ type: 'text/tab-separated-values' } as SnippetFileType)).toBe(true);
+      expect(isTSV({ type: 'text/plain' } as SnippetFileType)).toBe(false);
+    });
+  });
+
+  describe('isOpenApi', () => {
+    it('should detect OpenAPI files', () => {
+      expect(isOpenApi({ language: 'OASv2-json' } as SnippetFileType)).toBe(true);
+      expect(isOpenApi({ language: 'OASv3-json' } as SnippetFileType)).toBe(true);
+      expect(isOpenApi({ language: 'JavaScript' } as SnippetFileType)).toBe(false);
+    });
+  });
+
+  describe('isLaTex', () => {
+    it('should detect LaTeX files', () => {
+      expect(isLaTex({ language: 'TeX' } as SnippetFileType)).toBe(true);
+      expect(isLaTex({ language: 'JavaScript' } as SnippetFileType)).toBe(false);
+    });
+  });
+
+  describe('isGeoJson', () => {
+    it('should detect GeoJSON files', () => {
+      expect(isGeoJson({ language: 'JSON', filename: 'file.geojson' } as SnippetFileType)).toBe(
+        true
+      );
+      expect(isGeoJson({ language: 'JavaScript', filename: 'test.js' } as SnippetFileType)).toBe(
+        false
+      );
     });
   });
 });
