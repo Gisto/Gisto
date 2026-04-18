@@ -114,7 +114,6 @@ export const FileCard = ({ file, index, dispatch, isEdit, errors, totalFiles }: 
                 filename={String(file.filename)}
                 language={fileLanguage}
                 index={index}
-                isMarkdown={isMarkdownFile}
                 onOpenChange={setModalOpen}
               />
             </div>
