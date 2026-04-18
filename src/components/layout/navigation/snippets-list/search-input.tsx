@@ -158,6 +158,7 @@ export const SearchInput = ({ allSnippets }: SearchInputProps) => {
         onChange={handleSearch}
         onKeyDown={handleKeyDown}
         onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+        data-search-input
       />
 
       {showSuggestions && filteredSuggestions.length > 0 && (
