@@ -159,8 +159,8 @@
     },
     "about": {
       "title": "Über",
-      "aboutParagraph": "Gisto ist ein Snippet-Manager auf Basis von GitHub Gists mit Tags, Suche, Teilen und einem modernen Editor.",
-      "privacyParagraph": "Alle Daten bleiben auf GitHub. Änderungen wirken sich direkt auf Gists aus.",
+      "aboutParagraph": "Gisto ist ein Snippet-Manager, der mit GitHub Gists, GitLab oder lokalem Speicher synchronisiert. Er bietet Features wie Suche, Tags und Teilen mit einem modernen Editor.",
+      "privacyParagraph": "Ihre Daten werden bei Ihrem gewählten Anbieter gespeichert (GitHub, GitLab oder lokal im Browser) und synchronisieren nahtlos mit Gisto.",
       "sponsor": "Gisto unterstützen",
       "changelog": "Änderungsprotokoll",
       "website": "Website",
