@@ -38,7 +38,9 @@
     "languages": "languages",
     "download": "download",
     "restart": "restart",
-    "activeFilters": "Active filters"
+    "activeFilters": "Active filters",
+    "hidePreview": "Hide preview",
+    "showPreview": "Show preview"
   },
   "components": {
     "filterTags": "Filter {number} tags",

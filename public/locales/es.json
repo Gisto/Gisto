@@ -36,7 +36,9 @@
     "languages": "lenguajes",
     "download": "descargar",
     "restart": "reiniciar",
-    "activeFilters": "Filtros activos"
+    "activeFilters": "Filtros activos",
+    "hidePreview": "Ocultar vista previa",
+    "showPreview": "Mostrar vista previa"
   },
   "components": {
     "filterTags": "Filtrar {number} etiquetas",

@@ -36,7 +36,9 @@
     "languages": "языки",
     "download": "скачать",
     "restart": "перезапуск",
-    "activeFilters": "Активные фильтры"
+    "activeFilters": "Активные фильтры",
+    "hidePreview": "Скрыть превью",
+    "showPreview": "Показать превью"
   },
   "components": {
     "filterTags": "Фильтр {number} тегов",

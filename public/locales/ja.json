@@ -36,7 +36,9 @@
     "languages": "言語",
     "download": "ダウンロード",
     "restart": "再起動",
-    "activeFilters": "アクティブなフィルタ"
+    "activeFilters": "アクティブなフィルタ",
+    "hidePreview": "プレビューを非表示",
+    "showPreview": "プレビューを表示"
   },
   "components": {
     "filterTags": "{number}個のタグをフィルタリング",
