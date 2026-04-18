@@ -102,6 +102,6 @@ jobs:
 
     steps:
       - name: Trigger Homebrew tap workflow
-        run: gh workflow run homebrew-tap.yml --ref main
+        run:  gh workflow run homebrew-tap.yml --ref main --repo Gisto/Gisto
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
