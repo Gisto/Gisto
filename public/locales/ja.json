@@ -159,8 +159,8 @@
     },
     "about": {
       "title": "について",
-      "aboutParagraph": "Gistoは、GitHub Gistsで実行されるコードスニペットマネージャーであり、検索、タグ付け、Gistsの共有などの追加機能を追加しながら、豊富なコードエディタを含みます。",
-      "privacyParagraph": "すべてのデータはGitHubに保存され、いつでもGitHub Gistsからアクセスでき、変更はGistoに引き継がれます。",
+      "aboutParagraph": "GistoはGitHub Gists、GitLab、またはローカルストレージと同期するスニペットマネージャーです。検索、タグ付け、共有などの機能とモダンなエディタを提供します。",
+      "privacyParagraph": "データは選択したプロバイダー（GitHub、GitLab、またはブラウザ内のローカル）に保存され、Gistoシームレスに同期します。",
       "sponsor": "Gistoをスポンサー",
       "changelog": "変更ログ",
       "website": "Webサイト",

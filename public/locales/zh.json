@@ -159,8 +159,8 @@
     },
     "about": {
       "title": "关于",
-      "aboutParagraph": "Gisto是一个运行在GitHub Gists上的代码片段管理器，增加了搜索、标记和共享snippets等功能，同时包含一个丰富的代码编辑器。",
-      "privacyParagraph": "您的所有数据都存储在GitHub上，您可以随时从GitHub Gists访问，更改会同步到Gisto。",
+      "aboutParagraph": "Gisto是一个与GitHub Gists、GitLab或本地存储同步的代码片段管理器。它提供搜索、标签和共享等功能，以及一个现代的代码编辑器。",
+      "privacyParagraph": "您的数据存储在您选择的服务提供商（GitHub、GitLab或浏览器本地）并与Gisto无缝同步。",
       "sponsor": "赞助Gisto",
       "changelog": "更新日志",
       "website": "网站",

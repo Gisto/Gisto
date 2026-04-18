@@ -162,8 +162,8 @@
     },
     "about": {
       "title": "About",
-      "aboutParagraph": "Gisto is a code snippet manager that runs on GitHub Gists and adds additional features\n              such as searching, tagging and sharing snippets while including a rich code editor.",
-      "privacyParagraph": "All your data is stored on GitHub and you can access it from GitHub Gists at any time\n              with changes carrying over to Gisto.",
+      "aboutParagraph": "Gisto is a code snippet manager that syncs with GitHub Gists, GitLab, or local storage. It adds features like searching, tagging, and sharing snippets while including a rich code editor.",
+      "privacyParagraph": "Your data is stored on your chosen provider (GitHub, GitLab, or locally in your browser) and syncs seamlessly with Gisto.",
       "sponsor": "Sponsor Gisto",
       "changelog": "Change log",
       "website": "Web site",

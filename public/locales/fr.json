@@ -159,8 +159,8 @@
     },
     "about": {
       "title": "À propos",
-      "aboutParagraph": "Gisto est un gestionnaire d’extraits basé sur GitHub Gists, avec des fonctionnalités supplémentaires comme la recherche, l’étiquetage et le partage, le tout avec un éditeur avancé.",
-      "privacyParagraph": "Toutes vos données sont stockées sur GitHub et accessibles via les Gists. Les modifications sont reflétées dans Gisto.",
+      "aboutParagraph": "Gisto est un gestionnaire de snippets qui synchronise avec GitHub Gists, GitLab ou le stockage local. Il offre des fonctionnalités comme la recherche, les tags et le partage avec un éditeur moderne.",
+      "privacyParagraph": "Vos données sont stockées chez votre fournisseur choisi (GitHub, GitLab ou localement dans le navigateur) et synchronisent de manière transparente avec Gisto.",
       "sponsor": "Soutenir Gisto",
       "changelog": "Journal des modifications",
       "website": "Site web",
