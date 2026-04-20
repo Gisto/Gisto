@@ -71,6 +71,7 @@ interface GitHubNode {
 interface SnippetQueryData {
   viewer: {
     gists: {
+      totalCount: number;
       pageInfo: {
         hasNextPage: boolean;
         endCursor: string | null;
@@ -311,6 +312,7 @@ export const GithubApi: SnippetProvider<GitHubSnippetListItem, SnippetSingleType
     query($cursor: String) {
       viewer {
         gists(first: ${ITEMS_PER_PAGE}, after: $cursor, orderBy: {field: CREATED_AT, direction: DESC}, privacy: ALL) {
+          totalCount
           pageInfo {
             hasNextPage
             endCursor
@@ -385,6 +387,7 @@ export const GithubApi: SnippetProvider<GitHubSnippetListItem, SnippetSingleType
       return {
         nodes: data.viewer.gists.nodes.map((node) => this.mapToSnippetType(node)),
         pageInfo: data.viewer.gists.pageInfo,
+        totalCount: data.viewer.gists.totalCount,
       };
     } catch (error) {
       console.error('Error fetching snippets:', error);

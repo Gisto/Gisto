@@ -29,6 +29,7 @@ export interface SnippetProvider<TRawList = SnippetSingleType, TRawSingle = TRaw
       hasNextPage: boolean;
       endCursor: string | null;
     };
+    totalCount: number;
   }>;
   getSnippets(): Promise<SnippetType[]>;
   getSnippetsGenerator(): AsyncGenerator<SnippetType[], void, unknown>;

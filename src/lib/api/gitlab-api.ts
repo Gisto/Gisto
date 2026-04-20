@@ -274,6 +274,7 @@ export const GitlabApi: SnippetProvider<GitLabSnippet, GitLabSnippet> = {
         hasNextPage: userSnippets.headers.get('x-next-page') !== '',
         endCursor: userSnippets.headers.get('x-next-page') || null,
       },
+      totalCount: parseInt(userSnippets.headers.get('x-total') || '0', 10),
     };
   },
 

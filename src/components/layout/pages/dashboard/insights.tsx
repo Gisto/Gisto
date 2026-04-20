@@ -10,12 +10,50 @@ import {
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState';
 
+const ChartSkeleton = () => (
+  <Card>
+    <CardHeader>
+      <div className="h-5 w-32 bg-foreground/10 rounded animate-pulse" />
+    </CardHeader>
+    <CardContent>
+      <div className="h-[250px] bg-foreground/10 rounded animate-pulse" />
+    </CardContent>
+  </Card>
+);
+
 export const Insights = () => {
   const list = useStoreValue('snippets');
+  const totalSnippetCount = useStoreValue('totalSnippetCount');
+
+  const isLoading = !list || (list.length === 0 && totalSnippetCount === 0);
+
+  if (isLoading) {
+    return (
+      <div className="mt-8 grid gap-4 grid-cols-1 lg:grid-cols-3">
+        <ChartSkeleton />
+        <ChartSkeleton />
+        <ChartSkeleton />
+      </div>
+    );
+  }
 
   if (!list || list.length === 0) return null;
 
-  // Compute stats
+  const filesDistribution = list.reduce(
+    (acc, snippet) => {
+      const count = snippet.files.length;
+      acc[count] = (acc[count] || 0) + 1;
+      return acc;
+    },
+    {} as Record<number, number>
+  );
+  const filesPerSnippetData = Object.entries(filesDistribution)
+    .sort(([a], [b]) => Number(a) - Number(b))
+    .map(([files, count]) => ({
+      name: `${files}`,
+      count,
+    }));
+
   const languages = list.reduce(
     (acc, snippet) => {
       snippet.languages.forEach((lang) => {
@@ -63,8 +101,16 @@ export const Insights = () => {
     return acc;
   }, {} as ChartConfig);
 
+  const filesChartConfig: ChartConfig = filesPerSnippetData.reduce((acc, item, index) => {
+    acc[item.name] = {
+      label: `${item.name} ${Number(item.name) === 1 ? 'file' : 'files'}`,
+      color: `hsl(var(--chart-${(index % 5) + 1}))`,
+    };
+    return acc;
+  }, {} as ChartConfig);
+
   return (
-    <div className="mt-8 grid gap-4 grid-cols-1 lg:grid-cols-2">
+    <div className="mt-8 grid gap-4 grid-cols-1 lg:grid-cols-3">
       <Card>
         <CardHeader>
           <CardTitle>{t('pages.dashboard.topLanguages')}</CardTitle>
@@ -117,6 +163,26 @@ export const Insights = () => {
                 ))}
               </Pie>
             </PieChart>
+          </ChartContainer>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>{t('pages.dashboard.filesPerSnippet')}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ChartContainer config={filesChartConfig} className="w-full h-[250px]">
+            <BarChart layout="vertical" data={filesPerSnippetData}>
+              <CartesianGrid vertical={false} />
+              <XAxis type="number" tickLine={false} axisLine={false} />
+              <YAxis dataKey="name" type="category" tickLine={false} axisLine={false} width={60} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+              <Bar dataKey="count" barSize={20}>
+                {filesPerSnippetData.map((_entry, index) => (
+                  <Cell key={`cell-${index}`} fill={`hsl(var(--chart-${(index % 5) + 1}))`} />
+                ))}
+              </Bar>
+            </BarChart>
           </ChartContainer>
         </CardContent>
       </Card>

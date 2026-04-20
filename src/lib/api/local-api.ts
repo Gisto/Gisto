@@ -273,6 +273,7 @@ export const LocalApi: SnippetProvider<LocalSnippet, LocalSnippet> = {
       hasNextPage: boolean;
       endCursor: string | null;
     };
+    totalCount: number;
   }> {
     const snippets = await db.snippets.orderBy('updatedAt').reverse().toArray();
     return {
@@ -281,6 +282,7 @@ export const LocalApi: SnippetProvider<LocalSnippet, LocalSnippet> = {
         hasNextPage: false,
         endCursor: null,
       },
+      totalCount: snippets.length,
     };
   },
 

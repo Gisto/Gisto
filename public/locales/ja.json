@@ -4,6 +4,9 @@
     "tags": "タグ",
     "file": "ファイル",
     "files": "ファイル",
+    "total": "合計",
+    "average": "平均",
+    "filesPerSnippet": "スニペットあたりのファイル数",
     "cancel": "キャンセル",
     "update": "更新",
     "upload": "アップロード",
@@ -18,6 +21,8 @@
     "untagged": "タグなし",
     "edit": "編集",
     "delete": "削除",
+    "expand": "展開",
+    "done": "完了",
     "of": "の",
     "hour": "時間",
     "slogan": "Snippets made awesome",
@@ -30,7 +35,10 @@
     "select": "選択",
     "languages": "言語",
     "download": "ダウンロード",
-    "restart": "再起動"
+    "restart": "再起動",
+    "activeFilters": "アクティブなフィルタ",
+    "hidePreview": "プレビューを非表示",
+    "showPreview": "プレビューを表示"
   },
   "components": {
     "filterTags": "{number}個のタグをフィルタリング",
@@ -71,7 +79,8 @@
       "sixMonthsAgo": "6ヶ月前",
       "oneYearAgo": "1年前",
       "topLanguages": "トップ言語",
-      "topTags": "トップタグ"
+      "topTags": "トップタグ",
+      "filesPerSnippet": "スニペットあたりのファイル数"
     },
     "new": {
       "title": "新しいスニペットを作成",
@@ -151,8 +160,8 @@
     },
     "about": {
       "title": "について",
-      "aboutParagraph": "Gistoは、GitHub Gistsで実行されるコードスニペットマネージャーであり、検索、タグ付け、Gistsの共有などの追加機能を追加しながら、豊富なコードエディタを含みます。",
-      "privacyParagraph": "すべてのデータはGitHubに保存され、いつでもGitHub Gistsからアクセスでき、変更はGistoに引き継がれます。",
+      "aboutParagraph": "GistoはGitHub Gists、GitLab、またはローカルストレージと同期するスニペットマネージャーです。検索、タグ付け、共有などの機能とモダンなエディタを提供します。",
+      "privacyParagraph": "データは選択したプロバイダー（GitHub、GitLab、またはブラウザ内のローカル）に保存され、Gistoシームレスに同期します。",
       "sponsor": "Gistoをスポンサー",
       "changelog": "変更ログ",
       "website": "Webサイト",
@@ -182,7 +191,10 @@
     "snippetDeleted": "スニペットが削除されました",
     "sureToDelete": "「{description}」スニペットを削除してもよろしいですか?",
     "searchSnippets": "{number}個のスニペットで検索",
-    "filteredSnippets": "{number}個のうち{filtered}個のスニペット"
+    "filteredSnippets": "{number}個のうち{filtered}個のスニペット",
+    "noTags": "タグなし",
+    "noLanguages": "言語なし",
+    "clearAllFilters": "すべてのフィルタをクリア"
   },
   "login": {
     "tokenNotValid": "トークンが無効です",

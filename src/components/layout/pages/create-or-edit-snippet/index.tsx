@@ -43,9 +43,17 @@ export const CreateOrEditSnippet = ({
   isCollapsed = false,
   setIsCollapsed = () => {},
 }: Props = {}) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { navigate, params } = useRouter();
   const settings = useStoreValue('settings');
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    dispatch({
+      type: 'INIT',
+      payload: { ...settings },
+    });
+  }, [settings]);
+
+  const { navigate, params } = useRouter();
 
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
   const [edit, setEdit] = useState<null | SnippetSingleType>(null);
@@ -255,7 +263,11 @@ export const CreateOrEditSnippet = ({
                   >
                     {upperCaseFirst(t('common.cancel'))}
                   </Button>
-                  <Button variant="default" onClick={() => (edit ? update() : create())}>
+                  <Button
+                    variant="default"
+                    onClick={() => (edit ? update() : create())}
+                    data-save-button
+                  >
                     {edit
                       ? upperCaseFirst(t('common.update')) +
                         ' ' +

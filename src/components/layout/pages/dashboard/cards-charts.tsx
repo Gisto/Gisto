@@ -10,8 +10,34 @@ import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { upperCaseFirst } from '@/utils';
 
+const CardSkeleton = () => (
+  <Card className="flex-1">
+    <CardHeader>
+      <div className="h-4 w-24 bg-foreground/10 rounded animate-pulse" />
+      <div className="h-3 w-full bg-foreground/10 rounded animate-pulse" />
+    </CardHeader>
+    <CardContent className="flex justify-end">
+      <div className="h-8 w-16 bg-foreground/10 rounded animate-pulse" />
+    </CardContent>
+  </Card>
+);
+
 export const CardsCharts = () => {
   const list = useStoreValue('snippets');
+  const totalSnippetCount = useStoreValue('totalSnippetCount');
+
+  const isLoading = !list || (list.length === 0 && totalSnippetCount === 0);
+
+  if (isLoading) {
+    return (
+      <div className="flex gap-4 mb-8">
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+      </div>
+    );
+  }
 
   const cardCharts = [
     {

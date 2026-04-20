@@ -4,6 +4,9 @@
     "tags": "tags",
     "file": "file",
     "files": "files",
+    "total": "total",
+    "average": "average",
+    "filesPerSnippet": "files per snippet",
     "cancel": "cancel",
     "update": "update",
     "upload": "upload",
@@ -18,6 +21,10 @@
     "untagged": "untagged",
     "edit": "edit",
     "delete": "delete",
+    "code": "code",
+    "preview": "preview",
+    "expand": "expand",
+    "done": "Done",
     "of": "of",
     "hour": "hour",
     "slogan": "Snippets made awesome",
@@ -30,7 +37,10 @@
     "select": "select",
     "languages": "languages",
     "download": "download",
-    "restart": "restart"
+    "restart": "restart",
+    "activeFilters": "Active filters",
+    "hidePreview": "Hide preview",
+    "showPreview": "Show preview"
   },
   "components": {
     "filterTags": "Filter {number} tags",
@@ -71,7 +81,8 @@
       "sixMonthsAgo": "6 months ago",
       "oneYearAgo": "1 year ago",
       "topLanguages": "Top Languages",
-      "topTags": "Top Tags"
+      "topTags": "Top Tags",
+      "filesPerSnippet": "Files per Snippet"
     },
     "new": {
       "title": "Create new snippet",
@@ -151,8 +162,8 @@
     },
     "about": {
       "title": "About",
-      "aboutParagraph": "Gisto is a code snippet manager that runs on GitHub Gists and adds additional features\n              such as searching, tagging and sharing snippets while including a rich code editor.",
-      "privacyParagraph": "All your data is stored on GitHub and you can access it from GitHub Gists at any time\n              with changes carrying over to Gisto.",
+      "aboutParagraph": "Gisto is a code snippet manager that syncs with GitHub Gists, GitLab, or local storage. It adds features like searching, tagging, and sharing snippets while including a rich code editor.",
+      "privacyParagraph": "Your data is stored on your chosen provider (GitHub, GitLab, or locally in your browser) and syncs seamlessly with Gisto.",
       "sponsor": "Sponsor Gisto",
       "changelog": "Change log",
       "website": "Web site",
@@ -182,7 +193,10 @@
     "snippetDeleted": "Snippet deleted",
     "sureToDelete": "Are you sure you want to delete \"{description}\" snippet?",
     "searchSnippets": "Search in {number} snippets",
-    "filteredSnippets": "{filtered} of {number} snippets"
+    "filteredSnippets": "{filtered} of {number} snippets",
+    "noTags": "No tags yet",
+    "noLanguages": "No languages yet",
+    "clearAllFilters": "Clear all filters"
   },
   "login": {
     "tokenNotValid": "Token not valid",

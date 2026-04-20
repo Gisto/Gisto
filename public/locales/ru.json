@@ -4,6 +4,9 @@
     "tags": "теги",
     "file": "файл",
     "files": "файлы",
+    "total": "всего",
+    "average": "среднее",
+    "filesPerSnippet": "файлов на фрагмент",
     "cancel": "отмена",
     "update": "обновить",
     "upload": "загрузить",
@@ -18,6 +21,8 @@
     "untagged": "без тегов",
     "edit": "редакт.",
     "delete": "удалить",
+    "expand": "расширить",
+    "done": "готово",
     "of": "из",
     "hour": "ч",
     "slogan": "Snippets made awesome",
@@ -30,7 +35,10 @@
     "select": "выбрать",
     "languages": "языки",
     "download": "скачать",
-    "restart": "перезапуск"
+    "restart": "перезапуск",
+    "activeFilters": "Активные фильтры",
+    "hidePreview": "Скрыть превью",
+    "showPreview": "Показать превью"
   },
   "components": {
     "filterTags": "Фильтр {number} тегов",
@@ -71,7 +79,8 @@
       "sixMonthsAgo": "6 мес. назад",
       "oneYearAgo": "1 год назад",
       "topLanguages": "Основные языки",
-      "topTags": "Основные теги"
+      "topTags": "Основные теги",
+      "filesPerSnippet": "Файлов на фрагмент"
     },
     "new": {
       "title": "Создать фрагмент",
@@ -151,8 +160,8 @@
     },
     "about": {
       "title": "О программе",
-      "aboutParagraph": "Gisto — менеджер фрагментов кода на базе GitHub Gists с расширенным поиском, тегами, шарингом и редактором кода.",
-      "privacyParagraph": "Все данные хранятся на GitHub и доступны через Gists. Изменения синхронизируются с Gisto.",
+      "aboutParagraph": "Gisto — менеджер сниппетов, который синхронизируется с GitHub Gists, GitLab или локальным хранилищем. Предлагает поиск, теги и общий доступ с современным редактором.",
+      "privacyParagraph": "Ваши данные хранятся у выбранного провайдера (GitHub, GitLab или локально в браузере) и синхронизируются с Gisto.",
       "sponsor": "Спонсировать Gisto",
       "changelog": "Изменения",
       "website": "Сайт",
@@ -182,7 +191,10 @@
     "snippetDeleted": "Фрагмент удалён",
     "sureToDelete": "Удалить фрагмент \"{description}\"?",
     "searchSnippets": "Поиск в {number} фрагментах",
-    "filteredSnippets": "{filtered} из {number} фрагментов"
+    "filteredSnippets": "{filtered} из {number} фрагментов",
+    "noTags": "Пока нет тегов",
+    "noLanguages": "Пока нет языков",
+    "clearAllFilters": "Очистить все фильтры"
   },
   "login": {
     "tokenNotValid": "Токен недействителен",

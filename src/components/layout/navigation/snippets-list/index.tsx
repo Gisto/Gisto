@@ -1,16 +1,8 @@
 import { useRouter } from 'dirty-react-router';
-import {
-  FileCode,
-  Filter,
-  FilterX,
-  RefreshCcw,
-  SidebarClose,
-  SidebarOpen,
-  Plus,
-  Loader,
-} from 'lucide-react';
+import { FileCode, RefreshCcw, SidebarClose, SidebarOpen, Plus, Loader } from 'lucide-react';
 import { useCallback, useMemo } from 'react';
 
+import { FilterDropdown } from '@/components/layout/navigation/snippets-list/filter-dropdown.tsx';
 import { ListItem } from '@/components/layout/navigation/snippets-list/item.tsx';
 import { SearchInput } from '@/components/layout/navigation/snippets-list/search-input.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
@@ -22,7 +14,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
 import { t } from '@/lib/i18n';
-import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
+import { useStoreValue } from '@/lib/store/globalState.ts';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
 import { searchFilter } from '@/utils';
 const LazyListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
@@ -82,6 +74,7 @@ const SnippetsListFooter = ({
   refresh,
   filteredCount,
   totalCount,
+  totalSnippetCount,
   apiRateLimits,
 }: {
   isLoading: boolean;
@@ -89,6 +82,7 @@ const SnippetsListFooter = ({
   refresh: () => void;
   filteredCount: number;
   totalCount: number;
+  totalSnippetCount: number;
   apiRateLimits?: { remaining: number; limit: number; reset: string } | null;
 }) => {
   return (
@@ -99,7 +93,7 @@ const SnippetsListFooter = ({
             <FileCode className="size-3" />{' '}
             {t('list.filteredSnippets', {
               filtered: filteredCount,
-              number: totalCount,
+              number: totalSnippetCount || totalCount,
             })}
             {isLoading && <Loader size={16} className="animate-spin" />}
           </>
@@ -141,6 +135,7 @@ export const Lists = ({
   const allSnippets = useStoreValue('snippets');
   const search = useStoreValue('search');
   const apiRateLimits = useStoreValue('apiRateLimits');
+  const totalSnippetCount = useStoreValue('totalSnippetCount');
 
   const handleCollapse = useCallback(() => {
     setIsCollapsed(!isCollapsed);
@@ -172,16 +167,7 @@ export const Lists = ({
         </Button>
         <SearchInput allSnippets={allSnippets} />
 
-        <Button
-          disabled={!search}
-          variant="ghost"
-          size="icon"
-          onClick={() => {
-            globalState.setState({ search: '' });
-          }}
-        >
-          {search ? <FilterX className="size-4" /> : <Filter className="size-4" />}
-        </Button>
+        <FilterDropdown />
       </PageHeader>
       <ScrollArea className="h-[calc(100dvh_-_104px)] shadow-inner">
         {allSnippets.length === 0 && isLoading ? (
@@ -214,6 +200,7 @@ export const Lists = ({
         refresh={refresh}
         filteredCount={listOfSnippets.length}
         totalCount={allSnippets.length}
+        totalSnippetCount={totalSnippetCount}
         apiRateLimits={apiRateLimits}
       />
     </div>

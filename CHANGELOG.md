@@ -2,6 +2,208 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### 📚 Documentation
+
+- Update readme with download info
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([f9ccbbc](https://github.com/gisto/gisto/commit/f9ccbbc66ce644a987715bb622c0af91c8daaaf4))
+
+
+## v2.9.2
+
+Released on: Apr 18, 2026
+
+### 🛠️️ Build
+
+- *(homebrew)* Fix homebrewbrew tap job trigger
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([a8d45bf](https://github.com/gisto/gisto/commit/a8d45bf8b47d49556394b6b08dac34cff172ed97))
+
+
+### 📚 Documentation
+
+- Rename RC build
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([8a9e360](https://github.com/gisto/gisto/commit/8a9e3608648e9e7e2885fd4efad8ddc1ca1f5b8a))
+
+
+## v2.9.1
+
+Released on: Apr 18, 2026
+
+### 🚀 Features
+
+- *(navigation)* Add shortcuts
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([bf7bb46](https://github.com/gisto/gisto/commit/bf7bb46393066b86e82c5fdcb4f2286bd3ca66fe))
+
+
+### 📚 Documentation
+
+- Update about screen
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([acff1d1](https://github.com/gisto/gisto/commit/acff1d116c636bfdc480856ecac1c25ca9ccc71d))
+
+
+### 🧪 Testing
+
+- Add reports
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([20874e6](https://github.com/gisto/gisto/commit/20874e605bc8a8e2758248af6cbec58cad3c1962))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix brew tap trigger
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([5bc7927](https://github.com/gisto/gisto/commit/5bc792792e73d5c74253e1f76689de628f59fe82))
+
+
+## v2.9.0
+
+Released on: Apr 18, 2026
+
+### 🚀 Features
+
+- *(create new or edit)* Adds preview for more files on edit
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([24f570e](https://github.com/gisto/gisto/commit/24f570e738fc14ef78c3ec064af2199fa21afdba))
+
+
+### 🛠️️ Build
+
+- Update automate-release.yml
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([78611b6](https://github.com/gisto/gisto/commit/78611b658d08936789d743cb2eef2c45898924cc))
+
+- *(deps)* Bump follow-redirects
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([0a8b14a](https://github.com/gisto/gisto/commit/0a8b14af66fe112545c5f265789d02ed2ee75367))
+
+
+## v2.8.0
+
+Released on: Apr 12, 2026
+
+### 🚀 Features
+
+- *(dashboard)* Add average files per snippet chart
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([e056c75](https://github.com/gisto/gisto/commit/e056c752edf394a4f31c478e745e4d971e4dcc7f))
+
+- *(editor)* Allow to expand create new snippet file content while editing
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([26769b2](https://github.com/gisto/gisto/commit/26769b229d62edecb2515754b370ca6c8d617720))
+
+
+### 🐛 Bug Fixes
+
+- *(search)* Filter tags and snippets tabs
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([14c7bd2](https://github.com/gisto/gisto/commit/14c7bd262f1336a35cbf1f6df7e2bd15178f5644))
+
+
+### 🛠️️ Build
+
+- *(deps)* Bump axios in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([4813862](https://github.com/gisto/gisto/commit/4813862268e6ef7253a149e22659bc1cd6ee7ef0))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix home brew cask workflow
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([ffe8e35](https://github.com/gisto/gisto/commit/ffe8e356af6ec16538fc26291db99354829e9218))
+
+
+## v2.7.1
+
+Released on: Apr 11, 2026
+
+### 🚀 Features
+
+- *(search)* Filter icon button to open dropdown with tag language filters on search bar
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([47e0dcc](https://github.com/gisto/gisto/commit/47e0dccebb767388810720c288be74d4f61dc083))
+
+
+### 🐛 Bug Fixes
+
+- *(homebrew-tap)* Fix release flow
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([23215b6](https://github.com/gisto/gisto/commit/23215b620ba6d220125b157f676c6020987cc7ee))
+
+- *(homebrew-tap)* Fix url in cask
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([c9cbdca](https://github.com/gisto/gisto/commit/c9cbdcaa15892cd01b32c684f0bdce77a3085837))
+
+- *(homebrew-tap)* Add caveats block in cask
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([f8e117b](https://github.com/gisto/gisto/commit/f8e117b38e32b52dd086a4e4b8c0ad08a23c59eb))
+
+
+## v2.7.0
+
+Released on: Apr 8, 2026
+
+### 🚀 Features
+
+- *(loading)* Adds better global loading indications of progress, totals and skeletons
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([8a79166](https://github.com/gisto/gisto/commit/8a79166add9afae4a631aee3a809deae0817aae2))
+
+
+### 🛠️️ Build
+
+- *(deps)* Bump flatted in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([4cbd6a4](https://github.com/gisto/gisto/commit/4cbd6a489256fbf250a19cda3e49b8ed5758086f))
+
+- *(deps)* Bump the npm_and_yarn group across 1 directory with 5 updates
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([35285cf](https://github.com/gisto/gisto/commit/35285cfceba558190fdc01ff684e1dd3d301b2c7))
+
+- *(deps-dev)* Bump vite in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([f9c6385](https://github.com/gisto/gisto/commit/f9c6385bc0eed44e9d9d45706dfe90690ec1d21e))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- *(brew tap)* Add brew tap for Gisto because of issue #560
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([cb1fe5c](https://github.com/gisto/gisto/commit/cb1fe5ced11fec63ab3b2b11e8c3814a65613000))
+
+
 ## v2.6.2
 
 Released on: Mar 11, 2026

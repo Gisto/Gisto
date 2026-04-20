@@ -4,6 +4,9 @@
     "tags": "标签",
     "file": "文件",
     "files": "多个文件",
+    "total": "总计",
+    "average": "平均",
+    "filesPerSnippet": "每个片段的文件数",
     "cancel": "取消",
     "update": "更新",
     "upload": "上传",
@@ -18,6 +21,8 @@
     "untagged": "未标记",
     "edit": "编辑",
     "delete": "删除",
+    "expand": "展开",
+    "done": "完成",
     "of": "的",
     "hour": "小时",
     "slogan": "让代码片段更出色",
@@ -30,7 +35,10 @@
     "select": "选择",
     "languages": "语言",
     "download": "下载",
-    "restart": "重新启动"
+    "restart": "重新启动",
+    "activeFilters": "活动筛选",
+    "hidePreview": "隐藏预览",
+    "showPreview": "显示预览"
   },
   "components": {
     "filterTags": "过滤 {number} 个标签",
@@ -71,7 +79,8 @@
       "sixMonthsAgo": "6个月前",
       "oneYearAgo": "1年前",
       "topLanguages": "主要语言",
-      "topTags": "主要标签"
+      "topTags": "主要标签",
+      "filesPerSnippet": "每个片段的文件数"
     },
     "new": {
       "title": "创建新代码片段",
@@ -151,8 +160,8 @@
     },
     "about": {
       "title": "关于",
-      "aboutParagraph": "Gisto是一个运行在GitHub Gists上的代码片段管理器，增加了搜索、标记和共享snippets等功能，同时包含一个丰富的代码编辑器。",
-      "privacyParagraph": "您的所有数据都存储在GitHub上，您可以随时从GitHub Gists访问，更改会同步到Gisto。",
+      "aboutParagraph": "Gisto是一个与GitHub Gists、GitLab或本地存储同步的代码片段管理器。它提供搜索、标签和共享等功能，以及一个现代的代码编辑器。",
+      "privacyParagraph": "您的数据存储在您选择的服务提供商（GitHub、GitLab或浏览器本地）并与Gisto无缝同步。",
       "sponsor": "赞助Gisto",
       "changelog": "更新日志",
       "website": "网站",
@@ -182,7 +191,10 @@
     "snippetDeleted": "代码片段已删除",
     "sureToDelete": "确定要删除\"{description}\"代码片段吗？",
     "searchSnippets": "在 {number} 个代码片段中搜索",
-    "filteredSnippets": "{filtered} / {number} 个代码片段"
+    "filteredSnippets": "{filtered} / {number} 个代码片段",
+    "noTags": "暂无标签",
+    "noLanguages": "暂无语言",
+    "clearAllFilters": "清除所有筛选"
   },
   "login": {
     "tokenNotValid": "令牌无效",

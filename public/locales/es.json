@@ -4,6 +4,9 @@
     "tags": "etiquetas",
     "file": "archivo",
     "files": "archivos",
+    "total": "total",
+    "average": "promedio",
+    "filesPerSnippet": "archivos por fragmento",
     "cancel": "cancelar",
     "update": "actualizar",
     "upload": "subir",
@@ -18,6 +21,8 @@
     "untagged": "sin etiqueta",
     "edit": "editar",
     "delete": "eliminar",
+    "expand": "expandir",
+    "done": "hecho",
     "of": "de",
     "hour": "hora",
     "slogan": "Snippets made awesome",
@@ -30,7 +35,10 @@
     "select": "seleccionar",
     "languages": "lenguajes",
     "download": "descargar",
-    "restart": "reiniciar"
+    "restart": "reiniciar",
+    "activeFilters": "Filtros activos",
+    "hidePreview": "Ocultar vista previa",
+    "showPreview": "Mostrar vista previa"
   },
   "components": {
     "filterTags": "Filtrar {number} etiquetas",
@@ -71,7 +79,8 @@
       "sixMonthsAgo": "hace 6 meses",
       "oneYearAgo": "hace 1 año",
       "topLanguages": "Lenguajes principales",
-      "topTags": "Etiquetas principales"
+      "topTags": "Etiquetas principales",
+      "filesPerSnippet": "Archivos por fragmento"
     },
     "new": {
       "title": "Crear nuevo fragmento",
@@ -151,8 +160,8 @@
     },
     "about": {
       "title": "Acerca de",
-      "aboutParagraph": "Gisto es un gestor de fragmentos de código que se basa en GitHub Gists y agrega funciones adicionales\ncomo búsqueda, etiquetado y compartición de snippets, incluyendo un editor de código avanzado.",
-      "privacyParagraph": "Todos tus datos se almacenan en GitHub y puedes acceder a ellos desde GitHub Gists en cualquier momento,\ncon los cambios reflejados en Gisto.",
+      "aboutParagraph": "Gisto es un gestor de snippets que sincroniza con GitHub Gists, GitLab o almacenamiento local. Ofrece funciones como búsqueda, etiquetas y Compartición con un editor moderno.",
+      "privacyParagraph": "Tus datos se almacenan en tu proveedor elegido (GitHub, GitLab o localmente en el navegador) y se sincronizan perfectamente con Gisto.",
       "sponsor": "Patrocinar Gisto",
       "changelog": "Registro de cambios",
       "website": "Sitio web",
@@ -182,7 +191,10 @@
     "snippetDeleted": "Fragmento eliminado",
     "sureToDelete": "¿Estás seguro de que deseas eliminar el fragmento \"{description}\"?",
     "searchSnippets": "Buscar en {number} fragmentos",
-    "filteredSnippets": "{filtered} de {number} fragmentos"
+    "filteredSnippets": "{filtered} de {number} fragmentos",
+    "noTags": "Sin etiquetas aun",
+    "noLanguages": "Sin idiomas aun",
+    "clearAllFilters": "Borrar todos los filtros"
   },
   "login": {
     "tokenNotValid": "Token no válido",

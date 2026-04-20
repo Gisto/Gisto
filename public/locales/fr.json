@@ -4,6 +4,9 @@
     "tags": "étiquettes",
     "file": "fichier",
     "files": "fichiers",
+    "total": "total",
+    "average": "moyenne",
+    "filesPerSnippet": "fichiers par extrait",
     "cancel": "annuler",
     "update": "mettre à jour",
     "upload": "téléverser",
@@ -18,6 +21,8 @@
     "untagged": "sans étiquette",
     "edit": "modifier",
     "delete": "supprimer",
+    "expand": "étendre",
+    "done": "terminé",
     "of": "de",
     "hour": "heure",
     "slogan": "Snippets made awesome",
@@ -30,7 +35,10 @@
     "select": "sélectionner",
     "languages": "langages",
     "download": "télécharger",
-    "restart": "redémarrer"
+    "restart": "redémarrer",
+    "activeFilters": "Filtres actifs",
+    "hidePreview": "Masquer l'aperçu",
+    "showPreview": "Afficher l'aperçu"
   },
   "components": {
     "filterTags": "Filtrer {number} étiquettes",
@@ -71,7 +79,8 @@
       "sixMonthsAgo": "il y a 6 mois",
       "oneYearAgo": "il y a 1 an",
       "topLanguages": "Langages principaux",
-      "topTags": "Étiquettes principales"
+      "topTags": "Étiquettes principales",
+      "filesPerSnippet": "Fichiers par extrait"
     },
     "new": {
       "title": "Créer un nouvel extrait",
@@ -151,8 +160,8 @@
     },
     "about": {
       "title": "À propos",
-      "aboutParagraph": "Gisto est un gestionnaire d’extraits basé sur GitHub Gists, avec des fonctionnalités supplémentaires comme la recherche, l’étiquetage et le partage, le tout avec un éditeur avancé.",
-      "privacyParagraph": "Toutes vos données sont stockées sur GitHub et accessibles via les Gists. Les modifications sont reflétées dans Gisto.",
+      "aboutParagraph": "Gisto est un gestionnaire de snippets qui synchronise avec GitHub Gists, GitLab ou le stockage local. Il offre des fonctionnalités comme la recherche, les tags et le partage avec un éditeur moderne.",
+      "privacyParagraph": "Vos données sont stockées chez votre fournisseur choisi (GitHub, GitLab ou localement dans le navigateur) et synchronisent de manière transparente avec Gisto.",
       "sponsor": "Soutenir Gisto",
       "changelog": "Journal des modifications",
       "website": "Site web",
@@ -182,7 +191,10 @@
     "snippetDeleted": "Extrait supprimé",
     "sureToDelete": "Voulez-vous vraiment supprimer l’extrait \"{description}\" ?",
     "searchSnippets": "Rechercher dans {number} extraits",
-    "filteredSnippets": "{filtered} sur {number} extraits"
+    "filteredSnippets": "{filtered} sur {number} extraits",
+    "noTags": "Pas encore de tags",
+    "noLanguages": "Pas encore de langues",
+    "clearAllFilters": "Effacer tous les filtres"
   },
   "login": {
     "tokenNotValid": "Jeton non valide",

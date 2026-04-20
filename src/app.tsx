@@ -7,6 +7,7 @@ import { Gisto } from '@/components/main/gisto.tsx';
 import { Login } from '@/components/main/login.tsx';
 import { toast } from '@/components/toast';
 import { getProviderConfig, SnippetProviderType } from '@/constants/providers.tsx';
+import { TotalProgressLoader } from '@/components/total-progress-loader.tsx';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 
@@ -120,8 +121,18 @@ export const App = () => {
   }
 
   if (isValid) {
-    return <Gisto />;
+    return (
+      <>
+        <TotalProgressLoader />
+        <Gisto />
+      </>
+    );
   }
 
-  return <Login onTokenSubmit={handleTokenSubmit} token={token} isValid={isValid} />;
+  return (
+    <>
+      <TotalProgressLoader />
+      <Login onTokenSubmit={handleTokenSubmit} token={token} isValid={isValid} />
+    </>
+  );
 };

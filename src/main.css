@@ -162,11 +162,11 @@
     --input: 201 10% 20%;
     --ring: 201 45.5% 45.3%;
     --radius: 0.3rem;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
 
     /* https://github.com/swagger-api/swagger-ui/issues/5327#issuecomment-742375520 😭 */
     .swagger-ui {
