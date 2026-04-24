@@ -2,6 +2,8 @@
   "common": {
     "optional": "opcional",
     "tags": "etiquetas",
+    "list": "lista",
+    "code": "código",
     "file": "archivo",
     "files": "archivos",
     "total": "total",
@@ -22,6 +24,9 @@
     "edit": "editar",
     "delete": "eliminar",
     "expand": "expandir",
+    "collapse": "contraer",
+    "expandAll": "Expandir todo",
+    "collapseAll": "Contraer todo",
     "done": "hecho",
     "of": "de",
     "hour": "hora",
@@ -189,6 +194,9 @@
     "sureToDelete": "¿Estás seguro de que deseas eliminar el fragmento \"{description}\"?",
     "searchSnippets": "Buscar en {number} fragmentos",
     "filteredSnippets": "{filtered} de {number} fragmentos",
+    "viewAsList": "Ver como lista",
+    "viewByTags": "Ver por etiquetas",
+    "viewByLanguages": "Ver por idiomas",
     "noTags": "Sin etiquetas aun",
     "noLanguages": "Sin idiomas aun",
     "clearAllFilters": "Borrar todos los filtros"

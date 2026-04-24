@@ -29,6 +29,7 @@ export type StoreStateType = {
     jsonPreviewCollapsedByDefault: boolean;
     filesPreviewEnabledByDefault: boolean;
     sortFilesByMarkdownFirst: boolean;
+    sidebarViewMode: 'list' | 'tags' | 'languages';
     editor: {
       fontFamily: string;
       fontLigatures: boolean;
@@ -138,6 +139,7 @@ export const defaultSettings: SettingsType = {
   jsonPreviewCollapsedByDefault: true,
   filesPreviewEnabledByDefault: true,
   sortFilesByMarkdownFirst: false,
+  sidebarViewMode: 'list',
   editor: {
     fontFamily: 'monospace',
     fontLigatures: false,

@@ -8,7 +8,12 @@ interface EmptyStateProps {
 
 export const EmptyState = ({ className, title, description, action }: EmptyStateProps) => {
   return (
-    <div className={cn('flex flex-col items-center justify-center py-10 text-center', className)}>
+    <div
+      className={cn(
+        'flex flex-col items-center justify-center min-h-full py-10 text-center',
+        className
+      )}
+    >
       <div className="flex flex-col items-center gap-2">
         <div className="text-primary font-semibold text-xl">{`{ G }`}</div>
         <h3 className="text-lg font-semibold text-foreground">{title}</h3>

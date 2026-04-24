@@ -2,6 +2,8 @@
   "common": {
     "optional": "необяз.",
     "tags": "теги",
+    "list": "список",
+    "code": "код",
     "file": "файл",
     "files": "файлы",
     "total": "всего",
@@ -22,6 +24,9 @@
     "edit": "редакт.",
     "delete": "удалить",
     "expand": "расширить",
+    "collapse": "свернуть",
+    "expandAll": "Раскрыть всё",
+    "collapseAll": "Свернуть всё",
     "done": "готово",
     "of": "из",
     "hour": "ч",
@@ -189,6 +194,9 @@
     "sureToDelete": "Удалить фрагмент \"{description}\"?",
     "searchSnippets": "Поиск в {number} фрагментах",
     "filteredSnippets": "{filtered} из {number} фрагментов",
+    "viewAsList": "Показать списком",
+    "viewByTags": "Показать по тегам",
+    "viewByLanguages": "Показать по языкам",
     "noTags": "Пока нет тегов",
     "noLanguages": "Пока нет языков",
     "clearAllFilters": "Очистить все фильтры"
