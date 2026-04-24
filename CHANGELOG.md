@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- Add tree folder views of tags and languages
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([a7bb193](https://github.com/gisto/gisto/commit/a7bb193be58fb53576d68fcb9a764caaf6df7c4c))
+
+
 ### 📚 Documentation
 
 - Update readme with download info
