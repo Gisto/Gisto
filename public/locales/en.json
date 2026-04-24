@@ -2,6 +2,8 @@
   "common": {
     "optional": "optional",
     "tags": "tags",
+    "list": "list",
+    "code": "code",
     "file": "file",
     "files": "files",
     "total": "total",
@@ -24,6 +26,9 @@
     "code": "code",
     "preview": "preview",
     "expand": "expand",
+    "collapse": "collapse",
+    "expandAll": "Expand all",
+    "collapseAll": "Collapse all",
     "done": "Done",
     "of": "of",
     "hour": "hour",
@@ -194,6 +199,9 @@
     "sureToDelete": "Are you sure you want to delete \"{description}\" snippet?",
     "searchSnippets": "Search in {number} snippets",
     "filteredSnippets": "{filtered} of {number} snippets",
+    "viewAsList": "View as list",
+    "viewByTags": "View by tags",
+    "viewByLanguages": "View by languages",
     "noTags": "No tags yet",
     "noLanguages": "No languages yet",
     "clearAllFilters": "Clear all filters"

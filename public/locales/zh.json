@@ -2,6 +2,8 @@
   "common": {
     "optional": "可选",
     "tags": "标签",
+    "list": "列表",
+    "code": "代码",
     "file": "文件",
     "files": "多个文件",
     "total": "总计",
@@ -22,6 +24,9 @@
     "edit": "编辑",
     "delete": "删除",
     "expand": "展开",
+    "collapse": "折叠",
+    "expandAll": "全部展开",
+    "collapseAll": "全部折叠",
     "done": "完成",
     "of": "的",
     "hour": "小时",
@@ -189,6 +194,9 @@
     "sureToDelete": "确定要删除\"{description}\"代码片段吗？",
     "searchSnippets": "在 {number} 个代码片段中搜索",
     "filteredSnippets": "{filtered} / {number} 个代码片段",
+    "viewAsList": "列表视图",
+    "viewByTags": "按标签查看",
+    "viewByLanguages": "按语言查看",
     "noTags": "暂无标签",
     "noLanguages": "暂无语言",
     "clearAllFilters": "清除所有筛选"

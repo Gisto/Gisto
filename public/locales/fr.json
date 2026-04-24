@@ -2,6 +2,8 @@
   "common": {
     "optional": "optionnel",
     "tags": "étiquettes",
+    "list": "liste",
+    "code": "code",
     "file": "fichier",
     "files": "fichiers",
     "total": "total",
@@ -22,6 +24,9 @@
     "edit": "modifier",
     "delete": "supprimer",
     "expand": "étendre",
+    "collapse": "réduire",
+    "expandAll": "Tout étendre",
+    "collapseAll": "Tout réduire",
     "done": "terminé",
     "of": "de",
     "hour": "heure",
@@ -189,6 +194,9 @@
     "sureToDelete": "Voulez-vous vraiment supprimer l’extrait \"{description}\" ?",
     "searchSnippets": "Rechercher dans {number} extraits",
     "filteredSnippets": "{filtered} sur {number} extraits",
+    "viewAsList": "Afficher en liste",
+    "viewByTags": "Afficher par tags",
+    "viewByLanguages": "Afficher par langues",
     "noTags": "Pas encore de tags",
     "noLanguages": "Pas encore de langues",
     "clearAllFilters": "Effacer tous les filtres"
