@@ -142,6 +142,7 @@
       "temperature": "Температура",
       "apiKey": "API ключ",
       "uiLanguage": "Язык интерфейса (экспериментально)",
+      "snippetProvider": "Поставщик сниппетов",
       "experimentalTranslation": "Экспериментально, машинный перевод, некоторые переводы неточны или недоступны.",
       "getApiKey": "Получите API ключ {provider} на {url}.",
       "apiKeyPlaceholder": "ваш api ключ",
@@ -178,6 +179,8 @@
     "apiRate": "API лимит",
     "apiRateLimit": "GitHub API лимит",
     "nextReset": "Следующий сброс",
+    "noSnippets": "Сниппетов пока нет",
+    "noSnippetsDescription": "Создайте свой первый сниппет, чтобы начать",
     "searchHelp": {
       "title": "Поиск по описанию/названию, тегам, языку<br />или их комбинации:",
       "description": "<strong>Описание/содержимое:</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>любой текст</code>",
@@ -224,13 +227,22 @@
     "gitlabWarningDescription": "Поддержка GitLab находится на ранней стадии",
     "providerGithub": "GitHub",
     "providerGitlab": "GitLab",
-    "providerLocal": "Локально"
+    "providerLocal": "Локально",
+    "providerSnippetBin": "Snippet-bin",
+    "snippetBinToken": "Токен Snippet-bin",
+    "snippetBinBaseUrl": "Базовый URL Snippet-bin",
+    "enterSnippetBinToken": "Введите токен snippet-bin",
+    "enterSnippetBinBaseUrl": "Введите базовый URL snippet-bin",
+    "scopeMessageSnippetBin": "Введите ваш персональный токен доступа для snippet-bin",
+    "snippetBinWarning": "Пользовательский экземпляр",
+    "snippetBinDescription": "Подключение к экземпляру snippet-bin по адресу {baseUrl}"
   },
   "api": {
     "starRemoved": "Звезда снята",
     "starAdded": "Добавлено в избранное",
     "visibilityChangedToPublic": "Фрагмент стал публичным",
     "visibilityChangedToPrivate": "Фрагмент стал приватным",
-    "errorTryToRefresh": "Ошибка загрузки snippets, попробуйте обновить"
+    "errorTryToRefresh": "Ошибка загрузки snippets, попробуйте обновить",
+    "featureNotSupported": "Эта функция еще не поддерживается для {provider}"
   }
 }

@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "// ℹ️ ------- test  and lint-------": "",
-    "check": "pnpm lint && pnpm ts:lint && pnpm test && pnpm e2e",
+    "validate": "pnpm lint && pnpm ts:lint && pnpm test && pnpm e2e",
+    "check": "pnpm lint && pnpm 
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "prettier:fix": "prettier ./src --write",

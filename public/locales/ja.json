@@ -142,6 +142,7 @@
       "temperature": "温度",
       "apiKey": "APIキー",
       "uiLanguage": "UI言語（実験的）",
+      "snippetProvider": "スニペットプロバイダ",
       "experimentalTranslation": "実験的、機械翻訳、一部の翻訳は正確でない、または利用できません。",
       "getApiKey": "{url}であなたの{provider} APIキーを取得します。",
       "apiKeyPlaceholder": "あなたのAPIキー",
@@ -178,6 +179,8 @@
     "apiRate": "APIレート",
     "apiRateLimit": "GitHub APIレート制限",
     "nextReset": "次のリセット",
+    "noSnippets": "スニペットはまだありません",
+    "noSnippetsDescription": "最初のスニペットを作成して始めましょう",
     "searchHelp": {
       "title": "説明/タイトル、タグ、または言語でスニペットを検索<br />またはすべての組み合わせ:",
       "description": "<strong>説明またはファイルの内容:</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>単なるフリーテキスト</code>",
@@ -224,13 +227,22 @@
     "gitlabWarningDescription": "GitLabサポートはまだ初期段階です",
     "providerGithub": "GitHub",
     "providerGitlab": "GitLab",
-    "providerLocal": "ローカル"
+    "providerLocal": "ローカル",
+    "providerSnippetBin": "Snippet-bin",
+    "snippetBinToken": "Snippet-binトークン",
+    "snippetBinBaseUrl": "Snippet-binベースURL",
+    "enterSnippetBinToken": "Snippet-binトークンを入力",
+    "enterSnippetBinBaseUrl": "Snippet-binベースURLを入力",
+    "scopeMessageSnippetBin": "Snippet-binの個人アクセストークンを入力してください",
+    "snippetBinWarning": "カスタムインスタンス",
+    "snippetBinDescription": "{baseUrl}のSnippet-binインスタンスに接続しています"
   },
   "api": {
     "starRemoved": "スターが削除されました",
     "starAdded": "スターが追加されました",
     "visibilityChangedToPublic": "スニペットの可視性が公開に変更されました",
     "visibilityChangedToPrivate": "スニペットの可視性がプライベートに変更されました",
-    "errorTryToRefresh": "Gistsのフェッチエラーが発生しました。更新してみてください"
+    "errorTryToRefresh": "Gistsのフェッチエラーが発生しました。更新してみてください",
+    "featureNotSupported": "この機能は{provider}ではまだサポートされていません"
   }
 }

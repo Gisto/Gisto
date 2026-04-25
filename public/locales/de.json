@@ -142,6 +142,7 @@
       "temperature": "Temperatur",
       "apiKey": "API-Schlüssel",
       "uiLanguage": "UI-Sprache (experimentell)",
+      "snippetProvider": "Snippet-Anbieter",
       "experimentalTranslation": "Experimentell, maschinell übersetzt, einige Übersetzungen sind ungenau oder nicht verfügbar.",
       "getApiKey": "Erhalten Sie Ihren {provider} API-Schlüssel unter {url}.",
       "apiKeyPlaceholder": "Ihr API-Schlüssel",
@@ -178,6 +179,8 @@
     "apiRate": "API-Limit",
     "apiRateLimit": "GitHub API-Limit",
     "nextReset": "Nächster Reset",
+    "noSnippets": "Noch keine Snippets",
+    "noSnippetsDescription": "Erstellen Sie Ihr erstes Snippet, um loszulegen",
     "searchHelp": {
       "title": "Suche nach Beschreibung, Tags, Sprache<br />oder kombiniert:",
       "description": "<strong>Beschreibung:</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>Text</code>",
@@ -224,13 +227,22 @@
     "gitlabWarningDescription": "GitLab-Unterstützung befindet sich in einem frühen Stadium",
     "providerGithub": "GitHub",
     "providerGitlab": "GitLab",
-    "providerLocal": "Lokal"
+    "providerLocal": "Lokal",
+    "providerSnippetBin": "Snippet-bin",
+    "snippetBinToken": "Snippet-bin Token",
+    "snippetBinBaseUrl": "Snippet-bin Basis-URL",
+    "enterSnippetBinToken": "Snippet-bin Token eingeben",
+    "enterSnippetBinBaseUrl": "Snippet-bin Basis-URL eingeben",
+    "scopeMessageSnippetBin": "Geben Sie Ihren persönlichen Zugangs-Token für Snippet-bin ein",
+    "snippetBinWarning": "Benutzerdefinierte Instanz",
+    "snippetBinDescription": "Verbindung zur Snippet-bin Instanz unter {baseUrl}"
   },
   "api": {
     "starRemoved": "Markierung entfernt",
     "starAdded": "Markiert",
     "visibilityChangedToPublic": "Öffentlich gemacht",
     "visibilityChangedToPrivate": "Privat gemacht",
-    "errorTryToRefresh": "Fehler, bitte neu laden"
+    "errorTryToRefresh": "Fehler, bitte neu laden",
+    "featureNotSupported": "Diese Funktion wird für {provider} noch nicht unterstützt"
   }
 }
