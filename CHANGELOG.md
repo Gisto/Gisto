@@ -2,6 +2,34 @@
 
 All significant updates and improvements
 
+## v2.10.0
+
+Released on: Apr 25, 2026
+
+### 🚀 Features
+
+- Add tree folder views of tags and languages
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([a7bb193](https://github.com/gisto/gisto/commit/a7bb193be58fb53576d68fcb9a764caaf6df7c4c))
+
+
+### 🐛 Bug Fixes
+
+- Tree folder views of tags and languages empty state
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([95daeab](https://github.com/gisto/gisto/commit/95daeabe9fc464962fba30a3bc729a1f2f7cf81d))
+
+
+### 📚 Documentation
+
+- Update readme with download info
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([f9ccbbc](https://github.com/gisto/gisto/commit/f9ccbbc66ce644a987715bb622c0af91c8daaaf4))
+
+
 ## v2.9.2
 
 Released on: Apr 18, 2026

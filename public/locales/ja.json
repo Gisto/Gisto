@@ -2,6 +2,8 @@
   "common": {
     "optional": "オプション",
     "tags": "タグ",
+    "list": "リスト",
+    "code": "コード",
     "file": "ファイル",
     "files": "ファイル",
     "total": "合計",
@@ -22,6 +24,9 @@
     "edit": "編集",
     "delete": "削除",
     "expand": "展開",
+    "collapse": "折りたたむ",
+    "expandAll": "すべて展開",
+    "collapseAll": "すべて折りたたむ",
     "done": "完了",
     "of": "の",
     "hour": "時間",
@@ -189,6 +194,9 @@
     "sureToDelete": "「{description}」スニペットを削除してもよろしいですか?",
     "searchSnippets": "{number}個のスニペットで検索",
     "filteredSnippets": "{number}個のうち{filtered}個のスニペット",
+    "viewAsList": "リスト表示",
+    "viewByTags": "タグで表示",
+    "viewByLanguages": "言語で表示",
     "noTags": "タグなし",
     "noLanguages": "言語なし",
     "clearAllFilters": "すべてのフィルタをクリア"

@@ -61,9 +61,27 @@ Gisto is a code snippet manager that runs on GitHub Gists / GitLab Snippets / lo
 
 # ⬇️ Getting gisto
 
-You can download Gisto for (macOS, Windows, Linux) desktop from [releases](https://github.com/Gisto/Gisto/releases) tab
+### Homebrew (Recommended for macOS)
 
-Or use a full-featured Web-based client available at: [Web app](https://app.gisto.org) (old one still [available](https://web-gistoapp.netlify.app) as well )
+```bash
+brew install --cask Gisto/tap/gisto
+```
+
+### Download from website
+
+Visit [gisto.org](https://gisto.org) for more information.
+
+
+### Download from realeases
+
+Download Gisto for macOS, Windows, Linux from the [releases](https://github.com/Gisto/Gisto/releases) tab
+
+### Web app
+
+- **New**: [app.gisto.org](https://app.gisto.org)
+- **Old**: [web-gistoapp.netlify.app](https://web-gistoapp.netlify.app)
+
+---
 
 Desktop app is built with [Tauri](https://v2.tauri.app/) for a smaller file size.
 
@@ -189,18 +207,56 @@ Please feel free to add a bug / feature request / suggestions to the issue track
 
 ⚠︎ For maintainers
 
-## on branch `main`:
+The release process is fully automated via GitHub Actions. Here's the flow:
 
-- run `pnpm release:major|minor|patch` - this will also create tag and generate changelog with commit
-  > This will also push the changes and tag(s) to the remote repository
+```mermaid
+flowchart TD
+    A[Maintainer triggers<br>automate-release.yml] -->|selects version bump| B{bump type}
+    B -->|patch| C[Patch version bump]
+    B -->|minor| D[Minor version bump]
+    B -->|major| E[Major version bump]
 
-## on branch `release`:
+    C --> F[Bump version & update CHANGELOG]
+    D --> F
+    E --> F
 
-merge `main` into `release`:
+    F --> G[Push tag to remote]
+    G --> H[Merge main → release branch]
+    H --> I[Trigger publish.yml]
 
-- run "`git merge main && git push origin head`
+    I --> J[Build for macOS ARM]
+    I --> K[Build for macOS Intel]
+    I --> L[Build for Linux]
+    I --> M[Build for Windows]
 
-release.yml workflow of github actions is responsible for creating the release builds upon merging to special branch called `release`.
+    J --> N[Create GitHub Release]
+    K --> N
+    L --> N
+    M --> N
+
+    N --> O[Trigger homebrew-tap.yml]
+    O --> P[Update Homebrew tap]
+```
+
+## Steps
+
+1. **Trigger `automate-release.yml`** workflow manually:
+   - Go to Actions → Automate Release → Run workflow
+   - Select version bump type: `patch`, `minor`, or `major`
+   - Click "Run workflow"
+
+2. **Automated process** (no manual intervention needed):
+   - Version bumped and tag created
+   - Changelog updated and committed
+   - Changes pushed to remote
+   - `main` merged into `release` branch
+   - Build triggered for all platforms
+   - Release created with DMG/EXE/AppImage
+   - Homebrew tap updated automatically
+
+3. **Release available** at:
+   - [Releases](https://github.com/Gisto/Gisto/releases) tab
+   - Homebrew: `brew install --cask Gisto/tap/gisto`
 
 # ⚖️ License
 

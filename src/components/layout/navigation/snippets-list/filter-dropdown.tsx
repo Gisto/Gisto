@@ -34,29 +34,49 @@ export const FilterDropdown = () => {
     const newSearch = search
       ? `${search} tag:${tag.replace('#', '')}`
       : `tag:${tag.replace('#', '')}`;
-    globalState.setState({ search: newSearch });
+    const settings = globalState.getState().settings;
+    globalState.setState({
+      search: newSearch,
+      settings: { ...settings, sidebarViewMode: 'list' },
+    });
   };
 
   const handleAddLanguage = (lang: string) => {
     const newSearch = search ? `${search} lang:${lang}` : `lang:${lang}`;
-    globalState.setState({ search: newSearch });
+    const settings = globalState.getState().settings;
+    globalState.setState({
+      search: newSearch,
+      settings: { ...settings, sidebarViewMode: 'list' },
+    });
   };
 
   const handleRemoveTag = (tag: string) => {
     const newSearch = search.replace(new RegExp(`tag:${tag}\\b/?\\s*`), '').trim();
-    globalState.setState({ search: newSearch });
+    const settings = globalState.getState().settings;
+    globalState.setState({
+      search: newSearch,
+      settings: { ...settings, sidebarViewMode: 'list' },
+    });
   };
 
   const handleRemoveLanguage = (lang: string) => {
     const newSearch = search.replace(new RegExp(`lang:${lang}\\b/?\\s*`), '').trim();
-    globalState.setState({ search: newSearch });
+    const settings = globalState.getState().settings;
+    globalState.setState({
+      search: newSearch,
+      settings: { ...settings, sidebarViewMode: 'list' },
+    });
   };
 
   const clearAllFilters = () => {
     const terms = search
       .split(' ')
       .filter((term) => !term.startsWith('tag:') && !term.startsWith('lang:'));
-    globalState.setState({ search: terms.join(' ').trim() });
+    const settings = globalState.getState().settings;
+    globalState.setState({
+      search: terms.join(' ').trim(),
+      settings: { ...settings, sidebarViewMode: 'list' },
+    });
   };
 
   return (

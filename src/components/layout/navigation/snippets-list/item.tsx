@@ -55,7 +55,11 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                   onClick={(event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    globalState.setState({ search: filter === search ? '' : filter });
+                    const settings = globalState.getState().settings;
+                    globalState.setState({
+                      search: filter === search ? '' : filter,
+                      settings: { ...settings, sidebarViewMode: 'list' },
+                    });
                   }}
                   variant={search === filter ? 'default' : 'primary-outline'}
                   className="whitespace-nowrap cursor-pointer"
@@ -79,7 +83,11 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
-                      globalState.setState({ search: filter === search ? '' : filter });
+                      const settings = globalState.getState().settings;
+                      globalState.setState({
+                        search: filter === search ? '' : filter,
+                        settings: { ...settings, sidebarViewMode: 'list' },
+                      });
                     }}
                     variant={search === filter ? 'default' : 'primary-outline'}
                     className="whitespace-nowrap cursor-pointer"

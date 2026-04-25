@@ -2,6 +2,8 @@
   "common": {
     "optional": "optional",
     "tags": "Tags",
+    "list": "Liste",
+    "code": "Code",
     "file": "Datei",
     "files": "Dateien",
     "total": "Gesamt",
@@ -22,6 +24,9 @@
     "edit": "Bearbeiten",
     "delete": "Löschen",
     "expand": "erweitern",
+    "collapse": "einklappen",
+    "expandAll": "Alle erweitern",
+    "collapseAll": "Alle einklappen",
     "done": "fertig",
     "of": "von",
     "hour": "Stunde",
@@ -189,6 +194,9 @@
     "sureToDelete": "\"{description}\" wirklich löschen?",
     "searchSnippets": "Suche in {number} Snippets",
     "filteredSnippets": "{filtered} von {number} Snippets",
+    "viewAsList": "Als Liste anzeigen",
+    "viewByTags": "Nach Tags anzeigen",
+    "viewByLanguages": "Nach Sprachen anzeigen",
     "noTags": "Noch keine Tags",
     "noLanguages": "Noch keine Sprachen",
     "clearAllFilters": "Alle Filter loeschen"

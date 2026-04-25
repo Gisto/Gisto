@@ -1,12 +1,25 @@
 import { useRouter } from 'dirty-react-router';
-import { FileCode, RefreshCcw, SidebarClose, SidebarOpen, Plus, Loader } from 'lucide-react';
-import { useCallback, useMemo } from 'react';
+import {
+  FileCode,
+  RefreshCcw,
+  SidebarClose,
+  SidebarOpen,
+  Plus,
+  Loader,
+  List,
+  Tag,
+  ChevronsUpDown,
+  ChevronsUp,
+} from 'lucide-react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { FilterDropdown } from '@/components/layout/navigation/snippets-list/filter-dropdown.tsx';
 import { ListItem } from '@/components/layout/navigation/snippets-list/item.tsx';
 import { SearchInput } from '@/components/layout/navigation/snippets-list/search-input.tsx';
+import { TreeView } from '@/components/layout/navigation/snippets-list/tree-view.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Loading } from '@/components/loading.tsx';
+import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { EmptyState } from '@/components/ui/empty-state.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
@@ -14,7 +27,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import useIntersectionObserver from '@/hooks/use-intersection-observer.tsx';
 import { useSnippets } from '@/hooks/use-snippets.tsx';
 import { t } from '@/lib/i18n';
-import { useStoreValue } from '@/lib/store/globalState.ts';
+import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
 import { searchFilter } from '@/utils';
 const LazyListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
@@ -86,7 +99,7 @@ const SnippetsListFooter = ({
   apiRateLimits?: { remaining: number; limit: number; reset: string } | null;
 }) => {
   return (
-    <div className="h-[52px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">
+    <div className="h-[48px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">
       <div className="flex items-center gap-2">
         {totalCount > 0 ? (
           <>
@@ -136,10 +149,22 @@ export const Lists = ({
   const search = useStoreValue('search');
   const apiRateLimits = useStoreValue('apiRateLimits');
   const totalSnippetCount = useStoreValue('totalSnippetCount');
+  const settings = useStoreValue('settings');
+  const sidebarViewMode = settings?.sidebarViewMode || 'list';
+  const [allExpanded, setAllExpanded] = useState(false);
 
   const handleCollapse = useCallback(() => {
     setIsCollapsed(!isCollapsed);
   }, [isCollapsed, setIsCollapsed]);
+
+  const handleViewModeChange = useCallback(
+    (mode: 'list' | 'tags' | 'languages') => {
+      globalState.setState({
+        settings: { ...settings, sidebarViewMode: mode },
+      });
+    },
+    [settings]
+  );
 
   // Memoize filtered results using only the debounced global search
   const listOfSnippets = useMemo(() => {
@@ -151,7 +176,7 @@ export const Lists = ({
   }
 
   return (
-    <div className="flex flex-col gap-0">
+    <div className="flex flex-col h-full">
       <PageHeader>
         <Button
           variant="ghost"
@@ -169,31 +194,85 @@ export const Lists = ({
 
         <FilterDropdown />
       </PageHeader>
-      <ScrollArea className="h-[calc(100dvh_-_104px)] shadow-inner">
-        {allSnippets.length === 0 && isLoading ? (
-          <ListSkeleton />
-        ) : allSnippets.length === 0 ? (
-          <EmptyState
-            className="h-[calc(100dvh_-_200px)]"
-            title={t('list.noSnippets')}
-            description={t('list.noSnippetsDescription')}
-            action={
-              <Button
-                className="cursor-pointer"
-                variant="outline"
-                size="sm"
-                onClick={() => navigate('/new-snippet')}
-              >
-                <Plus className="size-4" />
-                {t('common.create')} {t('common.snippet')}
-              </Button>
-            }
-          />
-        ) : (
-          listOfSnippets.length > 0 &&
-          listOfSnippets.map((snippet) => <LazyListItem key={snippet.id} snippet={snippet} />)
+      <div className="flex items-center justify-between px-2 py-1.5 border-b">
+        <div className="flex items-center gap-1">
+          <span className="text-xs text-muted-foreground mr-1">View:</span>
+          <Button
+            variant={sidebarViewMode === 'list' ? 'secondary' : 'ghost'}
+            size="xs"
+            onClick={() => handleViewModeChange('list')}
+            className="h-6 px-1.5 text-xs gap-1"
+          >
+            <List className="size-3" />
+            {t('common.list')}
+          </Button>
+          <Button
+            variant={sidebarViewMode === 'tags' ? 'secondary' : 'ghost'}
+            size="xs"
+            onClick={() => handleViewModeChange('tags')}
+            className="h-6 px-1.5 text-xs gap-1"
+          >
+            <Tag className="size-3" />
+            {t('common.tags')}
+          </Button>
+          <Button
+            variant={sidebarViewMode === 'languages' ? 'secondary' : 'ghost'}
+            size="xs"
+            onClick={() => handleViewModeChange('languages')}
+            className="h-6 px-1.5 text-xs gap-1"
+          >
+            <FileCode className="size-3" />
+            {t('common.languages')}
+          </Button>
+        </div>
+        {sidebarViewMode !== 'list' && (
+          <SimpleTooltip content={allExpanded ? t('common.collapseAll') : t('common.expandAll')}>
+            <Button
+              variant="ghost"
+              size="xs"
+              className="h-6 px-1.5 text-xs"
+              onClick={() => setAllExpanded((prev) => !prev)}
+            >
+              {allExpanded ? (
+                <ChevronsUp className="size-3" />
+              ) : (
+                <ChevronsUpDown className="size-3" />
+              )}
+            </Button>
+          </SimpleTooltip>
         )}
-      </ScrollArea>
+      </div>
+      {sidebarViewMode === 'list' ? (
+        <ScrollArea className="flex-1 shadow-inner">
+          {allSnippets.length === 0 && isLoading ? (
+            <ListSkeleton />
+          ) : allSnippets.length === 0 ? (
+            <EmptyState
+              className="min-h-full"
+              title={t('list.noSnippets')}
+              description={t('list.noSnippetsDescription')}
+              action={
+                <Button
+                  className="cursor-pointer"
+                  variant="outline"
+                  size="xs"
+                  onClick={() => navigate('/new-snippet')}
+                >
+                  <Plus className="size-4" />
+                  {t('common.create')} {t('common.snippet')}
+                </Button>
+              }
+            />
+          ) : (
+            listOfSnippets.length > 0 &&
+            listOfSnippets.map((snippet) => <LazyListItem key={snippet.id} snippet={snippet} />)
+          )}
+        </ScrollArea>
+      ) : sidebarViewMode === 'tags' ? (
+        <TreeView key={`tags-${allExpanded}`} mode="tags" allExpanded={allExpanded} />
+      ) : (
+        <TreeView key={`languages-${allExpanded}`} mode="languages" allExpanded={allExpanded} />
+      )}
       <SnippetsListFooter
         isLoading={isLoading}
         isRefreshing={isRefreshing}

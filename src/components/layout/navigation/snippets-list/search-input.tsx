@@ -141,7 +141,11 @@ export const SearchInput = ({ allSnippets }: SearchInputProps) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      globalState.setState({ search: localSearch });
+      const settings = globalState.getState().settings;
+      globalState.setState({
+        search: localSearch,
+        settings: { ...settings, sidebarViewMode: 'list' },
+      });
     }, 300);
 
     return () => clearTimeout(timer);
