@@ -19,6 +19,7 @@ import { SearchInput } from '@/components/layout/navigation/snippets-list/search
 import { TreeView } from '@/components/layout/navigation/snippets-list/tree-view.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { Loading } from '@/components/loading.tsx';
+import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { EmptyState } from '@/components/ui/empty-state.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
@@ -198,7 +199,7 @@ export const Lists = ({
           <span className="text-xs text-muted-foreground mr-1">View:</span>
           <Button
             variant={sidebarViewMode === 'list' ? 'secondary' : 'ghost'}
-            size="sm"
+            size="xs"
             onClick={() => handleViewModeChange('list')}
             className="h-6 px-1.5 text-xs gap-1"
           >
@@ -207,7 +208,7 @@ export const Lists = ({
           </Button>
           <Button
             variant={sidebarViewMode === 'tags' ? 'secondary' : 'ghost'}
-            size="sm"
+            size="xs"
             onClick={() => handleViewModeChange('tags')}
             className="h-6 px-1.5 text-xs gap-1"
           >
@@ -216,7 +217,7 @@ export const Lists = ({
           </Button>
           <Button
             variant={sidebarViewMode === 'languages' ? 'secondary' : 'ghost'}
-            size="sm"
+            size="xs"
             onClick={() => handleViewModeChange('languages')}
             className="h-6 px-1.5 text-xs gap-1"
           >
@@ -225,18 +226,20 @@ export const Lists = ({
           </Button>
         </div>
         {sidebarViewMode !== 'list' && (
-          <Button
-            variant="ghost"
-            size="icon"
-            className="size-6 rounded-md"
-            onClick={() => setAllExpanded((prev) => !prev)}
-          >
-            {allExpanded ? (
-              <ChevronsUp className="size-4" />
-            ) : (
-              <ChevronsUpDown className="size-4" />
-            )}
-          </Button>
+          <SimpleTooltip content={allExpanded ? t('common.collapseAll') : t('common.expandAll')}>
+            <Button
+              variant="ghost"
+              size="xs"
+              className="h-6 px-1.5 text-xs"
+              onClick={() => setAllExpanded((prev) => !prev)}
+            >
+              {allExpanded ? (
+                <ChevronsUp className="size-3" />
+              ) : (
+                <ChevronsUpDown className="size-3" />
+              )}
+            </Button>
+          </SimpleTooltip>
         )}
       </div>
       {sidebarViewMode === 'list' ? (
@@ -252,7 +255,7 @@ export const Lists = ({
                 <Button
                   className="cursor-pointer"
                   variant="outline"
-                  size="sm"
+                  size="xs"
                   onClick={() => navigate('/new-snippet')}
                 >
                   <Plus className="size-4" />

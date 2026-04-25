@@ -1,10 +1,12 @@
 'use client';
 
 import { useRouter } from 'dirty-react-router';
-import { ChevronRight, Folder, FolderOpen, Tag, FileCode } from 'lucide-react';
+import { ChevronRight, Folder, FolderOpen, FileCode, Plus } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
 
 import { Badge } from '@/components/ui/badge.tsx';
+import { Button } from '@/components/ui/button.tsx';
+import { EmptyState } from '@/components/ui/empty-state.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
@@ -113,6 +115,7 @@ interface TreeViewProps {
 }
 
 export const TreeView = ({ mode, allExpanded = false }: TreeViewProps) => {
+  const { navigate } = useRouter();
   const allSnippets = useStoreValue('snippets');
   const search = useStoreValue('search');
 
@@ -185,16 +188,25 @@ export const TreeView = ({ mode, allExpanded = false }: TreeViewProps) => {
     return <SkeletonTree />;
   }
 
-  const Icon = mode === 'tags' ? Tag : FileCode;
-  const emptyMessage = mode === 'tags' ? t('list.noTags') : t('list.noLanguages');
-
   return (
     <ScrollArea className="flex-1">
       {sortedKeys.length === 0 ? (
-        <div className="flex flex-col items-center justify-center min-h-full text-muted-foreground">
-          <Icon className="size-12 mb-2" />
-          <p>{emptyMessage}</p>
-        </div>
+        <EmptyState
+          className="min-h-full"
+          title={t('list.noSnippets')}
+          description={t('list.noSnippetsDescription')}
+          action={
+            <Button
+              className="cursor-pointer"
+              variant="outline"
+              size="sm"
+              onClick={() => navigate('/new-snippet')}
+            >
+              <Plus className="size-4" />
+              {t('common.create')} {t('common.snippet')}
+            </Button>
+          }
+        />
       ) : (
         <div className="py-2">
           {sortedKeys.map((key) => (
