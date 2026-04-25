@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### 🛠️️ Build
+
+- *(deps-dev)* Bump postcss
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([c22b6db](https://github.com/gisto/gisto/commit/c22b6db0007d2ca60bd035b2cb16180048d3ca4f))
+
+
 ## v2.10.0
 
 Released on: Apr 25, 2026
