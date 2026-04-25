@@ -14,6 +14,14 @@ All significant updates and improvements
 ([a7bb193](https://github.com/gisto/gisto/commit/a7bb193be58fb53576d68fcb9a764caaf6df7c4c))
 
 
+### 🐛 Bug Fixes
+
+- Tree folder views of tags and languages empty state
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([95daeab](https://github.com/gisto/gisto/commit/95daeabe9fc464962fba30a3bc729a1f2f7cf81d))
+
+
 ### 📚 Documentation
 
 - Update readme with download info
