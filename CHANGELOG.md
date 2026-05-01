@@ -18,6 +18,16 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([a914413](https://github.com/gisto/gisto/commit/a91441392eecc438303edb0ae33cb74d5cf497d5))
 
+- *(deps)* Bump mermaid from 11.13.0 to 11.14.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([6c719ab](https://github.com/gisto/gisto/commit/6c719ab6e4343229ae24f746c622bd5fb609bef9))
+
+- *(deps-dev)* Bump @vitejs/plugin-react from 5.1.2 to 5.2.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([85609ac](https://github.com/gisto/gisto/commit/85609ac9eff597945a06d784abfb97e96cbfcba0))
+
 
 ## v2.10.0
 
