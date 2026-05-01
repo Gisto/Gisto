@@ -13,6 +13,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([c22b6db](https://github.com/gisto/gisto/commit/c22b6db0007d2ca60bd035b2cb16180048d3ca4f))
 
+- *(deps-dev)* Bump @testing-library/react from 16.3.1 to 16.3.2
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([a914413](https://github.com/gisto/gisto/commit/a91441392eecc438303edb0ae33cb74d5cf497d5))
+
 
 ## v2.10.0
 
