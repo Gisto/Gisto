@@ -33,6 +33,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([48b749f](https://github.com/gisto/gisto/commit/48b749fe49c0de0fbadaefbff6ca06c447b95d9e))
 
+- *(deps)* Bump axios in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([f83e9b0](https://github.com/gisto/gisto/commit/f83e9b0b5e7c295adb21c5866d8e69b918721b42))
+
 
 ## v2.10.0
 
