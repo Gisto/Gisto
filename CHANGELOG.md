@@ -28,6 +28,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([85609ac](https://github.com/gisto/gisto/commit/85609ac9eff597945a06d784abfb97e96cbfcba0))
 
+- *(deps-dev)* Bump jsdom from 27.4.0 to 29.1.1
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([48b749f](https://github.com/gisto/gisto/commit/48b749fe49c0de0fbadaefbff6ca06c447b95d9e))
+
 
 ## v2.10.0
 
