@@ -12,7 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.t
 import { Input } from '@/components/ui/input.tsx';
 import { ZodError } from '@/components/zod-error.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
-import { languageMap } from '@/constants/language-map.ts';
+import { getLanguage } from '@/constants/language-map.ts';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, getEditorTheme } from '@/utils';

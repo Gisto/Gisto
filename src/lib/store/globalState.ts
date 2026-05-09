@@ -59,7 +59,8 @@ export type StoreStateType = {
       temperature: number;
       cleanJson: boolean;
     };
-    activeSnippetProvider: 'github' | 'gitlab' | 'local';
+    activeSnippetProvider: 'github' | 'gitlab' | 'local' | 'snippet-bin';
+    snippetBinBaseUrl: string;
     dashboardSnippetsOverTimeRange: '7days' | '30days' | '6months' | '1year';
   };
 };
@@ -170,6 +171,7 @@ export const defaultSettings: SettingsType = {
     cleanJson: true,
   },
   activeSnippetProvider: 'github',
+  snippetBinBaseUrl: 'http://localhost:3001/api',
   dashboardSnippetsOverTimeRange: '6months',
 };
 
