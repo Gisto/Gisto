@@ -38,6 +38,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([f83e9b0](https://github.com/gisto/gisto/commit/f83e9b0b5e7c295adb21c5866d8e69b918721b42))
 
+- *(deps)* Bump fast-uri in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([3bdcb92](https://github.com/gisto/gisto/commit/3bdcb92b66f1e945e332c4f2236f955da838bf36))
+
 
 ## v2.10.0
 
