@@ -48,6 +48,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([855aaf0](https://github.com/gisto/gisto/commit/855aaf00a86a6bc26dd559718c5ca2d721b0abb4))
 
+- *(deps)* Bump the npm_and_yarn group across 1 directory with 2 updates
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([65a85e9](https://github.com/gisto/gisto/commit/65a85e9f725709f05dbf572f85204007eb95eb74))
+
 
 ## v2.10.0
 
