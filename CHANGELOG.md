@@ -53,6 +53,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([65a85e9](https://github.com/gisto/gisto/commit/65a85e9f725709f05dbf572f85204007eb95eb74))
 
+- *(deps-dev)* Bump vitest
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([2e0fd11](https://github.com/gisto/gisto/commit/2e0fd118aaea1f29be898b0e3c83bfcb4f5fbf44))
+
 
 ## v2.10.0
 
