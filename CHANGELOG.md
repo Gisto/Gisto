@@ -2,6 +2,63 @@
 
 All significant updates and improvements
 
+## v2.10.1
+
+Released on: Jun 8, 2026
+
+### 🛠️️ Build
+
+- *(deps-dev)* Bump postcss
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([c22b6db](https://github.com/gisto/gisto/commit/c22b6db0007d2ca60bd035b2cb16180048d3ca4f))
+
+- *(deps-dev)* Bump @testing-library/react from 16.3.1 to 16.3.2
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([a914413](https://github.com/gisto/gisto/commit/a91441392eecc438303edb0ae33cb74d5cf497d5))
+
+- *(deps)* Bump mermaid from 11.13.0 to 11.14.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([6c719ab](https://github.com/gisto/gisto/commit/6c719ab6e4343229ae24f746c622bd5fb609bef9))
+
+- *(deps-dev)* Bump @vitejs/plugin-react from 5.1.2 to 5.2.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([85609ac](https://github.com/gisto/gisto/commit/85609ac9eff597945a06d784abfb97e96cbfcba0))
+
+- *(deps-dev)* Bump jsdom from 27.4.0 to 29.1.1
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([48b749f](https://github.com/gisto/gisto/commit/48b749fe49c0de0fbadaefbff6ca06c447b95d9e))
+
+- *(deps)* Bump axios in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([f83e9b0](https://github.com/gisto/gisto/commit/f83e9b0b5e7c295adb21c5866d8e69b918721b42))
+
+- *(deps)* Bump fast-uri in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([3bdcb92](https://github.com/gisto/gisto/commit/3bdcb92b66f1e945e332c4f2236f955da838bf36))
+
+- *(deps)* Bump mermaid in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([855aaf0](https://github.com/gisto/gisto/commit/855aaf00a86a6bc26dd559718c5ca2d721b0abb4))
+
+- *(deps)* Bump the npm_and_yarn group across 1 directory with 2 updates
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([65a85e9](https://github.com/gisto/gisto/commit/65a85e9f725709f05dbf572f85204007eb95eb74))
+
+- *(deps-dev)* Bump vitest
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([2e0fd11](https://github.com/gisto/gisto/commit/2e0fd118aaea1f29be898b0e3c83bfcb4f5fbf44))
+
+
 ## v2.10.0
 
 Released on: Apr 25, 2026
