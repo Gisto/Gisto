@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### ⚙️ Miscellaneous Tasks
+
+- Add sentry error trace
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([25f6537](https://github.com/gisto/gisto/commit/25f6537ad641ed3e7b5bd097e6ee5572c5f499cd))
+
+
 ## v2.10.1
 
 Released on: Jun 8, 2026
