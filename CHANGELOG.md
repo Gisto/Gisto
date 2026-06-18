@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 
+### 🛠️️ Build
+
+- *(deps)* Bump markdown-it
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([04a5edf](https://github.com/gisto/gisto/commit/04a5edfda2174eb768737e06e16edc3be33610af))
+
+
 ### ⚙️ Miscellaneous Tasks
 
 - Add sentry error trace
