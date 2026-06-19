@@ -141,21 +141,21 @@ export const getFileExtension = (file: SnippetFileType): string =>
 export const isPDF = (file: SnippetFileType): boolean =>
   file?.type === 'application/pdf' && getFileExtension(file) === 'pdf';
 
-export const isHTML = (file: SnippetFileType): boolean => getLanguageName(file) === 'HTML';
+export const isHTML = (file: SnippetFileType): boolean => getLanguageName(file).toLowerCase() === 'html';
 
-export const isCSV = (file: SnippetFileType): boolean => getLanguageName(file) === 'CSV';
+export const isCSV = (file: SnippetFileType): boolean => getLanguageName(file).toLowerCase() === 'csv';
 
 export const isTSV = (file: SnippetFileType): boolean => file?.type === 'text/tab-separated-values';
 
 export const isImage = (file: SnippetFileType): boolean => file?.type?.startsWith('image/');
 
-export const isJson = (file: SnippetFileType): boolean => getLanguageName(file) === 'JSON';
+export const isJson = (file: SnippetFileType): boolean => getLanguageName(file).toLowerCase() === 'json';
 
-export const isMarkdown = (file: SnippetFileType): boolean => getLanguageName(file) === 'Markdown';
+export const isMarkdown = (file: SnippetFileType): boolean => getLanguageName(file).toLowerCase() === 'markdown';
 
 export const isOpenApi = (file: SnippetFileType): boolean => {
-  const lang = getLanguageName(file);
-  return lang === 'OASv2-json' || lang === 'OASv3-json';
+  const lang = getLanguageName(file).toLowerCase();
+  return lang === 'oasv2-json' || lang === 'oasv3-json';
 };
 
 export const isLaTex = (file: SnippetFileType): boolean => {

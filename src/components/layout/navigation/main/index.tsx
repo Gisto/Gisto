@@ -3,10 +3,10 @@ import { BadgeHelp, SlidersHorizontal, LogOut, LayoutDashboard, Plus, Globe } fr
 
 import { version } from '../../../../../package.json';
 
-import { GitHubIcon, GitLabIcon } from '@/components/icons';
 import { NavigationItem } from '@/components/layout/navigation/main/navigation-item.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { ThemeSwitcher } from '@/components/theme/theme-switcher.tsx';
+import { getProviderConfig, SnippetProviderType } from '@/constants/providers.tsx';
 import { useIsOnline } from '@/hooks/use-is-online.tsx';
 import { t } from '@/lib/i18n';
 import { useStoreValue, globalState } from '@/lib/store/globalState.ts';
@@ -103,6 +103,7 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
               if (confirmation) {
                 localStorage.removeItem('GITHUB_TOKEN');
                 localStorage.removeItem('GITLAB_TOKEN');
+                localStorage.removeItem('SNIPPET_BIN_TOKEN');
                 localStorage.removeItem('ACTIVE_PROVIDER');
                 globalState.setState({
                   user: null,
@@ -140,16 +141,17 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
               {!isCollapsed && (
                 <div className="min-w-0 transition-all duration-300 ease-in-out">
                   <div className="truncate text-sm font-medium">{displayName}</div>
-                  {handle && handle !== displayName && (
+                  {handle && (
                     <div className="truncate text-xs text-muted-foreground flex items-center gap-1">
-                      @{handle} /
                       <span className="inline-flex items-center size-3">
-                        {settings.activeSnippetProvider === 'gitlab' ? (
-                          <GitLabIcon />
-                        ) : (
-                          <GitHubIcon />
-                        )}
+                        {(() => {
+                          const Config = getProviderConfig(
+                            settings.activeSnippetProvider as SnippetProviderType
+                          ).Icon;
+                          return <Config />;
+                        })()}
                       </span>
+                      <span>@{handle}</span>
                     </div>
                   )}
                 </div>
