@@ -28,6 +28,7 @@ type PromptAssistantProps = {
   onSend: (prompt: string) => void | Promise<void>;
   isLoading: boolean;
   placeholder?: string;
+  emptyText?: string;
   contextLabel?: string;
 };
 
@@ -36,6 +37,7 @@ export const PromptAssistant = ({
   onSend,
   isLoading,
   placeholder = 'Ask a question...',
+  emptyText = 'Ask a question to get started',
   contextLabel,
 }: PromptAssistantProps) => {
   const [input, setInput] = useState('');
@@ -49,7 +51,7 @@ export const PromptAssistant = ({
   }, [input, isLoading, onSend]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
@@ -69,7 +71,7 @@ export const PromptAssistant = ({
               {messages.length === 0 && !isLoading && (
                 <div className="flex flex-1 flex-col items-center justify-center text-center">
                   <Sparkles className="mb-2 size-8 text-muted-foreground/50" />
-                  <p className="text-sm text-muted-foreground">Ask a question to get started</p>
+                  <p className="text-sm text-muted-foreground">{emptyText}</p>
                 </div>
               )}
               {messages.map((msg, i) => (
@@ -82,7 +84,9 @@ export const PromptAssistant = ({
                       >
                         <BubbleContent
                           className={cn(
-                            msg.role === 'assistant' && '[&_pre]:overflow-x-auto [&_pre]:max-w-full'
+                            msg.role === 'assistant' &&
+                              '[&_pre]:overflow-x-auto [&_pre]:max-w-full',
+                            msg.role === 'user' && 'whitespace-pre-wrap'
                           )}
                         >
                           {msg.role === 'assistant' && isMarkdown(msg.content) ? (
@@ -125,6 +129,7 @@ export const PromptAssistant = ({
           disabled={isLoading || !input.trim()}
           size="icon"
           className="shrink-0 size-8"
+          aria-label="Send message"
         >
           {isLoading ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
         </Button>

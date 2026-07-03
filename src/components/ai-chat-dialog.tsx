@@ -19,6 +19,7 @@ type AIChatDialogProps = {
   onClear: () => void;
   isLoading: boolean;
   placeholder?: string;
+  emptyText?: string;
   contextLabel?: string;
 };
 
@@ -31,6 +32,7 @@ export const AIChatDialog = ({
   onClear,
   isLoading,
   placeholder = 'Ask a question...',
+  emptyText,
   contextLabel,
 }: AIChatDialogProps) => {
   const [width, setWidth] = useState(DEFAULT_WIDTH);
@@ -110,6 +112,7 @@ export const AIChatDialog = ({
             onSend={onSend}
             isLoading={isLoading}
             placeholder={placeholder}
+            emptyText={emptyText}
             contextLabel={contextLabel}
           />
         </div>
