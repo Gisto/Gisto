@@ -26,6 +26,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([25f6537](https://github.com/gisto/gisto/commit/25f6537ad641ed3e7b5bd097e6ee5572c5f499cd))
 
+- Update local docker
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([c94bf96](https://github.com/gisto/gisto/commit/c94bf96a07181d7e0f7fa3eccf48b4f8e1c30320))
+
 
 ## v2.10.1
 
