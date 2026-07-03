@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update readme with supported snippet services
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6c32274](https://github.com/gisto/gisto/commit/6c3227444a902e31cb01b71c3fa8b6001678a2bf))
+
+
 ## v2.11.0
 
 Released on: Jul 3, 2026
