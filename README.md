@@ -19,6 +19,7 @@ Gisto is a code snippet manager that runs on GitHub Gists / GitLab Snippets / lo
 - [🍾 New version (2.x.x)](#-new-version-2xx)
 - [👁️ Preview](#%EF%B8%8F-preview)
 - [ℹ️ About](#ℹ%EF%B8%8F-about)
+- [🔌 Supported Snippet Backends](#-supported-snippet-backends)
 - [⬇️ Getting gisto](#️-getting-gisto)
 - [⚠️ Important Notice About Installation](#️-important-notice-about-installation)
 - [🌱 Features](#-features)
