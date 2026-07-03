@@ -1,18 +1,24 @@
 import { useRouter } from 'dirty-react-router';
 import {
-  Pencil,
+  Copy,
+  ExternalLink,
+  Globe,
+  Info,
   MoreVertical,
+  Pencil,
+  Shield,
+  ShieldCheck,
+  Sparkles,
   Star,
   Trash,
-  Globe,
-  ExternalLink,
-  Copy,
-  ShieldCheck,
-  Shield,
-  Info,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
+import type { AssistantMessage } from '@/components/prompt-assistant.tsx';
+import type { ChatMessage } from '@/lib/api/ai-api.ts';
+import type { SnippetSingleType } from '@/types/snippet.ts';
+
+import { AIChatDialog } from '@/components/ai-chat-dialog.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { File } from '@/components/layout/pages/snippet/content';
 import { Loading } from '@/components/loading.tsx';
@@ -28,10 +34,10 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
+import { AiApiError, generateAiResponse, isAiAvailable } from '@/lib/api/ai-api.ts';
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
-import { SnippetSingleType } from '@/types/snippet.ts';
 import {
   copyToClipboard,
   fetchAndUpdateSnippets,
@@ -45,9 +51,11 @@ export const SnippetContent = () => {
   const [loading, setLoading] = useState(true);
   const { params, navigate } = useRouter();
   const snippetState = useStoreValue('snippets').find((s) => s.id === params.id);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<AssistantMessage[]>([]);
+  const [chatLoading, setChatLoading] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(true);
     const fetchData = async () => {
       const snippetData = await snippetService.getSnippet(params.id);
@@ -60,6 +68,70 @@ export const SnippetContent = () => {
       void fetchData();
     }
   }, [params.id]);
+
+  useEffect(() => {
+    setChatMessages([]);
+    setChatOpen(false);
+  }, [params.id]);
+
+  const snippetContext = snippet
+    ? `You are helping the user with the following snippet:\nTitle: ${removeTags(snippet.description) || 'Untitled'}\nFiles:\n${Object.values(
+        snippet.files
+      )
+        .map((f) => `--- ${f.filename} (${f.language}) ---\n${f.content}`)
+        .join('\n\n')}`
+    : '';
+
+  const handleChatSend = useCallback(
+    async (prompt: string) => {
+      const userMessage: AssistantMessage = {
+        id: crypto.randomUUID(),
+        role: 'user',
+        content: prompt,
+      };
+      const updated = [...chatMessages, userMessage];
+      setChatMessages(updated);
+
+      if (!isAiAvailable()) {
+        setChatMessages([
+          ...updated,
+          {
+            id: crypto.randomUUID(),
+            role: 'assistant',
+            content: 'Please configure an AI provider API key in Settings > AI Assistant.',
+          },
+        ]);
+        return;
+      }
+
+      const msgs: ChatMessage[] = updated.map((m) => ({ role: m.role, content: m.content }));
+
+      setChatLoading(true);
+      try {
+        const result = await generateAiResponse({
+          prompt,
+          messages: msgs,
+          systemContext: snippetContext,
+        });
+        setChatMessages((prev) => [
+          ...prev,
+          { id: crypto.randomUUID(), role: 'assistant', content: result },
+        ]);
+      } catch (error) {
+        const msg =
+          error instanceof AiApiError
+            ? `Error: ${error.message}`
+            : `Error: ${error instanceof Error ? error.message : 'An unexpected error occurred'}`;
+        setChatMessages((prev) => [
+          ...prev,
+          { id: crypto.randomUUID(), role: 'assistant', content: msg },
+        ]);
+      } finally {
+        setChatLoading(false);
+      }
+    },
+    [chatMessages, snippetContext]
+  );
 
   if (loading || !snippet) {
     return <Loading />;
@@ -94,6 +166,21 @@ export const SnippetContent = () => {
           </div>
 
           <div className="flex items-center gap-2">
+            {isAiAvailable() && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="-mx-3"
+                onClick={() => setChatOpen(true)}
+              >
+                <Sparkles
+                  className="size-4 text-primary"
+                  style={{ filter: 'drop-shadow(0 0 6px hsl(var(--primary)))' }}
+                />
+                <span className="sr-only">AI Assistant</span>
+              </Button>
+            )}
+
             <Separator orientation="vertical" className="mx-2 h-6" />
 
             <Button
@@ -268,7 +355,7 @@ export const SnippetContent = () => {
                     );
 
                     if (confirmation) {
-                      const value = await snippetService.deleteSnippet(snippet.id);
+                      const value = await snippetService.deleteSnippet(snippet.id, true);
 
                       if (value.success) {
                         navigate('/');
@@ -307,6 +394,18 @@ export const SnippetContent = () => {
           </div>
         </ScrollArea>
       </div>
+
+      <AIChatDialog
+        open={chatOpen}
+        onOpenChange={setChatOpen}
+        title="Assistant"
+        messages={chatMessages}
+        onSend={handleChatSend}
+        onClear={() => setChatMessages([])}
+        isLoading={chatLoading}
+        emptyText={`Ask about "${removeTags(snippet.description) || 'Untitled'}"`}
+        placeholder="Ask a question..."
+      />
     </div>
   );
 };

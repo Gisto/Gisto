@@ -1,4 +1,4 @@
-import { Sun, Moon, LaptopMinimal } from 'lucide-react';
+import { Sun, Moon, LaptopMinimal, RefreshCw, Info } from 'lucide-react';
 import { ReactNode } from 'react';
 
 import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
@@ -18,6 +18,7 @@ import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
 import { AI_PROVIDERS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
+import { useAiModels } from '@/hooks/use-ai-models';
 import { t } from '@/lib/i18n';
 import { SettingsType } from '@/lib/store/globalState.ts';
 import {
@@ -77,6 +78,110 @@ const SpecialSelect = ({
     </div>
   );
 };
+
+function ModelSelect({
+  value,
+  onChange,
+  fullPath,
+  provider,
+}: {
+  value: string;
+  onChange: (path: string, value: string) => void;
+  fullPath: string;
+  provider: string;
+}) {
+  const { models, isLoading, error, refresh } = useAiModels(provider);
+
+  const selectedModel = models.find((m) => m.value === value);
+  const freeCount = models.filter((m) => m.isFree).length;
+
+  return (
+    <div className="mb-4">
+      <label className="mb-2 flex items-center gap-2 text-sm font-medium">
+        {t('pages.settings.model')}
+        <SimpleTooltip
+          className="max-w-xs"
+          content={
+            <div className="space-y-1 text-primary-foreground text-xs">
+              <p className="font-medium">{AI_PROVIDERS[provider]?.label ?? provider}</p>
+              <p>Selected: {selectedModel?.label ?? value}</p>
+              <p>
+                Available: {freeCount} free &middot; {models.length - freeCount} paid
+              </p>
+              {error && <p className="text-destructive-foreground mt-1">Error: {error}</p>}
+            </div>
+          }
+        />
+        {isLoading && <RefreshCw className="size-3.5 animate-spin text-muted-foreground" />}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            refresh();
+          }}
+          className="ml-auto"
+        >
+          <RefreshCw className="size-3.5 text-muted-foreground hover:text-foreground transition-colors" />
+        </button>
+      </label>
+      <Select onValueChange={(val) => onChange(fullPath, val)} value={value}>
+        <SelectTrigger>
+          <SelectValue
+            placeholder={isLoading ? 'Loading models...' : upperCaseFirst(t('common.select'))}
+          />
+        </SelectTrigger>
+        <SelectContent>
+          {isLoading && models.length === 0 && (
+            <div className="px-2 py-4 text-center text-sm text-muted-foreground">
+              Loading models...
+            </div>
+          )}
+          {error && models.length === 0 && (
+            <div className="px-2 py-4 text-center text-sm text-muted-foreground">
+              Failed to load models
+            </div>
+          )}
+          {models.map((option) => (
+            <SelectItem key={option.value} value={option.value}>
+              <span className="flex items-center gap-1.5 w-full">
+                <span className="flex-1 min-w-0 truncate">{option.label}</span>
+                <SimpleTooltip
+                  content={
+                    <div className="text-xs space-y-1 max-w-64">
+                      {option.description && (
+                        <p className="text-muted-foreground leading-relaxed">
+                          {option.description}
+                        </p>
+                      )}
+                      <p className="text-muted-foreground/60">{option.modelId ?? option.value}</p>
+                      <div className="flex flex-wrap gap-x-2 gap-y-0.5">
+                        {option.contextLength && (
+                          <span>{(option.contextLength / 1000).toLocaleString()}K context</span>
+                        )}
+                        {option.pricing ? (
+                          <span>
+                            ${(option.pricing.prompt * 1_000_000).toFixed(2)}/M in &middot; $
+                            {(option.pricing.completion * 1_000_000).toFixed(2)}/M out
+                          </span>
+                        ) : (
+                          <span>{option.isFree ? 'Free' : 'Paid'}</span>
+                        )}
+                      </div>
+                    </div>
+                  }
+                >
+                  <span onPointerDown={(e) => e.stopPropagation()}>
+                    <Info className="size-3 shrink-0 text-muted-foreground cursor-help" />
+                  </span>
+                </SimpleTooltip>
+              </span>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}
 
 export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps) => {
   const { setTheme } = useTheme();
@@ -254,6 +359,23 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
+          if (key === 'snippetBinBaseUrl') {
+            const activeProvider = (settings as Record<string, unknown>)?.activeSnippetProvider;
+            if (activeProvider !== 'snippet-bin') {
+              return null;
+            }
+            return (
+              <div key={key} className="mb-4">
+                <label className="block mb-1">{t('login.snippetBinBaseUrl')}</label>
+                <Input
+                  type="text"
+                  value={value}
+                  onChange={(e) => onChange(fullPath, e.target.value)}
+                />
+              </div>
+            );
+          }
+
           if (key === 'activeSnippetProvider') {
             return (
               <SpecialSelect
@@ -265,6 +387,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 options={[
                   { value: 'github', label: 'GitHub' },
                   { value: 'gitlab', label: 'GitLab' },
+                  { value: 'snippet-bin', label: 'Snippet-bin' },
                   { value: 'local', label: 'Local' },
                 ]}
               />
@@ -468,27 +591,15 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
           if (key === 'model') {
             const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
             const currentProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
-            const providerData = AI_PROVIDERS[currentProvider as keyof typeof AI_PROVIDERS];
-            const modelOptions = providerData?.modelOptions || [];
 
             return (
-              <div key={key} className="mb-4">
-                <label className="mb-2 block text-sm font-medium">
-                  {t('pages.settings.model')}
-                </label>
-                <Select onValueChange={(val) => onChange(fullPath, val)} value={value}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={upperCaseFirst(t('common.select'))} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {modelOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              <ModelSelect
+                key={currentProvider}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                provider={currentProvider}
+              />
             );
           }
 

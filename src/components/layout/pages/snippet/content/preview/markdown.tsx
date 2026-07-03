@@ -92,12 +92,13 @@ const setThemeCss = (theme: string) => {
   }
 };
 
-export const Markdown = ({ file }: { file: SnippetFileType }) => {
+export const Markdown = ({ file, content }: { file?: SnippetFileType; content?: string }) => {
   const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
 
   setThemeCss(theme);
-  const result = md.render(file.content);
+  const source = content ?? file?.content ?? '';
+  const result = md.render(source);
 
   useEffect(() => {
     if (!containerRef.current) return;

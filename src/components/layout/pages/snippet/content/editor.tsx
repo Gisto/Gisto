@@ -16,7 +16,7 @@ import { Markdown } from '@/components/layout/pages/snippet/content/preview/mark
 import { OpenApi } from '@/components/layout/pages/snippet/content/preview/open-api.tsx';
 import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
-import { languageMap } from '@/constants/language-map.ts';
+import { getLanguage } from '@/constants/language-map.ts';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { SnippetFileType, SnippetSingleType } from '@/types/snippet.ts';
@@ -146,7 +146,7 @@ export const Editor = ({
       beforeMount={handleEditorWillMount}
       height={height}
       theme={getEditorTheme()}
-      defaultLanguage={languageMap[getLanguageName(file) || file.filename.split('.')[1]] ?? 'text'}
+      defaultLanguage={getLanguage(getLanguageName(file) || file.filename.split('.')[1])}
       defaultValue={file.content}
     />
   );
