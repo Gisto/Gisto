@@ -116,9 +116,20 @@ export function useKeyboardShortcuts(
         return;
       }
 
-      if (e.key === '?' || (isMod && e.key === '/')) {
+      if (isMod && e.key === '/') {
         e.preventDefault();
         setShowShortcutsModal(true);
+        return;
+      }
+
+      if (e.key === '?' && !isMod) {
+        const el = e.target as HTMLElement;
+        const isEditable =
+          el?.tagName === 'INPUT' || el?.tagName === 'TEXTAREA' || el?.isContentEditable;
+        if (!isEditable) {
+          e.preventDefault();
+          setShowShortcutsModal(true);
+        }
         return;
       }
 
