@@ -55,7 +55,31 @@ Previous version can be tracked via the ["master"](https://github.com/Gisto/Gist
 
 # ℹ️ About
 
-Gisto is a code snippet manager that runs on GitHub Gists / GitLab Snippets / local in-browser database and adds additional features such as searching, tagging and sharing snippets while including a rich code editor. All your data is stored on GitHub/GitLab and you can access it from GitHub Gists or GitLab Snippets at any time with changes carrying over to Gisto. You can also use local storage to save snippets directly in your browser without an account.
+Gisto is a code snippet manager with support for multiple snippet backends, a rich code editor, searching, tagging, and sharing.
+
+---
+
+## 🔌 Supported Snippet Backends
+
+### GitHub Gists
+
+The default backend. Uses your GitHub account and the [Gists API](https://docs.github.com/en/rest/gists). All snippets are stored on GitHub and accessible at gist.github.com at any time. Requires a GitHub personal access token.
+
+### GitLab Snippets
+
+Uses your GitLab account and the [Snippets API](https://docs.gitlab.com/ee/api/snippets.html). All snippets are stored on GitLab and accessible from your GitLab account. Requires a GitLab personal access token.
+
+### Snippet-Bin
+
+[Self-hosted](https://github.com/sanusart/snippet-bin) snippet server inspired by the GitHub Gists API. Provides the same Gisto experience with full data ownership — your snippets never leave your infrastructure. Deploy with Docker behind your own domain or VPN. Requires a Snippet-Bin instance URL and API token.
+
+**When to use Snippet-Bin:** You want a private snippet store without relying on GitHub/GitLab, need to host behind a corporate firewall, or prefer owning your infrastructure.
+
+### Local Storage
+
+No account required. Snippets are stored in your browser's IndexedDB. You can export and import your snippets as JSON files from Settings.
+
+**When to use Local Storage:** You want to try Gisto without setting up an account, need offline-first access, or prefer not to sync snippets to any external service.
 
 ---
 
@@ -70,7 +94,6 @@ brew install --cask Gisto/tap/gisto
 ### Download from website
 
 Visit [gisto.org](https://gisto.org) for more information.
-
 
 ### Download from realeases
 
