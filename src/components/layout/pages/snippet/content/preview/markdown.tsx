@@ -11,7 +11,7 @@ import { useTheme } from '@/components/theme/theme-provider.tsx';
 import { SnippetFileType } from '@/types/snippet.ts';
 import { upperCaseFirst } from '@/utils';
 
-export const md = markdownIt({
+const md = markdownIt({
   html: true,
   linkify: true,
   typographer: true,
