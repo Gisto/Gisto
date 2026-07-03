@@ -11,7 +11,7 @@ import { useTheme } from '@/components/theme/theme-provider.tsx';
 import { SnippetFileType } from '@/types/snippet.ts';
 import { upperCaseFirst } from '@/utils';
 
-const md = markdownIt({
+export const md = markdownIt({
   html: true,
   linkify: true,
   typographer: true,
@@ -92,12 +92,13 @@ const setThemeCss = (theme: string) => {
   }
 };
 
-export const Markdown = ({ file }: { file: SnippetFileType }) => {
+export const Markdown = ({ file, content }: { file?: SnippetFileType; content?: string }) => {
   const { theme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
 
   setThemeCss(theme);
-  const result = md.render(file.content);
+  const source = content ?? file?.content ?? '';
+  const result = md.render(source);
 
   useEffect(() => {
     if (!containerRef.current) return;

@@ -96,6 +96,10 @@
   }
 }
 
+@utility wrap-break-word {
+  word-break: break-word;
+}
+
 @utility h1 {
   @apply text-5xl font-semibold leading-snug;
 }

@@ -37,6 +37,26 @@ export default defineConfig({
         target: 'http://localhost:3001',
         changeOrigin: true,
       },
+      '/proxy/ai/openrouter': {
+        target: 'https://openrouter.ai',
+        changeOrigin: true,
+        rewrite: (p) => p.replace('/proxy/ai/openrouter', ''),
+      },
+      '/proxy/ai/openai': {
+        target: 'https://api.openai.com',
+        changeOrigin: true,
+        rewrite: (p) => p.replace('/proxy/ai/openai', ''),
+      },
+      '/proxy/ai/gemini': {
+        target: 'https://generativelanguage.googleapis.com',
+        changeOrigin: true,
+        rewrite: (p) => p.replace('/proxy/ai/gemini', ''),
+      },
+      '/proxy/ai/claude': {
+        target: 'https://api.anthropic.com',
+        changeOrigin: true,
+        rewrite: (p) => p.replace('/proxy/ai/claude', ''),
+      },
     },
   },
   test: {

@@ -6,8 +6,14 @@ const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
 const OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
 const CLAUDE_ENDPOINT = 'https://api.anthropic.com/v1/messages';
 
+export interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
 export interface GenerateAiResponseOptions {
   prompt: string;
+  messages?: ChatMessage[];
   model?: string;
   temperature?: number;
   activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude';
@@ -60,8 +66,33 @@ export function isAiAvailable(): boolean {
   return Boolean(apiKey);
 }
 
+function buildMessages(
+  prompt: string,
+  messages?: ChatMessage[]
+): { role: 'user' | 'assistant'; content: string }[] {
+  if (messages && messages.length > 0) {
+    return messages.map((m) => ({ role: m.role, content: m.content }));
+  }
+  return [{ role: 'user', content: prompt }];
+}
+
+function buildGeminiMessages(prompt: string, messages?: ChatMessage[]) {
+  if (messages && messages.length > 0) {
+    return messages.map((m) => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }],
+    }));
+  }
+  return [{ parts: [{ text: prompt }] }];
+}
+
 export async function generateAiResponse(options: GenerateAiResponseOptions): Promise<string> {
-  const { prompt, model: overrideModel, temperature: overrideTemperature } = options;
+  const {
+    prompt,
+    messages: chatMessages,
+    model: overrideModel,
+    temperature: overrideTemperature,
+  } = options;
 
   const { ai } = globalState.getState().settings;
   const model = overrideModel ?? ai.model;
@@ -105,7 +136,7 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
       },
       body: JSON.stringify({
         model,
-        messages: [{ role: 'user', content: prompt }],
+        messages: buildMessages(prompt, chatMessages),
         temperature,
       }),
     });
@@ -121,7 +152,7 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
       },
       body: JSON.stringify({
         model,
-        messages: [{ role: 'user', content: prompt }],
+        messages: buildMessages(prompt, chatMessages),
         temperature,
       }),
     });
@@ -136,7 +167,7 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
         'x-goog-api-key': apiKey,
       },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
+        contents: buildGeminiMessages(prompt, chatMessages),
       }),
     });
 
@@ -153,7 +184,7 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
       body: JSON.stringify({
         model,
         max_tokens: 4096,
-        messages: [{ role: 'user', content: prompt }],
+        messages: buildMessages(prompt, chatMessages),
         temperature,
       }),
     });
