@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(snippets)* Support snippet-bin
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([302ed0b](https://github.com/gisto/gisto/commit/302ed0bf838622d23bb673ebc756c627006557fe))
+
+
 ### 🛠️️ Build
 
 - *(deps)* Bump markdown-it
