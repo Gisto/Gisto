@@ -13,6 +13,19 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([302ed0b](https://github.com/gisto/gisto/commit/302ed0bf838622d23bb673ebc756c627006557fe))
 
+- Assistant in snippet view
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([a9d5fb7](https://github.com/gisto/gisto/commit/a9d5fb76d87477b1433b6991956889481b6166ac))
+
+
+### 🐛 Bug Fixes
+
+- Pull available models and fix assistant
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([600dde7](https://github.com/gisto/gisto/commit/600dde7d777911e35df72c956ec1d9188e7b131d))
+
 
 ### 🛠️️ Build
 
