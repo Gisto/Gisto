@@ -13,6 +13,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([6c32274](https://github.com/gisto/gisto/commit/6c3227444a902e31cb01b71c3fa8b6001678a2bf))
 
+- Update readme with supported snippet services
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([b8a0fa3](https://github.com/gisto/gisto/commit/b8a0fa343fa2d6a202358e672a82608219050065))
+
 
 ## v2.11.0
 
