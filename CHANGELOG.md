@@ -6,6 +6,35 @@ All significant updates and improvements
 
 [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- Use searchable select
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([ea7bf03](https://github.com/gisto/gisto/commit/ea7bf03a81aa6efeb3a555e4446186b6474576b3))
+
+- Add sidebarViewMode to settings
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([64bcd1d](https://github.com/gisto/gisto/commit/64bcd1d969df9d144f5b0bc411701654edbe3860))
+
+
+### 🚜 Refactor
+
+- Better assistant UI
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([abfcef2](https://github.com/gisto/gisto/commit/abfcef2f376e91e98453bacc1fa728cc1bfdba69))
+
+
+### 🌍 Translations
+
+- Fix translations
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([85b0b7d](https://github.com/gisto/gisto/commit/85b0b7db014ecd877892bddcd69febcccf083793))
+
+
 ### ⚙️ Miscellaneous Tasks
 
 - Update readme with supported snippet services
@@ -17,6 +46,11 @@ All significant updates and improvements
 ・ by Sasha Khamkov
 ([@sanusart](https://github.com/sanusart))
 ([b8a0fa3](https://github.com/gisto/gisto/commit/b8a0fa343fa2d6a202358e672a82608219050065))
+
+- Upgrade ui
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([a82be22](https://github.com/gisto/gisto/commit/a82be22fb36fd4aa6034dbcc1bc3832334105c0c))
 
 
 ## v2.11.0
