@@ -75,7 +75,7 @@ export const SnippetContent = () => {
   }, [params.id]);
 
   const snippetContext = snippet
-    ? `You are helping the user with the following snippet:\nTitle: ${removeTags(snippet.description) || 'Untitled'}\nFiles:\n${Object.values(
+    ? `You are helping the user with the following snippet:\nTitle: ${removeTags(snippet.description) || t('common.untitled')}\nFiles:\n${Object.values(
         snippet.files
       )
         .map((f) => `--- ${f.filename} (${f.language}) ---\n${f.content}`)
@@ -98,7 +98,7 @@ export const SnippetContent = () => {
           {
             id: crypto.randomUUID(),
             role: 'assistant',
-            content: 'Please configure an AI provider API key in Settings > AI Assistant.',
+            content: t('api.configureAiProvider'),
           },
         ]);
         return;
@@ -121,7 +121,7 @@ export const SnippetContent = () => {
         const msg =
           error instanceof AiApiError
             ? `Error: ${error.message}`
-            : `Error: ${error instanceof Error ? error.message : 'An unexpected error occurred'}`;
+            : `Error: ${error instanceof Error ? error.message : t('api.unexpectedError')}`;
         setChatMessages((prev) => [
           ...prev,
           { id: crypto.randomUUID(), role: 'assistant', content: msg },
@@ -177,7 +177,7 @@ export const SnippetContent = () => {
                   className="size-4 text-primary"
                   style={{ filter: 'drop-shadow(0 0 6px hsl(var(--primary)))' }}
                 />
-                <span className="sr-only">AI Assistant</span>
+                <span className="sr-only">{t('components.aiAssistant')}</span>
               </Button>
             )}
 
@@ -221,7 +221,7 @@ export const SnippetContent = () => {
                       strokeWidth={1.5}
                       className="size-3 cursor-pointer hover:text-primary stroke-danger"
                     />
-                    <span className="sr-only">Lock</span>
+                    <span className="sr-only">{t('common.lock')}</span>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -254,7 +254,7 @@ export const SnippetContent = () => {
                       strokeWidth={1.5}
                       className="size-3 cursor-pointer hover:text-primary stroke-success"
                     />
-                    <span className="sr-only">Lock</span>
+                    <span className="sr-only">{t('common.lock')}</span>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -296,7 +296,7 @@ export const SnippetContent = () => {
               <DropdownMenuTrigger asChild className="">
                 <Button variant="ghost" size="icon" className="-ml-3">
                   <MoreVertical className="h-4 w-4" />
-                  <span className="sr-only">More</span>
+                  <span className="sr-only">{t('common.more')}</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -402,8 +402,10 @@ export const SnippetContent = () => {
         onSend={handleChatSend}
         onClear={() => setChatMessages([])}
         isLoading={chatLoading}
-        emptyText={`Ask about "${removeTags(snippet.description) || 'Untitled'}"`}
-        placeholder="Ask a question..."
+        emptyText={t('pages.snippet.askAbout', {
+          title: removeTags(snippet.description) || t('common.untitled'),
+        })}
+        placeholder={t('pages.snippet.askAQuestion')}
       />
     </div>
   );

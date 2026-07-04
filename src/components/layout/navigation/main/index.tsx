@@ -98,7 +98,7 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
             isCollapsed={isCollapsed}
             label={t('menu.logOut')}
             onClick={async () => {
-              const confirmation = await confirm(`Are you sure you want to log-out?`);
+              const confirmation = await confirm(t('common.confirmLogout'));
 
               if (confirmation) {
                 localStorage.removeItem('GITHUB_TOKEN');

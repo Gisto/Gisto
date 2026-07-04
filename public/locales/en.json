@@ -45,7 +45,21 @@
     "restart": "restart",
     "activeFilters": "Active filters",
     "hidePreview": "Hide preview",
-    "showPreview": "Show preview"
+    "showPreview": "Show preview",
+    "more": "More",
+    "close": "Close",
+    "lock": "Lock",
+    "unlock": "Unlock",
+    "active": "Active",
+    "toggleTheme": "Toggle theme",
+    "text": "Text",
+    "view": "View",
+    "send": "Send",
+    "newChat": "New chat",
+    "confirmLogout": "Are you sure you want to log-out?",
+    "selectRange": "Select range",
+    "scrollToEnd": "Scroll to end",
+    "scrollToStart": "Scroll to start"
   },
   "components": {
     "filterTags": "Filter {number} tags",
@@ -55,7 +69,25 @@
     "allUniqueLanguages": "All, unique languages",
     "noLanguageMatching": "No language matching {search}",
     "updateAvailable": "Update to v{version} is available",
-    "downloadFinished": "Download of v{version} finished"
+    "downloadFinished": "Download of v{version} finished",
+    "aiAssistant": "AI Assistant",
+    "thinking": "Thinking...",
+    "pressSendToStart": "Press send to start a new conversation",
+    "useTextInputToAsk": "Use the text input below to ask a question",
+    "howCanIHelp": "How can I help you today?",
+    "askAQuestion": "Ask a question...",
+    "searchModels": "Search models...",
+    "searchLanguages": "Search languages...",
+    "noResults": "No results",
+    "failedToLoadModels": "Failed to load models",
+    "loadingModels": "Loading models...",
+    "selected": "Selected: {label}",
+    "available": "Available: {freeCount} free · {paidCount} paid",
+    "error": "Error: {error}",
+    "free": "Free",
+    "paid": "Paid",
+    "contextK": "{n}K context",
+    "editingFiles": "Editing {n} files"
   },
   "menu": {
     "logOut": "Log-out",
@@ -151,7 +183,19 @@
       "localDatabase": "Local Database",
       "localDatabaseDescription": "Export or import your local snippets. Import will merge with existing data.",
       "export": "Export",
-      "import": "Import"
+      "import": "Import",
+      "selection": "Selection",
+      "boundary": "Boundary",
+      "trailing": "Trailing",
+      "all": "All",
+      "line": "Line",
+      "gutter": "Gutter",
+      "keyboardShortcuts": "Keyboard Shortcuts",
+      "keyboardShortcutsDescription": "Quick shortcuts to navigate and interact with Gisto.",
+      "gistoSettings": "Gisto settings",
+      "themeLanguageAndTokens": "Theme, language, and access tokens.",
+      "openAiChatDescription": "Open the AI chat to have a conversation with your configured AI model. Your conversation history is preserved within the session.",
+      "openAiChat": "Open assistant"
     },
     "snippet": {
       "fileTooLarge": "File too large, please",
@@ -163,7 +207,9 @@
       "copySnippetId": "Copy snippet ID",
       "copyEmbed": "Copy embed code to clipboard",
       "jsfiddleInstructions": "Need to have CSS, JS and HTML files as part of the snippet",
-      "cannotBeUndone": "can not be undone"
+      "cannotBeUndone": "can not be undone",
+      "askAbout": "Ask about \"{title}\"",
+      "askAQuestion": "Ask a question..."
     },
     "about": {
       "title": "About",
@@ -172,7 +218,10 @@
       "sponsor": "Sponsor Gisto",
       "changelog": "Change log",
       "website": "Web site",
-      "issues": "Report issue"
+      "issues": "Report issue",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "mitLicense": "MIT License · © {year} Gisto"
     }
   },
   "list": {
@@ -245,6 +294,22 @@
     "visibilityChangedToPublic": "Snippet visibility changed to public",
     "visibilityChangedToPrivate": "Snippet visibility changed to private",
     "errorTryToRefresh": "Error fetching snippets, please try to refresh",
-    "featureNotSupported": "This feature is not supported for {provider} yet"
+    "featureNotSupported": "This feature is not supported for {provider} yet",
+    "snippetBinUnauthorized": "Snippet-bin Unauthorized",
+    "gitlabUnauthorized": "GitLab Unauthorized",
+    "invalidSnippetIdForGitLab": "Invalid snippet ID for GitLab",
+    "notAllowedToDelete": "Not allowed to delete this snippet",
+    "noDataFromGraphql": "No data returned from GitHub GraphQL API",
+    "fetchGithubGraphQLNotSupported": "fetchGithubGraphQL is not supported by this provider",
+    "directRequestsNotSupported": "Direct requests are not supported in local mode",
+    "snippetNotFound": "Snippet not found",
+    "unexpectedError": "An unexpected error occurred",
+    "configureAiProvider": "Please configure an AI provider API key in Settings > AI Assistant.",
+    "openAiApiKeyNotConfigured": "OpenAI API key not configured",
+    "geminiApiKeyNotConfigured": "Gemini API key not configured",
+    "claudeApiKeyNotConfigured": "Claude API key not configured",
+    "aiError": "AI error",
+    "errorWithProvider": "{provider} API error",
+    "failedToFetchModels": "Failed to fetch models"
   }
 }

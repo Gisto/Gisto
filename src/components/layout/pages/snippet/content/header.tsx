@@ -35,7 +35,7 @@ export const Header = ({
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon">
               <MoreVertical className="h-4 w-4" />
-              <span className="sr-only">More</span>
+              <span className="sr-only">{t('common.more')}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
@@ -82,7 +82,7 @@ export const Header = ({
       </div>
 
       <div className="flex items-center gap-2">
-        <Badge variant="primary-outline">{getLanguageName(file) ?? 'Text'}</Badge>
+        <Badge variant="primary-outline">{getLanguageName(file) ?? t('common.text')}</Badge>
         {previewAvailable(file) && (
           <Button variant="ghost" size="icon" onClick={() => setPreview(!preview)}>
             {preview ? <Code2 className="size-4" /> : <Eye className="size-4" />}

@@ -90,7 +90,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
           {
             id: crypto.randomUUID(),
             role: 'assistant',
-            content: 'Please configure an AI provider API key in Settings > AI Assistant.',
+            content: t('api.configureAiProvider'),
           },
         ]);
         return;
@@ -109,7 +109,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
         const msg =
           error instanceof AiApiError
             ? `Error: ${error.message}`
-            : `Error: ${error instanceof Error ? error.message : 'An unexpected error occurred'}`;
+            : `Error: ${error instanceof Error ? error.message : t('api.unexpectedError')}`;
         setChatMessages((prev) => [
           ...prev,
           { id: crypto.randomUUID(), role: 'assistant', content: msg },
@@ -184,8 +184,8 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Gisto settings</CardTitle>
-                  <CardDescription>Theme, language, and access tokens.</CardDescription>
+                  <CardTitle>{t('pages.settings.gistoSettings')}</CardTitle>
+                  <CardDescription>{t('pages.settings.themeLanguageAndTokens')}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <DynamicSettings
@@ -353,12 +353,11 @@ console.log(createNote('Gisto Settings', ['UI', 'ui', ' Editor ']));`}
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground">
-                    Open the AI chat to have a conversation with your configured AI model. Your
-                    conversation history is preserved within the session.
+                    {t('pages.settings.openAiChatDescription')}
                   </p>
                   <Button onClick={() => setChatOpen(true)} className="w-full gap-2">
                     <Sparkles className="size-4" />
-                    Open AI Chat
+                    {t('pages.settings.openAiChat')}
                   </Button>
                 </CardContent>
               </Card>

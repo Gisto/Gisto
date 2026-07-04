@@ -129,7 +129,7 @@ export const TreeView = ({ mode, allExpanded = false }: TreeViewProps) => {
 
       filteredSnippets.forEach((snippet) => {
         if (!snippet.tags || snippet.tags.length === 0) {
-          const untagged = 'Untagged';
+          const untagged = t('common.untagged');
           if (!tagsMap[untagged]) {
             tagsMap[untagged] = {
               name: untagged,

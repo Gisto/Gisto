@@ -4,6 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import Select, { SelectRenderer } from 'react-dropdown-select';
 
 import { Input } from '@/components/ui/input';
+import { t } from '@/lib/i18n';
 import { cn } from '@/utils';
 
 export type SearchableSelectOption<T = string> = {
@@ -30,8 +31,8 @@ export function SearchableSelect<T>({
   options,
   value,
   onChange,
-  placeholder = 'Select...',
-  searchPlaceholder = 'Search...',
+  placeholder = t('common.select'),
+  searchPlaceholder = t('common.search'),
   disabled,
   loading,
   itemRenderer,
@@ -139,7 +140,7 @@ export function SearchableSelect<T>({
                 regexp.test(item[searchBy as keyof SearchableSelectOption<T>] as string)
               ).length === 0 && (
                 <div className="px-2 py-4 text-center text-sm text-muted-foreground">
-                  No results
+                  {t('components.noResults')}
                 </div>
               )}
             </div>

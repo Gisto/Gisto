@@ -80,14 +80,14 @@ export const AiAssistantButton = ({ state, dispatch, tags }: AiAssistantButtonPr
           message: error.message,
           type: 'error',
           duration: 5000,
-          title: `${providerName} API error`,
+          title: t('api.errorWithProvider', { provider: providerName }),
         });
       } else {
         toast.show({
-          message: error instanceof Error ? error.message : 'An unexpected error occurred',
+          message: error instanceof Error ? error.message : t('api.unexpectedError'),
           type: 'error',
           duration: 5000,
-          title: 'AI error',
+          title: t('api.aiError'),
         });
       }
     }

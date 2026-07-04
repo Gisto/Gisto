@@ -4,6 +4,7 @@ import { GithubApi } from '@/lib/api/github-api.ts';
 import { GitlabApi } from '@/lib/api/gitlab-api.ts';
 import { LocalApi } from '@/lib/api/local-api.ts';
 import { SnippetBinApi } from '@/lib/api/snippet-bin-api.ts';
+import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState';
 
 type SnippetProviderKey = 'github' | 'gitlab' | 'local' | 'snippet-bin';
@@ -95,7 +96,7 @@ class SnippetService implements SnippetProvider<unknown, unknown> {
 
   fetchGithubGraphQL<T>(query?: string, params?: { cursor: string | null }): Promise<T> {
     if (!this.provider.fetchGithubGraphQL) {
-      throw new Error('fetchGithubGraphQL is not supported by this provider');
+      throw new Error(t('api.fetchGithubGraphQLNotSupported'));
     }
     return this.provider.fetchGithubGraphQL(query, params);
   }
