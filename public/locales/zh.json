@@ -43,7 +43,21 @@
     "restart": "重新启动",
     "activeFilters": "活动筛选",
     "hidePreview": "隐藏预览",
-    "showPreview": "显示预览"
+    "showPreview": "显示预览",
+    "more": "More",
+    "close": "Close",
+    "lock": "Lock",
+    "unlock": "Unlock",
+    "active": "Active",
+    "toggleTheme": "Toggle theme",
+    "text": "Text",
+    "view": "View",
+    "send": "Send",
+    "newChat": "新对话",
+    "confirmLogout": "Are you sure you want to log-out?",
+    "selectRange": "Select range",
+    "scrollToEnd": "Scroll to end",
+    "scrollToStart": "Scroll to start"
   },
   "components": {
     "filterTags": "过滤 {number} 个标签",
@@ -53,7 +67,25 @@
     "allUniqueLanguages": "全部，唯一语言",
     "noLanguageMatching": "没有匹配 {search} 的语言",
     "updateAvailable": "可更新至 v{version}",
-    "downloadFinished": "v{version} 下载完成"
+    "downloadFinished": "v{version} 下载完成",
+    "aiAssistant": "AI助手",
+    "thinking": "思考中...",
+    "pressSendToStart": "按发送开始新对话",
+    "useTextInputToAsk": "使用下方输入框提问",
+    "howCanIHelp": "今天能为您做些什么？",
+    "askAQuestion": "提问...",
+    "searchModels": "搜索模型...",
+    "searchLanguages": "搜索语言...",
+    "noResults": "无结果",
+    "failedToLoadModels": "加载模型失败",
+    "loadingModels": "加载模型中...",
+    "selected": "已选择: {label}",
+    "available": "可用: {freeCount} 免费 · {paidCount} 付费",
+    "error": "错误: {error}",
+    "free": "免费",
+    "paid": "付费",
+    "contextK": "{n}K 上下文",
+    "editingFiles": "正在编辑 {n} 个文件"
   },
   "menu": {
     "logOut": "退出登录",
@@ -149,7 +181,19 @@
       "localDatabase": "本地数据库",
       "localDatabaseDescription": "导出或导入您的本地代码片段。导入将与现有数据合并。",
       "export": "导出",
-      "import": "导入"
+      "import": "导入",
+      "selection": "Selection",
+      "boundary": "Boundary",
+      "trailing": "Trailing",
+      "all": "All",
+      "line": "Line",
+      "gutter": "Gutter",
+      "keyboardShortcuts": "Keyboard Shortcuts",
+      "keyboardShortcutsDescription": "Quick shortcuts to navigate and interact with Gisto.",
+      "gistoSettings": "Gisto settings",
+      "themeLanguageAndTokens": "Theme, language, and access tokens.",
+      "openAiChatDescription": "打开 AI 聊天，与您配置的 AI 模型进行对话。您的对话历史记录在会话期间会保留。",
+      "openAiChat": "打开助手"
     },
     "snippet": {
       "fileTooLarge": "文件太大，请",
@@ -161,7 +205,9 @@
       "copySnippetId": "复制代码片段ID",
       "copyEmbed": "复制嵌入代码到剪贴板",
       "jsfiddleInstructions": "需要将CSS、JS和HTML文件作为代码片段的一部分",
-      "cannotBeUndone": "无法撤销"
+      "cannotBeUndone": "无法撤销",
+      "askAbout": "询问 \"{title}\"",
+      "askAQuestion": "提问..."
     },
     "about": {
       "title": "关于",
@@ -170,7 +216,10 @@
       "sponsor": "赞助Gisto",
       "changelog": "更新日志",
       "website": "网站",
-      "issues": "报告问题"
+      "issues": "报告问题",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "mitLicense": "MIT License · © {year} Gisto"
     }
   },
   "list": {
@@ -243,6 +292,22 @@
     "visibilityChangedToPublic": "代码片段可见性已改为公开",
     "visibilityChangedToPrivate": "代码片段可见性已改为私有",
     "errorTryToRefresh": "获取snippets出错，请尝试刷新",
-    "featureNotSupported": "{provider} 尚不支持此功能"
+    "featureNotSupported": "{provider} 尚不支持此功能",
+    "snippetBinUnauthorized": "Snippet-bin Unauthorized",
+    "gitlabUnauthorized": "GitLab Unauthorized",
+    "invalidSnippetIdForGitLab": "Invalid snippet ID for GitLab",
+    "notAllowedToDelete": "Not allowed to delete this snippet",
+    "noDataFromGraphql": "No data returned from GitHub GraphQL API",
+    "fetchGithubGraphQLNotSupported": "fetchGithubGraphQL is not supported by this provider",
+    "directRequestsNotSupported": "Direct requests are not supported in local mode",
+    "snippetNotFound": "Snippet not found",
+    "unexpectedError": "An unexpected error occurred",
+    "configureAiProvider": "Please configure an AI provider API key in Settings > AI Assistant.",
+    "openAiApiKeyNotConfigured": "OpenAI API key not configured",
+    "geminiApiKeyNotConfigured": "Gemini API key not configured",
+    "claudeApiKeyNotConfigured": "Claude API key not configured",
+    "aiError": "AI error",
+    "errorWithProvider": "{provider} API error",
+    "failedToFetchModels": "Failed to fetch models"
   }
 }

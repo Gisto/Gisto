@@ -23,6 +23,7 @@ import {
   MessageScrollerItem,
 } from '@/components/ui/message-scroller';
 import { Textarea } from '@/components/ui/textarea';
+import { t } from '@/lib/i18n';
 import { isMarkdown } from '@/lib/is-markdown';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/utils';
@@ -47,8 +48,8 @@ export const PromptAssistant = ({
   onSend,
   onClear,
   isLoading,
-  placeholder = 'How can I help you today?',
-  emptyText = 'Press send to start a new conversation',
+  placeholder = t('components.howCanIHelp'),
+  emptyText = t('components.pressSendToStart'),
 }: PromptAssistantProps) => {
   const [input, setInput] = useState('');
   const user = useStoreValue('user');
@@ -73,7 +74,7 @@ export const PromptAssistant = ({
     <Card className="flex h-full flex-col gap-0 rounded-none border-0">
       <CardHeader className="flex-row items-center justify-between gap-4 border-b shrink-0 px-4 py-3">
         <div className="flex items-center gap-2">
-          <CardTitle className="text-sm">AI Assistant</CardTitle>
+          <CardTitle className="text-sm">{t('components.aiAssistant')}</CardTitle>
           <Button
             variant="outline"
             size="xs"
@@ -82,7 +83,7 @@ export const PromptAssistant = ({
             className="gap-1 text-muted-foreground"
           >
             <PlusIcon className="size-3" />
-            New chat
+            {t('common.newChat')}
           </Button>
         </div>
       </CardHeader>
@@ -94,7 +95,7 @@ export const PromptAssistant = ({
                 <MessageCircleDashedIcon />
               </EmptyMedia>
               <EmptyTitle>{emptyText}</EmptyTitle>
-              <EmptyDescription>Use the text input below to ask a question</EmptyDescription>
+              <EmptyDescription>{t('components.useTextInputToAsk')}</EmptyDescription>
             </EmptyHeader>
           </Empty>
         ) : (
@@ -156,7 +157,7 @@ export const PromptAssistant = ({
                         </MessageAvatar>
                         <MessageContent className="gap-1.5">
                           <Bubble variant="secondary" align="start">
-                            <BubbleContent>Thinking...</BubbleContent>
+                            <BubbleContent>{t('components.thinking')}</BubbleContent>
                           </Bubble>
                         </MessageContent>
                       </Message>
@@ -195,7 +196,7 @@ export const PromptAssistant = ({
             size="icon-sm"
             disabled={!input.trim() || isBusy}
             className="absolute bottom-2 right-2 rounded-full!"
-            aria-label="Send"
+            aria-label={t('common.send')}
           >
             <ArrowUpIcon />
           </Button>

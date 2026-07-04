@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { PromptAssistant, type AssistantMessage } from '@/components/prompt-assistant.tsx';
 import { Sheet, SheetContent } from '@/components/ui/sheet.tsx';
+import { t } from '@/lib/i18n';
 import { cn } from '@/utils';
 
 const MIN_WIDTH = 420;
@@ -27,7 +28,7 @@ export const AIChatDialog = ({
   onSend,
   onClear,
   isLoading,
-  placeholder = 'Ask a question...',
+  placeholder = t('components.askAQuestion'),
   emptyText,
 }: AIChatDialogProps) => {
   const [width, setWidth] = useState(DEFAULT_WIDTH);

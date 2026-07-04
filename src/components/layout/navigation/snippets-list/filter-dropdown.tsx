@@ -86,7 +86,7 @@ export const FilterDropdown = () => {
           <Funnel className="size-4" />
           {hasActiveFilters && (
             <span className="border-background absolute -right-0.5 -top-0.5 size-3 rounded-full border-2 bg-primary">
-              <span className="sr-only">Active</span>
+              <span className="sr-only">{t('common.active')}</span>
             </span>
           )}
         </Button>

@@ -4,6 +4,7 @@ import 'dexie-export-import';
 import { guessLanguage, guessMimeType } from '../providers/snippet-utils.ts';
 import { SnippetProvider } from '../providers/types.ts';
 
+import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 import {
   SnippetFileType,
@@ -135,7 +136,7 @@ export const LocalApi: SnippetProvider<LocalSnippet, LocalSnippet> = {
   async getSnippet(snippetId: string): Promise<SnippetSingleType> {
     const snippet = await db.snippets.get(snippetId);
     if (!snippet) {
-      throw new Error('Snippet not found');
+      throw new Error(t('api.snippetNotFound'));
     }
     return mapToSnippetSingleType(snippet);
   },
@@ -193,7 +194,7 @@ export const LocalApi: SnippetProvider<LocalSnippet, LocalSnippet> = {
   }): Promise<SnippetType> {
     const existing = await db.snippets.get(params.snippetId);
     if (!existing) {
-      throw new Error('Snippet not found');
+      throw new Error(t('api.snippetNotFound'));
     }
 
     const now = new Date().toISOString();
@@ -308,7 +309,7 @@ export const LocalApi: SnippetProvider<LocalSnippet, LocalSnippet> = {
     method?: string;
     body?: Record<string, unknown>;
   }): Promise<{ data: T; headers: Headers; status: number }> {
-    throw new Error('Direct requests are not supported in local mode');
+    throw new Error(t('api.directRequestsNotSupported'));
   },
 
   guessMimeType(extension: string): string {

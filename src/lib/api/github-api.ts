@@ -381,7 +381,7 @@ export const GithubApi: SnippetProvider<GitHubSnippetListItem, SnippetSingleType
       });
 
       if (!data) {
-        throw new Error('No data returned from GitHub GraphQL API');
+        throw new Error(t('api.noDataFromGraphql'));
       }
 
       return {

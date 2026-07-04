@@ -196,7 +196,7 @@ export const Lists = ({
       </PageHeader>
       <div className="flex items-center justify-between px-2 py-1.5 border-b">
         <div className="flex items-center gap-1">
-          <span className="text-xs text-muted-foreground mr-1">View:</span>
+          <span className="text-xs text-muted-foreground mr-1">{t('common.view')}:</span>
           <Button
             variant={sidebarViewMode === 'list' ? 'secondary' : 'ghost'}
             size="xs"

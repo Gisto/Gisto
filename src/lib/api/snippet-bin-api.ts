@@ -70,7 +70,7 @@ export const SnippetBinApi: SnippetProvider<SnippetBinGist, SnippetBinGist> = {
       headers,
       body,
       onUnauthorized: () => {
-        toast.error({ message: 'Snippet-bin Unauthorized' });
+        toast.error({ message: t('api.snippetBinUnauthorized') });
       },
     });
   },
@@ -184,7 +184,7 @@ export const SnippetBinApi: SnippetProvider<SnippetBinGist, SnippetBinGist> = {
       status = response.status;
     } catch (error) {
       if (error instanceof Error && error.message.includes('403')) {
-        toast.error({ message: 'Not allowed to delete this snippet' });
+        toast.error({ message: t('api.notAllowedToDelete') });
         return { success: false };
       }
       throw error;

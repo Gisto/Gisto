@@ -169,7 +169,7 @@ export const SnippetsOverTimeChart = () => {
         <div className="flex items-center">
           <Select value={range} onValueChange={handleRangeChange}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select range" />
+              <SelectValue placeholder={t('common.selectRange')} />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>

@@ -5,6 +5,7 @@ import { Keyboard } from 'lucide-react';
 
 import { Button } from '@/components/ui/button.tsx';
 import { shortcutsConfig } from '@/constants/shortcuts.ts';
+import { t } from '@/lib/i18n';
 import { cn } from '@/utils';
 
 export const KeyboardShortcutsModal = ({
@@ -23,12 +24,12 @@ export const KeyboardShortcutsModal = ({
             <div className="flex items-center gap-2">
               <Keyboard className="size-5" />
               <DialogPrimitive.Title className="text-lg font-semibold">
-                Keyboard Shortcuts
+                {t('pages.settings.keyboardShortcuts')}
               </DialogPrimitive.Title>
             </div>
 
             <DialogPrimitive.Description className="text-sm text-muted-foreground">
-              Quick shortcuts to navigate and interact with Gisto.
+              {t('pages.settings.keyboardShortcutsDescription')}
             </DialogPrimitive.Description>
 
             <div className="grid gap-4 py-2 overflow-y-auto max-h-[60vh]">
@@ -64,7 +65,7 @@ export const KeyboardShortcutsModal = ({
 
             <DialogPrimitive.Close asChild>
               <Button variant="secondary" className="mt-2">
-                Close
+                {t('common.close')}
               </Button>
             </DialogPrimitive.Close>
           </div>

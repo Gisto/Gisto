@@ -114,11 +114,15 @@ function ModelSelect({
           content={
             <div className="space-y-1 text-primary-foreground text-xs">
               <p className="font-medium">{AI_PROVIDERS[provider]?.label ?? provider}</p>
-              <p>Selected: {selectedModel?.label ?? value}</p>
+              <p>{t('components.selected', { label: selectedModel?.label ?? value })}</p>
               <p>
-                Available: {freeCount} free &middot; {models.length - freeCount} paid
+                {t('components.available', { freeCount, paidCount: models.length - freeCount })}
               </p>
-              {error && <p className="text-destructive-foreground mt-1">Error: {error}</p>}
+              {error && (
+                <p className="text-destructive-foreground mt-1">
+                  {t('components.error', { error })}
+                </p>
+              )}
             </div>
           }
         />
@@ -138,15 +142,17 @@ function ModelSelect({
       </label>
       {error && models.length === 0 ? (
         <div className="px-2 py-4 text-center text-sm text-muted-foreground rounded-md border">
-          Failed to load models
+          {t('components.failedToLoadModels')}
         </div>
       ) : (
         <SearchableSelect
           options={options}
           value={value}
           onChange={(val) => onChange(fullPath, val)}
-          placeholder={isLoading ? 'Loading models...' : upperCaseFirst(t('common.select'))}
-          searchPlaceholder="Search models..."
+          placeholder={
+            isLoading ? t('components.loadingModels') : upperCaseFirst(t('common.select'))
+          }
+          searchPlaceholder={t('components.searchModels')}
           loading={isLoading && models.length === 0}
           itemRenderer={(option) => {
             const model = models.find((m) => m.value === option.value);
@@ -164,7 +170,11 @@ function ModelSelect({
                       <p className="text-muted-foreground/60">{model.modelId ?? model.value}</p>
                       <div className="flex flex-wrap gap-x-2 gap-y-0.5">
                         {model.contextLength && (
-                          <span>{(model.contextLength / 1000).toLocaleString()}K context</span>
+                          <span>
+                            {t('components.contextK', {
+                              n: (model.contextLength / 1000).toLocaleString(),
+                            })}
+                          </span>
                         )}
                         {model.pricing ? (
                           <span>
@@ -172,7 +182,7 @@ function ModelSelect({
                             {(model.pricing.completion * 1_000_000).toFixed(2)}/M out
                           </span>
                         ) : (
-                          <span>{model.isFree ? 'Free' : 'Paid'}</span>
+                          <span>{model.isFree ? t('components.free') : t('components.paid')}</span>
                         )}
                       </div>
                     </div>
@@ -341,10 +351,10 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 fullPath={fullPath}
                 options={[
                   { value: 'none', label: upperCaseFirst(t('common.off')) },
-                  { value: 'selection', label: 'Selection' },
-                  { value: 'boundary', label: 'Boundary' },
-                  { value: 'trailing', label: 'Trailing' },
-                  { value: 'all', label: 'All' },
+                  { value: 'selection', label: t('pages.settings.selection') },
+                  { value: 'boundary', label: t('pages.settings.boundary') },
+                  { value: 'trailing', label: t('pages.settings.trailing') },
+                  { value: 'all', label: t('pages.settings.all') },
                 ]}
               />
             );
@@ -358,9 +368,9 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 onChange={onChange}
                 fullPath={fullPath}
                 options={[
-                  { value: 'line', label: 'Line' },
-                  { value: 'all', label: 'All' },
-                  { value: 'gutter', label: 'Gutter' },
+                  { value: 'line', label: t('pages.settings.line') },
+                  { value: 'all', label: t('pages.settings.all') },
+                  { value: 'gutter', label: t('pages.settings.gutter') },
                   { value: 'none', label: upperCaseFirst(t('common.off')) },
                 ]}
               />
@@ -393,10 +403,10 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 onChange={onChange}
                 fullPath={fullPath}
                 options={[
-                  { value: 'github', label: 'GitHub' },
-                  { value: 'gitlab', label: 'GitLab' },
-                  { value: 'snippet-bin', label: 'Snippet-bin' },
-                  { value: 'local', label: 'Local' },
+                  { value: 'github', label: t('login.providerGithub') },
+                  { value: 'gitlab', label: t('login.providerGitlab') },
+                  { value: 'snippet-bin', label: t('login.providerSnippetBin') },
+                  { value: 'local', label: t('login.providerLocal') },
                 ]}
               />
             );
@@ -490,7 +500,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   options={langOptions}
                   value={value}
                   onChange={(val) => onChange(fullPath, val)}
-                  searchPlaceholder="Search languages..."
+                  searchPlaceholder={t('components.searchLanguages')}
                 />
               </div>
             );
