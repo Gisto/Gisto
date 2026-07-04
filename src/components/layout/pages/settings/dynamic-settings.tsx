@@ -429,6 +429,22 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
+          if (key === 'sidebarViewMode') {
+            return (
+              <SpecialSelect
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={[
+                  { value: 'list', label: upperCaseFirst(t('common.list')) },
+                  { value: 'tags', label: upperCaseFirst(t('common.tags')) },
+                  { value: 'languages', label: upperCaseFirst(t('common.languages')) },
+                ]}
+              />
+            );
+          }
+
           if (key === 'language') {
             return (
               <SpecialSelect
