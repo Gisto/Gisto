@@ -8,6 +8,10 @@ import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Label } from '@/components/ui/label.tsx';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.tsx';
 import {
+  SearchableSelect,
+  type SearchableSelectOption,
+} from '@/components/ui/searchable-select.tsx';
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -95,6 +99,12 @@ function ModelSelect({
   const selectedModel = models.find((m) => m.value === value);
   const freeCount = models.filter((m) => m.isFree).length;
 
+  const options: SearchableSelectOption<string>[] = models.map((m) => ({
+    label: m.label,
+    value: m.value,
+    disabled: false,
+  }));
+
   return (
     <div className="mb-4">
       <label className="mb-2 flex items-center gap-2 text-sm font-medium">
@@ -112,7 +122,9 @@ function ModelSelect({
             </div>
           }
         />
-        {isLoading && <RefreshCw className="size-3.5 animate-spin text-muted-foreground" />}
+        {isLoading && !error && (
+          <RefreshCw className="size-3.5 animate-spin text-muted-foreground" />
+        )}
         <button
           type="button"
           onClick={(e) => {
@@ -124,47 +136,43 @@ function ModelSelect({
           <RefreshCw className="size-3.5 text-muted-foreground hover:text-foreground transition-colors" />
         </button>
       </label>
-      <Select onValueChange={(val) => onChange(fullPath, val)} value={value}>
-        <SelectTrigger>
-          <SelectValue
-            placeholder={isLoading ? 'Loading models...' : upperCaseFirst(t('common.select'))}
-          />
-        </SelectTrigger>
-        <SelectContent>
-          {isLoading && models.length === 0 && (
-            <div className="px-2 py-4 text-center text-sm text-muted-foreground">
-              Loading models...
-            </div>
-          )}
-          {error && models.length === 0 && (
-            <div className="px-2 py-4 text-center text-sm text-muted-foreground">
-              Failed to load models
-            </div>
-          )}
-          {models.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
+      {error && models.length === 0 ? (
+        <div className="px-2 py-4 text-center text-sm text-muted-foreground rounded-md border">
+          Failed to load models
+        </div>
+      ) : (
+        <SearchableSelect
+          options={options}
+          value={value}
+          onChange={(val) => onChange(fullPath, val)}
+          placeholder={isLoading ? 'Loading models...' : upperCaseFirst(t('common.select'))}
+          searchPlaceholder="Search models..."
+          loading={isLoading && models.length === 0}
+          itemRenderer={(option) => {
+            const model = models.find((m) => m.value === option.value);
+            if (!model) return <span>{option.label}</span>;
+
+            return (
               <span className="flex items-center gap-1.5 w-full">
-                <span className="flex-1 min-w-0 truncate">{option.label}</span>
+                <span className="flex-1 min-w-0 truncate text-sm">{model.label}</span>
                 <SimpleTooltip
                   content={
                     <div className="text-xs space-y-1 max-w-64">
-                      {option.description && (
-                        <p className="text-muted-foreground leading-relaxed">
-                          {option.description}
-                        </p>
+                      {model.description && (
+                        <p className="text-muted-foreground leading-relaxed">{model.description}</p>
                       )}
-                      <p className="text-muted-foreground/60">{option.modelId ?? option.value}</p>
+                      <p className="text-muted-foreground/60">{model.modelId ?? model.value}</p>
                       <div className="flex flex-wrap gap-x-2 gap-y-0.5">
-                        {option.contextLength && (
-                          <span>{(option.contextLength / 1000).toLocaleString()}K context</span>
+                        {model.contextLength && (
+                          <span>{(model.contextLength / 1000).toLocaleString()}K context</span>
                         )}
-                        {option.pricing ? (
+                        {model.pricing ? (
                           <span>
-                            ${(option.pricing.prompt * 1_000_000).toFixed(2)}/M in &middot; $
-                            {(option.pricing.completion * 1_000_000).toFixed(2)}/M out
+                            ${(model.pricing.prompt * 1_000_000).toFixed(2)}/M in &middot; $
+                            {(model.pricing.completion * 1_000_000).toFixed(2)}/M out
                           </span>
                         ) : (
-                          <span>{option.isFree ? 'Free' : 'Paid'}</span>
+                          <span>{model.isFree ? 'Free' : 'Paid'}</span>
                         )}
                       </div>
                     </div>
@@ -175,10 +183,10 @@ function ModelSelect({
                   </span>
                 </SimpleTooltip>
               </span>
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+            );
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -469,17 +477,22 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
           }
 
           if (key === 'newSnippetDefaultLanguage') {
+            const langOptions: SearchableSelectOption<string>[] = Object.keys(languageMap).map(
+              (language) => ({
+                value: language,
+                label: language,
+              })
+            );
             return (
-              <SpecialSelect
-                settingKey={key}
-                value={value}
-                onChange={onChange}
-                fullPath={fullPath}
-                options={Object.keys(languageMap).map((language) => ({
-                  value: language,
-                  label: language,
-                }))}
-              />
+              <div className="mb-4">
+                <label className="block mb-1">{camelToTitleCase(key)}</label>
+                <SearchableSelect
+                  options={langOptions}
+                  value={value}
+                  onChange={(val) => onChange(fullPath, val)}
+                  searchPlaceholder="Search languages..."
+                />
+              </div>
             );
           }
 
