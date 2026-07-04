@@ -141,17 +141,21 @@ export const getFileExtension = (file: SnippetFileType): string =>
 export const isPDF = (file: SnippetFileType): boolean =>
   file?.type === 'application/pdf' && getFileExtension(file) === 'pdf';
 
-export const isHTML = (file: SnippetFileType): boolean => getLanguageName(file).toLowerCase() === 'html';
+export const isHTML = (file: SnippetFileType): boolean =>
+  getLanguageName(file).toLowerCase() === 'html';
 
-export const isCSV = (file: SnippetFileType): boolean => getLanguageName(file).toLowerCase() === 'csv';
+export const isCSV = (file: SnippetFileType): boolean =>
+  getLanguageName(file).toLowerCase() === 'csv';
 
 export const isTSV = (file: SnippetFileType): boolean => file?.type === 'text/tab-separated-values';
 
 export const isImage = (file: SnippetFileType): boolean => file?.type?.startsWith('image/');
 
-export const isJson = (file: SnippetFileType): boolean => getLanguageName(file).toLowerCase() === 'json';
+export const isJson = (file: SnippetFileType): boolean =>
+  getLanguageName(file).toLowerCase() === 'json';
 
-export const isMarkdown = (file: SnippetFileType): boolean => getLanguageName(file).toLowerCase() === 'markdown';
+export const isMarkdown = (file: SnippetFileType): boolean =>
+  getLanguageName(file).toLowerCase() === 'markdown';
 
 export const isOpenApi = (file: SnippetFileType): boolean => {
   const lang = getLanguageName(file).toLowerCase();

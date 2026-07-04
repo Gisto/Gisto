@@ -29,7 +29,8 @@ export const PROVIDER_CONFIGS: Record<SnippetProviderType, ProviderConfig> = {
     label: () => t('login.providerGithub'),
     tokenKey: 'GITHUB_TOKEN',
     Icon: GitHubIcon,
-    helpUrl: 'https://github.com/settings/tokens/new?scopes=gist&description=Gisto%20(created%20via%20Gisto%20App)',
+    helpUrl:
+      'https://github.com/settings/tokens/new?scopes=gist&description=Gisto%20(created%20via%20Gisto%20App)',
     tokenLabel: () => t('login.githubToken'),
     tokenPlaceholder: () => t('login.enterGithubToken'),
     scopeMessage: () => t('login.scopeMessageGithub'),

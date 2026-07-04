@@ -15,9 +15,7 @@ export const App = () => {
   const [token, setToken] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const storedProvider = localStorage.getItem('ACTIVE_PROVIDER') as
-    | SnippetProviderType
-    | null;
+  const storedProvider = localStorage.getItem('ACTIVE_PROVIDER') as SnippetProviderType | null;
   const activeProvider = storedProvider || globalState.getState().settings.activeSnippetProvider;
 
   useEffect(() => {
@@ -73,7 +71,9 @@ export const App = () => {
           user: {
             ...userData,
             login: userData.login || userData.username,
-            avatar_url: userData.avatar_url || `https://api.dicebear.com/7.x/initials/svg?seed=${userData.login || userData.username || 'Gisto'}`,
+            avatar_url:
+              userData.avatar_url ||
+              `https://api.dicebear.com/7.x/initials/svg?seed=${userData.login || userData.username || 'Gisto'}`,
           },
           isLoggedIn: true,
         });
