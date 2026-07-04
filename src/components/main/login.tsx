@@ -29,11 +29,7 @@ import { globalState } from '@/lib/store/globalState.ts';
 import { cn } from '@/utils';
 
 type LoginProps = {
-  onTokenSubmit: (
-    token: string,
-    provider: SnippetProviderType,
-    snippetBinBaseUrl?: string
-  ) => void;
+  onTokenSubmit: (token: string, provider: SnippetProviderType, snippetBinBaseUrl?: string) => void;
   token: string | null;
   isValid: boolean | null;
 };

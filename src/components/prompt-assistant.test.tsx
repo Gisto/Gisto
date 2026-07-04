@@ -1,21 +1,27 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
-import { PromptAssistant, type AssistantMessage } from './prompt-assistant.tsx';
+import { PromptAssistant, type AssistantMessage } from './prompt-assistant';
 
 vi.mock('@/lib/is-markdown', () => ({
   isMarkdown: () => false,
 }));
 
-vi.mock('@/components/layout/pages/snippet/content/preview/markdown.tsx', () => ({
+vi.mock('@/components/layout/pages/snippet/content/preview/markdown', () => ({
   Markdown: ({ content }: { content: string }) => <div data-testid="markdown">{content}</div>,
+}));
+
+vi.mock('@/lib/store/globalState', () => ({
+  useStoreValue: () => ({ avatar_url: '', name: 'Test User' }),
 }));
 
 describe('PromptAssistant', () => {
   it('renders empty state when no messages', () => {
-    render(<PromptAssistant messages={[]} onSend={() => {}} isLoading={false} />);
+    render(
+      <PromptAssistant messages={[]} onSend={() => {}} onClear={() => {}} isLoading={false} />
+    );
 
-    expect(screen.getByText('Ask a question to get started')).toBeInTheDocument();
+    expect(screen.getByText('Press send to start a new conversation')).toBeInTheDocument();
   });
 
   it('renders custom emptyText when provided', () => {
@@ -23,6 +29,7 @@ describe('PromptAssistant', () => {
       <PromptAssistant
         messages={[]}
         onSend={() => {}}
+        onClear={() => {}}
         isLoading={false}
         emptyText="Ask about My Snippet"
       />
@@ -33,9 +40,9 @@ describe('PromptAssistant', () => {
 
   it('submits on Enter', () => {
     const onSend = vi.fn();
-    render(<PromptAssistant messages={[]} onSend={onSend} isLoading={false} />);
+    render(<PromptAssistant messages={[]} onSend={onSend} onClear={() => {}} isLoading={false} />);
 
-    const textarea = screen.getByPlaceholderText('Ask a question...');
+    const textarea = screen.getByPlaceholderText('How can I help you today?');
     fireEvent.change(textarea, { target: { value: 'hello' } });
     fireEvent.keyDown(textarea, { key: 'Enter' });
 
@@ -44,9 +51,9 @@ describe('PromptAssistant', () => {
 
   it('does not submit on Shift+Enter', () => {
     const onSend = vi.fn();
-    render(<PromptAssistant messages={[]} onSend={onSend} isLoading={false} />);
+    render(<PromptAssistant messages={[]} onSend={onSend} onClear={() => {}} isLoading={false} />);
 
-    const textarea = screen.getByPlaceholderText('Ask a question...');
+    const textarea = screen.getByPlaceholderText('How can I help you today?');
     fireEvent.change(textarea, { target: { value: 'hello' } });
     fireEvent.keyDown(textarea, { key: 'Enter', shiftKey: true });
 
@@ -55,9 +62,9 @@ describe('PromptAssistant', () => {
 
   it('does not submit on Enter when input is empty', () => {
     const onSend = vi.fn();
-    render(<PromptAssistant messages={[]} onSend={onSend} isLoading={false} />);
+    render(<PromptAssistant messages={[]} onSend={onSend} onClear={() => {}} isLoading={false} />);
 
-    const textarea = screen.getByPlaceholderText('Ask a question...');
+    const textarea = screen.getByPlaceholderText('How can I help you today?');
     fireEvent.keyDown(textarea, { key: 'Enter' });
 
     expect(onSend).not.toHaveBeenCalled();
@@ -65,9 +72,9 @@ describe('PromptAssistant', () => {
 
   it('does not submit on Enter when loading', () => {
     const onSend = vi.fn();
-    render(<PromptAssistant messages={[]} onSend={onSend} isLoading={true} />);
+    render(<PromptAssistant messages={[]} onSend={onSend} onClear={() => {}} isLoading={true} />);
 
-    const textarea = screen.getByPlaceholderText('Ask a question...');
+    const textarea = screen.getByPlaceholderText('How can I help you today?');
     fireEvent.change(textarea, { target: { value: 'hello' } });
     fireEvent.keyDown(textarea, { key: 'Enter' });
 
@@ -76,9 +83,11 @@ describe('PromptAssistant', () => {
 
   it('clears input after submit', () => {
     const onSend = vi.fn();
-    render(<PromptAssistant messages={[]} onSend={onSend} isLoading={false} />);
+    render(<PromptAssistant messages={[]} onSend={onSend} onClear={() => {}} isLoading={false} />);
 
-    const textarea = screen.getByPlaceholderText('Ask a question...') as HTMLTextAreaElement;
+    const textarea = screen.getByPlaceholderText(
+      'How can I help you today?'
+    ) as HTMLTextAreaElement;
     fireEvent.change(textarea, { target: { value: 'hello' } });
     fireEvent.keyDown(textarea, { key: 'Enter' });
 
@@ -86,26 +95,30 @@ describe('PromptAssistant', () => {
   });
 
   it('shows send button disabled when input is empty', () => {
-    render(<PromptAssistant messages={[]} onSend={() => {}} isLoading={false} />);
+    render(
+      <PromptAssistant messages={[]} onSend={() => {}} onClear={() => {}} isLoading={false} />
+    );
 
-    const sendButton = screen.getByRole('button', { name: 'Send message' });
+    const sendButton = screen.getByRole('button', { name: 'Send' });
     expect(sendButton).toBeDisabled();
   });
 
   it('shows send button disabled when loading', () => {
-    render(<PromptAssistant messages={[]} onSend={() => {}} isLoading={true} />);
+    render(<PromptAssistant messages={[]} onSend={() => {}} onClear={() => {}} isLoading={true} />);
 
-    const textarea = screen.getByPlaceholderText('Ask a question...');
+    const textarea = screen.getByPlaceholderText('How can I help you today?');
     fireEvent.change(textarea, { target: { value: 'hello' } });
 
-    const sendButton = screen.getByRole('button', { name: 'Send message' });
+    const sendButton = screen.getByRole('button', { name: 'Send' });
     expect(sendButton).toBeDisabled();
   });
 
   it('renders user messages with content', () => {
     const messages: AssistantMessage[] = [{ id: '1', role: 'user', content: 'hello there' }];
 
-    render(<PromptAssistant messages={messages} onSend={() => {}} isLoading={false} />);
+    render(
+      <PromptAssistant messages={messages} onSend={() => {}} onClear={() => {}} isLoading={false} />
+    );
 
     expect(screen.getByText('hello there')).toBeInTheDocument();
   });
@@ -115,7 +128,9 @@ describe('PromptAssistant', () => {
       { id: '1', role: 'assistant', content: 'Hi! How can I help?' },
     ];
 
-    render(<PromptAssistant messages={messages} onSend={() => {}} isLoading={false} />);
+    render(
+      <PromptAssistant messages={messages} onSend={() => {}} onClear={() => {}} isLoading={false} />
+    );
 
     expect(screen.getByText('Hi! How can I help?')).toBeInTheDocument();
   });
@@ -126,28 +141,15 @@ describe('PromptAssistant', () => {
     ];
 
     const { container } = render(
-      <PromptAssistant messages={messages} onSend={() => {}} isLoading={false} />
+      <PromptAssistant messages={messages} onSend={() => {}} onClear={() => {}} isLoading={false} />
     );
 
     const bubbleContent = container.querySelector('[data-slot="bubble-content"]');
     expect(bubbleContent).toHaveClass('whitespace-pre-wrap');
   });
 
-  it('renders context label when provided', () => {
-    render(
-      <PromptAssistant
-        messages={[]}
-        onSend={() => {}}
-        isLoading={false}
-        contextLabel="Asking about: My Snippet"
-      />
-    );
-
-    expect(screen.getByText('Asking about: My Snippet')).toBeInTheDocument();
-  });
-
   it('shows loading state', () => {
-    render(<PromptAssistant messages={[]} onSend={() => {}} isLoading={true} />);
+    render(<PromptAssistant messages={[]} onSend={() => {}} onClear={() => {}} isLoading={true} />);
 
     expect(screen.getByText('Thinking...')).toBeInTheDocument();
   });
@@ -155,8 +157,10 @@ describe('PromptAssistant', () => {
   it('does not show empty state when messages exist', () => {
     const messages: AssistantMessage[] = [{ id: '1', role: 'user', content: 'hello' }];
 
-    render(<PromptAssistant messages={messages} onSend={() => {}} isLoading={false} />);
+    render(
+      <PromptAssistant messages={messages} onSend={() => {}} onClear={() => {}} isLoading={false} />
+    );
 
-    expect(screen.queryByText('Ask a question to get started')).not.toBeInTheDocument();
+    expect(screen.queryByText('Press send to start a new conversation')).not.toBeInTheDocument();
   });
 });

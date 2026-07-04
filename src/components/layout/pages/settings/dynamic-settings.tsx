@@ -8,6 +8,10 @@ import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Label } from '@/components/ui/label.tsx';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.tsx';
 import {
+  SearchableSelect,
+  type SearchableSelectOption,
+} from '@/components/ui/searchable-select.tsx';
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -95,6 +99,12 @@ function ModelSelect({
   const selectedModel = models.find((m) => m.value === value);
   const freeCount = models.filter((m) => m.isFree).length;
 
+  const options: SearchableSelectOption<string>[] = models.map((m) => ({
+    label: m.label,
+    value: m.value,
+    disabled: false,
+  }));
+
   return (
     <div className="mb-4">
       <label className="mb-2 flex items-center gap-2 text-sm font-medium">
@@ -104,15 +114,21 @@ function ModelSelect({
           content={
             <div className="space-y-1 text-primary-foreground text-xs">
               <p className="font-medium">{AI_PROVIDERS[provider]?.label ?? provider}</p>
-              <p>Selected: {selectedModel?.label ?? value}</p>
+              <p>{t('components.selected', { label: selectedModel?.label ?? value })}</p>
               <p>
-                Available: {freeCount} free &middot; {models.length - freeCount} paid
+                {t('components.available', { freeCount, paidCount: models.length - freeCount })}
               </p>
-              {error && <p className="text-destructive-foreground mt-1">Error: {error}</p>}
+              {error && (
+                <p className="text-destructive-foreground mt-1">
+                  {t('components.error', { error })}
+                </p>
+              )}
             </div>
           }
         />
-        {isLoading && <RefreshCw className="size-3.5 animate-spin text-muted-foreground" />}
+        {isLoading && !error && (
+          <RefreshCw className="size-3.5 animate-spin text-muted-foreground" />
+        )}
         <button
           type="button"
           onClick={(e) => {
@@ -124,47 +140,49 @@ function ModelSelect({
           <RefreshCw className="size-3.5 text-muted-foreground hover:text-foreground transition-colors" />
         </button>
       </label>
-      <Select onValueChange={(val) => onChange(fullPath, val)} value={value}>
-        <SelectTrigger>
-          <SelectValue
-            placeholder={isLoading ? 'Loading models...' : upperCaseFirst(t('common.select'))}
-          />
-        </SelectTrigger>
-        <SelectContent>
-          {isLoading && models.length === 0 && (
-            <div className="px-2 py-4 text-center text-sm text-muted-foreground">
-              Loading models...
-            </div>
-          )}
-          {error && models.length === 0 && (
-            <div className="px-2 py-4 text-center text-sm text-muted-foreground">
-              Failed to load models
-            </div>
-          )}
-          {models.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
+      {error && models.length === 0 ? (
+        <div className="px-2 py-4 text-center text-sm text-muted-foreground rounded-md border">
+          {t('components.failedToLoadModels')}
+        </div>
+      ) : (
+        <SearchableSelect
+          options={options}
+          value={value}
+          onChange={(val) => onChange(fullPath, val)}
+          placeholder={
+            isLoading ? t('components.loadingModels') : upperCaseFirst(t('common.select'))
+          }
+          searchPlaceholder={t('components.searchModels')}
+          loading={isLoading && models.length === 0}
+          itemRenderer={(option) => {
+            const model = models.find((m) => m.value === option.value);
+            if (!model) return <span>{option.label}</span>;
+
+            return (
               <span className="flex items-center gap-1.5 w-full">
-                <span className="flex-1 min-w-0 truncate">{option.label}</span>
+                <span className="flex-1 min-w-0 truncate text-sm">{model.label}</span>
                 <SimpleTooltip
                   content={
                     <div className="text-xs space-y-1 max-w-64">
-                      {option.description && (
-                        <p className="text-muted-foreground leading-relaxed">
-                          {option.description}
-                        </p>
+                      {model.description && (
+                        <p className="text-muted-foreground leading-relaxed">{model.description}</p>
                       )}
-                      <p className="text-muted-foreground/60">{option.modelId ?? option.value}</p>
+                      <p className="text-muted-foreground/60">{model.modelId ?? model.value}</p>
                       <div className="flex flex-wrap gap-x-2 gap-y-0.5">
-                        {option.contextLength && (
-                          <span>{(option.contextLength / 1000).toLocaleString()}K context</span>
-                        )}
-                        {option.pricing ? (
+                        {model.contextLength && (
                           <span>
-                            ${(option.pricing.prompt * 1_000_000).toFixed(2)}/M in &middot; $
-                            {(option.pricing.completion * 1_000_000).toFixed(2)}/M out
+                            {t('components.contextK', {
+                              n: (model.contextLength / 1000).toLocaleString(),
+                            })}
+                          </span>
+                        )}
+                        {model.pricing ? (
+                          <span>
+                            ${(model.pricing.prompt * 1_000_000).toFixed(2)}/M in &middot; $
+                            {(model.pricing.completion * 1_000_000).toFixed(2)}/M out
                           </span>
                         ) : (
-                          <span>{option.isFree ? 'Free' : 'Paid'}</span>
+                          <span>{model.isFree ? t('components.free') : t('components.paid')}</span>
                         )}
                       </div>
                     </div>
@@ -175,10 +193,10 @@ function ModelSelect({
                   </span>
                 </SimpleTooltip>
               </span>
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+            );
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -333,10 +351,10 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 fullPath={fullPath}
                 options={[
                   { value: 'none', label: upperCaseFirst(t('common.off')) },
-                  { value: 'selection', label: 'Selection' },
-                  { value: 'boundary', label: 'Boundary' },
-                  { value: 'trailing', label: 'Trailing' },
-                  { value: 'all', label: 'All' },
+                  { value: 'selection', label: t('pages.settings.selection') },
+                  { value: 'boundary', label: t('pages.settings.boundary') },
+                  { value: 'trailing', label: t('pages.settings.trailing') },
+                  { value: 'all', label: t('pages.settings.all') },
                 ]}
               />
             );
@@ -350,9 +368,9 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 onChange={onChange}
                 fullPath={fullPath}
                 options={[
-                  { value: 'line', label: 'Line' },
-                  { value: 'all', label: 'All' },
-                  { value: 'gutter', label: 'Gutter' },
+                  { value: 'line', label: t('pages.settings.line') },
+                  { value: 'all', label: t('pages.settings.all') },
+                  { value: 'gutter', label: t('pages.settings.gutter') },
                   { value: 'none', label: upperCaseFirst(t('common.off')) },
                 ]}
               />
@@ -385,10 +403,10 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 onChange={onChange}
                 fullPath={fullPath}
                 options={[
-                  { value: 'github', label: 'GitHub' },
-                  { value: 'gitlab', label: 'GitLab' },
-                  { value: 'snippet-bin', label: 'Snippet-bin' },
-                  { value: 'local', label: 'Local' },
+                  { value: 'github', label: t('login.providerGithub') },
+                  { value: 'gitlab', label: t('login.providerGitlab') },
+                  { value: 'snippet-bin', label: t('login.providerSnippetBin') },
+                  { value: 'local', label: t('login.providerLocal') },
                 ]}
               />
             );
@@ -406,6 +424,22 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   { value: '30days', label: t('pages.dashboard.oneMonthAgo') },
                   { value: '6months', label: t('pages.dashboard.sixMonthsAgo') },
                   { value: '1year', label: t('pages.dashboard.oneYearAgo') },
+                ]}
+              />
+            );
+          }
+
+          if (key === 'sidebarViewMode') {
+            return (
+              <SpecialSelect
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={[
+                  { value: 'list', label: upperCaseFirst(t('common.list')) },
+                  { value: 'tags', label: upperCaseFirst(t('common.tags')) },
+                  { value: 'languages', label: upperCaseFirst(t('common.languages')) },
                 ]}
               />
             );
@@ -469,17 +503,22 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
           }
 
           if (key === 'newSnippetDefaultLanguage') {
+            const langOptions: SearchableSelectOption<string>[] = Object.keys(languageMap).map(
+              (language) => ({
+                value: language,
+                label: language,
+              })
+            );
             return (
-              <SpecialSelect
-                settingKey={key}
-                value={value}
-                onChange={onChange}
-                fullPath={fullPath}
-                options={Object.keys(languageMap).map((language) => ({
-                  value: language,
-                  label: language,
-                }))}
-              />
+              <div className="mb-4">
+                <label className="block mb-1">{camelToTitleCase(key)}</label>
+                <SearchableSelect
+                  options={langOptions}
+                  value={value}
+                  onChange={(val) => onChange(fullPath, val)}
+                  searchPlaceholder={t('components.searchLanguages')}
+                />
+              </div>
             );
           }
 

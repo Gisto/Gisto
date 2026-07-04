@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { fetchModels } from '@/lib/api/models-api.ts';
+import { t } from '@/lib/i18n';
 
 export type ModelOption = {
   value: string;
@@ -97,7 +98,7 @@ export function useAiModels(provider: string | undefined): UseAiModelsResult {
       cache.set(provider, { models: sorted, timestamp: Date.now() });
       setModels(sorted);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch models');
+      setError(err instanceof Error ? err.message : t('api.failedToFetchModels'));
     } finally {
       setIsLoading(false);
     }

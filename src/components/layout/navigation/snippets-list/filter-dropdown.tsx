@@ -34,37 +34,29 @@ export const FilterDropdown = () => {
     const newSearch = search
       ? `${search} tag:${tag.replace('#', '')}`
       : `tag:${tag.replace('#', '')}`;
-    const settings = globalState.getState().settings;
     globalState.setState({
       search: newSearch,
-      settings: { ...settings, sidebarViewMode: 'list' },
     });
   };
 
   const handleAddLanguage = (lang: string) => {
     const newSearch = search ? `${search} lang:${lang}` : `lang:${lang}`;
-    const settings = globalState.getState().settings;
     globalState.setState({
       search: newSearch,
-      settings: { ...settings, sidebarViewMode: 'list' },
     });
   };
 
   const handleRemoveTag = (tag: string) => {
     const newSearch = search.replace(new RegExp(`tag:${tag}\\b/?\\s*`), '').trim();
-    const settings = globalState.getState().settings;
     globalState.setState({
       search: newSearch,
-      settings: { ...settings, sidebarViewMode: 'list' },
     });
   };
 
   const handleRemoveLanguage = (lang: string) => {
     const newSearch = search.replace(new RegExp(`lang:${lang}\\b/?\\s*`), '').trim();
-    const settings = globalState.getState().settings;
     globalState.setState({
       search: newSearch,
-      settings: { ...settings, sidebarViewMode: 'list' },
     });
   };
 
@@ -72,10 +64,8 @@ export const FilterDropdown = () => {
     const terms = search
       .split(' ')
       .filter((term) => !term.startsWith('tag:') && !term.startsWith('lang:'));
-    const settings = globalState.getState().settings;
     globalState.setState({
       search: terms.join(' ').trim(),
-      settings: { ...settings, sidebarViewMode: 'list' },
     });
   };
 
@@ -86,7 +76,7 @@ export const FilterDropdown = () => {
           <Funnel className="size-4" />
           {hasActiveFilters && (
             <span className="border-background absolute -right-0.5 -top-0.5 size-3 rounded-full border-2 bg-primary">
-              <span className="sr-only">Active</span>
+              <span className="sr-only">{t('common.active')}</span>
             </span>
           )}
         </Button>

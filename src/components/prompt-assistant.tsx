@@ -1,20 +1,31 @@
-import { Loader2, Send, Sparkles } from 'lucide-react';
-import { useState, useRef, useCallback } from 'react';
+import { ArrowUpIcon, MessageCircleDashedIcon, PlusIcon, Sparkles } from 'lucide-react';
+import { useCallback, useState } from 'react';
 
 import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Bubble, BubbleContent } from '@/components/ui/bubble';
 import { Button } from '@/components/ui/button';
-import { Marker, MarkerContent, MarkerIcon } from '@/components/ui/marker';
-import { Message, MessageContent } from '@/components/ui/message';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  MessageScrollerProvider,
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from '@/components/ui/empty';
+import { Message, MessageAvatar, MessageContent } from '@/components/ui/message';
+import {
   MessageScroller,
-  MessageScrollerViewport,
+  MessageScrollerButton,
   MessageScrollerContent,
+  MessageScrollerProvider,
+  MessageScrollerViewport,
   MessageScrollerItem,
 } from '@/components/ui/message-scroller';
 import { Textarea } from '@/components/ui/textarea';
+import { t } from '@/lib/i18n';
 import { isMarkdown } from '@/lib/is-markdown';
+import { useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/utils';
 
 export type AssistantMessage = {
@@ -26,22 +37,29 @@ export type AssistantMessage = {
 type PromptAssistantProps = {
   messages: AssistantMessage[];
   onSend: (prompt: string) => void | Promise<void>;
+  onClear: () => void;
   isLoading: boolean;
   placeholder?: string;
   emptyText?: string;
-  contextLabel?: string;
 };
 
 export const PromptAssistant = ({
   messages,
   onSend,
+  onClear,
   isLoading,
-  placeholder = 'Ask a question...',
-  emptyText = 'Ask a question to get started',
-  contextLabel,
+  placeholder = t('components.howCanIHelp'),
+  emptyText = t('components.pressSendToStart'),
 }: PromptAssistantProps) => {
   const [input, setInput] = useState('');
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const user = useStoreValue('user');
+  const userRecord = (user ?? {}) as Record<string, unknown>;
+  const userAvatarUrl = typeof userRecord.avatar_url === 'string' ? userRecord.avatar_url : '';
+  const userName =
+    (typeof userRecord.name === 'string' && userRecord.name) ||
+    (typeof userRecord.login === 'string' && userRecord.login) ||
+    (typeof userRecord.username === 'string' && userRecord.username) ||
+    '';
 
   const handleSend = useCallback(() => {
     const q = input.trim();
@@ -50,90 +68,140 @@ export const PromptAssistant = ({
     void onSend(q);
   }, [input, isLoading, onSend]);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
+  const isBusy = isLoading;
 
   return (
-    <div className="flex h-full flex-col">
-      {contextLabel && (
-        <div className="border-b bg-muted/30 px-4 py-2">
-          <p className="text-xs text-muted-foreground truncate">{contextLabel}</p>
+    <Card className="flex h-full flex-col gap-0 rounded-none border-0">
+      <CardHeader className="flex-row items-center justify-between gap-4 border-b shrink-0 px-4 py-3">
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-sm">{t('components.aiAssistant')}</CardTitle>
+          <Button
+            variant="outline"
+            size="xs"
+            onClick={onClear}
+            disabled={isBusy}
+            className="gap-1 text-muted-foreground"
+          >
+            <PlusIcon className="size-3" />
+            {t('common.newChat')}
+          </Button>
         </div>
-      )}
-      <MessageScrollerProvider autoScroll>
-        <MessageScroller className="flex-1">
-          <MessageScrollerViewport>
-            <MessageScrollerContent className="gap-3 pb-3">
-              {messages.length === 0 && !isLoading && (
-                <div className="flex flex-1 flex-col items-center justify-center text-center">
-                  <Sparkles className="mb-2 size-8 text-muted-foreground/50" />
-                  <p className="text-sm text-muted-foreground">{emptyText}</p>
-                </div>
-              )}
-              {messages.map((msg, i) => (
-                <MessageScrollerItem key={msg.id} scrollAnchor={i === messages.length - 1}>
-                  <Message align={msg.role === 'user' ? 'end' : 'start'}>
-                    <MessageContent className="gap-1.5">
-                      <Bubble
-                        variant={msg.role === 'user' ? 'default' : 'secondary'}
-                        align={msg.role === 'user' ? 'end' : 'start'}
-                      >
-                        <BubbleContent
-                          className={cn(
-                            msg.role === 'assistant' &&
-                              '[&_pre]:overflow-x-auto [&_pre]:max-w-full',
-                            msg.role === 'user' && 'whitespace-pre-wrap'
-                          )}
-                        >
-                          {msg.role === 'assistant' && isMarkdown(msg.content) ? (
-                            <Markdown content={msg.content} />
-                          ) : (
-                            msg.content
-                          )}
-                        </BubbleContent>
-                      </Bubble>
-                    </MessageContent>
-                  </Message>
-                </MessageScrollerItem>
-              ))}
-              {isLoading && (
-                <MessageScrollerItem scrollAnchor>
-                  <Marker role="status">
-                    <MarkerIcon>
-                      <Loader2 className="size-4 animate-spin" />
-                    </MarkerIcon>
-                    <MarkerContent>Thinking...</MarkerContent>
-                  </Marker>
-                </MessageScrollerItem>
-              )}
-            </MessageScrollerContent>
-          </MessageScrollerViewport>
-        </MessageScroller>
-      </MessageScrollerProvider>
-      <div className="border-t px-3 py-3 flex items-end gap-2 shrink-0">
-        <Textarea
-          ref={textareaRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder={placeholder}
-          className="min-h-[36px] max-h-[100px] resize-none text-sm"
-          rows={1}
-        />
-        <Button
-          onClick={handleSend}
-          disabled={isLoading || !input.trim()}
-          size="icon"
-          className="shrink-0 size-8"
-          aria-label="Send message"
+      </CardHeader>
+      <CardContent className="flex-1 overflow-hidden p-0">
+        {messages.length === 0 && !isLoading ? (
+          <Empty className="h-full">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <MessageCircleDashedIcon />
+              </EmptyMedia>
+              <EmptyTitle>{emptyText}</EmptyTitle>
+              <EmptyDescription>{t('components.useTextInputToAsk')}</EmptyDescription>
+            </EmptyHeader>
+          </Empty>
+        ) : (
+          <MessageScrollerProvider autoScroll>
+            <MessageScroller>
+              <MessageScrollerViewport>
+                <MessageScrollerContent aria-busy={isBusy} className="p-4 gap-3">
+                  {messages.map((msg) => (
+                    <MessageScrollerItem key={msg.id} scrollAnchor={msg.role === 'user'}>
+                      <Message align={msg.role === 'user' ? 'end' : 'start'}>
+                        <MessageAvatar>
+                          <Avatar className="size-8">
+                            {msg.role === 'user' ? (
+                              <>
+                                <AvatarImage src={userAvatarUrl} alt={userName} />
+                                <AvatarFallback className="text-xs">
+                                  {userName.charAt(0)?.toUpperCase() || '?'}
+                                </AvatarFallback>
+                              </>
+                            ) : (
+                              <AvatarFallback>
+                                <Sparkles className="size-4 text-primary" />
+                              </AvatarFallback>
+                            )}
+                          </Avatar>
+                        </MessageAvatar>
+                        <MessageContent className="gap-1.5">
+                          <Bubble
+                            variant={msg.role === 'user' ? 'default' : 'secondary'}
+                            align={msg.role === 'user' ? 'end' : 'start'}
+                          >
+                            <BubbleContent
+                              className={cn(
+                                msg.role === 'assistant' &&
+                                  '[&_pre]:overflow-x-auto [&_pre]:max-w-full',
+                                msg.role === 'user' && 'whitespace-pre-wrap'
+                              )}
+                            >
+                              {msg.role === 'assistant' && isMarkdown(msg.content) ? (
+                                <Markdown content={msg.content} />
+                              ) : (
+                                msg.content
+                              )}
+                            </BubbleContent>
+                          </Bubble>
+                        </MessageContent>
+                      </Message>
+                    </MessageScrollerItem>
+                  ))}
+                  {isLoading && (
+                    <MessageScrollerItem scrollAnchor>
+                      <Message align="start">
+                        <MessageAvatar>
+                          <Avatar className="size-8">
+                            <AvatarFallback>
+                              <Sparkles className="size-4" />
+                            </AvatarFallback>
+                          </Avatar>
+                        </MessageAvatar>
+                        <MessageContent className="gap-1.5">
+                          <Bubble variant="secondary" align="start">
+                            <BubbleContent>{t('components.thinking')}</BubbleContent>
+                          </Bubble>
+                        </MessageContent>
+                      </Message>
+                    </MessageScrollerItem>
+                  )}
+                </MessageScrollerContent>
+              </MessageScrollerViewport>
+              <MessageScrollerButton />
+            </MessageScroller>
+          </MessageScrollerProvider>
+        )}
+      </CardContent>
+      <CardFooter className=" shrink-0 p-3">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSend();
+          }}
+          className="relative w-full"
         >
-          {isLoading ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
-        </Button>
-      </div>
-    </div>
+          <Textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+              }
+            }}
+            placeholder={placeholder}
+            className="min-h-14 max-h-32 pr-10 resize-none rounded-2xl!"
+            rows={1}
+          />
+          <Button
+            type="submit"
+            size="icon-sm"
+            disabled={!input.trim() || isBusy}
+            className="absolute bottom-2 right-2 rounded-full!"
+            aria-label={t('common.send')}
+          >
+            <ArrowUpIcon />
+          </Button>
+        </form>
+      </CardFooter>
+    </Card>
   );
 };

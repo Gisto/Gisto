@@ -1,3 +1,4 @@
+import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 
 type ModelInfo = {
@@ -47,7 +48,7 @@ export async function fetchOpenRouterModels(): Promise<ModelInfo[]> {
 
 export async function fetchOpenAiModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('openai');
-  if (!apiKey) throw new Error('OpenAI API key not configured');
+  if (!apiKey) throw new Error(t('api.openAiApiKeyNotConfigured'));
 
   const res = await fetch('https://api.openai.com/v1/models', {
     headers: { Authorization: `Bearer ${apiKey}` },
@@ -67,7 +68,7 @@ export async function fetchOpenAiModels(): Promise<ModelInfo[]> {
 
 export async function fetchGeminiModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('gemini');
-  if (!apiKey) throw new Error('Gemini API key not configured');
+  if (!apiKey) throw new Error(t('api.geminiApiKeyNotConfigured'));
 
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
 
@@ -83,7 +84,7 @@ export async function fetchGeminiModels(): Promise<ModelInfo[]> {
 
 export async function fetchClaudeModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('claude');
-  if (!apiKey) throw new Error('Claude API key not configured');
+  if (!apiKey) throw new Error(t('api.claudeApiKeyNotConfigured'));
 
   const res = await fetch('/proxy/ai/claude/v1/models', {
     headers: {
