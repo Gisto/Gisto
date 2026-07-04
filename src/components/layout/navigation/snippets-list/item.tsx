@@ -55,10 +55,8 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                   onClick={(event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    const settings = globalState.getState().settings;
                     globalState.setState({
                       search: filter === search ? '' : filter,
-                      settings: { ...settings, sidebarViewMode: 'list' },
                     });
                   }}
                   variant={search === filter ? 'default' : 'primary-outline'}
@@ -83,10 +81,8 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
-                      const settings = globalState.getState().settings;
                       globalState.setState({
                         search: filter === search ? '' : filter,
-                        settings: { ...settings, sidebarViewMode: 'list' },
                       });
                     }}
                     variant={search === filter ? 'default' : 'primary-outline'}
