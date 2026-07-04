@@ -4,7 +4,6 @@ import { reactErrorHandler } from '@sentry/react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-
 import './main.css';
 import { App } from './app.tsx';
 import { initI18n } from './lib/i18n';

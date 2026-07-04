@@ -398,7 +398,6 @@ export const SnippetContent = () => {
       <AIChatDialog
         open={chatOpen}
         onOpenChange={setChatOpen}
-        title="Assistant"
         messages={chatMessages}
         onSend={handleChatSend}
         onClear={() => setChatMessages([])}
