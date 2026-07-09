@@ -16,6 +16,7 @@ function getApiKey(provider: string): string | null {
     openai: 'openaiApiKey',
     gemini: 'geminiApiKey',
     claude: 'claudeApiKey',
+    minimax: 'minimaxApiKey',
     openrouter: 'openRouterApiKey',
   };
   const key = keyField[provider];
@@ -103,6 +104,17 @@ export async function fetchClaudeModels(): Promise<ModelInfo[]> {
   }));
 }
 
+export async function fetchMiniMaxModels(): Promise<ModelInfo[]> {
+  return [
+    {
+      id: 'MiniMax-M3',
+      name: 'MiniMax-M3',
+      pricing: { prompt: 0.6 / 1_000_000, completion: 2.4 / 1_000_000 },
+      contextLength: 1000000,
+    },
+  ];
+}
+
 export async function fetchModels(provider: string): Promise<ModelInfo[]> {
   switch (provider) {
     case 'openrouter':
@@ -113,6 +125,8 @@ export async function fetchModels(provider: string): Promise<ModelInfo[]> {
       return fetchGeminiModels();
     case 'claude':
       return fetchClaudeModels();
+    case 'minimax':
+      return fetchMiniMaxModels();
     default:
       return [];
   }

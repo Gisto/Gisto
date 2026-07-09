@@ -47,6 +47,13 @@ export const AI_PROVIDERS: Record<string, AiProvider> = {
       { value: 'claude-3-haiku-20240307', label: '🏃‍♂️ Claude 3 Haiku (Legacy)' },
     ],
   },
+  minimax: {
+    label: 'MiniMax',
+    description: 'MiniMax models',
+    icon: OpenAIIcon,
+    apiKeyUrl: 'https://platform.minimaxi.com/user-center/basic-information/interface-key',
+    modelOptions: [{ value: 'MiniMax-M3', label: 'MiniMax-M3' }],
+  },
   openrouter: {
     label: 'OpenRouter',
     description: 'Multiple Models',
