@@ -4,6 +4,7 @@ const GEMINI_ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
 const OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+const MINIMAX_ENDPOINT = 'https://api.minimax.io/v1/chat/completions';
 const CLAUDE_ENDPOINT = 'https://api.anthropic.com/v1/messages';
 
 export interface ChatMessage {
@@ -17,17 +18,23 @@ export interface GenerateAiResponseOptions {
   systemContext?: string;
   model?: string;
   temperature?: number;
-  activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude';
+  activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude' | 'minimax';
 }
 
 type AiProvider = NonNullable<GenerateAiResponseOptions['activeAiProvider']>;
-type AiApiKeyField = 'openRouterApiKey' | 'geminiApiKey' | 'openaiApiKey' | 'claudeApiKey';
+type AiApiKeyField =
+  | 'openRouterApiKey'
+  | 'geminiApiKey'
+  | 'openaiApiKey'
+  | 'claudeApiKey'
+  | 'minimaxApiKey';
 
 const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
   openrouter: 'openRouterApiKey',
   gemini: 'geminiApiKey',
   openai: 'openaiApiKey',
   claude: 'claudeApiKey',
+  minimax: 'minimaxApiKey',
 };
 
 type OpenAiChatResponse = {
@@ -156,8 +163,9 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
 
     const res = await parseJsonResponse<OpenRouterChatResponse>(response, 'openrouter');
     rawResponse = res.choices?.[0]?.message?.content ?? '';
-  } else if (activeAiProvider === 'openai') {
-    const response = await fetch(OPENAI_ENDPOINT, {
+  } else if (activeAiProvider === 'openai' || activeAiProvider === 'minimax') {
+    const endpoint = activeAiProvider === 'minimax' ? MINIMAX_ENDPOINT : OPENAI_ENDPOINT;
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -170,7 +178,7 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
       }),
     });
 
-    const res = await parseJsonResponse<OpenAiChatResponse>(response, 'openai');
+    const res = await parseJsonResponse<OpenAiChatResponse>(response, activeAiProvider);
     rawResponse = res.choices?.[0]?.message?.content ?? '';
   } else if (activeAiProvider === 'gemini') {
     const response = await fetch(GEMINI_ENDPOINT, {

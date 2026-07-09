@@ -163,6 +163,31 @@ describe('generateAiResponse', () => {
     fetchSpy.mockRestore();
   });
 
+  it('sends requests to the MiniMax OpenAI-compatible endpoint', async () => {
+    mockSettings.ai = {
+      activeAiProvider: 'minimax',
+      minimaxApiKey: 'test-key',
+      model: 'MiniMax-M3',
+      temperature: 0.7,
+    };
+
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ choices: [{ message: { content: 'MiniMax response' } }] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    const result = await generateAiResponse({ prompt: 'hello' });
+
+    expect(result).toBe('MiniMax response');
+    expect(fetchSpy.mock.calls[0][0]).toBe('https://api.minimax.io/v1/chat/completions');
+    const callBody = JSON.parse(fetchSpy.mock.calls[0][1]?.body as string);
+    expect(callBody.model).toBe('MiniMax-M3');
+
+    fetchSpy.mockRestore();
+  });
+
   it('cleans JSON code fences from response', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(
       new Response(

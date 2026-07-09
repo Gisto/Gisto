@@ -50,11 +50,12 @@ export type StoreStateType = {
       minimap: { enabled: boolean };
     };
     ai: {
-      activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude';
+      activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude' | 'minimax';
       geminiApiKey?: string;
       openRouterApiKey?: string;
       openaiApiKey?: string;
       claudeApiKey?: string;
+      minimaxApiKey?: string;
       model: string;
       temperature: number;
       cleanJson: boolean;
@@ -166,6 +167,7 @@ export const defaultSettings: SettingsType = {
     openRouterApiKey: '',
     openaiApiKey: '',
     claudeApiKey: '',
+    minimaxApiKey: '',
     model: 'meta-llama/llama-3.2-3b-instruct:free',
     temperature: 0.7,
     cleanJson: true,
