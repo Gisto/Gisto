@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### 🐛 Bug Fixes
+
+- Ai models select
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([3cc5752](https://github.com/gisto/gisto/commit/3cc575248d87880720e2aa86d622bbe556d937e6))
+
+
 ## v2.13.0
 
 Released on: Jul 12, 2026
