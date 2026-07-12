@@ -523,55 +523,68 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
           }
 
           if (key === 'activeAiProvider') {
-            const providers: Array<'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter'> = [
-              'openai',
-              'gemini',
-              'claude',
-              'minimax',
-              'openrouter',
-            ];
+            const providers = Object.keys(AI_PROVIDERS);
+            const selectedProvider = AI_PROVIDERS[value as string];
+            const SelectedIcon = selectedProvider?.icon;
 
             return (
-              <>
-                <label className="block mb-4 font-medium">{t('pages.settings.aiProvider')}</label>
-                <RadioGroup
-                  className="grid grid-cols-2 gap-4 mb-4"
+              <div key={key} className="mb-4">
+                <label className="block mb-2 font-medium">{t('pages.settings.aiProvider')}</label>
+                <Select
+                  value={value}
                   onValueChange={(selectedValue) => {
                     onChange(fullPath, selectedValue);
                   }}
-                  defaultValue={value}
                 >
-                  {providers.map((provider) => {
-                    const providerData = AI_PROVIDERS[provider];
-                    if (!providerData) return null;
-
-                    const IconComponent = providerData.icon;
-
-                    return (
-                      <div key={provider}>
-                        <RadioGroupItem
-                          value={provider}
-                          id={`provider-${provider}`}
-                          className="peer sr-only"
-                          aria-label={providerData.label}
-                        />
-                        <Label
-                          htmlFor={`provider-${provider}`}
-                          className="cursor-pointer flex gap-3 flex-col items-center justify-between rounded-lg border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <div className="w-8 h-8">
-                            <IconComponent />
+                  <SelectTrigger className="w-full h-auto min-h-[72px] px-4 py-3">
+                    <div className="flex items-center gap-3">
+                      {SelectedIcon && (
+                        <span className="w-8 h-8 shrink-0">
+                          <SelectedIcon />
+                        </span>
+                      )}
+                      <div className="text-left">
+                        <div className="text-sm font-medium">
+                          {selectedProvider?.label ?? t('pages.settings.aiProvider')}
+                        </div>
+                        {selectedProvider && (
+                          <div className="text-xs text-muted-foreground mt-0.5">
+                            {selectedProvider.description}
                           </div>
-                          <div className="text-sm font-medium">{providerData.label}</div>
-                          <small className="text-xs text-muted-foreground text-center">
-                            {providerData.description}
-                          </small>
-                        </Label>
+                        )}
                       </div>
-                    );
-                  })}
-                </RadioGroup>
-              </>
+                    </div>
+                  </SelectTrigger>
+                  <SelectContent className="min-w-[var(--radix-select-trigger-width)] p-2">
+                    {providers.map((provider) => {
+                      const providerData = AI_PROVIDERS[provider];
+                      if (!providerData) return null;
+
+                      const IconComponent = providerData.icon;
+
+                      return (
+                        <SelectItem
+                          key={provider}
+                          value={provider}
+                          className="cursor-pointer rounded-lg px-3 py-3 pl-3"
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="w-8 h-8 shrink-0">
+                              <IconComponent />
+                            </span>
+                            <div>
+                              <div className="text-sm font-medium">{providerData.label}</div>
+                              <div className="text-xs text-muted-foreground mt-0.5">
+                                {providerData.description}
+                              </div>
+                            </div>
+                          </div>
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectContent>
+                </Select>
+              </div>
             );
           }
 
