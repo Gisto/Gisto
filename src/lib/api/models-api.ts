@@ -105,14 +105,23 @@ export async function fetchClaudeModels(): Promise<ModelInfo[]> {
 }
 
 export async function fetchMiniMaxModels(): Promise<ModelInfo[]> {
-  return [
-    {
-      id: 'MiniMax-M3',
-      name: 'MiniMax-M3',
-      pricing: { prompt: 0.6 / 1_000_000, completion: 2.4 / 1_000_000 },
-      contextLength: 1000000,
-    },
-  ];
+  const apiKey = getApiKey('minimax');
+  if (!apiKey) throw new Error(t('api.configureAiProvider'));
+
+  const res = await fetch('https://api.minimax.io/v1/models', {
+    headers: { Authorization: `Bearer ${apiKey}` },
+  });
+
+  if (!res.ok) throw new Error(`MiniMax API error: ${res.status}`);
+
+  const data = await res.json();
+
+  return (data.data || [])
+    .filter((m: Record<string, unknown>) => typeof m.id === 'string')
+    .map((m: Record<string, unknown>) => ({
+      id: m.id as string,
+      name: m.id as string,
+    }));
 }
 
 export async function fetchModels(provider: string): Promise<ModelInfo[]> {
