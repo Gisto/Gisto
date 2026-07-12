@@ -2,6 +2,26 @@
 
 All significant updates and improvements
 
+## v2.13.0
+
+Released on: Jul 12, 2026
+
+### 🚀 Features
+
+- Add MiniMax AI provider
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([485ad81](https://github.com/gisto/gisto/commit/485ad8158c972588af5bdc67e56d90eafbdddd81))
+
+
+### 🐛 Bug Fixes
+
+- Fetch MiniMax models dynamically
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([8855f68](https://github.com/gisto/gisto/commit/8855f68362956cb4a9c778fa4f3d20f87d98c9a5))
+
+
 ## v2.12.0
 
 Released on: Jul 4, 2026

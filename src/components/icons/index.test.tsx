@@ -1,6 +1,14 @@
 import { render } from '@testing-library/react';
 
-import { OpenAIIcon, GeminiIcon, ClaudeIcon, OpenRouterIcon, GitHubIcon, GitLabIcon } from '.';
+import {
+  OpenAIIcon,
+  GeminiIcon,
+  ClaudeIcon,
+  MiniMaxIcon,
+  OpenRouterIcon,
+  GitHubIcon,
+  GitLabIcon,
+} from '.';
 
 describe('Icons', () => {
   it('renders OpenAIIcon', () => {
@@ -15,6 +23,11 @@ describe('Icons', () => {
 
   it('renders ClaudeIcon', () => {
     const { asFragment } = render(<ClaudeIcon />);
+    expect(asFragment()).toBeDefined();
+  });
+
+  it('renders MiniMaxIcon', () => {
+    const { asFragment } = render(<MiniMaxIcon />);
     expect(asFragment()).toBeDefined();
   });
 

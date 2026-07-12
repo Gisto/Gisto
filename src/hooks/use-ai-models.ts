@@ -53,6 +53,8 @@ const KNOWN_MODEL_LABELS: Record<string, string> = {
   'claude-sonnet-4-20250514': 'Claude Sonnet 4',
   'claude-opus-4-20250514': 'Claude Opus 4',
   'claude-3-haiku-20240307': 'Claude 3 Haiku',
+  'MiniMax-M3': 'MiniMax-M3',
+  'MiniMax-M2.7': 'MiniMax-M2.7',
 };
 
 export function useAiModels(provider: string | undefined): UseAiModelsResult {

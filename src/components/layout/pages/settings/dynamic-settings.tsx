@@ -523,10 +523,11 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
           }
 
           if (key === 'activeAiProvider') {
-            const providers: Array<'openai' | 'gemini' | 'claude' | 'openrouter'> = [
+            const providers: Array<'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter'> = [
               'openai',
               'gemini',
               'claude',
+              'minimax',
               'openrouter',
             ];
 
@@ -579,12 +580,17 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             key === 'openaiApiKey' ||
             key === 'geminiApiKey' ||
             key === 'claudeApiKey' ||
+            key === 'minimaxApiKey' ||
             key === 'openRouterApiKey'
           ) {
-            const providerMap: Record<string, 'openai' | 'gemini' | 'claude' | 'openrouter'> = {
+            const providerMap: Record<
+              string,
+              'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter'
+            > = {
               openaiApiKey: 'openai',
               geminiApiKey: 'gemini',
               claudeApiKey: 'claude',
+              minimaxApiKey: 'minimax',
               openRouterApiKey: 'openrouter',
             };
             const provider = providerMap[key];

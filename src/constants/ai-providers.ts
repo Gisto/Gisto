@@ -1,4 +1,10 @@
-import { OpenAIIcon, GeminiIcon, ClaudeIcon, OpenRouterIcon } from '@/components/icons';
+import {
+  OpenAIIcon,
+  GeminiIcon,
+  ClaudeIcon,
+  MiniMaxIcon,
+  OpenRouterIcon,
+} from '@/components/icons';
 
 export interface AiProvider {
   icon: React.ComponentType<{ className?: string }>;
@@ -45,6 +51,16 @@ export const AI_PROVIDERS: Record<string, AiProvider> = {
       { value: 'claude-opus-4-20250514', label: '🔥 Claude Opus 4' },
       { value: 'claude-sonnet-4-20250514', label: '🔥 Claude Sonnet 4' },
       { value: 'claude-3-haiku-20240307', label: '🏃‍♂️ Claude 3 Haiku (Legacy)' },
+    ],
+  },
+  minimax: {
+    label: 'MiniMax',
+    description: 'MiniMax models',
+    icon: MiniMaxIcon,
+    apiKeyUrl: 'https://platform.minimax.io/user-center/basic-information/interface-key',
+    modelOptions: [
+      { value: 'MiniMax-M3', label: 'MiniMax-M3' },
+      { value: 'MiniMax-M2.7', label: 'MiniMax-M2.7' },
     ],
   },
   openrouter: {

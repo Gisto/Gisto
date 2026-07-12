@@ -16,6 +16,7 @@ function getApiKey(provider: string): string | null {
     openai: 'openaiApiKey',
     gemini: 'geminiApiKey',
     claude: 'claudeApiKey',
+    minimax: 'minimaxApiKey',
     openrouter: 'openRouterApiKey',
   };
   const key = keyField[provider];
@@ -103,6 +104,26 @@ export async function fetchClaudeModels(): Promise<ModelInfo[]> {
   }));
 }
 
+export async function fetchMiniMaxModels(): Promise<ModelInfo[]> {
+  const apiKey = getApiKey('minimax');
+  if (!apiKey) throw new Error(t('api.configureAiProvider'));
+
+  const res = await fetch('https://api.minimax.io/v1/models', {
+    headers: { Authorization: `Bearer ${apiKey}` },
+  });
+
+  if (!res.ok) throw new Error(`MiniMax API error: ${res.status}`);
+
+  const data = await res.json();
+
+  return (data.data || [])
+    .filter((m: Record<string, unknown>) => typeof m.id === 'string')
+    .map((m: Record<string, unknown>) => ({
+      id: m.id as string,
+      name: m.id as string,
+    }));
+}
+
 export async function fetchModels(provider: string): Promise<ModelInfo[]> {
   switch (provider) {
     case 'openrouter':
@@ -113,6 +134,8 @@ export async function fetchModels(provider: string): Promise<ModelInfo[]> {
       return fetchGeminiModels();
     case 'claude':
       return fetchClaudeModels();
+    case 'minimax':
+      return fetchMiniMaxModels();
     default:
       return [];
   }
