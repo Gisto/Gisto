@@ -56,6 +56,8 @@ export type StoreStateType = {
       openaiApiKey?: string;
       claudeApiKey?: string;
       minimaxApiKey?: string;
+      minimaxRegion: 'global_en' | 'cn_zh';
+      minimaxProtocol: 'openai' | 'anthropic';
       model: string;
       temperature: number;
       cleanJson: boolean;
@@ -168,6 +170,8 @@ export const defaultSettings: SettingsType = {
     openaiApiKey: '',
     claudeApiKey: '',
     minimaxApiKey: '',
+    minimaxRegion: 'global_en',
+    minimaxProtocol: 'openai',
     model: 'meta-llama/llama-3.2-3b-instruct:free',
     temperature: 0.7,
     cleanJson: true,

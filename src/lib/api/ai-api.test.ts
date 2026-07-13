@@ -163,30 +163,85 @@ describe('generateAiResponse', () => {
     fetchSpy.mockRestore();
   });
 
-  it('sends requests to the MiniMax OpenAI-compatible endpoint', async () => {
-    mockSettings.ai = {
-      activeAiProvider: 'minimax',
-      minimaxApiKey: 'test-key',
-      model: 'MiniMax-M3',
-      temperature: 0.7,
-    };
+  it.each([
+    {
+      name: 'global OpenAI-compatible',
+      region: 'global_en',
+      protocol: 'openai',
+      endpoint: 'https://api.minimax.io/v1/chat/completions',
+    },
+    {
+      name: 'China OpenAI-compatible',
+      region: 'cn_zh',
+      protocol: 'openai',
+      endpoint: 'https://api.minimaxi.com/v1/chat/completions',
+    },
+    {
+      name: 'global Anthropic-compatible',
+      region: 'global_en',
+      protocol: 'anthropic',
+      endpoint: 'https://api.minimax.io/anthropic/v1/messages',
+    },
+    {
+      name: 'China Anthropic-compatible',
+      region: 'cn_zh',
+      protocol: 'anthropic',
+      endpoint: 'https://api.minimaxi.com/anthropic/v1/messages',
+    },
+  ])(
+    'routes MiniMax requests through the $name endpoint',
+    async ({ region, protocol, endpoint }) => {
+      mockSettings.ai = {
+        activeAiProvider: 'minimax',
+        minimaxApiKey: 'test-key',
+        minimaxRegion: region,
+        minimaxProtocol: protocol,
+        model: 'MiniMax-M3',
+        temperature: 0.7,
+      };
 
-    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
-      new Response(JSON.stringify({ choices: [{ message: { content: 'MiniMax response' } }] }), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      })
-    );
+      const responseBody =
+        protocol === 'anthropic'
+          ? {
+              content: [
+                { type: 'thinking', thinking: 'Internal reasoning' },
+                { type: 'text', text: 'MiniMax response' },
+              ],
+            }
+          : { choices: [{ message: { content: 'MiniMax response' } }] };
+      const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+        new Response(JSON.stringify(responseBody), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
 
-    const result = await generateAiResponse({ prompt: 'hello' });
+      const result = await generateAiResponse({
+        prompt: 'hello',
+        systemContext: 'Follow the requested format.',
+      });
 
-    expect(result).toBe('MiniMax response');
-    expect(fetchSpy.mock.calls[0][0]).toBe('https://api.minimax.io/v1/chat/completions');
-    const callBody = JSON.parse(fetchSpy.mock.calls[0][1]?.body as string);
-    expect(callBody.model).toBe('MiniMax-M3');
+      expect(result).toBe('MiniMax response');
+      expect(fetchSpy.mock.calls[0][0]).toBe(endpoint);
+      const request = fetchSpy.mock.calls[0][1];
+      const headers = request?.headers as Record<string, string>;
+      const callBody = JSON.parse(request?.body as string);
+      expect(callBody.model).toBe('MiniMax-M3');
+      if (protocol === 'anthropic') {
+        expect(headers['x-api-key']).toBe('test-key');
+        expect(callBody.system).toBe('Follow the requested format.');
+        expect(callBody.max_tokens).toBe(4096);
+      } else {
+        expect(headers.Authorization).toBe('Bearer test-key');
+        expect(callBody.messages[0]).toEqual({
+          role: 'system',
+          content: 'Follow the requested format.',
+        });
+      }
 
-    fetchSpy.mockRestore();
-  });
+      fetchSpy.mockRestore();
+    }
+  );
 
   it('cleans JSON code fences from response', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(
