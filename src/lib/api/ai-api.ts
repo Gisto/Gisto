@@ -1,10 +1,11 @@
 import { globalState } from '../store/globalState.ts';
 
+import { resolveMiniMaxEndpoint } from '@/constants/minimax-endpoints.ts';
+
 const GEMINI_ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
 const OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
-const MINIMAX_ENDPOINT = 'https://api.minimax.io/v1/chat/completions';
 const CLAUDE_ENDPOINT = 'https://api.anthropic.com/v1/messages';
 
 export interface ChatMessage {
@@ -47,8 +48,8 @@ type GeminiResponse = {
   candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
 };
 
-type ClaudeResponse = {
-  content?: Array<{ text?: string }>;
+type AnthropicChatResponse = {
+  content?: Array<{ type?: string; text?: string }>;
 };
 
 export class AiApiError extends Error {
@@ -121,6 +122,10 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
   // Get the active provider and its API key
   const activeAiProvider = (ai.activeAiProvider || 'openrouter') as AiProvider;
   const apiKey = ai[AI_PROVIDER_API_KEYS[activeAiProvider]] || '';
+  const minimaxEndpoint =
+    activeAiProvider === 'minimax'
+      ? resolveMiniMaxEndpoint(ai.minimaxRegion, ai.minimaxProtocol)
+      : null;
 
   if (!apiKey) {
     throw new AiApiError(
@@ -163,8 +168,12 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
 
     const res = await parseJsonResponse<OpenRouterChatResponse>(response, 'openrouter');
     rawResponse = res.choices?.[0]?.message?.content ?? '';
-  } else if (activeAiProvider === 'openai' || activeAiProvider === 'minimax') {
-    const endpoint = activeAiProvider === 'minimax' ? MINIMAX_ENDPOINT : OPENAI_ENDPOINT;
+  } else if (
+    activeAiProvider === 'openai' ||
+    (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'openai')
+  ) {
+    const endpoint =
+      activeAiProvider === 'minimax' && minimaxEndpoint ? minimaxEndpoint.chatUrl : OPENAI_ENDPOINT;
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -194,34 +203,42 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
 
     const res = await parseJsonResponse<GeminiResponse>(response, 'gemini');
     rawResponse = res.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
-  } else if (activeAiProvider === 'claude') {
-    const claudeMessages = buildMessages(prompt, chatMessages, systemContext);
-    const claudeSystem =
-      claudeMessages
+  } else if (
+    activeAiProvider === 'claude' ||
+    (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'anthropic')
+  ) {
+    const anthropicMessages = buildMessages(prompt, chatMessages, systemContext);
+    const anthropicSystem =
+      anthropicMessages
         .filter((m) => m.role === 'system')
         .map((m) => m.content)
         .join('\n') || undefined;
-    const claudeBody: Record<string, unknown> = {
+    const anthropicBody: Record<string, unknown> = {
       model,
       max_tokens: 4096,
-      messages: claudeMessages.filter((m) => m.role !== 'system'),
+      messages: anthropicMessages.filter((m) => m.role !== 'system'),
       temperature,
     };
-    if (claudeSystem) {
-      claudeBody.system = claudeSystem;
+    if (anthropicSystem) {
+      anthropicBody.system = anthropicSystem;
     }
-    const response = await fetch(CLAUDE_ENDPOINT, {
+    const endpoint =
+      activeAiProvider === 'minimax' && minimaxEndpoint ? minimaxEndpoint.chatUrl : CLAUDE_ENDPOINT;
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
       },
-      body: JSON.stringify(claudeBody),
+      body: JSON.stringify(anthropicBody),
     });
 
-    const res = await parseJsonResponse<ClaudeResponse>(response, 'claude');
-    rawResponse = res.content?.[0]?.text ?? '';
+    const res = await parseJsonResponse<AnthropicChatResponse>(response, activeAiProvider);
+    rawResponse =
+      res.content?.find((block) => block.type === 'text')?.text ??
+      res.content?.find((block) => block.text)?.text ??
+      '';
   } else {
     throw new AiApiError('Invalid AI provider configured.', activeAiProvider);
   }

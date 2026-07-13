@@ -1,3 +1,4 @@
+import { resolveMiniMaxEndpoint } from '@/constants/minimax-endpoints.ts';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 
@@ -108,8 +109,14 @@ export async function fetchMiniMaxModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('minimax');
   if (!apiKey) throw new Error(t('api.configureAiProvider'));
 
-  const res = await fetch('https://api.minimax.io/v1/models', {
-    headers: { Authorization: `Bearer ${apiKey}` },
+  const { ai } = globalState.getState().settings;
+  const endpoint = resolveMiniMaxEndpoint(ai.minimaxRegion, ai.minimaxProtocol);
+
+  const res = await fetch(endpoint.modelsUrl, {
+    headers:
+      endpoint.protocol === 'anthropic'
+        ? { 'x-api-key': apiKey }
+        : { Authorization: `Bearer ${apiKey}` },
   });
 
   if (!res.ok) throw new Error(`MiniMax API error: ${res.status}`);
