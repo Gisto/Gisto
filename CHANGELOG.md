@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## v2.13.2
+
+Released on: Jul 16, 2026
+
+### 🐛 Bug Fixes
+
+- Add MiniMax endpoint configuration
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([56e1dbd](https://github.com/gisto/gisto/commit/56e1dbdcc7e856312f3eee3a283ebe8dbd50c433))
+
+
 ## v2.13.1
 
 Released on: Jul 12, 2026

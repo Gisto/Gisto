@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/select.tsx';
 import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
-import { AI_PROVIDERS } from '@/constants';
+import { AI_PROVIDERS, MINIMAX_PROTOCOL_OPTIONS, MINIMAX_REGION_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { useAiModels } from '@/hooks/use-ai-models';
 import { t } from '@/lib/i18n';
@@ -585,6 +585,29 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   </SelectContent>
                 </Select>
               </div>
+            );
+          }
+
+          if (key === 'minimaxRegion' || key === 'minimaxProtocol') {
+            const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
+            const activeProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
+
+            if (activeProvider !== 'minimax') {
+              return null;
+            }
+
+            return (
+              <SpecialSelect
+                key={key}
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={
+                  key === 'minimaxRegion' ? MINIMAX_REGION_OPTIONS : MINIMAX_PROTOCOL_OPTIONS
+                }
+                label={key === 'minimaxRegion' ? 'MiniMax region' : 'API protocol'}
+              />
             );
           }
 
