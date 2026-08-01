@@ -50,16 +50,20 @@ export type StoreStateType = {
       minimap: { enabled: boolean };
     };
     ai: {
-      activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude';
+      activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude' | 'minimax';
       geminiApiKey?: string;
       openRouterApiKey?: string;
       openaiApiKey?: string;
       claudeApiKey?: string;
+      minimaxApiKey?: string;
+      minimaxRegion: 'global_en' | 'cn_zh';
+      minimaxProtocol: 'openai' | 'anthropic';
       model: string;
       temperature: number;
       cleanJson: boolean;
     };
-    activeSnippetProvider: 'github' | 'gitlab' | 'local';
+    activeSnippetProvider: 'github' | 'gitlab' | 'local' | 'snippet-bin';
+    snippetBinBaseUrl: string;
     dashboardSnippetsOverTimeRange: '7days' | '30days' | '6months' | '1year';
   };
 };
@@ -165,11 +169,15 @@ export const defaultSettings: SettingsType = {
     openRouterApiKey: '',
     openaiApiKey: '',
     claudeApiKey: '',
+    minimaxApiKey: '',
+    minimaxRegion: 'global_en',
+    minimaxProtocol: 'openai',
     model: 'meta-llama/llama-3.2-3b-instruct:free',
     temperature: 0.7,
     cleanJson: true,
   },
   activeSnippetProvider: 'github',
+  snippetBinBaseUrl: '/api',
   dashboardSnippetsOverTimeRange: '6months',
 };
 

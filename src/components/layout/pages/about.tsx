@@ -56,9 +56,13 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
         <div className="w-full h-[calc(100vh-116px)] overflow-auto">
           <div className="max-w-2xl mx-auto p-8 space-y-8">
             <div className="flex items-center gap-6">
-              <img src="/icon-192.png" className="w-20 h-20 rounded-2xl shadow-md" alt="Gisto" />
+              <img
+                src="/icon-192.png"
+                className="w-20 h-20 rounded-2xl shadow-md"
+                alt={t('pages.about.title')}
+              />
               <div>
-                <h1 className="text-3xl font-bold">Gisto</h1>
+                <h1 className="text-3xl font-bold">{t('pages.about.title')}</h1>
                 <p className="text-sm text-muted-foreground flex items-center gap-2">
                   <span>v{version}</span>
                   <span>·</span>
@@ -76,9 +80,17 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <LinkButton href="https://github.com/Gisto/Gisto" icon={Github} label="GitHub" />
-              <LinkButton href="https://gisto.org" icon={Globe} label="Website" />
-              <LinkButton href="https://twitter.com/gistoapp" icon={Twitter} label="Twitter" />
+              <LinkButton
+                href="https://github.com/Gisto/Gisto"
+                icon={Github}
+                label={t('pages.about.github')}
+              />
+              <LinkButton href="https://gisto.org" icon={Globe} label={t('pages.about.website')} />
+              <LinkButton
+                href="https://twitter.com/gistoapp"
+                icon={Twitter}
+                label={t('pages.about.twitter')}
+              />
               <LinkButton
                 href="https://github.com/Gisto/Gisto/blob/main/CHANGELOG.md"
                 icon={BookOpen}
@@ -104,7 +116,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
             <div className="pt-6 border-t text-center">
               <p className="text-xs text-muted-foreground flex items-center justify-center gap-2">
                 <Scale className="size-3" />
-                MIT License · © {new Date().getFullYear()} Gisto
+                {t('pages.about.mitLicense', { year: new Date().getFullYear() })}
               </p>
             </div>
           </div>

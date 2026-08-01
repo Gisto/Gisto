@@ -1,15 +1,17 @@
-# docker-compose for local frontend development
-version: '3.8'
+version: "3.8"
+
 services:
   web:
     build: .
     volumes:
-      - ./:/app:cached
-      - /app/node_modules
+      - .:/app
+      - node_modules:/app/node_modules
     ports:
       - "61570:61570"
     environment:
-      - NODE_ENV=development
-      - HOST=0.0.0.0
-    # make sure vite listens on 0.0.0.0 so the port mapping works
-    command: sh -c "pnpm exec vite --port 61570 --host 0.0.0.0"
+      NODE_ENV: development
+      HOST: 0.0.0.0
+    command: pnpm exec vite --port 61570 --host 0.0.0.0
+
+volumes:
+  node_modules:

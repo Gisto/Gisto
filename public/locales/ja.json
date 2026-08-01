@@ -43,7 +43,21 @@
     "restart": "再起動",
     "activeFilters": "アクティブなフィルタ",
     "hidePreview": "プレビューを非表示",
-    "showPreview": "プレビューを表示"
+    "showPreview": "プレビューを表示",
+    "more": "More",
+    "close": "Close",
+    "lock": "Lock",
+    "unlock": "Unlock",
+    "active": "Active",
+    "toggleTheme": "Toggle theme",
+    "text": "Text",
+    "view": "View",
+    "send": "Send",
+    "newChat": "新しいチャット",
+    "confirmLogout": "Are you sure you want to log-out?",
+    "selectRange": "Select range",
+    "scrollToEnd": "Scroll to end",
+    "scrollToStart": "Scroll to start"
   },
   "components": {
     "filterTags": "{number}個のタグをフィルタリング",
@@ -53,7 +67,25 @@
     "allUniqueLanguages": "すべての一意な言語",
     "noLanguageMatching": "{search}と一致する言語がありません",
     "updateAvailable": "v{version}への更新が利用可能です",
-    "downloadFinished": "v{version}のダウンロードが完了しました"
+    "downloadFinished": "v{version}のダウンロードが完了しました",
+    "aiAssistant": "AIアシスタント",
+    "thinking": "考え中...",
+    "pressSendToStart": "送信を押して新しい会話を始める",
+    "useTextInputToAsk": "以下のテキスト入力を使って質問してください",
+    "howCanIHelp": "今日はどのようにお手伝いできますか？",
+    "askAQuestion": "質問する...",
+    "searchModels": "モデルを検索...",
+    "searchLanguages": "言語を検索...",
+    "noResults": "結果なし",
+    "failedToLoadModels": "モデルの読み込みに失敗しました",
+    "loadingModels": "モデルを読み込み中...",
+    "selected": "選択中: {label}",
+    "available": "利用可能: {freeCount} 無料 · {paidCount} 有料",
+    "error": "エラー: {error}",
+    "free": "無料",
+    "paid": "有料",
+    "contextK": "{n}K コンテキスト",
+    "editingFiles": "{n} 個のファイルを編集中"
   },
   "menu": {
     "logOut": "ログアウト",
@@ -142,13 +174,26 @@
       "temperature": "温度",
       "apiKey": "APIキー",
       "uiLanguage": "UI言語（実験的）",
+      "snippetProvider": "スニペットプロバイダ",
       "experimentalTranslation": "実験的、機械翻訳、一部の翻訳は正確でない、または利用できません。",
       "getApiKey": "{url}であなたの{provider} APIキーを取得します。",
       "apiKeyPlaceholder": "あなたのAPIキー",
       "localDatabase": "ローカルデータベース",
       "localDatabaseDescription": "ローカルのスニペットをエクスポートまたはインポートします。インポートは既存のデータとマージされます。",
       "export": "エクスポート",
-      "import": "インポート"
+      "import": "インポート",
+      "selection": "Selection",
+      "boundary": "Boundary",
+      "trailing": "Trailing",
+      "all": "All",
+      "line": "Line",
+      "gutter": "Gutter",
+      "keyboardShortcuts": "Keyboard Shortcuts",
+      "keyboardShortcutsDescription": "Quick shortcuts to navigate and interact with Gisto.",
+      "gistoSettings": "Gisto settings",
+      "themeLanguageAndTokens": "Theme, language, and access tokens.",
+      "openAiChatDescription": "AIチャットを開いて、設定したAIモデルと会話できます。会話履歴はセッション中保持されます。",
+      "openAiChat": "アシスタントを開く"
     },
     "snippet": {
       "fileTooLarge": "ファイルが大きすぎます。してください",
@@ -160,7 +205,9 @@
       "copySnippetId": "スニペットIDをコピー",
       "copyEmbed": "埋め込みコードをクリップボードにコピー",
       "jsfiddleInstructions": "スニペットの一部としてCSS、JS、HTMLファイルが必要です",
-      "cannotBeUndone": "元に戻すことはできません"
+      "cannotBeUndone": "元に戻すことはできません",
+      "askAbout": "\"{title}\"について質問",
+      "askAQuestion": "質問する..."
     },
     "about": {
       "title": "について",
@@ -169,7 +216,10 @@
       "sponsor": "Gistoをスポンサー",
       "changelog": "変更ログ",
       "website": "Webサイト",
-      "issues": "問題を報告"
+      "issues": "問題を報告",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "mitLicense": "MIT License · © {year} Gisto"
     }
   },
   "list": {
@@ -178,6 +228,8 @@
     "apiRate": "APIレート",
     "apiRateLimit": "GitHub APIレート制限",
     "nextReset": "次のリセット",
+    "noSnippets": "スニペットはまだありません",
+    "noSnippetsDescription": "最初のスニペットを作成して始めましょう",
     "searchHelp": {
       "title": "説明/タイトル、タグ、または言語でスニペットを検索<br />またはすべての組み合わせ:",
       "description": "<strong>説明またはファイルの内容:</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>単なるフリーテキスト</code>",
@@ -224,13 +276,38 @@
     "gitlabWarningDescription": "GitLabサポートはまだ初期段階です",
     "providerGithub": "GitHub",
     "providerGitlab": "GitLab",
-    "providerLocal": "ローカル"
+    "providerLocal": "ローカル",
+    "providerSnippetBin": "Snippet-bin",
+    "snippetBinToken": "Snippet-binトークン",
+    "snippetBinBaseUrl": "Snippet-binベースURL",
+    "enterSnippetBinToken": "Snippet-binトークンを入力",
+    "enterSnippetBinBaseUrl": "Snippet-binベースURLを入力",
+    "scopeMessageSnippetBin": "Snippet-binの個人アクセストークンを入力してください",
+    "snippetBinWarning": "カスタムインスタンス",
+    "snippetBinDescription": "{baseUrl}のSnippet-binインスタンスに接続しています"
   },
   "api": {
     "starRemoved": "スターが削除されました",
     "starAdded": "スターが追加されました",
     "visibilityChangedToPublic": "スニペットの可視性が公開に変更されました",
     "visibilityChangedToPrivate": "スニペットの可視性がプライベートに変更されました",
-    "errorTryToRefresh": "Gistsのフェッチエラーが発生しました。更新してみてください"
+    "errorTryToRefresh": "Gistsのフェッチエラーが発生しました。更新してみてください",
+    "featureNotSupported": "この機能は{provider}ではまだサポートされていません",
+    "snippetBinUnauthorized": "Snippet-bin Unauthorized",
+    "gitlabUnauthorized": "GitLab Unauthorized",
+    "invalidSnippetIdForGitLab": "Invalid snippet ID for GitLab",
+    "notAllowedToDelete": "Not allowed to delete this snippet",
+    "noDataFromGraphql": "No data returned from GitHub GraphQL API",
+    "fetchGithubGraphQLNotSupported": "fetchGithubGraphQL is not supported by this provider",
+    "directRequestsNotSupported": "Direct requests are not supported in local mode",
+    "snippetNotFound": "Snippet not found",
+    "unexpectedError": "An unexpected error occurred",
+    "configureAiProvider": "Please configure an AI provider API key in Settings > AI Assistant.",
+    "openAiApiKeyNotConfigured": "OpenAI API key not configured",
+    "geminiApiKeyNotConfigured": "Gemini API key not configured",
+    "claudeApiKeyNotConfigured": "Claude API key not configured",
+    "aiError": "AI error",
+    "errorWithProvider": "{provider} API error",
+    "failedToFetchModels": "Failed to fetch models"
   }
 }

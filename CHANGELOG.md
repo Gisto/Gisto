@@ -11,6 +11,179 @@ All significant updates and improvements
 - *(deps-dev)* Bump postcss
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
+([de395dc](https://github.com/gisto/gisto/commit/de395dc9a100d1565bef737665d926935dd92a9b))
+
+- *(deps)* Bump @radix-ui/react-switch from 1.2.6 to 1.3.7
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([ab5a87c](https://github.com/gisto/gisto/commit/ab5a87c543610f55bd806a5d75d85845e4bc39ba))
+
+- *(deps)* Bump @commitlint/types from 20.4.0 to 21.2.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([e61e1b0](https://github.com/gisto/gisto/commit/e61e1b073c38303638ec7943953ed4a61d33db75))
+
+- *(deps)* Bump @radix-ui/react-label from 2.1.8 to 2.1.15
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b612b2a](https://github.com/gisto/gisto/commit/b612b2a4adcd62a6a546b9de77801f78d869a24c))
+
+
+## v2.13.2
+
+Released on: Jul 16, 2026
+
+### 🐛 Bug Fixes
+
+- Add MiniMax endpoint configuration
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([56e1dbd](https://github.com/gisto/gisto/commit/56e1dbdcc7e856312f3eee3a283ebe8dbd50c433))
+
+
+## v2.13.1
+
+Released on: Jul 12, 2026
+
+### 🐛 Bug Fixes
+
+- Ai models select
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([3cc5752](https://github.com/gisto/gisto/commit/3cc575248d87880720e2aa86d622bbe556d937e6))
+
+
+## v2.13.0
+
+Released on: Jul 12, 2026
+
+### 🚀 Features
+
+- Add MiniMax AI provider
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([485ad81](https://github.com/gisto/gisto/commit/485ad8158c972588af5bdc67e56d90eafbdddd81))
+
+
+### 🐛 Bug Fixes
+
+- Fetch MiniMax models dynamically
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([8855f68](https://github.com/gisto/gisto/commit/8855f68362956cb4a9c778fa4f3d20f87d98c9a5))
+
+
+## v2.12.0
+
+Released on: Jul 4, 2026
+
+### 🚀 Features
+
+- Use searchable select
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([ea7bf03](https://github.com/gisto/gisto/commit/ea7bf03a81aa6efeb3a555e4446186b6474576b3))
+
+- Add sidebarViewMode to settings
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([64bcd1d](https://github.com/gisto/gisto/commit/64bcd1d969df9d144f5b0bc411701654edbe3860))
+
+
+### 🚜 Refactor
+
+- Better assistant UI
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([abfcef2](https://github.com/gisto/gisto/commit/abfcef2f376e91e98453bacc1fa728cc1bfdba69))
+
+
+### 🌍 Translations
+
+- Fix translations
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([85b0b7d](https://github.com/gisto/gisto/commit/85b0b7db014ecd877892bddcd69febcccf083793))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Update readme with supported snippet services
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6c32274](https://github.com/gisto/gisto/commit/6c3227444a902e31cb01b71c3fa8b6001678a2bf))
+
+- Update readme with supported snippet services
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([b8a0fa3](https://github.com/gisto/gisto/commit/b8a0fa343fa2d6a202358e672a82608219050065))
+
+- Upgrade ui
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([a82be22](https://github.com/gisto/gisto/commit/a82be22fb36fd4aa6034dbcc1bc3832334105c0c))
+
+
+## v2.11.0
+
+Released on: Jul 3, 2026
+
+### 🚀 Features
+
+- *(snippets)* Support snippet-bin
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([302ed0b](https://github.com/gisto/gisto/commit/302ed0bf838622d23bb673ebc756c627006557fe))
+
+- Assistant in snippet view
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([a9d5fb7](https://github.com/gisto/gisto/commit/a9d5fb76d87477b1433b6991956889481b6166ac))
+
+
+### 🐛 Bug Fixes
+
+- Pull available models and fix assistant
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([600dde7](https://github.com/gisto/gisto/commit/600dde7d777911e35df72c956ec1d9188e7b131d))
+
+
+### 🛠️️ Build
+
+- *(deps)* Bump markdown-it
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([04a5edf](https://github.com/gisto/gisto/commit/04a5edfda2174eb768737e06e16edc3be33610af))
+
+- *(deps-dev)* Bump vite in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([68de435](https://github.com/gisto/gisto/commit/68de435c24035ab3fe39f7b6492edf4ca1caf620))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Add sentry error trace
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([25f6537](https://github.com/gisto/gisto/commit/25f6537ad641ed3e7b5bd097e6ee5572c5f499cd))
+
+- Update local docker
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([c94bf96](https://github.com/gisto/gisto/commit/c94bf96a07181d7e0f7fa3eccf48b4f8e1c30320))
+
+
+## v2.10.1
+
+Released on: Jun 8, 2026
+
+### 🛠️️ Build
+
+- *(deps-dev)* Bump postcss
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([c22b6db](https://github.com/gisto/gisto/commit/c22b6db0007d2ca60bd035b2cb16180048d3ca4f))
 
 - *(deps-dev)* Bump @testing-library/react from 16.3.1 to 16.3.2
@@ -27,6 +200,36 @@ All significant updates and improvements
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([85609ac](https://github.com/gisto/gisto/commit/85609ac9eff597945a06d784abfb97e96cbfcba0))
+
+- *(deps-dev)* Bump jsdom from 27.4.0 to 29.1.1
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([48b749f](https://github.com/gisto/gisto/commit/48b749fe49c0de0fbadaefbff6ca06c447b95d9e))
+
+- *(deps)* Bump axios in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([f83e9b0](https://github.com/gisto/gisto/commit/f83e9b0b5e7c295adb21c5866d8e69b918721b42))
+
+- *(deps)* Bump fast-uri in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([3bdcb92](https://github.com/gisto/gisto/commit/3bdcb92b66f1e945e332c4f2236f955da838bf36))
+
+- *(deps)* Bump mermaid in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([855aaf0](https://github.com/gisto/gisto/commit/855aaf00a86a6bc26dd559718c5ca2d721b0abb4))
+
+- *(deps)* Bump the npm_and_yarn group across 1 directory with 2 updates
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([65a85e9](https://github.com/gisto/gisto/commit/65a85e9f725709f05dbf572f85204007eb95eb74))
+
+- *(deps-dev)* Bump vitest
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([2e0fd11](https://github.com/gisto/gisto/commit/2e0fd118aaea1f29be898b0e3c83bfcb4f5fbf44))
 
 
 ## v2.10.0

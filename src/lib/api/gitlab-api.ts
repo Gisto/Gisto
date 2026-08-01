@@ -67,14 +67,14 @@ export const GitlabApi: SnippetProvider<GitLabSnippet, GitLabSnippet> = {
       headers,
       body,
       onUnauthorized: () => {
-        toast.error({ message: 'GitLab Unauthorized' });
+        toast.error({ message: t('api.gitlabUnauthorized') });
       },
     });
   },
 
   async getSnippet(snippetId: string): Promise<SnippetSingleType> {
     if (!/^\d+$/.test(snippetId)) {
-      throw new Error('Invalid snippet ID for GitLab');
+      throw new Error(t('api.invalidSnippetIdForGitLab'));
     }
     const { data } = await this.request<GitLabSnippet>({ endpoint: `/snippets/${snippetId}` });
     const mapped = this.mapToSnippetSingleType(data);
@@ -155,7 +155,7 @@ export const GitlabApi: SnippetProvider<GitLabSnippet, GitLabSnippet> = {
     description: string;
   }): Promise<SnippetType> {
     if (!/^\d+$/.test(snippetId)) {
-      throw new Error('Invalid snippet ID for GitLab');
+      throw new Error(t('api.invalidSnippetIdForGitLab'));
     }
     const originalSnippet = await this.request<GitLabSnippet>({
       endpoint: `/snippets/${snippetId}`,
@@ -276,11 +276,6 @@ export const GitlabApi: SnippetProvider<GitLabSnippet, GitLabSnippet> = {
       },
       totalCount: parseInt(userSnippets.headers.get('x-total') || '0', 10),
     };
-  },
-
-  // GitLab doesn't have GraphQL, so this is a no-op implementation
-  async fetchGithubGraphQL<T>(): Promise<T> {
-    throw new Error('GraphQL is not supported by GitLab API');
   },
 
   async getSnippets(): Promise<SnippetType[]> {

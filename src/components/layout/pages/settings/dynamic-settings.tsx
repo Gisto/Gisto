@@ -1,4 +1,4 @@
-import { Sun, Moon, LaptopMinimal } from 'lucide-react';
+import { Sun, Moon, LaptopMinimal, RefreshCw, Info } from 'lucide-react';
 import { ReactNode } from 'react';
 
 import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
@@ -8,6 +8,10 @@ import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Label } from '@/components/ui/label.tsx';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group.tsx';
 import {
+  SearchableSelect,
+  type SearchableSelectOption,
+} from '@/components/ui/searchable-select.tsx';
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -16,8 +20,9 @@ import {
 } from '@/components/ui/select.tsx';
 import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
-import { AI_PROVIDERS } from '@/constants';
+import { AI_PROVIDERS, MINIMAX_PROTOCOL_OPTIONS, MINIMAX_REGION_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
+import { useAiModels } from '@/hooks/use-ai-models';
 import { t } from '@/lib/i18n';
 import { SettingsType } from '@/lib/store/globalState.ts';
 import {
@@ -77,6 +82,124 @@ const SpecialSelect = ({
     </div>
   );
 };
+
+function ModelSelect({
+  value,
+  onChange,
+  fullPath,
+  provider,
+}: {
+  value: string;
+  onChange: (path: string, value: string) => void;
+  fullPath: string;
+  provider: string;
+}) {
+  const { models, isLoading, error, refresh } = useAiModels(provider);
+
+  const selectedModel = models.find((m) => m.value === value);
+  const freeCount = models.filter((m) => m.isFree).length;
+
+  const options: SearchableSelectOption<string>[] = models.map((m) => ({
+    label: m.label,
+    value: m.value,
+    disabled: false,
+  }));
+
+  return (
+    <div className="mb-4">
+      <label className="mb-2 flex items-center gap-2 text-sm font-medium">
+        {t('pages.settings.model')}
+        <SimpleTooltip
+          className="max-w-xs"
+          content={
+            <div className="space-y-1 text-primary-foreground text-xs">
+              <p className="font-medium">{AI_PROVIDERS[provider]?.label ?? provider}</p>
+              <p>{t('components.selected', { label: selectedModel?.label ?? value })}</p>
+              <p>
+                {t('components.available', { freeCount, paidCount: models.length - freeCount })}
+              </p>
+              {error && (
+                <p className="text-destructive-foreground mt-1">
+                  {t('components.error', { error })}
+                </p>
+              )}
+            </div>
+          }
+        />
+        {isLoading && !error && (
+          <RefreshCw className="size-3.5 animate-spin text-muted-foreground" />
+        )}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            refresh();
+          }}
+          className="ml-auto"
+        >
+          <RefreshCw className="size-3.5 text-muted-foreground hover:text-foreground transition-colors" />
+        </button>
+      </label>
+      {error && models.length === 0 ? (
+        <div className="px-2 py-4 text-center text-sm text-muted-foreground rounded-md border">
+          {t('components.failedToLoadModels')}
+        </div>
+      ) : (
+        <SearchableSelect
+          options={options}
+          value={value}
+          onChange={(val) => onChange(fullPath, val)}
+          placeholder={
+            isLoading ? t('components.loadingModels') : upperCaseFirst(t('common.select'))
+          }
+          searchPlaceholder={t('components.searchModels')}
+          loading={isLoading && models.length === 0}
+          itemRenderer={(option) => {
+            const model = models.find((m) => m.value === option.value);
+            if (!model) return <span>{option.label}</span>;
+
+            return (
+              <span className="flex items-center gap-1.5 w-full">
+                <span className="flex-1 min-w-0 truncate text-sm">{model.label}</span>
+                <SimpleTooltip
+                  content={
+                    <div className="text-xs space-y-1 max-w-64">
+                      {model.description && (
+                        <p className="text-muted-foreground leading-relaxed">{model.description}</p>
+                      )}
+                      <p className="text-muted-foreground/60">{model.modelId ?? model.value}</p>
+                      <div className="flex flex-wrap gap-x-2 gap-y-0.5">
+                        {model.contextLength && (
+                          <span>
+                            {t('components.contextK', {
+                              n: (model.contextLength / 1000).toLocaleString(),
+                            })}
+                          </span>
+                        )}
+                        {model.pricing ? (
+                          <span>
+                            ${(model.pricing.prompt * 1_000_000).toFixed(2)}/M in &middot; $
+                            {(model.pricing.completion * 1_000_000).toFixed(2)}/M out
+                          </span>
+                        ) : (
+                          <span>{model.isFree ? t('components.free') : t('components.paid')}</span>
+                        )}
+                      </div>
+                    </div>
+                  }
+                >
+                  <span onPointerDown={(e) => e.stopPropagation()}>
+                    <Info className="size-3 shrink-0 text-muted-foreground cursor-help" />
+                  </span>
+                </SimpleTooltip>
+              </span>
+            );
+          }}
+        />
+      )}
+    </div>
+  );
+}
 
 export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps) => {
   const { setTheme } = useTheme();
@@ -228,10 +351,10 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 fullPath={fullPath}
                 options={[
                   { value: 'none', label: upperCaseFirst(t('common.off')) },
-                  { value: 'selection', label: 'Selection' },
-                  { value: 'boundary', label: 'Boundary' },
-                  { value: 'trailing', label: 'Trailing' },
-                  { value: 'all', label: 'All' },
+                  { value: 'selection', label: t('pages.settings.selection') },
+                  { value: 'boundary', label: t('pages.settings.boundary') },
+                  { value: 'trailing', label: t('pages.settings.trailing') },
+                  { value: 'all', label: t('pages.settings.all') },
                 ]}
               />
             );
@@ -245,12 +368,29 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 onChange={onChange}
                 fullPath={fullPath}
                 options={[
-                  { value: 'line', label: 'Line' },
-                  { value: 'all', label: 'All' },
-                  { value: 'gutter', label: 'Gutter' },
+                  { value: 'line', label: t('pages.settings.line') },
+                  { value: 'all', label: t('pages.settings.all') },
+                  { value: 'gutter', label: t('pages.settings.gutter') },
                   { value: 'none', label: upperCaseFirst(t('common.off')) },
                 ]}
               />
+            );
+          }
+
+          if (key === 'snippetBinBaseUrl') {
+            const activeProvider = (settings as Record<string, unknown>)?.activeSnippetProvider;
+            if (activeProvider !== 'snippet-bin') {
+              return null;
+            }
+            return (
+              <div key={key} className="mb-4">
+                <label className="block mb-1">{t('login.snippetBinBaseUrl')}</label>
+                <Input
+                  type="text"
+                  value={value}
+                  onChange={(e) => onChange(fullPath, e.target.value)}
+                />
+              </div>
             );
           }
 
@@ -263,9 +403,10 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 onChange={onChange}
                 fullPath={fullPath}
                 options={[
-                  { value: 'github', label: 'GitHub' },
-                  { value: 'gitlab', label: 'GitLab' },
-                  { value: 'local', label: 'Local' },
+                  { value: 'github', label: t('login.providerGithub') },
+                  { value: 'gitlab', label: t('login.providerGitlab') },
+                  { value: 'snippet-bin', label: t('login.providerSnippetBin') },
+                  { value: 'local', label: t('login.providerLocal') },
                 ]}
               />
             );
@@ -283,6 +424,22 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   { value: '30days', label: t('pages.dashboard.oneMonthAgo') },
                   { value: '6months', label: t('pages.dashboard.sixMonthsAgo') },
                   { value: '1year', label: t('pages.dashboard.oneYearAgo') },
+                ]}
+              />
+            );
+          }
+
+          if (key === 'sidebarViewMode') {
+            return (
+              <SpecialSelect
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={[
+                  { value: 'list', label: upperCaseFirst(t('common.list')) },
+                  { value: 'tags', label: upperCaseFirst(t('common.tags')) },
+                  { value: 'languages', label: upperCaseFirst(t('common.languages')) },
                 ]}
               />
             );
@@ -346,69 +503,111 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
           }
 
           if (key === 'newSnippetDefaultLanguage') {
+            const langOptions: SearchableSelectOption<string>[] = Object.keys(languageMap).map(
+              (language) => ({
+                value: language,
+                label: language,
+              })
+            );
             return (
-              <SpecialSelect
-                settingKey={key}
-                value={value}
-                onChange={onChange}
-                fullPath={fullPath}
-                options={Object.keys(languageMap).map((language) => ({
-                  value: language,
-                  label: language,
-                }))}
-              />
+              <div className="mb-4">
+                <label className="block mb-1">{camelToTitleCase(key)}</label>
+                <SearchableSelect
+                  options={langOptions}
+                  value={value}
+                  onChange={(val) => onChange(fullPath, val)}
+                  searchPlaceholder={t('components.searchLanguages')}
+                />
+              </div>
             );
           }
 
           if (key === 'activeAiProvider') {
-            const providers: Array<'openai' | 'gemini' | 'claude' | 'openrouter'> = [
-              'openai',
-              'gemini',
-              'claude',
-              'openrouter',
-            ];
+            const providers = Object.keys(AI_PROVIDERS);
+            const selectedProvider = AI_PROVIDERS[value as string];
+            const SelectedIcon = selectedProvider?.icon;
 
             return (
-              <>
-                <label className="block mb-4 font-medium">{t('pages.settings.aiProvider')}</label>
-                <RadioGroup
-                  className="grid grid-cols-2 gap-4 mb-4"
+              <div key={key} className="mb-4">
+                <label className="block mb-2 font-medium">{t('pages.settings.aiProvider')}</label>
+                <Select
+                  value={value}
                   onValueChange={(selectedValue) => {
                     onChange(fullPath, selectedValue);
                   }}
-                  defaultValue={value}
                 >
-                  {providers.map((provider) => {
-                    const providerData = AI_PROVIDERS[provider];
-                    if (!providerData) return null;
-
-                    const IconComponent = providerData.icon;
-
-                    return (
-                      <div key={provider}>
-                        <RadioGroupItem
-                          value={provider}
-                          id={`provider-${provider}`}
-                          className="peer sr-only"
-                          aria-label={providerData.label}
-                        />
-                        <Label
-                          htmlFor={`provider-${provider}`}
-                          className="cursor-pointer flex gap-3 flex-col items-center justify-between rounded-lg border-2 border-muted bg-transparent p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                        >
-                          <div className="w-8 h-8">
-                            <IconComponent />
+                  <SelectTrigger className="w-full h-auto min-h-[72px] px-4 py-3">
+                    <div className="flex items-center gap-3">
+                      {SelectedIcon && (
+                        <span className="w-8 h-8 shrink-0">
+                          <SelectedIcon />
+                        </span>
+                      )}
+                      <div className="text-left">
+                        <div className="text-sm font-medium">
+                          {selectedProvider?.label ?? t('pages.settings.aiProvider')}
+                        </div>
+                        {selectedProvider && (
+                          <div className="text-xs text-muted-foreground mt-0.5">
+                            {selectedProvider.description}
                           </div>
-                          <div className="text-sm font-medium">{providerData.label}</div>
-                          <small className="text-xs text-muted-foreground text-center">
-                            {providerData.description}
-                          </small>
-                        </Label>
+                        )}
                       </div>
-                    );
-                  })}
-                </RadioGroup>
-              </>
+                    </div>
+                  </SelectTrigger>
+                  <SelectContent className="min-w-[var(--radix-select-trigger-width)] p-2">
+                    {providers.map((provider) => {
+                      const providerData = AI_PROVIDERS[provider];
+                      if (!providerData) return null;
+
+                      const IconComponent = providerData.icon;
+
+                      return (
+                        <SelectItem
+                          key={provider}
+                          value={provider}
+                          className="cursor-pointer rounded-lg px-3 py-3 pl-3"
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="w-8 h-8 shrink-0">
+                              <IconComponent />
+                            </span>
+                            <div>
+                              <div className="text-sm font-medium">{providerData.label}</div>
+                              <div className="text-xs text-muted-foreground mt-0.5">
+                                {providerData.description}
+                              </div>
+                            </div>
+                          </div>
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectContent>
+                </Select>
+              </div>
+            );
+          }
+
+          if (key === 'minimaxRegion' || key === 'minimaxProtocol') {
+            const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
+            const activeProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
+
+            if (activeProvider !== 'minimax') {
+              return null;
+            }
+
+            return (
+              <SpecialSelect
+                key={key}
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={
+                  key === 'minimaxRegion' ? MINIMAX_REGION_OPTIONS : MINIMAX_PROTOCOL_OPTIONS
+                }
+                label={key === 'minimaxRegion' ? 'MiniMax region' : 'API protocol'}
+              />
             );
           }
 
@@ -417,12 +616,17 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             key === 'openaiApiKey' ||
             key === 'geminiApiKey' ||
             key === 'claudeApiKey' ||
+            key === 'minimaxApiKey' ||
             key === 'openRouterApiKey'
           ) {
-            const providerMap: Record<string, 'openai' | 'gemini' | 'claude' | 'openrouter'> = {
+            const providerMap: Record<
+              string,
+              'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter'
+            > = {
               openaiApiKey: 'openai',
               geminiApiKey: 'gemini',
               claudeApiKey: 'claude',
+              minimaxApiKey: 'minimax',
               openRouterApiKey: 'openrouter',
             };
             const provider = providerMap[key];
@@ -468,27 +672,15 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
           if (key === 'model') {
             const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
             const currentProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
-            const providerData = AI_PROVIDERS[currentProvider as keyof typeof AI_PROVIDERS];
-            const modelOptions = providerData?.modelOptions || [];
 
             return (
-              <div key={key} className="mb-4">
-                <label className="mb-2 block text-sm font-medium">
-                  {t('pages.settings.model')}
-                </label>
-                <Select onValueChange={(val) => onChange(fullPath, val)} value={value}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={upperCaseFirst(t('common.select'))} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {modelOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              <ModelSelect
+                key={currentProvider}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                provider={currentProvider}
+              />
             );
           }
 

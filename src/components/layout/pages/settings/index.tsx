@@ -1,18 +1,21 @@
 import MonacoEditor from '@monaco-editor/react';
-import { HelpCircle, SidebarClose, SidebarOpen, Download, Upload } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { SidebarClose, SidebarOpen, Download, Upload, Sparkles } from 'lucide-react';
+import { useState, useRef, useCallback } from 'react';
 
+import type { AssistantMessage } from '@/components/prompt-assistant.tsx';
+import type { ChatMessage } from '@/lib/api/ai-api.ts';
+
+import { AIChatDialog } from '@/components/ai-chat-dialog.tsx';
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { DynamicSettings } from '@/components/layout/pages/settings/dynamic-settings.tsx';
-import { SimpleTooltip } from '@/components/simple-tooltip.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Textarea } from '@/components/ui/textarea';
 import { EDITOR_OPTIONS } from '@/constants';
-import { generateAiResponse, AiApiError } from '@/lib/api/ai-api.ts';
+import { getProviderConfig, getTranslation, SnippetProviderType } from '@/constants/providers.tsx';
+import { generateAiResponse, AiApiError, isAiAvailable } from '@/lib/api/ai-api.ts';
 import { exportLocalDatabase, importLocalDatabase } from '@/lib/api/local-api.ts';
 import { t } from '@/lib/i18n';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
@@ -26,9 +29,9 @@ type Props = {
 
 export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props = {}) => {
   const settings = useStoreValue('settings');
-  const [testPrompt, setTestPrompt] = useState('');
-  const [testResponse, setTestResponse] = useState('');
-  const [isTesting, setIsTesting] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<AssistantMessage[]>([]);
+  const [chatLoading, setChatLoading] = useState(false);
   const [, setTick] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -71,33 +74,52 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     }
   };
 
-  const handleTestPrompt = async () => {
-    if (!testPrompt.trim()) return;
+  const handleChatSend = useCallback(
+    async (prompt: string) => {
+      const userMessage: AssistantMessage = {
+        id: crypto.randomUUID(),
+        role: 'user',
+        content: prompt,
+      };
+      const updated = [...chatMessages, userMessage];
+      setChatMessages(updated);
 
-    setIsTesting(true);
-    setTestResponse('');
-    try {
-      const response = await generateAiResponse({
-        prompt: testPrompt,
-      });
-      setTestResponse(response);
-    } catch (error) {
-      if (error instanceof AiApiError) {
-        const modelInfo = ai.model ? `\n\nModel: ${ai.model}` : '';
-        const providerInfo =
-          error.provider === 'openrouter'
-            ? '\n\nTip: If using a free model, it may be unavailable or have rate limits. Try a different model or check openrouter.ai/models for current availability.'
-            : '';
-        setTestResponse(`Error: ${error.message}${modelInfo}${providerInfo}`);
-      } else {
-        setTestResponse(
-          `Error: ${error instanceof Error ? error.message : 'An unexpected error occurred'}`
-        );
+      if (!isAiAvailable()) {
+        setChatMessages([
+          ...updated,
+          {
+            id: crypto.randomUUID(),
+            role: 'assistant',
+            content: t('api.configureAiProvider'),
+          },
+        ]);
+        return;
       }
-    } finally {
-      setIsTesting(false);
-    }
-  };
+
+      const msgs: ChatMessage[] = updated.map((m) => ({ role: m.role, content: m.content }));
+
+      setChatLoading(true);
+      try {
+        const result = await generateAiResponse({ prompt, messages: msgs });
+        setChatMessages((prev) => [
+          ...prev,
+          { id: crypto.randomUUID(), role: 'assistant', content: result },
+        ]);
+      } catch (error) {
+        const msg =
+          error instanceof AiApiError
+            ? `Error: ${error.message}`
+            : `Error: ${error instanceof Error ? error.message : t('api.unexpectedError')}`;
+        setChatMessages((prev) => [
+          ...prev,
+          { id: crypto.randomUUID(), role: 'assistant', content: msg },
+        ]);
+      } finally {
+        setChatLoading(false);
+      }
+    },
+    [chatMessages]
+  );
 
   const {
     editor,
@@ -113,6 +135,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     filesPreviewEnabledByDefault,
     sortFilesByMarkdownFirst,
     dashboardSnippetsOverTimeRange,
+    sidebarViewMode,
   } = settings;
 
   // Group settings into logical sections
@@ -130,6 +153,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     jsonPreviewCollapsedByDefault,
     filesPreviewEnabledByDefault,
     sortFilesByMarkdownFirst,
+    sidebarViewMode,
   };
 
   return (
@@ -162,8 +186,8 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Gisto settings</CardTitle>
-                  <CardDescription>Theme, language, and access tokens.</CardDescription>
+                  <CardTitle>{t('pages.settings.gistoSettings')}</CardTitle>
+                  <CardDescription>{t('pages.settings.themeLanguageAndTokens')}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <DynamicSettings
@@ -175,36 +199,36 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
                       {t('pages.settings.snippetProvider')}
                     </label>
                     <div className="text-sm py-2 px-3 bg-muted rounded-md">
-                      {activeSnippetProvider === 'github'
-                        ? 'GitHub'
-                        : activeSnippetProvider === 'gitlab'
-                          ? 'GitLab'
-                          : 'Local'}
+                      {getTranslation(
+                        getProviderConfig(activeSnippetProvider as SnippetProviderType).label
+                      )}
                     </div>
                   </div>
-                  {activeSnippetProvider === 'github' && (
+                  {activeSnippetProvider !== 'local' && activeSnippetProvider !== 'snippet-bin' && (
                     <div className="flex flex-col space-y-1.5">
-                      <label className="text-sm font-medium">{t('login.githubToken')}</label>
+                      <label className="text-sm font-medium">
+                        {getTranslation(
+                          getProviderConfig(activeSnippetProvider as SnippetProviderType).tokenLabel
+                        )}
+                      </label>
                       <InputPassword
-                        value={localStorage.getItem('GITHUB_TOKEN') || ''}
+                        value={
+                          localStorage.getItem(
+                            getProviderConfig(activeSnippetProvider as SnippetProviderType).tokenKey
+                          ) || ''
+                        }
                         onChange={(e) => {
-                          localStorage.setItem('GITHUB_TOKEN', e.target.value);
+                          localStorage.setItem(
+                            getProviderConfig(activeSnippetProvider as SnippetProviderType)
+                              .tokenKey,
+                            e.target.value
+                          );
                           forceUpdate();
                         }}
-                        placeholder={t('login.enterGithubToken')}
-                      />
-                    </div>
-                  )}
-                  {activeSnippetProvider === 'gitlab' && (
-                    <div className="flex flex-col space-y-1.5">
-                      <label className="text-sm font-medium">{t('login.gitlabToken')}</label>
-                      <InputPassword
-                        value={localStorage.getItem('GITLAB_TOKEN') || ''}
-                        onChange={(e) => {
-                          localStorage.setItem('GITLAB_TOKEN', e.target.value);
-                          forceUpdate();
-                        }}
-                        placeholder={t('login.enterGitlabToken')}
+                        placeholder={getTranslation(
+                          getProviderConfig(activeSnippetProvider as SnippetProviderType)
+                            .tokenPlaceholder
+                        )}
                       />
                     </div>
                   )}
@@ -326,61 +350,28 @@ console.log(createNote('Gisto Settings', ['UI', 'ui', ' Editor ']));`}
 
               <Card>
                 <CardHeader>
-                  <div className="flex items-center gap-2">
-                    <CardTitle>{t('pages.settings.promptAssistant')}</CardTitle>
-                    <SimpleTooltip
-                      className="max-w-md"
-                      content={
-                        <div className="space-y-2 text-primary-foreground">
-                          <p>Interact with AI using your configured model and settings.</p>
-                          <p className="font-semibold mt-2">Example:</p>
-                          <pre className="text-xs bg-primary-foreground/20 p-2 rounded overflow-x-auto">
-                            {`Explain what this code does:
-function createObject(name, age) {
-  return { name, age };
-}`}
-                          </pre>
-                          <p className="text-xs opacity-90 mt-2">
-                            Current: {ai.model || 'Not configured'} (temp: {ai.temperature ?? 0.7})
-                          </p>
-                        </div>
-                      }
-                    >
-                      <HelpCircle className="size-4 text-muted-foreground cursor-help" />
-                    </SimpleTooltip>
-                  </div>
+                  <CardTitle>{t('pages.settings.promptAssistant')}</CardTitle>
                   <CardDescription>{t('pages.settings.interactWithAiDirectly')}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">{t('pages.settings.yourPrompt')}</label>
-                    <Textarea
-                      placeholder="e.g. Explain what this code does: console.log('Hello, world!');"
-                      value={testPrompt}
-                      onChange={(e) => setTestPrompt(e.target.value)}
-                      className="min-h-[150px] font-mono text-sm"
-                    />
-                    <Button
-                      onClick={handleTestPrompt}
-                      disabled={isTesting || !testPrompt.trim()}
-                      className="w-full"
-                    >
-                      {isTesting ? t('pages.settings.sending') : t('pages.settings.sendPrompt')}
-                    </Button>
-                  </div>
-
-                  {testResponse && (
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium">Response</label>
-                      <div className="rounded-md bg-muted p-3 border min-h-[150px]">
-                        <pre className="text-sm whitespace-pre-wrap break-words font-mono">
-                          {testResponse}
-                        </pre>
-                      </div>
-                    </div>
-                  )}
+                  <p className="text-sm text-muted-foreground">
+                    {t('pages.settings.openAiChatDescription')}
+                  </p>
+                  <Button onClick={() => setChatOpen(true)} className="w-full gap-2">
+                    <Sparkles className="size-4" />
+                    {t('pages.settings.openAiChat')}
+                  </Button>
                 </CardContent>
               </Card>
+
+              <AIChatDialog
+                open={chatOpen}
+                onOpenChange={setChatOpen}
+                messages={chatMessages}
+                onSend={handleChatSend}
+                onClear={() => setChatMessages([])}
+                isLoading={chatLoading}
+              />
             </div>
           </TabsContent>
         </Tabs>

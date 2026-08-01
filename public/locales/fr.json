@@ -43,7 +43,21 @@
     "restart": "redémarrer",
     "activeFilters": "Filtres actifs",
     "hidePreview": "Masquer l'aperçu",
-    "showPreview": "Afficher l'aperçu"
+    "showPreview": "Afficher l'aperçu",
+    "more": "More",
+    "close": "Close",
+    "lock": "Lock",
+    "unlock": "Unlock",
+    "active": "Active",
+    "toggleTheme": "Toggle theme",
+    "text": "Text",
+    "view": "View",
+    "send": "Send",
+    "newChat": "Nouveau chat",
+    "confirmLogout": "Are you sure you want to log-out?",
+    "selectRange": "Select range",
+    "scrollToEnd": "Scroll to end",
+    "scrollToStart": "Scroll to start"
   },
   "components": {
     "filterTags": "Filtrer {number} étiquettes",
@@ -53,7 +67,25 @@
     "allUniqueLanguages": "Tous, langages uniques",
     "noLanguageMatching": "Aucun langage correspondant à {search}",
     "updateAvailable": "Mise à jour vers la v{version} disponible",
-    "downloadFinished": "Téléchargement de la v{version} terminé"
+    "downloadFinished": "Téléchargement de la v{version} terminé",
+    "aiAssistant": "Assistant IA",
+    "thinking": "Réflexion...",
+    "pressSendToStart": "Appuyez sur envoyer pour commencer une nouvelle conversation",
+    "useTextInputToAsk": "Utilisez le champ ci-dessous pour poser une question",
+    "howCanIHelp": "Comment puis-je vous aider aujourd'hui ?",
+    "askAQuestion": "Posez une question...",
+    "searchModels": "Rechercher des modèles...",
+    "searchLanguages": "Rechercher des langages...",
+    "noResults": "Aucun résultat",
+    "failedToLoadModels": "Échec du chargement des modèles",
+    "loadingModels": "Chargement des modèles...",
+    "selected": "Sélectionné : {label}",
+    "available": "Disponible : {freeCount} gratuit · {paidCount} payant",
+    "error": "Erreur : {error}",
+    "free": "Gratuit",
+    "paid": "Payant",
+    "contextK": "{n}K de contexte",
+    "editingFiles": "Modification de {n} fichiers"
   },
   "menu": {
     "logOut": "Se déconnecter",
@@ -142,13 +174,26 @@
       "temperature": "Température",
       "apiKey": "Clé API",
       "uiLanguage": "Langue de l'interface (expérimental)",
+      "snippetProvider": "Fournisseur d'extraits",
       "experimentalTranslation": "Expérimental, traduit par machine, certaines traductions ne sont pas précises ou non disponibles.",
       "getApiKey": "Obtenez votre clé API {provider} sur {url}.",
       "apiKeyPlaceholder": "votre clé api",
       "localDatabase": "Base de données locale",
       "localDatabaseDescription": "Exportez ou importez vos snippets locaux. L'importation fusionnera avec les données existantes.",
       "export": "Exporter",
-      "import": "Importer"
+      "import": "Importer",
+      "selection": "Selection",
+      "boundary": "Boundary",
+      "trailing": "Trailing",
+      "all": "All",
+      "line": "Line",
+      "gutter": "Gutter",
+      "keyboardShortcuts": "Keyboard Shortcuts",
+      "keyboardShortcutsDescription": "Quick shortcuts to navigate and interact with Gisto.",
+      "gistoSettings": "Gisto settings",
+      "themeLanguageAndTokens": "Theme, language, and access tokens.",
+      "openAiChatDescription": "Ouvrez le chat IA pour discuter avec votre modèle IA configuré. L'historique de votre conversation est conservé pendant la session.",
+      "openAiChat": "Ouvrir l'assistant"
     },
     "snippet": {
       "fileTooLarge": "Fichier trop volumineux",
@@ -160,7 +205,9 @@
       "copySnippetId": "Copier l’ID de l’extrait",
       "copyEmbed": "Copier le code d’intégration dans le presse-papiers",
       "jsfiddleInstructions": "Vous devez avoir des fichiers CSS, JS et HTML dans l’extrait",
-      "cannotBeUndone": "ne peut pas être annulé"
+      "cannotBeUndone": "ne peut pas être annulé",
+      "askAbout": "Interroger sur \"{title}\"",
+      "askAQuestion": "Posez une question..."
     },
     "about": {
       "title": "À propos",
@@ -169,7 +216,10 @@
       "sponsor": "Soutenir Gisto",
       "changelog": "Journal des modifications",
       "website": "Site web",
-      "issues": "Signaler un problème"
+      "issues": "Signaler un problème",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "mitLicense": "MIT License · © {year} Gisto"
     }
   },
   "list": {
@@ -178,6 +228,8 @@
     "apiRate": "Limite d’API",
     "apiRateLimit": "Limite de l’API GitHub",
     "nextReset": "Prochaine réinitialisation",
+    "noSnippets": "Pas encore d'extraits",
+    "noSnippetsDescription": "Créez votre premier extrait pour commencer",
     "searchHelp": {
       "title": "Recherchez des extraits par description/titre, étiquettes ou langage<br />Ou une combinaison :",
       "description": "<strong>Description ou contenu du fichier :</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>texte libre</code>",
@@ -224,13 +276,38 @@
     "gitlabWarningDescription": "Le support GitLab est à ses début",
     "providerGithub": "GitHub",
     "providerGitlab": "GitLab",
-    "providerLocal": "Local"
+    "providerLocal": "Local",
+    "providerSnippetBin": "Snippet-bin",
+    "snippetBinToken": "Jeton Snippet-bin",
+    "snippetBinBaseUrl": "URL de base Snippet-bin",
+    "enterSnippetBinToken": "Entrez le jeton snippet-bin",
+    "enterSnippetBinBaseUrl": "Entrez l'URL de base snippet-bin",
+    "scopeMessageSnippetBin": "Entrez votre jeton d'accès personnel pour snippet-bin",
+    "snippetBinWarning": "Instance personnalisée",
+    "snippetBinDescription": "Connexion à l'instance snippet-bin sur {baseUrl}"
   },
   "api": {
     "starRemoved": "Favori supprimé",
     "starAdded": "Favori ajouté",
     "visibilityChangedToPublic": "Visibilité modifiée en public",
     "visibilityChangedToPrivate": "Visibilité modifiée en privé",
-    "errorTryToRefresh": "Erreur lors de la récupération des snippets, veuillez essayer d’actualiser"
+    "errorTryToRefresh": "Erreur lors de la récupération des snippets, veuillez essayer d’actualiser",
+    "featureNotSupported": "Cette fonctionnalité n'est pas encore prise en charge pour {provider}",
+    "snippetBinUnauthorized": "Snippet-bin Unauthorized",
+    "gitlabUnauthorized": "GitLab Unauthorized",
+    "invalidSnippetIdForGitLab": "Invalid snippet ID for GitLab",
+    "notAllowedToDelete": "Not allowed to delete this snippet",
+    "noDataFromGraphql": "No data returned from GitHub GraphQL API",
+    "fetchGithubGraphQLNotSupported": "fetchGithubGraphQL is not supported by this provider",
+    "directRequestsNotSupported": "Direct requests are not supported in local mode",
+    "snippetNotFound": "Snippet not found",
+    "unexpectedError": "An unexpected error occurred",
+    "configureAiProvider": "Please configure an AI provider API key in Settings > AI Assistant.",
+    "openAiApiKeyNotConfigured": "OpenAI API key not configured",
+    "geminiApiKeyNotConfigured": "Gemini API key not configured",
+    "claudeApiKeyNotConfigured": "Claude API key not configured",
+    "aiError": "AI error",
+    "errorWithProvider": "{provider} API error",
+    "failedToFetchModels": "Failed to fetch models"
   }
 }

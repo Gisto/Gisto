@@ -1,26 +1,41 @@
 import { globalState } from '../store/globalState.ts';
 
+import { resolveMiniMaxEndpoint } from '@/constants/minimax-endpoints.ts';
+
 const GEMINI_ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
 const OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
 const CLAUDE_ENDPOINT = 'https://api.anthropic.com/v1/messages';
 
+export interface ChatMessage {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+}
+
 export interface GenerateAiResponseOptions {
   prompt: string;
+  messages?: ChatMessage[];
+  systemContext?: string;
   model?: string;
   temperature?: number;
-  activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude';
+  activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude' | 'minimax';
 }
 
 type AiProvider = NonNullable<GenerateAiResponseOptions['activeAiProvider']>;
-type AiApiKeyField = 'openRouterApiKey' | 'geminiApiKey' | 'openaiApiKey' | 'claudeApiKey';
+type AiApiKeyField =
+  | 'openRouterApiKey'
+  | 'geminiApiKey'
+  | 'openaiApiKey'
+  | 'claudeApiKey'
+  | 'minimaxApiKey';
 
 const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
   openrouter: 'openRouterApiKey',
   gemini: 'geminiApiKey',
   openai: 'openaiApiKey',
   claude: 'claudeApiKey',
+  minimax: 'minimaxApiKey',
 };
 
 type OpenAiChatResponse = {
@@ -33,8 +48,8 @@ type GeminiResponse = {
   candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
 };
 
-type ClaudeResponse = {
-  content?: Array<{ text?: string }>;
+type AnthropicChatResponse = {
+  content?: Array<{ type?: string; text?: string }>;
 };
 
 export class AiApiError extends Error {
@@ -60,8 +75,45 @@ export function isAiAvailable(): boolean {
   return Boolean(apiKey);
 }
 
+type ApiMessage = { role: 'user' | 'assistant' | 'system'; content: string };
+
+export function buildMessages(
+  prompt: string,
+  messages?: ChatMessage[],
+  systemContext?: string
+): ApiMessage[] {
+  const base: ApiMessage[] =
+    messages && messages.length > 0
+      ? messages.map((m) => ({ role: m.role as ApiMessage['role'], content: m.content }))
+      : [{ role: 'user', content: prompt }];
+  if (systemContext) {
+    base.unshift({ role: 'system', content: systemContext });
+  }
+  return base;
+}
+
+function buildGeminiMessages(prompt: string, messages?: ChatMessage[], systemContext?: string) {
+  const base =
+    messages && messages.length > 0
+      ? messages.map((m) => ({
+          role: m.role === 'assistant' ? 'model' : 'user',
+          parts: [{ text: m.content }],
+        }))
+      : [{ parts: [{ text: prompt }] }];
+  if (systemContext) {
+    base.unshift({ role: 'user', parts: [{ text: systemContext }] });
+  }
+  return base;
+}
+
 export async function generateAiResponse(options: GenerateAiResponseOptions): Promise<string> {
-  const { prompt, model: overrideModel, temperature: overrideTemperature } = options;
+  const {
+    prompt,
+    messages: chatMessages,
+    systemContext,
+    model: overrideModel,
+    temperature: overrideTemperature,
+  } = options;
 
   const { ai } = globalState.getState().settings;
   const model = overrideModel ?? ai.model;
@@ -70,6 +122,10 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
   // Get the active provider and its API key
   const activeAiProvider = (ai.activeAiProvider || 'openrouter') as AiProvider;
   const apiKey = ai[AI_PROVIDER_API_KEYS[activeAiProvider]] || '';
+  const minimaxEndpoint =
+    activeAiProvider === 'minimax'
+      ? resolveMiniMaxEndpoint(ai.minimaxRegion, ai.minimaxProtocol)
+      : null;
 
   if (!apiKey) {
     throw new AiApiError(
@@ -105,15 +161,20 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
       },
       body: JSON.stringify({
         model,
-        messages: [{ role: 'user', content: prompt }],
+        messages: buildMessages(prompt, chatMessages, systemContext),
         temperature,
       }),
     });
 
     const res = await parseJsonResponse<OpenRouterChatResponse>(response, 'openrouter');
     rawResponse = res.choices?.[0]?.message?.content ?? '';
-  } else if (activeAiProvider === 'openai') {
-    const response = await fetch(OPENAI_ENDPOINT, {
+  } else if (
+    activeAiProvider === 'openai' ||
+    (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'openai')
+  ) {
+    const endpoint =
+      activeAiProvider === 'minimax' && minimaxEndpoint ? minimaxEndpoint.chatUrl : OPENAI_ENDPOINT;
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -121,12 +182,12 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
       },
       body: JSON.stringify({
         model,
-        messages: [{ role: 'user', content: prompt }],
+        messages: buildMessages(prompt, chatMessages, systemContext),
         temperature,
       }),
     });
 
-    const res = await parseJsonResponse<OpenAiChatResponse>(response, 'openai');
+    const res = await parseJsonResponse<OpenAiChatResponse>(response, activeAiProvider);
     rawResponse = res.choices?.[0]?.message?.content ?? '';
   } else if (activeAiProvider === 'gemini') {
     const response = await fetch(GEMINI_ENDPOINT, {
@@ -136,30 +197,48 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
         'x-goog-api-key': apiKey,
       },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
+        contents: buildGeminiMessages(prompt, chatMessages, systemContext),
       }),
     });
 
     const res = await parseJsonResponse<GeminiResponse>(response, 'gemini');
     rawResponse = res.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
-  } else if (activeAiProvider === 'claude') {
-    const response = await fetch(CLAUDE_ENDPOINT, {
+  } else if (
+    activeAiProvider === 'claude' ||
+    (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'anthropic')
+  ) {
+    const anthropicMessages = buildMessages(prompt, chatMessages, systemContext);
+    const anthropicSystem =
+      anthropicMessages
+        .filter((m) => m.role === 'system')
+        .map((m) => m.content)
+        .join('\n') || undefined;
+    const anthropicBody: Record<string, unknown> = {
+      model,
+      max_tokens: 4096,
+      messages: anthropicMessages.filter((m) => m.role !== 'system'),
+      temperature,
+    };
+    if (anthropicSystem) {
+      anthropicBody.system = anthropicSystem;
+    }
+    const endpoint =
+      activeAiProvider === 'minimax' && minimaxEndpoint ? minimaxEndpoint.chatUrl : CLAUDE_ENDPOINT;
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
       },
-      body: JSON.stringify({
-        model,
-        max_tokens: 4096,
-        messages: [{ role: 'user', content: prompt }],
-        temperature,
-      }),
+      body: JSON.stringify(anthropicBody),
     });
 
-    const res = await parseJsonResponse<ClaudeResponse>(response, 'claude');
-    rawResponse = res.content?.[0]?.text ?? '';
+    const res = await parseJsonResponse<AnthropicChatResponse>(response, activeAiProvider);
+    rawResponse =
+      res.content?.find((block) => block.type === 'text')?.text ??
+      res.content?.find((block) => block.text)?.text ??
+      '';
   } else {
     throw new AiApiError('Invalid AI provider configured.', activeAiProvider);
   }

@@ -251,7 +251,9 @@ export const CreateOrEditSnippet = ({
                   <FileUploadButton dispatch={dispatch} />
                 </div>
 
-                <div className="self-center">Editing {state.files.length} files</div>
+                <div className="self-center">
+                  {t('components.editingFiles', { n: state.files.length })}
+                </div>
 
                 <div className="flex gap-2">
                   <Button

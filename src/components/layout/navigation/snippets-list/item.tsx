@@ -55,10 +55,8 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                   onClick={(event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    const settings = globalState.getState().settings;
                     globalState.setState({
                       search: filter === search ? '' : filter,
-                      settings: { ...settings, sidebarViewMode: 'list' },
                     });
                   }}
                   variant={search === filter ? 'default' : 'primary-outline'}
@@ -83,10 +81,8 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                     onClick={(event) => {
                       event.preventDefault();
                       event.stopPropagation();
-                      const settings = globalState.getState().settings;
                       globalState.setState({
                         search: filter === search ? '' : filter,
-                        settings: { ...settings, sidebarViewMode: 'list' },
                       });
                     }}
                     variant={search === filter ? 'default' : 'primary-outline'}
@@ -169,7 +165,7 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                         strokeWidth={1.5}
                         className="size-3 cursor-pointer hover:text-primary stroke-danger"
                       />
-                      <span className="sr-only">Lock</span>
+                      <span className="sr-only">{t('common.lock')}</span>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -201,7 +197,7 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                         strokeWidth={1.5}
                         className="size-3 cursor-pointer hover:text-primary stroke-success"
                       />
-                      <span className="sr-only">Unlock</span>
+                      <span className="sr-only">{t('common.unlock')}</span>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>

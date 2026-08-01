@@ -43,7 +43,21 @@
     "restart": "reiniciar",
     "activeFilters": "Filtros activos",
     "hidePreview": "Ocultar vista previa",
-    "showPreview": "Mostrar vista previa"
+    "showPreview": "Mostrar vista previa",
+    "more": "More",
+    "close": "Close",
+    "lock": "Lock",
+    "unlock": "Unlock",
+    "active": "Active",
+    "toggleTheme": "Toggle theme",
+    "text": "Text",
+    "view": "View",
+    "send": "Send",
+    "newChat": "Nuevo chat",
+    "confirmLogout": "Are you sure you want to log-out?",
+    "selectRange": "Select range",
+    "scrollToEnd": "Scroll to end",
+    "scrollToStart": "Scroll to start"
   },
   "components": {
     "filterTags": "Filtrar {number} etiquetas",
@@ -53,7 +67,25 @@
     "allUniqueLanguages": "Todos, lenguajes únicos",
     "noLanguageMatching": "No hay lenguajes que coincidan con {search}",
     "updateAvailable": "Actualización a la v{version} disponible",
-    "downloadFinished": "Descarga de la v{version} finalizada"
+    "downloadFinished": "Descarga de la v{version} finalizada",
+    "aiAssistant": "Asistente de IA",
+    "thinking": "Pensando...",
+    "pressSendToStart": "Presiona enviar para iniciar una nueva conversación",
+    "useTextInputToAsk": "Usa el campo de texto para hacer una pregunta",
+    "howCanIHelp": "¿Cómo puedo ayudarte hoy?",
+    "askAQuestion": "Haz una pregunta...",
+    "searchModels": "Buscar modelos...",
+    "searchLanguages": "Buscar lenguajes...",
+    "noResults": "Sin resultados",
+    "failedToLoadModels": "Error al cargar modelos",
+    "loadingModels": "Cargando modelos...",
+    "selected": "Seleccionado: {label}",
+    "available": "Disponible: {freeCount} gratis · {paidCount} de pago",
+    "error": "Error: {error}",
+    "free": "Gratis",
+    "paid": "De pago",
+    "contextK": "{n}K de contexto",
+    "editingFiles": "Editando {n} archivos"
   },
   "menu": {
     "logOut": "Cerrar sesión",
@@ -142,13 +174,26 @@
       "temperature": "Temperatura",
       "apiKey": "Clave API",
       "uiLanguage": "Idioma de interfaz (experimental)",
+      "snippetProvider": "Proveedor de fragmentos",
       "experimentalTranslation": "Experimental, traducido automáticamente, algunas traducciones no son precisas o no están disponibles.",
       "getApiKey": "Obtén tu clave API de {provider} en {url}.",
       "apiKeyPlaceholder": "tu clave api",
       "localDatabase": "Base de datos local",
       "localDatabaseDescription": "Exporta o importa tus fragmentos locales. La importación se fusionará con los datos existentes.",
       "export": "Exportar",
-      "import": "Importar"
+      "import": "Importar",
+      "selection": "Selection",
+      "boundary": "Boundary",
+      "trailing": "Trailing",
+      "all": "All",
+      "line": "Line",
+      "gutter": "Gutter",
+      "keyboardShortcuts": "Keyboard Shortcuts",
+      "keyboardShortcutsDescription": "Quick shortcuts to navigate and interact with Gisto.",
+      "gistoSettings": "Gisto settings",
+      "themeLanguageAndTokens": "Theme, language, and access tokens.",
+      "openAiChatDescription": "Abre el chat de IA para conversar con tu modelo de IA configurado. El historial de la conversación se conserva durante la sesión.",
+      "openAiChat": "Abrir asistente"
     },
     "snippet": {
       "fileTooLarge": "Archivo demasiado grande",
@@ -160,7 +205,9 @@
       "copySnippetId": "Copiar ID del fragmento",
       "copyEmbed": "Copiar código para insertar al portapapeles",
       "jsfiddleInstructions": "Debes tener archivos CSS, JS y HTML como parte del fragmento",
-      "cannotBeUndone": "no se puede deshacer"
+      "cannotBeUndone": "no se puede deshacer",
+      "askAbout": "Preguntar sobre \"{title}\"",
+      "askAQuestion": "Haz una pregunta..."
     },
     "about": {
       "title": "Acerca de",
@@ -169,7 +216,10 @@
       "sponsor": "Patrocinar Gisto",
       "changelog": "Registro de cambios",
       "website": "Sitio web",
-      "issues": "Reportar un problema"
+      "issues": "Reportar un problema",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "mitLicense": "MIT License · © {year} Gisto"
     }
   },
   "list": {
@@ -178,6 +228,8 @@
     "apiRate": "Límite de API",
     "apiRateLimit": "Límite de la API de GitHub",
     "nextReset": "Próximo reinicio",
+    "noSnippets": "No hay fragmentos aún",
+    "noSnippetsDescription": "Crea tu primer fragmento para comenzar",
     "searchHelp": {
       "title": "Busca fragmentos por descripción/título, etiquetas o lenguaje<br />O una combinación de todos:",
       "description": "<strong>Descripción o contenido de archivos:</strong> <code class='bg-muted-foreground dark:bg-accent rounded p-1'>texto libre</code>",
@@ -224,13 +276,38 @@
     "gitlabWarningDescription": "El soporte de GitLab está en sus primeras etapas",
     "providerGithub": "GitHub",
     "providerGitlab": "GitLab",
-    "providerLocal": "Local"
+    "providerLocal": "Local",
+    "providerSnippetBin": "Snippet-bin",
+    "snippetBinToken": "Token de Snippet-bin",
+    "snippetBinBaseUrl": "URL base de Snippet-bin",
+    "enterSnippetBinToken": "Introduce el token de snippet-bin",
+    "enterSnippetBinBaseUrl": "Introduce la URL base de snippet-bin",
+    "scopeMessageSnippetBin": "Introduce tu token de acceso personal para snippet-bin",
+    "snippetBinWarning": "Instancia personalizada",
+    "snippetBinDescription": "Conectando a la instancia de snippet-bin en {baseUrl}"
   },
   "api": {
     "starRemoved": "Favorito eliminado",
     "starAdded": "Favorito agregado",
     "visibilityChangedToPublic": "Visibilidad del fragmento cambiada a público",
     "visibilityChangedToPrivate": "Visibilidad del fragmento cambiada a privado",
-    "errorTryToRefresh": "Error al obtener snippets, intenta actualizar"
+    "errorTryToRefresh": "Error al obtener snippets, intenta actualizar",
+    "featureNotSupported": "Esta función aún no es compatible con {provider}",
+    "snippetBinUnauthorized": "Snippet-bin Unauthorized",
+    "gitlabUnauthorized": "GitLab Unauthorized",
+    "invalidSnippetIdForGitLab": "Invalid snippet ID for GitLab",
+    "notAllowedToDelete": "Not allowed to delete this snippet",
+    "noDataFromGraphql": "No data returned from GitHub GraphQL API",
+    "fetchGithubGraphQLNotSupported": "fetchGithubGraphQL is not supported by this provider",
+    "directRequestsNotSupported": "Direct requests are not supported in local mode",
+    "snippetNotFound": "Snippet not found",
+    "unexpectedError": "An unexpected error occurred",
+    "configureAiProvider": "Please configure an AI provider API key in Settings > AI Assistant.",
+    "openAiApiKeyNotConfigured": "OpenAI API key not configured",
+    "geminiApiKeyNotConfigured": "Gemini API key not configured",
+    "claudeApiKeyNotConfigured": "Claude API key not configured",
+    "aiError": "AI error",
+    "errorWithProvider": "{provider} API error",
+    "failedToFetchModels": "Failed to fetch models"
   }
 }
