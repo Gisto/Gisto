@@ -13,6 +13,21 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([de395dc](https://github.com/gisto/gisto/commit/de395dc9a100d1565bef737665d926935dd92a9b))
 
+- *(deps)* Bump @radix-ui/react-switch from 1.2.6 to 1.3.7
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([ab5a87c](https://github.com/gisto/gisto/commit/ab5a87c543610f55bd806a5d75d85845e4bc39ba))
+
+- *(deps)* Bump @commitlint/types from 20.4.0 to 21.2.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([e61e1b0](https://github.com/gisto/gisto/commit/e61e1b073c38303638ec7943953ed4a61d33db75))
+
+- *(deps)* Bump @radix-ui/react-label from 2.1.8 to 2.1.15
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b612b2a](https://github.com/gisto/gisto/commit/b612b2a4adcd62a6a546b9de77801f78d869a24c))
+
 
 ## v2.13.2
 
