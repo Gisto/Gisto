@@ -28,6 +28,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([b612b2a](https://github.com/gisto/gisto/commit/b612b2a4adcd62a6a546b9de77801f78d869a24c))
 
+- *(deps)* Bump katex from 0.16.27 to 0.18.1
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b8858a4](https://github.com/gisto/gisto/commit/b8858a43763c6282f98d908369484cfd854578ad))
+
 
 ## v2.13.2
 
