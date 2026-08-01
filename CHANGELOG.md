@@ -23,6 +23,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([e61e1b0](https://github.com/gisto/gisto/commit/e61e1b073c38303638ec7943953ed4a61d33db75))
 
+- *(deps)* Bump @radix-ui/react-label from 2.1.8 to 2.1.15
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b612b2a](https://github.com/gisto/gisto/commit/b612b2a4adcd62a6a546b9de77801f78d869a24c))
+
 
 ## v2.13.2
 
