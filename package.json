@@ -77,7 +77,7 @@
     "leaflet": "^1.9.4",
     "lucide-react": "^0.563.0",
     "markdown-it": "^14.2.0",
-    "mermaid": "^11.15.0",
+    "mermaid": "^11.16.1",
     "motion": "^12.23.24",
     "papaparse": "^5.5.3",
     "react": "^19.2.0",
