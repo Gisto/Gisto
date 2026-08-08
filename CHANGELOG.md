@@ -38,6 +38,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([e9df914](https://github.com/gisto/gisto/commit/e9df914e516523cd56bc82aaacb3ea95654e6551))
 
+- *(deps-dev)* Bump postcss
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([f4bd3e4](https://github.com/gisto/gisto/commit/f4bd3e4a436d36cb178a27962c6c7cd01debad59))
+
 
 ## v2.13.2
 
