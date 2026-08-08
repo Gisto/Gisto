@@ -33,6 +33,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([b8858a4](https://github.com/gisto/gisto/commit/b8858a43763c6282f98d908369484cfd854578ad))
 
+- *(deps)* Bump mermaid in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([e9df914](https://github.com/gisto/gisto/commit/e9df914e516523cd56bc82aaacb3ea95654e6551))
+
 
 ## v2.13.2
 
