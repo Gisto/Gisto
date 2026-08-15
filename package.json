@@ -117,6 +117,7 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.0",
+    "fake-indexeddb": "^6.2.5",
     "globals": "^16.5.0",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",

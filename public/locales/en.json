@@ -209,7 +209,15 @@
       "jsfiddleInstructions": "Need to have CSS, JS and HTML files as part of the snippet",
       "cannotBeUndone": "can not be undone",
       "askAbout": "Ask about \"{title}\"",
-      "askAQuestion": "Ask a question..."
+      "askAQuestion": "Ask a question...",
+      "versionHistory": "Version history",
+      "noHistory": "No history yet",
+      "noHistoryDescription": "Save changes to this snippet to create versions. Each save is recorded so you can view the diff and restore any previous version.",
+      "version": "Version {number}",
+      "versionShort": "v{number}",
+      "restoreVersion": "Restore this version",
+      "restoreVersionConfirm": "Are you sure you want to restore this version? The current version will be kept in the history.",
+      "restored": "Version restored"
     },
     "about": {
       "title": "About",
@@ -303,6 +311,7 @@
     "fetchGithubGraphQLNotSupported": "fetchGithubGraphQL is not supported by this provider",
     "directRequestsNotSupported": "Direct requests are not supported in local mode",
     "snippetNotFound": "Snippet not found",
+    "revisionNotFound": "Revision not found",
     "unexpectedError": "An unexpected error occurred",
     "configureAiProvider": "Please configure an AI provider API key in Settings > AI Assistant.",
     "openAiApiKeyNotConfigured": "OpenAI API key not configured",
