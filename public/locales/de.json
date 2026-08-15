@@ -194,12 +194,19 @@
       "gistoSettings": "Gisto-Einstellungen",
       "themeLanguageAndTokens": "Design, Sprache und Zugriffstokens.",
       "openAiChatDescription": "Öffnen Sie den KI-Chat, um ein Gespräch mit Ihrem konfigurierten KI-Modell zu führen. Ihr Gesprächsverlauf bleibt während der Sitzung erhalten.",
-      "openAiChat": "Assistent öffnen"
+      "openAiChat": "Assistent öffnen",
+      "externalEditor": "Externer Editor",
+      "externalEditorDescription": "Snippets aus dem Snippet-Menü in Ihrem bevorzugten Editor öffnen",
+      "editorCommand": "Editor-Befehl",
+      "editorCommandHint": "Befehl zum Starten Ihres Editors, z. B. code, cursor, subl oder den vollständigen Pfad zur Editor-Datei. Die Snippet-Dateien werden in einen temporären Ordner geschrieben und damit geöffnet."
     },
     "snippet": {
       "fileTooLarge": "Datei zu groß",
       "downloadFile": "Datei herunterladen",
       "openOnWeb": "im Web öffnen",
+      "openInEditor": "Im Editor öffnen",
+      "openedInEditor": "Im Editor geöffnet, Dateien gespeichert unter {path}",
+      "editorSyncError": "Fehler beim Speichern des Snippets aus dem Editor",
       "invalidJson": "Ungültiges JSON",
       "copyContentToClipboard": "Inhalt kopieren",
       "openIn": "Öffnen in",

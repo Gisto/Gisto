@@ -11,6 +11,7 @@ import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { DynamicSettings } from '@/components/layout/pages/settings/dynamic-settings.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input.tsx';
 import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EDITOR_OPTIONS } from '@/constants';
@@ -123,6 +124,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
 
   const {
     editor,
+    externalEditor,
     ai,
     theme,
     language,
@@ -330,6 +332,29 @@ console.log(createNote('Gisto Settings', ['UI', 'ui', ' Editor ']));`}
                 </CardContent>
               </Card>
             </div>
+
+            <Card className="mt-6">
+              <CardHeader>
+                <CardTitle>{t('pages.settings.externalEditor')}</CardTitle>
+                <CardDescription>{t('pages.settings.externalEditorDescription')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div>
+                  <label className="text-sm font-medium block mb-1">
+                    {t('pages.settings.editorCommand')}
+                  </label>
+                  <Input
+                    type="text"
+                    value={externalEditor.command}
+                    placeholder="code"
+                    onChange={(e) => handleChange('externalEditor.command', e.target.value)}
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {t('pages.settings.editorCommandHint')}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="ai" className="mt-6">

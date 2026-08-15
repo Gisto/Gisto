@@ -1,8 +1,10 @@
+import { listen, UnlistenFn } from '@tauri-apps/api/event';
 import { useRouter, Outlet } from 'dirty-react-router';
 import * as React from 'react';
 import { useEffect } from 'react';
 
 import { CommandPalette } from '@/components/command-palette-modal.tsx';
+import { isTauri } from '@/components/isTauri.ts';
 import { KeyboardShortcutsModal } from '@/components/keyboard-shortcuts-modal.tsx';
 import { Navigation } from '@/components/layout/navigation/main';
 import { Lists } from '@/components/layout/navigation/snippets-list';
@@ -10,7 +12,7 @@ import { PATHS_WITHOUT_SNIPPET_LIST } from '@/constants';
 import { doReload } from '@/constants/shortcuts.ts';
 import { useKeybindings } from '@/hooks/use-keyboard-shortcuts.tsx';
 import { useIsMobile } from '@/hooks/use-mobile.tsx';
-import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
+import { setSnippetOpenInEditor, updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn } from '@/utils';
 
 export const MainLayout = () => {
@@ -43,6 +45,23 @@ export const MainLayout = () => {
   useEffect(() => {
     updateSettings({ sidebarCollapsedByDefault: isCollapsed });
   }, [isCollapsed]);
+
+  useEffect(() => {
+    if (!isTauri()) {
+      return;
+    }
+
+    let unlisten: UnlistenFn | undefined;
+    listen<{ snippetId: string }>('editor-file-closed', (event) => {
+      setSnippetOpenInEditor(event.payload.snippetId, false);
+    }).then((fn) => {
+      unlisten = fn;
+    });
+
+    return () => {
+      unlisten?.();
+    };
+  }, []);
 
   return (
     <div className="overflow-hidden bg-background w-screen h-dvh sticky">

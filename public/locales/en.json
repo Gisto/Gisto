@@ -195,12 +195,19 @@
       "gistoSettings": "Gisto settings",
       "themeLanguageAndTokens": "Theme, language, and access tokens.",
       "openAiChatDescription": "Open the AI chat to have a conversation with your configured AI model. Your conversation history is preserved within the session.",
-      "openAiChat": "Open assistant"
+      "openAiChat": "Open assistant",
+      "externalEditor": "External editor",
+      "externalEditorDescription": "Open snippets in your editor of choice from the snippet menu",
+      "editorCommand": "Editor command",
+      "editorCommandHint": "Command used to launch your editor, e.g. code, cursor, subl, or the full path to the editor binary. Snippet files are written to a temporary folder and opened with it."
     },
     "snippet": {
       "fileTooLarge": "File too large, please",
       "downloadFile": "Download file",
       "openOnWeb": "open on web",
+      "openInEditor": "Open in editor",
+      "openedInEditor": "Opened in editor, files saved to {path}",
+      "editorSyncError": "Failed to save snippet from editor",
       "invalidJson": "Detected as JSON but not valid for preview",
       "copyContentToClipboard": "Copy file contents to clipboard",
       "openIn": "Open in",

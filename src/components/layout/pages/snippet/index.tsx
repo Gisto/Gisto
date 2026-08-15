@@ -1,6 +1,7 @@
 import { useRouter } from 'dirty-react-router';
 import {
   Copy,
+  Code2,
   ExternalLink,
   Globe,
   History,
@@ -20,10 +21,12 @@ import type { ChatMessage } from '@/lib/api/ai-api.ts';
 import type { SnippetSingleType } from '@/types/snippet.ts';
 
 import { AIChatDialog } from '@/components/ai-chat-dialog.tsx';
+import { isTauri } from '@/components/isTauri.ts';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { File } from '@/components/layout/pages/snippet/content';
 import { HistoryDialog } from '@/components/layout/pages/snippet/history-dialog.tsx';
 import { Loading } from '@/components/loading.tsx';
+import { toast } from '@/components/toast';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import {
@@ -36,6 +39,7 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
+import { useEditorSync } from '@/hooks/use-editor-sync.tsx';
 import { AiApiError, generateAiResponse, isAiAvailable } from '@/lib/api/ai-api.ts';
 import {
   getGistRevisionContent,
@@ -47,13 +51,15 @@ import {
   getSnippetRevisions,
   restoreSnippetRevision,
 } from '@/lib/api/local-api.ts';
+import { openSnippetInEditor } from '@/lib/api/open-in-editor.ts';
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
-import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
+import { globalState, setSnippetOpenInEditor, useStoreValue } from '@/lib/store/globalState.ts';
 import {
   copyToClipboard,
   fetchAndUpdateSnippets,
   getTags,
+  mergeSyncedSnippet,
   removeTags,
   upperCaseFirst,
 } from '@/utils';
@@ -176,6 +182,19 @@ export const SnippetContent = () => {
         : restoreSnippetRevision(id, revisionId),
     [activeProvider]
   );
+
+  const handleEditorSynced = useCallback(async () => {
+    const snippetData = await snippetService.getSnippet(params.id);
+    setSnippet(snippetData);
+
+    globalState.setState({
+      snippets: globalState
+        .getState()
+        .snippets.map((s) => (s.id === snippetData.id ? mergeSyncedSnippet(s, snippetData) : s)),
+    });
+  }, [params.id]);
+
+  useEditorSync(snippet, handleEditorSynced);
 
   if (loading || !snippet) {
     return <Loading />;
@@ -364,6 +383,37 @@ export const SnippetContent = () => {
                     <Globe /> {upperCaseFirst(t('pages.snippet.openOnWeb'))}
                   </a>
                 </DropdownMenuItem>
+                {isTauri() && (
+                  <DropdownMenuItem
+                    onClick={async () => {
+                      try {
+                        const dirPath = await openSnippetInEditor(
+                          snippet.id,
+                          Object.values(snippet.files).map((file) => ({
+                            filename: file.filename,
+                            content: file.content ?? '',
+                          })),
+                          settings.externalEditor.command
+                        );
+
+                        setSnippetOpenInEditor(snippet.id, true);
+
+                        toast.info({
+                          title: t('pages.snippet.openInEditor'),
+                          message: t('pages.snippet.openedInEditor', { path: dirPath }),
+                        });
+                      } catch (error) {
+                        toast.error({
+                          title: t('pages.snippet.openInEditor'),
+                          message:
+                            error instanceof Error ? error.message : t('api.unexpectedError'),
+                        });
+                      }
+                    }}
+                  >
+                    <Code2 /> {t('pages.snippet.openInEditor')}
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuItem onClick={() => copyToClipboard(snippet.id)}>
                   <Copy /> {t('pages.snippet.copySnippetId')}
                 </DropdownMenuItem>

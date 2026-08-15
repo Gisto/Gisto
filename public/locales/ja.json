@@ -194,12 +194,19 @@
       "gistoSettings": "Gisto設定",
       "themeLanguageAndTokens": "テーマ、言語、アクセストークン。",
       "openAiChatDescription": "AIチャットを開いて、設定したAIモデルと会話できます。会話履歴はセッション中保持されます。",
-      "openAiChat": "アシスタントを開く"
+      "openAiChat": "アシスタントを開く",
+      "externalEditor": "外部エディター",
+      "externalEditorDescription": "スニペットメニューから選択したエディターでスニペットを開く",
+      "editorCommand": "エディターコマンド",
+      "editorCommandHint": "エディターを起動するコマンド（例: code、cursor、subl、またはエディター実行ファイルへのフルパス）。スニペットファイルは一時フォルダーに書き込まれ、それで開かれます。"
     },
     "snippet": {
       "fileTooLarge": "ファイルが大きすぎます。してください",
       "downloadFile": "ファイルをダウンロード",
       "openOnWeb": "ウェブで開く",
+      "openInEditor": "エディターで開く",
+      "openedInEditor": "エディターで開きました。ファイルは {path} に保存されています",
+      "editorSyncError": "エディターからスニペットを保存できませんでした",
       "invalidJson": "JSONとして検出されましたが、プレビューには有効ではありません",
       "copyContentToClipboard": "ファイルの内容をクリップボードにコピー",
       "openIn": "で開く",

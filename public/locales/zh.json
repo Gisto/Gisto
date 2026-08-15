@@ -194,12 +194,19 @@
       "gistoSettings": "Gisto 设置",
       "themeLanguageAndTokens": "主题、语言和访问令牌。",
       "openAiChatDescription": "打开 AI 聊天，与您配置的 AI 模型进行对话。您的对话历史记录在会话期间会保留。",
-      "openAiChat": "打开助手"
+      "openAiChat": "打开助手",
+      "externalEditor": "外部编辑器",
+      "externalEditorDescription": "从代码片段菜单在您选择的编辑器中打开代码片段",
+      "editorCommand": "编辑器命令",
+      "editorCommandHint": "用于启动编辑器的命令，例如 code、cursor、subl，或编辑器可执行文件的完整路径。代码片段文件会写入临时文件夹并随之打开。"
     },
     "snippet": {
       "fileTooLarge": "文件太大，请",
       "downloadFile": "下载文件",
       "openOnWeb": "在网页中打开",
+      "openInEditor": "在编辑器中打开",
+      "openedInEditor": "已在编辑器中打开，文件保存到 {path}",
+      "editorSyncError": "无法从编辑器保存代码片段",
       "invalidJson": "检测为JSON但预览无效",
       "copyContentToClipboard": "复制文件内容到剪贴板",
       "openIn": "打开在",
