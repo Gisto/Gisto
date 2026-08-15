@@ -8,6 +8,7 @@ import {
   MessageSquareText,
   Pencil,
   Trash,
+  MonitorUp,
 } from 'lucide-react';
 
 import { toast } from '@/components/toast';
@@ -22,6 +23,7 @@ import { cn, fetchAndUpdateSnippets, getTags, removeTags, upperCaseFirst } from 
 
 export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
   const search = useStoreValue('search');
+  const openInEditor = useStoreValue('openInEditor');
   const { navigate, path } = useRouter();
 
   const active = path === `/snippets/${snippet.id}`;
@@ -40,8 +42,19 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
       <div
       //  className="hover:scale-95 transition"
       >
-        <h4 className="cursor-pointer [word-break:break-word]">
-          {removeTags(snippet.description) || t('common.untitled')}
+        <h4 className="cursor-pointer [word-break:break-word] flex items-center gap-2">
+          <span className="min-w-0">{removeTags(snippet.description) || t('common.untitled')}</span>
+          {openInEditor[snippet.id] && (
+            <Tooltip delayDuration={100}>
+              <TooltipTrigger asChild>
+                <MonitorUp
+                  className="size-3.5 shrink-0 text-primary"
+                  aria-label={t('pages.snippet.openInEditor')}
+                />
+              </TooltipTrigger>
+              <TooltipContent>{t('pages.snippet.openInEditor')}</TooltipContent>
+            </Tooltip>
+          )}
         </h4>
 
         <div className="flex items-center mt-2 gap-2">

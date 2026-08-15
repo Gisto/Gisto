@@ -13,6 +13,7 @@ export type StoreStateType = {
   loadingProgress: number;
   totalSnippetCount: number;
   snippets: SnippetEnrichedType[] | [];
+  openInEditor: Record<string, boolean>;
   search: string;
   apiRateLimits: {
     limit: number;
@@ -48,6 +49,9 @@ export type StoreStateType = {
       renderWhitespace: 'none' | 'boundary' | 'selection' | 'trailing' | 'all';
       renderLineHighlight: 'all' | 'line' | 'none' | 'gutter';
       minimap: { enabled: boolean };
+    };
+    externalEditor: {
+      command: string;
     };
     ai: {
       activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude' | 'minimax';
@@ -163,6 +167,9 @@ export const defaultSettings: SettingsType = {
     renderLineHighlight: 'line',
     minimap: { enabled: false },
   },
+  externalEditor: {
+    command: 'code',
+  },
   ai: {
     activeAiProvider: 'openrouter',
     geminiApiKey: '',
@@ -188,6 +195,7 @@ export const globalState = new Store<StoreStateType>({
   loadingProgress: 0,
   totalSnippetCount: 0,
   snippets: [],
+  openInEditor: {},
   search: '',
   apiRateLimits: null,
   settings: loadSettingsFromLocalStorage() as SettingsType,
@@ -224,6 +232,16 @@ export function updateSettings(newSettings: Partial<SettingsType>) {
   });
 
   globalState.setState({ settings: updatedSettings });
+}
+
+export function setSnippetOpenInEditor(snippetId: string, open: boolean) {
+  const next = { ...globalState.getState().openInEditor };
+  if (open) {
+    next[snippetId] = true;
+  } else {
+    delete next[snippetId];
+  }
+  globalState.setState({ openInEditor: next });
 }
 
 function setNestedProperty(obj: { [key: string]: unknown }, path: string, value: unknown): void {
