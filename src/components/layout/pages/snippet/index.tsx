@@ -3,6 +3,7 @@ import {
   Copy,
   ExternalLink,
   Globe,
+  History,
   Info,
   MoreVertical,
   Pencil,
@@ -21,6 +22,7 @@ import type { SnippetSingleType } from '@/types/snippet.ts';
 import { AIChatDialog } from '@/components/ai-chat-dialog.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { File } from '@/components/layout/pages/snippet/content';
+import { HistoryDialog } from '@/components/layout/pages/snippet/history-dialog.tsx';
 import { Loading } from '@/components/loading.tsx';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
@@ -35,6 +37,16 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { AiApiError, generateAiResponse, isAiAvailable } from '@/lib/api/ai-api.ts';
+import {
+  getGistRevisionContent,
+  getGistRevisions,
+  restoreGistRevision,
+} from '@/lib/api/github-api.ts';
+import {
+  getLocalRevisionContent,
+  getSnippetRevisions,
+  restoreSnippetRevision,
+} from '@/lib/api/local-api.ts';
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
@@ -51,9 +63,14 @@ export const SnippetContent = () => {
   const [loading, setLoading] = useState(true);
   const { params, navigate } = useRouter();
   const snippetState = useStoreValue('snippets').find((s) => s.id === params.id);
+  const settings = useStoreValue('settings');
+  const activeProvider = settings.activeSnippetProvider;
+  const isLocalProvider = activeProvider === 'local';
+  const isHistorySupported = isLocalProvider || activeProvider === 'github';
   const [chatOpen, setChatOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState<AssistantMessage[]>([]);
   const [chatLoading, setChatLoading] = useState(false);
+  const [historyOpen, setHistoryOpen] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -133,6 +150,33 @@ export const SnippetContent = () => {
     [chatMessages, snippetContext]
   );
 
+  const handleRestored = useCallback(async () => {
+    const snippetData = await snippetService.getSnippet(params.id);
+    setSnippet(snippetData);
+    await fetchAndUpdateSnippets();
+  }, [params.id]);
+
+  const loadRevisions = useCallback(
+    (id: string) => (activeProvider === 'github' ? getGistRevisions(id) : getSnippetRevisions(id)),
+    [activeProvider]
+  );
+
+  const loadRevision = useCallback(
+    (id: string, revisionId: string) =>
+      activeProvider === 'github'
+        ? getGistRevisionContent(id, revisionId)
+        : getLocalRevisionContent(id, revisionId),
+    [activeProvider]
+  );
+
+  const restoreRevision = useCallback(
+    (id: string, revisionId: string) =>
+      activeProvider === 'github'
+        ? restoreGistRevision(id, revisionId)
+        : restoreSnippetRevision(id, revisionId),
+    [activeProvider]
+  );
+
   if (loading || !snippet) {
     return <Loading />;
   }
@@ -192,6 +236,21 @@ export const SnippetContent = () => {
               <Pencil className="size-4" />
               <span className="sr-only">{upperCaseFirst(t('common.edit'))}</span>
             </Button>
+
+            {isHistorySupported && (
+              <>
+                <Separator orientation="vertical" className="mx-2 h-6" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="-mx-3"
+                  onClick={() => setHistoryOpen(true)}
+                >
+                  <History className="size-4" />
+                  <span className="sr-only">{t('pages.snippet.versionHistory')}</span>
+                </Button>
+              </>
+            )}
 
             <Separator orientation="vertical" className="mx-2 h-6" />
 
@@ -407,6 +466,19 @@ export const SnippetContent = () => {
         })}
         placeholder={t('pages.snippet.askAQuestion')}
       />
+
+      {isHistorySupported && (
+        <HistoryDialog
+          open={historyOpen}
+          onOpenChange={setHistoryOpen}
+          snippetId={snippet.id}
+          currentSnippet={snippet}
+          onRestored={handleRestored}
+          loadRevisions={loadRevisions}
+          loadRevision={loadRevision}
+          restoreRevision={restoreRevision}
+        />
+      )}
     </div>
   );
 };

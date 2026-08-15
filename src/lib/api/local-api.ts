@@ -8,6 +8,8 @@ import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 import {
   SnippetFileType,
+  SnippetRevision,
+  SnippetRevisionContent,
   SnippetSingleType,
   SnippetType,
   SnippetEnrichedType,
@@ -37,15 +39,27 @@ interface LocalSnippetComment {
   createdAt: string;
 }
 
+export interface LocalSnippetRevision {
+  id: string;
+  snippetId: string;
+  description: string;
+  files: Record<string, SnippetFileType>;
+  createdAt: string;
+}
+
 class GistoDatabase extends Dexie {
   snippets!: Table<LocalSnippet>;
   comments!: Table<LocalSnippetComment>;
+  revisions!: Table<LocalSnippetRevision>;
 
   constructor() {
     super('GistoDB');
     this.version(1).stores({
       snippets: 'id, description, isPublic, createdAt, updatedAt, starred',
       comments: 'id, snippetId, createdAt',
+    });
+    this.version(2).stores({
+      revisions: 'id, snippetId, createdAt',
     });
   }
 }
@@ -60,6 +74,24 @@ async function refreshLocalSnippets() {
 
 function generateId(): string {
   return `local_${Date.now()}_${randomString(16)}`;
+}
+
+function generateRevisionId(): string {
+  return `rev_${Date.now()}_${randomString(16)}`;
+}
+
+async function saveRevision(
+  snippet: Pick<LocalSnippet, 'id' | 'description' | 'files'>
+): Promise<void> {
+  const revision: LocalSnippetRevision = {
+    id: generateRevisionId(),
+    snippetId: snippet.id,
+    description: snippet.description,
+    files: snippet.files,
+    createdAt: new Date().toISOString(),
+  };
+
+  await db.revisions.add(revision);
 }
 
 function mapToSnippetType(snippet: LocalSnippet): SnippetType {
@@ -197,6 +229,12 @@ export const LocalApi: SnippetProvider<LocalSnippet, LocalSnippet> = {
       throw new Error(t('api.snippetNotFound'));
     }
 
+    await saveRevision({
+      id: existing.id,
+      description: existing.description,
+      files: existing.files,
+    });
+
     const now = new Date().toISOString();
     const files: Record<string, SnippetFileType> = {};
 
@@ -253,6 +291,7 @@ export const LocalApi: SnippetProvider<LocalSnippet, LocalSnippet> = {
   async deleteSnippet(snippetId: string): Promise<{ success: boolean }> {
     await db.snippets.delete(snippetId);
     await db.comments.where('snippetId').equals(snippetId).delete();
+    await db.revisions.where('snippetId').equals(snippetId).delete();
     await refreshLocalSnippets();
     return { success: true };
   },
@@ -336,4 +375,50 @@ export async function exportLocalDatabase(): Promise<Blob> {
 export async function importLocalDatabase(file: File): Promise<void> {
   await db.import(file);
   await refreshLocalSnippets();
+}
+
+export async function getSnippetRevisions(snippetId: string): Promise<SnippetRevision[]> {
+  const revisions = await db.revisions.where('snippetId').equals(snippetId).sortBy('createdAt');
+
+  return revisions.reverse();
+}
+
+export async function getLocalRevisionContent(
+  snippetId: string,
+  revisionId: string
+): Promise<SnippetRevisionContent> {
+  const revision = await db.revisions.get(revisionId);
+  if (!revision || revision.snippetId !== snippetId) {
+    throw new Error(t('api.revisionNotFound'));
+  }
+
+  return { description: revision.description, files: revision.files };
+}
+
+export async function restoreSnippetRevision(
+  snippetId: string,
+  revisionId: string
+): Promise<SnippetType> {
+  const existing = await db.snippets.get(snippetId);
+  if (!existing) {
+    throw new Error(t('api.snippetNotFound'));
+  }
+
+  const revision = await db.revisions.get(revisionId);
+  if (!revision) {
+    throw new Error(t('api.revisionNotFound'));
+  }
+
+  await saveRevision({ id: existing.id, description: existing.description, files: existing.files });
+
+  const restored: LocalSnippet = {
+    ...existing,
+    description: revision.description,
+    updatedAt: new Date().toISOString(),
+    files: revision.files,
+  };
+
+  await db.snippets.put(restored);
+  await refreshLocalSnippets();
+  return mapToSnippetType(restored);
 }

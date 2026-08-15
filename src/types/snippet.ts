@@ -45,6 +45,20 @@ export type SnippetHistoryItem = {
   url: string;
 };
 
+export type SnippetRevision = {
+  id: string;
+  snippetId: string;
+  description: string;
+  files?: Record<string, SnippetFileType>;
+  createdAt: string;
+  meta?: string;
+};
+
+export type SnippetRevisionContent = {
+  description: string;
+  files: Record<string, SnippetFileType>;
+};
+
 export type SnippetSingleType = {
   url: string;
   forks_url: string;
