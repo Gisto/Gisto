@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(snippet)* Show history diff
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([440f71f](https://github.com/gisto/gisto/commit/440f71fc146973a733c97cbe901d2544685776fe))
+
+
 ### 🛠️️ Build
 
 - *(deps-dev)* Bump postcss
