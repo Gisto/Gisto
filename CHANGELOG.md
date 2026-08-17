@@ -13,6 +13,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([440f71f](https://github.com/gisto/gisto/commit/440f71fc146973a733c97cbe901d2544685776fe))
 
+- Edit snippet in own editor
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([247701d](https://github.com/gisto/gisto/commit/247701d2ada6d77bb9e763d583ec240ef075dcdd))
+
 
 ### 🛠️️ Build
 
