@@ -54,9 +54,9 @@ export async function createSnippet(
   await page.waitForTimeout(3000);
 }
 
-export async function deleteSnippet(page: Page, snippetTitle: string) {
+export async function deleteSnippet(page: Page, snippetTitle: string, fileName = 'hello.js') {
   await page.click(`text=${snippetTitle}`);
-  await page.waitForSelector('text=hello.js');
+  await page.waitForSelector(`text=${fileName}`);
 
   await page.click('button:has-text("More")');
 

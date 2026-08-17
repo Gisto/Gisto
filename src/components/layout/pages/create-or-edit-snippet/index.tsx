@@ -137,7 +137,7 @@ export const CreateOrEditSnippet = ({
   };
 
   return (
-    <div className="h-screen w-full border-r border-collapse">
+    <div className="h-screen w-full min-w-0 border-r border-collapse">
       <PageHeader>
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
@@ -171,7 +171,6 @@ export const CreateOrEditSnippet = ({
                   </label>
                   <div className="flex items-baseline gap-2">
                     <Textarea
-                      className="bg-white"
                       id="description"
                       value={state.description}
                       onChange={(e) =>

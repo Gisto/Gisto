@@ -86,7 +86,8 @@
     "free": "免费",
     "paid": "付费",
     "contextK": "{n}K 上下文",
-    "editingFiles": "正在编辑 {n} 个文件"
+    "editingFiles": "正在编辑 {n} 个文件",
+    "searchFonts": "搜索字体"
   },
   "menu": {
     "logOut": "退出登录",
@@ -95,7 +96,9 @@
     "settings": "设置",
     "about": "关于",
     "onLine": "您已在线",
-    "offLine": "您已离线"
+    "offLine": "您已离线",
+    "overview": "概览",
+    "system": "系统"
   },
   "theme": {
     "theme": "主题",
@@ -118,7 +121,11 @@
       "oneYearAgo": "1年前",
       "topLanguages": "主要语言",
       "topTags": "主要标签",
-      "filesPerSnippet": "每个片段的文件数"
+      "filesPerSnippet": "每个片段的文件数",
+      "subtitle": "片段概览",
+      "goodMorning": "早上好",
+      "goodAfternoon": "下午好",
+      "goodEvening": "晚上好"
     },
     "new": {
       "title": "创建新代码片段",
@@ -198,7 +205,36 @@
       "externalEditor": "外部编辑器",
       "externalEditorDescription": "从代码片段菜单在您选择的编辑器中打开代码片段",
       "editorCommand": "编辑器命令",
-      "editorCommandHint": "用于启动编辑器的命令，例如 code、cursor、subl，或编辑器可执行文件的完整路径。代码片段文件会写入临时文件夹并随之打开。"
+      "editorCommandHint": "用于启动编辑器的命令，例如 code、cursor、subl，或编辑器可执行文件的完整路径。代码片段文件会写入临时文件夹并随之打开。",
+      "baseColor": "基础颜色",
+      "baseColors": {
+        "teal": "青绿",
+        "blue": "蓝色",
+        "indigo": "靛蓝",
+        "purple": "紫色",
+        "pink": "粉色",
+        "red": "红色",
+        "orange": "橙色",
+        "amber": "琥珀色",
+        "green": "绿色",
+        "emerald": "祖母绿",
+        "cyan": "青色",
+        "sky": "天蓝色"
+      },
+      "customColor": "自定义颜色",
+      "headingFont": "标题字体",
+      "numbersFont": "数字字体",
+      "bodyFont": "正文字体",
+      "fonts": "字体",
+      "fontsDescription": "自定义应用中使用的字体",
+      "editorFont": "编辑器字体",
+      "systemMonospace": "系统等宽字体",
+      "fontsPreviewHeading": "字体排印",
+      "fontsPreviewBody": "中文排版预览，快速横越懒狗跳过旋转的狐狸。",
+      "fontsPreviewSnippets": "代码片段",
+      "fontsPreviewViews": "浏览数",
+      "fontsPreviewUptime": "可用性",
+      "resetFontsToDefaults": "将字体重置为默认"
     },
     "snippet": {
       "fileTooLarge": "文件太大，请",

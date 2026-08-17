@@ -78,11 +78,11 @@ function generateChartData(list: SnippetEnrichedType[], period = '6months') {
 const chartConfig = {
   public: {
     label: upperCaseFirst(t('common.public')),
-    color: 'hsl(var(--chart-1))',
+    color: 'var(--color-destructive)',
   },
   private: {
     label: upperCaseFirst(t('common.private')),
-    color: 'hsl(var(--chart-2))',
+    color: 'var(--chart-1)',
   },
 } satisfies ChartConfig;
 
@@ -141,7 +141,7 @@ export const SnippetsOverTimeChart = () => {
   if (isLoading) {
     return (
       <Card>
-        <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
+        <CardHeader className="flex flex-col items-stretch space-y-0 border-b border-border/60 p-0 sm:flex-row">
           <div className="flex flex-1 flex-col justify-center gap-1">
             <div className="h-5 w-48 bg-muted rounded animate-pulse" />
             <div className="h-3 w-32 bg-muted rounded animate-pulse" />
@@ -159,7 +159,7 @@ export const SnippetsOverTimeChart = () => {
 
   return (
     <Card>
-      <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
+      <CardHeader className="flex flex-col items-stretch space-y-0 border-b border-border/60 p-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1">
           <CardTitle>{t('pages.dashboard.snippetsOverTime')}</CardTitle>
           <CardDescription>

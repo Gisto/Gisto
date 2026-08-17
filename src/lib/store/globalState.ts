@@ -23,6 +23,10 @@ export type StoreStateType = {
   settings: {
     language: 'en' | 'fr' | 'es' | 'de' | 'it' | 'ru' | 'zh' | 'ja';
     theme: 'system' | 'light' | 'dark';
+    baseColor: string;
+    headingFont: string;
+    numbersFont: string;
+    bodyFont: string;
     newSnippetDefaultLanguage: string;
     sidebarCollapsedByDefault: boolean;
     filesCollapsedByDefault: boolean;
@@ -139,6 +143,10 @@ function loadSettingsFromLocalStorage() {
 
 export const defaultSettings: SettingsType = {
   theme: 'system',
+  baseColor: '201 45.5% 45.3%',
+  headingFont: 'Titillium Web',
+  numbersFont: 'Bodoni Moda',
+  bodyFont: 'Titillium Web',
   language: 'en',
   newSnippetDefaultLanguage: 'Text',
   sidebarCollapsedByDefault: false,
@@ -149,7 +157,7 @@ export const defaultSettings: SettingsType = {
   sortFilesByMarkdownFirst: false,
   sidebarViewMode: 'list',
   editor: {
-    fontFamily: 'monospace',
+    fontFamily: 'JetBrains Mono',
     fontLigatures: false,
     fontSize: 13,
     lineHeight: 20,

@@ -123,7 +123,10 @@ const SnippetsListFooter = ({
         {apiRateLimits && (
           <Tooltip>
             <TooltipTrigger>
-              {t('list.apiRate')}: {apiRateLimits.remaining}/{apiRateLimits.limit}
+              {t('list.apiRate')}:{' '}
+              <span className="font-numbers">
+                {apiRateLimits.remaining}/{apiRateLimits.limit}
+              </span>
             </TooltipTrigger>
             <TooltipContent>
               {t('list.apiRateLimit')}, {apiRateLimits.limit}/{t('common.hour')}{' '}

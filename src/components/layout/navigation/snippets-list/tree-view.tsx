@@ -72,7 +72,7 @@ const TreeNode = ({ name, color, count, snippets, depth, allExpanded }: TreeNode
           />
         )}
         <span className="text-sm truncate flex-1">{name}</span>
-        <Badge variant="secondary" className="ml-auto text-xs h-5">
+        <Badge variant="secondary" className="ml-auto text-xs h-5 font-numbers">
           {count}
         </Badge>
       </div>

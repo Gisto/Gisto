@@ -86,7 +86,8 @@
     "free": "無料",
     "paid": "有料",
     "contextK": "{n}K コンテキスト",
-    "editingFiles": "{n} 個のファイルを編集中"
+    "editingFiles": "{n} 個のファイルを編集中",
+    "searchFonts": "フォントを検索"
   },
   "menu": {
     "logOut": "ログアウト",
@@ -95,7 +96,9 @@
     "settings": "設定",
     "about": "について",
     "onLine": "あなたはオンラインです",
-    "offLine": "あなたはオフラインです"
+    "offLine": "あなたはオフラインです",
+    "overview": "概要",
+    "system": "システム"
   },
   "theme": {
     "theme": "テーマ",
@@ -118,7 +121,11 @@
       "oneYearAgo": "1年前",
       "topLanguages": "トップ言語",
       "topTags": "トップタグ",
-      "filesPerSnippet": "スニペットあたりのファイル数"
+      "filesPerSnippet": "スニペットあたりのファイル数",
+      "subtitle": "スニペットの概要",
+      "goodMorning": "おはようございます",
+      "goodAfternoon": "こんにちは",
+      "goodEvening": "こんばんは"
     },
     "new": {
       "title": "新しいスニペットを作成",
@@ -198,7 +205,36 @@
       "externalEditor": "外部エディター",
       "externalEditorDescription": "スニペットメニューから選択したエディターでスニペットを開く",
       "editorCommand": "エディターコマンド",
-      "editorCommandHint": "エディターを起動するコマンド（例: code、cursor、subl、またはエディター実行ファイルへのフルパス）。スニペットファイルは一時フォルダーに書き込まれ、それで開かれます。"
+      "editorCommandHint": "エディターを起動するコマンド（例: code、cursor、subl、またはエディター実行ファイルへのフルパス）。スニペットファイルは一時フォルダーに書き込まれ、それで開かれます。",
+      "baseColor": "ベースカラー",
+      "baseColors": {
+        "teal": "ティール",
+        "blue": "青",
+        "indigo": "藍色",
+        "purple": "紫",
+        "pink": "ピンク",
+        "red": "赤",
+        "orange": "オレンジ",
+        "amber": "琥珀色",
+        "green": "緑",
+        "emerald": "エメラルド",
+        "cyan": "シアン",
+        "sky": "空色"
+      },
+      "customColor": "カスタムカラー",
+      "headingFont": "見出しフォント",
+      "numbersFont": "数字フォント",
+      "bodyFont": "本文フォント",
+      "fonts": "フォント",
+      "fontsDescription": "アプリで使用するフォントをカスタマイズ",
+      "editorFont": "エディターフォント",
+      "systemMonospace": "システム等幅",
+      "fontsPreviewHeading": "タイポグラフィ",
+      "fontsPreviewBody": "日本語のフォントプレビュー。すばやく茶色の狐が怠け犬を飛び越えます。",
+      "fontsPreviewSnippets": "スニペット",
+      "fontsPreviewViews": "表示回数",
+      "fontsPreviewUptime": "稼働率",
+      "resetFontsToDefaults": "フォントを既定にリセット"
     },
     "snippet": {
       "fileTooLarge": "ファイルが大きすぎます。してください",

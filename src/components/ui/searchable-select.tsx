@@ -1,7 +1,9 @@
 'use client';
 
 import { ChevronDown } from 'lucide-react';
-import Select, { SelectRenderer } from 'react-dropdown-select';
+import Select from 'react-dropdown-select';
+
+import type { RendererArgs } from 'react-dropdown-select/types/select-types';
 
 import { Input } from '@/components/ui/input';
 import { t } from '@/lib/i18n';
@@ -23,7 +25,7 @@ interface SearchableSelectProps<T> {
   loading?: boolean;
   itemRenderer?: (
     item: SearchableSelectOption<T>,
-    props: SelectRenderer<SearchableSelectOption<T>>
+    props: RendererArgs<SearchableSelectOption<T>>
   ) => React.ReactNode;
 }
 
@@ -56,7 +58,7 @@ export function SearchableSelect<T>({
       loading={loading}
       className="searchable-select"
       color="hsl(var(--primary))"
-      contentRenderer={({ state }: SelectRenderer<SearchableSelectOption<T>>) => (
+      contentRenderer={({ state }: RendererArgs<SearchableSelectOption<T>>) => (
         <div className="flex w-full items-center justify-between gap-2">
           <span
             className={cn('flex-1 truncate text-sm', !state.values[0] && 'text-muted-foreground')}
@@ -66,7 +68,7 @@ export function SearchableSelect<T>({
           <ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
         </div>
       )}
-      dropdownRenderer={({ props, state, methods }: SelectRenderer<SearchableSelectOption<T>>) => {
+      dropdownRenderer={({ props, state, methods }: RendererArgs<SearchableSelectOption<T>>) => {
         const regexp = new RegExp(state.search, 'i');
         const { searchBy } = props;
 
@@ -106,7 +108,7 @@ export function SearchableSelect<T>({
                               }
                         }
                       >
-                        {itemRenderer(option, { props, state, methods } as SelectRenderer<
+                        {itemRenderer(option, { props, state, methods } as RendererArgs<
                           SearchableSelectOption<T>
                         >)}
                       </div>

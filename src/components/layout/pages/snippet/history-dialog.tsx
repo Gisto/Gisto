@@ -26,6 +26,7 @@ import {
   SnippetSingleType,
 } from '@/types/snippet.ts';
 import { cn, getEditorTheme, getLanguageName, removeTags } from '@/utils';
+import { defineEditorThemes } from '@/utils/monacoTheme';
 
 type HistoryDialogProps = {
   open: boolean;
@@ -230,7 +231,7 @@ export const HistoryDialog = ({
                       )}
                     >
                       <span className="flex items-center gap-2">
-                        <Badge variant="primary-outline" className="shrink-0">
+                        <Badge variant="primary-outline" className="shrink-0 font-numbers">
                           {t('pages.snippet.versionShort', {
                             number: revisions.length - index,
                           })}
@@ -280,6 +281,7 @@ export const HistoryDialog = ({
                   modified={modifiedFile?.content ?? ''}
                   language={diffLanguage}
                   theme={getEditorTheme()}
+                  beforeMount={(monaco) => defineEditorThemes(monaco)}
                   height="100%"
                   options={DIFF_OPTIONS}
                 />

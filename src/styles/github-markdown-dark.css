@@ -11,7 +11,8 @@
     'Apple Color Emoji', 'Segoe UI Emoji';
   font-size: 16px;
   line-height: 1.5;
-  word-wrap: break-word;
+  word-wrap: anywhere;
+  overflow-x: auto;
 }
 
 .markdown-body .octicon {
@@ -1124,4 +1125,27 @@
 
 .markdown-body .highlight pre:has(+ .zeroclipboard-container) {
   min-height: 52px;
+}
+
+.markdown-body {
+  color: var(--foreground);
+  background-color: transparent;
+}
+
+.markdown-body pre,
+.markdown-body .highlight pre {
+  background-color: var(--muted);
+}
+
+.markdown-body .hljs {
+  background-color: transparent;
+}
+
+.markdown-body code {
+  background-color: var(--accent);
+}
+
+.markdown-body pre code,
+.markdown-body pre tt {
+  background-color: transparent;
 }

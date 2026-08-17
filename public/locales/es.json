@@ -86,7 +86,8 @@
     "free": "Gratis",
     "paid": "De pago",
     "contextK": "{n}K de contexto",
-    "editingFiles": "Editando {n} archivos"
+    "editingFiles": "Editando {n} archivos",
+    "searchFonts": "Buscar fuentes"
   },
   "menu": {
     "logOut": "Cerrar sesión",
@@ -95,7 +96,9 @@
     "settings": "Configuraciones",
     "about": "Acerca de",
     "onLine": "Estás en línea",
-    "offLine": "Estás fuera de línea"
+    "offLine": "Estás fuera de línea",
+    "overview": "Resumen",
+    "system": "Sistema"
   },
   "theme": {
     "theme": "Tema",
@@ -118,7 +121,11 @@
       "oneYearAgo": "hace 1 año",
       "topLanguages": "Lenguajes principales",
       "topTags": "Etiquetas principales",
-      "filesPerSnippet": "Archivos por fragmento"
+      "filesPerSnippet": "Archivos por fragmento",
+      "subtitle": "Resumen de tus fragmentos",
+      "goodMorning": "Buenos días",
+      "goodAfternoon": "Buenas tardes",
+      "goodEvening": "Buenas noches"
     },
     "new": {
       "title": "Crear nuevo fragmento",
@@ -198,7 +205,36 @@
       "externalEditor": "Editor externo",
       "externalEditorDescription": "Abrir snippets en su editor preferido desde el menú del snippet",
       "editorCommand": "Comando del editor",
-      "editorCommandHint": "Comando para iniciar su editor, p. ej. code, cursor, subl, o la ruta completa al binario del editor. Los archivos del snippet se escriben en una carpeta temporal y se abren con él."
+      "editorCommandHint": "Comando para iniciar su editor, p. ej. code, cursor, subl, o la ruta completa al binario del editor. Los archivos del snippet se escriben en una carpeta temporal y se abren con él.",
+      "baseColor": "Color base",
+      "baseColors": {
+        "teal": "Verde azulado",
+        "blue": "Azul",
+        "indigo": "Índigo",
+        "purple": "Púrpura",
+        "pink": "Rosa",
+        "red": "Rojo",
+        "orange": "Naranja",
+        "amber": "Ámbar",
+        "green": "Verde",
+        "emerald": "Esmeralda",
+        "cyan": "Cian",
+        "sky": "Cielo"
+      },
+      "customColor": "Color personalizado",
+      "headingFont": "Fuente de encabezados",
+      "numbersFont": "Fuente de números",
+      "bodyFont": "Fuente del cuerpo",
+      "fonts": "Fuentes",
+      "fontsDescription": "Personaliza las fuentes utilizadas en la aplicación",
+      "editorFont": "Fuente del editor",
+      "systemMonospace": "Monospace del sistema",
+      "fontsPreviewHeading": "Tipografía",
+      "fontsPreviewBody": "El veloz murciélago hindú comía feliz cardillo y kiwi.",
+      "fontsPreviewSnippets": "extractos",
+      "fontsPreviewViews": "vistas",
+      "fontsPreviewUptime": "disponibilidad",
+      "resetFontsToDefaults": "Restablecer fuentes predeterminadas"
     },
     "snippet": {
       "fileTooLarge": "Archivo demasiado grande",

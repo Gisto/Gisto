@@ -13,14 +13,16 @@ import { Button } from '@/components/ui/button.tsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input.tsx';
 import { InputPassword } from '@/components/ui/inputPassword.tsx';
+import { Separator } from '@/components/ui/separator.tsx';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EDITOR_OPTIONS } from '@/constants';
 import { getProviderConfig, getTranslation, SnippetProviderType } from '@/constants/providers.tsx';
 import { generateAiResponse, AiApiError, isAiAvailable } from '@/lib/api/ai-api.ts';
 import { exportLocalDatabase, importLocalDatabase } from '@/lib/api/local-api.ts';
 import { t } from '@/lib/i18n';
-import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
+import { updateSettings, useStoreValue, defaultSettings } from '@/lib/store/globalState.ts';
 import { getEditorTheme } from '@/utils';
+import { defineEditorThemes } from '@/utils/monacoTheme';
 
 type Props = {
   isCollapsed?: boolean;
@@ -42,6 +44,14 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     updateSettings({
       [key]: value,
     });
+
+  const handleResetFonts = () =>
+    updateSettings({
+      bodyFont: defaultSettings.bodyFont,
+      headingFont: defaultSettings.headingFont,
+      numbersFont: defaultSettings.numbersFont,
+      'editor.fontFamily': defaultSettings.editor.fontFamily,
+    } as Record<string, unknown>);
 
   const handleExport = async () => {
     try {
@@ -127,6 +137,10 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     externalEditor,
     ai,
     theme,
+    baseColor,
+    headingFont,
+    numbersFont,
+    bodyFont,
     language,
     activeSnippetProvider,
     newSnippetDefaultLanguage,
@@ -143,8 +157,15 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
   // Group settings into logical sections
   const appearanceSettings = {
     theme,
+    baseColor,
     language,
     dashboardSnippetsOverTimeRange,
+  };
+
+  const fontSettings = {
+    bodyFont,
+    headingFont,
+    numbersFont,
   };
 
   const snippetSettings = {
@@ -159,7 +180,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
   };
 
   return (
-    <div className="h-screen w-full border-r border-collapse">
+    <div className="h-screen w-full min-w-0 border-r border-collapse">
       <PageHeader>
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
@@ -181,6 +202,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
           <TabsList variant="line" className="w-full">
             <TabsTrigger value="general">{t('pages.settings.general')}</TabsTrigger>
             <TabsTrigger value="editor">{t('pages.settings.editor')}</TabsTrigger>
+            <TabsTrigger value="fonts">{t('pages.settings.fonts')}</TabsTrigger>
             <TabsTrigger value="ai">{t('pages.settings.aiAssistant')}</TabsTrigger>
           </TabsList>
 
@@ -293,7 +315,11 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
                   <CardDescription>{t('pages.settings.editorSpecificSettings')}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <DynamicSettings settings={{ ...editor }} path="editor" onChange={handleChange} />
+                  <DynamicSettings
+                    settings={{ ...editor, fontFamily: undefined }}
+                    path="editor"
+                    onChange={handleChange}
+                  />
                 </CardContent>
               </Card>
 
@@ -313,6 +339,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
                     }}
                     height="400px"
                     theme={getEditorTheme()}
+                    beforeMount={(monaco) => defineEditorThemes(monaco)}
                     defaultLanguage={'javascript'}
                     defaultValue={`type Note = { id: string; title: string; tags?: string[] };
 
@@ -355,6 +382,105 @@ console.log(createNote('Gisto Settings', ['UI', 'ui', ' Editor ']));`}
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="fonts" className="mt-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>{t('pages.settings.fonts')}</CardTitle>
+                  <CardDescription>{t('pages.settings.fontsDescription')}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <DynamicSettings
+                    settings={fontSettings as Record<string, unknown>}
+                    onChange={handleChange}
+                  />
+                  <DynamicSettings
+                    settings={{ fontFamily: editor.fontFamily }}
+                    path="editor"
+                    onChange={handleChange}
+                  />
+                  <Button variant="outline" size="sm" onClick={handleResetFonts}>
+                    {t('pages.settings.resetFontsToDefaults')}
+                  </Button>
+                </CardContent>
+              </Card>
+
+              <Card className="lg:sticky lg:top-4 self-start">
+                <CardHeader>
+                  <CardTitle>{t('pages.settings.preview')}</CardTitle>
+                  <CardDescription>{t('pages.settings.fontsDescription')}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground">
+                      <span>{t('pages.settings.headingFont')}</span>
+                      <span className="font-heading truncate text-foreground">
+                        {settings.headingFont}
+                      </span>
+                    </div>
+                    <h3 className="font-heading mt-1.5 text-3xl font-semibold leading-tight">
+                      {t('pages.settings.fontsPreviewHeading')}
+                    </h3>
+                    <p className="font-heading mt-1 text-sm leading-relaxed text-muted-foreground">
+                      {t('pages.settings.fontsPreviewBody')}
+                    </p>
+                  </div>
+
+                  <Separator />
+
+                  <div>
+                    <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground">
+                      <span>{t('pages.settings.bodyFont')}</span>
+                      <span className="truncate text-foreground">{settings.bodyFont}</span>
+                    </div>
+                    <p className="mt-1.5 text-sm leading-relaxed">
+                      {t('pages.settings.fontsPreviewBody')}
+                    </p>
+                  </div>
+
+                  <Separator />
+
+                  <div>
+                    <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground">
+                      <span>{t('pages.settings.numbersFont')}</span>
+                      <span className="font-numbers truncate text-foreground">
+                        {settings.numbersFont}
+                      </span>
+                    </div>
+                    <div className="font-numbers mt-1.5 text-2xl font-semibold tracking-wide">
+                      0123456789
+                    </div>
+                    <div className="font-numbers mt-0.5 text-sm text-muted-foreground">
+                      128 &middot; 12.4k &middot; 98.6%
+                    </div>
+                  </div>
+
+                  <Separator />
+
+                  <div>
+                    <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground">
+                      <span>{t('pages.settings.editorFont')}</span>
+                      <span
+                        className="truncate text-foreground"
+                        style={{ fontFamily: settings.editor.fontFamily }}
+                      >
+                        {settings.editor.fontFamily}
+                      </span>
+                    </div>
+                    <pre
+                      className="mt-1.5 overflow-x-auto rounded-md bg-muted p-3 text-xs leading-relaxed"
+                      style={{ fontFamily: settings.editor.fontFamily }}
+                    >
+                      {`const greet = (name: string): string => {
+  return \`Hello, \${name}!\`;
+};`}
+                    </pre>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="ai" className="mt-6">

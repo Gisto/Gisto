@@ -203,7 +203,7 @@ export const SnippetContent = () => {
   const badges = getTags(snippet.description);
 
   return (
-    <div className="h-screen w-full border-r border-collapse">
+    <div className="h-screen w-full min-w-0 border-r border-collapse">
       <PageHeader>
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">

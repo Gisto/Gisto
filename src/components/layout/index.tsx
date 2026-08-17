@@ -65,10 +65,10 @@ export const MainLayout = () => {
 
   return (
     <div className="overflow-hidden bg-background w-screen h-dvh sticky">
-      <div className="flex border-t">
+      <div className="flex border-t border-border/60">
         <div
           className={cn(
-            'h-screen border-b border-r border-collapse transition-all duration-300 ease-in-out',
+            'h-screen border-b border-r border-border/60 bg-sidebar text-sidebar-foreground transition-all duration-300 ease-in-out',
             isCollapsed ? 'w-[52px] min-w-[52px]' : 'w-[200px] min-w-[200px]'
           )}
         >
@@ -78,7 +78,7 @@ export const MainLayout = () => {
         {isListHidden ? null : (
           <div
             className={cn(
-              'h-screen w-[380px] min-w-[380px] sm:w-[340px] sm:min-w-[340px] border-r transition-all duration-300 ease-in-out'
+              'h-screen w-[380px] min-w-[380px] sm:w-[340px] sm:min-w-[340px] border-r border-border/60 bg-card shadow-[4px_0_16px_-8px] shadow-black/5 transition-all duration-300 ease-in-out'
             )}
           >
             <Lists isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
@@ -93,6 +93,7 @@ export const MainLayout = () => {
           onNavigate={handleNavigate}
         />
       </div>
+      <div aria-hidden className="pointer-events-none fixed inset-0 z-30 bg-grain opacity-[0.04]" />
     </div>
   );
 };
