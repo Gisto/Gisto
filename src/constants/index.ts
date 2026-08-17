@@ -6,7 +6,7 @@ export const EDITOR_OPTIONS = {
   scrollBeyondLastLine: false,
   readOnly: true,
   automaticLayout: true,
-  fontFamily: '"Fira Code", "Fira Mono", monospace',
+  fontFamily: '"JetBrains Mono", "Fira Code", "Fira Mono", monospace',
   fontSize: 13,
   codeLens: true,
 };

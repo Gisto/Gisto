@@ -58,7 +58,7 @@ describe('formatZodErrors', () => {
 });
 
 describe('getEditorTheme', () => {
-  it('returns "vs-dark" when system theme is dark', () => {
+  it('returns "gisto-dark" when system theme is dark', () => {
     vi.spyOn(window, 'matchMedia').mockReturnValue({ matches: true } as MediaQueryList);
     vi.spyOn(globalState, 'getState').mockReturnValue({
       // @ts-expect-error not all provided
@@ -66,33 +66,33 @@ describe('getEditorTheme', () => {
         theme: 'system',
       },
     });
-    expect(getEditorTheme()).toBe('vs-dark');
+    expect(getEditorTheme()).toBe('gisto-dark');
   });
 
-  it('returns "light" when system theme is light', () => {
+  it('returns "gisto-light" when system theme is light', () => {
     vi.spyOn(window, 'matchMedia').mockReturnValue({ matches: false } as MediaQueryList);
     vi.spyOn(globalState, 'getState').mockReturnValue({
       // @ts-expect-error not all provided
       settings: { theme: 'system' },
     });
-    expect(getEditorTheme()).toBe('light');
+    expect(getEditorTheme()).toBe('gisto-light');
   });
 
-  it('returns "vs-dark" when user theme is set to dark', () => {
+  it('returns "gisto-dark" when user theme is set to dark', () => {
     vi.spyOn(globalState, 'getState').mockReturnValue({
       // @ts-expect-error not all provided
       settings: {
         theme: 'dark',
       },
     });
-    expect(getEditorTheme()).toBe('vs-dark');
+    expect(getEditorTheme()).toBe('gisto-dark');
   });
 
-  it('returns "light" when user theme is set to light', () => {
+  it('returns "gisto-light" when user theme is set to light', () => {
     vi.spyOn(globalState, 'getState').mockReturnValue({
       // @ts-expect-error not all provided
       settings: { theme: 'light' },
     });
-    expect(getEditorTheme()).toBe('light');
+    expect(getEditorTheme()).toBe('gisto-light');
   });
 });

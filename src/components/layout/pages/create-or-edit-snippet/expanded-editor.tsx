@@ -14,6 +14,7 @@ import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { SnippetFileType } from '@/types/snippet.ts';
 import { getEditorTheme, isCSV, isHTML, isJson, isMarkdown, isTSV } from '@/utils';
+import { defineEditorThemes } from '@/utils/monacoTheme';
 
 type ExpandedEditorProps = {
   content: string;
@@ -122,6 +123,7 @@ export const ExpandedEditor = ({
                   }}
                   height="100%"
                   theme={getEditorTheme()}
+                  beforeMount={(monaco) => defineEditorThemes(monaco)}
                   language={languageMap[language] ?? 'text'}
                   path={`modal-editor-${index}`}
                 />

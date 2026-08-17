@@ -36,7 +36,7 @@ const LinkButton = ({
 
 export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props = {}) => {
   return (
-    <div className="h-screen w-full border-r border-collapse">
+    <div className="h-screen w-full min-w-0 border-r border-collapse">
       <PageHeader>
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
@@ -64,7 +64,7 @@ export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props 
               <div>
                 <h1 className="text-3xl font-bold">{t('pages.about.title')}</h1>
                 <p className="text-sm text-muted-foreground flex items-center gap-2">
-                  <span>v{version}</span>
+                  <span className="font-numbers">v{version}</span>
                   <span>·</span>
                   <span className="flex items-center gap-1 font-mono text-xs">
                     <GitCommit className="size-3" />

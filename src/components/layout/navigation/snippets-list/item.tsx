@@ -33,9 +33,8 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
   return (
     <div
       className={cn(
-        'border-b p-4 cursor-pointer',
-        active && 'bg-secondary',
-        'hover:bg-linear-to-r hover:to-50% hover:from-primary/10 dark:hover:from-primary-950 transition-all ease-in-out duration-300'
+        'border-b border-border/60 p-4 cursor-pointer transition-all ease-in-out duration-200',
+        active ? 'border-l-2 border-l-gold bg-accent/60' : 'hover:bg-accent/40'
       )}
       onClick={() => navigate(`/snippets/${snippet.id}`)}
     >
@@ -126,7 +125,7 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
                   <TooltipTrigger asChild>
                     <div className="flex items-center gap-1 cursor-help">
                       <MessageSquareText className="size-3" />{' '}
-                      <span className="text-xs">{snippet.comments.edges.length}</span>
+                      <span className="text-xs font-numbers">{snippet.comments.edges.length}</span>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -144,7 +143,7 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
               <TooltipTrigger asChild>
                 <div className="flex items-center gap-1 cursor-help">
                   <File strokeWidth={1.5} className="size-3" />{' '}
-                  <span className="text-xs">{Object.keys(snippet.files).length}</span>
+                  <span className="text-xs font-numbers">{Object.keys(snippet.files).length}</span>
                 </div>
               </TooltipTrigger>
               <TooltipContent>

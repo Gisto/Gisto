@@ -86,7 +86,8 @@
     "free": "Gratuit",
     "paid": "Payant",
     "contextK": "{n}K de contexte",
-    "editingFiles": "Modification de {n} fichiers"
+    "editingFiles": "Modification de {n} fichiers",
+    "searchFonts": "Rechercher des polices"
   },
   "menu": {
     "logOut": "Se déconnecter",
@@ -95,7 +96,9 @@
     "settings": "Paramètres",
     "about": "À propos",
     "onLine": "Vous êtes en ligne",
-    "offLine": "Vous êtes hors ligne"
+    "offLine": "Vous êtes hors ligne",
+    "overview": "Vue d'ensemble",
+    "system": "Système"
   },
   "theme": {
     "theme": "Thème",
@@ -118,7 +121,11 @@
       "oneYearAgo": "il y a 1 an",
       "topLanguages": "Langages principaux",
       "topTags": "Étiquettes principales",
-      "filesPerSnippet": "Fichiers par extrait"
+      "filesPerSnippet": "Fichiers par extrait",
+      "subtitle": "Aperçu de vos extraits",
+      "goodMorning": "Bonjour",
+      "goodAfternoon": "Bon après-midi",
+      "goodEvening": "Bonsoir"
     },
     "new": {
       "title": "Créer un nouvel extrait",
@@ -198,7 +205,36 @@
       "externalEditor": "Éditeur externe",
       "externalEditorDescription": "Ouvrir les snippets dans l'éditeur de votre choix depuis le menu du snippet",
       "editorCommand": "Commande de l'éditeur",
-      "editorCommandHint": "Commande pour lancer votre éditeur, ex. code, cursor, subl, ou le chemin complet vers l'exécutable de l'éditeur. Les fichiers du snippet sont écrits dans un dossier temporaire et ouverts avec."
+      "editorCommandHint": "Commande pour lancer votre éditeur, ex. code, cursor, subl, ou le chemin complet vers l'exécutable de l'éditeur. Les fichiers du snippet sont écrits dans un dossier temporaire et ouverts avec.",
+      "baseColor": "Couleur de base",
+      "baseColors": {
+        "teal": "Bleu sarcelle",
+        "blue": "Bleu",
+        "indigo": "Indigo",
+        "purple": "Violet",
+        "pink": "Rose",
+        "red": "Rouge",
+        "orange": "Orange",
+        "amber": "Ambre",
+        "green": "Vert",
+        "emerald": "Émeraude",
+        "cyan": "Cyan",
+        "sky": "Azur"
+      },
+      "customColor": "Couleur personnalisée",
+      "headingFont": "Police des titres",
+      "numbersFont": "Police des nombres",
+      "bodyFont": "Police du corps de texte",
+      "fonts": "Polices",
+      "fontsDescription": "Personnalisez les polices utilisées dans l’application",
+      "editorFont": "Police de l’éditeur",
+      "systemMonospace": "Monospace système",
+      "fontsPreviewHeading": "Typographie",
+      "fontsPreviewBody": "Le vif zéphyr jubile sur les kumquats du clown gracieux.",
+      "fontsPreviewSnippets": "extraits",
+      "fontsPreviewViews": "vues",
+      "fontsPreviewUptime": "disponibilité",
+      "resetFontsToDefaults": "Réinitialiser les polices par défaut"
     },
     "snippet": {
       "fileTooLarge": "Fichier trop volumineux",

@@ -86,7 +86,8 @@
     "free": "Kostenlos",
     "paid": "Kostenpflichtig",
     "contextK": "{n}K Kontext",
-    "editingFiles": "{n} Dateien bearbeiten"
+    "editingFiles": "{n} Dateien bearbeiten",
+    "searchFonts": "Schriftarten suchen"
   },
   "menu": {
     "logOut": "Abmelden",
@@ -95,7 +96,9 @@
     "settings": "Einstellungen",
     "about": "Über",
     "onLine": "Online",
-    "offLine": "Offline"
+    "offLine": "Offline",
+    "overview": "Übersicht",
+    "system": "System"
   },
   "theme": {
     "theme": "Thema",
@@ -118,7 +121,11 @@
       "oneYearAgo": "vor 1 Jahr",
       "topLanguages": "Top-Sprachen",
       "topTags": "Top-Tags",
-      "filesPerSnippet": "Dateien pro Snippet"
+      "filesPerSnippet": "Dateien pro Snippet",
+      "subtitle": "Übersicht Ihrer Snippets",
+      "goodMorning": "Guten Morgen",
+      "goodAfternoon": "Guten Tag",
+      "goodEvening": "Guten Abend"
     },
     "new": {
       "title": "Snippet erstellen",
@@ -198,7 +205,36 @@
       "externalEditor": "Externer Editor",
       "externalEditorDescription": "Snippets aus dem Snippet-Menü in Ihrem bevorzugten Editor öffnen",
       "editorCommand": "Editor-Befehl",
-      "editorCommandHint": "Befehl zum Starten Ihres Editors, z. B. code, cursor, subl oder den vollständigen Pfad zur Editor-Datei. Die Snippet-Dateien werden in einen temporären Ordner geschrieben und damit geöffnet."
+      "editorCommandHint": "Befehl zum Starten Ihres Editors, z. B. code, cursor, subl oder den vollständigen Pfad zur Editor-Datei. Die Snippet-Dateien werden in einen temporären Ordner geschrieben und damit geöffnet.",
+      "baseColor": "Basisfarbe",
+      "baseColors": {
+        "teal": "Petrol",
+        "blue": "Blau",
+        "indigo": "Indigo",
+        "purple": "Lila",
+        "pink": "Pink",
+        "red": "Rot",
+        "orange": "Orange",
+        "amber": "Bernstein",
+        "green": "Grün",
+        "emerald": "Smaragd",
+        "cyan": "Cyan",
+        "sky": "Himmelblau"
+      },
+      "customColor": "Benutzerdefinierte Farbe",
+      "headingFont": "Schriftart für Überschriften",
+      "numbersFont": "Schriftart für Zahlen",
+      "bodyFont": "Schriftart für Text",
+      "fonts": "Schriftarten",
+      "fontsDescription": "Passen Sie die in der App verwendeten Schriftarten an",
+      "editorFont": "Editor-Schriftart",
+      "systemMonospace": "System-Monospace",
+      "fontsPreviewHeading": "Typografie",
+      "fontsPreviewBody": "Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich.",
+      "fontsPreviewSnippets": "Snippets",
+      "fontsPreviewViews": "Aufrufe",
+      "fontsPreviewUptime": "Verfügbarkeit",
+      "resetFontsToDefaults": "Schriftarten auf Standard zurücksetzen"
     },
     "snippet": {
       "fileTooLarge": "Datei zu groß",

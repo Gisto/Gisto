@@ -93,10 +93,10 @@ const setThemeCss = (theme: string) => {
 };
 
 export const Markdown = ({ file, content }: { file?: SnippetFileType; content?: string }) => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  setThemeCss(theme);
+  setThemeCss(resolvedTheme);
   const source = content ?? file?.content ?? '';
   const result = md.render(source);
 
@@ -130,7 +130,7 @@ export const Markdown = ({ file, content }: { file?: SnippetFileType; content?: 
     import('mermaid').then((mermaid) => {
       mermaid.default.initialize({
         startOnLoad: false,
-        theme: theme === 'dark' ? 'dark' : 'default',
+        theme: resolvedTheme === 'dark' ? 'dark' : 'default',
       });
       mermaid.default.run({ querySelector: '.mermaid' });
     });
@@ -140,7 +140,7 @@ export const Markdown = ({ file, content }: { file?: SnippetFileType; content?: 
         root.unmount();
       });
     };
-  }, [result, theme]);
+  }, [result, resolvedTheme]);
 
   return (
     <div className="bg-background p-4 overflow-auto h-full">

@@ -23,7 +23,6 @@
     "untagged": "untagged",
     "edit": "edit",
     "delete": "delete",
-    "code": "code",
     "preview": "preview",
     "expand": "expand",
     "collapse": "collapse",
@@ -87,7 +86,8 @@
     "free": "Free",
     "paid": "Paid",
     "contextK": "{n}K context",
-    "editingFiles": "Editing {n} files"
+    "editingFiles": "Editing {n} files",
+    "searchFonts": "Search fonts"
   },
   "menu": {
     "logOut": "Log-out",
@@ -96,7 +96,9 @@
     "settings": "Settings",
     "about": "About",
     "onLine": "You are on-line",
-    "offLine": "You are off-line"
+    "offLine": "You are off-line",
+    "overview": "Overview",
+    "system": "System"
   },
   "theme": {
     "theme": "Theme",
@@ -119,7 +121,11 @@
       "oneYearAgo": "1 year ago",
       "topLanguages": "Top Languages",
       "topTags": "Top Tags",
-      "filesPerSnippet": "Files per Snippet"
+      "filesPerSnippet": "Files per Snippet",
+      "subtitle": "Overview of your snippets",
+      "goodMorning": "Good morning",
+      "goodAfternoon": "Good afternoon",
+      "goodEvening": "Good evening"
     },
     "new": {
       "title": "Create new snippet",
@@ -199,7 +205,36 @@
       "externalEditor": "External editor",
       "externalEditorDescription": "Open snippets in your editor of choice from the snippet menu",
       "editorCommand": "Editor command",
-      "editorCommandHint": "Command used to launch your editor, e.g. code, cursor, subl, or the full path to the editor binary. Snippet files are written to a temporary folder and opened with it."
+      "editorCommandHint": "Command used to launch your editor, e.g. code, cursor, subl, or the full path to the editor binary. Snippet files are written to a temporary folder and opened with it.",
+      "baseColor": "Base color",
+      "baseColors": {
+        "teal": "Teal",
+        "blue": "Blue",
+        "indigo": "Indigo",
+        "purple": "Purple",
+        "pink": "Pink",
+        "red": "Red",
+        "orange": "Orange",
+        "amber": "Amber",
+        "green": "Green",
+        "emerald": "Emerald",
+        "cyan": "Cyan",
+        "sky": "Sky"
+      },
+      "customColor": "Custom color",
+      "headingFont": "Heading font",
+      "numbersFont": "Numbers font",
+      "bodyFont": "Body font",
+      "fonts": "Fonts",
+      "fontsDescription": "Customize the fonts used across the app",
+      "editorFont": "Editor font",
+      "systemMonospace": "System monospace",
+      "fontsPreviewHeading": "Typography",
+      "fontsPreviewBody": "The quick brown fox jumps over the lazy dog while Jackdaws love my big sphinx of quartz.",
+      "fontsPreviewSnippets": "snippets",
+      "fontsPreviewViews": "views",
+      "fontsPreviewUptime": "uptime",
+      "resetFontsToDefaults": "Reset fonts to defaults"
     },
     "snippet": {
       "fileTooLarge": "File too large, please",

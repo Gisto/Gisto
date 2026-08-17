@@ -37,7 +37,7 @@ export function ThemeSwitcher({
           <button
             type="button"
             className={cn(
-              'flex items-center gap-2 mb-2 p-2 w-full rounded hover:bg-secondary',
+              'flex items-center gap-2 mb-1.5 p-2 w-full rounded-lg hover:bg-accent transition-all duration-300 ease-in-out',
               showLabel ? 'justify-start' : 'justify-center',
               className
             )}

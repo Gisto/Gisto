@@ -34,6 +34,7 @@ import {
   isTSV,
   getLanguageName,
 } from '@/utils';
+import { defineEditorThemes } from '@/utils/monacoTheme';
 
 export const Editor = ({
   file,
@@ -139,6 +140,7 @@ export const Editor = ({
   }
 
   const handleEditorWillMount = (monaco: Monaco) => {
+    defineEditorThemes(monaco);
     monaco.languages.register({ id: 'groovy' });
     monaco.languages.setMonarchTokensProvider('groovy', groovyLanguage);
     monaco.languages.register({ id: 'bsl', extensions: ['.bsl', '.os'] });

@@ -1,3 +1,5 @@
+import { FileText, Globe, Star, Tag } from 'lucide-react';
+
 import {
   Card,
   CardContent,
@@ -30,7 +32,7 @@ export const CardsCharts = () => {
 
   if (isLoading) {
     return (
-      <div className="flex gap-4 mb-8">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <CardSkeleton />
         <CardSkeleton />
         <CardSkeleton />
@@ -44,18 +46,21 @@ export const CardsCharts = () => {
       title: `${upperCaseFirst(t('common.public'))} / ${upperCaseFirst(t('common.private'))}`,
       value: `${list.filter((snippet) => snippet.isPublic).length}/${list.filter((snippet) => !snippet.isPublic).length}`,
       description: t('pages.dashboard.publicAndPrivateNumbers', { number: list.length }),
+      icon: Globe,
       show: true,
     },
     {
       title: upperCaseFirst(t('common.starred')),
       value: list.filter((snippet) => snippet.starred).length,
       description: t('pages.dashboard.starredNumbers', { number: list.length }),
+      icon: Star,
       show: snippetService.capabilities.supportsStars,
     },
     {
       title: upperCaseFirst(t('common.untagged')),
       value: list.filter((snippet) => snippet.tags.length === 0).length,
       description: t('pages.dashboard.snippetsWithNoTags'),
+      icon: Tag,
       show: true,
     },
     {
@@ -64,27 +69,38 @@ export const CardsCharts = () => {
         (snippet) => snippet.isUntitled || snippet.description.trim().toLowerCase() === 'untitled'
       ).length,
       description: t('pages.dashboard.snippetsWithNoDescription'),
+      icon: FileText,
       show: true,
     },
   ];
 
   return (
-    <div className="flex gap-4 mb-8">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {cardCharts
         .filter((chart) => chart.show)
-        .map((chart) => (
-          <Card key={chart.title} className="flex-1">
-            <CardHeader>
-              <CardTitle className="text-primary">{chart.title}</CardTitle>
-              <CardDescription className="text-foreground text-xs min-h-8">
-                {chart.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-primary text-4xl text-right font-numbers">
-              {chart.value}
-            </CardContent>
-          </Card>
-        ))}
+        .map((chart) => {
+          const Icon = chart.icon;
+          return (
+            <Card key={chart.title} className="flex-1">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 p-5">
+                <CardTitle className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                  {chart.title}
+                </CardTitle>
+                <div className="flex size-9 items-center justify-center rounded-lg bg-gold/15 text-gold">
+                  <Icon className="size-4" strokeWidth={2} />
+                </div>
+              </CardHeader>
+              <CardContent className="px-5 pb-5">
+                <div className="font-numbers text-4xl font-bold leading-none text-primary">
+                  {chart.value}
+                </div>
+                <CardDescription className="mt-2 min-h-8 text-xs">
+                  {chart.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
+          );
+        })}
     </div>
   );
 };

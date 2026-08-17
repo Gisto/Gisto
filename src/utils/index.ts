@@ -28,8 +28,8 @@ export const formatZodErrors = (errors: z.ZodIssue[]): Record<string, string[]> 
 
 export const getEditorTheme = () => {
   if (globalState.getState().settings.theme === 'system') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'vs-dark' : 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'gisto-dark' : 'gisto-light';
   }
 
-  return globalState.getState().settings.theme === 'dark' ? 'vs-dark' : 'light';
+  return globalState.getState().settings.theme === 'dark' ? 'gisto-dark' : 'gisto-light';
 };
