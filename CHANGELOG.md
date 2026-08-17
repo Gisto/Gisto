@@ -18,6 +18,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([247701d](https://github.com/gisto/gisto/commit/247701d2ada6d77bb9e763d583ec240ef075dcdd))
 
+- Refresh ui and add more styling options like colors and fonts
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([4f78de2](https://github.com/gisto/gisto/commit/4f78de29167111f708db775b04a04bc4d8ba3215))
+
 
 ### 🛠️️ Build
 
