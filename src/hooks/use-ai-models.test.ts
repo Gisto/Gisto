@@ -16,10 +16,10 @@ describe('sortModelOptions', () => {
     expect(sortModelOptions(options).map((option) => option.value)).toEqual([
       '@preset/a',
       '@preset/z',
-      'free-a',
       'free-b',
-      'paid-a',
+      'free-a',
       'paid-b',
+      'paid-a',
     ]);
   });
 });
@@ -34,7 +34,7 @@ describe('includeSelectedModel', () => {
         label: '@preset/azure-credit-efficient',
         modelId: '@preset/azure-credit-efficient',
         isPreset: true,
-        isCustom: true,
+        hasModelDetails: false,
       },
       ...models,
     ]);

@@ -246,7 +246,7 @@ function ModelSelect({
                         <p className="text-muted-foreground leading-relaxed">{model.description}</p>
                       )}
                       <p className="text-muted-foreground/60">{model.modelId ?? model.value}</p>
-                      {!model.isPreset && !model.isCustom && (
+                      {model.hasModelDetails && (
                         <div className="flex flex-wrap gap-x-2 gap-y-0.5">
                           {model.contextLength && (
                             <span>

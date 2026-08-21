@@ -7,7 +7,7 @@ export type ModelOption = {
   value: string;
   label: string;
   isPreset?: boolean;
-  isCustom?: boolean;
+  hasModelDetails?: boolean;
   isFree?: boolean;
   modelId?: string;
   description?: string;
@@ -31,7 +31,7 @@ export function includeSelectedModel(models: ModelOption[], value: string): Mode
       label: value,
       modelId: value,
       isPreset: value.startsWith('@preset/'),
-      isCustom: true,
+      hasModelDetails: false,
     },
     ...models,
   ];
@@ -40,8 +40,8 @@ export function includeSelectedModel(models: ModelOption[], value: string): Mode
 export function sortModelOptions(models: ModelOption[]): ModelOption[] {
   const byLabel = (a: ModelOption, b: ModelOption) => a.label.localeCompare(b.label);
   const presets = models.filter((model) => model.isPreset).sort(byLabel);
-  const free = models.filter((model) => !model.isPreset && model.isFree).sort(byLabel);
-  const paid = models.filter((model) => !model.isPreset && !model.isFree).sort(byLabel);
+  const free = models.filter((model) => !model.isPreset && model.isFree);
+  const paid = models.filter((model) => !model.isPreset && !model.isFree);
 
   return [...presets, ...free, ...paid];
 }
@@ -91,8 +91,7 @@ export function useAiModels(provider: string | undefined): UseAiModelsResult {
   const loadModels = useCallback(async () => {
     if (!provider) return;
 
-    // OpenRouter presets depend on the active API key/workspace and may change independently.
-    const cached = provider === 'openrouter' ? undefined : cache.get(provider);
+    const cached = cache.get(provider);
     if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
       setModels(cached.models);
       return;
@@ -110,6 +109,7 @@ export function useAiModels(provider: string | undefined): UseAiModelsResult {
             value: m.id,
             label: `🎛 ${m.name}`,
             isPreset: true,
+            hasModelDetails: false,
             modelId: m.id,
             description: m.description,
           };
@@ -123,6 +123,7 @@ export function useAiModels(provider: string | undefined): UseAiModelsResult {
           value: m.id,
           label: m.isFree ? `💸 ${cleanName} (Free)` : name,
           isFree: m.isFree,
+          hasModelDetails: true,
           modelId: id,
           description: m.description,
           contextLength: m.contextLength,
@@ -132,9 +133,7 @@ export function useAiModels(provider: string | undefined): UseAiModelsResult {
 
       const sorted = sortModelOptions(mapped);
 
-      if (provider !== 'openrouter') {
-        cache.set(provider, { models: sorted, timestamp: Date.now() });
-      }
+      cache.set(provider, { models: sorted, timestamp: Date.now() });
       setModels(sorted);
     } catch (err) {
       setError(err instanceof Error ? err.message : t('api.failedToFetchModels'));
