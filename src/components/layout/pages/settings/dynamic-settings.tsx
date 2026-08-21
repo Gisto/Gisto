@@ -22,7 +22,7 @@ import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
 import { AI_PROVIDERS, MINIMAX_PROTOCOL_OPTIONS, MINIMAX_REGION_OPTIONS } from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
-import { useAiModels } from '@/hooks/use-ai-models';
+import { includeSelectedModel, useAiModels } from '@/hooks/use-ai-models';
 import { useGoogleFonts } from '@/hooks/use-google-fonts';
 import { t } from '@/lib/i18n';
 import { SettingsType } from '@/lib/store/globalState.ts';
@@ -175,9 +175,11 @@ function ModelSelect({
   const { models, isLoading, error, refresh } = useAiModels(provider);
 
   const selectedModel = models.find((m) => m.value === value);
+  const displayedModels = includeSelectedModel(models, value);
   const freeCount = models.filter((m) => m.isFree).length;
+  const paidCount = models.filter((m) => !m.isPreset && !m.isFree).length;
 
-  const options: SearchableSelectOption<string>[] = models.map((m) => ({
+  const options: SearchableSelectOption<string>[] = displayedModels.map((m) => ({
     label: m.label,
     value: m.value,
     disabled: false,
@@ -193,9 +195,7 @@ function ModelSelect({
             <div className="space-y-1 text-primary-foreground text-xs">
               <p className="font-medium">{AI_PROVIDERS[provider]?.label ?? provider}</p>
               <p>{t('components.selected', { label: selectedModel?.label ?? value })}</p>
-              <p>
-                {t('components.available', { freeCount, paidCount: models.length - freeCount })}
-              </p>
+              <p>{t('components.available', { freeCount, paidCount })}</p>
               {error && (
                 <p className="text-destructive-foreground mt-1">
                   {t('components.error', { error })}
@@ -233,7 +233,7 @@ function ModelSelect({
           searchPlaceholder={t('components.searchModels')}
           loading={isLoading && models.length === 0}
           itemRenderer={(option) => {
-            const model = models.find((m) => m.value === option.value);
+            const model = displayedModels.find((m) => m.value === option.value);
             if (!model) return <span>{option.label}</span>;
 
             return (
@@ -246,23 +246,27 @@ function ModelSelect({
                         <p className="text-muted-foreground leading-relaxed">{model.description}</p>
                       )}
                       <p className="text-muted-foreground/60">{model.modelId ?? model.value}</p>
-                      <div className="flex flex-wrap gap-x-2 gap-y-0.5">
-                        {model.contextLength && (
-                          <span>
-                            {t('components.contextK', {
-                              n: (model.contextLength / 1000).toLocaleString(),
-                            })}
-                          </span>
-                        )}
-                        {model.pricing ? (
-                          <span>
-                            ${(model.pricing.prompt * 1_000_000).toFixed(2)}/M in &middot; $
-                            {(model.pricing.completion * 1_000_000).toFixed(2)}/M out
-                          </span>
-                        ) : (
-                          <span>{model.isFree ? t('components.free') : t('components.paid')}</span>
-                        )}
-                      </div>
+                      {!model.isPreset && !model.isCustom && (
+                        <div className="flex flex-wrap gap-x-2 gap-y-0.5">
+                          {model.contextLength && (
+                            <span>
+                              {t('components.contextK', {
+                                n: (model.contextLength / 1000).toLocaleString(),
+                              })}
+                            </span>
+                          )}
+                          {model.pricing ? (
+                            <span>
+                              ${(model.pricing.prompt * 1_000_000).toFixed(2)}/M in &middot; $
+                              {(model.pricing.completion * 1_000_000).toFixed(2)}/M out
+                            </span>
+                          ) : (
+                            <span>
+                              {model.isFree ? t('components.free') : t('components.paid')}
+                            </span>
+                          )}
+                        </div>
+                      )}
                     </div>
                   }
                 >

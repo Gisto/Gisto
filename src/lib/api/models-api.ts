@@ -5,6 +5,7 @@ import { globalState } from '@/lib/store/globalState.ts';
 type ModelInfo = {
   id: string;
   name: string;
+  isPreset?: boolean;
   description?: string;
   pricing?: { prompt: number; completion: number };
   contextLength?: number;
@@ -28,16 +29,33 @@ function getApiKey(provider: string): string | null {
 
 export async function fetchOpenRouterModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('openrouter') || '';
+  const headers: Record<string, string> = apiKey ? { Authorization: `Bearer ${apiKey}` } : {};
 
-  const res = await fetch('https://openrouter.ai/api/v1/models', {
-    headers: apiKey ? { Authorization: `Bearer ${apiKey}` } : {},
-  });
+  const [modelsResponse, presetsResponse] = await Promise.all([
+    fetch('https://openrouter.ai/api/v1/models', { headers }),
+    apiKey
+      ? fetch('https://openrouter.ai/api/v1/presets?limit=100', { headers }).catch(() => null)
+      : Promise.resolve(null),
+  ]);
 
-  if (!res.ok) throw new Error(`OpenRouter API error: ${res.status}`);
+  if (!modelsResponse.ok) throw new Error(`OpenRouter API error: ${modelsResponse.status}`);
 
-  const data = await res.json();
+  const data = await modelsResponse.json();
+  const presetData = presetsResponse?.ok ? await presetsResponse.json().catch(() => null) : null;
 
-  return (data.data || []).map((m: Record<string, unknown>) => ({
+  const presets = (presetData?.data || [])
+    .filter(
+      (preset: Record<string, unknown>) =>
+        preset.status === 'active' && typeof preset.slug === 'string'
+    )
+    .map((preset: Record<string, unknown>) => ({
+      id: `@preset/${preset.slug as string}`,
+      name: (preset.name as string) || (preset.slug as string),
+      description: (preset.description as string | null) || undefined,
+      isPreset: true,
+    }));
+
+  const models = (data.data || []).map((m: Record<string, unknown>) => ({
     id: m.id as string,
     name: (m.name as string) || (m.id as string),
     description: m.description as string | undefined,
@@ -46,6 +64,8 @@ export async function fetchOpenRouterModels(): Promise<ModelInfo[]> {
     isFree:
       String(m.id).endsWith(':free') || ((m.pricing as { prompt?: number })?.prompt ?? 1) === 0,
   }));
+
+  return [...presets, ...models];
 }
 
 export async function fetchOpenAiModels(): Promise<ModelInfo[]> {
