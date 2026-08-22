@@ -23,6 +23,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([4f78de2](https://github.com/gisto/gisto/commit/4f78de29167111f708db775b04a04bc4d8ba3215))
 
+- List OpenRouter presets in model picker
+・ by Franky
+([@fw1776](https://github.com/fw1776))
+([63a71b3](https://github.com/gisto/gisto/commit/63a71b32bd10122267a0faa06fc9579ae2c19fd2))
+
 
 ### 🛠️️ Build
 
