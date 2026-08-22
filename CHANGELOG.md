@@ -2,6 +2,71 @@
 
 All significant updates and improvements
 
+## v2.14.0
+
+Released on: Aug 22, 2026
+
+### 🚀 Features
+
+- *(snippet)* Show history diff
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([440f71f](https://github.com/gisto/gisto/commit/440f71fc146973a733c97cbe901d2544685776fe))
+
+- Edit snippet in own editor
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([247701d](https://github.com/gisto/gisto/commit/247701d2ada6d77bb9e763d583ec240ef075dcdd))
+
+- Refresh ui and add more styling options like colors and fonts
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([4f78de2](https://github.com/gisto/gisto/commit/4f78de29167111f708db775b04a04bc4d8ba3215))
+
+- List OpenRouter presets in model picker
+・ by Franky
+([@fw1776](https://github.com/fw1776))
+([63a71b3](https://github.com/gisto/gisto/commit/63a71b32bd10122267a0faa06fc9579ae2c19fd2))
+
+
+### 🛠️️ Build
+
+- *(deps-dev)* Bump postcss
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([de395dc](https://github.com/gisto/gisto/commit/de395dc9a100d1565bef737665d926935dd92a9b))
+
+- *(deps)* Bump @radix-ui/react-switch from 1.2.6 to 1.3.7
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([ab5a87c](https://github.com/gisto/gisto/commit/ab5a87c543610f55bd806a5d75d85845e4bc39ba))
+
+- *(deps)* Bump @commitlint/types from 20.4.0 to 21.2.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([e61e1b0](https://github.com/gisto/gisto/commit/e61e1b073c38303638ec7943953ed4a61d33db75))
+
+- *(deps)* Bump @radix-ui/react-label from 2.1.8 to 2.1.15
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b612b2a](https://github.com/gisto/gisto/commit/b612b2a4adcd62a6a546b9de77801f78d869a24c))
+
+- *(deps)* Bump katex from 0.16.27 to 0.18.1
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b8858a4](https://github.com/gisto/gisto/commit/b8858a43763c6282f98d908369484cfd854578ad))
+
+- *(deps)* Bump mermaid in the npm_and_yarn group across 1 directory
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([e9df914](https://github.com/gisto/gisto/commit/e9df914e516523cd56bc82aaacb3ea95654e6551))
+
+- *(deps-dev)* Bump postcss
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([f4bd3e4](https://github.com/gisto/gisto/commit/f4bd3e4a436d36cb178a27962c6c7cd01debad59))
+
+
 ## v2.13.2
 
 Released on: Jul 16, 2026

@@ -23,7 +23,6 @@
     "untagged": "untagged",
     "edit": "edit",
     "delete": "delete",
-    "code": "code",
     "preview": "preview",
     "expand": "expand",
     "collapse": "collapse",
@@ -87,7 +86,8 @@
     "free": "Free",
     "paid": "Paid",
     "contextK": "{n}K context",
-    "editingFiles": "Editing {n} files"
+    "editingFiles": "Editing {n} files",
+    "searchFonts": "Search fonts"
   },
   "menu": {
     "logOut": "Log-out",
@@ -96,7 +96,9 @@
     "settings": "Settings",
     "about": "About",
     "onLine": "You are on-line",
-    "offLine": "You are off-line"
+    "offLine": "You are off-line",
+    "overview": "Overview",
+    "system": "System"
   },
   "theme": {
     "theme": "Theme",
@@ -119,7 +121,11 @@
       "oneYearAgo": "1 year ago",
       "topLanguages": "Top Languages",
       "topTags": "Top Tags",
-      "filesPerSnippet": "Files per Snippet"
+      "filesPerSnippet": "Files per Snippet",
+      "subtitle": "Overview of your snippets",
+      "goodMorning": "Good morning",
+      "goodAfternoon": "Good afternoon",
+      "goodEvening": "Good evening"
     },
     "new": {
       "title": "Create new snippet",
@@ -195,12 +201,48 @@
       "gistoSettings": "Gisto settings",
       "themeLanguageAndTokens": "Theme, language, and access tokens.",
       "openAiChatDescription": "Open the AI chat to have a conversation with your configured AI model. Your conversation history is preserved within the session.",
-      "openAiChat": "Open assistant"
+      "openAiChat": "Open assistant",
+      "externalEditor": "External editor",
+      "externalEditorDescription": "Open snippets in your editor of choice from the snippet menu",
+      "editorCommand": "Editor command",
+      "editorCommandHint": "Command used to launch your editor, e.g. code, cursor, subl, or the full path to the editor binary. Snippet files are written to a temporary folder and opened with it.",
+      "baseColor": "Base color",
+      "baseColors": {
+        "teal": "Teal",
+        "blue": "Blue",
+        "indigo": "Indigo",
+        "purple": "Purple",
+        "pink": "Pink",
+        "red": "Red",
+        "orange": "Orange",
+        "amber": "Amber",
+        "green": "Green",
+        "emerald": "Emerald",
+        "cyan": "Cyan",
+        "sky": "Sky"
+      },
+      "customColor": "Custom color",
+      "headingFont": "Heading font",
+      "numbersFont": "Numbers font",
+      "bodyFont": "Body font",
+      "fonts": "Fonts",
+      "fontsDescription": "Customize the fonts used across the app",
+      "editorFont": "Editor font",
+      "systemMonospace": "System monospace",
+      "fontsPreviewHeading": "Typography",
+      "fontsPreviewBody": "The quick brown fox jumps over the lazy dog while Jackdaws love my big sphinx of quartz.",
+      "fontsPreviewSnippets": "snippets",
+      "fontsPreviewViews": "views",
+      "fontsPreviewUptime": "uptime",
+      "resetFontsToDefaults": "Reset fonts to defaults"
     },
     "snippet": {
       "fileTooLarge": "File too large, please",
       "downloadFile": "Download file",
       "openOnWeb": "open on web",
+      "openInEditor": "Open in editor",
+      "openedInEditor": "Opened in editor, files saved to {path}",
+      "editorSyncError": "Failed to save snippet from editor",
       "invalidJson": "Detected as JSON but not valid for preview",
       "copyContentToClipboard": "Copy file contents to clipboard",
       "openIn": "Open in",
@@ -209,7 +251,15 @@
       "jsfiddleInstructions": "Need to have CSS, JS and HTML files as part of the snippet",
       "cannotBeUndone": "can not be undone",
       "askAbout": "Ask about \"{title}\"",
-      "askAQuestion": "Ask a question..."
+      "askAQuestion": "Ask a question...",
+      "versionHistory": "Version history",
+      "noHistory": "No history yet",
+      "noHistoryDescription": "Save changes to this snippet to create versions. Each save is recorded so you can view the diff and restore any previous version.",
+      "version": "Version {number}",
+      "versionShort": "v{number}",
+      "restoreVersion": "Restore this version",
+      "restoreVersionConfirm": "Are you sure you want to restore this version? The current version will be kept in the history.",
+      "restored": "Version restored"
     },
     "about": {
       "title": "About",
@@ -303,6 +353,7 @@
     "fetchGithubGraphQLNotSupported": "fetchGithubGraphQL is not supported by this provider",
     "directRequestsNotSupported": "Direct requests are not supported in local mode",
     "snippetNotFound": "Snippet not found",
+    "revisionNotFound": "Revision not found",
     "unexpectedError": "An unexpected error occurred",
     "configureAiProvider": "Please configure an AI provider API key in Settings > AI Assistant.",
     "openAiApiKeyNotConfigured": "OpenAI API key not configured",

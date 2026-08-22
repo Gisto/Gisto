@@ -65,6 +65,23 @@ export const processSnippet = (snippet: SnippetType): SnippetEnrichedType => {
   };
 };
 
+export const mergeSyncedSnippet = (
+  enriched: SnippetEnrichedType,
+  updated: SnippetSingleType
+): SnippetEnrichedType =>
+  processSnippet({
+    ...enriched,
+    id: updated.id,
+    description: updated.description,
+    html_url: updated.html_url,
+    files: updated.files,
+    comments: enriched.comments,
+    isPublic: enriched.isPublic,
+    createdAt: enriched.createdAt,
+    starred: enriched.starred,
+    stars: enriched.stars,
+  } as SnippetType);
+
 export const getLanguageName = (file: SnippetFileType): string => {
   if (!file?.language) return '';
   return typeof file.language === 'string' ? file.language : file.language.name;

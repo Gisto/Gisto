@@ -110,7 +110,8 @@ export const AllTags = ({
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
           <div>
-            {upperCaseFirst(t('common.tags'))} <small>({tagsData.length})</small>
+            {upperCaseFirst(t('common.tags'))}{' '}
+            <small className="font-numbers">({tagsData.length})</small>
           </div>{' '}
           <div>
             <Input
@@ -148,7 +149,7 @@ export const AllTags = ({
                 className="m-1 cursor-pointer hover:opacity-70"
                 onClick={() => onClick && onClick(tag)}
               >
-                {tag} <small className="ml-1">({count})</small>
+                {tag} <small className="ml-1 font-numbers">({count})</small>
               </Badge>
             ))}
       </CardContent>

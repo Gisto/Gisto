@@ -2,6 +2,7 @@ import {
   removeTags,
   getTags,
   processSnippet,
+  mergeSyncedSnippet,
   getFileExtension,
   getLanguageName,
   isPDF,
@@ -34,6 +35,22 @@ type MockSnippet = {
 };
 
 describe('snippet utils', () => {
+  const mockSnippet: MockSnippet = {
+    id: '1',
+    resourcePath: '/snippet/1',
+    html_url: 'https://gist.github.com/1',
+    description: 'Test #tag',
+    createdAt: '2023-01-01',
+    stars: 0,
+    starred: false,
+    isPublic: true,
+    comments: { edges: [] },
+    files: {
+      'file1.js': { name: 'file1.js', language: { name: 'JavaScript', color: 'yellow' } },
+      'file2.py': { name: 'file2.py', language: { name: 'Python', color: 'blue' } },
+    },
+  };
+
   describe('removeTags', () => {
     it('should remove tags from title', () => {
       expect(removeTags('Hello #world')).toBe('Hello ');
@@ -67,22 +84,6 @@ describe('snippet utils', () => {
   });
 
   describe('processSnippet', () => {
-    const mockSnippet: MockSnippet = {
-      id: '1',
-      resourcePath: '/snippet/1',
-      html_url: 'https://gist.github.com/1',
-      description: 'Test #tag',
-      createdAt: '2023-01-01',
-      stars: 0,
-      starred: false,
-      isPublic: true,
-      comments: { edges: [] },
-      files: {
-        'file1.js': { name: 'file1.js', language: { name: 'JavaScript', color: 'yellow' } },
-        'file2.py': { name: 'file2.py', language: { name: 'Python', color: 'blue' } },
-      },
-    };
-
     it('should process snippet correctly', () => {
       const result = processSnippet(mockSnippet as unknown as SnippetType);
 
@@ -101,6 +102,48 @@ describe('snippet utils', () => {
 
       expect(result.isUntitled).toBe(false);
       expect(result.description).toBe('Untitled');
+    });
+  });
+
+  describe('mergeSyncedSnippet', () => {
+    const enriched = processSnippet(mockSnippet as unknown as SnippetType);
+
+    const updated = {
+      id: '1',
+      description: 'Test #tag',
+      html_url: 'https://gist.github.com/1',
+      files: {
+        'file1.js': {
+          filename: 'file1.js',
+          type: 'text/plain',
+          language: 'JavaScript',
+          raw_url: 'https://gist.github.com/1/raw',
+          size: 4,
+          content: 'x = 1;',
+        },
+      },
+      comments: 0,
+    } as unknown as SnippetSingleType;
+
+    it('preserves the enriched comments structure when merging a REST response', () => {
+      const result = mergeSyncedSnippet(enriched, updated);
+
+      expect(Array.isArray(result.comments.edges)).toBe(true);
+    });
+
+    it('takes the updated files, description and language', () => {
+      const result = mergeSyncedSnippet(enriched, updated);
+
+      expect(result.description).toBe('Test #tag');
+      expect(result.languages).toEqual([{ name: 'JavaScript', color: 'white' }]);
+    });
+
+    it('keeps enriched-only fields like createdAt and isPublic', () => {
+      const result = mergeSyncedSnippet(enriched, updated);
+
+      expect(result.createdAt).toBe('2023-01-01');
+      expect(result.isPublic).toBe(true);
+      expect(result.starred).toBe(false);
     });
   });
 

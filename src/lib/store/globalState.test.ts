@@ -1,7 +1,13 @@
 import { renderHook, waitFor, act } from '@testing-library/react';
 import { vi } from 'vitest';
 
-import { globalState, useStoreValue, updateSettings, defaultSettings } from './globalState';
+import {
+  globalState,
+  useStoreValue,
+  updateSettings,
+  setSnippetOpenInEditor,
+  defaultSettings,
+} from './globalState';
 
 describe('globalState', () => {
   beforeEach(() => {
@@ -11,6 +17,7 @@ describe('globalState', () => {
       loadingProgress: 0,
       search: '',
       snippets: [],
+      openInEditor: {},
     });
   });
 
@@ -106,6 +113,29 @@ describe('globalState', () => {
       updateSettings({ 'ai.activeAiProvider': 'claude' } as Record<string, unknown>);
 
       expect(globalState.getState().settings.ai.activeAiProvider).toBe('claude');
+    });
+  });
+
+  describe('setSnippetOpenInEditor', () => {
+    it('should mark a snippet as open in the external editor', () => {
+      setSnippetOpenInEditor('snippet-1', true);
+
+      expect(globalState.getState().openInEditor).toEqual({ 'snippet-1': true });
+    });
+
+    it('should clear the marker when the editor session closes', () => {
+      setSnippetOpenInEditor('snippet-1', true);
+      setSnippetOpenInEditor('snippet-1', false);
+
+      expect(globalState.getState().openInEditor).toEqual({});
+    });
+
+    it('should keep markers for other snippets', () => {
+      setSnippetOpenInEditor('snippet-1', true);
+      setSnippetOpenInEditor('snippet-2', true);
+      setSnippetOpenInEditor('snippet-1', false);
+
+      expect(globalState.getState().openInEditor).toEqual({ 'snippet-2': true });
     });
   });
 });

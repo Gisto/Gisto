@@ -16,6 +16,7 @@ import { languageMap } from '@/constants/language-map.ts';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, getEditorTheme } from '@/utils';
+import { defineEditorThemes } from '@/utils/monacoTheme';
 
 type FileCardProps = {
   file: {
@@ -123,6 +124,7 @@ export const FileCard = ({ file, index, dispatch, isEdit, errors, totalFiles }: 
                 value={content}
                 onChange={handleContentChange}
                 onMount={handleEditorMount}
+                beforeMount={(monaco) => defineEditorThemes(monaco)}
                 className="border-primary border rounded p-1"
                 options={{
                   ...EDITOR_OPTIONS,

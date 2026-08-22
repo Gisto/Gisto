@@ -6,6 +6,8 @@ import { t } from '@/lib/i18n';
 export type ModelOption = {
   value: string;
   label: string;
+  isPreset?: boolean;
+  hasModelDetails?: boolean;
   isFree?: boolean;
   modelId?: string;
   description?: string;
@@ -19,6 +21,30 @@ type UseAiModelsResult = {
   error: string | null;
   refresh: () => void;
 };
+
+export function includeSelectedModel(models: ModelOption[], value: string): ModelOption[] {
+  if (!value || models.some((model) => model.value === value)) return models;
+
+  return [
+    {
+      value,
+      label: value,
+      modelId: value,
+      isPreset: value.startsWith('@preset/'),
+      hasModelDetails: false,
+    },
+    ...models,
+  ];
+}
+
+export function sortModelOptions(models: ModelOption[]): ModelOption[] {
+  const byLabel = (a: ModelOption, b: ModelOption) => a.label.localeCompare(b.label);
+  const presets = models.filter((model) => model.isPreset).sort(byLabel);
+  const free = models.filter((model) => !model.isPreset && model.isFree);
+  const paid = models.filter((model) => !model.isPreset && !model.isFree);
+
+  return [...presets, ...free, ...paid];
+}
 
 const cache = new Map<string, { models: ModelOption[]; timestamp: number }>();
 const CACHE_TTL = 5 * 60 * 1000;
@@ -78,6 +104,17 @@ export function useAiModels(provider: string | undefined): UseAiModelsResult {
       const result = await fetchModels(provider);
 
       const mapped: ModelOption[] = result.map((m) => {
+        if (m.isPreset) {
+          return {
+            value: m.id,
+            label: `🎛 ${m.name}`,
+            isPreset: true,
+            hasModelDetails: false,
+            modelId: m.id,
+            description: m.description,
+          };
+        }
+
         const id = m.id.replace(/^models\//, '');
         const known = KNOWN_MODEL_LABELS[id];
         const name = known ?? formatModelName(m.name, m.id);
@@ -86,6 +123,7 @@ export function useAiModels(provider: string | undefined): UseAiModelsResult {
           value: m.id,
           label: m.isFree ? `💸 ${cleanName} (Free)` : name,
           isFree: m.isFree,
+          hasModelDetails: true,
           modelId: id,
           description: m.description,
           contextLength: m.contextLength,
@@ -93,9 +131,7 @@ export function useAiModels(provider: string | undefined): UseAiModelsResult {
         };
       });
 
-      const free = mapped.filter((m) => m.isFree);
-      const paid = mapped.filter((m) => !m.isFree);
-      const sorted = [...free, ...paid];
+      const sorted = sortModelOptions(mapped);
 
       cache.set(provider, { models: sorted, timestamp: Date.now() });
       setModels(sorted);

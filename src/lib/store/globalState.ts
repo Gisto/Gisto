@@ -13,6 +13,7 @@ export type StoreStateType = {
   loadingProgress: number;
   totalSnippetCount: number;
   snippets: SnippetEnrichedType[] | [];
+  openInEditor: Record<string, boolean>;
   search: string;
   apiRateLimits: {
     limit: number;
@@ -22,6 +23,10 @@ export type StoreStateType = {
   settings: {
     language: 'en' | 'fr' | 'es' | 'de' | 'it' | 'ru' | 'zh' | 'ja';
     theme: 'system' | 'light' | 'dark';
+    baseColor: string;
+    headingFont: string;
+    numbersFont: string;
+    bodyFont: string;
     newSnippetDefaultLanguage: string;
     sidebarCollapsedByDefault: boolean;
     filesCollapsedByDefault: boolean;
@@ -48,6 +53,9 @@ export type StoreStateType = {
       renderWhitespace: 'none' | 'boundary' | 'selection' | 'trailing' | 'all';
       renderLineHighlight: 'all' | 'line' | 'none' | 'gutter';
       minimap: { enabled: boolean };
+    };
+    externalEditor: {
+      command: string;
     };
     ai: {
       activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude' | 'minimax';
@@ -135,6 +143,10 @@ function loadSettingsFromLocalStorage() {
 
 export const defaultSettings: SettingsType = {
   theme: 'system',
+  baseColor: '201 45.5% 45.3%',
+  headingFont: 'Titillium Web',
+  numbersFont: 'Bodoni Moda',
+  bodyFont: 'Titillium Web',
   language: 'en',
   newSnippetDefaultLanguage: 'Text',
   sidebarCollapsedByDefault: false,
@@ -145,7 +157,7 @@ export const defaultSettings: SettingsType = {
   sortFilesByMarkdownFirst: false,
   sidebarViewMode: 'list',
   editor: {
-    fontFamily: 'monospace',
+    fontFamily: 'JetBrains Mono',
     fontLigatures: false,
     fontSize: 13,
     lineHeight: 20,
@@ -162,6 +174,9 @@ export const defaultSettings: SettingsType = {
     renderWhitespace: 'selection',
     renderLineHighlight: 'line',
     minimap: { enabled: false },
+  },
+  externalEditor: {
+    command: 'code',
   },
   ai: {
     activeAiProvider: 'openrouter',
@@ -188,6 +203,7 @@ export const globalState = new Store<StoreStateType>({
   loadingProgress: 0,
   totalSnippetCount: 0,
   snippets: [],
+  openInEditor: {},
   search: '',
   apiRateLimits: null,
   settings: loadSettingsFromLocalStorage() as SettingsType,
@@ -224,6 +240,16 @@ export function updateSettings(newSettings: Partial<SettingsType>) {
   });
 
   globalState.setState({ settings: updatedSettings });
+}
+
+export function setSnippetOpenInEditor(snippetId: string, open: boolean) {
+  const next = { ...globalState.getState().openInEditor };
+  if (open) {
+    next[snippetId] = true;
+  } else {
+    delete next[snippetId];
+  }
+  globalState.setState({ openInEditor: next });
 }
 
 function setNestedProperty(obj: { [key: string]: unknown }, path: string, value: unknown): void {

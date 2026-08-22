@@ -1,13 +1,14 @@
 'use client';
 
 import { useRouter } from 'dirty-react-router';
-import { ChevronRight, Folder, FolderOpen, FileCode, Plus } from 'lucide-react';
+import { ChevronRight, Folder, FolderOpen, FileCode, MonitorUp, Plus } from 'lucide-react';
 import { useCallback, useMemo, useState } from 'react';
 
 import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { EmptyState } from '@/components/ui/empty-state.tsx';
 import { ScrollArea } from '@/components/ui/scroll-area.tsx';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { t } from '@/lib/i18n';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
@@ -37,6 +38,7 @@ const TreeNode = ({ name, color, count, snippets, depth, allExpanded }: TreeNode
   const [isOpen, setIsOpen] = useState(allExpanded && depth === 0);
   const [isHovered, setIsHovered] = useState(false);
   const { navigate } = useRouter();
+  const openInEditor = useStoreValue('openInEditor');
 
   const handleToggle = useCallback(() => {
     setIsOpen((prev: boolean) => !prev);
@@ -70,7 +72,7 @@ const TreeNode = ({ name, color, count, snippets, depth, allExpanded }: TreeNode
           />
         )}
         <span className="text-sm truncate flex-1">{name}</span>
-        <Badge variant="secondary" className="ml-auto text-xs h-5">
+        <Badge variant="secondary" className="ml-auto text-xs h-5 font-numbers">
           {count}
         </Badge>
       </div>
@@ -90,6 +92,17 @@ const TreeNode = ({ name, color, count, snippets, depth, allExpanded }: TreeNode
             >
               <FileCode className="size-3 text-muted-foreground" />
               <span className="text-sm truncate">{snippet.title || t('common.untitled')}</span>
+              {openInEditor[snippet.id] && (
+                <Tooltip delayDuration={100}>
+                  <TooltipTrigger asChild>
+                    <MonitorUp
+                      className="size-3 shrink-0 text-primary"
+                      aria-label={t('pages.snippet.openInEditor')}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>{t('pages.snippet.openInEditor')}</TooltipContent>
+                </Tooltip>
+              )}
             </div>
           ))}
         </div>

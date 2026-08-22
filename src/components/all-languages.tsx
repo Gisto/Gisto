@@ -64,7 +64,8 @@ export const AllLanguages = ({
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
           <div>
-            {upperCaseFirst(t('common.languages'))} <small>({languagesData.length})</small>
+            {upperCaseFirst(t('common.languages'))}{' '}
+            <small className="font-numbers">({languagesData.length})</small>
           </div>{' '}
           <div>
             <Input
@@ -93,7 +94,7 @@ export const AllLanguages = ({
               className="m-1 cursor-pointer hover:opacity-70"
             >
               <div className="w-2 h-2 rounded-full mr-2" style={{ background: language?.color }} />{' '}
-              {language?.name} <small className="ml-1">({count})</small>
+              {language?.name} <small className="ml-1 font-numbers">({count})</small>
             </Badge>
           ))
         )}

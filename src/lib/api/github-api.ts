@@ -7,7 +7,14 @@ import { toast } from '@/components/toast';
 import { ITEMS_PER_PAGE } from '@/constants';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
-import { SnippetFileType, SnippetSingleType, SnippetType } from '@/types/snippet.ts';
+import {
+  SnippetFileType,
+  SnippetHistoryItem,
+  SnippetRevision,
+  SnippetRevisionContent,
+  SnippetSingleType,
+  SnippetType,
+} from '@/types/snippet.ts';
 
 interface GraphQLResponse<T> {
   data: T;
@@ -470,3 +477,89 @@ export const GithubApi: SnippetProvider<GitHubSnippetListItem, SnippetSingleType
     return guessLanguage(extension);
   },
 };
+
+interface GitHubRevisionGist {
+  id: string;
+  description: string;
+  files: Record<
+    string,
+    {
+      content: string | null;
+      filename: string;
+      language: string | null;
+      truncated: boolean;
+      size: number;
+    }
+  >;
+}
+
+export async function getGistRevisions(snippetId: string): Promise<SnippetRevision[]> {
+  const { data } = await GithubApi.request<SnippetHistoryItem[]>({
+    endpoint: `/gists/${snippetId}/commits?per_page=100`,
+  });
+
+  return data.map((commit) => ({
+    id: commit.version,
+    snippetId,
+    description: '',
+    createdAt: commit.committed_at,
+    meta: `${commit.change_status.additions}+ ${commit.change_status.deletions}-`,
+  }));
+}
+
+export async function getGistRevisionContent(
+  snippetId: string,
+  revisionId: string
+): Promise<SnippetRevisionContent> {
+  const { data } = await GithubApi.request<GitHubRevisionGist>({
+    endpoint: `/gists/${snippetId}/${revisionId}`,
+  });
+
+  const files: Record<string, SnippetFileType> = {};
+
+  for (const [name, file] of Object.entries(data.files)) {
+    const content = file.content ?? '';
+    files[name] = {
+      filename: name,
+      content,
+      language: file.language
+        ? { name: file.language, color: null }
+        : { name: 'Text', color: null },
+      size: file.size ?? content.length,
+      truncated: file.truncated ?? false,
+      encoding: 'utf-8',
+      raw_url: '',
+      type: 'text/plain',
+    };
+  }
+
+  return { description: data.description ?? '', files };
+}
+
+export async function restoreGistRevision(
+  snippetId: string,
+  revisionId: string
+): Promise<SnippetType> {
+  const revision = await getGistRevisionContent(snippetId, revisionId);
+  const current = await GithubApi.getSnippet(snippetId);
+
+  const files: Record<string, { content: string } | null> = {};
+
+  for (const name of Object.keys(current.files)) {
+    if (!revision.files[name]) {
+      files[name] = null;
+    }
+  }
+
+  for (const [name, file] of Object.entries(revision.files)) {
+    files[name] = { content: file.content };
+  }
+
+  const { data } = await GithubApi.request<SnippetType>({
+    endpoint: `/gists/${snippetId}`,
+    method: 'PATCH',
+    body: { files, description: revision.description },
+  });
+
+  return data;
+}

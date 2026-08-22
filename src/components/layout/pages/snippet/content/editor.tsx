@@ -1,6 +1,6 @@
 import MonacoEditor from '@monaco-editor/react';
 import { Skull } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { Monaco } from '@monaco-editor/react';
 
@@ -34,6 +34,7 @@ import {
   isTSV,
   getLanguageName,
 } from '@/utils';
+import { defineEditorThemes } from '@/utils/monacoTheme';
 
 export const Editor = ({
   file,
@@ -46,7 +47,16 @@ export const Editor = ({
 }) => {
   const settings = useStoreValue('settings');
   const [height, setHeight] = useState('65vh');
-  const editorRef = useRef(null);
+  const editorRef = useRef<{ getValue: () => string; setValue: (value: string) => void } | null>(
+    null
+  );
+
+  useEffect(() => {
+    const editor = editorRef.current;
+    if (editor && file.content !== editor.getValue()) {
+      editor.setValue(file.content);
+    }
+  }, [file.content]);
 
   if (file.truncated) {
     return (
@@ -130,6 +140,7 @@ export const Editor = ({
   }
 
   const handleEditorWillMount = (monaco: Monaco) => {
+    defineEditorThemes(monaco);
     monaco.languages.register({ id: 'groovy' });
     monaco.languages.setMonarchTokensProvider('groovy', groovyLanguage);
     monaco.languages.register({ id: 'bsl', extensions: ['.bsl', '.os'] });

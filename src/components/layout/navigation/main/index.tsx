@@ -1,5 +1,6 @@
 import { Link, useRouter } from 'dirty-react-router';
 import { BadgeHelp, SlidersHorizontal, LogOut, LayoutDashboard, Plus, Globe } from 'lucide-react';
+import { ReactNode } from 'react';
 
 import { version } from '../../../../../package.json';
 
@@ -11,6 +12,13 @@ import { useIsOnline } from '@/hooks/use-is-online.tsx';
 import { t } from '@/lib/i18n';
 import { useStoreValue, globalState } from '@/lib/store/globalState.ts';
 import { cn } from '@/utils';
+
+const SectionLabel = ({ children, isCollapsed }: { children: ReactNode; isCollapsed: boolean }) =>
+  isCollapsed ? null : (
+    <div className="px-2 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-sidebar-foreground/50">
+      {children}
+    </div>
+  );
 
 export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
   const online = useIsOnline();
@@ -40,20 +48,25 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
     <>
       <PageHeader>
         {isCollapsed ? (
-          <h1 className="text-[1rem] whitespace-nowrap text-primary hover:text-primary/80 font-semibold transition-all duration-300 ease-in-out">
+          <h1 className="text-[1rem] whitespace-nowrap text-gold hover:text-gold/80 font-bold transition-all duration-300 ease-in-out">
             <Link to={'/'}>{'{ G }'}</Link>
           </h1>
         ) : (
           <div className="flex items-center justify-between w-full transition-all duration-300 ease-in-out">
-            <h2 className="text-primary hover:text-primary/80 font-semibold text-xl transition-all duration-300 ease-in-out">
-              <Link to={'/'}>{'{ Gisto } '}</Link>{' '}
-              <small className="text-xs font-light">v{version}</small>
+            <h2 className="font-heading text-primary hover:text-primary/80 font-bold text-xl transition-all duration-300 ease-in-out">
+              <Link to={'/'}>
+                <span className="text-gold">{'{ Gisto }'}</span>
+              </Link>{' '}
+              <small className="text-xs font-light text-muted-foreground font-numbers">
+                v{version}
+              </small>
             </h2>
           </div>
         )}
       </PageHeader>
       <div className="flex flex-col justify-between h-[calc(100dvh_-_52px)]">
         <div className="p-2">
+          <SectionLabel isCollapsed={isCollapsed}>{t('menu.overview')}</SectionLabel>
           <NavigationItem
             isCollapsed={isCollapsed}
             label={t('menu.dashboard')}
@@ -69,6 +82,7 @@ export const Navigation = ({ isCollapsed }: { isCollapsed: boolean }) => {
         </div>
 
         <div className="p-2">
+          <SectionLabel isCollapsed={isCollapsed}>{t('menu.system')}</SectionLabel>
           <NavigationItem
             isCollapsed={isCollapsed}
             label={t('menu.about')}
