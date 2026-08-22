@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### 🚀 Features
+
+- Add error boundary
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([84d88d4](https://github.com/gisto/gisto/commit/84d88d4c60c6e4bd4f6bb01527ef43ffe44a03f3))
+
+
 ## v2.14.0
 
 Released on: Aug 22, 2026
