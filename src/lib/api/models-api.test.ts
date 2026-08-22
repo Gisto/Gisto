@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { fetchMiniMaxModels } from './models-api.ts';
+import { fetchMiniMaxModels, fetchOpenRouterModels } from './models-api.ts';
 
 const mockSettings: {
   ai: Record<string, string | undefined>;
@@ -89,5 +89,136 @@ describe('fetchMiniMaxModels', () => {
 
     await expect(fetchMiniMaxModels()).rejects.toThrow();
     expect(fetchSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('fetchOpenRouterModels', () => {
+  beforeEach(() => {
+    mockSettings.ai = { openRouterApiKey: 'test-key' };
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('adds active presets before catalog models', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockImplementation(async (input) => {
+      const url = String(input);
+
+      if (url.endsWith('/models')) {
+        return new Response(
+          JSON.stringify({
+            data: [
+              {
+                id: 'google/gemini-3.7-flash',
+                name: 'Google: Gemini 3.7 Flash',
+                context_length: 1000000,
+                pricing: { prompt: 0.000000375, completion: 0.000001875 },
+              },
+            ],
+          }),
+          { status: 200, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
+
+      return new Response(
+        JSON.stringify({
+          data: [
+            {
+              slug: 'discounted-quality',
+              name: 'Discounted Quality',
+              description: 'Economical fallback route',
+              status: 'active',
+            },
+            { slug: 'archived', name: 'Archived', status: 'archived' },
+          ],
+        }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      );
+    });
+
+    await expect(fetchOpenRouterModels()).resolves.toEqual([
+      {
+        id: '@preset/discounted-quality',
+        name: 'Discounted Quality',
+        description: 'Economical fallback route',
+        isPreset: true,
+      },
+      {
+        id: 'google/gemini-3.7-flash',
+        name: 'Google: Gemini 3.7 Flash',
+        description: undefined,
+        contextLength: 1000000,
+        pricing: { prompt: 0.000000375, completion: 0.000001875 },
+        isFree: false,
+      },
+    ]);
+    expect(fetchSpy).toHaveBeenCalledTimes(2);
+    expect(fetchSpy.mock.calls[1][0]).toBe('https://openrouter.ai/api/v1/presets?limit=100');
+    expect(fetchSpy.mock.calls[1][1]?.headers).toEqual({ Authorization: 'Bearer test-key' });
+  });
+
+  it('keeps catalog models when preset loading fails', async () => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (input) => {
+      if (String(input).endsWith('/models')) {
+        return new Response(JSON.stringify({ data: [{ id: 'openrouter/auto', name: 'Auto' }] }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+
+      return new Response(null, { status: 403 });
+    });
+
+    await expect(fetchOpenRouterModels()).resolves.toEqual([
+      {
+        id: 'openrouter/auto',
+        name: 'Auto',
+        description: undefined,
+        contextLength: undefined,
+        pricing: undefined,
+        isFree: false,
+      },
+    ]);
+  });
+
+  it('keeps catalog models when the preset request rejects', async () => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (input) => {
+      if (String(input).endsWith('/models')) {
+        return new Response(JSON.stringify({ data: [{ id: 'openrouter/auto', name: 'Auto' }] }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+
+      throw new TypeError('Network error');
+    });
+
+    await expect(fetchOpenRouterModels()).resolves.toEqual([
+      {
+        id: 'openrouter/auto',
+        name: 'Auto',
+        description: undefined,
+        contextLength: undefined,
+        pricing: undefined,
+        isFree: false,
+      },
+    ]);
+  });
+
+  it('does not request presets without an API key', async () => {
+    mockSettings.ai = { openRouterApiKey: '' };
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ data: [{ id: 'openrouter/auto', name: 'Auto' }] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    await fetchOpenRouterModels();
+
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+    expect(fetchSpy.mock.calls[0][0]).toBe('https://openrouter.ai/api/v1/models');
+    expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({});
   });
 });
