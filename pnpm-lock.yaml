@@ -160,8 +160,8 @@ importers:
         specifier: ^19.2.0
         version: 19.2.3(react@19.2.3)
       react-dropdown-select:
-        specifier: ^5.0.2
-        version: 5.0.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: ^5.0.5
+        version: 5.0.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-leaflet:
         specifier: ^5.0.0
         version: 5.0.0(leaflet@1.9.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -4675,11 +4675,11 @@ packages:
     peerDependencies:
       react: ^19.2.3
 
-  react-dropdown-select@5.0.2:
-    resolution: {integrity: sha512-dupyRuR/zEFZFnQ05iboZp8WZLFadqJIVamb9Yfudhj0e/ldaBoSy2y9DS6V1i25sF03luHb+EWDEBg8yT0KGA==}
+  react-dropdown-select@5.0.5:
+    resolution: {integrity: sha512-ZliYpQuNSwo+nd3XhVzfKwwJqc/7/HEcLghl+OdYy7AAiuUs75ZjdU6DlzQZDjVv/Jv2xcIALH52c4DI7fmkWg==}
     peerDependencies:
-      react: '>=16.x'
-      react-dom: '>=16.x'
+      react: '>=16.8'
+      react-dom: '>=16.8'
 
   react-immutable-proptypes@2.2.0:
     resolution: {integrity: sha512-Vf4gBsePlwdGvSZoLSBfd4HAP93HDauMY4fDjXhreg/vg6F3Fj/MXDNyTbltPC/xZKmZc+cjLu3598DdYK6sgQ==}
@@ -10369,7 +10369,7 @@ snapshots:
       react: 19.2.3
       scheduler: 0.27.0
 
-  react-dropdown-select@5.0.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  react-dropdown-select@5.0.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
