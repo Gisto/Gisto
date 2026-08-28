@@ -59,7 +59,8 @@
     "confirmLogout": "Вы уверены, что хотите выйти?",
     "selectRange": "Выбрать диапазон",
     "scrollToEnd": "Прокрутить в конец",
-    "scrollToStart": "Прокрутить в начало"
+    "scrollToStart": "Прокрутить в начало",
+    "searchProviders": "Найти провайдера"
   },
   "components": {
     "filterTags": "Фильтр {number} тегов",
@@ -92,7 +93,8 @@
     "paid": "Платно",
     "contextK": "{n}K контекст",
     "editingFiles": "Редактирование {n} файлов",
-    "searchFonts": "Поиск шрифтов"
+    "searchFonts": "Поиск шрифтов",
+    "hey": "Привет, {name}!"
   },
   "menu": {
     "logOut": "Выйти",

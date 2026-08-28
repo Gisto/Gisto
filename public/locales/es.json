@@ -59,7 +59,8 @@
     "confirmLogout": "¿Seguro que quieres cerrar sesión?",
     "selectRange": "Seleccionar rango",
     "scrollToEnd": "Desplazarse al final",
-    "scrollToStart": "Desplazarse al inicio"
+    "scrollToStart": "Desplazarse al inicio",
+    "searchProviders": "Buscar proveedor"
   },
   "components": {
     "filterTags": "Filtrar {number} etiquetas",
@@ -92,7 +93,8 @@
     "paid": "De pago",
     "contextK": "{n}K de contexto",
     "editingFiles": "Editando {n} archivos",
-    "searchFonts": "Buscar fuentes"
+    "searchFonts": "Buscar fuentes",
+    "hey": "¡Hola, {name}!"
   },
   "menu": {
     "logOut": "Cerrar sesión",

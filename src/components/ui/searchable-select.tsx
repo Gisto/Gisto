@@ -23,6 +23,8 @@ interface SearchableSelectProps<T> {
   searchPlaceholder?: string;
   disabled?: boolean;
   loading?: boolean;
+  chip?: boolean;
+  contentRenderer?: (arg: RendererArgs<SearchableSelectOption<T>>) => React.ReactElement;
   itemRenderer?: (
     item: SearchableSelectOption<T>,
     props: RendererArgs<SearchableSelectOption<T>>
@@ -37,6 +39,8 @@ export function SearchableSelect<T>({
   searchPlaceholder = t('common.search'),
   disabled,
   loading,
+  chip,
+  contentRenderer,
   itemRenderer,
 }: SearchableSelectProps<T>) {
   return (
@@ -56,18 +60,29 @@ export function SearchableSelect<T>({
       dropdownPosition="auto"
       disabled={disabled}
       loading={loading}
-      className="searchable-select"
+      className={cn('searchable-select', chip && 'searchable-select-chip')}
       color="hsl(var(--primary))"
-      contentRenderer={({ state }: RendererArgs<SearchableSelectOption<T>>) => (
-        <div className="flex w-full items-center justify-between gap-2">
-          <span
-            className={cn('flex-1 truncate text-sm', !state.values[0] && 'text-muted-foreground')}
+      contentRenderer={
+        contentRenderer ??
+        (({ state }: RendererArgs<SearchableSelectOption<T>>) => (
+          <div
+            className={cn('flex w-full items-center justify-between gap-2', chip && 'h-6! gap-1.5')}
           >
-            {state.values[0]?.label ?? placeholder}
-          </span>
-          <ChevronDown className="h-4 w-4 shrink-0 opacity-50" />
-        </div>
-      )}
+            <span
+              className={cn(
+                'flex-1 truncate text-sm',
+                chip && 'text-xs! font-medium',
+                !state.values[0] && 'text-muted-foreground'
+              )}
+            >
+              {state.values[0]?.label ?? placeholder}
+            </span>
+            <ChevronDown
+              className={cn('h-4 w-4 shrink-0 opacity-50', chip && 'size-3! text-muted-foreground')}
+            />
+          </div>
+        ))
+      }
       dropdownRenderer={({ props, state, methods }: RendererArgs<SearchableSelectOption<T>>) => {
         const regexp = new RegExp(state.search, 'i');
         const { searchBy } = props;
@@ -95,7 +110,7 @@ export function SearchableSelect<T>({
                       <div
                         key={String(option.value)}
                         className={cn(
-                          'flex cursor-pointer items-center rounded-sm px-3 py-2 transition-colors hover:bg-accent hover:text-accent-foreground',
+                          'flex cursor-pointer items-center gap-2 rounded-sm px-3 py-2 transition-colors hover:bg-accent hover:text-accent-foreground',
                           state.values[0]?.value === option.value &&
                             'bg-accent text-accent-foreground'
                         )}
@@ -134,7 +149,7 @@ export function SearchableSelect<T>({
                             }
                       }
                     >
-                      {option.label}
+                      <span className="min-w-0 flex-1 truncate text-left">{option.label}</span>
                     </button>
                   );
                 })}

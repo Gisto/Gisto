@@ -59,7 +59,8 @@
     "confirmLogout": "ログアウトしてもよろしいですか？",
     "selectRange": "範囲を選択",
     "scrollToEnd": "最後までスクロール",
-    "scrollToStart": "最初までスクロール"
+    "scrollToStart": "最初までスクロール",
+    "searchProviders": "プロバイダーを検索"
   },
   "components": {
     "filterTags": "{number}個のタグをフィルタリング",
@@ -92,7 +93,8 @@
     "paid": "有料",
     "contextK": "{n}K コンテキスト",
     "editingFiles": "{n} 個のファイルを編集中",
-    "searchFonts": "フォントを検索"
+    "searchFonts": "フォントを検索",
+    "hey": "こんにちは、{name}！"
   },
   "menu": {
     "logOut": "ログアウト",

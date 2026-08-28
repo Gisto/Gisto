@@ -59,7 +59,8 @@
     "confirmLogout": "Möchten Sie sich wirklich abmelden?",
     "selectRange": "Bereich auswählen",
     "scrollToEnd": "Zum Ende scrollen",
-    "scrollToStart": "Zum Anfang scrollen"
+    "scrollToStart": "Zum Anfang scrollen",
+    "searchProviders": "Anbieter suchen"
   },
   "components": {
     "filterTags": "Filter {number} Tags",
@@ -92,7 +93,8 @@
     "paid": "Kostenpflichtig",
     "contextK": "{n}K Kontext",
     "editingFiles": "{n} Dateien bearbeiten",
-    "searchFonts": "Schriftarten suchen"
+    "searchFonts": "Schriftarten suchen",
+    "hey": "Hey, {name}!"
   },
   "menu": {
     "logOut": "Abmelden",

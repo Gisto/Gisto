@@ -171,12 +171,12 @@ describe('PromptAssistant', () => {
     expect(screen.queryByText('Press send to start a new conversation')).not.toBeInTheDocument();
   });
 
-  it('shows the active AI provider and model in the header', () => {
+  it('shows the active AI provider icon and model', () => {
     render(
       <PromptAssistant messages={[]} onSend={() => {}} onClear={() => {}} isLoading={false} />
     );
 
-    expect(screen.getByText('OpenRouter')).toBeInTheDocument();
+    expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByText('💸 Llama 3.2 3B (Free)')).toBeInTheDocument();
   });
 });

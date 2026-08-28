@@ -59,7 +59,8 @@
     "confirmLogout": "Voulez-vous vraiment vous déconnecter ?",
     "selectRange": "Sélectionner une plage",
     "scrollToEnd": "Faire défiler jusqu'à la fin",
-    "scrollToStart": "Faire défiler jusqu'au début"
+    "scrollToStart": "Faire défiler jusqu'au début",
+    "searchProviders": "Rechercher un fournisseur"
   },
   "components": {
     "filterTags": "Filtrer {number} étiquettes",
@@ -92,7 +93,8 @@
     "paid": "Payant",
     "contextK": "{n}K de contexte",
     "editingFiles": "Modification de {n} fichiers",
-    "searchFonts": "Rechercher des polices"
+    "searchFonts": "Rechercher des polices",
+    "hey": "Salut, {name} !"
   },
   "menu": {
     "logOut": "Se déconnecter",
