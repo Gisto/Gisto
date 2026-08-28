@@ -94,7 +94,12 @@
     "contextK": "{n}K Kontext",
     "editingFiles": "{n} Dateien bearbeiten",
     "searchFonts": "Schriftarten suchen",
-    "hey": "Hey, {name}!"
+    "hey": "Hey, {name}!",
+    "startVoiceInput": "Spracheingabe starten",
+    "stopVoiceInput": "Spracheingabe stoppen",
+    "voiceInputError": "Fehler bei der Spracheingabe: {error}",
+    "voiceInputUnsupported": "Spracheingabe wird von diesem Browser nicht unterstützt",
+    "listening": "Höre zu…"
   },
   "menu": {
     "logOut": "Abmelden",

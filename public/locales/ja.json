@@ -94,7 +94,12 @@
     "contextK": "{n}K コンテキスト",
     "editingFiles": "{n} 個のファイルを編集中",
     "searchFonts": "フォントを検索",
-    "hey": "こんにちは、{name}！"
+    "hey": "こんにちは、{name}！",
+    "startVoiceInput": "音声入力を開始",
+    "stopVoiceInput": "音声入力を停止",
+    "voiceInputError": "音声入力エラー: {error}",
+    "voiceInputUnsupported": "このブラウザは音声入力をサポートしていません",
+    "listening": "聴いています…"
   },
   "menu": {
     "logOut": "ログアウト",

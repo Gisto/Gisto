@@ -94,7 +94,12 @@
     "contextK": "{n}K контекст",
     "editingFiles": "Редактирование {n} файлов",
     "searchFonts": "Поиск шрифтов",
-    "hey": "Привет, {name}!"
+    "hey": "Привет, {name}!",
+    "startVoiceInput": "Начать голосовой ввод",
+    "stopVoiceInput": "Остановить голосовой ввод",
+    "voiceInputError": "Ошибка голосового ввода: {error}",
+    "voiceInputUnsupported": "Голосовой ввод не поддерживается этим браузером",
+    "listening": "Слушаю…"
   },
   "menu": {
     "logOut": "Выйти",

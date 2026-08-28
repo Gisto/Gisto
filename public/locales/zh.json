@@ -94,7 +94,12 @@
     "contextK": "{n}K 上下文",
     "editingFiles": "正在编辑 {n} 个文件",
     "searchFonts": "搜索字体",
-    "hey": "你好，{name}！"
+    "hey": "你好，{name}！",
+    "startVoiceInput": "开始语音输入",
+    "stopVoiceInput": "停止语音输入",
+    "voiceInputError": "语音输入错误：{error}",
+    "voiceInputUnsupported": "当前浏览器不支持语音输入",
+    "listening": "正在听…"
   },
   "menu": {
     "logOut": "退出登录",

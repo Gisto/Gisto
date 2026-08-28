@@ -94,7 +94,12 @@
     "contextK": "{n}K context",
     "editingFiles": "Editing {n} files",
     "searchFonts": "Search fonts",
-    "hey": "Hey, {name}!"
+    "hey": "Hey, {name}!",
+    "startVoiceInput": "Start voice input",
+    "stopVoiceInput": "Stop voice input",
+    "voiceInputError": "Voice input error: {error}",
+    "voiceInputUnsupported": "Voice input isn't supported in this browser",
+    "listening": "Listening…"
   },
   "menu": {
     "logOut": "Log-out",
