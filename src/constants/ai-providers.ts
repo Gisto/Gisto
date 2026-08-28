@@ -4,6 +4,7 @@ import {
   ClaudeIcon,
   MiniMaxIcon,
   OpenRouterIcon,
+  OllamaIcon,
 } from '@/components/icons';
 
 export interface AiProvider {
@@ -61,6 +62,22 @@ export const AI_PROVIDERS: Record<string, AiProvider> = {
     modelOptions: [
       { value: 'MiniMax-M3', label: 'MiniMax-M3' },
       { value: 'MiniMax-M2.7', label: 'MiniMax-M2.7' },
+    ],
+  },
+  ollama: {
+    label: 'Ollama',
+    description: 'Local & remote models',
+    icon: OllamaIcon,
+    apiKeyUrl: 'https://ollama.com/download',
+    modelOptions: [
+      { value: 'llama3.2', label: 'Llama 3.2' },
+      { value: 'llama3.1', label: 'Llama 3.1' },
+      { value: 'qwen2.5', label: 'Qwen 2.5' },
+      { value: 'mistral', label: 'Mistral' },
+      { value: 'gemma2', label: 'Gemma 2' },
+      { value: 'codellama', label: 'Code Llama' },
+      { value: 'phi3', label: 'Phi-3' },
+      { value: 'deepseek-coder-v2', label: 'DeepSeek Coder V2' },
     ],
   },
   openrouter: {

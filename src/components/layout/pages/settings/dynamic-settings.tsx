@@ -20,7 +20,12 @@ import {
 } from '@/components/ui/select.tsx';
 import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
-import { AI_PROVIDERS, MINIMAX_PROTOCOL_OPTIONS, MINIMAX_REGION_OPTIONS } from '@/constants';
+import {
+  AI_PROVIDERS,
+  MINIMAX_PROTOCOL_OPTIONS,
+  MINIMAX_REGION_OPTIONS,
+  OLLAMA_MODE_OPTIONS,
+} from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { includeSelectedModel, useAiModels } from '@/hooks/use-ai-models';
 import { useGoogleFonts } from '@/hooks/use-google-fonts';
@@ -798,23 +803,72 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
+          if (key === 'ollamaMode') {
+            const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
+            const activeProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
+
+            if (activeProvider !== 'ollama') {
+              return null;
+            }
+
+            return (
+              <SpecialSelect
+                key={key}
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={OLLAMA_MODE_OPTIONS}
+                label="Connection"
+              />
+            );
+          }
+
+          if (key === 'ollamaBaseUrl') {
+            const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
+            const activeProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
+            const ollamaMode = (aiSettings?.ollamaMode as string) || 'local';
+
+            if (activeProvider !== 'ollama' || ollamaMode !== 'remote') {
+              return null;
+            }
+
+            return (
+              <div key={key} className="mb-4">
+                <label className="block mb-1">Base URL</label>
+                <Input
+                  type="text"
+                  value={value}
+                  placeholder="http://192.168.1.10:11434"
+                  onChange={(e) => onChange(fullPath, e.target.value)}
+                  className="w-full"
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  The Ollama server base URL, e.g. http://192.168.1.10:11434
+                </p>
+              </div>
+            );
+          }
+
           // API Key fields
           if (
             key === 'openaiApiKey' ||
             key === 'geminiApiKey' ||
             key === 'claudeApiKey' ||
             key === 'minimaxApiKey' ||
-            key === 'openRouterApiKey'
+            key === 'openRouterApiKey' ||
+            key === 'ollamaApiKey'
           ) {
             const providerMap: Record<
               string,
-              'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter'
+              'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter' | 'ollama'
             > = {
               openaiApiKey: 'openai',
               geminiApiKey: 'gemini',
               claudeApiKey: 'claude',
               minimaxApiKey: 'minimax',
               openRouterApiKey: 'openrouter',
+              ollamaApiKey: 'ollama',
             };
             const provider = providerMap[key];
             const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
@@ -825,13 +879,21 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
               return null;
             }
 
+            // Local Ollama does not require an API key
+            if (provider === 'ollama' && (aiSettings?.ollamaMode as string) !== 'remote') {
+              return null;
+            }
+
             const providerData = AI_PROVIDERS[provider];
 
             return (
               <div key={key} className="mb-4">
                 <label className="mb-2 flex items-center gap-2 text-sm font-medium">
                   {t('pages.settings.apiKey')}
-                  {providerData?.apiKeyUrl && (
+                  {provider === 'ollama' && (
+                    <span className="text-xs text-muted-foreground">(optional)</span>
+                  )}
+                  {providerData?.apiKeyUrl && provider !== 'ollama' && (
                     <SimpleTooltip
                       className="max-w-2xs"
                       content={

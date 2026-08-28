@@ -58,14 +58,17 @@ export type StoreStateType = {
       command: string;
     };
     ai: {
-      activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude' | 'minimax';
+      activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude' | 'minimax' | 'ollama';
       geminiApiKey?: string;
       openRouterApiKey?: string;
       openaiApiKey?: string;
       claudeApiKey?: string;
       minimaxApiKey?: string;
+      ollamaApiKey?: string;
       minimaxRegion: 'global_en' | 'cn_zh';
       minimaxProtocol: 'openai' | 'anthropic';
+      ollamaMode: 'local' | 'remote';
+      ollamaBaseUrl?: string;
       model: string;
       temperature: number;
       cleanJson: boolean;
@@ -187,6 +190,9 @@ export const defaultSettings: SettingsType = {
     minimaxApiKey: '',
     minimaxRegion: 'global_en',
     minimaxProtocol: 'openai',
+    ollamaMode: 'local',
+    ollamaBaseUrl: '',
+    ollamaApiKey: '',
     model: 'meta-llama/llama-3.2-3b-instruct:free',
     temperature: 0.7,
     cleanJson: true,
