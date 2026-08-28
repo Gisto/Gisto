@@ -59,7 +59,8 @@
     "confirmLogout": "确定要退出登录吗？",
     "selectRange": "选择范围",
     "scrollToEnd": "滚动到底部",
-    "scrollToStart": "滚动到顶部"
+    "scrollToStart": "滚动到顶部",
+    "searchProviders": "搜索提供商"
   },
   "components": {
     "filterTags": "过滤 {number} 个标签",
@@ -92,7 +93,8 @@
     "paid": "付费",
     "contextK": "{n}K 上下文",
     "editingFiles": "正在编辑 {n} 个文件",
-    "searchFonts": "搜索字体"
+    "searchFonts": "搜索字体",
+    "hey": "你好，{name}！"
   },
   "menu": {
     "logOut": "退出登录",

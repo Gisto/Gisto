@@ -59,7 +59,8 @@
     "confirmLogout": "Are you sure you want to log-out?",
     "selectRange": "Select range",
     "scrollToEnd": "Scroll to end",
-    "scrollToStart": "Scroll to start"
+    "scrollToStart": "Scroll to start",
+    "searchProviders": "Search providers"
   },
   "components": {
     "filterTags": "Filter {number} tags",
@@ -92,7 +93,8 @@
     "paid": "Paid",
     "contextK": "{n}K context",
     "editingFiles": "Editing {n} files",
-    "searchFonts": "Search fonts"
+    "searchFonts": "Search fonts",
+    "hey": "Hey, {name}!"
   },
   "menu": {
     "logOut": "Log-out",
