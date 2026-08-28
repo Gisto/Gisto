@@ -1,5 +1,5 @@
-export const OpenAIIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 721 721" fill="none" xmlns="http://www.w3.org/2000/svg">
+export const OpenAIIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 721 721" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_1637_2934)">
       <g clipPath="url(#clip1_1637_2934)">
         <path
