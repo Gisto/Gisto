@@ -94,7 +94,12 @@
     "contextK": "{n}K de contexto",
     "editingFiles": "Editando {n} archivos",
     "searchFonts": "Buscar fuentes",
-    "hey": "¡Hola, {name}!"
+    "hey": "¡Hola, {name}!",
+    "startVoiceInput": "Iniciar entrada de voz",
+    "stopVoiceInput": "Detener entrada de voz",
+    "voiceInputError": "Error de entrada de voz: {error}",
+    "voiceInputUnsupported": "La entrada de voz no es compatible con este navegador",
+    "listening": "Escuchando…"
   },
   "menu": {
     "logOut": "Cerrar sesión",

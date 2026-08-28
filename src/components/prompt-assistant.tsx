@@ -1,7 +1,8 @@
-import { ArrowUpIcon, Check, PlusIcon, Sparkles } from 'lucide-react';
-import { useCallback, useState } from 'react';
+import { ArrowUpIcon, Check, Mic, PlusIcon, Sparkles, Square } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
+import { toast } from '@/components/toast';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Bubble, BubbleContent } from '@/components/ui/bubble';
 import { Button } from '@/components/ui/button';
@@ -23,6 +24,35 @@ import { t } from '@/lib/i18n';
 import { isMarkdown } from '@/lib/is-markdown';
 import { updateSettings, useStoreValue } from '@/lib/store/globalState.ts';
 import { cn, upperCaseFirst } from '@/utils';
+
+type SpeechRecognitionResultEvent = {
+  resultIndex: number;
+  results: ArrayLike<{ isFinal: boolean } & ArrayLike<{ transcript: string }>>;
+};
+
+type SpeechRecognitionInstance = {
+  lang: string;
+  interimResults: boolean;
+  maxAlternatives: number;
+  continuous: boolean;
+  onresult: ((event: SpeechRecognitionResultEvent) => void) | null;
+  onend: (() => void) | null;
+  onerror: ((event: { error: string }) => void) | null;
+  start: () => void;
+  stop: () => void;
+  abort: () => void;
+};
+
+type SpeechRecognitionConstructor = new () => SpeechRecognitionInstance;
+
+const getSpeechRecognition = (): SpeechRecognitionConstructor | null => {
+  const w = window as unknown as {
+    SpeechRecognition?: SpeechRecognitionConstructor;
+    webkitSpeechRecognition?: SpeechRecognitionConstructor;
+  };
+
+  return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
+};
 
 export type AssistantMessage = {
   id: string;
@@ -87,12 +117,106 @@ export const PromptAssistant = ({
     updateSettings({ 'ai.model': value } as Record<string, unknown>);
   };
 
+  const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
+  const interimRef = useRef('');
+  const spokenFinalRef = useRef('');
+  const [isListening, setIsListening] = useState(false);
+  const speechSupported = getSpeechRecognition() !== null;
+
+  useEffect(() => {
+    return () => recognitionRef.current?.abort();
+  }, []);
+
+  const stopListening = useCallback(() => {
+    recognitionRef.current?.stop();
+    recognitionRef.current = null;
+    interimRef.current = '';
+    spokenFinalRef.current = '';
+    setIsListening(false);
+  }, []);
+
+  const toggleListening = useCallback(() => {
+    const SpeechRecognition = getSpeechRecognition();
+    if (!SpeechRecognition) {
+      toast.error({ message: t('components.voiceInputUnsupported') });
+      return;
+    }
+
+    if (isListening) {
+      stopListening();
+      return;
+    }
+
+    let recognition: SpeechRecognitionInstance;
+    try {
+      recognition = new SpeechRecognition();
+    } catch {
+      toast.error({ message: t('components.voiceInputUnsupported') });
+      return;
+    }
+
+    interimRef.current = '';
+    spokenFinalRef.current = '';
+    recognition.lang = navigator.language || 'en-US';
+    recognition.interimResults = true;
+    recognition.continuous = true;
+    recognition.maxAlternatives = 1;
+
+    recognition.onresult = (event) => {
+      let finalText = '';
+      let interimText = '';
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const result = event.results[i];
+        if (result.isFinal) finalText += result[0].transcript;
+        else interimText += result[0].transcript;
+      }
+      if (finalText) spokenFinalRef.current += finalText;
+
+      setInput((prev) => {
+        const base =
+          interimRef.current && prev.endsWith(interimRef.current)
+            ? prev.slice(0, prev.length - interimRef.current.length)
+            : prev;
+        interimRef.current = interimText;
+        return base + spokenFinalRef.current + interimText;
+      });
+    };
+
+    recognition.onend = () => {
+      recognitionRef.current = null;
+      interimRef.current = '';
+      spokenFinalRef.current = '';
+      setIsListening(false);
+    };
+
+    recognition.onerror = (event) => {
+      const { error } = event;
+      recognitionRef.current = null;
+      interimRef.current = '';
+      spokenFinalRef.current = '';
+      setIsListening(false);
+      if (error !== 'aborted' && error !== 'no-speech') {
+        toast.error({ message: t('components.voiceInputError', { error }) });
+      }
+    };
+
+    recognitionRef.current = recognition;
+    try {
+      recognition.start();
+      setIsListening(true);
+    } catch {
+      recognitionRef.current = null;
+      toast.error({ message: t('components.voiceInputUnsupported') });
+    }
+  }, [isListening, stopListening]);
+
   const handleSend = useCallback(() => {
     const q = input.trim();
     if (!q || isLoading) return;
+    stopListening();
     setInput('');
     void onSend(q);
-  }, [input, isLoading, onSend]);
+  }, [input, isLoading, onSend, stopListening]);
 
   const isBusy = isLoading;
   const isNewChat = messages.length === 0 && !isBusy;
@@ -184,10 +308,10 @@ export const PromptAssistant = ({
             handleSend();
           }
         }}
-        placeholder={placeholder}
+        placeholder={isListening ? t('components.listening') : placeholder}
         autoFocus={big}
         className={cn(
-          'resize-none rounded-2xl! pr-10',
+          'resize-none rounded-2xl! pr-20',
           big ? 'min-h-32 max-h-44 pb-16' : 'min-h-20 max-h-32 pb-14'
         )}
         rows={1}
@@ -207,6 +331,27 @@ export const PromptAssistant = ({
           big ? 'bottom-2 right-2' : 'bottom-1.5 right-1.5'
         )}
       >
+        <Button
+          type="button"
+          size="icon-sm"
+          variant={isListening ? 'default' : 'ghost'}
+          onClick={toggleListening}
+          disabled={!speechSupported || isBusy}
+          aria-label={
+            isListening ? t('components.stopVoiceInput') : t('components.startVoiceInput')
+          }
+          title={isListening ? t('components.stopVoiceInput') : t('components.startVoiceInput')}
+          className={cn(
+            'rounded-full! shrink-0',
+            isListening && 'bg-destructive text-destructive-foreground animate-pulse'
+          )}
+        >
+          {isListening ? (
+            <Square className="size-3.5 fill-current" />
+          ) : (
+            <Mic className={isListening ? 'animate-pulse' : undefined} />
+          )}
+        </Button>
         <Button
           type="submit"
           size="icon-sm"
