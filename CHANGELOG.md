@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### ⚙️ Miscellaneous Tasks
+
+- Add Contributor Covenant Code of Conduct
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([ba084df](https://github.com/gisto/gisto/commit/ba084df5119bcbda42969c227061071f18c2b4af))
+
+
 ## v2.15.0
 
 Released on: Aug 28, 2026
