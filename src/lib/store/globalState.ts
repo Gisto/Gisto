@@ -194,7 +194,7 @@ export const defaultSettings: SettingsType = {
     ollamaBaseUrl: '',
     ollamaApiKey: '',
     model: 'meta-llama/llama-3.2-3b-instruct:free',
-    temperature: 0.7,
+    temperature: 0.2,
     cleanJson: true,
   },
   activeSnippetProvider: 'github',
