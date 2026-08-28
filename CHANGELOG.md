@@ -13,6 +13,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([ba084df](https://github.com/gisto/gisto/commit/ba084df5119bcbda42969c227061071f18c2b4af))
 
+- Add Netlify status badge
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([419f549](https://github.com/gisto/gisto/commit/419f549b202213aaaba6e5d15a3f595f522bb428))
+
 
 ## v2.15.0
 
