@@ -41,11 +41,44 @@ const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
   ollama: 'ollamaApiKey',
 };
 
+export type ResolvedMiniMaxEndpoint = ReturnType<typeof resolveMiniMaxEndpoint>;
+export type ResolvedOllamaEndpoint = ReturnType<typeof resolveOllamaEndpoint>;
+
+function resolveOpenAiCompatibleEndpoint(
+  provider: AiProvider,
+  minimaxEndpoint: ResolvedMiniMaxEndpoint | null,
+  ollamaEndpoint: ResolvedOllamaEndpoint | null
+): string {
+  switch (provider) {
+    case 'openrouter':
+      return OPENROUTER_ENDPOINT;
+    case 'minimax':
+      return minimaxEndpoint?.chatUrl ?? OPENAI_ENDPOINT;
+    case 'ollama':
+      return ollamaEndpoint?.chatUrl ?? OPENAI_ENDPOINT;
+    default:
+      return OPENAI_ENDPOINT;
+  }
+}
+
+function buildOpenAiCompatibleHeaders(
+  provider: AiProvider,
+  apiKey: string
+): Record<string, string> {
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  if (apiKey) {
+    headers.Authorization = `Bearer ${apiKey}`;
+  }
+  if (provider === 'openrouter') {
+    headers['HTTP-Referer'] = window.location.origin;
+    headers['X-Title'] = 'Gisto';
+  }
+  return headers;
+}
+
 type OpenAiChatResponse = {
   choices?: Array<{ message?: { content?: string } }>;
 };
-
-type OpenRouterChatResponse = OpenAiChatResponse;
 
 type GeminiResponse = {
   candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
@@ -53,6 +86,20 @@ type GeminiResponse = {
 
 type AnthropicChatResponse = {
   content?: Array<{ type?: string; text?: string }>;
+};
+
+const parseErrorMessage = (response: Response, errorBody: unknown) =>
+  (errorBody as { error?: { message?: string } } | null)?.error?.message ||
+  `HTTP ${response.status} ${response.statusText}`;
+
+const parseJsonResponse = async <T>(response: Response, provider: AiProvider): Promise<T> => {
+  if (!response.ok) {
+    const errorBody = await response.json().catch(() => null);
+    const message = parseErrorMessage(response, errorBody);
+    throw new AiApiError(message, provider, response.status);
+  }
+
+  return response.json();
 };
 
 export class AiApiError extends Error {
@@ -147,62 +194,25 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
 
   let rawResponse: string;
 
-  const parseErrorMessage = (response: Response, errorBody: unknown) =>
-    (errorBody as { error?: { message?: string } } | null)?.error?.message ||
-    `HTTP ${response.status} ${response.statusText}`;
-
-  const parseJsonResponse = async <T>(response: Response, provider: AiProvider): Promise<T> => {
-    if (!response.ok) {
-      const errorBody = await response.json().catch(() => null);
-      const message = parseErrorMessage(response, errorBody);
-      throw new AiApiError(message, provider, response.status);
-    }
-
-    return response.json();
-  };
-
-  if (activeAiProvider === 'openrouter') {
-    const response = await fetch(OPENROUTER_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-        'HTTP-Referer': window.location.origin,
-        'X-Title': 'Gisto',
-      },
-      body: JSON.stringify({
-        model,
-        messages: buildMessages(prompt, chatMessages, systemContext),
-        temperature,
-      }),
-    });
-
-    const res = await parseJsonResponse<OpenRouterChatResponse>(response, 'openrouter');
-    rawResponse = res.choices?.[0]?.message?.content ?? '';
-  } else if (
+  const isOpenAiCompatible =
     activeAiProvider === 'openai' ||
+    activeAiProvider === 'openrouter' ||
     activeAiProvider === 'ollama' ||
-    (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'openai')
-  ) {
-    const endpoint =
-      activeAiProvider === 'minimax' && minimaxEndpoint
-        ? minimaxEndpoint.chatUrl
-        : activeAiProvider === 'ollama' && ollamaEndpoint
-          ? ollamaEndpoint.chatUrl
-          : OPENAI_ENDPOINT;
-    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-    if (apiKey) {
-      headers.Authorization = `Bearer ${apiKey}`;
-    }
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        model,
-        messages: buildMessages(prompt, chatMessages, systemContext),
-        temperature,
-      }),
-    });
+    (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'openai');
+
+  if (isOpenAiCompatible) {
+    const response = await fetch(
+      resolveOpenAiCompatibleEndpoint(activeAiProvider, minimaxEndpoint, ollamaEndpoint),
+      {
+        method: 'POST',
+        headers: buildOpenAiCompatibleHeaders(activeAiProvider, apiKey),
+        body: JSON.stringify({
+          model,
+          messages: buildMessages(prompt, chatMessages, systemContext),
+          temperature,
+        }),
+      }
+    );
 
     const res = await parseJsonResponse<OpenAiChatResponse>(response, activeAiProvider);
     rawResponse = res.choices?.[0]?.message?.content ?? '';
