@@ -11,6 +11,7 @@
     "average": "promedio",
     "filesPerSnippet": "archivos por fragmento",
     "cancel": "cancelar",
+    "retry": "Reintentar",
     "update": "actualizar",
     "upload": "subir",
     "create": "crear",
@@ -58,7 +59,8 @@
     "confirmLogout": "¿Seguro que quieres cerrar sesión?",
     "selectRange": "Seleccionar rango",
     "scrollToEnd": "Desplazarse al final",
-    "scrollToStart": "Desplazarse al inicio"
+    "scrollToStart": "Desplazarse al inicio",
+    "searchProviders": "Buscar proveedor"
   },
   "components": {
     "filterTags": "Filtrar {number} etiquetas",
@@ -78,6 +80,10 @@
     "searchModels": "Buscar modelos...",
     "searchLanguages": "Buscar lenguajes...",
     "noResults": "Sin resultados",
+    "errorBoundaryTitle": "Algo salió mal",
+    "errorBoundaryDescription": "Ocurrió un error inesperado al mostrar esta página. Tus datos están seguros.",
+    "errorBoundaryBackHome": "Volver al panel",
+    "errorBoundaryDetails": "Detalles del error",
     "failedToLoadModels": "Error al cargar modelos",
     "loadingModels": "Cargando modelos...",
     "selected": "Seleccionado: {label}",
@@ -87,7 +93,13 @@
     "paid": "De pago",
     "contextK": "{n}K de contexto",
     "editingFiles": "Editando {n} archivos",
-    "searchFonts": "Buscar fuentes"
+    "searchFonts": "Buscar fuentes",
+    "hey": "¡Hola, {name}!",
+    "startVoiceInput": "Iniciar entrada de voz",
+    "stopVoiceInput": "Detener entrada de voz",
+    "voiceInputError": "Error de entrada de voz: {error}",
+    "voiceInputUnsupported": "La entrada de voz no es compatible con este navegador",
+    "listening": "Escuchando…"
   },
   "menu": {
     "logOut": "Cerrar sesión",

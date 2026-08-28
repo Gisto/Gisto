@@ -13,3 +13,4 @@ export const EDITOR_OPTIONS = {
 
 export * from './ai-providers';
 export * from './minimax-endpoints';
+export * from './ollama-endpoints';

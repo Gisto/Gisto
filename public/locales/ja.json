@@ -11,6 +11,7 @@
     "average": "平均",
     "filesPerSnippet": "スニペットあたりのファイル数",
     "cancel": "キャンセル",
+    "retry": "再試行",
     "update": "更新",
     "upload": "アップロード",
     "create": "作成",
@@ -58,7 +59,8 @@
     "confirmLogout": "ログアウトしてもよろしいですか？",
     "selectRange": "範囲を選択",
     "scrollToEnd": "最後までスクロール",
-    "scrollToStart": "最初までスクロール"
+    "scrollToStart": "最初までスクロール",
+    "searchProviders": "プロバイダーを検索"
   },
   "components": {
     "filterTags": "{number}個のタグをフィルタリング",
@@ -78,6 +80,10 @@
     "searchModels": "モデルを検索...",
     "searchLanguages": "言語を検索...",
     "noResults": "結果なし",
+    "errorBoundaryTitle": "問題が発生しました",
+    "errorBoundaryDescription": "このページの表示中に予期しないエラーが発生しました。データは安全です。",
+    "errorBoundaryBackHome": "ダッシュボードに戻る",
+    "errorBoundaryDetails": "エラーの詳細",
     "failedToLoadModels": "モデルの読み込みに失敗しました",
     "loadingModels": "モデルを読み込み中...",
     "selected": "選択中: {label}",
@@ -87,7 +93,13 @@
     "paid": "有料",
     "contextK": "{n}K コンテキスト",
     "editingFiles": "{n} 個のファイルを編集中",
-    "searchFonts": "フォントを検索"
+    "searchFonts": "フォントを検索",
+    "hey": "こんにちは、{name}！",
+    "startVoiceInput": "音声入力を開始",
+    "stopVoiceInput": "音声入力を停止",
+    "voiceInputError": "音声入力エラー: {error}",
+    "voiceInputUnsupported": "このブラウザは音声入力をサポートしていません",
+    "listening": "聴いています…"
   },
   "menu": {
     "logOut": "ログアウト",

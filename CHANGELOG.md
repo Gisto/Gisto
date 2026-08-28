@@ -2,6 +2,84 @@
 
 All significant updates and improvements
 
+## v2.15.0
+
+Released on: Aug 28, 2026
+
+### 🚀 Features
+
+- Add error boundary
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([84d88d4](https://github.com/gisto/gisto/commit/84d88d4c60c6e4bd4f6bb01527ef43ffe44a03f3))
+
+- *(ai)* Support ollama
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([63a4ccb](https://github.com/gisto/gisto/commit/63a4ccb28eea942d18eebe4dce4769515c8b5910))
+
+- *(ai)* Show provider and model in assistant header
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([ed311ce](https://github.com/gisto/gisto/commit/ed311ce33ab009fec4934d27187c6cf80639ab47))
+
+- *(ai)* Clear model on provider switch
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([e9a0d6c](https://github.com/gisto/gisto/commit/e9a0d6c0184b02faeae4bac708d9a027b4ef7695))
+
+- *(ai)* Document Gisto usage context for assistant chats
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([33106f0](https://github.com/gisto/gisto/commit/33106f0b37dada035805a421e1ee53319fc1788f))
+
+- *(ai)* Inline provider and model pickers into assistant composer
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([455abd6](https://github.com/gisto/gisto/commit/455abd6ead012a33ae326d99dbc1f6987033a5c5))
+
+- *(ai)* Add voice input with live interim transcription
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([e179c64](https://github.com/gisto/gisto/commit/e179c64f55868d31692b8120cf58f56c2e2ae918))
+
+
+### 🐛 Bug Fixes
+
+- *(icons)* Allow provider icons to be sized via className
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([28da268](https://github.com/gisto/gisto/commit/28da26812f2542c6c7e2bfadce0dff205d1f5355))
+
+- *(ai)* Keep model picker usable when provider model list fails
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([394f42f](https://github.com/gisto/gisto/commit/394f42ff98e951cc877112984b9beb29ceee3e2b))
+
+- *(settings)* Temperature slider 0-2 with 0.2 default
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([5ff1c07](https://github.com/gisto/gisto/commit/5ff1c077726e372dc8d2e497f10a17c9c3066c94))
+
+- *(dashboard)* Cleanup cards charts
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([efff4e1](https://github.com/gisto/gisto/commit/efff4e1d7ba589c7da55fb2c8c46243f861cdae9))
+
+
+### 🚜 Refactor
+
+- *(ai)* Unify OpenAI-compatible chat requests
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([4c3f75b](https://github.com/gisto/gisto/commit/4c3f75bc4dd537942529023fc1659c6327b9044b))
+
+- *(ai)* Unify model list fetching
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([332a097](https://github.com/gisto/gisto/commit/332a097a78c9b9abda9cc093643da4defb2677f0))
+
+
 ## v2.14.0
 
 Released on: Aug 22, 2026

@@ -1,6 +1,7 @@
 import { globalState } from '../store/globalState.ts';
 
 import { resolveMiniMaxEndpoint } from '@/constants/minimax-endpoints.ts';
+import { resolveOllamaEndpoint } from '@/constants/ollama-endpoints.ts';
 
 const GEMINI_ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
@@ -19,7 +20,7 @@ export interface GenerateAiResponseOptions {
   systemContext?: string;
   model?: string;
   temperature?: number;
-  activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude' | 'minimax';
+  activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude' | 'minimax' | 'ollama';
 }
 
 type AiProvider = NonNullable<GenerateAiResponseOptions['activeAiProvider']>;
@@ -28,7 +29,8 @@ type AiApiKeyField =
   | 'geminiApiKey'
   | 'openaiApiKey'
   | 'claudeApiKey'
-  | 'minimaxApiKey';
+  | 'minimaxApiKey'
+  | 'ollamaApiKey';
 
 const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
   openrouter: 'openRouterApiKey',
@@ -36,13 +38,47 @@ const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
   openai: 'openaiApiKey',
   claude: 'claudeApiKey',
   minimax: 'minimaxApiKey',
+  ollama: 'ollamaApiKey',
 };
+
+export type ResolvedMiniMaxEndpoint = ReturnType<typeof resolveMiniMaxEndpoint>;
+export type ResolvedOllamaEndpoint = ReturnType<typeof resolveOllamaEndpoint>;
+
+function resolveOpenAiCompatibleEndpoint(
+  provider: AiProvider,
+  minimaxEndpoint: ResolvedMiniMaxEndpoint | null,
+  ollamaEndpoint: ResolvedOllamaEndpoint | null
+): string {
+  switch (provider) {
+    case 'openrouter':
+      return OPENROUTER_ENDPOINT;
+    case 'minimax':
+      return minimaxEndpoint?.chatUrl ?? OPENAI_ENDPOINT;
+    case 'ollama':
+      return ollamaEndpoint?.chatUrl ?? OPENAI_ENDPOINT;
+    default:
+      return OPENAI_ENDPOINT;
+  }
+}
+
+function buildOpenAiCompatibleHeaders(
+  provider: AiProvider,
+  apiKey: string
+): Record<string, string> {
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  if (apiKey) {
+    headers.Authorization = `Bearer ${apiKey}`;
+  }
+  if (provider === 'openrouter') {
+    headers['HTTP-Referer'] = window.location.origin;
+    headers['X-Title'] = 'Gisto';
+  }
+  return headers;
+}
 
 type OpenAiChatResponse = {
   choices?: Array<{ message?: { content?: string } }>;
 };
-
-type OpenRouterChatResponse = OpenAiChatResponse;
 
 type GeminiResponse = {
   candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
@@ -50,6 +86,20 @@ type GeminiResponse = {
 
 type AnthropicChatResponse = {
   content?: Array<{ type?: string; text?: string }>;
+};
+
+const parseErrorMessage = (response: Response, errorBody: unknown) =>
+  (errorBody as { error?: { message?: string } } | null)?.error?.message ||
+  `HTTP ${response.status} ${response.statusText}`;
+
+const parseJsonResponse = async <T>(response: Response, provider: AiProvider): Promise<T> => {
+  if (!response.ok) {
+    const errorBody = await response.json().catch(() => null);
+    const message = parseErrorMessage(response, errorBody);
+    throw new AiApiError(message, provider, response.status);
+  }
+
+  return response.json();
 };
 
 export class AiApiError extends Error {
@@ -64,12 +114,18 @@ export class AiApiError extends Error {
 }
 
 /**
- * Check if an AI provider is available (has a configured API key)
+ * Check if an AI provider is available
  */
 export function isAiAvailable(): boolean {
   const { ai } = globalState.getState().settings;
 
   const activeAiProvider = (ai.activeAiProvider || 'openrouter') as AiProvider;
+
+  // Ollama runs locally (or on a self-hosted server) and needs no API key
+  if (activeAiProvider === 'ollama') {
+    return true;
+  }
+
   const apiKey = ai[AI_PROVIDER_API_KEYS[activeAiProvider]] || '';
 
   return Boolean(apiKey);
@@ -126,8 +182,10 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
     activeAiProvider === 'minimax'
       ? resolveMiniMaxEndpoint(ai.minimaxRegion, ai.minimaxProtocol)
       : null;
+  const ollamaEndpoint =
+    activeAiProvider === 'ollama' ? resolveOllamaEndpoint(ai.ollamaMode, ai.ollamaBaseUrl) : null;
 
-  if (!apiKey) {
+  if (activeAiProvider !== 'ollama' && !apiKey) {
     throw new AiApiError(
       `No API key provided for ${activeAiProvider}. Please add your ${activeAiProvider.charAt(0).toUpperCase() + activeAiProvider.slice(1)} API key in Settings > AI Assistant.`,
       activeAiProvider as GenerateAiResponseOptions['activeAiProvider']
@@ -136,56 +194,25 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
 
   let rawResponse: string;
 
-  const parseErrorMessage = (response: Response, errorBody: unknown) =>
-    (errorBody as { error?: { message?: string } } | null)?.error?.message ||
-    `HTTP ${response.status} ${response.statusText}`;
-
-  const parseJsonResponse = async <T>(response: Response, provider: AiProvider): Promise<T> => {
-    if (!response.ok) {
-      const errorBody = await response.json().catch(() => null);
-      const message = parseErrorMessage(response, errorBody);
-      throw new AiApiError(message, provider, response.status);
-    }
-
-    return response.json();
-  };
-
-  if (activeAiProvider === 'openrouter') {
-    const response = await fetch(OPENROUTER_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-        'HTTP-Referer': window.location.origin,
-        'X-Title': 'Gisto',
-      },
-      body: JSON.stringify({
-        model,
-        messages: buildMessages(prompt, chatMessages, systemContext),
-        temperature,
-      }),
-    });
-
-    const res = await parseJsonResponse<OpenRouterChatResponse>(response, 'openrouter');
-    rawResponse = res.choices?.[0]?.message?.content ?? '';
-  } else if (
+  const isOpenAiCompatible =
     activeAiProvider === 'openai' ||
-    (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'openai')
-  ) {
-    const endpoint =
-      activeAiProvider === 'minimax' && minimaxEndpoint ? minimaxEndpoint.chatUrl : OPENAI_ENDPOINT;
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model,
-        messages: buildMessages(prompt, chatMessages, systemContext),
-        temperature,
-      }),
-    });
+    activeAiProvider === 'openrouter' ||
+    activeAiProvider === 'ollama' ||
+    (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'openai');
+
+  if (isOpenAiCompatible) {
+    const response = await fetch(
+      resolveOpenAiCompatibleEndpoint(activeAiProvider, minimaxEndpoint, ollamaEndpoint),
+      {
+        method: 'POST',
+        headers: buildOpenAiCompatibleHeaders(activeAiProvider, apiKey),
+        body: JSON.stringify({
+          model,
+          messages: buildMessages(prompt, chatMessages, systemContext),
+          temperature,
+        }),
+      }
+    );
 
     const res = await parseJsonResponse<OpenAiChatResponse>(response, activeAiProvider);
     rawResponse = res.choices?.[0]?.message?.content ?? '';

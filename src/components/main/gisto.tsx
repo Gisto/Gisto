@@ -1,7 +1,9 @@
 import { RouterProvider, RouteType } from 'dirty-react-router';
-import { lazy } from 'react';
+import { Suspense, lazy, type ComponentType, type ReactNode } from 'react';
 
+import { ErrorBoundary } from '@/components/error-boundary';
 import { MainLayout } from '@/components/layout';
+import { Loading } from '@/components/loading.tsx';
 import { ThemeProvider } from '@/components/theme/theme-provider.tsx';
 import ToastManager from '@/components/toast/toast-manager.tsx';
 import { TooltipProvider } from '@/components/ui/tooltip.tsx';
@@ -36,30 +38,45 @@ const SettingsPage = lazy(() =>
   }))
 );
 
+const withErrorBoundary = <T extends Record<string, unknown>>(
+  label: string,
+  Component: ComponentType<T>
+): ((props: T) => ReactNode) => {
+  const BoundedRoute = (props: T): ReactNode => (
+    <ErrorBoundary label={label}>
+      <Suspense fallback={<Loading />}>
+        <Component {...props} />
+      </Suspense>
+    </ErrorBoundary>
+  );
+  BoundedRoute.displayName = `BoundedRoute(${label})`;
+  return BoundedRoute;
+};
+
 const routes: RouteType[] = [
   {
     path: '/',
-    component: DashBoardPage,
+    component: withErrorBoundary('dashboard', DashBoardPage),
   },
   {
     path: '/snippets/:id',
-    component: SnippetContentPage,
+    component: withErrorBoundary('snippet', SnippetContentPage),
   },
   {
     path: '/new-snippet',
-    component: CreateNewPage,
+    component: withErrorBoundary('new-snippet', CreateNewPage),
   },
   {
     path: '/edit/:id',
-    component: CreateNewPage,
+    component: withErrorBoundary('edit-snippet', CreateNewPage),
   },
   {
     path: '/about',
-    component: AboutPage,
+    component: withErrorBoundary('about', AboutPage),
   },
   {
     path: '/settings',
-    component: SettingsPage,
+    component: withErrorBoundary('settings', SettingsPage),
   },
   // {
   //   path: '*',

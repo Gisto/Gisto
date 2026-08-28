@@ -286,3 +286,27 @@
   overflow: visible;
   padding: 0;
 }
+
+.searchable-select-chip.react-dropdown-select {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  min-height: 24px;
+  height: 26px;
+  padding: 0 4px;
+  border-radius: 8px;
+}
+
+.searchable-select-chip.react-dropdown-select:hover,
+.searchable-select-chip.react-dropdown-select:focus-within {
+  border-color: transparent;
+}
+
+.searchable-select-chip.react-dropdown-select:focus-within {
+  outline: none;
+  box-shadow: none;
+}
+
+.searchable-select-chip > .react-dropdown-select-dropdown {
+  width: 400px !important;
+}

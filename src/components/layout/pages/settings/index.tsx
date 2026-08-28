@@ -16,6 +16,7 @@ import { InputPassword } from '@/components/ui/inputPassword.tsx';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { EDITOR_OPTIONS } from '@/constants';
+import { GISTO_APP_CONTEXT } from '@/constants/ai-context';
 import { getProviderConfig, getTranslation, SnippetProviderType } from '@/constants/providers.tsx';
 import { generateAiResponse, AiApiError, isAiAvailable } from '@/lib/api/ai-api.ts';
 import { exportLocalDatabase, importLocalDatabase } from '@/lib/api/local-api.ts';
@@ -111,7 +112,11 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
 
       setChatLoading(true);
       try {
-        const result = await generateAiResponse({ prompt, messages: msgs });
+        const result = await generateAiResponse({
+          prompt,
+          messages: msgs,
+          systemContext: GISTO_APP_CONTEXT,
+        });
         setChatMessages((prev) => [
           ...prev,
           { id: crypto.randomUUID(), role: 'assistant', content: result },

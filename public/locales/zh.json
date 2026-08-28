@@ -11,6 +11,7 @@
     "average": "平均",
     "filesPerSnippet": "每个片段的文件数",
     "cancel": "取消",
+    "retry": "重试",
     "update": "更新",
     "upload": "上传",
     "create": "创建",
@@ -58,7 +59,8 @@
     "confirmLogout": "确定要退出登录吗？",
     "selectRange": "选择范围",
     "scrollToEnd": "滚动到底部",
-    "scrollToStart": "滚动到顶部"
+    "scrollToStart": "滚动到顶部",
+    "searchProviders": "搜索提供商"
   },
   "components": {
     "filterTags": "过滤 {number} 个标签",
@@ -78,6 +80,10 @@
     "searchModels": "搜索模型...",
     "searchLanguages": "搜索语言...",
     "noResults": "无结果",
+    "errorBoundaryTitle": "出错了",
+    "errorBoundaryDescription": "显示此页面时发生了意外错误。您的数据是安全的。",
+    "errorBoundaryBackHome": "返回仪表板",
+    "errorBoundaryDetails": "错误详情",
     "failedToLoadModels": "加载模型失败",
     "loadingModels": "加载模型中...",
     "selected": "已选择: {label}",
@@ -87,7 +93,13 @@
     "paid": "付费",
     "contextK": "{n}K 上下文",
     "editingFiles": "正在编辑 {n} 个文件",
-    "searchFonts": "搜索字体"
+    "searchFonts": "搜索字体",
+    "hey": "你好，{name}！",
+    "startVoiceInput": "开始语音输入",
+    "stopVoiceInput": "停止语音输入",
+    "voiceInputError": "语音输入错误：{error}",
+    "voiceInputUnsupported": "当前浏览器不支持语音输入",
+    "listening": "正在听…"
   },
   "menu": {
     "logOut": "退出登录",

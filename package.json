@@ -3,7 +3,7 @@
   "description": "Cross-platform snippets management desktop application",
   "productName": "Gisto",
   "private": true,
-  "version": "2.14.0",
+  "version": "2.15.0",
   "type": "module",
   "scripts": {
     "// ℹ️ ------- build and develop -------": "",
@@ -83,7 +83,7 @@
     "papaparse": "^5.5.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-dropdown-select": "^5.0.2",
+    "react-dropdown-select": "^5.0.5",
     "react-leaflet": "^5.0.0",
     "recharts": "^3.8.1",
     "swagger-ui-react": "^5.30.2",

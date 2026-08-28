@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { fetchMiniMaxModels, fetchOpenRouterModels } from './models-api.ts';
+import { fetchMiniMaxModels, fetchOllamaModels, fetchOpenRouterModels } from './models-api.ts';
 
 const mockSettings: {
   ai: Record<string, string | undefined>;
@@ -17,6 +17,63 @@ vi.mock('@/lib/store/globalState', () => ({
     }),
   },
 }));
+
+describe('fetchOllamaModels', () => {
+  beforeEach(() => {
+    mockSettings.ai = { ollamaMode: 'local', model: '' };
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('fetches and maps models from a local Ollama server', async () => {
+    mockSettings.ai = { ollamaMode: 'local' };
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          models: [{ model: 'llama3.2', name: 'llama3.2:latest' }],
+        }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      )
+    );
+
+    await expect(fetchOllamaModels()).resolves.toEqual([
+      { id: 'llama3.2', name: 'llama3.2:latest' },
+    ]);
+    expect(fetchSpy.mock.calls[0][0]).toBe('http://localhost:11434/v1/models');
+    expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({});
+  });
+
+  it('reads OpenAI-compatible listing and uses bearer auth for remote servers', async () => {
+    mockSettings.ai = {
+      ollamaMode: 'remote',
+      ollamaBaseUrl: 'http://192.168.1.10:11434',
+      ollamaApiKey: 'secret',
+    };
+    const fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(
+        new Response(JSON.stringify({ data: [{ id: 'qwen2.5' }, { id: 'mistral' }] }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
+
+    await expect(fetchOllamaModels()).resolves.toEqual([
+      { id: 'qwen2.5', name: 'qwen2.5' },
+      { id: 'mistral', name: 'mistral' },
+    ]);
+    expect(fetchSpy.mock.calls[0][0]).toBe('http://192.168.1.10:11434/v1/models');
+    expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({ Authorization: 'Bearer secret' });
+  });
+
+  it('throws when the Ollama server is unreachable', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(null, { status: 500 }));
+
+    await expect(fetchOllamaModels()).rejects.toThrow('Ollama API error: 500');
+  });
+});
 
 describe('fetchMiniMaxModels', () => {
   beforeEach(() => {

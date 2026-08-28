@@ -20,7 +20,12 @@ import {
 } from '@/components/ui/select.tsx';
 import { Slider } from '@/components/ui/slider.tsx';
 import { Switch } from '@/components/ui/switch.tsx';
-import { AI_PROVIDERS, MINIMAX_PROTOCOL_OPTIONS, MINIMAX_REGION_OPTIONS } from '@/constants';
+import {
+  AI_PROVIDERS,
+  MINIMAX_PROTOCOL_OPTIONS,
+  MINIMAX_REGION_OPTIONS,
+  OLLAMA_MODE_OPTIONS,
+} from '@/constants';
 import { languageMap } from '@/constants/language-map.ts';
 import { includeSelectedModel, useAiModels } from '@/hooks/use-ai-models';
 import { useGoogleFonts } from '@/hooks/use-google-fonts';
@@ -174,8 +179,14 @@ function ModelSelect({
 }) {
   const { models, isLoading, error, refresh } = useAiModels(provider);
 
-  const selectedModel = models.find((m) => m.value === value);
-  const displayedModels = includeSelectedModel(models, value);
+  const fallbackModels = (AI_PROVIDERS[provider]?.modelOptions ?? []).map((option) => ({
+    value: option.value,
+    label: option.label,
+  }));
+  const baseModels = models.length > 0 ? models : fallbackModels;
+
+  const selectedModel = baseModels.find((m) => m.value === value);
+  const displayedModels = includeSelectedModel(baseModels, value);
   const freeCount = models.filter((m) => m.isFree).length;
   const paidCount = models.filter((m) => !m.isPreset && !m.isFree).length;
 
@@ -219,9 +230,13 @@ function ModelSelect({
         </button>
       </label>
       {error && models.length === 0 ? (
-        <div className="px-2 py-4 text-center text-sm text-muted-foreground rounded-md border">
-          {t('components.failedToLoadModels')}
-        </div>
+        <SearchableSelect
+          options={options}
+          value={value}
+          onChange={(val) => onChange(fullPath, val)}
+          placeholder={upperCaseFirst(t('common.select'))}
+          searchPlaceholder={t('components.searchModels')}
+        />
       ) : (
         <SearchableSelect
           options={options}
@@ -328,6 +343,24 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
     // temp migration
     if (path === 'editor' && key === 'wordWrap' && typeof value === 'boolean') {
       onChange('editor.wordWrap', 'wordWrapColumn');
+    }
+
+    if (key === 'temperature') {
+      const tempValue = parseFloat(value as string);
+      return (
+        <div key={key} className="mb-4">
+          <label className="mb-2 flex items-center gap-2 text-sm font-medium">
+            {t('pages.settings.temperature')} <small>({tempValue})</small>
+          </label>
+          <Slider
+            value={[tempValue]}
+            onValueChange={(val) => onChange(fullPath, val[0])}
+            min={0}
+            max={2}
+            step={0.1}
+          />
+        </div>
+      );
     }
 
     if (typeof value === 'object' && value !== null) {
@@ -721,6 +754,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   value={value}
                   onValueChange={(selectedValue) => {
                     onChange(fullPath, selectedValue);
+                    onChange(`${path}.model`, '');
                   }}
                 >
                   <SelectTrigger className="w-full h-auto min-h-[72px] px-4 py-3">
@@ -798,23 +832,72 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             );
           }
 
+          if (key === 'ollamaMode') {
+            const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
+            const activeProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
+
+            if (activeProvider !== 'ollama') {
+              return null;
+            }
+
+            return (
+              <SpecialSelect
+                key={key}
+                settingKey={key}
+                value={value}
+                onChange={onChange}
+                fullPath={fullPath}
+                options={OLLAMA_MODE_OPTIONS}
+                label="Connection"
+              />
+            );
+          }
+
+          if (key === 'ollamaBaseUrl') {
+            const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
+            const activeProvider = (aiSettings?.activeAiProvider as string) || 'openrouter';
+            const ollamaMode = (aiSettings?.ollamaMode as string) || 'local';
+
+            if (activeProvider !== 'ollama' || ollamaMode !== 'remote') {
+              return null;
+            }
+
+            return (
+              <div key={key} className="mb-4">
+                <label className="block mb-1">Base URL</label>
+                <Input
+                  type="text"
+                  value={value}
+                  placeholder="http://192.168.1.10:11434"
+                  onChange={(e) => onChange(fullPath, e.target.value)}
+                  className="w-full"
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  The Ollama server base URL, e.g. http://192.168.1.10:11434
+                </p>
+              </div>
+            );
+          }
+
           // API Key fields
           if (
             key === 'openaiApiKey' ||
             key === 'geminiApiKey' ||
             key === 'claudeApiKey' ||
             key === 'minimaxApiKey' ||
-            key === 'openRouterApiKey'
+            key === 'openRouterApiKey' ||
+            key === 'ollamaApiKey'
           ) {
             const providerMap: Record<
               string,
-              'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter'
+              'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter' | 'ollama'
             > = {
               openaiApiKey: 'openai',
               geminiApiKey: 'gemini',
               claudeApiKey: 'claude',
               minimaxApiKey: 'minimax',
               openRouterApiKey: 'openrouter',
+              ollamaApiKey: 'ollama',
             };
             const provider = providerMap[key];
             const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;
@@ -825,13 +908,21 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
               return null;
             }
 
+            // Local Ollama does not require an API key
+            if (provider === 'ollama' && (aiSettings?.ollamaMode as string) !== 'remote') {
+              return null;
+            }
+
             const providerData = AI_PROVIDERS[provider];
 
             return (
               <div key={key} className="mb-4">
                 <label className="mb-2 flex items-center gap-2 text-sm font-medium">
                   {t('pages.settings.apiKey')}
-                  {providerData?.apiKeyUrl && (
+                  {provider === 'ollama' && (
+                    <span className="text-xs text-muted-foreground">(optional)</span>
+                  )}
+                  {providerData?.apiKeyUrl && provider !== 'ollama' && (
                     <SimpleTooltip
                       className="max-w-2xs"
                       content={
@@ -868,25 +959,6 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 fullPath={fullPath}
                 provider={currentProvider}
               />
-            );
-          }
-
-          // Temperature slider
-          if (key === 'temperature') {
-            const tempValue = parseFloat(value as string);
-            return (
-              <div key={key} className="mb-4">
-                <label className="mb-2 flex items-center gap-2 text-sm font-medium">
-                  {t('pages.settings.temperature')} <small>({tempValue})</small>
-                </label>
-                <Slider
-                  value={[tempValue]}
-                  onValueChange={(val) => onChange(fullPath, val[0])}
-                  min={0}
-                  max={2}
-                  step={0.1}
-                />
-              </div>
             );
           }
         }

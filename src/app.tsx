@@ -2,6 +2,7 @@ import './main.css';
 
 import { useEffect, useState } from 'react';
 
+import { ErrorBoundary } from '@/components/error-boundary';
 import { Loading } from '@/components/loading.tsx';
 import { Gisto } from '@/components/main/gisto.tsx';
 import { Login } from '@/components/main/login.tsx';
@@ -127,7 +128,9 @@ export const App = () => {
     return (
       <>
         <TotalProgressLoader />
-        <Gisto />
+        <ErrorBoundary label="app">
+          <Gisto />
+        </ErrorBoundary>
       </>
     );
   }

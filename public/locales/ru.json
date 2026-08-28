@@ -11,6 +11,7 @@
     "average": "среднее",
     "filesPerSnippet": "файлов на фрагмент",
     "cancel": "отмена",
+    "retry": "Повторить",
     "update": "обновить",
     "upload": "загрузить",
     "create": "создать",
@@ -58,7 +59,8 @@
     "confirmLogout": "Вы уверены, что хотите выйти?",
     "selectRange": "Выбрать диапазон",
     "scrollToEnd": "Прокрутить в конец",
-    "scrollToStart": "Прокрутить в начало"
+    "scrollToStart": "Прокрутить в начало",
+    "searchProviders": "Найти провайдера"
   },
   "components": {
     "filterTags": "Фильтр {number} тегов",
@@ -78,6 +80,10 @@
     "searchModels": "Поиск моделей...",
     "searchLanguages": "Поиск языков...",
     "noResults": "Нет результатов",
+    "errorBoundaryTitle": "Что-то пошло не так",
+    "errorBoundaryDescription": "При отображении этой страницы произошла непредвиденная ошибка. Ваши данные в безопасности.",
+    "errorBoundaryBackHome": "Вернуться на панель управления",
+    "errorBoundaryDetails": "Подробности ошибки",
     "failedToLoadModels": "Не удалось загрузить модели",
     "loadingModels": "Загрузка моделей...",
     "selected": "Выбрано: {label}",
@@ -87,7 +93,13 @@
     "paid": "Платно",
     "contextK": "{n}K контекст",
     "editingFiles": "Редактирование {n} файлов",
-    "searchFonts": "Поиск шрифтов"
+    "searchFonts": "Поиск шрифтов",
+    "hey": "Привет, {name}!",
+    "startVoiceInput": "Начать голосовой ввод",
+    "stopVoiceInput": "Остановить голосовой ввод",
+    "voiceInputError": "Ошибка голосового ввода: {error}",
+    "voiceInputUnsupported": "Голосовой ввод не поддерживается этим браузером",
+    "listening": "Слушаю…"
   },
   "menu": {
     "logOut": "Выйти",
