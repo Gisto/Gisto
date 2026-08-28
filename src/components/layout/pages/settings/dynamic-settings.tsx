@@ -179,8 +179,14 @@ function ModelSelect({
 }) {
   const { models, isLoading, error, refresh } = useAiModels(provider);
 
-  const selectedModel = models.find((m) => m.value === value);
-  const displayedModels = includeSelectedModel(models, value);
+  const fallbackModels = (AI_PROVIDERS[provider]?.modelOptions ?? []).map((option) => ({
+    value: option.value,
+    label: option.label,
+  }));
+  const baseModels = models.length > 0 ? models : fallbackModels;
+
+  const selectedModel = baseModels.find((m) => m.value === value);
+  const displayedModels = includeSelectedModel(baseModels, value);
   const freeCount = models.filter((m) => m.isFree).length;
   const paidCount = models.filter((m) => !m.isPreset && !m.isFree).length;
 
@@ -224,9 +230,13 @@ function ModelSelect({
         </button>
       </label>
       {error && models.length === 0 ? (
-        <div className="px-2 py-4 text-center text-sm text-muted-foreground rounded-md border">
-          {t('components.failedToLoadModels')}
-        </div>
+        <SearchableSelect
+          options={options}
+          value={value}
+          onChange={(val) => onChange(fullPath, val)}
+          placeholder={upperCaseFirst(t('common.select'))}
+          searchPlaceholder={t('components.searchModels')}
+        />
       ) : (
         <SearchableSelect
           options={options}
