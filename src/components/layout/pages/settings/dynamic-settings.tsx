@@ -736,6 +736,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                   value={value}
                   onValueChange={(selectedValue) => {
                     onChange(fullPath, selectedValue);
+                    onChange(`${path}.model`, '');
                   }}
                 >
                   <SelectTrigger className="w-full h-auto min-h-[72px] px-4 py-3">
