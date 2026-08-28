@@ -12,7 +12,14 @@ vi.mock('@/components/layout/pages/snippet/content/preview/markdown', () => ({
 }));
 
 vi.mock('@/lib/store/globalState', () => ({
-  useStoreValue: () => ({ avatar_url: '', name: 'Test User' }),
+  useStoreValue: () => ({
+    avatar_url: '',
+    name: 'Test User',
+    ai: {
+      activeAiProvider: 'openrouter',
+      model: 'meta-llama/llama-3.2-3b-instruct:free',
+    },
+  }),
 }));
 
 describe('PromptAssistant', () => {
@@ -162,5 +169,14 @@ describe('PromptAssistant', () => {
     );
 
     expect(screen.queryByText('Press send to start a new conversation')).not.toBeInTheDocument();
+  });
+
+  it('shows the active AI provider and model in the header', () => {
+    render(
+      <PromptAssistant messages={[]} onSend={() => {}} onClear={() => {}} isLoading={false} />
+    );
+
+    expect(screen.getByText('OpenRouter')).toBeInTheDocument();
+    expect(screen.getByText('💸 Llama 3.2 3B (Free)')).toBeInTheDocument();
   });
 });
