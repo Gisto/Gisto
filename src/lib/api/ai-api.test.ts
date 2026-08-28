@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-import { buildMessages, generateAiResponse, AiApiError } from './ai-api.ts';
+import { buildMessages, generateAiResponse, isAiAvailable, AiApiError } from './ai-api.ts';
 
 const mockSettings: {
   ai: Record<string, string | number | undefined>;
@@ -253,5 +253,109 @@ describe('generateAiResponse', () => {
 
     const result = await generateAiResponse({ prompt: 'generate json' });
     expect(result).toBe('{"key": "value"}');
+  });
+
+  it('routes OpenAI-compatible requests to the local Ollama server', async () => {
+    mockSettings.ai = {
+      activeAiProvider: 'ollama',
+      ollamaMode: 'local',
+      model: 'llama3.2',
+      temperature: 0.7,
+    };
+
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ choices: [{ message: { content: 'Local response' } }] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    const result = await generateAiResponse({ prompt: 'hello', systemContext: 'Be concise.' });
+
+    expect(result).toBe('Local response');
+    expect(fetchSpy.mock.calls[0][0]).toBe('http://localhost:11434/v1/chat/completions');
+    const request = fetchSpy.mock.calls[0][1];
+    let headers: Record<string, string>;
+    if (request && typeof request === 'object' && 'headers' in request) {
+      headers = (request as { headers: Record<string, string> }).headers;
+    } else {
+      headers = {};
+    }
+    expect(headers.Authorization).toBeUndefined();
+    const callBody = JSON.parse(request?.body as string);
+    expect(callBody.model).toBe('llama3.2');
+    expect(callBody.messages[0]).toEqual({ role: 'system', content: 'Be concise.' });
+
+    fetchSpy.mockRestore();
+  });
+
+  it('routes OpenAI-compatible requests to a remote Ollama server', async () => {
+    mockSettings.ai = {
+      activeAiProvider: 'ollama',
+      ollamaMode: 'remote',
+      ollamaBaseUrl: 'http://192.168.1.10:11434/',
+      ollamaApiKey: 'optional-token',
+      model: 'llama3.1',
+      temperature: 0.7,
+    };
+
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ choices: [{ message: { content: 'Remote response' } }] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    const result = await generateAiResponse({ prompt: 'hello' });
+
+    expect(result).toBe('Remote response');
+    expect(fetchSpy.mock.calls[0][0]).toBe('http://192.168.1.10:11434/v1/chat/completions');
+    const headers = fetchSpy.mock.calls[0][1]?.headers as Record<string, string>;
+    expect(headers.Authorization).toBe('Bearer optional-token');
+
+    fetchSpy.mockRestore();
+  });
+
+  it('does not require an API key for Ollama', async () => {
+    mockSettings.ai = {
+      activeAiProvider: 'ollama',
+      ollamaMode: 'local',
+      model: 'llama3.2',
+      temperature: 0.7,
+    };
+
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ choices: [{ message: { content: 'ok' } }] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    await expect(generateAiResponse({ prompt: 'hello' })).resolves.toBe('ok');
+  });
+});
+
+describe('isAiAvailable', () => {
+  beforeEach(() => {
+    mockSettings.ai = {
+      activeAiProvider: 'openrouter',
+      openRouterApiKey: 'test-key',
+      model: 'test-model',
+      temperature: 0.7,
+    };
+  });
+
+  it('returns false without a configured API key', () => {
+    mockSettings.ai = { activeAiProvider: 'openrouter', openRouterApiKey: '' };
+    expect(isAiAvailable()).toBe(false);
+  });
+
+  it('returns true when an API key is configured', () => {
+    expect(isAiAvailable()).toBe(true);
+  });
+
+  it('returns true for Ollama even without an API key', () => {
+    mockSettings.ai = { activeAiProvider: 'ollama', ollamaMode: 'local' };
+    expect(isAiAvailable()).toBe(true);
   });
 });

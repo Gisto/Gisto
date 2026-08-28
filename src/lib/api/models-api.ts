@@ -1,4 +1,5 @@
 import { resolveMiniMaxEndpoint } from '@/constants/minimax-endpoints.ts';
+import { resolveOllamaEndpoint } from '@/constants/ollama-endpoints.ts';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 
@@ -20,6 +21,7 @@ function getApiKey(provider: string): string | null {
     claude: 'claudeApiKey',
     minimax: 'minimaxApiKey',
     openrouter: 'openRouterApiKey',
+    ollama: 'ollamaApiKey',
   };
   const key = keyField[provider];
   if (!key) return null;
@@ -151,6 +153,33 @@ export async function fetchMiniMaxModels(): Promise<ModelInfo[]> {
     }));
 }
 
+export async function fetchOllamaModels(): Promise<ModelInfo[]> {
+  const { ai } = globalState.getState().settings;
+  const endpoint = resolveOllamaEndpoint(ai.ollamaMode, ai.ollamaBaseUrl);
+  const apiKey = getApiKey('ollama');
+
+  const headers: Record<string, string> = {};
+  if (apiKey) {
+    headers.Authorization = `Bearer ${apiKey}`;
+  }
+
+  const res = await fetch(endpoint.modelsUrl, { headers });
+
+  if (!res.ok) throw new Error(`Ollama API error: ${res.status}`);
+
+  const data = await res.json();
+
+  const list = (data.data || data.models || []) as Record<string, unknown>[];
+
+  return list
+    .map((m) => {
+      const id = (m.id ?? m.model ?? m.name) as string | undefined;
+      if (!id) return null;
+      return { id, name: (m.name as string) || id };
+    })
+    .filter((m): m is ModelInfo => m !== null);
+}
+
 export async function fetchModels(provider: string): Promise<ModelInfo[]> {
   switch (provider) {
     case 'openrouter':
@@ -163,6 +192,8 @@ export async function fetchModels(provider: string): Promise<ModelInfo[]> {
       return fetchClaudeModels();
     case 'minimax':
       return fetchMiniMaxModels();
+    case 'ollama':
+      return fetchOllamaModels();
     default:
       return [];
   }
