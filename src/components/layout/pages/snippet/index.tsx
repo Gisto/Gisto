@@ -39,6 +39,7 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
+import { GISTO_APP_CONTEXT } from '@/constants/ai-context';
 import { useEditorSync } from '@/hooks/use-editor-sync.tsx';
 import { AiApiError, generateAiResponse, isAiAvailable } from '@/lib/api/ai-api.ts';
 import {
@@ -134,7 +135,7 @@ export const SnippetContent = () => {
         const result = await generateAiResponse({
           prompt,
           messages: msgs,
-          systemContext: snippetContext,
+          systemContext: [GISTO_APP_CONTEXT, snippetContext].filter(Boolean).join('\n\n'),
         });
         setChatMessages((prev) => [
           ...prev,
