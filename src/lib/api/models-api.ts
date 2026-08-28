@@ -13,6 +13,10 @@ type ModelInfo = {
   isFree?: boolean;
 };
 
+type ModelListEntry = Record<string, unknown>;
+
+type RawModelList = { data?: ModelListEntry[]; models?: ModelListEntry[] };
+
 function getApiKey(provider: string): string | null {
   const { ai } = globalState.getState().settings;
   const keyField: Record<string, string> = {
@@ -29,20 +33,65 @@ function getApiKey(provider: string): string | null {
   return typeof val === 'string' ? val : null;
 }
 
+function mapModelList(list: ModelListEntry[], includeDetails: boolean): ModelInfo[] {
+  const mapped: (ModelInfo | null)[] = list.map((m) => {
+    const id = (m.id ?? m.model) as string | undefined;
+    if (typeof id !== 'string' || !id) return null;
+
+    const name = ((m.name ?? m.display_name) as string) || id;
+
+    if (!includeDetails) {
+      return { id, name };
+    }
+
+    return {
+      id,
+      name,
+      description: m.description as string | undefined,
+      pricing: m.pricing as { prompt: number; completion: number } | undefined,
+      contextLength: m.context_length as number | undefined,
+      isFree:
+        String(id).endsWith(':free') || ((m.pricing as { prompt?: number })?.prompt ?? 1) === 0,
+    };
+  });
+
+  return mapped.filter((m): m is ModelInfo => m !== null);
+}
+
+async function fetchModelList(options: {
+  provider: string;
+  url: string;
+  headers?: Record<string, string>;
+  includeDetails?: boolean;
+}): Promise<ModelInfo[]> {
+  const { provider, url, headers = {}, includeDetails = false } = options;
+
+  const res = await fetch(url, { headers });
+
+  if (!res.ok) throw new Error(`${provider} API error: ${res.status}`);
+
+  const data = (await res.json()) as RawModelList;
+  const list = (data.data ?? data.models ?? []) as ModelListEntry[];
+
+  return mapModelList(list, includeDetails);
+}
+
 export async function fetchOpenRouterModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('openrouter') || '';
   const headers: Record<string, string> = apiKey ? { Authorization: `Bearer ${apiKey}` } : {};
 
-  const [modelsResponse, presetsResponse] = await Promise.all([
-    fetch('https://openrouter.ai/api/v1/models', { headers }),
+  const [models, presetsResponse] = await Promise.all([
+    fetchModelList({
+      provider: 'OpenRouter',
+      url: 'https://openrouter.ai/api/v1/models',
+      headers,
+      includeDetails: true,
+    }),
     apiKey
       ? fetch('https://openrouter.ai/api/v1/presets?limit=100', { headers }).catch(() => null)
       : Promise.resolve(null),
   ]);
 
-  if (!modelsResponse.ok) throw new Error(`OpenRouter API error: ${modelsResponse.status}`);
-
-  const data = await modelsResponse.json();
   const presetData = presetsResponse?.ok ? await presetsResponse.json().catch(() => null) : null;
 
   const presets = (presetData?.data || [])
@@ -57,16 +106,6 @@ export async function fetchOpenRouterModels(): Promise<ModelInfo[]> {
       isPreset: true,
     }));
 
-  const models = (data.data || []).map((m: Record<string, unknown>) => ({
-    id: m.id as string,
-    name: (m.name as string) || (m.id as string),
-    description: m.description as string | undefined,
-    pricing: m.pricing as { prompt: number; completion: number } | undefined,
-    contextLength: m.context_length as number | undefined,
-    isFree:
-      String(m.id).endsWith(':free') || ((m.pricing as { prompt?: number })?.prompt ?? 1) === 0,
-  }));
-
   return [...presets, ...models];
 }
 
@@ -74,20 +113,11 @@ export async function fetchOpenAiModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('openai');
   if (!apiKey) throw new Error(t('api.openAiApiKeyNotConfigured'));
 
-  const res = await fetch('https://api.openai.com/v1/models', {
+  return fetchModelList({
+    provider: 'OpenAI',
+    url: 'https://api.openai.com/v1/models',
     headers: { Authorization: `Bearer ${apiKey}` },
   });
-
-  if (!res.ok) throw new Error(`OpenAI API error: ${res.status}`);
-
-  const data = await res.json();
-
-  return (data.data || [])
-    .filter((m: Record<string, unknown>) => m.id as string)
-    .map((m: Record<string, unknown>) => ({
-      id: m.id as string,
-      name: m.id as string,
-    }));
 }
 
 export async function fetchGeminiModels(): Promise<ModelInfo[]> {
@@ -110,21 +140,14 @@ export async function fetchClaudeModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('claude');
   if (!apiKey) throw new Error(t('api.claudeApiKeyNotConfigured'));
 
-  const res = await fetch('/proxy/ai/claude/v1/models', {
+  return fetchModelList({
+    provider: 'Claude',
+    url: '/proxy/ai/claude/v1/models',
     headers: {
       'x-api-key': apiKey,
       'anthropic-version': '2023-06-01',
     },
   });
-
-  if (!res.ok) throw new Error(`Claude API error: ${res.status}`);
-
-  const data = await res.json();
-
-  return (data.data || []).map((m: Record<string, unknown>) => ({
-    id: m.id as string,
-    name: (m.name as string) || (m.display_name as string) || (m.id as string),
-  }));
 }
 
 export async function fetchMiniMaxModels(): Promise<ModelInfo[]> {
@@ -134,23 +157,14 @@ export async function fetchMiniMaxModels(): Promise<ModelInfo[]> {
   const { ai } = globalState.getState().settings;
   const endpoint = resolveMiniMaxEndpoint(ai.minimaxRegion, ai.minimaxProtocol);
 
-  const res = await fetch(endpoint.modelsUrl, {
+  return fetchModelList({
+    provider: 'MiniMax',
+    url: endpoint.modelsUrl,
     headers:
       endpoint.protocol === 'anthropic'
         ? { 'x-api-key': apiKey }
         : { Authorization: `Bearer ${apiKey}` },
   });
-
-  if (!res.ok) throw new Error(`MiniMax API error: ${res.status}`);
-
-  const data = await res.json();
-
-  return (data.data || [])
-    .filter((m: Record<string, unknown>) => typeof m.id === 'string')
-    .map((m: Record<string, unknown>) => ({
-      id: m.id as string,
-      name: m.id as string,
-    }));
 }
 
 export async function fetchOllamaModels(): Promise<ModelInfo[]> {
@@ -163,21 +177,7 @@ export async function fetchOllamaModels(): Promise<ModelInfo[]> {
     headers.Authorization = `Bearer ${apiKey}`;
   }
 
-  const res = await fetch(endpoint.modelsUrl, { headers });
-
-  if (!res.ok) throw new Error(`Ollama API error: ${res.status}`);
-
-  const data = await res.json();
-
-  const list = (data.data || data.models || []) as Record<string, unknown>[];
-
-  return list
-    .map((m) => {
-      const id = (m.id ?? m.model ?? m.name) as string | undefined;
-      if (!id) return null;
-      return { id, name: (m.name as string) || id };
-    })
-    .filter((m): m is ModelInfo => m !== null);
+  return fetchModelList({ provider: 'Ollama', url: endpoint.modelsUrl, headers });
 }
 
 export async function fetchModels(provider: string): Promise<ModelInfo[]> {
