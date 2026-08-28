@@ -345,6 +345,24 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
       onChange('editor.wordWrap', 'wordWrapColumn');
     }
 
+    if (key === 'temperature') {
+      const tempValue = parseFloat(value as string);
+      return (
+        <div key={key} className="mb-4">
+          <label className="mb-2 flex items-center gap-2 text-sm font-medium">
+            {t('pages.settings.temperature')} <small>({tempValue})</small>
+          </label>
+          <Slider
+            value={[tempValue]}
+            onValueChange={(val) => onChange(fullPath, val[0])}
+            min={0}
+            max={2}
+            step={0.1}
+          />
+        </div>
+      );
+    }
+
     if (typeof value === 'object' && value !== null) {
       return (
         <div key={key} className="flex items-center space-x-2 mb-4">
@@ -941,25 +959,6 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
                 fullPath={fullPath}
                 provider={currentProvider}
               />
-            );
-          }
-
-          // Temperature slider
-          if (key === 'temperature') {
-            const tempValue = parseFloat(value as string);
-            return (
-              <div key={key} className="mb-4">
-                <label className="mb-2 flex items-center gap-2 text-sm font-medium">
-                  {t('pages.settings.temperature')} <small>({tempValue})</small>
-                </label>
-                <Slider
-                  value={[tempValue]}
-                  onValueChange={(val) => onChange(fullPath, val[0])}
-                  min={0}
-                  max={2}
-                  step={0.1}
-                />
-              </div>
             );
           }
         }
