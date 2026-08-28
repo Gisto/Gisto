@@ -3,6 +3,7 @@ import { useCallback, useState } from 'react';
 
 import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import { Bubble, BubbleContent } from '@/components/ui/bubble';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -23,6 +24,7 @@ import {
   MessageScrollerItem,
 } from '@/components/ui/message-scroller';
 import { Textarea } from '@/components/ui/textarea';
+import { AI_PROVIDERS } from '@/constants/ai-providers';
 import { t } from '@/lib/i18n';
 import { isMarkdown } from '@/lib/is-markdown';
 import { useStoreValue } from '@/lib/store/globalState.ts';
@@ -61,6 +63,13 @@ export const PromptAssistant = ({
     (typeof userRecord.username === 'string' && userRecord.username) ||
     '';
 
+  const aiSettings = useStoreValue('settings').ai;
+  const provider = AI_PROVIDERS[aiSettings.activeAiProvider];
+  const ProviderIcon = provider?.icon;
+  const modelLabel =
+    provider?.modelOptions.find((option) => option.value === aiSettings.model)?.label ??
+    aiSettings.model;
+
   const handleSend = useCallback(() => {
     const q = input.trim();
     if (!q || isLoading) return;
@@ -86,6 +95,19 @@ export const PromptAssistant = ({
             {t('common.newChat')}
           </Button>
         </div>
+        {provider && (
+          <Badge
+            variant="outline"
+            className="max-w-56 shrink-0 items-center gap-1.5 px-2 font-normal text-muted-foreground"
+            title={`${provider.label} · ${modelLabel}`}
+          >
+            {ProviderIcon && <ProviderIcon className="size-3 shrink-0 text-foreground/70" />}
+            <span className="truncate">
+              <span className="font-semibold text-foreground">{provider.label}</span>
+              <span className="ml-1 font-mono text-[11px]">{modelLabel}</span>
+            </span>
+          </Badge>
+        )}
       </CardHeader>
       <CardContent className="flex-1 overflow-hidden p-0">
         {messages.length === 0 && !isLoading ? (
