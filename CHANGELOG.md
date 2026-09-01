@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 
+### 🛠️️ Build
+
+- *(deps)* Bump swagger-ui-react from 5.31.0 to 5.32.14
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([c1235ac](https://github.com/gisto/gisto/commit/c1235ace22f4c1da34ae6f279af02a823f118015))
+
+
 ### ⚙️ Miscellaneous Tasks
 
 - Add Contributor Covenant Code of Conduct
