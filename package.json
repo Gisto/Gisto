@@ -74,7 +74,7 @@
     "dirty-react-router": "^0.1.0",
     "gisto": "link:",
     "highlight.js": "^11.11.1",
-    "katex": "^0.18.1",
+    "katex": "^0.18.4",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.563.0",
     "markdown-it": "^14.2.0",
