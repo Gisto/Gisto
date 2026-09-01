@@ -13,6 +13,16 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([c1235ac](https://github.com/gisto/gisto/commit/c1235ace22f4c1da34ae6f279af02a823f118015))
 
+- *(deps)* Bump katex from 0.18.1 to 0.18.4
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([0975802](https://github.com/gisto/gisto/commit/0975802b5f5c95966937f23811aaebbc9237f81e))
+
+- *(deps-dev)* Bump @testing-library/jest-dom from 6.9.1 to 7.0.1
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([76ed722](https://github.com/gisto/gisto/commit/76ed72212228ead1833b632ec9f1f6776bb2a3c9))
+
 
 ### ⚙️ Miscellaneous Tasks
 
