@@ -80,7 +80,7 @@
     "markdown-it": "^14.2.0",
     "mermaid": "^11.16.1",
     "motion": "^12.23.24",
-    "papaparse": "^5.5.3",
+    "papaparse": "^5.7.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-dropdown-select": "^5.0.5",
