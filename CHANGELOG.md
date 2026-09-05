@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 
+### 🐛 Bug Fixes
+
+- *(snippet)* Snippet header spacing
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6265d4b](https://github.com/gisto/gisto/commit/6265d4b70a1f95472a1a0479c0302c6e4a7b9675))
+
+
 ### 🛠️️ Build
 
 - *(deps)* Bump swagger-ui-react from 5.31.0 to 5.32.14
