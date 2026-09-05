@@ -23,6 +23,11 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([76ed722](https://github.com/gisto/gisto/commit/76ed72212228ead1833b632ec9f1f6776bb2a3c9))
 
+- *(deps)* Bump papaparse from 5.5.3 to 5.7.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([bf167a0](https://github.com/gisto/gisto/commit/bf167a04edec020441e2c6785a223eedfde0d4fb))
+
 
 ### ⚙️ Miscellaneous Tasks
 
