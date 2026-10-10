@@ -161,6 +161,12 @@
       "fileTooLargeError": "El archivo excede los 5 MB. Elige un archivo más pequeño.",
       "fileWillBeConvertedToBase64": "Los archivos de imagen se convertirán a base64",
       "fileError": "El nombre del archivo es obligatorio",
+      "missingExtension": {
+        "title": "¿Añadir extensión de archivo que falta?",
+        "message": "Los proveedores detectan el idioma de un archivo por su nombre; sin extensión se pierde el idioma seleccionado:",
+        "confirm": "Añadir extensión",
+        "skip": "Guardar sin extensión"
+      },
       "fileContentError": "El contenido del archivo es obligatorio",
       "descriptionError": "La descripción es obligatoria",
       "generateDescriptionAndTags": "Generar descripción y etiquetas con IA",

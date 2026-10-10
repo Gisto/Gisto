@@ -161,6 +161,12 @@
       "fileTooLargeError": "ファイルサイズが5MBを超えています。より小さいファイルを選択してください。",
       "fileWillBeConvertedToBase64": "画像ファイルはbase64データURLに変換されます",
       "fileError": "ファイル名が必須です",
+      "missingExtension": {
+        "title": "ファイルに拡張子を追加しますか？",
+        "message": "プロバイダーはファイル名から言語を判別します。拡張子がないと選択した言語が失われます：",
+        "confirm": "拡張子を追加",
+        "skip": "拡張子なしで保存"
+      },
       "fileContentError": "ファイルの内容が必須です",
       "descriptionError": "説明が必須です",
       "generateDescriptionAndTags": "AIで説明とタグを生成",

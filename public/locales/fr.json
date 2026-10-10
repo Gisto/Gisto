@@ -161,6 +161,12 @@
       "fileTooLargeError": "Le fichier dépasse 5 Mo. Veuillez choisir un fichier plus petit.",
       "fileWillBeConvertedToBase64": "Les fichiers image seront convertis en base64",
       "fileError": "Le nom du fichier est requis",
+      "missingExtension": {
+        "title": "Ajouter l'extension de fichier manquante ?",
+        "message": "Les fournisseurs détectent le langage d'un fichier par son nom ; sans extension, le langage sélectionné est perdu :",
+        "confirm": "Ajouter l'extension",
+        "skip": "Enregistrer sans extension"
+      },
       "fileContentError": "Le contenu du fichier est requis",
       "descriptionError": "La description est requise",
       "generateDescriptionAndTags": "Générer une description et des étiquettes avec l'IA",
