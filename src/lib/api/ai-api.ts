@@ -6,6 +6,7 @@ import { resolveOllamaEndpoint } from '@/constants/ollama-endpoints.ts';
 const GEMINI_ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
+const ATLASCLOUD_ENDPOINT = 'https://api.atlascloud.ai/v1/chat/completions';
 const OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
 const CLAUDE_ENDPOINT = 'https://api.anthropic.com/v1/messages';
 
@@ -20,7 +21,14 @@ export interface GenerateAiResponseOptions {
   systemContext?: string;
   model?: string;
   temperature?: number;
-  activeAiProvider?: 'openrouter' | 'gemini' | 'openai' | 'claude' | 'minimax' | 'ollama';
+  activeAiProvider?:
+    | 'openrouter'
+    | 'gemini'
+    | 'openai'
+    | 'claude'
+    | 'minimax'
+    | 'ollama'
+    | 'atlascloud';
 }
 
 type AiProvider = NonNullable<GenerateAiResponseOptions['activeAiProvider']>;
@@ -30,7 +38,8 @@ type AiApiKeyField =
   | 'openaiApiKey'
   | 'claudeApiKey'
   | 'minimaxApiKey'
-  | 'ollamaApiKey';
+  | 'ollamaApiKey'
+  | 'atlascloudApiKey';
 
 const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
   openrouter: 'openRouterApiKey',
@@ -39,6 +48,7 @@ const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
   claude: 'claudeApiKey',
   minimax: 'minimaxApiKey',
   ollama: 'ollamaApiKey',
+  atlascloud: 'atlascloudApiKey',
 };
 
 export type ResolvedMiniMaxEndpoint = ReturnType<typeof resolveMiniMaxEndpoint>;
@@ -52,6 +62,8 @@ function resolveOpenAiCompatibleEndpoint(
   switch (provider) {
     case 'openrouter':
       return OPENROUTER_ENDPOINT;
+    case 'atlascloud':
+      return ATLASCLOUD_ENDPOINT;
     case 'minimax':
       return minimaxEndpoint?.chatUrl ?? OPENAI_ENDPOINT;
     case 'ollama':
@@ -197,6 +209,7 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
   const isOpenAiCompatible =
     activeAiProvider === 'openai' ||
     activeAiProvider === 'openrouter' ||
+    activeAiProvider === 'atlascloud' ||
     activeAiProvider === 'ollama' ||
     (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'openai');
 

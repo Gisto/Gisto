@@ -886,11 +886,12 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
             key === 'claudeApiKey' ||
             key === 'minimaxApiKey' ||
             key === 'openRouterApiKey' ||
-            key === 'ollamaApiKey'
+            key === 'ollamaApiKey' ||
+            key === 'atlascloudApiKey'
           ) {
             const providerMap: Record<
               string,
-              'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter' | 'ollama'
+              'openai' | 'gemini' | 'claude' | 'minimax' | 'openrouter' | 'ollama' | 'atlascloud'
             > = {
               openaiApiKey: 'openai',
               geminiApiKey: 'gemini',
@@ -898,6 +899,7 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
               minimaxApiKey: 'minimax',
               openRouterApiKey: 'openrouter',
               ollamaApiKey: 'ollama',
+              atlascloudApiKey: 'atlascloud',
             };
             const provider = providerMap[key];
             const aiSettings = path === 'ai' ? (settings as Record<string, unknown>) : null;

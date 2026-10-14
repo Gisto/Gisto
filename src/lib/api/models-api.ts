@@ -26,6 +26,7 @@ function getApiKey(provider: string): string | null {
     minimax: 'minimaxApiKey',
     openrouter: 'openRouterApiKey',
     ollama: 'ollamaApiKey',
+    atlascloud: 'atlascloudApiKey',
   };
   const key = keyField[provider];
   if (!key) return null;
@@ -109,6 +110,17 @@ export async function fetchOpenRouterModels(): Promise<ModelInfo[]> {
   return [...presets, ...models];
 }
 
+export async function fetchAtlasCloudModels(): Promise<ModelInfo[]> {
+  const apiKey = getApiKey('atlascloud') || '';
+
+  // The model list is public, so the key is optional here
+  return fetchModelList({
+    provider: 'Atlas Cloud',
+    url: 'https://api.atlascloud.ai/v1/models',
+    headers: apiKey ? { Authorization: `Bearer ${apiKey}` } : {},
+  });
+}
+
 export async function fetchOpenAiModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('openai');
   if (!apiKey) throw new Error(t('api.openAiApiKeyNotConfigured'));
@@ -184,6 +196,8 @@ export async function fetchModels(provider: string): Promise<ModelInfo[]> {
   switch (provider) {
     case 'openrouter':
       return fetchOpenRouterModels();
+    case 'atlascloud':
+      return fetchAtlasCloudModels();
     case 'openai':
       return fetchOpenAiModels();
     case 'gemini':
