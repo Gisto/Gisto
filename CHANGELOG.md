@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- Preserve multimodal chat content
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([72ea0da](https://github.com/gisto/gisto/commit/72ea0daf59c53bcd81da4730c0b080416196e69d))
+
+
 ### 🐛 Bug Fixes
 
 - *(snippet)* Snippet header spacing
@@ -1913,6 +1921,18 @@ Released on: Feb 1, 2025
 ([60e8173](https://github.com/gisto/gisto/commit/60e81732014c6db2cd7199b57fca7e9ad2a554d3))
 
 
+## v2.0.2
+
+Released on: Jan 31, 2025
+
+### 🛠️️ Build
+
+- Add secrets
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([14ee053](https://github.com/gisto/gisto/commit/14ee053c7a7ada187a67d2a5c88f82b3199ccf7b))
+
+
 ## v2.0.1
 
 Released on: Jan 31, 2025
@@ -1926,11 +1946,6 @@ Released on: Jan 31, 2025
 
 
 ### 🛠️️ Build
-
-- Add secrets
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([14ee053](https://github.com/gisto/gisto/commit/14ee053c7a7ada187a67d2a5c88f82b3199ccf7b))
 
 - Add secrets
 ・ by Sasha Khamkov
