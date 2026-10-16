@@ -1,5 +1,7 @@
 import { ITEMS_PER_PAGE } from '@/constants';
+import { LANGUAGE_TO_EXTENSION } from '@/constants/language-extensions.ts';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
+import { guessLanguage } from '@/lib/providers/snippet-utils.ts';
 import { globalState } from '@/lib/store/globalState.ts';
 import {
   SnippetEnrichedType,
@@ -155,6 +157,39 @@ export const fetchAndUpdateSnippets = async () => {
 export const getFileExtension = (file: SnippetFileType): string =>
   file.filename.split('.').reverse()[0];
 
+export type SnippetFileDraft = {
+  filename: string;
+  content: string | null;
+  language?: string;
+};
+
+// the extension to append so the filename detects `language`, undefined if it already does
+const missingExtension = (filename: string, language?: string): string | undefined => {
+  if (!language) return undefined;
+  // Text is the fallback label: dotless names like `c`, `go` or `dockerfile` must not get .txt
+  if (language === 'Text') return undefined;
+  const extension = LANGUAGE_TO_EXTENSION[language];
+  if (!extension) return undefined;
+  const current = getFileExtension({ filename } as SnippetFileType).toLowerCase();
+  return current === extension || guessLanguage(current) === language ? undefined : extension;
+};
+
+const withLanguageExtension = (filename: string, language?: string): string => {
+  const extension = missingExtension(filename, language);
+  return extension ? `${filename}.${extension}` : filename;
+};
+
+export const getFilesNeedingLanguageExtension = (
+  files: Pick<SnippetFileDraft, 'filename' | 'language'>[]
+): { filename: string; extension: string }[] =>
+  files.flatMap(({ filename, language }) => {
+    const extension = missingExtension(filename, language);
+    if (!extension) return [];
+    // save-time rename is skipped when another file owns the target name; don't promise it
+    if (files.some((other) => other.filename === `${filename}.${extension}`)) return [];
+    return [{ filename, extension }];
+  });
+
 export const isPDF = (file: SnippetFileType): boolean =>
   file?.type === 'application/pdf' && getFileExtension(file) === 'pdf';
 
@@ -201,12 +236,13 @@ export const formatSnippetForSaving = (
   snippet: {
     description: string;
     isPublic: boolean;
-    files: { filename: string; content: string | null }[];
+    files: SnippetFileDraft[];
     tags?: string[];
   },
-  edit: SnippetSingleType | null = null
+  edit: SnippetSingleType | null = null,
+  applyLanguageExtensions = false
 ) => {
-  const updatedFiles = edit
+  const updatedFiles: SnippetFileDraft[] = edit
     ? [
         ...snippet.files,
         ...Object.keys(edit.files)
@@ -215,13 +251,40 @@ export const formatSnippetForSaving = (
       ]
     : snippet.files;
 
-  const files = updatedFiles.reduce<{ [key: string]: { content: string } | null }>(
-    (acc, { filename, content }) => {
-      acc[filename] = content === null ? null : { content };
-      return acc;
-    },
-    {}
+  // assign final keys first so a renamed file never hijacks a name another live file owns
+  const keys = new Map<string, string>();
+  const reserved = new Set(
+    updatedFiles.filter((file) => file.content !== null).map((file) => file.filename)
   );
+  for (const { filename, language } of updatedFiles) {
+    let key = applyLanguageExtensions ? withLanguageExtension(filename, language) : filename;
+    if (key !== filename && (reserved.has(key) || keys.has(key))) {
+      key = filename;
+    }
+    keys.set(filename, key);
+  }
+
+  const files: { [key: string]: { content: string } | null } = {};
+  for (const { filename, content } of updatedFiles) {
+    const key = keys.get(filename) ?? filename;
+    if (content === null) {
+      if (files[key] === undefined) {
+        files[key] = null;
+      }
+      continue;
+    }
+    files[key] = { content };
+    // edit mode removes the original so the provider renames instead of duplicating,
+    // but only when the original name actually exists on the server
+    if (
+      edit &&
+      key !== filename &&
+      Object.hasOwn(edit.files, filename) &&
+      files[filename] === undefined
+    ) {
+      files[filename] = null;
+    }
+  }
 
   return {
     description: snippet.description + (snippet.tags?.length ? ` ${snippet.tags.join(' ')}` : ''),

@@ -17,6 +17,7 @@ import {
   isGeoJson,
   previewAvailable,
   formatSnippetForSaving,
+  getFilesNeedingLanguageExtension,
 } from './snippet.ts';
 
 import { SnippetFileType, SnippetType, SnippetSingleType } from '@/types/snippet.ts';
@@ -210,6 +211,153 @@ describe('snippet utils', () => {
       expect(result.files).toEqual({ 'test.js': { content: 'console.log()' } });
     });
 
+    it('appends a detected extension when the filename would not detect the language', () => {
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: true,
+          files: [{ filename: 'test', content: 'content', language: 'Python' }],
+        },
+        null,
+        true
+      );
+
+      expect(result.files).toEqual({ 'test.py': { content: 'content' } });
+    });
+
+    it('keeps the filename when the extension already matches the language', () => {
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: true,
+          files: [{ filename: 'test.py', content: 'content', language: 'Python' }],
+        },
+        null,
+        true
+      );
+
+      expect(result.files).toEqual({ 'test.py': { content: 'content' } });
+    });
+
+    it('appends an extension for languages Linguist still lists', () => {
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: true,
+          files: [{ filename: 'test', content: 'content', language: 'Ada' }],
+        },
+        null,
+        true
+      );
+
+      expect(result.files).toEqual({ 'test.adb': { content: 'content' } });
+    });
+
+    it('appends the closest modern extension for renamed or removed Linguist languages', () => {
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: true,
+          files: [
+            { filename: 'config', content: 'content', language: 'Bro' },
+            { filename: 'macros', content: 'content', language: 'VimL' },
+            { filename: 'proof', content: 'content', language: 'Coq' },
+          ],
+        },
+        null,
+        true
+      );
+
+      expect(result.files).toEqual({
+        'config.zeek': { content: 'content' },
+        'macros.vim': { content: 'content' },
+        'proof.v': { content: 'content' },
+      });
+    });
+
+    it('does not repeat an extension already present on the filename', () => {
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: true,
+          files: [{ filename: 'pom.xml', content: 'content', language: 'Maven POM' }],
+        },
+        null,
+        true
+      );
+
+      expect(result.files).toEqual({ 'pom.xml': { content: 'content' } });
+    });
+
+    it('does not append extensions when applyLanguageExtensions is false', () => {
+      const result = formatSnippetForSaving({
+        description: 'Test',
+        isPublic: true,
+        files: [{ filename: 'test', content: 'content', language: 'Python' }],
+      });
+
+      expect(result.files).toEqual({ test: { content: 'content' } });
+    });
+
+    it('never renames a file whose language is Text', () => {
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: true,
+          files: [{ filename: 'c', content: 'content', language: 'Text' }],
+        },
+        null,
+        true
+      );
+
+      expect(result.files).toEqual({ c: { content: 'content' } });
+    });
+
+    it('still appends an extension to an extensionless file with a real language', () => {
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: true,
+          files: [{ filename: 'notes', content: 'content', language: 'Python' }],
+        },
+        null,
+        true
+      );
+
+      expect(result.files).toEqual({ 'notes.py': { content: 'content' } });
+    });
+
+    it('does not append to dotless names that already detect as their language', () => {
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: true,
+          files: [{ filename: 'dockerfile', content: 'content', language: 'Dockerfile' }],
+        },
+        null,
+        true
+      );
+
+      expect(result.files).toEqual({ dockerfile: { content: 'content' } });
+    });
+
+    it('does not hijack the name of another live file', () => {
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: true,
+          files: [
+            { filename: 'helper', content: 'a', language: 'Python' },
+            { filename: 'helper.py', content: 'b', language: 'Python' },
+          ],
+        },
+        null,
+        true
+      );
+
+      expect(result.files).toEqual({ helper: { content: 'a' }, 'helper.py': { content: 'b' } });
+    });
+
     it('should handle edit mode', () => {
       const editSnippet = {
         files: { 'old.js': { content: 'old' } },
@@ -219,13 +367,107 @@ describe('snippet utils', () => {
         {
           description: 'Test',
           isPublic: false,
-          files: [{ filename: 'new.js', content: 'new' }],
+          files: [{ filename: 'new.js', content: 'new', language: 'JavaScript' }],
         },
-        editSnippet
+        editSnippet,
+        true
       );
 
       expect(result.files).toHaveProperty('new.js');
       expect(result.files).toHaveProperty('old.js');
+      expect(result.files['new.js']).toEqual({ content: 'new' });
+    });
+
+    it('renames the original file when appending an extension in edit mode', () => {
+      const editSnippet = {
+        files: { test: { content: 'content' } },
+      } as unknown as SnippetSingleType;
+
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: false,
+          files: [{ filename: 'test', content: 'content', language: 'Python' }],
+        },
+        editSnippet,
+        true
+      );
+
+      expect(result.files).toEqual({ 'test.py': { content: 'content' }, test: null });
+    });
+
+    it('does not overwrite a live file with a deleted marker in edit mode', () => {
+      const editSnippet = {
+        files: { 'test.py': { content: 'old' } },
+      } as unknown as SnippetSingleType;
+
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: false,
+          files: [{ filename: 'test', content: 'content', language: 'Python' }],
+        },
+        editSnippet,
+        true
+      );
+
+      expect(result.files).toEqual({ 'test.py': { content: 'content' } });
+    });
+
+    it('does not delete a brand-new file name when appending an extension in edit mode', () => {
+      const editSnippet = {
+        files: { 'app.js': { content: 'old' } },
+      } as unknown as SnippetSingleType;
+
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: false,
+          files: [
+            { filename: 'server', content: 'new', language: 'JavaScript' },
+            { filename: 'app.js', content: 'kept', language: 'JavaScript' },
+          ],
+        },
+        editSnippet,
+        true
+      );
+
+      // `server: null` would ask the provider to delete a file that never existed
+      expect(result.files).toEqual({
+        'server.js': { content: 'new' },
+        'app.js': { content: 'kept' },
+      });
+    });
+  });
+
+  describe('getFilesNeedingLanguageExtension', () => {
+    it('returns files that miss the extension of the selected language', () => {
+      expect(
+        getFilesNeedingLanguageExtension([
+          { filename: 'test', language: 'Python' },
+          { filename: 'kept.py', language: 'Python' },
+          { filename: 'x', language: 'Nope' },
+        ])
+      ).toEqual([{ filename: 'test', extension: 'py' }]);
+    });
+
+    it('does not promise a rename whose target name another file already owns', () => {
+      expect(
+        getFilesNeedingLanguageExtension([
+          { filename: 'helper', language: 'Python' },
+          { filename: 'helper.py', language: 'Python' },
+        ])
+      ).toEqual([]);
+    });
+
+    it('ignores files whose existing extension detects the language regardless of case', () => {
+      expect(
+        getFilesNeedingLanguageExtension([{ filename: 'TEST.PY', language: 'Python' }])
+      ).toEqual([]);
+    });
+
+    it('never renames a Text file', () => {
+      expect(getFilesNeedingLanguageExtension([{ filename: 'c', language: 'Text' }])).toEqual([]);
     });
   });
 

@@ -1,11 +1,15 @@
 import { useRouter } from 'dirty-react-router';
 import { Plus, SidebarClose, SidebarOpen, Shield, ShieldCheck } from 'lucide-react';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import { z } from 'zod';
 
 import { AiAssistantButton } from '@/components/layout/pages/create-or-edit-snippet/ai-assistant-button.tsx';
 import { DropZoneOverlay } from '@/components/layout/pages/create-or-edit-snippet/drop-zone-overlay.tsx';
 import { FileCard } from '@/components/layout/pages/create-or-edit-snippet/file-card.tsx';
+import {
+  MissingExtensionDialog,
+  MissingExtensionFile,
+} from '@/components/layout/pages/create-or-edit-snippet/missing-extension-dialog.tsx';
 import { initialState, reducer } from '@/components/layout/pages/create-or-edit-snippet/reducer.ts';
 import { SnippetSchema } from '@/components/layout/pages/create-or-edit-snippet/schema.ts';
 import {
@@ -26,6 +30,7 @@ import { useStoreValue } from '@/lib/store/globalState.ts';
 import { SnippetSingleType } from '@/types/snippet.ts';
 import {
   formatSnippetForSaving,
+  getFilesNeedingLanguageExtension,
   getLanguageName,
   getTags,
   removeTags,
@@ -57,6 +62,11 @@ export const CreateOrEditSnippet = ({
 
   const [errors, setErrors] = useState<z.ZodIssue[]>([]);
   const [edit, setEdit] = useState<null | SnippetSingleType>(null);
+  const [missingFiles, setMissingFiles] = useState<MissingExtensionFile[] | null>(null);
+  const pendingSaveRef = useRef<{
+    data: z.infer<typeof SnippetSchema>;
+    edit: SnippetSingleType | null;
+  } | null>(null);
   useEffect(() => {
     if (params?.id) {
       (async () => {
@@ -90,14 +100,34 @@ export const CreateOrEditSnippet = ({
     };
   }, [params?.id]);
 
-  const create = async () => {
-    const validation = SnippetSchema.safeParse(state);
+  const persist = async (
+    data: z.infer<typeof SnippetSchema>,
+    edit: SnippetSingleType | null,
+    applyLanguageExtensions: boolean
+  ) => {
+    const formatted = formatSnippetForSaving(data, edit, applyLanguageExtensions);
 
-    if (!validation.success) {
-      setErrors(validation.error.issues);
-      return;
+    if (edit) {
+      const {
+        // it is just an omit of isPublic
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        isPublic,
+        ...restOfTheSnippet
+      } = formatted;
+
+      const save = await snippetService.updateSnippet({
+        ...restOfTheSnippet,
+        snippetId: edit.id,
+      });
+
+      if (save && save.id) {
+        navigate(`/snippets/${edit.id}`);
+        toast.show({ message: t('pages.new.snippetUpdated') });
+
+        dispatch({ type: 'RESET' });
+      }
     } else {
-      const save = await snippetService.createSnippet(formatSnippetForSaving(validation.data));
+      const save = await snippetService.createSnippet(formatted);
 
       if (save && save.id) {
         navigate(`/snippets/${save.id}`);
@@ -108,32 +138,54 @@ export const CreateOrEditSnippet = ({
     }
   };
 
+  const create = async () => {
+    const validation = SnippetSchema.safeParse(state);
+
+    if (!validation.success) {
+      setErrors(validation.error.issues);
+      return;
+    }
+
+    const missing = getFilesNeedingLanguageExtension(validation.data.files);
+    if (missing.length) {
+      pendingSaveRef.current = { data: validation.data, edit: null };
+      setMissingFiles(missing);
+      return;
+    }
+
+    await persist(validation.data, null, false);
+  };
+
   const update = async () => {
     const validation = SnippetSchema.safeParse(state);
 
     if (!validation.success) {
       setErrors(validation.error.issues);
       return;
-    } else {
-      const {
-        // it is just an omit of isPublic
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        isPublic,
-        ...restOfTheSnippet
-      } = formatSnippetForSaving(validation.data, edit);
-
-      const save = await snippetService.updateSnippet({
-        ...restOfTheSnippet,
-        snippetId: edit!.id,
-      });
-
-      if (save && save.id) {
-        navigate(`/snippets/${edit!.id}`);
-        toast.show({ message: t('pages.new.snippetUpdated') });
-
-        dispatch({ type: 'RESET' });
-      }
     }
+
+    const missing = getFilesNeedingLanguageExtension(validation.data.files);
+    if (missing.length) {
+      pendingSaveRef.current = { data: validation.data, edit };
+      setMissingFiles(missing);
+      return;
+    }
+
+    await persist(validation.data, edit, false);
+  };
+
+  const resolveMissingExtensions = (apply: boolean) => {
+    const pending = pendingSaveRef.current;
+    pendingSaveRef.current = null;
+    setMissingFiles(null);
+    if (pending) {
+      void persist(pending.data, pending.edit, apply);
+    }
+  };
+
+  const abortMissingExtensions = () => {
+    pendingSaveRef.current = null;
+    setMissingFiles(null);
   };
 
   return (
@@ -281,6 +333,14 @@ export const CreateOrEditSnippet = ({
           </div>
         </PageContent>
       </DropZoneOverlay>
+      {missingFiles ? (
+        <MissingExtensionDialog
+          files={missingFiles}
+          onConfirm={() => resolveMissingExtensions(true)}
+          onSkip={() => resolveMissingExtensions(false)}
+          onDismiss={abortMissingExtensions}
+        />
+      ) : null}
     </div>
   );
 };
