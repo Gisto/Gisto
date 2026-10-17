@@ -73,9 +73,11 @@ export const AiAssistantButton = ({ state, dispatch, tags }: AiAssistantButtonPr
         const providerName =
           error.provider === 'openrouter'
             ? 'OpenRouter'
-            : error.provider === 'openai'
-              ? 'OpenAI'
-              : 'Gemini';
+            : error.provider === 'atlascloud'
+              ? 'Atlas Cloud'
+              : error.provider === 'openai'
+                ? 'OpenAI'
+                : 'Gemini';
         toast.show({
           message: error.message,
           type: 'error',

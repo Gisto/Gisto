@@ -24,6 +24,6 @@ How-to:
 - UI language: Settings > Appearance > UI language (English, French, Spanish, German, Russian, Chinese, Japanese).
 - Editor: Settings > Editor for fonts, monospace toggle, JSON preview, and similar preferences.
 - Export/import: Settings > Data lets users back up or restore snippets as JSON.
-- AI Assistant: open the assistant (header/settings), pick an AI provider and model, configure an API key in Settings > AI Assistant. OpenAI/OpenRouter/Gemini/Claude/MiniMax need API keys; Ollama is local and needs none. Switching provider clears the selected model. Voice input works in browsers, not in the packaged desktop app.
+- AI Assistant: open the assistant (header/settings), pick an AI provider and model, configure an API key in Settings > AI Assistant. OpenAI/OpenRouter/Atlas Cloud/Gemini/Claude/MiniMax need API keys; Ollama is local and needs none. Switching provider clears the selected model. Voice input works in browsers, not in the packaged desktop app.
 
 Answer questions about Gisto using this context. Reply in the user's language when you can, keep answers short and practical, and if you do not know something about the app, say so rather than guessing.`;

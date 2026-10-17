@@ -58,13 +58,21 @@ export type StoreStateType = {
       command: string;
     };
     ai: {
-      activeAiProvider: 'openrouter' | 'openai' | 'gemini' | 'claude' | 'minimax' | 'ollama';
+      activeAiProvider:
+        | 'openrouter'
+        | 'openai'
+        | 'gemini'
+        | 'claude'
+        | 'minimax'
+        | 'ollama'
+        | 'atlascloud';
       geminiApiKey?: string;
       openRouterApiKey?: string;
       openaiApiKey?: string;
       claudeApiKey?: string;
       minimaxApiKey?: string;
       ollamaApiKey?: string;
+      atlascloudApiKey?: string;
       minimaxRegion: 'global_en' | 'cn_zh';
       minimaxProtocol: 'openai' | 'anthropic';
       ollamaMode: 'local' | 'remote';
@@ -193,6 +201,7 @@ export const defaultSettings: SettingsType = {
     ollamaMode: 'local',
     ollamaBaseUrl: '',
     ollamaApiKey: '',
+    atlascloudApiKey: '',
     model: 'meta-llama/llama-3.2-3b-instruct:free',
     temperature: 0.2,
     cleanJson: true,
