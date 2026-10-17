@@ -11,8 +11,17 @@ const CLAUDE_ENDPOINT = 'https://api.anthropic.com/v1/messages';
 
 export interface ChatMessage {
   role: 'user' | 'assistant' | 'system';
-  content: string;
+  content: ChatContent;
 }
+
+/** Content blocks accepted by OpenAI-compatible multimodal endpoints. */
+export type ChatContent =
+  | string
+  | Array<
+      | { type: 'text'; text: string }
+      | { type: 'image_url'; image_url: { url: string; detail?: 'auto' | 'low' | 'high' } }
+      | { type: 'video_url'; video_url: { url: string } }
+    >;
 
 export interface GenerateAiResponseOptions {
   prompt: string;
@@ -131,7 +140,7 @@ export function isAiAvailable(): boolean {
   return Boolean(apiKey);
 }
 
-type ApiMessage = { role: 'user' | 'assistant' | 'system'; content: string };
+type ApiMessage = { role: 'user' | 'assistant' | 'system'; content: ChatContent };
 
 export function buildMessages(
   prompt: string,
@@ -148,12 +157,20 @@ export function buildMessages(
   return base;
 }
 
+function contentToText(content: ChatContent): string {
+  if (typeof content === 'string') return content;
+  return content
+    .filter((block): block is { type: 'text'; text: string } => block.type === 'text')
+    .map((block) => block.text)
+    .join('\n');
+}
+
 function buildGeminiMessages(prompt: string, messages?: ChatMessage[], systemContext?: string) {
   const base =
     messages && messages.length > 0
       ? messages.map((m) => ({
           role: m.role === 'assistant' ? 'model' : 'user',
-          parts: [{ text: m.content }],
+          parts: [{ text: contentToText(m.content) }],
         }))
       : [{ parts: [{ text: prompt }] }];
   if (systemContext) {
@@ -238,7 +255,7 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
     const anthropicSystem =
       anthropicMessages
         .filter((m) => m.role === 'system')
-        .map((m) => m.content)
+        .map((m) => contentToText(m.content))
         .join('\n') || undefined;
     const anthropicBody: Record<string, unknown> = {
       model,

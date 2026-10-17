@@ -243,6 +243,43 @@ describe('generateAiResponse', () => {
     }
   );
 
+  it.each([
+    { protocol: 'openai' as const, response: { choices: [{ message: { content: 'ok' } }] } },
+    { protocol: 'anthropic' as const, response: { content: [{ type: 'text', text: 'ok' }] } },
+  ])(
+    'preserves image and video blocks for MiniMax $protocol requests',
+    async ({ protocol, response }) => {
+      mockSettings.ai = {
+        activeAiProvider: 'minimax',
+        minimaxApiKey: 'test-key',
+        minimaxRegion: 'global_en',
+        minimaxProtocol: protocol,
+        model: 'MiniMax-M3',
+        temperature: 0.7,
+      };
+      const fetchSpy = vi
+        .spyOn(globalThis, 'fetch')
+        .mockResolvedValue(
+          new Response(JSON.stringify(response), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+          })
+        );
+      const content = [
+        { type: 'text' as const, text: 'Describe these assets.' },
+        { type: 'image_url' as const, image_url: { url: 'https://example.com/image.png' } },
+        { type: 'video_url' as const, video_url: { url: 'https://example.com/video.mp4' } },
+      ];
+
+      await generateAiResponse({ prompt: 'fallback', messages: [{ role: 'user', content }] });
+
+      const body = JSON.parse(fetchSpy.mock.calls[0][1]?.body as string);
+      const sent = protocol === 'anthropic' ? body.messages[0].content : body.messages[0].content;
+      expect(sent).toEqual(content);
+      fetchSpy.mockRestore();
+    }
+  );
+
   it('cleans JSON code fences from response', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(
       new Response(

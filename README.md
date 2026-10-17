@@ -2,6 +2,8 @@
 
 ![GitHub License](https://img.shields.io/github/license/gisto/gisto)
 ![GitHub Release](https://img.shields.io/github/v/release/gisto/gisto)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2ab5791f-976a-4673-b168-55e4e136130f/deploy-status)](https://app.netlify.com/projects/gisto-web-app/deploys)
+
 
 > Snippets made awesome
 

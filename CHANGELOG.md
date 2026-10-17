@@ -2,6 +2,72 @@
 
 All significant updates and improvements
 
+## v2.15.1
+
+Released on: Oct 17, 2026
+
+### 🚀 Features
+
+- Preserve multimodal chat content
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([72ea0da](https://github.com/gisto/gisto/commit/72ea0daf59c53bcd81da4730c0b080416196e69d))
+
+
+### 🐛 Bug Fixes
+
+- *(snippet)* Snippet header spacing
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6265d4b](https://github.com/gisto/gisto/commit/6265d4b70a1f95472a1a0479c0302c6e4a7b9675))
+
+
+### 🛠️️ Build
+
+- *(deps)* Bump swagger-ui-react from 5.31.0 to 5.32.14
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([c1235ac](https://github.com/gisto/gisto/commit/c1235ace22f4c1da34ae6f279af02a823f118015))
+
+- *(deps)* Bump katex from 0.18.1 to 0.18.4
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([0975802](https://github.com/gisto/gisto/commit/0975802b5f5c95966937f23811aaebbc9237f81e))
+
+- *(deps-dev)* Bump @testing-library/jest-dom from 6.9.1 to 7.0.1
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([76ed722](https://github.com/gisto/gisto/commit/76ed72212228ead1833b632ec9f1f6776bb2a3c9))
+
+- *(deps)* Bump papaparse from 5.5.3 to 5.7.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([bf167a0](https://github.com/gisto/gisto/commit/bf167a04edec020441e2c6785a223eedfde0d4fb))
+
+- *(deps)* Bump @tauri-apps/plugin-window-state from 2.4.1 to 2.5.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b633d37](https://github.com/gisto/gisto/commit/b633d376104bf1e140cc11376ade86bcc66c6645))
+
+- *(deps)* Bump @radix-ui/react-tabs from 1.1.13 to 1.1.21
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([a578fdd](https://github.com/gisto/gisto/commit/a578fdd510bca28ba50dc3e4d562cee5dee1b87b))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Add Contributor Covenant Code of Conduct
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([ba084df](https://github.com/gisto/gisto/commit/ba084df5119bcbda42969c227061071f18c2b4af))
+
+- Add Netlify status badge
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([419f549](https://github.com/gisto/gisto/commit/419f549b202213aaaba6e5d15a3f595f522bb428))
+
+
 ## v2.15.0
 
 Released on: Aug 28, 2026
@@ -1865,6 +1931,18 @@ Released on: Feb 1, 2025
 ([60e8173](https://github.com/gisto/gisto/commit/60e81732014c6db2cd7199b57fca7e9ad2a554d3))
 
 
+## v2.0.2
+
+Released on: Jan 31, 2025
+
+### 🛠️️ Build
+
+- Add secrets
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([14ee053](https://github.com/gisto/gisto/commit/14ee053c7a7ada187a67d2a5c88f82b3199ccf7b))
+
+
 ## v2.0.1
 
 Released on: Jan 31, 2025
@@ -1878,11 +1956,6 @@ Released on: Jan 31, 2025
 
 
 ### 🛠️️ Build
-
-- Add secrets
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([14ee053](https://github.com/gisto/gisto/commit/14ee053c7a7ada187a67d2a5c88f82b3199ccf7b))
 
 - Add secrets
 ・ by Sasha Khamkov
