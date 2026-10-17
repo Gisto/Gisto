@@ -44,6 +44,16 @@ All significant updates and improvements
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([bf167a0](https://github.com/gisto/gisto/commit/bf167a04edec020441e2c6785a223eedfde0d4fb))
 
+- *(deps)* Bump @tauri-apps/plugin-window-state from 2.4.1 to 2.5.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b633d37](https://github.com/gisto/gisto/commit/b633d376104bf1e140cc11376ade86bcc66c6645))
+
+- *(deps)* Bump @radix-ui/react-tabs from 1.1.13 to 1.1.21
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([a578fdd](https://github.com/gisto/gisto/commit/a578fdd510bca28ba50dc3e4d562cee5dee1b87b))
+
 
 ### ⚙️ Miscellaneous Tasks
 
