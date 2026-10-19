@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### 🐛 Bug Fixes
+
+- *(create and edit)* Map missing file extentions based on file language
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([d01e3c4](https://github.com/gisto/gisto/commit/d01e3c4774828566dc9561b671fcc41a8d7353a7))
+
+
 ## v2.15.3
 
 Released on: Oct 19, 2026
