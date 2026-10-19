@@ -51,14 +51,12 @@ describe('fetchOllamaModels', () => {
       ollamaBaseUrl: 'http://192.168.1.10:11434',
       ollamaApiKey: 'secret',
     };
-    const fetchSpy = vi
-      .spyOn(globalThis, 'fetch')
-      .mockResolvedValue(
-        new Response(JSON.stringify({ data: [{ id: 'qwen2.5' }, { id: 'mistral' }] }), {
-          status: 200,
-          headers: { 'Content-Type': 'application/json' },
-        })
-      );
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ data: [{ id: 'qwen2.5' }, { id: 'mistral' }] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
 
     await expect(fetchOllamaModels()).resolves.toEqual([
       { id: 'qwen2.5', name: 'qwen2.5' },
@@ -121,6 +119,9 @@ describe('fetchMiniMaxModels', () => {
           data: [
             { id: 'MiniMax-M3', object: 'model', owned_by: 'minimax' },
             { id: 'MiniMax-M2.7', object: 'model', owned_by: 'minimax' },
+            { id: 'MiniMax-M3.1-Flash', object: 'model', owned_by: 'minimax' },
+            { id: 'MiniMax-M2.5', object: 'model', owned_by: 'minimax' },
+            { id: 'speech-02-hd', object: 'model', owned_by: 'minimax' },
           ],
         }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
@@ -128,8 +129,8 @@ describe('fetchMiniMaxModels', () => {
     );
 
     await expect(fetchMiniMaxModels()).resolves.toEqual([
+      { id: 'MiniMax-M3.1-Flash', name: 'MiniMax-M3.1-Flash' },
       { id: 'MiniMax-M3', name: 'MiniMax-M3' },
-      { id: 'MiniMax-M2.7', name: 'MiniMax-M2.7' },
     ]);
     expect(fetchSpy.mock.calls[0][0]).toBe(endpoint);
     const headers = fetchSpy.mock.calls[0][1]?.headers as Record<string, string>;
@@ -138,6 +139,16 @@ describe('fetchMiniMaxModels', () => {
     } else {
       expect(headers.Authorization).toBe('Bearer test-key');
     }
+  });
+
+  it('does not invent availability for a model absent from the API response', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ data: [{ id: 'MiniMax-M3', name: 'MiniMax M3' }] }), {
+        status: 200,
+      })
+    );
+
+    await expect(fetchMiniMaxModels()).resolves.toEqual([{ id: 'MiniMax-M3', name: 'MiniMax M3' }]);
   });
 
   it('does not call the API without a configured key', async () => {

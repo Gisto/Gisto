@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## v2.15.2
+
+Released on: Oct 19, 2026
+
+### 🚀 Features
+
+- Refresh MiniMax text models to M3.1 Flash and M3
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([60a40a1](https://github.com/gisto/gisto/commit/60a40a150d613c71c8c0534e4b3d272a86e2db7d))
+
+
 ## v2.15.1
 
 Released on: Oct 17, 2026
