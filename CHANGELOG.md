@@ -2,9 +2,41 @@
 
 All significant updates and improvements
 
-## Upcoming version
+## v2.15.3
 
-[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+Released on: Oct 19, 2026
+
+### 🐛 Bug Fixes
+
+- *(pipeline)* Pipeline run
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([164ea55](https://github.com/gisto/gisto/commit/164ea55bb18da3b89940b6850cbbe850c6c12e55))
+
+
+## v2.15.2
+
+Released on: Oct 19, 2026
+
+### 🚀 Features
+
+- Refresh MiniMax text models to M3.1 Flash and M3
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([60a40a1](https://github.com/gisto/gisto/commit/60a40a150d613c71c8c0534e4b3d272a86e2db7d))
+
+
+## v2.15.1
+
+Released on: Oct 17, 2026
+
+### 🚀 Features
+
+- Preserve multimodal chat content
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([72ea0da](https://github.com/gisto/gisto/commit/72ea0daf59c53bcd81da4730c0b080416196e69d))
+
 
 ### 🐛 Bug Fixes
 
@@ -35,6 +67,16 @@ All significant updates and improvements
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([bf167a0](https://github.com/gisto/gisto/commit/bf167a04edec020441e2c6785a223eedfde0d4fb))
+
+- *(deps)* Bump @tauri-apps/plugin-window-state from 2.4.1 to 2.5.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b633d37](https://github.com/gisto/gisto/commit/b633d376104bf1e140cc11376ade86bcc66c6645))
+
+- *(deps)* Bump @radix-ui/react-tabs from 1.1.13 to 1.1.21
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([a578fdd](https://github.com/gisto/gisto/commit/a578fdd510bca28ba50dc3e4d562cee5dee1b87b))
 
 
 ### ⚙️ Miscellaneous Tasks
@@ -1913,6 +1955,18 @@ Released on: Feb 1, 2025
 ([60e8173](https://github.com/gisto/gisto/commit/60e81732014c6db2cd7199b57fca7e9ad2a554d3))
 
 
+## v2.0.2
+
+Released on: Jan 31, 2025
+
+### 🛠️️ Build
+
+- Add secrets
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([14ee053](https://github.com/gisto/gisto/commit/14ee053c7a7ada187a67d2a5c88f82b3199ccf7b))
+
+
 ## v2.0.1
 
 Released on: Jan 31, 2025
@@ -1926,11 +1980,6 @@ Released on: Jan 31, 2025
 
 
 ### 🛠️️ Build
-
-- Add secrets
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([14ee053](https://github.com/gisto/gisto/commit/14ee053c7a7ada187a67d2a5c88f82b3199ccf7b))
 
 - Add secrets
 ・ by Sasha Khamkov
