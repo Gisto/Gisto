@@ -1,4 +1,5 @@
 import { resolveMiniMaxEndpoint } from '@/constants/minimax-endpoints.ts';
+import { MINIMAX_TEXT_MODELS } from '@/constants/minimax-models.ts';
 import { resolveOllamaEndpoint } from '@/constants/ollama-endpoints.ts';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
@@ -157,13 +158,18 @@ export async function fetchMiniMaxModels(): Promise<ModelInfo[]> {
   const { ai } = globalState.getState().settings;
   const endpoint = resolveMiniMaxEndpoint(ai.minimaxRegion, ai.minimaxProtocol);
 
-  return fetchModelList({
+  const models = await fetchModelList({
     provider: 'MiniMax',
     url: endpoint.modelsUrl,
     headers:
       endpoint.protocol === 'anthropic'
         ? { 'x-api-key': apiKey }
         : { Authorization: `Bearer ${apiKey}` },
+  });
+
+  return MINIMAX_TEXT_MODELS.flatMap((id) => {
+    const model = models.find((entry) => entry.id === id);
+    return model ? [model] : [];
   });
 }
 

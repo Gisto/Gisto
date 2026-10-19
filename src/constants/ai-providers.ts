@@ -6,6 +6,7 @@ import {
   OpenRouterIcon,
   OllamaIcon,
 } from '@/components/icons';
+import { MINIMAX_TEXT_MODELS } from '@/constants/minimax-models';
 
 export interface AiProvider {
   icon: React.ComponentType<{ className?: string }>;
@@ -59,10 +60,7 @@ export const AI_PROVIDERS: Record<string, AiProvider> = {
     description: 'MiniMax models',
     icon: MiniMaxIcon,
     apiKeyUrl: 'https://platform.minimax.io/user-center/basic-information/interface-key',
-    modelOptions: [
-      { value: 'MiniMax-M3', label: 'MiniMax-M3' },
-      { value: 'MiniMax-M2.7', label: 'MiniMax-M2.7' },
-    ],
+    modelOptions: MINIMAX_TEXT_MODELS.map((value) => ({ value, label: value })),
   },
   ollama: {
     label: 'Ollama',
