@@ -13,6 +13,11 @@ on:
           - minor
           - major
 
+# don't let two releases race each other's push
+concurrency:
+  group: automate-release
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
