@@ -161,6 +161,12 @@
       "fileTooLargeError": "文件大小超过5MB，请选择较小的文件。",
       "fileWillBeConvertedToBase64": "图片文件将被转换为base64数据URL",
       "fileError": "需要文件名",
+      "missingExtension": {
+        "title": "添加缺少的文件扩展名？",
+        "message": "提供程序通过文件名检测文件语言；没有扩展名，所选语言将丢失：",
+        "confirm": "添加扩展名",
+        "skip": "保存时不添加扩展名"
+      },
       "fileContentError": "需要文件内容",
       "descriptionError": "需要描述",
       "generateDescriptionAndTags": "使用AI生成描述和标签",

@@ -2,6 +2,26 @@
 
 All significant updates and improvements
 
+## v2.15.5
+
+Released on: Oct 20, 2026
+
+### 🐛 Bug Fixes
+
+- *(create and edit)* Map missing file extentions based on file language
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([d01e3c4](https://github.com/gisto/gisto/commit/d01e3c4774828566dc9561b671fcc41a8d7353a7))
+
+
+### 👷 Continuous Integration
+
+- *(release)* Rebase before push and serialize release runs
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([5d6e3f3](https://github.com/gisto/gisto/commit/5d6e3f3e53c5110f444368df59c28e4b975a192e))
+
+
 ## v2.15.3
 
 Released on: Oct 19, 2026

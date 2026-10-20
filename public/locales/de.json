@@ -161,6 +161,12 @@
       "fileTooLargeError": "Datei über 5 MB, bitte kleinere wählen.",
       "fileWillBeConvertedToBase64": "Bilddateien werden in base64 konvertiert",
       "fileError": "Dateiname erforderlich",
+      "missingExtension": {
+        "title": "Dateiendung hinzufügen?",
+        "message": "Dienste erkennen die Sprache einer Datei am Dateinamen; ohne Endung geht die gewählte Sprache verloren:",
+        "confirm": "Endung hinzufügen",
+        "skip": "Ohne Endung speichern"
+      },
       "fileContentError": "Inhalt erforderlich",
       "descriptionError": "Beschreibung erforderlich",
       "generateDescriptionAndTags": "Beschreibung und Tags mit KI generieren",
