@@ -111,6 +111,38 @@ describe('generateAiResponse', () => {
     fetchSpy.mockRestore();
   });
 
+  it('routes Atlas Cloud requests to its OpenAI-compatible endpoint', async () => {
+    mockSettings.ai = {
+      activeAiProvider: 'atlascloud',
+      atlascloudApiKey: 'test-key',
+      model: 'deepseek-ai/deepseek-v4-flash',
+      temperature: 0.7,
+    };
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ choices: [{ message: { content: 'Atlas response' } }] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    const result = await generateAiResponse({ prompt: 'hello' });
+
+    expect(result).toBe('Atlas response');
+    expect(fetchSpy.mock.calls[0][0]).toBe('https://api.atlascloud.ai/v1/chat/completions');
+    const headers = fetchSpy.mock.calls[0][1]?.headers as Record<string, string>;
+    expect(headers.Authorization).toBe('Bearer test-key');
+    const callBody = JSON.parse(fetchSpy.mock.calls[0][1]?.body as string);
+    expect(callBody.model).toBe('deepseek-ai/deepseek-v4-flash');
+
+    fetchSpy.mockRestore();
+  });
+
+  it('throws AiApiError when no Atlas Cloud API key is configured', async () => {
+    mockSettings.ai = { activeAiProvider: 'atlascloud', atlascloudApiKey: '' };
+
+    await expect(generateAiResponse({ prompt: 'hello' })).rejects.toThrow(AiApiError);
+  });
+
   it('includes system context as system message for OpenRouter', async () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
       new Response(JSON.stringify({ choices: [{ message: { content: 'ok' } }] }), {

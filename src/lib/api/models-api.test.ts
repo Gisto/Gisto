@@ -1,6 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { fetchMiniMaxModels, fetchOllamaModels, fetchOpenRouterModels } from './models-api.ts';
+import {
+  fetchAtlasCloudModels,
+  fetchMiniMaxModels,
+  fetchOllamaModels,
+  fetchOpenRouterModels,
+} from './models-api.ts';
 
 const mockSettings: {
   ai: Record<string, string | undefined>;
@@ -287,6 +292,47 @@ describe('fetchOpenRouterModels', () => {
 
     expect(fetchSpy).toHaveBeenCalledTimes(1);
     expect(fetchSpy.mock.calls[0][0]).toBe('https://openrouter.ai/api/v1/models');
+    expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({});
+  });
+});
+
+describe('fetchAtlasCloudModels', () => {
+  beforeEach(() => {
+    mockSettings.ai = { atlascloudApiKey: 'test-key' };
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('fetches and maps models from the Atlas Cloud endpoint', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: [
+            { id: 'deepseek-ai/deepseek-v4-flash', name: 'DeepSeek V4 Flash', object: 'model' },
+            { id: 'moonshotai/kimi-k2.6', object: 'model' },
+          ],
+        }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      )
+    );
+
+    await expect(fetchAtlasCloudModels()).resolves.toEqual([
+      { id: 'deepseek-ai/deepseek-v4-flash', name: 'DeepSeek V4 Flash' },
+      { id: 'moonshotai/kimi-k2.6', name: 'moonshotai/kimi-k2.6' },
+    ]);
+    expect(fetchSpy.mock.calls[0][0]).toBe('https://api.atlascloud.ai/v1/models');
+    expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({ Authorization: 'Bearer test-key' });
+  });
+
+  it('lists models without a key because the endpoint is public', async () => {
+    mockSettings.ai = { atlascloudApiKey: '' };
+    const fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response(JSON.stringify({ data: [] }), { status: 200 }));
+
+    await expect(fetchAtlasCloudModels()).resolves.toEqual([]);
     expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({});
   });
 });
