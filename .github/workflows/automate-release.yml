@@ -64,8 +64,9 @@ jobs:
           git merge origin/main --no-ff -m "chore: merge main to release"
           git push origin release
 
-      - name: Trigger release workflow
+      - name: Trigger release workflows
         run: |
           gh workflow run publish.yml --ref release
+          gh workflow run deploy-netlify.yml --ref release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
