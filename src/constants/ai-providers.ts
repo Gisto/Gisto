@@ -5,6 +5,7 @@ import {
   MiniMaxIcon,
   OpenRouterIcon,
   OllamaIcon,
+  UberLLMIcon,
 } from '@/components/icons';
 import { MINIMAX_TEXT_MODELS } from '@/constants/minimax-models';
 
@@ -110,6 +111,19 @@ export const AI_PROVIDERS: Record<string, AiProvider> = {
       { value: 'anthropic/claude-3-5-sonnet-20241022', label: '🔥 Claude 3.5 Sonnet' },
       { value: 'meta-llama/llama-3.1-70b-instruct', label: '🔥 Llama 3.1 70B' },
       { value: 'openai/gpt-4o', label: '🔥 GPT-4o' },
+    ],
+  },
+  uberllm: {
+    label: 'UberLLM',
+    description: 'Multiple Models',
+    icon: UberLLMIcon,
+    apiKeyUrl: 'https://uberllm.dev/signup',
+    modelOptions: [
+      { value: 'deepseek/deepseek-v4.1-flash', label: '💸 DeepSeek V4.1 Flash' },
+      { value: 'google/gemini-3.5-flash', label: '💸 Gemini 3.5 Flash' },
+      { value: 'openai/gpt-5.4-mini', label: '💸 GPT-5.4 Mini' },
+      { value: 'deepseek/deepseek-v4-pro', label: '🔥 DeepSeek V4 Pro' },
+      { value: 'anthropic/claude-sonnet-4.6', label: '🔥 Claude Sonnet 4.6' },
     ],
   },
 };
