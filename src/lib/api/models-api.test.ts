@@ -1,6 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { fetchMiniMaxModels, fetchOllamaModels, fetchOpenRouterModels } from './models-api.ts';
+import {
+  fetchMiniMaxModels,
+  fetchOllamaModels,
+  fetchOpenRouterModels,
+  fetchUberLLMModels,
+} from './models-api.ts';
 
 const mockSettings: {
   ai: Record<string, string | undefined>;
@@ -287,6 +292,47 @@ describe('fetchOpenRouterModels', () => {
 
     expect(fetchSpy).toHaveBeenCalledTimes(1);
     expect(fetchSpy.mock.calls[0][0]).toBe('https://openrouter.ai/api/v1/models');
+    expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({});
+  });
+});
+
+describe('fetchUberLLMModels', () => {
+  beforeEach(() => {
+    mockSettings.ai = { uberllmApiKey: 'test-key' };
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('fetches and maps models from the UberLLM endpoint', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: [
+            { id: 'deepseek/deepseek-v4.1-flash', object: 'model' },
+            { id: 'anthropic/claude-sonnet-4.6', name: 'Claude Sonnet 4.6', object: 'model' },
+          ],
+        }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      )
+    );
+
+    await expect(fetchUberLLMModels()).resolves.toEqual([
+      { id: 'deepseek/deepseek-v4.1-flash', name: 'deepseek/deepseek-v4.1-flash' },
+      { id: 'anthropic/claude-sonnet-4.6', name: 'Claude Sonnet 4.6' },
+    ]);
+    expect(fetchSpy.mock.calls[0][0]).toBe('https://api.uberllm.dev/v1/models');
+    expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({ Authorization: 'Bearer test-key' });
+  });
+
+  it('lists models without a key because the endpoint is public', async () => {
+    mockSettings.ai = { uberllmApiKey: '' };
+    const fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response(JSON.stringify({ data: [] }), { status: 200 }));
+
+    await expect(fetchUberLLMModels()).resolves.toEqual([]);
     expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({});
   });
 });
