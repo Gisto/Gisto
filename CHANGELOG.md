@@ -6,6 +6,14 @@ All significant updates and improvements
 
 [Release candidate build](https://main-branch-gisto-app.netlify.app/)
 
+### 🚀 Features
+
+- *(ai)* Add UberLLM as an AI assistant provider
+・ by PSA-Team-source
+([@PSA-Team-source](https://github.com/PSA-Team-source))
+([7a85639](https://github.com/gisto/gisto/commit/7a85639f1e377c80572c552833473884891a613c))
+
+
 ### 📚 Documentation
 
 - Add deploy chart to readme
