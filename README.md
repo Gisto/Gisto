@@ -237,32 +237,49 @@ The release process is fully automated via GitHub Actions. Here's the flow:
 
 ```mermaid
 flowchart TD
-    PR[Pull request → main] --> V[Validate<br>lint · ts:lint · test · e2e]
-    MERGE[Merge PR → main] --> CL[Update Changelog<br>github-actions bot]
+    subgraph PRS["Pull requests → main"]
+        DEP["dependabot[bot]<br/>dependency PRs"] --> VAL["Validate<br/>lint · ts:lint · test:ci · e2e<br/>matrix on blacksmith-4vcpu"]
+        DEV["Human PR"] --> VAL
+    end
+    VAL --> MERGEPR["Merge PR → main"]
 
-    A[Maintainer triggers<br>Automate Release] -->|selects version bump| B[Bump version + CHANGELOG + tag]
-    B --> H[Merge main → release]
-    H -->|bot push does not trigger workflows| T[Explicit workflow dispatch]
+    subgraph CL["Update Changelog · on push main"]
+        C1["checkout + pnpm install"] --> C2["git-cliff → CHANGELOG.md"]
+        C2 --> C3{"CHANGELOG changed?"}
+        C3 -->|yes| C4["github-actions[bot]<br/>commit + push main"]
+        C3 -->|no| C5["stop"]
+    end
+    MERGEPR --> C1
 
-    T --> PUB[publish.yml]
-    T --> WEB[deploy-netlify.yml]
+    subgraph REL["Automate Release · manual: patch / minor / major"]
+        R1["pnpm release:bump"] --> R2["bump version + CHANGELOG + tag"]
+        R2 --> R3["github-actions[bot]<br/>pushes main + tag"]
+        R3 --> R4["checkout release<br/>merge main --no-ff"]
+        R4 --> R5["github-actions[bot]<br/>pushes release"]
+        R5 --> R6["gh workflow run<br/>publish + deploy-netlify"]
+    end
+    R6 --> P1
+    R6 --> W1
 
-    PUB --> J[macOS ARM]
-    PUB --> K[macOS Intel]
-    PUB --> L[Linux]
-    PUB --> M[Windows]
+    subgraph PUB["publish.yml · release push or manual"]
+        P1["matrix: macOS ARM, macOS Intel,<br/>Linux, Windows"] --> P2["pnpm install + Rust stable<br/>Rust cache"]
+        P2 --> P3["tauri-action build + sign"]
+        P3 --> P4["GitHub Release vX.Y.Z<br/>DMG / EXE / AppImage"]
+        P4 --> P5["gh workflow run homebrew-tap.yml"]
+    end
+    P5 --> H1
 
-    J --> N[Create GitHub Release]
-    K --> N
-    L --> N
-    M --> N
+    subgraph HB["Update Homebrew Tap · dispatch"]
+        H1["download DMGs + sha256"] --> H2["generate gisto.rb cask"]
+        H2 --> H3["update Gisto/homebrew-tap"]
+    end
+    H3 --> TAP[("Homebrew tap updated")]
 
-    N --> O[Trigger homebrew-tap.yml]
-    O --> P[Update Homebrew tap]
-
-    WEB --> W[pnpm build + Sentry]
-    W --> X[netlify deploy --prod --no-build]
-    X --> Y[(Netlify production)]
+    subgraph WEB["Deploy web · release push or manual"]
+        W1["pnpm install"] --> W2["pnpm build + Sentry<br/>VITE_SENTRY_DSN · SENTRY_AUTH_TOKEN"]
+        W2 --> W3["netlify deploy --prod<br/>--no-build --dir=dist"]
+    end
+    W3 --> NET[("Netlify production")]
 ```
 
 ## Steps
