@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix netlify deploy from github
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([9b7faf6](https://github.com/gisto/gisto/commit/9b7faf6d5c13b987f60c770b540ddd58f4434481))
+
+
 ## v2.15.6
 
 Released on: Nov 13, 2026
