@@ -2,6 +2,31 @@
 
 All significant updates and improvements
 
+## v2.16.0
+
+Released on: Nov 13, 2026
+
+### 🚀 Features
+
+- *(ai)* Add UberLLM as an AI assistant provider
+・ by PSA-Team-source
+([@PSA-Team-source](https://github.com/PSA-Team-source))
+([7a85639](https://github.com/gisto/gisto/commit/7a85639f1e377c80572c552833473884891a613c))
+
+
+### 📚 Documentation
+
+- Add deploy chart to readme
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6c661b2](https://github.com/gisto/gisto/commit/6c661b263b01b40e525b1d6ae240a748e0cbf419))
+
+- Improve deploy chart of all flows in readme
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([2322962](https://github.com/gisto/gisto/commit/2322962098189bee09ea4cccb298fa48db46960b))
+
+
 ## v2.15.7
 
 Released on: Nov 13, 2026

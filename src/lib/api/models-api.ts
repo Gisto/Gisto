@@ -27,6 +27,7 @@ function getApiKey(provider: string): string | null {
     minimax: 'minimaxApiKey',
     openrouter: 'openRouterApiKey',
     ollama: 'ollamaApiKey',
+    uberllm: 'uberllmApiKey',
   };
   const key = keyField[provider];
   if (!key) return null;
@@ -108,6 +109,17 @@ export async function fetchOpenRouterModels(): Promise<ModelInfo[]> {
     }));
 
   return [...presets, ...models];
+}
+
+export async function fetchUberLLMModels(): Promise<ModelInfo[]> {
+  const apiKey = getApiKey('uberllm') || '';
+
+  // The model list is public; an invalid key gets a 401, so send it only when set
+  return fetchModelList({
+    provider: 'UberLLM',
+    url: 'https://api.uberllm.dev/v1/models',
+    headers: apiKey ? { Authorization: `Bearer ${apiKey}` } : {},
+  });
 }
 
 export async function fetchOpenAiModels(): Promise<ModelInfo[]> {
@@ -198,6 +210,8 @@ export async function fetchModels(provider: string): Promise<ModelInfo[]> {
       return fetchClaudeModels();
     case 'minimax':
       return fetchMiniMaxModels();
+    case 'uberllm':
+      return fetchUberLLMModels();
     case 'ollama':
       return fetchOllamaModels();
     default:

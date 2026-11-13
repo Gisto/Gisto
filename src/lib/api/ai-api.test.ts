@@ -135,6 +135,38 @@ describe('generateAiResponse', () => {
     fetchSpy.mockRestore();
   });
 
+  it('routes UberLLM requests to its OpenAI-compatible endpoint', async () => {
+    mockSettings.ai = {
+      activeAiProvider: 'uberllm',
+      uberllmApiKey: 'test-key',
+      model: 'deepseek/deepseek-v4.1-flash',
+      temperature: 0.2,
+    };
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ choices: [{ message: { content: 'UberLLM response' } }] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    const result = await generateAiResponse({ prompt: 'hello' });
+
+    expect(result).toBe('UberLLM response');
+    expect(fetchSpy.mock.calls[0][0]).toBe('https://api.uberllm.dev/v1/chat/completions');
+    const headers = fetchSpy.mock.calls[0][1]?.headers as Record<string, string>;
+    expect(headers.Authorization).toBe('Bearer test-key');
+    const callBody = JSON.parse(fetchSpy.mock.calls[0][1]?.body as string);
+    expect(callBody.model).toBe('deepseek/deepseek-v4.1-flash');
+
+    fetchSpy.mockRestore();
+  });
+
+  it('throws AiApiError when no UberLLM API key is configured', async () => {
+    mockSettings.ai = { activeAiProvider: 'uberllm', uberllmApiKey: '' };
+
+    await expect(generateAiResponse({ prompt: 'hello' })).rejects.toThrow(AiApiError);
+  });
+
   it('sends system as separate field for Claude', async () => {
     mockSettings.ai = {
       activeAiProvider: 'claude',
