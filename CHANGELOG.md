@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## v2.15.6
+
+Released on: Nov 13, 2026
+
+### ⚙️ Miscellaneous Tasks
+
+- Build web app locally on GH
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([4cb3582](https://github.com/gisto/gisto/commit/4cb358257878122a1539049aeec337bbd450f7c3))
+
+
 ## v2.15.5
 
 Released on: Oct 20, 2026
