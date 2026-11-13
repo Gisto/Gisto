@@ -237,23 +237,20 @@ The release process is fully automated via GitHub Actions. Here's the flow:
 
 ```mermaid
 flowchart TD
-    A[Maintainer triggers<br>automate-release.yml] -->|selects version bump| B{bump type}
-    B -->|patch| C[Patch version bump]
-    B -->|minor| D[Minor version bump]
-    B -->|major| E[Major version bump]
+    PR[Pull request → main] --> V[Validate<br>lint · ts:lint · test · e2e]
+    MERGE[Merge PR → main] --> CL[Update Changelog<br>github-actions bot]
 
-    C --> F[Bump version & update CHANGELOG]
-    D --> F
-    E --> F
+    A[Maintainer triggers<br>Automate Release] -->|selects version bump| B[Bump version + CHANGELOG + tag]
+    B --> H[Merge main → release]
+    H -->|bot push does not trigger workflows| T[Explicit workflow dispatch]
 
-    F --> G[Push tag to remote]
-    G --> H[Merge main → release branch]
-    H --> I[Trigger publish.yml]
+    T --> PUB[publish.yml]
+    T --> WEB[deploy-netlify.yml]
 
-    I --> J[Build for macOS ARM]
-    I --> K[Build for macOS Intel]
-    I --> L[Build for Linux]
-    I --> M[Build for Windows]
+    PUB --> J[macOS ARM]
+    PUB --> K[macOS Intel]
+    PUB --> L[Linux]
+    PUB --> M[Windows]
 
     J --> N[Create GitHub Release]
     K --> N
@@ -262,6 +259,10 @@ flowchart TD
 
     N --> O[Trigger homebrew-tap.yml]
     O --> P[Update Homebrew tap]
+
+    WEB --> W[pnpm build + Sentry]
+    W --> X[netlify deploy --prod --no-build]
+    X --> Y[(Netlify production)]
 ```
 
 ## Steps
@@ -279,10 +280,15 @@ flowchart TD
    - Build triggered for all platforms
    - Release created with DMG/EXE/AppImage
    - Homebrew tap updated automatically
+   - Web app built in GitHub Actions and deployed to Netlify from the prebuilt `dist`
 
 3. **Release available** at:
    - [Releases](https://github.com/Gisto/Gisto/releases) tab
+   - [Web app](https://app.gisto.org)
    - Homebrew: `brew install --cask Gisto/tap/gisto`
+
+> [!NOTE]
+> Pull requests targeting `main` run `Validate` (lint, typecheck, unit and e2e tests), and merges to `main` update the changelog automatically. Netlify's own git builds are disabled; deployment is handled by GitHub Actions.
 
 # ⚖️ License
 
