@@ -13,6 +13,11 @@ All significant updates and improvements
 ([@sanusart](https://github.com/sanusart))
 ([6c661b2](https://github.com/gisto/gisto/commit/6c661b263b01b40e525b1d6ae240a748e0cbf419))
 
+- Improve deploy chart of all flows in readme
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([2322962](https://github.com/gisto/gisto/commit/2322962098189bee09ea4cccb298fa48db46960b))
+
 
 ## v2.15.7
 
