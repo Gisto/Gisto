@@ -12,6 +12,16 @@ import { getProviderConfig, SnippetProviderType } from '@/constants/providers.ts
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
 
+const validateUserUrl = (
+  provider: Exclude<SnippetProviderType, 'local'>,
+  snippetBinBase: string
+): string => {
+  if (provider === 'gitlab') return 'https://gitlab.com/api/v4/user';
+  if (provider === 'snippet-bin') return `${snippetBinBase}/auth/user`;
+
+  return 'https://api.github.com/user';
+};
+
 export const App = () => {
   const [token, setToken] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean | null>(null);
@@ -46,12 +56,7 @@ export const App = () => {
       const snippetBinBase = currentBaseUrl.endsWith('/api')
         ? currentBaseUrl
         : `${currentBaseUrl.replace(/\/+$/, '')}/api`;
-      const url =
-        provider === 'gitlab'
-          ? 'https://gitlab.com/api/v4/user'
-          : provider === 'snippet-bin'
-            ? `${snippetBinBase}/auth/user`
-            : 'https://api.github.com/user';
+      const url = validateUserUrl(provider, snippetBinBase);
       const headers: Record<string, string> = {};
 
       if (provider === 'gitlab') {

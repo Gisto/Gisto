@@ -60,6 +60,13 @@ const BASE_COLORS = [
   { value: '200 98% 39%', hex: '#0284C5', labelKey: 'pages.settings.baseColors.sky' },
 ] as const;
 
+const FEATURE_FLAG_COPY: Record<string, { labelKey: string; descriptionKey?: string }> = {
+  specialSnippetKinds: {
+    labelKey: 'pages.settings.specialSnippetKinds',
+    descriptionKey: 'pages.settings.specialSnippetKindsDescription',
+  },
+};
+
 const HSL_TRIPLET_REGEX = /^([\d.]+)\s+([\d.]+)%\s+([\d.]+)%$/;
 
 function formatHslPart(value: number) {
@@ -374,10 +381,21 @@ export const DynamicSettings = ({ settings, onChange, path = '' }: SettingsProps
 
     switch (typeof value) {
       case 'boolean': {
+        const flag = FEATURE_FLAG_COPY[key];
+
         return (
-          <div key={key} className="flex items-center space-x-2 mb-4">
-            <Switch checked={value} onCheckedChange={(checked) => onChange(fullPath, checked)} />
-            <label>{camelToTitleCase(key)}</label>
+          <div key={key} className="flex items-start space-x-2 mb-4">
+            <Switch
+              checked={value}
+              onCheckedChange={(checked) => onChange(fullPath, checked)}
+              className="mt-0.5"
+            />
+            <div className="flex flex-col">
+              <label>{flag ? t(flag.labelKey) : camelToTitleCase(key)}</label>
+              {flag?.descriptionKey && (
+                <p className="text-xs text-muted-foreground">{t(flag.descriptionKey)}</p>
+              )}
+            </div>
           </div>
         );
       }

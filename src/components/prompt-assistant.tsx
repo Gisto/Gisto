@@ -1,7 +1,7 @@
 import { ArrowUpIcon, Check, Mic, PlusIcon, Sparkles, Square } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
+import { Markdown } from '@/components/markdown.tsx';
 import { toast } from '@/components/toast';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Bubble, BubbleContent } from '@/components/ui/bubble';

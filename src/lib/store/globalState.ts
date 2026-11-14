@@ -34,6 +34,8 @@ export type StoreStateType = {
     jsonPreviewCollapsedByDefault: boolean;
     filesPreviewEnabledByDefault: boolean;
     sortFilesByMarkdownFirst: boolean;
+    /** Enables the structured snippet kinds (todo, kanban, doc, flashcards). */
+    specialSnippetKinds: boolean;
     sidebarViewMode: 'list' | 'tags' | 'languages';
     editor: {
       fontFamily: string;
@@ -166,6 +168,7 @@ export const defaultSettings: SettingsType = {
   jsonPreviewCollapsedByDefault: true,
   filesPreviewEnabledByDefault: true,
   sortFilesByMarkdownFirst: false,
+  specialSnippetKinds: true,
   sidebarViewMode: 'list',
   editor: {
     fontFamily: 'JetBrains Mono',

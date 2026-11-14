@@ -12,9 +12,9 @@ import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx
 import { Image } from '@/components/layout/pages/snippet/content/preview/image.tsx';
 import { JsonViewer } from '@/components/layout/pages/snippet/content/preview/json-viewer.tsx';
 import { Latex } from '@/components/layout/pages/snippet/content/preview/latex.tsx';
-import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
 import { OpenApi } from '@/components/layout/pages/snippet/content/preview/open-api.tsx';
 import { Pdf } from '@/components/layout/pages/snippet/content/preview/pdf.tsx';
+import { Markdown } from '@/components/markdown.tsx';
 import { EDITOR_OPTIONS } from '@/constants';
 import { getLanguage } from '@/constants/language-map.ts';
 import { t } from '@/lib/i18n';

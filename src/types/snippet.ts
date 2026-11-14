@@ -1,3 +1,42 @@
+export const SNIPPET_KINDS = ['snippet', 'todo', 'kanban', 'doc', 'flashcards'] as const;
+export type SnippetKind = (typeof SNIPPET_KINDS)[number];
+export type StructuredSnippetKind = Exclude<SnippetKind, 'snippet'>;
+
+export type TodoItem = { id: string; text: string; done: boolean };
+
+export type KanbanPriority = 'low' | 'medium' | 'high';
+
+export type KanbanCard = {
+  title: string;
+  description: string;
+  labels: string[];
+  priority?: KanbanPriority;
+};
+export type KanbanColumn = { id: string; title: string; cards: KanbanCard[] };
+
+export type DocEntry = {
+  id: string;
+  section: string;
+  title: string;
+  description: string;
+  code: string;
+  language: string;
+};
+
+export type FlashcardRating = 'again' | 'hard' | 'good' | 'easy';
+
+export type Flashcard = {
+  id: string;
+  front: string;
+  back: string;
+  /** Multiple-choice options; when present the card is answered by picking one */
+  options?: string[];
+  /** Indices into `options` that count as correct answers */
+  answers?: number[];
+  /** Seconds allowed to answer; expiry grades the card as `again` */
+  timeLimit?: number;
+};
+
 export type SnippetFileType = {
   filename: string;
   content: string;
@@ -121,6 +160,7 @@ export type SnippetType = {
 };
 
 export type SnippetEnrichedType = SnippetType & {
+  kind: SnippetKind;
   title: string;
   tags: string[];
   isUntitled: boolean;
