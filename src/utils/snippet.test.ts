@@ -1,6 +1,12 @@
 import {
   removeTags,
   getTags,
+  getSnippetKind,
+  parseTodoList,
+  serializeTodoList,
+  parseBoard,
+  serializeBoard,
+  moveBoardCard,
   processSnippet,
   mergeSyncedSnippet,
   getFileExtension,
@@ -396,6 +402,29 @@ describe('snippet utils', () => {
       expect(result.files).toEqual({ 'test.py': { content: 'content' }, test: null });
     });
 
+    it('marks files removed from the form for deletion in edit mode', () => {
+      const editSnippet = {
+        files: {
+          '.config-manifest.json': { content: '{"type":"todo"}' },
+          'todo.md': { content: '- [ ] one' },
+        },
+      } as unknown as SnippetSingleType;
+
+      const result = formatSnippetForSaving(
+        {
+          description: 'Test',
+          isPublic: false,
+          files: [{ filename: 'todo.md', content: '- [ ] one' }],
+        },
+        editSnippet
+      );
+
+      expect(result.files).toEqual({
+        'todo.md': { content: '- [ ] one' },
+        '.config-manifest.json': null,
+      });
+    });
+
     it('does not overwrite a live file with a deleted marker in edit mode', () => {
       const editSnippet = {
         files: { 'test.py': { content: 'old' } },
@@ -526,6 +555,161 @@ describe('snippet utils', () => {
       expect(isGeoJson({ language: 'JavaScript', filename: 'test.js' } as SnippetFileType)).toBe(
         false
       );
+    });
+  });
+
+  describe('todo lists', () => {
+    const manifest = (content: string) =>
+      ({
+        '.config-manifest.json': { filename: '.config-manifest.json', content },
+      }) as unknown as Record<string, SnippetFileType>;
+
+    it('detects the snippet kind from the manifest file', () => {
+      expect(getSnippetKind(manifest('{"type":"todo"}'))).toBe('todo');
+      expect(getSnippetKind(manifest('{"type":"kanban"}'))).toBe('kanban');
+      expect(getSnippetKind(manifest('{"type":"snippet"}'))).toBe('snippet');
+      expect(getSnippetKind({})).toBe('snippet');
+      expect(getSnippetKind(manifest('not json'))).toBe('snippet');
+    });
+
+    it('parses markdown checklist items', () => {
+      const todos = parseTodoList('# Tasks\n- [ ] one\n- [x] two\n* [X] three\nnot an item');
+
+      expect(todos.map(({ text, done }) => ({ text, done }))).toEqual([
+        { text: 'one', done: false },
+        { text: 'two', done: true },
+        { text: 'three', done: true },
+      ]);
+    });
+
+    it('serializes and skips empty items', () => {
+      expect(
+        serializeTodoList([
+          { id: '1', text: 'one', done: false },
+          { id: '2', text: ' two ', done: true },
+          { id: '3', text: '  ', done: false },
+        ])
+      ).toBe('- [ ] one\n- [x] two');
+
+      expect(
+        parseTodoList(serializeTodoList([{ id: '1', text: 'one', done: true }])).map(
+          ({ text, done }) => ({ text, done })
+        )
+      ).toEqual([{ text: 'one', done: true }]);
+    });
+  });
+
+  describe('kanban boards', () => {
+    const card = (
+      title: string,
+      description = '',
+      labels: string[] = [],
+      priority?: 'low' | 'medium' | 'high'
+    ) => ({
+      title,
+      description,
+      labels,
+      ...(priority ? { priority } : {}),
+    });
+
+    it('parses columns and cards, ignoring malformed content', () => {
+      const board = parseBoard(
+        JSON.stringify({
+          columns: [
+            {
+              title: 'Todo',
+              cards: [
+                'one',
+                2,
+                {
+                  title: 'two',
+                  description: 'details',
+                  labels: ['bug', ' UI ', 'bug', 3, ''],
+                  priority: 'high',
+                },
+                { title: 'three', priority: 'nope' },
+                { description: 'only' },
+              ],
+            },
+            { title: 42, cards: 'nope' },
+            null,
+          ],
+        })
+      );
+
+      expect(board.map(({ title, cards }) => ({ title, cards }))).toEqual([
+        {
+          title: 'Todo',
+          cards: [
+            card('one'),
+            card('two', 'details', ['bug', 'UI'], 'high'),
+            card('three'),
+            card('', 'only'),
+          ],
+        },
+        { title: '', cards: [] },
+      ]);
+      expect(parseBoard('not json')).toEqual([]);
+      expect(parseBoard('{"columns": "nope"}')).toEqual([]);
+    });
+
+    it('serializes columns without ids and skips empty cards', () => {
+      const content = serializeBoard([
+        {
+          id: '1',
+          title: ' Todo ',
+          cards: [
+            card(' one '),
+            card(''),
+            card('two', '  line one\nline two  ', [' bug ', '', 'ui'], 'low'),
+          ],
+        },
+        { id: '2', title: '', cards: [] },
+      ]);
+
+      expect(JSON.parse(content)).toEqual({
+        columns: [
+          {
+            title: 'Todo',
+            cards: [card('one'), card('two', 'line one\nline two', ['bug', 'ui'], 'low')],
+          },
+          { title: '', cards: [] },
+        ],
+      });
+    });
+
+    it('moves a card before a card in another column', () => {
+      const columns = [
+        { id: 'a', title: 'A', cards: [card('one'), card('two')] },
+        { id: 'b', title: 'B', cards: [card('three')] },
+      ];
+
+      expect(moveBoardCard(columns, { columnId: 'a', index: 0 }, 'b', 0)).toEqual([
+        { id: 'a', title: 'A', cards: [card('two')] },
+        { id: 'b', title: 'B', cards: [card('one'), card('three')] },
+      ]);
+    });
+
+    it('appends a card when dropped on a column', () => {
+      const columns = [
+        { id: 'a', title: 'A', cards: [card('one')] },
+        { id: 'b', title: 'B', cards: [card('two')] },
+      ];
+
+      expect(moveBoardCard(columns, { columnId: 'a', index: 0 }, 'b')).toEqual([
+        { id: 'a', title: 'A', cards: [] },
+        { id: 'b', title: 'B', cards: [card('two'), card('one')] },
+      ]);
+    });
+
+    it('reorders within a column and skips no-op moves', () => {
+      const columns = [{ id: 'a', title: 'A', cards: [card('one'), card('two'), card('three')] }];
+
+      expect(moveBoardCard(columns, { columnId: 'a', index: 1 }, 'a', 0)).toEqual([
+        { id: 'a', title: 'A', cards: [card('two'), card('one'), card('three')] },
+      ]);
+      expect(moveBoardCard(columns, { columnId: 'a', index: 0 }, 'a', 1)).toBe(columns);
+      expect(moveBoardCard(columns, { columnId: 'a', index: 0 }, 'missing')).toBe(columns);
     });
   });
 });

@@ -2,6 +2,40 @@ import { ITEMS_PER_PAGE } from '@/constants';
 import { LANGUAGE_TO_EXTENSION } from '@/constants/language-extensions.ts';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { guessLanguage } from '@/lib/providers/snippet-utils.ts';
+import {
+  MANIFEST_FILENAME,
+  TODO_FILENAME,
+  KANBAN_FILENAME,
+  DOC_FILENAME,
+  FLASHCARDS_FILENAME,
+  serializeManifest,
+  findManifestFile,
+  getManifest,
+  getDocDone,
+  isOrderedDoc,
+  getSnippetKind,
+  getVisibleSnippetKind,
+  parseTodoList,
+  serializeTodoList,
+  findTodoFile,
+  parseBoard,
+  serializeBoard,
+  moveBoardCard,
+  findKanbanFile,
+  parseDoc,
+  serializeDoc,
+  findDocFile,
+  docEntryKeys,
+  parseFlashcards,
+  serializeFlashcards,
+  findFlashcardsFile,
+  withKindFile,
+  findKindFile,
+  isStructuredSnippetKind,
+  KIND_FILENAMES,
+  KIND_LANGUAGES,
+  STRUCTURED_SNIPPET_KINDS,
+} from '@/lib/snippet-kinds';
 import { globalState } from '@/lib/store/globalState.ts';
 import {
   SnippetEnrichedType,
@@ -12,6 +46,40 @@ import {
 
 const tagsRegex = /#(\d*[A-Za-z_\-0-9]+\d*)/g;
 
+export {
+  MANIFEST_FILENAME,
+  TODO_FILENAME,
+  KANBAN_FILENAME,
+  DOC_FILENAME,
+  FLASHCARDS_FILENAME,
+  serializeManifest,
+  findManifestFile,
+  getManifest,
+  getDocDone,
+  isOrderedDoc,
+  getSnippetKind,
+  parseTodoList,
+  serializeTodoList,
+  findTodoFile,
+  parseBoard,
+  serializeBoard,
+  moveBoardCard,
+  findKanbanFile,
+  parseDoc,
+  serializeDoc,
+  findDocFile,
+  docEntryKeys,
+  parseFlashcards,
+  serializeFlashcards,
+  findFlashcardsFile,
+  withKindFile,
+  findKindFile,
+  isStructuredSnippetKind,
+  KIND_FILENAMES,
+  KIND_LANGUAGES,
+  STRUCTURED_SNIPPET_KINDS,
+};
+
 export const removeTags = (title: string) => {
   if (!title) {
     return 'unknown';
@@ -21,7 +89,7 @@ export const removeTags = (title: string) => {
   return tags ? title.trim().split(tags[0])[0] : title;
 };
 
-export const getTags = (title: string) => {
+export const getTags = (title: string): string[] => {
   if (!title) {
     return [];
   }
@@ -33,17 +101,19 @@ export const getTags = (title: string) => {
 
 export const processSnippet = (snippet: SnippetType): SnippetEnrichedType => {
   const description = snippet.description ?? 'Untitled';
+  const files = Object.values(snippet.files).filter((file) => file.filename !== MANIFEST_FILENAME);
 
   return {
     ...snippet,
     id: snippet.id,
+    kind: getVisibleSnippetKind(snippet.files),
     description: description,
     isUntitled: !description,
     tags: getTags(description),
     title: removeTags(description),
-    languages: Object.keys(snippet.files)
+    languages: files
       .map((file) => {
-        const lang = snippet.files[file]?.language;
+        const lang = file?.language;
         if (typeof lang === 'string') {
           return { name: lang, color: 'white' as const };
         }
@@ -60,7 +130,7 @@ export const processSnippet = (snippet: SnippetType): SnippetEnrichedType => {
 
         return acc;
       }, []),
-    files: Object.values(snippet.files).map((file) => ({
+    files: files.map((file) => ({
       ...file,
       text: file.content,
     })) as unknown as SnippetEnrichedType['files'],

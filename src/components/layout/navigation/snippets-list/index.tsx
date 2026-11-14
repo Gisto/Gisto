@@ -30,6 +30,80 @@ import { t } from '@/lib/i18n';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 import { SnippetEnrichedType } from '@/types/snippet.ts';
 import { searchFilter } from '@/utils';
+const ListStatus = ({
+  filteredCount,
+  totalCount,
+  totalSnippetCount,
+  isLoading,
+}: {
+  filteredCount: number;
+  totalCount: number;
+  totalSnippetCount: number;
+  isLoading: boolean;
+}) => {
+  if (totalCount > 0) {
+    return (
+      <>
+        <FileCode className="size-3" />{' '}
+        {t('list.filteredSnippets', {
+          filtered: filteredCount,
+          number: totalSnippetCount || totalCount,
+        })}
+        {isLoading && <Loader size={16} className="animate-spin" />}
+      </>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <>
+        <Loading size={3} className="flex items-center justify-center mr-1" />{' '}
+        {t('list.refreshingData')}
+      </>
+    );
+  }
+
+  return null;
+};
+
+const SnippetListContent = ({
+  snippets,
+  isLoading,
+  onCreate,
+}: {
+  snippets: SnippetEnrichedType[];
+  isLoading: boolean;
+  onCreate: () => void;
+}) => {
+  if (snippets.length === 0 && isLoading) {
+    return <ListSkeleton />;
+  }
+
+  if (snippets.length === 0) {
+    return (
+      <EmptyState
+        className="min-h-full"
+        title={t('list.noSnippets')}
+        description={t('list.noSnippetsDescription')}
+        action={
+          <Button className="cursor-pointer" variant="outline" size="xs" onClick={onCreate}>
+            <Plus className="size-4" />
+            {t('common.create')} {t('common.snippet')}
+          </Button>
+        }
+      />
+    );
+  }
+
+  return (
+    <>
+      {snippets.map((snippet) => (
+        <LazyListItem key={snippet.id} snippet={snippet} />
+      ))}
+    </>
+  );
+};
+
 const LazyListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
   const [isInView, ref] = useIntersectionObserver<HTMLDivElement>();
 
@@ -101,21 +175,12 @@ const SnippetsListFooter = ({
   return (
     <div className="h-[48px] border-t flex items-center justify-between p-4 gap-2 text-[10px]">
       <div className="flex items-center gap-2">
-        {totalCount > 0 ? (
-          <>
-            <FileCode className="size-3" />{' '}
-            {t('list.filteredSnippets', {
-              filtered: filteredCount,
-              number: totalSnippetCount || totalCount,
-            })}
-            {isLoading && <Loader size={16} className="animate-spin" />}
-          </>
-        ) : isLoading ? (
-          <>
-            <Loading size={3} className="flex items-center justify-center mr-1" />{' '}
-            {t('list.refreshingData')}
-          </>
-        ) : null}
+        <ListStatus
+          filteredCount={filteredCount}
+          totalCount={totalCount}
+          totalSnippetCount={totalSnippetCount}
+          isLoading={isLoading}
+        />
 
         <RefreshButton isLoading={isLoading} isRefreshing={isRefreshing} onClick={refresh} />
       </div>
@@ -247,34 +312,18 @@ export const Lists = ({
       </div>
       {sidebarViewMode === 'list' ? (
         <ScrollArea className="flex-1 shadow-inner">
-          {allSnippets.length === 0 && isLoading ? (
-            <ListSkeleton />
-          ) : allSnippets.length === 0 ? (
-            <EmptyState
-              className="min-h-full"
-              title={t('list.noSnippets')}
-              description={t('list.noSnippetsDescription')}
-              action={
-                <Button
-                  className="cursor-pointer"
-                  variant="outline"
-                  size="xs"
-                  onClick={() => navigate('/new-snippet')}
-                >
-                  <Plus className="size-4" />
-                  {t('common.create')} {t('common.snippet')}
-                </Button>
-              }
-            />
-          ) : (
-            listOfSnippets.length > 0 &&
-            listOfSnippets.map((snippet) => <LazyListItem key={snippet.id} snippet={snippet} />)
-          )}
+          <SnippetListContent
+            snippets={listOfSnippets}
+            isLoading={isLoading}
+            onCreate={() => navigate('/new-snippet')}
+          />
         </ScrollArea>
-      ) : sidebarViewMode === 'tags' ? (
-        <TreeView key={`tags-${allExpanded}`} mode="tags" allExpanded={allExpanded} />
       ) : (
-        <TreeView key={`languages-${allExpanded}`} mode="languages" allExpanded={allExpanded} />
+        <TreeView
+          key={`${sidebarViewMode}-${allExpanded}`}
+          mode={sidebarViewMode === 'tags' ? 'tags' : 'languages'}
+          allExpanded={allExpanded}
+        />
       )}
       <SnippetsListFooter
         isLoading={isLoading}

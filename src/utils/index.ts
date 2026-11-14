@@ -5,6 +5,7 @@ import { globalState } from '@/lib/store/globalState.ts';
 export * from './string.ts';
 export * from './snippet.ts';
 export * from './search.ts';
+export * from '@/lib/snippet-kinds/index.ts';
 
 export function cn(...classes: (string | undefined | null | false)[]) {
   return classes.filter(Boolean).join(' ');
