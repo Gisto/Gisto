@@ -128,7 +128,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.3.5",
-    "vitest": "^4.1.0"
+    "vitest": "^5.0.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
