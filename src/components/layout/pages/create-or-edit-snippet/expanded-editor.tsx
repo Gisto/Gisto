@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Csv } from '@/components/layout/pages/snippet/content/preview/csv.tsx';
 import { Html } from '@/components/layout/pages/snippet/content/preview/html.tsx';
 import { JsonViewer } from '@/components/layout/pages/snippet/content/preview/json-viewer.tsx';
-import { Markdown } from '@/components/layout/pages/snippet/content/preview/markdown.tsx';
+import { Markdown } from '@/components/markdown.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog.tsx';
 import { EDITOR_OPTIONS } from '@/constants';

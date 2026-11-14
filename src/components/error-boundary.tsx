@@ -58,7 +58,9 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
           <h2 className="font-semibold text-foreground text-lg">
             {t('components.errorBoundaryTitle')}
           </h2>
-          <p className="text-muted-foreground text-sm">{t('components.errorBoundaryDescription')}</p>
+          <p className="text-muted-foreground text-sm">
+            {t('components.errorBoundaryDescription')}
+          </p>
         </div>
         <div className="flex items-center gap-2">
           <Button onClick={this.resetErrorBoundary}>{t('common.retry')}</Button>

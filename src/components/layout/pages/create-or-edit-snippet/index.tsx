@@ -5,7 +5,11 @@ import { z } from 'zod';
 
 import { AiAssistantButton } from '@/components/layout/pages/create-or-edit-snippet/ai-assistant-button.tsx';
 import { DropZoneOverlay } from '@/components/layout/pages/create-or-edit-snippet/drop-zone-overlay.tsx';
-import { FileCard } from '@/components/layout/pages/create-or-edit-snippet/file-card.tsx';
+import { KindEditor } from '@/components/layout/pages/create-or-edit-snippet/kind-editor.tsx';
+import {
+  kindContent,
+  kindCounterLabel,
+} from '@/components/layout/pages/create-or-edit-snippet/kind-form.ts';
 import {
   MissingExtensionDialog,
   MissingExtensionFile,
@@ -19,6 +23,7 @@ import {
 import { FileUploadButton } from '@/components/layout/pages/create-or-edit-snippet/upload-file-button.tsx';
 import { PageContent } from '@/components/layout/pages/page-content.tsx';
 import { PageHeader } from '@/components/layout/pages/page-header.tsx';
+import { getKindMeta, structuredKinds } from '@/components/snippet-kinds/kind-meta.ts';
 import { toast } from '@/components/toast';
 import { Button } from '@/components/ui/button.tsx';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs.tsx';
@@ -26,14 +31,28 @@ import { Textarea } from '@/components/ui/textarea';
 import { ZodError } from '@/components/zod-error.tsx';
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
+import { isKanbanCard } from '@/lib/snippet-kinds/kanban.ts';
 import { useStoreValue } from '@/lib/store/globalState.ts';
-import { SnippetSingleType } from '@/types/snippet.ts';
+import { SnippetKind, SnippetSingleType } from '@/types/snippet.ts';
 import {
+  findDocFile,
+  findFlashcardsFile,
+  findKanbanFile,
+  findTodoFile,
   formatSnippetForSaving,
   getFilesNeedingLanguageExtension,
   getLanguageName,
+  getVisibleSnippetKind,
   getTags,
+  isOrderedDoc,
+  KIND_FILENAMES,
+  MANIFEST_FILENAME,
+  parseBoard,
+  parseDoc,
+  parseFlashcards,
+  parseTodoList,
   removeTags,
+  serializeManifest,
   upperCaseFirst,
 } from '@/utils';
 
@@ -74,7 +93,10 @@ export const CreateOrEditSnippet = ({
 
         setEdit(snippet);
 
+        const kind = getVisibleSnippetKind(snippet.files);
+
         dispatch({ type: 'RESET' });
+        dispatch({ type: 'SET_KIND', payload: kind });
 
         dispatch({ type: 'REMOVE_FILE', index: 0 });
         dispatch({ type: 'SET_DESCRIPTION', payload: removeTags(snippet?.description) });
@@ -84,6 +106,8 @@ export const CreateOrEditSnippet = ({
         }
 
         for (const file in snippet?.files) {
+          if (snippet.files[file].filename === MANIFEST_FILENAME) continue;
+
           dispatch({
             type: 'ADD_FILE',
             payload: {
@@ -91,6 +115,33 @@ export const CreateOrEditSnippet = ({
               content: snippet?.files[file].content,
               language: getLanguageName(snippet?.files[file]),
             },
+          });
+        }
+
+        if (kind === 'todo') {
+          dispatch({
+            type: 'SET_TODOS',
+            payload: parseTodoList(findTodoFile(snippet.files)?.content ?? ''),
+          });
+        } else if (kind === 'kanban') {
+          dispatch({
+            type: 'SET_BOARD',
+            payload: parseBoard(findKanbanFile(snippet.files)?.content ?? ''),
+          });
+        } else if (kind === 'doc') {
+          const ordered = isOrderedDoc(snippet.files);
+          dispatch({ type: 'SET_DOC_ORDERED', payload: ordered });
+          dispatch({
+            type: 'SET_DOC_ENTRIES',
+            payload: parseDoc(
+              findDocFile(snippet.files)?.content ?? '',
+              ordered ? 'ordered' : 'reference'
+            ),
+          });
+        } else if (kind === 'flashcards') {
+          dispatch({
+            type: 'SET_FLASHCARDS',
+            payload: parseFlashcards(findFlashcardsFile(snippet.files)?.content ?? ''),
           });
         }
       })();
@@ -138,8 +189,69 @@ export const CreateOrEditSnippet = ({
     }
   };
 
+  const buildFormState = () => {
+    const meta = getKindMeta(state.kind);
+
+    if (!meta.filename) {
+      return state;
+    }
+
+    const manifest = {
+      filename: MANIFEST_FILENAME,
+      content: serializeManifest(
+        meta.supportsOrdering
+          ? { type: state.kind, ordered: state.docOrdered }
+          : { type: state.kind }
+      ),
+      language: 'JSON',
+    };
+    const kindFiles = new Set<string>([MANIFEST_FILENAME, ...Object.values(KIND_FILENAMES)]);
+    const extraFiles = state.files.filter((file) => file.filename && !kindFiles.has(file.filename));
+    const dataFile = {
+      filename: meta.filename,
+      content: kindContent(state),
+      language: meta.language ?? '',
+    };
+
+    return {
+      ...state,
+      files: [...extraFiles, manifest, dataFile],
+    };
+  };
+
+  const validateKind = () => {
+    const meta = getKindMeta(state.kind);
+
+    if (!meta.filename) return true;
+
+    if (state.kind === 'kanban') {
+      const emptyBoard = !state.board.some((column) => column.cards.some(isKanbanCard));
+      if (emptyBoard) return failValidation(meta.emptyErrorKey);
+    }
+
+    if (!kindContent(state).trim()) {
+      return failValidation(meta.emptyErrorKey);
+    }
+
+    return true;
+  };
+
+  const failValidation = (message: string) => {
+    setErrors([
+      {
+        code: 'custom',
+        message: t(message),
+        path: ['files', 0, 'content'],
+        input: undefined,
+      },
+    ]);
+    return false;
+  };
+
   const create = async () => {
-    const validation = SnippetSchema.safeParse(state);
+    if (!validateKind()) return;
+
+    const validation = SnippetSchema.safeParse(buildFormState());
 
     if (!validation.success) {
       setErrors(validation.error.issues);
@@ -157,7 +269,9 @@ export const CreateOrEditSnippet = ({
   };
 
   const update = async () => {
-    const validation = SnippetSchema.safeParse(state);
+    if (!validateKind()) return;
+
+    const validation = SnippetSchema.safeParse(buildFormState());
 
     if (!validation.success) {
       setErrors(validation.error.issues);
@@ -188,6 +302,9 @@ export const CreateOrEditSnippet = ({
     setMissingFiles(null);
   };
 
+  const meta = getKindMeta(state.kind);
+  const kindLabel = t(meta.labelKey);
+
   return (
     <div className="h-screen w-full min-w-0 border-r border-collapse">
       <PageHeader>
@@ -203,8 +320,8 @@ export const CreateOrEditSnippet = ({
 
             <div className="line-clamp-1">
               {edit
-                ? `${t('pages.new.editSnippet')}: ${removeTags(edit.description)}`
-                : t('pages.new.createNewSnippet')}
+                ? `${t(`pages.new.edit${upperCaseFirst(state.kind)}`)}: ${removeTags(edit.description)}`
+                : t(`pages.new.createNew${upperCaseFirst(state.kind)}`)}
             </div>
           </div>
         </div>
@@ -212,7 +329,31 @@ export const CreateOrEditSnippet = ({
       <DropZoneOverlay dispatch={dispatch} defaultLanguage={settings.newSnippetDefaultLanguage}>
         <PageContent>
           <div className="m-8 flex gap-8">
-            <div className="flex flex-col gap-4 w-2/3">
+            <div
+              className={
+                meta.wide ? 'flex flex-col gap-4 flex-1 min-w-0' : 'flex flex-col gap-4 w-2/3'
+              }
+            >
+              {settings.specialSnippetKinds && (
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-primary">{t('pages.new.type')}</span>
+                  <Tabs
+                    value={state.kind}
+                    onValueChange={(value) =>
+                      dispatch({ type: 'SET_KIND', payload: value as SnippetKind })
+                    }
+                  >
+                    <TabsList className="flex h-auto flex-wrap justify-start">
+                      <TabsTrigger value="snippet">{t('pages.new.typeSnippet')}</TabsTrigger>
+                      {structuredKinds().map((kind) => (
+                        <TabsTrigger key={kind} value={kind}>
+                          {t(`pages.new.type${upperCaseFirst(kind)}`)}
+                        </TabsTrigger>
+                      ))}
+                    </TabsList>
+                  </Tabs>
+                </div>
+              )}
               <div className="flex justify-between gap-8">
                 <div className="flex flex-col gap-2 w-full">
                   <label
@@ -254,57 +395,45 @@ export const CreateOrEditSnippet = ({
                   )}
                 </div>
 
-                <div className="flex flex-col gap-2 w-2/3">
+                <div
+                  className={
+                    state.kind === 'kanban'
+                      ? 'flex flex-col gap-2 w-64 shrink-0'
+                      : 'flex flex-col gap-2 w-2/3'
+                  }
+                >
                   <TagsSectionLabel />
                   <TagsSection tags={state.tags} dispatch={dispatch} />
                 </div>
               </div>
-              <div className="text-xs">{t('pages.new.dragDropTip')}</div>
-              {state.files.map(
-                (
-                  file: {
-                    language: string | undefined;
-                    filename: string | number | readonly string[] | undefined;
-                    content: string | undefined;
-                  },
-                  index: number
-                ) => (
-                  <FileCard
-                    key={`${index}-${file.language}`}
-                    file={file}
-                    index={index}
-                    dispatch={dispatch}
-                    isEdit={!!edit}
-                    errors={errors}
-                    totalFiles={state.files.length}
-                  />
-                )
-              )}
+              <KindEditor state={state} dispatch={dispatch} errors={errors} isEdit={!!edit} />
               <div className="flex justify-between sticky bottom-0 bg-accent z-20 p-4">
                 <div className="flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    onClick={() =>
-                      dispatch({
-                        type: 'ADD_FILE',
-                        payload: {
-                          filename: '',
-                          content: '',
-                          language: settings.newSnippetDefaultLanguage,
-                        },
-                      })
-                    }
-                  >
-                    <Plus className="size-4" />
-                    {t('pages.new.addFile')}
-                  </Button>
+                  {state.kind === 'snippet' && (
+                    <>
+                      <Button
+                        variant="outline"
+                        onClick={() =>
+                          dispatch({
+                            type: 'ADD_FILE',
+                            payload: {
+                              filename: '',
+                              content: '',
+                              language: settings.newSnippetDefaultLanguage,
+                            },
+                          })
+                        }
+                      >
+                        <Plus className="size-4" />
+                        {t('pages.new.addFile')}
+                      </Button>
 
-                  <FileUploadButton dispatch={dispatch} />
+                      <FileUploadButton dispatch={dispatch} />
+                    </>
+                  )}
                 </div>
 
-                <div className="self-center">
-                  {t('components.editingFiles', { n: state.files.length })}
-                </div>
+                <div className="self-center">{kindCounterLabel(state)}</div>
 
                 <div className="flex gap-2">
                   <Button
@@ -322,10 +451,8 @@ export const CreateOrEditSnippet = ({
                     data-save-button
                   >
                     {edit
-                      ? upperCaseFirst(t('common.update')) +
-                        ' ' +
-                        upperCaseFirst(t('common.snippet'))
-                      : `${upperCaseFirst(t('common.create'))} ${state.isPublic ? t('common.public') : t('common.private')} ${t('common.snippet')}`}
+                      ? upperCaseFirst(t('common.update')) + ' ' + upperCaseFirst(kindLabel)
+                      : `${upperCaseFirst(t('common.create'))} ${state.isPublic ? t('common.public') : t('common.private')} ${kindLabel}`}
                   </Button>
                 </div>
               </div>

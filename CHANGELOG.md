@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## v2.17.0
+
+Released on: Nov 14, 2026
+
+### 🚀 Features
+
+- Special snippet types
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([2c6b473](https://github.com/gisto/gisto/commit/2c6b473fd5fb92197a673f0a753f99d1690547ff))
+
+
 ## v2.16.0
 
 Released on: Nov 13, 2026

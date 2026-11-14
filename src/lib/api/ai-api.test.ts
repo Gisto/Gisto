@@ -289,14 +289,12 @@ describe('generateAiResponse', () => {
         model: 'MiniMax-M3',
         temperature: 0.7,
       };
-      const fetchSpy = vi
-        .spyOn(globalThis, 'fetch')
-        .mockResolvedValue(
-          new Response(JSON.stringify(response), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' },
-          })
-        );
+      const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+        new Response(JSON.stringify(response), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
       const content = [
         { type: 'text' as const, text: 'Describe these assets.' },
         { type: 'image_url' as const, image_url: { url: 'https://example.com/image.png' } },

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-import { loginWithLocal, deleteSnippet, navigateToNewSnippet } from './test-utils';
+import { loginWithLocal, deleteSnippet, navigateToNewSnippet, selectLanguage } from './test-utils';
 
 test.describe('Snippet CRUD with language extension dialog', () => {
   test('creates snippet with filename needing extension and applies it', async ({ page }) => {
@@ -13,10 +13,7 @@ test.describe('Snippet CRUD with language extension dialog', () => {
     await page.click('.monaco-editor');
     await page.keyboard.insertText('console.log("hi");');
 
-    // Select JavaScript language
-    await page.getByLabel('Dropdown select').click();
-    await page.fill('input[placeholder="Find language"]', 'JavaScript');
-    await page.click('div:has-text("JavaScript")');
+    await selectLanguage(page, 'JavaScript');
 
     await page.click('button:has-text("Create")');
 
@@ -46,9 +43,7 @@ test.describe('Snippet CRUD with language extension dialog', () => {
     await page.click('.monaco-editor');
     await page.keyboard.insertText('print("hi")');
 
-    await page.getByLabel('Dropdown select').click();
-    await page.fill('input[placeholder="Find language"]', 'Python');
-    await page.click('div:has-text("Python")');
+    await selectLanguage(page, 'Python');
 
     await page.click('button:has-text("Create")');
 
@@ -110,9 +105,7 @@ test.describe('Snippet CRUD with language extension dialog', () => {
     await page.click('.monaco-editor');
     await page.keyboard.insertText('FROM node:20');
 
-    await page.getByLabel('Dropdown select').click();
-    await page.fill('input[placeholder="Find language"]', 'Dockerfile');
-    await page.click('div:has-text("Dockerfile")');
+    await selectLanguage(page, 'Dockerfile');
 
     await page.click('button:has-text("Create")');
 

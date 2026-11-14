@@ -1,17 +1,29 @@
 import { Sparkles } from 'lucide-react';
 import React from 'react';
 
-import { ActionType } from '@/components/layout/pages/create-or-edit-snippet/reducer.ts';
+import { kindContent } from '@/components/layout/pages/create-or-edit-snippet/kind-form.ts';
+import { ActionType, StateType } from '@/components/layout/pages/create-or-edit-snippet/reducer.ts';
 import { toast } from '@/components/toast';
 import { Button } from '@/components/ui/button.tsx';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip.tsx';
 import { generateAiResponse, AiApiError, isAiAvailable } from '@/lib/api/ai-api.ts';
 import { t } from '@/lib/i18n';
 
+const AI_PROVIDER_LABELS: Record<string, string> = {
+  openrouter: 'OpenRouter',
+  gemini: 'Gemini',
+  openai: 'OpenAI',
+  claude: 'Claude',
+  minimax: 'MiniMax',
+  ollama: 'Ollama',
+  uberllm: 'UberLLM',
+};
+
+const aiProviderLabel = (provider?: string): string =>
+  (provider && AI_PROVIDER_LABELS[provider]) || provider || '';
+
 interface AiAssistantButtonProps {
-  state: {
-    files: Array<{ content: string }>;
-  };
+  state: StateType;
   dispatch: React.ActionDispatch<[action: ActionType]>;
   tags: string[];
 }
@@ -23,7 +35,7 @@ export const AiAssistantButton = ({ state, dispatch, tags }: AiAssistantButtonPr
 
   const generate = async () => {
     try {
-      const codeContent = state.files.map((f) => f.content).join('\n');
+      const codeContent = kindContent(state);
 
       const prompt = [
         'Respond ONLY with a raw JSON object like this:',
@@ -70,14 +82,7 @@ export const AiAssistantButton = ({ state, dispatch, tags }: AiAssistantButtonPr
       console.error('AI error:', error);
 
       if (error instanceof AiApiError) {
-        const providerName =
-          error.provider === 'openrouter'
-            ? 'OpenRouter'
-            : error.provider === 'uberllm'
-              ? 'UberLLM'
-              : error.provider === 'openai'
-                ? 'OpenAI'
-                : 'Gemini';
+        const providerName = aiProviderLabel(error.provider);
         toast.show({
           message: error.message,
           type: 'error',
