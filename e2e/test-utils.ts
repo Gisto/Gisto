@@ -70,6 +70,21 @@ export async function deleteSnippet(page: Page, snippetTitle: string, fileName =
   await page.waitForTimeout(1000);
 }
 
+// the language picker is a searchable dropdown; the search field filters on label and keywords,
+// so pick the option by its visible label and assert the trigger shows it before moving on
+export async function selectLanguage(page: Page, language: string) {
+  const trigger = page.locator('.searchable-select').first();
+
+  await trigger.click();
+  await page.fill('input[placeholder="Find language"]', language);
+
+  const option = page.locator('.searchable-select button', { hasText: language }).first();
+  await expect(option).toBeVisible({ timeout: 5000 });
+  await option.click();
+
+  await expect(trigger).toContainText(language);
+}
+
 export async function logout(page: Page) {
   page.on('dialog', async (dialog) => {
     expect(dialog.message()).toContain('log-out');

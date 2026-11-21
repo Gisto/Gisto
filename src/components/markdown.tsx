@@ -1,53 +1,20 @@
 import { alert } from '@mdit/plugin-alert';
 import { tasklist } from '@mdit/plugin-tasklist';
 import markdownItMermaid from '@wekanteam/markdown-it-mermaid';
-import hljs from 'highlight.js';
-import markdownIt from 'markdown-it';
 import { useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import { CopyToClipboardButton } from '@/components/copy-to-clipboard-button.tsx';
 import { useTheme } from '@/components/theme/theme-provider.tsx';
+import { createMarkdown } from '@/lib/markdown.ts';
 import { SnippetFileType } from '@/types/snippet.ts';
-import { upperCaseFirst } from '@/utils';
+import { cn } from '@/utils';
 
-const md = markdownIt({
-  html: true,
-  linkify: true,
-  typographer: true,
-  highlight: (str: string, lang?: string): string => {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return `<pre><div class="relative text-xs border-b bottom-1 pb-3 mb-4">${upperCaseFirst(lang)}</div><code class="hljs language-${lang}">${hljs.highlight(str, { language: lang }).value}</code></pre>`;
-      } catch (err) {
-        console.error('Error highlighting code:', err);
-        void err;
-      }
-    }
-    try {
-      return `<pre><code class="hljs">${hljs.highlightAuto(str).value}</code></pre>`;
-    } catch (err) {
-      void err;
-      return `<pre><code class="hljs">${md.utils.escapeHtml(str)}</code></pre>`;
-    }
-  },
-});
+const md = createMarkdown();
 
 md.use(tasklist);
 md.use(alert);
 md.use(markdownItMermaid);
-
-const defaultRender =
-  md.renderer.rules.link_open ||
-  function (tokens, idx, options, _env, self) {
-    return self.renderToken(tokens, idx, options);
-  };
-
-md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
-  tokens[idx].attrSet('target', '_blank');
-
-  return defaultRender(tokens, idx, options, env, self);
-};
 
 let codeBlockCounter = 0;
 const defaultFenceRender =
@@ -92,7 +59,22 @@ const setThemeCss = (theme: string) => {
   }
 };
 
-export const Markdown = ({ file, content }: { file?: SnippetFileType; content?: string }) => {
+export const Markdown = ({
+  file,
+  content,
+  className,
+  frameless = false,
+  prose = true,
+}: {
+  file?: SnippetFileType;
+  content?: string;
+  /** Extra classes for the rendered markdown body. */
+  className?: string;
+  /** Skip the padded file-preview wrapper, e.g. when embedded in a kind view. */
+  frameless?: boolean;
+  /** Apply the github-markdown typography, off when caller styles the output. */
+  prose?: boolean;
+}) => {
   const { resolvedTheme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -142,13 +124,15 @@ export const Markdown = ({ file, content }: { file?: SnippetFileType; content?: 
     };
   }, [result, resolvedTheme]);
 
-  return (
-    <div className="bg-background p-4 overflow-auto h-full">
-      <div
-        ref={containerRef}
-        className="markdown-body"
-        dangerouslySetInnerHTML={{ __html: result }}
-      />
-    </div>
+  const body = (
+    <div
+      ref={containerRef}
+      className={cn(prose && 'markdown-body', className)}
+      dangerouslySetInnerHTML={{ __html: result }}
+    />
   );
+
+  if (frameless) return body;
+
+  return <div className="bg-background p-4 overflow-auto h-full">{body}</div>;
 };

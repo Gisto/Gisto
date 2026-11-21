@@ -35,7 +35,8 @@ const LinkButton = ({
 );
 
 export const About = ({ isCollapsed = false, setIsCollapsed = () => {} }: Props = {}) => {
-  if (window.location.search.includes('__crash_test__')) throw new Error('boundary verification crash');
+  if (window.location.search.includes('__crash_test__'))
+    throw new Error('boundary verification crash');
   return (
     <div className="h-screen w-full min-w-0 border-r border-collapse">
       <PageHeader>

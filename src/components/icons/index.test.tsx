@@ -7,6 +7,7 @@ import {
   MiniMaxIcon,
   OpenRouterIcon,
   OllamaIcon,
+  UberLLMIcon,
   AtlasCloudIcon,
   GitHubIcon,
   GitLabIcon,
@@ -38,13 +39,18 @@ describe('Icons', () => {
     expect(asFragment()).toBeDefined();
   });
 
-  it('renders AtlasCloudIcon', () => {
-    const { asFragment } = render(<AtlasCloudIcon />);
+  it('renders OllamaIcon', () => {
+    const { asFragment } = render(<OllamaIcon />);
     expect(asFragment()).toBeDefined();
   });
 
-  it('renders OllamaIcon', () => {
-    const { asFragment } = render(<OllamaIcon />);
+  it('renders UberLLMIcon', () => {
+    const { asFragment } = render(<UberLLMIcon />);
+    expect(asFragment()).toBeDefined();
+  });
+
+  it('renders AtlasCloudIcon', () => {
+    const { asFragment } = render(<AtlasCloudIcon />);
     expect(asFragment()).toBeDefined();
   });
 

@@ -11,6 +11,7 @@ import {
   MonitorUp,
 } from 'lucide-react';
 
+import { KindIcon } from '@/components/snippet-kinds/kind-icon.tsx';
 import { toast } from '@/components/toast';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Separator } from '@/components/ui/separator.tsx';
@@ -43,6 +44,14 @@ export const ListItem = ({ snippet }: { snippet: SnippetEnrichedType }) => {
       >
         <h4 className="cursor-pointer [word-break:break-word] flex items-center gap-2">
           <span className="min-w-0">{removeTags(snippet.description) || t('common.untitled')}</span>
+          {snippet.kind !== 'snippet' && (
+            <Tooltip delayDuration={100}>
+              <TooltipTrigger asChild>
+                <KindIcon kind={snippet.kind} className="size-3.5 shrink-0 text-primary" />
+              </TooltipTrigger>
+              <TooltipContent>{upperCaseFirst(t(`common.${snippet.kind}`))}</TooltipContent>
+            </Tooltip>
+          )}
           {openInEditor[snippet.id] && (
             <Tooltip delayDuration={100}>
               <TooltipTrigger asChild>

@@ -167,6 +167,38 @@ describe('generateAiResponse', () => {
     fetchSpy.mockRestore();
   });
 
+  it('routes UberLLM requests to its OpenAI-compatible endpoint', async () => {
+    mockSettings.ai = {
+      activeAiProvider: 'uberllm',
+      uberllmApiKey: 'test-key',
+      model: 'deepseek/deepseek-v4.1-flash',
+      temperature: 0.2,
+    };
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ choices: [{ message: { content: 'UberLLM response' } }] }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    const result = await generateAiResponse({ prompt: 'hello' });
+
+    expect(result).toBe('UberLLM response');
+    expect(fetchSpy.mock.calls[0][0]).toBe('https://api.uberllm.dev/v1/chat/completions');
+    const headers = fetchSpy.mock.calls[0][1]?.headers as Record<string, string>;
+    expect(headers.Authorization).toBe('Bearer test-key');
+    const callBody = JSON.parse(fetchSpy.mock.calls[0][1]?.body as string);
+    expect(callBody.model).toBe('deepseek/deepseek-v4.1-flash');
+
+    fetchSpy.mockRestore();
+  });
+
+  it('throws AiApiError when no UberLLM API key is configured', async () => {
+    mockSettings.ai = { activeAiProvider: 'uberllm', uberllmApiKey: '' };
+
+    await expect(generateAiResponse({ prompt: 'hello' })).rejects.toThrow(AiApiError);
+  });
+
   it('sends system as separate field for Claude', async () => {
     mockSettings.ai = {
       activeAiProvider: 'claude',
@@ -271,6 +303,41 @@ describe('generateAiResponse', () => {
         });
       }
 
+      fetchSpy.mockRestore();
+    }
+  );
+
+  it.each([
+    { protocol: 'openai' as const, response: { choices: [{ message: { content: 'ok' } }] } },
+    { protocol: 'anthropic' as const, response: { content: [{ type: 'text', text: 'ok' }] } },
+  ])(
+    'preserves image and video blocks for MiniMax $protocol requests',
+    async ({ protocol, response }) => {
+      mockSettings.ai = {
+        activeAiProvider: 'minimax',
+        minimaxApiKey: 'test-key',
+        minimaxRegion: 'global_en',
+        minimaxProtocol: protocol,
+        model: 'MiniMax-M3',
+        temperature: 0.7,
+      };
+      const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+        new Response(JSON.stringify(response), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
+      const content = [
+        { type: 'text' as const, text: 'Describe these assets.' },
+        { type: 'image_url' as const, image_url: { url: 'https://example.com/image.png' } },
+        { type: 'video_url' as const, video_url: { url: 'https://example.com/video.mp4' } },
+      ];
+
+      await generateAiResponse({ prompt: 'fallback', messages: [{ role: 'user', content }] });
+
+      const body = JSON.parse(fetchSpy.mock.calls[0][1]?.body as string);
+      const sent = protocol === 'anthropic' ? body.messages[0].content : body.messages[0].content;
+      expect(sent).toEqual(content);
       fetchSpy.mockRestore();
     }
   );

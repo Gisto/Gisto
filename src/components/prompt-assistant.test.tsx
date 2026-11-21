@@ -7,7 +7,7 @@ vi.mock('@/lib/is-markdown', () => ({
   isMarkdown: () => false,
 }));
 
-vi.mock('@/components/layout/pages/snippet/content/preview/markdown', () => ({
+vi.mock('@/components/markdown.tsx', () => ({
   Markdown: ({ content }: { content: string }) => <div data-testid="markdown">{content}</div>,
 }));
 

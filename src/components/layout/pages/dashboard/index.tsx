@@ -13,6 +13,13 @@ import { Updater } from '@/components/updater.tsx';
 import { t } from '@/lib/i18n';
 import { globalState, useStoreValue } from '@/lib/store/globalState.ts';
 
+const greetingKey = (hour: number): string => {
+  if (hour < 12) return 'pages.dashboard.goodMorning';
+  if (hour < 18) return 'pages.dashboard.goodAfternoon';
+
+  return 'pages.dashboard.goodEvening';
+};
+
 export const DashBoard = () => {
   const search = useStoreValue('search');
   const list = useStoreValue('snippets');
@@ -26,14 +33,9 @@ export const DashBoard = () => {
     (typeof userRecord.username === 'string' && userRecord.username) ||
     '';
 
-  const hour = new Date().getHours();
-  const greetingKey =
-    hour < 12
-      ? 'pages.dashboard.goodMorning'
-      : hour < 18
-        ? 'pages.dashboard.goodAfternoon'
-        : 'pages.dashboard.goodEvening';
-  const greeting = `${t(greetingKey)}${displayName ? `, ${displayName}` : ''}`;
+  const greeting = `${t(greetingKey(new Date().getHours()))}${
+    displayName ? `, ${displayName}` : ''
+  }`;
 
   const hasNoData = !list || (list.length === 0 && totalSnippetCount === 0);
 

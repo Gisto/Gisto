@@ -155,6 +155,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     jsonPreviewCollapsedByDefault,
     filesPreviewEnabledByDefault,
     sortFilesByMarkdownFirst,
+    specialSnippetKinds,
     dashboardSnippetsOverTimeRange,
     sidebarViewMode,
   } = settings;
@@ -181,6 +182,7 @@ export const Settings = ({ isCollapsed = false, setIsCollapsed = () => {} }: Pro
     jsonPreviewCollapsedByDefault,
     filesPreviewEnabledByDefault,
     sortFilesByMarkdownFirst,
+    specialSnippetKinds,
     sidebarViewMode,
   };
 

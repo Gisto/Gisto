@@ -1,3 +1,13 @@
+/** Reads the response body according to the request method and content type. */
+async function readBody<T>(response: Response, method: string): Promise<T | null> {
+  if (method === 'DELETE') return null;
+  if (response.headers.get('Content-Type')?.includes('application/json')) {
+    return (await response.json()) as T;
+  }
+
+  return (await response.text()) as T;
+}
+
 type RequestParams = {
   baseUrl: string;
   endpoint?: string;
@@ -30,12 +40,7 @@ export async function requestApi<T>({
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  const data =
-    method === 'DELETE'
-      ? null
-      : response.headers.get('Content-Type')?.includes('application/json')
-        ? await response.json()
-        : await response.text();
+  const data = await readBody<T>(response, method);
 
   return { data: data as T, headers: response.headers, status: response.status };
 }

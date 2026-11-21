@@ -1,4 +1,5 @@
 import { resolveMiniMaxEndpoint } from '@/constants/minimax-endpoints.ts';
+import { MINIMAX_TEXT_MODELS } from '@/constants/minimax-models.ts';
 import { resolveOllamaEndpoint } from '@/constants/ollama-endpoints.ts';
 import { t } from '@/lib/i18n';
 import { globalState } from '@/lib/store/globalState.ts';
@@ -26,6 +27,7 @@ function getApiKey(provider: string): string | null {
     minimax: 'minimaxApiKey',
     openrouter: 'openRouterApiKey',
     ollama: 'ollamaApiKey',
+    uberllm: 'uberllmApiKey',
     atlascloud: 'atlascloudApiKey',
   };
   const key = keyField[provider];
@@ -110,6 +112,17 @@ export async function fetchOpenRouterModels(): Promise<ModelInfo[]> {
   return [...presets, ...models];
 }
 
+export async function fetchUberLLMModels(): Promise<ModelInfo[]> {
+  const apiKey = getApiKey('uberllm') || '';
+
+  // The model list is public; an invalid key gets a 401, so send it only when set
+  return fetchModelList({
+    provider: 'UberLLM',
+    url: 'https://api.uberllm.dev/v1/models',
+    headers: apiKey ? { Authorization: `Bearer ${apiKey}` } : {},
+  });
+}
+
 export async function fetchAtlasCloudModels(): Promise<ModelInfo[]> {
   const apiKey = getApiKey('atlascloud') || '';
 
@@ -169,13 +182,18 @@ export async function fetchMiniMaxModels(): Promise<ModelInfo[]> {
   const { ai } = globalState.getState().settings;
   const endpoint = resolveMiniMaxEndpoint(ai.minimaxRegion, ai.minimaxProtocol);
 
-  return fetchModelList({
+  const models = await fetchModelList({
     provider: 'MiniMax',
     url: endpoint.modelsUrl,
     headers:
       endpoint.protocol === 'anthropic'
         ? { 'x-api-key': apiKey }
         : { Authorization: `Bearer ${apiKey}` },
+  });
+
+  return MINIMAX_TEXT_MODELS.flatMap((id) => {
+    const model = models.find((entry) => entry.id === id);
+    return model ? [model] : [];
   });
 }
 
@@ -196,8 +214,6 @@ export async function fetchModels(provider: string): Promise<ModelInfo[]> {
   switch (provider) {
     case 'openrouter':
       return fetchOpenRouterModels();
-    case 'atlascloud':
-      return fetchAtlasCloudModels();
     case 'openai':
       return fetchOpenAiModels();
     case 'gemini':
@@ -206,6 +222,10 @@ export async function fetchModels(provider: string): Promise<ModelInfo[]> {
       return fetchClaudeModels();
     case 'minimax':
       return fetchMiniMaxModels();
+    case 'uberllm':
+      return fetchUberLLMModels();
+    case 'atlascloud':
+      return fetchAtlasCloudModels();
     case 'ollama':
       return fetchOllamaModels();
     default:

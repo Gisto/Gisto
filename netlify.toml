@@ -1,2 +1,5 @@
-[build.environment]
-  NODE_OPTIONS = "--max-old-space-size=4096"
+# Builds run in GitHub Actions (.github/workflows/deploy-netlify.yml);
+# Netlify only hosts the prebuilt dist/ uploaded by the CLI.
+[build]
+  publish = "dist"
+  ignore = "exit 0"

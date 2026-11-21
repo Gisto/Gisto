@@ -2,9 +2,122 @@
 
 All significant updates and improvements
 
-## Upcoming version
+## v2.17.0
 
-[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+Released on: Nov 14, 2026
+
+### 🚀 Features
+
+- Special snippet types
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([2c6b473](https://github.com/gisto/gisto/commit/2c6b473fd5fb92197a673f0a753f99d1690547ff))
+
+
+## v2.16.0
+
+Released on: Nov 13, 2026
+
+### 🚀 Features
+
+- *(ai)* Add UberLLM as an AI assistant provider
+・ by PSA-Team-source
+([@PSA-Team-source](https://github.com/PSA-Team-source))
+([7a85639](https://github.com/gisto/gisto/commit/7a85639f1e377c80572c552833473884891a613c))
+
+
+### 📚 Documentation
+
+- Add deploy chart to readme
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([6c661b2](https://github.com/gisto/gisto/commit/6c661b263b01b40e525b1d6ae240a748e0cbf419))
+
+- Improve deploy chart of all flows in readme
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([2322962](https://github.com/gisto/gisto/commit/2322962098189bee09ea4cccb298fa48db46960b))
+
+
+## v2.15.7
+
+Released on: Nov 13, 2026
+
+### ⚙️ Miscellaneous Tasks
+
+- Fix netlify deploy from github
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([9b7faf6](https://github.com/gisto/gisto/commit/9b7faf6d5c13b987f60c770b540ddd58f4434481))
+
+
+## v2.15.6
+
+Released on: Nov 13, 2026
+
+### ⚙️ Miscellaneous Tasks
+
+- Build web app locally on GH
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([4cb3582](https://github.com/gisto/gisto/commit/4cb358257878122a1539049aeec337bbd450f7c3))
+
+
+## v2.15.5
+
+Released on: Oct 20, 2026
+
+### 🐛 Bug Fixes
+
+- *(create and edit)* Map missing file extentions based on file language
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([d01e3c4](https://github.com/gisto/gisto/commit/d01e3c4774828566dc9561b671fcc41a8d7353a7))
+
+
+### 👷 Continuous Integration
+
+- *(release)* Rebase before push and serialize release runs
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([5d6e3f3](https://github.com/gisto/gisto/commit/5d6e3f3e53c5110f444368df59c28e4b975a192e))
+
+
+## v2.15.3
+
+Released on: Oct 19, 2026
+
+### 🐛 Bug Fixes
+
+- *(pipeline)* Pipeline run
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([164ea55](https://github.com/gisto/gisto/commit/164ea55bb18da3b89940b6850cbbe850c6c12e55))
+
+
+## v2.15.2
+
+Released on: Oct 19, 2026
+
+### 🚀 Features
+
+- Refresh MiniMax text models to M3.1 Flash and M3
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([60a40a1](https://github.com/gisto/gisto/commit/60a40a150d613c71c8c0534e4b3d272a86e2db7d))
+
+
+## v2.15.1
+
+Released on: Oct 17, 2026
+
+### 🚀 Features
+
+- Preserve multimodal chat content
+・ by octo-patch
+([@octo-patch](https://github.com/octo-patch))
+([72ea0da](https://github.com/gisto/gisto/commit/72ea0daf59c53bcd81da4730c0b080416196e69d))
+
 
 ### 🐛 Bug Fixes
 
@@ -35,6 +148,16 @@ All significant updates and improvements
 ・ by dependabot[bot]
 ([@dependabot[bot]](https://github.com/dependabot[bot]))
 ([bf167a0](https://github.com/gisto/gisto/commit/bf167a04edec020441e2c6785a223eedfde0d4fb))
+
+- *(deps)* Bump @tauri-apps/plugin-window-state from 2.4.1 to 2.5.0
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([b633d37](https://github.com/gisto/gisto/commit/b633d376104bf1e140cc11376ade86bcc66c6645))
+
+- *(deps)* Bump @radix-ui/react-tabs from 1.1.13 to 1.1.21
+・ by dependabot[bot]
+([@dependabot[bot]](https://github.com/dependabot[bot]))
+([a578fdd](https://github.com/gisto/gisto/commit/a578fdd510bca28ba50dc3e4d562cee5dee1b87b))
 
 
 ### ⚙️ Miscellaneous Tasks
@@ -1913,6 +2036,18 @@ Released on: Feb 1, 2025
 ([60e8173](https://github.com/gisto/gisto/commit/60e81732014c6db2cd7199b57fca7e9ad2a554d3))
 
 
+## v2.0.2
+
+Released on: Jan 31, 2025
+
+### 🛠️️ Build
+
+- Add secrets
+・ by Sasha Khamkov
+([@sanusart](https://github.com/sanusart))
+([14ee053](https://github.com/gisto/gisto/commit/14ee053c7a7ada187a67d2a5c88f82b3199ccf7b))
+
+
 ## v2.0.1
 
 Released on: Jan 31, 2025
@@ -1926,11 +2061,6 @@ Released on: Jan 31, 2025
 
 
 ### 🛠️️ Build
-
-- Add secrets
-・ by Sasha Khamkov
-([@sanusart](https://github.com/sanusart))
-([14ee053](https://github.com/gisto/gisto/commit/14ee053c7a7ada187a67d2a5c88f82b3199ccf7b))
 
 - Add secrets
 ・ by Sasha Khamkov

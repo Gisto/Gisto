@@ -1,10 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import {
-  fetchAtlasCloudModels,
   fetchMiniMaxModels,
   fetchOllamaModels,
   fetchOpenRouterModels,
+  fetchUberLLMModels,
+  fetchAtlasCloudModels,
 } from './models-api.ts';
 
 const mockSettings: {
@@ -124,6 +125,9 @@ describe('fetchMiniMaxModels', () => {
           data: [
             { id: 'MiniMax-M3', object: 'model', owned_by: 'minimax' },
             { id: 'MiniMax-M2.7', object: 'model', owned_by: 'minimax' },
+            { id: 'MiniMax-M3.1-Flash', object: 'model', owned_by: 'minimax' },
+            { id: 'MiniMax-M2.5', object: 'model', owned_by: 'minimax' },
+            { id: 'speech-02-hd', object: 'model', owned_by: 'minimax' },
           ],
         }),
         { status: 200, headers: { 'Content-Type': 'application/json' } }
@@ -131,8 +135,8 @@ describe('fetchMiniMaxModels', () => {
     );
 
     await expect(fetchMiniMaxModels()).resolves.toEqual([
+      { id: 'MiniMax-M3.1-Flash', name: 'MiniMax-M3.1-Flash' },
       { id: 'MiniMax-M3', name: 'MiniMax-M3' },
-      { id: 'MiniMax-M2.7', name: 'MiniMax-M2.7' },
     ]);
     expect(fetchSpy.mock.calls[0][0]).toBe(endpoint);
     const headers = fetchSpy.mock.calls[0][1]?.headers as Record<string, string>;
@@ -141,6 +145,16 @@ describe('fetchMiniMaxModels', () => {
     } else {
       expect(headers.Authorization).toBe('Bearer test-key');
     }
+  });
+
+  it('does not invent availability for a model absent from the API response', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify({ data: [{ id: 'MiniMax-M3', name: 'MiniMax M3' }] }), {
+        status: 200,
+      })
+    );
+
+    await expect(fetchMiniMaxModels()).resolves.toEqual([{ id: 'MiniMax-M3', name: 'MiniMax M3' }]);
   });
 
   it('does not call the API without a configured key', async () => {
@@ -279,6 +293,47 @@ describe('fetchOpenRouterModels', () => {
 
     expect(fetchSpy).toHaveBeenCalledTimes(1);
     expect(fetchSpy.mock.calls[0][0]).toBe('https://openrouter.ai/api/v1/models');
+    expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({});
+  });
+});
+
+describe('fetchUberLLMModels', () => {
+  beforeEach(() => {
+    mockSettings.ai = { uberllmApiKey: 'test-key' };
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('fetches and maps models from the UberLLM endpoint', async () => {
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          data: [
+            { id: 'deepseek/deepseek-v4.1-flash', object: 'model' },
+            { id: 'anthropic/claude-sonnet-4.6', name: 'Claude Sonnet 4.6', object: 'model' },
+          ],
+        }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      )
+    );
+
+    await expect(fetchUberLLMModels()).resolves.toEqual([
+      { id: 'deepseek/deepseek-v4.1-flash', name: 'deepseek/deepseek-v4.1-flash' },
+      { id: 'anthropic/claude-sonnet-4.6', name: 'Claude Sonnet 4.6' },
+    ]);
+    expect(fetchSpy.mock.calls[0][0]).toBe('https://api.uberllm.dev/v1/models');
+    expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({ Authorization: 'Bearer test-key' });
+  });
+
+  it('lists models without a key because the endpoint is public', async () => {
+    mockSettings.ai = { uberllmApiKey: '' };
+    const fetchSpy = vi
+      .spyOn(globalThis, 'fetch')
+      .mockResolvedValue(new Response(JSON.stringify({ data: [] }), { status: 200 }));
+
+    await expect(fetchUberLLMModels()).resolves.toEqual([]);
     expect(fetchSpy.mock.calls[0][1]?.headers).toEqual({});
   });
 });

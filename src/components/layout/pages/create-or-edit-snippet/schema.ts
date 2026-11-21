@@ -5,6 +5,7 @@ import { t } from '@/lib/i18n';
 export const FileSchema = z.object({
   filename: z.string().min(1, t('pages.new.fileError')),
   content: z.union([z.string().min(1, t('pages.new.fileContentError')), z.null()]),
+  language: z.string().optional(),
 });
 
 export const SnippetSchema = z.object({

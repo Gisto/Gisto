@@ -34,6 +34,8 @@ export type StoreStateType = {
     jsonPreviewCollapsedByDefault: boolean;
     filesPreviewEnabledByDefault: boolean;
     sortFilesByMarkdownFirst: boolean;
+    /** Enables the structured snippet kinds (todo, kanban, doc, flashcards). */
+    specialSnippetKinds: boolean;
     sidebarViewMode: 'list' | 'tags' | 'languages';
     editor: {
       fontFamily: string;
@@ -65,6 +67,7 @@ export type StoreStateType = {
         | 'claude'
         | 'minimax'
         | 'ollama'
+        | 'uberllm'
         | 'atlascloud';
       geminiApiKey?: string;
       openRouterApiKey?: string;
@@ -72,6 +75,7 @@ export type StoreStateType = {
       claudeApiKey?: string;
       minimaxApiKey?: string;
       ollamaApiKey?: string;
+      uberllmApiKey?: string;
       atlascloudApiKey?: string;
       minimaxRegion: 'global_en' | 'cn_zh';
       minimaxProtocol: 'openai' | 'anthropic';
@@ -166,6 +170,7 @@ export const defaultSettings: SettingsType = {
   jsonPreviewCollapsedByDefault: true,
   filesPreviewEnabledByDefault: true,
   sortFilesByMarkdownFirst: false,
+  specialSnippetKinds: true,
   sidebarViewMode: 'list',
   editor: {
     fontFamily: 'JetBrains Mono',
@@ -201,6 +206,7 @@ export const defaultSettings: SettingsType = {
     ollamaMode: 'local',
     ollamaBaseUrl: '',
     ollamaApiKey: '',
+    uberllmApiKey: '',
     atlascloudApiKey: '',
     model: 'meta-llama/llama-3.2-3b-instruct:free',
     temperature: 0.2,

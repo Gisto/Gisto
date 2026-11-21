@@ -6,10 +6,21 @@ import { Header } from '@/components/layout/pages/snippet/content/header.tsx';
 import { useStoreValue } from '@/lib/store/globalState.ts';
 import { SnippetFileType, SnippetSingleType } from '@/types/snippet.ts';
 
-export const File = ({ file, snippet }: { file: SnippetFileType; snippet: SnippetSingleType }) => {
+export const File = ({
+  file,
+  snippet,
+  defaultPreview,
+}: {
+  file: SnippetFileType;
+  snippet: SnippetSingleType;
+  /** Overrides the user setting, e.g. to open kind sources as raw code. */
+  defaultPreview?: boolean;
+}) => {
   const settings = useStoreValue('settings');
   const [collapsed, setCollapsed] = useState(settings.filesCollapsedByDefault);
-  const [preview, setPreview] = useState(settings.filesPreviewEnabledByDefault ?? false);
+  const [preview, setPreview] = useState(
+    defaultPreview ?? settings.filesPreviewEnabledByDefault ?? false
+  );
 
   return (
     <>

@@ -6,6 +6,9 @@ import {
   Globe,
   History,
   Info,
+  ListTree,
+  Maximize2,
+  Minimize2,
   MoreVertical,
   Pencil,
   Shield,
@@ -26,6 +29,10 @@ import { PageHeader } from '@/components/layout/pages/page-header.tsx';
 import { File } from '@/components/layout/pages/snippet/content';
 import { HistoryDialog } from '@/components/layout/pages/snippet/history-dialog.tsx';
 import { Loading } from '@/components/loading.tsx';
+import { DocView } from '@/components/snippet-kinds/views/doc-view.tsx';
+import { FlashcardsView } from '@/components/snippet-kinds/views/flashcards-view.tsx';
+import { KanbanBoard } from '@/components/snippet-kinds/views/kanban-board.tsx';
+import { TodoChecklist } from '@/components/snippet-kinds/views/todo-checklist.tsx';
 import { toast } from '@/components/toast';
 import { Badge } from '@/components/ui/badge.tsx';
 import { Button } from '@/components/ui/button.tsx';
@@ -56,18 +63,126 @@ import { openSnippetInEditor } from '@/lib/api/open-in-editor.ts';
 import { t } from '@/lib/i18n';
 import { snippetService } from '@/lib/providers/snippet-service.ts';
 import { globalState, setSnippetOpenInEditor, useStoreValue } from '@/lib/store/globalState.ts';
+import { SnippetKind } from '@/types/snippet.ts';
 import {
   copyToClipboard,
   fetchAndUpdateSnippets,
+  getVisibleSnippetKind,
   getTags,
+  isOrderedDoc,
+  MANIFEST_FILENAME,
+  TODO_FILENAME,
+  KANBAN_FILENAME,
+  FLASHCARDS_FILENAME,
   mergeSyncedSnippet,
   removeTags,
+  cn,
+  sortSnippetFiles,
   upperCaseFirst,
 } from '@/utils';
+
+const KindView = ({
+  kind,
+  snippet,
+  onTodoUpdated,
+  onKanbanUpdated,
+  onFlashcardsUpdated,
+}: {
+  kind: SnippetKind;
+  snippet: SnippetSingleType;
+  onTodoUpdated: (content: string) => void;
+  onKanbanUpdated: (content: string) => void;
+  onFlashcardsUpdated: (content: string) => void;
+}) => {
+  if (kind === 'kanban') {
+    return (
+      <div className="h-full overflow-auto pb-10">
+        <KanbanBoard snippet={snippet} onUpdated={onKanbanUpdated} />
+      </div>
+    );
+  }
+
+  if (kind === 'doc') {
+    return (
+      <ScrollArea className="h-full pb-10">
+        <DocView snippet={snippet} ordered={isOrderedDoc(snippet.files)} />
+      </ScrollArea>
+    );
+  }
+
+  if (kind === 'flashcards') {
+    // the view owns its own scroll container so it can center on the page
+    return <FlashcardsView snippet={snippet} onUpdated={onFlashcardsUpdated} />;
+  }
+
+  if (kind === 'todo') {
+    return (
+      <ScrollArea className="h-full pb-10">
+        <TodoChecklist snippet={snippet} onUpdated={onTodoUpdated} />
+      </ScrollArea>
+    );
+  }
+
+  return <SnippetFiles snippet={snippet} />;
+};
+
+const SnippetFiles = ({
+  snippet,
+  includeManifest = false,
+}: {
+  snippet: SnippetSingleType;
+  includeManifest?: boolean;
+}) => (
+  <ScrollArea className="h-full pb-10">
+    <div className="p-4">
+      {renderSnippetFiles(snippet, {
+        includeManifest,
+        defaultPreview: includeManifest ? false : undefined,
+      })}
+    </div>
+  </ScrollArea>
+);
+
+const renderSnippetFiles = (
+  snippet: SnippetSingleType,
+  {
+    includeManifest = false,
+    defaultPreview,
+  }: { includeManifest?: boolean; defaultPreview?: boolean } = {}
+) => {
+  const sortByMarkdownFirst = globalState.getState()?.settings?.sortFilesByMarkdownFirst;
+  const filenames = Object.keys(snippet.files).filter(
+    (file) => includeManifest || file !== MANIFEST_FILENAME
+  );
+
+  return sortSnippetFiles(filenames, snippet.files, sortByMarkdownFirst).map((file) => (
+    <File key={file} snippet={snippet} file={snippet.files[file]} defaultPreview={defaultPreview} />
+  ));
+};
 
 export const SnippetContent = () => {
   const [snippet, setSnippet] = useState<SnippetSingleType | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showSource, setShowSource] = useState(false);
+  const [fullScreen, setFullScreen] = useState(false);
+
+  // view mode is per snippet, so reset it when navigating between snippets
+  useEffect(() => {
+    setShowSource(false);
+    setFullScreen(false);
+  }, [snippet?.id]);
+
+  useEffect(() => {
+    if (!fullScreen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setFullScreen(false);
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [fullScreen]);
   const { params, navigate } = useRouter();
   const snippetState = useStoreValue('snippets').find((s) => s.id === params.id);
   const settings = useStoreValue('settings');
@@ -201,7 +316,28 @@ export const SnippetContent = () => {
     return <Loading />;
   }
 
+  const kind = getVisibleSnippetKind(snippet.files);
+  const isStructuredKind = kind !== 'snippet';
   const badges = getTags(snippet.description);
+  const updateFileContent = (filename: string, content: string) =>
+    setSnippet((previous) => {
+      if (!previous) return previous;
+
+      const target = Object.values(previous.files).find((file) => file.filename === filename);
+      if (!target) return previous;
+
+      return {
+        ...previous,
+        files: {
+          ...previous.files,
+          [target.filename]: { ...target, content },
+        },
+      };
+    });
+  const handleTodoUpdated = (content: string) => updateFileContent(TODO_FILENAME, content);
+  const handleKanbanUpdated = (content: string) => updateFileContent(KANBAN_FILENAME, content);
+  const handleFlashcardsUpdated = (content: string) =>
+    updateFileContent(FLASHCARDS_FILENAME, content);
 
   return (
     <div className="h-screen w-full min-w-0 border-r border-collapse">
@@ -211,6 +347,10 @@ export const SnippetContent = () => {
             <div className="line-clamp-1">
               {removeTags(snippet.description) || t('common.untitled')}
             </div>
+
+            {kind !== 'snippet' && (
+              <Badge variant="secondary">{upperCaseFirst(t(`common.${kind}`))}</Badge>
+            )}
 
             {badges.length > 0 && (
               <div className="flex items-center gap-2">
@@ -244,6 +384,51 @@ export const SnippetContent = () => {
                 <span className="sr-only">{t('components.aiAssistant')}</span>
               </Button>
             )}
+
+            {isStructuredKind && (
+              <>
+                <Separator orientation="vertical" className="mx-2 h-6" />
+                <Tooltip delayDuration={0}>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="-mx-3"
+                      onClick={() => setShowSource((value) => !value)}
+                    >
+                      {showSource ? <ListTree className="size-4" /> : <Code2 className="size-4" />}
+                      <span className="sr-only">
+                        {t(showSource ? 'pages.snippet.showKindView' : 'pages.snippet.showSource')}
+                      </span>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    {t(showSource ? 'pages.snippet.showKindView' : 'pages.snippet.showSource')}
+                  </TooltipContent>
+                </Tooltip>
+              </>
+            )}
+
+            <Separator orientation="vertical" className="mx-2 h-6" />
+
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="-mx-3"
+                  onClick={() => setFullScreen((value) => !value)}
+                >
+                  {fullScreen ? <Minimize2 className="size-4" /> : <Maximize2 className="size-4" />}
+                  <span className="sr-only">
+                    {t(fullScreen ? 'pages.snippet.exitFullScreen' : 'pages.snippet.fullScreen')}
+                  </span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                {t(fullScreen ? 'pages.snippet.exitFullScreen' : 'pages.snippet.fullScreen')}
+              </TooltipContent>
+            </Tooltip>
 
             <Separator orientation="vertical" className="mx-2 h-6" />
 
@@ -481,28 +666,40 @@ export const SnippetContent = () => {
           </div>
         </div>
       </PageHeader>
-      <div className="bg-secondary h-full shadow-inner">
-        <ScrollArea className="h-full pb-10">
-          <div className="p-4">
-            {Object.keys(snippet.files)
-              .sort((a, b) => {
-                const sortByMarkdownFirst =
-                  globalState.getState()?.settings?.sortFilesByMarkdownFirst;
-
-                if (sortByMarkdownFirst) {
-                  const isMarkdownA = a.endsWith('.md') || snippet.files[a].language === 'Markdown';
-                  const isMarkdownB = b.endsWith('.md') || snippet.files[b].language === 'Markdown';
-                  if (isMarkdownA && !isMarkdownB) return -1;
-                  if (!isMarkdownA && isMarkdownB) return 1;
-                }
-
-                return 0;
-              })
-              .map((file) => {
-                return <File key={file} snippet={snippet} file={snippet.files[file]} />;
-              })}
+      <div
+        className={cn(
+          'bg-secondary h-full shadow-inner',
+          fullScreen && 'fixed inset-0 z-50 flex flex-col'
+        )}
+      >
+        {fullScreen && (
+          <div className="flex h-[52px] shrink-0 items-center justify-between gap-2 border-b bg-background px-4">
+            <div className="line-clamp-1 text-sm font-medium">
+              {removeTags(snippet.description) || t('common.untitled')}
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setFullScreen(false)}
+              aria-label={t('pages.snippet.exitFullScreen')}
+            >
+              <Minimize2 className="size-4" />
+            </Button>
           </div>
-        </ScrollArea>
+        )}
+        <div className={cn('min-h-0', fullScreen ? 'flex-1' : 'h-full')}>
+          {showSource ? (
+            <SnippetFiles snippet={snippet} includeManifest />
+          ) : (
+            <KindView
+              kind={kind}
+              snippet={snippet}
+              onTodoUpdated={handleTodoUpdated}
+              onKanbanUpdated={handleKanbanUpdated}
+              onFlashcardsUpdated={handleFlashcardsUpdated}
+            />
+          )}
+        </div>
       </div>
 
       <AIChatDialog
