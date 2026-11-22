@@ -17,6 +17,7 @@ const AI_PROVIDER_LABELS: Record<string, string> = {
   minimax: 'MiniMax',
   ollama: 'Ollama',
   uberllm: 'UberLLM',
+  atlascloud: 'Atlas Cloud',
 };
 
 const aiProviderLabel = (provider?: string): string =>

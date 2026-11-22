@@ -7,6 +7,7 @@ const GEMINI_ENDPOINT =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
 const UBERLLM_ENDPOINT = 'https://api.uberllm.dev/v1/chat/completions';
+const ATLASCLOUD_ENDPOINT = 'https://api.atlascloud.ai/v1/chat/completions';
 const OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
 const CLAUDE_ENDPOINT = 'https://api.anthropic.com/v1/messages';
 
@@ -37,7 +38,8 @@ export interface GenerateAiResponseOptions {
     | 'claude'
     | 'minimax'
     | 'ollama'
-    | 'uberllm';
+    | 'uberllm'
+    | 'atlascloud';
 }
 
 type AiProvider = NonNullable<GenerateAiResponseOptions['activeAiProvider']>;
@@ -48,7 +50,8 @@ type AiApiKeyField =
   | 'claudeApiKey'
   | 'minimaxApiKey'
   | 'ollamaApiKey'
-  | 'uberllmApiKey';
+  | 'uberllmApiKey'
+  | 'atlascloudApiKey';
 
 const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
   openrouter: 'openRouterApiKey',
@@ -58,6 +61,7 @@ const AI_PROVIDER_API_KEYS: Record<AiProvider, AiApiKeyField> = {
   minimax: 'minimaxApiKey',
   ollama: 'ollamaApiKey',
   uberllm: 'uberllmApiKey',
+  atlascloud: 'atlascloudApiKey',
 };
 
 export type ResolvedMiniMaxEndpoint = ReturnType<typeof resolveMiniMaxEndpoint>;
@@ -73,6 +77,8 @@ function resolveOpenAiCompatibleEndpoint(
       return OPENROUTER_ENDPOINT;
     case 'uberllm':
       return UBERLLM_ENDPOINT;
+    case 'atlascloud':
+      return ATLASCLOUD_ENDPOINT;
     case 'minimax':
       return minimaxEndpoint?.chatUrl ?? OPENAI_ENDPOINT;
     case 'ollama':
@@ -227,6 +233,7 @@ export async function generateAiResponse(options: GenerateAiResponseOptions): Pr
     activeAiProvider === 'openai' ||
     activeAiProvider === 'openrouter' ||
     activeAiProvider === 'uberllm' ||
+    activeAiProvider === 'atlascloud' ||
     activeAiProvider === 'ollama' ||
     (activeAiProvider === 'minimax' && minimaxEndpoint?.protocol === 'openai');
 

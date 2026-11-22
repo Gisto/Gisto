@@ -8,6 +8,7 @@ import {
   OpenRouterIcon,
   OllamaIcon,
   UberLLMIcon,
+  AtlasCloudIcon,
   GitHubIcon,
   GitLabIcon,
 } from '.';
@@ -45,6 +46,11 @@ describe('Icons', () => {
 
   it('renders UberLLMIcon', () => {
     const { asFragment } = render(<UberLLMIcon />);
+    expect(asFragment()).toBeDefined();
+  });
+
+  it('renders AtlasCloudIcon', () => {
+    const { asFragment } = render(<AtlasCloudIcon />);
     expect(asFragment()).toBeDefined();
   });
 

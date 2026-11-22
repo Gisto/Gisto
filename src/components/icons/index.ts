@@ -5,6 +5,7 @@ export { MiniMaxIcon } from './minimax-icon';
 export { OpenRouterIcon } from './openrouter-icon';
 export { OllamaIcon } from './ollama-icon';
 export { UberLLMIcon } from './uberllm-icon';
+export { AtlasCloudIcon } from './atlascloud-icon';
 export { GitHubIcon } from './github-icon';
 export { GitLabIcon } from './gitlab-icon';
 export { SnippetBinIcon } from './snippet-bin-icon';
