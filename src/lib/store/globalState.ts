@@ -67,7 +67,8 @@ export type StoreStateType = {
         | 'claude'
         | 'minimax'
         | 'ollama'
-        | 'uberllm';
+        | 'uberllm'
+        | 'atlascloud';
       geminiApiKey?: string;
       openRouterApiKey?: string;
       openaiApiKey?: string;
@@ -75,6 +76,7 @@ export type StoreStateType = {
       minimaxApiKey?: string;
       ollamaApiKey?: string;
       uberllmApiKey?: string;
+      atlascloudApiKey?: string;
       minimaxRegion: 'global_en' | 'cn_zh';
       minimaxProtocol: 'openai' | 'anthropic';
       ollamaMode: 'local' | 'remote';
@@ -205,6 +207,7 @@ export const defaultSettings: SettingsType = {
     ollamaBaseUrl: '',
     ollamaApiKey: '',
     uberllmApiKey: '',
+    atlascloudApiKey: '',
     model: 'meta-llama/llama-3.2-3b-instruct:free',
     temperature: 0.2,
     cleanJson: true,

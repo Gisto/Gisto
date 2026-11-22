@@ -6,6 +6,7 @@ import {
   OpenRouterIcon,
   OllamaIcon,
   UberLLMIcon,
+  AtlasCloudIcon,
 } from '@/components/icons';
 import { MINIMAX_TEXT_MODELS } from '@/constants/minimax-models';
 
@@ -124,6 +125,19 @@ export const AI_PROVIDERS: Record<string, AiProvider> = {
       { value: 'openai/gpt-5.4-mini', label: '💸 GPT-5.4 Mini' },
       { value: 'deepseek/deepseek-v4-pro', label: '🔥 DeepSeek V4 Pro' },
       { value: 'anthropic/claude-sonnet-4.6', label: '🔥 Claude Sonnet 4.6' },
+    ],
+  },
+  atlascloud: {
+    label: 'Atlas Cloud',
+    description: 'Multiple Models',
+    icon: AtlasCloudIcon,
+    apiKeyUrl: 'https://console.atlascloud.ai/api-keys',
+    modelOptions: [
+      { value: 'deepseek-ai/deepseek-v4-flash', label: '💸 DeepSeek V4 Flash' },
+      { value: 'deepseek-ai/deepseek-v4-pro', label: '🔥 DeepSeek V4 Pro' },
+      { value: 'moonshotai/kimi-k2.6', label: '🔥 Kimi K2.6' },
+      { value: 'qwen/qwen3.6-plus', label: '🔥 Qwen3.6 Plus' },
+      { value: 'openai/gpt-5.4-mini', label: '💸 GPT-5.4 Mini' },
     ],
   },
 };
