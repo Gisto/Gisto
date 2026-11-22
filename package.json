@@ -85,7 +85,7 @@
     "react-dom": "^19.2.0",
     "react-dropdown-select": "^5.0.5",
     "react-leaflet": "^5.0.0",
-    "recharts": "^3.8.1",
+    "recharts": "^3.10.1",
     "swagger-ui-react": "^5.32.14",
     "tailwind-merge": "^3.6.0",
     "tailwindcss-animate": "^1.0.7",
