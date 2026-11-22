@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### 🚀 Features
+
+- *(ai)* Add Atlas Cloud provider ([#637](https://github.com/gisto/gisto/issues/637))
+・ by nb213
+([@binyangzhu000-sudo](https://github.com/binyangzhu000-sudo))
+([41e584e](https://github.com/gisto/gisto/commit/41e584e199abcc1d32c3e2ea657ee5c23b1017b8))
+
+
 ## v2.17.0
 
 Released on: Nov 14, 2026
@@ -22,7 +34,7 @@ Released on: Nov 13, 2026
 
 - *(ai)* Add UberLLM as an AI assistant provider
 ・ by PSA-Team-source
-([@PSA-Team-source](https://github.com/PSA-Team-source))
+([@al-global-tech](https://github.com/al-global-tech))
 ([7a85639](https://github.com/gisto/gisto/commit/7a85639f1e377c80572c552833473884891a613c))
 
 
