@@ -169,6 +169,7 @@ describe('PromptAssistant', () => {
     );
 
     expect(screen.queryByText('Press send to start a new conversation')).not.toBeInTheDocument();
+    expect(screen.getByPlaceholderText('How can I help you today?')).toBeInTheDocument();
   });
 
   it('shows the active AI provider icon and model', () => {
