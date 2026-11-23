@@ -2,6 +2,18 @@
 
 All significant updates and improvements
 
+## Upcoming version
+
+[Release candidate build](https://main-branch-gisto-app.netlify.app/)
+
+### 🧪 Testing
+
+- *(ai)* Assert the composer stays visible once a chat has messages ([#648](https://github.com/gisto/gisto/issues/648))
+・ by Alex Mouradian
+([@AlexikM](https://github.com/AlexikM))
+([f0df114](https://github.com/gisto/gisto/commit/f0df114215ce08406dbd9f5d7e8d0027f96a05fb))
+
+
 ## v2.18.0
 
 Released on: Nov 22, 2026
